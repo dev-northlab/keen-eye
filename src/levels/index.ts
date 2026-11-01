@@ -59,6 +59,26 @@ import level057 from './chapter-03/level-057.ts'
 import level058 from './chapter-03/level-058.ts'
 import level059 from './chapter-03/level-059.ts'
 import level060 from './chapter-03/level-060.ts'
+import level061 from './chapter-04/level-061.ts'
+import level062 from './chapter-04/level-062.ts'
+import level063 from './chapter-04/level-063.ts'
+import level064 from './chapter-04/level-064.ts'
+import level065 from './chapter-04/level-065.ts'
+import level066 from './chapter-04/level-066.ts'
+import level067 from './chapter-04/level-067.ts'
+import level068 from './chapter-04/level-068.ts'
+import level069 from './chapter-04/level-069.ts'
+import level070 from './chapter-04/level-070.ts'
+import level071 from './chapter-04/level-071.ts'
+import level072 from './chapter-04/level-072.ts'
+import level073 from './chapter-04/level-073.ts'
+import level074 from './chapter-04/level-074.ts'
+import level075 from './chapter-04/level-075.ts'
+import level076 from './chapter-04/level-076.ts'
+import level077 from './chapter-04/level-077.ts'
+import level078 from './chapter-04/level-078.ts'
+import level079 from './chapter-04/level-079.ts'
+import level080 from './chapter-04/level-080.ts'
 
 export const levels: Level[] = [
   level001,
@@ -121,6 +141,26 @@ export const levels: Level[] = [
   level058,
   level059,
   level060,
+  level061,
+  level062,
+  level063,
+  level064,
+  level065,
+  level066,
+  level067,
+  level068,
+  level069,
+  level070,
+  level071,
+  level072,
+  level073,
+  level074,
+  level075,
+  level076,
+  level077,
+  level078,
+  level079,
+  level080,
 ]
 
 export const levelById = (id: number): Level | undefined => levels.find((l) => l.id === id)
