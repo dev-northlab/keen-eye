@@ -1,6 +1,7 @@
 // Level validator: npm run check-levels
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
+import { allPieces } from '../src/levels/generator.ts'
 import { levels } from '../src/levels/index.ts'
 import { posedSvg, rasterize } from './render.ts'
 
@@ -17,6 +18,8 @@ const ZONE_TOLERANCE_PX = 2
 const MIN_VISIBLE_PX = 40
 /** Differences at least this large on levels 1–15 ("large differences", spec section 7). */
 const MIN_EARLY_RADIUS = 24
+/** Smallest zone on later levels: still tappable when zoomed in. */
+const MIN_RADIUS = 18
 
 /** Allowed number of differences by level id (spec, section 7). */
 function expectedDiffs(id: number): [min: number, max: number] {
@@ -99,8 +102,8 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
 
   const [min, max] = expectedDiffs(level.id)
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
-  if (level.id <= 15)
-    ds.forEach((d, i) => d.r < MIN_EARLY_RADIUS && errors.push(`zone #${i} r${d.r} is too small for level ${level.id}`))
+  const minRadius = level.id <= 15 ? MIN_EARLY_RADIUS : MIN_RADIUS
+  ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id}`))
 
   if (level.kind !== 'svg') {
     if (!level.imageA || !level.imageB) errors.push('image level without imageA/imageB')
@@ -110,6 +113,8 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   const a = level.build(0)
   const b = level.build(1)
   if (JSON.stringify(a) !== JSON.stringify(level.build(0))) errors.push('build(0) is not deterministic')
+  // resvg (validator, previews) reads `rgb(r g b / a)` as black while browsers show it: use fill-opacity.
+  if (/rgba?\([^)]*\//.test(a.svg + b.svg)) errors.push('CSS "rgb(r g b / a)" color: use fill-opacity / stroke-opacity')
   const pictures = [a, b].map((p) => new Map(p.animations.map((anim) => [anim.id, anim])))
 
   ds.forEach((d, i) => {
@@ -142,7 +147,43 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   return { errors, motion }
 }
 
-let failed = 0
+/**
+ * Generator pieces: every opaque pixel of a piece (in each of its colors) must lie inside its declared
+ * bounds circle, or zones built from the bounds would miss parts of the difference.
+ */
+function checkPieces(): number {
+  const SIZE = 400
+  const X = 200
+  const Y = 260
+  let bad = 0
+  for (const [name, piece] of allPieces) {
+    const [dx, dy, r] = piece.bounds
+    const opaque: [number, number][] = []
+    for (const color of piece.colors) {
+      const px = rasterize(piece.draw(X, Y, 1, color), SIZE, SIZE).pixels
+      for (let y = 0; y < SIZE; y++)
+        for (let x = 0; x < SIZE; x++) if (px[(y * SIZE + x) * 4 + 3] > 16) opaque.push([x + 0.5 - X, y + 0.5 - Y])
+    }
+    const reach = (cx: number, cy: number) => Math.max(...opaque.map(([x, y]) => Math.hypot(x - cx, y - cy)))
+    const worst = reach(dx, dy)
+    if (worst > r + ZONE_TOLERANCE_PX) {
+      bad++
+      // Suggest bounds around the middle of the drawing's bounding box.
+      const xs = opaque.map((p) => p[0])
+      const ys = opaque.map((p) => p[1])
+      const cx = Math.round((Math.min(...xs) + Math.max(...xs)) / 2)
+      const cy = Math.round((Math.min(...ys) + Math.max(...ys)) / 2)
+      console.log(
+        `FAIL  piece ${name}: drawing reaches ${worst.toFixed(1)} from its bounds center, declared r ${r}` +
+          ` (try bounds: [${cx}, ${cy}, ${Math.ceil(reach(cx, cy))}])`,
+      )
+    }
+  }
+  if (allPieces.size > 0 && bad === 0) console.log(`ok    ${allPieces.size} generator pieces fit their bounds`)
+  return bad
+}
+
+let failed = checkPieces() > 0 ? 1 : 0
 levels.forEach((level, i) => {
   const { errors, motion } = check(level, i)
   if (errors.length === 0) {

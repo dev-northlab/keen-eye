@@ -22,7 +22,7 @@ const smoke =
 const pumpkin = (x: number, y: number, color: string) =>
   `<path d="M${x} ${y - 14}q2 -6 6 -8" stroke="#4c7a3a" stroke-width="3" fill="none"/>` +
   `<ellipse cx="${x - 10}" cy="${y}" rx="12" ry="15" fill="${color}"/><ellipse cx="${x + 10}" cy="${y}" rx="12" ry="15" fill="${color}"/>` +
-  `<ellipse cx="${x}" cy="${y}" rx="11" ry="16" fill="${color}" stroke="rgb(0 0 0 / 0.15)"/>`
+  `<ellipse cx="${x}" cy="${y}" rx="11" ry="16" fill="${color}" stroke="#000000" stroke-opacity="0.15"/>`
 
 const firefly = (x: number, y: number) => `<circle cx="${x}" cy="${y}" r="3" fill="#fff3a3"/>`
 

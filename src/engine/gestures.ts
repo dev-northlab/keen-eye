@@ -52,6 +52,9 @@ export class Gestures {
     container.addEventListener('pointerup', this.onUp, { signal })
     container.addEventListener('pointercancel', this.onUp, { signal })
     container.addEventListener('wheel', this.onWheel, { passive: false, signal })
+    // The browser follows a touch with a synthetic click on whatever is under the finger after the
+    // tap was handled, e.g. a button of the result dialog that the last find just opened.
+    container.addEventListener('touchend', (e) => e.cancelable && e.preventDefault(), { passive: false, signal })
   }
 
   /** The container outlives the scene (e.g. level restart), so listeners must be removed. */

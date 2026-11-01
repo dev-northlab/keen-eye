@@ -30,7 +30,9 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   `render.ts` (SVG pictures and marks), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel), `scene.ts` (`GameScene`: wires it together, timer, events)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
-  `shapes.ts` (shared drawing helpers: animals, trees, buildings, props — reuse before drawing a new one)
+  `shapes.ts` (chapter 1 drawing helpers), `generator.ts` (generated levels 16+: `Piece`, `definePieces`,
+  `generatedLevel`); chapter themes `chapter-02/city.ts`, `chapter-03/sea.ts`, `chapter-04/forest.ts` hold the pieces
+  and the composer, each `level-NNN.ts` there is a small options object
 - `src/views/` — screens: Home, LevelMap, Level, Settings, Purchase; `src/components/` — dialogs (pause, result), stars, header
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
@@ -70,9 +72,19 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   separately in each picture. The scene is static at animation time 0 = rest position of the zones.
 - `svgLevel` marks a difference `motion: true` when `a` and `b` draw the same markup and differ only in animation.
   Motion differences (spec, section 4): none on levels 1–10, exactly 1 on 11–15, 1–3 later.
-- Chapter 1 "farm" = levels 1–15 (5 large differences each, zone r ≥ 24). Add a level: new `chapter-NN/level-NNN.ts`,
-  register it in `levels/index.ts`, add `levelTitles.<title>` to all three locales, run `check-levels` and look at
-  the preview.
+- Chapters: 1 "farm" 1–15 (hand-drawn, 5 large differences, zone r ≥ 24), 2 "city" 16–30, 3 "sea" 31–45,
+  4 "forest" 46–60 (generated). Counts per spec section 7: 16–50 → 6–8 differences, 51+ → 8–12 subtle ones
+  (`subtle: true`); motion differences 1 → 2 → 3; zone r ≥ 18 after level 15.
+- Generated levels: a theme's composer `add()`s pieces (backdrop first; draw order = layering); the generator picks
+  differences from the seed among pieces not covered by later static ones, with zones that fit and never overlap
+  (moving zones over their whole path). Static kinds: missing, extra, color, flip/rotate (asymmetric pieces only),
+  size, shift; motion kinds: reverse, speed, phase, only-on-B. Mark large scenery `fixed`. A level whose differences
+  don't fit throws at build time — change its options (density, counts) rather than the seed logic.
+- Piece `bounds` [dx, dy, r] must contain the whole drawing in every color: `check-levels` renders each registered
+  piece and prints suggested bounds when they don't. Register theme pieces with `definePieces`.
+- Colors: no CSS `rgb(r g b / a)` in level markup (resvg draws it black); use `fill-opacity` / `stroke-opacity`.
+- Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
+  `chapters.<chapter>` for a new chapter) to all three locales, run `check-levels` and look at the preview.
 - Difference count by level: 1–15 → 5, 16–50 → 6–8, 51–100 → 8–12. Zones must not overlap. Run
   `npm run check-levels` after touching levels.
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
@@ -85,6 +97,8 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
   passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. Use SVG icons,
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
+- Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
+  of the result dialog that opens under the finger.
 - Development-only tools (Settings → "Complete all levels", "Reset progress", "Forget purchase") are behind `import.meta.env.DEV`.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.
 - Level modules and everything they import must stay free of browser/Vue APIs (the validator runs them in Node),
