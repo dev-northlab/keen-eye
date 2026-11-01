@@ -1,7 +1,8 @@
 // Level validator: npm run check-levels
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { allPieces } from '../src/levels/generator.ts'
+import { chapterOf } from '../src/levels/chapters.ts'
+import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels } from '../src/levels/index.ts'
 import { posedSvg, rasterize } from './render.ts'
 
@@ -16,24 +17,6 @@ const PIXEL_THRESHOLD = 8
 const ZONE_TOLERANCE_PX = 2
 /** A zone must show at least this many differing pixels at some sampled time. */
 const MIN_VISIBLE_PX = 40
-/** Differences at least this large on levels 1–15 ("large differences", spec section 7). */
-const MIN_EARLY_RADIUS = 24
-/** Smallest zone on later levels: still tappable when zoomed in. */
-const MIN_RADIUS = 18
-
-/** Allowed number of differences by level id (spec, section 7). */
-function expectedDiffs(id: number): [min: number, max: number] {
-  if (id <= 15) return [5, 5]
-  if (id <= 50) return [6, 8]
-  return [8, 12]
-}
-
-/** Allowed number of motion differences (spec, section 4: none on the first ~10 levels, then 1, later 2–3). */
-function expectedMotion(id: number): [min: number, max: number] {
-  if (id <= 10) return [0, 0]
-  if (id <= 15) return [1, 1]
-  return [1, 3]
-}
 
 type Zone = { x: number; y: number; r: number }
 
@@ -99,11 +82,13 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   const ds = level.differences
 
   if (level.id !== index + 1) errors.push(`id ${level.id} is out of order (expected ${index + 1})`)
+  const chapter = chapterOf(level.id)
+  if (!chapter) errors.push(`no chapter covers level ${level.id}`)
+  else if (chapter.id !== level.chapter) errors.push(`chapter "${level.chapter}", expected "${chapter.id}" (chapters.ts)`)
 
-  const [min, max] = expectedDiffs(level.id)
+  const { differences: [min, max], motion: [mmin, mmax], minRadius } = difficultyOf(level.id)
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
-  const minRadius = level.id <= 15 ? MIN_EARLY_RADIUS : MIN_RADIUS
-  ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id}`))
+  ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id} (min ${minRadius})`))
 
   if (level.kind !== 'svg') {
     if (!level.imageA || !level.imageB) errors.push('image level without imageA/imageB')
@@ -141,49 +126,12 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   comparePixels(level, a, b, pictures, report)
 
   const motion = ds.filter((d) => d.motion).length
-  const [mmin, mmax] = expectedMotion(level.id)
   if (motion < mmin || motion > mmax) errors.push(`${motion} motion differences, expected ${mmin}–${mmax}`)
 
   return { errors, motion }
 }
 
-/**
- * Generator pieces: every opaque pixel of a piece (in each of its colors) must lie inside its declared
- * bounds circle, or zones built from the bounds would miss parts of the difference.
- */
-function checkPieces(): number {
-  const SIZE = 400
-  const X = 200
-  const Y = 260
-  let bad = 0
-  for (const [name, piece] of allPieces) {
-    const [dx, dy, r] = piece.bounds
-    const opaque: [number, number][] = []
-    for (const color of piece.colors) {
-      const px = rasterize(piece.draw(X, Y, 1, color), SIZE, SIZE).pixels
-      for (let y = 0; y < SIZE; y++)
-        for (let x = 0; x < SIZE; x++) if (px[(y * SIZE + x) * 4 + 3] > 16) opaque.push([x + 0.5 - X, y + 0.5 - Y])
-    }
-    const reach = (cx: number, cy: number) => Math.max(...opaque.map(([x, y]) => Math.hypot(x - cx, y - cy)))
-    const worst = reach(dx, dy)
-    if (worst > r + ZONE_TOLERANCE_PX) {
-      bad++
-      // Suggest bounds around the middle of the drawing's bounding box.
-      const xs = opaque.map((p) => p[0])
-      const ys = opaque.map((p) => p[1])
-      const cx = Math.round((Math.min(...xs) + Math.max(...xs)) / 2)
-      const cy = Math.round((Math.min(...ys) + Math.max(...ys)) / 2)
-      console.log(
-        `FAIL  piece ${name}: drawing reaches ${worst.toFixed(1)} from its bounds center, declared r ${r}` +
-          ` (try bounds: [${cx}, ${cy}, ${Math.ceil(reach(cx, cy))}])`,
-      )
-    }
-  }
-  if (allPieces.size > 0 && bad === 0) console.log(`ok    ${allPieces.size} generator pieces fit their bounds`)
-  return bad
-}
-
-let failed = checkPieces() > 0 ? 1 : 0
+let failed = 0
 levels.forEach((level, i) => {
   const { errors, motion } = check(level, i)
   if (errors.length === 0) {

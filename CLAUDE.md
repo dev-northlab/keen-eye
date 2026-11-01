@@ -34,10 +34,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `render.ts` (SVG pictures and marks), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel), `scene.ts` (`GameScene`: wires it together, timer, events)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
-  `shapes.ts` (chapter 1 drawing helpers), `generator.ts` (generated levels 16+: `Piece`, `definePieces`,
-  `generatedLevel`); chapter themes `chapter-02/city.ts`, `chapter-03/sea.ts`, `chapter-04/forest.ts` hold the pieces
-  and the composer, each `level-NNN.ts` there is a small options object
-- `src/views/` — screens: Home, LevelMap, Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen), stars, header
+  `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
+  `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
+  `difficulty.ts` (difference and motion counts, min zone radius and kinds by level range; read by `check-levels`)
+- `src/views/` — screens: Home, LevelMap (chapter cards), Chapter (level grid of one chapter, `/levels/:chapter`),
+  Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen), stars, header
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
@@ -76,21 +77,20 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   separately in each picture. The scene is static at animation time 0 = rest position of the zones.
 - `svgLevel` marks a difference `motion: true` when `a` and `b` draw the same markup and differ only in animation.
   Motion differences (spec, section 4): none on levels 1–10, exactly 1 on 11–15, 1–3 later.
-- Chapters: 1 "farm" 1–15 (hand-drawn, 5 large differences, zone r ≥ 24), 2 "city" 16–30, 3 "sea" 31–45,
-  4 "forest" 46–60 (generated). Counts per spec section 7: 16–50 → 6–8 differences, 51+ → 8–12 subtle ones
-  (`subtle: true`); motion differences 1 → 2 → 3; zone r ≥ 18 after level 15.
-- Generated levels: a theme's composer `add()`s pieces (backdrop first; draw order = layering); the generator picks
-  differences from the seed among pieces not covered by later static ones, with zones that fit and never overlap
-  (moving zones over their whole path). Static kinds: missing, extra, color, flip/rotate (asymmetric pieces only),
-  size, shift; motion kinds: reverse, speed, phase, only-on-B. Mark large scenery `fixed`. A level whose differences
-  don't fit throws at build time — change its options (density, counts) rather than the seed logic.
-- Piece `bounds` [dx, dy, r] must contain the whole drawing in every color: `check-levels` renders each registered
-  piece and prints suggested bounds when they don't. Register theme pieces with `definePieces`.
+- Chapters ("worlds") of 20 levels, `levels/chapters.ts`: 1 "farm" 1–20, 2 "city" 21–40, 3 "forest" 41–60,
+  4 "sea" 61–80, 5 "space" 81–100 (sea and space have no levels yet and show as "coming soon"); drawing helpers per
+  chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city), `chapter-03/shapes.ts` (forest). Every
+  level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
+- Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,
+  41–60 → 8, 61–100 → 9–10 (r ≥ 18 after 15); motion differences 0 → 1 → 1–2 → 2–3. `check-levels` enforces it
+  and that each level's `chapter` matches the chapter covering its id.
+- Every zone must contain everything its `a`/`b` draw (over the whole motion for moving objects: use the rest
+  position as the zone center and pass the animation id as `diff`'s 6th argument). Draw only the differing part
+  inside `diff` (a hat, a canopy, a roof stripe) so zones stay small and never overlap.
 - Colors: no CSS `rgb(r g b / a)` in level markup (resvg draws it black); use `fill-opacity` / `stroke-opacity`.
 - Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
   `chapters.<chapter>` for a new chapter) to all three locales, run `check-levels` and look at the preview.
-- Difference count by level: 1–15 → 5, 16–50 → 6–8, 51–100 → 8–12. Zones must not overlap. Run
-  `npm run check-levels` after touching levels.
+- Zones must not overlap. Run `npm run check-levels` after touching levels and look at `npm run preview-levels`.
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, unlimited hints, slower animation, soft sounds,
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.

@@ -23,6 +23,8 @@ const settings = useSettingsStore()
 // The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
 const nextLevel = levels[levels.indexOf(level) + 1]
+/** The level grid this level belongs to. */
+const grid = { name: 'chapter', params: { chapter: level.chapter } }
 
 const board = ref<HTMLDivElement>()
 const found = ref(0)
@@ -121,7 +123,7 @@ function resume() {
 // Android back: pause first; back again on the pause dialog leaves to the menu (from its settings, back
 // to the dialog); after the level, to the map.
 useBackButton(() => {
-  if (result.value) router.push({ name: 'levels' })
+  if (result.value) router.push(grid)
   else if (settingsOpen.value) settingsOpen.value = false
   else if (paused.value) router.push({ name: 'home' })
   else pause()
@@ -229,7 +231,7 @@ onBeforeUnmount(() => {
       v-else-if="paused"
       @resume="resume"
       @restart="start"
-      @levels="router.push({ name: 'levels' })"
+      @levels="router.push(grid)"
       @settings="settingsOpen = true"
       @exit="router.push({ name: 'home' })"
     />
@@ -241,7 +243,7 @@ onBeforeUnmount(() => {
       :has-next="!!nextLevel"
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
-      @menu="router.push({ name: 'levels' })"
+      @menu="router.push(grid)"
     />
   </div>
 </template>

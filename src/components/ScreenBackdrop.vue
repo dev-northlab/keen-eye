@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import type { BackdropTheme } from '../levels/chapters.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 
-// Screen backdrops, one world per screen: sky, sun, drifting clouds and a landscape strip at the bottom.
-// Covers the whole window (also under the system bars) behind the screen's content; decorative only.
-// The parent needs its own stacking context (`isolation: isolate`), the backdrop sits at z-index -1.
-
-export type BackdropTheme = 'meadow' | 'forest' | 'sea' | 'city'
+// Screen backdrops, one world per screen: sky, sun, drifting clouds and a landscape strip at the bottom
+// (space: stars, a moon and a planet surface). Covers the whole window (also under the system bars)
+// behind the screen's content; decorative only. The parent needs its own stacking context
+// (`isolation: isolate`), the backdrop sits at z-index -1.
 
 /** `underHeader`: the screen has a ScreenHeader on top, so the sun and clouds start below it. */
 defineProps<{ theme: BackdropTheme; underHeader?: boolean }>()
@@ -92,6 +92,21 @@ const houses = Array.from({ length: 16 }, (_, i) => {
   return { x, w, h, color: HOUSE_COLORS[i % HOUSE_COLORS.length], windows }
 })
 const streetTrees = [140, 420, 700, 980, 1260, 1520]
+
+// Space: stars over the whole window (% positions), craters on the planet surface.
+const stars = Array.from({ length: 40 }, (_, i) => ({
+  x: ((i * 37) % 100) + jitter(i, 7, 6),
+  y: ((i * 53) % 100) + jitter(i, 11, 6),
+  r: 1 + ((i * 3) % 3) * 0.6,
+  opacity: 0.5 + ((i * 7) % 5) / 10,
+}))
+const craters = [
+  { x: 180, y: 330, r: 22 },
+  { x: 520, y: 360, r: 14 },
+  { x: 900, y: 335, r: 28 },
+  { x: 1240, y: 365, r: 12 },
+  { x: 1460, y: 330, r: 18 },
+]
 </script>
 
 <template>
@@ -100,6 +115,9 @@ const streetTrees = [140, 420, 700, 980, 1260, 1520]
     :class="[theme, { still: settings.effectiveReduceMotion, 'under-header': underHeader }]"
     aria-hidden="true"
   >
+    <svg v-if="theme === 'space'" class="stars" preserveAspectRatio="none">
+      <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
+    </svg>
     <div class="sky">
       <!-- The glow pulses and the rays turn slowly; both stand still with "reduce motion". -->
       <div class="sun">
@@ -224,6 +242,25 @@ const streetTrees = [140, 420, 700, 980, 1260, 1520]
         <ellipse cx="1040" cy="366" rx="18" ry="9" fill="#d8b07a" />
       </template>
 
+      <template v-else-if="theme === 'space'">
+        <g transform="translate(1180 120)">
+          <circle r="44" fill="#9b7bff" />
+          <circle cx="-14" cy="-10" r="10" fill="#fff" fill-opacity="0.2" />
+          <ellipse rx="78" ry="18" fill="none" stroke="#d9ccff" stroke-width="7" transform="rotate(-18)" />
+        </g>
+        <path d="M0 300Q400 250 800 290T1600 280V400H0Z" fill="#c3b8e6" />
+        <g v-for="(c, i) in craters" :key="i">
+          <circle :cx="c.x" :cy="c.y" :r="c.r" fill="#a99bd6" />
+          <circle :cx="c.x - c.r * 0.15" :cy="c.y - c.r * 0.15" :r="c.r * 0.7" fill="#b7aae0" />
+        </g>
+        <g transform="translate(380 290)">
+          <path d="M0-120q26 30 26 90v30H-26v-30q0-60 26-90Z" fill="#f4f1de" />
+          <path d="M-26-20l-22 28v24l22-10ZM26-20l22 28v24l-22-10Z" fill="#e05a47" />
+          <circle cy="-48" r="9" fill="#3ba7cc" stroke="#fff" stroke-width="3" />
+          <path d="M-12 0h24l-12 26Z" fill="#ff9e5e" />
+        </g>
+      </template>
+
       <template v-else>
         <rect
           v-for="(t, i) in farTowers"
@@ -298,6 +335,26 @@ const streetTrees = [140, 420, 700, 980, 1260, 1520]
   --sky-mid: #ffe6cc;
   --sun: #ff9e5e;
   --glow: rgb(255 158 94 / 0.55);
+}
+
+/* Night sky; the "sun" is a pale moon without clouds. */
+.space {
+  --sky: #1d1b4b;
+  --sky-mid: #3b2f73;
+  --sun: #f4f1de;
+  --glow: rgb(244 241 222 / 0.35);
+  background: linear-gradient(var(--sky) 0%, var(--sky-mid) 70%, #5b4bd6 100%);
+}
+
+.space .cloud {
+  display: none;
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sky {

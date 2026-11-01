@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { chapterById } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import ChapterView from '../views/ChapterView.vue'
 import HomeView from '../views/HomeView.vue'
 import LevelMapView from '../views/LevelMapView.vue'
 import LevelView from '../views/LevelView.vue'
@@ -13,6 +15,7 @@ export const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
     { path: '/levels', name: 'levels', component: LevelMapView },
+    { path: '/levels/:chapter', name: 'chapter', component: ChapterView, props: true },
     {
       path: '/level/:id(\\d+)',
       name: 'level',
@@ -26,12 +29,15 @@ export const router = createRouter({
 })
 
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
-// Unknown level → home; paid level not bought → purchase screen; not reached yet → level map.
+// Unknown chapter → chapter map. Unknown level → home; paid level not bought → purchase screen;
+// not reached yet → its chapter's grid.
 router.beforeEach((to) => {
+  if (to.name === 'chapter') return chapterById(String(to.params.chapter)) ? true : { name: 'levels' }
   if (to.name !== 'level') return true
   const id = Number(to.params.id)
   const progress = useProgressStore()
-  if (!levelById(id)) return { name: 'home' }
+  const level = levelById(id)
+  if (!level) return { name: 'home' }
   if (progress.needsPurchase(id)) return { name: 'purchase' }
-  return progress.isUnlocked(id) ? true : { name: 'levels' }
+  return progress.isUnlocked(id) ? true : { name: 'chapter', params: { chapter: level.chapter } }
 })
