@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import ScreenHeader from '../components/ScreenHeader.vue'
+import BackButton from '../components/BackButton.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
 import { chapterById, chapterLevels } from '../levels/chapters.ts'
@@ -41,8 +41,7 @@ function tileLabel(level: Level) {
 
 <template>
   <div class="screen">
-    <ScreenBackdrop :theme="chapter.backdrop" under-header />
-    <ScreenHeader :title="$t(`chapters.${chapter.id}`)" :on-back="toMap" />
+    <ScreenBackdrop :theme="chapter.backdrop" />
     <main>
       <ul class="grid">
         <li v-for="level in levels" :key="level.id">
@@ -61,6 +60,7 @@ function tileLabel(level: Level) {
       </ul>
       <p v-if="missing > 0" class="soon">{{ $t('map.soonLevels', { n: missing }) }}</p>
     </main>
+    <BackButton :on-back="toMap" />
   </div>
 </template>
 

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import ScreenHeader from '../components/ScreenHeader.vue'
+import BackButton from '../components/BackButton.vue'
 import SettingsPanel from '../components/SettingsPanel.vue'
 </script>
 
 <template>
   <div class="screen">
-    <ScreenBackdrop theme="sea" under-header />
-    <ScreenHeader :title="$t('settings.title')" />
+    <ScreenBackdrop theme="sea" />
     <SettingsPanel />
+    <BackButton />
   </div>
 </template>
 

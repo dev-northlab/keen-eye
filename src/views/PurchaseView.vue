@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import ScreenHeader from '../components/ScreenHeader.vue'
+import BackButton from '../components/BackButton.vue'
 import { levels } from '../levels/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { isFreeLevel, usePurchaseStore } from '../stores/purchase.ts'
@@ -36,8 +36,7 @@ function play() {
 
 <template>
   <div class="screen">
-    <ScreenBackdrop theme="city" under-header />
-    <ScreenHeader :title="$t('purchase.title')" />
+    <ScreenBackdrop theme="city" />
     <main>
       <section v-if="purchase.fullGame" class="card owned">
         <p class="big" aria-hidden="true">★</p>
@@ -65,6 +64,7 @@ function play() {
 
       <button class="secondary" :disabled="purchase.busy" @click="restore">{{ $t('purchase.restore') }}</button>
     </main>
+    <BackButton />
   </div>
 </template>
 

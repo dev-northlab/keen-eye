@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Settings list: the Settings screen and the level's pause menu both show it.
+import LanguageSelect from './LanguageSelect.vue'
 import ModeSwitch from './ModeSwitch.vue'
-import { isLocale, LOCALES } from '../i18n/index.ts'
 import { playSfx } from '../services/audio.ts'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '../stores/progress.ts'
@@ -13,28 +13,16 @@ const progress = useProgressStore()
 const purchase = usePurchaseStore()
 const router = useRouter()
 
-/** Language names are shown in their own language. */
-const LANGUAGE_NAMES: Record<string, string> = { ru: 'Русский', en: 'English', hy: 'Հայերեն' }
-
 const isDev = import.meta.env.DEV
 const percent = (v: number) => `${Math.round(v * 100)}%`
-const version = __APP_VERSION__
-
-function onLanguage(e: Event) {
-  const value = (e.target as HTMLSelectElement).value
-  settings.locale = isLocale(value) ? value : null
-}
 </script>
 
 <template>
   <main>
-    <label class="row">
-      <span>{{ $t('settings.language') }}</span>
-      <select :value="settings.locale ?? ''" @change="onLanguage">
-        <option value="">{{ $t('settings.systemLanguage') }}</option>
-        <option v-for="l in LOCALES" :key="l" :value="l">{{ LANGUAGE_NAMES[l] }}</option>
-      </select>
-    </label>
+    <div class="row">
+      <span id="language-label">{{ $t('settings.language') }}</span>
+      <LanguageSelect labelledby="language-label" />
+    </div>
 
     <div class="row column">
       <span>
@@ -95,17 +83,6 @@ function onLanguage(e: Event) {
       </span>
     </button>
 
-    <details>
-      <summary>{{ $t('settings.about') }}</summary>
-      <p>{{ $t('settings.aboutText') }}</p>
-      <p class="muted">{{ $t('settings.version', { v: version }) }}</p>
-    </details>
-
-    <details>
-      <summary>{{ $t('settings.privacy') }}</summary>
-      <p>{{ $t('settings.privacyText') }}</p>
-    </details>
-
     <section v-if="isDev" class="dev">
       <h2>{{ $t('settings.dev') }}</h2>
       <button class="secondary" @click="progress.unlockAll()">{{ $t('settings.unlockAll') }}</button>
@@ -128,8 +105,7 @@ main {
   gap: 10px;
 }
 
-.row,
-details {
+.row {
   background: var(--panel);
   border-radius: 14px;
   padding: 14px 16px;
@@ -181,23 +157,10 @@ button.row.link {
   color: #6b766f;
 }
 
-select {
-  font: inherit;
-  padding: 6px 8px;
-  border-radius: 8px;
-  border: 1px solid #cfd8d3;
-  background: #fff;
-}
-
 input[type='checkbox'] {
   width: 24px;
   height: 24px;
   accent-color: var(--accent);
-}
-
-summary {
-  cursor: pointer;
-  font-weight: 600;
 }
 
 .muted {

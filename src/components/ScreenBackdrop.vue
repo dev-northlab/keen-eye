@@ -7,8 +7,7 @@ import { useSettingsStore } from '../stores/settings.ts'
 // behind the screen's content; decorative only. The parent needs its own stacking context
 // (`isolation: isolate`), the backdrop sits at z-index -1.
 
-/** `underHeader`: the screen has a ScreenHeader on top, so the sun and clouds start below it. */
-defineProps<{ theme: BackdropTheme; underHeader?: boolean }>()
+defineProps<{ theme: BackdropTheme }>()
 const settings = useSettingsStore()
 
 /** Deterministic jitter: the pictures are the same on every start. */
@@ -75,6 +74,22 @@ const mushrooms = [
 // Sea: waves are one repeated crest.
 const crest = (y: number, n: number, w: number) =>
   `M0 ${y}` + `q${w / 4} -14 ${w / 2} 0t${w / 2} 0`.repeat(n) + `V400H0Z`
+/** One palm frond (base at 0,0, drooping to the right); the crown turns and mirrors it. */
+const PALM_LEAF = 'M0 0Q30-26 70 4Q60-2 50 0Q40-4 30 2Q18-4 0 0Z'
+const palmLeaves = [
+  { t: 'rotate(-8)', c: '#3f9a5a' },
+  { t: 'scale(-1 1) rotate(-8)', c: '#3f9a5a' },
+  { t: 'rotate(-38) scale(0.85)', c: '#4fb26a' },
+  { t: 'scale(-1 1) rotate(-38) scale(0.85)', c: '#4fb26a' },
+  { t: 'rotate(28) scale(0.8)', c: '#358a4e' },
+  { t: 'scale(-1 1) rotate(28) scale(0.8)', c: '#358a4e' },
+]
+/** Position, size and flap offset (s) of each gull. */
+const gulls = [
+  { x: 500, y: 130, s: 1, delay: 0 },
+  { x: 548, y: 108, s: 0.7, delay: -0.35 },
+  { x: 1250, y: 112, s: 0.85, delay: -0.6 },
+]
 const shells = [
   { x: 520, y: 360, c: '#ff8f6b' },
   { x: 880, y: 372, c: '#ffb84d' },
@@ -121,7 +136,7 @@ const craters = [
 <template>
   <div
     class="backdrop"
-    :class="[theme, { still: settings.effectiveReduceMotion, 'under-header': underHeader }]"
+    :class="[theme, { still: settings.effectiveReduceMotion }]"
     aria-hidden="true"
   >
     <svg v-if="theme === 'space'" class="stars" preserveAspectRatio="none">
@@ -257,31 +272,60 @@ const craters = [
       <template v-else-if="theme === 'sea'">
         <path :d="crest(190, 16, 100)" fill="#8fd8ec" />
         <rect y="200" width="1600" height="200" fill="#5cc0de" />
-        <g transform="translate(1290 200)">
-          <path d="M-120 4Q0-50 120 4Z" fill="#f2d79e" />
-          <path d="M0-26Q-6-80 14-120" fill="none" stroke="#9a6b43" stroke-width="10" stroke-linecap="round" />
-          <path
-            d="M14-120q-40-12-62 10M14-120q-26-34-60-28M14-120q38-20 62 4M14-120q26-34 56-22"
-            fill="none"
-            stroke="#3f9a5a"
-            stroke-width="12"
-            stroke-linecap="round"
-          />
+        <!-- Sun glints on the water. -->
+        <path
+          d="M260 222h28M300 232h14M520 244h30M900 226h22M1290 236h30M1330 226h14M1480 246h24"
+          stroke="#fff"
+          stroke-opacity="0.6"
+          stroke-width="3"
+          stroke-linecap="round"
+        />
+        <!-- Island on the near water, behind the front wave; everything stays below y = 70
+             (wide windows cut the strip's top 60 units). -->
+        <g transform="translate(1010 262)">
+          <path d="M-150 0Q-80-50 0-52Q86-52 150 0Z" fill="#e3bf7d" />
+          <path d="M-128 0Q-66-40 6-42Q76-40 128 0Z" fill="#f4dca4" />
+          <path d="M-60-30q16-6 30-4M24-36q18-2 30 4" stroke="#fff" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round" fill="none" />
+          <!-- Small palm leaning left. -->
+          <g transform="translate(-52 -30)">
+            <path d="M0 0Q4-34-26-62" fill="none" stroke="#9a6b43" stroke-width="8" stroke-linecap="round" />
+            <path d="M0 0Q4-34-26-62" fill="none" stroke="#7d5434" stroke-width="8" stroke-dasharray="2 7" />
+            <g transform="translate(-26 -62) scale(0.7)">
+              <path v-for="(l, i) in palmLeaves" :key="i" :d="PALM_LEAF" :fill="l.c" :transform="l.t" />
+            </g>
+          </g>
+          <!-- Tall palm. -->
+          <g transform="translate(12 -40)">
+            <path d="M0 0Q-8-52 20-104" fill="none" stroke="#9a6b43" stroke-width="11" stroke-linecap="round" />
+            <path d="M0 0Q-8-52 20-104" fill="none" stroke="#7d5434" stroke-width="11" stroke-dasharray="2.5 9" />
+            <g transform="translate(20 -104)">
+              <path v-for="(l, i) in palmLeaves" :key="i" :d="PALM_LEAF" :fill="l.c" :transform="l.t" />
+              <circle cx="-5" cy="6" r="6" fill="#7a4e33" />
+              <circle cx="6" cy="7" r="6" fill="#6b4329" />
+              <circle cx="0" cy="13" r="5.5" fill="#7a4e33" />
+            </g>
+          </g>
+          <path d="M-160 4q20-8 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round" />
         </g>
-        <g transform="translate(760 222)">
+        <g transform="translate(640 222)">
           <path d="M-56 0h112l-20 26h-72Z" fill="#e05a47" />
           <path d="M4-4V-96L52-10Z" fill="#fff" />
           <path d="M-4-4V-76L-42-10Z" fill="#ffe08a" />
           <rect x="-1" y="-100" width="4" height="98" fill="#7a4e33" />
         </g>
-        <path
-          d="M330 120l14 9 14-9M380 96l10 7 10-7M1080 110l12 8 12-8"
-          fill="none"
-          stroke="#3d5a66"
-          stroke-width="4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
+        <!-- Gulls: two arched wings; the outer group places them, the inner one flaps. -->
+        <g v-for="(g, i) in gulls" :key="i" :transform="`translate(${g.x} ${g.y}) scale(${g.s})`">
+          <path
+            class="gull"
+            :style="{ animationDelay: `${g.delay}s` }"
+            d="M-18 2Q-10-10 0 0Q10-10 18 2"
+            fill="none"
+            stroke="#3d5a66"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </g>
         <path :d="crest(270, 10, 160)" fill="#3ba7cc" />
         <path d="M0 330Q200 300 400 325T800 320T1200 325T1600 318V400H0Z" fill="#f2d79e" />
         <g v-for="(s, i) in shells" :key="i" :transform="`translate(${s.x} ${s.y})`">
@@ -426,11 +470,6 @@ const craters = [
   inset: env(safe-area-inset-top) 0 0;
 }
 
-/* ScreenHeader: 44 px button + 2 × 12 px padding. */
-.under-header .sky {
-  top: calc(env(safe-area-inset-top) + 68px);
-}
-
 /* 154 px box: the 110 px sun of the 100-unit disc area plus 22 px of rays on each side. */
 .sun {
   position: absolute;
@@ -515,9 +554,22 @@ const craters = [
   }
 }
 
+.gull {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: flap 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes flap {
+  to {
+    transform: scaleY(0.45);
+  }
+}
+
 .still .cloud,
 .still .glow,
-.still .rays {
+.still .rays,
+.still .gull {
   animation-play-state: paused;
 }
 </style>

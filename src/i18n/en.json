@@ -9,6 +9,13 @@
     "needsPurchase": "Level {n} — full game",
     "devOpenAll": "Open all levels (testing)"
   },
+  "info": {
+    "about": "About",
+    "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
+    "version": "Version {v}",
+    "privacy": "Privacy policy",
+    "privacyText": "We collect no data at all. Progress and settings are stored only on your device."
+  },
   "map": {
     "title": "Worlds",
     "locked": "Locked",
@@ -48,11 +55,6 @@
     "systemLanguage": "System default",
     "reduceMotion": "Reduce motion",
     "reduceMotionHint": "Scenes move slower and softer",
-    "about": "About",
-    "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
-    "version": "Version {v}",
-    "privacy": "Privacy policy",
-    "privacyText": "We collect no data at all. Progress and settings are stored only on your device.",
     "dev": "Development",
     "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",
@@ -66,7 +68,8 @@
     "resetPurchaseStore": "Forget purchase (also in the \"store\")"
   },
   "common": {
-    "back": "Back"
+    "back": "Back",
+    "close": "Close"
   },
   "chapters": {
     "farm": "Farm",

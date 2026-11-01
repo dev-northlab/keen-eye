@@ -38,7 +38,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
   `difficulty.ts` (difference and motion counts, min zone radius and kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (chapter cards), Chapter (level grid of one chapter, `/levels/:chapter`),
-  Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen), stars, header
+  Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen), stars, bottom back button (`BackButton`)
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
@@ -51,7 +51,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   here; in production builds the stub sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought to the purchase screen and
   levels not reached yet to the map
-- `src/i18n/` — `ru.json`, `en.json`, `hy.json` (keep the same keys in all three); default language = system
+- `src/i18n/` — `ru.json`, `en.json`, `hy.json` (keep the same keys in all three); default language = system;
+  `languages.ts` — name (in its own language) and SVG flag per locale for the language picker
 - `scripts/` — `check-levels.ts`, `preview-levels.ts`, `render.ts` (posed SVG → pixels, shared by both);
   `assets/` — music (`assets/music/`), later photo levels and icons
 

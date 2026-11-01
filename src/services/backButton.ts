@@ -16,11 +16,18 @@ export function exitApp(): void {
   App.exitApp().catch(() => {})
 }
 
-/** Handles the back button while the calling component is mounted. */
-export function useBackButton(handler: Handler): void {
-  onMounted(() => handlers.push(handler))
-  onBeforeUnmount(() => {
+/** Handles the back button until the returned function is called (e.g. while a popup is open). */
+export function pushBackHandler(handler: Handler): () => void {
+  handlers.push(handler)
+  return () => {
     const i = handlers.lastIndexOf(handler)
     if (i >= 0) handlers.splice(i, 1)
-  })
+  }
+}
+
+/** Handles the back button while the calling component is mounted. */
+export function useBackButton(handler: Handler): void {
+  let remove = () => {}
+  onMounted(() => (remove = pushBackHandler(handler)))
+  onBeforeUnmount(() => remove())
 }

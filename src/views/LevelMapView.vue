@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import ScreenHeader from '../components/ScreenHeader.vue'
+import BackButton from '../components/BackButton.vue'
 import { CHAPTERS, chapterLevels, type Chapter } from '../levels/chapters.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -25,8 +25,7 @@ function open(chapter: Chapter) {
 
 <template>
   <div class="screen">
-    <ScreenBackdrop theme="meadow" under-header />
-    <ScreenHeader :title="$t('map.title')" />
+    <ScreenBackdrop theme="space" />
     <main>
       <ul class="list">
         <li v-for="c in cards" :key="c.chapter.id">
@@ -54,6 +53,7 @@ function open(chapter: Chapter) {
         </li>
       </ul>
     </main>
+    <BackButton />
   </div>
 </template>
 

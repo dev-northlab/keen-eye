@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import PauseDialog from '../components/PauseDialog.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import ScreenHeader from '../components/ScreenHeader.vue'
+import BackButton from '../components/BackButton.vue'
 import SettingsPanel from '../components/SettingsPanel.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
@@ -223,9 +223,9 @@ onBeforeUnmount(() => {
     </footer>
 
     <div v-if="settingsOpen" class="settings-screen">
-      <ScreenBackdrop theme="sea" under-header />
-      <ScreenHeader :title="$t('settings.title')" @back="settingsOpen = false" />
+      <ScreenBackdrop theme="sea" />
       <SettingsPanel />
+      <BackButton :on-back="() => (settingsOpen = false)" />
     </div>
     <PauseDialog
       v-else-if="paused"
