@@ -35,6 +35,15 @@ const clouds = [
   { w: 150, top: 4, dur: 120, delay: -90, opacity: 0.7 },
 ]
 
+// Farm: crop rows on a field, a fence, hay bales, sunflowers and a windmill.
+const cropRows = Array.from({ length: 7 }, (_, i) => 262 + i * 14)
+const bales = [
+  { x: 560, y: 330, s: 1 },
+  { x: 630, y: 338, s: 0.8 },
+  { x: 1060, y: 334, s: 1.1 },
+]
+const sunflowers = [500, 540, 1090, 1130].map((x, i) => ({ x, h: 60 + (i % 2) * 14 }))
+
 const meadowTrees = [
   { x: 260, y: 150, s: 0.8, c: '#6fb879' },
   { x: 1340, y: 145, s: 0.8, c: '#6fb879' },
@@ -177,6 +186,45 @@ const craters = [
         <circle v-for="(f, i) in flowers" :key="i" :cx="f.x" :cy="f.y" r="4" :fill="f.color" />
       </template>
 
+      <template v-else-if="theme === 'farm'">
+        <path d="M0 180Q300 120 640 170T1600 150V400H0Z" fill="#c7dd8f" />
+        <path d="M0 250Q400 220 800 250T1600 240V400H0Z" fill="#e9c46a" />
+        <path v-for="y in cropRows" :key="y" :d="`M0 ${y}Q400 ${y - 14} 800 ${y}T1600 ${y - 6}`" fill="none" stroke="#d9a43a" stroke-width="3" />
+        <g transform="translate(700 236)">
+          <path d="M-28 0L-18-90h36L28 0Z" fill="#f4efe6" />
+          <path d="M-32 0h64v10h-64Z" fill="#a0703f" />
+          <rect x="-8" y="-40" width="16" height="22" fill="#5a3d2b" />
+          <g class="sails">
+            <path d="M0-96L-56-52M0-96L56-52M0-96L-56-140M0-96L56-140" stroke="#6b4f3a" stroke-width="5" stroke-linecap="round" />
+            <path d="M-50-56l-6-40 24 10ZM50-56l6-40-24 10ZM-50-136l-6 40 24-10ZM50-136l6 40-24-10Z" fill="#fff" fill-opacity="0.9" />
+            <circle cy="-96" r="6" fill="#6b4f3a" />
+          </g>
+        </g>
+        <path d="M0 340Q400 310 800 335T1600 325V400H0Z" fill="#8fca68" />
+        <g v-for="(b, i) in bales" :key="i" :transform="`translate(${b.x} ${b.y}) scale(${b.s})`">
+          <ellipse rx="34" ry="26" fill="#f2c14e" />
+          <path d="M-20-10q8-6 16 0M2-14q8-6 16 0M-12 10q8-6 16 0M10 6q8-6 14 0" stroke="#d9a43a" stroke-width="3" fill="none" />
+        </g>
+        <g v-for="(f, i) in sunflowers" :key="i" :transform="`translate(${f.x} 372)`">
+          <path :d="`M0 0V-${f.h}`" stroke="#3f8f3a" stroke-width="4" />
+          <g :transform="`translate(0 -${f.h})`">
+            <circle v-for="k in 8" :key="k" :cx="12 * Math.cos((k * Math.PI) / 4)" :cy="12 * Math.sin((k * Math.PI) / 4)" r="6" fill="#ffc300" />
+            <circle r="8" fill="#6b3f1d" />
+          </g>
+        </g>
+        <rect x="320" y="344" width="960" height="6" fill="#d8bd8a" />
+        <rect x="320" y="362" width="960" height="6" fill="#d8bd8a" />
+        <rect v-for="k in 13" :key="k" :x="320 + (k - 1) * 80" y="334" width="12" height="44" rx="3" fill="#e9d3a7" />
+        <g transform="translate(900 372)">
+          <path d="M-10 0h-6v-10M10 0h6v-10M-14-10h28" stroke="#ff9f1c" stroke-width="3" />
+          <ellipse cy="-20" rx="18" ry="13" fill="#fff" />
+          <circle cx="14" cy="-32" r="8" fill="#fff" />
+          <path d="M22-34l6 2-6 3Z" fill="#ff9f1c" />
+          <circle cx="12" cy="-42" r="3" fill="#e63946" />
+          <circle cx="17" cy="-41" r="3" fill="#e63946" />
+        </g>
+      </template>
+
       <template v-else-if="theme === 'forest'">
         <path d="M0 200Q300 120 640 180T1300 160T1600 180V400H0Z" fill="#a9d3a0" />
         <g v-for="(p, i) in farPines" :key="i" :transform="`translate(${p.x} ${p.y}) scale(${p.s})`">
@@ -314,6 +362,22 @@ const craters = [
   --sky-mid: #d6eef3;
   --sun: #ffd45c;
   --glow: rgb(255 248 214 / 0.8);
+}
+
+.farm {
+  --sky: #a9dcf5;
+  --sky-mid: #e0f0f6;
+  --sun: #ffd45c;
+  --glow: rgb(255 248 214 / 0.8);
+}
+
+.farm .sails {
+  transform-origin: 0 -96px;
+  animation: spin 24s linear infinite;
+}
+
+.still .sails {
+  animation-play-state: paused;
 }
 
 .forest {

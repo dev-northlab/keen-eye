@@ -3,7 +3,7 @@
 import { levels } from './index.ts'
 
 /** Screen backdrop worlds (drawn by components/ScreenBackdrop.vue). */
-export type BackdropTheme = 'meadow' | 'forest' | 'sea' | 'city' | 'space'
+export type BackdropTheme = 'meadow' | 'farm' | 'forest' | 'sea' | 'city' | 'space'
 
 export interface Chapter {
   /** Level.chapter value and i18n key `chapters.<id>`. */
@@ -27,7 +27,7 @@ export const CHAPTERS: Chapter[] = [
     to: 20,
     color: '#e05a47',
     soft: '#ffe9e3',
-    backdrop: 'meadow',
+    backdrop: 'farm',
     icon:
       `<path d="M6 22L24 8l18 14v18H6Z" fill="#e05a47"/>` +
       `<path d="M4 22L24 6l20 16" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>` +
