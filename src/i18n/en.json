@@ -1,7 +1,16 @@
 {
   "home": {
     "play": "Play",
-    "levels": "Levels"
+    "continueLevel": "Level {n}",
+    "allDone": "All levels completed",
+    "levels": "Levels",
+    "settings": "Settings",
+    "stars": "Stars: {n}"
+  },
+  "map": {
+    "title": "Levels",
+    "locked": "Locked",
+    "level": "Level {n}"
   },
   "level": {
     "level": "Level {n}",
@@ -13,7 +22,39 @@
     "next": "Next",
     "retry": "Retry",
     "menu": "Menu",
-    "resetZoom": "Reset zoom"
+    "resetZoom": "Reset zoom",
+    "pause": "Pause",
+    "hint": "Hint",
+    "animPause": "Stop motion",
+    "animPlay": "Motion",
+    "calmDone": "Calm mode — no stars"
+  },
+  "pause": {
+    "title": "Paused",
+    "resume": "Continue",
+    "restart": "Restart",
+    "exit": "Exit to menu"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "systemLanguage": "System default",
+    "reduceMotion": "Reduce motion",
+    "reduceMotionHint": "Scenes move slower and softer",
+    "about": "About",
+    "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
+    "version": "Version {v}",
+    "privacy": "Privacy policy",
+    "privacyText": "We collect no data at all. Progress and settings are stored only on your device.",
+    "dev": "Development",
+    "unlockAll": "Unlock all levels",
+    "resetProgress": "Reset progress",
+    "music": "Music",
+    "sound": "Sounds",
+    "vibration": "Vibration"
+  },
+  "common": {
+    "back": "Back"
   },
   "chapters": {
     "farm": "Farm"
@@ -23,5 +64,11 @@
     "garden": "Garden",
     "pond": "Pond",
     "windmill": "Windmill"
+  },
+  "mode": {
+    "label": "Mode",
+    "normal": "Normal",
+    "calm": "Calm",
+    "calmHint": "No timer, mistakes or stars"
   }
 }

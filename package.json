@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@capacitor/core": "^8.6.0",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/preferences": "^8.0.1",
     "pinia": "^4.1.0",
     "vue": "^3.5.44",
     "vue-i18n": "^11.4.16",

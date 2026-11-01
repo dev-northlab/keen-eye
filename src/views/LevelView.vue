@@ -1,16 +1,24 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import PauseDialog from '../components/PauseDialog.vue'
+import ResultDialog from '../components/ResultDialog.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
-import { levelById } from '../levels/index.ts'
+import { levelById, levels } from '../levels/index.ts'
+import { playMusic, playSfx } from '../services/audio.ts'
+import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
+import { useProgressStore } from '../stores/progress.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 const props = defineProps<{ id: number }>()
 const router = useRouter()
+const progress = useProgressStore()
+const settings = useSettingsStore()
 
-// The route guard guarantees the level exists.
+// The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
-const nextLevel = levelById(props.id + 1)
+const nextLevel = levels[levels.indexOf(level) + 1]
 
 const board = ref<HTMLDivElement>()
 const found = ref(0)
@@ -18,11 +26,13 @@ const seconds = ref(0)
 const mistakes = ref(0)
 const locked = ref(false)
 const zoom = ref(1)
+const paused = ref(false)
+/** Mode of the current attempt (read when the level starts). */
+const calm = ref(false)
+const hintActive = ref(false)
+const animationFrozen = ref(false)
 const result = ref<LevelResult | null>(null)
 let scene: GameScene | undefined
-
-// System "reduce motion": softer (slower) scene animation.
-const animationSpeed = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0.5 : 1
 
 const formatTime = (sec: number) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`
 const time = computed(() => formatTime(result.value?.timeSec ?? seconds.value))
@@ -34,29 +44,94 @@ function start() {
   mistakes.value = 0
   locked.value = false
   zoom.value = 1
+  paused.value = false
+  hintActive.value = false
+  animationFrozen.value = false
   result.value = null
-  scene = new GameScene(board.value!, level, {
-    onFound: (n) => (found.value = n),
-    onMiss: (n) => (mistakes.value = n),
-    onLock: (l) => (locked.value = l),
-    onTick: (s) => (seconds.value = s),
-    onZoom: (s) => (zoom.value = s),
-    onComplete: (r) => (result.value = r),
-  }, { animationSpeed })
+  calm.value = settings.calm
+  playMusic(calm.value ? 'calm' : 'level')
+  scene = new GameScene(
+    board.value!,
+    level,
+    {
+      onFound: (n) => {
+        found.value = n
+        playSfx('found')
+        vibrateFound()
+      },
+      onMiss: (n) => {
+        mistakes.value = n
+        playSfx('miss')
+        vibrateMiss()
+      },
+      onLock: (l) => (locked.value = l),
+      onTick: (s) => (seconds.value = s),
+      onZoom: (s) => (zoom.value = s),
+      onHint: (active) => (hintActive.value = active),
+      onComplete: (r) => {
+        result.value = r
+        playMusic('complete')
+        if (calm.value) progress.recordCalmCompletion(level.id)
+        else progress.recordResult(level.id, r)
+      },
+    },
+    {
+      // Calm mode and "reduce motion" both slow the scene down.
+      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * (calm.value ? 0.6 : 1),
+      missLock: !calm.value,
+    },
+  )
 }
 
-onMounted(start)
-onBeforeUnmount(() => scene?.destroy())
+const canHint = computed(() => !result.value && !hintActive.value && (calm.value || progress.hints > 0))
+
+/** Calm mode hints are free; normal mode takes one from the shared pool. */
+async function showHint() {
+  if (!canHint.value || !scene?.hint()) return
+  playSfx('hint')
+  if (!calm.value) await progress.spendHint()
+}
+
+function toggleAnimation() {
+  animationFrozen.value = !animationFrozen.value
+  scene?.setAnimationFrozen(animationFrozen.value)
+}
+
+function pause() {
+  if (result.value || paused.value) return
+  paused.value = true
+  scene?.pause()
+}
+
+function resume() {
+  paused.value = false
+  scene?.resume()
+}
+
+// Leaving the app (home button, switching tabs) pauses the level.
+function onVisibility() {
+  if (document.hidden) pause()
+}
+
+onMounted(() => {
+  start()
+  document.addEventListener('visibilitychange', onVisibility)
+})
+onBeforeUnmount(() => {
+  document.removeEventListener('visibilitychange', onVisibility)
+  scene?.destroy()
+})
 </script>
 
 <template>
   <div class="level">
     <header class="hud">
-      <RouterLink :to="{ name: 'home' }" class="back" aria-label="menu">‹</RouterLink>
       <span class="title">{{ $t('level.level', { n: level.id }) }}</span>
       <span>{{ $t('level.found', { found, total: level.differences.length }) }}</span>
-      <span>⏱ {{ time }}</span>
-      <span>{{ $t('level.mistakes', { n: mistakes }) }}</span>
+      <template v-if="!calm">
+        <span>⏱ {{ time }}</span>
+        <span>{{ $t('level.mistakes', { n: mistakes }) }}</span>
+      </template>
     </header>
 
     <div class="board" :class="{ locked }">
@@ -66,27 +141,35 @@ onBeforeUnmount(() => scene?.destroy())
     </div>
 
     <footer class="toolbar">
+      <button class="secondary" :disabled="!canHint" @click="showHint">
+        <span aria-hidden="true">💡</span>
+        {{ $t('level.hint') }} {{ calm ? '∞' : progress.hints }}
+      </button>
       <button class="secondary" :disabled="zoom === 1" @click="scene?.resetZoom()">
+        <span aria-hidden="true">⤢</span>
         {{ $t('level.resetZoom') }}
+      </button>
+      <button v-if="calm" class="secondary" :aria-pressed="animationFrozen" @click="toggleAnimation">
+        <span aria-hidden="true">{{ animationFrozen ? '▶' : '⏹' }}</span>
+        {{ animationFrozen ? $t('level.animPlay') : $t('level.animPause') }}
+      </button>
+      <button class="secondary" :disabled="!!result" @click="pause">
+        <span aria-hidden="true">⏸</span>
+        {{ $t('level.pause') }}
       </button>
     </footer>
 
-    <div v-if="result" class="result">
-      <div class="dialog">
-        <h2>{{ $t('level.complete') }}</h2>
-        <div class="stars" :aria-label="`${result.stars}/3`">
-          <span v-for="i in 3" :key="i" :class="{ on: i <= result.stars }">★</span>
-        </div>
-        <p>{{ $t('level.time', { t: time }) }} · {{ $t('level.mistakes', { n: result.mistakes }) }}</p>
-        <div class="actions">
-          <button v-if="nextLevel" @click="router.push({ name: 'level', params: { id: nextLevel.id } })">
-            {{ $t('level.next') }}
-          </button>
-          <button class="secondary" @click="start">{{ $t('level.retry') }}</button>
-          <button class="secondary" @click="router.push({ name: 'home' })">{{ $t('level.menu') }}</button>
-        </div>
-      </div>
-    </div>
+    <PauseDialog v-if="paused" @resume="resume" @restart="start" @exit="router.push({ name: 'home' })" />
+    <ResultDialog
+      v-if="result"
+      :result="result"
+      :calm="calm"
+      :time="time"
+      :has-next="!!nextLevel"
+      @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
+      @retry="start"
+      @menu="router.push({ name: 'levels' })"
+    />
   </div>
 </template>
 
@@ -101,7 +184,7 @@ onBeforeUnmount(() => scene?.destroy())
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 12px;
+  padding: 10px 12px;
   background: var(--panel);
   font-size: 15px;
   white-space: nowrap;
@@ -111,13 +194,6 @@ onBeforeUnmount(() => scene?.destroy())
 .hud .title {
   font-weight: 600;
   margin-right: auto;
-}
-
-.back {
-  color: var(--fg);
-  text-decoration: none;
-  font-size: 28px;
-  line-height: 1;
 }
 
 .board {
@@ -157,9 +233,24 @@ onBeforeUnmount(() => scene?.destroy())
 .toolbar {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  padding: 6px 12px 10px;
+  gap: 6px;
+  padding: 6px 8px 10px;
   background: var(--panel);
+}
+
+.toolbar button {
+  flex: 1 1 0;
+  max-width: 120px;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 6px 4px;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.toolbar button span {
+  font-size: 20px;
 }
 
 .toolbar button:disabled {
@@ -176,41 +267,5 @@ onBeforeUnmount(() => scene?.destroy())
   font-weight: 600;
   pointer-events: none;
   z-index: 1;
-}
-
-.result {
-  position: fixed;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: rgb(0 0 0 / 0.35);
-}
-
-.dialog {
-  background: var(--panel);
-  border-radius: 20px;
-  padding: 24px;
-  text-align: center;
-  min-width: 260px;
-}
-
-.dialog h2 {
-  margin: 0 0 8px;
-}
-
-.stars {
-  font-size: 44px;
-  color: #d6d6d6;
-}
-
-.stars .on {
-  color: #f5b301;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
 }
 </style>
