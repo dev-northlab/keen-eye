@@ -3,6 +3,7 @@ import {
   addFoundMark,
   addHintMark,
   addMissMark,
+  addRevealMark,
   animatePicture,
   createPicture,
   HINT_SCALE,
@@ -59,6 +60,7 @@ export class GameScene {
   private hintsUsed = 0
   /** Difference currently highlighted by a hint, or -1. */
   private hinted = -1
+  private revealed = false
   /** Scene animation stopped by the player (calm mode); timer and input keep working. */
   private animationFrozen = false
   private elapsedMs = 0
@@ -118,6 +120,16 @@ export class GameScene {
     this.hintsUsed++
     this.handlers.onHint?.(true)
     return true
+  }
+
+  /** Development tool: outlines every unfound difference in red (once; found marks cover them). */
+  revealAll(): void {
+    if (this.done || this.revealed) return
+    this.revealed = true
+    for (const p of this.pictures) {
+      const zones = zonesAt(p, this.level.differences, this.animTime)
+      this.found.forEach((f, i) => f || addRevealMark(p, i, zones[i]))
+    }
   }
 
   /** Stops or restarts the scene animation (calm mode button). */

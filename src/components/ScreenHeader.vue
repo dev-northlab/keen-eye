@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 
-defineProps<{ title: string }>()
+/** `onBack` replaces the default "back to home" (e.g. settings opened over a level). */
+const props = defineProps<{ title: string; onBack?: () => void }>()
 const router = useRouter()
+const back = () => (props.onBack ? props.onBack() : router.push({ name: 'home' }))
 </script>
 
 <template>
   <header class="screen-header">
-    <button class="icon secondary" :aria-label="$t('common.back')" @click="router.push({ name: 'home' })">‹</button>
+    <button class="icon secondary" :aria-label="$t('common.back')" @click="back">‹</button>
     <h1>{{ title }}</h1>
   </header>
 </template>

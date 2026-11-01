@@ -108,6 +108,11 @@ export function addFoundMark(p: Picture, index: number, zone: Zone): void {
   addZoneMark(p, index, zone, { r: zone.r, stroke: '#22c55e', 'stroke-width': 4 })
 }
 
+/** Development tool: red circle exactly on the zone (drawn under a later found mark). */
+export function addRevealMark(p: Picture, index: number, zone: Zone): void {
+  addZoneMark(p, index, zone, { r: zone.r, stroke: '#ef4444', 'stroke-width': 3 })
+}
+
 /** Dashed circle of radius r·HINT_SCALE around the zone; (dx, dy) shifts it so the zone is not at its center. */
 export const HINT_SCALE = 2.2
 
