@@ -1,0 +1,27 @@
+{
+  "home": {
+    "play": "Играть",
+    "levels": "Уровни"
+  },
+  "level": {
+    "level": "Уровень {n}",
+    "found": "Найдено {found}/{total}",
+    "mistakes": "Ошибки: {n}",
+    "locked": "Не торопитесь…",
+    "complete": "Уровень пройден!",
+    "time": "Время: {t}",
+    "next": "Дальше",
+    "retry": "Заново",
+    "menu": "Меню",
+    "resetZoom": "Сбросить масштаб"
+  },
+  "chapters": {
+    "farm": "Ферма"
+  },
+  "levelTitles": {
+    "barnyard": "Скотный двор",
+    "garden": "Огород",
+    "pond": "Пруд",
+    "windmill": "Мельница"
+  }
+}

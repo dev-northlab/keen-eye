@@ -1,0 +1,27 @@
+{
+  "home": {
+    "play": "Խաղալ",
+    "levels": "Մակարդակներ"
+  },
+  "level": {
+    "level": "Մակարդակ {n}",
+    "found": "Գտնված է {found}/{total}",
+    "mistakes": "Սխալներ՝ {n}",
+    "locked": "Մի՛ շտապեք…",
+    "complete": "Մակարդակն անցած է",
+    "time": "Ժամանակ՝ {t}",
+    "next": "Հաջորդը",
+    "retry": "Կրկին",
+    "menu": "Ընտրացանկ",
+    "resetZoom": "Վերականգնել մասշտաբը"
+  },
+  "chapters": {
+    "farm": "Ագարակ"
+  },
+  "levelTitles": {
+    "barnyard": "Անասնաբակ",
+    "garden": "Բանջարանոց",
+    "pond": "Լճակ",
+    "windmill": "Հողմաղաց"
+  }
+}

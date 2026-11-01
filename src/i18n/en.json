@@ -1,0 +1,27 @@
+{
+  "home": {
+    "play": "Play",
+    "levels": "Levels"
+  },
+  "level": {
+    "level": "Level {n}",
+    "found": "Found {found}/{total}",
+    "mistakes": "Mistakes: {n}",
+    "locked": "Slow down…",
+    "complete": "Level complete!",
+    "time": "Time: {t}",
+    "next": "Next",
+    "retry": "Retry",
+    "menu": "Menu",
+    "resetZoom": "Reset zoom"
+  },
+  "chapters": {
+    "farm": "Farm"
+  },
+  "levelTitles": {
+    "barnyard": "Barnyard",
+    "garden": "Garden",
+    "pond": "Pond",
+    "windmill": "Windmill"
+  }
+}
