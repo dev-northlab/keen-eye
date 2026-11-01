@@ -2,6 +2,7 @@
 // Settings list: the Settings screen and the level's pause menu both show it.
 import LanguageSelect from './LanguageSelect.vue'
 import ModeSwitch from './ModeSwitch.vue'
+import ThemeSwitch from './ThemeSwitch.vue'
 import { playSfx } from '../services/audio.ts'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '../stores/progress.ts'
@@ -56,6 +57,11 @@ const percent = (v: number) => `${Math.round(v * 100)}%`
         @change="playSfx('found')"
       />
       <output for="sound-volume">{{ percent(settings.soundVolume) }}</output>
+    </div>
+
+    <div class="row">
+      <span>{{ $t('theme.label') }}</span>
+      <ThemeSwitch />
     </div>
 
     <label class="row">
@@ -135,7 +141,7 @@ main {
   width: 3em;
   text-align: right;
   font-variant-numeric: tabular-nums;
-  color: #6b766f;
+  color: var(--muted);
 }
 
 button.row.link {
@@ -154,7 +160,7 @@ button.row.link {
 .row small {
   display: block;
   font-size: 13px;
-  color: #6b766f;
+  color: var(--muted);
 }
 
 input[type='checkbox'] {
@@ -164,7 +170,7 @@ input[type='checkbox'] {
 }
 
 .muted {
-  color: #6b766f;
+  color: var(--muted);
 }
 
 .dev {
@@ -172,12 +178,12 @@ input[type='checkbox'] {
   gap: 8px;
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px dashed #c4ccc7;
+  border-top: 1px dashed var(--line);
 }
 
 .dev h2 {
   font-size: 15px;
   margin: 0;
-  color: #6b766f;
+  color: var(--muted);
 }
 </style>

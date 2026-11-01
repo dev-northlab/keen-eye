@@ -4,6 +4,8 @@ import { useRouter } from 'vue-router'
 import ModalDialog from '../components/ModalDialog.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
+import SeasonSwitch from '../components/SeasonSwitch.vue'
+import ThemeSwitch from '../components/ThemeSwitch.vue'
 import { pushBackHandler } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -31,6 +33,10 @@ function play() {
 <template>
   <main class="home">
     <ScreenBackdrop theme="meadow" />
+    <div class="corner">
+      <SeasonSwitch />
+      <ThemeSwitch />
+    </div>
     <h1>Keen Eye</h1>
     <p class="stars">★ {{ $t('home.stars', { n: progress.totalStars }) }}</p>
     <button class="play" @click="play">
@@ -105,13 +111,23 @@ h1 {
 
 .stars {
   margin: 0 0 16px;
-  color: #b58500;
+  color: var(--gold-fg);
   font-weight: 600;
 }
 
 button,
 .mode {
   width: min(100%, 280px);
+}
+
+/* Season and day/night switches: top left, away from the sun (top right) and the centered menu. */
+.corner {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .info-links {
@@ -129,8 +145,8 @@ button,
   gap: 6px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgb(255 255 255 / 0.75);
-  color: #4d5a55;
+  background: var(--glass);
+  color: var(--muted);
   font-size: 15px;
   box-shadow: 0 2px 6px rgb(35 48 43 / 0.08);
 }
@@ -158,7 +174,7 @@ button,
 }
 
 .info-body .muted {
-  color: #6b766f;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -175,7 +191,7 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #6b766f;
+  color: var(--muted);
 }
 
 .dev input {

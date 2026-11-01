@@ -100,7 +100,7 @@ main {
   padding: 6px;
   background: var(--panel);
   color: var(--fg);
-  border: 2px solid #dfe7e2;
+  border: 2px solid var(--soft);
 }
 
 .tile.done {
@@ -108,14 +108,14 @@ main {
 }
 
 .tile.paid {
-  background: #fff4d6;
+  background: var(--gold-bg);
   border-color: #f5b301;
-  color: #8a6400;
+  color: var(--gold-fg);
 }
 
 .tile:disabled {
-  background: #e9ecea;
-  color: #8a948f;
+  background: var(--disabled-bg);
+  color: var(--faint);
   cursor: default;
 }
 
@@ -134,6 +134,6 @@ main {
   padding: 4px 14px;
   border-radius: 999px;
   background: var(--panel);
-  color: #5f6b66;
+  color: var(--muted);
 }
 </style>

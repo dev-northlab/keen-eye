@@ -1,8 +1,28 @@
+/* Colour tokens; the dark theme (settings → html[data-theme="dark"]) overrides them below. */
 :root {
+  color-scheme: light;
   --bg: #f4f1ea;
   --fg: #23302b;
   --accent: #2f9e6e;
   --panel: #ffffff;
+  /* Secondary and inactive text. */
+  --muted: #6b766f;
+  --faint: #8a948f;
+  /* Secondary buttons, tracks and borders; a lighter fill; dividers. */
+  --soft: #dfe7e2;
+  --soft-2: #eef3f0;
+  /* The chosen item of a segmented switch, raised over its track. */
+  --raised: #ffffff;
+  --line: #c9d1cc;
+  --disabled-bg: #e9ecea;
+  /* Floating pills over the screen backdrops. */
+  --glass: rgb(255 255 255 / 0.75);
+  --gold-bg: #fff4d6;
+  --gold-fg: #8a6400;
+  --danger-bg: #fde8e8;
+  --danger-fg: #b42318;
+  --ok-bg: #e3f4ea;
+  --star-empty: #d6d6d6;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--fg);
   background: var(--bg);
@@ -39,8 +59,30 @@ button {
 }
 
 button.secondary {
-  background: #dfe7e2;
+  background: var(--soft);
   color: var(--fg);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f1726;
+  --fg: #e6edf5;
+  --accent: #2fa874;
+  --panel: #1b2538;
+  --muted: #a1adbf;
+  --faint: #6c7a90;
+  --soft: #2a3650;
+  --soft-2: #222d44;
+  --raised: #3d4b70;
+  --line: #3a4762;
+  --disabled-bg: #161e2e;
+  --glass: rgb(27 37 56 / 0.8);
+  --gold-bg: #3b311a;
+  --gold-fg: #f3c64a;
+  --danger-bg: #4a2226;
+  --danger-fg: #ff9e96;
+  --ok-bg: #1d3a2d;
+  --star-empty: #46546e;
 }
 
 /* Disable browser double-tap zoom on UI; pictures handle their own gestures. */

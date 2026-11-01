@@ -38,12 +38,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
   `difficulty.ts` (difference and motion counts, min zone radius and kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (chapter cards), Chapter (level grid of one chapter, `/levels/:chapter`),
-  Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen), stars, bottom back button (`BackButton`)
+  Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
-  (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
+  (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
-- `src/services/` — `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
+- `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
   starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `purchases.ts`
@@ -88,6 +88,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Every zone must contain everything its `a`/`b` draw (over the whole motion for moving objects: use the rest
   position as the zone center and pass the animation id as `diff`'s 6th argument). Draw only the differing part
   inside `diff` (a hat, a canopy, a roof stripe) so zones stay small and never overlap.
+- UI colours come from the tokens in `src/style.css` (`--bg`, `--fg`, `--panel`, `--muted`, `--soft`, …), which the dark
+  theme overrides; don't hard-code UI colours in components. Backdrops turn to night in the dark theme; level
+  pictures stay as drawn.
 - Colors: no CSS `rgb(r g b / a)` in level markup (resvg draws it black); use `fill-opacity` / `stroke-opacity`.
 - Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
   `chapters.<chapter>` for a new chapter) to all three locales, run `check-levels` and look at the preview.

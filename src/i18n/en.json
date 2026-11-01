@@ -9,6 +9,17 @@
     "needsPurchase": "Level {n} — full game",
     "devOpenAll": "Open all levels (testing)"
   },
+  "season": {
+    "label": "Season",
+    "spring": "Spring",
+    "summer": "Summer",
+    "autumn": "Autumn",
+    "winter": "Winter"
+  },
+  "theme": {
+    "label": "Theme",
+    "dark": "Dark theme"
+  },
   "info": {
     "about": "About",
     "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",

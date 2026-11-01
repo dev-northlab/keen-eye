@@ -25,7 +25,7 @@ function open(chapter: Chapter) {
 
 <template>
   <div class="screen">
-    <ScreenBackdrop theme="space" />
+    <ScreenBackdrop theme="meadow" />
     <main>
       <ul class="list">
         <li v-for="c in cards" :key="c.chapter.id">
@@ -118,14 +118,14 @@ main {
 
 .sub {
   font-size: 14px;
-  color: #5f6b66;
+  color: var(--muted);
 }
 
 .lock {
   flex: none;
   width: 24px;
   height: 24px;
-  color: #8a948f;
+  color: var(--faint);
 }
 
 .lock svg {
@@ -134,14 +134,14 @@ main {
 }
 
 .card.locked {
-  border-color: #c9d1cc;
+  border-color: var(--line);
 }
 
 .card.soon,
 .card:disabled {
-  background: #e9ecea;
-  color: #8a948f;
-  border-color: #c9d1cc;
+  background: var(--disabled-bg);
+  color: var(--faint);
+  border-color: var(--line);
   cursor: default;
 }
 

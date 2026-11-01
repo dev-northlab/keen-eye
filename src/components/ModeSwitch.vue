@@ -27,7 +27,7 @@ const MODES: GameMode[] = ['normal', 'calm']
   gap: 4px;
   padding: 4px;
   border-radius: 14px;
-  background: #dfe7e2;
+  background: var(--soft);
 }
 
 button {
@@ -37,7 +37,7 @@ button {
 }
 
 button.active {
-  background: var(--panel);
+  background: var(--raised);
   font-weight: 600;
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
 }

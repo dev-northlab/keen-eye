@@ -1,14 +1,42 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { BackdropTheme } from '../levels/chapters.ts'
 import { useSettingsStore } from '../stores/settings.ts'
+import MeadowScene from './MeadowScene.vue'
 
 // Screen backdrops, one world per screen: sky, sun, drifting clouds and a landscape strip at the bottom
 // (space: stars, a moon and a planet surface). Covers the whole window (also under the system bars)
 // behind the screen's content; decorative only. The parent needs its own stacking context
 // (`isolation: isolate`), the backdrop sits at z-index -1.
 
-defineProps<{ theme: BackdropTheme }>()
+const props = defineProps<{ theme: BackdropTheme }>()
 const settings = useSettingsStore()
+
+/** Dark theme: every world at night (dark sky, moon, stars, dimmed landscape); space already is. */
+const night = computed(() => settings.theme === 'dark')
+
+/** The meadow follows the season chosen on the home screen (sky colours, falling petals/leaves/snow). */
+const season = computed(() => (props.theme === 'meadow' ? settings.season : null))
+
+const FALLING = {
+  spring: { count: 14, size: 9, colors: ['#ffd1e0', '#ffffff', '#ffb3cb'] },
+  summer: { count: 0, size: 0, colors: [] },
+  autumn: { count: 18, size: 11, colors: ['#e98a2e', '#d9542b', '#f2c14e', '#c9662b'] },
+  winter: { count: 46, size: 4, colors: ['#ffffff'] },
+}
+/** Deterministic spread: left (%), size (px), fall time and start offset (s), sideways drift (px). */
+const falling = computed(() => {
+  if (!season.value) return []
+  const { count, size, colors } = FALLING[season.value]
+  return Array.from({ length: count }, (_, i) => ({
+    left: (i * 37 + 11) % 100,
+    size: size + ((i * 7) % 5),
+    duration: 9 + ((i * 13) % 8),
+    delay: -((i * 7.3) % 16),
+    drift: ((i * 29) % 90) - 45,
+    color: colors[i % colors.length],
+  }))
+})
 
 /** Deterministic jitter: the pictures are the same on every start. */
 const jitter = (i: number, a: number, m: number) => ((i * a) % m) - m / 2
@@ -42,14 +70,6 @@ const bales = [
   { x: 1060, y: 334, s: 1.1 },
 ]
 const sunflowers = [500, 540, 1090, 1130].map((x, i) => ({ x, h: 60 + (i % 2) * 14 }))
-
-const meadowTrees = [
-  { x: 260, y: 150, s: 0.8, c: '#6fb879' },
-  { x: 1340, y: 145, s: 0.8, c: '#6fb879' },
-  { x: 560, y: 230, s: 1, c: '#3f9a5a' },
-  { x: 640, y: 236, s: 0.75, c: '#3f9a5a' },
-  { x: 1170, y: 224, s: 1.05, c: '#3f9a5a' },
-]
 
 // Forest: a row of small far pines, then big near ones (both rows cover the whole width).
 const farPines = Array.from({ length: 22 }, (_, i) => ({
@@ -136,14 +156,14 @@ const craters = [
 <template>
   <div
     class="backdrop"
-    :class="[theme, { still: settings.effectiveReduceMotion }]"
+    :class="[theme, season, { night }]"
     aria-hidden="true"
   >
-    <svg v-if="theme === 'space'" class="stars" preserveAspectRatio="none">
+    <svg v-if="theme === 'space' || night" class="stars" preserveAspectRatio="none">
       <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
     </svg>
     <div class="sky">
-      <!-- The glow pulses and the rays turn slowly; both stand still with "reduce motion". -->
+      <!-- The glow pulses and the rays turn slowly. Backdrops always move: "reduce motion" is for levels only. -->
       <div class="sun">
         <div class="glow" />
         <svg viewBox="-20 -20 140 140">
@@ -180,26 +200,7 @@ const craters = [
 
     <!-- Wide strip cut to the window: on a phone its middle part stays visible. -->
     <svg class="strip" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
-      <template v-if="theme === 'meadow'">
-        <path d="M0 170Q250 70 520 150T1050 130T1600 150V400H0Z" fill="#b5dca5" />
-        <path d="M0 240Q300 150 640 220T1250 200T1600 230V400H0Z" fill="#8cc97f" />
-        <g transform="translate(1010 232)">
-          <path d="M-46 0V-50L0-82L46-50V0Z" fill="#e05a47" />
-          <path d="M-52-48L0-88L52-48" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round" />
-          <rect x="-16" y="-36" width="32" height="36" fill="#fff" />
-          <path d="M-16-36L16 0M16-36L-16 0" stroke="#e05a47" stroke-width="4" />
-          <rect x="-9" y="-66" width="18" height="14" fill="#fff" />
-        </g>
-        <g v-for="(t, i) in meadowTrees" :key="i" :transform="`translate(${t.x} ${t.y}) scale(${t.s})`">
-          <rect x="-5" y="-10" width="10" height="34" fill="#8a5a3b" />
-          <circle cy="-30" r="26" :fill="t.c" />
-          <circle cx="-14" cy="-18" r="16" :fill="t.c" />
-          <circle cx="14" cy="-18" r="16" :fill="t.c" />
-          <circle cx="-8" cy="-38" r="8" fill="#fff" fill-opacity="0.18" />
-        </g>
-        <path d="M0 310Q400 250 800 300T1600 290V400H0Z" fill="#6db86a" />
-        <circle v-for="(f, i) in flowers" :key="i" :cx="f.x" :cy="f.y" r="4" :fill="f.color" />
-      </template>
+      <MeadowScene v-if="theme === 'meadow'" :season="settings.season" />
 
       <template v-else-if="theme === 'farm'">
         <path d="M0 180Q300 120 640 170T1600 150V400H0Z" fill="#c7dd8f" />
@@ -388,6 +389,25 @@ const craters = [
         <path d="M0 362H1600" stroke="#fff" stroke-width="5" stroke-dasharray="34 24" />
       </template>
     </svg>
+    <!-- Night lights of the meadow's house, over the dimmed strip (same box, so they line up). -->
+    <svg v-if="night && theme === 'meadow'" class="strip lit" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
+      <MeadowScene :season="settings.season" lights />
+    </svg>
+
+    <div v-if="falling.length" class="falling">
+      <span
+        v-for="(f, i) in falling"
+        :key="i"
+        :style="{
+          left: `${f.left}%`,
+          '--size': `${f.size}px`,
+          '--drift': `${f.drift}px`,
+          '--color': f.color,
+          animationDuration: `${f.duration}s`,
+          animationDelay: `${f.delay}s`,
+        }"
+      />
+    </div>
   </div>
 </template>
 
@@ -408,6 +428,60 @@ const craters = [
   --glow: rgb(255 248 214 / 0.8);
 }
 
+/* Meadow seasons (home screen). */
+.meadow.spring {
+  --sky: #a7def2;
+  --sky-mid: #e3f5ea;
+}
+
+.meadow.autumn {
+  --sky: #9ccbe6;
+  --sky-mid: #e2eef0;
+  --sun: #ffc85c;
+}
+
+.meadow.winter {
+  --sky: #a9c6dc;
+  --sky-mid: #d4e2ec;
+  --sun: #fff1c4;
+  --glow: rgb(255 255 255 / 0.6);
+}
+
+.falling {
+  position: absolute;
+  inset: 0;
+}
+
+.falling span {
+  position: absolute;
+  top: -24px;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color);
+  animation: fall linear infinite;
+}
+
+/* Snowflakes, petals and leaves differ only in shape. */
+.winter .falling span {
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.spring .falling span {
+  height: calc(var(--size) * 0.7);
+  border-radius: 80% 0 80% 0;
+}
+
+.autumn .falling span {
+  border-radius: 0 80% 0 80%;
+}
+
+@keyframes fall {
+  to {
+    transform: translate(var(--drift), calc(100vh + 48px)) rotate(540deg);
+  }
+}
+
 .farm {
   --sky: #a9dcf5;
   --sky-mid: #e0f0f6;
@@ -418,10 +492,6 @@ const craters = [
 .farm .sails {
   transform-origin: 0 -96px;
   animation: spin 24s linear infinite;
-}
-
-.still .sails {
-  animation-play-state: paused;
 }
 
 .forest {
@@ -456,6 +526,30 @@ const craters = [
 
 .space .cloud {
   display: none;
+}
+
+/* Night (dark theme) for the daytime worlds: the sun turns into the moon, clouds and land darken. */
+.night:not(.space) {
+  --sky: #0e1433;
+  --sky-mid: #1f2b5a;
+  --sun: #f4f1de;
+  --glow: rgb(244 241 222 / 0.3);
+}
+
+.night:not(.space) .rays {
+  display: none;
+}
+
+.night:not(.space) .cloud {
+  filter: brightness(0.45) saturate(0.6);
+}
+
+.night:not(.space) .strip {
+  filter: brightness(0.55) saturate(0.85);
+}
+
+.night .strip.lit {
+  filter: none;
 }
 
 .stars {
@@ -564,12 +658,5 @@ const craters = [
   to {
     transform: scaleY(0.45);
   }
-}
-
-.still .cloud,
-.still .glow,
-.still .rays,
-.still .gull {
-  animation-play-state: paused;
 }
 </style>

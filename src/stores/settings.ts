@@ -3,11 +3,17 @@ import { computed, ref, watch, watchSyncEffect } from 'vue'
 import { isLocale, setLocale, systemLocale, type Locale } from '../i18n/index.ts'
 import { setMusicVolume, setSfxVolume, setSoftSounds } from '../services/audio.ts'
 import { setHapticsEnabled } from '../services/haptics.ts'
+import { setTheme, systemTheme, type Theme } from '../services/theme.ts'
 import { loadJson, saveJson } from '../services/storage.ts'
 
 const KEY = 'settings'
 
 export type GameMode = 'normal' | 'calm'
+
+/** Season of the home screen's meadow. */
+export const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const
+export type Season = (typeof SEASONS)[number]
+const isSeason = (v: unknown): v is Season => SEASONS.includes(v as Season)
 
 const DEFAULT_MUSIC_VOLUME = 0.45
 const DEFAULT_SOUND_VOLUME = 0.7
@@ -31,6 +37,9 @@ export const useSettingsStore = defineStore('settings', () => {
   const musicVolume = ref(DEFAULT_MUSIC_VOLUME)
   const soundVolume = ref(DEFAULT_SOUND_VOLUME)
   const vibration = ref(true)
+  const season = ref<Season>('summer')
+  /** Follows the system until the player picks one (then stored). */
+  const theme = ref<Theme>(systemTheme())
 
   const effectiveLocale = computed(() => locale.value ?? systemLocale())
   const effectiveReduceMotion = computed(() => reduceMotion.value ?? systemReducedMotion())
@@ -44,6 +53,7 @@ export const useSettingsStore = defineStore('settings', () => {
     setSfxVolume(soundVolume.value)
     setSoftSounds(calm.value)
     setHapticsEnabled(vibration.value)
+    setTheme(theme.value)
   })
 
   async function load() {
@@ -56,9 +66,11 @@ export const useSettingsStore = defineStore('settings', () => {
     musicVolume.value = parseVolume(raw.musicVolume, raw.music, DEFAULT_MUSIC_VOLUME)
     soundVolume.value = parseVolume(raw.soundVolume, raw.sound, DEFAULT_SOUND_VOLUME)
     vibration.value = bool(raw.vibration, true)
+    season.value = isSeason(raw.season) ? raw.season : 'summer'
+    theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration], () =>
+  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme], () =>
     saveJson(KEY, {
       locale: locale.value,
       reduceMotion: reduceMotion.value,
@@ -66,8 +78,10 @@ export const useSettingsStore = defineStore('settings', () => {
       musicVolume: musicVolume.value,
       soundVolume: soundVolume.value,
       vibration: vibration.value,
+      season: season.value,
+      theme: theme.value,
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, calm, effectiveLocale, effectiveReduceMotion, load }
+  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, calm, effectiveLocale, effectiveReduceMotion, load }
 })

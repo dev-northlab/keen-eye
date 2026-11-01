@@ -10,7 +10,7 @@ withDefaults(defineProps<{ stars: number; size?: number; animated?: boolean }>()
 
 <style scoped>
 .stars {
-  color: #d6d6d6;
+  color: var(--star-empty);
   letter-spacing: 0.05em;
   white-space: nowrap;
 }

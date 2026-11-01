@@ -42,7 +42,7 @@ const back = () => (props.onBack ? props.onBack() : router.push({ name: 'home' }
   font-weight: 600;
   box-shadow:
     0 6px 16px rgb(35 48 43 / 0.16),
-    inset 0 0 0 2px #dfe7e2;
+    inset 0 0 0 2px var(--soft);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease;

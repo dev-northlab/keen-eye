@@ -6,7 +6,7 @@ import SettingsPanel from '../components/SettingsPanel.vue'
 
 <template>
   <div class="screen">
-    <ScreenBackdrop theme="sea" />
+    <ScreenBackdrop theme="meadow" />
     <SettingsPanel />
     <BackButton />
   </div>

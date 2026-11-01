@@ -136,12 +136,12 @@ button:disabled {
   margin: 0;
   padding: 10px 14px;
   border-radius: 12px;
-  background: #e3f4ea;
+  background: var(--ok-bg);
   text-align: center;
 }
 
 .message.none,
 .message.error {
-  background: #fdecea;
+  background: var(--danger-bg);
 }
 </style>

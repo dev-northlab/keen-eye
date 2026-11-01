@@ -148,9 +148,9 @@ const name = (l: Locale | null) => (l === null ? null : LANGUAGES[l].name)
   max-width: 100%;
   padding: 8px 10px 8px 12px;
   border-radius: 12px;
-  background: #eef3f0;
+  background: var(--soft-2);
   color: var(--fg);
-  box-shadow: inset 0 0 0 2px #dfe7e2;
+  box-shadow: inset 0 0 0 2px var(--soft);
   transition: box-shadow 0.15s ease;
 }
 
@@ -170,7 +170,7 @@ const name = (l: Locale | null) => (l === null ? null : LANGUAGES[l].name)
   flex: none;
   width: 18px;
   height: 18px;
-  color: #6b766f;
+  color: var(--muted);
   transition: transform 0.2s ease;
 }
 
@@ -211,7 +211,7 @@ li {
 
 li:hover,
 li:focus-visible {
-  background: #eef3f0;
+  background: var(--soft-2);
 }
 
 .option-name {

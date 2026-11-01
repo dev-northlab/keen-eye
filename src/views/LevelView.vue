@@ -223,7 +223,7 @@ onBeforeUnmount(() => {
     </footer>
 
     <div v-if="settingsOpen" class="settings-screen">
-      <ScreenBackdrop theme="sea" />
+      <ScreenBackdrop theme="meadow" />
       <SettingsPanel />
       <BackButton :on-back="() => (settingsOpen = false)" />
     </div>
@@ -290,7 +290,7 @@ onBeforeUnmount(() => {
   gap: 6px;
   padding: 4px 10px 4px 5px;
   border-radius: 999px;
-  background: #eef3f0;
+  background: var(--soft-2);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   transition:
@@ -316,8 +316,8 @@ onBeforeUnmount(() => {
 }
 
 .slot .disc {
-  fill: #f6f9f7;
-  stroke: #c5d1cb;
+  fill: var(--soft-2);
+  stroke: var(--line);
   stroke-width: 1.6;
   transition:
     fill 0.25s,
@@ -368,14 +368,14 @@ onBeforeUnmount(() => {
 
 /* Time: yellow chip with a stopwatch. */
 .time {
-  background: #fff3c2;
-  color: #8a5a00;
+  background: var(--gold-bg);
+  color: var(--gold-fg);
 }
 
 /* Mistakes: red cross; the chip shakes and flashes on every miss. */
 .miss.shake {
-  background: #fde8e8;
-  color: #b42318;
+  background: var(--danger-bg);
+  color: var(--danger-fg);
   animation:
     shake 0.45s ease-in-out,
     flash 0.8s ease-out;
