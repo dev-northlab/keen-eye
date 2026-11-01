@@ -42,6 +42,8 @@ export interface Difference {
   r: number
   /** Id of the animation the zone moves with, in each picture where that animation exists. */
   animatedId?: string
+  /** Motion difference: A and B draw the same thing and differ only in how it moves (set by svgLevel). */
+  motion?: boolean
 }
 
 export interface Level {

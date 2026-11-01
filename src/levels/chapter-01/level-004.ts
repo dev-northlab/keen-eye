@@ -1,93 +1,80 @@
-// Demo of motion differences (spec, section 4). By the spec they start around level 11;
-// the level order is settled in stage 7.
-import type { AnimSpec } from '../helpers.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
+import { apple, basket, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
 
-const blades = () => {
-  let s = ''
-  for (const angle of [0, 90, 180, 270])
-    s += `<rect x="-9" y="-82" width="18" height="72" rx="3" fill="#fffaf0" stroke="#c9b79c" stroke-width="2" transform="rotate(${angle})"/>`
-  return `<g transform="translate(600 185)">${s}<circle r="9" fill="#6b4f3a"/></g>`
+/** (x, y) = ground under the middle. Bounds: x ±50, y from −38 to 0 (either direction). */
+const wheelbarrow = (x: number, y: number, flip: boolean) =>
+  `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)">` +
+  `<path d="M-14 -14L-48 -30" stroke="#8a5a33" stroke-width="5" stroke-linecap="round"/>` +
+  `<path d="M-30 -20L-34 0" stroke="#8a5a33" stroke-width="4"/>` +
+  `<path d="M-32 -36L38 -36L26 -12L-18 -12Z" fill="#4dabf7"/>` +
+  `<circle cx="26" cy="-10" r="10" fill="#333"/><circle cx="26" cy="-10" r="3" fill="#ccc"/></g>`
+
+/** (x, y) = center. Bounds: x ±16, y ±21. */
+const birdhouse = (x: number, y: number) =>
+  `<path d="M${x - 16} ${y - 6}L${x} ${y - 21}L${x + 16} ${y - 6}Z" fill="#b5523b"/>` +
+  `<rect x="${x - 12}" y="${y - 7}" width="24" height="24" fill="#f2d29b"/>` +
+  `<circle cx="${x}" cy="${y + 3}" r="5" fill="#5a3d1e"/>` +
+  `<rect x="${x - 2}" y="${y + 17}" width="4" height="4" fill="#8a5a33"/>`
+
+/** Ladder leaning from (x0, y0) on the ground to (x1, y1). */
+const ladder = (x0: number, y0: number, x1: number, y1: number) => {
+  let rungs = ''
+  for (let i = 1; i < 7; i++) {
+    const f = i / 7
+    const x = x0 + (x1 - x0) * f
+    const y = y0 + (y1 - y0) * f
+    rungs += `M${x - 12} ${y}H${x + 12}`
+  }
+  return (
+    `<path d="M${x0 - 12} ${y0}L${x1 - 12} ${y1}M${x0 + 12} ${y0}L${x1 + 12} ${y1}" stroke="#a0703f" stroke-width="5" stroke-linecap="round"/>` +
+    `<path d="${rungs}" stroke="#a0703f" stroke-width="4"/>`
+  )
 }
-
-const flag = `<path d="M125 127L168 138L125 149Z" fill="#e63946"/>`
-
-const windowLight = `<rect x="90" y="265" width="36" height="36" fill="#ffe066"/>`
-
-const swing =
-  `<path d="M424 268V323M440 268V323" stroke="#6b4f3a" stroke-width="2.5"/>` +
-  `<rect x="418" y="321" width="28" height="6" rx="2" fill="#8a5a33"/>`
-
-const swim = (period: number): AnimSpec => ({
-  id: 'duck',
-  type: 'path',
-  points: [
-    [0, 0],
-    [220, 0],
-  ],
-  flipX: 154,
-  period,
-})
 
 export default svgLevel({
   id: 4,
   chapter: 'farm',
-  title: 'windmill',
-  parTimeSec: 90,
+  title: 'orchard',
+  parTimeSec: 70,
   scene: ({ diff, anim, rand }) => {
     let tufts = ''
-    for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 340 + rand() * 150)
+    for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 345 + rand() * 150)
     let flowers = ''
-    for (let i = 0; i < 8; i++) {
-      const x = 500 + rand() * 290
-      const y = 360 + rand() * 135
+    for (let i = 0; i < 9; i++) {
+      const x = 20 + rand() * 760
+      const y = 470 + rand() * 25
       const period = 2.5 + rand()
       flowers += anim({ type: 'sway', angle: 6, pivot: [x, y], period, phase: rand() }, flower(x, y, pick(rand, FLOWER_COLORS)))
     }
 
     return (
-      `<rect width="800" height="500" fill="#bde3f2"/>` +
-      sun(300, 70) +
-      anim({ type: 'path', points: [[0, 0], [-60, 0]], period: 20 }, cloud(430, 90, 0.8)) +
-      `<ellipse cx="620" cy="340" rx="280" ry="70" fill="#a6d985"/>` +
-      `<rect y="330" width="800" height="170" fill="#96cc6c"/>` +
+      `<rect width="800" height="500" fill="#b9e2f5"/>` +
+      sun(70, 70) +
+      anim({ type: 'path', points: [[0, 0], [70, 0]], period: 22 }, cloud(300, 80, 0.8)) +
+      anim({ type: 'path', points: [[0, 0], [-50, 0]], period: 18 }, cloud(560, 55, 0.6)) +
+      `<ellipse cx="200" cy="330" rx="320" ry="70" fill="#a6d985"/>` +
+      `<ellipse cx="660" cy="335" rx="260" ry="60" fill="#9fd47c"/>` +
+      `<rect y="320" width="800" height="180" fill="#94cf6b"/>` +
       tufts +
-      // House: the window light blinks only on picture B; the flag waves only on B.
-      `<path d="M125 185V125" stroke="#6b4f3a" stroke-width="3"/>` +
-      diff(145, 138, 32, flag, anim({ id: 'flag', type: 'sway', angle: 14, pivot: [125, 138], period: 1.4 }, flag), 'flag') +
-      `<path d="M38 250L125 185L212 250Z" fill="#8e5b3a"/>` +
-      `<rect x="50" y="245" width="150" height="85" fill="#f2d29b"/>` +
-      `<rect x="150" y="280" width="32" height="50" fill="#8a5a33"/>` +
-      `<rect x="86" y="261" width="44" height="44" fill="#ffffff"/>` +
-      `<rect x="90" y="265" width="36" height="36" fill="#3d4a5c"/>` +
-      diff(108, 283, 28, windowLight, anim({ type: 'blink', period: 1.6 }, windowLight)) +
-      // Tree with a swing that is out of sync between the pictures
-      tree(380, 330) +
-      diff(
-        432,
-        305,
-        45,
-        anim({ id: 'swing', type: 'sway', angle: 20, pivot: [432, 268], period: 2.4 }, swing),
-        anim({ id: 'swing', type: 'sway', angle: 20, pivot: [432, 268], period: 2.4, phase: 0.25 }, swing),
-        'swing',
-      ) +
-      // Windmill: blades turn the other way on B
-      `<path d="M565 330L635 330L622 200L578 200Z" fill="#e8d9c0"/>` +
-      `<rect x="588" y="295" width="24" height="35" rx="12" fill="#8a5a33"/>` +
-      `<path d="M570 205L600 165L630 205Z" fill="#b5523b"/>` +
-      diff(
-        600,
-        185,
-        90,
-        anim({ type: 'rotate', pivot: [600, 185], period: 6 }, blades()),
-        anim({ type: 'rotate', pivot: [600, 185], period: 6, reverse: true }, blades()),
-      ) +
-      flowers +
-      // Pond: the duck swims faster on B
-      `<ellipse cx="265" cy="420" rx="215" ry="55" fill="#4fa9d8"/>` +
-      `<ellipse cx="265" cy="424" rx="190" ry="42" fill="#63b8e3"/>` +
-      diff(154, 412, 40, anim(swim(12), duck(150, 418)), anim(swim(7), duck(150, 418)), 'duck')
+      // Trees with apples
+      tree(150, 335) +
+      apple(110, 225) +
+      apple(185, 200) +
+      diff(120, 180, 26, apple(120, 180), '') +
+      apple(175, 255) +
+      tree(400, 330) +
+      apple(360, 210) +
+      apple(430, 180) +
+      apple(385, 255) +
+      tree(660, 335) +
+      apple(625, 205) +
+      apple(700, 230) +
+      apple(690, 180) +
+      diff(660, 270, 28, birdhouse(660, 270), '') +
+      diff(458, 263, 76, ladder(440, 330, 475, 196), '') +
+      diff(561, 393, 28, basket(560, 420), basket(560, 420, '#8ac926')) +
+      diff(250, 421, 56, wheelbarrow(250, 440, false), wheelbarrow(250, 440, true)) +
+      flowers
     )
   },
 })

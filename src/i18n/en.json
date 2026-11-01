@@ -63,7 +63,18 @@
     "barnyard": "Barnyard",
     "garden": "Garden",
     "pond": "Pond",
-    "windmill": "Windmill"
+    "windmill": "Windmill",
+    "orchard": "Orchard",
+    "pigsty": "Pigsty",
+    "henhouse": "Henhouse",
+    "apiary": "Apiary",
+    "wheat": "Wheat field",
+    "meadow": "Sheep meadow",
+    "pasture": "Pasture",
+    "evening": "Evening farm",
+    "river": "River",
+    "swing": "Swing",
+    "fair": "Harvest fair"
   },
   "mode": {
     "label": "Mode",

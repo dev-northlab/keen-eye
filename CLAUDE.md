@@ -12,7 +12,10 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
 
 - `npm run dev` — dev server at http://localhost:3000 (develop and test in the browser)
 - `npm run build` — type check (`vue-tsc -b`) + production build into `dist/`
-- `npm run check-levels` — level validator (`scripts/check-levels.ts`, runs on Node's built-in TS type stripping)
+- `npm run check-levels` — level validator (`scripts/check-levels.ts`, Node's built-in TS type stripping): renders A and B
+  with resvg at several animation moments and checks that they differ only inside the zones and that every zone shows
+  a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism
+- `npm run preview-levels [-- <id> ...]` — `previews/level-NNN.png`: A | B with the zones outlined (gitignored)
 - `npm run typecheck` — type check only
 
 ## Layout
@@ -22,7 +25,7 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   `render.ts` (SVG pictures and marks), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel), `scene.ts` (`GameScene`: wires it together, timer, events)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
-  `shapes.ts` (shared drawing helpers)
+  `shapes.ts` (shared drawing helpers: animals, trees, buildings, props — reuse before drawing a new one)
 - `src/views/` — screens: Home, LevelMap, Level, Settings; `src/components/` — dialogs (pause, result), stars, header
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
@@ -32,7 +35,8 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics)
 - `src/router/` — routes; a global guard sends unknown levels home and locked levels to the map
 - `src/i18n/` — `ru.json`, `en.json`, `hy.json` (keep the same keys in all three); default language = system
-- `scripts/` — tooling; `assets/` — photo levels, icons, sounds
+- `scripts/` — `check-levels.ts`, `preview-levels.ts`, `render.ts` (posed SVG → pixels, shared by both);
+  `assets/` — music (`assets/music/`), later photo levels and icons
 
 ## Rules
 
@@ -54,7 +58,11 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   pictures share one clock, so identical specs stay in sync. A motion difference passes different specs as `a`/`b`;
   when the object moves, give it an `id` and pass that id as `diff`'s 6th argument so the zone follows the object
   separately in each picture. The scene is static at animation time 0 = rest position of the zones.
-- Motion differences appear from about level 11 (spec, section 4); level 4 is a temporary demo of all types.
+- `svgLevel` marks a difference `motion: true` when `a` and `b` draw the same markup and differ only in animation.
+  Motion differences (spec, section 4): none on levels 1–10, exactly 1 on 11–15, 1–3 later.
+- Chapter 1 "farm" = levels 1–15 (5 large differences each, zone r ≥ 24). Add a level: new `chapter-NN/level-NNN.ts`,
+  register it in `levels/index.ts`, add `levelTitles.<title>` to all three locales, run `check-levels` and look at
+  the preview.
 - Difference count by level: 1–15 → 5, 16–50 → 6–8, 51–100 → 8–12. Zones must not overlap. Run
   `npm run check-levels` after touching levels.
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).

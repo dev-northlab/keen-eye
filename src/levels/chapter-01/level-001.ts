@@ -1,20 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { cloud, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
-
-const apple = (x: number, y: number) =>
-  `<path d="M${x} ${y - 9}q2 -6 7 -7" stroke="#6b3f1d" stroke-width="2" fill="none"/>` +
-  `<circle cx="${x}" cy="${y}" r="10" fill="#e63946"/>`
-
-/** Bounds: about 36 around (x, y). */
-const chicken = (x: number, y: number, flip: boolean) =>
-  `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)">` +
-  `<path d="M-6 16V26M6 16V26" stroke="#ff9f1c" stroke-width="3"/>` +
-  `<path d="M-20 -4L-32 -16L-16 -12Z" fill="#f1f1f1"/>` +
-  `<ellipse rx="22" ry="16" fill="#ffffff"/>` +
-  `<circle cx="14" cy="-27" r="4" fill="#e63946"/><circle cx="19" cy="-26" r="4" fill="#e63946"/>` +
-  `<circle cx="16" cy="-16" r="10" fill="#ffffff"/>` +
-  `<path d="M25 -18L33 -15L25 -12Z" fill="#ff9f1c"/>` +
-  `<circle cx="19" cy="-18" r="1.8" fill="#222"/></g>`
+import { apple, cloud, flower, FLOWER_COLORS, grass, hen, pick, sun, tree } from '../shapes.ts'
 
 const hay =
   `<ellipse cx="738" cy="378" rx="42" ry="34" fill="#f2c14e"/>` +
@@ -68,9 +53,9 @@ export default svgLevel({
       tufts +
       flowers +
       diff(738, 378, 50, hay, '') +
-      diff(300, 440, 42, chicken(300, 440, false), chicken(300, 440, true)) +
+      diff(300, 440, 42, hen(300, 440), hen(300, 440, true)) +
       // Pecking
-      anim({ type: 'sway', angle: 12, pivot: [400, 494], period: 2.2 }, chicken(400, 468, true))
+      anim({ type: 'sway', angle: 12, pivot: [400, 494], period: 2.2 }, hen(400, 468, true))
     )
   },
 })

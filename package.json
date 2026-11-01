@@ -8,7 +8,8 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "check-levels": "node scripts/check-levels.ts",
-    "typecheck": "vue-tsc -b"
+    "typecheck": "vue-tsc -b",
+    "preview-levels": "node scripts/preview-levels.ts"
   },
   "dependencies": {
     "@capacitor/core": "^8.6.0",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^8.6.0",
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^24.19.2",
     "@vitejs/plugin-vue": "^6.0.10",
     "@vue/tsconfig": "^0.9.1",

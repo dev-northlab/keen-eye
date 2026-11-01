@@ -52,13 +52,30 @@ export function svgLevel(def: SvgLevelDef): Level {
     // Both arguments of diff() are evaluated, so anim() registers the animations of
     // both variants; only those whose group ends up in the markup are kept.
     const registered: Animation[] = []
+    const groups: { wrapped: string; markup: string; motion: string }[] = []
     const anim: Anim = ({ id, ...spec }, markup) => {
       const key = `a${registered.length}`
       registered.push({ ...spec, key, id: id ?? key } as Animation)
-      return `<g data-anim="${key}">${markup}</g>`
+      const wrapped = `<g data-anim="${key}">${markup}</g>`
+      groups.push({ wrapped, markup, motion: JSON.stringify(spec) })
+      return wrapped
+    }
+    // Markup with every animated group unwrapped (`still`) or replaced by its motion spec
+    // (`moving`). Outer groups are registered after inner ones, so unwrap them first.
+    const unwrap = (s: string, as: 'still' | 'moving') => {
+      for (let i = groups.length - 1; i >= 0; i--) {
+        const g = groups[i]
+        s = s.split(g.wrapped).join(as === 'still' ? g.markup : `<motion ${g.motion}>${g.markup}</motion>`)
+      }
+      return s
     }
     const diff: Diff = (x, y, r, a, b, follow) => {
-      zones?.push(follow === undefined ? { x, y, r } : { x, y, r, animatedId: follow })
+      if (zones) {
+        const zone: Difference = { x, y, r }
+        if (follow !== undefined) zone.animatedId = follow
+        if (unwrap(a, 'still') === unwrap(b, 'still') && unwrap(a, 'moving') !== unwrap(b, 'moving')) zone.motion = true
+        zones.push(zone)
+      }
       return variant === 0 ? a : b
     }
     const svg = def.scene({ diff, anim, rand: rng(def.id) })
