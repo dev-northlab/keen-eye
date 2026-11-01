@@ -13,9 +13,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 
 - `npm run dev` — dev server at http://localhost:3000 (develop and test in the browser)
 - `npm run build` — type check (`vue-tsc -b`) + production build into `dist/`
-- `npm run check-levels` — level validator (`scripts/check-levels.ts`, Node's built-in TS type stripping): renders A and B
+- `npm run check-levels [-- <id> ...]` — level validator (`scripts/check-levels.ts`, Node's built-in TS type stripping): renders A and B
   with resvg at several animation moments and checks that they differ only inside the zones and that every zone shows
-  a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism
+  a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism. All levels
+  in one run may exceed the memory of a busy machine (killed with code 137) — then check by id in batches
 - `npm run preview-levels [-- <id> ...]` — `previews/level-NNN.png`: A | B with the zones outlined (gitignored)
 - `npm run typecheck` — type check only
 - `npm run icons` — renders the app icon, splash and store icon (Android, iOS, Play, favicon) from the SVG in
@@ -79,8 +80,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `svgLevel` marks a difference `motion: true` when `a` and `b` draw the same markup and differ only in animation.
   Motion differences (spec, section 4): none on levels 1–10, exactly 1 on 11–15, 1–3 later.
 - Chapters ("worlds") of 20 levels, `levels/chapters.ts`: 1 "farm" 1–20, 2 "city" 21–40, 3 "forest" 41–60,
-  4 "sea" 61–80, 5 "space" 81–100 (space has no levels yet and shows as "coming soon"); drawing helpers per chapter:
-  `shapes.ts` (farm), `chapter-02/shapes.ts` (city), `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea). Every
+  4 "sea" 61–80, 5 "space" 81–100; drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+  `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,
   41–60 → 8, 61–100 → 9–10 (r ≥ 18 after 15); motion differences 0 → 1 → 1–2 → 2–3. `check-levels` enforces it

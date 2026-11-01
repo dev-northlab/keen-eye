@@ -131,8 +131,13 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   return { errors, motion }
 }
 
+// Optional level ids to check (npm run check-levels -- 81 82); all levels by default.
+const ids = process.argv.slice(2).map(Number)
+const selected = levels.filter((l) => ids.length === 0 || ids.includes(l.id))
+
 let failed = 0
-levels.forEach((level, i) => {
+selected.forEach((level) => {
+  const i = levels.indexOf(level)
   const { errors, motion } = check(level, i)
   if (errors.length === 0) {
     console.log(`ok    level ${level.id} (${level.differences.length} differences, ${motion} in motion)`)
@@ -143,5 +148,5 @@ levels.forEach((level, i) => {
   for (const e of errors) console.log(`        ${e}`)
 })
 
-console.log(failed ? `\n${failed} of ${levels.length} levels failed` : `\nAll ${levels.length} levels passed`)
+console.log(failed ? `\n${failed} of ${selected.length} levels failed` : `\nAll ${selected.length} levels passed`)
 process.exitCode = failed ? 1 : 0
