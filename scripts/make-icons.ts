@@ -1,6 +1,7 @@
 // App icon and splash: npm run icons
 // The artwork lives here as SVG; this script renders every size Android, the store and the web need.
 import { mkdirSync, writeFileSync } from 'node:fs'
+import { crc32, deflateSync } from 'node:zlib'
 import { Resvg } from '@resvg/resvg-js'
 
 const BACKGROUND = '#2f9e6e'
@@ -29,7 +30,41 @@ const fullIcon = (shape: 'square' | 'round' | 'bleed') =>
     bleed: `<rect width="108" height="108" fill="${BACKGROUND}"/>`,
   })[shape] + FOREGROUND
 
-const png = (markup: string) => new Resvg(markup, { font: { loadSystemFonts: false } }).render().asPng()
+const render = (markup: string) => new Resvg(markup, { font: { loadSystemFonts: false } }).render()
+const png = (markup: string) => render(markup).asPng()
+
+/** PNG without an alpha channel: the App Store rejects icons that have one, even when fully opaque. */
+function opaquePng(markup: string): Buffer {
+  const img = render(markup)
+  const { width, height, pixels } = img
+  const rows = Buffer.alloc((width * 3 + 1) * height)
+  for (let y = 0; y < height; y++) {
+    rows[y * (width * 3 + 1)] = 0 // filter: none
+    for (let x = 0; x < width; x++) {
+      const i = (y * width + x) * 4
+      pixels.copy(rows, y * (width * 3 + 1) + 1 + x * 3, i, i + 3)
+    }
+  }
+  const chunk = (type: string, data: Buffer) => {
+    const len = Buffer.alloc(4)
+    len.writeUInt32BE(data.length)
+    const body = Buffer.concat([Buffer.from(type, 'ascii'), data])
+    const crc = Buffer.alloc(4)
+    crc.writeUInt32BE(crc32(body))
+    return Buffer.concat([len, body, crc])
+  }
+  const header = Buffer.alloc(13)
+  header.writeUInt32BE(width, 0)
+  header.writeUInt32BE(height, 4)
+  header[8] = 8 // bit depth
+  header[9] = 2 // color type: RGB
+  return Buffer.concat([
+    Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+    chunk('IHDR', header),
+    chunk('IDAT', deflateSync(rows)),
+    chunk('IEND', Buffer.alloc(0)),
+  ])
+}
 
 function write(path: string, data: Buffer | string) {
   mkdirSync(path.slice(0, path.lastIndexOf('/')), { recursive: true })
@@ -72,6 +107,16 @@ for (const [dir, [w, h]] of Object.entries(SPLASHES)) {
     png(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="${SPLASH_BACKGROUND}"/>${icon}</svg>`),
   )
 }
+
+// iOS: 1024 px app icon (opaque, full bleed — iOS rounds the corners) and the 2732 px launch image.
+const IOS = 'ios/App/App/Assets.xcassets'
+write(`${IOS}/AppIcon.appiconset/AppIcon-512@2x.png`, opaquePng(svg(1024, fullIcon('bleed'), '16 16 76 76')))
+const iosSplash = opaquePng(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="2732" height="2732"><rect width="2732" height="2732" fill="${SPLASH_BACKGROUND}"/>` +
+    `<svg x="1066" y="1066" width="600" height="600" viewBox="16 16 76 76">${fullIcon('square')}</svg></svg>`,
+)
+for (const name of ['splash-2732x2732.png', 'splash-2732x2732-1.png', 'splash-2732x2732-2.png'])
+  write(`${IOS}/Splash.imageset/${name}`, iosSplash)
 
 // Store icon and the web favicon.
 write('assets/store/icon-512.png', png(svg(512, fullIcon('bleed'), '16 16 76 76')))

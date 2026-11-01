@@ -6,7 +6,8 @@ Fully offline, no ads, no analytics. Full spec: `docs/SPEC.md` (stages of develo
 ## Stack
 
 Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5 history, no `#`), Pinia, vue-i18n
-(Composition API, `legacy: false`), Capacitor 8 (`capacitor.config.ts`; `android/` added, iOS later via Codemagic).
+(Composition API, `legacy: false`), Capacitor 8 (`capacitor.config.ts`; `android/` and `ios/` — iOS project uses
+Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 
 ## Commands
 
@@ -17,7 +18,10 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism
 - `npm run preview-levels [-- <id> ...]` — `previews/level-NNN.png`: A | B with the zones outlined (gitignored)
 - `npm run typecheck` — type check only
-- `npm run icons` — renders the app icon, splash and store icon from the SVG in `scripts/make-icons.ts`
+- `npm run icons` — renders the app icon, splash and store icon (Android, iOS, Play, favicon) from the SVG in
+  `scripts/make-icons.ts`; the iOS 1024 px icon is written without an alpha channel (App Store requirement)
+- `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
+  `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
   (`android/app/build/outputs/apk/debug/app-debug.apk`). Gradle needs **JDK 21** in `JAVA_HOME` (here:
   `~/.local/share/jdks/jdk-21.0.13+9`; Studio's JDK 25 is too new for Gradle 8.14) and the SDK in `ANDROID_HOME`

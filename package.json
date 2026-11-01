@@ -12,13 +12,15 @@
     "preview-levels": "node scripts/preview-levels.ts",
     "icons": "node scripts/make-icons.ts",
     "android:sync": "npm run build && cap sync android",
-    "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug"
+    "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "ios:sync": "npm run build && cap sync ios"
   },
   "dependencies": {
     "@capacitor/android": "^8.6.0",
     "@capacitor/app": "^8.1.2",
     "@capacitor/core": "^8.6.0",
     "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.6.0",
     "@capacitor/preferences": "^8.0.1",
     "pinia": "^4.1.0",
     "vue": "^3.5.44",
