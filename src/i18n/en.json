@@ -6,7 +6,8 @@
     "levels": "Levels",
     "settings": "Settings",
     "stars": "Stars: {n}",
-    "needsPurchase": "Level {n} — full game"
+    "needsPurchase": "Level {n} — full game",
+    "devOpenAll": "Open all levels (testing)"
   },
   "map": {
     "title": "Levels",

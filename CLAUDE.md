@@ -37,7 +37,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `shapes.ts` (chapter 1 drawing helpers), `generator.ts` (generated levels 16+: `Piece`, `definePieces`,
   `generatedLevel`); chapter themes `chapter-02/city.ts`, `chapter-03/sea.ts`, `chapter-04/forest.ts` hold the pieces
   and the composer, each `level-NNN.ts` there is a small options object
-- `src/views/` — screens: Home, LevelMap, Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), stars, header
+- `src/views/` — screens: Home, LevelMap, Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen), stars, header
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it

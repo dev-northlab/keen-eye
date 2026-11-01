@@ -3,6 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import PauseDialog from '../components/PauseDialog.vue'
 import ResultDialog from '../components/ResultDialog.vue'
+import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ScreenHeader from '../components/ScreenHeader.vue'
 import SettingsPanel from '../components/SettingsPanel.vue'
 import { GameScene } from '../engine/scene.ts'
@@ -220,6 +221,7 @@ onBeforeUnmount(() => {
     </footer>
 
     <div v-if="settingsOpen" class="settings-screen">
+      <ScreenBackdrop theme="sea" under-header />
       <ScreenHeader :title="$t('settings.title')" @back="settingsOpen = false" />
       <SettingsPanel />
     </div>
@@ -227,6 +229,7 @@ onBeforeUnmount(() => {
       v-else-if="paused"
       @resume="resume"
       @restart="start"
+      @levels="router.push({ name: 'levels' })"
       @settings="settingsOpen = true"
       @exit="router.push({ name: 'home' })"
     />

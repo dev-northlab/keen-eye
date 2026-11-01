@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
 import { useProgressStore } from '../stores/progress.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
+const isDev = import.meta.env.DEV
 
 function play() {
   const id = progress.continueLevelId
@@ -14,6 +16,7 @@ function play() {
 
 <template>
   <main class="home">
+    <ScreenBackdrop theme="meadow" />
     <h1>Keen Eye</h1>
     <p class="stars">★ {{ $t('home.stars', { n: progress.totalStars }) }}</p>
     <button class="play" @click="play">
@@ -31,11 +34,18 @@ function play() {
     <ModeSwitch class="mode" />
     <button class="secondary" @click="router.push({ name: 'levels' })">{{ $t('home.levels') }}</button>
     <button class="secondary" @click="router.push({ name: 'settings' })">{{ $t('home.settings') }}</button>
+    <label v-if="isDev" class="dev">
+      <input v-model="progress.devOpenAll" type="checkbox" />
+      {{ $t('home.devOpenAll') }}
+    </label>
   </main>
 </template>
 
 <style scoped>
 .home {
+  /* Own stacking context: the backdrop (z-index -1) stays behind the menu. */
+  position: relative;
+  isolation: isolate;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -63,6 +73,19 @@ button,
 
 button {
   font-size: 18px;
+}
+
+.dev {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b766f;
+}
+
+.dev input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent);
 }
 
 .play {

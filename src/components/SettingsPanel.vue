@@ -120,7 +120,8 @@ function onLanguage(e: Event) {
 main {
   flex: 1;
   overflow-y: auto;
-  padding: 12px 16px 24px;
+  /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
+  padding: 12px max(16px, (100% - 560px) / 2) 24px;
   display: grid;
   /* Rows take their content height and the list scrolls; auto rows would shrink to fit the screen. */
   grid-auto-rows: max-content;

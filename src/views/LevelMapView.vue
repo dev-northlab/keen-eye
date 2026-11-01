@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ScreenHeader from '../components/ScreenHeader.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
@@ -37,6 +38,7 @@ function tileLabel(level: Level) {
 
 <template>
   <div class="screen">
+    <ScreenBackdrop theme="forest" under-header />
     <ScreenHeader :title="$t('map.title')" />
     <main>
       <section v-for="c in chapters" :key="c.chapter">
@@ -63,6 +65,9 @@ function tileLabel(level: Level) {
 
 <style scoped>
 .screen {
+  /* Own stacking context: the backdrop (z-index -1) stays behind the content. */
+  position: relative;
+  isolation: isolate;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -71,12 +76,18 @@ function tileLabel(level: Level) {
 main {
   flex: 1;
   overflow-y: auto;
-  padding: 8px 16px 24px;
+  /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
+  padding: 8px max(16px, (100% - 640px) / 2) 24px;
 }
 
+/* A light pill keeps chapter names readable over the backdrop's trees. */
 h2 {
+  width: fit-content;
   font-size: 18px;
   margin: 16px 0 10px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--panel);
 }
 
 .grid {

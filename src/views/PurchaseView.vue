@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ScreenHeader from '../components/ScreenHeader.vue'
 import { levels } from '../levels/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -35,6 +36,7 @@ function play() {
 
 <template>
   <div class="screen">
+    <ScreenBackdrop theme="city" under-header />
     <ScreenHeader :title="$t('purchase.title')" />
     <main>
       <section v-if="purchase.fullGame" class="card owned">
@@ -68,6 +70,9 @@ function play() {
 
 <style scoped>
 .screen {
+  /* Own stacking context: the backdrop (z-index -1) stays behind the content. */
+  position: relative;
+  isolation: isolate;
   height: 100%;
   display: flex;
   flex-direction: column;

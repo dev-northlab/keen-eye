@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ModalDialog from './ModalDialog.vue'
 
-defineEmits<{ resume: []; restart: []; settings: []; exit: [] }>()
+defineEmits<{ resume: []; restart: []; levels: []; settings: []; exit: [] }>()
 </script>
 
 <template>
@@ -9,6 +9,7 @@ defineEmits<{ resume: []; restart: []; settings: []; exit: [] }>()
     <div class="actions">
       <button @click="$emit('resume')">{{ $t('pause.resume') }}</button>
       <button class="secondary" @click="$emit('restart')">{{ $t('pause.restart') }}</button>
+      <button class="secondary" @click="$emit('levels')">{{ $t('home.levels') }}</button>
       <button class="secondary" @click="$emit('settings')">{{ $t('settings.title') }}</button>
       <button class="secondary" @click="$emit('exit')">{{ $t('pause.exit') }}</button>
     </div>

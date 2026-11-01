@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
 import { levels } from '../levels/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 import { isFreeLevel, usePurchaseStore } from './purchase.ts'
 
 const KEY = 'progress'
+const DEV_OPEN_ALL_KEY = 'devOpenAll'
 /** Hint pool of a new player (spec, section 9). */
 const START_HINTS = 5
 
@@ -37,6 +38,8 @@ export const useProgressStore = defineStore('progress', () => {
   const records = ref<Record<number, LevelRecord>>({})
   /** Shared hint pool of normal mode (calm mode hints are unlimited). */
   const hints = ref(START_HINTS)
+  /** Development only (Home checkbox): every level is playable, ignoring order and the purchase. */
+  const devOpenAll = ref(false)
 
   const save = () => saveJson(KEY, { levels: records.value, hints: hints.value })
 
@@ -44,18 +47,21 @@ export const useProgressStore = defineStore('progress', () => {
     const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown }
     records.value = parseLevels(raw.levels)
     hints.value = parseHints(raw.hints)
+    devOpenAll.value = import.meta.env.DEV && (await loadJson(DEV_OPEN_ALL_KEY)) === true
   }
+
+  watch(devOpenAll, (open) => saveJson(DEV_OPEN_ALL_KEY, open))
 
   const isCompleted = (id: number) => id in records.value
 
   /** Levels open one after another: the first one, then each after the previous is completed. */
   function isReached(id: number): boolean {
     const i = levels.findIndex((l) => l.id === id)
-    return i === 0 || (i > 0 && isCompleted(levels[i - 1].id))
+    return i === 0 || (i > 0 && (devOpenAll.value || isCompleted(levels[i - 1].id)))
   }
 
   /** A paid level while the full game is not bought. */
-  const needsPurchase = (id: number) => !isFreeLevel(id) && !usePurchaseStore().fullGame
+  const needsPurchase = (id: number) => !devOpenAll.value && !isFreeLevel(id) && !usePurchaseStore().fullGame
 
   /** Playable: reached in order and, for paid levels, bought. */
   const isUnlocked = (id: number) => isReached(id) && !needsPurchase(id)
@@ -108,6 +114,7 @@ export const useProgressStore = defineStore('progress', () => {
   return {
     records,
     hints,
+    devOpenAll,
     load,
     isCompleted,
     isUnlocked,
