@@ -6,7 +6,7 @@ Fully offline, no ads, no analytics. Full spec: `docs/SPEC.md` (stages of develo
 ## Stack
 
 Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5 history, no `#`), Pinia, vue-i18n
-(Composition API, `legacy: false`), Capacitor (`capacitor.config.ts`; android/ios platforms not added yet).
+(Composition API, `legacy: false`), Capacitor 8 (`capacitor.config.ts`; `android/` added, iOS later via Codemagic).
 
 ## Commands
 
@@ -17,6 +17,11 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism
 - `npm run preview-levels [-- <id> ...]` — `previews/level-NNN.png`: A | B with the zones outlined (gitignored)
 - `npm run typecheck` — type check only
+- `npm run icons` — renders the app icon, splash and store icon from the SVG in `scripts/make-icons.ts`
+- `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
+  (`android/app/build/outputs/apk/debug/app-debug.apk`). Gradle needs **JDK 21** in `JAVA_HOME` (here:
+  `~/.local/share/jdks/jdk-21.0.13+9`; Studio's JDK 25 is too new for Gradle 8.14) and the SDK in `ANDROID_HOME`
+  (`~/Android/Sdk`); install with `adb install -r <apk>`. Debug builds allow WebView DevTools (chrome://inspect).
 
 ## Layout
 
@@ -26,14 +31,19 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   `gestures.ts` (tap, double tap, pan, pinch, wheel), `scene.ts` (`GameScene`: wires it together, timer, events)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (shared drawing helpers: animals, trees, buildings, props — reuse before drawing a new one)
-- `src/views/` — screens: Home, LevelMap, Level, Settings; `src/components/` — dialogs (pause, result), stars, header
+- `src/views/` — screens: Home, LevelMap, Level, Settings, Purchase; `src/components/` — dialogs (pause, result), stars, header
 - `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion; written directly, auto-saved, pushed to
-  i18n and services by a `watchSyncEffect`); both are loaded in `main.ts` before the router starts
-- `src/services/` — `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
+  i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
+  from the store in the background); all are loaded in `main.ts` before the router starts
+- `src/services/` — `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
+  `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
-  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics)
-- `src/router/` — routes; a global guard sends unknown levels home and locked levels to the map
+  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `purchases.ts`
+  (the only code that talks to the app store: price, purchase, ownership; currently a dev-only stub — RevenueCat goes
+  here; in production builds the stub sells nothing)
+- `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought to the purchase screen and
+  levels not reached yet to the map
 - `src/i18n/` — `ru.json`, `en.json`, `hy.json` (keep the same keys in all three); default language = system
 - `scripts/` — `check-levels.ts`, `preview-levels.ts`, `render.ts` (posed SVG → pixels, shared by both);
   `assets/` — music (`assets/music/`), later photo levels and icons
@@ -70,7 +80,12 @@ Vue 3 (Composition API, `<script setup>`) + TypeScript + Vite, Vue Router (HTML5
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.
 - Hints: shared pool (start 5, +1 for the first 3-star finish of a level); `GameScene.hint()` returns false
   when nothing can be hinted, so a hint is only spent when it is shown.
-- Development-only tools (Settings → "Unlock all levels", "Reset progress") are behind `import.meta.env.DEV`.
+- Monetization (spec, section 10): levels 1–`FREE_LEVELS` (15, `stores/purchase.ts`) are free, the rest need the one
+  "full game" purchase. Lock checks go through `progress.isUnlocked` / `progress.needsPurchase` only.
+- Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
+  passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. Use SVG icons,
+  not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
+- Development-only tools (Settings → "Complete all levels", "Reset progress", "Forget purchase") are behind `import.meta.env.DEV`.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.
 - Level modules and everything they import must stay free of browser/Vue APIs (the validator runs them in Node),
   and TS imports use explicit `.ts` extensions.

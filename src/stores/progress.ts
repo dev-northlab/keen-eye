@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
 import { levels } from '../levels/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
+import { isFreeLevel, usePurchaseStore } from './purchase.ts'
 
 const KEY = 'progress'
 /** Hint pool of a new player (spec, section 9). */
@@ -48,13 +49,19 @@ export const useProgressStore = defineStore('progress', () => {
   const isCompleted = (id: number) => id in records.value
 
   /** Levels open one after another: the first one, then each after the previous is completed. */
-  function isUnlocked(id: number): boolean {
+  function isReached(id: number): boolean {
     const i = levels.findIndex((l) => l.id === id)
     return i === 0 || (i > 0 && isCompleted(levels[i - 1].id))
   }
 
-  /** Level for "Play": the first unlocked level not completed yet; undefined when all are done. */
-  const continueLevelId = computed(() => levels.find((l) => isUnlocked(l.id) && !isCompleted(l.id))?.id)
+  /** A paid level while the full game is not bought. */
+  const needsPurchase = (id: number) => !isFreeLevel(id) && !usePurchaseStore().fullGame
+
+  /** Playable: reached in order and, for paid levels, bought. */
+  const isUnlocked = (id: number) => isReached(id) && !needsPurchase(id)
+
+  /** Level for "Play": the first reached level not completed yet (may need the purchase); undefined when all are done. */
+  const continueLevelId = computed(() => levels.find((l) => isReached(l.id) && !isCompleted(l.id))?.id)
 
   const totalStars = computed(() => Object.values(records.value).reduce((s, r) => s + r.stars, 0))
 
@@ -104,6 +111,7 @@ export const useProgressStore = defineStore('progress', () => {
     load,
     isCompleted,
     isUnlocked,
+    needsPurchase,
     continueLevelId,
     totalStars,
     recordResult,

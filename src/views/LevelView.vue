@@ -7,6 +7,7 @@ import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelById, levels } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
+import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { useSettingsStore } from '../stores/settings.ts'
@@ -108,6 +109,13 @@ function resume() {
   scene?.resume()
 }
 
+// Android back: pause first; back again on the pause dialog leaves to the menu; after the level, to the map.
+useBackButton(() => {
+  if (result.value) router.push({ name: 'levels' })
+  else if (paused.value) router.push({ name: 'home' })
+  else pause()
+})
+
 // Leaving the app (home button, switching tabs) pauses the level.
 function onVisibility() {
   if (document.hidden) pause()
@@ -142,19 +150,22 @@ onBeforeUnmount(() => {
 
     <footer class="toolbar">
       <button class="secondary" :disabled="!canHint" @click="showHint">
-        <span aria-hidden="true">💡</span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         {{ $t('level.hint') }} {{ calm ? '∞' : progress.hints }}
       </button>
       <button class="secondary" :disabled="zoom === 1" @click="scene?.resetZoom()">
-        <span aria-hidden="true">⤢</span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         {{ $t('level.resetZoom') }}
       </button>
       <button v-if="calm" class="secondary" :aria-pressed="animationFrozen" @click="toggleAnimation">
-        <span aria-hidden="true">{{ animationFrozen ? '▶' : '⏹' }}</span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path v-if="animationFrozen" d="M8 5v14l11-7Z" fill="currentColor" />
+          <rect v-else x="6" y="6" width="12" height="12" rx="2" fill="currentColor" />
+        </svg>
         {{ animationFrozen ? $t('level.animPlay') : $t('level.animPause') }}
       </button>
       <button class="secondary" :disabled="!!result" @click="pause">
-        <span aria-hidden="true">⏸</span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
         {{ $t('level.pause') }}
       </button>
     </footer>
@@ -249,8 +260,9 @@ onBeforeUnmount(() => {
   line-height: 1.2;
 }
 
-.toolbar button span {
-  font-size: 20px;
+.toolbar .icon {
+  width: 22px;
+  height: 22px;
 }
 
 .toolbar button:disabled {

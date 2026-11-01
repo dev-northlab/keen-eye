@@ -3,11 +3,15 @@ import ModeSwitch from '../components/ModeSwitch.vue'
 import ScreenHeader from '../components/ScreenHeader.vue'
 import { isLocale, LOCALES } from '../i18n/index.ts'
 import { playSfx } from '../services/audio.ts'
+import { useRouter } from 'vue-router'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 
 const settings = useSettingsStore()
 const progress = useProgressStore()
+const purchase = usePurchaseStore()
+const router = useRouter()
 
 /** Language names are shown in their own language. */
 const LANGUAGE_NAMES: Record<string, string> = { ru: 'Русский', en: 'English', hy: 'Հայերեն' }
@@ -86,6 +90,13 @@ function onLanguage(e: Event) {
         />
       </label>
 
+      <button class="row link" @click="router.push({ name: 'purchase' })">
+        <span>{{ $t('settings.fullGame') }}</span>
+        <span class="muted">
+          {{ purchase.fullGame ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›
+        </span>
+      </button>
+
       <details>
         <summary>{{ $t('settings.about') }}</summary>
         <p>{{ $t('settings.aboutText') }}</p>
@@ -100,6 +111,8 @@ function onLanguage(e: Event) {
       <section v-if="isDev" class="dev">
         <h2>{{ $t('settings.dev') }}</h2>
         <button class="secondary" @click="progress.unlockAll()">{{ $t('settings.unlockAll') }}</button>
+        <button class="secondary" @click="purchase.resetForDev(false)">{{ $t('settings.resetPurchaseCache') }}</button>
+        <button class="secondary" @click="purchase.resetForDev(true)">{{ $t('settings.resetPurchaseStore') }}</button>
         <button class="secondary" @click="progress.reset()">{{ $t('settings.resetProgress') }}</button>
       </section>
     </main>
@@ -155,6 +168,14 @@ details {
   text-align: right;
   font-variant-numeric: tabular-nums;
   color: #6b766f;
+}
+
+button.row.link {
+  width: 100%;
+  font: inherit;
+  color: var(--fg);
+  text-align: left;
+  cursor: pointer;
 }
 
 .row.column {

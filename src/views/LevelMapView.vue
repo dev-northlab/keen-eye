@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ScreenHeader from '../components/ScreenHeader.vue'
 import StarRating from '../components/StarRating.vue'
@@ -9,6 +10,7 @@ import { useProgressStore } from '../stores/progress.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
+const { t } = useI18n()
 
 /** Levels grouped by chapter, in level order. */
 const chapters = computed(() => {
@@ -18,7 +20,18 @@ const chapters = computed(() => {
 })
 
 function open(level: Level) {
-  if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
+  if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
+  else if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
+}
+
+/** Paid levels stay tappable (they lead to the purchase screen); levels not reached yet are disabled. */
+function tileLabel(level: Level) {
+  const name = progress.needsPurchase(level.id)
+    ? t('map.paid')
+    : progress.isUnlocked(level.id)
+      ? t(`levelTitles.${level.title}`)
+      : t('map.locked')
+  return `${t('map.level', { n: level.id })}: ${name}`
 }
 </script>
 
@@ -32,13 +45,9 @@ function open(level: Level) {
           <li v-for="level in c.levels" :key="level.id">
             <button
               class="tile"
-              :class="{ done: progress.isCompleted(level.id) }"
-              :disabled="!progress.isUnlocked(level.id)"
-              :aria-label="
-                progress.isUnlocked(level.id)
-                  ? `${$t('map.level', { n: level.id })}: ${$t(`levelTitles.${level.title}`)}`
-                  : `${$t('map.level', { n: level.id })}: ${$t('map.locked')}`
-              "
+              :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id) }"
+              :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
+              :aria-label="tileLabel(level)"
               @click="open(level)"
             >
               <span class="num">{{ level.id }}</span>
@@ -94,6 +103,12 @@ h2 {
 
 .tile.done {
   border-color: var(--accent);
+}
+
+.tile.paid {
+  background: #fff4d6;
+  border-color: #f5b301;
+  color: #8a6400;
 }
 
 .tile:disabled {

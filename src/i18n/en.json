@@ -5,12 +5,14 @@
     "allDone": "All levels completed",
     "levels": "Levels",
     "settings": "Settings",
-    "stars": "Stars: {n}"
+    "stars": "Stars: {n}",
+    "needsPurchase": "Level {n} — full game"
   },
   "map": {
     "title": "Levels",
     "locked": "Locked",
-    "level": "Level {n}"
+    "level": "Level {n}",
+    "paid": "Full game"
   },
   "level": {
     "level": "Level {n}",
@@ -47,11 +49,16 @@
     "privacy": "Privacy policy",
     "privacyText": "We collect no data at all. Progress and settings are stored only on your device.",
     "dev": "Development",
-    "unlockAll": "Unlock all levels",
+    "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",
     "music": "Music",
     "sound": "Sounds",
-    "vibration": "Vibration"
+    "vibration": "Vibration",
+    "fullGame": "Full game",
+    "fullGameOwned": "Unlocked",
+    "fullGameOpen": "Unlock all levels",
+    "resetPurchaseCache": "Forget purchase (cache)",
+    "resetPurchaseStore": "Forget purchase (also in the \"store\")"
   },
   "common": {
     "back": "Back"
@@ -81,5 +88,24 @@
     "normal": "Normal",
     "calm": "Calm",
     "calmHint": "No timer, mistakes or stars"
+  },
+  "purchase": {
+    "title": "Full game",
+    "owned": "The full game is unlocked. Thank you!",
+    "what": "What you get",
+    "allLevels": "All levels: {n} now and every future level of the main game",
+    "allLevelsNone": "Every future level of the main game",
+    "noAds": "No ads, no subscription",
+    "once": "One purchase forever, works offline",
+    "buy": "Buy for {price}",
+    "buyNoPrice": "Buy",
+    "restore": "Restore purchases",
+    "wait": "Please wait…",
+    "success": "Done! All levels are unlocked.",
+    "restored": "Purchase restored.",
+    "none": "No purchases found.",
+    "error": "Could not reach the store. Please try again later.",
+    "play": "Play",
+    "unavailable": "Store unavailable"
   }
 }

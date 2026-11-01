@@ -22,7 +22,9 @@ function play() {
         {{
           progress.continueLevelId === undefined
             ? $t('home.allDone')
-            : $t('home.continueLevel', { n: progress.continueLevelId })
+            : progress.needsPurchase(progress.continueLevelId)
+              ? $t('home.needsPurchase', { n: progress.continueLevelId })
+              : $t('home.continueLevel', { n: progress.continueLevelId })
         }}
       </small>
     </button>

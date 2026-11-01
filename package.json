@@ -9,9 +9,14 @@
     "preview": "vite preview",
     "check-levels": "node scripts/check-levels.ts",
     "typecheck": "vue-tsc -b",
-    "preview-levels": "node scripts/preview-levels.ts"
+    "preview-levels": "node scripts/preview-levels.ts",
+    "icons": "node scripts/make-icons.ts",
+    "android:sync": "npm run build && cap sync android",
+    "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
     "@capacitor/core": "^8.6.0",
     "@capacitor/haptics": "^8.0.2",
     "@capacitor/preferences": "^8.0.1",
