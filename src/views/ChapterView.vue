@@ -5,7 +5,7 @@ import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
-import { chapterById, chapterLevels } from '../levels/chapters.ts'
+import { chapterById, chapterLevels, chapterSize } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -18,7 +18,7 @@ const { t } = useI18n()
 
 const chapter = chapterById(props.chapter)!
 const levels = chapterLevels(chapter)
-const missing = chapter.to - chapter.from + 1 - levels.length
+const missing = chapterSize(chapter) - levels.length
 
 const toMap = () => router.push({ name: 'levels' })
 useBackButton(toMap)

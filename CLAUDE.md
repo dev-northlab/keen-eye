@@ -50,8 +50,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   (`createSvgPicture`) and its background moves: `data-anim` groups in the SVG + `animations` in the JSON, same
   motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
-  `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
-  `difficulty.ts` (difference and motion counts, min zone radius and kinds by level range; read by `check-levels`)
+  `chapters.ts` (the chapters/"worlds": id, level id ranges, card colors, icon, backdrop — one entry per world),
+  `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (chapter cards), Chapter (level grid of one chapter, `/levels/:chapter`),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels),
   Level, Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
@@ -99,13 +99,19 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   separately in each picture. The scene is static at animation time 0 = rest position of the zones.
 - `svgLevel` marks a difference `motion: true` when `a` and `b` draw the same markup and differ only in animation.
   Motion differences (spec, section 4): none on levels 1–10, exactly 1 on 11–15, 1–3 later.
-- Chapters ("worlds") of 20 levels, `levels/chapters.ts`: 1 "farm" 1–20, 2 "city" 21–40, 3 "forest" 41–60,
-  4 "sea" 61–80, 5 "space" 81–100; drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+- Chapters ("worlds") of 30 levels, `levels/chapters.ts` (`ranges`): 1 "farm" 1–20 + 101–110, 2 "city" 21–40 +
+  111–120, 3 "forest" 41–60 + 121–130, 4 "sea" 61–80 + 131–140, 5 "space" 81–100 + 141–150; the harder ten of a
+  chapter (ids after 100, files in its own `chapter-NN/`) open after its 20th level, one after another, and never
+  hold back the next chapter (`progress.isReached`: a level follows the previous level of its chapter, a chapter's
+  first level follows id − 1); "next" in the result dialog goes through the chapter (`nextLevel`). Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,
-  41–60 → 8, 61–100 → 9–10 (r ≥ 18 after 15); motion differences 0 → 1 → 1–2 → 2–3. `check-levels` enforces it
-  and that each level's `chapter` matches the chapter covering its id.
+  41–60 → 8, 61–100 → 9–10 (r ≥ 18 after 15); motion differences 0 → 1 → 1–2 → 2–3. The harder ten of each
+  chapter (`harder()`): 7, 8, 9 differences in steps of three levels and 10 on the last, never fewer than the
+  chapter's first 20 have; 2–3 motion differences, r ≥ 22 (a finger) and zone centers ≥ 64 apart (`minGap`); their
+  `parTimeSec` is the chapter's last par time −10/−20/−30/−35%, levels 7–9 allow 2 hints and the 10th 1
+  (`hintLimit`). `check-levels` enforces it and that each level's `chapter` matches the chapter covering its id.
 - Every zone must contain everything its `a`/`b` draw (over the whole motion for moving objects: use the rest
   position as the zone center and pass the animation id as `diff`'s 6th argument). Draw only the differing part
   inside `diff` (a hat, a canopy, a roof stripe) so zones stay small and never overlap.
@@ -119,7 +125,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, unlimited hints, slower animation, soft sounds,
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.
-- Hints: shared pool (start 5, +1 for the first 3-star finish of a level); `GameScene.hint()` returns false
+- Hints: shared pool (start 5, +1 for the first 3-star finish of a level), capped per attempt in normal mode by
+  `Level.hintLimit` where a level sets one; `GameScene.hint()` returns false
   when nothing can be hinted, so a hint is only spent when it is shown.
 - Monetization (spec, section 10): levels 1–`FREE_LEVELS` (15, `stores/purchase.ts`) are free, the rest need the one
   "full game" purchase. Lock checks go through `progress.isUnlocked` / `progress.needsPurchase` only.

@@ -62,10 +62,17 @@ export const useProgressStore = defineStore('progress', () => {
 
   const isCompleted = (id: number) => id in records.value
 
-  /** Levels open one after another: the first one, then each after the previous is completed. */
+  /**
+   * Levels open one after another: the first one, then each after the previous level of its chapter
+   * is completed. A chapter's first level follows level id − 1 (the previous chapter's first 20), so
+   * the harder levels added at a chapter's end never hold back the next chapter.
+   */
   function isReached(id: number): boolean {
     const i = levels.findIndex((l) => l.id === id)
-    return i === 0 || (i > 0 && (devOpenAll.value || isCompleted(levels[i - 1].id)))
+    if (i <= 0 || devOpenAll.value) return i >= 0
+    let j = i - 1
+    while (j >= 0 && levels[j].chapter !== levels[i].chapter) j--
+    return isCompleted(j >= 0 ? levels[j].id : id - 1)
   }
 
   /** A paid level while the full game is not bought. */

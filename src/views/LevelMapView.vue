@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { CHAPTERS, chapterLevels, type Chapter } from '../levels/chapters.ts'
+import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -13,7 +13,7 @@ const progress = useProgressStore()
 
 const cards = CHAPTERS.map((chapter) => {
   const levels = chapterLevels(chapter)
-  return { chapter, levels, total: chapter.to - chapter.from + 1, first: levels[0]?.id }
+  return { chapter, levels, total: chapterSize(chapter), first: levels[0]?.id }
 })
 
 const done = (c: (typeof cards)[number]) => c.levels.filter((l) => progress.isCompleted(l.id)).length

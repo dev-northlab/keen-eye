@@ -9,7 +9,8 @@ import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
-import { levelById, levels } from '../levels/index.ts'
+import { nextLevel as nextLevelOf } from '../levels/chapters.ts'
+import { levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
@@ -23,7 +24,7 @@ const settings = useSettingsStore()
 
 // The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
-const nextLevel = levels[levels.indexOf(level) + 1]
+const nextLevel = nextLevelOf(level)
 /** The level grid this level belongs to. */
 const grid = { name: 'chapter', params: { chapter: level.chapter } }
 
@@ -39,6 +40,8 @@ const settingsOpen = ref(false)
 /** Mode of the current attempt (read when the level starts). */
 const calm = ref(false)
 const hintActive = ref(false)
+/** Normal mode hints taken in this attempt (some levels allow only a few, `Level.hintLimit`). */
+const hintsUsed = ref(0)
 const animationFrozen = ref(false)
 const result = ref<LevelResult | null>(null)
 let scene: GameScene | undefined
@@ -59,6 +62,7 @@ function start() {
   paused.value = false
   settingsOpen.value = false
   hintActive.value = false
+  hintsUsed.value = 0
   animationFrozen.value = false
   result.value = null
   calm.value = settings.calm
@@ -96,13 +100,17 @@ function start() {
   )
 }
 
-const canHint = computed(() => !result.value && !hintActive.value && (calm.value || progress.hints > 0))
+/** Hints this attempt can still take in normal mode: the pool, capped by the level's limit. */
+const hintsLeft = computed(() => Math.min(progress.hints, (level.hintLimit ?? Infinity) - hintsUsed.value))
+const canHint = computed(() => !result.value && !hintActive.value && (calm.value || hintsLeft.value > 0))
 
-/** Calm mode hints are free; normal mode takes one from the shared pool. */
+/** Calm mode hints are free; normal mode takes one from the shared pool (at most `hintLimit` per attempt). */
 async function showHint() {
   if (!canHint.value || !scene?.hint()) return
   playSfx('hint')
-  if (!calm.value) await progress.spendHint()
+  if (calm.value) return
+  hintsUsed.value++
+  await progress.spendHint()
 }
 
 function toggleAnimation() {
@@ -160,7 +168,7 @@ onBeforeUnmount(() => {
     </div>
 
     <footer class="toolbar">
-      <ToolButton tone="hint" :label="`${$t('level.hint')} ${calm ? '∞' : progress.hints}`" :disabled="!canHint" @click="showHint">
+      <ToolButton tone="hint" :label="`${$t('level.hint')} ${calm ? '∞' : hintsLeft}`" :disabled="!canHint" @click="showHint">
         <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </ToolButton>
       <!-- Development only: outlines all differences in red. -->
