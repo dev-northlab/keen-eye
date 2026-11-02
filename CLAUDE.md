@@ -57,7 +57,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   here; in production builds the stub sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought to the purchase screen and
   levels not reached yet to the map
-- `src/i18n/` — `ru.json`, `en.json`, `hy.json` (keep the same keys in all three); default language = system;
+- `src/i18n/` — one `<locale>.json` per language (ru, en, hy, de, fr, es, it, pt, nl, pl, cs, ro, bg, uk, el, hu,
+  tr, hi, zh, ja, ko), registered in `index.ts` (keep the same keys in all of them; `en` is the fallback); default
+  language = system;
   `languages.ts` — name (in its own language) and SVG flag per locale for the language picker
 - `scripts/` — `check-levels.ts`, `preview-levels.ts`, `render.ts` (posed SVG → pixels, shared by both);
   `assets/` — music (`assets/music/`), later photo levels and icons
@@ -101,7 +103,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   pictures stay as drawn.
 - Colors: no CSS `rgb(r g b / a)` in level markup (resvg draws it black); use `fill-opacity` / `stroke-opacity`.
 - Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
-  `chapters.<chapter>` for a new chapter) to all three locales, run `check-levels` and look at the preview.
+  `chapters.<chapter>` for a new chapter) to all locales, run `check-levels` and look at the preview.
 - Zones must not overlap. Run `npm run check-levels` after touching levels and look at `npm run preview-levels`.
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, unlimited hints, slower animation, soft sounds,
