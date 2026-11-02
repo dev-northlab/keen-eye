@@ -48,7 +48,8 @@
     "paid": "Pełna wersja",
     "soon": "Wkrótce",
     "soonLevels": "Wkrótce: jeszcze {n}",
-    "progress": "{done} z {total}"
+    "progress": "{done} z {total}",
+    "task": "Znajdź różnice"
   },
   "timeTravel": {
     "title": "Podróż w czasie",

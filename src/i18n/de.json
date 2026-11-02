@@ -48,7 +48,8 @@
     "paid": "Vollversion",
     "soon": "Bald",
     "soonLevels": "Bald: {n} weitere",
-    "progress": "{done} von {total}"
+    "progress": "{done} von {total}",
+    "task": "Finde die Unterschiede"
   },
   "timeTravel": {
     "title": "Zeitreise",

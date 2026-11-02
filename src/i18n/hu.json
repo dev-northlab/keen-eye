@@ -48,7 +48,8 @@
     "paid": "Teljes verzió",
     "soon": "Hamarosan",
     "soonLevels": "Hamarosan: még {n}",
-    "progress": "{done} / {total}"
+    "progress": "{done} / {total}",
+    "task": "Keresd a különbségeket"
   },
   "timeTravel": {
     "title": "Időutazás",

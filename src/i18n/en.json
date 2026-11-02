@@ -48,7 +48,8 @@
     "paid": "Full game",
     "soon": "Coming soon",
     "soonLevels": "Coming soon: {n} more",
-    "progress": "{done} of {total}"
+    "progress": "{done} of {total}",
+    "task": "Spot the difference"
   },
   "timeTravel": {
     "title": "Time travel",

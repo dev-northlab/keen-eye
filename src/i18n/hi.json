@@ -48,7 +48,8 @@
     "paid": "पूरा गेम",
     "soon": "जल्द आ रहा है",
     "soonLevels": "जल्द आ रहे हैं: {n} और",
-    "progress": "{total} में से {done}"
+    "progress": "{total} में से {done}",
+    "task": "अंतर खोजो"
   },
   "timeTravel": {
     "title": "समय यात्रा",

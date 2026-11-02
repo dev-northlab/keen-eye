@@ -48,7 +48,8 @@
     "paid": "Gioco completo",
     "soon": "In arrivo",
     "soonLevels": "In arrivo: altri {n}",
-    "progress": "{done} su {total}"
+    "progress": "{done} su {total}",
+    "task": "Trova le differenze"
   },
   "timeTravel": {
     "title": "Viaggio nel tempo",

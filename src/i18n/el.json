@@ -48,7 +48,8 @@
     "paid": "Πλήρες παιχνίδι",
     "soon": "Σύντομα",
     "soonLevels": "Σύντομα: άλλα {n}",
-    "progress": "{done} από {total}"
+    "progress": "{done} από {total}",
+    "task": "Βρες τις διαφορές"
   },
   "timeTravel": {
     "title": "Ταξίδι στον χρόνο",

@@ -27,7 +27,7 @@ onBeforeUnmount(() => removeBack())
 
 function play() {
   const id = progress.continueLevelId
-  router.push(id === undefined ? { name: 'levels' } : { name: 'level', params: { id } })
+  router.push(id === undefined ? { name: 'worlds' } : { name: 'level', params: { id } })
 }
 </script>
 

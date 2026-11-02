@@ -48,7 +48,8 @@
     "paid": "정식판",
     "soon": "곧 공개",
     "soonLevels": "곧 공개: {n}개 더",
-    "progress": "{done} / {total}"
+    "progress": "{done} / {total}",
+    "task": "다른 그림 찾기"
   },
   "timeTravel": {
     "title": "시간 여행",

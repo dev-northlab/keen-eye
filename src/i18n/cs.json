@@ -48,7 +48,8 @@
     "paid": "Plná verze",
     "soon": "Již brzy",
     "soonLevels": "Již brzy: další {n}",
-    "progress": "{done} z {total}"
+    "progress": "{done} z {total}",
+    "task": "Najdi rozdíly"
   },
   "timeTravel": {
     "title": "Cestování časem",

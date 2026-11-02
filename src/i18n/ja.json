@@ -48,7 +48,8 @@
     "paid": "完全版",
     "soon": "近日公開",
     "soonLevels": "近日公開：あと {n} レベル",
-    "progress": "{done} / {total}"
+    "progress": "{done} / {total}",
+    "task": "まちがいさがし"
   },
   "timeTravel": {
     "title": "タイムトラベル",

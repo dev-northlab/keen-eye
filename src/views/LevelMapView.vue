@@ -2,28 +2,23 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
+import { CHAPTERS, chapterLevels, chapterSize } from '../levels/chapters.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
-// Chapter map: one card per world; a card opens the chapter's level grid (ChapterView).
+// Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
+// "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView).
 
 const router = useRouter()
 const progress = useProgressStore()
 
-const cards = CHAPTERS.map((chapter) => {
-  const levels = chapterLevels(chapter)
-  return { chapter, levels, total: chapterSize(chapter), first: levels[0]?.id }
-})
-
-const done = (c: (typeof cards)[number]) => c.levels.filter((l) => progress.isCompleted(l.id)).length
-const stars = (c: (typeof cards)[number]) => c.levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0)
-
-function open(chapter: Chapter) {
-  router.push({ name: 'chapter', params: { chapter: chapter.id } })
+const levels = CHAPTERS.flatMap(chapterLevels)
+const worlds = {
+  total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
+  done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
+  stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
 }
 
-// "Find the odd one out" (docs/anachronism-mode.md): one card under the worlds, opens its eras (TimeTravelView).
 const timeTravel = {
   total: timeTravelLevels.length,
   done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
@@ -36,35 +31,46 @@ const timeTravel = {
     <ScreenBackdrop theme="meadow" />
     <main>
       <ul class="list">
-        <li v-for="c in cards" :key="c.chapter.id">
-          <button
-            class="card"
-            :class="{ soon: !c.first, locked: c.first !== undefined && !progress.isUnlocked(c.first) }"
-            :style="{ '--chapter': c.chapter.color, '--chapter-soft': c.chapter.soft }"
-            :disabled="!c.first"
-            @click="open(c.chapter)"
-          >
-            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="c.chapter.icon" />
+        <li>
+          <button class="mode spot" @click="router.push({ name: 'worlds' })">
+            <!-- A big faint magnifier behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="42" cy="42" r="30" fill="none" stroke="#fff" stroke-width="7" />
+              <path d="M64 64l24 24" fill="none" stroke="#fff" stroke-width="11" stroke-linecap="round" />
+            </svg>
+            <!-- Two pictures, the second with a red sun, and a magnifier over it. -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="2" y="9" width="20" height="24" rx="3" fill="#bfe6cf" />
+              <path d="M2 26l6-5 5 4 9-6v11a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3Z" fill="#3fa46f" />
+              <circle cx="15" cy="15" r="3" fill="#f2b04a" />
+              <rect x="26" y="9" width="20" height="24" rx="3" fill="#bfe6cf" />
+              <path d="M26 26l6-5 5 4 9-6v11a3 3 0 0 1-3 3h-14a3 3 0 0 1-3-3Z" fill="#3fa46f" />
+              <circle cx="39" cy="15" r="3" fill="#e5484d" />
+              <circle cx="38" cy="16" r="7" fill="#fff" fill-opacity="0.35" stroke="#1f7a55" stroke-width="2.6" />
+              <path d="M33 21l-6 6" fill="none" stroke="#1f7a55" stroke-width="3.4" stroke-linecap="round" />
+            </svg>
             <span class="text">
-              <span class="name">{{ $t(`chapters.${c.chapter.id}`) }}</span>
+              <span class="tag">{{ $t('map.task') }}</span>
+              <span class="name">{{ $t('map.title') }}</span>
               <span class="sub">
-                <template v-if="!c.first">{{ $t('map.soon') }}</template>
-                <template v-else-if="progress.needsPurchase(c.first)">{{ $t('map.paid') }}</template>
-                <template v-else-if="!progress.isUnlocked(c.first)">{{ $t('map.locked') }}</template>
-                <template v-else>{{ $t('map.progress', { done: done(c), total: c.total }) }} · ★ {{ stars(c) }}</template>
+                {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
               </span>
-            </span>
-            <span v-if="c.first !== undefined && !progress.isUnlocked(c.first)" class="lock" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
             </span>
           </button>
         </li>
         <li>
-          <button
-            class="card"
-            style="--chapter: #d98a1c; --chapter-soft: #fff1d6"
-            @click="router.push({ name: 'eras' })"
-          >
+          <button class="mode travel" @click="router.push({ name: 'eras' })">
+            <!-- A big faint clock face behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="6" />
+              <path
+                d="M50 14v8M50 78v8M14 50h8M78 50h8M50 50V28M50 50l15 10"
+                fill="none"
+                stroke="#fff"
+                stroke-width="6"
+                stroke-linecap="round"
+              />
+            </svg>
             <!-- A pyramid and a clock. -->
             <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
               <path d="M4 42L22 12l18 30Z" fill="#e8b85a" />
@@ -73,9 +79,10 @@ const timeTravel = {
               <path d="M35 8.5V14l4 2.5" fill="none" stroke="#d98a1c" stroke-width="2.6" stroke-linecap="round" />
             </svg>
             <span class="text">
+              <span class="tag">{{ $t('timeTravel.task') }}</span>
               <span class="name">{{ $t('timeTravel.title') }}</span>
               <span class="sub">
-                {{ $t('timeTravel.task') }} · {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
+                {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
               </span>
             </span>
           </button>
@@ -108,74 +115,86 @@ main {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 
-.card {
+/* A banner per game mode: "spot the difference" green, "find the odd one out" warm. */
+.spot {
+  --mode-from: #4cc38a;
+  --mode-mid: #2f9e6e;
+  --mode-to: #1f7a55;
+  --mode-shadow: rgb(20 90 60 / 0.6);
+  --mode-icon-bg: #e3f6ec;
+}
+
+.travel {
+  --mode-from: #f2b04a;
+  --mode-mid: #d9771c;
+  --mode-to: #b8561a;
+  --mode-shadow: rgb(150 70 0 / 0.6);
+  --mode-icon-bg: #fff3dd;
+}
+
+.mode {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px 16px;
+  padding: 18px 16px;
   text-align: left;
-  background: var(--panel);
-  color: var(--fg);
-  border: 2px solid var(--chapter);
-  border-left-width: 10px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, var(--mode-from), var(--mode-mid) 60%, var(--mode-to));
+  color: #fff;
+  box-shadow: 0 8px 18px -8px var(--mode-shadow);
+}
+
+.art {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  height: 150%;
+  translate: 0 -50%;
+  opacity: 0.18;
+  pointer-events: none;
 }
 
 .icon {
+  position: relative;
   flex: none;
-  width: 48px;
-  height: 48px;
-  padding: 4px;
-  border-radius: 12px;
-  background: var(--chapter-soft);
+  width: 60px;
+  height: 60px;
+  padding: 6px;
+  border-radius: 16px;
+  background: var(--mode-icon-bg);
 }
 
 .text {
+  position: relative;
   flex: 1;
   display: grid;
   gap: 2px;
   min-width: 0;
 }
 
-.name {
-  font-size: 20px;
+.tag {
+  justify-self: start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 13px;
   font-weight: 700;
+  background: rgb(255 255 255 / 0.25);
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
 }
 
 .sub {
   font-size: 14px;
-  color: var(--muted);
-}
-
-.lock {
-  flex: none;
-  width: 24px;
-  height: 24px;
-  color: var(--faint);
-}
-
-.lock svg {
-  width: 100%;
-  height: 100%;
-}
-
-.card.locked {
-  border-color: var(--line);
-}
-
-.card.soon,
-.card:disabled {
-  background: var(--disabled-bg);
-  color: var(--faint);
-  border-color: var(--line);
-  cursor: default;
-}
-
-.card.soon .icon {
-  filter: grayscale(1);
-  opacity: 0.6;
+  opacity: 0.9;
 }
 </style>

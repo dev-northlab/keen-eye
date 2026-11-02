@@ -14,13 +14,16 @@ import MatchView from '../views/MatchView.vue'
 import PurchaseView from '../views/PurchaseView.vue'
 import SettingsView from '../views/SettingsView.vue'
 import TimeTravelView from '../views/TimeTravelView.vue'
+import WorldsView from '../views/WorldsView.vue'
 
 // HTML5 history: Vite dev/preview and the Capacitor webview fall back to index.html for unknown paths.
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', name: 'home', component: HomeView },
+    // Game modes; "spot the difference" opens its worlds, each world its level grid.
     { path: '/levels', name: 'levels', component: LevelMapView },
+    { path: '/worlds', name: 'worlds', component: WorldsView },
     { path: '/levels/:chapter', name: 'chapter', component: ChapterView, props: true },
     {
       path: '/level/:id(\\d+)',
@@ -46,11 +49,11 @@ export const router = createRouter({
 })
 
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
-// Unknown chapter → chapter map. Unknown level → home; paid level not bought → purchase screen;
+// Unknown chapter → worlds. Unknown level → home; paid level not bought → purchase screen;
 // not reached yet → its chapter's grid. Two-player matches need no order, only the purchase for paid levels.
 // Unknown "find the odd one out" level → home.
 router.beforeEach((to) => {
-  if (to.name === 'chapter') return chapterById(String(to.params.chapter)) ? true : { name: 'levels' }
+  if (to.name === 'chapter') return chapterById(String(to.params.chapter)) ? true : { name: 'worlds' }
   if (to.name === 'time-travel') return timeTravelLevelById(String(to.params.id)) ? true : { name: 'home' }
   if (to.name !== 'level' && to.name !== 'match') return true
   const id = Number(to.params.id)
