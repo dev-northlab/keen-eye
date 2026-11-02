@@ -335,7 +335,22 @@
     "farmYear": "Boerderij met molen",
     "harborEvening": "Avond in de haven",
     "forestYear": "Bruggetje in het bos",
-    "yardNight": "Avond in de tuin"
+    "yardNight": "Avond in de tuin",
+    "marketSquare": "Marktplein",
+    "mountainVillage": "Bergdorp",
+    "railwayEvening": "Avond op het station",
+    "lakeCottage": "Huisje aan het meer",
+    "fishingHarbor": "Vissershaven",
+    "schoolYard": "Schoolplein",
+    "funfair": "Kermis",
+    "orchardHives": "Boomgaard met bijenkorven",
+    "riverTown": "Stad aan de rivier",
+    "parkPond": "Vijver in het park",
+    "oldTownSquare": "Plein in de oude stad",
+    "farmyardSeasons": "Boerenerf",
+    "seaPromenade": "Boulevard aan zee",
+    "cableCar": "Kabelbaan",
+    "downtown": "Binnenstad"
   },
   "mode": {
     "label": "Modus",
@@ -382,7 +397,8 @@
       "clothes": "'s Winters kleden mensen zich warm aan — dat is natuurlijk",
       "icicles": "IJspegels zijn er alleen in de winter — geen verschil",
       "smoke": "'s Winters brandt de kachel — de rook hoort erbij",
-      "flowers": "'s Winters groeien er geen bloemen en paddenstoelen — dat is natuurlijk"
+      "flowers": "'s Winters groeien er geen bloemen en paddenstoelen — dat is natuurlijk",
+      "clock": "De tijd gaat voorbij — de klok hoort iets anders aan te wijzen"
     }
   }
 }

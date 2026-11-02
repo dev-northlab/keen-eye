@@ -335,7 +335,22 @@
     "farmYear": "Hof mit Windmühle",
     "harborEvening": "Abend im Hafen",
     "forestYear": "Waldbrücke",
-    "yardNight": "Abend im Garten"
+    "yardNight": "Abend im Garten",
+    "marketSquare": "Marktplatz",
+    "mountainVillage": "Bergdorf",
+    "railwayEvening": "Abend am Bahnhof",
+    "lakeCottage": "Häuschen am See",
+    "fishingHarbor": "Fischerhafen",
+    "schoolYard": "Schulhof",
+    "funfair": "Jahrmarkt",
+    "orchardHives": "Obstgarten mit Bienenstöcken",
+    "riverTown": "Stadt am Fluss",
+    "parkPond": "Parkteich",
+    "oldTownSquare": "Altstadtplatz",
+    "farmyardSeasons": "Bauernhof",
+    "seaPromenade": "Strandpromenade",
+    "cableCar": "Seilbahn",
+    "downtown": "Innenstadt"
   },
   "mode": {
     "label": "Modus",
@@ -382,7 +397,8 @@
       "clothes": "Im Winter zieht man sich warm an — das ist natürlich",
       "icicles": "Eiszapfen gibt es nur im Winter — kein Unterschied",
       "smoke": "Im Winter wird geheizt — der Rauch gehört dazu",
-      "flowers": "Im Winter wachsen keine Blumen und Pilze — das ist natürlich"
+      "flowers": "Im Winter wachsen keine Blumen und Pilze — das ist natürlich",
+      "clock": "Die Zeit vergeht — die Uhr muss etwas anderes zeigen"
     }
   }
 }

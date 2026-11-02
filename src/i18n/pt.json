@@ -335,7 +335,22 @@
     "farmYear": "Quinta com moinho",
     "harborEvening": "Noite no porto",
     "forestYear": "Ponte da floresta",
-    "yardNight": "Noite no jardim"
+    "yardNight": "Noite no jardim",
+    "marketSquare": "Praça do mercado",
+    "mountainVillage": "Aldeia na montanha",
+    "railwayEvening": "Noite na estação",
+    "lakeCottage": "Casinha junto ao lago",
+    "fishingHarbor": "Porto de pesca",
+    "schoolYard": "Recreio da escola",
+    "funfair": "Feira popular",
+    "orchardHives": "Pomar e colmeias",
+    "riverTown": "Cidade junto ao rio",
+    "parkPond": "Lago do parque",
+    "oldTownSquare": "Praça da cidade velha",
+    "farmyardSeasons": "Pátio da quinta",
+    "seaPromenade": "Passeio marítimo",
+    "cableCar": "Teleférico",
+    "downtown": "Centro da cidade"
   },
   "mode": {
     "label": "Modo",
@@ -382,7 +397,8 @@
       "clothes": "No inverno veste-se roupa quente — é natural",
       "icicles": "Os pingentes de gelo só existem no inverno — não é uma diferença",
       "smoke": "No inverno acende-se o fogão — o fumo é natural",
-      "flowers": "No inverno não crescem flores nem cogumelos — é natural"
+      "flowers": "No inverno não crescem flores nem cogumelos — é natural",
+      "clock": "O tempo passa — o relógio tem de mostrar outra hora"
     }
   }
 }

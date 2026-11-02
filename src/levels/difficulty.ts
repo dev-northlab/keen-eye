@@ -42,6 +42,10 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 201, to: 205, differences: [5, 5], motion: [0, 0], minRadius: 24, traps: [3, 4], kinds: EASY },
   { from: 206, to: 210, differences: [6, 6], motion: [0, 0], minRadius: 22, traps: [3, 5], kinds: EASY },
   { from: 211, to: 215, differences: [7, 8], motion: [0, 0], minRadius: 20, minGap: 56, traps: [4, 6], kinds: [...EASY, 'shift', 'rotate'] },
+  // 216–230: busier scenes, both kinds of pairs, 8 → 9 → 10 differences and more traps.
+  { from: 216, to: 220, differences: [8, 8], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
+  { from: 221, to: 225, differences: [9, 9], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
+  { from: 226, to: 230, differences: [10, 10], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
 ]
 
 /**

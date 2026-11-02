@@ -335,7 +335,22 @@
     "farmYear": "Fattoria col mulino",
     "harborEvening": "Sera al porto",
     "forestYear": "Ponticello nel bosco",
-    "yardNight": "Sera in giardino"
+    "yardNight": "Sera in giardino",
+    "marketSquare": "Piazza del mercato",
+    "mountainVillage": "Paese di montagna",
+    "railwayEvening": "Sera in stazione",
+    "lakeCottage": "Casetta sul lago",
+    "fishingHarbor": "Porto dei pescatori",
+    "schoolYard": "Cortile della scuola",
+    "funfair": "Luna park",
+    "orchardHives": "Frutteto e alveari",
+    "riverTown": "Città sul fiume",
+    "parkPond": "Laghetto del parco",
+    "oldTownSquare": "Piazza della città vecchia",
+    "farmyardSeasons": "Aia della fattoria",
+    "seaPromenade": "Lungomare",
+    "cableCar": "Funivia",
+    "downtown": "Centro città"
   },
   "mode": {
     "label": "Modalità",
@@ -382,7 +397,8 @@
       "clothes": "D'inverno ci si veste pesante: è naturale",
       "icicles": "I ghiaccioli ci sono solo d'inverno: non è una differenza",
       "smoke": "D'inverno si accende la stufa: il fumo è normale",
-      "flowers": "D'inverno non crescono fiori né funghi: è naturale"
+      "flowers": "D'inverno non crescono fiori né funghi: è naturale",
+      "clock": "Il tempo passa: l'orologio deve segnare un'altra ora"
     }
   }
 }

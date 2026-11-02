@@ -108,7 +108,7 @@ export const CHAPTERS: Chapter[] = [
  */
 export const TIME_CHAPTER: Chapter = {
   id: 'time',
-  ranges: [[201, 215]],
+  ranges: [[201, 230]],
   color: '#7a5af5',
   soft: '#ece6ff',
   backdrop: 'meadow',

@@ -335,7 +335,22 @@
     "farmYear": "Farma z wiatrakiem",
     "harborEvening": "Wieczór w porcie",
     "forestYear": "Leśna kładka",
-    "yardNight": "Wieczór w ogrodzie"
+    "yardNight": "Wieczór w ogrodzie",
+    "marketSquare": "Rynek",
+    "mountainVillage": "Górska wioska",
+    "railwayEvening": "Wieczór na dworcu",
+    "lakeCottage": "Domek nad jeziorem",
+    "fishingHarbor": "Port rybacki",
+    "schoolYard": "Szkolne boisko",
+    "funfair": "Wesołe miasteczko",
+    "orchardHives": "Sad i ule",
+    "riverTown": "Miasto nad rzeką",
+    "parkPond": "Staw w parku",
+    "oldTownSquare": "Stary rynek",
+    "farmyardSeasons": "Podwórze gospodarstwa",
+    "seaPromenade": "Promenada nad morzem",
+    "cableCar": "Kolejka linowa",
+    "downtown": "Śródmieście"
   },
   "mode": {
     "label": "Tryb",
@@ -382,7 +397,8 @@
       "clothes": "Zimą ubieramy się cieplej — to naturalne",
       "icicles": "Sople są tylko zimą — to nie różnica",
       "smoke": "Zimą pali się w piecu — dym jest naturalny",
-      "flowers": "Zimą nie rosną kwiaty ani grzyby — to naturalne"
+      "flowers": "Zimą nie rosną kwiaty ani grzyby — to naturalne",
+      "clock": "Czas płynie — zegar powinien pokazywać inną godzinę"
     }
   }
 }

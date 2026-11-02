@@ -335,7 +335,22 @@
     "farmYear": "Ferma cu moară",
     "harborEvening": "Seară în port",
     "forestYear": "Podeț în pădure",
-    "yardNight": "Seară în grădină"
+    "yardNight": "Seară în grădină",
+    "marketSquare": "Piața orașului",
+    "mountainVillage": "Sat de munte",
+    "railwayEvening": "Seară la gară",
+    "lakeCottage": "Căsuța de lângă lac",
+    "fishingHarbor": "Port pescăresc",
+    "schoolYard": "Curtea școlii",
+    "funfair": "Bâlci",
+    "orchardHives": "Livadă și stupi",
+    "riverTown": "Oraș pe râu",
+    "parkPond": "Lacul din parc",
+    "oldTownSquare": "Piața orașului vechi",
+    "farmyardSeasons": "Curtea fermei",
+    "seaPromenade": "Faleza mării",
+    "cableCar": "Telecabină",
+    "downtown": "Centrul orașului"
   },
   "mode": {
     "label": "Mod",
@@ -382,7 +397,8 @@
       "clothes": "Iarna ne îmbrăcăm mai gros — e firesc",
       "icicles": "Țurțurii apar doar iarna — nu e o diferență",
       "smoke": "Iarna se face focul în sobă — fumul e firesc",
-      "flowers": "Iarna nu cresc flori și ciuperci — e firesc"
+      "flowers": "Iarna nu cresc flori și ciuperci — e firesc",
+      "clock": "Timpul trece — ceasul trebuie să arate altă oră"
     }
   }
 }

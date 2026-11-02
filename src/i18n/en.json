@@ -335,7 +335,22 @@
     "farmYear": "Windmill farm",
     "harborEvening": "Harbor evening",
     "forestYear": "Forest footbridge",
-    "yardNight": "Garden evening"
+    "yardNight": "Garden evening",
+    "marketSquare": "Market square",
+    "mountainVillage": "Mountain village",
+    "railwayEvening": "Station evening",
+    "lakeCottage": "Lakeside cottage",
+    "fishingHarbor": "Fishing harbor",
+    "schoolYard": "School yard",
+    "funfair": "Funfair",
+    "orchardHives": "Orchard and hives",
+    "riverTown": "River town",
+    "parkPond": "Park pond",
+    "oldTownSquare": "Old town square",
+    "farmyardSeasons": "Farmyard",
+    "seaPromenade": "Seaside promenade",
+    "cableCar": "Cable car",
+    "downtown": "Downtown"
   },
   "mode": {
     "label": "Mode",
@@ -382,7 +397,8 @@
       "clothes": "People dress warmly in winter — that's natural",
       "icicles": "Icicles only grow in winter — not a difference",
       "smoke": "The stove is lit in winter — the smoke is natural",
-      "flowers": "Flowers and mushrooms don't grow in winter — that's natural"
+      "flowers": "Flowers and mushrooms don't grow in winter — that's natural",
+      "clock": "Time goes by — the clock should show a different time"
     }
   }
 }

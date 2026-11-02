@@ -335,7 +335,22 @@
     "farmYear": "Granja con molino",
     "harborEvening": "Tarde en el puerto",
     "forestYear": "Puente del bosque",
-    "yardNight": "Tarde en el jardín"
+    "yardNight": "Tarde en el jardín",
+    "marketSquare": "Plaza del mercado",
+    "mountainVillage": "Pueblo de montaña",
+    "railwayEvening": "Tarde en la estación",
+    "lakeCottage": "Casita junto al lago",
+    "fishingHarbor": "Puerto pesquero",
+    "schoolYard": "Patio del colegio",
+    "funfair": "Feria",
+    "orchardHives": "Huerto y colmenas",
+    "riverTown": "Ciudad junto al río",
+    "parkPond": "Estanque del parque",
+    "oldTownSquare": "Plaza del casco antiguo",
+    "farmyardSeasons": "Corral de la granja",
+    "seaPromenade": "Paseo marítimo",
+    "cableCar": "Teleférico",
+    "downtown": "Centro de la ciudad"
   },
   "mode": {
     "label": "Modo",
@@ -382,7 +397,8 @@
       "clothes": "En invierno la gente se abriga: es natural",
       "icicles": "Los carámbanos solo salen en invierno: no es una diferencia",
       "smoke": "En invierno se enciende la estufa: el humo es normal",
-      "flowers": "En invierno no crecen flores ni setas: es natural"
+      "flowers": "En invierno no crecen flores ni setas: es natural",
+      "clock": "El tiempo pasa: el reloj debe marcar otra hora"
     }
   }
 }

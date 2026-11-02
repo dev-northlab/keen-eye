@@ -55,11 +55,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
   `chapters.ts` (the chapters/"worlds": id, level id ranges, card colors, icon, backdrop — one entry per world; plus
-  `TIME_CHAPTER`), `time/` — "spot the difference in time" (`docs/time-differences-mode.md`): levels 201–215 of chapter
+  `TIME_CHAPTER`), `time/` — "spot the difference in time" (`docs/time-differences-mode.md`): levels 201–230 of chapter
   `time`, the same scene at two moments (`pair`: morning/evening, summer/winter); `svgLevel` gets `pair`, `time(a, b)`
   draws by the picture's moment and `trap(x, y, r, a, b, hint)` marks a natural change (light, snow, leaves) whose tap is
   a miss that shows `timeMode.traps.<hint>` once (`GameScene` → `onTrap`); played by `LevelView`, grid by `ChapterView`
-  (`/levels/time`, a banner on the modes screen, not a world), numbered 1–15 (`levelNumber`), open from the start, the
+  (`/levels/time`, a banner on the modes screen, not a world), numbered 1–30 (`levelNumber`; 216–230 are the busier
+  scenes with 8–10 differences, `difficulty.ts`), open from the start, the
   first `FREE_TIME_LEVELS` (3) free; `allLevels` = worlds + time (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),

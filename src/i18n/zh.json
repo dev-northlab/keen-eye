@@ -335,7 +335,22 @@
     "farmYear": "风车农场",
     "harborEvening": "港口的傍晚",
     "forestYear": "林间小桥",
-    "yardNight": "花园的傍晚"
+    "yardNight": "花园的傍晚",
+    "marketSquare": "集市广场",
+    "mountainVillage": "山村",
+    "railwayEvening": "车站的傍晚",
+    "lakeCottage": "湖边小屋",
+    "fishingHarbor": "渔港",
+    "schoolYard": "学校操场",
+    "funfair": "游乐会",
+    "orchardHives": "果园和蜂箱",
+    "riverTown": "河边小城",
+    "parkPond": "公园池塘",
+    "oldTownSquare": "老城广场",
+    "farmyardSeasons": "农家院子",
+    "seaPromenade": "海滨步道",
+    "cableCar": "缆车",
+    "downtown": "市中心"
   },
   "mode": {
     "label": "模式",
@@ -382,7 +397,8 @@
       "clothes": "冬天大家穿得更暖和——这很自然",
       "icicles": "冰柱只在冬天出现——这不是不同之处",
       "smoke": "冬天要生炉子——冒烟很自然",
-      "flowers": "冬天不长花也不长蘑菇——这很自然"
+      "flowers": "冬天不长花也不长蘑菇——这很自然",
+      "clock": "时间在流逝——钟表本来就该显示别的时间"
     }
   }
 }

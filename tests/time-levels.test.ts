@@ -29,8 +29,8 @@ describe('"time" levels (docs/time-differences-mode.md)', () => {
     for (const level of levels) assert.ok(!level.pair && !level.traps, `level ${level.id}`)
   })
 
-  test('15 levels from 201 in the time category, morning/evening first, then summer/winter, then both', () => {
-    assert.deepEqual(timeLevels.map((l) => l.id), Array.from({ length: 15 }, (_, i) => 201 + i))
+  test('30 levels from 201 in the time category, morning/evening first, then summer/winter, then both', () => {
+    assert.deepEqual(timeLevels.map((l) => l.id), Array.from({ length: 30 }, (_, i) => 201 + i))
     timeLevels.forEach((level, i) => {
       assert.equal(level.chapter, TIME_CHAPTER.id)
       assert.equal(chapterOf(level.id), TIME_CHAPTER)
@@ -38,10 +38,10 @@ describe('"time" levels (docs/time-differences-mode.md)', () => {
       assert.equal(levelNumber(level), i + 1)
       if (i < 5) assert.equal(level.pair, 'day-night')
       else if (i < 10) assert.equal(level.pair, 'summer-winter')
-      assert.ok(level.traps!.length >= 3 && level.traps!.length <= 6, `level ${level.id}`)
+      assert.ok(level.traps!.length >= 3 && level.traps!.length <= 7, `level ${level.id}`)
     })
-    const pairs = new Set(timeLevels.slice(10).map((l) => l.pair))
-    assert.equal(pairs.size, 2)
+    assert.equal(new Set(timeLevels.slice(10, 15).map((l) => l.pair)).size, 2)
+    assert.equal(new Set(timeLevels.slice(15).map((l) => l.pair)).size, 2)
   })
 
   test('"next" stays in the category and ends with it', () => {

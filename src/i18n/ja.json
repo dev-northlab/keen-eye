@@ -335,7 +335,22 @@
     "farmYear": "風車のある農場",
     "harborEvening": "港の夕方",
     "forestYear": "森の小さな橋",
-    "yardNight": "夕方の庭"
+    "yardNight": "夕方の庭",
+    "marketSquare": "市場の広場",
+    "mountainVillage": "山の村",
+    "railwayEvening": "夕方の駅",
+    "lakeCottage": "湖のほとりの家",
+    "fishingHarbor": "漁港",
+    "schoolYard": "学校の校庭",
+    "funfair": "移動遊園地",
+    "orchardHives": "果樹園と巣箱",
+    "riverTown": "川沿いの町",
+    "parkPond": "公園の池",
+    "oldTownSquare": "旧市街の広場",
+    "farmyardSeasons": "農家の庭",
+    "seaPromenade": "海辺のプロムナード",
+    "cableCar": "ロープウェイ",
+    "downtown": "街の中心"
   },
   "mode": {
     "label": "モード",
@@ -382,7 +397,8 @@
       "clothes": "冬はあたたかい服を着るよ——自然なことだよ",
       "icicles": "つららは冬だけのものだよ——まちがいじゃないよ",
       "smoke": "冬はストーブをたくよ——けむりは自然なことだよ",
-      "flowers": "冬は花もきのこも生えないよ——自然なことだよ"
+      "flowers": "冬は花もきのこも生えないよ——自然なことだよ",
+      "clock": "時間はすすむよ——時計がちがう時刻をさすのは当たり前"
     }
   }
 }

@@ -335,7 +335,22 @@
     "farmYear": "Statek s větrným mlýnem",
     "harborEvening": "Večer v přístavu",
     "forestYear": "Lesní lávka",
-    "yardNight": "Večer na zahradě"
+    "yardNight": "Večer na zahradě",
+    "marketSquare": "Tržní náměstí",
+    "mountainVillage": "Horská vesnice",
+    "railwayEvening": "Večer na nádraží",
+    "lakeCottage": "Chata u jezera",
+    "fishingHarbor": "Rybářský přístav",
+    "schoolYard": "Školní dvůr",
+    "funfair": "Pouť",
+    "orchardHives": "Sad a úly",
+    "riverTown": "Město u řeky",
+    "parkPond": "Rybník v parku",
+    "oldTownSquare": "Staroměstské náměstí",
+    "farmyardSeasons": "Statkový dvůr",
+    "seaPromenade": "Přímořská promenáda",
+    "cableCar": "Lanovka",
+    "downtown": "Centrum města"
   },
   "mode": {
     "label": "Režim",
@@ -382,7 +397,8 @@
       "clothes": "V zimě se lidé oblékají tepleji — to je přirozené",
       "icicles": "Rampouchy jsou jen v zimě — to není rozdíl",
       "smoke": "V zimě se topí — kouř k tomu patří",
-      "flowers": "V zimě nerostou květiny ani houby — to je přirozené"
+      "flowers": "V zimě nerostou květiny ani houby — to je přirozené",
+      "clock": "Čas běží — hodiny mají ukazovat jiný čas"
     }
   }
 }

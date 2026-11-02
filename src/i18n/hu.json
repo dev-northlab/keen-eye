@@ -335,7 +335,22 @@
     "farmYear": "Tanya szélmalommal",
     "harborEvening": "Este a kikötőben",
     "forestYear": "Erdei hídacska",
-    "yardNight": "Este a kertben"
+    "yardNight": "Este a kertben",
+    "marketSquare": "Piactér",
+    "mountainVillage": "Hegyi falu",
+    "railwayEvening": "Este az állomáson",
+    "lakeCottage": "Tóparti házikó",
+    "fishingHarbor": "Halászkikötő",
+    "schoolYard": "Iskolaudvar",
+    "funfair": "Vurstli",
+    "orchardHives": "Gyümölcsös és kaptárak",
+    "riverTown": "Folyóparti város",
+    "parkPond": "Parki tó",
+    "oldTownSquare": "Óvárosi tér",
+    "farmyardSeasons": "Gazdasági udvar",
+    "seaPromenade": "Tengerparti sétány",
+    "cableCar": "Libegő",
+    "downtown": "Belváros"
   },
   "mode": {
     "label": "Mód",
@@ -382,7 +397,8 @@
       "clothes": "Télen melegebben öltözünk — ez természetes",
       "icicles": "Jégcsapok csak télen vannak — ez nem különbség",
       "smoke": "Télen begyújtják a kályhát — a füst természetes",
-      "flowers": "Télen nem nőnek virágok és gombák — ez természetes"
+      "flowers": "Télen nem nőnek virágok és gombák — ez természetes",
+      "clock": "Telik az idő — az órának mást kell mutatnia"
     }
   }
 }

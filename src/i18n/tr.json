@@ -335,7 +335,22 @@
     "farmYear": "Yel değirmenli çiftlik",
     "harborEvening": "Limanda akşam",
     "forestYear": "Orman köprüsü",
-    "yardNight": "Bahçede akşam"
+    "yardNight": "Bahçede akşam",
+    "marketSquare": "Pazar meydanı",
+    "mountainVillage": "Dağ köyü",
+    "railwayEvening": "İstasyonda akşam",
+    "lakeCottage": "Göl kenarında kulübe",
+    "fishingHarbor": "Balıkçı limanı",
+    "schoolYard": "Okul bahçesi",
+    "funfair": "Lunapark",
+    "orchardHives": "Meyve bahçesi ve kovanlar",
+    "riverTown": "Nehir kenarındaki kasaba",
+    "parkPond": "Parktaki gölet",
+    "oldTownSquare": "Eski şehir meydanı",
+    "farmyardSeasons": "Çiftlik avlusu",
+    "seaPromenade": "Sahil yolu",
+    "cableCar": "Teleferik",
+    "downtown": "Şehir merkezi"
   },
   "mode": {
     "label": "Mod",
@@ -382,7 +397,8 @@
       "clothes": "Kışın kalın giyinilir — bu doğal",
       "icicles": "Buz sarkıtları yalnızca kışın olur — bu bir fark değil",
       "smoke": "Kışın soba yanar — duman doğal",
-      "flowers": "Kışın çiçek ve mantar yetişmez — bu doğal"
+      "flowers": "Kışın çiçek ve mantar yetişmez — bu doğal",
+      "clock": "Zaman geçiyor — saatin başka bir saati göstermesi gerekir"
     }
   }
 }
