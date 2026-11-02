@@ -48,7 +48,8 @@
     "paid": "Повна гра",
     "soon": "Незабаром",
     "soonLevels": "Незабаром: ще {n}",
-    "progress": "{done} з {total}"
+    "progress": "{done} з {total}",
+    "task": "Знайди відмінності"
   },
   "timeTravel": {
     "title": "Подорож у часі",

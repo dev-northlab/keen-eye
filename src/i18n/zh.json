@@ -48,7 +48,8 @@
     "paid": "完整版",
     "soon": "即将推出",
     "soonLevels": "即将推出：还有 {n} 关",
-    "progress": "{done} / {total}"
+    "progress": "{done} / {total}",
+    "task": "找不同"
   },
   "timeTravel": {
     "title": "时光旅行",

@@ -48,7 +48,8 @@
     "paid": "Полная версия",
     "soon": "Скоро",
     "soonLevels": "Скоро: ещё {n}",
-    "progress": "{done} из {total}"
+    "progress": "{done} из {total}",
+    "task": "Найди отличия"
   },
   "timeTravel": {
     "title": "Путешествие во времени",

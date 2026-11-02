@@ -48,7 +48,8 @@
     "paid": "Volledige game",
     "soon": "Binnenkort",
     "soonLevels": "Binnenkort: nog {n}",
-    "progress": "{done} van {total}"
+    "progress": "{done} van {total}",
+    "task": "Zoek de verschillen"
   },
   "timeTravel": {
     "title": "Tijdreis",

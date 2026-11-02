@@ -48,7 +48,8 @@
     "paid": "Tam sürüm",
     "soon": "Yakında",
     "soonLevels": "Yakında: {n} tane daha",
-    "progress": "{done} / {total}"
+    "progress": "{done} / {total}",
+    "task": "Farklılıkları bul"
   },
   "timeTravel": {
     "title": "Zaman yolculuğu",

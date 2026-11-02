@@ -48,7 +48,8 @@
     "paid": "Լիարժեք տարբերակ",
     "soon": "Շուտով",
     "soonLevels": "Շուտով՝ ևս {n}",
-    "progress": "{done}՝ {total}-ից"
+    "progress": "{done}՝ {total}-ից",
+    "task": "Գտիր տարբերությունները"
   },
   "timeTravel": {
     "title": "Ճամփորդություն ժամանակի մեջ",

@@ -20,8 +20,8 @@ const chapter = chapterById(props.chapter)!
 const levels = chapterLevels(chapter)
 const missing = chapterSize(chapter) - levels.length
 
-const toMap = () => router.push({ name: 'levels' })
-useBackButton(toMap)
+const toWorlds = () => router.push({ name: 'worlds' })
+useBackButton(toWorlds)
 
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
@@ -60,7 +60,7 @@ function tileLabel(level: Level) {
       </ul>
       <p v-if="missing > 0" class="soon">{{ $t('map.soonLevels', { n: missing }) }}</p>
     </main>
-    <BackButton :on-back="toMap" />
+    <BackButton :on-back="toWorlds" />
   </div>
 </template>
 
