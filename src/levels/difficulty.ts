@@ -58,6 +58,11 @@ export const DIFFICULTY: Difficulty[] = [
   // 316–330: busier, more detailed scenes (12–18 objects), so a little more time to look.
   { from: 316, to: 320, differences: [5, 5], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   { from: 321, to: 330, differences: [6, 6], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
+  // "Travel" category (docs/world-travel-mode.md): 5 → 6 → 7 differences tied to the place (the
+  // gondola's color, the flag on the tower), smaller ones and one in motion later.
+  { from: 401, to: 405, differences: [5, 5], motion: [0, 0], minRadius: 24, kinds: EASY },
+  { from: 406, to: 410, differences: [6, 6], motion: [0, 1], minRadius: 22, kinds: MEDIUM },
+  { from: 411, to: 415, differences: [7, 7], motion: [1, 1], minRadius: 20, minGap: 56, kinds: HARD },
 ]
 
 /**

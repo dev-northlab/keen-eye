@@ -169,7 +169,8 @@
     "sea": "Mare",
     "space": "Spațiu",
     "time": "Timpul",
-    "memory": "Memorie"
+    "memory": "Memorie",
+    "travel": "Călătorie în jurul lumii"
   },
   "levelTitles": {
     "barnyard": "Curtea fermei",
@@ -381,7 +382,22 @@
     "memoryAirfield": "Aerodrom",
     "memoryWorkshop": "Atelier",
     "memoryOasis": "Oază în deșert",
-    "memoryHoliday": "Seară de sărbătoare"
+    "memoryHoliday": "Seară de sărbătoare",
+    "paris": "Paris",
+    "venice": "Veneția",
+    "amsterdam": "Amsterdam",
+    "tokyo": "Tokyo",
+    "agra": "Agra",
+    "greatWall": "Marele Zid Chinezesc",
+    "yerevan": "Erevan",
+    "baku": "Baku",
+    "tbilisi": "Tbilisi",
+    "newYork": "New York",
+    "rio": "Rio de Janeiro",
+    "giza": "Giza",
+    "safari": "Safari",
+    "sydney": "Sydney",
+    "southernAlps": "Alpii Sudici"
   },
   "mode": {
     "label": "Mod",
@@ -447,5 +463,57 @@
     "failed": "Nu de data asta",
     "foundOf": "Găsite {found} din {total}",
     "legend": "Cu roșu e ce ți-a scăpat"
+  },
+  "worldTravel": {
+    "task": "Diferențe din toată lumea",
+    "rules": "Călătorește prin lume: găsește diferențele în fiecare loc, află o curiozitate și primește o ștampilă în pașaport.",
+    "didYouKnow": "Știai că…?",
+    "passport": "Pașaport",
+    "passportTitle": "Pașaportul călătorului",
+    "stamps": "Ștampile: {n} din {total}",
+    "newStamp": "Ștampilă nouă în pașaport!",
+    "notVisited": "Încă nevizitat",
+    "regions": {
+      "europe": "Europa",
+      "asia": "Asia",
+      "caucasus": "Caucaz",
+      "americas": "America",
+      "africa": "Africa",
+      "oceania": "Oceania"
+    },
+    "countries": {
+      "fr": "Franța",
+      "it": "Italia",
+      "nl": "Țările de Jos",
+      "jp": "Japonia",
+      "in": "India",
+      "cn": "China",
+      "am": "Armenia",
+      "az": "Azerbaidjan",
+      "ge": "Georgia",
+      "us": "SUA",
+      "br": "Brazilia",
+      "eg": "Egipt",
+      "ke": "Kenya",
+      "au": "Australia",
+      "nz": "Noua Zeelandă"
+    },
+    "facts": {
+      "paris": "Turnul Eiffel a fost construit pentru Expoziția Universală din 1889. Trebuia demontat după 20 de ani, dar a rămas și a devenit simbolul Parisului.",
+      "venice": "Veneția se întinde pe peste o sută de insulițe: în loc de străzi are canale, iar în loc de mașini, bărci și gondole.",
+      "amsterdam": "Multe case vechi din Amsterdam stau pe piloni de lemn bătuți adânc în pământul moale și mlăștinos.",
+      "tokyo": "Muntele Fuji este cel mai înalt munte din Japonia. Pe vreme senină se vede chiar din Tokyo.",
+      "agra": "Taj Mahalul a fost construit de împăratul Shah Jahan în amintirea soției sale iubite. Zidurile lui sunt îmbrăcate în marmură albă.",
+      "greatWall": "Marele Zid Chinezesc a fost construit și extins timp de multe secole. Nu este un singur zid, ci un întreg lanț de ziduri și turnuri peste munți și câmpii.",
+      "yerevan": "Erevanul este numit „orașul roz”: multe clădiri sunt construite din tuf, o piatră vulcanică roz. Pe vreme senină, de aici se vede muntele Ararat.",
+      "baku": "Baku se află pe malul Mării Caspice, cel mai mare lac de pe Pământ. Orașul se află sub nivelul mării, așa că este cea mai joasă capitală din lume.",
+      "tbilisi": "Numele Tbilisi vine de la cuvântul georgian „tbili”, care înseamnă „cald”: aici țâșnesc din pământ izvoare fierbinți cu sulf.",
+      "newYork": "Statuia Libertății a fost un dar al Franței pentru America. A traversat oceanul în bucăți și a fost inaugurată în 1886.",
+      "rio": "Statuia lui Hristos Mântuitorul, cu brațele deschise, se înalță pe vârful muntelui Corcovado, sus deasupra orașului Rio de Janeiro.",
+      "giza": "Marea Piramidă din Giza este singura dintre cele șapte minuni ale lumii antice care mai există și astăzi.",
+      "safari": "Gâtul girafei este foarte lung, dar are tot atâtea vertebre cât cel al omului: doar șapte.",
+      "sydney": "Acoperișurile Operei din Sydney seamănă cu niște pânze umflate de vânt. Teatrul a fost inaugurat în 1973.",
+      "southernAlps": "Kiwi este o pasăre care nu poate zbura. Este simbolul Noii Zeelande, iar neozeelandezii înșiși sunt adesea numiți „kiwi”."
+    }
   }
 }

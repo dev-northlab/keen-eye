@@ -7,9 +7,10 @@ import PauseDialog from '../components/PauseDialog.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
+import TravelFact from '../components/TravelFact.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
-import { levelNumber, nextLevel as nextLevelOf } from '../levels/chapters.ts'
+import { levelNumber, levelsScreen, nextLevel as nextLevelOf } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
@@ -26,8 +27,10 @@ const settings = useSettingsStore()
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
 const number = levelNumber(level)
-/** The level grid this level belongs to. */
-const grid = { name: 'chapter', params: { chapter: level.chapter } }
+/** The screen listing this level: its chapter's grid, or the world map of "travel". */
+const grid = levelsScreen(level)
+/** "Travel" levels: the first visit earns a passport stamp (shown with the place's fact). */
+const newStamp = ref(false)
 
 const board = ref<HTMLDivElement>()
 const found = ref(0)
@@ -102,6 +105,7 @@ function start() {
       onZoom: (s) => (zoom.value = s),
       onHint: (active) => (hintActive.value = active),
       onComplete: (r) => {
+        newStamp.value = !!level.travel && !progress.isCompleted(level.id)
         result.value = r
         playMusic('complete')
         if (calm.value) progress.recordCalmCompletion(level.id)
@@ -176,6 +180,7 @@ onBeforeUnmount(() => {
       <span class="title">
         {{ $t('level.level', { n: number }) }}
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
+        <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>
       <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
       <HudCounters v-if="!calm" :time="time" :mistakes="mistakes" :locked="locked" :still="settings.effectiveReduceMotion" />
@@ -234,7 +239,9 @@ onBeforeUnmount(() => {
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
       @menu="router.push(grid)"
-    />
+    >
+      <TravelFact v-if="level.travel" :level="level" :new-stamp="newStamp" />
+    </ResultDialog>
   </div>
 </template>
 

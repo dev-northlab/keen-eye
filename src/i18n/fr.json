@@ -169,7 +169,8 @@
     "sea": "Mer",
     "space": "Espace",
     "time": "Le temps",
-    "memory": "Mémoire"
+    "memory": "Mémoire",
+    "travel": "Tour du monde"
   },
   "levelTitles": {
     "barnyard": "Basse-cour",
@@ -381,7 +382,22 @@
     "memoryAirfield": "Aérodrome",
     "memoryWorkshop": "Atelier",
     "memoryOasis": "Oasis du désert",
-    "memoryHoliday": "Soir de fête"
+    "memoryHoliday": "Soir de fête",
+    "paris": "Paris",
+    "venice": "Venise",
+    "amsterdam": "Amsterdam",
+    "tokyo": "Tokyo",
+    "agra": "Agra",
+    "greatWall": "Grande Muraille de Chine",
+    "yerevan": "Erevan",
+    "baku": "Bakou",
+    "tbilisi": "Tbilissi",
+    "newYork": "New York",
+    "rio": "Rio de Janeiro",
+    "giza": "Gizeh",
+    "safari": "Safari",
+    "sydney": "Sydney",
+    "southernAlps": "Alpes du Sud"
   },
   "mode": {
     "label": "Mode",
@@ -447,5 +463,57 @@
     "failed": "Pas cette fois",
     "foundOf": "Trouvé {found} sur {total}",
     "legend": "En rouge, ce que tu as manqué"
+  },
+  "worldTravel": {
+    "task": "Des différences partout dans le monde",
+    "rules": "Voyage autour du monde : trouve les différences dans chaque lieu, découvre une anecdote et reçois un tampon dans ton passeport.",
+    "didYouKnow": "Le savais-tu ?",
+    "passport": "Passeport",
+    "passportTitle": "Passeport du voyageur",
+    "stamps": "Tampons : {n} sur {total}",
+    "newStamp": "Nouveau tampon dans ton passeport !",
+    "notVisited": "Pas encore visité",
+    "regions": {
+      "europe": "Europe",
+      "asia": "Asie",
+      "caucasus": "Caucase",
+      "americas": "Amériques",
+      "africa": "Afrique",
+      "oceania": "Océanie"
+    },
+    "countries": {
+      "fr": "France",
+      "it": "Italie",
+      "nl": "Pays-Bas",
+      "jp": "Japon",
+      "in": "Inde",
+      "cn": "Chine",
+      "am": "Arménie",
+      "az": "Azerbaïdjan",
+      "ge": "Géorgie",
+      "us": "États-Unis",
+      "br": "Brésil",
+      "eg": "Égypte",
+      "ke": "Kenya",
+      "au": "Australie",
+      "nz": "Nouvelle-Zélande"
+    },
+    "facts": {
+      "paris": "La tour Eiffel a été construite pour l’Exposition universelle de 1889. Elle devait être démontée au bout de 20 ans, mais elle est restée et elle est devenue le symbole de Paris.",
+      "venice": "Venise s’étend sur plus d’une centaine de petites îles : on y trouve des canaux au lieu des rues, et des bateaux et des gondoles au lieu des voitures.",
+      "amsterdam": "Beaucoup de vieilles maisons d’Amsterdam reposent sur des pieux en bois enfoncés profondément dans le sol mou et marécageux.",
+      "tokyo": "Le mont Fuji est la plus haute montagne du Japon. Par temps clair, on le voit depuis Tokyo.",
+      "agra": "Le Taj Mahal a été construit par l’empereur Shah Jahan en mémoire de son épouse bien-aimée. Ses murs sont revêtus de marbre blanc.",
+      "greatWall": "La Grande Muraille de Chine a été construite et agrandie pendant de nombreux siècles. Ce n’est pas un seul mur, mais toute une chaîne de murs et de tours à travers montagnes et plaines.",
+      "yerevan": "On appelle Erevan la « ville rose » : beaucoup de ses maisons sont construites en tuf, une pierre volcanique rose. Par temps clair, on voit d’ici le mont Ararat.",
+      "baku": "Bakou se trouve au bord de la mer Caspienne, le plus grand lac de la planète. La ville est située sous le niveau de la mer : c’est la capitale la plus basse du monde.",
+      "tbilisi": "Le nom de Tbilissi vient du mot géorgien « tbili », qui veut dire « chaud » : des sources sulfureuses chaudes jaillissent ici du sol.",
+      "newYork": "La statue de la Liberté est un cadeau de la France à l’Amérique. Elle a traversé l’océan en pièces détachées et a été inaugurée en 1886.",
+      "rio": "La statue du Christ Rédempteur, les bras ouverts, se dresse au sommet du Corcovado, bien au-dessus de Rio de Janeiro.",
+      "giza": "La grande pyramide de Gizeh est la seule des sept merveilles du monde antique qui existe encore aujourd’hui.",
+      "safari": "Le cou de la girafe est très long, mais il compte autant de vertèbres que celui d’un humain : seulement sept.",
+      "sydney": "Les toits de l’Opéra de Sydney ressemblent à des voiles gonflées par le vent. Il a été inauguré en 1973.",
+      "southernAlps": "Le kiwi est un oiseau qui ne sait pas voler. C’est le symbole de la Nouvelle-Zélande, et on surnomme souvent les Néo-Zélandais eux-mêmes les « Kiwis »."
+    }
   }
 }

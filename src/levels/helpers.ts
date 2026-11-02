@@ -1,4 +1,4 @@
-import type { Animation, AnimationMotion, Difference, Level, MemoryRules, TimePair, Trap } from '../engine/types.ts'
+import type { Animation, AnimationMotion, Difference, Level, MemoryRules, TimePair, TravelPlace, Trap } from '../engine/types.ts'
 
 /**
  * Returns `a` for picture A and `b` for picture B and registers the zone
@@ -64,6 +64,8 @@ interface SvgLevelDef {
   pair?: TimePair
   /** Makes it a "memory" level (see `memoryLevel`). */
   memory?: MemoryRules
+  /** Makes it a "travel" level (see `travelLevel`). */
+  travel?: TravelPlace
   /** Draws the scene; called once per picture with a fresh context. */
   scene: (ctx: SceneContext) => string
 }
@@ -126,6 +128,7 @@ export function svgLevel(def: SvgLevelDef): Level {
     multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
     ...(def.pair !== undefined && { pair: def.pair, traps }),
     ...(def.memory !== undefined && { memory: def.memory }),
+    ...(def.travel !== undefined && { travel: def.travel }),
   }
 }
 
@@ -143,3 +146,10 @@ export const memoryLevel = (def: { id: number; title: string; showSeconds: numbe
     memory: { showSeconds: def.showSeconds, peeks: def.peeks ?? 1 },
     scene: def.scene,
   })
+
+/**
+ * "Travel" level (docs/world-travel-mode.md), chapter 'travel': a recognizable scene of `place`;
+ * `title` names the place (levelTitles.<title>) and its fact (worldTravel.facts.<title>).
+ */
+export const travelLevel = (def: { id: number; title: string; parTimeSec: number; place: TravelPlace; scene: SvgLevelDef['scene'] }) =>
+  svgLevel({ id: def.id, chapter: 'travel', title: def.title, parTimeSec: def.parTimeSec, travel: def.place, scene: def.scene })

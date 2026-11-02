@@ -169,7 +169,8 @@
     "sea": "Zee",
     "space": "Ruimte",
     "time": "Tijd",
-    "memory": "Geheugen"
+    "memory": "Geheugen",
+    "travel": "Wereldreis"
   },
   "levelTitles": {
     "barnyard": "Erf",
@@ -381,7 +382,22 @@
     "memoryAirfield": "Vliegveld",
     "memoryWorkshop": "Werkplaats",
     "memoryOasis": "Woestijnoase",
-    "memoryHoliday": "Feestavond"
+    "memoryHoliday": "Feestavond",
+    "paris": "Parijs",
+    "venice": "Venetië",
+    "amsterdam": "Amsterdam",
+    "tokyo": "Tokio",
+    "agra": "Agra",
+    "greatWall": "Chinese Muur",
+    "yerevan": "Jerevan",
+    "baku": "Bakoe",
+    "tbilisi": "Tbilisi",
+    "newYork": "New York",
+    "rio": "Rio de Janeiro",
+    "giza": "Gizeh",
+    "safari": "Safari",
+    "sydney": "Sydney",
+    "southernAlps": "Zuidelijke Alpen"
   },
   "mode": {
     "label": "Modus",
@@ -447,5 +463,57 @@
     "failed": "Deze keer niet",
     "foundOf": "{found} van {total} gevonden",
     "legend": "Rood omcirkeld is wat je miste"
+  },
+  "worldTravel": {
+    "task": "Verschillen van over de hele wereld",
+    "rules": "Reis de wereld rond: zoek op elke plek de verschillen, ontdek een leuk weetje en krijg een stempel in je paspoort.",
+    "didYouKnow": "Wist je dat?",
+    "passport": "Paspoort",
+    "passportTitle": "Reispaspoort",
+    "stamps": "Stempels: {n} van {total}",
+    "newStamp": "Nieuwe stempel in je paspoort!",
+    "notVisited": "Nog niet bezocht",
+    "regions": {
+      "europe": "Europa",
+      "asia": "Azië",
+      "caucasus": "Kaukasus",
+      "americas": "Amerika",
+      "africa": "Afrika",
+      "oceania": "Oceanië"
+    },
+    "countries": {
+      "fr": "Frankrijk",
+      "it": "Italië",
+      "nl": "Nederland",
+      "jp": "Japan",
+      "in": "India",
+      "cn": "China",
+      "am": "Armenië",
+      "az": "Azerbeidzjan",
+      "ge": "Georgië",
+      "us": "VS",
+      "br": "Brazilië",
+      "eg": "Egypte",
+      "ke": "Kenia",
+      "au": "Australië",
+      "nz": "Nieuw-Zeeland"
+    },
+    "facts": {
+      "paris": "De Eiffeltoren werd gebouwd voor de Wereldtentoonstelling van 1889. Na 20 jaar zou hij worden afgebroken, maar hij bleef staan en werd het symbool van Parijs.",
+      "venice": "Venetië ligt verspreid over meer dan honderd eilandjes: in plaats van straten zijn er grachten, en in plaats van auto’s boten en gondels.",
+      "amsterdam": "Veel oude huizen in Amsterdam staan op houten palen die diep in de zachte, drassige grond zijn geslagen.",
+      "tokyo": "De Fuji is de hoogste berg van Japan. Op een heldere dag kun je hem vanuit Tokio zien.",
+      "agra": "De Taj Mahal werd gebouwd in opdracht van keizer Shah Jahan ter nagedachtenis aan zijn geliefde vrouw. De muren zijn bekleed met wit marmer.",
+      "greatWall": "Aan de Chinese Muur is eeuwenlang gebouwd. Het is niet één muur, maar een hele keten van muren en torens over bergen en vlaktes.",
+      "yerevan": "Jerevan wordt de ‘roze stad’ genoemd: veel gebouwen zijn gemaakt van tufsteen, een roze vulkanische steen. Op heldere dagen zie je hier de berg Ararat.",
+      "baku": "Bakoe ligt aan de Kaspische Zee, het grootste meer ter wereld. De stad ligt onder zeeniveau en is daarmee de laagst gelegen hoofdstad ter wereld.",
+      "tbilisi": "De naam Tbilisi komt van het Georgische woord ‘tbili’, dat ‘warm’ betekent: hier borrelen hete zwavelbronnen uit de grond.",
+      "newYork": "Het Vrijheidsbeeld was een geschenk van Frankrijk aan Amerika. Het ging in stukken over de oceaan en werd in 1886 onthuld.",
+      "rio": "Het beeld van Christus de Verlosser staat met gespreide armen op de top van de Corcovado, hoog boven Rio de Janeiro.",
+      "giza": "De Grote Piramide van Gizeh is het enige van de zeven wereldwonderen van de oudheid dat nog steeds bestaat.",
+      "safari": "De nek van een giraf is heel lang, maar heeft evenveel wervels als die van een mens: maar zeven.",
+      "sydney": "De daken van het Sydney Opera House lijken op bolle zeilen in de wind. Het theater werd in 1973 geopend.",
+      "southernAlps": "De kiwi is een vogel die niet kan vliegen. Hij is het symbool van Nieuw-Zeeland, en Nieuw-Zeelanders zelf worden vaak ook ‘Kiwi’s’ genoemd."
+    }
   }
 }

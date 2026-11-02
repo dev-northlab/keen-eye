@@ -2,14 +2,14 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { CHAPTERS, chapterLevels, chapterSize, MEMORY_CHAPTER, TIME_CHAPTER, type Chapter } from '../levels/chapters.ts'
+import { CHAPTERS, chapterLevels, chapterSize, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER, type Chapter } from '../levels/chapters.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
 // in time" (docs/time-differences-mode.md) and "memory" (docs/memory-mode.md) their level grids
-// (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER).
+// (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView).
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -31,6 +31,7 @@ function category(chapter: Chapter) {
 }
 const time = category(TIME_CHAPTER)
 const memory = category(MEMORY_CHAPTER)
+const travel = category(TRAVEL_CHAPTER)
 
 const timeTravel = {
   total: timeTravelLevels.length,
@@ -106,6 +107,23 @@ const timeTravel = {
           </button>
         </li>
         <li>
+          <button class="mode world" @click="router.push({ name: 'travel' })">
+            <!-- A big faint globe behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="6" />
+              <path d="M10 50h80M50 10q-24 40 0 80M50 10q24 40 0 80" fill="none" stroke="#fff" stroke-width="5" />
+            </svg>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="TRAVEL_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('worldTravel.task') }}</span>
+              <span class="name">{{ $t('chapters.travel') }}</span>
+              <span class="sub">
+                {{ $t('map.progress', { done: travel.done(), total: travel.total }) }} · ★ {{ travel.stars() }}
+              </span>
+            </span>
+          </button>
+        </li>
+        <li>
           <button class="mode travel" @click="router.push({ name: 'eras' })">
             <!-- A big faint clock face behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
@@ -165,7 +183,8 @@ main {
   gap: 16px;
 }
 
-/* A banner per game mode: "spot the difference" green, "in time" violet, "memory" pink, "find the odd one out" warm. */
+/* A banner per game mode: "spot the difference" green, "in time" violet, "memory" pink, "travel" sea blue,
+   "find the odd one out" warm. */
 .spot {
   --mode-from: #4cc38a;
   --mode-mid: #2f9e6e;
@@ -188,6 +207,14 @@ main {
   --mode-to: #b8235a;
   --mode-shadow: rgb(150 20 70 / 0.6);
   --mode-icon-bg: #ffe6ee;
+}
+
+.world {
+  --mode-from: #4cc9e0;
+  --mode-mid: #1f9bb5;
+  --mode-to: #17768a;
+  --mode-shadow: rgb(20 100 120 / 0.6);
+  --mode-icon-bg: #ddf4f8;
 }
 
 .travel {

@@ -169,7 +169,8 @@
     "sea": "Mar",
     "space": "Espacio",
     "time": "El tiempo",
-    "memory": "Memoria"
+    "memory": "Memoria",
+    "travel": "Viaje por el mundo"
   },
   "levelTitles": {
     "barnyard": "Corral",
@@ -381,7 +382,22 @@
     "memoryAirfield": "Aeródromo",
     "memoryWorkshop": "Taller",
     "memoryOasis": "Oasis del desierto",
-    "memoryHoliday": "Noche de fiesta"
+    "memoryHoliday": "Noche de fiesta",
+    "paris": "París",
+    "venice": "Venecia",
+    "amsterdam": "Ámsterdam",
+    "tokyo": "Tokio",
+    "agra": "Agra",
+    "greatWall": "Gran Muralla China",
+    "yerevan": "Ereván",
+    "baku": "Bakú",
+    "tbilisi": "Tiflis",
+    "newYork": "Nueva York",
+    "rio": "Río de Janeiro",
+    "giza": "Guiza",
+    "safari": "Safari",
+    "sydney": "Sídney",
+    "southernAlps": "Alpes del Sur"
   },
   "mode": {
     "label": "Modo",
@@ -447,5 +463,57 @@
     "failed": "Esta vez no",
     "foundOf": "Encontradas {found} de {total}",
     "legend": "En rojo, lo que se te escapó"
+  },
+  "worldTravel": {
+    "task": "Diferencias de todo el mundo",
+    "rules": "Viaja por el mundo: encuentra las diferencias en cada lugar, descubre un dato curioso y consigue un sello en tu pasaporte.",
+    "didYouKnow": "¿Sabías que…?",
+    "passport": "Pasaporte",
+    "passportTitle": "Pasaporte de viajero",
+    "stamps": "Sellos: {n} de {total}",
+    "newStamp": "¡Nuevo sello en tu pasaporte!",
+    "notVisited": "Aún no visitado",
+    "regions": {
+      "europe": "Europa",
+      "asia": "Asia",
+      "caucasus": "Cáucaso",
+      "americas": "América",
+      "africa": "África",
+      "oceania": "Oceanía"
+    },
+    "countries": {
+      "fr": "Francia",
+      "it": "Italia",
+      "nl": "Países Bajos",
+      "jp": "Japón",
+      "in": "India",
+      "cn": "China",
+      "am": "Armenia",
+      "az": "Azerbaiyán",
+      "ge": "Georgia",
+      "us": "EE. UU.",
+      "br": "Brasil",
+      "eg": "Egipto",
+      "ke": "Kenia",
+      "au": "Australia",
+      "nz": "Nueva Zelanda"
+    },
+    "facts": {
+      "paris": "La torre Eiffel se construyó para la Exposición Universal de 1889. Iban a desmontarla a los 20 años, pero se quedó y hoy es el símbolo de París.",
+      "venice": "Venecia se extiende sobre más de cien islas pequeñas: en lugar de calles tiene canales, y en lugar de coches, barcas y góndolas.",
+      "amsterdam": "Muchas casas antiguas de Ámsterdam se apoyan sobre pilotes de madera clavados muy hondo en el suelo blando y pantanoso.",
+      "tokyo": "El monte Fuji es la montaña más alta de Japón. En un día despejado se ve desde Tokio.",
+      "agra": "El Taj Mahal lo mandó construir el emperador Shah Jahan en memoria de su amada esposa. Sus muros están revestidos de mármol blanco.",
+      "greatWall": "La Gran Muralla China se construyó y amplió durante muchos siglos. No es una sola muralla, sino toda una cadena de muros y torres que cruza montañas y llanuras.",
+      "yerevan": "A Ereván la llaman la «ciudad rosa»: muchos de sus edificios son de toba, una piedra volcánica rosada. En días despejados se ve desde aquí el monte Ararat.",
+      "baku": "Bakú está a orillas del mar Caspio, el lago más grande del planeta. La ciudad se encuentra por debajo del nivel del mar: es la capital más baja del mundo.",
+      "tbilisi": "El nombre de Tiflis (Tbilisi) viene de la palabra georgiana «tbili», que significa «cálido»: aquí brotan de la tierra manantiales calientes de azufre.",
+      "newYork": "La Estatua de la Libertad fue un regalo de Francia a Estados Unidos. Cruzó el océano en piezas y se inauguró en 1886.",
+      "rio": "La estatua del Cristo Redentor, con los brazos abiertos, se alza en la cima del monte Corcovado, muy por encima de Río de Janeiro.",
+      "giza": "La Gran Pirámide de Guiza es la única de las siete maravillas del mundo antiguo que sigue en pie.",
+      "safari": "El cuello de la jirafa es muy largo, pero tiene las mismas vértebras que el de una persona: solo siete.",
+      "sydney": "Los techos de la Ópera de Sídney parecen velas hinchadas por el viento. Se inauguró en 1973.",
+      "southernAlps": "El kiwi es un ave que no puede volar. Es el símbolo de Nueva Zelanda, y a los propios neozelandeses se les suele llamar «kiwis»."
+    }
   }
 }
