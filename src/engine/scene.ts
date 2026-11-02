@@ -4,7 +4,8 @@ import { computeStars, hitTest, LOCK_MS, MissGuard } from './rules.ts'
 import type { Level, LevelResult } from './types.ts'
 
 export interface SceneHandlers {
-  onFound?: (found: number, total: number) => void
+  /** `index`: the difference just found (Level.differences). */
+  onFound?: (found: number, total: number, index: number) => void
   onMiss?: (mistakes: number) => void
   /** "Time" levels: a miss landed on natural change `Level.traps[index]` (reported once per trap). */
   onTrap?: (index: number) => void
@@ -130,7 +131,7 @@ export class GameScene {
     this.foundCount++
     this.guard.hit()
     if (this.board.markFound(hit)) this.handlers.onHint?.(false)
-    this.handlers.onFound?.(this.foundCount, this.found.length)
+    this.handlers.onFound?.(this.foundCount, this.found.length, hit)
     if (this.foundCount === this.found.length) this.complete()
   }
 

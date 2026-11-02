@@ -7,11 +7,12 @@ import { loadJson, remove, saveJson } from '../services/storage.ts'
 const KEY = 'purchase'
 /** Levels 1–15 are free; the rest need the one-time purchase (spec, section 10). */
 export const FREE_LEVELS = 15
-/** The first levels of each category ("time", "memory") are free as well. */
+/** The first levels of each category ("time", "memory") are free as well; a category may set its own count. */
 export const FREE_CATEGORY_LEVELS = 3
 
 export const isFreeLevel = (id: number) =>
-  id <= FREE_LEVELS || CATEGORIES.some(({ ranges: [[first]] }) => id >= first && id < first + FREE_CATEGORY_LEVELS)
+  id <= FREE_LEVELS ||
+  CATEGORIES.some(({ ranges: [[first]], freeLevels = FREE_CATEGORY_LEVELS }) => id >= first && id < first + freeLevels)
 
 /**
  * The full-game purchase, cached locally so the game works offline. The store

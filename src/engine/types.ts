@@ -81,6 +81,14 @@ export interface TravelPlace {
   lon: number
 }
 
+/** "Detective" levels (docs/detective-mode.md): the case the scene belongs to and the clue each difference reveals. */
+export interface DetectiveScene {
+  /** Case id (levels/detective/cases.ts; i18n detective.cases.<case>). */
+  case: string
+  /** Clue key of each difference, in the order of `differences` (i18n detective.clueTexts.<key>). */
+  clues: string[]
+}
+
 export interface Level {
   id: number
   /** Chapter theme key (i18n: chapters.<chapter>). */
@@ -112,6 +120,8 @@ export interface Level {
   memory?: MemoryRules
   /** "Travel" levels only: the place, shown on the world map and with its fact after the level. */
   travel?: TravelPlace
+  /** "Detective" levels only: a scene of a case, each difference a clue. */
+  detective?: DetectiveScene
 }
 
 export type Stars = 1 | 2 | 3

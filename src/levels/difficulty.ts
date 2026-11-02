@@ -67,6 +67,11 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 416, to: 420, differences: [8, 8], motion: [1, 2], minRadius: 18, minGap: 56, kinds: HARD },
   { from: 421, to: 425, differences: [9, 9], motion: [1, 2], minRadius: 18, minGap: 56, kinds: HARD },
   { from: 426, to: 432, differences: [10, 10], motion: [1, 2], minRadius: 18, minGap: 56, kinds: HARD },
+  // "Detective" category (docs/detective-mode.md): a case of 5 scenes each, 5 → 6 → 7 clues per scene.
+  // Clues are evidence left behind (prints, an open window, a missing thing), so none of them move.
+  { from: 501, to: 505, differences: [5, 5], motion: [0, 0], minRadius: 24, kinds: EASY },
+  { from: 506, to: 510, differences: [6, 6], motion: [0, 0], minRadius: 22, minGap: 56, kinds: [...EASY, 'shift'] },
+  { from: 511, to: 515, differences: [7, 7], motion: [0, 0], minRadius: 20, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
 ]
 
 /**
