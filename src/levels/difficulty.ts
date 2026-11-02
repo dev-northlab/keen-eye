@@ -63,6 +63,10 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 401, to: 405, differences: [5, 5], motion: [0, 0], minRadius: 24, kinds: EASY },
   { from: 406, to: 410, differences: [6, 6], motion: [0, 1], minRadius: 22, kinds: MEDIUM },
   { from: 411, to: 415, differences: [7, 7], motion: [1, 1], minRadius: 20, minGap: 56, kinds: HARD },
+  // 416–430: busier cities, 8 → 9 → 10 differences, smaller ones and up to two in motion.
+  { from: 416, to: 420, differences: [8, 8], motion: [1, 2], minRadius: 18, minGap: 56, kinds: HARD },
+  { from: 421, to: 425, differences: [9, 9], motion: [1, 2], minRadius: 18, minGap: 56, kinds: HARD },
+  { from: 426, to: 432, differences: [10, 10], motion: [1, 2], minRadius: 18, minGap: 56, kinds: HARD },
 ]
 
 /**

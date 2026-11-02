@@ -146,7 +146,7 @@ export const MEMORY_CHAPTER: Chapter = {
  */
 export const TRAVEL_CHAPTER: Chapter = {
   id: 'travel',
-  ranges: [[401, 415]],
+  ranges: [[401, 432]],
   color: '#1f9bb5',
   soft: '#ddf4f8',
   backdrop: 'meadow',
