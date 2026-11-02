@@ -71,6 +71,11 @@
     "player": "Player {n}",
     "name": "Player {n} name",
     "color": "Player {n} color",
+    "avatar": "Player {n} character",
+    "avatars": {
+      "boy": "Boy",
+      "girl": "Girl"
+    },
     "colors": {
       "blue": "Blue",
       "red": "Red",
@@ -107,7 +112,8 @@
     "timeUp": "Time's up",
     "together": "Found together: {found} of {total}",
     "rematch": "Rematch",
-    "otherLevel": "Another level"
+    "otherLevel": "Another level",
+    "rotate": "Turn the device sideways"
   },
   "pause": {
     "title": "Paused",

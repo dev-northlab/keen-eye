@@ -3,10 +3,12 @@ import { onBeforeUnmount, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ModalDialog from '../components/ModalDialog.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
+import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SeasonSwitch from '../components/SeasonSwitch.vue'
 import ThemeSwitch from '../components/ThemeSwitch.vue'
 import { pushBackHandler } from '../services/backButton.ts'
+import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 const router = useRouter()
@@ -38,23 +40,51 @@ function play() {
       <ThemeSwitch />
     </div>
     <h1>Keen Eye</h1>
-    <p class="stars">★ {{ $t('home.stars', { n: progress.totalStars }) }}</p>
+    <p class="stars">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.8-4.6 4.4 1.2 6.3L12 17l-5.7 3.1 1.2-6.3-4.6-4.4 6.3-.8Z" fill="#ffc933" stroke="#e8a400" stroke-width="1.4" stroke-linejoin="round" /></svg>
+      {{ $t('home.stars', { n: progress.totalStars }) }}
+    </p>
     <button class="play" @click="play">
-      {{ $t('home.play') }}
-      <small>
-        {{
-          progress.continueLevelId === undefined
-            ? $t('home.allDone')
-            : progress.needsPurchase(progress.continueLevelId)
-              ? $t('home.needsPurchase', { n: progress.continueLevelId })
-              : $t('home.continueLevel', { n: progress.continueLevelId })
-        }}
-      </small>
+      <span class="play-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /></svg>
+      </span>
+      <span class="text">
+        {{ $t('home.play') }}
+        <small>
+          {{
+            progress.continueLevelId === undefined
+              ? $t('home.allDone')
+              : progress.needsPurchase(progress.continueLevelId)
+                ? $t('home.needsPurchase', { n: progress.continueLevelId })
+                : $t('home.continueLevel', { n: progress.continueLevelId })
+          }}
+        </small>
+      </span>
     </button>
     <ModeSwitch class="mode" />
-    <button class="secondary" @click="router.push({ name: 'duo' })">{{ $t('home.duo') }}</button>
-    <button class="secondary" @click="router.push({ name: 'levels' })">{{ $t('home.levels') }}</button>
-    <button class="secondary" @click="router.push({ name: 'settings' })">{{ $t('home.settings') }}</button>
+    <!-- Menu entries: a raised pill with an icon on the left and a chevron on the right. -->
+    <button class="entry" @click="router.push({ name: 'duo' })">
+      <span class="pair" aria-hidden="true">
+        <PlayerAvatar avatar="boy" :color="PLAYER_COLORS[0].value" />
+        <PlayerAvatar avatar="girl" :color="PLAYER_COLORS[1].value" />
+      </span>
+      <span class="label">{{ $t('home.duo') }}</span>
+      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
+    <button class="entry" @click="router.push({ name: 'levels' })">
+      <span class="badge levels" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2" /></svg>
+      </span>
+      <span class="label">{{ $t('home.levels') }}</span>
+      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
+    <button class="entry" @click="router.push({ name: 'settings' })">
+      <span class="badge settings" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M10.3 2.5h3.4l.5 2.6 1.9.8 2.2-1.5 2.4 2.4-1.5 2.2.8 1.9 2.6.5v3.4l-2.6.5-.8 1.9 1.5 2.2-2.4 2.4-2.2-1.5-1.9.8-.5 2.6h-3.4l-.5-2.6-1.9-.8-2.2 1.5-2.4-2.4 1.5-2.2-.8-1.9-2.6-.5v-3.4l2.6-.5.8-1.9-1.5-2.2 2.4-2.4 2.2 1.5 1.9-.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" /><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+      </span>
+      <span class="label">{{ $t('home.settings') }}</span>
+      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
     <label v-if="isDev" class="dev">
       <input v-model="progress.devOpenAll" type="checkbox" />
       {{ $t('home.devOpenAll') }}
@@ -108,12 +138,26 @@ function play() {
 h1 {
   font-size: 44px;
   margin: 0;
+  /* A soft halo keeps the title readable over the sky and clouds. */
+  text-shadow: 0 2px 0 var(--glass), 0 0 18px var(--glass);
 }
 
 .stars {
-  margin: 0 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 5px 14px 5px 8px;
+  border-radius: 999px;
+  background: var(--gold-bg);
   color: var(--gold-fg);
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgb(35 48 43 / 0.12);
+}
+
+.stars svg {
+  width: 22px;
+  height: 22px;
 }
 
 button,
@@ -202,16 +246,131 @@ button {
 }
 
 .play {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px 14px 14px;
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: left;
+  box-shadow:
+    0 8px 18px rgb(35 48 43 / 0.2),
+    inset 0 -4px 0 rgb(0 0 0 / 0.12);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.play-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--accent);
+}
+
+.play-icon svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 3px;
+}
+
+.play .text {
   display: grid;
   gap: 2px;
-  padding: 16px 20px;
-  font-size: 22px;
-  font-weight: 600;
 }
 
 .play small {
   font-size: 14px;
   font-weight: 400;
-  opacity: 0.85;
+  opacity: 0.9;
+}
+
+.play:active,
+.entry:active {
+  transform: scale(0.97);
+}
+
+/* Menu entries, in the style of the back button and the level toolbar. */
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 18px;
+  background: var(--panel);
+  color: var(--fg);
+  font-weight: 600;
+  text-align: left;
+  box-shadow:
+    0 6px 16px rgb(35 48 43 / 0.14),
+    inset 0 0 0 2px var(--soft);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.entry:hover {
+  box-shadow:
+    0 8px 20px rgb(35 48 43 / 0.18),
+    inset 0 0 0 2px var(--accent);
+}
+
+.entry .label {
+  flex: 1;
+}
+
+.badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.badge svg {
+  width: 24px;
+  height: 24px;
+}
+
+.badge.levels {
+  background: var(--hint);
+}
+
+.badge.settings {
+  background: var(--muted);
+}
+
+/* Two players: the two characters, overlapping. */
+.pair {
+  flex: none;
+  display: flex;
+  width: 42px;
+}
+
+.pair svg {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--panel);
+}
+
+.pair svg + svg {
+  margin: 10px 0 0 -10px;
+}
+
+.chevron {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--faint);
 }
 </style>

@@ -12,7 +12,7 @@ export interface MatchHandlers {
   onTurn?: (playerId: PlayerId) => void
   /** Called when the whole number of elapsed seconds changes. */
   onTick?: (seconds: number) => void
-  /** Zoom of board 0 (shared boards only; face-to-face boards reset with a double tap). */
+  /** Zoom of the board (hot-seat and co-op; duels have no zoom). */
   onZoom?: (scale: number) => void
   /** A hint is shown (true) or its difference was found (false) on board 0 or 1. */
   onHint?: (board: number, active: boolean) => void
@@ -43,15 +43,15 @@ export class MatchScene {
     this.match = match
     this.handlers = handlers
     this.animationSpeed = options.animationSpeed ?? 1
-    const faceToFace = containers.length > 1
-    // A shared duel board has no zoom: one player must not zoom the other's view, and two fingers are two taps.
-    const zoom = faceToFace || match.rules.mode !== 'duel'
+    // Duels have no zoom: one player must not zoom the other's view, two fingers are two taps, and a
+    // tap counts when the finger touches, so the first to touch a difference gets it.
+    const zoom = match.rules.mode !== 'duel'
     this.boards = containers.map(
       (container, i) =>
-        new Board(container, level, (hit, tap) => this.tap(hit, tap, i), {
+        new Board(container, level, (_hit, tap) => this.tap(tap, i), {
           zoom,
           flipped: i === 1,
-          onZoom: i === 0 && !faceToFace ? (s) => handlers.onZoom?.(s) : undefined,
+          onZoom: (s) => handlers.onZoom?.(s),
         }),
     )
     this.loop = new FrameLoop(this.frame)
@@ -110,16 +110,20 @@ export class MatchScene {
     for (const b of this.boards) b.pose(this.animTime, now)
   }
 
-  private tap(hit: number, tap: Tap, board: number): void {
+  /** The board's own hit test only times misses (double tap); the match decides. */
+  private tap(tap: Tap, board: number): void {
     if (this.loop.paused) return
     const { mode, currentTurn } = this.match.state
     const playerId: PlayerId =
       this.boards.length > 1 ? ((board + 1) as PlayerId) : mode === 'hotseat' ? currentTurn : ((tap.picture + 1) as PlayerId)
-    this.apply(this.match.dispatch({ type: 'tap', playerId, diff: hit, t: this.seconds }), { board, tap })
+    // Match time of the tap itself: a miss arrives after the double tap wait.
+    const t = Math.max(0, this.seconds - (performance.now() - tap.time) / 1000)
+    const { picture, x, y } = tap
+    this.apply(this.match.dispatch({ type: 'tap', playerId, picture, x, y, t }))
   }
 
-  /** Shows the effects of an event (`at`: the tap that caused it); returns their number. */
-  private apply(effects: MatchEffect[], at?: { board: number; tap: Tap }): number {
+  /** Shows the effects of an event; returns their number. */
+  private apply(effects: MatchEffect[]): number {
     const state = this.match.state
     for (const e of effects) {
       switch (e.type) {
@@ -130,7 +134,7 @@ export class MatchScene {
           break
         }
         case 'miss':
-          if (at) this.boards[at.board].markMiss(at.tap)
+          this.boards[this.boardOf(e.playerId)].markMiss(e)
           this.handlers.onMiss?.(e.playerId)
           break
         case 'hint': {

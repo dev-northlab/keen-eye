@@ -24,6 +24,10 @@ export const PLAYER_COLORS = [
 ] as const
 const isColor = (v: unknown): v is string => PLAYER_COLORS.some((c) => c.value === v)
 
+/** Player characters (components/PlayerAvatar.vue); i18n `duo.avatars.<id>`. */
+export const AVATARS = ['boy', 'girl'] as const
+export type Avatar = (typeof AVATARS)[number]
+
 /** Duel and co-op time limit, minutes (null = none, the default: like the calm mode). */
 export const TIME_LIMITS = [null, 2, 3, 5] as const
 /** Hot-seat turn length, seconds (null = until a miss). */
@@ -32,14 +36,11 @@ export const TURN_LENGTHS = [15, 30, 60, null] as const
 export const DUEL_HINTS = [0, 1] as const
 const COOP_HINTS = 3
 
-/** Levels with this many differences last longer and suit two players best. */
-const MULTIPLAYER_MIN_DIFFERENCES = 7
-export const isMultiplayerReady = (level: Level) => level.differences.length >= MULTIPLAYER_MIN_DIFFERENCES
-
 export interface DuoPlayer {
   /** Empty = the default "Player N" in the current language. */
   name: string
   color: string
+  avatar: Avatar
 }
 
 export interface DuoSetup {
@@ -65,8 +66,8 @@ export interface MatchRecord {
 const defaultSetup = (): DuoSetup => ({
   mode: 'duel',
   players: [
-    { name: '', color: PLAYER_COLORS[0].value },
-    { name: '', color: PLAYER_COLORS[1].value },
+    { name: '', color: PLAYER_COLORS[0].value, avatar: 'boy' },
+    { name: '', color: PLAYER_COLORS[1].value, avatar: 'girl' },
   ],
   faceToFace: false,
   duelHints: 0,
@@ -87,6 +88,7 @@ function parseSetup(raw: unknown): DuoSetup {
     return {
       name: typeof p.name === 'string' ? p.name.slice(0, NAME_MAX) : '',
       color: isColor(p.color) ? p.color : def.color,
+      avatar: pick(AVATARS, p.avatar, def.avatar),
     }
   }) as DuoSetup['players']
   if (parsed[0].color === parsed[1].color) parsed[1].color = PLAYER_COLORS.find((c) => c.value !== parsed[0].color)!.value
@@ -160,10 +162,10 @@ export const useDuoStore = defineStore('duo', () => {
   /** Two players may play every free level and, after the purchase, every level. */
   const isAvailable = (level: Level) => !useProgressStore().needsPurchase(level.id)
 
-  /** A random available level, preferring the ones with more differences. */
+  /** A random available level, preferring the multiplayer-ready ones. */
   function randomLevel(): Level {
     const available = levels.filter(isAvailable)
-    const ready = available.filter(isMultiplayerReady)
+    const ready = available.filter((l) => l.multiplayerReady)
     const pool = ready.length ? ready : available
     return pool[Math.floor(Math.random() * pool.length)]
   }

@@ -1,6 +1,10 @@
 // Match engine of the two-player modes: rules and state only, no DOM and no clock of its own.
 // Input comes as events (from this device now, from the network later); the answer is a list
-// of effects for the view (marks, sounds, the hand-over screen).
+// of effects for the view (marks, sounds, the hand-over screen). Taps are hit-tested here,
+// against the zones of the tapped picture at the tap's time, so the engine alone decides.
+import { zoneCenter } from './animation.ts'
+import { hitTest } from './rules.ts'
+import type { Animation, Level } from './types.ts'
 
 export const MATCH_MODES = ['duel', 'hotseat', 'coop'] as const
 /** duel: both at once, first to find scores; hotseat: by turns; coop: together, one shared score. */
@@ -55,15 +59,15 @@ export interface MatchState {
 
 /** `t` is the match time in seconds (the scene's clock; it stops while paused). */
 export type MatchEvent =
-  /** A tap resolved by the view against the zones of the tapped picture: zone index, or -1 for a miss. */
-  | { type: 'tap'; playerId: PlayerId; diff: number; t: number }
+  /** A tap on picture 0 (A) or 1 (B) at scene point (x, y). */
+  | { type: 'tap'; playerId: PlayerId; picture: 0 | 1; x: number; y: number; t: number }
   | { type: 'hint'; playerId: PlayerId; t: number }
   /** Time passes: ends locks, turns and the time limit. */
   | { type: 'tick'; t: number }
 
 export type MatchEffect =
   | { type: 'found'; diff: number; playerId: PlayerId }
-  | { type: 'miss'; playerId: PlayerId }
+  | { type: 'miss'; playerId: PlayerId; picture: 0 | 1; x: number; y: number }
   | { type: 'lock'; playerId: PlayerId; locked: boolean }
   /** A hint was spent: the view highlights an unfound difference. */
   | { type: 'hint'; playerId: PlayerId }
@@ -71,12 +75,24 @@ export type MatchEffect =
   | { type: 'turn'; playerId: PlayerId }
   | { type: 'finished' }
 
+export interface MatchOptions {
+  /** Animation time per second of match time (the scene's animation speed); places the moving zones. */
+  animationSpeed?: number
+}
+
 export class Match {
   readonly rules: MatchRules
+  private readonly level: Level
+  private readonly animationSpeed: number
+  /** Animations by id of pictures A and B: moving zones follow them. */
+  private readonly animations: Map<string, Animation>[]
   private readonly s: MatchState
 
-  constructor(levelId: number, total: number, players: { name: string; color: string }[], rules: MatchRules) {
+  constructor(level: Level, players: { name: string; color: string }[], rules: MatchRules, options: MatchOptions = {}) {
     this.rules = rules
+    this.level = level
+    this.animationSpeed = options.animationSpeed ?? 1
+    this.animations = ([0, 1] as const).map((v) => new Map((level.build?.(v).animations ?? []).map((a) => [a.id, a])))
     const player = (id: PlayerId): MatchPlayer => ({
       id,
       ...players[id - 1],
@@ -87,8 +103,8 @@ export class Match {
     })
     this.s = {
       mode: rules.mode,
-      levelId,
-      total,
+      levelId: level.id,
+      total: level.differences.length,
       players: [player(1), player(2)],
       found: [],
       currentTurn: 1,
@@ -109,7 +125,7 @@ export class Match {
     if (this.s.status !== 'playing') return []
     switch (e.type) {
       case 'tap':
-        return this.tap(e.playerId, e.diff, e.t)
+        return this.tap(e)
       case 'hint':
         return this.hint(e.playerId)
       case 'tick':
@@ -126,10 +142,12 @@ export class Match {
     return this.s.mode === 'coop' ? this.s.players : [this.player(id)]
   }
 
-  private tap(id: PlayerId, diff: number, t: number): MatchEffect[] {
+  private tap({ playerId: id, picture, x, y, t }: Extract<MatchEvent, { type: 'tap' }>): MatchEffect[] {
     const p = this.player(id)
     if (this.s.mode === 'hotseat' && id !== this.s.currentTurn) return []
     if (t < p.lockedUntil) return []
+    const zones = this.level.differences.map((d) => ({ ...zoneCenter(d, this.animations[picture], t * this.animationSpeed), r: d.r }))
+    const diff = hitTest(zones, x, y)
     if (diff >= 0) {
       // Already found (by anyone): neither a point nor a miss.
       if (this.isFound(diff)) return []
@@ -140,8 +158,9 @@ export class Match {
       return effects
     }
     p.misses++
-    if (this.s.mode === 'hotseat') return [{ type: 'miss', playerId: id }, this.passTurn(t)]
-    const effects: MatchEffect[] = [{ type: 'miss', playerId: id }]
+    const miss: MatchEffect = { type: 'miss', playerId: id, picture, x, y }
+    if (this.s.mode === 'hotseat') return [miss, this.passTurn(t)]
+    const effects: MatchEffect[] = [miss]
     for (const q of this.affected(id)) {
       q.lockedUntil = t + MISS_LOCK_SEC
       effects.push({ type: 'lock', playerId: q.id, locked: true })

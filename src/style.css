@@ -22,6 +22,9 @@
   --danger-bg: #fde8e8;
   --danger-fg: #b42318;
   --ok-bg: #e3f4ea;
+  /* Icon circles of the toolbar buttons: hint, development tools. */
+  --hint: #f2a900;
+  --danger: #e5484d;
   --star-empty: #d6d6d6;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--fg);
@@ -82,6 +85,8 @@ button.secondary {
   --danger-bg: #4a2226;
   --danger-fg: #ff9e96;
   --ok-bg: #1d3a2d;
+  --hint: #d99a0b;
+  --danger: #d6454a;
   --star-empty: #46546e;
 }
 

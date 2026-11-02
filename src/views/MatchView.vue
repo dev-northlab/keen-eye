@@ -3,11 +3,14 @@ import { computed, onBeforeUnmount, onMounted, ref, toRaw } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FoundSlots from '../components/FoundSlots.vue'
+import LockBadge from '../components/LockBadge.vue'
 import MatchResultDialog from '../components/MatchResultDialog.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import PauseDialog from '../components/PauseDialog.vue'
+import PlayerAvatar from '../components/PlayerAvatar.vue'
 import PlayerChip from '../components/PlayerChip.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
+import ToolButton from '../components/ToolButton.vue'
 import { Match, winnerOf, type MatchState, type PlayerId } from '../engine/match.ts'
 import { MatchScene } from '../engine/match-scene.ts'
 import { levelById } from '../levels/index.ts'
@@ -30,8 +33,9 @@ const level = levelById(props.id)!
 const setup = structuredClone(toRaw(duo.setup))
 const rules = duo.rules
 const faceToFace = rules.mode === 'duel' && setup.faceToFace
-/** Zoom is off on a shared duel board (see MatchScene). */
-const zoomable = faceToFace || rules.mode !== 'duel'
+/** Duels have no zoom (see MatchScene). */
+const zoomable = rules.mode !== 'duel'
+const still = computed(() => settings.effectiveReduceMotion)
 const otherLevel = { name: 'duo', query: { step: 'level' } }
 
 /** The shared board, or player 1's face to face. */
@@ -75,7 +79,10 @@ function start() {
   hintShown.value = [false, false]
   handOver.value = null
   result.value = null
-  const match = new Match(level.id, level.differences.length, setup.players.map((p, i) => ({ name: playerName(i), color: p.color })), rules)
+  // Reduce motion slows the scene down; the match places moving zones on the same clock.
+  const animationSpeed = settings.effectiveReduceMotion ? 0.5 : 1
+  const players = setup.players.map((p, i) => ({ name: playerName(i), color: p.color }))
+  const match = new Match(level, players, rules, { animationSpeed })
   state.value = structuredClone(match.state)
   playMusic('level')
   scene = new MatchScene(
@@ -108,7 +115,7 @@ function start() {
         })
       },
     },
-    { animationSpeed: settings.effectiveReduceMotion ? 0.5 : 1 },
+    { animationSpeed },
   )
   // Hot-seat starts with the first player taking the phone.
   if (rules.mode === 'hotseat') {
@@ -174,10 +181,13 @@ onBeforeUnmount(() => {
       <!-- Player 2 sits at the far side: their bar and pictures are turned to them. -->
       <section class="half far" :class="{ locked: isLocked(2) }">
         <div v-if="state" class="bar turned">
-          <PlayerChip :player="player(2)" :locked="isLocked(2)" :hint="rules.hints > 0" :hint-disabled="!canHint(2)" @hint="hint(2)" />
+          <PlayerChip :player="player(2)" :avatar="setup.players[1].avatar" :locked="isLocked(2)" :still="still" :hint="rules.hints > 0" :hint-disabled="!canHint(2)" @hint="hint(2)" />
         </div>
-        <!-- Filled by the engine; Vue must not render children here. -->
-        <div ref="far" class="pictures flipped" />
+        <div class="area">
+          <!-- Filled by the engine; Vue must not render children here. -->
+          <div ref="far" class="pictures flipped" />
+          <LockBadge v-if="isLocked(2)" :still="still" />
+        </div>
       </section>
       <div class="middle">
         <FoundSlots :total="level.differences.length" :found="state?.found.length ?? 0" :colors="foundColors" :still="settings.effectiveReduceMotion" />
@@ -187,9 +197,12 @@ onBeforeUnmount(() => {
         </button>
       </div>
       <section class="half near" :class="{ locked: isLocked(1) }">
-        <div ref="near" class="pictures" />
+        <div class="area">
+          <div ref="near" class="pictures" />
+          <LockBadge v-if="isLocked(1)" :still="still" />
+        </div>
         <div v-if="state" class="bar">
-          <PlayerChip :player="player(1)" :locked="isLocked(1)" :hint="rules.hints > 0" :hint-disabled="!canHint(1)" @hint="hint(1)" />
+          <PlayerChip :player="player(1)" :avatar="setup.players[0].avatar" :locked="isLocked(1)" :still="still" :hint="rules.hints > 0" :hint-disabled="!canHint(1)" @hint="hint(1)" />
         </div>
       </section>
     </template>
@@ -198,7 +211,9 @@ onBeforeUnmount(() => {
       <header v-if="state" class="hud">
         <PlayerChip
           :player="player(1)"
+          :avatar="setup.players[0].avatar"
           :locked="isLocked(1)"
+          :still="still"
           :active="rules.mode === 'hotseat' && state.currentTurn === 1"
           :hint="rules.mode === 'duel' && rules.hints > 0"
           :hint-disabled="!canHint(1)"
@@ -210,7 +225,9 @@ onBeforeUnmount(() => {
         </span>
         <PlayerChip
           :player="player(2)"
+          :avatar="setup.players[1].avatar"
           :locked="isLocked(2)"
+          :still="still"
           :active="rules.mode === 'hotseat' && state.currentTurn === 2"
           :hint="rules.mode === 'duel' && rules.hints > 0"
           :hint-disabled="!canHint(2)"
@@ -221,26 +238,52 @@ onBeforeUnmount(() => {
       <div class="board" :class="{ 'lock-1': isLocked(1), 'lock-2': isLocked(2) }">
         <!-- Filled by the engine; Vue must not render children here. -->
         <div ref="near" class="pictures" />
-        <div v-if="rules.mode === 'coop' && isLocked(1)" class="lock-note">{{ $t('level.locked') }}</div>
+        <template v-if="rules.mode === 'duel'">
+          <LockBadge v-if="isLocked(1)" class="side-1" :still="still" />
+          <LockBadge v-if="isLocked(2)" class="side-2" :still="still" />
+          <p class="rotate-note">{{ $t('duo.rotate') }}</p>
+        </template>
+        <LockBadge v-else-if="isLocked(1)" :label="$t('level.locked')" :still="still" />
+        <!-- Hot-seat: the character of the player on turn, under their chip; keyed so it jumps in every turn. -->
+        <PlayerAvatar
+          v-if="rules.mode === 'hotseat' && state"
+          :key="state.currentTurn"
+          class="turn-badge"
+          :class="[`at-${state.currentTurn}`, { still }]"
+          :style="{ '--player': player(state.currentTurn).color }"
+          :avatar="setup.players[state.currentTurn - 1].avatar"
+          :color="player(state.currentTurn).color"
+        />
       </div>
 
       <footer class="toolbar">
-        <button v-if="rules.mode === 'coop'" class="secondary" :disabled="!state || !canHint(1)" @click="hint(1)">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          {{ $t('level.hint') }} {{ state?.players[0].hints }}
-        </button>
-        <button v-if="zoomable" class="secondary" :disabled="zoom === 1" @click="scene?.resetZoom()">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          {{ $t('level.resetZoom') }}
-        </button>
-        <button class="secondary" :disabled="!!result" @click="pause">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
-          {{ $t('level.pause') }}
-        </button>
+        <ToolButton
+          v-if="rules.mode === 'coop'"
+          tone="hint"
+          :label="`${$t('level.hint')} ${state?.players[0].hints ?? ''}`"
+          :disabled="!state || !canHint(1)"
+          @click="hint(1)"
+        >
+          <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </ToolButton>
+        <ToolButton v-if="zoomable" :label="$t('level.resetZoom')" :disabled="zoom === 1" @click="scene?.resetZoom()">
+          <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </ToolButton>
+        <ToolButton :label="$t('level.pause')" :disabled="!!result" @click="pause">
+          <svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+        </ToolButton>
       </footer>
     </template>
 
     <ModalDialog v-if="handOver && !result" :title="$t('duo.turnOf', { name: player(handOver.playerId).name })">
+      <!-- The dialog mounts anew every turn, so the character jumps in each time. -->
+      <PlayerAvatar
+        class="turn-avatar"
+        :class="{ still }"
+        :style="{ '--player': player(handOver.playerId).color }"
+        :avatar="setup.players[handOver.playerId - 1].avatar"
+        :color="player(handOver.playerId).color"
+      />
       <p v-if="!handOver.first" class="hand-over">{{ $t('duo.handOver') }}</p>
       <button class="ready" :style="{ background: player(handOver.playerId).color }" @click="ready">{{ $t('duo.ready') }}</button>
     </ModalDialog>
@@ -330,9 +373,37 @@ onBeforeUnmount(() => {
   padding: 6px;
 }
 
+/* A duel is always side by side: the left half is player 1's, the right half player 2's. */
 @media (orientation: landscape) {
   .pictures {
     flex-direction: row;
+  }
+}
+
+.duel .pictures {
+  flex-direction: row;
+}
+
+.rotate-note {
+  display: none;
+}
+
+/* Portrait phone: the side-by-side pictures are small, ask to turn the device. */
+@media (orientation: portrait) {
+  .rotate-note {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    margin: 0;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
   }
 }
 
@@ -363,15 +434,13 @@ onBeforeUnmount(() => {
   opacity: 0.5;
 }
 
-.lock-note {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 22px;
-  font-weight: 600;
-  pointer-events: none;
-  z-index: 1;
+/* Shared duel board: each lock over its own half. */
+.side-1 {
+  right: 50%;
+}
+
+.side-2 {
+  left: 50%;
 }
 
 /* Face to face: two halves, each with its own pair; both pairs side by side in a row. */
@@ -382,9 +451,13 @@ onBeforeUnmount(() => {
   flex-direction: column;
 }
 
-.half .pictures {
+.half .area {
+  position: relative;
   flex: 1;
   min-height: 0;
+}
+
+.half .pictures {
   flex-direction: row;
 }
 
@@ -422,30 +495,89 @@ onBeforeUnmount(() => {
 .toolbar {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  padding: 6px 8px 10px;
-  background: var(--panel);
+  gap: 8px;
+  padding: 6px 10px 10px;
 }
 
-.toolbar button {
-  flex: 1 1 0;
-  max-width: 120px;
-  display: grid;
-  justify-items: center;
-  gap: 2px;
-  padding: 6px 4px;
-  font-size: 12px;
-  line-height: 1.2;
+@media (max-width: 480px) {
+  .toolbar {
+    gap: 5px;
+    padding: 6px 6px 10px;
+  }
 }
 
-.toolbar .icon {
-  width: 22px;
-  height: 22px;
+/* Whose turn: the player's character jumps in, then sways, in a pulsing ring of their color. */
+.turn-avatar,
+.turn-badge {
+  --gap: 5px;
+  --ring: 10px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 var(--gap) var(--panel),
+    0 0 0 var(--ring) var(--player);
+  animation:
+    jump-in 0.6s cubic-bezier(0.3, 1.6, 0.6, 1),
+    sway 1.6s ease-in-out 0.6s infinite,
+    ring 1.6s ease-in-out 0.6s infinite;
 }
 
-.toolbar button:disabled {
-  opacity: 0.45;
-  cursor: default;
+.turn-avatar {
+  width: 140px;
+  height: 140px;
+  margin: 4px auto 18px;
+}
+
+/* In play: over the board's top corner under the chip; taps pass through to the pictures. */
+.turn-badge {
+  --gap: 3px;
+  --ring: 6px;
+  position: absolute;
+  top: 12px;
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+}
+
+.turn-badge.at-1 {
+  left: 16px;
+}
+
+.turn-badge.at-2 {
+  right: 16px;
+}
+
+.turn-avatar.still,
+.turn-badge.still {
+  animation: none;
+}
+
+@keyframes jump-in {
+  from {
+    transform: scale(0.2) rotate(-25deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(-6px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(5deg);
+  }
+}
+
+@keyframes ring {
+  50% {
+    box-shadow:
+      0 0 0 var(--gap) var(--panel),
+      0 0 0 calc(var(--ring) + 4px) var(--player);
+  }
 }
 
 .hand-over {

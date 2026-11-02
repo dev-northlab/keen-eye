@@ -3,13 +3,14 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
+import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SegmentedSwitch from '../components/SegmentedSwitch.vue'
 import { MATCH_MODES, type MatchMode } from '../engine/match.ts'
 import type { Level } from '../engine/types.ts'
 import { CHAPTERS, chapterLevels } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
-import { DUEL_HINTS, isMultiplayerReady, NAME_MAX, PLAYER_COLORS, TIME_LIMITS, TURN_LENGTHS, useDuoStore } from '../stores/duo.ts'
+import { AVATARS, DUEL_HINTS, NAME_MAX, PLAYER_COLORS, TIME_LIMITS, TURN_LENGTHS, useDuoStore } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // Two players: mode → players and rules → level, then the match. "Other level" after a match
@@ -86,10 +87,23 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
       <template v-else-if="step === 'players'">
         <h1>{{ $t(`duo.modes.${setup.mode}`) }}</h1>
         <section v-for="(p, i) in setup.players" :key="i" class="panel player" :style="{ '--player': p.color }">
-          <label class="name-row">
-            <span class="dot" aria-hidden="true" />
+          <div class="name-row">
+            <div class="avatars" role="radiogroup" :aria-label="$t('duo.avatar', { n: i + 1 })">
+              <button
+                v-for="a in AVATARS"
+                :key="a"
+                class="avatar-option"
+                role="radio"
+                :aria-checked="p.avatar === a"
+                :aria-label="$t(`duo.avatars.${a}`)"
+                :class="{ active: p.avatar === a }"
+                @click="p.avatar = a"
+              >
+                <PlayerAvatar :avatar="a" :color="p.color" />
+              </button>
+            </div>
             <input v-model="p.name" type="text" :maxlength="NAME_MAX" :placeholder="$t('duo.player', { n: i + 1 })" :aria-label="$t('duo.name', { n: i + 1 })" />
-          </label>
+          </div>
           <div class="colors" role="radiogroup" :aria-label="$t('duo.color', { n: i + 1 })">
             <button
               v-for="c in PLAYER_COLORS"
@@ -145,7 +159,7 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
             <li v-for="level in s.levels" :key="level.id">
               <button
                 class="tile"
-                :class="{ paid: progress.needsPurchase(level.id), ready: isMultiplayerReady(level) }"
+                :class="{ paid: progress.needsPurchase(level.id), ready: level.multiplayerReady }"
                 :aria-label="`${$t('map.level', { n: level.id })}: ${progress.needsPurchase(level.id) ? $t('map.paid') : $t(`levelTitles.${level.title}`)} · ${$t('duo.differences', { n: level.differences.length })}`"
                 @click="play(level)"
               >
@@ -180,6 +194,8 @@ main {
   /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
   padding: 12px max(16px, (100% - 560px) / 2) 24px;
   display: grid;
+  /* One column no wider than the screen, whatever the content's minimum width. */
+  grid-template-columns: minmax(0, 1fr);
   grid-auto-rows: max-content;
   gap: 12px;
 }
@@ -272,16 +288,44 @@ h2 {
   gap: 10px;
 }
 
-.dot {
+.avatars {
   flex: none;
-  width: 22px;
-  height: 22px;
+  display: flex;
+  gap: 6px;
+}
+
+/* The unchosen character is dimmed; the chosen one gets a ring in the player's color. */
+.avatar-option {
+  width: 60px;
+  height: 60px;
+  padding: 0;
   border-radius: 50%;
-  background: var(--player);
+  background: none;
+  opacity: 0.45;
+  transition:
+    opacity 0.15s,
+    transform 0.15s;
+}
+
+.avatar-option.active {
+  opacity: 1;
+  box-shadow:
+    0 0 0 3px var(--panel),
+    0 0 0 6px var(--player);
+}
+
+.avatar-option:active {
+  transform: scale(0.94);
+}
+
+.avatar-option svg {
+  width: 100%;
+  height: 100%;
 }
 
 .name-row input {
   flex: 1;
+  width: 0;
   min-width: 0;
   font: inherit;
   font-size: 18px;
@@ -377,7 +421,7 @@ h2 {
   border: 2px solid var(--soft);
 }
 
-/* More differences: a longer, better match. */
+/* Multiplayer-ready: a longer, better match. */
 .tile.ready {
   border-color: var(--chapter);
 }

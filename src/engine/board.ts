@@ -24,6 +24,8 @@ export interface Tap {
   picture: 0 | 1
   x: number
   y: number
+  /** performance.now() of the tap: a miss is reported later (it may be the start of a double tap). */
+  time: number
 }
 
 export interface BoardOptions {
@@ -102,8 +104,8 @@ export class Board {
     return true
   }
 
-  markMiss(tap: Tap): void {
-    addMissMark(this.pictures[tap.picture], tap.x, tap.y, this.viewport.scale)
+  markMiss({ picture, x, y }: Omit<Tap, 'time'>): void {
+    addMissMark(this.pictures[picture], x, y, this.viewport.scale)
   }
 
   /** Dashed circle larger than the zone, shifted so that the zone is somewhere inside it; shown until found. */
@@ -157,7 +159,8 @@ export class Board {
     const pt = this.viewPoint(picture, clientX, clientY)
     if (!pt) return
     const { w, h } = this.level.viewBox
-    const tap: Tap = this.flipped ? { picture, x: w - pt.x, y: h - pt.y } : { picture, x: pt.x, y: pt.y }
+    const time = performance.now()
+    const tap: Tap = this.flipped ? { picture, x: w - pt.x, y: h - pt.y, time } : { picture, x: pt.x, y: pt.y, time }
     const hit = hitTest(zonesAt(this.pictures[picture], this.level.differences, this.time), tap.x, tap.y)
     if (hit < 0 && this.zoom) {
       this.pendingMiss = { timer: window.setTimeout(() => this.commitMiss(), DOUBLE_TAP_MS), tap }

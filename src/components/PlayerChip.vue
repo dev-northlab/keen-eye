@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import type { MatchPlayer } from '../engine/match.ts'
+import type { Avatar } from '../stores/duo.ts'
+import PlayerAvatar from './PlayerAvatar.vue'
 
-// A player in the match HUD: color, name, score; optionally their hint button.
+// A player in the match HUD: character, name, score; optionally their hint button.
 defineProps<{
   player: MatchPlayer
+  avatar: Avatar
   /** Blocked after a miss. */
   locked?: boolean
   /** Hot-seat: it is this player's turn. */
@@ -11,13 +14,19 @@ defineProps<{
   /** Show the hint button (duel with hints). */
   hint?: boolean
   hintDisabled?: boolean
+  /** Reduce motion: no shake and pulse. */
+  still?: boolean
 }>()
 defineEmits<{ hint: [] }>()
 </script>
 
 <template>
-  <div class="player" :class="{ locked, active }" :style="{ '--player': player.color }">
-    <span class="dot" aria-hidden="true" />
+  <div class="player" :class="{ locked, active, still }" :style="{ '--player': player.color }">
+    <svg v-if="locked" class="lock" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7.5 10V7.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="currentColor" stroke-width="2.6" />
+      <rect x="5" y="10" width="14" height="11" rx="2.5" fill="currentColor" />
+    </svg>
+    <PlayerAvatar v-else class="face" :avatar="avatar" :color="player.color" />
     <span class="name">{{ player.name }}</span>
     <span class="score" :aria-label="$t('duo.score', { name: player.name, n: player.score })">{{ player.score }}</span>
     <button v-if="hint" class="hint secondary" :disabled="hintDisabled" :aria-label="$t('level.hint')" @click="$emit('hint')">
@@ -38,7 +47,6 @@ defineEmits<{ hint: [] }>()
   background: var(--soft-2);
   box-shadow: inset 0 0 0 2px var(--player);
   font-weight: 600;
-  transition: opacity 0.2s;
 }
 
 .player.active {
@@ -46,17 +54,55 @@ defineEmits<{ hint: [] }>()
   color: #fff;
 }
 
+/* Locked after a miss: a shake, then a pulsing padlock in place of the character. */
 .player.locked {
-  opacity: 0.5;
+  background: var(--danger-bg);
+  color: var(--danger-fg);
+  animation: shake 0.45s ease-in-out;
 }
 
-.dot {
+.lock {
   flex: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--player);
-  box-shadow: 0 0 0 2px var(--panel);
+  width: 30px;
+  height: 18px;
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+.player.still,
+.player.still .lock {
+  animation: none;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(1.25);
+  }
+}
+
+.face {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  margin-left: -6px;
 }
 
 .name {

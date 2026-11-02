@@ -62,6 +62,8 @@ export interface Level {
   differences: Difference[]
   /** Time limit for three stars. */
   parTimeSec: number
+  /** Suits a two-player match (enough differences for a long race); preferred by "random level". */
+  multiplayerReady: boolean
 }
 
 export type Stars = 1 | 2 | 3

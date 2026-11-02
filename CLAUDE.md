@@ -36,8 +36,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
   `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
-  `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; events carry the hit zone
-  resolved by the board), `match-scene.ts` (`MatchScene`: clock, 1 shared or 2 face-to-face boards, `Match`)
+  `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; tap events
+  `{ playerId, picture, x, y, t }` are hit-tested by the engine itself), `match-scene.ts` (`MatchScene`: clock,
+  1 shared or 2 face-to-face boards, `Match`; duels have no zoom and count a tap when the finger touches)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
   `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
@@ -71,7 +72,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   objects into it, and never let Vue render children into the engine container.
 - **Level format** — `Level` / `Difference` in `src/engine/types.ts` (spec, section 8): `id`, `chapter`, `title`,
   `kind: 'svg' | 'image'`, `build(variant)` (0 = A, 1 = B) → `{ svg, animations }` or `imageA`/`imageB`,
-  `viewBox` (default 800×500), `differences: { x, y, r, animatedId? }[]` in viewBox coordinates, `parTimeSec`.
+  `viewBox` (default 800×500), `differences: { x, y, r, animatedId? }[]` in viewBox coordinates, `parTimeSec`,
+  `multiplayerReady` (preferred by the two-player "random level"; `svgLevel` sets it for 7+ differences unless the
+  level passes it).
 - SVG levels are written with `svgLevel({ ..., scene: ({ diff, anim, rand }) => markup })`. `diff(x, y, r, a, b)`
   returns `a` for picture A and `b` for B and registers the zone — never list zones by hand. Everything `a`/`b` draw
   must fit inside the zone circle. Use only the provided `rand` (seeded by level id) for randomness, so A and B match

@@ -5,6 +5,7 @@ import FoundSlots from '../components/FoundSlots.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
+import ToolButton from '../components/ToolButton.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelById, levels } from '../levels/index.ts'
@@ -186,30 +187,30 @@ onBeforeUnmount(() => {
     </div>
 
     <footer class="toolbar">
-      <button class="secondary" :disabled="!canHint" @click="showHint">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        {{ $t('level.hint') }} {{ calm ? '∞' : progress.hints }}
-      </button>
+      <ToolButton tone="hint" :label="`${$t('level.hint')} ${calm ? '∞' : progress.hints}`" :disabled="!canHint" @click="showHint">
+        <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </ToolButton>
       <!-- Development only: outlines all differences in red. -->
-      <button v-if="isDev" class="secondary" :disabled="!!result" @click="scene?.revealAll()">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-        {{ $t('level.revealAll') }}
-      </button>
-      <button class="secondary" :disabled="zoom === 1" @click="scene?.resetZoom()">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        {{ $t('level.resetZoom') }}
-      </button>
-      <button v-if="calm" class="secondary" :aria-pressed="animationFrozen" @click="toggleAnimation">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+      <ToolButton v-if="isDev" tone="danger" :label="$t('level.revealAll')" :disabled="!!result" @click="scene?.revealAll()">
+        <svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      </ToolButton>
+      <ToolButton :label="$t('level.resetZoom')" :disabled="zoom === 1" @click="scene?.resetZoom()">
+        <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </ToolButton>
+      <ToolButton
+        v-if="calm"
+        :label="animationFrozen ? $t('level.animPlay') : $t('level.animPause')"
+        :aria-pressed="animationFrozen"
+        @click="toggleAnimation"
+      >
+        <svg viewBox="0 0 24 24">
           <path v-if="animationFrozen" d="M8 5v14l11-7Z" fill="currentColor" />
           <rect v-else x="6" y="6" width="12" height="12" rx="2" fill="currentColor" />
         </svg>
-        {{ animationFrozen ? $t('level.animPlay') : $t('level.animPause') }}
-      </button>
-      <button class="secondary" :disabled="!!result" @click="pause">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
-        {{ $t('level.pause') }}
-      </button>
+      </ToolButton>
+      <ToolButton :label="$t('level.pause')" :disabled="!!result" @click="pause">
+        <svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
+      </ToolButton>
     </footer>
 
     <SettingsOverlay v-if="settingsOpen" @close="settingsOpen = false" />
@@ -388,30 +389,15 @@ onBeforeUnmount(() => {
 .toolbar {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  padding: 6px 8px 10px;
-  background: var(--panel);
+  gap: 8px;
+  padding: 6px 10px 10px;
 }
 
-.toolbar button {
-  flex: 1 1 0;
-  max-width: 120px;
-  display: grid;
-  justify-items: center;
-  gap: 2px;
-  padding: 6px 4px;
-  font-size: 12px;
-  line-height: 1.2;
-}
-
-.toolbar .icon {
-  width: 22px;
-  height: 22px;
-}
-
-.toolbar button:disabled {
-  opacity: 0.45;
-  cursor: default;
+@media (max-width: 480px) {
+  .toolbar {
+    gap: 5px;
+    padding: 6px 6px 10px;
+  }
 }
 
 .lock-note {

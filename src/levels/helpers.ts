@@ -37,12 +37,17 @@ export function rng(seed: number): () => number {
   }
 }
 
+/** Levels with this many differences last long enough for two players. */
+const MULTIPLAYER_MIN_DIFFERENCES = 7
+
 interface SvgLevelDef {
   id: number
   chapter: string
   title: string
   parTimeSec: number
   viewBox?: { w: number; h: number }
+  /** Level.multiplayerReady; default: at least MULTIPLAYER_MIN_DIFFERENCES differences. */
+  multiplayerReady?: boolean
   /** Draws the scene; called once per picture with a fresh context. */
   scene: (ctx: SceneContext) => string
 }
@@ -94,5 +99,6 @@ export function svgLevel(def: SvgLevelDef): Level {
     viewBox: def.viewBox ?? { w: 800, h: 500 },
     differences,
     parTimeSec: def.parTimeSec,
+    multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
   }
 }

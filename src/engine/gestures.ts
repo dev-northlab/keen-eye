@@ -29,7 +29,8 @@ interface Pointer {
  * with a finger in the gap between pictures still works. Pan/pinch keep the
  * scene point under the fingers' centroid fixed; both pictures follow because
  * they share a Viewport. Without zoom there are no pan, pinch, wheel or double
- * tap, and every finger is a tap of its own: two players can tap at once.
+ * tap, and every finger is a tap of its own, reported when it touches: two
+ * players can tap at once and the first to touch is the first reported.
  */
 export class Gestures {
   private readonly svgs: SVGSVGElement[]
@@ -72,9 +73,12 @@ export class Gestures {
 
   private onDown = (e: PointerEvent) => {
     const svg = this.svgAt(e.target)
+    if (!this.zoom) {
+      if (svg) this.handlers.onTap(svg, e.clientX, e.clientY)
+      return
+    }
     ;(e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId)
     this.pointers.set(e.pointerId, { svg, x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY })
-    if (!this.zoom) return
     if (this.pointers.size > 1) this.dragging = true
     this.beginTransform()
   }
@@ -84,7 +88,6 @@ export class Gestures {
     if (!p) return
     p.x = e.clientX
     p.y = e.clientY
-    if (!this.zoom) return
     if (!this.dragging && Math.hypot(p.x - p.startX, p.y - p.startY) >= TAP_SLOP_PX) this.dragging = true
     if (this.dragging) this.updateTransform()
   }
@@ -93,11 +96,6 @@ export class Gestures {
     const p = this.pointers.get(e.pointerId)
     if (!p) return
     this.pointers.delete(e.pointerId)
-    if (!this.zoom) {
-      const still = Math.hypot(p.x - p.startX, p.y - p.startY) < TAP_SLOP_PX
-      if (still && e.type === 'pointerup' && p.svg) this.handlers.onTap(p.svg, p.startX, p.startY)
-      return
-    }
     if (this.pointers.size > 0) {
       // Continue the pan/pinch with the remaining fingers.
       this.beginTransform()
