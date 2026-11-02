@@ -1,5 +1,5 @@
 // Chapters ("worlds"): 20 levels each, plus 10 harder ones added later with ids after 100;
-// and the "time" category (TIME_CHAPTER), which plays like a chapter but is not a world.
+// and the categories ("time", "memory"), which play like a chapter but are not worlds.
 // Adding a chapter is one entry here, its levels in `index.ts` and the `chapters.<id>` /
 // `levelTitles.*` texts in every locale.
 import type { Level } from '../engine/types.ts'
@@ -23,6 +23,8 @@ export interface Chapter {
   icon: string
   /** Backdrop of the chapter's level grid. */
   backdrop: BackdropTheme
+  /** Categories: i18n key of the rules shown above the level grid. */
+  rules?: string
 }
 
 export const CHAPTERS: Chapter[] = [
@@ -104,20 +106,44 @@ export const CHAPTERS: Chapter[] = [
 /**
  * "Spot the difference in time" (docs/time-differences-mode.md, levels in `time/`): its own banner on
  * the game modes screen, not a world. Its first level is open from the start; the first
- * `FREE_TIME_LEVELS` (stores/purchase.ts) need no purchase.
+ * `FREE_CATEGORY_LEVELS` (stores/purchase.ts) need no purchase.
  */
 export const TIME_CHAPTER: Chapter = {
   id: 'time',
-  ranges: [[201, 215]],
+  ranges: [[201, 230]],
   color: '#7a5af5',
   soft: '#ece6ff',
   backdrop: 'meadow',
+  rules: 'timeMode.rules',
   icon:
     `<path d="M24 4a20 20 0 0 0 0 40Z" fill="#ffc94a"/><path d="M24 4a20 20 0 0 1 0 40Z" fill="#3b3f8f"/>` +
     `<circle cx="16" cy="24" r="6" fill="#fff3b0"/><path d="M34 16a7 7 0 1 0 0 12a6 6 0 0 1 0-12Z" fill="#fff3b0"/>`,
 }
 
-const ALL_CHAPTERS = [...CHAPTERS, TIME_CHAPTER]
+/**
+ * "Memory" (docs/memory-mode.md, levels in `memory/`): picture A for a few seconds, then B alone, find
+ * the changes from memory. Played by MemoryLevelView; open and paid like the "time" category.
+ */
+export const MEMORY_CHAPTER: Chapter = {
+  id: 'memory',
+  ranges: [[301, 315]],
+  color: '#e8457a',
+  soft: '#ffe6ee',
+  backdrop: 'meadow',
+  rules: 'memoryMode.rules',
+  icon:
+    `<rect x="4" y="8" width="40" height="32" rx="5" fill="#bfe6f7"/>` +
+    `<path d="M4 32l11-10 9 7 8-6 12 9v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5Z" fill="#3fa46f"/>` +
+    `<circle cx="14" cy="17" r="4" fill="#ffd23f"/>` +
+    `<circle cx="34" cy="20" r="11" fill="#e8457a"/>` +
+    `<path d="M30.5 17.5a3.6 3.6 0 1 1 5.2 3.2c-1.2.6-1.7 1.3-1.7 2.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>` +
+    `<circle cx="34" cy="27" r="1.6" fill="#fff"/>`,
+}
+
+/** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
+export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER]
+
+const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES]
 
 export const chapterById = (id: string): Chapter | undefined => ALL_CHAPTERS.find((c) => c.id === id)
 
@@ -138,6 +164,11 @@ export function nextLevel(level: Level): Level | undefined {
   return own[own.indexOf(level) + 1] ?? (CHAPTERS.includes(chapter) && next ? chapterLevels(next)[0] : undefined)
 }
 
-/** Number shown to the player: the id in the worlds, the place in the category for "time" levels (1–15). */
-export const levelNumber = (level: Level) =>
-  level.chapter === TIME_CHAPTER.id ? level.id - TIME_CHAPTER.ranges[0][0] + 1 : level.id
+/** The category of a level, or undefined for a world's level. */
+export const categoryOf = (level: Level) => CATEGORIES.find((c) => c.id === level.chapter)
+
+/** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
+export function levelNumber(level: Level): number {
+  const category = categoryOf(level)
+  return category ? level.id - category.ranges[0][0] + 1 : level.id
+}

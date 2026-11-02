@@ -168,7 +168,8 @@
     "forest": "森",
     "sea": "海",
     "space": "宇宙",
-    "time": "とき"
+    "time": "とき",
+    "memory": "きおく"
   },
   "levelTitles": {
     "barnyard": "農家の庭",
@@ -335,7 +336,37 @@
     "farmYear": "風車のある農場",
     "harborEvening": "港の夕方",
     "forestYear": "森の小さな橋",
-    "yardNight": "夕方の庭"
+    "yardNight": "夕方の庭",
+    "marketSquare": "市場の広場",
+    "mountainVillage": "山の村",
+    "railwayEvening": "夕方の駅",
+    "lakeCottage": "湖のほとりの家",
+    "fishingHarbor": "漁港",
+    "schoolYard": "学校の校庭",
+    "funfair": "移動遊園地",
+    "orchardHives": "果樹園と巣箱",
+    "riverTown": "川沿いの町",
+    "parkPond": "公園の池",
+    "oldTownSquare": "旧市街の広場",
+    "farmyardSeasons": "農家の庭",
+    "seaPromenade": "海辺のプロムナード",
+    "cableCar": "ロープウェイ",
+    "downtown": "街の中心",
+    "memoryKitchen": "朝ごはんのテーブル",
+    "memoryFarmyard": "農場の庭",
+    "memoryBeach": "海辺の一日",
+    "memoryBedroom": "子ども部屋",
+    "memoryPlayground": "公園の遊び場",
+    "memoryGarden": "野菜畑",
+    "memoryStreet": "街角",
+    "memorySpace": "月面基地",
+    "memoryReef": "サンゴ礁",
+    "memoryCamp": "湖のキャンプ",
+    "memoryWinter": "雪の庭",
+    "memoryClassroom": "教室",
+    "memoryHarbor": "港",
+    "memoryParty": "誕生日パーティー",
+    "memoryMarket": "果物屋"
   },
   "mode": {
     "label": "モード",
@@ -382,7 +413,24 @@
       "clothes": "冬はあたたかい服を着るよ——自然なことだよ",
       "icicles": "つららは冬だけのものだよ——まちがいじゃないよ",
       "smoke": "冬はストーブをたくよ——けむりは自然なことだよ",
-      "flowers": "冬は花もきのこも生えないよ——自然なことだよ"
+      "flowers": "冬は花もきのこも生えないよ——自然なことだよ",
+      "clock": "時間はすすむよ——時計がちがう時刻をさすのは当たり前"
     }
+  },
+  "memoryMode": {
+    "task": "記憶でさがそう",
+    "rules": "絵を覚えよう。見られるのは数秒だけ。そのあと絵が変わるので、記憶をたよりにちがいを見つけよう。ミスは3回まで。",
+    "phases": {
+      "show": "絵を覚えよう！",
+      "search": "何が変わった？",
+      "peek": "もう一度見よう！",
+      "reveal": "ビフォー・アフター"
+    },
+    "peek": "もう一度見る",
+    "finish": "答えを見る",
+    "misses": "ミス：{n}/{max}",
+    "failed": "今回は残念",
+    "foundOf": "{found}/{total} 見つけた",
+    "legend": "赤い丸が見のがしたところ"
   }
 }

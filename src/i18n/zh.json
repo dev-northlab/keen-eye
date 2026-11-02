@@ -168,7 +168,8 @@
     "forest": "森林",
     "sea": "大海",
     "space": "太空",
-    "time": "时间"
+    "time": "时间",
+    "memory": "记忆"
   },
   "levelTitles": {
     "barnyard": "农家院",
@@ -335,7 +336,37 @@
     "farmYear": "风车农场",
     "harborEvening": "港口的傍晚",
     "forestYear": "林间小桥",
-    "yardNight": "花园的傍晚"
+    "yardNight": "花园的傍晚",
+    "marketSquare": "集市广场",
+    "mountainVillage": "山村",
+    "railwayEvening": "车站的傍晚",
+    "lakeCottage": "湖边小屋",
+    "fishingHarbor": "渔港",
+    "schoolYard": "学校操场",
+    "funfair": "游乐会",
+    "orchardHives": "果园和蜂箱",
+    "riverTown": "河边小城",
+    "parkPond": "公园池塘",
+    "oldTownSquare": "老城广场",
+    "farmyardSeasons": "农家院子",
+    "seaPromenade": "海滨步道",
+    "cableCar": "缆车",
+    "downtown": "市中心",
+    "memoryKitchen": "早餐桌",
+    "memoryFarmyard": "农家院子",
+    "memoryBeach": "海滩一日",
+    "memoryBedroom": "儿童房",
+    "memoryPlayground": "游乐场",
+    "memoryGarden": "菜园",
+    "memoryStreet": "街角",
+    "memorySpace": "月球基地",
+    "memoryReef": "珊瑚礁",
+    "memoryCamp": "湖边露营",
+    "memoryWinter": "雪中小院",
+    "memoryClassroom": "教室",
+    "memoryHarbor": "港口",
+    "memoryParty": "生日派对",
+    "memoryMarket": "水果摊"
   },
   "mode": {
     "label": "模式",
@@ -382,7 +413,24 @@
       "clothes": "冬天大家穿得更暖和——这很自然",
       "icicles": "冰柱只在冬天出现——这不是不同之处",
       "smoke": "冬天要生炉子——冒烟很自然",
-      "flowers": "冬天不长花也不长蘑菇——这很自然"
+      "flowers": "冬天不长花也不长蘑菇——这很自然",
+      "clock": "时间在流逝——钟表本来就该显示别的时间"
     }
+  },
+  "memoryMode": {
+    "task": "凭记忆找不同",
+    "rules": "记住这张图——你只有几秒钟。之后它会变化：凭记忆找出不同之处。最多失误 3 次。",
+    "phases": {
+      "show": "记住这张图！",
+      "search": "哪里变了？",
+      "peek": "再看一眼！",
+      "reveal": "变化前后"
+    },
+    "peek": "再看一眼",
+    "finish": "显示答案",
+    "misses": "失误：{n}/{max}",
+    "failed": "这次没成功",
+    "foundOf": "找到 {found}/{total}",
+    "legend": "红圈标出的是你漏掉的"
   }
 }

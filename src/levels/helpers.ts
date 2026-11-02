@@ -1,4 +1,4 @@
-import type { Animation, AnimationMotion, Difference, Level, TimePair, Trap } from '../engine/types.ts'
+import type { Animation, AnimationMotion, Difference, Level, MemoryRules, TimePair, Trap } from '../engine/types.ts'
 
 /**
  * Returns `a` for picture A and `b` for picture B and registers the zone
@@ -62,6 +62,8 @@ interface SvgLevelDef {
   multiplayerReady?: boolean
   /** Makes it a "time" level: A and B show the scene at these two moments (`time`, `trap`). */
   pair?: TimePair
+  /** Makes it a "memory" level (see `memoryLevel`). */
+  memory?: MemoryRules
   /** Draws the scene; called once per picture with a fresh context. */
   scene: (ctx: SceneContext) => string
 }
@@ -123,5 +125,21 @@ export function svgLevel(def: SvgLevelDef): Level {
     ...(def.hintLimit !== undefined && { hintLimit: def.hintLimit }),
     multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
     ...(def.pair !== undefined && { pair: def.pair, traps }),
+    ...(def.memory !== undefined && { memory: def.memory }),
   }
 }
+
+/**
+ * "Memory" level (docs/memory-mode.md), chapter 'memory': A is shown for `showSeconds`, then B alone;
+ * `peeks` extra looks at A (default 1). The stars count finds, misses and looks, not time.
+ */
+export const memoryLevel = (def: { id: number; title: string; showSeconds: number; peeks?: number; scene: SvgLevelDef['scene'] }) =>
+  svgLevel({
+    id: def.id,
+    chapter: 'memory',
+    title: def.title,
+    parTimeSec: 0,
+    multiplayerReady: false,
+    memory: { showSeconds: def.showSeconds, peeks: def.peeks ?? 1 },
+    scene: def.scene,
+  })

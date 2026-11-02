@@ -168,7 +168,8 @@
     "forest": "Forest",
     "sea": "Sea",
     "space": "Space",
-    "time": "Time"
+    "time": "Time",
+    "memory": "Memory"
   },
   "levelTitles": {
     "barnyard": "Barnyard",
@@ -335,7 +336,37 @@
     "farmYear": "Windmill farm",
     "harborEvening": "Harbor evening",
     "forestYear": "Forest footbridge",
-    "yardNight": "Garden evening"
+    "yardNight": "Garden evening",
+    "marketSquare": "Market square",
+    "mountainVillage": "Mountain village",
+    "railwayEvening": "Station evening",
+    "lakeCottage": "Lakeside cottage",
+    "fishingHarbor": "Fishing harbor",
+    "schoolYard": "School yard",
+    "funfair": "Funfair",
+    "orchardHives": "Orchard and hives",
+    "riverTown": "River town",
+    "parkPond": "Park pond",
+    "oldTownSquare": "Old town square",
+    "farmyardSeasons": "Farmyard",
+    "seaPromenade": "Seaside promenade",
+    "cableCar": "Cable car",
+    "downtown": "Downtown",
+    "memoryKitchen": "Breakfast table",
+    "memoryFarmyard": "Farmyard",
+    "memoryBeach": "Day at the beach",
+    "memoryBedroom": "Kid’s room",
+    "memoryPlayground": "Playground",
+    "memoryGarden": "Vegetable garden",
+    "memoryStreet": "Street corner",
+    "memorySpace": "Moon base",
+    "memoryReef": "Coral reef",
+    "memoryCamp": "Lake camp",
+    "memoryWinter": "Snowy yard",
+    "memoryClassroom": "Classroom",
+    "memoryHarbor": "Harbor",
+    "memoryParty": "Birthday party",
+    "memoryMarket": "Fruit stall"
   },
   "mode": {
     "label": "Mode",
@@ -382,7 +413,24 @@
       "clothes": "People dress warmly in winter — that's natural",
       "icicles": "Icicles only grow in winter — not a difference",
       "smoke": "The stove is lit in winter — the smoke is natural",
-      "flowers": "Flowers and mushrooms don't grow in winter — that's natural"
+      "flowers": "Flowers and mushrooms don't grow in winter — that's natural",
+      "clock": "Time goes by — the clock should show a different time"
     }
+  },
+  "memoryMode": {
+    "task": "Find it from memory",
+    "rules": "Remember the picture — you only get a few seconds. Then it changes: find what is different from memory. Up to 3 misses.",
+    "phases": {
+      "show": "Remember the picture!",
+      "search": "What has changed?",
+      "peek": "Take another look!",
+      "reveal": "Before and after"
+    },
+    "peek": "Look again",
+    "finish": "Show answer",
+    "misses": "Misses: {n} of {max}",
+    "failed": "Not this time",
+    "foundOf": "Found {found} of {total}",
+    "legend": "Red circles show what you missed"
   }
 }

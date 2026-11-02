@@ -2,10 +2,17 @@
 // and the details that differ. Each returns SVG markup positioned at (x, y); the bounds in the
 // comments are what a difference or trap zone must cover.
 import { rng } from '../helpers.ts'
-export { cloud, pick, sun } from '../shapes.ts'
-export { awning, bench, bike, building, car, cityTree, door, dog, hydrant, lampPost, person, pigeon, street, window } from '../chapter-02/shapes.ts'
-export { bush, cabin, fireLogs, flame, mushroom, oak, pine, rabbit, rock, stump, tent } from '../chapter-03/shapes.ts'
-export { buoy, gull, lifeRing, sailboat, waves } from '../chapter-04/shapes.ts'
+export { beehive, cloud, cow, duck, hayBale, hen, pick, pig, sheep, sun, sunflower, tractor } from '../shapes.ts'
+export { awning, balloon, bench, bike, bin, building, bus, car, cityTree, cone, door, dog, flowerBox, hydrant, lampPost, person, pigeon, signBoard, street, window } from '../chapter-02/shapes.ts'
+export { bird, bush, cabin, deer, fern, fireLogs, flame, fox, hedgehog, mushroom, oak, pine, rabbit, rock, squirrel, stump, tent } from '../chapter-03/shapes.ts'
+export { buoy, gull, lifeRing, palm, parasol, sailboat, towel, waves } from '../chapter-04/shapes.ts'
+
+/** Zone around the box (x0, y0)–(x1, y1): its center and a radius reaching the corners, at least `min`. */
+export const around = (x0: number, y0: number, x1: number, y1: number, min = 20): [number, number, number] => [
+  (x0 + x1) / 2,
+  (y0 + y1) / 2,
+  Math.max(min, Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 2) + 1),
+]
 
 // --- Sky and light ---
 
@@ -270,3 +277,126 @@ export const flowers = (x: number, y: number, color = '#ff6b8b') =>
   [-16, -4, 9, 19]
     .map((dx, i) => `<path d="M${x + dx} ${y}v-${12 + (i % 2) * 4}" stroke="#3f8f3a" stroke-width="2.5"/><circle cx="${x + dx}" cy="${y - 14 - (i % 2) * 4}" r="${4.5}" fill="${color}"/>`)
     .join('')
+
+// --- Busier scenes (levels 216–230) ---
+
+/** Clock face; (x, y) = center, radius r, hands at h:m. Bounds: radius r + 3. */
+export const clockFace = (x: number, y: number, r: number, h: number, m: number) => {
+  const hand = (deg: number, len: number, w: number) => {
+    const a = ((deg - 90) * Math.PI) / 180
+    return `<path d="M${x} ${y}L${(x + Math.cos(a) * len).toFixed(1)} ${(y + Math.sin(a) * len).toFixed(1)}" stroke="#2b2d42" stroke-width="${w}" stroke-linecap="round"/>`
+  }
+  return (
+    `<circle cx="${x}" cy="${y}" r="${r + 3}" fill="#3d4a55"/><circle cx="${x}" cy="${y}" r="${r}" fill="#fdf6e3"/>` +
+    hand((h % 12) * 30 + m / 2, r * 0.5, 3) + hand(m * 6, r * 0.8, 2) + `<circle cx="${x}" cy="${y}" r="2" fill="#2b2d42"/>`
+  )
+}
+
+/** Market stall with a striped roof; (x, y) = ground center. Goods go on the counter at y − 40. Bounds: x ±54, y from −96 to 0. */
+export const stall = (x: number, y: number, color: string) => {
+  let stripes = ''
+  for (let i = 0; i < 6; i++) stripes += `<path d="M${x - 54 + i * 18} ${y - 96}h18v22h-18Z" fill="${i % 2 ? '#ffffff' : color}"/>`
+  return (
+    `<path d="M${x - 46} ${y - 74}V${y}M${x + 46} ${y - 74}V${y}" stroke="#8a5a33" stroke-width="5"/>` +
+    stripes +
+    `<rect x="${x - 50}" y="${y - 40}" width="100" height="40" fill="#c68b4e"/><rect x="${x - 54}" y="${y - 44}" width="108" height="6" fill="#a0703f"/>`
+  )
+}
+
+/** Heap of fruit on a counter; (x, y) = bottom center. Bounds: x ±16, y from −16 to 0. */
+export const fruit = (x: number, y: number, color: string) =>
+  `<circle cx="${x - 9}" cy="${y - 6}" r="6" fill="${color}"/><circle cx="${x + 9}" cy="${y - 6}" r="6" fill="${color}"/><circle cx="${x}" cy="${y - 10}" r="6" fill="${color}"/>`
+
+/** Pennant bunting from (x0, y0) to (x1, y1), sagging 14, one flag per color. */
+export const bunting = (x0: number, y0: number, x1: number, y1: number, colors: string[]) => {
+  const n = colors.length
+  let flags = ''
+  colors.forEach((c, i) => {
+    const t = (i + 0.5) / n
+    const x = x0 + (x1 - x0) * t
+    const y = y0 + (y1 - y0) * t + 14 * 4 * t * (1 - t)
+    flags += `<path d="M${(x - 7).toFixed(1)} ${y.toFixed(1)}h14l-7 14Z" fill="${c}"/>`
+  })
+  return `<path d="M${x0} ${y0}Q${(x0 + x1) / 2} ${(y0 + y1) / 2 + 28} ${x1} ${y1}" stroke="#555" stroke-width="1.5" fill="none"/>` + flags
+}
+
+/** String of n light bulbs from (x0, y0) to (x1, y1), sagging 14: dark by day, lit in the evening. */
+export const bulbs = (x0: number, y0: number, x1: number, y1: number, n: number, lit: boolean) => {
+  let out = `<path d="M${x0} ${y0}Q${(x0 + x1) / 2} ${(y0 + y1) / 2 + 28} ${x1} ${y1}" stroke="#3d4a55" stroke-width="1.5" fill="none"/>`
+  for (let i = 0; i < n; i++) {
+    const t = (i + 0.5) / n
+    const x = (x0 + (x1 - x0) * t).toFixed(1)
+    const y = (y0 + (y1 - y0) * t + 14 * 4 * t * (1 - t) + 4).toFixed(1)
+    out += (lit ? `<circle cx="${x}" cy="${y}" r="8" fill="#ffe08a" fill-opacity="0.35"/>` : '') + `<circle cx="${x}" cy="${y}" r="3.5" fill="${lit ? '#fff3b0' : '#c9d1d9'}"/>`
+  }
+  return out
+}
+
+/** Ferris wheel frame; (x, y) = hub, radius r, legs down to the ground at y + r + 30. Gondolas are `gondola`. */
+export const ferrisWheel = (x: number, y: number, r: number) => {
+  let spokes = ''
+  for (let a = 0; a < 360; a += 45) {
+    const rad = (a * Math.PI) / 180
+    spokes += `M${x} ${y}L${(x + Math.cos(rad) * r).toFixed(1)} ${(y + Math.sin(rad) * r).toFixed(1)}`
+  }
+  return (
+    `<path d="M${x} ${y}L${x - r * 0.6} ${y + r + 30}M${x} ${y}L${x + r * 0.6} ${y + r + 30}" stroke="#5c677d" stroke-width="6"/>` +
+    `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#e63946" stroke-width="5"/><path d="${spokes}" stroke="#e63946" stroke-width="2.5"/>` +
+    `<circle cx="${x}" cy="${y}" r="7" fill="#3d4a55"/>`
+  )
+}
+
+/** Point on the rim of `ferrisWheel(x, y, r)` at angle `deg` (0 = right, clockwise). */
+export const rim = (x: number, y: number, r: number, deg: number): [number, number] => {
+  const a = (deg * Math.PI) / 180
+  return [Math.round(x + Math.cos(a) * r), Math.round(y + Math.sin(a) * r)]
+}
+
+/** Gondola hanging from a rim point (x, y). Bounds: x ±11, y from −2 to +20. */
+export const gondola = (x: number, y: number, color: string) =>
+  `<path d="M${x} ${y}v4" stroke="#3d4a55" stroke-width="2"/><path d="M${x - 11} ${y + 4}h22v10a6 6 0 0 1 -6 6h-10a6 6 0 0 1 -6 -6Z" fill="${color}"/>`
+
+/** Railway carriage; body from x0 to x0 + w on rails at y. Bounds: x0…x0 + w, y from −66 to 0. */
+export const carriage = (x0: number, y: number, w: number, color: string) =>
+  `<rect x="${x0}" y="${y - 62}" width="${w}" height="52" rx="6" fill="${color}"/><rect x="${x0 + 4}" y="${y - 66}" width="${w - 8}" height="6" rx="3" fill="#5c677d"/>` +
+  carriageWindows(x0, y, w, '#bde3f2') +
+  `<circle cx="${x0 + 24}" cy="${y - 6}" r="7" fill="#2b2b2b"/><circle cx="${x0 + w - 24}" cy="${y - 6}" r="7" fill="#2b2b2b"/>`
+
+/** Windows of `carriage(x0, y, w)` in `glass` (lit ones are drawn over the carriage in the evening). */
+export const carriageWindows = (x0: number, y: number, w: number, glass: string) => {
+  let windows = ''
+  for (let x = x0 + 14; x + 26 <= x0 + w - 10; x += 36) windows += `<rect x="${x}" y="${y - 52}" width="26" height="20" rx="3" fill="${glass}"/>`
+  return windows
+}
+
+/** Fountain; (x, y) = ground center: a basin and a column, water running by day or frozen. Bounds: x ±60, y from −90 to 0. */
+export const fountain = (x: number, y: number, frozen: boolean) =>
+  `<ellipse cx="${x}" cy="${y - 10}" rx="60" ry="14" fill="#a7b4c2"/><ellipse cx="${x}" cy="${y - 14}" rx="52" ry="10" fill="${frozen ? '#e3f0f7' : '#5aa9d6'}"/>` +
+  `<rect x="${x - 6}" y="${y - 58}" width="12" height="46" fill="#a7b4c2"/><ellipse cx="${x}" cy="${y - 58}" rx="24" ry="6" fill="#a7b4c2"/>` +
+  (frozen
+    ? `<path d="M${x - 20} ${y - 56}v14M${x - 8} ${y - 55}v10M${x + 8} ${y - 55}v12M${x + 20} ${y - 56}v8" stroke="#cfe8f7" stroke-width="4" stroke-linecap="round"/>`
+    : `<path d="M${x} ${y - 60}q-4 -24 0 -30q4 6 0 30M${x - 2} ${y - 62}q-24 -10 -30 22M${x + 2} ${y - 62}q24 -10 30 22" stroke="#7cc4ea" stroke-width="4" fill="none" stroke-linecap="round"/>`)
+
+/** Mountain range standing on y with snow caps (bigger in winter). */
+export const mountains = (y: number, winter: boolean) =>
+  `<path d="M0 ${y}L120 ${y - 150}L230 ${y - 60}L360 ${y - 190}L500 ${y - 70}L620 ${y - 170}L800 ${y - 40}V${y}Z" fill="#8d9bb3"/>` +
+  (winter
+    ? `<path d="M80 ${y - 100}L120 ${y - 150}L170 ${y - 90}L140 ${y - 98}L120 ${y - 84}L100 ${y - 98}ZM300 ${y - 120}L360 ${y - 190}L430 ${y - 110}L395 ${y - 122}L370 ${y - 104}L340 ${y - 124}ZM570 ${y - 110}L620 ${y - 170}L680 ${y - 120}L645 ${y - 126}L622 ${y - 108}L600 ${y - 124}Z" fill="#ffffff"/>`
+    : `<path d="M105 ${y - 130}L120 ${y - 150}L136 ${y - 128}ZM340 ${y - 166}L360 ${y - 190}L382 ${y - 164}ZM604 ${y - 150}L620 ${y - 170}L637 ${y - 148}Z" fill="#ffffff"/>`)
+
+/** Canoe, faces right; (x, y) = waterline center. Bounds: x ±44, y from −12 to +4. */
+export const canoe = (x: number, y: number, color: string) =>
+  `<path d="M${x - 44} ${y - 12}q44 24 88 0q-8 16 -44 16q-36 0 -44 -16Z" fill="${color}"/><path d="M${x - 30} ${y - 4}h60" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/>`
+
+/** Sled; (x, y) = ground center. Bounds: x ±26, y from −16 to 0. */
+export const sled = (x: number, y: number, color = '#e63946') =>
+  `<rect x="${x - 22}" y="${y - 16}" width="44" height="8" rx="2" fill="${color}"/><path d="M${x - 18} ${y - 8}v6M${x + 14} ${y - 8}v6M${x - 26} ${y - 2}h46q6 0 6 -6" stroke="#3d4a55" stroke-width="2.5" fill="none"/>`
+
+/** `body` at 0.75 scale around (x, y): a child (`person` with its feet at (x, y): x ±10, y from −47 to 0, in winter clothes −54), a duck, a hen. */
+export const small = (x: number, y: number, body: string) => `<g transform="translate(${x} ${y}) scale(0.75) translate(${-x} ${-y})">${body}</g>`
+
+/** Street lamp with a lantern on a bracket (wall lamp); (x, y) = bracket on the wall, facing right. Bounds: x from 0 to +24, y from −8 to +24. */
+export const wallLamp = (x: number, y: number, lit: boolean) =>
+  (lit ? `<circle cx="${x + 18}" cy="${y + 10}" r="22" fill="#ffe08a" fill-opacity="0.3"/>` : '') +
+  `<path d="M${x} ${y}h18v4" stroke="#3d4a55" stroke-width="2.5" fill="none"/><path d="M${x + 12} ${y + 4}h12l-2 14h-8Z" fill="#3d4a55"/>` +
+  `<rect x="${x + 14}" y="${y + 7}" width="8" height="9" fill="${lit ? '#fff3b0' : '#d8dee4'}"/>`

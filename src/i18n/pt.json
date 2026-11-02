@@ -168,7 +168,8 @@
     "forest": "Floresta",
     "sea": "Mar",
     "space": "Espaço",
-    "time": "Tempo"
+    "time": "Tempo",
+    "memory": "Memória"
   },
   "levelTitles": {
     "barnyard": "Terreiro",
@@ -335,7 +336,37 @@
     "farmYear": "Quinta com moinho",
     "harborEvening": "Noite no porto",
     "forestYear": "Ponte da floresta",
-    "yardNight": "Noite no jardim"
+    "yardNight": "Noite no jardim",
+    "marketSquare": "Praça do mercado",
+    "mountainVillage": "Aldeia na montanha",
+    "railwayEvening": "Noite na estação",
+    "lakeCottage": "Casinha junto ao lago",
+    "fishingHarbor": "Porto de pesca",
+    "schoolYard": "Recreio da escola",
+    "funfair": "Feira popular",
+    "orchardHives": "Pomar e colmeias",
+    "riverTown": "Cidade junto ao rio",
+    "parkPond": "Lago do parque",
+    "oldTownSquare": "Praça da cidade velha",
+    "farmyardSeasons": "Pátio da quinta",
+    "seaPromenade": "Passeio marítimo",
+    "cableCar": "Teleférico",
+    "downtown": "Centro da cidade",
+    "memoryKitchen": "Café da manhã",
+    "memoryFarmyard": "Quintal da fazenda",
+    "memoryBeach": "Dia de praia",
+    "memoryBedroom": "Quarto infantil",
+    "memoryPlayground": "Parquinho",
+    "memoryGarden": "Horta",
+    "memoryStreet": "Na esquina",
+    "memorySpace": "Base lunar",
+    "memoryReef": "Recife de coral",
+    "memoryCamp": "Acampamento no lago",
+    "memoryWinter": "Quintal nevado",
+    "memoryClassroom": "Sala de aula",
+    "memoryHarbor": "Porto",
+    "memoryParty": "Festa de aniversário",
+    "memoryMarket": "Banca de frutas"
   },
   "mode": {
     "label": "Modo",
@@ -382,7 +413,24 @@
       "clothes": "No inverno veste-se roupa quente — é natural",
       "icicles": "Os pingentes de gelo só existem no inverno — não é uma diferença",
       "smoke": "No inverno acende-se o fogão — o fumo é natural",
-      "flowers": "No inverno não crescem flores nem cogumelos — é natural"
+      "flowers": "No inverno não crescem flores nem cogumelos — é natural",
+      "clock": "O tempo passa — o relógio tem de mostrar outra hora"
     }
+  },
+  "memoryMode": {
+    "task": "Encontre de memória",
+    "rules": "Memorize a imagem — você só tem alguns segundos. Depois ela muda: encontre as diferenças de memória. No máximo 3 erros.",
+    "phases": {
+      "show": "Memorize a imagem!",
+      "search": "O que mudou?",
+      "peek": "Olhe mais uma vez!",
+      "reveal": "Antes e depois"
+    },
+    "peek": "Olhar de novo",
+    "finish": "Mostrar resposta",
+    "misses": "Erros: {n} de {max}",
+    "failed": "Não foi desta vez",
+    "foundOf": "Encontradas {found} de {total}",
+    "legend": "Em vermelho, o que você deixou passar"
   }
 }

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
-import { chapterById, chapterLevels, TIME_CHAPTER } from '../levels/chapters.ts'
+import { categoryOf, chapterById, chapterLevels } from '../levels/chapters.ts'
 import { allLevels, levelById, levels } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
@@ -66,8 +66,8 @@ export const useProgressStore = defineStore('progress', () => {
   /**
    * Levels open one after another: the first one, then each after the previous level of its chapter
    * is completed. A world's first level follows level id − 1 (the previous world's first 20), so
-   * the harder levels added at a world's end never hold back the next world. The "time" category
-   * starts open.
+   * the harder levels added at a world's end never hold back the next world. A category ("time",
+   * "memory") starts open.
    */
   function isReached(id: number): boolean {
     const level = levelById(id)
@@ -75,7 +75,7 @@ export const useProgressStore = defineStore('progress', () => {
     const own = chapterLevels(chapterById(level.chapter)!)
     const i = own.indexOf(level)
     if (i > 0) return isCompleted(own[i - 1].id)
-    return id === 1 || level.chapter === TIME_CHAPTER.id || isCompleted(id - 1)
+    return id === 1 || categoryOf(level) !== undefined || isCompleted(id - 1)
   }
 
   /** A paid level while the full game is not bought. */

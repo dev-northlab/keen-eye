@@ -2,13 +2,14 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { CHAPTERS, chapterLevels, chapterSize, TIME_CHAPTER } from '../levels/chapters.ts'
+import { CHAPTERS, chapterLevels, chapterSize, MEMORY_CHAPTER, TIME_CHAPTER, type Chapter } from '../levels/chapters.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
-// in time" (docs/time-differences-mode.md) its level grid (ChapterView of TIME_CHAPTER).
+// in time" (docs/time-differences-mode.md) and "memory" (docs/memory-mode.md) their level grids
+// (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER).
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -20,12 +21,16 @@ const worlds = {
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
 }
 
-const timeLevels = chapterLevels(TIME_CHAPTER)
-const time = {
-  total: chapterSize(TIME_CHAPTER),
-  done: () => timeLevels.filter((l) => progress.isCompleted(l.id)).length,
-  stars: () => timeLevels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
+function category(chapter: Chapter) {
+  const own = chapterLevels(chapter)
+  return {
+    total: chapterSize(chapter),
+    done: () => own.filter((l) => progress.isCompleted(l.id)).length,
+    stars: () => own.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
+  }
 }
+const time = category(TIME_CHAPTER)
+const memory = category(MEMORY_CHAPTER)
 
 const timeTravel = {
   total: timeTravelLevels.length,
@@ -79,6 +84,23 @@ const timeTravel = {
               <span class="name">{{ $t('chapters.time') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: time.done(), total: time.total }) }} · ★ {{ time.stars() }}
+              </span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="mode memory" @click="router.push({ name: 'chapter', params: { chapter: MEMORY_CHAPTER.id } })">
+            <!-- A big faint eye behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <path d="M8 50s16-28 42-28 42 28 42 28-16 28-42 28S8 50 8 50Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" />
+              <circle cx="50" cy="50" r="13" fill="#fff" />
+            </svg>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="MEMORY_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('memoryMode.task') }}</span>
+              <span class="name">{{ $t('chapters.memory') }}</span>
+              <span class="sub">
+                {{ $t('map.progress', { done: memory.done(), total: memory.total }) }} · ★ {{ memory.stars() }}
               </span>
             </span>
           </button>
@@ -143,7 +165,7 @@ main {
   gap: 16px;
 }
 
-/* A banner per game mode: "spot the difference" green, "in time" violet, "find the odd one out" warm. */
+/* A banner per game mode: "spot the difference" green, "in time" violet, "memory" pink, "find the odd one out" warm. */
 .spot {
   --mode-from: #4cc38a;
   --mode-mid: #2f9e6e;
@@ -158,6 +180,14 @@ main {
   --mode-to: #4b3bb0;
   --mode-shadow: rgb(60 40 150 / 0.6);
   --mode-icon-bg: #ece6ff;
+}
+
+.memory {
+  --mode-from: #ff8fb1;
+  --mode-mid: #e8457a;
+  --mode-to: #b8235a;
+  --mode-shadow: rgb(150 20 70 / 0.6);
+  --mode-icon-bg: #ffe6ee;
 }
 
 .travel {

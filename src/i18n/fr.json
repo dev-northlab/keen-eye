@@ -168,7 +168,8 @@
     "forest": "Forêt",
     "sea": "Mer",
     "space": "Espace",
-    "time": "Le temps"
+    "time": "Le temps",
+    "memory": "Mémoire"
   },
   "levelTitles": {
     "barnyard": "Basse-cour",
@@ -335,7 +336,37 @@
     "farmYear": "Ferme au moulin",
     "harborEvening": "Soir au port",
     "forestYear": "Passerelle en forêt",
-    "yardNight": "Soirée au jardin"
+    "yardNight": "Soirée au jardin",
+    "marketSquare": "Place du marché",
+    "mountainVillage": "Village de montagne",
+    "railwayEvening": "Soir à la gare",
+    "lakeCottage": "Chalet au bord du lac",
+    "fishingHarbor": "Port de pêche",
+    "schoolYard": "Cour d'école",
+    "funfair": "Fête foraine",
+    "orchardHives": "Verger et ruches",
+    "riverTown": "Ville au bord de l'eau",
+    "parkPond": "Étang du parc",
+    "oldTownSquare": "Place de la vieille ville",
+    "farmyardSeasons": "Cour de ferme",
+    "seaPromenade": "Promenade du bord de mer",
+    "cableCar": "Téléphérique",
+    "downtown": "Centre-ville",
+    "memoryKitchen": "Petit-déjeuner",
+    "memoryFarmyard": "Cour de ferme",
+    "memoryBeach": "Journée à la plage",
+    "memoryBedroom": "Chambre d’enfant",
+    "memoryPlayground": "Aire de jeux",
+    "memoryGarden": "Potager",
+    "memoryStreet": "Coin de rue",
+    "memorySpace": "Base lunaire",
+    "memoryReef": "Récif de corail",
+    "memoryCamp": "Camp au bord du lac",
+    "memoryWinter": "Cour enneigée",
+    "memoryClassroom": "Salle de classe",
+    "memoryHarbor": "Port",
+    "memoryParty": "Fête d’anniversaire",
+    "memoryMarket": "Étal de fruits"
   },
   "mode": {
     "label": "Mode",
@@ -382,7 +413,24 @@
       "clothes": "En hiver, on s'habille chaudement — c'est naturel",
       "icicles": "Les glaçons n'existent qu'en hiver — ce n'est pas une différence",
       "smoke": "En hiver, on chauffe le poêle — la fumée est normale",
-      "flowers": "En hiver, les fleurs et les champignons ne poussent pas — c'est naturel"
+      "flowers": "En hiver, les fleurs et les champignons ne poussent pas — c'est naturel",
+      "clock": "Le temps passe — l'horloge doit indiquer une autre heure"
     }
+  },
+  "memoryMode": {
+    "task": "Retrouve de mémoire",
+    "rules": "Mémorise l’image — tu n’as que quelques secondes. Puis elle change : trouve les différences de mémoire. 3 erreurs au maximum.",
+    "phases": {
+      "show": "Mémorise l’image !",
+      "search": "Qu’est-ce qui a changé ?",
+      "peek": "Regarde encore une fois !",
+      "reveal": "Avant et après"
+    },
+    "peek": "Revoir",
+    "finish": "Voir la réponse",
+    "misses": "Erreurs : {n} sur {max}",
+    "failed": "Pas cette fois",
+    "foundOf": "Trouvé {found} sur {total}",
+    "legend": "En rouge, ce que tu as manqué"
   }
 }

@@ -168,7 +168,8 @@
     "forest": "Bos",
     "sea": "Zee",
     "space": "Ruimte",
-    "time": "Tijd"
+    "time": "Tijd",
+    "memory": "Geheugen"
   },
   "levelTitles": {
     "barnyard": "Erf",
@@ -335,7 +336,37 @@
     "farmYear": "Boerderij met molen",
     "harborEvening": "Avond in de haven",
     "forestYear": "Bruggetje in het bos",
-    "yardNight": "Avond in de tuin"
+    "yardNight": "Avond in de tuin",
+    "marketSquare": "Marktplein",
+    "mountainVillage": "Bergdorp",
+    "railwayEvening": "Avond op het station",
+    "lakeCottage": "Huisje aan het meer",
+    "fishingHarbor": "Vissershaven",
+    "schoolYard": "Schoolplein",
+    "funfair": "Kermis",
+    "orchardHives": "Boomgaard met bijenkorven",
+    "riverTown": "Stad aan de rivier",
+    "parkPond": "Vijver in het park",
+    "oldTownSquare": "Plein in de oude stad",
+    "farmyardSeasons": "Boerenerf",
+    "seaPromenade": "Boulevard aan zee",
+    "cableCar": "Kabelbaan",
+    "downtown": "Binnenstad",
+    "memoryKitchen": "Ontbijttafel",
+    "memoryFarmyard": "Boerenerf",
+    "memoryBeach": "Dagje strand",
+    "memoryBedroom": "Kinderkamer",
+    "memoryPlayground": "Speeltuin",
+    "memoryGarden": "Moestuin",
+    "memoryStreet": "Op de hoek",
+    "memorySpace": "Maanbasis",
+    "memoryReef": "Koraalrif",
+    "memoryCamp": "Kamp bij het meer",
+    "memoryWinter": "Besneeuwde tuin",
+    "memoryClassroom": "Klaslokaal",
+    "memoryHarbor": "Haven",
+    "memoryParty": "Verjaardagsfeest",
+    "memoryMarket": "Fruitkraam"
   },
   "mode": {
     "label": "Modus",
@@ -382,7 +413,24 @@
       "clothes": "'s Winters kleden mensen zich warm aan — dat is natuurlijk",
       "icicles": "IJspegels zijn er alleen in de winter — geen verschil",
       "smoke": "'s Winters brandt de kachel — de rook hoort erbij",
-      "flowers": "'s Winters groeien er geen bloemen en paddenstoelen — dat is natuurlijk"
+      "flowers": "'s Winters groeien er geen bloemen en paddenstoelen — dat is natuurlijk",
+      "clock": "De tijd gaat voorbij — de klok hoort iets anders aan te wijzen"
     }
+  },
+  "memoryMode": {
+    "task": "Zoek het uit je geheugen",
+    "rules": "Onthoud de afbeelding — je hebt maar een paar seconden. Daarna verandert ze: zoek de verschillen uit je geheugen. Hoogstens 3 missers.",
+    "phases": {
+      "show": "Onthoud de afbeelding!",
+      "search": "Wat is er veranderd?",
+      "peek": "Kijk nog eens!",
+      "reveal": "Voor en na"
+    },
+    "peek": "Nog eens kijken",
+    "finish": "Antwoord tonen",
+    "misses": "Missers: {n} van {max}",
+    "failed": "Deze keer niet",
+    "foundOf": "{found} van {total} gevonden",
+    "legend": "Rood omcirkeld is wat je miste"
   }
 }

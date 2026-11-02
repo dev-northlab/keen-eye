@@ -16,6 +16,15 @@ export function computeStars(p: {
   return 1
 }
 
+/**
+ * "Memory" mode (docs/memory-mode.md): 3 stars — all found without a peek and with at most one miss,
+ * 2 — all found, 1 — more than half; 0 = failed (the level is not completed).
+ */
+export function memoryStars(p: { found: number; total: number; mistakes: number; peeks: number }): Stars | 0 {
+  if (p.found === p.total) return p.peeks === 0 && p.mistakes <= 1 ? 3 : 2
+  return p.found * 2 > p.total ? 1 : 0
+}
+
 /** Anti-spam: MISS_LIMIT misses in a row within MISS_WINDOW_MS lock the pictures for LOCK_MS. */
 export const MISS_LIMIT = 3
 export const MISS_WINDOW_MS = 3000

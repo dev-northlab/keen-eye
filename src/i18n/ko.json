@@ -168,7 +168,8 @@
     "forest": "숲",
     "sea": "바다",
     "space": "우주",
-    "time": "시간"
+    "time": "시간",
+    "memory": "기억력"
   },
   "levelTitles": {
     "barnyard": "농가 마당",
@@ -335,7 +336,37 @@
     "farmYear": "풍차 농장",
     "harborEvening": "항구의 저녁",
     "forestYear": "숲속 작은 다리",
-    "yardNight": "정원의 저녁"
+    "yardNight": "정원의 저녁",
+    "marketSquare": "시장 광장",
+    "mountainVillage": "산골 마을",
+    "railwayEvening": "기차역의 저녁",
+    "lakeCottage": "호숫가 오두막",
+    "fishingHarbor": "어촌 항구",
+    "schoolYard": "학교 운동장",
+    "funfair": "놀이 장터",
+    "orchardHives": "과수원과 벌통",
+    "riverTown": "강변 마을",
+    "parkPond": "공원 연못",
+    "oldTownSquare": "구시가지 광장",
+    "farmyardSeasons": "농장 마당",
+    "seaPromenade": "해변 산책로",
+    "cableCar": "케이블카",
+    "downtown": "도심",
+    "memoryKitchen": "아침 식탁",
+    "memoryFarmyard": "농장 마당",
+    "memoryBeach": "해변에서의 하루",
+    "memoryBedroom": "아이 방",
+    "memoryPlayground": "놀이터",
+    "memoryGarden": "텃밭",
+    "memoryStreet": "길모퉁이",
+    "memorySpace": "달 기지",
+    "memoryReef": "산호초",
+    "memoryCamp": "호숫가 캠프",
+    "memoryWinter": "눈 덮인 마당",
+    "memoryClassroom": "교실",
+    "memoryHarbor": "항구",
+    "memoryParty": "생일 파티",
+    "memoryMarket": "과일 가판대"
   },
   "mode": {
     "label": "모드",
@@ -382,7 +413,24 @@
       "clothes": "겨울엔 따뜻하게 입어요 — 자연스러운 일이에요",
       "icicles": "고드름은 겨울에만 생겨요 — 다른 점이 아니에요",
       "smoke": "겨울엔 난로를 피워요 — 연기는 자연스러워요",
-      "flowers": "겨울엔 꽃도 버섯도 자라지 않아요 — 자연스러운 일이에요"
+      "flowers": "겨울엔 꽃도 버섯도 자라지 않아요 — 자연스러운 일이에요",
+      "clock": "시간이 흘러요 — 시계가 다른 시각을 가리키는 게 당연해요"
     }
+  },
+  "memoryMode": {
+    "task": "기억으로 찾기",
+    "rules": "그림을 기억하세요. 단 몇 초뿐이에요. 그다음 그림이 바뀌면 기억을 떠올려 달라진 곳을 찾으세요. 실수는 최대 3번.",
+    "phases": {
+      "show": "그림을 기억하세요!",
+      "search": "무엇이 바뀌었을까요?",
+      "peek": "한 번 더 보세요!",
+      "reveal": "전과 후"
+    },
+    "peek": "다시 보기",
+    "finish": "정답 보기",
+    "misses": "실수: {n}/{max}",
+    "failed": "이번엔 아쉬워요",
+    "foundOf": "{found}/{total}개 찾음",
+    "legend": "빨간 원은 놓친 곳이에요"
   }
 }

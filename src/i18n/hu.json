@@ -168,7 +168,8 @@
     "forest": "Erdő",
     "sea": "Tenger",
     "space": "Világűr",
-    "time": "Idő"
+    "time": "Idő",
+    "memory": "Memória"
   },
   "levelTitles": {
     "barnyard": "Udvar",
@@ -335,7 +336,37 @@
     "farmYear": "Tanya szélmalommal",
     "harborEvening": "Este a kikötőben",
     "forestYear": "Erdei hídacska",
-    "yardNight": "Este a kertben"
+    "yardNight": "Este a kertben",
+    "marketSquare": "Piactér",
+    "mountainVillage": "Hegyi falu",
+    "railwayEvening": "Este az állomáson",
+    "lakeCottage": "Tóparti házikó",
+    "fishingHarbor": "Halászkikötő",
+    "schoolYard": "Iskolaudvar",
+    "funfair": "Vurstli",
+    "orchardHives": "Gyümölcsös és kaptárak",
+    "riverTown": "Folyóparti város",
+    "parkPond": "Parki tó",
+    "oldTownSquare": "Óvárosi tér",
+    "farmyardSeasons": "Gazdasági udvar",
+    "seaPromenade": "Tengerparti sétány",
+    "cableCar": "Libegő",
+    "downtown": "Belváros",
+    "memoryKitchen": "Reggeli",
+    "memoryFarmyard": "Tanyaudvar",
+    "memoryBeach": "Nap a strandon",
+    "memoryBedroom": "Gyerekszoba",
+    "memoryPlayground": "Játszótér",
+    "memoryGarden": "Veteményes",
+    "memoryStreet": "Az utcasarkon",
+    "memorySpace": "Holdbázis",
+    "memoryReef": "Korallzátony",
+    "memoryCamp": "Tábor a tónál",
+    "memoryWinter": "Havas udvar",
+    "memoryClassroom": "Osztályterem",
+    "memoryHarbor": "Kikötő",
+    "memoryParty": "Születésnapi zsúr",
+    "memoryMarket": "Gyümölcsös stand"
   },
   "mode": {
     "label": "Mód",
@@ -382,7 +413,24 @@
       "clothes": "Télen melegebben öltözünk — ez természetes",
       "icicles": "Jégcsapok csak télen vannak — ez nem különbség",
       "smoke": "Télen begyújtják a kályhát — a füst természetes",
-      "flowers": "Télen nem nőnek virágok és gombák — ez természetes"
+      "flowers": "Télen nem nőnek virágok és gombák — ez természetes",
+      "clock": "Telik az idő — az órának mást kell mutatnia"
     }
+  },
+  "memoryMode": {
+    "task": "Emlékezetből",
+    "rules": "Jegyezd meg a képet — csak néhány másodperced van. Aztán megváltozik: keresd meg a különbségeket emlékezetből. Legfeljebb 3 tévedés.",
+    "phases": {
+      "show": "Jegyezd meg a képet!",
+      "search": "Mi változott?",
+      "peek": "Nézd meg még egyszer!",
+      "reveal": "Előtte és utána"
+    },
+    "peek": "Még egy pillantás",
+    "finish": "Megoldás",
+    "misses": "Tévedések: {n} / {max}",
+    "failed": "Most nem sikerült",
+    "foundOf": "{found} / {total} megtalálva",
+    "legend": "Pirossal jelölve, ami kimaradt"
   }
 }
