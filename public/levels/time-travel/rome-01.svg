@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <!-- "Find the odd one out" level rome-01, Ancient Rome. The odd items (groups with ids) must stay
+       inside their hitboxes in src/levels/time-travel/rome-01.json (percent of 800×500). -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd3ff" />
+      <stop offset="1" stop-color="#fff0c8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky. -->
+  <rect width="800" height="340" fill="url(#sky)" />
+  <circle cx="730" cy="70" r="52" fill="#fff3b0" opacity="0.6" />
+  <g data-anim="sun" fill="#ffd23f">
+  <circle cx="730" cy="70" r="40" />
+  </g>
+  <g data-anim="clouds">
+  <g fill="#fff">
+    <ellipse cx="420" cy="80" rx="46" ry="18" /><circle cx="402" cy="70" r="18" /><circle cx="432" cy="64" r="22" />
+    <ellipse cx="600" cy="140" rx="36" ry="14" /><circle cx="588" cy="132" r="14" /><circle cx="612" cy="128" r="17" />
+  </g>
+  </g>
+  <g data-anim="birds">
+  <path d="M500 50q8-9 16 0q8-9 16 0M532 34q7-8 14 0q7-8 14 0" fill="none" stroke="#34495e" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Hills with cypresses. -->
+  <path d="M0 300q160-70 330-30t300-40 170 20V340H0Z" fill="#a8c97f" />
+  <g data-anim="cypress-1">
+  <ellipse cx="338" cy="262" rx="11" ry="46" fill="#3d6b3a" />
+  </g>
+  <g data-anim="cypress-2">
+  <ellipse cx="364" cy="272" rx="9" ry="38" fill="#467a40" />
+  </g>
+  <g data-anim="cypress-3">
+  <ellipse cx="516" cy="258" rx="11" ry="48" fill="#3d6b3a" />
+  </g>
+  <rect x="335" y="300" width="6" height="12" fill="#6b4a2a" />
+  <rect x="513" y="298" width="6" height="14" fill="#6b4a2a" />
+
+  <!-- Colosseum. -->
+  <path d="M540 330V214q125-46 250 0V330Z" fill="#e6c79a" />
+  <path d="M540 214q125-46 250 0v14q-125-44-250 0Z" fill="#d1ab76" />
+  <path d="M540 262H790M540 298H790" stroke="#c49a63" stroke-width="4" />
+  <g fill="#9c7046">
+    <path d="M552 258v-18a7 7 0 0 1 14 0v18ZM580 258v-18a7 7 0 0 1 14 0v18ZM608 258v-18a7 7 0 0 1 14 0v18ZM636 258v-18a7 7 0 0 1 14 0v18ZM664 258v-18a7 7 0 0 1 14 0v18ZM692 258v-18a7 7 0 0 1 14 0v18ZM720 258v-18a7 7 0 0 1 14 0v18ZM748 258v-18a7 7 0 0 1 14 0v18Z" />
+    <path d="M552 294v-20a7 7 0 0 1 14 0v20ZM580 294v-20a7 7 0 0 1 14 0v20ZM608 294v-20a7 7 0 0 1 14 0v20ZM636 294v-20a7 7 0 0 1 14 0v20ZM664 294v-20a7 7 0 0 1 14 0v20ZM692 294v-20a7 7 0 0 1 14 0v20ZM720 294v-20a7 7 0 0 1 14 0v20ZM748 294v-20a7 7 0 0 1 14 0v20Z" />
+    <path d="M552 330v-20a7 7 0 0 1 14 0v20ZM580 330v-20a7 7 0 0 1 14 0v20ZM608 330v-20a7 7 0 0 1 14 0v20ZM636 330v-20a7 7 0 0 1 14 0v20ZM664 330v-20a7 7 0 0 1 14 0v20ZM692 330v-20a7 7 0 0 1 14 0v20ZM720 330v-20a7 7 0 0 1 14 0v20ZM748 330v-20a7 7 0 0 1 14 0v20Z" />
+  </g>
+
+  <!-- Temple. -->
+  <path d="M40 186L170 136 300 186Z" fill="#f4efe6" />
+  <path d="M70 180L170 145 270 180Z" fill="#ddd3c2" />
+  <rect x="40" y="186" width="260" height="16" fill="#e8e0d0" />
+  <g fill="#f4efe6">
+    <rect x="58" y="202" width="16" height="108" /><rect x="102" y="202" width="16" height="108" />
+    <rect x="146" y="202" width="16" height="108" /><rect x="190" y="202" width="16" height="108" />
+    <rect x="234" y="202" width="16" height="108" /><rect x="268" y="202" width="16" height="108" />
+  </g>
+  <g fill="#ddd3c2">
+    <rect x="68" y="202" width="6" height="108" /><rect x="112" y="202" width="6" height="108" />
+    <rect x="156" y="202" width="6" height="108" /><rect x="200" y="202" width="6" height="108" />
+    <rect x="244" y="202" width="6" height="108" /><rect x="278" y="202" width="6" height="108" />
+  </g>
+  <rect x="34" y="310" width="272" height="8" fill="#e8e0d0" />
+  <rect x="28" y="318" width="284" height="8" fill="#ddd3c2" />
+  <rect x="22" y="326" width="296" height="8" fill="#cfc4b0" />
+
+  <!-- Forum pavement. -->
+  <rect y="334" width="800" height="166" fill="#e8dcc2" />
+  <path d="M0 370H800M0 412H800M0 458H800M60 334V370M180 370V412M300 334V370M420 412V458M540 334V370M660 370V412M760 412V458M120 458V500M360 458V500M600 458V500" stroke="#d6c7a6" stroke-width="2" />
+
+  <!-- Amphorae. -->
+  <g fill="#c8643b">
+    <path d="M36 420q-12-14-6-34 4-8 6-14h10q2 6 6 14 6 20-6 34Z" />
+    <path d="M62 424q-10-12-5-28 3-6 5-11h8q2 5 5 11 5 16-5 28Z" />
+  </g>
+  <path d="M30 392h22M57 400h18" stroke="#a84e2c" stroke-width="2.5" />
+
+  <!-- Senators. -->
+  <path d="M212 400l-4 10h8ZM226 400l4 10h-8Z" fill="#8a5a33" />
+  <path d="M202 334h36l8 68h-52Z" fill="#fafafa" />
+  <path d="M206 336l28 44" stroke="#c0392b" stroke-width="5" />
+  <g data-anim="scroll-arm">
+  <path d="M236 344l14 18" stroke="#e0a878" stroke-width="6" stroke-linecap="round" />
+  <rect x="246" y="356" width="16" height="8" rx="3" fill="#f3e2b3" />
+  </g>
+  <circle cx="220" cy="320" r="14" fill="#e0a878" />
+  <path d="M206 318q14-20 28 0v-6q-14-14-28 0Z" fill="#8a8a8a" />
+  <circle cx="225" cy="320" r="1.6" fill="#3b2a1a" />
+
+  <path d="M292 400l-4 10h8ZM306 400l4 10h-8Z" fill="#8a5a33" />
+  <path d="M282 334h36l8 68h-52Z" fill="#fafafa" />
+  <path d="M286 336l30 42" stroke="#7b2d8e" stroke-width="5" />
+  <path d="M284 344l-12 22" stroke="#e0a878" stroke-width="6" stroke-linecap="round" />
+  <circle cx="301" cy="318" r="14" fill="#e0a878" />
+  <path d="M287 314q14-20 28 0v-6q-14-14-28 0Z" fill="#5a3a22" />
+  <path d="M286 312l6-7M300 304l3-7M311 307l5-6" stroke="#3f9a4a" stroke-width="3" stroke-linecap="round" />
+  <circle cx="295" cy="318" r="1.6" fill="#3b2a1a" />
+  <circle cx="307" cy="318" r="1.6" fill="#3b2a1a" />
+
+  <!-- Stone bench. -->
+  <rect x="356" y="420" width="88" height="10" rx="2" fill="#cfc4b0" />
+  <rect x="364" y="430" width="10" height="16" fill="#bdb19b" />
+  <rect x="426" y="430" width="10" height="16" fill="#bdb19b" />
+
+  <!-- Market stall. -->
+  <rect x="471" y="300" width="6" height="130" fill="#8a5a33" />
+  <rect x="633" y="300" width="6" height="130" fill="#8a5a33" />
+  <path d="M462 292h186l-10 30H472Z" fill="#fafafa" />
+  <path d="M484 292l-4 30M510 292v30M536 292v30M562 292v30M588 292v30M614 292l4 30" stroke="#d93a3a" stroke-width="12" />
+  <rect x="476" y="380" width="158" height="50" fill="#a8743f" />
+  <path d="M476 394H634M476 410H634" stroke="#8a5a33" stroke-width="2" />
+  <g fill="#7b3f98">
+    <circle cx="552" cy="372" r="5" /><circle cx="562" cy="372" r="5" /><circle cx="572" cy="372" r="5" />
+    <circle cx="557" cy="364" r="5" /><circle cx="567" cy="364" r="5" /><circle cx="562" cy="356" r="5" />
+  </g>
+  <path d="M562 351v-6" stroke="#3f9a4a" stroke-width="3" stroke-linecap="round" />
+  <ellipse cx="600" cy="373" rx="13" ry="7" fill="#d9a35a" />
+  <ellipse cx="622" cy="374" rx="10" ry="6" fill="#c98f45" />
+  <path d="M594 370l4-4M602 370l4-4" stroke="#b5814a" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Statue. -->
+  <rect x="708" y="400" width="44" height="50" fill="#cfc4b0" />
+  <rect x="702" y="394" width="56" height="8" fill="#ddd3c2" />
+  <path d="M716 394l4-50h20l4 50Z" fill="#f4efe6" />
+  <circle cx="730" cy="334" r="11" fill="#f4efe6" />
+  <path d="M740 352l12-16" stroke="#f4efe6" stroke-width="6" stroke-linecap="round" />
+
+  <!-- Odd items. -->
+  <g id="balloon" transform="translate(0 -15)">
+    <path d="M181 112l4 16M199 112l-4 16" stroke="#8a5a33" stroke-width="2" />
+    <ellipse cx="190" cy="84" rx="27" ry="31" fill="#ff7a00" />
+    <path d="M190 53q-12 31 0 62q12-31 0-62Z" fill="#ffd23f" />
+    <path d="M168 76h44" stroke="#3a86ff" stroke-width="5" />
+    <rect x="183" y="126" width="14" height="10" rx="2" fill="#8a5a33" />
+  </g>
+  <g id="bicycle" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="112" cy="424" r="16" stroke="#333" stroke-width="4" />
+    <circle cx="160" cy="424" r="16" stroke="#333" stroke-width="4" />
+    <path d="M112 424L134 424 128 400ZM128 400L152 400 134 424M152 400L160 424" stroke="#e84a4a" stroke-width="4" />
+    <path d="M122 396h12M148 396l8-3" stroke="#333" stroke-width="4" />
+  </g>
+  <g id="glasses" fill="none" stroke="#222" stroke-width="2">
+    <circle cx="295" cy="318" r="5" />
+    <circle cx="307" cy="318" r="5" />
+    <path d="M300 318h2M290 317l-3-1M312 317l3-1" />
+  </g>
+  <g id="tomatoes">
+    <circle cx="494" cy="375" r="7" fill="#e8402f" /><circle cx="508" cy="375" r="7" fill="#e8402f" />
+    <circle cx="522" cy="375" r="7" fill="#e8402f" /><circle cx="501" cy="366" r="6" fill="#f05a3c" />
+    <circle cx="515" cy="366" r="6" fill="#f05a3c" />
+    <g fill="#3f9a4a">
+      <circle cx="494" cy="368" r="2" /><circle cx="508" cy="368" r="2" /><circle cx="522" cy="368" r="2" />
+      <circle cx="501" cy="360" r="2" /><circle cx="515" cy="360" r="2" />
+    </g>
+  </g>
+  <g id="telephone">
+    <path d="M386 420l4-14h20l4 14Z" fill="#2b2b2b" />
+    <circle cx="400" cy="413" r="5.5" fill="#ddd" />
+    <circle cx="400" cy="413" r="1.8" fill="#2b2b2b" />
+    <path d="M383 402q0-6 6-6h22q6 0 6 6v2h-8v-2h-18v2h-8Z" fill="#2b2b2b" />
+  </g>
+  <g id="corn">
+    <path d="M650 424h40l-5 26h-30Z" fill="#b9853f" />
+    <path d="M652 432h36M654 441h32" stroke="#9c6b2e" stroke-width="2" />
+    <ellipse cx="660" cy="412" rx="6" ry="14" fill="#ffd23f" transform="rotate(-12 660 412)" />
+    <ellipse cx="672" cy="408" rx="6" ry="14" fill="#ffc933" />
+    <ellipse cx="684" cy="412" rx="6" ry="14" fill="#ffd23f" transform="rotate(12 684 412)" />
+    <path d="M656 426q-8-12-2-22q6 10 8 22ZM688 426q8-12 2-22q-6 10-8 22ZM668 426q-4-10 0-16q4 6 4 16Z" fill="#4f8f3a" />
+  </g>
+</svg>

@@ -37,6 +37,11 @@
     "soonLevels": "Coming soon: {n} more",
     "progress": "{done} of {total}"
   },
+  "timeTravel": {
+    "title": "Time travel",
+    "task": "Find what doesn't belong",
+    "facts": "Out-of-place items"
+  },
   "level": {
     "level": "Level {n}",
     "found": "Found {found}/{total}",

@@ -37,6 +37,11 @@
     "soonLevels": "Hamarosan: még {n}",
     "progress": "{done} / {total}"
   },
+  "timeTravel": {
+    "title": "Időutazás",
+    "task": "Találd meg, ami nem illik ide",
+    "facts": "Korba nem illő tárgyak"
+  },
   "level": {
     "level": "{n}. pálya",
     "found": "Megtalálva {found}/{total}",

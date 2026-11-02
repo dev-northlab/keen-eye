@@ -37,6 +37,11 @@
     "soonLevels": "Binnenkort: nog {n}",
     "progress": "{done} van {total}"
   },
+  "timeTravel": {
+    "title": "Tijdreis",
+    "task": "Vind wat er niet hoort",
+    "facts": "Voorwerpen uit een andere tijd"
+  },
   "level": {
     "level": "Level {n}",
     "found": "Gevonden {found}/{total}",

@@ -24,6 +24,8 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
       <StarRating :stars="result.stars" :size="48" animated />
       <p>{{ $t('level.time', { t: time }) }} · {{ $t('level.mistakes', { n: result.mistakes }) }}</p>
     </template>
+    <!-- Extra content of a mode, e.g. the facts of "find the odd one out". -->
+    <slot />
     <div class="actions">
       <button v-if="hasNext" @click="$emit('next')">{{ $t('level.next') }}</button>
       <button class="secondary" @click="$emit('retry')">{{ $t('level.retry') }}</button>

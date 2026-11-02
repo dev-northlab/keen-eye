@@ -19,6 +19,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   in one run may exceed the memory of a busy machine (killed with code 137) — then check by id in batches
 - `npm run preview-levels [-- <id> ...]` — `previews/level-NNN.png`: A | B with the zones outlined (gitignored)
 - `npm run typecheck` — type check only
+- `npm test` — unit tests (`tests/*.test.ts`, Node's built-in `node:test`, no extra dependencies)
 - `npm run icons` — renders the app icon, splash and store icon (Android, iOS, Play, favicon) from the SVG in
   `scripts/make-icons.ts`; the iOS 1024 px icon is written without an alpha channel (App Store requirement)
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
@@ -36,15 +37,24 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
   `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
-  `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; tap events
+  `hit-test.ts`, `anachronism.ts`, `anachronism-scene.ts` ("find the odd one out", `docs/anachronism-mode.md`: screen →
+  percent of the image and hitboxes; level JSON checks and the DOM-free round; `AnachronismScene`, one picture with the
+  same zoom, gestures, marks and miss lock), `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; tap events
   `{ playerId, picture, x, y, t }` are hit-tested by the engine itself), `match-scene.ts` (`MatchScene`: clock,
   1 shared or 2 face-to-face boards, `Match`; duels have no zoom and count a tap when the finger touches)
-- `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
+- `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `time-travel/` — "find the odd one out"
+  levels as JSON (`mode: "anachronism"`, string ids, percent hitboxes, texts as `{ <locale>: … }` in every interface language — `npm test` checks it), checked by
+  `parseAnachronismLevel` in `time-travel/index.ts`, images in `public/levels/time-travel/`; kept out of `levels`
+  (no unlock order, no purchase, own `progress.timeTravel` records; a world map card opens the eras, `/time-travel`, a level is `/time-travel/:id`;
+  one era per level: Egypt, Rome, Vikings, castle, pirates so far, difficulty growing; the picture is inlined
+  (`createSvgPicture`) and its background moves: `data-anim` groups in the SVG + `animations` in the JSON, same
+  motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
   `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
   `difficulty.ts` (difference and motion counts, min zone radius and kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (chapter cards), Chapter (level grid of one chapter, `/levels/:chapter`),
-  Level, Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
+  TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels),
+  Level, Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
 - `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it

@@ -37,6 +37,11 @@
     "soonLevels": "Próximamente: {n} más",
     "progress": "{done} de {total}"
   },
+  "timeTravel": {
+    "title": "Viaje en el tiempo",
+    "task": "Encuentra lo que no encaja",
+    "facts": "Objetos de otra época"
+  },
   "level": {
     "level": "Nivel {n}",
     "found": "Encontradas {found}/{total}",

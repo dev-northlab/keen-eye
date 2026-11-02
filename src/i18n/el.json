@@ -37,6 +37,11 @@
     "soonLevels": "Σύντομα: άλλα {n}",
     "progress": "{done} από {total}"
   },
+  "timeTravel": {
+    "title": "Ταξίδι στον χρόνο",
+    "task": "Βρες τι δεν ταιριάζει",
+    "facts": "Αντικείμενα από άλλη εποχή"
+  },
   "level": {
     "level": "Επίπεδο {n}",
     "found": "Βρέθηκαν {found}/{total}",

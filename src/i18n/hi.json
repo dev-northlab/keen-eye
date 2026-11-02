@@ -37,6 +37,11 @@
     "soonLevels": "जल्द आ रहे हैं: {n} और",
     "progress": "{total} में से {done}"
   },
+  "timeTravel": {
+    "title": "समय यात्रा",
+    "task": "जो मेल नहीं खाता, उसे ढूँढो",
+    "facts": "दूसरे युग की चीज़ें"
+  },
   "level": {
     "level": "लेवल {n}",
     "found": "मिले {found}/{total}",

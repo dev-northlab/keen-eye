@@ -37,6 +37,11 @@
     "soonLevels": "Již brzy: další {n}",
     "progress": "{done} z {total}"
   },
+  "timeTravel": {
+    "title": "Cestování časem",
+    "task": "Najdi, co sem nepatří",
+    "facts": "Předměty z jiné doby"
+  },
   "level": {
     "level": "Úroveň {n}",
     "found": "Nalezeno {found}/{total}",

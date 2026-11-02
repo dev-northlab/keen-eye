@@ -37,6 +37,11 @@
     "soonLevels": "Yakında: {n} tane daha",
     "progress": "{done} / {total}"
   },
+  "timeTravel": {
+    "title": "Zaman yolculuğu",
+    "task": "Uymayanı bul",
+    "facts": "Döneme uymayan nesneler"
+  },
   "level": {
     "level": "Bölüm {n}",
     "found": "Bulunan {found}/{total}",

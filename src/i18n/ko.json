@@ -37,6 +37,11 @@
     "soonLevels": "곧 공개: {n}개 더",
     "progress": "{done} / {total}"
   },
+  "timeTravel": {
+    "title": "시간 여행",
+    "task": "어울리지 않는 것을 찾아보세요",
+    "facts": "시대에 맞지 않는 물건"
+  },
   "level": {
     "level": "레벨 {n}",
     "found": "찾음 {found}/{total}",

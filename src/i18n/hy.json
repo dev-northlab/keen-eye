@@ -37,6 +37,11 @@
     "soonLevels": "Շուտով՝ ևս {n}",
     "progress": "{done}՝ {total}-ից"
   },
+  "timeTravel": {
+    "title": "Ճամփորդություն ժամանակի մեջ",
+    "task": "Գտիր ավելորդը",
+    "facts": "Ավելորդ առարկաներ"
+  },
   "level": {
     "level": "Մակարդակ {n}",
     "found": "Գտնված է {found}/{total}",

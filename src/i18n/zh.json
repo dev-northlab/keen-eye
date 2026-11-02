@@ -37,6 +37,11 @@
     "soonLevels": "即将推出：还有 {n} 关",
     "progress": "{done} / {total}"
   },
+  "timeTravel": {
+    "title": "时光旅行",
+    "task": "找出不属于这里的东西",
+    "facts": "不属于这个时代的物品"
+  },
   "level": {
     "level": "第 {n} 关",
     "found": "已找到 {found}/{total}",

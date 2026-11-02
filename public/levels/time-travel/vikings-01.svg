@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <!-- "Find the odd one out" level vikings-01, the Viking age. The odd items (groups with ids) must stay
+       inside their hitboxes in src/levels/time-travel/vikings-01.json (percent of 800×500). -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9fd4f5" />
+      <stop offset="1" stop-color="#eaf6fb" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky. -->
+  <rect width="800" height="280" fill="url(#sky)" />
+  <circle cx="120" cy="70" r="46" fill="#fff8d6" opacity="0.6" />
+  <g data-anim="sun" fill="#fff1a8">
+  <circle cx="120" cy="70" r="34" />
+  </g>
+  <g data-anim="clouds">
+  <g fill="#fff">
+    <ellipse cx="330" cy="70" rx="44" ry="16" /><circle cx="314" cy="62" r="16" /><circle cx="342" cy="56" r="20" />
+    <ellipse cx="560" cy="96" rx="38" ry="14" /><circle cx="548" cy="88" r="14" /><circle cx="572" cy="84" r="17" />
+  </g>
+  </g>
+
+  <!-- Fjord mountains. -->
+  <path d="M0 270L80 150 170 230 260 120 360 240 450 140 560 250 650 130 760 220 800 190V280H0Z" fill="#8fa9c4" />
+  <g fill="#fff">
+    <path d="M80 150l-18 27 9-3 9 8 8-8 10 3Z" />
+    <path d="M260 120l-20 30 10-4 10 9 9-9 11 4Z" />
+    <path d="M450 140l-19 28 10-4 9 8 9-8 10 4Z" />
+    <path d="M650 130l-20 30 10-4 10 9 9-9 11 4Z" />
+  </g>
+  <path d="M0 280L120 200 220 270 330 210 420 280 520 220 640 270 720 230 800 260V290H0Z" fill="#6f8fae" />
+
+  <!-- Water. -->
+  <rect y="262" width="800" height="90" fill="#4a90b8" />
+  <g data-anim="water">
+  <path d="M40 300h40M460 320h50M680 304h40M60 336h30M520 342h40" stroke="#8cc4e0" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Longship. -->
+  <g data-anim="longship">
+  <rect x="262" y="180" width="6" height="122" fill="#6b4226" />
+  <path d="M206 190h118" stroke="#6b4226" stroke-width="5" stroke-linecap="round" />
+  <rect x="210" y="190" width="110" height="82" fill="#fafafa" />
+  <path d="M224 190v82M252 190v82M280 190v82M308 190v82" stroke="#c0392b" stroke-width="12" />
+  <path d="M130 296q10 26 60 30h150q40-4 56-34Z" fill="#7a4e2d" />
+  <path d="M138 300q12 14 56 16h146q32-2 48-18" fill="none" stroke="#5a3a22" stroke-width="3" />
+  <path d="M392 296q14-28 8-56" fill="none" stroke="#7a4e2d" stroke-width="9" stroke-linecap="round" />
+  <path d="M396 240q6-16 22-12l-4 8 8 4-16 5Z" fill="#7a4e2d" />
+  <circle cx="407" cy="236" r="1.8" fill="#ffd23f" />
+  <path d="M134 296q-16-30 4-42q10 4 2 14" fill="none" stroke="#7a4e2d" stroke-width="7" stroke-linecap="round" />
+  <g stroke="#5a3a22" stroke-width="2">
+    <circle cx="176" cy="300" r="9" fill="#c0392b" /><circle cx="206" cy="302" r="9" fill="#ffd23f" />
+    <circle cx="236" cy="302" r="9" fill="#c0392b" /><circle cx="266" cy="302" r="9" fill="#ffd23f" />
+    <circle cx="296" cy="302" r="9" fill="#c0392b" /><circle cx="326" cy="302" r="9" fill="#ffd23f" />
+    <circle cx="356" cy="300" r="9" fill="#c0392b" />
+  </g>
+  </g>
+
+  <!-- Shore. -->
+  <path d="M0 345q200-14 400 0t400 0V500H0Z" fill="#7fb26a" />
+  <path d="M0 470q200-12 400 0t400 0V500H0Z" fill="#74a65f" />
+  <ellipse cx="430" cy="352" rx="14" ry="6" fill="#9aa3ab" />
+  <ellipse cx="22" cy="356" rx="10" ry="5" fill="#9aa3ab" />
+  <path d="M120 470l-4-10M126 470l2-12M132 470l5-9M540 482l-4-10M546 482l2-12M552 482l5-9M300 486l-4-10M306 486l2-12M312 486l5-9" stroke="#4f8f3a" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Sheep. -->
+  <g data-anim="sheep">
+  <g fill="#f5f5f0">
+    <circle cx="40" cy="384" r="12" /><circle cx="56" cy="380" r="13" /><circle cx="70" cy="386" r="11" /><circle cx="54" cy="392" r="12" />
+  </g>
+  <path d="M44 398v12M64 398v12" stroke="#3b3b4a" stroke-width="4" stroke-linecap="round" />
+  <ellipse cx="82" cy="380" rx="8" ry="10" fill="#3b3b4a" />
+  </g>
+
+  <!-- Longhouse. -->
+  <rect x="600" y="350" width="200" height="80" fill="#8a5a33" />
+  <path d="M616 350v80M632 350v80M648 350v80M664 350v80M736 350v80M752 350v80M768 350v80M784 350v80" stroke="#74482a" stroke-width="2" />
+  <path d="M584 356L700 300 816 356Z" fill="#5d9b4f" />
+  <path d="M584 356L700 300 816 356" fill="none" stroke="#4a8240" stroke-width="5" stroke-linejoin="round" />
+  <path d="M694 302l-12-16M706 302l12-16" stroke="#6b4226" stroke-width="5" stroke-linecap="round" />
+  <path d="M682 430v-36q18-16 36 0v36Z" fill="#5a3a22" />
+  <circle cx="710" cy="412" r="2.5" fill="#ffd23f" />
+
+  <!-- Table with bread and a drinking horn. -->
+  <rect x="98" y="416" width="8" height="30" fill="#6b4226" />
+  <rect x="216" y="416" width="8" height="30" fill="#6b4226" />
+  <rect x="90" y="408" width="142" height="9" rx="2" fill="#8a5a33" />
+  <ellipse cx="118" cy="402" rx="14" ry="7" fill="#d9a35a" />
+  <path d="M112 399l4-4M120 399l4-4" stroke="#b5814a" stroke-width="2" stroke-linecap="round" />
+  <path d="M140 406q6-18 26-16q-4 8-14 18Z" fill="#f3ead2" />
+  <path d="M162 392l4-2" stroke="#c9b98f" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Barrel. -->
+  <path d="M247 424q-4 19 0 38h36q4-19 0-38Z" fill="#9a6b3c" />
+  <path d="M246 432h38M246 454h38" stroke="#5a3a22" stroke-width="3" />
+
+  <!-- A Viking with an axe. -->
+  <path d="M348 430v14M368 430v14" stroke="#6b4a2a" stroke-width="8" />
+  <path d="M342 396h36l6 40h-48Z" fill="#4f8f3a" />
+  <path d="M340 416h40" stroke="#6b4226" stroke-width="4" />
+  <g data-anim="axe">
+  <path d="M378 404l14-10" stroke="#f1c27d" stroke-width="6" stroke-linecap="round" />
+  <path d="M386 410l14-44" stroke="#6b4226" stroke-width="4" stroke-linecap="round" />
+  <path d="M398 368q12 2 12 14q-10-2-16-6Z" fill="#9aa7b8" />
+  </g>
+  <circle cx="360" cy="382" r="14" fill="#f1c27d" />
+  <path d="M348 386q12 4 24 0q-2 16-12 18q-10-2-12-18Z" fill="#8a5a33" />
+  <path d="M345 380q15-26 30 0Z" fill="#9aa7b8" />
+  <rect x="358" y="378" width="4" height="12" fill="#7b8794" />
+  <circle cx="354" cy="383" r="1.6" fill="#3b2a1a" />
+  <circle cx="366" cy="383" r="1.6" fill="#3b2a1a" />
+
+  <!-- A Viking with a shield. -->
+  <path d="M474 428v22M486 428v22" stroke="#6b4a2a" stroke-width="8" />
+  <path d="M462 386h36l6 44h-48Z" fill="#3a6fd8" />
+  <path d="M458 410h44" stroke="#6b4226" stroke-width="4" />
+  <circle cx="514" cy="408" r="16" fill="#c0392b" />
+  <path d="M514 392v32M498 408h32" stroke="#ffd23f" stroke-width="4" />
+  <circle cx="514" cy="408" r="4" fill="#9aa7b8" />
+  <circle cx="480" cy="372" r="14" fill="#f1c27d" />
+  <path d="M467 376q13 4 26 0q-2 20-13 22q-11-2-13-22Z" fill="#d9822b" />
+  <circle cx="474" cy="373" r="1.6" fill="#3b2a1a" />
+  <circle cx="486" cy="373" r="1.6" fill="#3b2a1a" />
+
+  <!-- Odd items. -->
+  <g id="steamship">
+    <path d="M572 272h86l-8 14h-70Z" fill="#333" />
+    <rect x="586" y="260" width="50" height="12" fill="#fafafa" />
+    <path d="M592 266h6M604 266h6M616 266h6" stroke="#3a86ff" stroke-width="3" />
+    <rect x="612" y="238" width="12" height="24" fill="#d93a3a" />
+    <rect x="612" y="238" width="12" height="5" fill="#222" />
+    <g fill="#c3ccd6"><circle cx="628" cy="232" r="5" /><circle cx="638" cy="228" r="6" /><circle cx="650" cy="226" r="6" /></g>
+    <path d="M574 288h14M646 288h12" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+  </g>
+  <g id="helmet">
+    <path d="M467 362q-14-4-16-22q8 10 18 14Z" fill="#f3ead2" />
+    <path d="M493 362q14-4 16-22q-8 10-18 14Z" fill="#f3ead2" />
+    <path d="M465 368q15-22 30 0Z" fill="#9aa7b8" />
+    <path d="M465 366h30" stroke="#7b8794" stroke-width="3" />
+  </g>
+  <g id="boots">
+    <rect x="346" y="443" width="11" height="18" rx="2" fill="#ffd23f" />
+    <rect x="363" y="443" width="11" height="18" rx="2" fill="#ffd23f" />
+    <path d="M344 461h15M361 461h15" stroke="#e8a400" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <g id="tin-can">
+    <rect x="190" y="390" width="16" height="18" fill="#b0b8c4" />
+    <rect x="190" y="395" width="16" height="8" fill="#d93a3a" />
+    <ellipse cx="198" cy="390" rx="8" ry="3" fill="#d5dbe3" />
+  </g>
+  <g id="pumpkin">
+    <rect x="637" y="424" width="5" height="8" rx="1" fill="#4f8f3a" />
+    <ellipse cx="640" cy="442" rx="18" ry="14" fill="#ff8c1a" />
+    <ellipse cx="640" cy="442" rx="7" ry="14" fill="#f27a0a" />
+    <path d="M628 434q-2 8 0 16M652 434q2 8 0 16" stroke="#e06c00" stroke-width="2" fill="none" />
+  </g>
+  <g id="teddy">
+    <circle cx="258" cy="390" r="3.5" fill="#b07a45" />
+    <circle cx="272" cy="390" r="3.5" fill="#b07a45" />
+    <ellipse cx="265" cy="412" rx="10" ry="10" fill="#b07a45" />
+    <circle cx="265" cy="397" r="8" fill="#b07a45" />
+    <ellipse cx="265" cy="400" rx="4" ry="3" fill="#e3c193" />
+    <circle cx="265" cy="399" r="1.2" fill="#3b2a1a" />
+    <circle cx="262" cy="395" r="1.1" fill="#3b2a1a" />
+    <circle cx="268" cy="395" r="1.1" fill="#3b2a1a" />
+    <path d="M261 405l4 2 4-2" stroke="#d93a3a" stroke-width="2.5" fill="none" />
+    <circle cx="258" cy="420" r="4" fill="#9a6838" />
+    <circle cx="272" cy="420" r="4" fill="#9a6838" />
+  </g>
+</svg>

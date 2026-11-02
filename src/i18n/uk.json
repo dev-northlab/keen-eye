@@ -37,6 +37,11 @@
     "soonLevels": "Незабаром: ще {n}",
     "progress": "{done} з {total}"
   },
+  "timeTravel": {
+    "title": "Подорож у часі",
+    "task": "Знайди зайве",
+    "facts": "Предмети з іншої епохи"
+  },
   "level": {
     "level": "Рівень {n}",
     "found": "Знайдено {found}/{total}",

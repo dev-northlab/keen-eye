@@ -49,22 +49,46 @@ export function createPicture(level: Level, variant: 0 | 1, flipped = false): Pi
     if (href) scene.append(el('image', { href, width: w, height: h }))
   }
 
-  const byKey = new Map(animations.map((a) => [a.key, a]))
-  const animated = [...scene.querySelectorAll<SVGGElement>('[data-anim]')].flatMap((g) => {
-    const animation = byKey.get(g.dataset.anim!)
-    return animation ? [{ el: g, animation }] : []
-  })
-
   const marks = el('g', { 'pointer-events': 'none' })
   content.append(scene, marks)
   if (flipped) svg.append(content)
   return {
     svg,
     marks,
-    animated,
+    animated: animatedGroups(scene, animations),
     animations: new Map(animations.map((a) => [a.id, a])),
     zoneMarks: [],
   }
+}
+
+/**
+ * A single picture from the source of an SVG file (the "find the odd one out" mode), viewBox = its
+ * w × h pixels; its `data-anim` groups move with `animations`. The files are the app's own assets.
+ */
+export function createSvgPicture(source: string, w: number, h: number, animations: Animation[]): Picture {
+  const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, class: 'ke-picture' })
+  svg.style.userSelect = 'none'
+  const scene = el('g', {})
+  const file = new DOMParser().parseFromString(source, 'image/svg+xml').documentElement
+  scene.append(...[...file.childNodes].map((n) => document.importNode(n, true)))
+  const marks = el('g', { 'pointer-events': 'none' })
+  svg.append(scene, marks)
+  return {
+    svg,
+    marks,
+    animated: animatedGroups(scene, animations),
+    animations: new Map(animations.map((a) => [a.id, a])),
+    zoneMarks: [],
+  }
+}
+
+/** The `data-anim` groups of a scene that have an animation (matched by key). */
+function animatedGroups(scene: SVGGElement, animations: Animation[]) {
+  const byKey = new Map(animations.map((a) => [a.key, a]))
+  return [...scene.querySelectorAll<SVGGElement>('[data-anim]')].flatMap((g) => {
+    const animation = byKey.get(g.dataset.anim!)
+    return animation ? [{ el: g, animation }] : []
+  })
 }
 
 /** Zones of a picture at animation time t (animated zones follow their objects). */

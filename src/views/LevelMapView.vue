@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import { CHAPTERS, chapterLevels, type Chapter } from '../levels/chapters.ts'
+import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // Chapter map: one card per world; a card opens the chapter's level grid (ChapterView).
@@ -20,6 +21,13 @@ const stars = (c: (typeof cards)[number]) => c.levels.reduce((s, l) => s + (prog
 
 function open(chapter: Chapter) {
   router.push({ name: 'chapter', params: { chapter: chapter.id } })
+}
+
+// "Find the odd one out" (docs/anachronism-mode.md): one card under the worlds, opens its eras (TimeTravelView).
+const timeTravel = {
+  total: timeTravelLevels.length,
+  done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
+  stars: () => timeTravelLevels.reduce((s, l) => s + (progress.timeTravel[l.id]?.stars ?? 0), 0),
 }
 </script>
 
@@ -48,6 +56,27 @@ function open(chapter: Chapter) {
             </span>
             <span v-if="c.first !== undefined && !progress.isUnlocked(c.first)" class="lock" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button
+            class="card"
+            style="--chapter: #d98a1c; --chapter-soft: #fff1d6"
+            @click="router.push({ name: 'eras' })"
+          >
+            <!-- A pyramid and a clock. -->
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M4 42L22 12l18 30Z" fill="#e8b85a" />
+              <path d="M22 12l18 30H24Z" fill="#c9953f" />
+              <circle cx="35" cy="14" r="10" fill="#fff" stroke="#d98a1c" stroke-width="3" />
+              <path d="M35 8.5V14l4 2.5" fill="none" stroke="#d98a1c" stroke-width="2.6" stroke-linecap="round" />
+            </svg>
+            <span class="text">
+              <span class="name">{{ $t('timeTravel.title') }}</span>
+              <span class="sub">
+                {{ $t('timeTravel.task') }} · {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
+              </span>
             </span>
           </button>
         </li>

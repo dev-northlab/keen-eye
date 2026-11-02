@@ -37,6 +37,11 @@
     "soonLevels": "În curând: încă {n}",
     "progress": "{done} din {total}"
   },
+  "timeTravel": {
+    "title": "Călătorie în timp",
+    "task": "Găsește ce nu se potrivește",
+    "facts": "Obiecte din altă epocă"
+  },
   "level": {
     "level": "Nivelul {n}",
     "found": "Găsite {found}/{total}",

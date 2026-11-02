@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
 import { levels } from '../levels/index.ts'
+import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 import { isFreeLevel, usePurchaseStore } from './purchase.ts'
 
@@ -17,18 +18,22 @@ export interface LevelRecord {
   bestTimeSec: number | null
 }
 
-/** Keeps only well-formed records: storage content is not trusted. */
-function parseLevels(raw: unknown): Record<number, LevelRecord> {
-  const out: Record<number, LevelRecord> = {}
+/** Keeps only well-formed records with ids passing `isId`: storage content is not trusted. */
+function parseRecords(raw: unknown, isId: (id: string) => boolean): Record<string, LevelRecord> {
+  const out: Record<string, LevelRecord> = {}
   if (typeof raw !== 'object' || raw === null) return out
   for (const [id, rec] of Object.entries(raw)) {
     const { stars, bestTimeSec } = (rec ?? {}) as Partial<LevelRecord>
-    if (!Number.isInteger(Number(id)) || ![0, 1, 2, 3].includes(stars as number)) continue
+    if (!isId(id) || ![0, 1, 2, 3].includes(stars as number)) continue
     if (bestTimeSec !== null && !(typeof bestTimeSec === 'number' && bestTimeSec >= 0)) continue
-    out[Number(id)] = { stars: stars as LevelRecord['stars'], bestTimeSec }
+    out[id] = { stars: stars as LevelRecord['stars'], bestTimeSec }
   }
   return out
 }
+
+const parseLevels = (raw: unknown): Record<number, LevelRecord> => parseRecords(raw, (id) => Number.isInteger(Number(id)))
+
+const parseTimeTravel = (raw: unknown) => parseRecords(raw, (id) => timeTravelLevelById(id) !== undefined)
 
 function parseHints(raw: unknown): number {
   return Number.isInteger(raw) && (raw as number) >= 0 ? (raw as number) : START_HINTS
@@ -36,16 +41,19 @@ function parseHints(raw: unknown): number {
 
 export const useProgressStore = defineStore('progress', () => {
   const records = ref<Record<number, LevelRecord>>({})
+  /** "Find the odd one out" levels by their string id (docs/anachronism-mode.md); no unlock order. */
+  const timeTravel = ref<Record<string, LevelRecord>>({})
   /** Shared hint pool of normal mode (calm mode hints are unlimited). */
   const hints = ref(START_HINTS)
   /** Development only (Home checkbox): every level is playable, ignoring order and the purchase. */
   const devOpenAll = ref(false)
 
-  const save = () => saveJson(KEY, { levels: records.value, hints: hints.value })
+  const save = () => saveJson(KEY, { levels: records.value, hints: hints.value, timeTravel: timeTravel.value })
 
   async function load() {
-    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown }
+    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown; timeTravel?: unknown }
     records.value = parseLevels(raw.levels)
+    timeTravel.value = parseTimeTravel(raw.timeTravel)
     hints.value = parseHints(raw.hints)
     devOpenAll.value = import.meta.env.DEV && (await loadJson(DEV_OPEN_ALL_KEY)) === true
   }
@@ -72,24 +80,31 @@ export const useProgressStore = defineStore('progress', () => {
   const totalStars = computed(() => Object.values(records.value).reduce((s, r) => s + r.stars, 0))
 
   /**
-   * Stores a normal mode result, keeping the best stars and time. The first
+   * Stores a normal mode result in `map`, keeping the best stars and time. The first
    * three-star finish of a level earns a hint.
    */
-  async function recordResult(id: number, result: LevelResult) {
-    const prev = records.value[id]
+  async function record(map: Record<string | number, LevelRecord>, id: string | number, result: LevelResult) {
+    const prev = map[id]
     if (result.stars === 3 && prev?.stars !== 3) hints.value++
-    records.value[id] = {
+    map[id] = {
       stars: Math.max(prev?.stars ?? 0, result.stars) as Stars,
       bestTimeSec: Math.min(prev?.bestTimeSec ?? Infinity, result.timeSec),
     }
     await save()
   }
 
-  /** Calm mode: the level is marked completed without stars or time. */
-  async function recordCalmCompletion(id: number) {
-    records.value[id] ??= { stars: 0, bestTimeSec: null }
+  /** Calm mode: the level is marked completed in `map` without stars or time. */
+  async function recordCalm(map: Record<string | number, LevelRecord>, id: string | number) {
+    map[id] ??= { stars: 0, bestTimeSec: null }
     await save()
   }
+
+  const recordResult = (id: number, result: LevelResult) => record(records.value, id, result)
+  const recordCalmCompletion = (id: number) => recordCalm(records.value, id)
+
+  /** A finished "find the odd one out" level; `null` = calm mode (no stars or time). */
+  const recordTimeTravel = (id: string, result: LevelResult | null) =>
+    result ? record(timeTravel.value, id, result) : recordCalm(timeTravel.value, id)
 
   /** Takes one hint from the pool; false when it is empty. */
   async function spendHint(): Promise<boolean> {
@@ -107,12 +122,14 @@ export const useProgressStore = defineStore('progress', () => {
 
   async function reset() {
     records.value = {}
+    timeTravel.value = {}
     hints.value = START_HINTS
     await remove(KEY)
   }
 
   return {
     records,
+    timeTravel,
     hints,
     devOpenAll,
     load,
@@ -123,6 +140,7 @@ export const useProgressStore = defineStore('progress', () => {
     totalStars,
     recordResult,
     recordCalmCompletion,
+    recordTimeTravel,
     spendHint,
     unlockAll,
     reset,

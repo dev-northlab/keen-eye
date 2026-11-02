@@ -74,3 +74,43 @@ export interface LevelResult {
   hintsUsed: number
   stars: Stars
 }
+
+/** Text of level content in several languages ({ ru, en, … }); `en` is required and is the fallback. */
+export type LocalizedText = Record<string, string>
+
+/**
+ * Hitbox in percent of the image: x and w of its width, y and h of its height; a circle's r is
+ * in percent of the width, so it stays round on a picture that is not square.
+ */
+export type HitShape =
+  | { shape: 'circle'; x: number; y: number; r: number }
+  /** (x, y) = top-left corner. */
+  | { shape: 'rect'; x: number; y: number; w: number; h: number }
+
+/** An object that could not exist in the level's era (docs/anachronism-mode.md). */
+export type AnachronismItem = HitShape & {
+  id: string
+  /** Short name. */
+  label: LocalizedText
+  /** One sentence: what it is and when it appeared. */
+  fact: LocalizedText
+}
+
+/** "Find the odd one out": one picture of a historical era with out-of-place items to tap. */
+export interface AnachronismLevel {
+  id: string
+  mode: 'anachronism'
+  world: string
+  era: LocalizedText
+  /** Image path relative to the app base (public/). */
+  image: string
+  /** Image size in pixels: its aspect ratio maps percent hitboxes onto the picture. */
+  width: number
+  height: number
+  difficulty: number
+  /** Time limit for three stars. */
+  parTimeSec: number
+  items: AnachronismItem[]
+  /** Living background: animations of the image's `data-anim` groups (id = key). Odd items never move. */
+  animations: Animation[]
+}

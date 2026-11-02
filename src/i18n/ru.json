@@ -37,6 +37,11 @@
     "soonLevels": "Скоро: ещё {n}",
     "progress": "{done} из {total}"
   },
+  "timeTravel": {
+    "title": "Путешествие во времени",
+    "task": "Найди лишнее",
+    "facts": "Лишние предметы"
+  },
   "level": {
     "level": "Уровень {n}",
     "found": "Найдено {found}/{total}",

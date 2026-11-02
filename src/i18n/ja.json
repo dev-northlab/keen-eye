@@ -37,6 +37,11 @@
     "soonLevels": "近日公開：あと {n} レベル",
     "progress": "{done} / {total}"
   },
+  "timeTravel": {
+    "title": "タイムトラベル",
+    "task": "時代に合わないものを探そう",
+    "facts": "時代に合わないもの"
+  },
   "level": {
     "level": "レベル {n}",
     "found": "見つけた {found}/{total}",
