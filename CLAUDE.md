@@ -22,6 +22,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm test` — unit tests (`tests/*.test.ts`, Node's built-in `node:test`, no extra dependencies)
 - `npm run icons` — renders the app icon, splash and store icon (Android, iOS, Play, favicon) from the SVG in
   `scripts/make-icons.ts`; the iOS 1024 px icon is written without an alpha channel (App Store requirement)
+- `npm run og` — renders `public/og-image.png` (1200×630 link preview of the web version, Open Graph/Twitter tags in
+  `index.html`) from the home screen's own meadow (`MeadowScene.vue` via Vite SSR) with the title and play button;
+  needs the Roboto font installed
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
