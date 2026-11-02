@@ -3,6 +3,7 @@ import { chapterById } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import AboutView from '../views/AboutView.vue'
 import AnachronismLevelView from '../views/AnachronismLevelView.vue'
 import ChapterView from '../views/ChapterView.vue'
 import DuoView from '../views/DuoView.vue'
@@ -39,6 +40,7 @@ export const router = createRouter({
     },
     { path: '/settings', name: 'settings', component: SettingsView },
     { path: '/full-game', name: 'purchase', component: PurchaseView },
+    { path: '/about', name: 'about', component: AboutView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })

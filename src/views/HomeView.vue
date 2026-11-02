@@ -14,15 +14,14 @@ import { useProgressStore } from '../stores/progress.ts'
 const router = useRouter()
 const progress = useProgressStore()
 const isDev = import.meta.env.DEV
-const version = __APP_VERSION__
 
-/** The open info dialog (About / Privacy policy), if any. */
-const info = ref<'about' | 'privacy' | null>(null)
+/** The privacy policy dialog is open. */
+const privacy = ref(false)
 // Android back closes the dialog instead of leaving the app.
 let removeBack = () => {}
-watch(info, (open) => {
+watch(privacy, (open) => {
   removeBack()
-  if (open) removeBack = pushBackHandler(() => (info.value = null))
+  if (open) removeBack = pushBackHandler(() => (privacy.value = false))
 })
 onBeforeUnmount(() => removeBack())
 
@@ -91,7 +90,7 @@ function play() {
     </label>
 
     <nav class="info-links">
-      <button class="info-link" @click="info = 'about'">
+      <button class="info-link" @click="router.push({ name: 'about' })">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
           <path d="M12 11v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
@@ -99,7 +98,7 @@ function play() {
         </svg>
         {{ $t('info.about') }}
       </button>
-      <button class="info-link" @click="info = 'privacy'">
+      <button class="info-link" @click="privacy = true">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6l7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -108,14 +107,10 @@ function play() {
       </button>
     </nav>
 
-    <ModalDialog v-if="info" :title="$t(`info.${info}`)">
+    <ModalDialog v-if="privacy" :title="$t('info.privacy')">
       <div class="info-body">
-        <template v-if="info === 'about'">
-          <p>{{ $t('info.aboutText') }}</p>
-          <p class="muted">{{ $t('info.version', { v: version }) }}</p>
-        </template>
-        <p v-else>{{ $t('info.privacyText') }}</p>
-        <button @click="info = null">{{ $t('common.close') }}</button>
+        <p>{{ $t('info.privacyText') }}</p>
+        <button @click="privacy = false">{{ $t('common.close') }}</button>
       </div>
     </ModalDialog>
   </main>
@@ -216,11 +211,6 @@ button,
 .info-body p {
   margin: 0;
   line-height: 1.45;
-}
-
-.info-body .muted {
-  color: var(--muted);
-  font-size: 14px;
 }
 
 .info-body button {

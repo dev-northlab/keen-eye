@@ -28,6 +28,19 @@
     "privacy": "Privacy",
     "privacyText": "We verzamelen helemaal geen gegevens. Voortgang en instellingen blijven alleen op je apparaat."
   },
+  "about": {
+    "shareGame": "Deel het spel",
+    "social": "Delen op sociale media",
+    "rate": "Beoordeel het spel"
+  },
+  "share": {
+    "button": "Delen",
+    "text": "Probeer alle verschillen te vinden! 👀",
+    "level": "Ik heb alle verschillen in level {n} van Keen Eye gevonden! 🎉 Kun jij het sneller?",
+    "copied": "Link gekopieerd",
+    "dialogTitle": "Deel het spel",
+    "on": "Delen op {name}"
+  },
   "map": {
     "title": "Werelden",
     "locked": "Op slot",

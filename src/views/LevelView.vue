@@ -201,6 +201,7 @@ onBeforeUnmount(() => {
       :calm="calm"
       :time="time"
       :has-next="!!nextLevel"
+      :share-text="$t('share.level', { n: id })"
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
       @menu="router.push(grid)"

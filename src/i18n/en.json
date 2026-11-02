@@ -28,6 +28,19 @@
     "privacy": "Privacy policy",
     "privacyText": "We collect no data at all. Progress and settings are stored only on your device."
   },
+  "about": {
+    "shareGame": "Share the game",
+    "social": "Share on social media",
+    "rate": "Rate the game"
+  },
+  "share": {
+    "button": "Share",
+    "text": "Try to find all the differences! 👀",
+    "level": "I found all the differences on level {n} in Keen Eye! 🎉 Can you do it faster?",
+    "copied": "Link copied",
+    "dialogTitle": "Share the game",
+    "on": "Share on {name}"
+  },
   "map": {
     "title": "Worlds",
     "locked": "Locked",

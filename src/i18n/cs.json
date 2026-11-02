@@ -28,6 +28,19 @@
     "privacy": "Ochrana soukromí",
     "privacyText": "Nesbíráme vůbec žádná data. Postup a nastavení se ukládají jen ve vašem zařízení."
   },
+  "about": {
+    "shareGame": "Sdílet hru",
+    "social": "Sdílet na sociálních sítích",
+    "rate": "Ohodnotit hru"
+  },
+  "share": {
+    "button": "Sdílet",
+    "text": "Zkus najít všechny rozdíly! 👀",
+    "level": "Našel jsem všechny rozdíly v úrovni {n} v Keen Eye! 🎉 Zvládneš to rychleji?",
+    "copied": "Odkaz zkopírován",
+    "dialogTitle": "Sdílet hru",
+    "on": "Sdílet na {name}"
+  },
   "map": {
     "title": "Světy",
     "locked": "Zamčeno",

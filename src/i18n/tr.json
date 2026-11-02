@@ -28,6 +28,19 @@
     "privacy": "Gizlilik politikası",
     "privacyText": "Hiçbir veri toplamıyoruz. İlerleme ve ayarlar yalnızca cihazında saklanır."
   },
+  "about": {
+    "shareGame": "Oyunu paylaş",
+    "social": "Sosyal medyada paylaş",
+    "rate": "Oyunu değerlendir"
+  },
+  "share": {
+    "button": "Paylaş",
+    "text": "Tüm farkları bulmayı dene! 👀",
+    "level": "Keen Eye'da {n}. seviyedeki tüm farkları buldum! 🎉 Daha hızlı bulabilir misin?",
+    "copied": "Bağlantı kopyalandı",
+    "dialogTitle": "Oyunu paylaş",
+    "on": "{name}'da paylaş"
+  },
   "map": {
     "title": "Dünyalar",
     "locked": "Kilitli",

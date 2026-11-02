@@ -28,6 +28,19 @@
     "privacy": "Confidențialitate",
     "privacyText": "Nu colectăm niciun fel de date. Progresul și setările rămân doar pe dispozitivul tău."
   },
+  "about": {
+    "shareGame": "Distribuie jocul",
+    "social": "Distribuie pe rețelele sociale",
+    "rate": "Evaluează jocul"
+  },
+  "share": {
+    "button": "Distribuie",
+    "text": "Încearcă să găsești toate diferențele! 👀",
+    "level": "Am găsit toate diferențele la nivelul {n} în Keen Eye! 🎉 Poți mai repede?",
+    "copied": "Link copiat",
+    "dialogTitle": "Distribuie jocul",
+    "on": "Distribuie pe {name}"
+  },
   "map": {
     "title": "Lumi",
     "locked": "Blocat",

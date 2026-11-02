@@ -28,6 +28,19 @@
     "privacy": "隐私政策",
     "privacyText": "我们不收集任何数据。进度和设置只保存在你的设备上。"
   },
+  "about": {
+    "shareGame": "分享游戏",
+    "social": "分享到社交平台",
+    "rate": "给游戏评分"
+  },
+  "share": {
+    "button": "分享",
+    "text": "试试找出所有不同之处！👀",
+    "level": "我在 Keen Eye 第 {n} 关找出了所有不同！🎉 你能更快吗？",
+    "copied": "链接已复制",
+    "dialogTitle": "分享游戏",
+    "on": "分享到 {name}"
+  },
   "map": {
     "title": "世界",
     "locked": "未解锁",

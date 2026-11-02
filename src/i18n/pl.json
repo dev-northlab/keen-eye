@@ -28,6 +28,19 @@
     "privacy": "Prywatność",
     "privacyText": "Nie zbieramy żadnych danych. Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu."
   },
+  "about": {
+    "shareGame": "Udostępnij grę",
+    "social": "Udostępnij w mediach społecznościowych",
+    "rate": "Oceń grę"
+  },
+  "share": {
+    "button": "Udostępnij",
+    "text": "Spróbuj znaleźć wszystkie różnice! 👀",
+    "level": "Znalazłem wszystkie różnice na poziomie {n} w Keen Eye! 🎉 Dasz radę szybciej?",
+    "copied": "Link skopiowany",
+    "dialogTitle": "Udostępnij grę",
+    "on": "Udostępnij w {name}"
+  },
   "map": {
     "title": "Światy",
     "locked": "Zablokowane",

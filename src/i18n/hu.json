@@ -28,6 +28,19 @@
     "privacy": "Adatvédelem",
     "privacyText": "Semmilyen adatot nem gyűjtünk. Az előrehaladás és a beállítások csak az eszközödön maradnak."
   },
+  "about": {
+    "shareGame": "Játék megosztása",
+    "social": "Megosztás a közösségi médiában",
+    "rate": "Játék értékelése"
+  },
+  "share": {
+    "button": "Megosztás",
+    "text": "Próbáld megtalálni az összes különbséget! 👀",
+    "level": "Megtaláltam az összes különbséget a Keen Eye {n}. szintjén! 🎉 Te gyorsabb vagy?",
+    "copied": "Link másolva",
+    "dialogTitle": "Játék megosztása",
+    "on": "Megosztás: {name}"
+  },
   "map": {
     "title": "Világok",
     "locked": "Zárolva",

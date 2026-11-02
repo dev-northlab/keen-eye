@@ -28,6 +28,19 @@
     "privacy": "Confidentialité",
     "privacyText": "Nous ne collectons aucune donnée. La progression et les réglages restent uniquement sur ton appareil."
   },
+  "about": {
+    "shareGame": "Partager le jeu",
+    "social": "Partager sur les réseaux sociaux",
+    "rate": "Noter le jeu"
+  },
+  "share": {
+    "button": "Partager",
+    "text": "Essaie de trouver toutes les différences ! 👀",
+    "level": "J'ai trouvé toutes les différences du niveau {n} dans Keen Eye ! 🎉 Tu peux faire plus vite ?",
+    "copied": "Lien copié",
+    "dialogTitle": "Partager le jeu",
+    "on": "Partager sur {name}"
+  },
   "map": {
     "title": "Mondes",
     "locked": "Verrouillé",
