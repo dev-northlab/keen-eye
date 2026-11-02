@@ -1,9 +1,10 @@
 // Level validator: npm run check-levels
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf } from '../src/levels/chapters.ts'
+import { chapterOf, TIME_CHAPTER } from '../src/levels/chapters.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels } from '../src/levels/index.ts'
+import { timeLevels } from '../src/levels/time/index.ts'
 import { posedSvg, rasterize } from './render.ts'
 
 /** Moving zones are checked geometrically at these times (seconds of animation). */
@@ -68,9 +69,53 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
   })
 }
 
+/** Differing pixels of A and B at t = 0 inside each zone. */
+function pixelsInZones(level: Level, a: SceneSvg, b: SceneSvg, zones: Zone[]): number[] {
+  const { w, h } = level.viewBox
+  const pa = rasterize(posedSvg(a, 0), w, h).pixels
+  const pb = rasterize(posedSvg(b, 0), w, h).pixels
+  return zones.map((z) => {
+    let n = 0
+    for (let y = Math.max(0, Math.floor(z.y - z.r)); y < Math.min(h, z.y + z.r); y++) {
+      for (let x = Math.max(0, Math.floor(z.x - z.r)); x < Math.min(w, z.x + z.r); x++) {
+        if ((x + 0.5 - z.x) ** 2 + (y + 0.5 - z.y) ** 2 > z.r ** 2) continue
+        const k = (y * w + x) * 4
+        if (Math.abs(pa[k] - pb[k]) + Math.abs(pa[k + 1] - pb[k + 1]) + Math.abs(pa[k + 2] - pb[k + 2]) > PIXEL_THRESHOLD) n++
+      }
+    }
+    return n
+  })
+}
+
+/**
+ * "Time" levels: the traps are where the natural changes show (A against B's moment drawn with
+ * A's differences) and keep clear of the difference zones and of each other.
+ */
+function checkTraps(level: Level, a: SceneSvg, aAtB: SceneSvg, range: [number, number] | undefined, errors: string[]) {
+  const { w, h } = level.viewBox
+  const traps = level.traps ?? []
+  if (!level.pair) errors.push('"time" level without a pair')
+  if (!range) {
+    errors.push('no trap range in difficulty.ts')
+    return
+  }
+  if (traps.length < range[0] || traps.length > range[1]) errors.push(`${traps.length} traps, expected ${range[0]}–${range[1]}`)
+  traps.forEach((t, i) => {
+    if (t.x - t.r < 0 || t.y - t.r < 0 || t.x + t.r > w || t.y + t.r > h) errors.push(`trap #${i} goes outside the ${w}×${h} viewBox`)
+    level.differences.forEach((d, j) => {
+      if (Math.hypot(t.x - d.x, t.y - d.y) < t.r + d.r) errors.push(`trap #${i} overlaps zone #${j}`)
+    })
+    for (let j = i + 1; j < traps.length; j++)
+      if (Math.hypot(t.x - traps[j].x, t.y - traps[j].y) < t.r + traps[j].r) errors.push(`traps #${i} and #${j} overlap`)
+  })
+  pixelsInZones(level, a, aAtB, traps).forEach((n, i) => {
+    if (n < MIN_VISIBLE_PX) errors.push(`trap #${i} ("${traps[i].hint}") shows no natural change (${n} px)`)
+  })
+}
+
 type Report = (problem: string, detail: string) => void
 
-function check(level: Level, index: number): { errors: string[]; motion: number } {
+function check(level: Level, expectedId: number): { errors: string[]; motion: number } {
   const errors: string[] = []
   // Each problem is reported once, with the details of its first occurrence.
   const reported = new Set<string>()
@@ -81,12 +126,14 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   const { w, h } = level.viewBox
   const ds = level.differences
 
-  if (level.id !== index + 1) errors.push(`id ${level.id} is out of order (expected ${index + 1})`)
+  if (level.id !== expectedId) errors.push(`id ${level.id} is out of order (expected ${expectedId})`)
   const chapter = chapterOf(level.id)
   if (!chapter) errors.push(`no chapter covers level ${level.id}`)
   else if (chapter.id !== level.chapter) errors.push(`chapter "${level.chapter}", expected "${chapter.id}" (chapters.ts)`)
 
-  const { differences: [min, max], motion: [mmin, mmax], minRadius, minGap = 0 } = difficultyOf(level.id)
+  const { differences: [min, max], motion: [mmin, mmax], minRadius, minGap = 0, traps } = difficultyOf(level.id)
+  const timed = level.chapter === TIME_CHAPTER.id
+  if (!timed && (level.pair || level.traps)) errors.push('pair/traps on a level outside the "time" category')
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
   ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id} (min ${minRadius})`))
 
@@ -126,7 +173,12 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
     })
   }
 
-  comparePixels(level, a, b, pictures, report)
+  if (timed) {
+    // The moments change the whole picture: differences are compared at B's moment, traps at A's.
+    const aAtB = level.build(0, 1)
+    comparePixels(level, aAtB, b, pictures, report)
+    checkTraps(level, a, aAtB, traps, errors)
+  } else comparePixels(level, a, b, pictures, report)
 
   const motion = ds.filter((d) => d.motion).length
   if (motion < mmin || motion > mmax) errors.push(`${motion} motion differences, expected ${mmin}–${mmax}`)
@@ -136,12 +188,16 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
 
 // Optional level ids to check (npm run check-levels -- 81 82); all levels by default.
 const ids = process.argv.slice(2).map(Number)
-const selected = levels.filter((l) => ids.length === 0 || ids.includes(l.id))
+// Ids run on without gaps: the worlds from 1, the "time" category from its first id.
+const expected = new Map([
+  ...levels.map((l, i) => [l, i + 1] as const),
+  ...timeLevels.map((l, i) => [l, TIME_CHAPTER.ranges[0][0] + i] as const),
+])
+const selected = [...expected.keys()].filter((l) => ids.length === 0 || ids.includes(l.id))
 
 let failed = 0
 selected.forEach((level) => {
-  const i = levels.indexOf(level)
-  const { errors, motion } = check(level, i)
+  const { errors, motion } = check(level, expected.get(level)!)
   if (errors.length === 0) {
     console.log(`ok    level ${level.id} (${level.differences.length} differences, ${motion} in motion)`)
     return

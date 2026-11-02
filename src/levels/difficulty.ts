@@ -15,6 +15,8 @@ export interface Difficulty {
   minRadius: number
   /** Smallest distance between zone centers (dense scenes keep differences apart). */
   minGap?: number
+  /** "Time" levels: natural changes marked as traps, inclusive range. */
+  traps?: [min: number, max: number]
   /** Kinds of static/motion differences to use. */
   kinds: DifferenceKind[]
 }
@@ -35,6 +37,11 @@ export const DIFFICULTY: Difficulty[] = [
   ...harder(121, 8),
   ...harder(131, 10),
   ...harder(141, 10),
+  // "Time" category (docs/time-differences-mode.md): 201–205 morning/evening, 206–210 summer/winter,
+  // 211–215 both kinds, harder. Static differences only: the moments already change a lot.
+  { from: 201, to: 205, differences: [5, 5], motion: [0, 0], minRadius: 24, traps: [3, 4], kinds: EASY },
+  { from: 206, to: 210, differences: [6, 6], motion: [0, 0], minRadius: 22, traps: [3, 5], kinds: EASY },
+  { from: 211, to: 215, differences: [7, 8], motion: [0, 0], minRadius: 20, minGap: 56, traps: [4, 6], kinds: [...EASY, 'shift', 'rotate'] },
 ]
 
 /**

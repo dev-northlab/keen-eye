@@ -1,4 +1,4 @@
-import type { Animation, AnimationMotion, Difference, Level } from '../engine/types.ts'
+import type { Animation, AnimationMotion, Difference, Level, TimePair, Trap } from '../engine/types.ts'
 
 /**
  * Returns `a` for picture A and `b` for picture B and registers the zone
@@ -18,11 +18,22 @@ export type AnimSpec = AnimationMotion & {
 /** Wraps `markup` (drawn at its rest position) into an animated group. */
 export type Anim = (spec: AnimSpec, markup: string) => string
 
+/** "Time" levels: returns `a` in the moment of picture A (morning, summer) and `b` in that of B (evening, winter). */
+export type Time = <T>(a: T, b: T) => T
+
+/**
+ * "Time" levels: a natural change that looks like a difference. Returns `a` in moment A and `b` in
+ * moment B and registers the trap zone (x, y, r); a tap there shows `timeMode.traps.<hint>`.
+ */
+export type TrapAt = (x: number, y: number, r: number, a: string, b: string, hint: string) => string
+
 export interface SceneContext {
   diff: Diff
   anim: Anim
   /** Deterministic random numbers in [0, 1), the same sequence for both pictures. */
   rand: () => number
+  time: Time
+  trap: TrapAt
 }
 
 /** Deterministic PRNG (mulberry32), returns numbers in [0, 1). */
@@ -49,12 +60,15 @@ interface SvgLevelDef {
   viewBox?: { w: number; h: number }
   /** Level.multiplayerReady; default: at least MULTIPLAYER_MIN_DIFFERENCES differences. */
   multiplayerReady?: boolean
+  /** Makes it a "time" level: A and B show the scene at these two moments (`time`, `trap`). */
+  pair?: TimePair
   /** Draws the scene; called once per picture with a fresh context. */
   scene: (ctx: SceneContext) => string
 }
 
 export function svgLevel(def: SvgLevelDef): Level {
-  const render = (variant: 0 | 1, zones?: Difference[]) => {
+  // `diff` picks by the variant, `time` and `trap` by the moment (only the validator makes them differ).
+  const render = (variant: 0 | 1, moment: 0 | 1, zones?: Difference[], traps?: Trap[]) => {
     // Both arguments of diff() are evaluated, so anim() registers the animations of
     // both variants; only those whose group ends up in the markup are kept.
     const registered: Animation[] = []
@@ -84,23 +98,30 @@ export function svgLevel(def: SvgLevelDef): Level {
       }
       return variant === 0 ? a : b
     }
-    const svg = def.scene({ diff, anim, rand: rng(def.id) })
+    const time: Time = (a, b) => (moment === 0 ? a : b)
+    const trap: TrapAt = (x, y, r, a, b, hint) => {
+      traps?.push({ x, y, r, hint })
+      return time(a, b)
+    }
+    const svg = def.scene({ diff, anim, rand: rng(def.id), time, trap })
     return { svg, animations: registered.filter((a) => svg.includes(`data-anim="${a.key}"`)) }
   }
 
   const differences: Difference[] = []
-  render(0, differences)
+  const traps: Trap[] = []
+  render(0, 0, differences, traps)
 
   return {
     id: def.id,
     chapter: def.chapter,
     title: def.title,
     kind: 'svg',
-    build: (variant) => render(variant),
+    build: (variant, moment = variant) => render(variant, moment),
     viewBox: def.viewBox ?? { w: 800, h: 500 },
     differences,
     parTimeSec: def.parTimeSec,
     ...(def.hintLimit !== undefined && { hintLimit: def.hintLimit }),
     multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
+    ...(def.pair !== undefined && { pair: def.pair, traps }),
   }
 }

@@ -167,7 +167,8 @@
     "city": "Cidade",
     "forest": "Floresta",
     "sea": "Mar",
-    "space": "Espaço"
+    "space": "Espaço",
+    "time": "Tempo"
   },
   "levelTitles": {
     "barnyard": "Terreiro",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Conserto do satélite",
     "alienBazaar": "Bazar alienígena",
     "gasGiantRings": "Anéis do gigante gasoso",
-    "blackHole": "Buraco negro e observatório"
+    "blackHole": "Buraco negro e observatório",
+    "duskFarm": "Quinta ao anoitecer",
+    "duskStreet": "Rua ao fim do dia",
+    "duskCamp": "Acampamento ao cair da noite",
+    "duskPier": "Cais ao anoitecer",
+    "duskYard": "Pátio ao fim do dia",
+    "snowFarm": "Quinta na neve",
+    "snowStreet": "Rua com neve",
+    "snowForest": "Cabana da floresta no inverno",
+    "snowPier": "Cais gelado",
+    "snowYard": "Pátio com neve",
+    "nightAvenue": "Luzes da avenida",
+    "farmYear": "Quinta com moinho",
+    "harborEvening": "Noite no porto",
+    "forestYear": "Ponte da floresta",
+    "yardNight": "Noite no jardim"
   },
   "mode": {
     "label": "Modo",
@@ -345,5 +361,28 @@
     "error": "Não foi possível acessar a loja. Tente novamente mais tarde.",
     "play": "Jogar",
     "unavailable": "Loja indisponível"
+  },
+  "timeMode": {
+    "task": "Diferenças no tempo",
+    "rules": "O mesmo lugar de manhã e à noite, no verão e no inverno. A luz, a neve e as folhas mudam sozinhas — encontra o que não devia ter mudado.",
+    "pairs": {
+      "day-night": "Manhã → noite",
+      "summer-winter": "Verão → inverno"
+    },
+    "traps": {
+      "moon": "É só a lua — à noite é assim",
+      "stars": "As estrelas aparecem à noite — não é uma diferença",
+      "lights": "À noite acendem-se as luzes — é assim mesmo",
+      "shadow": "As sombras mudam com o sol — não é uma diferença",
+      "birds": "Os pássaros voaram — é natural",
+      "snow": "No inverno está tudo com neve — é assim mesmo",
+      "leaves": "No inverno as folhas caem — não é uma diferença",
+      "ice": "No inverno a água congela — é assim mesmo",
+      "snowman": "Alguém fez um boneco de neve — não é uma diferença",
+      "clothes": "No inverno veste-se roupa quente — é natural",
+      "icicles": "Os pingentes de gelo só existem no inverno — não é uma diferença",
+      "smoke": "No inverno acende-se o fogão — o fumo é natural",
+      "flowers": "No inverno não crescem flores nem cogumelos — é natural"
+    }
   }
 }

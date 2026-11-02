@@ -9,7 +9,7 @@ import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
-import { nextLevel as nextLevelOf } from '../levels/chapters.ts'
+import { levelNumber, nextLevel as nextLevelOf } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
@@ -25,6 +25,7 @@ const settings = useSettingsStore()
 // The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
+const number = levelNumber(level)
 /** The level grid this level belongs to. */
 const grid = { name: 'chapter', params: { chapter: level.chapter } }
 
@@ -43,11 +44,23 @@ const hintActive = ref(false)
 /** Normal mode hints taken in this attempt (some levels allow only a few, `Level.hintLimit`). */
 const hintsUsed = ref(0)
 const animationFrozen = ref(false)
+/** "Time" levels: hint key of the natural change just tapped, shown for a moment over the pictures. */
+const trapHint = ref<string | null>(null)
+let trapTimer = 0
 const result = ref<LevelResult | null>(null)
 let scene: GameScene | undefined
 const isDev = import.meta.env.DEV
 
 const total = level.differences.length
+
+/** How long a trap hint stays on screen. */
+const TRAP_HINT_MS = 2600
+
+function showTrapHint(hint: string) {
+  clearTimeout(trapTimer)
+  trapHint.value = hint
+  trapTimer = window.setTimeout(() => (trapHint.value = null), TRAP_HINT_MS)
+}
 
 const formatTime = (sec: number) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`
 const time = computed(() => formatTime(result.value?.timeSec ?? seconds.value))
@@ -64,6 +77,8 @@ function start() {
   hintActive.value = false
   hintsUsed.value = 0
   animationFrozen.value = false
+  clearTimeout(trapTimer)
+  trapHint.value = null
   result.value = null
   calm.value = settings.calm
   playMusic(calm.value ? 'calm' : 'level')
@@ -81,6 +96,7 @@ function start() {
         playSfx('miss')
         vibrateMiss()
       },
+      onTrap: (i) => showTrapHint(level.traps![i].hint),
       onLock: (l) => (locked.value = l),
       onTick: (s) => (seconds.value = s),
       onZoom: (s) => (zoom.value = s),
@@ -149,6 +165,7 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
   document.removeEventListener('visibilitychange', onVisibility)
+  clearTimeout(trapTimer)
   scene?.destroy()
 })
 </script>
@@ -156,7 +173,10 @@ onBeforeUnmount(() => {
 <template>
   <div class="level">
     <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
-      <span class="title">{{ $t('level.level', { n: level.id }) }}</span>
+      <span class="title">
+        {{ $t('level.level', { n: number }) }}
+        <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
+      </span>
       <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
       <HudCounters v-if="!calm" :time="time" :mistakes="mistakes" :locked="locked" :still="settings.effectiveReduceMotion" />
     </header>
@@ -165,6 +185,7 @@ onBeforeUnmount(() => {
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
+      <div class="trap-note" role="status"><template v-if="trapHint">{{ $t(`timeMode.traps.${trapHint}`) }}</template></div>
     </div>
 
     <footer class="toolbar">
@@ -209,7 +230,7 @@ onBeforeUnmount(() => {
       :calm="calm"
       :time="time"
       :has-next="!!nextLevel"
-      :share-text="$t('share.level', { n: id })"
+      :share-text="$t('share.level', { n: number })"
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
       @menu="router.push(grid)"
@@ -239,6 +260,15 @@ onBeforeUnmount(() => {
 .hud .title {
   font-weight: 700;
   margin-right: auto;
+}
+
+.hud .pair {
+  margin-left: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--soft);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 /* Narrow screens: the circles get their own row under level, time and mistakes. */
@@ -306,6 +336,28 @@ onBeforeUnmount(() => {
     gap: 5px;
     padding: 6px 6px 10px;
   }
+}
+
+.trap-note {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  translate: -50% 0;
+  max-width: min(90%, 420px);
+  padding: 8px 16px;
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--fg);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.18);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.trap-note:empty {
+  display: none;
 }
 
 .lock-note {

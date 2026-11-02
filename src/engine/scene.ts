@@ -1,11 +1,13 @@
 import { Board, randomUnfound, type Tap } from './board.ts'
 import { FrameLoop } from './loop.ts'
-import { computeStars, LOCK_MS, MissGuard } from './rules.ts'
+import { computeStars, hitTest, LOCK_MS, MissGuard } from './rules.ts'
 import type { Level, LevelResult } from './types.ts'
 
 export interface SceneHandlers {
   onFound?: (found: number, total: number) => void
   onMiss?: (mistakes: number) => void
+  /** "Time" levels: a miss landed on natural change `Level.traps[index]` (reported once per trap). */
+  onTrap?: (index: number) => void
   onLock?: (locked: boolean) => void
   /** Called when the whole number of elapsed seconds changes. */
   onTick?: (seconds: number) => void
@@ -34,6 +36,8 @@ export class GameScene {
   private readonly board: Board
   private readonly loop: FrameLoop
   private readonly found: boolean[]
+  /** Traps whose hint was shown in this round. */
+  private readonly trapsShown = new Set<number>()
   private readonly guard = new MissGuard()
   private foundCount = 0
   private mistakes = 0
@@ -134,6 +138,11 @@ export class GameScene {
     this.mistakes++
     this.board.markMiss(tap)
     this.handlers.onMiss?.(this.mistakes)
+    const trap = hitTest(this.level.traps ?? [], tap.x, tap.y)
+    if (trap >= 0 && !this.trapsShown.has(trap)) {
+      this.trapsShown.add(trap)
+      this.handlers.onTrap?.(trap)
+    }
     if (this.missLock && this.guard.miss(performance.now())) {
       this.handlers.onLock?.(true)
       this.lockTimer = window.setTimeout(() => this.handlers.onLock?.(false), LOCK_MS)

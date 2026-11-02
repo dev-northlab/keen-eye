@@ -167,7 +167,8 @@
     "city": "城市",
     "forest": "森林",
     "sea": "大海",
-    "space": "太空"
+    "space": "太空",
+    "time": "时间"
   },
   "levelTitles": {
     "barnyard": "农家院",
@@ -319,7 +320,22 @@
     "satelliteRepair": "维修卫星",
     "alienBazaar": "外星集市",
     "gasGiantRings": "气态巨行星之环",
-    "blackHole": "黑洞与天文台"
+    "blackHole": "黑洞与天文台",
+    "duskFarm": "黄昏的农场",
+    "duskStreet": "傍晚的街道",
+    "duskCamp": "夜幕下的营地",
+    "duskPier": "黄昏的码头",
+    "duskYard": "傍晚的院子",
+    "snowFarm": "雪中的农场",
+    "snowStreet": "积雪的街道",
+    "snowForest": "冬天的林间小屋",
+    "snowPier": "结冰的码头",
+    "snowYard": "下雪的院子",
+    "nightAvenue": "大街的灯光",
+    "farmYear": "风车农场",
+    "harborEvening": "港口的傍晚",
+    "forestYear": "林间小桥",
+    "yardNight": "花园的傍晚"
   },
   "mode": {
     "label": "模式",
@@ -345,5 +361,28 @@
     "error": "无法连接商店，请稍后再试。",
     "play": "开始游戏",
     "unavailable": "商店不可用"
+  },
+  "timeMode": {
+    "task": "时间里的不同",
+    "rules": "同一个地方的早晨和傍晚、夏天和冬天。光线、积雪和树叶会自己变化——找出不该改变的东西。",
+    "pairs": {
+      "day-night": "早晨 → 傍晚",
+      "summer-winter": "夏天 → 冬天"
+    },
+    "traps": {
+      "moon": "这只是月亮——傍晚本来就这样",
+      "stars": "傍晚星星出来了——这不是不同之处",
+      "lights": "傍晚灯亮了——本来就该这样",
+      "shadow": "影子随太阳变化——这不是不同之处",
+      "birds": "鸟儿飞走了——这很自然",
+      "snow": "冬天到处是雪——本来就该这样",
+      "leaves": "冬天树叶会掉光——这不是不同之处",
+      "ice": "冬天水会结冰——本来就该这样",
+      "snowman": "有人堆了雪人——这不是不同之处",
+      "clothes": "冬天大家穿得更暖和——这很自然",
+      "icicles": "冰柱只在冬天出现——这不是不同之处",
+      "smoke": "冬天要生炉子——冒烟很自然",
+      "flowers": "冬天不长花也不长蘑菇——这很自然"
+    }
   }
 }

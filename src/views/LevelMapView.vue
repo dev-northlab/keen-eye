@@ -2,12 +2,13 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { CHAPTERS, chapterLevels, chapterSize } from '../levels/chapters.ts'
+import { CHAPTERS, chapterLevels, chapterSize, TIME_CHAPTER } from '../levels/chapters.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
-// "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView).
+// "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
+// in time" (docs/time-differences-mode.md) its level grid (ChapterView of TIME_CHAPTER).
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -17,6 +18,13 @@ const worlds = {
   total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
   done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
+}
+
+const timeLevels = chapterLevels(TIME_CHAPTER)
+const time = {
+  total: chapterSize(TIME_CHAPTER),
+  done: () => timeLevels.filter((l) => progress.isCompleted(l.id)).length,
+  stars: () => timeLevels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
 }
 
 const timeTravel = {
@@ -54,6 +62,23 @@ const timeTravel = {
               <span class="name">{{ $t('map.title') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
+              </span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="mode time" @click="router.push({ name: 'chapter', params: { chapter: TIME_CHAPTER.id } })">
+            <!-- A big faint half sun, half moon behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="6" />
+              <path d="M50 10a40 40 0 0 0 0 80Z" fill="#fff" />
+            </svg>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="TIME_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('timeMode.task') }}</span>
+              <span class="name">{{ $t('chapters.time') }}</span>
+              <span class="sub">
+                {{ $t('map.progress', { done: time.done(), total: time.total }) }} · ★ {{ time.stars() }}
               </span>
             </span>
           </button>
@@ -118,13 +143,21 @@ main {
   gap: 16px;
 }
 
-/* A banner per game mode: "spot the difference" green, "find the odd one out" warm. */
+/* A banner per game mode: "spot the difference" green, "in time" violet, "find the odd one out" warm. */
 .spot {
   --mode-from: #4cc38a;
   --mode-mid: #2f9e6e;
   --mode-to: #1f7a55;
   --mode-shadow: rgb(20 90 60 / 0.6);
   --mode-icon-bg: #e3f6ec;
+}
+
+.time {
+  --mode-from: #9b7bff;
+  --mode-mid: #7a5af5;
+  --mode-to: #4b3bb0;
+  --mode-shadow: rgb(60 40 150 / 0.6);
+  --mode-icon-bg: #ece6ff;
 }
 
 .travel {

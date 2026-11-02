@@ -167,7 +167,8 @@
     "city": "Ciudad",
     "forest": "Bosque",
     "sea": "Mar",
-    "space": "Espacio"
+    "space": "Espacio",
+    "time": "El tiempo"
   },
   "levelTitles": {
     "barnyard": "Corral",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Reparando el satélite",
     "alienBazaar": "Bazar alienígena",
     "gasGiantRings": "Anillos del gigante gaseoso",
-    "blackHole": "Agujero negro y observatorio"
+    "blackHole": "Agujero negro y observatorio",
+    "duskFarm": "Granja al anochecer",
+    "duskStreet": "Calle al atardecer",
+    "duskCamp": "Campamento al caer la noche",
+    "duskPier": "Muelle al anochecer",
+    "duskYard": "Patio al atardecer",
+    "snowFarm": "Granja nevada",
+    "snowStreet": "Calle nevada",
+    "snowForest": "Cabaña del bosque en invierno",
+    "snowPier": "Muelle helado",
+    "snowYard": "Patio nevado",
+    "nightAvenue": "Luces de la avenida",
+    "farmYear": "Granja con molino",
+    "harborEvening": "Tarde en el puerto",
+    "forestYear": "Puente del bosque",
+    "yardNight": "Tarde en el jardín"
   },
   "mode": {
     "label": "Modo",
@@ -345,5 +361,28 @@
     "error": "No se pudo conectar con la tienda. Inténtalo más tarde.",
     "play": "Jugar",
     "unavailable": "Tienda no disponible"
+  },
+  "timeMode": {
+    "task": "Diferencias en el tiempo",
+    "rules": "El mismo lugar por la mañana y por la tarde, en verano y en invierno. La luz, la nieve y las hojas cambian solas: encuentra lo que no debería haber cambiado.",
+    "pairs": {
+      "day-night": "Mañana → tarde",
+      "summer-winter": "Verano → invierno"
+    },
+    "traps": {
+      "moon": "Es solo la luna: por la noche es así",
+      "stars": "Por la noche salen las estrellas: no es una diferencia",
+      "lights": "Por la noche se encienden las luces: es lo normal",
+      "shadow": "Las sombras cambian con el sol: no es una diferencia",
+      "birds": "Los pájaros se han ido volando: es natural",
+      "snow": "En invierno todo está nevado: es lo normal",
+      "leaves": "En invierno caen las hojas: no es una diferencia",
+      "ice": "En invierno el agua se congela: es lo normal",
+      "snowman": "Alguien hizo un muñeco de nieve: no es una diferencia",
+      "clothes": "En invierno la gente se abriga: es natural",
+      "icicles": "Los carámbanos solo salen en invierno: no es una diferencia",
+      "smoke": "En invierno se enciende la estufa: el humo es normal",
+      "flowers": "En invierno no crecen flores ni setas: es natural"
+    }
   }
 }

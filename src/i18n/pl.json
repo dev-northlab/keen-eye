@@ -167,7 +167,8 @@
     "city": "Miasto",
     "forest": "Las",
     "sea": "Morze",
-    "space": "Kosmos"
+    "space": "Kosmos",
+    "time": "Czas"
   },
   "levelTitles": {
     "barnyard": "Podwórko",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Naprawa satelity",
     "alienBazaar": "Kosmiczny bazar",
     "gasGiantRings": "Pierścienie gazowego olbrzyma",
-    "blackHole": "Czarna dziura i obserwatorium"
+    "blackHole": "Czarna dziura i obserwatorium",
+    "duskFarm": "Farma o zmierzchu",
+    "duskStreet": "Wieczorna ulica",
+    "duskCamp": "Obóz o zmroku",
+    "duskPier": "Pomost o zmierzchu",
+    "duskYard": "Wieczorne podwórko",
+    "snowFarm": "Farma w śniegu",
+    "snowStreet": "Zaśnieżona ulica",
+    "snowForest": "Leśna chatka zimą",
+    "snowPier": "Zamarznięty pomost",
+    "snowYard": "Zaśnieżone podwórko",
+    "nightAvenue": "Światła alei",
+    "farmYear": "Farma z wiatrakiem",
+    "harborEvening": "Wieczór w porcie",
+    "forestYear": "Leśna kładka",
+    "yardNight": "Wieczór w ogrodzie"
   },
   "mode": {
     "label": "Tryb",
@@ -345,5 +361,28 @@
     "error": "Nie udało się połączyć ze sklepem. Spróbuj później.",
     "play": "Graj",
     "unavailable": "Sklep niedostępny"
+  },
+  "timeMode": {
+    "task": "Różnice w czasie",
+    "rules": "To samo miejsce rano i wieczorem, latem i zimą. Światło, śnieg i liście zmieniają się same — znajdź to, co nie powinno się zmienić.",
+    "pairs": {
+      "day-night": "Rano → wieczór",
+      "summer-winter": "Lato → zima"
+    },
+    "traps": {
+      "moon": "To tylko księżyc — wieczorem tak ma być",
+      "stars": "Wieczorem pojawiają się gwiazdy — to nie różnica",
+      "lights": "Wieczorem zapala się światła — tak ma być",
+      "shadow": "Cienie zmieniają się ze słońcem — to nie różnica",
+      "birds": "Ptaki odleciały — to naturalne",
+      "snow": "Zimą wszystko jest w śniegu — tak ma być",
+      "leaves": "Zimą liście opadają — to nie różnica",
+      "ice": "Zimą woda zamarza — tak ma być",
+      "snowman": "Ktoś ulepił bałwana — to nie różnica",
+      "clothes": "Zimą ubieramy się cieplej — to naturalne",
+      "icicles": "Sople są tylko zimą — to nie różnica",
+      "smoke": "Zimą pali się w piecu — dym jest naturalny",
+      "flowers": "Zimą nie rosną kwiaty ani grzyby — to naturalne"
+    }
   }
 }

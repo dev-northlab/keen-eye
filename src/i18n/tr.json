@@ -167,7 +167,8 @@
     "city": "Şehir",
     "forest": "Orman",
     "sea": "Deniz",
-    "space": "Uzay"
+    "space": "Uzay",
+    "time": "Zaman"
   },
   "levelTitles": {
     "barnyard": "Çiftlik avlusu",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Uydu onarımı",
     "alienBazaar": "Uzaylı çarşısı",
     "gasGiantRings": "Gaz devinin halkaları",
-    "blackHole": "Kara delik ve gözlemevi"
+    "blackHole": "Kara delik ve gözlemevi",
+    "duskFarm": "Alacakaranlıkta çiftlik",
+    "duskStreet": "Akşam sokağı",
+    "duskCamp": "Gece çökerken kamp",
+    "duskPier": "Alacakaranlıkta iskele",
+    "duskYard": "Akşam avlusu",
+    "snowFarm": "Karlı çiftlik",
+    "snowStreet": "Karlı sokak",
+    "snowForest": "Kışın orman kulübesi",
+    "snowPier": "Donmuş iskele",
+    "snowYard": "Karlı avlu",
+    "nightAvenue": "Caddenin ışıkları",
+    "farmYear": "Yel değirmenli çiftlik",
+    "harborEvening": "Limanda akşam",
+    "forestYear": "Orman köprüsü",
+    "yardNight": "Bahçede akşam"
   },
   "mode": {
     "label": "Mod",
@@ -345,5 +361,28 @@
     "error": "Mağazaya bağlanılamadı. Lütfen daha sonra tekrar dene.",
     "play": "Oyna",
     "unavailable": "Mağaza kullanılamıyor"
+  },
+  "timeMode": {
+    "task": "Zamandaki farklar",
+    "rules": "Aynı yer sabah ve akşam, yaz ve kış. Işık, kar ve yapraklar kendiliğinden değişir — değişmemesi gerekeni bul.",
+    "pairs": {
+      "day-night": "Sabah → akşam",
+      "summer-winter": "Yaz → kış"
+    },
+    "traps": {
+      "moon": "Bu sadece ay — akşam böyle olur",
+      "stars": "Akşam yıldızlar çıkar — bu bir fark değil",
+      "lights": "Akşam ışıklar yanar — böyle olması gerekir",
+      "shadow": "Gölgeler güneşle değişir — bu bir fark değil",
+      "birds": "Kuşlar uçup gitti — bu doğal",
+      "snow": "Kışın her yer karla kaplıdır — böyle olması gerekir",
+      "leaves": "Kışın yapraklar dökülür — bu bir fark değil",
+      "ice": "Kışın su donar — böyle olması gerekir",
+      "snowman": "Biri kardan adam yapmış — bu bir fark değil",
+      "clothes": "Kışın kalın giyinilir — bu doğal",
+      "icicles": "Buz sarkıtları yalnızca kışın olur — bu bir fark değil",
+      "smoke": "Kışın soba yanar — duman doğal",
+      "flowers": "Kışın çiçek ve mantar yetişmez — bu doğal"
+    }
   }
 }

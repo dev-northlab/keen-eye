@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
-import { levels } from '../levels/index.ts'
+import { chapterById, chapterLevels, TIME_CHAPTER } from '../levels/chapters.ts'
+import { allLevels, levelById, levels } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 import { isFreeLevel, usePurchaseStore } from './purchase.ts'
@@ -64,15 +65,17 @@ export const useProgressStore = defineStore('progress', () => {
 
   /**
    * Levels open one after another: the first one, then each after the previous level of its chapter
-   * is completed. A chapter's first level follows level id − 1 (the previous chapter's first 20), so
-   * the harder levels added at a chapter's end never hold back the next chapter.
+   * is completed. A world's first level follows level id − 1 (the previous world's first 20), so
+   * the harder levels added at a world's end never hold back the next world. The "time" category
+   * starts open.
    */
   function isReached(id: number): boolean {
-    const i = levels.findIndex((l) => l.id === id)
-    if (i <= 0 || devOpenAll.value) return i >= 0
-    let j = i - 1
-    while (j >= 0 && levels[j].chapter !== levels[i].chapter) j--
-    return isCompleted(j >= 0 ? levels[j].id : id - 1)
+    const level = levelById(id)
+    if (!level || devOpenAll.value) return !!level
+    const own = chapterLevels(chapterById(level.chapter)!)
+    const i = own.indexOf(level)
+    if (i > 0) return isCompleted(own[i - 1].id)
+    return id === 1 || level.chapter === TIME_CHAPTER.id || isCompleted(id - 1)
   }
 
   /** A paid level while the full game is not bought. */
@@ -123,7 +126,7 @@ export const useProgressStore = defineStore('progress', () => {
 
   /** Development only: complete every level with one star. */
   async function unlockAll() {
-    for (const l of levels) records.value[l.id] ??= { stars: 1, bestTimeSec: null }
+    for (const l of allLevels) records.value[l.id] ??= { stars: 1, bestTimeSec: null }
     await save()
   }
 

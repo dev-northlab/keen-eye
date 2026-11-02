@@ -5,11 +5,11 @@ import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
-import { chapterById, chapterLevels, chapterSize } from '../levels/chapters.ts'
+import { CHAPTERS, chapterById, chapterLevels, chapterSize, levelNumber, TIME_CHAPTER } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
-// Level grid of one chapter. The router guard guarantees the chapter exists.
+// Level grid of one chapter, or of the "time" category. The router guard guarantees the chapter exists.
 
 const props = defineProps<{ chapter: string }>()
 const router = useRouter()
@@ -20,8 +20,9 @@ const chapter = chapterById(props.chapter)!
 const levels = chapterLevels(chapter)
 const missing = chapterSize(chapter) - levels.length
 
-const toWorlds = () => router.push({ name: 'worlds' })
-useBackButton(toWorlds)
+/** A world's grid goes back to the worlds, the "time" category to the game modes. */
+const toParent = () => router.push({ name: CHAPTERS.includes(chapter) ? 'worlds' : 'levels' })
+useBackButton(toParent)
 
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
@@ -35,7 +36,7 @@ function tileLabel(level: Level) {
     : progress.isUnlocked(level.id)
       ? t(`levelTitles.${level.title}`)
       : t('map.locked')
-  return `${t('map.level', { n: level.id })}: ${name}`
+  return `${t('map.level', { n: levelNumber(level) })}: ${name}`
 }
 </script>
 
@@ -43,6 +44,7 @@ function tileLabel(level: Level) {
   <div class="screen">
     <ScreenBackdrop :theme="chapter.backdrop" />
     <main>
+      <p v-if="chapter === TIME_CHAPTER" class="rules">{{ $t('timeMode.rules') }}</p>
       <ul class="grid">
         <li v-for="level in levels" :key="level.id">
           <button
@@ -52,7 +54,7 @@ function tileLabel(level: Level) {
             :aria-label="tileLabel(level)"
             @click="open(level)"
           >
-            <span class="num">{{ level.id }}</span>
+            <span class="num">{{ levelNumber(level) }}</span>
             <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
             <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :size="14" />
           </button>
@@ -60,7 +62,7 @@ function tileLabel(level: Level) {
       </ul>
       <p v-if="missing > 0" class="soon">{{ $t('map.soonLevels', { n: missing }) }}</p>
     </main>
-    <BackButton :on-back="toWorlds" />
+    <BackButton :on-back="toParent" />
   </div>
 </template>
 
@@ -79,6 +81,15 @@ main {
   overflow-y: auto;
   /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
   padding: 16px max(16px, (100% - var(--menu-width)) / 2) 24px;
+}
+
+.rules {
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--panel);
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 .grid {

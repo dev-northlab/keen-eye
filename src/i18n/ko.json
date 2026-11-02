@@ -167,7 +167,8 @@
     "city": "도시",
     "forest": "숲",
     "sea": "바다",
-    "space": "우주"
+    "space": "우주",
+    "time": "시간"
   },
   "levelTitles": {
     "barnyard": "농가 마당",
@@ -319,7 +320,22 @@
     "satelliteRepair": "위성 수리",
     "alienBazaar": "외계인 바자회",
     "gasGiantRings": "가스 행성의 고리",
-    "blackHole": "블랙홀과 천문대"
+    "blackHole": "블랙홀과 천문대",
+    "duskFarm": "해 질 녘 농장",
+    "duskStreet": "저녁 거리",
+    "duskCamp": "밤이 오는 캠프",
+    "duskPier": "해 질 녘 부두",
+    "duskYard": "저녁 마당",
+    "snowFarm": "눈 덮인 농장",
+    "snowStreet": "눈 내린 거리",
+    "snowForest": "겨울 숲속 오두막",
+    "snowPier": "얼어붙은 부두",
+    "snowYard": "눈 내린 마당",
+    "nightAvenue": "큰길의 불빛",
+    "farmYear": "풍차 농장",
+    "harborEvening": "항구의 저녁",
+    "forestYear": "숲속 작은 다리",
+    "yardNight": "정원의 저녁"
   },
   "mode": {
     "label": "모드",
@@ -345,5 +361,28 @@
     "error": "스토어에 연결할 수 없습니다. 나중에 다시 시도해 주세요.",
     "play": "플레이",
     "unavailable": "스토어를 사용할 수 없음"
+  },
+  "timeMode": {
+    "task": "시간 속 다른 그림",
+    "rules": "같은 장소의 아침과 저녁, 여름과 겨울. 빛과 눈과 나뭇잎은 저절로 바뀌어요 — 바뀌면 안 되는 것을 찾아보세요.",
+    "pairs": {
+      "day-night": "아침 → 저녁",
+      "summer-winter": "여름 → 겨울"
+    },
+    "traps": {
+      "moon": "그냥 달이에요 — 저녁엔 원래 그래요",
+      "stars": "저녁엔 별이 떠요 — 다른 점이 아니에요",
+      "lights": "저녁엔 불이 켜져요 — 원래 그래야 해요",
+      "shadow": "그림자는 해를 따라 바뀌어요 — 다른 점이 아니에요",
+      "birds": "새들이 날아갔어요 — 자연스러운 일이에요",
+      "snow": "겨울엔 온통 눈이에요 — 원래 그래야 해요",
+      "leaves": "겨울엔 나뭇잎이 떨어져요 — 다른 점이 아니에요",
+      "ice": "겨울엔 물이 얼어요 — 원래 그래야 해요",
+      "snowman": "누군가 눈사람을 만들었어요 — 다른 점이 아니에요",
+      "clothes": "겨울엔 따뜻하게 입어요 — 자연스러운 일이에요",
+      "icicles": "고드름은 겨울에만 생겨요 — 다른 점이 아니에요",
+      "smoke": "겨울엔 난로를 피워요 — 연기는 자연스러워요",
+      "flowers": "겨울엔 꽃도 버섯도 자라지 않아요 — 자연스러운 일이에요"
+    }
   }
 }

@@ -167,7 +167,8 @@
     "city": "Stad",
     "forest": "Bos",
     "sea": "Zee",
-    "space": "Ruimte"
+    "space": "Ruimte",
+    "time": "Tijd"
   },
   "levelTitles": {
     "barnyard": "Erf",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Satellietreparatie",
     "alienBazaar": "Buitenaardse bazaar",
     "gasGiantRings": "Ringen van een gasreus",
-    "blackHole": "Zwart gat en sterrenwacht"
+    "blackHole": "Zwart gat en sterrenwacht",
+    "duskFarm": "Boerderij in de schemering",
+    "duskStreet": "Straat in de avond",
+    "duskCamp": "Kamp bij het vallen van de nacht",
+    "duskPier": "Steiger in de schemering",
+    "duskYard": "Binnenplaats in de avond",
+    "snowFarm": "Boerderij in de sneeuw",
+    "snowStreet": "Besneeuwde straat",
+    "snowForest": "Boshut in de winter",
+    "snowPier": "Bevroren steiger",
+    "snowYard": "Besneeuwde binnenplaats",
+    "nightAvenue": "Lichtjes van de laan",
+    "farmYear": "Boerderij met molen",
+    "harborEvening": "Avond in de haven",
+    "forestYear": "Bruggetje in het bos",
+    "yardNight": "Avond in de tuin"
   },
   "mode": {
     "label": "Modus",
@@ -345,5 +361,28 @@
     "error": "Kan de winkel niet bereiken. Probeer het later opnieuw.",
     "play": "Spelen",
     "unavailable": "Winkel niet beschikbaar"
+  },
+  "timeMode": {
+    "task": "Verschillen in de tijd",
+    "rules": "Dezelfde plek in de ochtend en de avond, in de zomer en de winter. Licht, sneeuw en bladeren veranderen vanzelf — zoek wat niet had mogen veranderen.",
+    "pairs": {
+      "day-night": "Ochtend → avond",
+      "summer-winter": "Zomer → winter"
+    },
+    "traps": {
+      "moon": "Dat is gewoon de maan — zo hoort het 's avonds",
+      "stars": "'s Avonds komen de sterren op — geen verschil",
+      "lights": "'s Avonds gaan de lichten aan — zo hoort het",
+      "shadow": "Schaduwen veranderen met de zon — geen verschil",
+      "birds": "De vogels zijn weggevlogen — dat is natuurlijk",
+      "snow": "'s Winters ligt alles onder de sneeuw — zo hoort het",
+      "leaves": "'s Winters vallen de bladeren — geen verschil",
+      "ice": "'s Winters bevriest het water — zo hoort het",
+      "snowman": "Iemand heeft een sneeuwpop gemaakt — geen verschil",
+      "clothes": "'s Winters kleden mensen zich warm aan — dat is natuurlijk",
+      "icicles": "IJspegels zijn er alleen in de winter — geen verschil",
+      "smoke": "'s Winters brandt de kachel — de rook hoort erbij",
+      "flowers": "'s Winters groeien er geen bloemen en paddenstoelen — dat is natuurlijk"
+    }
   }
 }

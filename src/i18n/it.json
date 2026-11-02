@@ -167,7 +167,8 @@
     "city": "Città",
     "forest": "Bosco",
     "sea": "Mare",
-    "space": "Spazio"
+    "space": "Spazio",
+    "time": "Il tempo"
   },
   "levelTitles": {
     "barnyard": "Aia",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Riparazione del satellite",
     "alienBazaar": "Bazar alieno",
     "gasGiantRings": "Anelli del gigante gassoso",
-    "blackHole": "Buco nero e osservatorio"
+    "blackHole": "Buco nero e osservatorio",
+    "duskFarm": "Fattoria al tramonto",
+    "duskStreet": "Strada di sera",
+    "duskCamp": "Campeggio al calar della notte",
+    "duskPier": "Pontile al tramonto",
+    "duskYard": "Cortile di sera",
+    "snowFarm": "Fattoria sotto la neve",
+    "snowStreet": "Strada innevata",
+    "snowForest": "Capanna nel bosco d'inverno",
+    "snowPier": "Pontile ghiacciato",
+    "snowYard": "Cortile innevato",
+    "nightAvenue": "Luci del viale",
+    "farmYear": "Fattoria col mulino",
+    "harborEvening": "Sera al porto",
+    "forestYear": "Ponticello nel bosco",
+    "yardNight": "Sera in giardino"
   },
   "mode": {
     "label": "Modalità",
@@ -345,5 +361,28 @@
     "error": "Impossibile contattare lo store. Riprova più tardi.",
     "play": "Gioca",
     "unavailable": "Store non disponibile"
+  },
+  "timeMode": {
+    "task": "Differenze nel tempo",
+    "rules": "Lo stesso posto di mattina e di sera, d'estate e d'inverno. Luce, neve e foglie cambiano da sole: trova ciò che non sarebbe dovuto cambiare.",
+    "pairs": {
+      "day-night": "Mattina → sera",
+      "summer-winter": "Estate → inverno"
+    },
+    "traps": {
+      "moon": "È solo la luna: di sera è normale",
+      "stars": "Di sera spuntano le stelle: non è una differenza",
+      "lights": "Di sera si accendono le luci: è normale",
+      "shadow": "Le ombre cambiano con il sole: non è una differenza",
+      "birds": "Gli uccelli sono volati via: è naturale",
+      "snow": "D'inverno è tutto innevato: è normale",
+      "leaves": "D'inverno cadono le foglie: non è una differenza",
+      "ice": "D'inverno l'acqua gela: è normale",
+      "snowman": "Qualcuno ha fatto un pupazzo di neve: non è una differenza",
+      "clothes": "D'inverno ci si veste pesante: è naturale",
+      "icicles": "I ghiaccioli ci sono solo d'inverno: non è una differenza",
+      "smoke": "D'inverno si accende la stufa: il fumo è normale",
+      "flowers": "D'inverno non crescono fiori né funghi: è naturale"
+    }
   }
 }

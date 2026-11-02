@@ -1,4 +1,5 @@
 import type { Level } from '../engine/types.ts'
+import { timeLevels } from './time/index.ts'
 import level001 from './chapter-01/level-001.ts'
 import level002 from './chapter-01/level-002.ts'
 import level003 from './chapter-01/level-003.ts'
@@ -303,4 +304,7 @@ export const levels: Level[] = [
   level150,
 ]
 
-export const levelById = (id: number): Level | undefined => levels.find((l) => l.id === id)
+/** Every numbered level: the worlds (`levels`) and the "time" category (ids from 201). */
+export const allLevels: Level[] = [...levels, ...timeLevels]
+
+export const levelById = (id: number): Level | undefined => allLevels.find((l) => l.id === id)

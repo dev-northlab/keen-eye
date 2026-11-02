@@ -15,7 +15,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm run build` — type check (`vue-tsc -b`) + production build into `dist/`
 - `npm run check-levels [-- <id> ...]` — level validator (`scripts/check-levels.ts`, Node's built-in TS type stripping): renders A and B
   with resvg at several animation moments and checks that they differ only inside the zones and that every zone shows
-  a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism. All levels
+  a difference; plus zone overlap/bounds over time, difference counts, motion difference counts, determinism; "time"
+  levels compare A's differences drawn at B's moment with B, and check that every trap shows a natural change. All levels
   in one run may exceed the memory of a busy machine (killed with code 137) — then check by id in batches
 - `npm run preview-levels [-- <id> ...]` — `previews/level-NNN.png`: A | B with the zones outlined (gitignored)
 - `npm run typecheck` — type check only
@@ -53,7 +54,13 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   (`createSvgPicture`) and its background moves: `data-anim` groups in the SVG + `animations` in the JSON, same
   motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
-  `chapters.ts` (the chapters/"worlds": id, level id ranges, card colors, icon, backdrop — one entry per world),
+  `chapters.ts` (the chapters/"worlds": id, level id ranges, card colors, icon, backdrop — one entry per world; plus
+  `TIME_CHAPTER`), `time/` — "spot the difference in time" (`docs/time-differences-mode.md`): levels 201–215 of chapter
+  `time`, the same scene at two moments (`pair`: morning/evening, summer/winter); `svgLevel` gets `pair`, `time(a, b)`
+  draws by the picture's moment and `trap(x, y, r, a, b, hint)` marks a natural change (light, snow, leaves) whose tap is
+  a miss that shows `timeMode.traps.<hint>` once (`GameScene` → `onTrap`); played by `LevelView`, grid by `ChapterView`
+  (`/levels/time`, a banner on the modes screen, not a world), numbered 1–15 (`levelNumber`), open from the start, the
+  first `FREE_TIME_LEVELS` (3) free; `allLevels` = worlds + time (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels),
