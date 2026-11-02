@@ -366,7 +366,22 @@
     "memoryClassroom": "教室",
     "memoryHarbor": "港口",
     "memoryParty": "生日派对",
-    "memoryMarket": "水果摊"
+    "memoryMarket": "水果摊",
+    "memoryLivingRoom": "客厅",
+    "memoryBakery": "面包店",
+    "memoryStation": "火车站",
+    "memoryAutumnPark": "秋日公园",
+    "memoryToyShelf": "玩具架",
+    "memoryPicnic": "野餐",
+    "memoryCircus": "马戏团",
+    "memoryCastle": "城堡庭院",
+    "memoryLab": "实验室",
+    "memoryIceRink": "溜冰场",
+    "memoryBathroom": "浴室",
+    "memoryAirfield": "机场",
+    "memoryWorkshop": "工作间",
+    "memoryOasis": "沙漠绿洲",
+    "memoryHoliday": "节日之夜"
   },
   "mode": {
     "label": "模式",

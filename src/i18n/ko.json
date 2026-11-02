@@ -366,7 +366,22 @@
     "memoryClassroom": "교실",
     "memoryHarbor": "항구",
     "memoryParty": "생일 파티",
-    "memoryMarket": "과일 가판대"
+    "memoryMarket": "과일 가판대",
+    "memoryLivingRoom": "거실",
+    "memoryBakery": "빵집",
+    "memoryStation": "기차역",
+    "memoryAutumnPark": "가을 공원",
+    "memoryToyShelf": "장난감 선반",
+    "memoryPicnic": "소풍",
+    "memoryCircus": "서커스",
+    "memoryCastle": "성 안뜰",
+    "memoryLab": "실험실",
+    "memoryIceRink": "스케이트장",
+    "memoryBathroom": "욕실",
+    "memoryAirfield": "비행장",
+    "memoryWorkshop": "작업실",
+    "memoryOasis": "사막 오아시스",
+    "memoryHoliday": "축제의 밤"
   },
   "mode": {
     "label": "모드",

@@ -366,7 +366,22 @@
     "memoryClassroom": "Sınıf",
     "memoryHarbor": "Liman",
     "memoryParty": "Doğum günü partisi",
-    "memoryMarket": "Meyve tezgâhı"
+    "memoryMarket": "Meyve tezgâhı",
+    "memoryLivingRoom": "Oturma odası",
+    "memoryBakery": "Fırın",
+    "memoryStation": "Tren istasyonu",
+    "memoryAutumnPark": "Sonbahar parkı",
+    "memoryToyShelf": "Oyuncak rafı",
+    "memoryPicnic": "Piknik",
+    "memoryCircus": "Sirk",
+    "memoryCastle": "Kale avlusu",
+    "memoryLab": "Laboratuvar",
+    "memoryIceRink": "Buz pisti",
+    "memoryBathroom": "Banyo",
+    "memoryAirfield": "Havaalanı",
+    "memoryWorkshop": "Atölye",
+    "memoryOasis": "Çöl vahası",
+    "memoryHoliday": "Bayram akşamı"
   },
   "mode": {
     "label": "Mod",

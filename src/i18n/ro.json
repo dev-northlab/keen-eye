@@ -366,7 +366,22 @@
     "memoryClassroom": "Sala de clasă",
     "memoryHarbor": "Port",
     "memoryParty": "Petrecere aniversară",
-    "memoryMarket": "Taraba cu fructe"
+    "memoryMarket": "Taraba cu fructe",
+    "memoryLivingRoom": "Sufragerie",
+    "memoryBakery": "Brutărie",
+    "memoryStation": "Gară",
+    "memoryAutumnPark": "Parc de toamnă",
+    "memoryToyShelf": "Raft cu jucării",
+    "memoryPicnic": "Picnic",
+    "memoryCircus": "Circ",
+    "memoryCastle": "Curtea castelului",
+    "memoryLab": "Laborator",
+    "memoryIceRink": "Patinoar",
+    "memoryBathroom": "Baie",
+    "memoryAirfield": "Aerodrom",
+    "memoryWorkshop": "Atelier",
+    "memoryOasis": "Oază în deșert",
+    "memoryHoliday": "Seară de sărbătoare"
   },
   "mode": {
     "label": "Mod",

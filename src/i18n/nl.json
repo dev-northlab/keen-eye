@@ -366,7 +366,22 @@
     "memoryClassroom": "Klaslokaal",
     "memoryHarbor": "Haven",
     "memoryParty": "Verjaardagsfeest",
-    "memoryMarket": "Fruitkraam"
+    "memoryMarket": "Fruitkraam",
+    "memoryLivingRoom": "Woonkamer",
+    "memoryBakery": "Bakkerij",
+    "memoryStation": "Station",
+    "memoryAutumnPark": "Herfstpark",
+    "memoryToyShelf": "Speelgoedkast",
+    "memoryPicnic": "Picknick",
+    "memoryCircus": "Circus",
+    "memoryCastle": "Kasteelplein",
+    "memoryLab": "Laboratorium",
+    "memoryIceRink": "IJsbaan",
+    "memoryBathroom": "Badkamer",
+    "memoryAirfield": "Vliegveld",
+    "memoryWorkshop": "Werkplaats",
+    "memoryOasis": "Woestijnoase",
+    "memoryHoliday": "Feestavond"
   },
   "mode": {
     "label": "Modus",

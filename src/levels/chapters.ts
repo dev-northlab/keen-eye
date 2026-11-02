@@ -126,7 +126,7 @@ export const TIME_CHAPTER: Chapter = {
  */
 export const MEMORY_CHAPTER: Chapter = {
   id: 'memory',
-  ranges: [[301, 315]],
+  ranges: [[301, 330]],
   color: '#e8457a',
   soft: '#ffe6ee',
   backdrop: 'meadow',

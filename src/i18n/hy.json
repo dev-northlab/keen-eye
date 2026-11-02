@@ -366,7 +366,22 @@
     "memoryClassroom": "Դասարան",
     "memoryHarbor": "Նավահանգիստ",
     "memoryParty": "Ծննդյան տոն",
-    "memoryMarket": "Մրգի վաճառասեղան"
+    "memoryMarket": "Մրգի վաճառասեղան",
+    "memoryLivingRoom": "Հյուրասենյակ",
+    "memoryBakery": "Հացատուն",
+    "memoryStation": "Կայարան",
+    "memoryAutumnPark": "Աշնանային այգի",
+    "memoryToyShelf": "Խաղալիքների դարակ",
+    "memoryPicnic": "Պիկնիկ",
+    "memoryCircus": "Կրկես",
+    "memoryCastle": "Ամրոցի բակ",
+    "memoryLab": "Լաբորատորիա",
+    "memoryIceRink": "Սահադաշտ",
+    "memoryBathroom": "Լոգարան",
+    "memoryAirfield": "Օդանավակայան",
+    "memoryWorkshop": "Արհեստանոց",
+    "memoryOasis": "Օազիս անապատում",
+    "memoryHoliday": "Տոնական երեկո"
   },
   "mode": {
     "label": "Ռեժիմ",

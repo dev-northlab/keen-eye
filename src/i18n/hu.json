@@ -366,7 +366,22 @@
     "memoryClassroom": "Osztályterem",
     "memoryHarbor": "Kikötő",
     "memoryParty": "Születésnapi zsúr",
-    "memoryMarket": "Gyümölcsös stand"
+    "memoryMarket": "Gyümölcsös stand",
+    "memoryLivingRoom": "Nappali",
+    "memoryBakery": "Pékség",
+    "memoryStation": "Vasútállomás",
+    "memoryAutumnPark": "Őszi park",
+    "memoryToyShelf": "Játékpolc",
+    "memoryPicnic": "Piknik",
+    "memoryCircus": "Cirkusz",
+    "memoryCastle": "Várudvar",
+    "memoryLab": "Labor",
+    "memoryIceRink": "Jégpálya",
+    "memoryBathroom": "Fürdőszoba",
+    "memoryAirfield": "Repülőtér",
+    "memoryWorkshop": "Műhely",
+    "memoryOasis": "Sivatagi oázis",
+    "memoryHoliday": "Ünnepi este"
   },
   "mode": {
     "label": "Mód",

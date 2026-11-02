@@ -366,7 +366,22 @@
     "memoryClassroom": "Klasa",
     "memoryHarbor": "Port",
     "memoryParty": "Przyjęcie urodzinowe",
-    "memoryMarket": "Stragan z owocami"
+    "memoryMarket": "Stragan z owocami",
+    "memoryLivingRoom": "Salon",
+    "memoryBakery": "Piekarnia",
+    "memoryStation": "Dworzec",
+    "memoryAutumnPark": "Jesienny park",
+    "memoryToyShelf": "Półka z zabawkami",
+    "memoryPicnic": "Piknik",
+    "memoryCircus": "Cyrk",
+    "memoryCastle": "Dziedziniec zamku",
+    "memoryLab": "Laboratorium",
+    "memoryIceRink": "Lodowisko",
+    "memoryBathroom": "Łazienka",
+    "memoryAirfield": "Lotnisko",
+    "memoryWorkshop": "Warsztat",
+    "memoryOasis": "Oaza na pustyni",
+    "memoryHoliday": "Świąteczny wieczór"
   },
   "mode": {
     "label": "Tryb",

@@ -366,7 +366,22 @@
     "memoryClassroom": "Τάξη",
     "memoryHarbor": "Λιμάνι",
     "memoryParty": "Πάρτι γενεθλίων",
-    "memoryMarket": "Πάγκος με φρούτα"
+    "memoryMarket": "Πάγκος με φρούτα",
+    "memoryLivingRoom": "Σαλόνι",
+    "memoryBakery": "Φούρνος",
+    "memoryStation": "Σιδηροδρομικός σταθμός",
+    "memoryAutumnPark": "Φθινοπωρινό πάρκο",
+    "memoryToyShelf": "Ράφι με παιχνίδια",
+    "memoryPicnic": "Πικνίκ",
+    "memoryCircus": "Τσίρκο",
+    "memoryCastle": "Αυλή του κάστρου",
+    "memoryLab": "Εργαστήριο",
+    "memoryIceRink": "Παγοδρόμιο",
+    "memoryBathroom": "Μπάνιο",
+    "memoryAirfield": "Αεροδρόμιο",
+    "memoryWorkshop": "Συνεργείο",
+    "memoryOasis": "Όαση στην έρημο",
+    "memoryHoliday": "Γιορτινό βράδυ"
   },
   "mode": {
     "label": "Λειτουργία",

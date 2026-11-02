@@ -366,7 +366,22 @@
     "memoryClassroom": "कक्षा",
     "memoryHarbor": "बंदरगाह",
     "memoryParty": "जन्मदिन की पार्टी",
-    "memoryMarket": "फलों का ठेला"
+    "memoryMarket": "फलों का ठेला",
+    "memoryLivingRoom": "बैठक",
+    "memoryBakery": "बेकरी",
+    "memoryStation": "रेलवे स्टेशन",
+    "memoryAutumnPark": "पतझड़ का पार्क",
+    "memoryToyShelf": "खिलौनों की अलमारी",
+    "memoryPicnic": "पिकनिक",
+    "memoryCircus": "सर्कस",
+    "memoryCastle": "किले का आँगन",
+    "memoryLab": "प्रयोगशाला",
+    "memoryIceRink": "आइस रिंक",
+    "memoryBathroom": "बाथरूम",
+    "memoryAirfield": "हवाई अड्डा",
+    "memoryWorkshop": "कार्यशाला",
+    "memoryOasis": "रेगिस्तान का नख़लिस्तान",
+    "memoryHoliday": "त्योहार की शाम"
   },
   "mode": {
     "label": "मोड",

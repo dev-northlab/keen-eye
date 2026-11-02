@@ -326,3 +326,23 @@ export const pumpkin = (x: number, y: number) =>
   `<rect x="${x - 5}" y="${y - 74}" width="10" height="18" rx="3" fill="#6b8f3a"/>` +
   `<g fill="#ff8c1a"><ellipse cx="${x - 22}" cy="${y - 30}" rx="22" ry="30"/><ellipse cx="${x + 22}" cy="${y - 30}" rx="22" ry="30"/></g>` +
   `<ellipse cx="${x}" cy="${y - 30}" rx="24" ry="31" fill="#ffa53a"/>`
+
+// --- Busier scenes (316–330) ---
+
+/** Lamp hanging from the ceiling on a cord down to `cord`; (x, 0) = cord top. Bounds: x ±30, y from 0 to cord + 40. */
+export const hangingLamp = (x: number, cord: number, shade: string) =>
+  `<path d="M${x} 0V${cord}" stroke="#3d4a55" stroke-width="3"/>` +
+  `<path d="M${x - 14} ${cord}h28l16 30h-60Z" fill="${shade}"/><circle cx="${x}" cy="${cord + 34}" r="6" fill="#fff3b0"/>`
+
+/** Kite with a bowed tail; (x, y) = center of the diamond. Bounds: x ±24, y from −34 to +84. */
+export const kite = (x: number, y: number, color: string) =>
+  `<path d="M${x} ${y + 34}q-10 14 0 25t0 25" stroke="#6b766f" stroke-width="2" fill="none"/>` +
+  `<path d="M${x - 8} ${y + 52}l8 4l8 -4v8l-8 -4l-8 4ZM${x - 8} ${y + 72}l8 4l8 -4v8l-8 -4l-8 4Z" fill="#ffffff"/>` +
+  `<path d="M${x} ${y - 34}L${x + 24} ${y}L${x} ${y + 34}L${x - 24} ${y}Z" fill="${color}"/>` +
+  `<path d="M${x} ${y - 34}V${y + 34}M${x - 24} ${y}H${x + 24}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2.5"/>`
+
+/** Suitcase; (x, y) = bottom center. Bounds: x ±18, y from −58 to 0. */
+export const suitcase = (x: number, y: number, color: string) =>
+  `<path d="M${x - 8} ${y - 48}v-8h16v8" stroke="#3d4a55" stroke-width="4" fill="none"/>` +
+  `<rect x="${x - 18}" y="${y - 48}" width="36" height="48" rx="5" fill="${color}"/>` +
+  `<path d="M${x - 18} ${y - 30}h36" stroke="#ffffff" stroke-opacity="0.5" stroke-width="3"/>`

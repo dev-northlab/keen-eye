@@ -366,7 +366,22 @@
     "memoryClassroom": "教室",
     "memoryHarbor": "港",
     "memoryParty": "誕生日パーティー",
-    "memoryMarket": "果物屋"
+    "memoryMarket": "果物屋",
+    "memoryLivingRoom": "リビング",
+    "memoryBakery": "パン屋さん",
+    "memoryStation": "駅",
+    "memoryAutumnPark": "秋の公園",
+    "memoryToyShelf": "おもちゃの棚",
+    "memoryPicnic": "ピクニック",
+    "memoryCircus": "サーカス",
+    "memoryCastle": "お城の中庭",
+    "memoryLab": "実験室",
+    "memoryIceRink": "スケートリンク",
+    "memoryBathroom": "お風呂場",
+    "memoryAirfield": "飛行場",
+    "memoryWorkshop": "作業場",
+    "memoryOasis": "砂漠のオアシス",
+    "memoryHoliday": "お祝いの夜"
   },
   "mode": {
     "label": "モード",

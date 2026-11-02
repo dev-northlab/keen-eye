@@ -366,7 +366,22 @@
     "memoryClassroom": "Aula",
     "memoryHarbor": "Porto",
     "memoryParty": "Festa di compleanno",
-    "memoryMarket": "Banco della frutta"
+    "memoryMarket": "Banco della frutta",
+    "memoryLivingRoom": "Soggiorno",
+    "memoryBakery": "Panetteria",
+    "memoryStation": "Stazione",
+    "memoryAutumnPark": "Parco d’autunno",
+    "memoryToyShelf": "Scaffale dei giocattoli",
+    "memoryPicnic": "Picnic",
+    "memoryCircus": "Circo",
+    "memoryCastle": "Cortile del castello",
+    "memoryLab": "Laboratorio",
+    "memoryIceRink": "Pista di pattinaggio",
+    "memoryBathroom": "Bagno",
+    "memoryAirfield": "Aeroporto",
+    "memoryWorkshop": "Officina",
+    "memoryOasis": "Oasi nel deserto",
+    "memoryHoliday": "Sera di festa"
   },
   "mode": {
     "label": "Modalità",

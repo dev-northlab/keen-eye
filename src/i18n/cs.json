@@ -366,7 +366,22 @@
     "memoryClassroom": "Třída",
     "memoryHarbor": "Přístav",
     "memoryParty": "Narozeninová oslava",
-    "memoryMarket": "Stánek s ovocem"
+    "memoryMarket": "Stánek s ovocem",
+    "memoryLivingRoom": "Obývák",
+    "memoryBakery": "Pekárna",
+    "memoryStation": "Nádraží",
+    "memoryAutumnPark": "Podzimní park",
+    "memoryToyShelf": "Police s hračkami",
+    "memoryPicnic": "Piknik",
+    "memoryCircus": "Cirkus",
+    "memoryCastle": "Hradní nádvoří",
+    "memoryLab": "Laboratoř",
+    "memoryIceRink": "Kluziště",
+    "memoryBathroom": "Koupelna",
+    "memoryAirfield": "Letiště",
+    "memoryWorkshop": "Dílna",
+    "memoryOasis": "Oáza v poušti",
+    "memoryHoliday": "Sváteční večer"
   },
   "mode": {
     "label": "Režim",

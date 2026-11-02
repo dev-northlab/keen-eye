@@ -366,7 +366,22 @@
     "memoryClassroom": "Клас",
     "memoryHarbor": "Гавань",
     "memoryParty": "День народження",
-    "memoryMarket": "Фруктовий прилавок"
+    "memoryMarket": "Фруктовий прилавок",
+    "memoryLivingRoom": "Вітальня",
+    "memoryBakery": "Пекарня",
+    "memoryStation": "Вокзал",
+    "memoryAutumnPark": "Осінній парк",
+    "memoryToyShelf": "Полиця з іграшками",
+    "memoryPicnic": "Пікнік",
+    "memoryCircus": "Цирк",
+    "memoryCastle": "Двір замку",
+    "memoryLab": "Лабораторія",
+    "memoryIceRink": "Ковзанка",
+    "memoryBathroom": "Ванна кімната",
+    "memoryAirfield": "Аеродром",
+    "memoryWorkshop": "Майстерня",
+    "memoryOasis": "Оаза в пустелі",
+    "memoryHoliday": "Святковий вечір"
   },
   "mode": {
     "label": "Режим",
