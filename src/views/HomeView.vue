@@ -162,7 +162,7 @@ h1 {
 
 button,
 .mode {
-  width: min(100%, 280px);
+  width: min(100%, var(--menu-width));
 }
 
 /* Season and day/night switches: top left, away from the sun (top right) and the centered menu. */

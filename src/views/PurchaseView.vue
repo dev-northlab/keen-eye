@@ -81,14 +81,12 @@ function play() {
 main {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
+  /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
+  padding: 16px max(16px, (100% - var(--menu-width)) / 2) 24px;
   display: grid;
   grid-auto-rows: max-content;
   gap: 12px;
   justify-items: stretch;
-  max-width: 480px;
-  width: 100%;
-  margin: 0 auto;
 }
 
 .card {

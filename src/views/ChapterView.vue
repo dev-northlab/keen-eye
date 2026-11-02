@@ -78,7 +78,7 @@ main {
   flex: 1;
   overflow-y: auto;
   /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
-  padding: 16px max(16px, (100% - 640px) / 2) 24px;
+  padding: 16px max(16px, (100% - var(--menu-width)) / 2) 24px;
 }
 
 .grid {

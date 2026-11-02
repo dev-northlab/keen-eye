@@ -71,7 +71,7 @@ main {
   flex: 1;
   overflow-y: auto;
   /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
-  padding: 12px max(16px, (100% - 520px) / 2) 24px;
+  padding: 12px max(16px, (100% - var(--menu-width)) / 2) 24px;
 }
 
 .list {
