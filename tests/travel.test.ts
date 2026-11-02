@@ -8,14 +8,14 @@ import { FLAGS } from '../src/levels/travel/flags.ts'
 import { TRAVEL_REGIONS, travelLevels } from '../src/levels/travel/index.ts'
 
 describe('"travel" mode (docs/world-travel-mode.md)', () => {
-  test('15 levels from 401: 5, then 6, then 7 differences', () => {
-    assert.deepEqual(travelLevels.map((l) => l.id), Array.from({ length: 15 }, (_, i) => 401 + i))
+  test('32 levels from 401: 5, 6, 7, then the busier cities with 8, 9, 10 differences', () => {
+    assert.deepEqual(travelLevels.map((l) => l.id), Array.from({ length: 32 }, (_, i) => 401 + i))
     travelLevels.forEach((level, i) => {
       assert.equal(level.chapter, TRAVEL_CHAPTER.id)
       assert.equal(chapterOf(level.id), TRAVEL_CHAPTER)
       assert.equal(levelById(level.id), level)
       assert.equal(levelNumber(level), i + 1)
-      assert.equal(level.differences.length, [5, 6, 7][Math.floor(i / 5)], `level ${level.id}`)
+      assert.equal(level.differences.length, [5, 6, 7, 8, 9, 10][Math.min(Math.floor(i / 5), 5)], `level ${level.id}`)
       const [min, max] = difficultyOf(level.id).motion
       const motion = level.differences.filter((d) => d.motion).length
       assert.ok(motion >= min && motion <= max, `level ${level.id}`)
@@ -26,14 +26,16 @@ describe('"travel" mode (docs/world-travel-mode.md)', () => {
     for (const level of allLevels) assert.equal(!!level.travel, level.chapter === TRAVEL_CHAPTER.id, `level ${level.id}`)
   })
 
-  test('every place has a flag, a region of 2–3 places and a position on the globe', () => {
+  test('every place has a flag and a position on the globe, one place per country, at least 2 per region', () => {
     for (const { travel, id } of travelLevels) {
       assert.ok(FLAGS[travel!.country], `level ${id}`)
       assert.ok(Math.abs(travel!.lat) <= 90 && Math.abs(travel!.lon) <= 180, `level ${id}`)
     }
+    const countries = travelLevels.map((l) => l.travel!.country)
+    assert.equal(new Set(countries).size, countries.length)
     for (const region of TRAVEL_REGIONS) {
       const n = travelLevels.filter((l) => l.travel!.region === region).length
-      assert.ok(n >= 2 && n <= 3, region)
+      assert.ok(n >= 2, region)
     }
   })
 

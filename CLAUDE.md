@@ -69,10 +69,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`); a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
-  `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–415 of chapter `travel` written with
+  `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–432 of chapter `travel` written with
   `travelLevel({ id, title, parTimeSec, place, scene })` (`Level.travel`: region, ISO country code, lat/lon on the world map),
   one recognizable place each (title = place name, `worldTravel.facts.<title>` its fact — only well-known, checked facts),
-  2–3 places per region (`TRAVEL_REGIONS`), flags in `travel/flags.ts`; 5 → 6 → 7 differences, one in motion on 411–415;
+  one city per country (`npm test` checks it), flags in `travel/flags.ts`, regions `TRAVEL_REGIONS`; 5 → 6 → 7 differences,
+  then 416–432 busier cities with 8 → 9 → 10, one in motion from 411;
   played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
   world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
   `/travel/passport`; open and paid like "time" (first 3 free);
