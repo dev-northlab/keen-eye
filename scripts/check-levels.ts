@@ -1,9 +1,10 @@
 // Level validator: npm run check-levels
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, TIME_CHAPTER } from '../src/levels/chapters.ts'
+import { chapterOf, MEMORY_CHAPTER, TIME_CHAPTER } from '../src/levels/chapters.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels } from '../src/levels/index.ts'
+import { memoryLevels } from '../src/levels/memory/index.ts'
 import { timeLevels } from '../src/levels/time/index.ts'
 import { posedSvg, rasterize } from './render.ts'
 
@@ -131,9 +132,12 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
   if (!chapter) errors.push(`no chapter covers level ${level.id}`)
   else if (chapter.id !== level.chapter) errors.push(`chapter "${level.chapter}", expected "${chapter.id}" (chapters.ts)`)
 
-  const { differences: [min, max], motion: [mmin, mmax], minRadius, minGap = 0, traps } = difficultyOf(level.id)
+  const { differences: [min, max], motion: [mmin, mmax], minRadius, minGap = 0, traps, showSeconds } = difficultyOf(level.id)
   const timed = level.chapter === TIME_CHAPTER.id
   if (!timed && (level.pair || level.traps)) errors.push('pair/traps on a level outside the "time" category')
+  if ((level.chapter === MEMORY_CHAPTER.id) !== !!level.memory) errors.push('"memory" rules belong to exactly the "memory" category')
+  else if (level.memory && level.memory.showSeconds !== showSeconds)
+    errors.push(`shows A for ${level.memory.showSeconds} s, expected ${showSeconds} (difficulty.ts)`)
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
   ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id} (min ${minRadius})`))
 
@@ -188,10 +192,11 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
 
 // Optional level ids to check (npm run check-levels -- 81 82); all levels by default.
 const ids = process.argv.slice(2).map(Number)
-// Ids run on without gaps: the worlds from 1, the "time" category from its first id.
+// Ids run on without gaps: the worlds from 1, each category from its first id.
 const expected = new Map([
   ...levels.map((l, i) => [l, i + 1] as const),
   ...timeLevels.map((l, i) => [l, TIME_CHAPTER.ranges[0][0] + i] as const),
+  ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
 ])
 const selected = [...expected.keys()].filter((l) => ids.length === 0 || ids.includes(l.id))
 

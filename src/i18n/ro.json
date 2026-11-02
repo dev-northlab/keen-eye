@@ -168,7 +168,8 @@
     "forest": "Pădure",
     "sea": "Mare",
     "space": "Spațiu",
-    "time": "Timpul"
+    "time": "Timpul",
+    "memory": "Memorie"
   },
   "levelTitles": {
     "barnyard": "Curtea fermei",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Curtea fermei",
     "seaPromenade": "Faleza mării",
     "cableCar": "Telecabină",
-    "downtown": "Centrul orașului"
+    "downtown": "Centrul orașului",
+    "memoryKitchen": "Micul dejun",
+    "memoryFarmyard": "Curtea fermei",
+    "memoryBeach": "O zi la plajă",
+    "memoryBedroom": "Camera copilului",
+    "memoryPlayground": "Loc de joacă",
+    "memoryGarden": "Grădina de legume",
+    "memoryStreet": "Colț de stradă",
+    "memorySpace": "Bază lunară",
+    "memoryReef": "Recif de corali",
+    "memoryCamp": "Tabără la lac",
+    "memoryWinter": "Curte înzăpezită",
+    "memoryClassroom": "Sala de clasă",
+    "memoryHarbor": "Port",
+    "memoryParty": "Petrecere aniversară",
+    "memoryMarket": "Taraba cu fructe"
   },
   "mode": {
     "label": "Mod",
@@ -400,5 +416,21 @@
       "flowers": "Iarna nu cresc flori și ciuperci — e firesc",
       "clock": "Timpul trece — ceasul trebuie să arate altă oră"
     }
+  },
+  "memoryMode": {
+    "task": "Găsește din memorie",
+    "rules": "Memorează imaginea — ai doar câteva secunde. Apoi se schimbă: găsește diferențele din memorie. Cel mult 3 greșeli.",
+    "phases": {
+      "show": "Memorează imaginea!",
+      "search": "Ce s-a schimbat?",
+      "peek": "Mai privește o dată!",
+      "reveal": "Înainte și după"
+    },
+    "peek": "Privește din nou",
+    "finish": "Arată răspunsul",
+    "misses": "Greșeli: {n} din {max}",
+    "failed": "Nu de data asta",
+    "foundOf": "Găsite {found} din {total}",
+    "legend": "Cu roșu e ce ți-a scăpat"
   }
 }

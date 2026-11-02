@@ -168,7 +168,8 @@
     "forest": "Bosque",
     "sea": "Mar",
     "space": "Espacio",
-    "time": "El tiempo"
+    "time": "El tiempo",
+    "memory": "Memoria"
   },
   "levelTitles": {
     "barnyard": "Corral",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Corral de la granja",
     "seaPromenade": "Paseo marítimo",
     "cableCar": "Teleférico",
-    "downtown": "Centro de la ciudad"
+    "downtown": "Centro de la ciudad",
+    "memoryKitchen": "Desayuno",
+    "memoryFarmyard": "Corral",
+    "memoryBeach": "Día de playa",
+    "memoryBedroom": "Cuarto infantil",
+    "memoryPlayground": "Parque infantil",
+    "memoryGarden": "Huerto",
+    "memoryStreet": "La esquina",
+    "memorySpace": "Base lunar",
+    "memoryReef": "Arrecife de coral",
+    "memoryCamp": "Campamento junto al lago",
+    "memoryWinter": "Patio nevado",
+    "memoryClassroom": "Aula",
+    "memoryHarbor": "Puerto",
+    "memoryParty": "Fiesta de cumpleaños",
+    "memoryMarket": "Puesto de fruta"
   },
   "mode": {
     "label": "Modo",
@@ -400,5 +416,21 @@
       "flowers": "En invierno no crecen flores ni setas: es natural",
       "clock": "El tiempo pasa: el reloj debe marcar otra hora"
     }
+  },
+  "memoryMode": {
+    "task": "Encuéntralo de memoria",
+    "rules": "Memoriza la imagen: solo tienes unos segundos. Luego cambia: encuentra las diferencias de memoria. Máximo 3 fallos.",
+    "phases": {
+      "show": "¡Memoriza la imagen!",
+      "search": "¿Qué ha cambiado?",
+      "peek": "¡Mira otra vez!",
+      "reveal": "Antes y después"
+    },
+    "peek": "Mirar otra vez",
+    "finish": "Ver respuesta",
+    "misses": "Fallos: {n} de {max}",
+    "failed": "Esta vez no",
+    "foundOf": "Encontradas {found} de {total}",
+    "legend": "En rojo, lo que se te escapó"
   }
 }

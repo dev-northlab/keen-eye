@@ -11,6 +11,7 @@ import HomeView from '../views/HomeView.vue'
 import LevelMapView from '../views/LevelMapView.vue'
 import LevelView from '../views/LevelView.vue'
 import MatchView from '../views/MatchView.vue'
+import MemoryLevelView from '../views/MemoryLevelView.vue'
 import PurchaseView from '../views/PurchaseView.vue'
 import SettingsView from '../views/SettingsView.vue'
 import TimeTravelView from '../views/TimeTravelView.vue'
@@ -29,6 +30,13 @@ export const router = createRouter({
       path: '/level/:id(\\d+)',
       name: 'level',
       component: LevelView,
+      props: (route) => ({ id: Number(route.params.id) }),
+    },
+    // "Memory" (docs/memory-mode.md): numbered levels of the 'memory' category with their own screen.
+    {
+      path: '/memory/:id(\\d+)',
+      name: 'memory',
+      component: MemoryLevelView,
       props: (route) => ({ id: Number(route.params.id) }),
     },
     // "Find the odd one out" (docs/anachronism-mode.md): open to everyone, no unlock order.
@@ -51,15 +59,18 @@ export const router = createRouter({
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
 // Unknown chapter → worlds. Unknown level → home; paid level not bought → purchase screen;
 // not reached yet → its chapter's grid. Two-player matches need no order, only the purchase for paid levels.
-// Unknown "find the odd one out" level → home.
+// Unknown "find the odd one out" level → home. A "memory" level plays only on its own
+// screen (/level/<id> leads there), no other level does.
 router.beforeEach((to) => {
   if (to.name === 'chapter') return chapterById(String(to.params.chapter)) ? true : { name: 'worlds' }
   if (to.name === 'time-travel') return timeTravelLevelById(String(to.params.id)) ? true : { name: 'home' }
-  if (to.name !== 'level' && to.name !== 'match') return true
+  if (to.name !== 'level' && to.name !== 'match' && to.name !== 'memory') return true
   const id = Number(to.params.id)
   const progress = useProgressStore()
   const level = levelById(id)
   if (!level) return { name: 'home' }
+  if ((to.name === 'memory') !== !!level.memory)
+    return level.memory && to.name === 'level' ? { name: 'memory', params: { id } } : { name: 'home' }
   if (progress.needsPurchase(id)) return { name: 'purchase' }
   if (to.name === 'match') return true
   return progress.isUnlocked(id) ? true : { name: 'chapter', params: { chapter: level.chapter } }

@@ -168,7 +168,8 @@
     "forest": "Erdő",
     "sea": "Tenger",
     "space": "Világűr",
-    "time": "Idő"
+    "time": "Idő",
+    "memory": "Memória"
   },
   "levelTitles": {
     "barnyard": "Udvar",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Gazdasági udvar",
     "seaPromenade": "Tengerparti sétány",
     "cableCar": "Libegő",
-    "downtown": "Belváros"
+    "downtown": "Belváros",
+    "memoryKitchen": "Reggeli",
+    "memoryFarmyard": "Tanyaudvar",
+    "memoryBeach": "Nap a strandon",
+    "memoryBedroom": "Gyerekszoba",
+    "memoryPlayground": "Játszótér",
+    "memoryGarden": "Veteményes",
+    "memoryStreet": "Az utcasarkon",
+    "memorySpace": "Holdbázis",
+    "memoryReef": "Korallzátony",
+    "memoryCamp": "Tábor a tónál",
+    "memoryWinter": "Havas udvar",
+    "memoryClassroom": "Osztályterem",
+    "memoryHarbor": "Kikötő",
+    "memoryParty": "Születésnapi zsúr",
+    "memoryMarket": "Gyümölcsös stand"
   },
   "mode": {
     "label": "Mód",
@@ -400,5 +416,21 @@
       "flowers": "Télen nem nőnek virágok és gombák — ez természetes",
       "clock": "Telik az idő — az órának mást kell mutatnia"
     }
+  },
+  "memoryMode": {
+    "task": "Emlékezetből",
+    "rules": "Jegyezd meg a képet — csak néhány másodperced van. Aztán megváltozik: keresd meg a különbségeket emlékezetből. Legfeljebb 3 tévedés.",
+    "phases": {
+      "show": "Jegyezd meg a képet!",
+      "search": "Mi változott?",
+      "peek": "Nézd meg még egyszer!",
+      "reveal": "Előtte és utána"
+    },
+    "peek": "Még egy pillantás",
+    "finish": "Megoldás",
+    "misses": "Tévedések: {n} / {max}",
+    "failed": "Most nem sikerült",
+    "foundOf": "{found} / {total} megtalálva",
+    "legend": "Pirossal jelölve, ami kimaradt"
   }
 }

@@ -168,7 +168,8 @@
     "forest": "Bosco",
     "sea": "Mare",
     "space": "Spazio",
-    "time": "Il tempo"
+    "time": "Il tempo",
+    "memory": "Memoria"
   },
   "levelTitles": {
     "barnyard": "Aia",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Aia della fattoria",
     "seaPromenade": "Lungomare",
     "cableCar": "Funivia",
-    "downtown": "Centro città"
+    "downtown": "Centro città",
+    "memoryKitchen": "Colazione",
+    "memoryFarmyard": "Aia",
+    "memoryBeach": "Giornata al mare",
+    "memoryBedroom": "Cameretta",
+    "memoryPlayground": "Parco giochi",
+    "memoryGarden": "Orto",
+    "memoryStreet": "All’angolo",
+    "memorySpace": "Base lunare",
+    "memoryReef": "Barriera corallina",
+    "memoryCamp": "Campeggio al lago",
+    "memoryWinter": "Cortile innevato",
+    "memoryClassroom": "Aula",
+    "memoryHarbor": "Porto",
+    "memoryParty": "Festa di compleanno",
+    "memoryMarket": "Banco della frutta"
   },
   "mode": {
     "label": "Modalità",
@@ -400,5 +416,21 @@
       "flowers": "D'inverno non crescono fiori né funghi: è naturale",
       "clock": "Il tempo passa: l'orologio deve segnare un'altra ora"
     }
+  },
+  "memoryMode": {
+    "task": "Trovalo a memoria",
+    "rules": "Memorizza l’immagine: hai solo pochi secondi. Poi cambia: trova le differenze a memoria. Al massimo 3 errori.",
+    "phases": {
+      "show": "Memorizza l’immagine!",
+      "search": "Cosa è cambiato?",
+      "peek": "Guarda ancora!",
+      "reveal": "Prima e dopo"
+    },
+    "peek": "Guarda ancora",
+    "finish": "Mostra la risposta",
+    "misses": "Errori: {n} su {max}",
+    "failed": "Non questa volta",
+    "foundOf": "Trovate {found} su {total}",
+    "legend": "In rosso ciò che ti è sfuggito"
   }
 }

@@ -168,7 +168,8 @@
     "forest": "Forêt",
     "sea": "Mer",
     "space": "Espace",
-    "time": "Le temps"
+    "time": "Le temps",
+    "memory": "Mémoire"
   },
   "levelTitles": {
     "barnyard": "Basse-cour",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Cour de ferme",
     "seaPromenade": "Promenade du bord de mer",
     "cableCar": "Téléphérique",
-    "downtown": "Centre-ville"
+    "downtown": "Centre-ville",
+    "memoryKitchen": "Petit-déjeuner",
+    "memoryFarmyard": "Cour de ferme",
+    "memoryBeach": "Journée à la plage",
+    "memoryBedroom": "Chambre d’enfant",
+    "memoryPlayground": "Aire de jeux",
+    "memoryGarden": "Potager",
+    "memoryStreet": "Coin de rue",
+    "memorySpace": "Base lunaire",
+    "memoryReef": "Récif de corail",
+    "memoryCamp": "Camp au bord du lac",
+    "memoryWinter": "Cour enneigée",
+    "memoryClassroom": "Salle de classe",
+    "memoryHarbor": "Port",
+    "memoryParty": "Fête d’anniversaire",
+    "memoryMarket": "Étal de fruits"
   },
   "mode": {
     "label": "Mode",
@@ -400,5 +416,21 @@
       "flowers": "En hiver, les fleurs et les champignons ne poussent pas — c'est naturel",
       "clock": "Le temps passe — l'horloge doit indiquer une autre heure"
     }
+  },
+  "memoryMode": {
+    "task": "Retrouve de mémoire",
+    "rules": "Mémorise l’image — tu n’as que quelques secondes. Puis elle change : trouve les différences de mémoire. 3 erreurs au maximum.",
+    "phases": {
+      "show": "Mémorise l’image !",
+      "search": "Qu’est-ce qui a changé ?",
+      "peek": "Regarde encore une fois !",
+      "reveal": "Avant et après"
+    },
+    "peek": "Revoir",
+    "finish": "Voir la réponse",
+    "misses": "Erreurs : {n} sur {max}",
+    "failed": "Pas cette fois",
+    "foundOf": "Trouvé {found} sur {total}",
+    "legend": "En rouge, ce que tu as manqué"
   }
 }

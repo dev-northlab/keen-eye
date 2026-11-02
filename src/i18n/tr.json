@@ -168,7 +168,8 @@
     "forest": "Orman",
     "sea": "Deniz",
     "space": "Uzay",
-    "time": "Zaman"
+    "time": "Zaman",
+    "memory": "Hafıza"
   },
   "levelTitles": {
     "barnyard": "Çiftlik avlusu",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Çiftlik avlusu",
     "seaPromenade": "Sahil yolu",
     "cableCar": "Teleferik",
-    "downtown": "Şehir merkezi"
+    "downtown": "Şehir merkezi",
+    "memoryKitchen": "Kahvaltı masası",
+    "memoryFarmyard": "Çiftlik avlusu",
+    "memoryBeach": "Plajda bir gün",
+    "memoryBedroom": "Çocuk odası",
+    "memoryPlayground": "Oyun parkı",
+    "memoryGarden": "Sebze bahçesi",
+    "memoryStreet": "Sokak köşesi",
+    "memorySpace": "Ay üssü",
+    "memoryReef": "Mercan kayalığı",
+    "memoryCamp": "Göl kenarında kamp",
+    "memoryWinter": "Karlı avlu",
+    "memoryClassroom": "Sınıf",
+    "memoryHarbor": "Liman",
+    "memoryParty": "Doğum günü partisi",
+    "memoryMarket": "Meyve tezgâhı"
   },
   "mode": {
     "label": "Mod",
@@ -400,5 +416,21 @@
       "flowers": "Kışın çiçek ve mantar yetişmez — bu doğal",
       "clock": "Zaman geçiyor — saatin başka bir saati göstermesi gerekir"
     }
+  },
+  "memoryMode": {
+    "task": "Hafızadan bul",
+    "rules": "Resmi aklında tut — sadece birkaç saniyen var. Sonra değişir: farkları hafızadan bul. En fazla 3 hata.",
+    "phases": {
+      "show": "Resmi aklında tut!",
+      "search": "Ne değişti?",
+      "peek": "Bir kez daha bak!",
+      "reveal": "Önce ve sonra"
+    },
+    "peek": "Tekrar bak",
+    "finish": "Cevabı göster",
+    "misses": "Hatalar: {n} / {max}",
+    "failed": "Bu sefer olmadı",
+    "foundOf": "{found} / {total} bulundu",
+    "legend": "Kırmızıyla işaretlenenleri kaçırdın"
   }
 }

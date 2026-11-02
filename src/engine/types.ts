@@ -62,6 +62,12 @@ export interface Trap {
   hint: string
 }
 
+/** "Memory" levels (docs/memory-mode.md): how long picture A is shown and how many extra looks a round allows. */
+export interface MemoryRules {
+  showSeconds: number
+  peeks: number
+}
+
 export interface Level {
   id: number
   /** Chapter theme key (i18n: chapters.<chapter>). */
@@ -89,6 +95,8 @@ export interface Level {
   /** "Time" levels only: the moments of A and B and the natural changes between them. */
   pair?: TimePair
   traps?: Trap[]
+  /** "Memory" levels only: A is shown first, then B alone (the stars ignore `parTimeSec`). */
+  memory?: MemoryRules
 }
 
 export type Stars = 1 | 2 | 3

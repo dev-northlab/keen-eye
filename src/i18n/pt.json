@@ -168,7 +168,8 @@
     "forest": "Floresta",
     "sea": "Mar",
     "space": "Espaço",
-    "time": "Tempo"
+    "time": "Tempo",
+    "memory": "Memória"
   },
   "levelTitles": {
     "barnyard": "Terreiro",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Pátio da quinta",
     "seaPromenade": "Passeio marítimo",
     "cableCar": "Teleférico",
-    "downtown": "Centro da cidade"
+    "downtown": "Centro da cidade",
+    "memoryKitchen": "Café da manhã",
+    "memoryFarmyard": "Quintal da fazenda",
+    "memoryBeach": "Dia de praia",
+    "memoryBedroom": "Quarto infantil",
+    "memoryPlayground": "Parquinho",
+    "memoryGarden": "Horta",
+    "memoryStreet": "Na esquina",
+    "memorySpace": "Base lunar",
+    "memoryReef": "Recife de coral",
+    "memoryCamp": "Acampamento no lago",
+    "memoryWinter": "Quintal nevado",
+    "memoryClassroom": "Sala de aula",
+    "memoryHarbor": "Porto",
+    "memoryParty": "Festa de aniversário",
+    "memoryMarket": "Banca de frutas"
   },
   "mode": {
     "label": "Modo",
@@ -400,5 +416,21 @@
       "flowers": "No inverno não crescem flores nem cogumelos — é natural",
       "clock": "O tempo passa — o relógio tem de mostrar outra hora"
     }
+  },
+  "memoryMode": {
+    "task": "Encontre de memória",
+    "rules": "Memorize a imagem — você só tem alguns segundos. Depois ela muda: encontre as diferenças de memória. No máximo 3 erros.",
+    "phases": {
+      "show": "Memorize a imagem!",
+      "search": "O que mudou?",
+      "peek": "Olhe mais uma vez!",
+      "reveal": "Antes e depois"
+    },
+    "peek": "Olhar de novo",
+    "finish": "Mostrar resposta",
+    "misses": "Erros: {n} de {max}",
+    "failed": "Não foi desta vez",
+    "foundOf": "Encontradas {found} de {total}",
+    "legend": "Em vermelho, o que você deixou passar"
   }
 }

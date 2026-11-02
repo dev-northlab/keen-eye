@@ -168,7 +168,8 @@
     "forest": "Las",
     "sea": "Morze",
     "space": "Kosmos",
-    "time": "Czas"
+    "time": "Czas",
+    "memory": "Pamięć"
   },
   "levelTitles": {
     "barnyard": "Podwórko",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Podwórze gospodarstwa",
     "seaPromenade": "Promenada nad morzem",
     "cableCar": "Kolejka linowa",
-    "downtown": "Śródmieście"
+    "downtown": "Śródmieście",
+    "memoryKitchen": "Śniadanie",
+    "memoryFarmyard": "Podwórko na farmie",
+    "memoryBeach": "Dzień na plaży",
+    "memoryBedroom": "Pokój dziecięcy",
+    "memoryPlayground": "Plac zabaw",
+    "memoryGarden": "Warzywnik",
+    "memoryStreet": "Na rogu ulicy",
+    "memorySpace": "Baza księżycowa",
+    "memoryReef": "Rafa koralowa",
+    "memoryCamp": "Obóz nad jeziorem",
+    "memoryWinter": "Zaśnieżone podwórko",
+    "memoryClassroom": "Klasa",
+    "memoryHarbor": "Port",
+    "memoryParty": "Przyjęcie urodzinowe",
+    "memoryMarket": "Stragan z owocami"
   },
   "mode": {
     "label": "Tryb",
@@ -400,5 +416,21 @@
       "flowers": "Zimą nie rosną kwiaty ani grzyby — to naturalne",
       "clock": "Czas płynie — zegar powinien pokazywać inną godzinę"
     }
+  },
+  "memoryMode": {
+    "task": "Znajdź z pamięci",
+    "rules": "Zapamiętaj obrazek — masz tylko kilka sekund. Potem się zmieni: znajdź różnice z pamięci. Najwyżej 3 pomyłki.",
+    "phases": {
+      "show": "Zapamiętaj obrazek!",
+      "search": "Co się zmieniło?",
+      "peek": "Spójrz jeszcze raz!",
+      "reveal": "Przed i po"
+    },
+    "peek": "Spójrz jeszcze raz",
+    "finish": "Pokaż odpowiedź",
+    "misses": "Pomyłki: {n} z {max}",
+    "failed": "Tym razem nie wyszło",
+    "foundOf": "Znaleziono {found} z {total}",
+    "legend": "Na czerwono zaznaczono to, co przeoczyłeś"
   }
 }

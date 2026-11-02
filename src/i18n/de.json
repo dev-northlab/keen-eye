@@ -168,7 +168,8 @@
     "forest": "Wald",
     "sea": "Meer",
     "space": "Weltall",
-    "time": "Zeit"
+    "time": "Zeit",
+    "memory": "Gedächtnis"
   },
   "levelTitles": {
     "barnyard": "Hof",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Bauernhof",
     "seaPromenade": "Strandpromenade",
     "cableCar": "Seilbahn",
-    "downtown": "Innenstadt"
+    "downtown": "Innenstadt",
+    "memoryKitchen": "Frühstückstisch",
+    "memoryFarmyard": "Bauernhof",
+    "memoryBeach": "Tag am Strand",
+    "memoryBedroom": "Kinderzimmer",
+    "memoryPlayground": "Spielplatz",
+    "memoryGarden": "Gemüsegarten",
+    "memoryStreet": "Straßenecke",
+    "memorySpace": "Mondbasis",
+    "memoryReef": "Korallenriff",
+    "memoryCamp": "Zeltlager am See",
+    "memoryWinter": "Verschneiter Hof",
+    "memoryClassroom": "Klassenzimmer",
+    "memoryHarbor": "Hafen",
+    "memoryParty": "Geburtstagsfeier",
+    "memoryMarket": "Obststand"
   },
   "mode": {
     "label": "Modus",
@@ -400,5 +416,21 @@
       "flowers": "Im Winter wachsen keine Blumen und Pilze — das ist natürlich",
       "clock": "Die Zeit vergeht — die Uhr muss etwas anderes zeigen"
     }
+  },
+  "memoryMode": {
+    "task": "Aus dem Gedächtnis finden",
+    "rules": "Merk dir das Bild — du hast nur ein paar Sekunden. Dann verändert es sich: Finde die Unterschiede aus dem Gedächtnis. Höchstens 3 Fehler.",
+    "phases": {
+      "show": "Merk dir das Bild!",
+      "search": "Was hat sich verändert?",
+      "peek": "Schau noch einmal!",
+      "reveal": "Vorher und nachher"
+    },
+    "peek": "Noch mal schauen",
+    "finish": "Lösung zeigen",
+    "misses": "Fehler: {n} von {max}",
+    "failed": "Diesmal nicht",
+    "foundOf": "{found} von {total} gefunden",
+    "legend": "Rot umkreist ist, was du übersehen hast"
   }
 }

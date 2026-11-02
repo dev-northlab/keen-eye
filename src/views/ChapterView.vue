@@ -5,11 +5,11 @@ import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
-import { CHAPTERS, chapterById, chapterLevels, chapterSize, levelNumber, TIME_CHAPTER } from '../levels/chapters.ts'
+import { CHAPTERS, chapterById, chapterLevels, chapterSize, levelNumber } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
-// Level grid of one chapter, or of the "time" category. The router guard guarantees the chapter exists.
+// Level grid of one chapter, or of a category ("time", "memory"). The router guard guarantees the chapter exists.
 
 const props = defineProps<{ chapter: string }>()
 const router = useRouter()
@@ -20,13 +20,13 @@ const chapter = chapterById(props.chapter)!
 const levels = chapterLevels(chapter)
 const missing = chapterSize(chapter) - levels.length
 
-/** A world's grid goes back to the worlds, the "time" category to the game modes. */
+/** A world's grid goes back to the worlds, a category to the game modes. */
 const toParent = () => router.push({ name: CHAPTERS.includes(chapter) ? 'worlds' : 'levels' })
 useBackButton(toParent)
 
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
-  else if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
+  else if (progress.isUnlocked(level.id)) router.push({ name: level.memory ? 'memory' : 'level', params: { id: level.id } })
 }
 
 /** Paid levels stay tappable (they lead to the purchase screen); levels not reached yet are disabled. */
@@ -44,7 +44,7 @@ function tileLabel(level: Level) {
   <div class="screen">
     <ScreenBackdrop :theme="chapter.backdrop" />
     <main>
-      <p v-if="chapter === TIME_CHAPTER" class="rules">{{ $t('timeMode.rules') }}</p>
+      <p v-if="chapter.rules" class="rules">{{ $t(chapter.rules) }}</p>
       <ul class="grid">
         <li v-for="level in levels" :key="level.id">
           <button

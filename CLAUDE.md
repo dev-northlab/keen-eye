@@ -45,7 +45,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   percent of the image and hitboxes; level JSON checks and the DOM-free round; `AnachronismScene`, one picture with the
   same zoom, gestures, marks and miss lock), `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; tap events
   `{ playerId, picture, x, y, t }` are hit-tested by the engine itself), `match-scene.ts` (`MatchScene`: clock,
-  1 shared or 2 face-to-face boards, `Match`; duels have no zoom and count a tap when the finger touches)
+  1 shared or 2 face-to-face boards, `Match`; duels have no zoom and count a tap when the finger touches),
+  `memory-scene.ts` (`MemoryScene`: a "memory" round, `docs/memory-mode.md` — phases show A → curtain → search B alone
+  (`Board.show`, no zoom, taps on B only) → reveal A|B with the missed zones in red; peeks, miss limit, `memoryStars` in `rules.ts`)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `time-travel/` — "find the odd one out"
   levels as JSON (`mode: "anachronism"`, string ids, percent hitboxes, texts as `{ <locale>: … }` in every interface language — `npm test` checks it), checked by
   `parseAnachronismLevel` in `time-travel/index.ts`, images in `public/levels/time-travel/`; kept out of `levels`
@@ -55,17 +57,22 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
   `chapters.ts` (the chapters/"worlds": id, level id ranges, card colors, icon, backdrop — one entry per world; plus
-  `TIME_CHAPTER`), `time/` — "spot the difference in time" (`docs/time-differences-mode.md`): levels 201–230 of chapter
+  the categories `TIME_CHAPTER` and `MEMORY_CHAPTER`, `CATEGORIES`, with their `rules` text), `time/` — "spot the difference in time" (`docs/time-differences-mode.md`): levels 201–230 of chapter
   `time`, the same scene at two moments (`pair`: morning/evening, summer/winter); `svgLevel` gets `pair`, `time(a, b)`
   draws by the picture's moment and `trap(x, y, r, a, b, hint)` marks a natural change (light, snow, leaves) whose tap is
   a miss that shows `timeMode.traps.<hint>` once (`GameScene` → `onTrap`); played by `LevelView`, grid by `ChapterView`
   (`/levels/time`, a banner on the modes screen, not a world), numbered 1–30 (`levelNumber`; 216–230 are the busier
   scenes with 8–10 differences, `difficulty.ts`), open from the start, the
-  first `FREE_TIME_LEVELS` (3) free; `allLevels` = worlds + time (`levels` stays the worlds),
+  first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–315 of chapter `memory`
+  written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks), 6–10 big
+  objects (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s (`difficulty.ts` `showSeconds`); a move's zone
+  covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
+  there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
+  `allLevels` = worlds + time + memory (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels),
-  Level, Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
+  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
 - `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to

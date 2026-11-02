@@ -168,7 +168,8 @@
     "forest": "Les",
     "sea": "Moře",
     "space": "Vesmír",
-    "time": "Čas"
+    "time": "Čas",
+    "memory": "Paměť"
   },
   "levelTitles": {
     "barnyard": "Dvůr",
@@ -350,7 +351,22 @@
     "farmyardSeasons": "Statkový dvůr",
     "seaPromenade": "Přímořská promenáda",
     "cableCar": "Lanovka",
-    "downtown": "Centrum města"
+    "downtown": "Centrum města",
+    "memoryKitchen": "Snídaně",
+    "memoryFarmyard": "Statek",
+    "memoryBeach": "Den na pláži",
+    "memoryBedroom": "Dětský pokoj",
+    "memoryPlayground": "Dětské hřiště",
+    "memoryGarden": "Zeleninová zahrádka",
+    "memoryStreet": "Na rohu ulice",
+    "memorySpace": "Měsíční základna",
+    "memoryReef": "Korálový útes",
+    "memoryCamp": "Tábor u jezera",
+    "memoryWinter": "Zasněžený dvůr",
+    "memoryClassroom": "Třída",
+    "memoryHarbor": "Přístav",
+    "memoryParty": "Narozeninová oslava",
+    "memoryMarket": "Stánek s ovocem"
   },
   "mode": {
     "label": "Režim",
@@ -400,5 +416,21 @@
       "flowers": "V zimě nerostou květiny ani houby — to je přirozené",
       "clock": "Čas běží — hodiny mají ukazovat jiný čas"
     }
+  },
+  "memoryMode": {
+    "task": "Najdi zpaměti",
+    "rules": "Zapamatuj si obrázek — máš jen pár sekund. Pak se změní: najdi rozdíly zpaměti. Nejvýš 3 chyby.",
+    "phases": {
+      "show": "Zapamatuj si obrázek!",
+      "search": "Co se změnilo?",
+      "peek": "Podívej se ještě jednou!",
+      "reveal": "Před a po"
+    },
+    "peek": "Podívat se znovu",
+    "finish": "Ukázat odpověď",
+    "misses": "Chyby: {n} z {max}",
+    "failed": "Tentokrát ne",
+    "foundOf": "Nalezeno {found} z {total}",
+    "legend": "Červeně je to, co ti uniklo"
   }
 }

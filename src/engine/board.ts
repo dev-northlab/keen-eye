@@ -125,7 +125,12 @@ export class Board {
     this.hinted = -1
   }
 
-  /** Development tool: outlines the unfound differences in red (found marks drawn later cover them). */
+  /** Shows only the given pictures ("memory" mode shows A, then B); hidden pictures take no taps. */
+  show(pictures: (0 | 1)[]): void {
+    this.pictures.forEach((p, i) => (p.svg.style.display = pictures.includes(i as 0 | 1) ? '' : 'none'))
+  }
+
+  /** Outlines the unfound differences in red (found marks drawn later cover them): a development tool, and the answer of a "memory" round. */
   reveal(found: boolean[]): void {
     for (const p of this.pictures) found.forEach((f, i) => f || addRevealMark(p, i, this.zone(p, i)))
   }
