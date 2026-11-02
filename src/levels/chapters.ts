@@ -1,8 +1,9 @@
-// Chapters ("worlds"): 20 levels each, plus 10 harder ones added later with ids after 100.
+// Chapters ("worlds"): 20 levels each, plus 10 harder ones added later with ids after 100;
+// and the "time" category (TIME_CHAPTER), which plays like a chapter but is not a world.
 // Adding a chapter is one entry here, its levels in `index.ts` and the `chapters.<id>` /
 // `levelTitles.*` texts in every locale.
 import type { Level } from '../engine/types.ts'
-import { levels } from './index.ts'
+import { allLevels } from './index.ts'
 
 /** Screen backdrop worlds (drawn by components/ScreenBackdrop.vue). */
 export type BackdropTheme = 'meadow' | 'farm' | 'forest' | 'sea' | 'city' | 'space'
@@ -100,20 +101,43 @@ export const CHAPTERS: Chapter[] = [
   },
 ]
 
-export const chapterById = (id: string): Chapter | undefined => CHAPTERS.find((c) => c.id === id)
+/**
+ * "Spot the difference in time" (docs/time-differences-mode.md, levels in `time/`): its own banner on
+ * the game modes screen, not a world. Its first level is open from the start; the first
+ * `FREE_TIME_LEVELS` (stores/purchase.ts) need no purchase.
+ */
+export const TIME_CHAPTER: Chapter = {
+  id: 'time',
+  ranges: [[201, 215]],
+  color: '#7a5af5',
+  soft: '#ece6ff',
+  backdrop: 'meadow',
+  icon:
+    `<path d="M24 4a20 20 0 0 0 0 40Z" fill="#ffc94a"/><path d="M24 4a20 20 0 0 1 0 40Z" fill="#3b3f8f"/>` +
+    `<circle cx="16" cy="24" r="6" fill="#fff3b0"/><path d="M34 16a7 7 0 1 0 0 12a6 6 0 0 1 0-12Z" fill="#fff3b0"/>`,
+}
+
+const ALL_CHAPTERS = [...CHAPTERS, TIME_CHAPTER]
+
+export const chapterById = (id: string): Chapter | undefined => ALL_CHAPTERS.find((c) => c.id === id)
 
 export const chapterOf = (levelId: number): Chapter | undefined =>
-  CHAPTERS.find((c) => c.ranges.some(([from, to]) => levelId >= from && levelId <= to))
+  ALL_CHAPTERS.find((c) => c.ranges.some(([from, to]) => levelId >= from && levelId <= to))
 
 /** Number of levels the chapter will have ("N of M" on its card). */
 export const chapterSize = (chapter: Chapter) => chapter.ranges.reduce((n, [from, to]) => n + to - from + 1, 0)
 
-/** Levels of the chapter that exist, in play order (`levels` is sorted by id, as are the ranges). */
-export const chapterLevels = (chapter: Chapter) => levels.filter((l) => l.chapter === chapter.id)
+/** Levels of the chapter that exist, in play order (`allLevels` is sorted by id, as are the ranges). */
+export const chapterLevels = (chapter: Chapter) => allLevels.filter((l) => l.chapter === chapter.id)
 
-/** The level after `level` in its chapter, or the next chapter's first one at the chapter's end. */
+/** The level after `level` in its chapter, or at a world's end the next world's first one. */
 export function nextLevel(level: Level): Level | undefined {
-  const i = CHAPTERS.findIndex((c) => c.id === level.chapter)
-  const own = chapterLevels(CHAPTERS[i])
-  return own[own.indexOf(level) + 1] ?? (CHAPTERS[i + 1] && chapterLevels(CHAPTERS[i + 1])[0])
+  const chapter = chapterById(level.chapter)!
+  const own = chapterLevels(chapter)
+  const next = CHAPTERS[CHAPTERS.indexOf(chapter) + 1]
+  return own[own.indexOf(level) + 1] ?? (CHAPTERS.includes(chapter) && next ? chapterLevels(next)[0] : undefined)
 }
+
+/** Number shown to the player: the id in the worlds, the place in the category for "time" levels (1–15). */
+export const levelNumber = (level: Level) =>
+  level.chapter === TIME_CHAPTER.id ? level.id - TIME_CHAPTER.ranges[0][0] + 1 : level.id

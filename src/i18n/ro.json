@@ -167,7 +167,8 @@
     "city": "Oraș",
     "forest": "Pădure",
     "sea": "Mare",
-    "space": "Spațiu"
+    "space": "Spațiu",
+    "time": "Timpul"
   },
   "levelTitles": {
     "barnyard": "Curtea fermei",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Repararea satelitului",
     "alienBazaar": "Bazar extraterestru",
     "gasGiantRings": "Inelele gigantului gazos",
-    "blackHole": "Gaura neagră și observatorul"
+    "blackHole": "Gaura neagră și observatorul",
+    "duskFarm": "Ferma în amurg",
+    "duskStreet": "Stradă seara",
+    "duskCamp": "Tabără la căderea nopții",
+    "duskPier": "Debarcader în amurg",
+    "duskYard": "Curte seara",
+    "snowFarm": "Ferma în zăpadă",
+    "snowStreet": "Stradă înzăpezită",
+    "snowForest": "Cabana din pădure iarna",
+    "snowPier": "Debarcader înghețat",
+    "snowYard": "Curte înzăpezită",
+    "nightAvenue": "Luminile bulevardului",
+    "farmYear": "Ferma cu moară",
+    "harborEvening": "Seară în port",
+    "forestYear": "Podeț în pădure",
+    "yardNight": "Seară în grădină"
   },
   "mode": {
     "label": "Mod",
@@ -345,5 +361,28 @@
     "error": "Nu ne-am putut conecta la magazin. Încearcă mai târziu.",
     "play": "Joacă",
     "unavailable": "Magazin indisponibil"
+  },
+  "timeMode": {
+    "task": "Diferențe în timp",
+    "rules": "Același loc dimineața și seara, vara și iarna. Lumina, zăpada și frunzele se schimbă singure — găsește ce nu ar fi trebuit să se schimbe.",
+    "pairs": {
+      "day-night": "Dimineață → seară",
+      "summer-winter": "Vară → iarnă"
+    },
+    "traps": {
+      "moon": "E doar luna — seara așa e normal",
+      "stars": "Seara apar stelele — nu e o diferență",
+      "lights": "Seara se aprind luminile — așa e normal",
+      "shadow": "Umbrele se schimbă odată cu soarele — nu e o diferență",
+      "birds": "Păsările au zburat — e firesc",
+      "snow": "Iarna totul e sub zăpadă — așa e normal",
+      "leaves": "Iarna cad frunzele — nu e o diferență",
+      "ice": "Iarna apa îngheață — așa e normal",
+      "snowman": "Cineva a făcut un om de zăpadă — nu e o diferență",
+      "clothes": "Iarna ne îmbrăcăm mai gros — e firesc",
+      "icicles": "Țurțurii apar doar iarna — nu e o diferență",
+      "smoke": "Iarna se face focul în sobă — fumul e firesc",
+      "flowers": "Iarna nu cresc flori și ciuperci — e firesc"
+    }
   }
 }

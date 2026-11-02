@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { levels } from '../levels/index.ts'
+import { allLevels } from '../levels/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { isFreeLevel, usePurchaseStore } from '../stores/purchase.ts'
 
@@ -11,7 +11,7 @@ const router = useRouter()
 const purchase = usePurchaseStore()
 const progress = useProgressStore()
 
-const paidLevels = levels.filter((l) => !isFreeLevel(l.id)).length
+const paidLevels = allLevels.filter((l) => !isFreeLevel(l.id)).length
 /** Result of the last action, as an i18n key under `purchase.`. */
 const message = ref<'success' | 'restored' | 'none' | 'error' | null>(null)
 

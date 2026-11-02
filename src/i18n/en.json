@@ -167,7 +167,8 @@
     "city": "City",
     "forest": "Forest",
     "sea": "Sea",
-    "space": "Space"
+    "space": "Space",
+    "time": "Time"
   },
   "levelTitles": {
     "barnyard": "Barnyard",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Satellite repair",
     "alienBazaar": "Alien bazaar",
     "gasGiantRings": "Rings of a gas giant",
-    "blackHole": "Black hole observatory"
+    "blackHole": "Black hole observatory",
+    "duskFarm": "Farm at dusk",
+    "duskStreet": "Evening street",
+    "duskCamp": "Camp at nightfall",
+    "duskPier": "Pier at dusk",
+    "duskYard": "Evening courtyard",
+    "snowFarm": "Farm in the snow",
+    "snowStreet": "Snowy street",
+    "snowForest": "Forest cabin in winter",
+    "snowPier": "Frozen pier",
+    "snowYard": "Snowy yard",
+    "nightAvenue": "Avenue lights",
+    "farmYear": "Windmill farm",
+    "harborEvening": "Harbor evening",
+    "forestYear": "Forest footbridge",
+    "yardNight": "Garden evening"
   },
   "mode": {
     "label": "Mode",
@@ -345,5 +361,28 @@
     "error": "Could not reach the store. Please try again later.",
     "play": "Play",
     "unavailable": "Store unavailable"
+  },
+  "timeMode": {
+    "task": "Spot the difference in time",
+    "rules": "The same place in the morning and in the evening, in summer and in winter. Light, snow and leaves change on their own — find what shouldn't have changed.",
+    "pairs": {
+      "day-night": "Morning → evening",
+      "summer-winter": "Summer → winter"
+    },
+    "traps": {
+      "moon": "It's just the moon — that's how evenings are",
+      "stars": "Stars come out in the evening — not a difference",
+      "lights": "Lights go on in the evening — that's how it should be",
+      "shadow": "Shadows change with the sun — not a difference",
+      "birds": "The birds have flown away — that's natural",
+      "snow": "Everything is snowy in winter — that's how it should be",
+      "leaves": "Trees lose their leaves in winter — not a difference",
+      "ice": "Water freezes in winter — that's how it should be",
+      "snowman": "Someone made a snowman — not a difference",
+      "clothes": "People dress warmly in winter — that's natural",
+      "icicles": "Icicles only grow in winter — not a difference",
+      "smoke": "The stove is lit in winter — the smoke is natural",
+      "flowers": "Flowers and mushrooms don't grow in winter — that's natural"
+    }
   }
 }

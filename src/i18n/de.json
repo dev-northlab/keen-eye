@@ -167,7 +167,8 @@
     "city": "Stadt",
     "forest": "Wald",
     "sea": "Meer",
-    "space": "Weltall"
+    "space": "Weltall",
+    "time": "Zeit"
   },
   "levelTitles": {
     "barnyard": "Hof",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Satellitenreparatur",
     "alienBazaar": "Alien-Basar",
     "gasGiantRings": "Ringe des Gasriesen",
-    "blackHole": "Schwarzes Loch und Sternwarte"
+    "blackHole": "Schwarzes Loch und Sternwarte",
+    "duskFarm": "Bauernhof in der Dämmerung",
+    "duskStreet": "Abendstraße",
+    "duskCamp": "Zeltlager bei Einbruch der Nacht",
+    "duskPier": "Steg in der Dämmerung",
+    "duskYard": "Hof am Abend",
+    "snowFarm": "Bauernhof im Schnee",
+    "snowStreet": "Verschneite Straße",
+    "snowForest": "Waldhütte im Winter",
+    "snowPier": "Vereister Steg",
+    "snowYard": "Verschneiter Hof",
+    "nightAvenue": "Lichter der Allee",
+    "farmYear": "Hof mit Windmühle",
+    "harborEvening": "Abend im Hafen",
+    "forestYear": "Waldbrücke",
+    "yardNight": "Abend im Garten"
   },
   "mode": {
     "label": "Modus",
@@ -345,5 +361,28 @@
     "error": "Store nicht erreichbar. Bitte versuche es später noch einmal.",
     "play": "Spielen",
     "unavailable": "Store nicht verfügbar"
+  },
+  "timeMode": {
+    "task": "Unterschiede in der Zeit",
+    "rules": "Derselbe Ort am Morgen und am Abend, im Sommer und im Winter. Licht, Schnee und Laub ändern sich von selbst — finde, was sich nicht hätte ändern dürfen.",
+    "pairs": {
+      "day-night": "Morgen → Abend",
+      "summer-winter": "Sommer → Winter"
+    },
+    "traps": {
+      "moon": "Das ist nur der Mond — abends ist das so",
+      "stars": "Abends gehen die Sterne auf — kein Unterschied",
+      "lights": "Abends gehen die Lichter an — das gehört so",
+      "shadow": "Schatten wandern mit der Sonne — kein Unterschied",
+      "birds": "Die Vögel sind weggeflogen — das ist natürlich",
+      "snow": "Im Winter liegt überall Schnee — das gehört so",
+      "leaves": "Im Winter fallen die Blätter — kein Unterschied",
+      "ice": "Im Winter friert das Wasser — das gehört so",
+      "snowman": "Jemand hat einen Schneemann gebaut — kein Unterschied",
+      "clothes": "Im Winter zieht man sich warm an — das ist natürlich",
+      "icicles": "Eiszapfen gibt es nur im Winter — kein Unterschied",
+      "smoke": "Im Winter wird geheizt — der Rauch gehört dazu",
+      "flowers": "Im Winter wachsen keine Blumen und Pilze — das ist natürlich"
+    }
   }
 }

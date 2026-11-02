@@ -46,6 +46,22 @@ export interface Difference {
   motion?: boolean
 }
 
+/** The two moments of a "time" level (docs/time-differences-mode.md): picture A is the first, B the second. */
+export type TimePair = 'day-night' | 'summer-winter'
+
+/**
+ * A natural change between the two moments of a "time" level (light, snow, leaves…): not a
+ * difference, so a tap on it is a miss that explains itself once.
+ */
+export interface Trap {
+  /** Zone center and radius in viewBox coordinates (traps never move). */
+  x: number
+  y: number
+  r: number
+  /** Hint text key (i18n: timeMode.traps.<hint>). */
+  hint: string
+}
+
 export interface Level {
   id: number
   /** Chapter theme key (i18n: chapters.<chapter>). */
@@ -53,8 +69,12 @@ export interface Level {
   /** Title key (i18n: levelTitles.<title>). */
   title: string
   kind: 'svg' | 'image'
-  /** kind = 'svg': builds the scene; variant 0 = A, 1 = B. */
-  build?: (variant: 0 | 1) => SceneSvg
+  /**
+   * kind = 'svg': builds the scene; variant 0 = A, 1 = B. A "time" level draws the moment of its
+   * `pair` from `moment` (default: the variant's own); the validator mixes them to tell the
+   * differences from the natural changes.
+   */
+  build?: (variant: 0 | 1, moment?: 0 | 1) => SceneSvg
   /** kind = 'image': asset URLs. */
   imageA?: string
   imageB?: string
@@ -66,6 +86,9 @@ export interface Level {
   hintLimit?: number
   /** Suits a two-player match (enough differences for a long race); preferred by "random level". */
   multiplayerReady: boolean
+  /** "Time" levels only: the moments of A and B and the natural changes between them. */
+  pair?: TimePair
+  traps?: Trap[]
 }
 
 export type Stars = 1 | 2 | 3

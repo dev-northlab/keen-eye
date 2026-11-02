@@ -1,13 +1,18 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { TIME_CHAPTER } from '../levels/chapters.ts'
 import { fetchOwnership, fetchPrice, purchaseFullGame, resetStubStore, type PurchaseOutcome } from '../services/purchases.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 
 const KEY = 'purchase'
 /** Levels 1–15 are free; the rest need the one-time purchase (spec, section 10). */
 export const FREE_LEVELS = 15
+/** The first levels of the "time" category are free as well. */
+export const FREE_TIME_LEVELS = 3
 
-export const isFreeLevel = (id: number) => id <= FREE_LEVELS
+const TIME_FIRST = TIME_CHAPTER.ranges[0][0]
+
+export const isFreeLevel = (id: number) => id <= FREE_LEVELS || (id >= TIME_FIRST && id < TIME_FIRST + FREE_TIME_LEVELS)
 
 /**
  * The full-game purchase, cached locally so the game works offline. The store

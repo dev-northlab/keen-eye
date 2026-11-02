@@ -167,7 +167,8 @@
     "city": "Város",
     "forest": "Erdő",
     "sea": "Tenger",
-    "space": "Világűr"
+    "space": "Világűr",
+    "time": "Idő"
   },
   "levelTitles": {
     "barnyard": "Udvar",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Műholdjavítás",
     "alienBazaar": "Földönkívüli bazár",
     "gasGiantRings": "Gázóriás gyűrűi",
-    "blackHole": "Fekete lyuk és csillagvizsgáló"
+    "blackHole": "Fekete lyuk és csillagvizsgáló",
+    "duskFarm": "Tanya alkonyatkor",
+    "duskStreet": "Esti utca",
+    "duskCamp": "Tábor szürkületkor",
+    "duskPier": "Stég alkonyatkor",
+    "duskYard": "Esti udvar",
+    "snowFarm": "Tanya a hóban",
+    "snowStreet": "Havas utca",
+    "snowForest": "Erdei kunyhó télen",
+    "snowPier": "Befagyott stég",
+    "snowYard": "Havas udvar",
+    "nightAvenue": "A sugárút fényei",
+    "farmYear": "Tanya szélmalommal",
+    "harborEvening": "Este a kikötőben",
+    "forestYear": "Erdei hídacska",
+    "yardNight": "Este a kertben"
   },
   "mode": {
     "label": "Mód",
@@ -345,5 +361,28 @@
     "error": "Nem sikerült elérni a boltot. Próbáld újra később.",
     "play": "Játék",
     "unavailable": "A bolt nem érhető el"
+  },
+  "timeMode": {
+    "task": "Különbségek az időben",
+    "rules": "Ugyanaz a hely reggel és este, nyáron és télen. A fény, a hó és a levelek maguktól változnak — keresd meg, aminek nem kellett volna megváltoznia.",
+    "pairs": {
+      "day-night": "Reggel → este",
+      "summer-winter": "Nyár → tél"
+    },
+    "traps": {
+      "moon": "Ez csak a hold — este ez így van rendjén",
+      "stars": "Este feljönnek a csillagok — ez nem különbség",
+      "lights": "Este felgyulladnak a fények — ez így van rendjén",
+      "shadow": "Az árnyékok a nappal változnak — ez nem különbség",
+      "birds": "A madarak elrepültek — ez természetes",
+      "snow": "Télen minden havas — ez így van rendjén",
+      "leaves": "Télen lehullanak a levelek — ez nem különbség",
+      "ice": "Télen befagy a víz — ez így van rendjén",
+      "snowman": "Valaki hóembert épített — ez nem különbség",
+      "clothes": "Télen melegebben öltözünk — ez természetes",
+      "icicles": "Jégcsapok csak télen vannak — ez nem különbség",
+      "smoke": "Télen begyújtják a kályhát — a füst természetes",
+      "flowers": "Télen nem nőnek virágok és gombák — ez természetes"
+    }
   }
 }

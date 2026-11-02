@@ -167,7 +167,8 @@
     "city": "Ville",
     "forest": "Forêt",
     "sea": "Mer",
-    "space": "Espace"
+    "space": "Espace",
+    "time": "Le temps"
   },
   "levelTitles": {
     "barnyard": "Basse-cour",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Réparation du satellite",
     "alienBazaar": "Bazar extraterrestre",
     "gasGiantRings": "Anneaux de la géante gazeuse",
-    "blackHole": "Trou noir et observatoire"
+    "blackHole": "Trou noir et observatoire",
+    "duskFarm": "Ferme au crépuscule",
+    "duskStreet": "Rue du soir",
+    "duskCamp": "Camp à la tombée de la nuit",
+    "duskPier": "Ponton au crépuscule",
+    "duskYard": "Cour du soir",
+    "snowFarm": "Ferme sous la neige",
+    "snowStreet": "Rue enneigée",
+    "snowForest": "Cabane en forêt l'hiver",
+    "snowPier": "Ponton gelé",
+    "snowYard": "Cour enneigée",
+    "nightAvenue": "Lumières de l'avenue",
+    "farmYear": "Ferme au moulin",
+    "harborEvening": "Soir au port",
+    "forestYear": "Passerelle en forêt",
+    "yardNight": "Soirée au jardin"
   },
   "mode": {
     "label": "Mode",
@@ -345,5 +361,28 @@
     "error": "Impossible de joindre le store. Réessaie plus tard.",
     "play": "Jouer",
     "unavailable": "Store indisponible"
+  },
+  "timeMode": {
+    "task": "Différences dans le temps",
+    "rules": "Le même endroit le matin et le soir, en été et en hiver. La lumière, la neige et les feuilles changent d'elles-mêmes — trouve ce qui n'aurait pas dû changer.",
+    "pairs": {
+      "day-night": "Matin → soir",
+      "summer-winter": "Été → hiver"
+    },
+    "traps": {
+      "moon": "Ce n'est que la lune — le soir, c'est normal",
+      "stars": "Les étoiles s'allument le soir — ce n'est pas une différence",
+      "lights": "Le soir, on allume les lumières — c'est normal",
+      "shadow": "Les ombres bougent avec le soleil — ce n'est pas une différence",
+      "birds": "Les oiseaux se sont envolés — c'est naturel",
+      "snow": "En hiver, tout est sous la neige — c'est normal",
+      "leaves": "En hiver, les arbres perdent leurs feuilles — ce n'est pas une différence",
+      "ice": "En hiver, l'eau gèle — c'est normal",
+      "snowman": "Quelqu'un a fait un bonhomme de neige — ce n'est pas une différence",
+      "clothes": "En hiver, on s'habille chaudement — c'est naturel",
+      "icicles": "Les glaçons n'existent qu'en hiver — ce n'est pas une différence",
+      "smoke": "En hiver, on chauffe le poêle — la fumée est normale",
+      "flowers": "En hiver, les fleurs et les champignons ne poussent pas — c'est naturel"
+    }
   }
 }

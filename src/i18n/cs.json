@@ -167,7 +167,8 @@
     "city": "Město",
     "forest": "Les",
     "sea": "Moře",
-    "space": "Vesmír"
+    "space": "Vesmír",
+    "time": "Čas"
   },
   "levelTitles": {
     "barnyard": "Dvůr",
@@ -319,7 +320,22 @@
     "satelliteRepair": "Oprava družice",
     "alienBazaar": "Mimozemský bazar",
     "gasGiantRings": "Prstence plynného obra",
-    "blackHole": "Černá díra a observatoř"
+    "blackHole": "Černá díra a observatoř",
+    "duskFarm": "Statek za soumraku",
+    "duskStreet": "Večerní ulice",
+    "duskCamp": "Tábor za soumraku",
+    "duskPier": "Molo za soumraku",
+    "duskYard": "Večerní dvůr",
+    "snowFarm": "Statek ve sněhu",
+    "snowStreet": "Zasněžená ulice",
+    "snowForest": "Lesní chata v zimě",
+    "snowPier": "Zamrzlé molo",
+    "snowYard": "Zasněžený dvůr",
+    "nightAvenue": "Světla třídy",
+    "farmYear": "Statek s větrným mlýnem",
+    "harborEvening": "Večer v přístavu",
+    "forestYear": "Lesní lávka",
+    "yardNight": "Večer na zahradě"
   },
   "mode": {
     "label": "Režim",
@@ -345,5 +361,28 @@
     "error": "Nepodařilo se spojit s obchodem. Zkuste to později.",
     "play": "Hrát",
     "unavailable": "Obchod není dostupný"
+  },
+  "timeMode": {
+    "task": "Rozdíly v čase",
+    "rules": "Stejné místo ráno a večer, v létě a v zimě. Světlo, sníh a listí se mění samy — najdi, co se změnit nemělo.",
+    "pairs": {
+      "day-night": "Ráno → večer",
+      "summer-winter": "Léto → zima"
+    },
+    "traps": {
+      "moon": "To je jen měsíc — večer to tak má být",
+      "stars": "Večer vycházejí hvězdy — to není rozdíl",
+      "lights": "Večer se rozsvěcují světla — tak to má být",
+      "shadow": "Stíny se mění se sluncem — to není rozdíl",
+      "birds": "Ptáci odletěli — to je přirozené",
+      "snow": "V zimě je všude sníh — tak to má být",
+      "leaves": "V zimě opadává listí — to není rozdíl",
+      "ice": "V zimě voda zamrzá — tak to má být",
+      "snowman": "Někdo postavil sněhuláka — to není rozdíl",
+      "clothes": "V zimě se lidé oblékají tepleji — to je přirozené",
+      "icicles": "Rampouchy jsou jen v zimě — to není rozdíl",
+      "smoke": "V zimě se topí — kouř k tomu patří",
+      "flowers": "V zimě nerostou květiny ani houby — to je přirozené"
+    }
   }
 }
