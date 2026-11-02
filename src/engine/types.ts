@@ -68,6 +68,19 @@ export interface MemoryRules {
   peeks: number
 }
 
+/** "Travel" regions (docs/world-travel-mode.md), in the order of the world map; i18n worldTravel.regions.<region>. */
+export type TravelRegion = 'europe' | 'asia' | 'caucasus' | 'americas' | 'africa' | 'oceania'
+
+/** "Travel" levels: the place the scene shows. Its fact is i18n worldTravel.facts.<title>. */
+export interface TravelPlace {
+  region: TravelRegion
+  /** ISO 3166-1 alpha-2 code: the flag (levels/travel/flags.ts) and i18n worldTravel.countries.<country>. */
+  country: string
+  /** Pin on the world map, degrees. */
+  lat: number
+  lon: number
+}
+
 export interface Level {
   id: number
   /** Chapter theme key (i18n: chapters.<chapter>). */
@@ -97,6 +110,8 @@ export interface Level {
   traps?: Trap[]
   /** "Memory" levels only: A is shown first, then B alone (the stars ignore `parTimeSec`). */
   memory?: MemoryRules
+  /** "Travel" levels only: the place, shown on the world map and with its fact after the level. */
+  travel?: TravelPlace
 }
 
 export type Stars = 1 | 2 | 3

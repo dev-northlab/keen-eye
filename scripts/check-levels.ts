@@ -1,10 +1,11 @@
 // Level validator: npm run check-levels
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, MEMORY_CHAPTER, TIME_CHAPTER } from '../src/levels/chapters.ts'
+import { chapterOf, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER } from '../src/levels/chapters.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
+import { travelLevels } from '../src/levels/travel/index.ts'
 import { timeLevels } from '../src/levels/time/index.ts'
 import { posedSvg, rasterize } from './render.ts'
 
@@ -138,6 +139,7 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
   if ((level.chapter === MEMORY_CHAPTER.id) !== !!level.memory) errors.push('"memory" rules belong to exactly the "memory" category')
   else if (level.memory && level.memory.showSeconds !== showSeconds)
     errors.push(`shows A for ${level.memory.showSeconds} s, expected ${showSeconds} (difficulty.ts)`)
+  if ((level.chapter === TRAVEL_CHAPTER.id) !== !!level.travel) errors.push('a "travel" place belongs to exactly the "travel" category')
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
   ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id} (min ${minRadius})`))
 
@@ -197,6 +199,7 @@ const expected = new Map([
   ...levels.map((l, i) => [l, i + 1] as const),
   ...timeLevels.map((l, i) => [l, TIME_CHAPTER.ranges[0][0] + i] as const),
   ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
+  ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
 ])
 const selected = [...expected.keys()].filter((l) => ids.length === 0 || ids.includes(l.id))
 

@@ -1,5 +1,5 @@
 // Chapters ("worlds"): 20 levels each, plus 10 harder ones added later with ids after 100;
-// and the categories ("time", "memory"), which play like a chapter but are not worlds.
+// and the categories ("time", "memory", "travel"), which play like a chapter but are not worlds.
 // Adding a chapter is one entry here, its levels in `index.ts` and the `chapters.<id>` /
 // `levelTitles.*` texts in every locale.
 import type { Level } from '../engine/types.ts'
@@ -126,7 +126,7 @@ export const TIME_CHAPTER: Chapter = {
  */
 export const MEMORY_CHAPTER: Chapter = {
   id: 'memory',
-  ranges: [[301, 315]],
+  ranges: [[301, 330]],
   color: '#e8457a',
   soft: '#ffe6ee',
   backdrop: 'meadow',
@@ -140,8 +140,25 @@ export const MEMORY_CHAPTER: Chapter = {
     `<circle cx="34" cy="27" r="1.6" fill="#fff"/>`,
 }
 
+/**
+ * "Travel" (docs/world-travel-mode.md, levels in `travel/`): a recognizable place per level, its fact
+ * after the win. Listed on the world map (TravelView), not a grid; open and paid like the "time" category.
+ */
+export const TRAVEL_CHAPTER: Chapter = {
+  id: 'travel',
+  ranges: [[401, 415]],
+  color: '#1f9bb5',
+  soft: '#ddf4f8',
+  backdrop: 'meadow',
+  rules: 'worldTravel.rules',
+  icon:
+    `<circle cx="24" cy="24" r="20" fill="#5cc3e0"/>` +
+    `<path d="M10 14q6-4 11 0t4 9q-3 4-8 2t-7 4q-4-6 0-15ZM27 30q5-3 9 1t-1 9q-6 3-9-2t1-8ZM29 9q6 0 9 5l-6 2q-4-2-3-7Z" fill="#6cc46a"/>` +
+    `<path d="M38 4l-9 21l-5-6l-6 4Z" fill="#e5484d" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>`,
+}
+
 /** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
-export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER]
+export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER]
 
 const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES]
 
@@ -166,6 +183,10 @@ export function nextLevel(level: Level): Level | undefined {
 
 /** The category of a level, or undefined for a world's level. */
 export const categoryOf = (level: Level) => CATEGORIES.find((c) => c.id === level.chapter)
+
+/** Route of the screen listing a level: the world map open at its region for "travel", its chapter's grid otherwise. */
+export const levelsScreen = (level: Level) =>
+  level.travel ? { name: 'travel', query: { region: level.travel.region } } : { name: 'chapter', params: { chapter: level.chapter } }
 
 /** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
 export function levelNumber(level: Level): number {

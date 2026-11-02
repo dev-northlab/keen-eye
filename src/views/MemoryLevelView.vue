@@ -7,7 +7,7 @@ import SettingsOverlay from '../components/SettingsOverlay.vue'
 import StarRating from '../components/StarRating.vue'
 import ToolButton from '../components/ToolButton.vue'
 import { MAX_MISSES, MemoryScene, type MemoryPhase, type MemoryResult } from '../engine/memory-scene.ts'
-import { levelNumber, nextLevel as nextLevelOf } from '../levels/chapters.ts'
+import { levelNumber, levelsScreen, nextLevel as nextLevelOf } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
@@ -28,7 +28,7 @@ const settings = useSettingsStore()
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
 const number = levelNumber(level)
-const grid = { name: 'chapter', params: { chapter: level.chapter } }
+const grid = levelsScreen(level)
 const total = level.differences.length
 
 const board = ref<HTMLDivElement>()

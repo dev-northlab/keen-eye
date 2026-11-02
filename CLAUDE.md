@@ -63,16 +63,24 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   a miss that shows `timeMode.traps.<hint>` once (`GameScene` → `onTrap`); played by `LevelView`, grid by `ChapterView`
   (`/levels/time`, a banner on the modes screen, not a world), numbered 1–30 (`levelNumber`; 216–230 are the busier
   scenes with 8–10 differences, `difficulty.ts`), open from the start, the
-  first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–315 of chapter `memory`
+  first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks), 6–10 big
-  objects (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s (`difficulty.ts` `showSeconds`); a move's zone
+  objects (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
+  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`); a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
-  `allLevels` = worlds + time + memory (`levels` stays the worlds),
+  `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–415 of chapter `travel` written with
+  `travelLevel({ id, title, parTimeSec, place, scene })` (`Level.travel`: region, ISO country code, lat/lon on the world map),
+  one recognizable place each (title = place name, `worldTravel.facts.<title>` its fact — only well-known, checked facts),
+  2–3 places per region (`TRAVEL_REGIONS`), flags in `travel/flags.ts`; 5 → 6 → 7 differences, one in motion on 411–415;
+  played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
+  world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
+  `/travel/passport`; open and paid like "time" (first 3 free);
+  `allLevels` = worlds + time + memory + travel (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),
-  TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels),
-  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
+  TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),
+  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
 - `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
