@@ -6,8 +6,10 @@ import castle01 from './castle-01.json' with { type: 'json' }
 import egypt01 from './egypt-01.json' with { type: 'json' }
 import pirates01 from './pirates-01.json' with { type: 'json' }
 import rome01 from './rome-01.json' with { type: 'json' }
+import stoneage01 from './stoneage-01.json' with { type: 'json' }
 import vikings01 from './vikings-01.json' with { type: 'json' }
+import wildwest01 from './wildwest-01.json' with { type: 'json' }
 
-export const timeTravelLevels: AnachronismLevel[] = [egypt01, rome01, vikings01, castle01, pirates01].map(parseAnachronismLevel)
+export const timeTravelLevels: AnachronismLevel[] = [egypt01, rome01, vikings01, castle01, pirates01, wildwest01, stoneage01].map(parseAnachronismLevel)
 
 export const timeTravelLevelById = (id: string): AnachronismLevel | undefined => timeTravelLevels.find((l) => l.id === id)

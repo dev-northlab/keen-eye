@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <!-- "Find the odd one out" level stoneage-01, the Stone Age. The odd items (groups with ids) must stay
+       inside their hitboxes in src/levels/time-travel/stoneage-01.json (percent of 800×500). -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ad7f0" />
+      <stop offset="1" stop-color="#f2f0d0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky. -->
+  <rect width="800" height="330" fill="url(#sky)" />
+  <circle cx="690" cy="70" r="48" fill="#fff3b0" opacity="0.6" />
+  <g data-anim="sun" fill="#ffd23f">
+    <circle cx="690" cy="70" r="36" />
+  </g>
+  <g data-anim="clouds">
+    <g fill="#fff">
+      <ellipse cx="430" cy="64" rx="42" ry="15" /><circle cx="414" cy="56" r="15" /><circle cx="442" cy="50" r="19" />
+      <ellipse cx="570" cy="120" rx="32" ry="12" /><circle cx="560" cy="113" r="12" /><circle cx="580" cy="109" r="15" />
+    </g>
+  </g>
+  <g data-anim="birds">
+    <path d="M330 110q8-9 16 0q8-9 16 0M362 94q7-8 14 0q7-8 14 0" fill="none" stroke="#34495e" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Mountains and hills. -->
+  <path d="M300 300l60-70 50 50 60-80 70 90 60-60 70 70 130-40V310H300Z" fill="#8fa9c4" />
+  <path d="M470 200l-14 20 8-3 6 7 6-7 8 3ZM600 210l-12 18 7-3 5 6 6-6 6 3Z" fill="#fff" />
+  <path d="M0 310q150-60 300-30t300-30 200 20V340H0Z" fill="#a9cf86" />
+
+  <!-- Mammoths far away. -->
+  <g data-anim="mammoths">
+    <g fill="#7a4e2d">
+      <path d="M486 278v12M494 278v12M506 278v12M514 278v12M526 280v10M532 280v10M542 280v10M548 280v10" stroke="#5a3a22" stroke-width="3.5" />
+      <ellipse cx="500" cy="272" rx="18" ry="12" /><circle cx="518" cy="264" r="8" />
+      <path d="M524 266q8 4 6 16" stroke="#7a4e2d" stroke-width="3.5" fill="none" stroke-linecap="round" />
+      <ellipse cx="537" cy="276" rx="14" ry="9" /><circle cx="551" cy="270" r="6" />
+      <path d="M556 272q6 3 4 12" stroke="#7a4e2d" stroke-width="3" fill="none" stroke-linecap="round" />
+    </g>
+    <path d="M522 270q6 6 12 2M554 274q4 4 9 1" stroke="#f3ead2" stroke-width="2" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- Ground. -->
+  <rect y="330" width="800" height="170" fill="#9cc56f" />
+  <ellipse cx="410" cy="440" rx="120" ry="34" fill="#c9a66b" />
+  <path d="M600 470l-4-10M606 470l2-12M612 470l5-9M380 340l-4-10M386 340l2-12M392 340l5-9M160 470l-4-10M166 470l2-12M172 470l5-9" stroke="#5d9b45" stroke-width="3" stroke-linecap="round" />
+
+  <!-- Cliff with a cave and paintings. -->
+  <path d="M0 60q80-20 160 10q90 20 140 120q20 60 14 160H0Z" fill="#9c8f80" />
+  <path d="M0 60q80-20 160 10q-40 30-60 110q-30 100-40 170H0Z" fill="#85796b" />
+  <path d="M30 404q0-150 90-150t90 150Z" fill="#3b2f2a" />
+  <path d="M186 150q6-10 18-8l16 2q6-8 12 0l-4 8q4 10-6 12h-24q-12-2-12-14ZM196 162v10M226 162v10" stroke="#a8542a" stroke-width="2.5" fill="none" />
+  <path d="M174 196l6-12 8 10 10-14 8 12M240 186l6 10" stroke="#a8542a" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <g fill="#c0392b" fill-opacity="0.8">
+    <path d="M150 220q0-10 6-10t6 10v8h-12ZM148 214v-8M153 210v-8M158 210v-8M163 214v-6" />
+    <path d="M232 226q0-10 6-10t6 10v8h-12Z" />
+  </g>
+  <path d="M232 216v-8M237 213v-8M242 216v-7M246 220l3-4M150 206l-1-6M155 204v-6M160 204v-6M164 208l2-5" stroke="#c0392b" stroke-opacity="0.8" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- Spears against the cliff. -->
+  <path d="M202 404l20-104M212 404l14-96" stroke="#8a5a33" stroke-width="3" stroke-linecap="round" />
+  <path d="M222 300l-4-12 8 4ZM226 308l-2-12 7 5Z" fill="#7b8794" />
+
+  <!-- Ledge and the painter. -->
+  <path d="M214 336q4-30 46-34q44 2 50 34Z" fill="#85796b" />
+  <path d="M244 304v-18M256 304v-18" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <path d="M238 252h24l4 36h-32Z" fill="#8a5a33" />
+  <path d="M238 252l24 18M262 262l-24 18" stroke="#6b4226" stroke-width="2" />
+  <path d="M240 258l-8 22" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <path d="M258 258l10-50" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <circle cx="250" cy="240" r="13" fill="#d9a070" />
+  <path d="M237 238q2-18 14-16q12-2 14 12l-4-4-3 6-4-6-4 6-4-6-3 6Z" fill="#5a3a22" />
+  <circle cx="255" cy="241" r="1.6" fill="#3b2a1a" />
+
+  <!-- Pots by the cave. -->
+  <path d="M34 446q-4-20 12-24h4q16 4 12 24q-4 14-14 14t-14-14Z" fill="#c8643b" />
+  <rect x="42" y="416" width="12" height="7" rx="2" fill="#b0532e" />
+  <path d="M36 440h24" stroke="#a8542a" stroke-width="2" />
+  <path d="M112 450q-4-16 10-18q14 2 10 18q-3 10-10 10t-10-10Z" fill="#b0532e" />
+  <path d="M114 446h16" stroke="#8a4524" stroke-width="2" />
+
+  <!-- The fire. -->
+  <g fill="#8f8f8f">
+    <ellipse cx="370" cy="446" rx="9" ry="6" /><ellipse cx="388" cy="452" rx="9" ry="6" /><ellipse cx="410" cy="454" rx="9" ry="6" />
+    <ellipse cx="430" cy="450" rx="9" ry="6" /><ellipse cx="444" cy="442" rx="8" ry="5" /><ellipse cx="358" cy="438" rx="8" ry="5" />
+  </g>
+  <path d="M376 444l48-12M380 432l44 14" stroke="#6b4226" stroke-width="7" stroke-linecap="round" />
+  <g data-anim="flames">
+    <path d="M384 440q-6-24 10-40q0 14 8 18q2-14 12-24q8 24-2 46Z" fill="#ff7a00" />
+  </g>
+  <g data-anim="flame-core" fill="#ffd23f">
+    <path d="M392 440q-2-14 8-22q2 10 8 12q0 8-4 10Z" />
+  </g>
+  <path d="M470 446l14-12M476 446l16-6" stroke="#6b4226" stroke-width="2" />
+  <ellipse cx="452" cy="453" rx="14" ry="5" fill="#9aa3ab" />
+
+  <!-- Fish drying on a stick. -->
+  <path d="M466 470l8-60M474 410l40 0M514 410l6 60" stroke="#8a5a33" stroke-width="3" stroke-linecap="round" />
+  <path d="M484 412v10M502 412v10" stroke="#8a5a33" stroke-width="1.5" />
+  <path d="M478 430q6-8 12 0q-6 8-12 0ZM490 430l4-4v8Z M496 430q6-8 12 0q-6 8-12 0ZM508 430l4-4v8Z" fill="#7b8794" />
+
+  <!-- Dog asleep. -->
+  <g data-anim="dog">
+    <ellipse cx="272" cy="456" rx="22" ry="10" fill="#a8743f" />
+    <circle cx="292" cy="452" r="8" fill="#a8743f" />
+    <path d="M288 446l2-8 5 6Z" fill="#8a5a33" />
+    <path d="M290 453h4" stroke="#3b2a1a" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M252 458q-10 2-12-6" stroke="#a8743f" stroke-width="4" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- A man on a log. -->
+  <ellipse cx="330" cy="448" rx="30" ry="8" fill="#7a4e2d" />
+  <path d="M318 430l-6 16M342 430l6 16" stroke="#c98a55" stroke-width="7" stroke-linecap="round" />
+  <path d="M318 384h24l4 48h-32Z" fill="#8a5a33" />
+  <path d="M318 384l24 24M342 400l-20 24" stroke="#6b4226" stroke-width="2" />
+  <path d="M320 392l-8 26" stroke="#c98a55" stroke-width="6" stroke-linecap="round" />
+  <path d="M340 392l12-14" stroke="#c98a55" stroke-width="6" stroke-linecap="round" />
+  <circle cx="330" cy="368" r="13" fill="#c98a55" />
+  <path d="M316 366q0-18 14-18t14 14l-4-2-2 6-4-6-4 6-4-6-4 6Z" fill="#3b2a1a" />
+  <path d="M320 374q10 12 20 0v4q-10 14-20 0Z" fill="#3b2a1a" />
+  <circle cx="335" cy="366" r="1.6" fill="#222" />
+
+  <!-- A woman with a spear. -->
+  <path d="M548 352l8 108" stroke="#8a5a33" stroke-width="3" stroke-linecap="round" />
+  <path d="M548 352l-4-12 8 3Z" fill="#7b8794" />
+  <path d="M512 440v20M526 440v20" stroke="#d9a070" stroke-width="7" stroke-linecap="round" />
+  <path d="M506 392h28l6 50h-40Z" fill="#a8743f" />
+  <path d="M500 380q20-10 40 0l4 30q-24 10-48 0Z" fill="#8a5a33" />
+  <g fill="#5a3a22"><circle cx="510" cy="392" r="2.5" /><circle cx="530" cy="398" r="2.5" /><circle cx="518" cy="404" r="2" /></g>
+  <path d="M540 396l8-30" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <circle cx="520" cy="362" r="13" fill="#d9a070" />
+  <path d="M506 366q-2-22 14-22t14 22l-4 14-4-16h-12l-4 16Z" fill="#2b1d14" />
+  <circle cx="524" cy="362" r="1.6" fill="#222" />
+
+  <!-- A child. -->
+  <path d="M594 440v20M606 440v20" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <path d="M588 396h24l4 46h-32Z" fill="#a8743f" />
+  <path d="M590 402l-6 22" stroke="#d9a070" stroke-width="5" stroke-linecap="round" />
+  <path d="M610 400l4-18" stroke="#d9a070" stroke-width="5" stroke-linecap="round" />
+  <circle cx="600" cy="382" r="11" fill="#d9a070" />
+  <path d="M589 380q0-14 11-14t11 12l-4-2-2 4-3-4-3 4-3-4Z" fill="#5a3a22" />
+  <circle cx="604" cy="382" r="1.4" fill="#222" />
+
+  <!-- Tree. -->
+  <rect x="690" y="290" width="20" height="170" rx="6" fill="#7a4e2d" />
+  <g data-anim="tree">
+    <circle cx="662" cy="250" r="40" fill="#4c9a3f" /><circle cx="770" cy="258" r="42" fill="#4c9a3f" />
+    <circle cx="720" cy="226" r="54" fill="#5bb04a" />
+  </g>
+
+  <!-- Flat rock with tools and a bone. -->
+  <ellipse cx="726" cy="454" rx="34" ry="9" fill="#9aa3ab" />
+  <path d="M700 448l12-10 2 12Z" fill="#6f7880" />
+  <path d="M742 448h16" stroke="#f3ead2" stroke-width="4" stroke-linecap="round" />
+  <circle cx="742" cy="446" r="3" fill="#f3ead2" /><circle cx="742" cy="450" r="3" fill="#f3ead2" />
+  <circle cx="758" cy="446" r="3" fill="#f3ead2" /><circle cx="758" cy="450" r="3" fill="#f3ead2" />
+
+  <!-- Stream. -->
+  <path d="M0 478q150-14 300 0t260 8t240-6V500H0Z" fill="#4fa9d8" />
+  <g data-anim="stream">
+    <path d="M40 488h30M150 492h30M260 490h26M380 494h24" stroke="#bfeaff" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Odd items. -->
+  <g id="pencil">
+    <path d="M268 204l9-16" stroke="#c9954f" stroke-width="2.8" stroke-linecap="round" />
+    <path d="M268.7 202.6l-2.2 3.4" stroke="#3b2a1a" stroke-width="1.4" stroke-linecap="round" />
+  </g>
+  <g id="dinosaur">
+    <path d="M746 314h18q5 14 0 28h-20Z" fill="#6f9e45" />
+    <path d="M721 305q-1-12 13-14l18-1q12 0 12 12l-2 14h-14l-6-4h-15q-6-1-6-7Z" fill="#6f9e45" />
+    <path d="M724 305l22 1" stroke="#3b5a26" stroke-width="1.6" stroke-linecap="round" />
+    <path d="M728 305.2l1.5 3 1.5-3ZM734 305.4l1.5 3 1.5-3ZM740 305.6l1.5 3 1.5-3Z" fill="#fff" />
+    <circle cx="750" cy="298" r="2.6" fill="#fff" />
+    <circle cx="749.5" cy="298.2" r="1.3" fill="#222" />
+    <path d="M745 294.5q5-3 9 0" stroke="#4a6e2c" stroke-width="1.6" fill="none" stroke-linecap="round" />
+    <circle cx="725" cy="298" r="1" fill="#3b5a26" />
+    <g fill="#5a8638"><circle cx="757" cy="303" r="1.8" /><circle cx="760" cy="309" r="1.5" /><circle cx="755" cy="309" r="1.2" /></g>
+    <path d="M752 321q-6 1-9 5M754 326q-6 1-8 5" stroke="#6f9e45" stroke-width="3" fill="none" stroke-linecap="round" />
+  </g>
+  <g id="lighter">
+    <rect x="448" y="440" width="8" height="12" rx="1.5" fill="#b8c0c8" />
+    <rect x="448" y="436" width="8" height="4" rx="1" fill="#9aa3ab" />
+    <path d="M448 440h8" stroke="#7b8794" stroke-width="0.8" />
+  </g>
+  <g id="pin">
+    <path d="M521 385h14" stroke="#c3ccd6" stroke-width="1.4" />
+    <path d="M522 387h12" stroke="#c3ccd6" stroke-width="1.2" />
+    <circle cx="521" cy="386" r="1.8" fill="none" stroke="#c3ccd6" stroke-width="1" />
+    <rect x="533" y="383.5" width="4" height="4" rx="1" fill="#9aa3ab" />
+  </g>
+  <g id="nail">
+    <path d="M356 446v-11" stroke="#8f969e" stroke-width="1.6" />
+    <ellipse cx="356" cy="434.5" rx="3" ry="1.3" fill="#7b8794" />
+  </g>
+  <g id="hourglass">
+    <rect x="720" y="430" width="12" height="3" rx="1" fill="#8a5a33" />
+    <rect x="720" y="445" width="12" height="3" rx="1" fill="#8a5a33" />
+    <path d="M722 433h8l-4 6 4 6h-8l4-6Z" fill="#bfeaff" fill-opacity="0.7" />
+    <path d="M723.5 434h5l-2.5 3.5ZM723 445l3-4 3 4Z" fill="#e8c35a" />
+  </g>
+  <g id="toothbrush">
+    <path d="M354 379l-13-11" stroke="#b5814a" stroke-width="2.4" stroke-linecap="round" />
+    <path d="M336 364l5 4-3 3-5-4Z" fill="#f3ead2" />
+  </g>
+  <g id="jar">
+    <rect x="76" y="421" width="20" height="5" rx="1.5" fill="#c3ccd6" />
+    <rect x="74" y="426" width="24" height="31" rx="5" fill="#cfe9f2" fill-opacity="0.55" stroke="#9fc3d0" stroke-width="1.2" />
+    <g fill="#8e2a4a"><circle cx="81" cy="450" r="3" /><circle cx="88" cy="452" r="3" /><circle cx="94" cy="449" r="3" /><circle cx="84" cy="444" r="3" /><circle cx="91" cy="443" r="3" /></g>
+    <rect x="77" y="429" width="3" height="24" rx="1.5" fill="#fff" fill-opacity="0.5" />
+  </g>
+
+  <!-- In front of the dinosaur. -->
+  <g fill="#4f8f3a">
+    <circle cx="726" cy="338" r="15" /><circle cx="744" cy="334" r="13" /><circle cx="710" cy="342" r="11" />
+  </g>
+</svg>

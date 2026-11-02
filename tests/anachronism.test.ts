@@ -36,7 +36,7 @@ describe('time travel levels', () => {
   test('levels are registered in era order', () => {
     assert.deepEqual(
       timeTravelLevels.map((l) => l.id),
-      ['egypt-01', 'rome-01', 'vikings-01', 'castle-01', 'pirates-01'],
+      ['egypt-01', 'rome-01', 'vikings-01', 'castle-01', 'pirates-01', 'wildwest-01', 'stoneage-01'],
     )
   })
 

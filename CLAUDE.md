@@ -46,7 +46,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   levels as JSON (`mode: "anachronism"`, string ids, percent hitboxes, texts as `{ <locale>: … }` in every interface language — `npm test` checks it), checked by
   `parseAnachronismLevel` in `time-travel/index.ts`, images in `public/levels/time-travel/`; kept out of `levels`
   (no unlock order, no purchase, own `progress.timeTravel` records; a world map card opens the eras, `/time-travel`, a level is `/time-travel/:id`;
-  one era per level: Egypt, Rome, Vikings, castle, pirates so far, difficulty growing; the picture is inlined
+  one era per level: Egypt, Rome, Vikings, castle, pirates, Wild West, Stone Age so far, difficulty growing; the picture is inlined
   (`createSvgPicture`) and its background moves: `data-anim` groups in the SVG + `animations` in the JSON, same
   motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),

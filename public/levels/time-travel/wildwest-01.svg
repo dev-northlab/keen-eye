@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <!-- "Find the odd one out" level wildwest-01, the Wild West. The odd items (groups with ids) must stay
+       inside their hitboxes in src/levels/time-travel/wildwest-01.json (percent of 800×500). -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd3f5" />
+      <stop offset="1" stop-color="#ffe4b0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky. -->
+  <rect width="800" height="300" fill="url(#sky)" />
+  <circle cx="90" cy="70" r="48" fill="#fff3b0" opacity="0.6" />
+  <g data-anim="sun" fill="#ffd23f">
+    <circle cx="90" cy="70" r="36" />
+  </g>
+  <g data-anim="hawk">
+    <path d="M300 150q10-10 20-2q10-8 20 2q-10-4-20 2q-10-6-20-2Z" fill="#5a3a22" />
+  </g>
+
+  <!-- Mesas. -->
+  <path d="M300 300V232l20-10h80l20 10v68Z" fill="#d98a4a" />
+  <path d="M380 222h20l20 10v68h-40Z" fill="#c07338" />
+  <path d="M520 300V212l16-8h110l14 8v88Z" fill="#d98a4a" />
+  <path d="M620 204h26l14 8v88h-40Z" fill="#c07338" />
+
+  <!-- Ground, railway and telegraph line. -->
+  <rect y="290" width="800" height="210" fill="#e8c38a" />
+  <path d="M280 296H800" stroke="#6b4a2a" stroke-width="3" />
+  <path d="M290 299h10M320 299h10M350 299h10M380 299h10M410 299h10M440 299h10M470 299h10M500 299h10M530 299h10M560 299h10M590 299h10M620 299h10M650 299h10M680 299h10M710 299h10M740 299h10M770 299h10" stroke="#6b4a2a" stroke-width="3" />
+  <path d="M330 296V240M500 296V240M330 246h-8M330 246h8M500 246h-8M500 246h8M322 244q89 14 186 0" fill="none" stroke="#6b4a2a" stroke-width="2.5" />
+  <path d="M0 360q200-12 400 0t400 0" fill="none" stroke="#d9ae6c" stroke-width="40" stroke-opacity="0.5" />
+  <ellipse cx="420" cy="480" rx="9" ry="4" fill="#c99a5a" />
+  <ellipse cx="640" cy="470" rx="7" ry="3" fill="#c99a5a" />
+
+  <!-- Steam train. -->
+  <g data-anim="train">
+    <!-- Drawn facing left; turned to face right, the direction "flipX" expects. -->
+    <g transform="matrix(-1 0 0 1 1322 0)">
+    <rect x="600" y="270" width="44" height="22" rx="3" fill="#2b2b2b" />
+    <rect x="628" y="258" width="16" height="14" fill="#2b2b2b" />
+    <rect x="606" y="256" width="8" height="14" fill="#2b2b2b" />
+    <path d="M600 288l-10 4h10Z" fill="#d93a3a" />
+    <rect x="631" y="261" width="10" height="7" fill="#ffd23f" />
+    <circle cx="610" cy="248" r="5" fill="#e1e6ec" /><circle cx="620" cy="242" r="6" fill="#e1e6ec" />
+    <rect x="648" y="272" width="40" height="18" rx="2" fill="#a8743f" />
+    <rect x="692" y="272" width="40" height="18" rx="2" fill="#8a5a33" />
+    <g fill="#222"><circle cx="608" cy="292" r="4" /><circle cx="622" cy="292" r="4" /><circle cx="636" cy="292" r="4" />
+      <circle cx="656" cy="292" r="3.5" /><circle cx="680" cy="292" r="3.5" /><circle cx="700" cy="292" r="3.5" /><circle cx="724" cy="292" r="3.5" /></g>
+    </g>
+  </g>
+
+  <!-- Windmill. -->
+  <path d="M742 300l10-80h8l10 80Z" fill="none" stroke="#6b4a2a" stroke-width="3" />
+  <path d="M746 270h20M750 245h12" stroke="#6b4a2a" stroke-width="2" />
+  <g data-anim="windmill">
+    <path d="M756 220l-4-24h8ZM756 220l24-4v8ZM756 220l4 24h-8ZM756 220l-24 4v-8Z" fill="#9aa3ab" />
+  </g>
+  <circle cx="756" cy="220" r="3.5" fill="#6b4a2a" />
+
+  <!-- Saloon. -->
+  <path d="M60 172v-22h30v-10h110v10h30v22Z" fill="#a8743f" />
+  <rect x="30" y="170" width="230" height="160" fill="#b5793f" />
+  <path d="M30 196h230M30 222h230M30 248h230M30 274h230M30 300h230" stroke="#9a6534" stroke-width="2" />
+  <rect x="70" y="148" width="100" height="24" rx="3" fill="#7a4e2d" />
+  <path d="M110 166v-8a10 10 0 0 1 20 0v8" fill="none" stroke="#ffd23f" stroke-width="4" stroke-linecap="round" />
+  <rect x="48" y="230" width="44" height="40" fill="#ffe7a3" stroke="#6b4226" stroke-width="4" />
+  <rect x="198" y="230" width="44" height="40" fill="#ffe7a3" stroke="#6b4226" stroke-width="4" />
+  <rect x="120" y="250" width="50" height="80" fill="#5a3a22" />
+  <path d="M123 268h21v40h-21ZM146 268h21v40h-21Z" fill="#c9954f" />
+  <path d="M20 232L270 220v12L20 244Z" fill="#7a4e2d" />
+  <rect x="26" y="240" width="7" height="90" fill="#6b4226" />
+  <rect x="254" y="232" width="7" height="98" fill="#6b4226" />
+  <path d="M272 304q-4 18 0 36h28q4-18 0-36Z" fill="#9a6b3c" />
+  <path d="M271 316h30M271 330h30" stroke="#5a3a22" stroke-width="2.5" />
+
+  <!-- Hitching post and the horse. -->
+  <path d="M184 400v-46M178 360h12" stroke="#6b4226" stroke-width="5" stroke-linecap="round" />
+  <g data-anim="horse-tail">
+    <path d="M76 390q-14 10-10 34q8-8 14-26Z" fill="#3b2a1a" />
+  </g>
+  <path d="M90 410v40M104 410v40M132 410v40M146 410v40" stroke="#7a4e2d" stroke-width="7" stroke-linecap="round" />
+  <ellipse cx="118" cy="398" rx="42" ry="20" fill="#8a5a33" />
+  <path d="M150 392q10-22 14-34" stroke="#8a5a33" stroke-width="16" stroke-linecap="round" />
+  <path d="M158 356q14-8 24 4q-2 8-12 8Z" fill="#8a5a33" />
+  <path d="M152 380q6-16 10-28" stroke="#3b2a1a" stroke-width="5" stroke-linecap="round" />
+  <circle cx="168" cy="358" r="1.8" fill="#222" />
+  <path d="M104 380h28v14h-28Z" fill="#c0392b" />
+  <path d="M178 364l6 0" stroke="#6b4226" stroke-width="2" />
+
+  <!-- Cacti and a wagon wheel. -->
+  <path d="M20 470v-62a8 8 0 0 1 16 0v62Z" fill="#4f8f3a" />
+  <path d="M20 432h-8v-14a4 4 0 0 1 8 0ZM36 440h8v-18a4 4 0 0 0-8 0Z" fill="#4f8f3a" />
+  <path d="M766 470v-70a9 9 0 0 1 18 0v70Z" fill="#4f8f3a" />
+  <path d="M766 428h-9v-16a4.5 4.5 0 0 1 9 0ZM784 436h9v-20a4.5 4.5 0 0 0-9 0Z" fill="#4f8f3a" />
+  <circle cx="230" cy="452" r="18" fill="none" stroke="#7a4e2d" stroke-width="4" />
+  <path d="M230 434v36M212 452h36M217 439l26 26M243 439l-26 26" stroke="#7a4e2d" stroke-width="2.5" />
+
+  <!-- Tumbleweed. -->
+  <g data-anim="tumbleweed-roll">
+    <g data-anim="tumbleweed-spin">
+      <circle cx="390" cy="470" r="10" fill="none" stroke="#b5814a" stroke-width="2" />
+      <path d="M382 464l16 12M398 464l-16 12M390 460v20M380 470h20" stroke="#b5814a" stroke-width="1.6" />
+    </g>
+  </g>
+
+  <!-- Sheriff. -->
+  <path d="M322 446h-6M338 446h6" stroke="#5a3a22" stroke-width="7" stroke-linecap="round" />
+  <path d="M320 412h9v34h-9ZM331 412h9v34h-9Z" fill="#3a5f9e" />
+  <path d="M316 382h28v32h-28Z" fill="#e8d3a8" />
+  <path d="M316 382h9v30h-9ZM335 382h9v30h-9Z" fill="#7a4e2d" />
+  <path d="M342 390l-4 3 1 5 4-2 4 2 1-5-4-3Z" fill="#ffd23f" />
+  <path d="M314 410h32" stroke="#5a3a22" stroke-width="5" />
+  <path d="M344 408l6 16h-6l-3-12Z" fill="#5a3a22" />
+  <path d="M316 386l-6 22M344 386l6 20" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <circle cx="330" cy="368" r="14" fill="#d9a070" />
+  <path d="M322 374q8 4 16 0" stroke="#5a3a22" stroke-width="3" stroke-linecap="round" fill="none" />
+  <path d="M308 356h44" stroke="#7a4e2d" stroke-width="5" stroke-linecap="round" />
+  <path d="M318 356q0-14 12-14t12 14Z" fill="#7a4e2d" />
+
+  <!-- Cowboy with a lasso. -->
+  <path d="M442 452h-6M458 452h6" stroke="#5a3a22" stroke-width="7" stroke-linecap="round" />
+  <path d="M440 416h9v36h-9ZM451 416h9v36h-9Z" fill="#3a5f9e" />
+  <path d="M436 382h28v36h-28Z" fill="#d93a3a" />
+  <path d="M436 392h28M436 404h28M445 382v36M455 382v36" stroke="#a82a2a" stroke-width="2" />
+  <path d="M434 414h32" stroke="#5a3a22" stroke-width="5" />
+  <circle cx="430" cy="420" r="9" fill="none" stroke="#c9a364" stroke-width="3" />
+  <path d="M436 386l-8 24M464 386l6 22" stroke="#e0a878" stroke-width="6" stroke-linecap="round" />
+  <circle cx="450" cy="368" r="14" fill="#e0a878" />
+  <circle cx="455" cy="365" r="1.6" fill="#3b2a1a" />
+  <path d="M428 356h44" stroke="#c9954f" stroke-width="5" stroke-linecap="round" />
+  <path d="M438 356q0-14 12-14t12 14Z" fill="#c9954f" />
+
+  <!-- Kid on a skateboard. -->
+  <path d="M552 412v24M568 412v24" stroke="#3a5f9e" stroke-width="7" />
+  <path d="M548 436h10M564 436h10" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+  <path d="M546 386h28v30h-28Z" fill="#4f8f3a" />
+  <path d="M546 390l-8 18M574 390l8 18" stroke="#e8c09a" stroke-width="5" stroke-linecap="round" />
+  <circle cx="560" cy="372" r="12" fill="#e8c09a" />
+  <path d="M549 368q11-14 22 0q-4-6-11-6t-11 6Z" fill="#8a5a33" />
+  <circle cx="564" cy="372" r="1.5" fill="#3b2a1a" />
+
+  <!-- Dog jumping for the flying disc. -->
+  <g data-anim="dog">
+    <path d="M676 428l-6 14M684 430l-2 14M700 428l4 14M708 426l6 12" stroke="#a8743f" stroke-width="5" stroke-linecap="round" />
+    <ellipse cx="692" cy="420" rx="22" ry="12" fill="#c9954f" />
+    <path d="M670 416q-10-6-12-16" stroke="#c9954f" stroke-width="5" stroke-linecap="round" fill="none" />
+    <circle cx="712" cy="404" r="10" fill="#c9954f" />
+    <path d="M704 398l-4-10 8 4Z" fill="#a8743f" />
+    <ellipse cx="721" cy="407" rx="5" ry="3.5" fill="#c9954f" />
+    <circle cx="724" cy="406" r="1.6" fill="#222" />
+    <circle cx="714" cy="402" r="1.5" fill="#222" />
+  </g>
+
+  <!-- Odd items. -->
+  <g id="dish">
+    <path d="M500 242v-6" stroke="#6b4a2a" stroke-width="3" />
+    <ellipse cx="500" cy="229" rx="11" ry="10" fill="#e1e6ec" stroke="#9aa3ab" stroke-width="1.5" transform="rotate(-20 500 229)" />
+    <ellipse cx="499" cy="230" rx="6.5" ry="5.5" fill="#c3ccd6" transform="rotate(-20 499 230)" />
+    <path d="M497 238l10-12" stroke="#5a6470" stroke-width="1.8" stroke-linecap="round" />
+    <rect x="505" y="222" width="5" height="5" rx="1" fill="#3b3b4a" />
+  </g>
+  <g id="neon">
+    <rect x="194" y="176" width="54" height="44" rx="5" fill="#2b2b3a" />
+    <g data-anim="neon-flicker">
+      <path d="M210 182l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="none" stroke="#ff4fa3" stroke-width="5" stroke-opacity="0.35" stroke-linejoin="round" />
+      <path d="M210 182l3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z" fill="none" stroke="#ff8cc6" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M240 186q2 20-20 28M220 214l2-7M220 214l7 1" fill="none" stroke="#4fe0ff" stroke-width="5" stroke-opacity="0.35" stroke-linecap="round" />
+      <path d="M240 186q2 20-20 28M220 214l2-7M220 214l7 1" fill="none" stroke="#a6f0ff" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+  </g>
+  <g id="sunglasses">
+    <path d="M318 364h10q2 0 1 3l-1 4q-1 3-4 3h-3q-3 0-4-3l-1-4q-1-3 2-3Z" fill="#222" />
+    <path d="M332 364h10q3 0 2 3l-1 4q-1 3-4 3h-3q-3 0-4-3l-1-4q-1-3 1-3Z" fill="#222" />
+    <path d="M328 366h4M318 365l-1 1M342 365l1 1" stroke="#222" stroke-width="1.5" />
+    <path d="M320 366l3 3M334 366l3 3" stroke="#6ec6ff" stroke-width="1.2" />
+  </g>
+  <g id="gum">
+    <circle cx="466" cy="374" r="11" fill="#ff8fc8" stroke="#e8609f" stroke-width="1.5" />
+    <ellipse cx="462" cy="369" rx="3" ry="2" fill="#fff" fill-opacity="0.7" />
+  </g>
+  <g id="headphones">
+    <path d="M547 372q13-24 26 0" fill="none" stroke="#222" stroke-width="4" stroke-linecap="round" />
+    <rect x="542" y="366" width="8" height="14" rx="3" fill="#d93a3a" />
+    <rect x="570" y="366" width="8" height="14" rx="3" fill="#d93a3a" />
+  </g>
+  <g id="skateboard">
+    <path d="M534 440q-4-6 2-6h48q6 0 2 6l-2 3h-48Z" fill="#3a86ff" />
+    <path d="M544 443v3M580 443v3" stroke="#7b8794" stroke-width="3" />
+    <circle cx="544" cy="449" r="4" fill="#ffd23f" />
+    <circle cx="580" cy="449" r="4" fill="#ffd23f" />
+  </g>
+  <g id="frisbee">
+    <ellipse cx="705" cy="371" rx="16" ry="5" fill="#ff7a00" />
+    <ellipse cx="705" cy="370" rx="12" ry="3" fill="none" stroke="#ffb066" stroke-width="1.5" />
+  </g>
+</svg>
