@@ -28,10 +28,15 @@ function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, 
   return node
 }
 
-export function createPicture(level: Level, variant: 0 | 1): Picture {
+/**
+ * `flipped` turns the content by 180° inside the svg (the far player's copy in a face-to-face duel);
+ * the viewBox (zoom) stays unturned, so the board turns tap points back itself.
+ */
+export function createPicture(level: Level, variant: 0 | 1, flipped = false): Picture {
   const { w, h } = level.viewBox
   const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, class: 'ke-picture' })
   svg.style.userSelect = 'none'
+  const content = flipped ? el('g', { transform: `rotate(180 ${w / 2} ${h / 2})` }) : svg
 
   const scene = el('g', {})
   let animations: Animation[] = []
@@ -51,7 +56,8 @@ export function createPicture(level: Level, variant: 0 | 1): Picture {
   })
 
   const marks = el('g', { 'pointer-events': 'none' })
-  svg.append(scene, marks)
+  content.append(scene, marks)
+  if (flipped) svg.append(content)
   return {
     svg,
     marks,
@@ -104,8 +110,9 @@ function addZoneMark(p: Picture, index: number, zone: Zone, attrs: Record<string
   return mark
 }
 
-export function addFoundMark(p: Picture, index: number, zone: Zone): void {
-  addZoneMark(p, index, zone, { r: zone.r, stroke: '#22c55e', 'stroke-width': 4 })
+/** Green by default; in a match, the color of the player who found it. */
+export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e'): void {
+  addZoneMark(p, index, zone, { r: zone.r, stroke: color, 'stroke-width': 4 })
 }
 
 /** Development tool: red circle exactly on the zone (drawn under a later found mark). */

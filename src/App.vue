@@ -4,11 +4,11 @@ import { useRoute } from 'vue-router'
 import { playMusic } from './services/audio.ts'
 
 const route = useRoute()
-// Menu screens share the menu track; the level screen picks its own music.
+// Menu screens share the menu track; the level and match screens pick their own music.
 watch(
   () => route.name,
   (name) => {
-    if (name !== 'level') playMusic('menu')
+    if (name !== 'level' && name !== 'match') playMusic('menu')
   },
   { immediate: true },
 )

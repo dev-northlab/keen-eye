@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import FoundSlots from '../components/FoundSlots.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import ResultDialog from '../components/ResultDialog.vue'
-import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import BackButton from '../components/BackButton.vue'
-import SettingsPanel from '../components/SettingsPanel.vue'
+import SettingsOverlay from '../components/SettingsOverlay.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelById, levels } from '../levels/index.ts'
@@ -148,16 +147,7 @@ onBeforeUnmount(() => {
   <div class="level">
     <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
       <span class="title">{{ $t('level.level', { n: level.id }) }}</span>
-      <!-- One empty circle per difference; a found one fills and gets a check drawn in. -->
-      <span class="found" :class="{ done: found === total }" role="img" :aria-label="$t('level.found', { found, total })">
-        <svg v-for="i in total" :key="i" class="icon slot" :class="{ hit: i <= found }" viewBox="0 0 24 24" aria-hidden="true">
-          <circle class="disc" cx="12" cy="12" r="10" />
-          <template v-if="i <= found">
-            <ellipse class="shine" cx="8.4" cy="7.4" rx="3.2" ry="1.7" transform="rotate(-35 8.4 7.4)" />
-            <path class="check" d="M7 12.5l3.2 3.2 6.8-7" />
-          </template>
-        </svg>
-      </span>
+      <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
       <template v-if="!calm">
         <span class="chip time" role="img" :aria-label="$t('level.time', { t: time })">
           <!-- Yellow stopwatch. -->
@@ -222,11 +212,7 @@ onBeforeUnmount(() => {
       </button>
     </footer>
 
-    <div v-if="settingsOpen" class="settings-screen">
-      <ScreenBackdrop theme="meadow" />
-      <SettingsPanel />
-      <BackButton :on-back="() => (settingsOpen = false)" />
-    </div>
+    <SettingsOverlay v-if="settingsOpen" @close="settingsOpen = false" />
     <PauseDialog
       v-else-if="paused"
       @resume="resume"
@@ -253,18 +239,6 @@ onBeforeUnmount(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
-}
-
-/* Settings over the paused level, so the attempt survives. */
-.settings-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  /* Fixed, so the #app safe-area padding does not apply. */
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-  background: var(--bg);
 }
 
 .hud {
@@ -308,50 +282,6 @@ onBeforeUnmount(() => {
   display: inline-block;
 }
 
-/* Found: a row of circles, filled with a check as differences are found. */
-.found {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.slot .disc {
-  fill: var(--soft-2);
-  stroke: var(--line);
-  stroke-width: 1.6;
-  transition:
-    fill 0.25s,
-    stroke 0.25s;
-}
-
-.slot.hit {
-  animation: pop 0.45s cubic-bezier(0.3, 1.6, 0.6, 1);
-}
-
-.slot.hit .disc {
-  fill: #3cc47f;
-  stroke: #239a5f;
-}
-
-.slot .shine {
-  fill: #fff;
-  fill-opacity: 0.4;
-}
-
-.slot .check {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 16;
-  animation: draw 0.4s ease-out;
-}
-
-.found.done {
-  animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.6, 1);
-}
-
 /* Narrow screens: the circles get their own row under level, time and mistakes. */
 @media (max-width: 720px) {
   .hud {
@@ -383,27 +313,6 @@ onBeforeUnmount(() => {
 
 .miss.locked .icon {
   animation: pulse 0.7s ease-in-out infinite alternate;
-}
-
-@keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.3);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes draw {
-  from {
-    stroke-dashoffset: 16;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
 }
 
 @keyframes shake {

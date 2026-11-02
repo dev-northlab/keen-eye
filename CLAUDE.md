@@ -33,14 +33,18 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/engine/` — game scene, plain TS: `types.ts` (Level format), `rules.ts` (hit test, stars, anti-spam),
   `animation.ts` (poses of animated objects at time t; DOM-free, also used by the validator),
   `render.ts` (SVG pictures and marks), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
-  `gestures.ts` (tap, double tap, pan, pinch, wheel), `scene.ts` (`GameScene`: wires it together, timer, events)
+  `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
+  rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
+  `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
+  `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; events carry the hit zone
+  resolved by the board), `match-scene.ts` (`MatchScene`: clock, 1 shared or 2 face-to-face boards, `Match`)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
   `chapters.ts` (the chapters/"worlds": id, level range, card colors, icon, backdrop — one entry per world),
   `difficulty.ts` (difference and motion counts, min zone radius and kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (chapter cards), Chapter (level grid of one chapter, `/levels/:chapter`),
-  Level, Settings, Purchase; `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
-- `src/stores/` — Pinia: `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
+  Level, Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
+- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts

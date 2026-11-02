@@ -3,9 +3,11 @@ import { chapterById } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import ChapterView from '../views/ChapterView.vue'
+import DuoView from '../views/DuoView.vue'
 import HomeView from '../views/HomeView.vue'
 import LevelMapView from '../views/LevelMapView.vue'
 import LevelView from '../views/LevelView.vue'
+import MatchView from '../views/MatchView.vue'
 import PurchaseView from '../views/PurchaseView.vue'
 import SettingsView from '../views/SettingsView.vue'
 
@@ -22,6 +24,13 @@ export const router = createRouter({
       component: LevelView,
       props: (route) => ({ id: Number(route.params.id) }),
     },
+    { path: '/duo', name: 'duo', component: DuoView },
+    {
+      path: '/duo/:id(\\d+)',
+      name: 'match',
+      component: MatchView,
+      props: (route) => ({ id: Number(route.params.id) }),
+    },
     { path: '/settings', name: 'settings', component: SettingsView },
     { path: '/full-game', name: 'purchase', component: PurchaseView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
@@ -30,14 +39,15 @@ export const router = createRouter({
 
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
 // Unknown chapter → chapter map. Unknown level → home; paid level not bought → purchase screen;
-// not reached yet → its chapter's grid.
+// not reached yet → its chapter's grid. Two-player matches need no order, only the purchase for paid levels.
 router.beforeEach((to) => {
   if (to.name === 'chapter') return chapterById(String(to.params.chapter)) ? true : { name: 'levels' }
-  if (to.name !== 'level') return true
+  if (to.name !== 'level' && to.name !== 'match') return true
   const id = Number(to.params.id)
   const progress = useProgressStore()
   const level = levelById(id)
   if (!level) return { name: 'home' }
   if (progress.needsPurchase(id)) return { name: 'purchase' }
+  if (to.name === 'match') return true
   return progress.isUnlocked(id) ? true : { name: 'chapter', params: { chapter: level.chapter } }
 })

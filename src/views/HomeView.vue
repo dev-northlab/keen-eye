@@ -52,6 +52,7 @@ function play() {
       </small>
     </button>
     <ModeSwitch class="mode" />
+    <button class="secondary" @click="router.push({ name: 'duo' })">{{ $t('home.duo') }}</button>
     <button class="secondary" @click="router.push({ name: 'levels' })">{{ $t('home.levels') }}</button>
     <button class="secondary" @click="router.push({ name: 'settings' })">{{ $t('home.settings') }}</button>
     <label v-if="isDev" class="dev">
