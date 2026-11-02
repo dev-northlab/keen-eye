@@ -4,6 +4,8 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  // The app sits at the root of the Capacitor webview; the GitHub Pages workflow builds it for its subpath.
+  base: process.env.BASE_PATH ?? '/',
   server: { port: 3000, strictPort: true },
   define: {
     __APP_VERSION__: JSON.stringify(process.env.npm_package_version ?? '0.0.0'),
