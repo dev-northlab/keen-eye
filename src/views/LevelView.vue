@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import ClueList from '../components/ClueList.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
 import PauseDialog from '../components/PauseDialog.vue'
@@ -22,12 +24,13 @@ const props = defineProps<{ id: number }>()
 const router = useRouter()
 const progress = useProgressStore()
 const settings = useSettingsStore()
+const { t } = useI18n()
 
 // The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
 const number = levelNumber(level)
-/** The screen listing this level: its chapter's grid, or the world map of "travel". */
+/** The screen listing this level: its chapter's grid, the world map of "travel" or the case of "detective". */
 const grid = levelsScreen(level)
 /** "Travel" levels: the first visit earns a passport stamp (shown with the place's fact). */
 const newStamp = ref(false)
@@ -47,22 +50,25 @@ const hintActive = ref(false)
 /** Normal mode hints taken in this attempt (some levels allow only a few, `Level.hintLimit`). */
 const hintsUsed = ref(0)
 const animationFrozen = ref(false)
-/** "Time" levels: hint key of the natural change just tapped, shown for a moment over the pictures. */
-const trapHint = ref<string | null>(null)
-let trapTimer = 0
+/**
+ * Shown for a moment over the pictures: on "time" levels the hint of the natural change just tapped,
+ * on "detective" ones the clue just found.
+ */
+const note = ref<string | null>(null)
+let noteTimer = 0
 const result = ref<LevelResult | null>(null)
 let scene: GameScene | undefined
 const isDev = import.meta.env.DEV
 
 const total = level.differences.length
 
-/** How long a trap hint stays on screen. */
-const TRAP_HINT_MS = 2600
+/** How long a note stays on screen. */
+const NOTE_MS = 2600
 
-function showTrapHint(hint: string) {
-  clearTimeout(trapTimer)
-  trapHint.value = hint
-  trapTimer = window.setTimeout(() => (trapHint.value = null), TRAP_HINT_MS)
+function showNote(text: string) {
+  clearTimeout(noteTimer)
+  note.value = text
+  noteTimer = window.setTimeout(() => (note.value = null), NOTE_MS)
 }
 
 const formatTime = (sec: number) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`
@@ -80,8 +86,8 @@ function start() {
   hintActive.value = false
   hintsUsed.value = 0
   animationFrozen.value = false
-  clearTimeout(trapTimer)
-  trapHint.value = null
+  clearTimeout(noteTimer)
+  note.value = null
   result.value = null
   calm.value = settings.calm
   playMusic(calm.value ? 'calm' : 'level')
@@ -89,17 +95,18 @@ function start() {
     board.value!,
     level,
     {
-      onFound: (n) => {
+      onFound: (n, _total, i) => {
         found.value = n
         playSfx('found')
         vibrateFound()
+        if (level.detective) showNote(`${t('detective.newClue')}: ${t(`detective.clueTexts.${level.detective.clues[i]}`)}`)
       },
       onMiss: (n) => {
         mistakes.value = n
         playSfx('miss')
         vibrateMiss()
       },
-      onTrap: (i) => showTrapHint(level.traps![i].hint),
+      onTrap: (i) => showNote(t(`timeMode.traps.${level.traps![i].hint}`)),
       onLock: (l) => (locked.value = l),
       onTick: (s) => (seconds.value = s),
       onZoom: (s) => (zoom.value = s),
@@ -169,7 +176,7 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
   document.removeEventListener('visibilitychange', onVisibility)
-  clearTimeout(trapTimer)
+  clearTimeout(noteTimer)
   scene?.destroy()
 })
 </script>
@@ -190,7 +197,7 @@ onBeforeUnmount(() => {
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
-      <div class="trap-note" role="status"><template v-if="trapHint">{{ $t(`timeMode.traps.${trapHint}`) }}</template></div>
+      <div class="note" role="status">{{ note }}</div>
     </div>
 
     <footer class="toolbar">
@@ -241,6 +248,11 @@ onBeforeUnmount(() => {
       @menu="router.push(grid)"
     >
       <TravelFact v-if="level.travel" :level="level" :new-stamp="newStamp" />
+      <template v-if="level.detective">
+        <ClueList class="clues" :title="$t('detective.notebook')" :clues="level.detective.clues" />
+        <!-- The case's last scene: on to naming the culprit. -->
+        <button v-if="!nextLevel" class="solve" @click="router.push(grid)">{{ $t('detective.solveCase') }}</button>
+      </template>
     </ResultDialog>
   </div>
 </template>
@@ -345,7 +357,7 @@ onBeforeUnmount(() => {
   }
 }
 
-.trap-note {
+.note {
   position: absolute;
   top: 12px;
   left: 50%;
@@ -363,8 +375,17 @@ onBeforeUnmount(() => {
   z-index: 2;
 }
 
-.trap-note:empty {
+.note:empty {
   display: none;
+}
+
+.clues {
+  margin: 4px 0 12px;
+}
+
+.solve {
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .lock-note {

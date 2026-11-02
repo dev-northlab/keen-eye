@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
 import { categoryOf, chapterById, chapterLevels } from '../levels/chapters.ts'
+import { caseById } from '../levels/detective/cases.ts'
 import { allLevels, levelById, levels } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
@@ -36,6 +37,10 @@ const parseLevels = (raw: unknown): Record<number, LevelRecord> => parseRecords(
 
 const parseTimeTravel = (raw: unknown) => parseRecords(raw, (id) => timeTravelLevelById(id) !== undefined)
 
+/** "Detective" cases solved, by id: only known cases, each once. */
+const parseCases = (raw: unknown): string[] =>
+  Array.isArray(raw) ? [...new Set(raw.filter((id): id is string => typeof id === 'string' && caseById(id) !== undefined))] : []
+
 function parseHints(raw: unknown): number {
   return Number.isInteger(raw) && (raw as number) >= 0 ? (raw as number) : START_HINTS
 }
@@ -44,17 +49,20 @@ export const useProgressStore = defineStore('progress', () => {
   const records = ref<Record<number, LevelRecord>>({})
   /** "Find the odd one out" levels by their string id (docs/anachronism-mode.md); no unlock order. */
   const timeTravel = ref<Record<string, LevelRecord>>({})
+  /** "Detective" cases whose culprit the player has named (docs/detective-mode.md). */
+  const solvedCases = ref<string[]>([])
   /** Shared hint pool of normal mode (calm mode hints are unlimited). */
   const hints = ref(START_HINTS)
   /** Development only (Home checkbox): every level is playable, ignoring order and the purchase. */
   const devOpenAll = ref(false)
 
-  const save = () => saveJson(KEY, { levels: records.value, hints: hints.value, timeTravel: timeTravel.value })
+  const save = () => saveJson(KEY, { levels: records.value, hints: hints.value, timeTravel: timeTravel.value, cases: solvedCases.value })
 
   async function load() {
-    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown; timeTravel?: unknown }
+    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown; timeTravel?: unknown; cases?: unknown }
     records.value = parseLevels(raw.levels)
     timeTravel.value = parseTimeTravel(raw.timeTravel)
+    solvedCases.value = parseCases(raw.cases)
     hints.value = parseHints(raw.hints)
     devOpenAll.value = import.meta.env.DEV && (await loadJson(DEV_OPEN_ALL_KEY)) === true
   }
@@ -116,6 +124,15 @@ export const useProgressStore = defineStore('progress', () => {
   const recordTimeTravel = (id: string, result: LevelResult | null) =>
     result ? record(timeTravel.value, id, result) : recordCalm(timeTravel.value, id)
 
+  const isCaseSolved = (id: string) => solvedCases.value.includes(id)
+
+  /** The player named the culprit of case `id`. */
+  async function solveCase(id: string) {
+    if (isCaseSolved(id)) return
+    solvedCases.value.push(id)
+    await save()
+  }
+
   /** Takes one hint from the pool; false when it is empty. */
   async function spendHint(): Promise<boolean> {
     if (hints.value <= 0) return false
@@ -133,6 +150,7 @@ export const useProgressStore = defineStore('progress', () => {
   async function reset() {
     records.value = {}
     timeTravel.value = {}
+    solvedCases.value = []
     hints.value = START_HINTS
     await remove(KEY)
   }
@@ -140,6 +158,7 @@ export const useProgressStore = defineStore('progress', () => {
   return {
     records,
     timeTravel,
+    solvedCases,
     hints,
     devOpenAll,
     load,
@@ -151,6 +170,8 @@ export const useProgressStore = defineStore('progress', () => {
     recordResult,
     recordCalmCompletion,
     recordTimeTravel,
+    isCaseSolved,
+    solveCase,
     spendHint,
     unlockAll,
     reset,

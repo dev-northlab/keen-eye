@@ -1,5 +1,5 @@
 // Chapters ("worlds"): 20 levels each, plus 10 harder ones added later with ids after 100;
-// and the categories ("time", "memory", "travel"), which play like a chapter but are not worlds.
+// and the categories ("time", "memory", "travel", "detective"), which play like a chapter but are not worlds.
 // Adding a chapter is one entry here, its levels in `index.ts` and the `chapters.<id>` /
 // `levelTitles.*` texts in every locale.
 import type { Level } from '../engine/types.ts'
@@ -25,6 +25,8 @@ export interface Chapter {
   backdrop: BackdropTheme
   /** Categories: i18n key of the rules shown above the level grid. */
   rules?: string
+  /** Categories: how many first levels need no purchase (default FREE_CATEGORY_LEVELS, stores/purchase.ts). */
+  freeLevels?: number
 }
 
 export const CHAPTERS: Chapter[] = [
@@ -157,8 +159,27 @@ export const TRAVEL_CHAPTER: Chapter = {
     `<path d="M38 4l-9 21l-5-6l-6 4Z" fill="#e5484d" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>`,
 }
 
+/**
+ * "Detective" (docs/detective-mode.md, levels in `detective/`): cases of 5 scenes, each difference a
+ * clue, then the player names the culprit (CaseView). The first case is free.
+ */
+export const DETECTIVE_CHAPTER: Chapter = {
+  id: 'detective',
+  ranges: [[501, 515]],
+  color: '#8a5a2b',
+  soft: '#f6eadc',
+  backdrop: 'city',
+  rules: 'detective.rules',
+  freeLevels: 5,
+  icon:
+    `<path d="M8 40l4-14h24l4 14Z" fill="#8a5a2b"/><path d="M6 26h36" stroke="#5e3b1a" stroke-width="3" stroke-linecap="round"/>` +
+    `<path d="M14 26q2-14 10-14t10 14" fill="#a8743f"/><path d="M14 22h20" stroke="#3b2a1a" stroke-width="3"/>` +
+    `<circle cx="32" cy="34" r="8" fill="#fff" fill-opacity="0.6" stroke="#3b2a1a" stroke-width="3"/>` +
+    `<path d="M38 40l6 6" stroke="#3b2a1a" stroke-width="4" stroke-linecap="round"/>`,
+}
+
 /** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
-export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER]
+export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER]
 
 const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES]
 
@@ -173,20 +194,32 @@ export const chapterSize = (chapter: Chapter) => chapter.ranges.reduce((n, [from
 /** Levels of the chapter that exist, in play order (`allLevels` is sorted by id, as are the ranges). */
 export const chapterLevels = (chapter: Chapter) => allLevels.filter((l) => l.chapter === chapter.id)
 
-/** The level after `level` in its chapter, or at a world's end the next world's first one. */
+/**
+ * The level after `level` in its chapter, or at a world's end the next world's first one. A "detective"
+ * case ends with its last scene: the player names the culprit before the next case.
+ */
 export function nextLevel(level: Level): Level | undefined {
   const chapter = chapterById(level.chapter)!
   const own = chapterLevels(chapter)
+  const after = own[own.indexOf(level) + 1]
+  if (level.detective) return after?.detective!.case === level.detective.case ? after : undefined
   const next = CHAPTERS[CHAPTERS.indexOf(chapter) + 1]
-  return own[own.indexOf(level) + 1] ?? (CHAPTERS.includes(chapter) && next ? chapterLevels(next)[0] : undefined)
+  return after ?? (CHAPTERS.includes(chapter) && next ? chapterLevels(next)[0] : undefined)
 }
 
 /** The category of a level, or undefined for a world's level. */
 export const categoryOf = (level: Level) => CATEGORIES.find((c) => c.id === level.chapter)
 
-/** Route of the screen listing a level: the world map open at its region for "travel", its chapter's grid otherwise. */
+/**
+ * Route of the screen listing a level: the world map open at its region for "travel", the case for
+ * "detective", its chapter's grid otherwise.
+ */
 export const levelsScreen = (level: Level) =>
-  level.travel ? { name: 'travel', query: { region: level.travel.region } } : { name: 'chapter', params: { chapter: level.chapter } }
+  level.travel
+    ? { name: 'travel', query: { region: level.travel.region } }
+    : level.detective
+      ? { name: 'case', params: { case: level.detective.case } }
+      : { name: 'chapter', params: { chapter: level.chapter } }
 
 /** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
 export function levelNumber(level: Level): number {

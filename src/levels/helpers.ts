@@ -153,3 +153,36 @@ export const memoryLevel = (def: { id: number; title: string; showSeconds: numbe
  */
 export const travelLevel = (def: { id: number; title: string; parTimeSec: number; place: TravelPlace; scene: SvgLevelDef['scene'] }) =>
   svgLevel({ id: def.id, chapter: 'travel', title: def.title, parTimeSec: def.parTimeSec, travel: def.place, scene: def.scene })
+
+/** "Detective" levels: like `diff`, plus the clue key the difference reveals (i18n detective.clueTexts.<key>). */
+export type ClueAt = (key: string, x: number, y: number, r: number, a: string, b: string, follow?: string) => string
+
+/**
+ * "Detective" level (docs/detective-mode.md), chapter 'detective': a scene of case `case` where A is
+ * the place before and B after; every difference is drawn with `clue` instead of `diff`.
+ */
+export function detectiveLevel(def: {
+  id: number
+  case: string
+  title: string
+  parTimeSec: number
+  scene: (ctx: SceneContext & { clue: ClueAt }) => string
+}): Level {
+  // Clue keys in the order of the zones: svgLevel registers the zones on its first render.
+  let clues: string[] = []
+  const level = svgLevel({
+    id: def.id,
+    chapter: 'detective',
+    title: def.title,
+    parTimeSec: def.parTimeSec,
+    scene: (ctx) => {
+      clues = []
+      const clue: ClueAt = (key, x, y, r, a, b, follow) => {
+        clues.push(key)
+        return ctx.diff(x, y, r, a, b, follow)
+      }
+      return def.scene({ ...ctx, clue })
+    },
+  })
+  return { ...level, detective: { case: def.case, clues } }
+}

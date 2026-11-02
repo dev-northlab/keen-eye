@@ -77,11 +77,19 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
   world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
   `/travel/passport`; open and paid like "time" (first 3 free);
-  `allLevels` = worlds + time + memory + travel (`levels` stays the worlds),
+  `detective/` — "detective story" (`docs/detective-mode.md`): levels 501–515 of chapter `detective` in 3 cases of 5 scenes
+  (`cases.ts`: suspects, culprit and `fits` — the suspects each clue fits; only the culprit fits all, `npm test` checks it;
+  portraits in `suspects.ts`), written with `detectiveLevel({ id, case, title, parTimeSec, scene })` whose `clue(key, x, y, r, a, b)`
+  is `diff` plus the clue text key (`Level.detective`: case, clue per difference, i18n `detective.clueTexts.<key>`); A = before,
+  B = after; 5 → 6 → 7 clues; played by `LevelView` (a found clue pops up, the result dialog lists the scene's clues), listed
+  by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
+  cases in `progress.solvedCases`); the first case is free (`Chapter.freeLevels`), the rest need the purchase;
+  `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),
-  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
+  Detective (cases), Case (one case),
+  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
 - `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to

@@ -2,14 +2,24 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import { CHAPTERS, chapterLevels, chapterSize, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER, type Chapter } from '../levels/chapters.ts'
+import {
+  CHAPTERS,
+  chapterLevels,
+  chapterSize,
+  DETECTIVE_CHAPTER,
+  MEMORY_CHAPTER,
+  TIME_CHAPTER,
+  TRAVEL_CHAPTER,
+  type Chapter,
+} from '../levels/chapters.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
 // in time" (docs/time-differences-mode.md) and "memory" (docs/memory-mode.md) their level grids
-// (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView).
+// (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView),
+// "detective" (docs/detective-mode.md) its cases (DetectiveView).
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -32,6 +42,7 @@ function category(chapter: Chapter) {
 const time = category(TIME_CHAPTER)
 const memory = category(MEMORY_CHAPTER)
 const travel = category(TRAVEL_CHAPTER)
+const detective = category(DETECTIVE_CHAPTER)
 
 const timeTravel = {
   total: timeTravelLevels.length,
@@ -124,6 +135,26 @@ const timeTravel = {
           </button>
         </li>
         <li>
+          <button class="mode detective" @click="router.push({ name: 'detective' })">
+            <!-- Big faint footprints behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <g fill="#fff">
+                <ellipse cx="34" cy="70" rx="11" ry="16" /><ellipse cx="66" cy="34" rx="11" ry="16" />
+                <circle cx="26" cy="46" r="5" /><circle cx="36" cy="44" r="5" /><circle cx="44" cy="50" r="5" />
+                <circle cx="58" cy="10" r="5" /><circle cx="68" cy="8" r="5" /><circle cx="76" cy="14" r="5" />
+              </g>
+            </svg>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="DETECTIVE_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('detective.task') }}</span>
+              <span class="name">{{ $t('chapters.detective') }}</span>
+              <span class="sub">
+                {{ $t('map.progress', { done: detective.done(), total: detective.total }) }} · ★ {{ detective.stars() }}
+              </span>
+            </span>
+          </button>
+        </li>
+        <li>
           <button class="mode travel" @click="router.push({ name: 'eras' })">
             <!-- A big faint clock face behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
@@ -184,7 +215,7 @@ main {
 }
 
 /* A banner per game mode: "spot the difference" green, "in time" violet, "memory" pink, "travel" sea blue,
-   "find the odd one out" warm. */
+   "detective" brown, "find the odd one out" warm. */
 .spot {
   --mode-from: #4cc38a;
   --mode-mid: #2f9e6e;
@@ -215,6 +246,14 @@ main {
   --mode-to: #17768a;
   --mode-shadow: rgb(20 100 120 / 0.6);
   --mode-icon-bg: #ddf4f8;
+}
+
+.detective {
+  --mode-from: #c08a55;
+  --mode-mid: #8a5a2b;
+  --mode-to: #5e3b1a;
+  --mode-shadow: rgb(90 50 20 / 0.6);
+  --mode-icon-bg: #f6eadc;
 }
 
 .travel {
