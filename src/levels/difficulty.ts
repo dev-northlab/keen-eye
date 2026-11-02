@@ -13,6 +13,8 @@ export interface Difficulty {
   motion: [min: number, max: number]
   /** Smallest zone radius in viewBox units: big objects early, small details later. */
   minRadius: number
+  /** Smallest distance between zone centers (dense scenes keep differences apart). */
+  minGap?: number
   /** Kinds of static/motion differences to use. */
   kinds: DifferenceKind[]
 }
@@ -28,7 +30,30 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 21, to: 40, differences: [7, 7], motion: [1, 2], minRadius: 18, kinds: MEDIUM },
   { from: 41, to: 60, differences: [8, 8], motion: [2, 3], minRadius: 18, kinds: HARD },
   { from: 61, to: 100, differences: [9, 10], motion: [2, 3], minRadius: 18, kinds: HARD },
+  ...harder(101, 6),
+  ...harder(111, 7),
+  ...harder(121, 8),
+  ...harder(131, 10),
+  ...harder(141, 10),
 ]
+
+/**
+ * The ten harder levels at the end of a chapter, ids from `first`: 7, 8, 9 differences in steps of
+ * three levels and 10 on the last, never fewer than the chapter's first 20 levels have (`floor`).
+ * Details are smaller, but zones stay at least 44 units wide (a finger) and 8% of the width apart.
+ */
+function harder(first: number, floor: number): Difficulty[] {
+  const steps: [from: number, to: number, differences: number][] = [[0, 2, 7], [3, 5, 8], [6, 8, 9], [9, 9, 10]]
+  return steps.map(([from, to, n]) => ({
+    from: first + from,
+    to: first + to,
+    differences: [Math.max(n, floor), Math.max(n, floor)],
+    motion: [2, 3],
+    minRadius: 22,
+    minGap: 64,
+    kinds: HARD,
+  }))
+}
 
 export function difficultyOf(levelId: number): Difficulty {
   const d = DIFFICULTY.find((d) => levelId >= d.from && levelId <= d.to)

@@ -1,5 +1,7 @@
-// Chapters ("worlds") of 20 levels each. Adding a chapter is one entry here, its levels in
-// `index.ts` and the `chapters.<id>` / `levelTitles.*` texts in the three locales.
+// Chapters ("worlds"): 20 levels each, plus 10 harder ones added later with ids after 100.
+// Adding a chapter is one entry here, its levels in `index.ts` and the `chapters.<id>` /
+// `levelTitles.*` texts in every locale.
+import type { Level } from '../engine/types.ts'
 import { levels } from './index.ts'
 
 /** Screen backdrop worlds (drawn by components/ScreenBackdrop.vue). */
@@ -8,9 +10,11 @@ export type BackdropTheme = 'meadow' | 'farm' | 'forest' | 'sea' | 'city' | 'spa
 export interface Chapter {
   /** Level.chapter value and i18n key `chapters.<id>`. */
   id: string
-  /** Level ids of the chapter, inclusive. Levels may still be missing at the end ("coming soon"). */
-  from: number
-  to: number
+  /**
+   * Level id ranges of the chapter, inclusive, in play order: the first 20 levels, then the harder
+   * ones. Levels may still be missing at the end ("coming soon").
+   */
+  ranges: [from: number, to: number][]
   /** Card colors on the chapter map: border/accent and a light background. */
   color: string
   soft: string
@@ -23,8 +27,10 @@ export interface Chapter {
 export const CHAPTERS: Chapter[] = [
   {
     id: 'farm',
-    from: 1,
-    to: 20,
+    ranges: [
+      [1, 20],
+      [101, 110],
+    ],
     color: '#e05a47',
     soft: '#ffe9e3',
     backdrop: 'farm',
@@ -36,8 +42,10 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'city',
-    from: 21,
-    to: 40,
+    ranges: [
+      [21, 40],
+      [111, 120],
+    ],
     color: '#3a86ff',
     soft: '#e3edff',
     backdrop: 'city',
@@ -50,8 +58,10 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'forest',
-    from: 41,
-    to: 60,
+    ranges: [
+      [41, 60],
+      [121, 130],
+    ],
     color: '#2f7d55',
     soft: '#e1f2e6',
     backdrop: 'forest',
@@ -62,8 +72,10 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'sea',
-    from: 61,
-    to: 80,
+    ranges: [
+      [61, 80],
+      [131, 140],
+    ],
     color: '#1f8fbf',
     soft: '#dff3fb',
     backdrop: 'sea',
@@ -74,8 +86,10 @@ export const CHAPTERS: Chapter[] = [
   },
   {
     id: 'space',
-    from: 81,
-    to: 100,
+    ranges: [
+      [81, 100],
+      [141, 150],
+    ],
     color: '#5b4bd6',
     soft: '#e8e4fb',
     backdrop: 'space',
@@ -88,7 +102,18 @@ export const CHAPTERS: Chapter[] = [
 
 export const chapterById = (id: string): Chapter | undefined => CHAPTERS.find((c) => c.id === id)
 
-export const chapterOf = (levelId: number): Chapter | undefined => CHAPTERS.find((c) => levelId >= c.from && levelId <= c.to)
+export const chapterOf = (levelId: number): Chapter | undefined =>
+  CHAPTERS.find((c) => c.ranges.some(([from, to]) => levelId >= from && levelId <= to))
 
-/** Levels of the chapter that exist, in order. */
+/** Number of levels the chapter will have ("N of M" on its card). */
+export const chapterSize = (chapter: Chapter) => chapter.ranges.reduce((n, [from, to]) => n + to - from + 1, 0)
+
+/** Levels of the chapter that exist, in play order (`levels` is sorted by id, as are the ranges). */
 export const chapterLevels = (chapter: Chapter) => levels.filter((l) => l.chapter === chapter.id)
+
+/** The level after `level` in its chapter, or the next chapter's first one at the chapter's end. */
+export function nextLevel(level: Level): Level | undefined {
+  const i = CHAPTERS.findIndex((c) => c.id === level.chapter)
+  const own = chapterLevels(CHAPTERS[i])
+  return own[own.indexOf(level) + 1] ?? (CHAPTERS[i + 1] && chapterLevels(CHAPTERS[i + 1])[0])
+}

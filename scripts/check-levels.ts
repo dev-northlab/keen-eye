@@ -86,7 +86,7 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
   if (!chapter) errors.push(`no chapter covers level ${level.id}`)
   else if (chapter.id !== level.chapter) errors.push(`chapter "${level.chapter}", expected "${chapter.id}" (chapters.ts)`)
 
-  const { differences: [min, max], motion: [mmin, mmax], minRadius } = difficultyOf(level.id)
+  const { differences: [min, max], motion: [mmin, mmax], minRadius, minGap = 0 } = difficultyOf(level.id)
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
   ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id} (min ${minRadius})`))
 
@@ -117,8 +117,11 @@ function check(level: Level, index: number): { errors: string[]; motion: number 
       zones.forEach((z, i) => {
         if (z.x - z.r < 0 || z.y - z.r < 0 || z.x + z.r > w || z.y + z.r > h)
           report(`zone #${i} goes outside the ${w}×${h} viewBox`, when)
-        for (let j = i + 1; j < zones.length; j++)
-          if (Math.hypot(z.x - zones[j].x, z.y - zones[j].y) < z.r + zones[j].r) report(`zones #${i} and #${j} overlap`, when)
+        for (let j = i + 1; j < zones.length; j++) {
+          const gap = Math.hypot(z.x - zones[j].x, z.y - zones[j].y)
+          if (gap < z.r + zones[j].r) report(`zones #${i} and #${j} overlap`, when)
+          else if (gap < minGap) report(`zones #${i} and #${j} are closer than ${minGap}`, when)
+        }
       })
     })
   }

@@ -99,6 +99,56 @@ import level097 from './chapter-05/level-097.ts'
 import level098 from './chapter-05/level-098.ts'
 import level099 from './chapter-05/level-099.ts'
 import level100 from './chapter-05/level-100.ts'
+import level101 from './chapter-01/level-101.ts'
+import level102 from './chapter-01/level-102.ts'
+import level103 from './chapter-01/level-103.ts'
+import level104 from './chapter-01/level-104.ts'
+import level105 from './chapter-01/level-105.ts'
+import level106 from './chapter-01/level-106.ts'
+import level107 from './chapter-01/level-107.ts'
+import level108 from './chapter-01/level-108.ts'
+import level109 from './chapter-01/level-109.ts'
+import level110 from './chapter-01/level-110.ts'
+import level111 from './chapter-02/level-111.ts'
+import level112 from './chapter-02/level-112.ts'
+import level113 from './chapter-02/level-113.ts'
+import level114 from './chapter-02/level-114.ts'
+import level115 from './chapter-02/level-115.ts'
+import level116 from './chapter-02/level-116.ts'
+import level117 from './chapter-02/level-117.ts'
+import level118 from './chapter-02/level-118.ts'
+import level119 from './chapter-02/level-119.ts'
+import level120 from './chapter-02/level-120.ts'
+import level121 from './chapter-03/level-121.ts'
+import level122 from './chapter-03/level-122.ts'
+import level123 from './chapter-03/level-123.ts'
+import level124 from './chapter-03/level-124.ts'
+import level125 from './chapter-03/level-125.ts'
+import level126 from './chapter-03/level-126.ts'
+import level127 from './chapter-03/level-127.ts'
+import level128 from './chapter-03/level-128.ts'
+import level129 from './chapter-03/level-129.ts'
+import level130 from './chapter-03/level-130.ts'
+import level131 from './chapter-04/level-131.ts'
+import level132 from './chapter-04/level-132.ts'
+import level133 from './chapter-04/level-133.ts'
+import level134 from './chapter-04/level-134.ts'
+import level135 from './chapter-04/level-135.ts'
+import level136 from './chapter-04/level-136.ts'
+import level137 from './chapter-04/level-137.ts'
+import level138 from './chapter-04/level-138.ts'
+import level139 from './chapter-04/level-139.ts'
+import level140 from './chapter-04/level-140.ts'
+import level141 from './chapter-05/level-141.ts'
+import level142 from './chapter-05/level-142.ts'
+import level143 from './chapter-05/level-143.ts'
+import level144 from './chapter-05/level-144.ts'
+import level145 from './chapter-05/level-145.ts'
+import level146 from './chapter-05/level-146.ts'
+import level147 from './chapter-05/level-147.ts'
+import level148 from './chapter-05/level-148.ts'
+import level149 from './chapter-05/level-149.ts'
+import level150 from './chapter-05/level-150.ts'
 
 export const levels: Level[] = [
   level001,
@@ -201,6 +251,56 @@ export const levels: Level[] = [
   level098,
   level099,
   level100,
+  level101,
+  level102,
+  level103,
+  level104,
+  level105,
+  level106,
+  level107,
+  level108,
+  level109,
+  level110,
+  level111,
+  level112,
+  level113,
+  level114,
+  level115,
+  level116,
+  level117,
+  level118,
+  level119,
+  level120,
+  level121,
+  level122,
+  level123,
+  level124,
+  level125,
+  level126,
+  level127,
+  level128,
+  level129,
+  level130,
+  level131,
+  level132,
+  level133,
+  level134,
+  level135,
+  level136,
+  level137,
+  level138,
+  level139,
+  level140,
+  level141,
+  level142,
+  level143,
+  level144,
+  level145,
+  level146,
+  level147,
+  level148,
+  level149,
+  level150,
 ]
 
 export const levelById = (id: number): Level | undefined => levels.find((l) => l.id === id)

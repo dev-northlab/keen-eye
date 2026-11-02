@@ -45,6 +45,7 @@ interface SvgLevelDef {
   chapter: string
   title: string
   parTimeSec: number
+  hintLimit?: number
   viewBox?: { w: number; h: number }
   /** Level.multiplayerReady; default: at least MULTIPLAYER_MIN_DIFFERENCES differences. */
   multiplayerReady?: boolean
@@ -99,6 +100,7 @@ export function svgLevel(def: SvgLevelDef): Level {
     viewBox: def.viewBox ?? { w: 800, h: 500 },
     differences,
     parTimeSec: def.parTimeSec,
+    ...(def.hintLimit !== undefined && { hintLimit: def.hintLimit }),
     multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
   }
 }
