@@ -47,6 +47,14 @@ describe('interface languages', () => {
     for (const tag of ['zh-TW', 'zh-HK', 'zh-MO', 'zh-Hant', 'zh-Hant-HK', 'zh_TW']) assert.equal(pick(tag), 'zh-Hant', tag)
   })
 
+  // WKWebView's navigator.languages offers only the languages the iOS bundle declares.
+  test('the iOS app declares every locale, and each declared one resolves to it', () => {
+    const plist = readFileSync(new URL('../ios/App/App/Info.plist', import.meta.url), 'utf8')
+    const array = plist.match(/<key>CFBundleLocalizations<\/key>\s*<array>([\s\S]*?)<\/array>/)?.[1] ?? ''
+    const declared = [...array.matchAll(/<string>([^<]+)<\/string>/g)].map((m) => m[1])
+    assert.deepEqual(declared.map((tag) => resolveLocale([tag], locales, 'en')).sort(), [...locales].sort())
+  })
+
   test('the first supported preferred language wins, English when none is', () => {
     assert.equal(resolveLocale(['xx', 'sv-SE', 'de'], locales, 'en'), 'sv')
     assert.equal(resolveLocale(['xx-YY', 'qq'], locales, 'en'), 'en')

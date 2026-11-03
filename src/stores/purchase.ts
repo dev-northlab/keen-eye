@@ -1,7 +1,14 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { CATEGORIES } from '../levels/chapters.ts'
-import { fetchOwnership, fetchPrice, purchaseFullGame, resetStubStore, type PurchaseOutcome } from '../services/purchases.ts'
+import {
+  fetchOwnership,
+  fetchPrice,
+  purchaseFullGame,
+  resetStubStore,
+  restorePurchases,
+  type PurchaseOutcome,
+} from '../services/purchases.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 
 const KEY = 'purchase'
@@ -67,7 +74,7 @@ export const usePurchaseStore = defineStore('purchase', () => {
   async function restore(): Promise<'restored' | 'none' | 'error'> {
     busy.value = true
     try {
-      const owned = await fetchOwnership()
+      const owned = await restorePurchases()
       if (owned === null) return 'error'
       await setFullGame(owned)
       return owned ? 'restored' : 'none'

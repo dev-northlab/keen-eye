@@ -14,6 +14,9 @@ const message = ref<'success' | 'restored' | 'none' | 'error' | null>(null)
 const close = () => (purchase.dialogOpen = false)
 useBackButton(close)
 
+// The game may have started offline: ask the store again for the price.
+if (!purchase.price) purchase.sync()
+
 async function buy() {
   message.value = null
   const outcome = await purchase.buy()

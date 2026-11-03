@@ -107,13 +107,15 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
   (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
   three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
-  (the only code that talks to the app store: price, purchase, ownership; currently a dev-only stub — RevenueCat goes
-  here; in production builds the stub sells nothing)
+  (the only code that talks to the app store: price, purchase, restore, ownership of the product `full_game`; Google Play
+  Billing / StoreKit straight through `capacitor-plugin-cdv-purchase`, no receipt server; in `npm run dev` in the
+  browser a stub store, a production web build sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and
   levels not reached yet to the map
 - `src/i18n/` — one `<locale>.json` per language, named by its BCP 47 tag (ru, en, hy, de, fr, es, it, pt, nl, pl,
   cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh, zh-Hant, ja, ko), registered in
-  `index.ts` (keep the same keys in all of them — `npm test` checks it; `en` is the fallback); default language =
+  `index.ts` and in `CFBundleLocalizations` of `ios/App/App/Info.plist` (`zh` as `zh-Hans`; iOS WebView reports only
+  the declared languages) — keep the same keys in all of them, `npm test` checks both; `en` is the fallback; default language =
   system, picked by `resolve.ts` from the language part of the system tags (fil ≠ fi, no/nn → nb, zh-TW/HK → zh-Hant);
   `ar` is right to left: `setLocale` sets `html[dir]`, so UI CSS uses logical sides (`margin-inline-start`,
   `text-align: start`), arrows along the reading direction carry `flip-rtl`, and `Board` keeps A|B left to right;
