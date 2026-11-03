@@ -88,7 +88,7 @@ main {
   align-items: center;
   gap: 14px;
   padding: 10px 14px 10px 10px;
-  text-align: left;
+  text-align: start;
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);

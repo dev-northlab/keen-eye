@@ -25,7 +25,7 @@ defineProps<{ clues: string[]; title?: string }>()
   padding: 10px 14px;
   border-radius: 14px;
   background: var(--soft-2);
-  text-align: left;
+  text-align: start;
 }
 
 .title {

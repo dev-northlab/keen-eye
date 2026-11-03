@@ -113,11 +113,11 @@ main {
   align-items: center;
   gap: 14px;
   padding: 12px 16px;
-  text-align: left;
+  text-align: start;
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--chapter);
-  border-left-width: 10px;
+  border-inline-start-width: 10px;
   position: relative;
 }
 

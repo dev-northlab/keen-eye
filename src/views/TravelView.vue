@@ -159,7 +159,7 @@ main {
 }
 
 .tab .count {
-  margin-left: 4px;
+  margin-inline-start: 4px;
   font-size: 13px;
   opacity: 0.8;
 }
@@ -178,7 +178,7 @@ main {
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  text-align: left;
+  text-align: start;
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);
@@ -263,7 +263,7 @@ main {
 }
 
 .passport .count {
-  margin-left: auto;
+  margin-inline-start: auto;
   font-size: 14px;
   font-weight: 600;
   opacity: 0.9;

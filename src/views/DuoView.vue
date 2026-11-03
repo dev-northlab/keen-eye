@@ -103,7 +103,7 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
                 <span class="name">{{ $t(`duo.modes.${m}`) }}</span>
                 <small>{{ $t(`duo.modeHints.${m}`) }}</small>
               </span>
-              <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
             </button>
           </li>
         </ul>
@@ -297,7 +297,7 @@ h2 {
   padding: 14px 14px 14px 16px;
   background: var(--panel);
   color: var(--fg);
-  text-align: left;
+  text-align: start;
   border: 2px solid transparent;
   border-radius: 20px;
   box-shadow: 0 6px 16px rgb(35 48 43 / 0.12);

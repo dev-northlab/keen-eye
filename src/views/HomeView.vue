@@ -87,21 +87,21 @@ function play() {
         <PlayerAvatar avatar="girl" :color="PLAYER_COLORS[1].value" />
       </span>
       <span class="label">{{ $t('home.duo') }}</span>
-      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
     <button class="entry" @click="router.push({ name: 'levels' })">
       <span class="badge levels" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" /><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2" /></svg>
       </span>
       <span class="label">{{ $t('home.levels') }}</span>
-      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
     <button class="entry" @click="router.push({ name: 'settings' })">
       <span class="badge settings" aria-hidden="true">
         <svg viewBox="0 0 24 24"><path d="M10.3 2.5h3.4l.5 2.6 1.9.8 2.2-1.5 2.4 2.4-1.5 2.2.8 1.9 2.6.5v3.4l-2.6.5-.8 1.9 1.5 2.2-2.4 2.4-2.2-1.5-1.9.8-.5 2.6h-3.4l-.5-2.6-1.9-.8-2.2 1.5-2.4-2.4 1.5-2.2-.8-1.9-2.6-.5v-3.4l2.6-.5.8-1.9-1.5-2.2 2.4-2.4 2.2 1.5 1.9-.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" /><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2" /></svg>
       </span>
       <span class="label">{{ $t('home.settings') }}</span>
-      <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
 
     <nav class="info-links">
@@ -228,9 +228,12 @@ function play() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* "safe": a menu taller than the screen scrolls from its top instead of losing it. */
+  justify-content: safe center;
+  overflow-y: auto;
   gap: 12px;
-  padding: 24px 16px;
+  /* The top padding keeps the title below the corner switches (12px + 48px) when the menu is tall. */
+  padding: 68px 16px 24px;
 }
 
 h1 {
@@ -324,7 +327,7 @@ button,
   border-radius: 14px;
   background: var(--soft-2);
   border: 1px solid var(--soft);
-  text-align: left;
+  text-align: start;
 }
 
 .email-card .at {
@@ -418,7 +421,7 @@ button {
   border-radius: 20px;
   font-size: 22px;
   font-weight: 700;
-  text-align: left;
+  text-align: start;
   box-shadow:
     0 8px 18px rgb(35 48 43 / 0.2),
     inset 0 -4px 0 rgb(0 0 0 / 0.12);
@@ -441,7 +444,7 @@ button {
 .play-icon svg {
   width: 30px;
   height: 30px;
-  margin-left: 3px;
+  margin-inline-start: 3px;
 }
 
 .play .text {
@@ -471,7 +474,7 @@ button {
   background: var(--panel);
   color: var(--fg);
   font-weight: 600;
-  text-align: left;
+  text-align: start;
   box-shadow:
     0 6px 16px rgb(35 48 43 / 0.14),
     inset 0 0 0 2px var(--soft);

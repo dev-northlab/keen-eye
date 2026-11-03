@@ -29,7 +29,7 @@ defineProps<{ level: Level; newStamp?: boolean }>()
   padding: 12px 14px;
   border-radius: 14px;
   background: var(--soft-2);
-  text-align: left;
+  text-align: start;
 }
 
 p {

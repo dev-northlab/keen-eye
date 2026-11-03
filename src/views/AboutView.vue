@@ -120,7 +120,7 @@ main {
   display: flex;
   align-items: center;
   gap: 14px;
-  text-align: left;
+  text-align: start;
 }
 
 .updates-icon {

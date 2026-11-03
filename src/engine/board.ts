@@ -92,6 +92,8 @@ export class Board {
       this.zoom,
     )
     this.pose(0, performance.now())
+    // A stays left of (or above) B in right-to-left languages too.
+    container.dir = 'ltr'
     for (const svg of svgs) container.append(svg)
   }
 

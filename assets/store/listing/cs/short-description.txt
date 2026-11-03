@@ -1,0 +1,1 @@
+Najdi rozdíly ve 280 živých, ručně kreslených scénách. Funguje offline.

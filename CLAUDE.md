@@ -26,6 +26,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm run og` — renders `public/og-image.png` (1200×630 link preview of the web version, Open Graph/Twitter tags in
   `index.html`) from the home screen's own meadow (`MeadowScene.vue` via Vite SSR) with the title and play button;
   needs the Roboto font installed
+- `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
+  installed Chrome (`playwright-core`, `/usr/bin/google-chrome`) with a seeded mid-game progress, taps some
+  differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
+  shot of `SHOTS`) at the store sizes — Play phone 1080×1920, iPhone 6.9" 1290×2796, iPad 13" 2048×2732 — plus the
+  Play feature graphic 1024×500, into `store-screenshots/` (gitignored); all languages take about half an hour
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
@@ -99,17 +104,25 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
-  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `purchases.ts`
+  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
+  (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
+  three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
   (the only code that talks to the app store: price, purchase, ownership; currently a dev-only stub — RevenueCat goes
   here; in production builds the stub sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and
   levels not reached yet to the map
-- `src/i18n/` — one `<locale>.json` per language (ru, en, hy, de, fr, es, it, pt, nl, pl, cs, ro, bg, uk, el, hu,
-  tr, hi, zh, ja, ko), registered in `index.ts` (keep the same keys in all of them; `en` is the fallback); default
-  language = system;
+- `src/i18n/` — one `<locale>.json` per language, named by its BCP 47 tag (ru, en, hy, de, fr, es, it, pt, nl, pl,
+  cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh, zh-Hant, ja, ko), registered in
+  `index.ts` (keep the same keys in all of them — `npm test` checks it; `en` is the fallback); default language =
+  system, picked by `resolve.ts` from the language part of the system tags (fil ≠ fi, no/nn → nb, zh-TW/HK → zh-Hant);
+  `ar` is right to left: `setLocale` sets `html[dir]`, so UI CSS uses logical sides (`margin-inline-start`,
+  `text-align: start`), arrows along the reading direction carry `flip-rtl`, and `Board` keeps A|B left to right;
   `languages.ts` — name (in its own language) and SVG flag per locale for the language picker
 - `scripts/` — `check-levels.ts`, `preview-levels.ts`, `render.ts` (posed SVG → pixels, shared by both);
-  `assets/` — music (`assets/music/`), later photo levels and icons
+  `assets/` — music (`assets/music/`), store icon and the store page texts (`assets/store/listing/<locale>/`: Google
+  Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
+  limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
+  update every description when levels, modes or languages are added)
 
 ## Rules
 

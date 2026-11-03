@@ -66,7 +66,7 @@ onBeforeUnmount(() => clearTimeout(timer))
   font-size: 14px;
   font-weight: 600;
   line-height: 1.3;
-  text-align: left;
+  text-align: start;
   white-space: normal;
   pointer-events: none;
   animation: pop 0.2s ease-out;

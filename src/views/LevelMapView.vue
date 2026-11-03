@@ -350,7 +350,7 @@ main {
   align-items: center;
   gap: 14px;
   padding: 18px 16px;
-  text-align: left;
+  text-align: start;
   border-radius: 20px;
   background: linear-gradient(120deg, var(--mode-from), var(--mode-mid) 60%, var(--mode-to));
   color: #fff;

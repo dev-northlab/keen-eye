@@ -99,3 +99,9 @@ button.secondary {
 html {
   touch-action: manipulation;
 }
+
+/* Arrows along the reading direction (back, forward) turn around in right-to-left languages. */
+[dir='rtl'] .flip-rtl {
+  display: inline-block;
+  transform: scaleX(-1);
+}

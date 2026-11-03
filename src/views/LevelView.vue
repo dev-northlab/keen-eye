@@ -20,6 +20,7 @@ import { levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
+import { askForReview } from '../services/review.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 
@@ -136,6 +137,7 @@ function start() {
         playMusic('complete')
         if (calm.value) progress.recordCalmCompletion(level.id)
         else progress.recordResult(level.id, r)
+        if (calm.value || r.stars === 3) askForReview(Object.keys(progress.records).length)
       },
     },
     {
@@ -302,11 +304,11 @@ onBeforeUnmount(() => {
 
 .hud .title {
   font-weight: 700;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .hud .pair {
-  margin-left: 4px;
+  margin-inline-start: 4px;
   padding: 2px 8px;
   border-radius: 999px;
   background: var(--soft);

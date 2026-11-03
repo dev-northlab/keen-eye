@@ -270,7 +270,7 @@ onBeforeUnmount(() => {
 .hud .title {
   display: grid;
   font-weight: 700;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .hud .title small {
@@ -362,7 +362,7 @@ onBeforeUnmount(() => {
   list-style: none;
   display: grid;
   gap: 8px;
-  text-align: left;
+  text-align: start;
   font-size: 14px;
   line-height: 1.35;
 }
