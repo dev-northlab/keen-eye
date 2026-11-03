@@ -184,11 +184,10 @@
     "fullGameOpen": "解锁所有关卡",
     "resetPurchaseCache": "忘记购买（缓存）",
     "resetPurchaseStore": "忘记购买（包括“商店”）",
-    "promo": "兑换码",
-    "promoApply": "兑换",
-    "promoInvalid": "兑换码错误",
-    "promoApplied": "所有关卡已解锁",
-    "promoReset": "重置"
+    "developer": "开发者",
+    "developerApply": "兑换",
+    "developerInvalid": "兑换码错误",
+    "devOff": "关闭开发者模式"
   },
   "common": {
     "back": "返回",

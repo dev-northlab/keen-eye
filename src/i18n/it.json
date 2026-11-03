@@ -184,11 +184,10 @@
     "fullGameOpen": "Sblocca tutti i livelli",
     "resetPurchaseCache": "Dimentica acquisto (cache)",
     "resetPurchaseStore": "Dimentica acquisto (anche nello «store»)",
-    "promo": "Codice promozionale",
-    "promoApply": "Applica",
-    "promoInvalid": "Codice errato",
-    "promoApplied": "Tutti i livelli sbloccati",
-    "promoReset": "Reimposta"
+    "developer": "Sviluppatore",
+    "developerApply": "Applica",
+    "developerInvalid": "Codice errato",
+    "devOff": "Disattiva la modalità sviluppatore"
   },
   "common": {
     "back": "Indietro",

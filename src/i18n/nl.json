@@ -184,11 +184,10 @@
     "fullGameOpen": "Alle levels ontgrendelen",
     "resetPurchaseCache": "Aankoop vergeten (cache)",
     "resetPurchaseStore": "Aankoop vergeten (ook in de \"winkel\")",
-    "promo": "Promotiecode",
-    "promoApply": "Toepassen",
-    "promoInvalid": "Onjuiste code",
-    "promoApplied": "Alle levels ontgrendeld",
-    "promoReset": "Resetten"
+    "developer": "Ontwikkelaar",
+    "developerApply": "Toepassen",
+    "developerInvalid": "Onjuiste code",
+    "devOff": "Ontwikkelaarsmodus uitschakelen"
   },
   "common": {
     "back": "Terug",

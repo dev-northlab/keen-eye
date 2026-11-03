@@ -184,11 +184,10 @@
     "fullGameOpen": "Minden pálya feloldása",
     "resetPurchaseCache": "Vásárlás elfelejtése (gyorsítótár)",
     "resetPurchaseStore": "Vásárlás elfelejtése (a „boltban” is)",
-    "promo": "Promóciós kód",
-    "promoApply": "Beváltás",
-    "promoInvalid": "Hibás kód",
-    "promoApplied": "Minden pálya feloldva",
-    "promoReset": "Visszavonás"
+    "developer": "Fejlesztő",
+    "developerApply": "Beváltás",
+    "developerInvalid": "Hibás kód",
+    "devOff": "Fejlesztői mód kikapcsolása"
   },
   "common": {
     "back": "Vissza",

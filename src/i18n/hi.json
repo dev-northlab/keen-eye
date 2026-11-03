@@ -184,11 +184,10 @@
     "fullGameOpen": "सभी लेवल अनलॉक करें",
     "resetPurchaseCache": "खरीद भूल जाएँ (कैश)",
     "resetPurchaseStore": "खरीद भूल जाएँ (\"स्टोर\" में भी)",
-    "promo": "प्रोमो कोड",
-    "promoApply": "लागू करें",
-    "promoInvalid": "गलत कोड",
-    "promoApplied": "सभी लेवल अनलॉक हो गए",
-    "promoReset": "रीसेट करें"
+    "developer": "डेवलपर",
+    "developerApply": "लागू करें",
+    "developerInvalid": "गलत कोड",
+    "devOff": "डेवलपर मोड बंद करें"
   },
   "common": {
     "back": "वापस",

@@ -184,11 +184,10 @@
     "fullGameOpen": "Открыть все уровни",
     "resetPurchaseCache": "Забыть покупку (кеш)",
     "resetPurchaseStore": "Забыть покупку (и в «магазине»)",
-    "promo": "Промокод",
-    "promoApply": "Применить",
-    "promoInvalid": "Неверный код",
-    "promoApplied": "Все уровни открыты",
-    "promoReset": "Сбросить"
+    "developer": "Разработчик",
+    "developerApply": "Применить",
+    "developerInvalid": "Неверный код",
+    "devOff": "Выключить режим разработчика"
   },
   "common": {
     "back": "Назад",

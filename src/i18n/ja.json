@@ -184,11 +184,10 @@
     "fullGameOpen": "全レベルを解放",
     "resetPurchaseCache": "購入を忘れる（キャッシュ）",
     "resetPurchaseStore": "購入を忘れる（「ストア」も）",
-    "promo": "プロモコード",
-    "promoApply": "適用",
-    "promoInvalid": "コードが正しくありません",
-    "promoApplied": "全レベルが解放されました",
-    "promoReset": "リセット"
+    "developer": "開発者",
+    "developerApply": "適用",
+    "developerInvalid": "コードが正しくありません",
+    "devOff": "開発者モードをオフにする"
   },
   "common": {
     "back": "戻る",

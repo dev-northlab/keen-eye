@@ -184,11 +184,10 @@
     "fullGameOpen": "Odemknout všechny úrovně",
     "resetPurchaseCache": "Zapomenout nákup (cache)",
     "resetPurchaseStore": "Zapomenout nákup (i v „obchodě“)",
-    "promo": "Promo kód",
-    "promoApply": "Použít",
-    "promoInvalid": "Nesprávný kód",
-    "promoApplied": "Všechny úrovně odemčeny",
-    "promoReset": "Zrušit"
+    "developer": "Vývojář",
+    "developerApply": "Použít",
+    "developerInvalid": "Nesprávný kód",
+    "devOff": "Vypnout vývojářský režim"
   },
   "common": {
     "back": "Zpět",

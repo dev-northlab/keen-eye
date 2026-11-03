@@ -184,11 +184,10 @@
     "fullGameOpen": "Tüm bölümlerin kilidini aç",
     "resetPurchaseCache": "Satın almayı unut (önbellek)",
     "resetPurchaseStore": "Satın almayı unut (\"mağazada\" da)",
-    "promo": "Promosyon kodu",
-    "promoApply": "Uygula",
-    "promoInvalid": "Yanlış kod",
-    "promoApplied": "Tüm bölümlerin kilidi açıldı",
-    "promoReset": "Sıfırla"
+    "developer": "Geliştirici",
+    "developerApply": "Uygula",
+    "developerInvalid": "Yanlış kod",
+    "devOff": "Geliştirici modunu kapat"
   },
   "common": {
     "back": "Geri",

@@ -11,15 +11,12 @@ import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
-import { usePurchaseStore } from '../stores/purchase.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
-const purchase = usePurchaseStore()
-const isDev = import.meta.env.DEV
 
-/** The open dialog, if any: info, or the development tools (development builds only). */
-const dialog = ref<'privacy' | 'contact' | 'dev' | null>(null)
+/** The open info dialog, if any. */
+const dialog = ref<'privacy' | 'contact' | null>(null)
 // Android back closes the dialog instead of leaving the app.
 let removeBack = () => {}
 watch(dialog, (open) => {
@@ -106,8 +103,6 @@ function play() {
       <span class="label">{{ $t('home.settings') }}</span>
       <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
-    <!-- Development only: opens the testing tools. -->
-    <button v-if="isDev" class="secondary dev-button" @click="dialog = 'dev'">{{ $t('settings.dev') }}</button>
 
     <nav class="info-links">
       <button class="info-link" @click="router.push({ name: 'about' })">
@@ -219,22 +214,6 @@ function play() {
           {{ $t('info.writeUs') }}
         </a>
         <button class="secondary" @click="dialog = null">{{ $t('common.close') }}</button>
-      </div>
-    </ModalDialog>
-
-    <ModalDialog v-if="isDev && dialog === 'dev'" :title="$t('settings.dev')">
-      <div class="dev-tools">
-        <label class="dev">
-          <input v-model="progress.devOpenAll" type="checkbox" />
-          {{ $t('home.devOpenAll') }}
-        </label>
-        <button class="secondary" @click="progress.unlockAll()">{{ $t('settings.unlockAll') }}</button>
-        <button class="secondary" @click="purchase.resetForDev(false)">{{ $t('settings.resetPurchaseCache') }}</button>
-        <button class="secondary" @click="purchase.resetForDev(true)">{{ $t('settings.resetPurchaseStore') }}</button>
-        <button class="secondary" @click="progress.reset()">{{ $t('settings.resetProgress') }}</button>
-        <!-- The hidden keys show on the pictures again. -->
-        <button class="secondary" @click="progress.resetKeys()">{{ $t('settings.resetKeys') }}</button>
-        <button @click="dialog = null">{{ $t('common.close') }}</button>
       </div>
     </ModalDialog>
   </main>
@@ -429,30 +408,6 @@ button,
 
 button {
   font-size: 18px;
-}
-
-.dev {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--muted);
-}
-
-.dev-tools {
-  display: grid;
-  gap: 8px;
-}
-
-.dev-button {
-  align-self: center;
-  padding: 8px 16px;
-  font-size: 15px;
-}
-
-.dev input {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--accent);
 }
 
 .play {

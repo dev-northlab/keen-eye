@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // Settings list: the Settings screen and the level's pause menu both show it.
+import DevToolsDialog from './DevToolsDialog.vue'
 import LanguageSelect from './LanguageSelect.vue'
 import ModeSwitch from './ModeSwitch.vue'
 import ThemeSwitch from './ThemeSwitch.vue'
@@ -13,13 +14,14 @@ const purchase = usePurchaseStore()
 
 const percent = (v: number) => `${Math.round(v * 100)}%`
 
-// TEMPORARY promo code for testing staging builds (see PROMO_CODE in stores/purchase.ts).
-const promoCode = ref('')
-const promoInvalid = ref(false)
-async function applyPromo() {
-  promoInvalid.value = !(await purchase.applyPromo(promoCode.value))
-  if (!promoInvalid.value) promoCode.value = ''
+// TEMPORARY code for testing staging builds: turns on developer mode (see DEVELOPER_CODE in stores/settings.ts).
+const developerCode = ref('')
+const developerInvalid = ref(false)
+function applyDeveloperCode() {
+  developerInvalid.value = !settings.enableDeveloper(developerCode.value)
+  if (!developerInvalid.value) developerCode.value = ''
 }
+const devToolsOpen = ref(false)
 </script>
 
 <template>
@@ -89,31 +91,30 @@ async function applyPromo() {
     <button class="row link" @click="purchase.dialogOpen = true">
       <span>{{ $t('settings.fullGame') }}</span>
       <span class="muted">
-        {{ purchase.owned ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›
+        {{ purchase.fullGame ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›
       </span>
     </button>
 
-    <div v-if="purchase.promo" class="row">
-      <span>
-        {{ $t('settings.promo') }}
-        <small>{{ $t('settings.promoApplied') }}</small>
-      </span>
-      <button class="secondary" @click="purchase.resetPromo()">{{ $t('settings.promoReset') }}</button>
-    </div>
-    <form v-else class="row column" @submit.prevent="applyPromo">
-      <label for="promo-code">{{ $t('settings.promo') }}</label>
-      <div class="promo">
+    <button v-if="settings.developer" class="row link" @click="devToolsOpen = true">
+      <span>{{ $t('settings.dev') }}</span>
+      <span class="muted">›</span>
+    </button>
+    <form v-else class="row column" @submit.prevent="applyDeveloperCode">
+      <label for="developer-code">{{ $t('settings.developer') }}</label>
+      <div class="code">
         <input
-          id="promo-code"
-          v-model="promoCode"
+          id="developer-code"
+          v-model="developerCode"
           inputmode="numeric"
           autocomplete="off"
-          @input="promoInvalid = false"
+          @input="developerInvalid = false"
         />
-        <button type="submit" :disabled="!promoCode.trim()">{{ $t('settings.promoApply') }}</button>
+        <button type="submit" :disabled="!developerCode.trim()">{{ $t('settings.developerApply') }}</button>
       </div>
-      <small v-if="promoInvalid" class="error" role="alert">{{ $t('settings.promoInvalid') }}</small>
+      <small v-if="developerInvalid" class="error" role="alert">{{ $t('settings.developerInvalid') }}</small>
     </form>
+
+    <DevToolsDialog v-if="settings.developer && devToolsOpen" @close="devToolsOpen = false" />
   </main>
 </template>
 
@@ -191,12 +192,12 @@ input[type='checkbox'] {
   color: var(--muted);
 }
 
-.promo {
+.code {
   display: flex;
   gap: 8px;
 }
 
-.promo input {
+.code input {
   flex: 1;
   min-width: 0;
   font: inherit;

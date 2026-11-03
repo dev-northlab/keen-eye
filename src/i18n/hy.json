@@ -184,11 +184,10 @@
     "fullGameOpen": "Բացել բոլոր մակարդակները",
     "resetPurchaseCache": "Մոռանալ գնումը (քեշ)",
     "resetPurchaseStore": "Մոռանալ գնումը («խանութում» նույնպես)",
-    "promo": "Պրոմոկոդ",
-    "promoApply": "Կիրառել",
-    "promoInvalid": "Սխալ կոդ",
-    "promoApplied": "Բոլոր մակարդակները բացված են",
-    "promoReset": "Չեղարկել"
+    "developer": "Մշակող",
+    "developerApply": "Կիրառել",
+    "developerInvalid": "Սխալ կոդ",
+    "devOff": "Անջատել մշակողի ռեժիմը"
   },
   "common": {
     "back": "Հետ",
