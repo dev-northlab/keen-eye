@@ -160,7 +160,8 @@
     "promo": "Պրոմոկոդ",
     "promoApply": "Կիրառել",
     "promoInvalid": "Սխալ կոդ",
-    "promoApplied": "Բոլոր մակարդակները բացված են"
+    "promoApplied": "Բոլոր մակարդակները բացված են",
+    "promoReset": "Չեղարկել"
   },
   "common": {
     "back": "Հետ",

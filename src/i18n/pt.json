@@ -160,7 +160,8 @@
     "promo": "Código promocional",
     "promoApply": "Aplicar",
     "promoInvalid": "Código incorreto",
-    "promoApplied": "Todas as fases desbloqueadas"
+    "promoApplied": "Todas as fases desbloqueadas",
+    "promoReset": "Redefinir"
   },
   "common": {
     "back": "Voltar",

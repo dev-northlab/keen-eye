@@ -160,7 +160,8 @@
     "promo": "Cod promoțional",
     "promoApply": "Aplică",
     "promoInvalid": "Cod greșit",
-    "promoApplied": "Toate nivelurile deblocate"
+    "promoApplied": "Toate nivelurile deblocate",
+    "promoReset": "Resetează"
   },
   "common": {
     "back": "Înapoi",

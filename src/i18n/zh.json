@@ -160,7 +160,8 @@
     "promo": "兑换码",
     "promoApply": "兑换",
     "promoInvalid": "兑换码错误",
-    "promoApplied": "所有关卡已解锁"
+    "promoApplied": "所有关卡已解锁",
+    "promoReset": "重置"
   },
   "common": {
     "back": "返回",

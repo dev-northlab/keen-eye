@@ -160,7 +160,8 @@
     "promo": "Promo kód",
     "promoApply": "Použít",
     "promoInvalid": "Nesprávný kód",
-    "promoApplied": "Všechny úrovně odemčeny"
+    "promoApplied": "Všechny úrovně odemčeny",
+    "promoReset": "Zrušit"
   },
   "common": {
     "back": "Zpět",

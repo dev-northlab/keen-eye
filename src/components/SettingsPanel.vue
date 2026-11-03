@@ -99,8 +99,11 @@ async function applyPromo() {
     </button>
 
     <div v-if="purchase.promo" class="row">
-      <span>{{ $t('settings.promo') }}</span>
-      <span class="muted">{{ $t('settings.promoApplied') }}</span>
+      <span>
+        {{ $t('settings.promo') }}
+        <small>{{ $t('settings.promoApplied') }}</small>
+      </span>
+      <button class="secondary" @click="purchase.resetPromo()">{{ $t('settings.promoReset') }}</button>
     </div>
     <form v-else class="row column" @submit.prevent="applyPromo">
       <label for="promo-code">{{ $t('settings.promo') }}</label>

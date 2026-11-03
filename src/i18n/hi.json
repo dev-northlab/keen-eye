@@ -160,7 +160,8 @@
     "promo": "प्रोमो कोड",
     "promoApply": "लागू करें",
     "promoInvalid": "गलत कोड",
-    "promoApplied": "सभी लेवल अनलॉक हो गए"
+    "promoApplied": "सभी लेवल अनलॉक हो गए",
+    "promoReset": "रीसेट करें"
   },
   "common": {
     "back": "वापस",

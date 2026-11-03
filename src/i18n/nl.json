@@ -160,7 +160,8 @@
     "promo": "Promotiecode",
     "promoApply": "Toepassen",
     "promoInvalid": "Onjuiste code",
-    "promoApplied": "Alle levels ontgrendeld"
+    "promoApplied": "Alle levels ontgrendeld",
+    "promoReset": "Resetten"
   },
   "common": {
     "back": "Terug",

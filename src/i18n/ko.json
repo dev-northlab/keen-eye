@@ -160,7 +160,8 @@
     "promo": "프로모션 코드",
     "promoApply": "적용",
     "promoInvalid": "잘못된 코드",
-    "promoApplied": "모든 레벨 잠금 해제됨"
+    "promoApplied": "모든 레벨 잠금 해제됨",
+    "promoReset": "초기화"
   },
   "common": {
     "back": "뒤로",

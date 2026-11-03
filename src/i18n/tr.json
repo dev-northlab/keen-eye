@@ -160,7 +160,8 @@
     "promo": "Promosyon kodu",
     "promoApply": "Uygula",
     "promoInvalid": "Yanlış kod",
-    "promoApplied": "Tüm bölümlerin kilidi açıldı"
+    "promoApplied": "Tüm bölümlerin kilidi açıldı",
+    "promoReset": "Sıfırla"
   },
   "common": {
     "back": "Geri",

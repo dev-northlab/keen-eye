@@ -160,7 +160,8 @@
     "promo": "Промокод",
     "promoApply": "Приложи",
     "promoInvalid": "Грешен код",
-    "promoApplied": "Всички нива са отключени"
+    "promoApplied": "Всички нива са отключени",
+    "promoReset": "Нулирай"
   },
   "common": {
     "back": "Назад",

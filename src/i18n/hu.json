@@ -160,7 +160,8 @@
     "promo": "Promóciós kód",
     "promoApply": "Beváltás",
     "promoInvalid": "Hibás kód",
-    "promoApplied": "Minden pálya feloldva"
+    "promoApplied": "Minden pálya feloldva",
+    "promoReset": "Visszavonás"
   },
   "common": {
     "back": "Vissza",

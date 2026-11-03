@@ -160,7 +160,8 @@
     "promo": "Promo code",
     "promoApply": "Apply",
     "promoInvalid": "Wrong code",
-    "promoApplied": "All levels unlocked"
+    "promoApplied": "All levels unlocked",
+    "promoReset": "Reset"
   },
   "common": {
     "back": "Back",

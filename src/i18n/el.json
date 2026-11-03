@@ -160,7 +160,8 @@
     "promo": "Κωδικός προσφοράς",
     "promoApply": "Εφαρμογή",
     "promoInvalid": "Λάθος κωδικός",
-    "promoApplied": "Όλα τα επίπεδα ξεκλειδώθηκαν"
+    "promoApplied": "Όλα τα επίπεδα ξεκλειδώθηκαν",
+    "promoReset": "Επαναφορά"
   },
   "common": {
     "back": "Πίσω",

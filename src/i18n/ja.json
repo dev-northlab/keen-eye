@@ -160,7 +160,8 @@
     "promo": "プロモコード",
     "promoApply": "適用",
     "promoInvalid": "コードが正しくありません",
-    "promoApplied": "全レベルが解放されました"
+    "promoApplied": "全レベルが解放されました",
+    "promoReset": "リセット"
   },
   "common": {
     "back": "戻る",

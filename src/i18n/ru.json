@@ -160,7 +160,8 @@
     "promo": "Промокод",
     "promoApply": "Применить",
     "promoInvalid": "Неверный код",
-    "promoApplied": "Все уровни открыты"
+    "promoApplied": "Все уровни открыты",
+    "promoReset": "Сбросить"
   },
   "common": {
     "back": "Назад",

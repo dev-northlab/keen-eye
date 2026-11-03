@@ -160,7 +160,8 @@
     "promo": "Promo-Code",
     "promoApply": "Einlösen",
     "promoInvalid": "Falscher Code",
-    "promoApplied": "Alle Level freigeschaltet"
+    "promoApplied": "Alle Level freigeschaltet",
+    "promoReset": "Zurücksetzen"
   },
   "common": {
     "back": "Zurück",

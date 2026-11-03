@@ -160,7 +160,8 @@
     "promo": "Kod promocyjny",
     "promoApply": "Zastosuj",
     "promoInvalid": "Nieprawidłowy kod",
-    "promoApplied": "Wszystkie poziomy odblokowane"
+    "promoApplied": "Wszystkie poziomy odblokowane",
+    "promoReset": "Resetuj"
   },
   "common": {
     "back": "Wstecz",
