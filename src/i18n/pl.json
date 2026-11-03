@@ -184,11 +184,10 @@
     "fullGameOpen": "Odblokuj wszystkie poziomy",
     "resetPurchaseCache": "Zapomnij zakup (pamięć podręczna)",
     "resetPurchaseStore": "Zapomnij zakup (także w „sklepie”)",
-    "promo": "Kod promocyjny",
-    "promoApply": "Zastosuj",
-    "promoInvalid": "Nieprawidłowy kod",
-    "promoApplied": "Wszystkie poziomy odblokowane",
-    "promoReset": "Resetuj"
+    "developer": "Deweloper",
+    "developerApply": "Zastosuj",
+    "developerInvalid": "Nieprawidłowy kod",
+    "devOff": "Wyłącz tryb dewelopera"
   },
   "common": {
     "back": "Wstecz",

@@ -39,9 +39,9 @@ async function restore() {
 
     <div class="body">
       <!-- Right after a purchase or restore its own message says it. -->
-      <p v-if="purchase.owned && !message">{{ $t('purchase.owned') }}</p>
+      <p v-if="purchase.fullGame && !message">{{ $t('purchase.fullGame') }}</p>
 
-      <template v-if="!purchase.owned">
+      <template v-if="!purchase.fullGame">
         <p class="tagline">{{ $t('purchase.tagline') }}</p>
         <ul class="points">
           <li>
@@ -93,7 +93,7 @@ async function restore() {
       <p v-if="message" class="message" :class="message" role="status">{{ $t(`purchase.${message}`) }}</p>
 
       <button class="secondary" @click="close">{{ $t('common.close') }}</button>
-      <button v-if="!purchase.owned" class="restore" :disabled="purchase.busy" @click="restore">
+      <button v-if="!purchase.fullGame" class="restore" :disabled="purchase.busy" @click="restore">
         {{ $t('purchase.restore') }}
       </button>
     </div>

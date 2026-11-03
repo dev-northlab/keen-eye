@@ -184,11 +184,10 @@
     "fullGameOpen": "Unlock all levels",
     "resetPurchaseCache": "Forget purchase (cache)",
     "resetPurchaseStore": "Forget purchase (also in the \"store\")",
-    "promo": "Promo code",
-    "promoApply": "Apply",
-    "promoInvalid": "Wrong code",
-    "promoApplied": "All levels unlocked",
-    "promoReset": "Reset"
+    "developer": "Developer",
+    "developerApply": "Apply",
+    "developerInvalid": "Wrong code",
+    "devOff": "Turn off developer mode"
   },
   "common": {
     "back": "Back",

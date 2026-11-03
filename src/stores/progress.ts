@@ -7,6 +7,7 @@ import { allLevels, levelById, levels } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 import { isFreeLevel, usePurchaseStore } from './purchase.ts'
+import { useSettingsStore } from './settings.ts'
 
 const KEY = 'progress'
 const DEV_OPEN_ALL_KEY = 'devOpenAll'
@@ -61,8 +62,9 @@ export const useProgressStore = defineStore('progress', () => {
   const keys = ref<string[]>([])
   /** Shared hint pool of normal mode (calm mode hints are unlimited). */
   const hints = ref(START_HINTS)
-  /** Development only (Home checkbox): every level is playable, ignoring order and the purchase. */
+  /** Developer tools checkbox: every level is playable, ignoring order and the purchase (only in developer mode). */
   const devOpenAll = ref(false)
+  const openAll = computed(() => devOpenAll.value && useSettingsStore().developer)
 
   const save = () =>
     saveJson(KEY, { levels: records.value, hints: hints.value, timeTravel: timeTravel.value, cases: solvedCases.value, keys: keys.value })
@@ -74,7 +76,7 @@ export const useProgressStore = defineStore('progress', () => {
     solvedCases.value = parseCases(raw.cases)
     keys.value = parseKeys(raw.keys)
     hints.value = parseHints(raw.hints)
-    devOpenAll.value = import.meta.env.DEV && (await loadJson(DEV_OPEN_ALL_KEY)) === true
+    devOpenAll.value = (await loadJson(DEV_OPEN_ALL_KEY)) === true
   }
 
   watch(devOpenAll, (open) => saveJson(DEV_OPEN_ALL_KEY, open))
@@ -94,7 +96,7 @@ export const useProgressStore = defineStore('progress', () => {
    */
   function isReached(id: number): boolean {
     const level = levelById(id)
-    if (!level || devOpenAll.value) return !!level
+    if (!level || openAll.value) return !!level
     if (level.chapter === TREASURY_CHAPTER.id) return allKeysFound.value
     const own = chapterLevels(chapterById(level.chapter)!)
     const i = own.indexOf(level)
@@ -103,7 +105,7 @@ export const useProgressStore = defineStore('progress', () => {
   }
 
   /** A paid level while the full game is not bought. */
-  const needsPurchase = (id: number) => !devOpenAll.value && !isFreeLevel(id) && !usePurchaseStore().owned
+  const needsPurchase = (id: number) => !openAll.value && !isFreeLevel(id) && !usePurchaseStore().fullGame
 
   /** Playable: reached in order and, for paid levels, bought. */
   const isUnlocked = (id: number) => isReached(id) && !needsPurchase(id)

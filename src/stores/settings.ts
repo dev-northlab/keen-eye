@@ -7,6 +7,9 @@ import { setTheme, systemTheme, type Theme } from '../services/theme.ts'
 import { loadJson, saveJson } from '../services/storage.ts'
 
 const KEY = 'settings'
+// TEMPORARY, for testing staging builds: this code turns on developer mode (the Development tools in Settings).
+// Remove DEVELOPER_CODE, `developer`/`enableDeveloper` and the code row in SettingsPanel before release.
+const DEVELOPER_CODE = '6561'
 
 export type GameMode = 'normal' | 'calm'
 
@@ -40,6 +43,8 @@ export const useSettingsStore = defineStore('settings', () => {
   const season = ref<Season>('summer')
   /** Follows the system until the player picks one (then stored). */
   const theme = ref<Theme>(systemTheme())
+  /** Turned on by the testing code: Settings show the Development tools. */
+  const developer = ref(false)
 
   const effectiveLocale = computed(() => locale.value ?? systemLocale())
   const effectiveReduceMotion = computed(() => reduceMotion.value ?? systemReducedMotion())
@@ -68,9 +73,17 @@ export const useSettingsStore = defineStore('settings', () => {
     vibration.value = bool(raw.vibration, true)
     season.value = isSeason(raw.season) ? raw.season : 'summer'
     theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
+    developer.value = raw.developer === true
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme], () =>
+  /** True if the code is right; then developer mode stays on on this device. */
+  function enableDeveloper(code: string): boolean {
+    if (code.trim() !== DEVELOPER_CODE) return false
+    developer.value = true
+    return true
+  }
+
+  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer], () =>
     saveJson(KEY, {
       locale: locale.value,
       reduceMotion: reduceMotion.value,
@@ -80,8 +93,9 @@ export const useSettingsStore = defineStore('settings', () => {
       vibration: vibration.value,
       season: season.value,
       theme: theme.value,
+      developer: developer.value,
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, calm, effectiveLocale, effectiveReduceMotion, load }
+  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
 })

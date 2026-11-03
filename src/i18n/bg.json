@@ -184,11 +184,10 @@
     "fullGameOpen": "Отключи всички нива",
     "resetPurchaseCache": "Забрави покупката (кеш)",
     "resetPurchaseStore": "Забрави покупката (и в „магазина“)",
-    "promo": "Промокод",
-    "promoApply": "Приложи",
-    "promoInvalid": "Грешен код",
-    "promoApplied": "Всички нива са отключени",
-    "promoReset": "Нулирай"
+    "developer": "Разработчик",
+    "developerApply": "Приложи",
+    "developerInvalid": "Грешен код",
+    "devOff": "Изключи режима за разработчици"
   },
   "common": {
     "back": "Назад",

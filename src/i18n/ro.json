@@ -184,11 +184,10 @@
     "fullGameOpen": "Deblochează toate nivelurile",
     "resetPurchaseCache": "Uită achiziția (cache)",
     "resetPurchaseStore": "Uită achiziția (și în „magazin”)",
-    "promo": "Cod promoțional",
-    "promoApply": "Aplică",
-    "promoInvalid": "Cod greșit",
-    "promoApplied": "Toate nivelurile deblocate",
-    "promoReset": "Resetează"
+    "developer": "Dezvoltator",
+    "developerApply": "Aplică",
+    "developerInvalid": "Cod greșit",
+    "devOff": "Dezactivează modul dezvoltator"
   },
   "common": {
     "back": "Înapoi",

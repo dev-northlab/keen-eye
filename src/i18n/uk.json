@@ -184,11 +184,10 @@
     "fullGameOpen": "Відкрити всі рівні",
     "resetPurchaseCache": "Забути покупку (кеш)",
     "resetPurchaseStore": "Забути покупку (і в «магазині»)",
-    "promo": "Промокод",
-    "promoApply": "Застосувати",
-    "promoInvalid": "Неправильний код",
-    "promoApplied": "Усі рівні відкрито",
-    "promoReset": "Скинути"
+    "developer": "Розробник",
+    "developerApply": "Застосувати",
+    "developerInvalid": "Неправильний код",
+    "devOff": "Вимкнути режим розробника"
   },
   "common": {
     "back": "Назад",
