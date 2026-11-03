@@ -29,6 +29,10 @@ function turnOff() {
         <input v-model="progress.devOpenAll" type="checkbox" />
         {{ $t('home.devOpenAll') }}
       </label>
+      <label class="dev">
+        <input v-model="settings.devShowPlaces" type="checkbox" />
+        {{ $t('home.devShowPlaces') }}
+      </label>
       <button class="secondary" @click="progress.unlockAll()">{{ $t('settings.unlockAll') }}</button>
       <button class="secondary" @click="purchase.resetForDev(false)">{{ $t('settings.resetPurchaseCache') }}</button>
       <button v-if="isDev" class="secondary" @click="purchase.resetForDev(true)">{{ $t('settings.resetPurchaseStore') }}</button>

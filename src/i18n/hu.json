@@ -8,7 +8,8 @@
     "settings": "Beállítások",
     "stars": "Csillagok: {n}",
     "needsPurchase": "{n}. pálya — teljes verzió",
-    "devOpenAll": "Minden pálya megnyitása (teszt)"
+    "devOpenAll": "Minden pálya megnyitása (teszt)",
+    "devShowPlaces": "Helyek mutatása a pályákon (teszt)"
   },
   "season": {
     "label": "Évszak",

@@ -8,7 +8,8 @@
     "settings": "Nastavení",
     "stars": "Hvězdy: {n}",
     "needsPurchase": "Úroveň {n} — plná verze",
-    "devOpenAll": "Otevřít všechny úrovně (test)"
+    "devOpenAll": "Otevřít všechny úrovně (test)",
+    "devShowPlaces": "Ukázat místa v úrovních (test)"
   },
   "season": {
     "label": "Roční období",

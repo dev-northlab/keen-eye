@@ -8,7 +8,8 @@
     "settings": "Setări",
     "stars": "Stele: {n}",
     "needsPurchase": "Nivelul {n} — jocul complet",
-    "devOpenAll": "Deschide toate nivelurile (test)"
+    "devOpenAll": "Deschide toate nivelurile (test)",
+    "devShowPlaces": "Arată locurile în niveluri (test)"
   },
   "season": {
     "label": "Anotimp",

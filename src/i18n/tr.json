@@ -8,7 +8,8 @@
     "settings": "Ayarlar",
     "stars": "Yıldız: {n}",
     "needsPurchase": "Bölüm {n} — tam sürüm",
-    "devOpenAll": "Tüm bölümleri aç (test)"
+    "devOpenAll": "Tüm bölümleri aç (test)",
+    "devShowPlaces": "Bölümlerde yerleri göster (test)"
   },
   "season": {
     "label": "Mevsim",

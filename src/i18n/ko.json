@@ -8,7 +8,8 @@
     "settings": "설정",
     "stars": "별: {n}",
     "needsPurchase": "레벨 {n} — 정식판",
-    "devOpenAll": "모든 레벨 열기 (테스트)"
+    "devOpenAll": "모든 레벨 열기 (테스트)",
+    "devShowPlaces": "레벨에서 위치 보기 (테스트)"
   },
   "season": {
     "label": "계절",

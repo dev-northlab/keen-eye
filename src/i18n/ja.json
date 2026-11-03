@@ -8,7 +8,8 @@
     "settings": "設定",
     "stars": "星：{n}",
     "needsPurchase": "レベル {n} — 完全版",
-    "devOpenAll": "全レベルを開く（テスト）"
+    "devOpenAll": "全レベルを開く（テスト）",
+    "devShowPlaces": "レベルで場所を見る（テスト）"
   },
   "season": {
     "label": "季節",

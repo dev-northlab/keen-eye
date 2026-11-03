@@ -8,7 +8,8 @@
     "settings": "Ajustes",
     "stars": "Estrellas: {n}",
     "needsPurchase": "Nivel {n}: juego completo",
-    "devOpenAll": "Abrir todos los niveles (prueba)"
+    "devOpenAll": "Abrir todos los niveles (prueba)",
+    "devShowPlaces": "Mostrar lugares en los niveles (prueba)"
   },
   "season": {
     "label": "Estación",

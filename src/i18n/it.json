@@ -8,7 +8,8 @@
     "settings": "Impostazioni",
     "stars": "Stelle: {n}",
     "needsPurchase": "Livello {n} — gioco completo",
-    "devOpenAll": "Apri tutti i livelli (test)"
+    "devOpenAll": "Apri tutti i livelli (test)",
+    "devShowPlaces": "Mostra i punti nei livelli (test)"
   },
   "season": {
     "label": "Stagione",

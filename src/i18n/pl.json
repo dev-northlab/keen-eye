@@ -8,7 +8,8 @@
     "settings": "Ustawienia",
     "stars": "Gwiazdki: {n}",
     "needsPurchase": "Poziom {n} — pełna wersja",
-    "devOpenAll": "Otwórz wszystkie poziomy (test)"
+    "devOpenAll": "Otwórz wszystkie poziomy (test)",
+    "devShowPlaces": "Pokaż miejsca w poziomach (test)"
   },
   "season": {
     "label": "Pora roku",

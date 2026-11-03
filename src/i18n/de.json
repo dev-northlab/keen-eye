@@ -8,7 +8,8 @@
     "settings": "Einstellungen",
     "stars": "Sterne: {n}",
     "needsPurchase": "Level {n} — Vollversion",
-    "devOpenAll": "Alle Level öffnen (Test)"
+    "devOpenAll": "Alle Level öffnen (Test)",
+    "devShowPlaces": "Stellen in Leveln zeigen (Test)"
   },
   "season": {
     "label": "Jahreszeit",

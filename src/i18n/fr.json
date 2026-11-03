@@ -8,7 +8,8 @@
     "settings": "Réglages",
     "stars": "Étoiles : {n}",
     "needsPurchase": "Niveau {n} — jeu complet",
-    "devOpenAll": "Ouvrir tous les niveaux (test)"
+    "devOpenAll": "Ouvrir tous les niveaux (test)",
+    "devShowPlaces": "Montrer les endroits dans les niveaux (test)"
   },
   "season": {
     "label": "Saison",

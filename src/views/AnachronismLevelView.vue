@@ -54,8 +54,6 @@ const result = ref<LevelResult | null>(null)
 let scene: AnachronismScene | undefined
 /** Source of the level's SVG picture, loaded once when the screen opens. */
 let source = ''
-const isDev = import.meta.env.DEV
-
 const total = level.items.length
 
 const formatTime = (sec: number) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`
@@ -197,8 +195,8 @@ onBeforeUnmount(() => {
       <ToolButton tone="hint" :label="`${$t('level.hint')} ${calm ? '∞' : progress.hints}`" :disabled="!canHint" @click="showHint">
         <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </ToolButton>
-      <!-- Development only: outlines all items in red. -->
-      <ToolButton v-if="isDev" tone="danger" :label="$t('level.revealAll')" :disabled="!!result" @click="scene?.revealAll()">
+      <!-- Developer mode (a checkbox in the developer tools): outlines all items in red. -->
+      <ToolButton v-if="settings.showPlaces" tone="danger" :label="$t('level.revealAll')" :disabled="!!result" @click="scene?.revealAll()">
         <svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
       </ToolButton>
       <ToolButton :label="$t('level.resetZoom')" :disabled="zoom === 1" @click="scene?.resetZoom()">
