@@ -11,8 +11,13 @@ in the texts match the game. When a level, mode or language is added, update eve
 | `description.txt` | Full description | Description | 4000 |
 | `ios-subtitle.txt` | — | Subtitle | 30 |
 | `ios-keywords.txt` | — | Keywords (comma separated, no spaces) | 100 |
+| `screenshots.txt` | captions of the screenshots, one line per shot (`npm run store-screenshots`) | same | 45 |
 
 App Store Connect has no Armenian, Bulgarian or Filipino, so `hy`, `bg` and `fil` have only the Google Play files.
+
+Screenshots are rendered, not stored: `npm run store-screenshots` writes `store-screenshots/` — `play-phone/` (Phone
+screenshots), `ios-iphone-6.9/` (iPhone 6.9" display), `ios-ipad-13/` (iPad 13" display; also fine as Play
+10-inch tablet screenshots) and `feature-graphic/` (Play feature graphic), one folder or file per language.
 
 ## Language codes
 

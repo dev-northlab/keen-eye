@@ -25,3 +25,6 @@ dist-ssr
 
 # Level previews (npm run preview-levels)
 previews
+
+# Store screenshots (npm run store-screenshots)
+store-screenshots

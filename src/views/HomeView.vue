@@ -228,9 +228,12 @@ function play() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* "safe": a menu taller than the screen scrolls from its top instead of losing it. */
+  justify-content: safe center;
+  overflow-y: auto;
   gap: 12px;
-  padding: 24px 16px;
+  /* The top padding keeps the title below the corner switches (12px + 48px) when the menu is tall. */
+  padding: 68px 16px 24px;
 }
 
 h1 {

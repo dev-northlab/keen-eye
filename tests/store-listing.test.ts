@@ -69,6 +69,15 @@ describe('store listing', () => {
     }
   })
 
+  test('every language has a short caption for each screenshot (scripts/store-screenshots.ts)', () => {
+    const count = read('en', 'screenshots.txt').split('\n').length
+    for (const locale of locales) {
+      const lines = read(locale, 'screenshots.txt').split('\n')
+      assert.equal(lines.length, count, locale)
+      assert.ok(lines.every((l) => l.trim() !== '' && [...l].length <= 45), locale)
+    }
+  })
+
   test('descriptions name the current numbers of levels, languages and countries', () => {
     const levels = String(allLevels.length + timeTravelLevels.length)
     const numbers = [levels, String(locales.length), String(travelLevels.length)]

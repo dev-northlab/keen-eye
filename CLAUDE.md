@@ -26,6 +26,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm run og` — renders `public/og-image.png` (1200×630 link preview of the web version, Open Graph/Twitter tags in
   `index.html`) from the home screen's own meadow (`MeadowScene.vue` via Vite SSR) with the title and play button;
   needs the Roboto font installed
+- `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
+  installed Chrome (`playwright-core`, `/usr/bin/google-chrome`) with a seeded mid-game progress, taps some
+  differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
+  shot of `SHOTS`) at the store sizes — Play phone 1080×1920, iPhone 6.9" 1290×2796, iPad 13" 2048×2732 — plus the
+  Play feature graphic 1024×500, into `store-screenshots/` (gitignored); all languages take about half an hour
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
