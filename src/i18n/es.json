@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye es un juego de buscar diferencias con escenas vivas. Sin anuncios y sin internet.",
     "version": "Versión {v}",
     "privacy": "Privacidad",
-    "privacyText": "No recopilamos ningún dato. El progreso y los ajustes se guardan solo en tu dispositivo.",
+    "privacyPoints": {
+      "noData": "No recopilamos ningún dato",
+      "onDevice": "El progreso y los ajustes se guardan solo en tu dispositivo",
+      "noAds": "Sin anuncios ni rastreo"
+    },
     "contact": "Contáctanos",
-    "contactText": "¿Tienes una pregunta o una idea, o encontraste un error? Escríbenos: leemos cada mensaje y te responderemos con gusto."
+    "contactText": "¿Tienes una pregunta o una idea, o encontraste un error? Escríbenos: leemos cada mensaje y te responderemos con gusto.",
+    "writeUs": "Escríbenos",
+    "copyEmail": "Copiar dirección",
+    "emailCopied": "Dirección copiada"
   },
   "about": {
     "shareGame": "Compartir el juego",
     "social": "Compartir en redes sociales",
     "rate": "Valorar el juego",
+    "updates": {
+      "title": "El juego crece",
+      "text": "Mejoramos los niveles existentes y añadimos otros nuevos en actualizaciones gratuitas."
+    },
     "features": "Qué incluye",
     "stats": {
       "levels": "Niveles",
@@ -478,6 +489,7 @@
   },
   "purchase": {
     "title": "Juego completo",
+    "tagline": "Disfruta del juego sin anuncios ni internet",
     "owned": "El juego completo está desbloqueado. ¡Gracias!",
     "what": "Qué obtienes",
     "allLevels": "Todos los niveles: {n} ahora y todos los futuros niveles del juego principal",
@@ -485,14 +497,12 @@
     "noAds": "Sin anuncios ni suscripción",
     "once": "Una sola compra para siempre, funciona sin conexión",
     "buy": "Comprar por {price}",
-    "buyNoPrice": "Comprar",
     "restore": "Restaurar compras",
     "wait": "Espera…",
     "success": "¡Listo! Todos los niveles están desbloqueados.",
     "restored": "Compra restaurada.",
     "none": "No se encontraron compras.",
     "error": "No se pudo conectar con la tienda. Inténtalo más tarde.",
-    "play": "Jugar",
     "unavailable": "Tienda no disponible"
   },
   "timeMode": {

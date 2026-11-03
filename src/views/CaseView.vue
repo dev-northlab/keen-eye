@@ -16,6 +16,7 @@ import { SUSPECT_ART } from '../levels/detective/suspects.ts'
 import { playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // One "detective" case (docs/detective-mode.md): its story, the scenes, the notebook of the clues
 // found so far and the suspects. Once every scene is done the player names the culprit: a wrong
@@ -23,6 +24,7 @@ import { useProgressStore } from '../stores/progress.ts'
 
 const props = defineProps<{ case: string }>()
 const router = useRouter()
+const purchase = usePurchaseStore()
 const progress = useProgressStore()
 const { t } = useI18n()
 
@@ -61,11 +63,11 @@ async function accuse(suspect: string) {
 }
 
 function open(level: Level) {
-  if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
+  if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
 }
 
-/** Paid scenes stay tappable (they lead to the purchase screen); scenes not reached yet are disabled. */
+/** Paid scenes stay tappable (they open the full-game dialog); scenes not reached yet are disabled. */
 function sceneLabel(level: Level, n: number) {
   const state = progress.needsPurchase(level.id) ? t('map.paid') : progress.isUnlocked(level.id) ? '' : t('map.locked')
   return [t('map.level', { n }), t(`levelTitles.${level.title}`), state].filter(Boolean).join(': ')
@@ -82,7 +84,7 @@ function sceneLabel(level: Level, n: number) {
         <p>{{ $t(`detective.cases.${c.id}.intro`) }}</p>
       </section>
 
-      <button v-if="locked" class="paid" @click="router.push({ name: 'purchase' })">
+      <button v-if="locked" class="paid" @click="purchase.dialogOpen = true">
         <span>{{ $t('detective.paid') }}</span>
         <strong>{{ $t('detective.unlock') }}</strong>
       </button>

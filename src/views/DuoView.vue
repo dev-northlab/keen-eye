@@ -12,6 +12,7 @@ import { CHAPTERS, chapterLevels } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { AVATARS, DUEL_HINTS, NAME_MAX, PLAYER_COLORS, TIME_LIMITS, TURN_LENGTHS, useDuoStore } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // Two players: mode → players and rules → level, then the match. "Other level" after a match
 // comes back straight to the level step (?step=level).
@@ -21,6 +22,7 @@ const STEPS: Step[] = ['mode', 'players', 'level']
 
 const route = useRoute()
 const router = useRouter()
+const purchase = usePurchaseStore()
 const duo = useDuoStore()
 const progress = useProgressStore()
 const { t } = useI18n()
@@ -43,7 +45,7 @@ function chooseMode(mode: MatchMode) {
 const sections = CHAPTERS.map((chapter) => ({ chapter, levels: chapterLevels(chapter) })).filter((s) => s.levels.length)
 
 function play(level: Level) {
-  if (!duo.isAvailable(level)) router.push({ name: 'purchase' })
+  if (!duo.isAvailable(level)) purchase.dialogOpen = true
   else router.push({ name: 'match', params: { id: level.id } })
 }
 

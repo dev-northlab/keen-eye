@@ -13,12 +13,14 @@ import { FLAGS } from '../levels/travel/flags.ts'
 import { TRAVEL_REGIONS, travelLevels } from '../levels/travel/index.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // "Travel" (docs/world-travel-mode.md): the world map with the regions, the places of the chosen
 // region (one level each, open one after another like a category's grid) and the passport button.
 
 const route = useRoute()
 const router = useRouter()
+const purchase = usePurchaseStore()
 const progress = useProgressStore()
 const { t } = useI18n()
 
@@ -38,11 +40,11 @@ const places = computed(() => placesOf(region.value))
 const stamps = computed(() => visited(travelLevels))
 
 function open(level: Level) {
-  if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
+  if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
 }
 
-/** Paid places stay tappable (they lead to the purchase screen); places not reached yet are disabled. */
+/** Paid places stay tappable (they open the full-game dialog); places not reached yet are disabled. */
 function placeLabel(level: Level) {
   const name = `${t(`levelTitles.${level.title}`)}, ${t(`worldTravel.countries.${level.travel!.country}`)}`
   const state = progress.needsPurchase(level.id) ? t('map.paid') : progress.isUnlocked(level.id) ? '' : t('map.locked')

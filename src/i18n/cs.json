@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami. Bez reklam a bez internetu.",
     "version": "Verze {v}",
     "privacy": "Ochrana soukromí",
-    "privacyText": "Nesbíráme vůbec žádná data. Postup a nastavení se ukládají jen ve vašem zařízení.",
+    "privacyPoints": {
+      "noData": "Nesbíráme vůbec žádná data",
+      "onDevice": "Postup a nastavení se ukládají jen ve vašem zařízení",
+      "noAds": "Žádné reklamy ani sledování"
+    },
     "contact": "Kontakt",
-    "contactText": "Máte otázku nebo nápad, nebo jste našli chybu? Napište nám — čteme každou zprávu a rádi odpovíme."
+    "contactText": "Máte otázku nebo nápad, nebo jste našli chybu? Napište nám — čteme každou zprávu a rádi odpovíme.",
+    "writeUs": "Napište nám",
+    "copyEmail": "Kopírovat adresu",
+    "emailCopied": "Adresa zkopírována"
   },
   "about": {
     "shareGame": "Sdílet hru",
     "social": "Sdílet na sociálních sítích",
     "rate": "Ohodnotit hru",
+    "updates": {
+      "title": "Hra roste",
+      "text": "Vylepšujeme stávající úrovně a neustále přidáváme nové v bezplatných aktualizacích."
+    },
     "features": "Co uvnitř najdeš",
     "stats": {
       "levels": "Úrovně",
@@ -478,6 +489,7 @@
   },
   "purchase": {
     "title": "Plná verze",
+    "tagline": "Užijte si hru bez reklam a bez internetu",
     "owned": "Plná verze je odemčena. Děkujeme!",
     "what": "Co získáte",
     "allLevels": "Všechny úrovně: nyní {n} a všechny budoucí úrovně hlavní hry",
@@ -485,14 +497,12 @@
     "noAds": "Bez reklam a bez předplatného",
     "once": "Jeden nákup navždy, funguje offline",
     "buy": "Koupit za {price}",
-    "buyNoPrice": "Koupit",
     "restore": "Obnovit nákupy",
     "wait": "Počkejte prosím…",
     "success": "Hotovo! Všechny úrovně jsou odemčené.",
     "restored": "Nákup obnoven.",
     "none": "Žádné nákupy nenalezeny.",
     "error": "Nepodařilo se spojit s obchodem. Zkuste to později.",
-    "play": "Hrát",
     "unavailable": "Obchod není dostupný"
   },
   "timeMode": {

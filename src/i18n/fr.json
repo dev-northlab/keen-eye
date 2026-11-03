@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye est un jeu des différences avec des scènes vivantes. Sans publicité, sans internet.",
     "version": "Version {v}",
     "privacy": "Confidentialité",
-    "privacyText": "Nous ne collectons aucune donnée. La progression et les réglages restent uniquement sur ton appareil.",
+    "privacyPoints": {
+      "noData": "Nous ne collectons aucune donnée",
+      "onDevice": "La progression et les réglages restent uniquement sur ton appareil",
+      "noAds": "Ni publicité ni pistage"
+    },
     "contact": "Nous contacter",
-    "contactText": "Une question, une idée ou un bug ? Écris-nous : nous lisons chaque message et répondrons avec plaisir."
+    "contactText": "Une question, une idée ou un bug ? Écris-nous : nous lisons chaque message et répondrons avec plaisir.",
+    "writeUs": "Écris-nous",
+    "copyEmail": "Copier l’adresse",
+    "emailCopied": "Adresse copiée"
   },
   "about": {
     "shareGame": "Partager le jeu",
     "social": "Partager sur les réseaux sociaux",
     "rate": "Noter le jeu",
+    "updates": {
+      "title": "Le jeu grandit",
+      "text": "Nous améliorons les niveaux existants et en ajoutons sans cesse de nouveaux dans des mises à jour gratuites."
+    },
     "features": "Au programme",
     "stats": {
       "levels": "Niveaux",
@@ -478,6 +489,7 @@
   },
   "purchase": {
     "title": "Jeu complet",
+    "tagline": "Profite du jeu sans publicité ni internet",
     "owned": "Le jeu complet est débloqué. Merci !",
     "what": "Ce que tu obtiens",
     "allLevels": "Tous les niveaux : {n} aujourd’hui et tous les futurs niveaux du jeu principal",
@@ -485,14 +497,12 @@
     "noAds": "Sans publicité ni abonnement",
     "once": "Un seul achat pour toujours, fonctionne hors ligne",
     "buy": "Acheter pour {price}",
-    "buyNoPrice": "Acheter",
     "restore": "Restaurer les achats",
     "wait": "Patiente…",
     "success": "C’est fait ! Tous les niveaux sont débloqués.",
     "restored": "Achat restauré.",
     "none": "Aucun achat trouvé.",
     "error": "Impossible de joindre le store. Réessaie plus tard.",
-    "play": "Jouer",
     "unavailable": "Store indisponible"
   },
   "timeMode": {

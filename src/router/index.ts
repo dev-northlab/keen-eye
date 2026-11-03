@@ -4,6 +4,7 @@ import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 import AboutView from '../views/AboutView.vue'
 import AnachronismLevelView from '../views/AnachronismLevelView.vue'
 import CaseView from '../views/CaseView.vue'
@@ -16,7 +17,6 @@ import LevelView from '../views/LevelView.vue'
 import MatchView from '../views/MatchView.vue'
 import MemoryLevelView from '../views/MemoryLevelView.vue'
 import PassportView from '../views/PassportView.vue'
-import PurchaseView from '../views/PurchaseView.vue'
 import SettingsView from '../views/SettingsView.vue'
 import TimeTravelView from '../views/TimeTravelView.vue'
 import TravelView from '../views/TravelView.vue'
@@ -61,7 +61,6 @@ export const router = createRouter({
       props: (route) => ({ id: Number(route.params.id) }),
     },
     { path: '/settings', name: 'settings', component: SettingsView },
-    { path: '/full-game', name: 'purchase', component: PurchaseView },
     { path: '/about', name: 'about', component: AboutView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
@@ -72,7 +71,7 @@ export const router = createRouter({
 // screen; not reached yet → its chapter's grid (or the world map). Two-player matches need no order, only the purchase for paid levels.
 // Unknown "find the odd one out" level → home. A "memory" level plays only on its own
 // screen (/level/<id> leads there), no other level does.
-router.beforeEach((to) => {
+router.beforeEach((to, from) => {
   if (to.name === 'chapter') {
     if (to.params.chapter === TRAVEL_CHAPTER.id) return { name: 'travel' }
     if (to.params.chapter === DETECTIVE_CHAPTER.id) return { name: 'detective' }
@@ -88,7 +87,11 @@ router.beforeEach((to) => {
   if (!level) return { name: 'home' }
   if ((to.name === 'memory') !== !!level.memory)
     return level.memory && to.name === 'level' ? { name: 'memory', params: { id } } : { name: 'home' }
-  if (progress.needsPurchase(id)) return { name: 'purchase' }
+  if (progress.needsPurchase(id)) {
+    // Offer the full game over the current screen; a direct link to the level lands on the home screen.
+    usePurchaseStore().dialogOpen = true
+    return from.matched.length ? false : { name: 'home' }
+  }
   if (to.name === 'match') return true
   return progress.isUnlocked(id) ? true : levelsScreen(level)
 })

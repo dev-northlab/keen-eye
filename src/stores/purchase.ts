@@ -30,6 +30,8 @@ export const usePurchaseStore = defineStore('purchase', () => {
   const owned = computed(() => fullGame.value || promo.value)
   const price = ref<string | null>(null)
   const busy = ref(false)
+  /** Whether the full-game dialog is open (mounted once in App.vue, opened from any screen). */
+  const dialogOpen = ref(false)
   /** Bumped on every change, so a slow background sync can't undo a newer purchase. */
   let version = 0
 
@@ -108,5 +110,5 @@ export const usePurchaseStore = defineStore('purchase', () => {
     if (alsoStore) resetStubStore()
   }
 
-  return { fullGame, promo, owned, price, busy, load, sync, buy, restore, applyPromo, resetPromo, resetForDev }
+  return { fullGame, promo, owned, price, busy, dialogOpen, load, sync, buy, restore, applyPromo, resetPromo, resetForDev }
 })

@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye é um jogo de encontrar diferenças com cenas vivas. Sem anúncios, sem internet.",
     "version": "Versão {v}",
     "privacy": "Privacidade",
-    "privacyText": "Não coletamos nenhum dado. O progresso e as configurações ficam só no seu aparelho.",
+    "privacyPoints": {
+      "noData": "Não coletamos nenhum dado",
+      "onDevice": "O progresso e as configurações ficam só no seu aparelho",
+      "noAds": "Sem anúncios e sem rastreamento"
+    },
     "contact": "Fale conosco",
-    "contactText": "Tem uma pergunta, uma ideia ou encontrou um erro? Escreva para nós — lemos todas as mensagens e teremos prazer em responder."
+    "contactText": "Tem uma pergunta, uma ideia ou encontrou um erro? Escreva para nós — lemos todas as mensagens e teremos prazer em responder.",
+    "writeUs": "Escreva para nós",
+    "copyEmail": "Copiar endereço",
+    "emailCopied": "Endereço copiado"
   },
   "about": {
     "shareGame": "Compartilhar o jogo",
     "social": "Compartilhar nas redes sociais",
     "rate": "Avaliar o jogo",
+    "updates": {
+      "title": "O jogo não para de crescer",
+      "text": "Melhoramos os níveis existentes e sempre adicionamos novos em atualizações gratuitas."
+    },
     "features": "O que há no jogo",
     "stats": {
       "levels": "Níveis",
@@ -478,6 +489,7 @@
   },
   "purchase": {
     "title": "Jogo completo",
+    "tagline": "Aproveite o jogo sem anúncios e sem internet",
     "owned": "O jogo completo está desbloqueado. Obrigado!",
     "what": "O que você ganha",
     "allLevels": "Todas as fases: {n} agora e todas as futuras fases do jogo principal",
@@ -485,14 +497,12 @@
     "noAds": "Sem anúncios, sem assinatura",
     "once": "Uma compra para sempre, funciona offline",
     "buy": "Comprar por {price}",
-    "buyNoPrice": "Comprar",
     "restore": "Restaurar compras",
     "wait": "Aguarde…",
     "success": "Pronto! Todas as fases estão desbloqueadas.",
     "restored": "Compra restaurada.",
     "none": "Nenhuma compra encontrada.",
     "error": "Não foi possível acessar a loja. Tente novamente mais tarde.",
-    "play": "Jogar",
     "unavailable": "Loja indisponível"
   },
   "timeMode": {
