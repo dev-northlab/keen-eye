@@ -1,6 +1,6 @@
 // Motion differences: the marquee bulbs blink only on picture B; the balloon bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { balloon, building, car, person, pigeon, skyline, street } from './shapes.ts'
+import { balloon, bollard, building, car, coffeeCup, mailbox, manhole, person, pigeon, sandwichBoard, skyline, street } from './shapes.ts'
 
 /** Film poster; (x, y) = center. Bounds: x ±20, y ±28. */
 const poster = (x: number, y: number, color: string) =>
@@ -56,7 +56,12 @@ export default svgLevel({
       pigeon(660, 360) +
       diff(700, 353, 18, pigeon(700, 360, true), '') +
       car(140, 470, '#ffb703') +
-      car(640, 480, '#3a86ff', true)
+      car(640, 480, '#3a86ff', true) +
+      bollard(140, 358) +
+      sandwichBoard(420, 358) +
+      coffeeCup(525, 358) +
+      mailbox(620, 358) +
+      manhole(400, 472)
     )
   },
 })

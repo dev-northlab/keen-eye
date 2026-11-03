@@ -1,6 +1,6 @@
 // Motion differences: the big firework bursts at another moment on picture B; the lantern swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { balloon, person, skyline } from './shapes.ts'
+import { ball, balloon, bollard, coffeeCup, person, sandwichBoard, shoppingBag, skyline } from './shapes.ts'
 
 /** Firework burst; (x, y) = center. Bounds: radius 26. */
 const burst = (x: number, y: number, color: string) => {
@@ -69,7 +69,12 @@ export default svgLevel({
       diff(300, 408, 20, person(300, 443, '#e63946'), person(300, 443, '#3a86ff')) +
       person(360, 443, '#ffb703', true) +
       diff(376, 383, 34, balloon(376, 371, '#8ac926'), balloon(376, 371, '#ff006e')) +
-      person(480, 443, '#8338ec')
+      person(480, 443, '#8338ec') +
+      shoppingBag(420, 438) +
+      ball(560, 438) +
+      coffeeCup(520, 438) +
+      sandwichBoard(670, 438) +
+      bollard(150, 438)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the bats fly faster on picture B; the drip falls only on B; the glowing crystals pulse faster on B.
 import { svgLevel } from '../helpers.ts'
-import { crab, fish, jellyfish, rock, seaweed, starfish } from './shapes.ts'
+import { bottleMessage, clam, crab, fish, jellyfish, rock, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
 /** Bat, faces right; (x, y) = body center. Bounds: x ±20, y from −10 to +8. */
 const bat = (x: number, y: number) =>
@@ -68,7 +68,12 @@ export default svgLevel({
       diff(300, 470, 20, fish(300, 470, '#8fd8ec', 1.1), fish(300, 470, '#8fd8ec', 1.1, true)) +
       jellyfish(520, 470, '#b38cff') +
       fish(560, 420, '#ffb703', 0.9) +
-      seaweed(240, 500, 1, '#2a9d8f')
+      seaweed(240, 500, 1, '#2a9d8f') +
+      seaUrchin(125, 442) +
+      clam(625, 442) +
+      bottleMessage(300, 412) +
+      seahorse(575, 460) +
+      snorkelMask(770, 462)
     )
   },
 })

@@ -1,6 +1,8 @@
 // Motion differences: the swing swings faster on picture B; the pinwheel turns the other way on B.
+import { butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bench, cityTree, cloud, grass, person, pigeon, sun } from './shapes.ts'
+import { stones } from '../shapes.ts'
+import { bench, cityTree, cloud, coffeeCup, grass, person, pigeon, scooter, skateboard, sun } from './shapes.ts'
 
 /** Swing seat on ropes from the pivot (x, y). Bounds: radius 48 around the pivot. */
 const swing = (x: number, y: number) =>
@@ -73,7 +75,12 @@ export default svgLevel({
       `<rect x="698" y="390" width="4" height="50" fill="#3d4a55"/>` +
       diff(700, 390, 20, spinning(false), spinning(true)) +
       pigeon(240, 480) +
-      tufts
+      tufts +
+      stones(240, 388) +
+      skateboard(520, 482) +
+      scooter(775, 480) +
+      coffeeCup(575, 424) +
+      butterfly(390, 300)
     )
   },
 })

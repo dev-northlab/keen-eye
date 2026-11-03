@@ -1,7 +1,7 @@
 // Motion differences: the chick by the trough bobs faster on picture B; the butterfly flutters only on B.
-import { bird, butterfly } from '../chapter-03/shapes.ts'
+import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, basket, bucket, cloud, fence, flower, FLOWER_COLORS, grass, hen, pick, sun, tree } from '../shapes.ts'
+import { apple, basket, bucket, cat, cloud, fence, flower, FLOWER_COLORS, flowerPot, grass, hen, pick, stones, sun, tree } from '../shapes.ts'
 
 /** Chick; (x, y) = feet. Bounds: x ±9, y from −14 to 0. */
 const chick = (x: number, y: number) =>
@@ -104,7 +104,12 @@ export default svgLevel({
       diff(250, 445, 24, tray(250, 445, '#e05a47'), tray(250, 445, '#e3804a')) +
       `<path d="M440 470q12 -26 34 -8q6 14 -8 22h-22Z" fill="#c9b28a"/><path d="M444 470h30" stroke="#a08a63" stroke-width="2"/>` +
       flowers +
-      tufts
+      tufts +
+      cat(435, 350) +
+      bird(491, 306) +
+      mushroom(375, 470) +
+      stones(640, 398) +
+      flowerPot(165, 348)
     )
   },
 })

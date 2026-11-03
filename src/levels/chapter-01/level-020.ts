@@ -1,6 +1,7 @@
 // Motion differences: the weathervane turns the other way on picture B; the horse's tail swings faster on B.
+import { stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bucket, cloud, fence, grass, hen, sun, tree } from '../shapes.ts'
+import { bucket, cat, chick, cloud, fence, grass, hen, pumpkin, sun, tree, wateringCan } from '../shapes.ts'
 
 /** Horse head looking out of a stable window; (x, y) = window center. Bounds: x ±30, y ±30. */
 const horseHead = (x: number, y: number, coat: string) =>
@@ -83,7 +84,12 @@ export default svgLevel({
       // Hens by the door
       hen(300, 440, true, '#ffffff') +
       diff(360, 440, 36, hen(360, 440, false, '#c9823a'), '') +
-      tufts
+      tufts +
+      chick(420, 472) +
+      cat(490, 368) +
+      wateringCan(50, 430) +
+      stump(250, 410) +
+      pumpkin(640, 385)
     )
   },
 })

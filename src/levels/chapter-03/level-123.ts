@@ -1,6 +1,6 @@
 // Motion differences: the campfire flame flickers faster on picture B; the heron dips its head only on B.
 import { svgLevel } from '../helpers.ts'
-import { fireLogs, flame, pine, rock } from './shapes.ts'
+import { backpack, bluebells, feather, fireLogs, flame, lantern, pine, pineCone, rock } from './shapes.ts'
 
 /** Duck, faces left; (x, y) = waterline. Bounds: x ±14·s, y from −18·s to +2. */
 const duck = (x: number, y: number, s = 1) =>
@@ -77,7 +77,12 @@ export default svgLevel({
       `<path d="M520 470h40M640 476h40" stroke="#8a5a33" stroke-width="7" stroke-linecap="round"/>` +
       heron(660, 386) + diff(670, 330, 22, dip(false), dip(true)) +
       reeds +
-      pine(470, 500, 0.8, '#2f6b4a') + pine(780, 500, 1, '#2a5f44')
+      pine(470, 500, 0.8, '#2f6b4a') + pine(780, 500, 1, '#2a5f44') +
+      backpack(240, 480) +
+      lantern(500, 472) +
+      pineCone(395, 486) +
+      feather(80, 366) +
+      bluebells(690, 456)
     )
   },
 })

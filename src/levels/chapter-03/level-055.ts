@@ -1,6 +1,6 @@
 // Motion differences: the dog runs faster on picture B; the kite flies faster on B; the frisbee spins the other way on B.
 import { svgLevel } from '../helpers.ts'
-import { bush, cloud, floor, oak, pine, sun } from './shapes.ts'
+import { anthill, backpack, bluebells, bush, cloud, feather, floor, oak, pine, sun, wildStrawberry } from './shapes.ts'
 import { dog, person } from '../chapter-02/shapes.ts'
 import { apple } from '../shapes.ts'
 
@@ -60,7 +60,12 @@ export default svgLevel({
       diff(540, 457, 30, running(8), running(4), 'dog') +
       bush(720, 440, 1.2) +
       bush(80, 460, 1, '#4caf6a') +
-      floor(rand, 330, 400, 8)
+      floor(rand, 330, 400, 8) +
+      wildStrawberry(130, 478) +
+      backpack(512, 405) +
+      bluebells(440, 354) +
+      feather(230, 362) +
+      anthill(770, 482)
     )
   },
 })

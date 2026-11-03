@@ -1,6 +1,6 @@
 // Motion differences: the wasp buzzes faster on picture B; the bird hops only on B; the berry branch sways only on B.
 import { svgLevel } from '../helpers.ts'
-import { bear, bird, bush, cloud, floor, oak, pine, sun } from './shapes.ts'
+import { acorn, backpack, bear, bird, bush, cloud, floor, oak, pine, pineCone, sun, trailSign, wildStrawberry } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
 /** Berry bush; (x, y) = bottom center. Bounds: x ±26, y from −28 to 0. */
@@ -58,7 +58,12 @@ export default svgLevel({
       diff(470, 476, 18, jar(470, 486), '') +
       jar(488, 488) +
       diff(600, 446, 44, bear(600, 480), bear(600, 480, true)) +
-      floor(rand, 330, 480, 12)
+      floor(rand, 330, 480, 12) +
+      wildStrawberry(280, 478) +
+      backpack(522, 478) +
+      trailSign(85, 332) +
+      pineCone(745, 482) +
+      acorn(662, 326)
     )
   },
 })

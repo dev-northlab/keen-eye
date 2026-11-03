@@ -1,6 +1,7 @@
 // Motion differences: the weathervane turns the other way on picture B; the lantern swings only on B.
+import { mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { duck, grass, hen } from '../shapes.ts'
+import { birdhouse, duck, grass, hen, milkCan, snail, stones } from '../shapes.ts'
 
 /** Figure in a raincoat holding an umbrella handle; (x, y) = ground center. The canopy is separate. */
 const walker = (x: number, y: number) =>
@@ -85,6 +86,11 @@ export default svgLevel({
       walker(380, 470) +
       diff(392, 384, 36, canopy(380, 470, '#e63946'), canopy(380, 470, '#3a86ff')) +
       tufts +
+      stones(250, 470) +
+      snail(300, 478) +
+      mushroom(720, 385) +
+      milkCan(50, 380) +
+      birdhouse(690, 345) +
       anim({ type: 'path', points: [[0, 0], [-12, 48]], period: 0.8 }, rain)
     )
   },

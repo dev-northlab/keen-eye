@@ -1,6 +1,6 @@
 // Motion differences: the middle crab waves its claw only on picture B; the little fish in the right pool darts faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bucket, crab, gull, seaweed, shell, starfish, waves } from './shapes.ts'
+import { bucket, crab, flipFlops, gull, seaUrchin, seaweed, shell, snorkelMask, starfish, sunglasses, sunHat, waves } from './shapes.ts'
 
 /** Crab body without its right claw; (x, y) = bottom center. Bounds: x ±20, y from −18 to 0. */
 const crabBody = (x: number, y: number, color: string) =>
@@ -80,7 +80,12 @@ export default svgLevel({
       mussel(664, 320, 20) + mussel(676, 312, -10) + diff(690, 324, 22, mussel(690, 324, 30), '') + mussel(702, 316, -20) +
       shell(560, 330, '#ffd1dc') + diff(760, 470, 22, shell(760, 476, '#ffb84d'), `<g transform="rotate(40 760 470)">${shell(760, 476, '#ffb84d')}</g>`) +
       shell(220, 470, '#f4f1e8') + bucket(60, 480, '#ff006e') +
-      `<path d="M500 490l40 -40" stroke="#a0703f" stroke-width="3"/><circle cx="548" cy="442" r="12" fill="none" stroke="#3d4a55" stroke-width="2"/><path d="M540 434l16 16M556 434l-16 16" stroke="#3d4a55" stroke-width="1"/>`
+      `<path d="M500 490l40 -40" stroke="#a0703f" stroke-width="3"/><circle cx="548" cy="442" r="12" fill="none" stroke="#3d4a55" stroke-width="2"/><path d="M540 434l16 16M556 434l-16 16" stroke="#3d4a55" stroke-width="1"/>` +
+      flipFlops(110, 420) +
+      sunHat(380, 302) +
+      snorkelMask(580, 362) +
+      seaUrchin(680, 464) +
+      sunglasses(150, 470)
     )
   },
 })

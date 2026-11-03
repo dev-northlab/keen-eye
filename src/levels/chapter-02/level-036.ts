@@ -1,6 +1,7 @@
 // Motion differences: the skater glides faster on picture B; the star on the tree blinks only on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { awning, building, cloud, person } from './shapes.ts'
+import { awning, building, cloud, mailbox, newspaperBox, parkingMeter, person, shoppingBag } from './shapes.ts'
 
 /** Skater, faces right; (x, y) = blade level. Bounds: x ±14, y from −62 to 0. */
 const skater = (x: number, y: number, coat: string) =>
@@ -68,6 +69,11 @@ export default svgLevel({
       snowman(60, 480, '#e63946') +
       diff(60, 414, 20, hat(60, 480), '') +
       diff(120, 478, 18, snowballs(120, 488), '') +
+      shoppingBag(560, 430) +
+      bird(520, 58) +
+      mailbox(500, 345) +
+      newspaperBox(300, 345) +
+      parkingMeter(150, 345) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes)
     )
   },

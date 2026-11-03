@@ -1,6 +1,6 @@
 // Motion differences: the fish school swims faster on picture B; the jellyfish bobs faster on B; the seaweed sways only on B.
 import { svgLevel } from '../helpers.ts'
-import { coral, fish, jellyfish, octopus, rock, seaweed, starfish, turtle } from './shapes.ts'
+import { bottleMessage, coral, fish, jellyfish, octopus, rock, seahorse, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
 
 /** Treasure chest, open or closed; (x, y) = bottom center. Bounds: x ±20, y from −34 to 0. */
 const chest = (x: number, y: number, open: boolean) =>
@@ -56,6 +56,11 @@ export default svgLevel({
       clam(580, 420) +
       diff(580, 410, 18, pearl(580, 420), '') +
       diff(680, 408, 32, octopus(680, 430), octopus(680, 430, '#e63946')) +
+      seahorse(450, 330) +
+      seaUrchin(320, 466) +
+      bottleMessage(55, 490) +
+      shell(440, 428) +
+      snorkelMask(705, 488) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles)
     )
   },

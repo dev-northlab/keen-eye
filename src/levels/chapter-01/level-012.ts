@@ -1,6 +1,7 @@
 // Motion difference: a window light blinks only on picture B.
+import { mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { fence, grass } from '../shapes.ts'
+import { fence, grass, milkCan, stones, wheelbarrow } from '../shapes.ts'
 
 const lit = (x: number, y: number) =>
   `<rect x="${x - 4}" y="${y - 4}" width="48" height="48" fill="#5a3d2b"/>` + `<rect x="${x}" y="${y}" width="40" height="40" fill="#ffd166"/>`
@@ -69,7 +70,12 @@ export default svgLevel({
       tufts +
       diff(250, 440, 28, pumpkin(250, 442, '#f77f00'), pumpkin(250, 442, '#8ac926')) +
       pumpkin(205, 452, '#f77f00') +
-      flies
+      flies +
+      milkCan(540, 355) +
+      stump(70, 430) +
+      mushroom(360, 470) +
+      wheelbarrow(770, 470) +
+      stones(505, 475)
     )
   },
 })

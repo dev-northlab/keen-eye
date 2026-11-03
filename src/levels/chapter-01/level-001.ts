@@ -1,5 +1,6 @@
+import { bird, mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, cloud, flower, FLOWER_COLORS, grass, hen, pick, sun, tree } from '../shapes.ts'
+import { apple, chick, cloud, flower, FLOWER_COLORS, grass, hen, milkCan, pick, pumpkin, sun, tree } from '../shapes.ts'
 
 const hay =
   `<ellipse cx="738" cy="378" rx="42" ry="34" fill="#f2c14e"/>` +
@@ -55,7 +56,12 @@ export default svgLevel({
       diff(738, 378, 50, hay, '') +
       diff(300, 440, 42, hen(300, 440), hen(300, 440, true)) +
       // Pecking
-      anim({ type: 'sway', angle: 12, pivot: [400, 494], period: 2.2 }, hen(400, 468, true))
+      anim({ type: 'sway', angle: 12, pivot: [400, 494], period: 2.2 }, hen(400, 468, true)) +
+      chick(470, 474) +
+      milkCan(472, 362) +
+      pumpkin(705, 488) +
+      mushroom(50, 482) +
+      bird(331, 339)
     )
   },
 })

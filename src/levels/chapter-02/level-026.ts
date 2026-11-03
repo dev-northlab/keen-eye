@@ -1,6 +1,6 @@
 // Motion differences: the hanging lamp swings only on picture B; the balloon bunch bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { awning, balloon, building, cloud, person, pigeon, street, sun } from './shapes.ts'
+import { awning, balloon, building, cloud, manhole, newspaperBox, parkingMeter, person, pigeon, scooter, shoppingBag, street, sun } from './shapes.ts'
 
 /** Market stall counter; (x, y) = ground center. The canopy is drawn with `awning`. Bounds: x ±60, y from −120 to 0. */
 const stall = (x: number, y: number, cloth: string) =>
@@ -78,7 +78,12 @@ export default svgLevel({
       diff(701, 266, 58, bunch(2.8), bunch(1.2), 'balloons') +
       pigeon(300, 470) +
       pigeon(330, 476, true) +
-      person(60, 470, '#2a9d8f')
+      person(60, 470, '#2a9d8f') +
+      shoppingBag(280, 398) +
+      newspaperBox(55, 398) +
+      parkingMeter(700, 398) +
+      scooter(770, 398) +
+      manhole(600, 478)
     )
   },
 })

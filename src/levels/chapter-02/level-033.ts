@@ -1,6 +1,8 @@
 // Motion differences: the laundry sways only on picture B; the chimney smoke rises faster on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, pigeon, skyline, sun } from './shapes.ts'
+import { flowerPot, wateringCan } from '../shapes.ts'
+import { ball, cloud, coffeeCup, pigeon, skyline, sun } from './shapes.ts'
 
 /** Chimney; (x, y) = bottom center on the roof. Bounds: x ±10, y from −34 to 0. */
 const chimney = (x: number, y: number, color = '#c0392b') =>
@@ -74,7 +76,12 @@ export default svgLevel({
       pigeon(500, 470) +
       diff(220, 472, 18, pigeon(220, 480), pigeon(220, 480, true)) +
       pigeon(540, 476, true) +
-      pigeon(700, 396)
+      pigeon(700, 396) +
+      bird(480, 406) +
+      ball(380, 482) +
+      flowerPot(590, 448) +
+      wateringCan(720, 478) +
+      coffeeCup(265, 462)
     )
   },
 })

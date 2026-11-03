@@ -1,6 +1,6 @@
 // Motion differences: the crow hops only on picture B; the hawk circles faster on B; the dandelion sways faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bush, floor, fox, log, mushroom, pine, rock } from './shapes.ts'
+import { acorn, anthill, bluebells, bush, feather, floor, fox, log, mushroom, pine, pineCone, rock } from './shapes.ts'
 
 /** Fox cub, faces right; (x, y) = feet. Bounds: x ±16, y from −20 to 0. */
 const cub = (x: number, y: number, flip = false) =>
@@ -62,7 +62,12 @@ export default svgLevel({
       bush(660, 440, 1.1, '#5fae4b') +
       rock(760, 496, 1) +
       diff(720, 462, 20, swaying(2.6), swaying(1.1)) +
-      floor(rand, 320, 440, 8)
+      floor(rand, 320, 440, 8) +
+      bluebells(205, 342) +
+      pineCone(82, 312) +
+      anthill(585, 432) +
+      acorn(365, 482) +
+      feather(185, 490)
     )
   },
 })

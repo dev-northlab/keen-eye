@@ -1,6 +1,6 @@
 // Motion differences: the lantern swings only on picture B; the sun brightens faster on B; the fog puff drifts faster on B.
 import { svgLevel } from '../helpers.ts'
-import { deer, floor, mushroom, pine, stump } from './shapes.ts'
+import { anthill, backpack, deer, feather, floor, mushroom, pine, pineCone, stump, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
 /** Lantern held out from (x, y) = hook. Bounds: x ±8, y from 0 to +28. */
@@ -67,7 +67,12 @@ export default svgLevel({
       diff(560, 454, 18, crow(560, 462), crow(560, 462, true)) +
       diff(220, 476, 20, '', mushroom(220, 490, '#e63946')) +
       mushroom(250, 494, '#a0703f', 0.8) +
-      floor(rand, 420, 490, 6)
+      floor(rand, 420, 490, 6) +
+      backpack(270, 470) +
+      pineCone(470, 480) +
+      trailSign(620, 425) +
+      feather(740, 480) +
+      anthill(70, 480)
     )
   },
 })

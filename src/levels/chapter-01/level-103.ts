@@ -1,6 +1,7 @@
 // Motion differences: the left lantern swings wider and faster on picture B; the cat's tail swishes only on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bucket, hayBale, hen } from '../shapes.ts'
+import { bucket, chick, eggNest, hayBale, hen, pumpkin, wateringCan } from '../shapes.ts'
 
 /** Hanging lantern; (x, y) = hook on the beam. Bounds: x ±10, y from 0 to +44. */
 const lantern = (x: number, y: number) =>
@@ -126,7 +127,12 @@ export default svgLevel({
       barrel(700, 474) + bucket(760, 478) +
       anim({ type: 'sway', angle: 8, pivot: [400, 476], period: 1.6 }, hen(400, 450)) +
       hen(470, 470, true, '#c9823a') +
-      `<path d="M30 420h4v-6h-4ZM770 420h4v-6h-4Z" fill="#5a3a24"/>`
+      `<path d="M30 420h4v-6h-4ZM770 420h4v-6h-4Z" fill="#5a3a24"/>` +
+      bird(560, 88) +
+      eggNest(340, 488) +
+      pumpkin(520, 488) +
+      wateringCan(650, 490) +
+      chick(270, 425)
     )
   },
 })

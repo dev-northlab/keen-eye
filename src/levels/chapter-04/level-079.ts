@@ -1,6 +1,6 @@
 // Motion differences: the hanging scale swings only on picture B; the gull hops faster on B; the shop sign sways faster on B.
 import { svgLevel } from '../helpers.ts'
-import { crab, fish, gullStanding, person, sun, waves } from './shapes.ts'
+import { bucket, clam, coconut, crab, fish, gullStanding, person, starfish, sun, sunHat, waves } from './shapes.ts'
 import { awning } from '../chapter-02/shapes.ts'
 
 /** Market stall counter; (x, y) = ground center. Bounds: x ±60, y from −120 to 0. */
@@ -68,7 +68,12 @@ export default svgLevel({
       person(460, 400, '#2a9d8f') +
       diff(640, 369, 36, person(640, 400, '#8338ec', true), '') +
       diff(120, 470, 22, crab(120, 480, '#ff9f43'), crab(120, 480, '#8ac926')) +
-      `<rect x="700" y="440" width="60" height="30" fill="#c68b4e"/><path d="M704 450h52M704 460h52" stroke="#9c6a37" stroke-width="2"/>`
+      `<rect x="700" y="440" width="60" height="30" fill="#c68b4e"/><path d="M704 450h52M704 460h52" stroke="#9c6a37" stroke-width="2"/>` +
+      bucket(415, 384) +
+      sunHat(560, 454) +
+      clam(320, 462) +
+      coconut(250, 456) +
+      starfish(645, 452)
     )
   },
 })

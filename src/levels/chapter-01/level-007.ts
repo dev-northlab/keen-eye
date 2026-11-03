@@ -1,5 +1,6 @@
+import { butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bee, beehive, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
+import { bee, beehive, cloud, flower, FLOWER_COLORS, flowerPot, grass, pick, snail, sun, tree } from '../shapes.ts'
 
 /** (x, y) = bottom center. Bounds: x ±12, y from −34 to 0. */
 const jar = (x: number, y: number) =>
@@ -71,7 +72,12 @@ export default svgLevel({
       flowers +
       flower(330, 450, '#b38cff') +
       diff(330, 416, 24, '', bee(330, 418)) +
-      bees
+      bees +
+      flowerPot(237, 360) +
+      stump(470, 388) +
+      mushroom(570, 385) +
+      snail(665, 420) +
+      butterfly(60, 410)
     )
   },
 })

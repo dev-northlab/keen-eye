@@ -1,6 +1,6 @@
 // Motion differences: the neon cup flickers only on picture B; the wall fan spins faster on B.
 import { svgLevel } from '../helpers.ts'
-import { car, lampHead, lampPost, person } from './shapes.ts'
+import { bollard, car, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person } from './shapes.ts'
 
 /** Neon tube along path `d` in `color`, with a soft glow. */
 const neon = (d: string, color: string) =>
@@ -97,6 +97,11 @@ export default svgLevel({
       // Dumpster with a cat
       `<rect x="704" y="372" width="76" height="46" rx="3" fill="#2f6b4f"/><path d="M700 372h84l-4 -8h-76Z" fill="#245a41"/>` +
       diff(740, 352, 28, cat(732, 368), cat(746, 368)) +
+      mailbox(115, 368) +
+      newspaperBox(330, 368) +
+      bollard(405, 370) +
+      parkingMeter(560, 370) +
+      manhole(460, 470) +
       rain
     )
   },

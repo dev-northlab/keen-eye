@@ -116,6 +116,60 @@ export const turtle = (x: number, y: number, color = '#4caf6a', flip = false) =>
   `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)"><path d="M-16 -4l-6 4M12 -4l6 4M-12 -6l-8 -4M10 -8l8 -4" stroke="${color}" stroke-width="4" stroke-linecap="round"/>` +
   `<ellipse cy="-10" rx="16" ry="11" fill="#2f7d55"/><path d="M-8 -16h16M-10 -8h20M0 -20v18" stroke="#4caf6a" stroke-width="2"/><circle cx="20" cy="-10" r="6" fill="${color}"/><circle cx="22" cy="-11" r="1.3" fill="#222"/></g>`
 
+/** Small beach and seabed items for the sea scenes. */
+
+/** Beach ball; (x, y) = bottom center. Bounds: x ±10, y from −20 to 0. */
+export const beachBall = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y - 10})"><circle r="10" fill="#ffffff"/>` +
+  `<path d="M0 -10A10 10 0 0 1 9.5 3L0 0Z" fill="#e63946"/><path d="M9.5 3A10 10 0 0 1 -9.5 3L0 0Z" fill="#3a86ff"/>` +
+  `<path d="M-9.5 3A10 10 0 0 1 0 -10L0 0Z" fill="#ffd23f"/><circle r="2.5" fill="#fff"/></g>`
+
+/** Pair of flip-flops on the sand; (x, y) = center. Bounds: x ±13, y ±9. */
+export const flipFlops = (x: number, y: number, color = '#ff6b8b') =>
+  `<g transform="translate(${x} ${y})"><ellipse cx="-6" rx="5" ry="9" fill="${color}"/><ellipse cx="6" cy="1" rx="5" ry="9" fill="${color}"/>` +
+  `<path d="M-9 -2L-6 -6L-3 -2M3 -1L6 -5L9 -1" stroke="#fff" stroke-width="1.6" fill="none"/></g>`
+
+/** Message in a bottle lying down; (x, y) = bottom center. Bounds: x ±15, y from −10 to 0. */
+export const bottleMessage = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><rect x="-12" y="-10" width="18" height="10" rx="4" fill="#8ecae6" fill-opacity="0.8"/>` +
+  `<rect x="6" y="-7" width="6" height="4" fill="#8ecae6" fill-opacity="0.8"/><rect x="12" y="-7.5" width="3" height="5" rx="1" fill="#a0703f"/>` +
+  `<rect x="-9" y="-7" width="11" height="4" rx="1" fill="#f4e3c1"/></g>`
+
+/** Sea urchin; (x, y) = bottom center. Bounds: x ±11, y from −16 to 0. */
+export const seaUrchin = (x: number, y: number, color = '#5a189a') =>
+  `<g transform="translate(${x} ${y})"><path d="M-11 -3L-5 -6M-9 -12L-3 -8M0 -16V-10M9 -12L3 -8M11 -3L5 -6" stroke="${color}" stroke-width="2" stroke-linecap="round"/>` +
+  `<path d="M-8 0A8 8 0 0 1 8 0Z" fill="${color}"/></g>`
+
+/** Snorkel mask; (x, y) = center. Bounds: x ±13, y from −16 to +7. */
+export const snorkelMask = (x: number, y: number, color = '#ffb703') =>
+  `<g transform="translate(${x} ${y})"><path d="M10 -2V-14A2 2 0 0 1 13 -14" stroke="#3a86ff" stroke-width="3" fill="none"/>` +
+  `<rect x="-11" y="-5" width="20" height="11" rx="5" fill="${color}"/><rect x="-8" y="-3" width="14" height="7" rx="3" fill="#bde3f2"/></g>`
+
+/** Sun hat on the sand; (x, y) = bottom center. Bounds: x ±16, y from −12 to 0. */
+export const sunHat = (x: number, y: number, band = '#e63946') =>
+  `<g transform="translate(${x} ${y})"><ellipse cy="-3" rx="16" ry="4" fill="#e9c46a"/>` +
+  `<path d="M-8 -4Q-8 -12 0 -12Q8 -12 8 -4Z" fill="#e9c46a"/><rect x="-8" y="-6.5" width="16" height="2.5" fill="${band}"/></g>`
+
+/** Seahorse, faces right; (x, y) = center. Bounds: x ±8, y ±14. */
+export const seahorse = (x: number, y: number, color = '#ffb703') =>
+  `<g transform="translate(${x} ${y})"><path d="M0 -8Q-6 0 -1 6Q3 11 -2 14" stroke="${color}" stroke-width="5" fill="none" stroke-linecap="round"/>` +
+  `<circle cx="1" cy="-10" r="4" fill="${color}"/><path d="M4 -11L8 -9L4 -8Z" fill="${color}"/><circle cx="2" cy="-11" r="1" fill="#222"/></g>`
+
+/** Coconut; (x, y) = bottom center. Bounds: x ±8, y from −15 to 0. */
+export const coconut = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y - 7})"><ellipse rx="8" ry="7.5" fill="#7a4e2d"/>` +
+  `<circle cx="-2.5" cy="-2" r="1.2" fill="#3d2616"/><circle cx="1.5" cy="-3" r="1.2" fill="#3d2616"/><circle cx="0" cy="0.5" r="1.2" fill="#3d2616"/></g>`
+
+/** Open clam with a pearl; (x, y) = bottom center. Bounds: x ±11, y from −16 to 0. */
+export const clam = (x: number, y: number, color = '#f4a6a6') =>
+  `<g transform="translate(${x} ${y})"><path d="M-11 -4Q0 -22 11 -4Z" fill="${color}"/>` +
+  `<path d="M-11 -4Q0 6 11 -4Z" fill="${color}"/><path d="M-11 -4H11" stroke="#c97b7b" stroke-width="1"/><circle cy="-5" r="3" fill="#fff"/></g>`
+
+/** Sunglasses on the sand; (x, y) = center. Bounds: x ±11, y ±4. */
+export const sunglasses = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><ellipse cx="-5" rx="5" ry="3.6" fill="#2b2d42"/><ellipse cx="5" rx="5" ry="3.6" fill="#2b2d42"/>` +
+  `<path d="M-1 -1H1M-10 -1L-11 -3M10 -1L11 -3" stroke="#2b2d42" stroke-width="1.4"/></g>`
+
 /** Sand with a few shells from `rand` between y0 and y1. */
 export const sandBits = (rand: () => number, y0: number, y1: number, n = 10) => {
   let out = ''

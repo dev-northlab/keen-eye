@@ -1,6 +1,6 @@
 // Motion differences: the station clock runs backwards on picture B; the engine's smoke rises faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bench, cloud, person, pigeon, skyline, window } from './shapes.ts'
+import { bench, bollard, cloud, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, window } from './shapes.ts'
 
 /** Clock face; (x, y) = center. The hands are separate. Bounds: radius 24. */
 const clockFace = (x: number, y: number) =>
@@ -89,7 +89,12 @@ export default svgLevel({
       coach(440, 470, '#3a86ff') +
       diff(440, 401, 67, coachRoof(440, 470, '#e63946'), coachRoof(440, 470, '#ffb703')) +
       coach(280, 470, '#3a86ff') +
-      coach(120, 470, '#3a86ff')
+      coach(120, 470, '#3a86ff') +
+      newspaperBox(60, 368) +
+      shoppingBag(215, 368) +
+      bollard(330, 368) +
+      mailbox(770, 368) +
+      skateboard(685, 368)
     )
   },
 })

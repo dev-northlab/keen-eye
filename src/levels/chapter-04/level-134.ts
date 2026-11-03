@@ -1,6 +1,6 @@
 // Motion differences: the lifeguard flag flaps faster on picture B; the swimmer bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { castleFlag, cloud, crab, gull, person, sailboat, sandcastle, shell, towel, waves } from './shapes.ts'
+import { castleFlag, cloud, coconut, crab, flipFlops, gull, person, sailboat, sandcastle, shell, snorkelMask, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
 /** Parasol with four colored panels; (x, y) = pole foot. Bounds: x ±44, y from −76 to 0. */
 const panelParasol = (x: number, y: number, colors: [string, string, string, string]) =>
@@ -75,7 +75,12 @@ export default svgLevel({
       shell(260, 486, '#ffd1dc') + diff(304, 476, 22, shell(304, 484, '#ffb84d'), `<g transform="translate(304 484) scale(1.35) translate(-304 -484)">${shell(304, 484, '#ffb84d')}</g>`) +
       diff(200, 470, 22, '', crab(200, 480, '#e05a47')) +
       `<path d="M710 470h20l-3 18h-14Z" fill="#3a86ff"/><path d="M711 470q9 -10 18 0" stroke="#3a86ff" stroke-width="2" fill="none"/>` +
-      shell(760, 490) + shell(560, 488, '#f4f1e8')
+      shell(760, 490) + shell(560, 488, '#f4f1e8') +
+      flipFlops(240, 415) +
+      sunHat(522, 388) +
+      sunglasses(680, 422) +
+      coconut(530, 302) +
+      snorkelMask(145, 442)
     )
   },
 })

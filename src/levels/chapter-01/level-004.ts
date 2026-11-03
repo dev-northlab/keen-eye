@@ -1,5 +1,6 @@
+import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, basket, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
+import { apple, basket, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
 
 /** (x, y) = ground under the middle. Bounds: x ±50, y from −38 to 0 (either direction). */
 const wheelbarrow = (x: number, y: number, flip: boolean) =>
@@ -74,7 +75,12 @@ export default svgLevel({
       diff(458, 263, 76, ladder(440, 330, 475, 196), '') +
       diff(561, 393, 28, basket(560, 420), basket(560, 420, '#8ac926')) +
       diff(250, 421, 56, wheelbarrow(250, 440, false), wheelbarrow(250, 440, true)) +
-      flowers
+      flowers +
+      bird(190, 171) +
+      mushroom(110, 342) +
+      stump(320, 478) +
+      butterfly(560, 330) +
+      wateringCan(705, 346)
     )
   },
 })

@@ -1,5 +1,7 @@
 // Motion differences: the ant on the grass blade runs faster on picture B; the caterpillar wiggles only on B.
 import { svgLevel } from '../helpers.ts'
+import { snail } from '../shapes.ts'
+import { acorn, feather, leafPile, pineCone } from './shapes.ts'
 
 /** Ant, faces right (or left with `flip`); (x, y) = middle. Bounds: x ±11, y ±6. */
 const ant = (x: number, y: number, flip = false, load = '') =>
@@ -82,7 +84,12 @@ export default svgLevel({
       diff(60, 420, 26, clover(60, 420), `<g transform="rotate(40 60 420)">${clover(60, 420)}</g>`) +
       pebble(220, 484, 16, '#9aa39a') + diff(522, 474, 24, pebble(514, 480, 14, '#b3aaa0'), pebble(528, 480, 14, '#b3aaa0')) +
       pebble(600, 488, 18, '#8d99ae') + pebble(760, 480, 12, '#b3aaa0') +
-      `<circle cx="660" cy="470" r="8" fill="#c1121f"/><circle cx="672" cy="476" r="7" fill="#c1121f"/><path d="M664 462q4 -8 10 -6" stroke="#4c7a2f" stroke-width="2" fill="none"/>`
+      `<circle cx="660" cy="470" r="8" fill="#c1121f"/><circle cx="672" cy="476" r="7" fill="#c1121f"/><path d="M664 462q4 -8 10 -6" stroke="#4c7a2f" stroke-width="2" fill="none"/>` +
+      acorn(390, 492) +
+      feather(455, 482) +
+      pineCone(115, 492) +
+      leafPile(728, 494) +
+      snail(280, 494)
     )
   },
 })

@@ -1,7 +1,7 @@
 // Motion differences: the dragonfly darts faster on picture B; the floating log drifts faster on B; the reeds sway only on B.
 import { svgLevel } from '../helpers.ts'
-import { bush, cloud, floor, log, oak, pine, rock, sun } from './shapes.ts'
-import { duck } from '../shapes.ts'
+import { acorn, anthill, bluebells, bush, cloud, floor, log, oak, pine, pineCone, rock, sun } from './shapes.ts'
+import { duck, snail } from '../shapes.ts'
 
 /** Beaver, faces right; (x, y) = feet. Bounds: x ±26, y from −26 to 0. */
 const beaver = (x: number, y: number, flip = false) =>
@@ -75,7 +75,12 @@ export default svgLevel({
       diff(330, 440, 18, '', fish(330, 440)) +
       diff(720, 388, 26, stand, anim({ type: 'sway', angle: 6, pivot: [720, 410], period: 1.8 }, stand)) +
       rock(60, 480, 1.2) +
-      floor(rand, 300, 336, 8)
+      floor(rand, 300, 336, 8) +
+      acorn(262, 338) +
+      pineCone(505, 338) +
+      bluebells(45, 338) +
+      anthill(735, 340) +
+      snail(590, 340)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the rope ladder sways only on picture B; the flag waves faster on B; the bucket goes up and down faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bush, cloud, floor, mushroom, pine, squirrel, sun } from './shapes.ts'
+import { acorn, backpack, bush, cloud, floor, lantern, mushroom, pine, pineCone, squirrel, sun, trailSign } from './shapes.ts'
 
 /** Rope ladder from the pivot (x, y) down. Bounds: x ±12, y from 0 to +70. */
 const ladder = (x: number, y: number) =>
@@ -67,7 +67,12 @@ export default svgLevel({
       mushroom(500, 490, '#a0703f', 0.8) +
       bush(140, 440, 1.2) +
       bush(680, 450, 1, '#4caf6a') +
-      floor(rand, 410, 490, 8)
+      floor(rand, 410, 490, 8) +
+      backpack(445, 420) +
+      lantern(255, 410) +
+      pineCone(620, 480) +
+      acorn(200, 480) +
+      trailSign(720, 412)
     )
   },
 })

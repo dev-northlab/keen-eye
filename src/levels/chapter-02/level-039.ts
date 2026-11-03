@@ -1,6 +1,6 @@
 // Motion differences: the skater rides the ramp faster on picture B; the bird on the wire hops only on B.
 import { svgLevel } from '../helpers.ts'
-import { bench, cityTree, cloud, cone, dog, person, skyline, sun } from './shapes.ts'
+import { ball, bench, cityTree, cloud, cone, dog, mailbox, newspaperBox, person, scooter, skateboard, skyline, sun } from './shapes.ts'
 
 /** Skateboarder, faces right; (x, y) = board level. The helmet is separate. Bounds: x ±16, y from −66 to 0. */
 const skater = (x: number, y: number, shirt: string) =>
@@ -59,7 +59,12 @@ export default svgLevel({
       person(640, 466, '#ffb703', true) +
       dog(80, 470, '#2b2b3a', true) +
       cone(120, 490) +
-      diff(150, 478, 18, cone(150, 490), '')
+      diff(150, 478, 18, cone(150, 490), '') +
+      skateboard(345, 492) +
+      ball(562, 490) +
+      mailbox(230, 345) +
+      scooter(485, 355) +
+      newspaperBox(150, 345)
     )
   },
 })

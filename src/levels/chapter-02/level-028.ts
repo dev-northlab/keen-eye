@@ -1,6 +1,6 @@
 // Motion differences: the exhaust puff bobs only on picture B; the cyclist weaves through faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bike, building, bus, car, cloud, person, skyline, street, trafficLight } from './shapes.ts'
+import { bike, bollard, building, bus, car, cloud, mailbox, newspaperBox, parkingMeter, person, sandwichBoard, skyline, street, trafficLight } from './shapes.ts'
 
 /** Destination board on the bus at (x, y) = ground center. Bounds: x ±16, y from −54 to −48. */
 const board = (x: number, y: number, color: string) => `<rect x="${x - 16}" y="${y - 54}" width="32" height="6" rx="2" fill="${color}"/>`
@@ -47,7 +47,12 @@ export default svgLevel({
       car(700, 470, '#8ac926') +
       car(180, 470, '#81b29a') +
       diff(126, 462, 22, exhaust, anim({ id: 'puff', type: 'bob', dx: 3, dy: 3, period: 0.8 }, exhaust), 'puff') +
-      diff(560, 439, 34, weaving(9), weaving(4), 'bike')
+      diff(560, 439, 34, weaving(9), weaving(4), 'bike') +
+      mailbox(60, 312) +
+      parkingMeter(155, 312) +
+      newspaperBox(300, 312) +
+      sandwichBoard(450, 312) +
+      bollard(570, 312)
     )
   },
 })

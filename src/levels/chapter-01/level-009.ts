@@ -1,5 +1,6 @@
+import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, grass, sheep, sun, tree } from '../shapes.ts'
+import { cloud, grass, sheep, stones, sun, tree } from '../shapes.ts'
 
 const stone = (x: number, y: number, shade: string) =>
   `<ellipse cx="${x}" cy="${y}" rx="17" ry="11" fill="${shade}" stroke="#7d848a" stroke-width="2"/>`
@@ -63,7 +64,12 @@ export default svgLevel({
       diff(180, 443, 54, sheep(180, 440), sheep(180, 440, true)) +
       anim({ type: 'bob', dx: 0, dy: 2, period: 3.1, phase: 0.4 }, sheep(700, 455, true)) +
       bush(520, 452) +
-      diff(520, 452, 40, berries(520, 452), '')
+      diff(520, 452, 40, berries(520, 452), '') +
+      stump(50, 400) +
+      mushroom(275, 478) +
+      bird(400, 293) +
+      butterfly(430, 445) +
+      stones(610, 480)
     )
   },
 })

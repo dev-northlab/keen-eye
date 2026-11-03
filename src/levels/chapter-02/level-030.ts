@@ -1,6 +1,6 @@
 // Motion differences: the middle fountain jet bobs faster on picture B; the flags wave only on B.
 import { svgLevel } from '../helpers.ts'
-import { balloon, bench, building, cloud, person, pigeon, sun } from './shapes.ts'
+import { balloon, bench, bollard, building, cloud, coffeeCup, newspaperBox, person, pigeon, sandwichBoard, shoppingBag, sun } from './shapes.ts'
 
 /** Flower bed; (x, y) = center. Bounds: x ±30, y ±12. */
 const bed = (x: number, y: number, color: string) =>
@@ -70,7 +70,12 @@ export default svgLevel({
       diff(716, 408, 34, balloon(716, 396, '#e63946'), balloon(716, 396, '#ffb703')) +
       pigeon(330, 490) +
       diff(360, 482, 18, pigeon(360, 490, true), '') +
-      pigeon(470, 486)
+      pigeon(470, 486) +
+      newspaperBox(120, 478) +
+      sandwichBoard(650, 470) +
+      coffeeCup(215, 442) +
+      shoppingBag(570, 488) +
+      bollard(775, 480)
     )
   },
 })

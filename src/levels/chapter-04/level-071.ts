@@ -1,6 +1,6 @@
 // Motion differences: the lead dolphin leaps faster on picture B; the gull flies the other way round on B; the boat rocks only on B.
 import { svgLevel } from '../helpers.ts'
-import { buoy, cloud, dolphin, gull, person, sun, waves } from './shapes.ts'
+import { beachBall, bottleMessage, buoy, cloud, dolphin, fish, gull, lifeRing, person, sun, sunHat, waves } from './shapes.ts'
 
 /** Tour boat, faces right; (x, y) = waterline center. Bounds: x ±50, y from −46 to +8. */
 const boat = (x: number, y: number, hull: string) =>
@@ -42,7 +42,12 @@ export default svgLevel({
       diff(380, 470, 18, '', `<path d="M372 470l8 -6l8 6l-8 4Z" fill="#ffb703"/>`) +
       diff(60, 460, 20, buoy(60, 464), buoy(60, 464, '#8ac926')) +
       diff(740, 250, 20, buoy(740, 254, '#ffb703'), '') +
-      anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(470, 10, 100, '#3ba7cc'))
+      anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(470, 10, 100, '#3ba7cc')) +
+      bottleMessage(260, 442) +
+      beachBall(445, 468) +
+      fish(150, 270, '#ffb703') +
+      lifeRing(130, 460) +
+      sunHat(720, 462)
     )
   },
 })

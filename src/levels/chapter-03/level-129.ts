@@ -1,6 +1,6 @@
 // Motion differences: the splash at the foot of the falls bubbles faster on picture B; the salmon leaps only on B.
 import { svgLevel } from '../helpers.ts'
-import { butterfly, fern, pine } from './shapes.ts'
+import { acorn, backpack, bluebells, butterfly, feather, fern, pine, pineCone } from './shapes.ts'
 
 /** Kingfisher, faces left; (x, y) = feet. Bounds: x ±14, y from −16 to 0. */
 const kingfisher = (x: number, y: number, back: string) =>
@@ -80,7 +80,12 @@ export default svgLevel({
       `<path d="M0 450Q200 440 400 452T800 446V500H0Z" fill="#6f9e52"/>` +
       diff(152, 466, 30, log(146, 476), log(156, 476)) +
       fern(40, 496, '#3f8f50') + fern(260, 494) + fern(470, 496, '#3f8f50') + fern(720, 490) + fern(770, 494, '#3f8f50') +
-      diff(742, 432, 22, '', butterfly(742, 432, '#ffb703'))
+      diff(742, 432, 22, '', butterfly(742, 432, '#ffb703')) +
+      pineCone(330, 490) +
+      acorn(560, 488) +
+      backpack(645, 484) +
+      bluebells(398, 484) +
+      feather(88, 281)
     )
   },
 })

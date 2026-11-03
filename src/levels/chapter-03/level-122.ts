@@ -1,6 +1,6 @@
 // Motion differences: the frog hops only on picture B; the spider on its thread bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { fern, frog, mushroom } from './shapes.ts'
+import { acorn, anthill, feather, fern, frog, lantern, mushroom, pineCone } from './shapes.ts'
 
 /** Fly agaric; (x, y) = stem foot; `dots` white dots on the cap. Bounds: x ±16, y from −34 to 0. */
 const agaric = (x: number, y: number, cap = '#d62828', dots = 4) => {
@@ -82,7 +82,12 @@ export default svgLevel({
       chanterelle(380, 440) + chanterelle(396, 444) + chanterelle(470, 448) + chanterelle(486, 452) +
       diff(340, 470, 24, hop(false), hop(true)) +
       diff(520, 472, 24, beetle(514, 474), beetle(526, 474)) +
-      `<path d="M0 0h800v10H0Z" fill="#26392d"/>`
+      `<path d="M0 0h800v10H0Z" fill="#26392d"/>` +
+      lantern(168, 402) +
+      anthill(445, 486) +
+      acorn(566, 480) +
+      feather(470, 418) +
+      pineCone(720, 408)
     )
   },
 })

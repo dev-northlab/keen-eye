@@ -1,6 +1,6 @@
 // Motion differences: the lightning flashes at another moment on picture B; the ship pitches faster on B; the buoy bell swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { gull, lifeRing, rock, waves } from './shapes.ts'
+import { beachBall, bottleMessage, dolphin, fish, gull, lifeRing, rock, sunHat, waves } from './shapes.ts'
 
 /** Lightning bolt; (x, y) = top. Bounds: x ±10, y from 0 to +50. */
 const bolt = (x: number, y: number) => `<path d="M${x} ${y}l-8 22h10l-6 28l14 -32h-10l8 -18Z" fill="#fff3a3"/>`
@@ -50,6 +50,11 @@ export default svgLevel({
       diff(200, 470, 26, rock(200, 480, 1.1, '#2b2b3a'), '') +
       diff(320, 468, 20, `<path d="M304 470q8 -10 16 0t16 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>`, '') +
       diff(760, 470, 18, `<path d="M748 470l6 -10h12l6 10Z" fill="#8a5a3b"/>`, '') +
+      bottleMessage(280, 402) +
+      beachBall(620, 382) +
+      sunHat(500, 462) +
+      fish(420, 470, '#ffb703') +
+      dolphin(160, 330) +
       anim({ type: 'path', points: [[0, 0], [-14, 50]], period: 0.7 }, rain)
     )
   },

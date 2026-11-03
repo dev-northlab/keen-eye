@@ -1,6 +1,6 @@
 // Motion differences: the school clock runs backwards on picture B; the ball bounces faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bus, cityTree, cloud, door, person, street, sun, window } from './shapes.ts'
+import { bollard, bus, cityTree, cloud, door, mailbox, person, scooter, shoppingBag, skateboard, street, sun, window } from './shapes.ts'
 
 /** Clock face; (x, y) = center. The hands are separate. */
 const clockFace = (x: number, y: number) =>
@@ -82,7 +82,12 @@ export default svgLevel({
       diff(560, 414, 24, bouncing(1.4), bouncing(0.7), 'ball') +
       kid(600, 410, '#8ac926', true) +
       bus(690, 480, '#ffb703') +
-      diff(756, 444, 18, stopSign(690, 480), '')
+      diff(756, 444, 18, stopSign(690, 480), '') +
+      bollard(495, 368) +
+      shoppingBag(545, 368) +
+      scooter(150, 368) +
+      skateboard(670, 368) +
+      mailbox(30, 368)
     )
   },
 })

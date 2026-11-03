@@ -1,6 +1,6 @@
 // Motion differences: a hand strap in the train swings only on picture B; a dot on the departure board blinks only on B.
 import { svgLevel } from '../helpers.ts'
-import { bench, bin, person } from './shapes.ts'
+import { bench, bin, coffeeCup, newspaperBox, person, scooter, shoppingBag, skateboard } from './shapes.ts'
 
 /** Ceiling light tube; (x, y) = center. Bounds: x ±18, y ±4. */
 const tube = (x: number, y: number) => `<rect x="${x - 18}" y="${y - 4}" width="36" height="8" rx="4" fill="#fff8d6"/>`
@@ -93,7 +93,12 @@ export default svgLevel({
       person(80, 470, '#8338ec') + person(130, 460, '#ffb703', true) + person(250, 480, '#2a9d8f', false, '#a86b4c', '#2b2b2b') +
       person(330, 456, '#e63946', true) + person(400, 470, '#3a86ff') +
       diff(428, 454, 28, suitcase(422, 474), suitcase(434, 474)) +
-      person(520, 446, '#fb8500') + person(610, 456, '#8ac926', true, '#c68b5e', '#2b2b2b') + person(690, 486, '#ff006e')
+      person(520, 446, '#fb8500') + person(610, 456, '#8ac926', true, '#c68b5e', '#2b2b2b') + person(690, 486, '#ff006e') +
+      newspaperBox(25, 430) +
+      coffeeCup(575, 440) +
+      shoppingBag(185, 462) +
+      scooter(472, 482) +
+      skateboard(775, 492)
     )
   },
 })

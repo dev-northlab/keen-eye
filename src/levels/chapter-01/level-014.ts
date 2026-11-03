@@ -1,7 +1,8 @@
 // Motion difference: the swing is out of sync between the pictures (different phase).
 import type { AnimSpec } from '../helpers.ts'
+import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
+import { cloud, flower, FLOWER_COLORS, flowerPot, grass, pick, stones, sun, wateringCan } from '../shapes.ts'
 
 const PIVOT: [number, number] = [300, 228]
 
@@ -69,7 +70,12 @@ export default svgLevel({
       tufts +
       diff(560, 361, 58, dogHouse(560, 440, '#b5523b'), dogHouse(560, 440, '#3a86ff')) +
       diff(430, 455, 26, `<circle cx="430" cy="455" r="16" fill="#e63946"/><path d="M414 455H446" stroke="#fff" stroke-width="3"/>`, `<circle cx="430" cy="455" r="16" fill="#3a86ff"/><path d="M414 455H446" stroke="#fff" stroke-width="3"/>`) +
-      flowers
+      flowers +
+      bird(643, 230) +
+      butterfly(450, 380) +
+      stones(650, 470) +
+      flowerPot(240, 420) +
+      wateringCan(80, 385)
     )
   },
 })

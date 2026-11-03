@@ -1,6 +1,6 @@
 // Motion differences: the flock flies faster on picture B; the butterfly flutters faster on B; the reeds sway only on B.
 import { svgLevel } from '../helpers.ts'
-import { butterfly, cloud, deer, floor, flower, oak, pine, rock } from './shapes.ts'
+import { anthill, bluebells, butterfly, cloud, deer, feather, floor, flower, oak, pine, pineCone, rock, trailSign } from './shapes.ts'
 
 /** Fawn (small deer), faces right; (x, y) = feet. Bounds: x ±18, y from −44 to 0. */
 const fawn = (x: number, y: number, flip = false) =>
@@ -56,7 +56,12 @@ export default svgLevel({
       diff(60, 454, 24, '', rock(60, 464, 1.1)) +
       rock(740, 430, 0.9) +
       blooms +
-      floor(rand, 330, 440, 10)
+      floor(rand, 330, 440, 10) +
+      bluebells(470, 440) +
+      anthill(660, 400) +
+      pineCone(80, 285) +
+      trailSign(200, 310) +
+      feather(420, 330)
     )
   },
 })

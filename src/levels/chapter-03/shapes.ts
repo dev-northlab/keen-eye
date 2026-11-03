@@ -120,6 +120,60 @@ export const cabin = (x: number, y: number, w: number, h: number, wall = '#a0703
 export const fern = (x: number, y: number, color = '#3f9a5a') =>
   `<g transform="translate(${x} ${y})" fill="${color}"><path d="M0 0q-18 -10 -14 -30q10 8 14 30Z"/><path d="M0 0q18 -10 14 -30q-10 8 -14 30Z"/><path d="M0 0q-4 -16 0 -30q4 14 0 30Z"/></g>`
 
+/** Small forest-floor items for the forest scenes. */
+
+/** Pine cone lying on the ground; (x, y) = bottom center. Bounds: x ±9, y from −9 to 0. */
+export const pineCone = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><ellipse cy="-4.5" rx="9" ry="4.5" fill="#8a5a33"/>` +
+  `<path d="M-6 -7l2 5M-2 -8l2 6M2 -8l2 6M6 -7l1 4" stroke="#5e3b1f" stroke-width="1.4"/></g>`
+
+/** Acorn; (x, y) = bottom center. Bounds: x ±6, y from −16 to 0. */
+export const acorn = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><ellipse cy="-5" rx="5" ry="6" fill="#c68b4e"/>` +
+  `<path d="M-6 -9Q0 -15 6 -9Z" fill="#7a5230"/><path d="M0 -13V-16" stroke="#5e3b1f" stroke-width="1.6"/></g>`
+
+/** Anthill; (x, y) = ground center. Bounds: x ±18, y from −16 to 0. */
+export const anthill = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><path d="M-18 0Q-8 -18 0 -16Q8 -18 18 0Z" fill="#b08355"/>` +
+  `<path d="M-8 -6l2 -1M3 -10l2 1M8 -4l2 -1M-2 -3l2 1" stroke="#5e3b1f" stroke-width="1.6" stroke-linecap="round"/></g>`
+
+/** Wild strawberry plant; (x, y) = ground. Bounds: x ±12, y from −14 to 0. */
+export const wildStrawberry = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><path d="M-10 0Q-12 -8 -4 -9Q0 -14 4 -9Q12 -8 10 0Z" fill="#4c9a3f"/>` +
+  `<g fill="#e63946"><ellipse cx="-6" cy="-2" rx="3" ry="3.6"/><ellipse cx="5" cy="-3" rx="3" ry="3.6"/></g></g>`
+
+/** Bluebells; (x, y) = ground. Bounds: x ±10, y from −22 to 0. */
+export const bluebells = (x: number, y: number, color = '#7b8cde') =>
+  `<g transform="translate(${x} ${y})"><path d="M0 0Q-2 -12 -6 -18M0 0Q1 -12 6 -20M0 0V-10" stroke="#3f8f3a" stroke-width="2" fill="none"/>` +
+  `<g fill="${color}"><path d="M-9 -16l3 -5l3 4Z"/><path d="M3 -18l3 -4l4 5Z"/><path d="M-3 -9l3 -4l3 4Z"/></g></g>`
+
+/** Trail marker on a post; (x, y) = foot. Bounds: x ±14, y from −40 to 0. */
+export const trailSign = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><rect x="-2" y="-34" width="4" height="34" fill="#8a5a33"/>` +
+  `<path d="M-12 -38H8L14 -32L8 -26H-12Z" fill="#d9a86c"/><path d="M-8 -32H6" stroke="#5e3b1f" stroke-width="2"/></g>`
+
+/** Pile of fallen leaves; (x, y) = ground center. Bounds: x ±16, y from −9 to 0. */
+export const leafPile = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><ellipse cx="-6" cy="-4" rx="8" ry="4" fill="#e07a2e" transform="rotate(-15 -6 -4)"/>` +
+  `<ellipse cx="6" cy="-4" rx="8" ry="4" fill="#d9a43a" transform="rotate(20 6 -4)"/><ellipse cy="-6" rx="7" ry="3.5" fill="#c1440e"/></g>`
+
+/** Feather on the ground; (x, y) = center. Bounds: x ±10, y ±5. */
+export const feather = (x: number, y: number, color = '#f4efe6') =>
+  `<g transform="translate(${x} ${y}) rotate(-15)"><path d="M-10 0Q0 -6 10 0Q0 5 -10 0Z" fill="${color}"/>` +
+  `<path d="M-11 0H10" stroke="#a0896b" stroke-width="1"/></g>`
+
+/** Camping lantern; (x, y) = bottom center. Bounds: x ±7, y from −22 to 0. */
+export const lantern = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><path d="M-4 -17A4 4 0 0 1 4 -17" stroke="#333" stroke-width="1.6" fill="none"/>` +
+  `<rect x="-6" y="-17" width="12" height="3" rx="1" fill="#2a5f44"/><rect x="-5" y="-14" width="10" height="11" fill="#ffd166"/>` +
+  `<rect x="-6" y="-3" width="12" height="3" rx="1" fill="#2a5f44"/></g>`
+
+/** Backpack leaning on the ground; (x, y) = bottom center. Bounds: x ±11, y from −24 to 0. */
+export const backpack = (x: number, y: number, color = '#e76f51') =>
+  `<g transform="translate(${x} ${y})"><path d="M-4 -22A4 4 0 0 1 4 -22" stroke="#5e3b1f" stroke-width="2" fill="none"/>` +
+  `<rect x="-10" y="-22" width="20" height="22" rx="5" fill="${color}"/><rect x="-7" y="-10" width="14" height="8" rx="2" fill="#000" fill-opacity="0.15"/>` +
+  `<rect x="-10" y="-16" width="20" height="3" fill="#000" fill-opacity="0.15"/></g>`
+
 /** Forest floor band with a few ferns and grass tufts from `rand`, over y0..y1. */
 export const floor = (rand: () => number, y0: number, y1: number, n = 14) => {
   let out = ''

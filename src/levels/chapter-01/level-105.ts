@@ -1,7 +1,8 @@
 // Motion differences: one bunting flag flutters only on picture B; the blue balloon bobs faster on B.
 import { awning, person } from '../chapter-02/shapes.ts'
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, cloud, grass, hayBale } from '../shapes.ts'
+import { apple, chick, cloud, flowerPot, grass, hayBale, milkCan, stones } from '../shapes.ts'
 
 /** Bunting flag hanging from (x, y). Bounds: x ±9, y from 0 to +20. */
 const pennant = (x: number, y: number, color: string) => `<path d="M${x - 9} ${y}h18l-9 20Z" fill="${color}"/>`
@@ -117,7 +118,12 @@ export default svgLevel({
       diff(431, 453, 28, goose(424, 470), goose(436, 470)) +
       person(560, 470, '#8338ec', true) + person(600, 480, '#3a86ff', false, '#a86b4c', '#2b2b2b') +
       `<rect x="660" y="440" width="70" height="40" rx="4" fill="#a0703f"/>` + pumpkin(676, 434, 12, 9) + pumpkin(704, 432, 13, 10, '#f4a43a') + pumpkin(724, 436, 9, 7) +
-      tufts
+      tufts +
+      chick(375, 470) +
+      milkCan(520, 470) +
+      bird(100, 178) +
+      stones(275, 415) +
+      flowerPot(780, 480)
     )
   },
 })

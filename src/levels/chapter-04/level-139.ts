@@ -1,6 +1,6 @@
 // Motion differences: the diver's bubbles rise faster on picture B; the octopus waves an arm only on B.
 import { svgLevel } from '../helpers.ts'
-import { crab, fish } from './shapes.ts'
+import { anchor, bottleMessage, crab, fish, seahorse, seaUrchin } from './shapes.ts'
 
 /** Diver swimming right; (x, y) = chest. Fins and flashlight separate. Bounds: x from −60 to +30, y ±20. */
 const diver = (x: number, y: number) =>
@@ -79,7 +79,12 @@ export default svgLevel({
       diff(350, 462, 26, clam(344, 470), clam(356, 470)) +
       diff(500, 466, 22, '', crab(500, 476, '#e05a47')) +
       diff(650, 446, 32, lobster(650, 456, '#c0392b'), lobster(650, 456, '#d0503a')) +
-      `<path d="M740 490q-6 -30 6 -50M754 490q8 -26 -2 -46M590 490q-4 -20 4 -34" stroke="#2a8f6a" stroke-width="4" fill="none"/>`
+      `<path d="M740 490q-6 -30 6 -50M754 490q8 -26 -2 -46M590 490q-4 -20 4 -34" stroke="#2a8f6a" stroke-width="4" fill="none"/>` +
+      seaUrchin(548, 476) +
+      bottleMessage(422, 484) +
+      seahorse(700, 400) +
+      anchor(112, 462) +
+      fish(260, 320, '#ff6b8b')
     )
   },
 })

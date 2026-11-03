@@ -1,6 +1,6 @@
 // Motion differences: one string-light bulb blinks only on picture B; the hanging scale pan swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { awning, building, dog, person } from './shapes.ts'
+import { awning, ball, building, coffeeCup, dog, newspaperBox, person, scooter, shoppingBag } from './shapes.ts'
 
 /** Crate of round produce: `rows` rows of `cols` fruits of radius r in `colors`; (x, y) = crate bottom-left. */
 const crate = (x: number, y: number, cols: number, r: number, colors: string[], skip = -1) => {
@@ -102,7 +102,12 @@ export default svgLevel({
       person(560, 440, '#8338ec') + person(620, 470, '#ffb703', true, '#a86b4c', '#2b2b2b') + person(720, 430, '#e63946') +
       dog(420, 470, '#c48a5a') +
       `<path d="M190 470h60l-6 20h-48Z" fill="#7aa6d6"/><circle cx="200" cy="494" r="5" fill="#3d3d3d"/><circle cx="240" cy="494" r="5" fill="#3d3d3d"/><path d="M250 470l14 -14" stroke="#3d4a55" stroke-width="3"/>` +
-      `<g fill="#e63946"><circle cx="206" cy="466" r="6"/><circle cx="220" cy="464" r="6"/><circle cx="234" cy="466" r="6"/></g>`
+      `<g fill="#e63946"><circle cx="206" cy="466" r="6"/><circle cx="220" cy="464" r="6"/><circle cx="234" cy="466" r="6"/></g>` +
+      shoppingBag(110, 420) +
+      ball(372, 482) +
+      newspaperBox(450, 400) +
+      coffeeCup(660, 465) +
+      scooter(770, 482)
     )
   },
 })

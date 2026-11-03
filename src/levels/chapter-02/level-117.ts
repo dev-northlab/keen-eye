@@ -1,6 +1,7 @@
 // Motion differences: the right duck in the pool bobs faster on picture B; the squirrel flicks its tail only on B.
+import { butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { balloon, cityTree, cloud, dog, flowerBox, lampHead, lampPost, person, pigeon, skyline } from './shapes.ts'
+import { balloon, cityTree, cloud, coffeeCup, dog, flowerBox, lampHead, lampPost, person, pigeon, scooter, shoppingBag, skateboard, skyline } from './shapes.ts'
 
 /** Small park bench, 44 wide, with `slats` back slats; (x, y) = ground center. Bounds: x ±22, y from −28 to 0. */
 const bench = (x: number, y: number, slats: number) => {
@@ -79,7 +80,12 @@ export default svgLevel({
       diff(716, 372, 22, balloon(716, 372, '#ff006e'), balloon(716, 372, '#f0388f')) +
       balloon(690, 380, '#ffd166') +
       person(560, 470, '#3a86ff') + person(590, 476, '#ff006e', true) +
-      flowerBox(200, 486, '#ff6b8b') + flowers
+      flowerBox(200, 486, '#ff6b8b') + flowers +
+      skateboard(510, 490) +
+      scooter(660, 472) +
+      shoppingBag(198, 422) +
+      butterfly(310, 330) +
+      coffeeCup(158, 412)
     )
   },
 })

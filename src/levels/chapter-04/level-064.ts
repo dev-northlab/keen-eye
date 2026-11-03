@@ -1,6 +1,6 @@
 // Motion differences: the lighthouse beam turns faster on picture B; the flag waves only on B; the boat sails faster on B.
 import { svgLevel } from '../helpers.ts'
-import { cloud, gull, gullStanding, rock, sailboat, waves } from './shapes.ts'
+import { bottleMessage, bucket, cloud, gull, gullStanding, rock, sailboat, shell, starfish, sunHat, waves } from './shapes.ts'
 
 /** Light beam pivoting on (x, y) = lamp center. Bounds: radius 40. */
 const beam = (x: number, y: number) => `<path d="M${x} ${y}l40 -10v20Z" fill="#fff3a3" fill-opacity="0.8"/>`
@@ -58,7 +58,12 @@ export default svgLevel({
       diff(700, 402, 58, sailing(16), sailing(8), 'boat') +
       diff(100, 444, 24, rock(100, 456, 1.2, '#5c677d'), '') +
       rock(760, 470, 1, '#5c677d') +
-      anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(440, 10, 100, '#8fd8ec'))
+      anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(440, 10, 100, '#8fd8ec')) +
+      sunHat(320, 350) +
+      bottleMessage(470, 348) +
+      starfish(675, 340) +
+      bucket(720, 338) +
+      shell(420, 358)
     )
   },
 })

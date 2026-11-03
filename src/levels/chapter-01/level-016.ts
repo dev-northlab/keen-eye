@@ -1,6 +1,7 @@
 // Motion differences: the crow flies the other way round on picture B; the tractor's exhaust puff bobs only on B.
+import { mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, basket, cloud, grass, hayBale, sun, tractor, tree } from '../shapes.ts'
+import { apple, basket, cat, cloud, eggNest, grass, hayBale, milkCan, stones, sun, tractor, tree } from '../shapes.ts'
 
 /** Crow, faces right; (x, y) = body center. Bounds: x from −18 to +19, y from −12 to +10. */
 const crow = (x: number, y: number) =>
@@ -78,7 +79,12 @@ export default svgLevel({
       diff(700, 450, 44, hayBale(700, 450), '') +
       basket(150, 478) +
       diff(210, 460, 36, basket(210, 480), basket(210, 480, '#8ac926')) +
-      tufts
+      tufts +
+      mushroom(30, 425) +
+      milkCan(460, 470) +
+      cat(775, 480) +
+      eggNest(268, 490) +
+      stones(420, 488)
     )
   },
 })

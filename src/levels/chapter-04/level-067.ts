@@ -1,6 +1,6 @@
 // Motion differences: the surfer rides faster on picture B; the kite bobs only on B; the gull flies faster on B.
 import { svgLevel } from '../helpers.ts'
-import { cloud, gull, palm, parasol, person, rock, sun, towel, waves } from './shapes.ts'
+import { beachBall, cloud, coconut, flipFlops, gull, palm, parasol, person, rock, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
 /** Surfer on a board, faces right; (x, y) = board center. Bounds: x ±30, y from −62 to +6. */
 const surfer = (x: number, y: number, board: string, shirt = '#ff006e') =>
@@ -58,7 +58,12 @@ export default svgLevel({
       towel(600, 470, '#8338ec') +
       diff(260, 455, 20, person(260, 490, '#2a9d8f'), person(260, 490, '#e63946')) +
       diff(540, 472, 22, '', rock(540, 480, 1)) +
-      rock(720, 494, 0.9)
+      rock(720, 494, 0.9) +
+      beachBall(320, 480) +
+      flipFlops(470, 465) +
+      sunHat(760, 450) +
+      coconut(85, 410) +
+      sunglasses(205, 470)
     )
   },
 })

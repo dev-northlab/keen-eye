@@ -1,6 +1,6 @@
 // Motion differences: the right hanging lamp swings only on picture B; the platform signal blinks only on B.
 import { svgLevel } from '../helpers.ts'
-import { bench, person, pigeon } from './shapes.ts'
+import { bench, coffeeCup, mailbox, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
 
 /** Station clock with hands at `h` and `m` degrees; (x, y) = center. Bounds: radius 20. */
 const clock = (x: number, y: number, h: number, m: number) =>
@@ -86,7 +86,12 @@ export default svgLevel({
       person(70, 470, '#8338ec') + person(130, 486, '#2a9d8f', true) + person(340, 470, '#fb8500') +
       person(470, 456, '#e63946', true, '#c68b5e', '#2b2b2b') + person(700, 480, '#3a86ff') +
       `<rect x="504" y="420" width="64" height="46" rx="4" fill="#ffb703"/><path d="M500 420h72l-6 -14h-60Z" fill="#e63946"/><rect x="514" y="432" width="44" height="18" fill="#fff6dc"/>` +
-      diff(560, 474, 26, pigeon(552, 486), pigeon(566, 486)) + pigeon(600, 492, true)
+      diff(560, 474, 26, pigeon(552, 486), pigeon(566, 486)) + pigeon(600, 492, true) +
+      newspaperBox(25, 445) +
+      coffeeCup(408, 440) +
+      shoppingBag(375, 472) +
+      scooter(745, 482) +
+      mailbox(588, 440)
     )
   },
 })

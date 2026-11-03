@@ -1,5 +1,6 @@
+import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, fence, flower, FLOWER_COLORS, grass, hen, pick, sun } from '../shapes.ts'
+import { cloud, eggNest, fence, flower, FLOWER_COLORS, grass, hen, milkCan, pick, sun, wateringCan } from '../shapes.ts'
 
 /** Faces right; (x, y) = body center. Bounds: x from −40 to +33, y from −35 to +26 (either direction: ±40). */
 const rooster = (x: number, y: number, flip: boolean) =>
@@ -68,7 +69,12 @@ export default svgLevel({
       egg(632, 437) +
       diff(654, 439, 24, egg(654, 439), '') +
       `<path d="M590 452q50 14 100 0" stroke="#b8862b" stroke-width="5" fill="none"/>` +
-      diff(700, 300, 52, rooster(700, 304, false), rooster(700, 304, true))
+      diff(700, 300, 52, rooster(700, 304, false), rooster(700, 304, true)) +
+      eggNest(95, 472) +
+      milkCan(185, 385) +
+      wateringCan(745, 478) +
+      bird(571, 317) +
+      butterfly(300, 330)
     )
   },
 })

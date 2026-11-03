@@ -1,6 +1,6 @@
 // Motion differences: the liner's pennants wave only on picture B; the tug boat rocks faster on B; the gull flies the other way round on B.
 import { svgLevel } from '../helpers.ts'
-import { buoy, cloud, gull, lifeRing, person, sun, waves } from './shapes.ts'
+import { beachBall, bottleMessage, buoy, cloud, dolphin, fish, gull, gullStanding, lifeRing, person, sun, waves } from './shapes.ts'
 
 /** Cruise liner, faces left; (x, y) = waterline center. Bounds: x ±200, y from −120 to +12. */
 const liner = (x: number, y: number) => {
@@ -59,7 +59,12 @@ export default svgLevel({
       anim({ type: 'bob', dx: 10, dy: 0, period: 4 }, ripples) +
       diff(120, 424, 36, rocking(2.4), rocking(1.1), 'tug') +
       diff(700, 440, 20, buoy(700, 444), buoy(700, 444, '#8ac926')) +
-      buoy(640, 474, '#ffb703')
+      buoy(640, 474, '#ffb703') +
+      beachBall(430, 262) +
+      bottleMessage(300, 452) +
+      fish(560, 432, '#ffb703') +
+      gullStanding(520, 276) +
+      dolphin(420, 445)
     )
   },
 })

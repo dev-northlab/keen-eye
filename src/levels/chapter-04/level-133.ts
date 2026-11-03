@@ -1,6 +1,6 @@
 // Motion differences: the moray peeks out of its hole only on picture B; the jellyfish pulses faster on B.
 import { svgLevel } from '../helpers.ts'
-import { anchor, crab, fish, jellyfish, octopus, sandBits, seaweed, starfish } from './shapes.ts'
+import { anchor, clam, crab, fish, jellyfish, octopus, sandBits, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
 const coin = (x: number, y: number) => `<ellipse cx="${x}" cy="${y}" rx="6" ry="4" fill="#ffd23f" stroke="#c9a227" stroke-width="1.5"/>`
 
@@ -66,7 +66,12 @@ export default svgLevel({
       `<path d="M690 450q30 -40 70 -20q20 14 10 34Z" fill="#6f7f86"/>` +
       diff(722, 428, 30, octopus(722, 444, '#8338ec'), octopus(722, 444, '#9a4ae0')) +
       starfish(530, 444, '#ff9f43') + starfish(760, 488, '#ff6b8b') +
-      weeds
+      weeds +
+      seaUrchin(512, 490) +
+      clam(660, 480) +
+      seahorse(450, 322) +
+      snorkelMask(140, 472) +
+      fish(130, 150, '#ffb703')
     )
   },
 })

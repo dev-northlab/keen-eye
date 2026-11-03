@@ -1,6 +1,7 @@
 // Motion differences: the windsock flaps faster on picture B; the bee over the blue hive hovers faster on B.
+import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bee, beehive, cloud, fence, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
+import { bee, beehive, cloud, fence, flower, FLOWER_COLORS, grass, pick, sun, wateringCan } from '../shapes.ts'
 
 /** Honey jar; (x, y) = bottom center; `lid` = lid color. Bounds: x ±12, y from −30 to 0. */
 const jar = (x: number, y: number, lid = '#e63946') =>
@@ -102,7 +103,12 @@ export default svgLevel({
       `<rect x="740" y="452" width="52" height="20" fill="#f7b267" stroke="#c98a3f" stroke-width="2"/><rect x="744" y="432" width="48" height="20" fill="#7ec4cf" stroke="#4f9aa6" stroke-width="2"/>` +
       `<rect x="736" y="472" width="60" height="20" fill="#f4d35e" stroke="#c9a227" stroke-width="2"/>` +
       `<rect x="610" y="462" width="56" height="26" fill="#a0703f"/><path d="M618 462v-14M630 462v-14M642 462v-14M654 462v-14" stroke="#d9a43a" stroke-width="5"/>` +
-      meadow + tufts + swarm
+      meadow + tufts + swarm +
+      bird(135, 148) +
+      stump(255, 430) +
+      butterfly(505, 430) +
+      wateringCan(460, 420) +
+      mushroom(360, 430)
     )
   },
 })

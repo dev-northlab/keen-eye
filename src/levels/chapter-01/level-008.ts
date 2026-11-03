@@ -1,5 +1,6 @@
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, fence, hayBale, sun, tractor } from '../shapes.ts'
+import { birdhouse, cat, cloud, fence, hayBale, pumpkin, sun, tractor, wheelbarrow } from '../shapes.ts'
 
 /** Faces right; (x, y) = feet. Bounds: x ±16, y from −20 to +2. */
 const crow = (x: number, y: number) =>
@@ -45,5 +46,10 @@ export default svgLevel({
     diff(359, 396, 76, tractor(360, 440), tractor(360, 440, '#2a9d8f')) +
     hayBale(560, 420) +
     diff(660, 450, 44, hayBale(660, 450), '') +
-    hayBale(750, 405),
+    hayBale(750, 405) +
+    bird(251, 288) +
+    birdhouse(318, 300) +
+    wheelbarrow(110, 400) +
+    pumpkin(470, 488) +
+    cat(770, 492),
 })

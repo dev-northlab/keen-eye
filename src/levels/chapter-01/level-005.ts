@@ -1,5 +1,6 @@
+import { bird, mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bucket, cloud, fence, grass, pig, sun, sunflower } from '../shapes.ts'
+import { bucket, cat, chick, cloud, fence, grass, pig, pumpkin, sun, sunflower } from '../shapes.ts'
 
 /** Zone around sunflower(x, y, h): a circle containing its bounds. */
 const sunflowerZone = (x: number, y: number, h: number): [number, number, number] => {
@@ -52,7 +53,12 @@ export default svgLevel({
       // Sleeping pig by the shed (breathing)
       anim({ type: 'bob', dx: 0, dy: 1.5, period: 3 }, pig(710, 410, true)) +
       diff(110, 455, 26, bucket(110, 470), bucket(110, 470, '#e63946')) +
-      anim({ type: 'path', points: [[0, 0], [-80, -20], [-140, 10], [-60, 30]], period: 7 }, `<circle cx="420" cy="250" r="3" fill="#333"/>`)
+      anim({ type: 'path', points: [[0, 0], [-80, -20], [-140, 10], [-60, 30]], period: 7 }, `<circle cx="420" cy="250" r="3" fill="#333"/>`) +
+      chick(320, 472) +
+      bird(492, 289) +
+      mushroom(30, 402) +
+      pumpkin(640, 484) +
+      cat(776, 482)
     )
   },
 })

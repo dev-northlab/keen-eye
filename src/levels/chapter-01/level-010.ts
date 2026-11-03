@@ -1,5 +1,6 @@
+import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, cow, fence, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
+import { cat, cloud, cow, fence, flower, FLOWER_COLORS, grass, pick, sun, wheelbarrow } from '../shapes.ts'
 
 /** (x, y) = bottom center. Bounds: x ±14, y from −40 to 0. */
 const milkCan = (x: number, y: number) =>
@@ -55,7 +56,12 @@ export default svgLevel({
       // Grazing cow by the barn
       anim({ type: 'sway', angle: 3, pivot: [700, 450], period: 3.2 }, cow(700, 412, true)) +
       flowers +
-      anim({ type: 'path', points: [[0, 0], [-60, -30], [-110, 0], [-60, 30]], period: 6 }, `<g transform="translate(300 300)"><ellipse cx="-6" cy="-3" rx="7" ry="9" fill="#ffd166" transform="rotate(-25 -6 -3)"/><ellipse cx="6" cy="-3" rx="7" ry="9" fill="#ffd166" transform="rotate(25 6 -3)"/><rect x="-1.5" y="-10" width="3" height="16" rx="1.5" fill="#333"/></g>`)
+      anim({ type: 'path', points: [[0, 0], [-60, -30], [-110, 0], [-60, 30]], period: 6 }, `<g transform="translate(300 300)"><ellipse cx="-6" cy="-3" rx="7" ry="9" fill="#ffd166" transform="rotate(-25 -6 -3)"/><ellipse cx="6" cy="-3" rx="7" ry="9" fill="#ffd166" transform="rotate(25 6 -3)"/><rect x="-1.5" y="-10" width="3" height="16" rx="1.5" fill="#333"/></g>`) +
+      cat(595, 480) +
+      bird(331, 323) +
+      wheelbarrow(555, 402) +
+      mushroom(25, 420) +
+      butterfly(775, 320)
     )
   },
 })

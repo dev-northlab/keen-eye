@@ -1,6 +1,7 @@
 // Motion differences: steam rises from the right cup only on picture B; the hanging plant swings faster on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { awning, bike, cityTree, flowerBox, lampHead, lampPost, person, pigeon } from './shapes.ts'
+import { awning, ball, bike, cityTree, flowerBox, lampHead, lampPost, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
 
 /** Café table with a parasol; (x, y) = ground under the table. Bounds: x ±56, y from −118 to 0. */
 const table = (x: number, y: number, canopy: string) =>
@@ -109,7 +110,12 @@ export default svgLevel({
       person(684, 462, '#3a86ff', true) +
       // Waiter, bike, pigeons
       person(540, 480, '#f4f4f4') + `<rect x="548" y="430" width="22" height="3" fill="#8d99ae"/><circle cx="560" cy="426" r="4" fill="#e63946"/>` +
-      bike(330, 496, '#ffb703') + pigeon(90, 492) + pigeon(740, 490, true)
+      bike(330, 496, '#ffb703') + pigeon(90, 492) + pigeon(740, 490, true) +
+      bird(240, 111) +
+      ball(48, 472) +
+      scooter(262, 482) +
+      shoppingBag(735, 440) +
+      newspaperBox(322, 380)
     )
   },
 })

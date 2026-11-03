@@ -1,6 +1,8 @@
 // Motion differences: smoke rises from the middle chimney only on picture B; the red shirt on the line swings faster on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { flowerBox, pigeon, skyline } from './shapes.ts'
+import { flowerPot, wateringCan } from '../shapes.ts'
+import { ball, coffeeCup, flowerBox, pigeon, skyline } from './shapes.ts'
 
 /** TV antenna; (x, y) = mast foot. Bounds: x ±14, y from −52 to 0. */
 const antenna = (x: number, y: number) =>
@@ -100,7 +102,12 @@ export default svgLevel({
       diff(588, 474, 24, `<path d="M572 486h32l-5 -20h-22Z" fill="#e07a5f"/>`, `<path d="M572 486h32l-5 -20h-22Z" fill="#cf8a5a"/>`) +
       `<path d="M588 466v-20M588 452l-8 -6M588 448l8 -6" stroke="#3f8f3a" stroke-width="3"/>` +
       `<g transform="translate(400 380)" fill="#3d3d3d"><ellipse cy="-10" rx="10" ry="11"/><circle cy="-24" r="7"/><path d="M-6 -28l1 -7l4 4ZM6 -28l-1 -7l-4 4Z"/></g>` +
-      `<rect x="680" y="310" width="120" height="80" fill="#c9b79c"/><path d="M670 312h140" stroke="#8a7a6a" stroke-width="8"/><rect x="706" y="334" width="34" height="56" fill="#6b5a4a"/>`
+      `<rect x="680" y="310" width="120" height="80" fill="#c9b79c"/><path d="M670 312h140" stroke="#8a7a6a" stroke-width="8"/><rect x="706" y="334" width="34" height="56" fill="#6b5a4a"/>` +
+      bird(680, 176) +
+      ball(150, 488) +
+      flowerPot(380, 482) +
+      coffeeCup(650, 482) +
+      wateringCan(720, 482)
     )
   },
 })
