@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
+import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import type { Level } from '../engine/types.ts'
 import { DETECTIVE_CHAPTER } from '../levels/chapters.ts'
@@ -38,6 +39,7 @@ function status(c: DetectiveCase, scenes: Level[]) {
       <ul class="cases">
         <li v-for="{ c, scenes, cover } in cases" :key="c.id">
           <button class="case" :class="status(c, scenes)" @click="router.push({ name: 'case', params: { case: c.id } })">
+            <LevelId :id="scenes.map((l) => l.id)" />
             <svg class="cover" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" v-html="cover" />
             <span class="text">
               <span class="name">{{ $t(`detective.cases.${c.id}.title`) }}</span>
@@ -99,6 +101,7 @@ main {
   color: var(--fg);
   border: 2px solid var(--soft);
   border-radius: 18px;
+  position: relative;
 }
 
 .case.solved {

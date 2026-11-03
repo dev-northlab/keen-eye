@@ -2,6 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import FoundSlots from '../components/FoundSlots.vue'
+import LevelId from '../components/LevelId.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import SecretFound from '../components/SecretFound.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
@@ -197,6 +198,7 @@ onBeforeUnmount(() => {
     <div class="board" :class="{ hidden: paused }">
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
+      <LevelId :id="level.id" boxed />
       <div v-if="phase === 'curtain'" :key="phaseKey" class="curtain" :class="{ still: settings.effectiveReduceMotion }" />
       <SecretFound v-if="secretShown" :still="settings.effectiveReduceMotion" />
     </div>

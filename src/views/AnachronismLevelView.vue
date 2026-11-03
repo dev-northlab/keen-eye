@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import FactCard from '../components/FactCard.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
+import LevelId from '../components/LevelId.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
@@ -180,6 +181,7 @@ onBeforeUnmount(() => {
     <div class="board" :class="{ locked }">
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
+      <LevelId :id="level.number" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <FactCard
         v-if="fact"

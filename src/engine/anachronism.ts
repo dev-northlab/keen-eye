@@ -67,6 +67,7 @@ export function parseAnachronismLevel(raw: unknown): AnachronismLevel {
   }
   if (!isObject(raw)) return fail('not an object')
   if (!isText(raw.id)) fail('id must be a string')
+  if (!Number.isInteger(raw.number) || (raw.number as number) < 1) fail('number must be an integer ≥ 1')
   if (raw.mode !== 'anachronism') fail('mode must be "anachronism"')
   if (!isText(raw.world) || !isText(raw.image)) fail('world and image must be strings')
   if (!isLocalized(raw.era)) fail('era must have texts with "en"')

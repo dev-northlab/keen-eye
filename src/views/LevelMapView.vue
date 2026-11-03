@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import KeyIcon from '../components/KeyIcon.vue'
+import LevelId from '../components/LevelId.vue'
 import {
   CHAPTERS,
   chapterLevels,
@@ -32,6 +33,7 @@ const progress = useProgressStore()
 
 const levels = CHAPTERS.flatMap(chapterLevels)
 const worlds = {
+  ids: levels.map((l) => l.id),
   total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
   done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
@@ -40,6 +42,7 @@ const worlds = {
 function category(chapter: Chapter) {
   const own = chapterLevels(chapter)
   return {
+    ids: own.map((l) => l.id),
     total: chapterSize(chapter),
     done: () => own.filter((l) => progress.isCompleted(l.id)).length,
     stars: () => own.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
@@ -60,6 +63,7 @@ function openTreasury() {
 }
 
 const timeTravel = {
+  ids: timeTravelLevels.map((l) => l.number),
   total: timeTravelLevels.length,
   done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
   stars: () => timeTravelLevels.reduce((s, l) => s + (progress.timeTravel[l.id]?.stars ?? 0), 0),
@@ -73,6 +77,7 @@ const timeTravel = {
       <ul class="list">
         <li>
           <button class="mode spot" @click="router.push({ name: 'worlds' })">
+            <LevelId :id="worlds.ids" />
             <!-- A big faint magnifier behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="42" cy="42" r="30" fill="none" stroke="#fff" stroke-width="7" />
@@ -102,6 +107,7 @@ const timeTravel = {
         </li>
         <li>
           <button class="mode time" @click="router.push({ name: 'chapter', params: { chapter: TIME_CHAPTER.id } })">
+            <LevelId :id="time.ids" />
             <!-- A big faint half sun, half moon behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="6" />
@@ -120,6 +126,7 @@ const timeTravel = {
         </li>
         <li>
           <button class="mode memory" @click="router.push({ name: 'chapter', params: { chapter: MEMORY_CHAPTER.id } })">
+            <LevelId :id="memory.ids" />
             <!-- A big faint eye behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <path d="M8 50s16-28 42-28 42 28 42 28-16 28-42 28S8 50 8 50Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" />
@@ -138,6 +145,7 @@ const timeTravel = {
         </li>
         <li>
           <button class="mode world" @click="router.push({ name: 'travel' })">
+            <LevelId :id="travel.ids" />
             <!-- A big faint globe behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="6" />
@@ -156,6 +164,7 @@ const timeTravel = {
         </li>
         <li>
           <button class="mode detective" @click="router.push({ name: 'detective' })">
+            <LevelId :id="detective.ids" />
             <!-- Big faint footprints behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <g fill="#fff">
@@ -177,6 +186,7 @@ const timeTravel = {
         </li>
         <li>
           <button class="mode travel" @click="router.push({ name: 'eras' })">
+            <LevelId :id="timeTravel.ids" />
             <!-- A big faint clock face behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="6" />
@@ -206,6 +216,7 @@ const timeTravel = {
         </li>
         <li>
           <button class="mode treasury" :class="{ closed: !treasuryOpen() }" :aria-disabled="!treasuryOpen()" @click="treasuryOpen() && openTreasury()">
+            <LevelId :id="treasuryLevel.id" />
             <!-- A big faint key behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="28" cy="50" r="18" fill="none" stroke="#fff" stroke-width="8" />

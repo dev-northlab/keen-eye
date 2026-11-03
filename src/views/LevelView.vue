@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import ClueList from '../components/ClueList.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
+import LevelId from '../components/LevelId.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import SecretFound from '../components/SecretFound.vue'
 import ResultDialog from '../components/ResultDialog.vue'
@@ -218,6 +219,7 @@ onBeforeUnmount(() => {
     <div class="board" :class="{ locked }">
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
+      <LevelId :id="level.id" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <div class="note" role="status">{{ note }}</div>
       <SecretFound v-if="secretShown" :still="settings.effectiveReduceMotion" />

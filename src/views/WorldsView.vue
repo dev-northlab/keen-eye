@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import KeyIcon from '../components/KeyIcon.vue'
+import LevelId from '../components/LevelId.vue'
 import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -43,6 +44,7 @@ useBackButton(toModes)
             :disabled="!c.first"
             @click="open(c.chapter)"
           >
+            <LevelId :id="c.levels.map((l) => l.id)" />
             <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="c.chapter.icon" />
             <span class="text">
               <span class="name">{{ $t(`chapters.${c.chapter.id}`) }}</span>
@@ -110,6 +112,7 @@ main {
   color: var(--fg);
   border: 2px solid var(--chapter);
   border-left-width: 10px;
+  position: relative;
 }
 
 .icon {

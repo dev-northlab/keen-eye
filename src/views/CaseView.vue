@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
 import ClueList from '../components/ClueList.vue'
+import LevelId from '../components/LevelId.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import StarRating from '../components/StarRating.vue'
@@ -96,6 +97,7 @@ function sceneLabel(level: Level, n: number) {
             :aria-label="sceneLabel(level, i + 1)"
             @click="open(level)"
           >
+            <LevelId :id="level.id" />
             <span class="num">{{ i + 1 }}</span>
             <span class="title">{{ $t(`levelTitles.${level.title}`) }}</span>
             <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
@@ -248,6 +250,7 @@ h2 {
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);
+  position: relative;
 }
 
 .scene.done {

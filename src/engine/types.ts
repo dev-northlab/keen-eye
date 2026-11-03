@@ -172,6 +172,8 @@ export type AnachronismItem = HitShape & {
 /** "Find the odd one out": one picture of a historical era with out-of-place items to tap. */
 export interface AnachronismLevel {
   id: string
+  /** Numeric id shown on screen (601+), outside the range of the numbered levels. */
+  number: number
   mode: 'anachronism'
   world: string
   era: LocalizedText
