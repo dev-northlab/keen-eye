@@ -38,7 +38,7 @@ function play() {
   <div class="screen">
     <ScreenBackdrop theme="city" />
     <main>
-      <section v-if="purchase.fullGame" class="card owned">
+      <section v-if="purchase.owned" class="card owned">
         <p class="big" aria-hidden="true">★</p>
         <p>{{ $t('purchase.owned') }}</p>
         <button @click="play">{{ $t('purchase.play') }}</button>

@@ -165,7 +165,7 @@ export const TRAVEL_CHAPTER: Chapter = {
  */
 export const DETECTIVE_CHAPTER: Chapter = {
   id: 'detective',
-  ranges: [[501, 515]],
+  ranges: [[501, 530]],
   color: '#8a5a2b',
   soft: '#f6eadc',
   backdrop: 'city',

@@ -90,4 +90,86 @@ export const SUSPECT_ART: Record<string, string> = {
     `<g fill="#fff"><circle cx="24" cy="20" r="1.6"/><circle cx="34" cy="18" r="1.6"/><circle cx="42" cy="22" r="1.6"/></g>` +
     eyes(35) +
     smile(44),
+  clown:
+    disc('#fff3c4') +
+    shoulders('#3a6ea5') +
+    `<g fill="#f2994a"><circle cx="14" cy="30" r="9"/><circle cx="16" cy="18" r="8"/><circle cx="50" cy="30" r="9"/><circle cx="48" cy="18" r="8"/></g>` +
+    face('#fff') +
+    `<path d="M24 26l-4 -6M40 26l4 -6" stroke="#3a6ea5" stroke-width="2"/>` +
+    eyes(33) +
+    `<circle cx="32" cy="39" r="5" fill="#e5484d"/><path d="M22 44q10 10 20 0" stroke="#e5484d" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+  monkey:
+    disc('#e1f2e6') +
+    `<circle cx="14" cy="34" r="8" fill="#8a5a2b"/><circle cx="50" cy="34" r="8" fill="#8a5a2b"/><circle cx="14" cy="34" r="4" fill="#e8c39e"/><circle cx="50" cy="34" r="4" fill="#e8c39e"/>` +
+    `<circle cx="32" cy="34" r="18" fill="#8a5a2b"/><path d="M20 34q0 -10 12 -6q12 -4 12 6q0 14 -12 14q-12 0 -12 -14Z" fill="#e8c39e"/>` +
+    eyes(33, 6) +
+    `<path d="M27 42q5 4 10 0" stroke="#7a3b2a" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+  strongman:
+    disc('#ffe0b2') +
+    `<path d="M6 64Q8 48 32 48Q56 48 58 64Z" fill="#e8b88c"/><path d="M18 64L22 50M46 64L42 50" stroke="#e5484d" stroke-width="5"/>` +
+    face('#e8b88c') +
+    `<path d="M16 30Q16 16 32 16Q48 16 48 30Q40 22 32 22Q24 22 16 30Z" fill="#d9a77a"/>` +
+    eyes(34) +
+    `<path d="M20 44q6 -6 12 -2q6 -4 12 2q-4 -2 -12 1q-8 -3 -12 -1ZM20 44q-4 -2 -4 -6M44 44q4 -2 4 -6" stroke="#3b2a1a" stroke-width="2.4" fill="#3b2a1a"/>`,
+  magician:
+    disc('#ece6ff') +
+    shoulders('#2b2b38') +
+    `<path d="M26 50L32 56L38 50L38 60L32 56L26 60Z" fill="#e5484d"/>` +
+    face('#f2c9a0') +
+    `<rect x="18" y="4" width="28" height="20" rx="2" fill="#2b2b38"/><rect x="18" y="16" width="28" height="4" fill="#8e6bbf"/><ellipse cx="32" cy="24" rx="22" ry="4" fill="#2b2b38"/>` +
+    eyes(35) +
+    `<path d="M24 43q8 -4 16 0" stroke="#3b2a1a" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M30 47q2 6 4 0" fill="#3b2a1a"/>`,
+  conductor:
+    disc('#dfe8f5') +
+    shoulders('#2a3f66') +
+    `<circle cx="26" cy="54" r="2" fill="#f2c14e"/><circle cx="38" cy="54" r="2" fill="#f2c14e"/>` +
+    face('#f0c4a0') +
+    `<path d="M14 24Q16 10 32 10Q48 10 50 24Z" fill="#2a3f66"/><path d="M12 24H52L48 30H16Z" fill="#1a2a44"/><rect x="28" y="14" width="8" height="6" rx="1" fill="#f2c14e"/>` +
+    eyes(36) +
+    `<path d="M24 44q8 -6 16 0" stroke="#8a8f99" stroke-width="3.4" fill="none" stroke-linecap="round"/>`,
+  poodle:
+    disc('#ffe6ee') +
+    `<g fill="#fff"><circle cx="32" cy="16" r="10"/><circle cx="14" cy="34" r="10"/><circle cx="50" cy="34" r="10"/><circle cx="32" cy="38" r="17"/></g>` +
+    `<path d="M24 12l8 4l8 -4l-2 8h-12Z" fill="#e8457a"/>` +
+    eyes(34, 7) +
+    `<ellipse cx="32" cy="44" rx="4" ry="3" fill="#2b2b38"/><path d="M30 49q2 5 4 0" fill="#e8457a"/>`,
+  boy:
+    disc('#e3edff') +
+    `<path d="M10 64Q12 50 32 50Q52 50 54 64Z" fill="#3fbf5f"/><path d="M14 56H50M12 62H52" stroke="#fff" stroke-width="3"/>` +
+    face('#f2c9a0') +
+    `<path d="M14 32Q12 16 24 16L22 10L30 14L32 8L36 14L42 10L42 16Q52 18 50 32Q46 22 32 22Q18 22 14 32Z" fill="#f2b632"/>` +
+    eyes(36) +
+    smile(44),
+  yeti:
+    disc('#dfe8f5') +
+    `<path d="M10 40Q8 14 32 12Q56 14 54 40Q56 56 32 58Q8 56 10 40Z" fill="#fff" stroke="#c7d8e8" stroke-width="2"/>` +
+    `<path d="M10 20l4 -8l6 6M54 20l-4 -8l-6 6" fill="#fff" stroke="#c7d8e8" stroke-width="2"/>` +
+    `<ellipse cx="32" cy="38" rx="14" ry="12" fill="#8ec3e6"/>` +
+    eyes(35, 6) +
+    `<path d="M26 43q6 5 12 0" stroke="#2b2b38" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M28 44l2 3l2 -3M32 44l2 3l2 -3" fill="#fff"/>`,
+  skier:
+    disc('#ffe6ee') +
+    shoulders('#e5484d') +
+    face('#e8b88c') +
+    `<path d="M14 28Q14 12 32 12Q50 12 50 28Z" fill="#e5484d"/><circle cx="32" cy="9" r="6" fill="#fff"/><path d="M14 26H50" stroke="#fff" stroke-width="3"/>` +
+    `<rect x="16" y="22" width="32" height="9" rx="4" fill="#f2994a" stroke="#2b2b38" stroke-width="1.6"/>` +
+    eyes(37) +
+    smile(45),
+  snowboarder:
+    disc('#e1f2e6') +
+    shoulders('#8e6bbf') +
+    face('#c98a5e') +
+    `<path d="M14 30Q12 12 32 12Q52 12 50 30Z" fill="#3fbf5f"/><path d="M14 30H50" stroke="#2f7d55" stroke-width="4"/>` +
+    `<path d="M12 36Q12 22 18 22M52 36Q52 22 46 22" stroke="#2b2b38" stroke-width="3" fill="none"/><rect x="8" y="32" width="8" height="12" rx="3" fill="#2b2b38"/><rect x="48" y="32" width="8" height="12" rx="3" fill="#2b2b38"/>` +
+    eyes(37) +
+    smile(45),
+  innkeeper:
+    disc('#fff3dd') +
+    shoulders('#3f9b6b') +
+    `<path d="M24 50H40V64H24Z" fill="#fff"/>` +
+    face('#f0c4a0') +
+    `<path d="M14 34Q12 16 32 16Q52 16 50 34Q46 22 32 22Q18 22 14 34Z" fill="#a8743f"/><circle cx="32" cy="12" r="7" fill="#a8743f"/>` +
+    `<circle cx="25" cy="36" r="5" fill="none" stroke="#2b2b38" stroke-width="1.8"/><circle cx="39" cy="36" r="5" fill="none" stroke="#2b2b38" stroke-width="1.8"/>` +
+    eyes(36, 7, '#2b2b38') +
+    smile(44),
 }

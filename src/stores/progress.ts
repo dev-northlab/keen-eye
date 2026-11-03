@@ -87,7 +87,7 @@ export const useProgressStore = defineStore('progress', () => {
   }
 
   /** A paid level while the full game is not bought. */
-  const needsPurchase = (id: number) => !devOpenAll.value && !isFreeLevel(id) && !usePurchaseStore().fullGame
+  const needsPurchase = (id: number) => !devOpenAll.value && !isFreeLevel(id) && !usePurchaseStore().owned
 
   /** Playable: reached in order and, for paid levels, bought. */
   const isUnlocked = (id: number) => isReached(id) && !needsPurchase(id)

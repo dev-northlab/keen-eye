@@ -10,9 +10,9 @@ import { allLevels, levelById } from '../src/levels/index.ts'
 const cluesOf = (caseId: string) => caseLevels(caseId).flatMap((l) => l.detective!.clues)
 
 describe('"detective" mode (docs/detective-mode.md)', () => {
-  test('3 cases of 5 scenes from 501: 5, 6, then 7 clues per scene', () => {
-    assert.deepEqual(detectiveLevels.map((l) => l.id), Array.from({ length: 15 }, (_, i) => 501 + i))
-    assert.deepEqual(CASES.map((c) => c.id), ['cake', 'cheese', 'vase'])
+  test('6 cases of 5 scenes from 501: 5, 6, 7, 8, 9, then 10 clues per scene', () => {
+    assert.deepEqual(detectiveLevels.map((l) => l.id), Array.from({ length: 30 }, (_, i) => 501 + i))
+    assert.deepEqual(CASES.map((c) => c.id), ['cake', 'cheese', 'vase', 'circus', 'train', 'lodge'])
     CASES.forEach((c, i) => {
       const levels = caseLevels(c.id)
       assert.deepEqual(levels, detectiveLevels.slice(i * 5, i * 5 + 5), c.id)
