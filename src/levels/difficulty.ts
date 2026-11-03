@@ -72,6 +72,10 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 501, to: 505, differences: [5, 5], motion: [0, 0], minRadius: 24, kinds: EASY },
   { from: 506, to: 510, differences: [6, 6], motion: [0, 0], minRadius: 22, minGap: 56, kinds: [...EASY, 'shift'] },
   { from: 511, to: 515, differences: [7, 7], motion: [0, 0], minRadius: 20, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
+  // 516–530: three harder cases, busier scenes with 8 → 9 → 10 smaller clues.
+  { from: 516, to: 520, differences: [8, 8], motion: [0, 0], minRadius: 20, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
+  { from: 521, to: 525, differences: [9, 9], motion: [0, 0], minRadius: 18, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
+  { from: 526, to: 530, differences: [10, 10], motion: [0, 0], minRadius: 18, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
 ]
 
 /**

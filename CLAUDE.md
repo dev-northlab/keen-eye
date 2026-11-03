@@ -77,11 +77,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
   world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
   `/travel/passport`; open and paid like "time" (first 3 free);
-  `detective/` — "detective story" (`docs/detective-mode.md`): levels 501–515 of chapter `detective` in 3 cases of 5 scenes
+  `detective/` — "detective story" (`docs/detective-mode.md`): levels 501–530 of chapter `detective` in 6 cases of 5 scenes
   (`cases.ts`: suspects, culprit and `fits` — the suspects each clue fits; only the culprit fits all, `npm test` checks it;
   portraits in `suspects.ts`), written with `detectiveLevel({ id, case, title, parTimeSec, scene })` whose `clue(key, x, y, r, a, b)`
   is `diff` plus the clue text key (`Level.detective`: case, clue per difference, i18n `detective.clueTexts.<key>`); A = before,
-  B = after; 5 → 6 → 7 clues; played by `LevelView` (a found clue pops up, the result dialog lists the scene's clues), listed
+  B = after; 5 → 6 → 7 clues, then the three harder cases (516–530) 8 → 9 → 10; played by `LevelView` (a found clue
+  pops up, the result dialog lists the scene's clues), listed
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
   cases in `progress.solvedCases`); the first case is free (`Chapter.freeLevels`), the rest need the purchase;
   `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),

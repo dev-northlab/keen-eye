@@ -209,3 +209,69 @@ export const vase = (x: number, y: number) =>
 export const shards = (x: number, y: number) =>
   `<g fill="#3a6ea5"><path d="M${x - 28} ${y + 6}l10 -14l8 12Z"/><path d="M${x - 4} ${y + 10}l6 -16l12 10Z"/><path d="M${x + 16} ${y}l12 -8l2 14Z"/><path d="M${x - 10} ${y - 8}l8 -4l2 8Z"/></g>` +
   `<path d="M${x + 4} ${y + 4}l8 -4" stroke="#fff" stroke-width="3"/>`
+
+/** Wall spotlight at (x, y): lit or off. Bounds: ±18. */
+export const spotlight = (x: number, y: number, on: boolean) =>
+  (on ? `<circle cx="${x}" cy="${y + 4}" r="17" fill="#ffd54a" fill-opacity="0.45"/>` : '') +
+  `<path d="M${x - 10} ${y - 8}H${x + 10}L${x + 7} ${y + 4}H${x - 7}Z" fill="#2b2b38"/><ellipse cx="${x}" cy="${y + 5}" rx="7" ry="3" fill="${on ? '#fff3b0' : '#5b6b7a'}"/>`
+
+/** Top hat; (x, y) = bottom middle of the brim. Bounds: x ±24, y from −40 to +2. */
+export const topHat = (x: number, y: number, band = '#e5484d') =>
+  `<rect x="${x - 16}" y="${y - 40}" width="32" height="38" rx="3" fill="#2b2b38"/><rect x="${x - 16}" y="${y - 14}" width="32" height="7" fill="${band}"/>` +
+  `<ellipse cx="${x}" cy="${y - 3}" rx="24" ry="5" fill="#2b2b38"/>`
+
+/** Print of a white glove, fingers up; (x, y) = middle of the palm. Bounds: x ±10, y from −14 to +8. */
+export const glovePrint = (x: number, y: number) =>
+  `<g fill="#fff" fill-opacity="0.85"><ellipse cx="${x}" cy="${y + 1}" rx="7" ry="7"/>` +
+  [-5, -1.7, 1.7, 5].map((dx) => `<rect x="${x + dx - 1.6}" y="${y - 14}" width="3.2" height="12" rx="1.6"/>`).join('') +
+  `<rect x="${x + 4}" y="${y - 2}" width="3.2" height="10" rx="1.6" transform="rotate(-50 ${x + 5.6} ${y + 3})"/></g>`
+
+/** Playing card lying tilted; (x, y) = center. Bounds: ±20. */
+export const playingCard = (x: number, y: number, angle = -18) =>
+  `<g transform="rotate(${angle} ${x} ${y})"><rect x="${x - 11}" y="${y - 15}" width="22" height="30" rx="3" fill="#fff" stroke="#c9c2b6" stroke-width="1.2"/>` +
+  `<path d="M${x} ${y - 7}c-6 -6 -10 2 0 9c10 -7 6 -15 0 -9Z" fill="#e5484d"/></g>`
+
+/** Banana peel lying flat; (x, y) = center. Bounds: x ±18, y ±10. */
+export const bananaPeel = (x: number, y: number) =>
+  `<g fill="#f2c94c" stroke="#c9953f" stroke-width="1.2"><path d="M${x - 4} ${y + 2}Q${x - 18} ${y - 2} ${x - 16} ${y + 8}Q${x - 8} ${y + 8} ${x - 2} ${y + 4}Z"/>` +
+  `<path d="M${x + 4} ${y + 2}Q${x + 18} ${y - 2} ${x + 16} ${y + 8}Q${x + 8} ${y + 8} ${x + 2} ${y + 4}Z"/><path d="M${x - 3} ${y + 4}Q${x - 6} ${y - 8} ${x} ${y - 10}Q${x + 6} ${y - 8} ${x + 3} ${y + 4}Z"/></g>` +
+  `<rect x="${x - 2}" y="${y + 2}" width="4" height="5" rx="1" fill="#7a5233"/>`
+
+/** Lantern hanging from a hook at (x, y): lit or out. Bounds: x ±13, y from 0 to +40. */
+export const lantern = (x: number, y: number, lit: boolean) =>
+  (lit ? `<circle cx="${x}" cy="${y + 24}" r="13" fill="#ffd54a" fill-opacity="0.4"/>` : '') +
+  `<path d="M${x - 6} ${y + 8}a6 6 0 0 1 12 0" fill="none" stroke="#2b2b38" stroke-width="2"/><rect x="${x - 9}" y="${y + 8}" width="18" height="5" fill="#2b2b38"/>` +
+  `<rect x="${x - 7}" y="${y + 13}" width="14" height="20" fill="${lit ? '#ffe680' : '#8a8f99'}" stroke="#2b2b38" stroke-width="2"/><rect x="${x - 9}" y="${y + 33}" width="18" height="5" fill="#2b2b38"/>`
+
+/** Bit of white fur. Bounds: x ±12, y ±9. */
+export const furTuft = (x: number, y: number, color = '#fff') =>
+  `<path d="M${x - 12} ${y + 6}q4 -10 8 -4q2 -10 6 -2q4 -9 6 1q5 -6 4 6q-6 6 -24 -1Z" fill="${color}" stroke="#c9c2b6" stroke-width="1"/>`
+
+/** Snowy ground from `y` down with soft drifts. */
+export const snowGround = (y: number) =>
+  `<rect y="${y}" width="800" height="${500 - y}" fill="#f4f8fc"/>` +
+  `<path d="M0 ${y}Q100 ${y - 14} 200 ${y}T400 ${y}T600 ${y}T800 ${y}V${y + 12}H0Z" fill="#f4f8fc"/>`
+
+/** Fir tree with snow; (x, y) = foot of the trunk, `s` scale. Bounds: x ±44s, y from −150s to 0. */
+export const fir = (x: number, y: number, s = 1) =>
+  `<rect x="${x - 6 * s}" y="${y - 20 * s}" width="${12 * s}" height="${20 * s}" fill="#7a5233"/>` +
+  [0, 1, 2]
+    .map((i) => {
+      const top = y - 150 * s + i * 40 * s
+      const w = (24 + i * 10) * s
+      return `<path d="M${x} ${top}L${x + w} ${top + 60 * s}H${x - w}Z" fill="#2f7d55"/><path d="M${x} ${top}L${x + w * 0.45} ${top + 24 * s}Q${x} ${top + 30 * s} ${x - w * 0.45} ${top + 24 * s}Z" fill="#fff"/>`
+    })
+    .join('')
+
+/** Small handprint, fingers up; (x, y) = middle of the palm. Bounds: x ±7, y from −11 to +6. */
+export const smallHand = (x: number, y: number) =>
+  `<g fill="#fff" fill-opacity="0.55"><ellipse cx="${x}" cy="${y + 1}" rx="5" ry="5"/>` +
+  [-3.6, -1.2, 1.2, 3.6].map((dx) => `<rect x="${x + dx - 1.1}" y="${y - 11}" width="2.2" height="8" rx="1.1"/>`).join('') +
+  `<rect x="${x + 3}" y="${y - 2}" width="2.2" height="7" rx="1.1" transform="rotate(-50 ${x + 4} ${y + 2})"/></g>`
+
+/** The golden snowflake trophy; (x, y) = bottom middle of its base. Bounds: x ±24, y from −54 to 0. */
+export const trophy = (x: number, y: number) =>
+  `<path d="M${x - 16} ${y - 52}H${x + 16}Q${x + 16} ${y - 24} ${x} ${y - 20}Q${x - 16} ${y - 24} ${x - 16} ${y - 52}Z" fill="#f2c14e"/>` +
+  `<path d="M${x - 16} ${y - 48}q-10 0 -6 10t8 4M${x + 16} ${y - 48}q10 0 6 10t-8 4" stroke="#f2c14e" stroke-width="3" fill="none"/>` +
+  `<rect x="${x - 4}" y="${y - 20}" width="8" height="10" fill="#e0b030"/><rect x="${x - 14}" y="${y - 10}" width="28" height="10" rx="2" fill="#c9953f"/>` +
+  `<path d="M${x} ${y - 46}V${y - 30}M${x - 7} ${y - 42}l14 8M${x + 7} ${y - 42}l-14 8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`
