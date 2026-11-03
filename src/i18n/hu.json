@@ -58,6 +58,13 @@
       "keys": "Rejtett kulcsok",
       "offline": "Internet nélkül",
       "noAds": "Reklám nélkül"
+    },
+    "support": {
+      "title": "Támogasd a játékot",
+      "text": "Tetszik a Keen Eye? A támogatásod motivál és inspirál minket, hogy új pályákat, módokat és funkciókat készítsünk.",
+      "note": "A borravaló semmit sem old fel a játékban: egyszerűen köszönet a fejlesztőknek.",
+      "tip": "{price} borravaló adása",
+      "thanks": "Nagyon köszönjük a támogatást! Sokat jelent nekünk."
     }
   },
   "share": {

@@ -2,12 +2,14 @@
 import { ref } from 'vue'
 import ModalDialog from './ModalDialog.vue'
 import { allLevels } from '../levels/index.ts'
+import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { isFreeLevel, usePurchaseStore } from '../stores/purchase.ts'
 
 const purchase = usePurchaseStore()
 
-const paidLevels = allLevels.filter((l) => !isFreeLevel(l.id)).length
+const paidLevels =
+  allLevels.filter((l) => !isFreeLevel(l.id)).length + timeTravelLevels.filter((l) => !isFreeLevel(l.number)).length
 /** Result of the last action, as an i18n key under `purchase.`. */
 const message = ref<'success' | 'restored' | 'none' | 'error' | null>(null)
 

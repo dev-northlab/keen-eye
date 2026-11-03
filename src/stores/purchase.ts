@@ -3,11 +3,13 @@ import { ref } from 'vue'
 import { CATEGORIES } from '../levels/chapters.ts'
 import {
   fetchOwnership,
-  fetchPrice,
+  fetchPrices,
   purchaseFullGame,
   resetStubStore,
   restorePurchases,
+  sendTip,
   type PurchaseOutcome,
+  type Tip,
 } from '../services/purchases.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 
@@ -16,9 +18,13 @@ const KEY = 'purchase'
 export const FREE_LEVELS = 15
 /** The first levels of each category ("time", "memory") are free as well; a category may set its own count. */
 export const FREE_CATEGORY_LEVELS = 3
+/** "Time travel" eras are numbered from 601 (levels/time-travel); only the first one is free. */
+export const FREE_TIME_TRAVEL_NUMBER = 601
 
+/** Whether a level (by id, or a "time travel" era by its number) needs no purchase. */
 export const isFreeLevel = (id: number) =>
   id <= FREE_LEVELS ||
+  id === FREE_TIME_TRAVEL_NUMBER ||
   CATEGORIES.some(({ ranges: [[first]], freeLevels = FREE_CATEGORY_LEVELS }) => id >= first && id < first + freeLevels)
 
 /**
@@ -28,6 +34,8 @@ export const isFreeLevel = (id: number) =>
 export const usePurchaseStore = defineStore('purchase', () => {
   const fullGame = ref(false)
   const price = ref<string | null>(null)
+  /** "Support us" tips the store offers, with their prices. */
+  const tipPrices = ref<Partial<Record<Tip, string>>>({})
   const busy = ref(false)
   /** Whether the full-game dialog is open (mounted once in App.vue, opened from any screen). */
   const dialogOpen = ref(false)
@@ -48,7 +56,9 @@ export const usePurchaseStore = defineStore('purchase', () => {
   /** Background check on start: refresh the price and the cached purchase (unless offline). */
   async function sync() {
     try {
-      price.value = await fetchPrice()
+      const prices = await fetchPrices()
+      price.value = prices.fullGame
+      tipPrices.value = prices.tips
       const seen = version
       const owned = await fetchOwnership()
       if (owned !== null && seen === version && owned !== fullGame.value) await setFullGame(owned)
@@ -63,6 +73,18 @@ export const usePurchaseStore = defineStore('purchase', () => {
       const outcome = await purchaseFullGame()
       if (outcome === 'purchased') await setFullGame(true)
       return outcome
+    } catch {
+      return 'error'
+    } finally {
+      busy.value = false
+    }
+  }
+
+  /** A "support us" tip: it unlocks nothing, so only the outcome matters. */
+  async function tip(id: Tip): Promise<PurchaseOutcome> {
+    busy.value = true
+    try {
+      return await sendTip(id)
     } catch {
       return 'error'
     } finally {
@@ -93,5 +115,5 @@ export const usePurchaseStore = defineStore('purchase', () => {
     if (alsoStore) resetStubStore()
   }
 
-  return { fullGame, price, busy, dialogOpen, load, sync, buy, restore, resetForDev }
+  return { fullGame, price, tipPrices, busy, dialogOpen, load, sync, buy, tip, restore, resetForDev }
 })

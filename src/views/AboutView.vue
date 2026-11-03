@@ -4,6 +4,7 @@ import FeaturesCard from '../components/FeaturesCard.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ShareButton from '../components/ShareButton.vue'
 import ShareLinks from '../components/ShareLinks.vue'
+import SupportCard from '../components/SupportCard.vue'
 import { useShare } from '../composables/useShare.ts'
 import { APP_NAME, getStoreLink } from '../config/links.ts'
 
@@ -39,6 +40,8 @@ const icon = `${import.meta.env.BASE_URL}favicon.svg`
       </section>
 
       <FeaturesCard />
+
+      <SupportCard />
 
       <ShareButton class="share">{{ $t('about.shareGame') }}</ShareButton>
 

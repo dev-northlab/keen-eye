@@ -19,6 +19,13 @@
     "updates": {
       "text": "Vi forbedrer stadig de eksisterende brettene og legger til nye i gratis oppdateringer.",
       "title": "Spillet fortsetter å vokse"
+    },
+    "support": {
+      "title": "Støtt spillet",
+      "text": "Liker du Keen Eye? Støtten din motiverer og inspirerer oss til å lage nye nivåer, moduser og funksjoner.",
+      "note": "Driks låser ikke opp noe i spillet: det er bare en takk til utviklerne.",
+      "tip": "Gi driks på {price}",
+      "thanks": "Tusen takk for støtten! Den betyr mye for oss."
     }
   },
   "chapters": {

@@ -58,6 +58,13 @@
       "keys": "Skryté klíče",
       "offline": "Bez internetu",
       "noAds": "Bez reklam"
+    },
+    "support": {
+      "title": "Podpořit hru",
+      "text": "Líbí se ti Keen Eye? Tvoje podpora nás motivuje a inspiruje k tvorbě nových úrovní, režimů a funkcí.",
+      "note": "Spropitné ve hře nic neodemyká: je to jen poděkování vývojářům.",
+      "tip": "Dát spropitné {price}",
+      "thanks": "Moc děkujeme za podporu! Hodně pro nás znamená."
     }
   },
   "share": {

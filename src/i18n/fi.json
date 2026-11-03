@@ -19,6 +19,13 @@
     "updates": {
       "text": "Parannamme jatkuvasti nykyisiä tasoja ja lisäämme uusia ilmaisissa päivityksissä.",
       "title": "Peli kasvaa koko ajan"
+    },
+    "support": {
+      "title": "Tue peliä",
+      "text": "Pidätkö Keen Eyestä? Tukesi motivoi ja inspiroi meitä tekemään uusia tasoja, pelitiloja ja ominaisuuksia.",
+      "note": "Tippi ei avaa pelissä mitään: se on vain kiitos kehittäjille.",
+      "tip": "Anna {price} tippiä",
+      "thanks": "Kiitos paljon tuestasi! Se merkitsee meille paljon."
     }
   },
   "chapters": {

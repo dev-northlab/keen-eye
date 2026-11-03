@@ -56,8 +56,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `time-travel/` — "find the odd one out"
   levels as JSON (`mode: "anachronism"`, string ids plus a numeric `number` from 601 for display, percent hitboxes, texts as `{ <locale>: … }` in every interface language — `npm test` checks it), checked by
   `parseAnachronismLevel` in `time-travel/index.ts`, images in `public/levels/time-travel/`; kept out of `levels`
-  (no unlock order, no purchase, own `progress.timeTravel` records; a world map card opens the eras, `/time-travel`, a level is `/time-travel/:id`;
-  one era per level: Egypt, Rome, Vikings, castle, pirates, Wild West, Stone Age so far, difficulty growing; the picture is inlined
+  (no unlock order; only the first era, 601, is free — `FREE_TIME_TRAVEL_NUMBER`, the rest need the purchase; own `progress.timeTravel` records; a world map card opens the eras, `/time-travel`, a level is `/time-travel/:id`;
+  one era per level: Egypt, Rome, Vikings, castle, pirates, Wild West, Stone Age, samurai Japan, Aztecs, ancient China so far, difficulty growing; the picture is inlined
   (`createSvgPicture`) and its background moves: `data-anim` groups in the SVG + `animations` in the JSON, same
   motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
@@ -107,7 +107,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
   (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
   three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
-  (the only code that talks to the app store: price, purchase, restore, ownership of the product `full_game`; Google Play
+  (the only code that talks to the app store: price, purchase, restore, ownership of the product `full_game`, and the
+  "support us" tips `tip_small`/`tip_medium`/`tip_large` (consumables, unlock nothing; `SupportCard` on the About screen,
+  shown only while the store offers them); Google Play
   Billing / StoreKit straight through `capacitor-plugin-cdv-purchase`, no receipt server; in `npm run dev` in the
   browser a stub store, a production web build sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and

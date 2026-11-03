@@ -1,6 +1,6 @@
 Dva obrázky vypadají stejně – ale nejsou. Najdi všechny rozdíly v ručně kreslených scénách, které ožívají: plují mraky, lodičky se houpou na vlnách, létají ptáci a některé rozdíly se skrývají přímo v pohybu.
 
-280 ÚROVNÍ, 7 ZPŮSOBŮ HRY
+283 ÚROVNÍ, 7 ZPŮSOBŮ HRY
 • Světy – 150 úrovní na farmě, ve městě, v lese, na moři a ve vesmíru, od 5 do 10 rozdílů
 • Čas – stejné místo ráno a večer, v létě a v zimě: najdi, co se opravdu změnilo
 • Paměť – zapamatuj si obrázek během pár sekund a najdi změny zpaměti

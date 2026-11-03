@@ -58,6 +58,13 @@
       "keys": "Chei ascunse",
       "offline": "Fără internet",
       "noAds": "Fără reclame"
+    },
+    "support": {
+      "title": "Susține jocul",
+      "text": "Îți place Keen Eye? Sprijinul tău ne motivează și ne inspiră să creăm niveluri, moduri și funcții noi.",
+      "note": "Bacșișul nu deblochează nimic în joc: este doar un mulțumesc pentru dezvoltatori.",
+      "tip": "Lasă un bacșiș de {price}",
+      "thanks": "Mulțumim din suflet pentru sprijin! Înseamnă mult pentru noi."
     }
   },
   "share": {

@@ -58,6 +58,13 @@
       "keys": "Ukryte klucze",
       "offline": "Bez internetu",
       "noAds": "Bez reklam"
+    },
+    "support": {
+      "title": "Wesprzyj grę",
+      "text": "Podoba ci się Keen Eye? Twoje wsparcie motywuje i inspiruje nas do tworzenia nowych poziomów, trybów i funkcji.",
+      "note": "Napiwek niczego nie odblokowuje w grze: to po prostu podziękowanie dla twórców.",
+      "tip": "Zostaw napiwek {price}",
+      "thanks": "Bardzo dziękujemy za wsparcie! Wiele dla nas znaczy."
     }
   },
   "share": {

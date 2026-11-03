@@ -58,6 +58,13 @@
       "keys": "Hidden keys",
       "offline": "Works offline",
       "noAds": "No ads"
+    },
+    "support": {
+      "title": "Support the game",
+      "text": "Enjoying Keen Eye? Your support motivates and inspires us to create new levels, modes and features.",
+      "note": "A tip unlocks nothing in the game: it is simply a thank-you to the developers.",
+      "tip": "Leave a tip of {price}",
+      "thanks": "Thank you so much for your support! It means a lot to us."
     }
   },
   "share": {

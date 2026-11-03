@@ -19,6 +19,13 @@
     "updates": {
       "text": "Vi forbedrer hele tiden de eksisterende baner og tilføjer nye i gratis opdateringer.",
       "title": "Spillet bliver ved med at vokse"
+    },
+    "support": {
+      "title": "Støt spillet",
+      "text": "Kan du lide Keen Eye? Din støtte motiverer og inspirerer os til at lave nye baner, spiltilstande og funktioner.",
+      "note": "Drikkepenge låser ikke op for noget i spillet: det er blot et tak til udviklerne.",
+      "tip": "Giv drikkepenge på {price}",
+      "thanks": "Mange tak for din støtte! Den betyder meget for os."
     }
   },
   "chapters": {

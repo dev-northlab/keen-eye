@@ -6,16 +6,25 @@ import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import StarRating from '../components/StarRating.vue'
 import { localized } from '../engine/anachronism.ts'
+import type { AnachronismLevel } from '../engine/types.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // "Find the odd one out" (docs/anachronism-mode.md): one card per era with a thumbnail of its picture.
-// Every era is open; a completed one gets a green border and its best stars.
+// Every era is open in any order, the paid ones (all but the first) once the full game is bought; a
+// completed one gets a green border and its best stars.
 
 const router = useRouter()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const progress = useProgressStore()
+const purchase = usePurchaseStore()
+
+function open(level: AnachronismLevel) {
+  if (progress.needsPurchase(level.number)) purchase.dialogOpen = true
+  else router.push({ name: 'time-travel', params: { id: level.id } })
+}
 
 const base = import.meta.env.BASE_URL
 const toMap = () => router.push({ name: 'levels' })
@@ -31,8 +40,9 @@ useBackButton(toMap)
         <li v-for="level in timeTravelLevels" :key="level.id">
           <button
             class="card"
-            :class="{ done: level.id in progress.timeTravel }"
-            @click="router.push({ name: 'time-travel', params: { id: level.id } })"
+            :class="{ done: level.id in progress.timeTravel, paid: progress.needsPurchase(level.number) }"
+            :aria-label="progress.needsPurchase(level.number) ? `${localized(level.era, locale)}: ${t('map.paid')}` : undefined"
+            @click="open(level)"
           >
             <LevelId :id="level.number" />
             <img class="thumb" :src="base + level.image" alt="" />
@@ -40,6 +50,7 @@ useBackButton(toMap)
               <span class="name">{{ localized(level.era, locale) }}</span>
               <StarRating :stars="progress.timeTravel[level.id]?.stars ?? 0" :size="16" />
             </span>
+            <span v-if="progress.needsPurchase(level.number)" class="lock" aria-hidden="true">🔒</span>
           </button>
         </li>
       </ul>
@@ -97,6 +108,16 @@ main {
 
 .card.done {
   border-color: var(--accent);
+}
+
+.card.paid {
+  background: var(--gold-bg);
+  border-color: #f5b301;
+  color: var(--gold-fg);
+}
+
+.lock {
+  font-size: 18px;
 }
 
 .thumb {
