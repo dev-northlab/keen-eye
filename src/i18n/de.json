@@ -156,7 +156,11 @@
     "fullGameOwned": "Freigeschaltet",
     "fullGameOpen": "Alle Level freischalten",
     "resetPurchaseCache": "Kauf vergessen (Cache)",
-    "resetPurchaseStore": "Kauf vergessen (auch im „Store“)"
+    "resetPurchaseStore": "Kauf vergessen (auch im „Store“)",
+    "promo": "Promo-Code",
+    "promoApply": "Einlösen",
+    "promoInvalid": "Falscher Code",
+    "promoApplied": "Alle Level freigeschaltet"
   },
   "common": {
     "back": "Zurück",

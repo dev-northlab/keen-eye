@@ -156,7 +156,11 @@
     "fullGameOwned": "Deblocat",
     "fullGameOpen": "Deblochează toate nivelurile",
     "resetPurchaseCache": "Uită achiziția (cache)",
-    "resetPurchaseStore": "Uită achiziția (și în „magazin”)"
+    "resetPurchaseStore": "Uită achiziția (și în „magazin”)",
+    "promo": "Cod promoțional",
+    "promoApply": "Aplică",
+    "promoInvalid": "Cod greșit",
+    "promoApplied": "Toate nivelurile deblocate"
   },
   "common": {
     "back": "Înapoi",

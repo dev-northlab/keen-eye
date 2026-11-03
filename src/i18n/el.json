@@ -156,7 +156,11 @@
     "fullGameOwned": "Ξεκλείδωτο",
     "fullGameOpen": "Ξεκλείδωμα όλων των επιπέδων",
     "resetPurchaseCache": "Ξέχασε την αγορά (cache)",
-    "resetPurchaseStore": "Ξέχασε την αγορά (και στο «κατάστημα»)"
+    "resetPurchaseStore": "Ξέχασε την αγορά (και στο «κατάστημα»)",
+    "promo": "Κωδικός προσφοράς",
+    "promoApply": "Εφαρμογή",
+    "promoInvalid": "Λάθος κωδικός",
+    "promoApplied": "Όλα τα επίπεδα ξεκλειδώθηκαν"
   },
   "common": {
     "back": "Πίσω",

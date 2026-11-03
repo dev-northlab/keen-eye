@@ -156,7 +156,11 @@
     "fullGameOwned": "Desbloqueado",
     "fullGameOpen": "Desbloquear todas as fases",
     "resetPurchaseCache": "Esquecer compra (cache)",
-    "resetPurchaseStore": "Esquecer compra (também na \"loja\")"
+    "resetPurchaseStore": "Esquecer compra (também na \"loja\")",
+    "promo": "Código promocional",
+    "promoApply": "Aplicar",
+    "promoInvalid": "Código incorreto",
+    "promoApplied": "Todas as fases desbloqueadas"
   },
   "common": {
     "back": "Voltar",

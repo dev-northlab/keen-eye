@@ -4,6 +4,7 @@ import LanguageSelect from './LanguageSelect.vue'
 import ModeSwitch from './ModeSwitch.vue'
 import ThemeSwitch from './ThemeSwitch.vue'
 import { playSfx } from '../services/audio.ts'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
@@ -16,6 +17,14 @@ const router = useRouter()
 
 const isDev = import.meta.env.DEV
 const percent = (v: number) => `${Math.round(v * 100)}%`
+
+// TEMPORARY promo code for testing staging builds (see PROMO_CODE in stores/purchase.ts).
+const promoCode = ref('')
+const promoInvalid = ref(false)
+async function applyPromo() {
+  promoInvalid.value = !(await purchase.applyPromo(promoCode.value))
+  if (!promoInvalid.value) promoCode.value = ''
+}
 </script>
 
 <template>
@@ -85,9 +94,28 @@ const percent = (v: number) => `${Math.round(v * 100)}%`
     <button class="row link" @click="router.push({ name: 'purchase' })">
       <span>{{ $t('settings.fullGame') }}</span>
       <span class="muted">
-        {{ purchase.fullGame ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›
+        {{ purchase.owned ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›
       </span>
     </button>
+
+    <div v-if="purchase.promo" class="row">
+      <span>{{ $t('settings.promo') }}</span>
+      <span class="muted">{{ $t('settings.promoApplied') }}</span>
+    </div>
+    <form v-else class="row column" @submit.prevent="applyPromo">
+      <label for="promo-code">{{ $t('settings.promo') }}</label>
+      <div class="promo">
+        <input
+          id="promo-code"
+          v-model="promoCode"
+          inputmode="numeric"
+          autocomplete="off"
+          @input="promoInvalid = false"
+        />
+        <button type="submit" :disabled="!promoCode.trim()">{{ $t('settings.promoApply') }}</button>
+      </div>
+      <small v-if="promoInvalid" class="error" role="alert">{{ $t('settings.promoInvalid') }}</small>
+    </form>
 
     <section v-if="isDev" class="dev">
       <h2>{{ $t('settings.dev') }}</h2>
@@ -171,6 +199,26 @@ input[type='checkbox'] {
 
 .muted {
   color: var(--muted);
+}
+
+.promo {
+  display: flex;
+  gap: 8px;
+}
+
+.promo input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.row .error {
+  color: var(--danger-fg);
 }
 
 .dev {

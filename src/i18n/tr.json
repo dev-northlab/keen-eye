@@ -156,7 +156,11 @@
     "fullGameOwned": "Açık",
     "fullGameOpen": "Tüm bölümlerin kilidini aç",
     "resetPurchaseCache": "Satın almayı unut (önbellek)",
-    "resetPurchaseStore": "Satın almayı unut (\"mağazada\" da)"
+    "resetPurchaseStore": "Satın almayı unut (\"mağazada\" da)",
+    "promo": "Promosyon kodu",
+    "promoApply": "Uygula",
+    "promoInvalid": "Yanlış kod",
+    "promoApplied": "Tüm bölümlerin kilidi açıldı"
   },
   "common": {
     "back": "Geri",

@@ -156,7 +156,11 @@
     "fullGameOwned": "Բացված է",
     "fullGameOpen": "Բացել բոլոր մակարդակները",
     "resetPurchaseCache": "Մոռանալ գնումը (քեշ)",
-    "resetPurchaseStore": "Մոռանալ գնումը («խանութում» նույնպես)"
+    "resetPurchaseStore": "Մոռանալ գնումը («խանութում» նույնպես)",
+    "promo": "Պրոմոկոդ",
+    "promoApply": "Կիրառել",
+    "promoInvalid": "Սխալ կոդ",
+    "promoApplied": "Բոլոր մակարդակները բացված են"
   },
   "common": {
     "back": "Հետ",

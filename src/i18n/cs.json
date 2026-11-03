@@ -156,7 +156,11 @@
     "fullGameOwned": "Odemčeno",
     "fullGameOpen": "Odemknout všechny úrovně",
     "resetPurchaseCache": "Zapomenout nákup (cache)",
-    "resetPurchaseStore": "Zapomenout nákup (i v „obchodě“)"
+    "resetPurchaseStore": "Zapomenout nákup (i v „obchodě“)",
+    "promo": "Promo kód",
+    "promoApply": "Použít",
+    "promoInvalid": "Nesprávný kód",
+    "promoApplied": "Všechny úrovně odemčeny"
   },
   "common": {
     "back": "Zpět",

@@ -156,7 +156,11 @@
     "fullGameOwned": "Відкрито",
     "fullGameOpen": "Відкрити всі рівні",
     "resetPurchaseCache": "Забути покупку (кеш)",
-    "resetPurchaseStore": "Забути покупку (і в «магазині»)"
+    "resetPurchaseStore": "Забути покупку (і в «магазині»)",
+    "promo": "Промокод",
+    "promoApply": "Застосувати",
+    "promoInvalid": "Неправильний код",
+    "promoApplied": "Усі рівні відкрито"
   },
   "common": {
     "back": "Назад",

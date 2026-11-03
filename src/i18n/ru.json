@@ -156,7 +156,11 @@
     "fullGameOwned": "Открыта",
     "fullGameOpen": "Открыть все уровни",
     "resetPurchaseCache": "Забыть покупку (кеш)",
-    "resetPurchaseStore": "Забыть покупку (и в «магазине»)"
+    "resetPurchaseStore": "Забыть покупку (и в «магазине»)",
+    "promo": "Промокод",
+    "promoApply": "Применить",
+    "promoInvalid": "Неверный код",
+    "promoApplied": "Все уровни открыты"
   },
   "common": {
     "back": "Назад",

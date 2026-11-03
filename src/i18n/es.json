@@ -156,7 +156,11 @@
     "fullGameOwned": "Desbloqueado",
     "fullGameOpen": "Desbloquear todos los niveles",
     "resetPurchaseCache": "Olvidar compra (caché)",
-    "resetPurchaseStore": "Olvidar compra (también en la «tienda»)"
+    "resetPurchaseStore": "Olvidar compra (también en la «tienda»)",
+    "promo": "Código promocional",
+    "promoApply": "Aplicar",
+    "promoInvalid": "Código incorrecto",
+    "promoApplied": "Todos los niveles desbloqueados"
   },
   "common": {
     "back": "Atrás",

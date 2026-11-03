@@ -156,7 +156,11 @@
     "fullGameOwned": "잠금 해제됨",
     "fullGameOpen": "모든 레벨 잠금 해제",
     "resetPurchaseCache": "구매 잊기 (캐시)",
-    "resetPurchaseStore": "구매 잊기 (\"스토어\"에서도)"
+    "resetPurchaseStore": "구매 잊기 (\"스토어\"에서도)",
+    "promo": "프로모션 코드",
+    "promoApply": "적용",
+    "promoInvalid": "잘못된 코드",
+    "promoApplied": "모든 레벨 잠금 해제됨"
   },
   "common": {
     "back": "뒤로",

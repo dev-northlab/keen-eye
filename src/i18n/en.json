@@ -156,7 +156,11 @@
     "fullGameOwned": "Unlocked",
     "fullGameOpen": "Unlock all levels",
     "resetPurchaseCache": "Forget purchase (cache)",
-    "resetPurchaseStore": "Forget purchase (also in the \"store\")"
+    "resetPurchaseStore": "Forget purchase (also in the \"store\")",
+    "promo": "Promo code",
+    "promoApply": "Apply",
+    "promoInvalid": "Wrong code",
+    "promoApplied": "All levels unlocked"
   },
   "common": {
     "back": "Back",

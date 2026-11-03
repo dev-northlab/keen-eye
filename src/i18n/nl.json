@@ -156,7 +156,11 @@
     "fullGameOwned": "Ontgrendeld",
     "fullGameOpen": "Alle levels ontgrendelen",
     "resetPurchaseCache": "Aankoop vergeten (cache)",
-    "resetPurchaseStore": "Aankoop vergeten (ook in de \"winkel\")"
+    "resetPurchaseStore": "Aankoop vergeten (ook in de \"winkel\")",
+    "promo": "Promotiecode",
+    "promoApply": "Toepassen",
+    "promoInvalid": "Onjuiste code",
+    "promoApplied": "Alle levels ontgrendeld"
   },
   "common": {
     "back": "Terug",

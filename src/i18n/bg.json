@@ -156,7 +156,11 @@
     "fullGameOwned": "Отключена",
     "fullGameOpen": "Отключи всички нива",
     "resetPurchaseCache": "Забрави покупката (кеш)",
-    "resetPurchaseStore": "Забрави покупката (и в „магазина“)"
+    "resetPurchaseStore": "Забрави покупката (и в „магазина“)",
+    "promo": "Промокод",
+    "promoApply": "Приложи",
+    "promoInvalid": "Грешен код",
+    "promoApplied": "Всички нива са отключени"
   },
   "common": {
     "back": "Назад",

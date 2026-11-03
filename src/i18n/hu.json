@@ -156,7 +156,11 @@
     "fullGameOwned": "Feloldva",
     "fullGameOpen": "Minden pálya feloldása",
     "resetPurchaseCache": "Vásárlás elfelejtése (gyorsítótár)",
-    "resetPurchaseStore": "Vásárlás elfelejtése (a „boltban” is)"
+    "resetPurchaseStore": "Vásárlás elfelejtése (a „boltban” is)",
+    "promo": "Promóciós kód",
+    "promoApply": "Beváltás",
+    "promoInvalid": "Hibás kód",
+    "promoApplied": "Minden pálya feloldva"
   },
   "common": {
     "back": "Vissza",

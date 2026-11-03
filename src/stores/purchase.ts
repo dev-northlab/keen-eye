@@ -1,10 +1,14 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { CATEGORIES } from '../levels/chapters.ts'
 import { fetchOwnership, fetchPrice, purchaseFullGame, resetStubStore, type PurchaseOutcome } from '../services/purchases.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 
 const KEY = 'purchase'
+// TEMPORARY, for testing staging builds: this code unlocks the full game without a purchase.
+// Remove PROMO_KEY, PROMO_CODE, `promo`/`applyPromo` and the promo row in SettingsPanel before release.
+const PROMO_KEY = 'promo'
+const PROMO_CODE = '6561'
 /** Levels 1–15 are free; the rest need the one-time purchase (spec, section 10). */
 export const FREE_LEVELS = 15
 /** The first levels of each category ("time", "memory") are free as well; a category may set its own count. */
@@ -20,6 +24,10 @@ export const isFreeLevel = (id: number) =>
  */
 export const usePurchaseStore = defineStore('purchase', () => {
   const fullGame = ref(false)
+  /** Unlocked by the temporary testing promo code; kept apart so a store sync never clears it. */
+  const promo = ref(false)
+  /** Whether the paid levels are open: bought, or unlocked by the promo code. */
+  const owned = computed(() => fullGame.value || promo.value)
   const price = ref<string | null>(null)
   const busy = ref(false)
   /** Bumped on every change, so a slow background sync can't undo a newer purchase. */
@@ -34,6 +42,15 @@ export const usePurchaseStore = defineStore('purchase', () => {
   async function load() {
     const raw = (await loadJson(KEY)) as { fullGame?: unknown } | undefined
     fullGame.value = raw?.fullGame === true
+    promo.value = (await loadJson(PROMO_KEY)) === true
+  }
+
+  /** True if the code is right; then the full game stays unlocked on this device. */
+  async function applyPromo(code: string): Promise<boolean> {
+    if (code.trim() !== PROMO_CODE) return false
+    promo.value = true
+    await saveJson(PROMO_KEY, true)
+    return true
   }
 
   /** Background check on start: refresh the price and the cached purchase (unless offline). */
@@ -80,9 +97,11 @@ export const usePurchaseStore = defineStore('purchase', () => {
   async function resetForDev(alsoStore: boolean) {
     version++
     fullGame.value = false
+    promo.value = false
     await remove(KEY)
+    await remove(PROMO_KEY)
     if (alsoStore) resetStubStore()
   }
 
-  return { fullGame, price, busy, load, sync, buy, restore, resetForDev }
+  return { fullGame, promo, owned, price, busy, load, sync, buy, restore, applyPromo, resetForDev }
 })

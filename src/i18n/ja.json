@@ -156,7 +156,11 @@
     "fullGameOwned": "購入済み",
     "fullGameOpen": "全レベルを解放",
     "resetPurchaseCache": "購入を忘れる（キャッシュ）",
-    "resetPurchaseStore": "購入を忘れる（「ストア」も）"
+    "resetPurchaseStore": "購入を忘れる（「ストア」も）",
+    "promo": "プロモコード",
+    "promoApply": "適用",
+    "promoInvalid": "コードが正しくありません",
+    "promoApplied": "全レベルが解放されました"
   },
   "common": {
     "back": "戻る",
