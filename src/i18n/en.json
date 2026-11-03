@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
     "version": "Version {v}",
     "privacy": "Privacy policy",
-    "privacyText": "We collect no data at all. Progress and settings are stored only on your device."
+    "privacyText": "We collect no data at all. Progress and settings are stored only on your device.",
+    "contact": "Contact us",
+    "contactText": "Have a question or an idea, or found a bug? Write to us — we read every message and will be glad to answer."
   },
   "about": {
     "shareGame": "Share the game",

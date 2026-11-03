@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye to gra w szukanie różnic z żywymi scenami. Bez reklam i bez internetu.",
     "version": "Wersja {v}",
     "privacy": "Prywatność",
-    "privacyText": "Nie zbieramy żadnych danych. Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu."
+    "privacyText": "Nie zbieramy żadnych danych. Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu.",
+    "contact": "Kontakt",
+    "contactText": "Masz pytanie lub pomysł, a może znalazłeś błąd? Napisz do nas — czytamy każdą wiadomość i chętnie odpowiemy."
   },
   "about": {
     "shareGame": "Udostępnij grę",

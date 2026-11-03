@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye este un joc de găsit diferențe cu scene vii. Fără reclame, fără internet.",
     "version": "Versiunea {v}",
     "privacy": "Confidențialitate",
-    "privacyText": "Nu colectăm niciun fel de date. Progresul și setările rămân doar pe dispozitivul tău."
+    "privacyText": "Nu colectăm niciun fel de date. Progresul și setările rămân doar pe dispozitivul tău.",
+    "contact": "Contactează-ne",
+    "contactText": "Ai o întrebare sau o idee ori ai găsit o eroare? Scrie-ne — citim fiecare mesaj și îți răspundem cu plăcere."
   },
   "about": {
     "shareGame": "Distribuie jocul",

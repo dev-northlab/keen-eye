@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye, canlı sahnelerle oynanan bir fark bulma oyunudur. Reklam yok, internet gerekmez.",
     "version": "Sürüm {v}",
     "privacy": "Gizlilik politikası",
-    "privacyText": "Hiçbir veri toplamıyoruz. İlerleme ve ayarlar yalnızca cihazında saklanır."
+    "privacyText": "Hiçbir veri toplamıyoruz. İlerleme ve ayarlar yalnızca cihazında saklanır.",
+    "contact": "Bize ulaşın",
+    "contactText": "Bir sorunuz ya da fikriniz mi var, bir hata mı buldunuz? Bize yazın — her mesajı okuyor ve memnuniyetle yanıtlıyoruz."
   },
   "about": {
     "shareGame": "Oyunu paylaş",

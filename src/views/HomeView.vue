@@ -7,6 +7,7 @@ import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SeasonSwitch from '../components/SeasonSwitch.vue'
 import ThemeSwitch from '../components/ThemeSwitch.vue'
+import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -15,14 +16,16 @@ const router = useRouter()
 const progress = useProgressStore()
 const isDev = import.meta.env.DEV
 
-/** The privacy policy dialog is open. */
-const privacy = ref(false)
+/** The open info dialog, if any. */
+const dialog = ref<'privacy' | 'contact' | null>(null)
 // Android back closes the dialog instead of leaving the app.
 let removeBack = () => {}
-watch(privacy, (open) => {
+watch(dialog, (open) => {
   removeBack()
-  if (open) removeBack = pushBackHandler(() => (privacy.value = false))
+  if (open) removeBack = pushBackHandler(() => (dialog.value = null))
 })
+
+const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(APP_NAME)}`
 onBeforeUnmount(() => removeBack())
 
 function play() {
@@ -98,19 +101,34 @@ function play() {
         </svg>
         {{ $t('info.about') }}
       </button>
-      <button class="info-link" @click="privacy = true">
+      <button class="info-link" @click="dialog = 'privacy'">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6l7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         {{ $t('info.privacy') }}
       </button>
+      <button class="info-link" @click="dialog = 'contact'">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M4 7.5l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        {{ $t('info.contact') }}
+      </button>
     </nav>
 
-    <ModalDialog v-if="privacy" :title="$t('info.privacy')">
+    <ModalDialog v-if="dialog === 'privacy'" :title="$t('info.privacy')">
       <div class="info-body">
         <p>{{ $t('info.privacyText') }}</p>
-        <button @click="privacy = false">{{ $t('common.close') }}</button>
+        <button @click="dialog = null">{{ $t('common.close') }}</button>
+      </div>
+    </ModalDialog>
+
+    <ModalDialog v-if="dialog === 'contact'" :title="$t('info.contact')">
+      <div class="info-body">
+        <p>{{ $t('info.contactText') }}</p>
+        <a class="email" :href="mailto">{{ CONTACT_EMAIL }}</a>
+        <button class="secondary" @click="dialog = null">{{ $t('common.close') }}</button>
       </div>
     </ModalDialog>
   </main>
@@ -211,6 +229,14 @@ button,
 .info-body p {
   margin: 0;
   line-height: 1.45;
+}
+
+.info-body .email {
+  justify-self: center;
+  font-weight: 700;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+  user-select: text;
 }
 
 .info-body button {

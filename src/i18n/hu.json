@@ -26,7 +26,9 @@
     "aboutText": "A Keen Eye egy különbségkereső játék élő jelenetekkel. Reklám és internet nélkül.",
     "version": "Verzió: {v}",
     "privacy": "Adatvédelem",
-    "privacyText": "Semmilyen adatot nem gyűjtünk. Az előrehaladás és a beállítások csak az eszközödön maradnak."
+    "privacyText": "Semmilyen adatot nem gyűjtünk. Az előrehaladás és a beállítások csak az eszközödön maradnak.",
+    "contact": "Kapcsolat",
+    "contactText": "Kérdésed vagy ötleted van, esetleg hibát találtál? Írj nekünk — minden üzenetet elolvasunk, és szívesen válaszolunk."
   },
   "about": {
     "shareGame": "Játék megosztása",

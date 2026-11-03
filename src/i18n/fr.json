@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye est un jeu des différences avec des scènes vivantes. Sans publicité, sans internet.",
     "version": "Version {v}",
     "privacy": "Confidentialité",
-    "privacyText": "Nous ne collectons aucune donnée. La progression et les réglages restent uniquement sur ton appareil."
+    "privacyText": "Nous ne collectons aucune donnée. La progression et les réglages restent uniquement sur ton appareil.",
+    "contact": "Nous contacter",
+    "contactText": "Une question, une idée ou un bug ? Écris-nous : nous lisons chaque message et répondrons avec plaisir."
   },
   "about": {
     "shareGame": "Partager le jeu",

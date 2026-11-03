@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye is een zoek-de-verschillen-spel met levendige scènes. Geen reclame, geen internet.",
     "version": "Versie {v}",
     "privacy": "Privacy",
-    "privacyText": "We verzamelen helemaal geen gegevens. Voortgang en instellingen blijven alleen op je apparaat."
+    "privacyText": "We verzamelen helemaal geen gegevens. Voortgang en instellingen blijven alleen op je apparaat.",
+    "contact": "Contact",
+    "contactText": "Heb je een vraag of een idee, of een fout gevonden? Schrijf ons — we lezen elk bericht en antwoorden graag."
   },
   "about": {
     "shareGame": "Deel het spel",

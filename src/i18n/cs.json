@@ -26,7 +26,9 @@
     "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami. Bez reklam a bez internetu.",
     "version": "Verze {v}",
     "privacy": "Ochrana soukromí",
-    "privacyText": "Nesbíráme vůbec žádná data. Postup a nastavení se ukládají jen ve vašem zařízení."
+    "privacyText": "Nesbíráme vůbec žádná data. Postup a nastavení se ukládají jen ve vašem zařízení.",
+    "contact": "Kontakt",
+    "contactText": "Máte otázku nebo nápad, nebo jste našli chybu? Napište nám — čteme každou zprávu a rádi odpovíme."
   },
   "about": {
     "shareGame": "Sdílet hru",
