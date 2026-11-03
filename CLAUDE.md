@@ -114,7 +114,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `text-align: start`), arrows along the reading direction carry `flip-rtl`, and `Board` keeps A|B left to right;
   `languages.ts` — name (in its own language) and SVG flag per locale for the language picker
 - `scripts/` — `check-levels.ts`, `preview-levels.ts`, `render.ts` (posed SVG → pixels, shared by both);
-  `assets/` — music (`assets/music/`), later photo levels and icons
+  `assets/` — music (`assets/music/`), store icon and the store page texts (`assets/store/listing/<locale>/`: Google
+  Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
+  limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
+  update every description when levels, modes or languages are added)
 
 ## Rules
 
