@@ -1,7 +1,7 @@
 // Motion differences: the space whale swims faster on picture B; the star jelly pulses faster on B.
 import { svgLevel } from '../helpers.ts'
 import { jellyfish } from '../chapter-04/shapes.ts'
-import { comet, planet, satellite, sparkle, star, starField, ufo } from './shapes.ts'
+import { asteroid, comet, fuelCanister, planet, probe, rocket, satellite, sparkle, star, starField, ufo, wrench } from './shapes.ts'
 
 /** Space whale, faces right; (x, y) = body center. Bounds: x from −80 to +70, y from −34 to +30. */
 const whale = (x: number, y: number) =>
@@ -36,7 +36,12 @@ export default svgLevel({
       diff(700, 432, 37, ufo(700, 430), '') +
       `<circle cx="480" cy="440" r="6" fill="#fff" fill-opacity="0.9"/><circle cx="480" cy="440" r="14" fill="#fff" fill-opacity="0.15"/>` +
       diff(560, 470, 18, `<circle cx="560" cy="470" r="5" fill="#ffd166"/><circle cx="560" cy="470" r="12" fill="#ffd166" fill-opacity="0.2"/>`, '') +
-      diff(255, 298, 82, swimming(18), swimming(9), 'whale')
+      diff(255, 298, 82, swimming(18), swimming(9), 'whale') +
+      probe(400, 420) +
+      asteroid(330, 140, 0.6) +
+      rocket(760, 310, '#f1f1f1', '#ff6b8b', 0.35) +
+      wrench(620, 380) +
+      fuelCanister(150, 340)
     )
   },
 })

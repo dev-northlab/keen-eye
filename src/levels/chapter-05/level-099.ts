@@ -1,6 +1,6 @@
 // Motion differences: the robot head rides the belt faster on picture B; the ceiling arm swings faster on B; the warning light flashes faster on B.
 import { svgLevel } from '../helpers.ts'
-import { robot } from './shapes.ts'
+import { beacon, fuelCanister, probe, robot, toolbox, wrench } from './shapes.ts'
 
 /** Gear; (x, y) = center. Bounds: radius r + 6. */
 const gear = (x: number, y: number, r: number, color: string) => {
@@ -65,7 +65,12 @@ export default svgLevel({
       robot(560, 470) +
       diff(620, 427, 18, robot(620, 470, '#ffb703'), robot(620, 470, '#ffb703', '#ff3b3b')) +
       diff(680, 439, 23, robot(680, 470, '#3a86ff'), robot(680, 470, '#e76f51')) +
-      robot(740, 470, '#8ac926')
+      robot(740, 470, '#8ac926') +
+      toolbox(300, 476) +
+      wrench(440, 460) +
+      fuelCanister(500, 474) +
+      probe(420, 270) +
+      beacon(780, 472)
     )
   },
 })

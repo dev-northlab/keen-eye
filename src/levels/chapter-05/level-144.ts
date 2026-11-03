@@ -1,6 +1,6 @@
 // Motion differences: the mining drone's lamp blinks only on picture B; the top asteroid spins faster on B.
 import { svgLevel } from '../helpers.ts'
-import { asteroid, comet, flame, planet, rocket, sparkle, starField } from './shapes.ts'
+import { asteroid, beacon, comet, flame, fuelCanister, planet, probe, rocket, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
 /** Asteroid with `pits` craters drawn on it; (x, y) = center, scale s. */
 const pitted = (x: number, y: number, s: number, pits: number) => {
@@ -53,7 +53,12 @@ export default svgLevel({
       `<g transform="rotate(90 400 240)">${rocket(400, 270, '#f1f1f1', '#3a86ff', 0.8)}${flame(400, 270, 0.7)}</g>` +
       diff(395, 240, 22, `<rect x="390" y="230" width="10" height="20" fill="#3a86ff"/>`, `<rect x="390" y="230" width="10" height="20" fill="#3a6ad6"/>`) +
       drone(100, 200) + diff(100, 210, 22, lamp(100, 212), anim({ type: 'blink', duty: 0.5, period: 0.9 }, lamp(100, 212))) +
-      `<path d="M100 220L76 270H124Z" fill="#ffd23f" fill-opacity="0.15"/>`
+      `<path d="M100 220L76 270H124Z" fill="#ffd23f" fill-opacity="0.15"/>` +
+      beacon(178, 372) +
+      toolbox(345, 420) +
+      probe(480, 300) +
+      fuelCanister(230, 335) +
+      wrench(650, 420)
     )
   },
 })

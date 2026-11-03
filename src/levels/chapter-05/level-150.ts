@@ -1,6 +1,6 @@
 // Motion differences: the beacon on the antenna mast blinks only on picture B; the right astronaut hops only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, crater, rock, sparkle, star, starField } from './shapes.ts'
+import { astronaut, crater, crystal, fuelCanister, moonPebbles, rock, solarPanel, sparkle, star, starField, toolbox } from './shapes.ts'
 
 /** Annex window grid, 36 × 26, with `cols` columns; (x, y) = center. */
 const annexWindow = (x: number, y: number, cols: number) => {
@@ -66,7 +66,12 @@ export default svgLevel({
       astronaut(450, 450, '#f1f1f1', '#ffb703') +
       diff(453, 408, 22, `<ellipse cx="453" cy="408" rx="6" ry="5" fill="#ffb703"/>`, `<ellipse cx="453" cy="408" rx="6" ry="5" fill="#f28a3a"/>`) +
       diff(600, 434, 38, hop(false), hop(true)) +
-      rock(60, 480, 1.2, '#5c5a6a') + diff(124, 472, 28, rock(118, 480, 0.9, '#7a7890'), rock(130, 478, 0.9, '#7a7890'))
+      rock(60, 480, 1.2, '#5c5a6a') + diff(124, 472, 28, rock(118, 480, 0.9, '#7a7890'), rock(130, 478, 0.9, '#7a7890')) +
+      toolbox(320, 432) +
+      fuelCanister(80, 412) +
+      crystal(520, 472) +
+      moonPebbles(680, 456) +
+      solarPanel(470, 352)
     )
   },
 })

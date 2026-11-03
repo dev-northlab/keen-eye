@@ -1,6 +1,6 @@
 // Motion differences: the lantern over the fruit stall swings faster on picture B; the lantern on the right swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { alien, robot, star, starField } from './shapes.ts'
+import { alien, alienPlant, crystal, fuelCanister, moonPebbles, probe, robot, star, starField } from './shapes.ts'
 
 /** Market stall; (x, y) = bottom center. Bounds: x ±66, y from −124 to 0. */
 const stall = (x: number, y: number, color: string) => {
@@ -75,7 +75,12 @@ export default svgLevel({
       crate(540, 470) +
       crate(566, 470) +
       diff(540, 434, 18, crate(540, 446), '') +
-      diff(760, 437, 18, robot(760, 480), robot(760, 480, '#8d99ae', '#ff3b3b'))
+      diff(760, 437, 18, robot(760, 480), robot(760, 480, '#8d99ae', '#ff3b3b')) +
+      alienPlant(332, 468) +
+      crystal(262, 378) +
+      fuelCanister(505, 378) +
+      moonPebbles(640, 466) +
+      probe(450, 210)
     )
   },
 })

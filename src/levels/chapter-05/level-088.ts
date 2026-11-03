@@ -1,6 +1,6 @@
 // Motion differences: the telescope scans only on picture B; the meteor flashes only on B; the fireflies blink faster on B.
 import { svgLevel } from '../helpers.ts'
-import { comet, person, starField } from './shapes.ts'
+import { beacon, comet, moonPebbles, person, solarPanel, starField, toolbox, wrench } from './shapes.ts'
 
 /** Pine silhouette; (x, y) = base. Bounds: x ±22·s, y from −90·s to 0. */
 const pine = (x: number, y: number, s = 1) =>
@@ -51,7 +51,12 @@ export default svgLevel({
       diff(380, 385, 48, tent(380, 410, '#e76f51'), tent(380, 410, '#8ac926')) +
       `<path d="M250 400l10 -30M270 400l-10 -30M260 400v-30" stroke="#8d99ae" stroke-width="2"/><rect x="246" y="358" width="30" height="10" rx="3" fill="#bfc7d5" transform="rotate(-25 260 364)"/>` +
       diff(220, 365, 20, person(220, 400, '#e63946'), person(220, 400, '#ffb703')) +
-      diff(120, 440, 20, blinking(1.6), blinking(0.7))
+      diff(120, 440, 20, blinking(1.6), blinking(0.7)) +
+      toolbox(300, 402) +
+      solarPanel(470, 334) +
+      moonPebbles(560, 442) +
+      beacon(690, 332) +
+      wrench(170, 440)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the big asteroid spins faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
 import { svgLevel } from '../helpers.ts'
-import { asteroid, astronaut, flag, flame, planet, rocket, sparkle, star, starField } from './shapes.ts'
+import { asteroid, astronaut, beacon, flag, flame, fuelCanister, planet, probe, rocket, sparkle, star, starField, toolbox, wrench } from './shapes.ts'
 
 /** Crystals; (x, y) = bottom center. Bounds: x from −8 to +14, y from −24 to 0. */
 const crystals = (x: number, y: number) => `<path d="M${x - 8} ${y}l4 -18l4 18ZM${x} ${y}l5 -24l5 24ZM${x + 8} ${y}l3 -14l3 14Z" fill="#3ae0ff"/>`
@@ -42,7 +42,12 @@ export default svgLevel({
       // Miner
       asteroid(580, 400, 1.8) +
       diff(583, 330, 18, astronaut(580, 372, '#f1f1f1', '#ffb703'), astronaut(580, 372, '#f1f1f1', '#8ac926')) +
-      diff(140, 440, 41, flying(9), flying(4.5), 'ship')
+      diff(140, 440, 41, flying(9), flying(4.5), 'ship') +
+      beacon(760, 360) +
+      toolbox(690, 447) +
+      probe(410, 360) +
+      fuelCanister(250, 245) +
+      wrench(470, 335)
     )
   },
 })

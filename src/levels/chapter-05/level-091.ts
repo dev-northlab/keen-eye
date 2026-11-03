@@ -1,6 +1,6 @@
 // Motion differences: the big geyser puffs faster on picture B; the small geyser erupts only on B.
 import { svgLevel } from '../helpers.ts'
-import { alien, astronaut, dome, flag, planet, sparkle, starField } from './shapes.ts'
+import { alien, astronaut, beacon, dome, flag, fuelCanister, helmet, planet, probe, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Geyser plume; (x, y) = vent. Bounds: x ±w, y from −h to 0. */
 const plume = (x: number, y: number, w: number, h: number) =>
@@ -43,7 +43,12 @@ export default svgLevel({
       diff(420, 414, 31, astronaut(420, 440, '#f1f1f1', '#ffb703'), astronaut(420, 440, '#ff9f43', '#ffb703')) +
       `<path d="M436 428l14 14" stroke="#5c677d" stroke-width="4"/>` +
       diff(90, 429, 18, alien(90, 460, '#f1f1f1'), alien(90, 460, '#f1f1f1', 2)) +
-      alien(220, 480, '#bde3f2', 2)
+      alien(220, 480, '#bde3f2', 2) +
+      beacon(240, 365) +
+      fuelCanister(520, 410) +
+      toolbox(330, 470) +
+      probe(380, 220) +
+      helmet(740, 470)
     )
   },
 })

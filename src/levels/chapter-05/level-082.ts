@@ -1,6 +1,6 @@
 // Motion differences: the rover drives faster on picture B; the dish scans only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, crater, dome, flag, planet, rover, satellite, sparkle, starField } from './shapes.ts'
+import { astronaut, beacon, crater, crystal, dome, flag, planet, rover, satellite, solarPanel, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
 /** Plant in a pot; (x, y) = bottom center. Bounds: x ±12, y from −40 to 0. */
 const plant = (x: number, y: number) =>
@@ -44,7 +44,12 @@ export default svgLevel({
       diff(432, 287, 18, flag(420, 330, '#e63946'), flag(420, 330, '#3a86ff')) +
       astronaut(380, 360, '#f1f1f1', '#ffb703', true) +
       diff(473, 378, 18, astronaut(470, 420, '#f1f1f1', '#ffb703'), astronaut(470, 420, '#f1f1f1', '#3ae0ff')) +
-      diff(560, 359, 37, driving(14), driving(7), 'rover')
+      diff(560, 359, 37, driving(14), driving(7), 'rover') +
+      solarPanel(120, 352) +
+      crystal(650, 302) +
+      wrench(320, 422) +
+      toolbox(540, 432) +
+      beacon(770, 320)
     )
   },
 })

@@ -1,6 +1,7 @@
 // Motion differences: the gardening robot rolls faster on picture B; the alien flower nods faster on B; the sprinkler sprays only on B.
 import { svgLevel } from '../helpers.ts'
-import { planet, robot, starField } from './shapes.ts'
+import { wateringCan } from '../shapes.ts'
+import { fuelCanister, helmet, planet, probe, robot, starField, toolbox } from './shapes.ts'
 
 /** Tomato plant; (x, y) = base. Bounds: x ±16, y from −50 to 0. */
 const tomato = (x: number, y: number, fruit: string) =>
@@ -67,7 +68,12 @@ export default svgLevel({
       anim({ type: 'bob', dx: 30, dy: 10, period: 6 }, butterfly(380, 280, '#ffd166')) +
       diff(300, 220, 18, butterfly(300, 220, '#3ae0ff'), '') +
       `<g fill="#bfc7d5">${[80, 200, 330, 470, 610, 740].map((x) => `<rect x="${x}" y="462" width="40" height="6" rx="3"/>`).join('')}</g>` +
-      diff(160, 453, 30, rolling(12), rolling(6), 'robot')
+      diff(160, 453, 30, rolling(12), rolling(6), 'robot') +
+      toolbox(520, 462) +
+      wateringCan(610, 465) +
+      helmet(700, 465) +
+      fuelCanister(440, 464) +
+      probe(460, 200)
     )
   },
 })

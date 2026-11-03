@@ -1,6 +1,6 @@
 // Motion differences: a landing pad light blinks only on picture B; the left astronaut hops only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, crater, dome, flag, rover, sparkle, starField } from './shapes.ts'
+import { astronaut, beacon, crater, crystal, dome, flag, fuelCanister, moonPebbles, rover, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Lunar lander; (x, y) = pad center. Bounds: x ±40, y from −70 to 0. */
 const lander = (x: number, y: number) =>
@@ -60,7 +60,12 @@ export default svgLevel({
       diff(520, 448, 30, rover(520, 466, '#ffb703'), rover(520, 466, '#f29a3a')) +
       crate(604, 470) + diff(636, 458, 24, crate(632, 470), crate(642, 470)) +
       prints + diff(200, 444, 37, hop(false), hop(true)) + astronaut(380, 486, '#f1f1f1', '#3a86ff', true) +
-      flag(80, 486, '#e63946')
+      flag(80, 486, '#e63946') +
+      beacon(260, 410) +
+      toolbox(480, 395) +
+      fuelCanister(440, 474) +
+      crystal(770, 470) +
+      moonPebbles(40, 420)
     )
   },
 })

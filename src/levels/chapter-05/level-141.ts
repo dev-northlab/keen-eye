@@ -1,6 +1,6 @@
 // Motion differences: the beacon on the main module blinks only on picture B; the floating wrench spins faster on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, sparkle, starField } from './shapes.ts'
+import { asteroid, astronaut, fuelCanister, helmet, probe, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Solar panel, 40 × 30, with `cols` columns of cells; (x, y) = center. */
 const panel = (x: number, y: number, cols: number) => {
@@ -70,7 +70,12 @@ export default svgLevel({
       `<path d="M480 232q60 40 110 70" stroke="#f4f4f4" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>` +
       astronaut(600, 340, '#f1f1f1', '#ffb703') + diff(603, 298, 22, `<ellipse cx="603" cy="298" rx="6" ry="5" fill="#ffb703"/>`, `<ellipse cx="603" cy="298" rx="6" ry="5" fill="#f2903a"/>`) +
       diff(250, 300, 24, spin(6), spin(2)) +
-      diff(182, 380, 22, bolt(176, 380), bolt(188, 376))
+      diff(182, 380, 22, bolt(176, 380), bolt(188, 376)) +
+      probe(340, 330) +
+      fuelCanister(690, 320) +
+      helmet(80, 310) +
+      asteroid(260, 90, 0.5) +
+      toolbox(410, 335)
     )
   },
 })

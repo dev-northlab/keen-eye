@@ -1,6 +1,6 @@
 // Motion differences: the saucer hovers faster on picture B; the bulb plant sways faster on B.
 import { svgLevel } from '../helpers.ts'
-import { alien, planet, star, starField, ufo } from './shapes.ts'
+import { alien, alienPlant, crystal, moonPebbles, planet, probe, solarPanel, star, starField, ufo } from './shapes.ts'
 
 /** Mushroom house; (x, y) = bottom center. Bounds: x ±50, y from −100 to 0. */
 const house = (x: number, y: number, cap: string) =>
@@ -56,7 +56,12 @@ export default svgLevel({
       diff(520, 437, 29, alien(520, 460, '#ff9f43', 2), alien(520, 460, '#ff6b8b', 2)) +
       alien(740, 470, '#8ac926', 2) +
       diff(60, 400, 48, swaying(4), swaying(1.6)) +
-      bulb(760, 400)
+      bulb(760, 400) +
+      alienPlant(380, 452) +
+      crystal(465, 432) +
+      moonPebbles(600, 452) +
+      probe(280, 210) +
+      solarPanel(218, 428)
     )
   },
 })
