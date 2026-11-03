@@ -99,7 +99,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
-  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `purchases.ts`
+  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
+  (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
+  three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
   (the only code that talks to the app store: price, purchase, ownership; currently a dev-only stub — RevenueCat goes
   here; in production builds the stub sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and
