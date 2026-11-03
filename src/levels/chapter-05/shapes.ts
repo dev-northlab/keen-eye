@@ -132,3 +132,56 @@ export const robot = (x: number, y: number, color = '#8d99ae', eye = '#3ae0ff') 
   `<path d="M-13 -30v14M13 -30v14" stroke="#5c677d" stroke-width="5" stroke-linecap="round"/><rect x="-11" y="-34" width="22" height="22" rx="3" fill="${color}"/>` +
   `<rect x="-9" y="-50" width="18" height="14" rx="3" fill="${color}"/><path d="M0 -50v-2" stroke="#5c677d" stroke-width="2"/><circle cy="-52" r="2" fill="#e63946"/>` +
   `<circle cx="-4" cy="-43" r="2.5" fill="${eye}"/><circle cx="4" cy="-43" r="2.5" fill="${eye}"/><rect x="-5" y="-28" width="10" height="6" rx="1" fill="#3d4a55"/></g>`
+
+// Small items for the space scenes.
+
+/** Glowing crystal cluster; (x, y) = bottom center. Bounds: x ±10, y from −20 to 0. */
+export const crystal = (x: number, y: number, color = '#7bdff2') =>
+  `<g transform="translate(${x} ${y})" fill="${color}"><path d="M-2 0L-5 -14L0 -20L4 -13L2 0Z"/>` +
+  `<path d="M-3 0L-10 -9L-7 -12L-1 -2Z" fill-opacity="0.75"/><path d="M2 0L9 -10L10 -6L4 0Z" fill-opacity="0.75"/>` +
+  `<path d="M-2 -16L0 -19L1 -14Z" fill="#fff" fill-opacity="0.6"/></g>`
+
+/** Wrench lying on the ground; (x, y) = center. Bounds: x ±12, y ±5. */
+export const wrench = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y}) rotate(-15)"><rect x="-7" y="-1.5" width="14" height="3" rx="1.5" fill="#adb5bd"/>` +
+  `<path d="M7 -4.5A4.5 4.5 0 1 0 7 4.5L9 2V-2Z" fill="#adb5bd"/><circle cx="-8" r="3" fill="#adb5bd"/><circle cx="-8" r="1.2" fill="#495057"/></g>`
+
+/** Fuel canister; (x, y) = bottom center. Bounds: x ±8, y from −22 to 0. */
+export const fuelCanister = (x: number, y: number, color = '#e63946') =>
+  `<g transform="translate(${x} ${y})"><rect x="-8" y="-18" width="16" height="18" rx="3" fill="${color}"/>` +
+  `<rect x="-3" y="-22" width="6" height="4" rx="1" fill="#495057"/><path d="M-8 -9H8" stroke="#fff" stroke-width="2"/></g>`
+
+/** Blinking-style beacon on a tripod; (x, y) = ground center. Bounds: x ±9, y from −26 to 0. */
+export const beacon = (x: number, y: number, light = '#ff3b3b') =>
+  `<g transform="translate(${x} ${y})"><path d="M0 -12L-8 0M0 -12L8 0M0 -12V0" stroke="#8d99ae" stroke-width="2"/>` +
+  `<rect x="-4" y="-17" width="8" height="5" rx="1" fill="#5c677d"/><circle cy="-20" r="4" fill="${light}"/><circle cy="-20" r="7" fill="${light}" fill-opacity="0.25"/></g>`
+
+/** Small solar panel on a stand; (x, y) = ground center. Bounds: x ±14, y from −22 to 0. */
+export const solarPanel = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><path d="M0 -10V0M-6 0H6" stroke="#8d99ae" stroke-width="2.5"/>` +
+  `<path d="M-14 -12L-10 -22H14L10 -12Z" fill="#3a5a9a"/><path d="M-12 -17H12M-2 -22L-4 -12M6 -22L4 -12" stroke="#8fb3e8" stroke-width="1"/></g>`
+
+/** Alien sprout; (x, y) = ground. Bounds: x ±10, y from −22 to 0. */
+export const alienPlant = (x: number, y: number, color = '#8ac926', bulb = '#ff6bd6') =>
+  `<g transform="translate(${x} ${y})"><path d="M0 0Q-2 -10 0 -16M0 0Q-6 -4 -9 -10M0 0Q6 -4 9 -9" stroke="${color}" stroke-width="2.5" fill="none" stroke-linecap="round"/>` +
+  `<circle cy="-18" r="4" fill="${bulb}"/><circle cx="-9" cy="-11" r="2.5" fill="${bulb}"/><circle cx="9" cy="-10" r="2.5" fill="${bulb}"/></g>`
+
+/** A few small moon pebbles; (x, y) = ground center. Bounds: x ±14, y from −8 to 0. */
+export const moonPebbles = (x: number, y: number, color = '#9d98b8') =>
+  `<g transform="translate(${x} ${y})" fill="${color}"><ellipse cx="-7" cy="-3" rx="7" ry="3.5"/>` +
+  `<ellipse cx="6" cy="-2.5" rx="5" ry="2.5" fill-opacity="0.8"/><ellipse cx="0" cy="-5" rx="4" ry="3" fill-opacity="0.9"/></g>`
+
+/** Spare space helmet on the ground; (x, y) = bottom center. Bounds: x ±11, y from −20 to 0. */
+export const helmet = (x: number, y: number, visor = '#3ae0ff') =>
+  `<g transform="translate(${x} ${y})"><path d="M-11 0V-9A11 11 0 0 1 11 -9V0Z" fill="#f1f1f1"/>` +
+  `<path d="M-7 -4V-9A7 7 0 0 1 7 -9V-4Z" fill="${visor}"/><rect x="-11" y="-2" width="22" height="2" fill="#adb5bd"/></g>`
+
+/** Little hovering probe drone; (x, y) = center. Bounds: x ±13, y ±8. */
+export const probe = (x: number, y: number, color = '#ffb703') =>
+  `<g transform="translate(${x} ${y})"><rect x="-13" y="-2" width="7" height="4" fill="#3a5a9a"/><rect x="6" y="-2" width="7" height="4" fill="#3a5a9a"/>` +
+  `<circle r="6" fill="${color}"/><circle cx="1" cy="-1" r="2.5" fill="#2b2b2b"/><path d="M0 -6V-8" stroke="${color}" stroke-width="1.5"/></g>`
+
+/** Toolbox; (x, y) = bottom center. Bounds: x ±11, y from −16 to 0. */
+export const toolbox = (x: number, y: number, color = '#3a86ff') =>
+  `<g transform="translate(${x} ${y})"><path d="M-4 -12V-15H4V-12" stroke="#5c677d" stroke-width="2" fill="none"/>` +
+  `<rect x="-11" y="-12" width="22" height="12" rx="2" fill="${color}"/><path d="M-11 -7H11" stroke="#000" stroke-opacity="0.2" stroke-width="2"/></g>`

@@ -1,6 +1,6 @@
 // Motion differences: the astronaut floats faster on picture B; the satellite flies faster on B; the antenna light blinks only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, comet, satellite, starField } from './shapes.ts'
+import { astronaut, comet, fuelCanister, helmet, probe, satellite, starField, toolbox, wrench } from './shapes.ts'
 
 /** Solar panel wing; (x, y) = top left. Bounds: 50 × 70. */
 const panel = (x: number, y: number, color = '#3a86ff') =>
@@ -41,7 +41,12 @@ export default svgLevel({
       diff(420, 196, 18, `<circle cx="420" cy="196" r="8" fill="#8ecae6"/>`, '') +
       `<path d="M500 180h20l24 12v16l-24 12h-20Z" fill="#f1f1f1"/>` +
       diff(511, 200, 21, `<rect x="508" y="180" width="6" height="40" fill="#e63946"/>`, `<rect x="508" y="180" width="6" height="40" fill="#3a86ff"/>`) +
-      diff(360, 294, 31, floating(6), floating(3), 'walker')
+      diff(360, 294, 31, floating(6), floating(3), 'walker') +
+      probe(520, 320) +
+      wrench(250, 335) +
+      fuelCanister(700, 330) +
+      toolbox(480, 120) +
+      helmet(90, 330)
     )
   },
 })

@@ -15,11 +15,10 @@ const purchase = usePurchaseStore()
 const percent = (v: number) => `${Math.round(v * 100)}%`
 
 // TEMPORARY code for testing staging builds: turns on developer mode (see DEVELOPER_CODE in stores/settings.ts).
+// Applied as soon as the typed code is right; there is no submit button.
 const developerCode = ref('')
-const developerInvalid = ref(false)
-function applyDeveloperCode() {
-  developerInvalid.value = !settings.enableDeveloper(developerCode.value)
-  if (!developerInvalid.value) developerCode.value = ''
+function onDeveloperCode() {
+  if (settings.enableDeveloper(developerCode.value)) developerCode.value = ''
 }
 const devToolsOpen = ref(false)
 </script>
@@ -99,20 +98,16 @@ const devToolsOpen = ref(false)
       <span>{{ $t('settings.dev') }}</span>
       <span class="muted">›</span>
     </button>
-    <form v-else class="row column" @submit.prevent="applyDeveloperCode">
-      <label for="developer-code">{{ $t('settings.developer') }}</label>
-      <div class="code">
-        <input
-          id="developer-code"
-          v-model="developerCode"
-          inputmode="numeric"
-          autocomplete="off"
-          @input="developerInvalid = false"
-        />
-        <button type="submit" :disabled="!developerCode.trim()">{{ $t('settings.developerApply') }}</button>
-      </div>
-      <small v-if="developerInvalid" class="error" role="alert">{{ $t('settings.developerInvalid') }}</small>
-    </form>
+    <label v-else class="row">
+      <span>{{ $t('settings.developer') }}</span>
+      <input
+        v-model="developerCode"
+        class="code"
+        inputmode="numeric"
+        autocomplete="off"
+        @input="onDeveloperCode"
+      />
+    </label>
 
     <DevToolsDialog v-if="settings.developer && devToolsOpen" @close="devToolsOpen = false" />
   </main>
@@ -125,6 +120,8 @@ main {
   /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
   padding: 12px max(16px, (100% - var(--menu-width)) / 2) 24px;
   display: grid;
+  /* One column no wider than the screen: a row's content (an input's own width) never adds a sideways scroll. */
+  grid-template-columns: minmax(0, 1fr);
   /* Rows take their content height and the list scrolls; auto rows would shrink to fit the screen. */
   grid-auto-rows: max-content;
   gap: 10px;
@@ -192,13 +189,8 @@ input[type='checkbox'] {
   color: var(--muted);
 }
 
-.code {
-  display: flex;
-  gap: 8px;
-}
-
-.code input {
-  flex: 1;
+input.code {
+  width: 7em;
   min-width: 0;
   font: inherit;
   padding: 8px 12px;
@@ -208,7 +200,4 @@ input[type='checkbox'] {
   color: var(--fg);
 }
 
-.row .error {
-  color: var(--danger-fg);
-}
 </style>

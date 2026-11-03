@@ -186,8 +186,6 @@
     "resetPurchaseCache": "購入を忘れる（キャッシュ）",
     "resetPurchaseStore": "購入を忘れる（「ストア」も）",
     "developer": "開発者",
-    "developerApply": "適用",
-    "developerInvalid": "コードが正しくありません",
     "devOff": "開発者モードをオフにする"
   },
   "common": {

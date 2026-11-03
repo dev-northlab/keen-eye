@@ -1,6 +1,6 @@
 // Motion differences: the warning light blinks only on picture B; the hanging mascot swings faster on B.
 import { svgLevel } from '../helpers.ts'
-import { comet, planet, sparkle, starField } from './shapes.ts'
+import { comet, crystal, helmet, planet, probe, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
 /** Bar graph screen, 52 × 40, with `bars` bars; (x, y) = center. */
 const graph = (x: number, y: number, bars: number) => {
@@ -79,7 +79,12 @@ export default svgLevel({
       `<rect x="380" y="456" width="40" height="14" rx="4" fill="#2b2b2b"/><path d="M400 456l-4 -34" stroke="#2b2b2b" stroke-width="7" stroke-linecap="round"/><circle cx="396" cy="420" r="9" fill="#e63946"/>` +
       diff(560, 462, 26, mug(554, 474), mug(566, 474)) +
       diff(300, 470, 22, '', `<path d="M290 462h20v16h-20Z" fill="#ffd166" transform="rotate(-8 300 470)"/><path d="M294 468h12M294 473h8" stroke="#c98a3a" stroke-width="1.5"/>`) +
-      `<rect x="40" y="470" width="40" height="30" fill="#2b2b2b"/><rect x="720" y="470" width="40" height="30" fill="#2b2b2b"/>`
+      `<rect x="40" y="470" width="40" height="30" fill="#2b2b2b"/><rect x="720" y="470" width="40" height="30" fill="#2b2b2b"/>` +
+      wrench(560, 380) +
+      helmet(60, 468) +
+      probe(620, 200) +
+      toolbox(650, 472) +
+      crystal(510, 340)
     )
   },
 })

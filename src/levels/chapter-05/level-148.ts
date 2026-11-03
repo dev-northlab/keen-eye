@@ -1,6 +1,6 @@
 // Motion differences: the right paper lantern bobs faster on picture B; the parked saucer's lights blink only on B.
 import { svgLevel } from '../helpers.ts'
-import { alien, robot, sparkle, starField } from './shapes.ts'
+import { alien, alienPlant, fuelCanister, moonPebbles, probe, robot, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Wavy awning; (x, y) = top-left, width w. */
 const awning = (x: number, y: number, w: number, a: string, b: string) => {
@@ -76,7 +76,12 @@ export default svgLevel({
       // Hover cart and glowing plants
       `<ellipse cx="90" cy="452" rx="44" ry="6" fill="#7ad0ff" fill-opacity="0.3"/><rect x="50" y="410" width="80" height="30" rx="6" fill="#6b4a8a"/>` +
       spiky(70, 404, '#ff6bd6') + spiky(92, 404, '#ffd23f') + spiky(114, 404, '#ff6bd6') +
-      [[250, 400], [420, 410], [540, 396], [770, 404], [30, 490]].map(([x, y]) => `<path d="M${x} ${y}q-6 -16 0 -26M${x} ${y}q8 -14 4 -24" stroke="#2bd9b0" stroke-width="3" fill="none"/><circle cx="${x}" cy="${y - 28}" r="4" fill="#7dffd0"/>`).join('')
+      [[250, 400], [420, 410], [540, 396], [770, 404], [30, 490]].map(([x, y]) => `<path d="M${x} ${y}q-6 -16 0 -26M${x} ${y}q8 -14 4 -24" stroke="#2bd9b0" stroke-width="3" fill="none"/><circle cx="${x}" cy="${y - 28}" r="4" fill="#7dffd0"/>`).join('') +
+      alienPlant(330, 468) +
+      moonPebbles(540, 474) +
+      fuelCanister(650, 470) +
+      probe(560, 80) +
+      toolbox(775, 474)
     )
   },
 })

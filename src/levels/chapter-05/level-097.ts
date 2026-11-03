@@ -1,7 +1,7 @@
 // Motion differences: the neon planet blinks faster on picture B; the robot waiter rolls faster on B; the arriving saucer hovers faster on B.
 import { svgLevel } from '../helpers.ts'
 import { parasol } from '../chapter-04/shapes.ts'
-import { alien, robot, rocket, star, starField, ufo } from './shapes.ts'
+import { alien, alienPlant, crystal, fuelCanister, helmet, robot, rocket, star, starField, toolbox, ufo } from './shapes.ts'
 
 /** Alien head behind the diner window; (x, y) = head center. Bounds: x ±10, y from −14 to +10. */
 const head = (x: number, y: number, color: string) =>
@@ -59,7 +59,12 @@ export default svgLevel({
       table(680, 400) +
       diff(680, 360, 18, steam(680, 368), '') +
       alien(730, 410, '#3ae0ff') +
-      diff(200, 414, 30, rolling(10), rolling(5), 'waiter')
+      diff(200, 414, 30, rolling(10), rolling(5), 'waiter') +
+      alienPlant(600, 350) +
+      helmet(250, 350) +
+      toolbox(480, 460) +
+      fuelCanister(140, 455) +
+      crystal(700, 455)
     )
   },
 })

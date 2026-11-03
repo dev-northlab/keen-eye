@@ -1,6 +1,6 @@
 // Motion differences: the crystals glow faster on picture B; the cart rolls faster on B; the bat flutters faster on B.
 import { svgLevel } from '../helpers.ts'
-import { alien, star } from './shapes.ts'
+import { alien, alienPlant, beacon, helmet, moonPebbles, star, toolbox } from './shapes.ts'
 
 /** Crystal cluster without its own fill (colored by the parent); (x, y) = bottom center. Bounds: x ±30·s, y from −60·s to 0. */
 const cluster = (x: number, y: number, s = 1) =>
@@ -60,7 +60,12 @@ export default svgLevel({
       diff(330, 461, 26, `<g fill="#ffd166"><circle cx="318" cy="464" r="8"/><circle cx="334" cy="462" r="9"/><circle cx="346" cy="466" r="6"/><circle cx="328" cy="452" r="7"/></g>`, `<g fill="#bfc7d5"><circle cx="318" cy="464" r="8"/><circle cx="334" cy="462" r="9"/><circle cx="346" cy="466" r="6"/><circle cx="328" cy="452" r="7"/></g>`) +
       // Rails and cart
       `<path d="M380 470h420M380 480h420" stroke="#8d99ae" stroke-width="3"/><g fill="#5a3d2b">${[390, 430, 470, 510, 550, 590, 630, 670, 710, 750, 790].map((x) => `<rect x="${x - 3}" y="468" width="6" height="16"/>`).join('')}</g>` +
-      diff(420, 450, 34, rolling(10), rolling(5), 'cart')
+      diff(420, 450, 34, rolling(10), rolling(5), 'cart') +
+      beacon(560, 405) +
+      toolbox(140, 472) +
+      helmet(760, 412) +
+      alienPlant(300, 416) +
+      moonPebbles(40, 482)
     )
   },
 })

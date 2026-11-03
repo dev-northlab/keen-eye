@@ -186,8 +186,6 @@
     "resetPurchaseCache": "忘记购买（缓存）",
     "resetPurchaseStore": "忘记购买（包括“商店”）",
     "developer": "开发者",
-    "developerApply": "兑换",
-    "developerInvalid": "兑换码错误",
     "devOff": "关闭开发者模式"
   },
   "common": {

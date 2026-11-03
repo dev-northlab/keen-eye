@@ -1,6 +1,6 @@
 // Motion differences: the rocket lands and lifts off faster on picture B; the pad beacon blinks faster on B; the tower radar turns only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, flame, rocket, starField, ufo } from './shapes.ts'
+import { astronaut, flame, fuelCanister, helmet, moonPebbles, rocket, solarPanel, starField, toolbox, ufo } from './shapes.ts'
 
 /** Landing pad; (x, y) = center. Bounds: x ±70, y ±14. */
 const pad = (x: number, y: number) =>
@@ -56,7 +56,12 @@ export default svgLevel({
       astronaut(620, 480, '#f1f1f1', '#ffb703') +
       `<path d="M634 456v-6h8v6" stroke="#3d4a55" stroke-width="2" fill="none"/>` +
       diff(646, 466, 18, `<rect x="636" y="456" width="20" height="20" rx="3" fill="#e76f51"/>`, `<rect x="636" y="456" width="20" height="20" rx="3" fill="#3a86ff"/>`) +
-      astronaut(250, 480, '#ffb703', '#3ae0ff', true)
+      astronaut(250, 480, '#ffb703', '#3ae0ff', true) +
+      fuelCanister(380, 472) +
+      toolbox(560, 474) +
+      moonPebbles(165, 364) +
+      helmet(730, 472) +
+      solarPanel(645, 356)
     )
   },
 })

@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Vásárlás elfelejtése (gyorsítótár)",
     "resetPurchaseStore": "Vásárlás elfelejtése (a „boltban” is)",
     "developer": "Fejlesztő",
-    "developerApply": "Beváltás",
-    "developerInvalid": "Hibás kód",
     "devOff": "Fejlesztői mód kikapcsolása"
   },
   "common": {

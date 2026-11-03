@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Zapomenout nákup (cache)",
     "resetPurchaseStore": "Zapomenout nákup (i v „obchodě“)",
     "developer": "Vývojář",
-    "developerApply": "Použít",
-    "developerInvalid": "Nesprávný kód",
     "devOff": "Vypnout vývojářský režim"
   },
   "common": {

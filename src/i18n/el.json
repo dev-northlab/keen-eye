@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Ξέχασε την αγορά (cache)",
     "resetPurchaseStore": "Ξέχασε την αγορά (και στο «κατάστημα»)",
     "developer": "Προγραμματιστής",
-    "developerApply": "Εφαρμογή",
-    "developerInvalid": "Λάθος κωδικός",
     "devOff": "Απενεργοποίηση λειτουργίας προγραμματιστή"
   },
   "common": {

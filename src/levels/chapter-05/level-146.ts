@@ -1,6 +1,6 @@
 // Motion differences: the sparkle above the nebula twinkles only on picture B; the pulsar on the right spins faster on B.
 import { svgLevel } from '../helpers.ts'
-import { comet, planet, sparkle, star, starField } from './shapes.ts'
+import { asteroid, comet, helmet, planet, probe, rocket, satellite, sparkle, star, starField } from './shapes.ts'
 
 /** Spiral galaxy; (x, y) = core. Bounds: radius 30. */
 const galaxy = (x: number, y: number) =>
@@ -60,7 +60,12 @@ export default svgLevel({
       planet(740, 60, 12, '#c98bb9') +
       diff(675, 424, 32, ship(676, 424), ship(684, 421)) +
       diff(760, 250, 30, spin(5), spin(1.6)) +
-      sparkle(40, 220, 5) + sparkle(560, 470, 6) + sparkle(330, 460, 5, '#ffd1dc')
+      sparkle(40, 220, 5) + sparkle(560, 470, 6) + sparkle(330, 460, 5, '#ffd1dc') +
+      probe(400, 420) +
+      asteroid(600, 200, 0.5) +
+      rocket(150, 345, '#f1f1f1', '#8ac926', 0.35) +
+      satellite(700, 330) +
+      helmet(320, 460)
     )
   },
 })

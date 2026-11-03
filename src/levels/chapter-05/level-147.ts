@@ -1,6 +1,6 @@
 // Motion differences: the left astronaut drifts faster on picture B; the status light on the satellite blinks only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, sparkle, starField } from './shapes.ts'
+import { asteroid, astronaut, fuelCanister, helmet, probe, rocket, sparkle, starField } from './shapes.ts'
 
 /** Solar wing panel, 46 × 50, with `cols` columns; (x, y) = center. */
 const wingPanel = (x: number, y: number, cols: number) => {
@@ -61,7 +61,12 @@ export default svgLevel({
       `<path d="M544 340l-10 -6" stroke="#ffb703" stroke-width="5" stroke-linecap="round"/>` +
       diff(202, 408, 30, toolbox(196, 412), toolbox(208, 406)) +
       diff(620, 440, 22, '', screwdriver(620, 440)) +
-      `<g transform="rotate(-20 470 420)"><rect x="462" y="416" width="16" height="8" rx="2" fill="#bfc7d5"/></g>`
+      `<g transform="rotate(-20 470 420)"><rect x="462" y="416" width="16" height="8" rx="2" fill="#bfc7d5"/></g>` +
+      rocket(420, 345, '#f1f1f1', '#e63946', 0.35) +
+      probe(700, 300) +
+      fuelCanister(560, 448) +
+      helmet(330, 462) +
+      asteroid(250, 100, 0.5)
     )
   },
 })

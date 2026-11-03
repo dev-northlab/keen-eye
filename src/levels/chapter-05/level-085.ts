@@ -1,6 +1,6 @@
 // Motion differences: the rover drives faster on picture B; the drone hovers faster on B; the dust devil sways only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, crater, rock, rover, starField } from './shapes.ts'
+import { astronaut, beacon, crater, crystal, fuelCanister, rock, rover, solarPanel, starField, toolbox } from './shapes.ts'
 
 /** Drone; (x, y) = body center. Bounds: x ±22, y from −12 to +14. */
 const drone = (x: number, y: number) =>
@@ -46,7 +46,12 @@ export default svgLevel({
       diff(110, 252, 18, `<path d="M110 268v-26" stroke="#8d99ae" stroke-width="3"/><circle cx="110" cy="240" r="4" fill="#e63946"/>`, '') +
       diff(700, 330, 42, devil, anim({ type: 'sway', angle: 6, pivot: [700, 360], period: 2 }, devil)) +
       diff(300, 374, 31, astronaut(300, 400, '#f1f1f1', '#ffb703'), astronaut(300, 400, '#ffb703', '#ffb703')) +
-      diff(400, 399, 37, driving(16), driving(8), 'rover')
+      diff(400, 399, 37, driving(16), driving(8), 'rover') +
+      crystal(460, 320) +
+      toolbox(380, 330) +
+      fuelCanister(175, 335) +
+      beacon(590, 336) +
+      solarPanel(760, 402)
     )
   },
 })

@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Forget purchase (cache)",
     "resetPurchaseStore": "Forget purchase (also in the \"store\")",
     "developer": "Developer",
-    "developerApply": "Apply",
-    "developerInvalid": "Wrong code",
     "devOff": "Turn off developer mode"
   },
   "common": {

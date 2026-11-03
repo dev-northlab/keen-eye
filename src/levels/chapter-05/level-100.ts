@@ -1,6 +1,6 @@
 // Motion differences: the big firework bursts faster on picture B; the dancer on stage hops faster on B; the disco ball spins only on B.
 import { svgLevel } from '../helpers.ts'
-import { alien, astronaut, robot, star, starField } from './shapes.ts'
+import { alien, alienPlant, astronaut, crystal, helmet, moonPebbles, probe, robot, star, starField } from './shapes.ts'
 
 /** Firework burst; (x, y) = center. Bounds: radius r + 3. */
 const burst = (x: number, y: number, r: number, color: string) => {
@@ -80,7 +80,12 @@ export default svgLevel({
       robot(600, 490, '#8d99ae') +
       alien(690, 480, '#8ac926') +
       diff(680, 392, 30, balloon(680, 380, '#ffd166'), '') +
-      alien(760, 488, '#b38cff', 2)
+      alien(760, 488, '#b38cff', 2) +
+      probe(170, 280) +
+      alienPlant(165, 472) +
+      crystal(555, 476) +
+      helmet(645, 476) +
+      moonPebbles(390, 476)
     )
   },
 })

@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Dimentica acquisto (cache)",
     "resetPurchaseStore": "Dimentica acquisto (anche nello «store»)",
     "developer": "Sviluppatore",
-    "developerApply": "Applica",
-    "developerInvalid": "Codice errato",
     "devOff": "Disattiva la modalità sviluppatore"
   },
   "common": {

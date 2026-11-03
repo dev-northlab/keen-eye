@@ -1,6 +1,6 @@
 // Motion differences: the beacon on the rocket tip blinks only on picture B; the dust devil spins faster on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, dome, flag, rocket, rover, starField } from './shapes.ts'
+import { astronaut, crystal, dome, flag, fuelCanister, helmet, moonPebbles, rocket, rover, starField, toolbox } from './shapes.ts'
 
 /** Robot with `eye` color; (x, y) = feet. Bounds: x ±16, y from −54 to 0. */
 const bot = (x: number, y: number, eye: string) =>
@@ -65,7 +65,12 @@ export default svgLevel({
       diff(340, 420, 30, spinning(3), spinning(1.1)) +
       bot(440, 466, '#3ae0ff') + diff(440, 422, 22, `<rect x="434" y="420" width="12" height="5" rx="2" fill="#3ae0ff"/>`, `<rect x="434" y="420" width="12" height="5" rx="2" fill="#7ad0ff"/>`) +
       astronaut(560, 470, '#f1f1f1', '#ffb703') + rover(700, 470, '#ffb703', true) + flag(760, 400, '#3a86ff') +
-      marsRock(200, 486) + diff(254, 470, 24, marsRock(250, 476), marsRock(260, 472)) + marsRock(620, 490, 1.3)
+      marsRock(200, 486) + diff(254, 470, 24, marsRock(250, 476), marsRock(260, 472)) + marsRock(620, 490, 1.3) +
+      fuelCanister(160, 366) +
+      toolbox(495, 472) +
+      crystal(630, 442) +
+      moonPebbles(772, 474) +
+      helmet(380, 476)
     )
   },
 })

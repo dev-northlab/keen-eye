@@ -1,7 +1,7 @@
 // Motion differences: the cow floats faster on picture B; the saucer lights blink faster on B; the weathervane spins only on B.
 import { svgLevel } from '../helpers.ts'
 import { cow, hayBale, sheep } from '../shapes.ts'
-import { person, starField, ufo } from './shapes.ts'
+import { alienPlant, crystal, fuelCanister, person, probe, starField, toolbox, ufo } from './shapes.ts'
 
 const vane = `<path d="M616 176h28M640 172l6 4l-6 4M616 172v8" stroke="#3d4a55" stroke-width="3" fill="none"/>`
 const lights = `<g fill="#ff6b6b"><circle cx="368" cy="114.8" r="4.8"/><circle cx="400" cy="116.4" r="4.8"/><circle cx="432" cy="114.8" r="4.8"/></g>`
@@ -40,7 +40,12 @@ export default svgLevel({
       `<path d="M370 125L320 400H480L410 125Z" fill="#f4ff8a" fill-opacity="0.22"/>` +
       diff(404, 290, 47, floating(3), floating(1.4), 'cow') +
       `<g transform="translate(400 110) scale(1.6)">${ufo(0, 0, '#9b7bff', '#ffd23f')}</g>` +
-      diff(400, 115, 38, blinking(2), blinking(0.7))
+      diff(400, 115, 38, blinking(2), blinking(0.7)) +
+      alienPlant(560, 445) +
+      crystal(500, 440) +
+      probe(250, 250) +
+      fuelCanister(775, 385) +
+      toolbox(340, 450)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the astronaut floats faster on picture B; the apple spins faster on B; the panel light blinks only on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, rocket } from './shapes.ts'
+import { astronaut, fuelCanister, helmet, probe, rocket, toolbox, wrench } from './shapes.ts'
 
 /** Floating apple; (x, y) = center. Bounds: radius 15. */
 const apple = (x: number, y: number) =>
@@ -50,7 +50,12 @@ export default svgLevel({
       diff(180, 274, 31, floating(5), floating(2.5), 'walker') +
       diff(617, 358, 18, astronaut(620, 400, '#f1f1f1', '#ffb703', true), astronaut(620, 400, '#f1f1f1', '#3ae0ff', true)) +
       anim({ type: 'bob', dx: 6, dy: 8, period: 7 }, `<circle cx="520" cy="330" r="7" fill="#8ecae6" fill-opacity="0.7"/><circle cx="534" cy="318" r="4" fill="#8ecae6" fill-opacity="0.7"/>`) +
-      `<path d="M30 300v120M770 300v120" stroke="#ffd166" stroke-width="8" stroke-linecap="round"/>`
+      `<path d="M30 300v120M770 300v120" stroke="#ffd166" stroke-width="8" stroke-linecap="round"/>` +
+      wrench(470, 420) +
+      toolbox(270, 401) +
+      helmet(720, 345) +
+      probe(260, 330) +
+      fuelCanister(500, 472)
     )
   },
 })

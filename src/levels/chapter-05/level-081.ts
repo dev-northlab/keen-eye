@@ -1,6 +1,6 @@
 // Motion differences: the warning light on the tower blinks faster on picture B; the astronaut walks faster on B.
 import { svgLevel } from '../helpers.ts'
-import { astronaut, dish, flag, rock, rocket, starField } from './shapes.ts'
+import { astronaut, dish, flag, fuelCanister, helmet, moonPebbles, rock, rocket, solarPanel, starField, toolbox } from './shapes.ts'
 
 /** Fuel tank; (x, y) = bottom center. Bounds: x ±14, y from −44 to 0. */
 const tank = (x: number, y: number, color: string) =>
@@ -55,7 +55,12 @@ export default svgLevel({
       diff(140, 414, 32, walking(12), walking(6), 'walker') +
       diff(560, 458, 33, rock(560, 470, 1.2, '#5c677d'), rock(560, 470, 1.5, '#5c677d')) +
       rock(700, 480, 0.9, '#5c677d') +
-      rock(40, 486, 1.1, '#5c677d')
+      rock(40, 486, 1.1, '#5c677d') +
+      toolbox(312, 410) +
+      fuelCanister(570, 360) +
+      solarPanel(770, 362) +
+      moonPebbles(400, 470) +
+      helmet(640, 430)
     )
   },
 })

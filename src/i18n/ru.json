@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Забыть покупку (кеш)",
     "resetPurchaseStore": "Забыть покупку (и в «магазине»)",
     "developer": "Разработчик",
-    "developerApply": "Применить",
-    "developerInvalid": "Неверный код",
     "devOff": "Выключить режим разработчика"
   },
   "common": {

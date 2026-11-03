@@ -1,6 +1,6 @@
 // Motion differences: the marker buoy's beacon blinks only on picture B; the sparkle in the lower left twinkles only on B.
 import { svgLevel } from '../helpers.ts'
-import { planet, sparkle, starField } from './shapes.ts'
+import { asteroid, helmet, planet, rocket, satellite, sparkle, starField, wrench } from './shapes.ts'
 
 /** Moon with `stripes` dark stripes; (x, y) = center. Bounds: radius 22. */
 const stripedMoon = (x: number, y: number, stripes: number) => {
@@ -83,7 +83,12 @@ export default svgLevel({
       diff(120, 80, 22, '', probe(120, 80)) +
       `<path d="M460 132v-12" stroke="#bfc7d5" stroke-width="2"/><rect x="452" y="132" width="16" height="16" rx="3" fill="#e63946"/>` +
       diff(460, 118, 22, beacon(460, 116), anim({ type: 'blink', duty: 0.5, period: 1 }, beacon(460, 116))) +
-      diff(60, 460, 22, sparkle(60, 460, 10, '#ffe8a3'), anim({ type: 'blink', duty: 0.6, period: 1.4 }, sparkle(60, 460, 10, '#ffe8a3')))
+      diff(60, 460, 22, sparkle(60, 460, 10, '#ffe8a3'), anim({ type: 'blink', duty: 0.6, period: 1.4 }, sparkle(60, 460, 10, '#ffe8a3'))) +
+      helmet(720, 300) +
+      satellite(220, 50) +
+      asteroid(770, 470, 0.6) +
+      rocket(40, 300, '#f1f1f1', '#3a86ff', 0.35) +
+      wrench(760, 60)
     )
   },
 })

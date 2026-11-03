@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Kauf vergessen (Cache)",
     "resetPurchaseStore": "Kauf vergessen (auch im „Store“)",
     "developer": "Entwickler",
-    "developerApply": "Einlösen",
-    "developerInvalid": "Falscher Code",
     "devOff": "Entwicklermodus ausschalten"
   },
   "common": {

@@ -1,6 +1,6 @@
 // Motion differences: the little moon orbits faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
 import { svgLevel } from '../helpers.ts'
-import { asteroid, comet, flame, planet, rocket, sparkle, starField, ufo } from './shapes.ts'
+import { asteroid, comet, flame, fuelCanister, helmet, planet, probe, rocket, sparkle, starField, toolbox, ufo, wrench } from './shapes.ts'
 
 /** Spiral galaxy; (x, y) = center. Bounds: radius 30. */
 const galaxy = (x: number, y: number, color: string) =>
@@ -42,7 +42,12 @@ export default svgLevel({
       diff(620, 460, 20, asteroid(620, 460, 0.8), asteroid(620, 460, 1.1)) +
       asteroid(760, 470, 0.7) +
       asteroid(480, 440, 0.9, '#a08d7a') +
-      diff(130, 420, 41, flying(10), flying(5), 'ship')
+      diff(130, 420, 41, flying(10), flying(5), 'ship') +
+      probe(420, 442) +
+      wrench(330, 90) +
+      helmet(765, 250) +
+      toolbox(60, 225) +
+      fuelCanister(225, 335)
     )
   },
 })
