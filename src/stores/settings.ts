@@ -45,10 +45,13 @@ export const useSettingsStore = defineStore('settings', () => {
   const theme = ref<Theme>(systemTheme())
   /** Turned on by the testing code: Settings show the Development tools. */
   const developer = ref(false)
+  /** Developer tools checkbox: levels get the "Show places" button (only in developer mode). */
+  const devShowPlaces = ref(false)
 
   const effectiveLocale = computed(() => locale.value ?? systemLocale())
   const effectiveReduceMotion = computed(() => reduceMotion.value ?? systemReducedMotion())
   const calm = computed(() => mode.value === 'calm')
+  const showPlaces = computed(() => developer.value && devShowPlaces.value)
 
   // i18n and the services are plain modules: keep them in sync with the settings, immediately
   // (sync), so e.g. a volume preview played right after a change already uses the new value.
@@ -74,6 +77,7 @@ export const useSettingsStore = defineStore('settings', () => {
     season.value = isSeason(raw.season) ? raw.season : 'summer'
     theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
     developer.value = raw.developer === true
+    devShowPlaces.value = raw.devShowPlaces === true
   }
 
   /** True if the code is right; then developer mode stays on on this device. */
@@ -83,7 +87,7 @@ export const useSettingsStore = defineStore('settings', () => {
     return true
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer], () =>
+  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer, devShowPlaces], () =>
     saveJson(KEY, {
       locale: locale.value,
       reduceMotion: reduceMotion.value,
@@ -94,8 +98,9 @@ export const useSettingsStore = defineStore('settings', () => {
       season: season.value,
       theme: theme.value,
       developer: developer.value,
+      devShowPlaces: devShowPlaces.value,
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
+  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
 })

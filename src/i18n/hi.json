@@ -8,7 +8,8 @@
     "settings": "सेटिंग्स",
     "stars": "सितारे: {n}",
     "needsPurchase": "लेवल {n} — पूरा गेम",
-    "devOpenAll": "सभी लेवल खोलें (टेस्ट)"
+    "devOpenAll": "सभी लेवल खोलें (टेस्ट)",
+    "devShowPlaces": "लेवल में जगहें दिखाएँ (टेस्ट)"
   },
   "season": {
     "label": "मौसम",

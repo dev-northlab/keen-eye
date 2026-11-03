@@ -8,7 +8,8 @@
     "settings": "Configurações",
     "stars": "Estrelas: {n}",
     "needsPurchase": "Fase {n} — jogo completo",
-    "devOpenAll": "Abrir todas as fases (teste)"
+    "devOpenAll": "Abrir todas as fases (teste)",
+    "devShowPlaces": "Mostrar lugares nas fases (teste)"
   },
   "season": {
     "label": "Estação",

@@ -8,7 +8,8 @@
     "settings": "设置",
     "stars": "星星：{n}",
     "needsPurchase": "第 {n} 关 — 完整版",
-    "devOpenAll": "开放所有关卡（测试）"
+    "devOpenAll": "开放所有关卡（测试）",
+    "devShowPlaces": "在关卡中显示位置（测试）"
   },
   "season": {
     "label": "季节",

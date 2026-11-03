@@ -8,7 +8,8 @@
     "settings": "Settings",
     "stars": "Stars: {n}",
     "needsPurchase": "Level {n} — full game",
-    "devOpenAll": "Open all levels (testing)"
+    "devOpenAll": "Open all levels (testing)",
+    "devShowPlaces": "Show places in levels (testing)"
   },
   "season": {
     "label": "Season",

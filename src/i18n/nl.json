@@ -8,7 +8,8 @@
     "settings": "Instellingen",
     "stars": "Sterren: {n}",
     "needsPurchase": "Level {n} — volledige game",
-    "devOpenAll": "Alle levels openen (test)"
+    "devOpenAll": "Alle levels openen (test)",
+    "devShowPlaces": "Plekken tonen in levels (test)"
   },
   "season": {
     "label": "Seizoen",
