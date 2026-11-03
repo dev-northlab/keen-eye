@@ -3,6 +3,9 @@ import { siFacebook, siTelegram, siVk, siWhatsapp, siX, type SimpleIcon } from '
 
 export const APP_NAME = 'Keen Eye'
 
+/** Where players write to us (the "Contact us" dialog on the home screen). */
+export const CONTACT_EMAIL = 'dev.northlab@gmail.com'
+
 /** Store pages; `ios` stays null until the game is in the App Store. */
 export const STORE_LINKS: { android: string; ios: string | null } = {
   android: 'https://play.google.com/store/apps/details?id=com.keeneye.app',

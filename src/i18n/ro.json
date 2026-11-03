@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye este un joc de găsit diferențe cu scene vii. Fără reclame, fără internet.",
     "version": "Versiunea {v}",
     "privacy": "Confidențialitate",
-    "privacyText": "Nu colectăm niciun fel de date. Progresul și setările rămân doar pe dispozitivul tău."
+    "privacyText": "Nu colectăm niciun fel de date. Progresul și setările rămân doar pe dispozitivul tău.",
+    "contact": "Contactează-ne",
+    "contactText": "Ai o întrebare sau o idee ori ai găsit o eroare? Scrie-ne — citim fiecare mesaj și îți răspundem cu plăcere."
   },
   "about": {
     "shareGame": "Distribuie jocul",
     "social": "Distribuie pe rețelele sociale",
-    "rate": "Evaluează jocul"
+    "rate": "Evaluează jocul",
+    "features": "Ce conține",
+    "stats": {
+      "levels": "Niveluri",
+      "modes": "Moduri de joc",
+      "languages": "Limbi"
+    },
+    "perks": {
+      "calm": "Mod calm",
+      "living": "Scene vii",
+      "keys": "Chei ascunse",
+      "offline": "Fără internet",
+      "noAds": "Fără reclame"
+    }
   },
   "share": {
     "button": "Distribuie",
@@ -149,6 +164,7 @@
     "dev": "Dezvoltare",
     "unlockAll": "Termină toate nivelurile",
     "resetProgress": "Resetează progresul",
+    "resetKeys": "Resetează cheile găsite",
     "music": "Muzică",
     "sound": "Sunete",
     "vibration": "Vibrații",
@@ -176,7 +192,8 @@
     "time": "Timpul",
     "memory": "Memorie",
     "travel": "Călătorie în jurul lumii",
-    "detective": "Poveste polițistă"
+    "detective": "Poveste polițistă",
+    "treasury": "Camera comorii"
   },
   "levelTitles": {
     "barnyard": "Curtea fermei",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Camera schiurilor",
     "lodgeYard": "Curtea",
     "lodgeChairlift": "Telescaunul",
-    "lodgeSummit": "Vârful"
+    "lodgeSummit": "Vârful",
+    "treasury": "Camera comorii"
   },
   "mode": {
     "label": "Mod",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Urme de bocanci urcă spre vârf",
       "skiPoleLeft": "Un băț de schi înfipt în zăpadă"
     }
+  },
+  "secret": {
+    "found": "Cheie secretă găsită!",
+    "keys": "Chei: {n} / {total}",
+    "keyFound": "Cheie găsită",
+    "keyHidden": "Cheie negăsită",
+    "findHere": "Într-unul dintre nivelurile de aici e ascunsă o cheie de aur. Găsește-o!",
+    "foundHere": "Ai găsit deja cheia de aici!",
+    "findWorlds": "Fiecare lume ascunde o cheie de aur. Găsite: {n} / {total}",
+    "foundWorlds": "Ai găsit cheile tuturor lumilor!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Găsește cheile de aur în toate capitolele",
+    "congrats": "Ești cel mai atent jucător!"
   }
 }

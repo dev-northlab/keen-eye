@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
+import LevelId from '../components/LevelId.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
 import { CHAPTERS, chapterById, chapterLevels, chapterSize, levelNumber } from '../levels/chapters.ts'
@@ -54,6 +55,7 @@ function tileLabel(level: Level) {
             :aria-label="tileLabel(level)"
             @click="open(level)"
           >
+            <LevelId :id="level.id" />
             <span class="num">{{ levelNumber(level) }}</span>
             <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
             <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :size="14" />
@@ -112,6 +114,7 @@ main {
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);
+  position: relative;
 }
 
 .tile.done {

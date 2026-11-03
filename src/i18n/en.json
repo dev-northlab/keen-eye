@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
     "version": "Version {v}",
     "privacy": "Privacy policy",
-    "privacyText": "We collect no data at all. Progress and settings are stored only on your device."
+    "privacyText": "We collect no data at all. Progress and settings are stored only on your device.",
+    "contact": "Contact us",
+    "contactText": "Have a question or an idea, or found a bug? Write to us — we read every message and will be glad to answer."
   },
   "about": {
     "shareGame": "Share the game",
     "social": "Share on social media",
-    "rate": "Rate the game"
+    "rate": "Rate the game",
+    "features": "What's inside",
+    "stats": {
+      "levels": "Levels",
+      "modes": "Game modes",
+      "languages": "Languages"
+    },
+    "perks": {
+      "calm": "Calm mode",
+      "living": "Living scenes",
+      "keys": "Hidden keys",
+      "offline": "Works offline",
+      "noAds": "No ads"
+    }
   },
   "share": {
     "button": "Share",
@@ -149,6 +164,7 @@
     "dev": "Development",
     "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",
+    "resetKeys": "Reset found keys",
     "music": "Music",
     "sound": "Sounds",
     "vibration": "Vibration",
@@ -176,7 +192,8 @@
     "time": "Time",
     "memory": "Memory",
     "travel": "World travel",
-    "detective": "Detective story"
+    "detective": "Detective story",
+    "treasury": "Treasury"
   },
   "levelTitles": {
     "barnyard": "Barnyard",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Ski room",
     "lodgeYard": "Yard",
     "lodgeChairlift": "Chairlift",
-    "lodgeSummit": "Summit"
+    "lodgeSummit": "Summit",
+    "treasury": "Treasury"
   },
   "mode": {
     "label": "Mode",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Boot prints going up to the summit",
       "skiPoleLeft": "A ski pole stuck in the snow"
     }
+  },
+  "secret": {
+    "found": "Secret key found!",
+    "keys": "Keys: {n} / {total}",
+    "keyFound": "Key found",
+    "keyHidden": "Key not found",
+    "findHere": "A golden key is hidden in one of the levels here. Find it!",
+    "foundHere": "You have found the key from here!",
+    "findWorlds": "Every world hides a golden key. Found: {n} / {total}",
+    "foundWorlds": "You have found the keys of all worlds!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Find the golden keys in every chapter",
+    "congrats": "You are the keenest player of all!"
   }
 }

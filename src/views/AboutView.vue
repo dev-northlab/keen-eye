@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BackButton from '../components/BackButton.vue'
+import FeaturesCard from '../components/FeaturesCard.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ShareButton from '../components/ShareButton.vue'
 import ShareLinks from '../components/ShareLinks.vue'
@@ -21,6 +22,8 @@ const icon = `${import.meta.env.BASE_URL}favicon.svg`
         <p>{{ $t('info.aboutText') }}</p>
         <p class="muted">{{ $t('info.version', { v: version }) }}</p>
       </section>
+
+      <FeaturesCard />
 
       <ShareButton class="share">{{ $t('about.shareGame') }}</ShareButton>
 

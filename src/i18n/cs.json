@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami. Bez reklam a bez internetu.",
     "version": "Verze {v}",
     "privacy": "Ochrana soukromí",
-    "privacyText": "Nesbíráme vůbec žádná data. Postup a nastavení se ukládají jen ve vašem zařízení."
+    "privacyText": "Nesbíráme vůbec žádná data. Postup a nastavení se ukládají jen ve vašem zařízení.",
+    "contact": "Kontakt",
+    "contactText": "Máte otázku nebo nápad, nebo jste našli chybu? Napište nám — čteme každou zprávu a rádi odpovíme."
   },
   "about": {
     "shareGame": "Sdílet hru",
     "social": "Sdílet na sociálních sítích",
-    "rate": "Ohodnotit hru"
+    "rate": "Ohodnotit hru",
+    "features": "Co uvnitř najdeš",
+    "stats": {
+      "levels": "Úrovně",
+      "modes": "Herní režimy",
+      "languages": "Jazyky"
+    },
+    "perks": {
+      "calm": "Klidný režim",
+      "living": "Živé scény",
+      "keys": "Skryté klíče",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam"
+    }
   },
   "share": {
     "button": "Sdílet",
@@ -149,6 +164,7 @@
     "dev": "Vývoj",
     "unlockAll": "Dokončit všechny úrovně",
     "resetProgress": "Smazat postup",
+    "resetKeys": "Vynulovat nalezené klíče",
     "music": "Hudba",
     "sound": "Zvuky",
     "vibration": "Vibrace",
@@ -176,7 +192,8 @@
     "time": "Čas",
     "memory": "Paměť",
     "travel": "Cesta kolem světa",
-    "detective": "Detektivní příběh"
+    "detective": "Detektivní příběh",
+    "treasury": "Klenotnice"
   },
   "levelTitles": {
     "barnyard": "Dvůr",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Lyžárna",
     "lodgeYard": "Dvůr",
     "lodgeChairlift": "Sedačková lanovka",
-    "lodgeSummit": "Vrchol"
+    "lodgeSummit": "Vrchol",
+    "treasury": "Klenotnice"
   },
   "mode": {
     "label": "Režim",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Stopy bot vedou nahoru na vrchol",
       "skiPoleLeft": "Lyžařská hůlka zapíchnutá ve sněhu"
     }
+  },
+  "secret": {
+    "found": "Tajný klíč nalezen!",
+    "keys": "Klíče: {n} / {total}",
+    "keyFound": "Klíč nalezen",
+    "keyHidden": "Klíč nenalezen",
+    "findHere": "V jedné z úrovní tady je ukrytý zlatý klíč. Najděte ho!",
+    "foundHere": "Klíč odsud už máte!",
+    "findWorlds": "Každý svět skrývá zlatý klíč. Nalezeno: {n} / {total}",
+    "foundWorlds": "Našli jste klíče všech světů!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Najděte zlaté klíče ve všech kapitolách",
+    "congrats": "Jste nejpozornější hráč!"
   }
 }

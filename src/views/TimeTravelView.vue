@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
+import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import StarRating from '../components/StarRating.vue'
 import { localized } from '../engine/anachronism.ts'
@@ -33,6 +34,7 @@ useBackButton(toMap)
             :class="{ done: level.id in progress.timeTravel }"
             @click="router.push({ name: 'time-travel', params: { id: level.id } })"
           >
+            <LevelId :id="level.number" />
             <img class="thumb" :src="base + level.image" alt="" />
             <span class="text">
               <span class="name">{{ localized(level.era, locale) }}</span>
@@ -90,6 +92,7 @@ main {
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);
+  position: relative;
 }
 
 .card.done {

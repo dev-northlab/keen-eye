@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye es un juego de buscar diferencias con escenas vivas. Sin anuncios y sin internet.",
     "version": "Versión {v}",
     "privacy": "Privacidad",
-    "privacyText": "No recopilamos ningún dato. El progreso y los ajustes se guardan solo en tu dispositivo."
+    "privacyText": "No recopilamos ningún dato. El progreso y los ajustes se guardan solo en tu dispositivo.",
+    "contact": "Contáctanos",
+    "contactText": "¿Tienes una pregunta o una idea, o encontraste un error? Escríbenos: leemos cada mensaje y te responderemos con gusto."
   },
   "about": {
     "shareGame": "Compartir el juego",
     "social": "Compartir en redes sociales",
-    "rate": "Valorar el juego"
+    "rate": "Valorar el juego",
+    "features": "Qué incluye",
+    "stats": {
+      "levels": "Niveles",
+      "modes": "Modos de juego",
+      "languages": "Idiomas"
+    },
+    "perks": {
+      "calm": "Modo tranquilo",
+      "living": "Escenas vivas",
+      "keys": "Llaves ocultas",
+      "offline": "Sin internet",
+      "noAds": "Sin anuncios"
+    }
   },
   "share": {
     "button": "Compartir",
@@ -149,6 +164,7 @@
     "dev": "Desarrollo",
     "unlockAll": "Completar todos los niveles",
     "resetProgress": "Borrar progreso",
+    "resetKeys": "Restablecer las llaves encontradas",
     "music": "Música",
     "sound": "Sonidos",
     "vibration": "Vibración",
@@ -176,7 +192,8 @@
     "time": "El tiempo",
     "memory": "Memoria",
     "travel": "Viaje por el mundo",
-    "detective": "Historia de detectives"
+    "detective": "Historia de detectives",
+    "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
     "barnyard": "Corral",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "La sala de esquís",
     "lodgeYard": "El patio",
     "lodgeChairlift": "El telesilla",
-    "lodgeSummit": "La cumbre"
+    "lodgeSummit": "La cumbre",
+    "treasury": "Cámara del tesoro"
   },
   "mode": {
     "label": "Modo",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Huellas de botas que suben a la cumbre",
       "skiPoleLeft": "Un bastón de esquí clavado en la nieve"
     }
+  },
+  "secret": {
+    "found": "¡Llave secreta encontrada!",
+    "keys": "Llaves: {n} / {total}",
+    "keyFound": "Llave encontrada",
+    "keyHidden": "Llave no encontrada",
+    "findHere": "En uno de estos niveles hay una llave dorada escondida. ¡Encuéntrala!",
+    "foundHere": "¡Ya encontraste la llave de aquí!",
+    "findWorlds": "Cada mundo esconde una llave dorada. Encontradas: {n} / {total}",
+    "foundWorlds": "¡Encontraste las llaves de todos los mundos!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Encuentra las llaves doradas en todos los capítulos",
+    "congrats": "¡Eres el jugador más observador!"
   }
 }

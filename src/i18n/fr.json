@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye est un jeu des différences avec des scènes vivantes. Sans publicité, sans internet.",
     "version": "Version {v}",
     "privacy": "Confidentialité",
-    "privacyText": "Nous ne collectons aucune donnée. La progression et les réglages restent uniquement sur ton appareil."
+    "privacyText": "Nous ne collectons aucune donnée. La progression et les réglages restent uniquement sur ton appareil.",
+    "contact": "Nous contacter",
+    "contactText": "Une question, une idée ou un bug ? Écris-nous : nous lisons chaque message et répondrons avec plaisir."
   },
   "about": {
     "shareGame": "Partager le jeu",
     "social": "Partager sur les réseaux sociaux",
-    "rate": "Noter le jeu"
+    "rate": "Noter le jeu",
+    "features": "Au programme",
+    "stats": {
+      "levels": "Niveaux",
+      "modes": "Modes de jeu",
+      "languages": "Langues"
+    },
+    "perks": {
+      "calm": "Mode zen",
+      "living": "Scènes vivantes",
+      "keys": "Clés cachées",
+      "offline": "Sans Internet",
+      "noAds": "Sans publicité"
+    }
   },
   "share": {
     "button": "Partager",
@@ -149,6 +164,7 @@
     "dev": "Développement",
     "unlockAll": "Terminer tous les niveaux",
     "resetProgress": "Réinitialiser la progression",
+    "resetKeys": "Réinitialiser les clés trouvées",
     "music": "Musique",
     "sound": "Sons",
     "vibration": "Vibration",
@@ -176,7 +192,8 @@
     "time": "Le temps",
     "memory": "Mémoire",
     "travel": "Tour du monde",
-    "detective": "Histoire de détective"
+    "detective": "Histoire de détective",
+    "treasury": "Salle au trésor"
   },
   "levelTitles": {
     "barnyard": "Basse-cour",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Le local à skis",
     "lodgeYard": "La cour",
     "lodgeChairlift": "Le télésiège",
-    "lodgeSummit": "Le sommet"
+    "lodgeSummit": "Le sommet",
+    "treasury": "Salle au trésor"
   },
   "mode": {
     "label": "Mode",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Des traces de bottes montent vers le sommet",
       "skiPoleLeft": "Un bâton de ski planté dans la neige"
     }
+  },
+  "secret": {
+    "found": "Clé secrète trouvée !",
+    "keys": "Clés : {n} / {total}",
+    "keyFound": "Clé trouvée",
+    "keyHidden": "Clé non trouvée",
+    "findHere": "Une clé d’or est cachée dans l’un des niveaux ici. Trouvez-la !",
+    "foundHere": "Vous avez déjà trouvé la clé d’ici !",
+    "findWorlds": "Chaque monde cache une clé d’or. Trouvées : {n} / {total}",
+    "foundWorlds": "Vous avez trouvé les clés de tous les mondes !"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Trouvez les clés d’or dans tous les chapitres",
+    "congrats": "Vous êtes le joueur le plus attentif !"
   }
 }

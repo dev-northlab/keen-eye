@@ -182,3 +182,39 @@ export function addMissMark(p: Picture, x: number, y: number, scale: number): vo
     .animate([{ opacity: 1 }, { opacity: 1, offset: 0.5 }, { opacity: 0 }], { duration: 700 })
     .finished.then(() => cross.remove(), () => cross.remove())
 }
+
+/**
+ * Takes the hidden key off the picture. `animate`: it grows with a golden shine, rises and fades out
+ * (the key just found); otherwise it is gone at once (collected on an earlier visit).
+ */
+export function takeSecret(p: Picture, secret: Zone, animate: boolean): void {
+  const key = p.svg.querySelector<SVGGElement>('[data-secret]')
+  if (!key) return
+  if (!animate) {
+    key.remove()
+    return
+  }
+  const shine = el('circle', { cx: secret.x, cy: secret.y, r: secret.r, fill: '#ffe27a', 'fill-opacity': 0.75 })
+  p.marks.append(shine)
+  shine.style.transformBox = 'fill-box'
+  shine.style.transformOrigin = 'center'
+  shine
+    .animate([{ transform: 'scale(0.3)', opacity: 1 }, { transform: 'scale(2.2)', opacity: 0 }], { duration: 700, easing: 'ease-out' })
+    .finished.then(() => shine.remove(), () => shine.remove())
+  // The key's own transform places it; the animation scales and lifts the wrapping group.
+  const wrap = el('g', {})
+  key.replaceWith(wrap)
+  wrap.append(key)
+  wrap.style.transformBox = 'fill-box'
+  wrap.style.transformOrigin = 'center'
+  wrap
+    .animate(
+      [
+        { transform: 'translateY(0) scale(1)', opacity: 1 },
+        { transform: 'translateY(-6px) scale(1.8)', opacity: 1, offset: 0.35 },
+        { transform: `translateY(-${secret.r * 4}px) scale(1.2)`, opacity: 0 },
+      ],
+      { duration: 900, easing: 'ease-in' },
+    )
+    .finished.then(() => wrap.remove(), () => wrap.remove())
+}

@@ -2,16 +2,21 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
+import KeyBadge from '../components/KeyBadge.vue'
+import LevelId from '../components/LevelId.vue'
 import {
   CHAPTERS,
   chapterLevels,
   chapterSize,
   DETECTIVE_CHAPTER,
+  KEY_CHAPTERS,
   MEMORY_CHAPTER,
   TIME_CHAPTER,
   TRAVEL_CHAPTER,
+  TREASURY_CHAPTER,
   type Chapter,
 } from '../levels/chapters.ts'
+import { treasuryLevel } from '../levels/index.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -19,13 +24,16 @@ import { useProgressStore } from '../stores/progress.ts'
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
 // in time" (docs/time-differences-mode.md) and "memory" (docs/memory-mode.md) their level grids
 // (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView),
-// "detective" (docs/detective-mode.md) its cases (DetectiveView).
+// "detective" (docs/detective-mode.md) its cases (DetectiveView). Category banners show whether their
+// hidden key is found; the last banner, the treasury (docs/hidden-item-feature.md), counts the keys
+// and opens its bonus level once all are found.
 
 const router = useRouter()
 const progress = useProgressStore()
 
 const levels = CHAPTERS.flatMap(chapterLevels)
 const worlds = {
+  ids: levels.map((l) => l.id),
   total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
   done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
@@ -34,6 +42,7 @@ const worlds = {
 function category(chapter: Chapter) {
   const own = chapterLevels(chapter)
   return {
+    ids: own.map((l) => l.id),
     total: chapterSize(chapter),
     done: () => own.filter((l) => progress.isCompleted(l.id)).length,
     stars: () => own.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
@@ -44,7 +53,19 @@ const memory = category(MEMORY_CHAPTER)
 const travel = category(TRAVEL_CHAPTER)
 const detective = category(DETECTIVE_CHAPTER)
 
+/** Worlds whose key is found (the "spot the difference" banner stands for all of them). */
+const worldKeys = () => CHAPTERS.filter((c) => progress.hasKey(c.id)).length
+const keysFound = () => KEY_CHAPTERS.filter((c) => progress.hasKey(c.id)).length
+/** All keys found (or every level opened for testing). */
+const treasuryOpen = () => progress.allKeysFound || progress.devOpenAll
+
+function openTreasury() {
+  if (progress.needsPurchase(treasuryLevel.id)) router.push({ name: 'purchase' })
+  else if (progress.isUnlocked(treasuryLevel.id)) router.push({ name: 'level', params: { id: treasuryLevel.id } })
+}
+
 const timeTravel = {
+  ids: timeTravelLevels.map((l) => l.number),
   total: timeTravelLevels.length,
   done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
   stars: () => timeTravelLevels.reduce((s, l) => s + (progress.timeTravel[l.id]?.stars ?? 0), 0),
@@ -58,6 +79,7 @@ const timeTravel = {
       <ul class="list">
         <li>
           <button class="mode spot" @click="router.push({ name: 'worlds' })">
+            <LevelId :id="worlds.ids" />
             <!-- A big faint magnifier behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="42" cy="42" r="30" fill="none" stroke="#fff" stroke-width="7" />
@@ -81,10 +103,18 @@ const timeTravel = {
                 {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
               </span>
             </span>
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <!-- Golden once the key of every world is found. -->
+          <KeyBadge
+            class="key"
+            :found="worldKeys() === CHAPTERS.length"
+            :text="worldKeys() === CHAPTERS.length ? $t('secret.foundWorlds') : $t('secret.findWorlds', { n: worldKeys(), total: CHAPTERS.length })"
+          />
         </li>
         <li>
           <button class="mode time" @click="router.push({ name: 'chapter', params: { chapter: TIME_CHAPTER.id } })">
+            <LevelId :id="time.ids" />
             <!-- A big faint half sun, half moon behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="6" />
@@ -98,10 +128,13 @@ const timeTravel = {
                 {{ $t('map.progress', { done: time.done(), total: time.total }) }} · ★ {{ time.stars() }}
               </span>
             </span>
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(TIME_CHAPTER.id)" :text="progress.hasKey(TIME_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode memory" @click="router.push({ name: 'chapter', params: { chapter: MEMORY_CHAPTER.id } })">
+            <LevelId :id="memory.ids" />
             <!-- A big faint eye behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <path d="M8 50s16-28 42-28 42 28 42 28-16 28-42 28S8 50 8 50Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round" />
@@ -115,10 +148,13 @@ const timeTravel = {
                 {{ $t('map.progress', { done: memory.done(), total: memory.total }) }} · ★ {{ memory.stars() }}
               </span>
             </span>
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(MEMORY_CHAPTER.id)" :text="progress.hasKey(MEMORY_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode world" @click="router.push({ name: 'travel' })">
+            <LevelId :id="travel.ids" />
             <!-- A big faint globe behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="40" fill="none" stroke="#fff" stroke-width="6" />
@@ -132,10 +168,13 @@ const timeTravel = {
                 {{ $t('map.progress', { done: travel.done(), total: travel.total }) }} · ★ {{ travel.stars() }}
               </span>
             </span>
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(TRAVEL_CHAPTER.id)" :text="progress.hasKey(TRAVEL_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode detective" @click="router.push({ name: 'detective' })">
+            <LevelId :id="detective.ids" />
             <!-- Big faint footprints behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <g fill="#fff">
@@ -152,10 +191,13 @@ const timeTravel = {
                 {{ $t('map.progress', { done: detective.done(), total: detective.total }) }} · ★ {{ detective.stars() }}
               </span>
             </span>
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(DETECTIVE_CHAPTER.id)" :text="progress.hasKey(DETECTIVE_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode travel" @click="router.push({ name: 'eras' })">
+            <LevelId :id="timeTravel.ids" />
             <!-- A big faint clock face behind the text. -->
             <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
               <circle cx="50" cy="50" r="42" fill="none" stroke="#fff" stroke-width="6" />
@@ -180,6 +222,26 @@ const timeTravel = {
               <span class="sub">
                 {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
               </span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="mode treasury" :class="{ closed: !treasuryOpen() }" :aria-disabled="!treasuryOpen()" @click="treasuryOpen() && openTreasury()">
+            <LevelId :id="treasuryLevel.id" />
+            <!-- A big faint key behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="28" cy="50" r="18" fill="none" stroke="#fff" stroke-width="8" />
+              <path d="M46 50h46M80 50v16M66 50v12" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" />
+            </svg>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="TREASURY_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('treasury.tag') }}</span>
+              <span class="name">{{ $t('chapters.treasury') }}</span>
+              <span class="sub">{{ $t('secret.keys', { n: keysFound(), total: KEY_CHAPTERS.length }) }}</span>
+              <span v-if="!treasuryOpen()" class="sub">{{ $t('treasury.locked') }}</span>
+            </span>
+            <span v-if="!treasuryOpen()" class="key lock" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
             </span>
           </button>
         </li>
@@ -264,6 +326,20 @@ main {
   --mode-icon-bg: #fff3dd;
 }
 
+/* The treasury: gold, dimmed until every key is found. */
+.treasury {
+  --mode-from: #ffd66b;
+  --mode-mid: #e0a100;
+  --mode-to: #a86b00;
+  --mode-shadow: rgb(140 90 0 / 0.6);
+  --mode-icon-bg: #fff3cf;
+}
+
+.treasury.closed {
+  filter: saturate(0.45);
+  cursor: default;
+}
+
 .mode {
   position: relative;
   overflow: hidden;
@@ -325,5 +401,43 @@ main {
 .sub {
   font-size: 14px;
   opacity: 0.9;
+}
+
+/* The banner's hidden key (grey or gold): a button of its own over the banner, in the place kept by
+   `.key-space`; the treasury's lock in the same light badge. */
+.list li {
+  position: relative;
+}
+
+.key-space {
+  flex: none;
+  width: 34px;
+  height: 34px;
+}
+
+li > .key {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.key :deep(.key-button),
+.key.lock {
+  background: rgb(255 255 255 / 0.85);
+}
+
+.key.lock {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.lock {
+  display: grid;
+  color: #8a6400;
 }
 </style>

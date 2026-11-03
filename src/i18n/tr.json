@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye, canlı sahnelerle oynanan bir fark bulma oyunudur. Reklam yok, internet gerekmez.",
     "version": "Sürüm {v}",
     "privacy": "Gizlilik politikası",
-    "privacyText": "Hiçbir veri toplamıyoruz. İlerleme ve ayarlar yalnızca cihazında saklanır."
+    "privacyText": "Hiçbir veri toplamıyoruz. İlerleme ve ayarlar yalnızca cihazında saklanır.",
+    "contact": "Bize ulaşın",
+    "contactText": "Bir sorunuz ya da fikriniz mi var, bir hata mı buldunuz? Bize yazın — her mesajı okuyor ve memnuniyetle yanıtlıyoruz."
   },
   "about": {
     "shareGame": "Oyunu paylaş",
     "social": "Sosyal medyada paylaş",
-    "rate": "Oyunu değerlendir"
+    "rate": "Oyunu değerlendir",
+    "features": "İçinde neler var",
+    "stats": {
+      "levels": "Bölümler",
+      "modes": "Oyun modları",
+      "languages": "Diller"
+    },
+    "perks": {
+      "calm": "Sakin mod",
+      "living": "Canlı sahneler",
+      "keys": "Gizli anahtarlar",
+      "offline": "İnternetsiz",
+      "noAds": "Reklamsız"
+    }
   },
   "share": {
     "button": "Paylaş",
@@ -149,6 +164,7 @@
     "dev": "Geliştirme",
     "unlockAll": "Tüm bölümleri tamamla",
     "resetProgress": "İlerlemeyi sıfırla",
+    "resetKeys": "Bulunan anahtarları sıfırla",
     "music": "Müzik",
     "sound": "Sesler",
     "vibration": "Titreşim",
@@ -176,7 +192,8 @@
     "time": "Zaman",
     "memory": "Hafıza",
     "travel": "Dünya turu",
-    "detective": "Dedektif hikâyesi"
+    "detective": "Dedektif hikâyesi",
+    "treasury": "Hazine odası"
   },
   "levelTitles": {
     "barnyard": "Çiftlik avlusu",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Kayak odası",
     "lodgeYard": "Avlu",
     "lodgeChairlift": "Telesiyej",
-    "lodgeSummit": "Zirve"
+    "lodgeSummit": "Zirve",
+    "treasury": "Hazine odası"
   },
   "mode": {
     "label": "Mod",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Zirveye çıkan bot izleri",
       "skiPoleLeft": "Kara saplanmış bir kayak batonu"
     }
+  },
+  "secret": {
+    "found": "Gizli anahtar bulundu!",
+    "keys": "Anahtarlar: {n} / {total}",
+    "keyFound": "Anahtar bulundu",
+    "keyHidden": "Anahtar bulunmadı",
+    "findHere": "Buradaki seviyelerden birinde altın bir anahtar saklı. Bul onu!",
+    "foundHere": "Buradaki anahtarı zaten buldun!",
+    "findWorlds": "Her dünyada altın bir anahtar saklı. Bulunan: {n} / {total}",
+    "foundWorlds": "Tüm dünyaların anahtarlarını buldun!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Tüm bölümlerdeki altın anahtarları bul",
+    "congrats": "Sen en dikkatli oyuncusun!"
   }
 }

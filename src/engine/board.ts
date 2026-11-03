@@ -8,6 +8,7 @@ import {
   createPicture,
   HINT_SCALE,
   removeHintMarks,
+  takeSecret,
   toViewBox,
   zonesAt,
   type Picture,
@@ -34,6 +35,10 @@ export interface BoardOptions {
   /** Content turned by 180°: the far player's copy in a face-to-face duel. */
   flipped?: boolean
   onZoom?: (scale: number) => void
+  /** A tap on the level's hidden key: never a hit or a miss; the scene decides whether to `takeSecret()`. */
+  onSecret?: (tap: Tap) => void
+  /** The key was collected on an earlier visit: it is not shown and its place taps like any other. */
+  secretTaken?: boolean
 }
 
 /** Index of a random unfound difference, or -1 when all are found. */
@@ -55,6 +60,9 @@ export class Board {
   private readonly pictures: Picture[]
   private readonly viewport: Viewport
   private readonly gestures: Gestures
+  private readonly onSecret?: (tap: Tap) => void
+  /** The hidden key is still on the pictures. */
+  private secretLeft: boolean
   /** Animation time of the current pose (zones of moving objects follow it). */
   private time = 0
   /** Difference highlighted by a hint, or -1. */
@@ -67,7 +75,10 @@ export class Board {
     this.onTap = onTap
     this.zoom = options.zoom ?? true
     this.flipped = options.flipped ?? false
+    this.onSecret = options.onSecret
     this.pictures = [createPicture(level, 0, this.flipped), createPicture(level, 1, this.flipped)]
+    this.secretLeft = !!level.secret && !options.secretTaken
+    if (level.secret && !this.secretLeft) for (const p of this.pictures) takeSecret(p, level.secret, false)
     const svgs = this.pictures.map((p) => p.svg)
     this.viewport = new Viewport(svgs, level.viewBox.w, level.viewBox.h, (s) => options.onZoom?.(s))
     this.gestures = new Gestures(
@@ -135,6 +146,13 @@ export class Board {
     for (const p of this.pictures) found.forEach((f, i) => f || addRevealMark(p, i, this.zone(p, i)))
   }
 
+  /** Takes the hidden key off both pictures with its shine; later taps there are ordinary. */
+  takeSecret(): void {
+    if (!this.level.secret || !this.secretLeft) return
+    this.secretLeft = false
+    for (const p of this.pictures) takeSecret(p, this.level.secret, true)
+  }
+
   resetZoom(): void {
     this.viewport.reset()
   }
@@ -167,11 +185,21 @@ export class Board {
     const time = performance.now()
     const tap: Tap = this.flipped ? { picture, x: w - pt.x, y: h - pt.y, time } : { picture, x: pt.x, y: pt.y, time }
     const hit = hitTest(zonesAt(this.pictures[picture], this.level.differences, this.time), tap.x, tap.y)
+    if (hit < 0 && this.onSecretKey(picture, tap)) {
+      this.onSecret?.(tap)
+      return
+    }
     if (hit < 0 && this.zoom) {
       this.pendingMiss = { timer: window.setTimeout(() => this.commitMiss(), DOUBLE_TAP_MS), tap }
       return
     }
     this.onTap(hit, tap)
+  }
+
+  /** The tap lands on the hidden key, still shown on this picture. */
+  private onSecretKey(picture: 0 | 1, tap: Tap): boolean {
+    const secret = this.level.secret
+    return !!secret && this.secretLeft && (secret.on === 'both' || picture === 1) && hitTest([secret], tap.x, tap.y) === 0
   }
 
   private doubleTap(picture: 0 | 1, clientX: number, clientY: number): void {

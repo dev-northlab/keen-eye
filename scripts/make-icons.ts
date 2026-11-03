@@ -4,31 +4,60 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { crc32, deflateSync } from 'node:zlib'
 import { Resvg } from '@resvg/resvg-js'
 
-const BACKGROUND = '#2f9e6e'
 const SPLASH_BACKGROUND = '#f4f1ea'
 const RES = 'android/app/src/main/res'
 
-/** Eye with a sparkle, in a 108×108 adaptive-icon canvas; stays inside the 66-unit safe circle. */
+/** Background: a teal diagonal gradient with a soft light in the top left, filling the given shape. */
+const background = (shape: string) =>
+  `<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5fd6c6"/><stop offset="0.55" stop-color="#22a396"/><stop offset="1" stop-color="#137a73"/></linearGradient>` +
+  `<radialGradient id="glow" cx="0.32" cy="0.28" r="0.6"><stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>` +
+  shape.replace('/>', ' fill="url(#bg)"/>') +
+  shape.replace('/>', ' fill="url(#glow)"/>')
+
+/** One of the owl's eyes, centered at (x, 54): face disk, white, amber iris, pupil, highlight. */
+const owlEye = (x: number) =>
+  `<circle cx="${x}" cy="54" r="12.5" fill="#f3dcb4"/>` +
+  `<circle cx="${x}" cy="54" r="9.6" fill="#ffffff"/>` +
+  `<circle cx="${x}" cy="54" r="6.6" fill="url(#iris)"/>` +
+  `<circle cx="${x}" cy="54" r="3.4" fill="#1b1410"/>` +
+  `<circle cx="${x + 2}" cy="51.8" r="1.7" fill="#ffffff"/>`
+
+/** A wide-eyed owl in a 108×108 adaptive-icon canvas; stays inside the 66-unit safe circle. */
 const FOREGROUND =
-  `<path d="M40 33l-3 -6M54 30v-7M68 33l3 -6" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>` +
-  `<path d="M24 54Q54 22 84 54Q54 86 24 54Z" fill="#ffffff" stroke="#1d3a30" stroke-width="3"/>` +
-  `<circle cx="54" cy="54" r="14" fill="#ffb703"/><circle cx="54" cy="54" r="14" fill="none" stroke="#e08a00" stroke-width="2"/>` +
-  `<circle cx="54" cy="54" r="7" fill="#1d3a30"/><circle cx="58.5" cy="49.5" r="3" fill="#ffffff"/>` +
-  `<path d="M80 30l2 5l5 2l-5 2l-2 5l-2 -5l-5 -2l5 -2Z" fill="#ffd166"/>`
+  `<defs>` +
+  `<radialGradient id="iris" cx="0.42" cy="0.38" r="0.7"><stop offset="0" stop-color="#fff0a8"/><stop offset="0.5" stop-color="#ffb703"/><stop offset="1" stop-color="#d36b00"/></radialGradient>` +
+  `<filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="2.6" stdDeviation="2.2" flood-color="#06403c" flood-opacity="0.4"/></filter>` +
+  `</defs>` +
+  `<g filter="url(#shadow)">` +
+  // Head with ear tufts, the chest and its feathers.
+  `<path d="M31 42L33.5 27.5L45 36Q54 33.5 63 36L74.5 27.5L77 42Q83 53 80 66Q74 82 54 82Q34 82 28 66Q25 53 31 42Z" fill="#8b5a2b"/>` +
+  `<path d="M40 76q14 7 28 0q-4-9-14-9t-14 9Z" fill="#a8743f"/>` +
+  `<path d="M47 75l2 3M54 74v3.5M61 75l-2 3" stroke="#8b5a2b" stroke-width="1.6" stroke-linecap="round"/>` +
+  owlEye(42.5) +
+  owlEye(65.5) +
+  // Beak and brows.
+  `<path d="M50.5 63h7L54 70.5Z" fill="#ff9f1c" stroke="#d97706" stroke-width="1" stroke-linejoin="round"/>` +
+  `<path d="M33 40.5q9-4 18 1.5M75 40.5q-9-4-18 1.5" fill="none" stroke="#5e3a17" stroke-width="2.6" stroke-linecap="round"/>` +
+  `</g>`
 
 const svg = (size: number, body: string, viewBox = '0 0 108 108') =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="${viewBox}">${body}</svg>`
 
+/** The adaptive icon's background layer: the whole 108×108 canvas. */
+const BACKGROUND = background('<rect width="108" height="108"/>')
+
 /**
- * Full icon with the eye, cropped to the middle 76 units of the canvas: rounded square or circle (legacy launchers,
+ * Full icon with the owl, cropped to the middle 76 units of the canvas: rounded square or circle (legacy launchers,
  * splash, favicon) or full-bleed square (Google Play rounds the corners itself).
  */
 const fullIcon = (shape: 'square' | 'round' | 'bleed') =>
-  ({
-    square: `<rect x="16" y="16" width="76" height="76" rx="17" fill="${BACKGROUND}"/>`,
-    round: `<circle cx="54" cy="54" r="38" fill="${BACKGROUND}"/>`,
-    bleed: `<rect width="108" height="108" fill="${BACKGROUND}"/>`,
-  })[shape] + FOREGROUND
+  background(
+    {
+      square: '<rect x="16" y="16" width="76" height="76" rx="17"/>',
+      round: '<circle cx="54" cy="54" r="38"/>',
+      bleed: '<rect x="16" y="16" width="76" height="76"/>',
+    }[shape],
+  ) + FOREGROUND
 
 const render = (markup: string) => new Resvg(markup, { font: { loadSystemFonts: false } }).render()
 const png = (markup: string) => render(markup).asPng()
@@ -79,11 +108,8 @@ for (const [density, k] of Object.entries(DENSITIES)) {
   write(`${dir}/ic_launcher.png`, png(svg(48 * k, fullIcon('square'), '16 16 76 76')))
   write(`${dir}/ic_launcher_round.png`, png(svg(48 * k, fullIcon('round'), '16 16 76 76')))
   write(`${dir}/ic_launcher_foreground.png`, png(svg(108 * k, FOREGROUND)))
+  write(`${dir}/ic_launcher_background.png`, png(svg(108 * k, BACKGROUND)))
 }
-write(
-  `${RES}/values/ic_launcher_background.xml`,
-  `<?xml version="1.0" encoding="utf-8"?>\n<resources>\n    <color name="ic_launcher_background">${BACKGROUND}</color>\n</resources>\n`,
-)
 
 // Splash (Android < 12 and the launch theme background): the icon centered on the app background.
 const SPLASHES: Record<string, [number, number]> = {

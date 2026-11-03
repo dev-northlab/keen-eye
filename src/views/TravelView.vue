@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
+import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import StarRating from '../components/StarRating.vue'
 import WorldMap from '../components/WorldMap.vue'
@@ -78,6 +79,7 @@ function placeLabel(level: Level) {
             :aria-label="placeLabel(level)"
             @click="open(level)"
           >
+            <LevelId :id="level.id" />
             <svg class="flag" viewBox="0 0 30 20" aria-hidden="true" v-html="FLAGS[level.travel!.country]" />
             <span class="text">
               <span class="name">{{ $t(`levelTitles.${level.title}`) }}</span>
@@ -178,6 +180,7 @@ main {
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);
+  position: relative;
 }
 
 .place.done {

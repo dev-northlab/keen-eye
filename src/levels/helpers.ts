@@ -1,4 +1,4 @@
-import type { Animation, AnimationMotion, Difference, Level, MemoryRules, TimePair, TravelPlace, Trap } from '../engine/types.ts'
+import type { Animation, AnimationMotion, Difference, Level, MemoryRules, SecretKey, TimePair, TravelPlace, Trap } from '../engine/types.ts'
 
 /**
  * Returns `a` for picture A and `b` for picture B and registers the zone
@@ -27,6 +27,14 @@ export type Time = <T>(a: T, b: T) => T
  */
 export type TrapAt = (x: number, y: number, r: number, a: string, b: string, hint: string) => string
 
+/**
+ * The chapter's hidden golden key (docs/hidden-item-feature.md): draws it at (x, y), turned by `angle`
+ * degrees, and makes it the level's secret. Not a difference: it is drawn on both pictures in the same
+ * place ("memory" levels: on B only). Hide part of it: draw it before whatever should cover it, next to
+ * colors close to its own (`check-levels` wants it partly covered but visible).
+ */
+export type SecretAt = (x: number, y: number, angle?: number) => string
+
 export interface SceneContext {
   diff: Diff
   anim: Anim
@@ -34,7 +42,20 @@ export interface SceneContext {
   rand: () => number
   time: Time
   trap: TrapAt
+  secret: SecretAt
 }
+
+/** Tap zone radius of the key: the key is about 20 units long (2.5% of an 800 wide picture). */
+export const SECRET_RADIUS = 14
+
+/** The key centered at (0, 0), its bow on the left: old, dull gold with a soft outline, drawn at 0.8. */
+const KEY_MARKUP =
+  `<g transform="scale(0.8)">` +
+  `<circle cx="-6.5" r="5.2" fill="#dcb653" stroke="#a5822f" stroke-width="1.3"/>` +
+  `<circle cx="-6.5" r="2" fill="#a5822f"/>` +
+  `<path d="M-1.6-1.8H12V1.8H10.4V5.6H8V1.8H6.4V4.6H4.1V1.8H-1.6Z" fill="#dcb653" stroke="#a5822f" stroke-width="1.1" stroke-linejoin="round"/>` +
+  `<path d="M-10 -2.2A4 4 0 0 1-7.4-4.4" fill="none" stroke="#fff" stroke-opacity="0.45" stroke-width="1.2" stroke-linecap="round"/>` +
+  `</g>`
 
 /** Deterministic PRNG (mulberry32), returns numbers in [0, 1). */
 export function rng(seed: number): () => number {
@@ -72,6 +93,8 @@ interface SvgLevelDef {
 
 export function svgLevel(def: SvgLevelDef): Level {
   // `diff` picks by the variant, `time` and `trap` by the moment (only the validator makes them differ).
+  const secretOn: SecretKey['on'] = def.memory ? 'b' : 'both'
+  let secretKey: SecretKey | undefined
   const render = (variant: 0 | 1, moment: 0 | 1, zones?: Difference[], traps?: Trap[]) => {
     // Both arguments of diff() are evaluated, so anim() registers the animations of
     // both variants; only those whose group ends up in the markup are kept.
@@ -107,7 +130,12 @@ export function svgLevel(def: SvgLevelDef): Level {
       traps?.push({ x, y, r, hint })
       return time(a, b)
     }
-    const svg = def.scene({ diff, anim, rand: rng(def.id), time, trap })
+    const secret: SecretAt = (x, y, angle = 0) => {
+      if (zones) secretKey = { x, y, r: SECRET_RADIUS, on: secretOn }
+      if (secretOn === 'b' && variant === 0) return ''
+      return `<g data-secret="" transform="translate(${x} ${y}) rotate(${angle})">${KEY_MARKUP}</g>`
+    }
+    const svg = def.scene({ diff, anim, rand: rng(def.id), time, trap, secret })
     return { svg, animations: registered.filter((a) => svg.includes(`data-anim="${a.key}"`)) }
   }
 
@@ -129,6 +157,7 @@ export function svgLevel(def: SvgLevelDef): Level {
     ...(def.pair !== undefined && { pair: def.pair, traps }),
     ...(def.memory !== undefined && { memory: def.memory }),
     ...(def.travel !== undefined && { travel: def.travel }),
+    ...(secretKey !== undefined && { secret: secretKey }),
   }
 }
 

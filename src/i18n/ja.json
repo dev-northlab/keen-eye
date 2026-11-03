@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye は動くシーンで遊ぶまちがいさがしゲームです。広告なし、インターネット不要。",
     "version": "バージョン {v}",
     "privacy": "プライバシーポリシー",
-    "privacyText": "データは一切収集しません。進行状況と設定はお使いの端末にのみ保存されます。"
+    "privacyText": "データは一切収集しません。進行状況と設定はお使いの端末にのみ保存されます。",
+    "contact": "お問い合わせ",
+    "contactText": "ご質問やアイデア、不具合の報告はこちらへ。すべてのメッセージに目を通し、喜んでお返事します。"
   },
   "about": {
     "shareGame": "ゲームをシェア",
     "social": "SNS でシェア",
-    "rate": "ゲームを評価"
+    "rate": "ゲームを評価",
+    "features": "ゲームの内容",
+    "stats": {
+      "levels": "レベル",
+      "modes": "ゲームモード",
+      "languages": "言語"
+    },
+    "perks": {
+      "calm": "のんびりモード",
+      "living": "動くシーン",
+      "keys": "隠された鍵",
+      "offline": "オフラインで遊べる",
+      "noAds": "広告なし"
+    }
   },
   "share": {
     "button": "シェア",
@@ -149,6 +164,7 @@
     "dev": "開発",
     "unlockAll": "全レベルをクリア",
     "resetProgress": "進行状況をリセット",
+    "resetKeys": "見つけた鍵をリセット",
     "music": "音楽",
     "sound": "効果音",
     "vibration": "バイブレーション",
@@ -176,7 +192,8 @@
     "time": "とき",
     "memory": "きおく",
     "travel": "世界の旅",
-    "detective": "探偵ストーリー"
+    "detective": "探偵ストーリー",
+    "treasury": "宝物庫"
   },
   "levelTitles": {
     "barnyard": "農家の庭",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "スキー室",
     "lodgeYard": "庭",
     "lodgeChairlift": "チェアリフト",
-    "lodgeSummit": "山頂"
+    "lodgeSummit": "山頂",
+    "treasury": "宝物庫"
   },
   "mode": {
     "label": "モード",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "ブーツの足跡が山頂へ続いている",
       "skiPoleLeft": "雪にささったストック"
     }
+  },
+  "secret": {
+    "found": "秘密の鍵を見つけた！",
+    "keys": "鍵：{n} / {total}",
+    "keyFound": "鍵を発見",
+    "keyHidden": "鍵は未発見",
+    "findHere": "ここのどこかのレベルに金の鍵が隠されています。見つけよう！",
+    "foundHere": "ここの鍵はもう見つけました！",
+    "findWorlds": "どの世界にも金の鍵が隠されています。発見：{n} / {total}",
+    "foundWorlds": "すべての世界の鍵を見つけました！"
+  },
+  "treasury": {
+    "tag": "ボーナス",
+    "locked": "すべての章で金の鍵を見つけよう",
+    "congrats": "あなたは最も注意深いプレイヤーです！"
   }
 }

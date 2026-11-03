@@ -60,7 +60,7 @@ export default travelLevel({
   title: 'tbilisi',
   parTimeSec: 78,
   place: { region: 'caucasus', country: 'ge', lat: 41.72, lon: 44.79 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     const ride = (period: number) => anim({ id: 'cabin', type: 'path', points: [[0, 0], [240, cableY(660) - cableY(420)]], period }, cabin(420))
     return (
       sky('#a9d6ef') +
@@ -88,6 +88,8 @@ export default travelLevel({
       vent(80, 400) +
       dome(150, 400) +
       diff(150, 362, 22, vent(150, 400), '') +
+      // The category's hidden key behind the last dome
+      secret(255, 393) +
       dome(220, 400) +
       vent(220, 400) +
       // Churchkhela stall

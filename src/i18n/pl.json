@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye to gra w szukanie różnic z żywymi scenami. Bez reklam i bez internetu.",
     "version": "Wersja {v}",
     "privacy": "Prywatność",
-    "privacyText": "Nie zbieramy żadnych danych. Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu."
+    "privacyText": "Nie zbieramy żadnych danych. Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu.",
+    "contact": "Kontakt",
+    "contactText": "Masz pytanie lub pomysł, a może znalazłeś błąd? Napisz do nas — czytamy każdą wiadomość i chętnie odpowiemy."
   },
   "about": {
     "shareGame": "Udostępnij grę",
     "social": "Udostępnij w mediach społecznościowych",
-    "rate": "Oceń grę"
+    "rate": "Oceń grę",
+    "features": "Co w środku",
+    "stats": {
+      "levels": "Poziomy",
+      "modes": "Tryby gry",
+      "languages": "Języki"
+    },
+    "perks": {
+      "calm": "Tryb spokojny",
+      "living": "Żywe sceny",
+      "keys": "Ukryte klucze",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam"
+    }
   },
   "share": {
     "button": "Udostępnij",
@@ -149,6 +164,7 @@
     "dev": "Programowanie",
     "unlockAll": "Ukończ wszystkie poziomy",
     "resetProgress": "Resetuj postęp",
+    "resetKeys": "Zresetuj znalezione klucze",
     "music": "Muzyka",
     "sound": "Dźwięki",
     "vibration": "Wibracje",
@@ -176,7 +192,8 @@
     "time": "Czas",
     "memory": "Pamięć",
     "travel": "Podróż dookoła świata",
-    "detective": "Historia detektywistyczna"
+    "detective": "Historia detektywistyczna",
+    "treasury": "Skarbiec"
   },
   "levelTitles": {
     "barnyard": "Podwórko",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Narciarnia",
     "lodgeYard": "Podwórze",
     "lodgeChairlift": "Wyciąg krzesełkowy",
-    "lodgeSummit": "Szczyt"
+    "lodgeSummit": "Szczyt",
+    "treasury": "Skarbiec"
   },
   "mode": {
     "label": "Tryb",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Ślady butów prowadzą na szczyt",
       "skiPoleLeft": "Kijek narciarski wbity w śnieg"
     }
+  },
+  "secret": {
+    "found": "Znaleziono sekretny klucz!",
+    "keys": "Klucze: {n} / {total}",
+    "keyFound": "Klucz znaleziony",
+    "keyHidden": "Klucz nieznaleziony",
+    "findHere": "W jednym z tutejszych poziomów ukryto złoty klucz. Znajdź go!",
+    "foundHere": "Klucz stąd jest już znaleziony!",
+    "findWorlds": "Każdy świat skrywa złoty klucz. Znalezione: {n} / {total}",
+    "foundWorlds": "Znalazłeś klucze wszystkich światów!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Znajdź złote klucze we wszystkich rozdziałach",
+    "congrats": "Jesteś najbardziej spostrzegawczym graczem!"
   }
 }

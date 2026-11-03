@@ -3,6 +3,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { describe, test } from 'node:test'
 import { AnachronismRound, localized, parseAnachronismLevel } from '../src/engine/anachronism.ts'
 import type { AnachronismItem } from '../src/engine/types.ts'
+import { allLevels } from '../src/levels/index.ts'
 import { timeTravelLevelById, timeTravelLevels } from '../src/levels/time-travel/index.ts'
 
 /** Center of an item's hitbox in percent. */
@@ -10,6 +11,7 @@ const center = (i: AnachronismItem) => (i.shape === 'circle' ? { x: i.x, y: i.y 
 
 const base = () => ({
   id: 'test',
+  number: 999,
   mode: 'anachronism',
   world: 'time-travel',
   era: { en: 'Test' },
@@ -38,6 +40,15 @@ describe('time travel levels', () => {
       timeTravelLevels.map((l) => l.id),
       ['egypt-01', 'rome-01', 'vikings-01', 'castle-01', 'pirates-01', 'wildwest-01', 'stoneage-01'],
     )
+  })
+
+  test('numbers follow the era order from 601, apart from the numbered levels', () => {
+    assert.deepEqual(
+      timeTravelLevels.map((l) => l.number),
+      timeTravelLevels.map((_, i) => 601 + i),
+    )
+    const taken = new Set(allLevels.map((l) => l.id))
+    assert.ok(timeTravelLevels.every((l) => !taken.has(l.number)))
   })
 
   test('every level completes once every item is found, and only then', () => {
@@ -105,6 +116,7 @@ describe('parseAnachronismLevel', () => {
     assert.throws(() => parseAnachronismLevel(level), message)
   }
 
+  test('rejects a missing number', () => rejects((l) => (l.number = 'one' as never), /number/))
   test('rejects another mode', () => rejects((l) => (l.mode = 'classic'), /mode/))
   test('rejects texts without English', () => rejects((l) => (l.items[0].fact = { ru: 'Факт' } as never), /"a".*en/))
   test('rejects a duplicate id', () => rejects((l) => (l.items[1].id = 'a'), /duplicate/))

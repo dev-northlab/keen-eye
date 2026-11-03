@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye 是一款画面会动的找不同游戏。无广告，无需联网。",
     "version": "版本 {v}",
     "privacy": "隐私政策",
-    "privacyText": "我们不收集任何数据。进度和设置只保存在你的设备上。"
+    "privacyText": "我们不收集任何数据。进度和设置只保存在你的设备上。",
+    "contact": "联系我们",
+    "contactText": "有问题或想法，或者发现了错误？给我们写信吧——我们会认真阅读每一封邮件，并乐意回复。"
   },
   "about": {
     "shareGame": "分享游戏",
     "social": "分享到社交平台",
-    "rate": "给游戏评分"
+    "rate": "给游戏评分",
+    "features": "游戏内容",
+    "stats": {
+      "levels": "关卡",
+      "modes": "游戏模式",
+      "languages": "语言"
+    },
+    "perks": {
+      "calm": "休闲模式",
+      "living": "生动场景",
+      "keys": "隐藏钥匙",
+      "offline": "无需联网",
+      "noAds": "无广告"
+    }
   },
   "share": {
     "button": "分享",
@@ -149,6 +164,7 @@
     "dev": "开发",
     "unlockAll": "完成所有关卡",
     "resetProgress": "重置进度",
+    "resetKeys": "重置已找到的钥匙",
     "music": "音乐",
     "sound": "音效",
     "vibration": "振动",
@@ -176,7 +192,8 @@
     "time": "时间",
     "memory": "记忆",
     "travel": "环游世界",
-    "detective": "侦探故事"
+    "detective": "侦探故事",
+    "treasury": "藏宝室"
   },
   "levelTitles": {
     "barnyard": "农家院",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "雪具室",
     "lodgeYard": "院子",
     "lodgeChairlift": "缆椅",
-    "lodgeSummit": "山顶"
+    "lodgeSummit": "山顶",
+    "treasury": "藏宝室"
   },
   "mode": {
     "label": "模式",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "靴印一路通向山顶",
       "skiPoleLeft": "一根雪杖插在雪里"
     }
+  },
+  "secret": {
+    "found": "找到了秘密钥匙！",
+    "keys": "钥匙：{n} / {total}",
+    "keyFound": "已找到钥匙",
+    "keyHidden": "未找到钥匙",
+    "findHere": "这里的某一关藏着一把金钥匙。找到它！",
+    "foundHere": "这里的钥匙已经找到了！",
+    "findWorlds": "每个世界都藏着一把金钥匙。已找到：{n} / {total}",
+    "foundWorlds": "所有世界的钥匙都找到了！"
+  },
+  "treasury": {
+    "tag": "奖励",
+    "locked": "在每一章中找到金钥匙",
+    "congrats": "你是最细心的玩家！"
   }
 }

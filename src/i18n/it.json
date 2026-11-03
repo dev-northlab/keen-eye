@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye è un gioco trova le differenze con scene animate. Senza pubblicità, senza internet.",
     "version": "Versione {v}",
     "privacy": "Privacy",
-    "privacyText": "Non raccogliamo alcun dato. Progressi e impostazioni restano solo sul tuo dispositivo."
+    "privacyText": "Non raccogliamo alcun dato. Progressi e impostazioni restano solo sul tuo dispositivo.",
+    "contact": "Contattaci",
+    "contactText": "Hai una domanda, un'idea o hai trovato un errore? Scrivici: leggiamo ogni messaggio e ti risponderemo volentieri."
   },
   "about": {
     "shareGame": "Condividi il gioco",
     "social": "Condividi sui social",
-    "rate": "Valuta il gioco"
+    "rate": "Valuta il gioco",
+    "features": "Cosa c'è dentro",
+    "stats": {
+      "levels": "Livelli",
+      "modes": "Modalità",
+      "languages": "Lingue"
+    },
+    "perks": {
+      "calm": "Modalità rilassata",
+      "living": "Scene animate",
+      "keys": "Chiavi nascoste",
+      "offline": "Senza internet",
+      "noAds": "Senza pubblicità"
+    }
   },
   "share": {
     "button": "Condividi",
@@ -149,6 +164,7 @@
     "dev": "Sviluppo",
     "unlockAll": "Completa tutti i livelli",
     "resetProgress": "Azzera i progressi",
+    "resetKeys": "Azzera le chiavi trovate",
     "music": "Musica",
     "sound": "Suoni",
     "vibration": "Vibrazione",
@@ -176,7 +192,8 @@
     "time": "Il tempo",
     "memory": "Memoria",
     "travel": "Giro del mondo",
-    "detective": "Storia investigativa"
+    "detective": "Storia investigativa",
+    "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
     "barnyard": "Aia",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Il deposito sci",
     "lodgeYard": "Il cortile",
     "lodgeChairlift": "La seggiovia",
-    "lodgeSummit": "La vetta"
+    "lodgeSummit": "La vetta",
+    "treasury": "Stanza del tesoro"
   },
   "mode": {
     "label": "Modalità",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Impronte di scarponi che salgono in vetta",
       "skiPoleLeft": "Un bastoncino da sci piantato nella neve"
     }
+  },
+  "secret": {
+    "found": "Chiave segreta trovata!",
+    "keys": "Chiavi: {n} / {total}",
+    "keyFound": "Chiave trovata",
+    "keyHidden": "Chiave non trovata",
+    "findHere": "In uno dei livelli qui è nascosta una chiave d’oro. Trovala!",
+    "foundHere": "Hai già trovato la chiave di qui!",
+    "findWorlds": "Ogni mondo nasconde una chiave d’oro. Trovate: {n} / {total}",
+    "foundWorlds": "Hai trovato le chiavi di tutti i mondi!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Trova le chiavi d’oro in tutti i capitoli",
+    "congrats": "Sei il giocatore più attento!"
   }
 }

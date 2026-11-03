@@ -16,6 +16,8 @@ export interface SceneHandlers {
   /** A hint is shown (true) or its difference was found (false). */
   onHint?: (active: boolean) => void
   onComplete?: (result: LevelResult) => void
+  /** The level's hidden key was tapped and taken (docs/hidden-item-feature.md): neither a find nor a miss. */
+  onSecret?: () => void
 }
 
 export interface SceneOptions {
@@ -23,6 +25,8 @@ export interface SceneOptions {
   animationSpeed?: number
   /** Anti-spam lock after quick misses (off in calm mode). Default true. */
   missLock?: boolean
+  /** The hidden key was collected before: not shown. */
+  secretTaken?: boolean
 }
 
 /**
@@ -59,7 +63,11 @@ export class GameScene {
     this.animationSpeed = options.animationSpeed ?? 1
     this.missLock = options.missLock ?? true
     this.found = level.differences.map(() => false)
-    this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), { onZoom: (s) => handlers.onZoom?.(s) })
+    this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), {
+      onZoom: (s) => handlers.onZoom?.(s),
+      onSecret: () => this.secret(),
+      secretTaken: options.secretTaken,
+    })
     this.loop = new FrameLoop(this.frame)
   }
 
@@ -133,6 +141,12 @@ export class GameScene {
     if (this.board.markFound(hit)) this.handlers.onHint?.(false)
     this.handlers.onFound?.(this.foundCount, this.found.length, hit)
     if (this.foundCount === this.found.length) this.complete()
+  }
+
+  private secret(): void {
+    if (this.done || this.loop.paused || this.guard.isLocked(performance.now())) return
+    this.board.takeSecret()
+    this.handlers.onSecret?.()
   }
 
   private miss(tap: Tap): void {

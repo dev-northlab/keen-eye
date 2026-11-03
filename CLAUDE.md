@@ -49,7 +49,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `memory-scene.ts` (`MemoryScene`: a "memory" round, `docs/memory-mode.md` — phases show A → curtain → search B alone
   (`Board.show`, no zoom, taps on B only) → reveal A|B with the missed zones in red; peeks, miss limit, `memoryStars` in `rules.ts`)
 - `src/levels/` — `chapter-NN/level-NNN.ts`, registered in `levels/index.ts`; `time-travel/` — "find the odd one out"
-  levels as JSON (`mode: "anachronism"`, string ids, percent hitboxes, texts as `{ <locale>: … }` in every interface language — `npm test` checks it), checked by
+  levels as JSON (`mode: "anachronism"`, string ids plus a numeric `number` from 601 for display, percent hitboxes, texts as `{ <locale>: … }` in every interface language — `npm test` checks it), checked by
   `parseAnachronismLevel` in `time-travel/index.ts`, images in `public/levels/time-travel/`; kept out of `levels`
   (no unlock order, no purchase, own `progress.timeTravel` records; a world map card opens the eras, `/time-travel`, a level is `/time-travel/:id`;
   one era per level: Egypt, Rome, Vikings, castle, pirates, Wild West, Stone Age so far, difficulty growing; the picture is inlined
@@ -90,9 +90,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),
   Detective (cases), Case (one case),
-  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
+  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`), the small level id in a corner of level tiles and the board, id ranges on world, mode and case cards (`LevelId`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
-- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
+- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool, hidden keys found), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
@@ -158,6 +158,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
   `chapters.<chapter>` for a new chapter) to all locales, run `check-levels` and look at the preview.
 - Zones must not overlap. Run `npm run check-levels` after touching levels and look at `npm run preview-levels`.
+- Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
+  key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on
+  it before hit/miss (never a miss, never hinted), `GameScene`/`MemoryScene` report `onSecret`, `progress.keys` stores the
+  chapter ids. `check-levels` checks the key is visible but at least 25% covered, and clear of zones and traps; `npm test` one key per chapter, the
+  farm's in the free levels. All keys open the bonus level 900, chapter `treasury` (`treasury/level-900.ts`, banner on
+  the game modes screen, `TreasureChest` in its result dialog).
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, unlimited hints, slower animation, soft sounds,
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.
@@ -171,7 +177,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.
-- Development-only tools (Settings → "Complete all levels", "Reset progress", "Forget purchase") are behind `import.meta.env.DEV`.
+- Development-only tools ("Open all levels", "Complete all levels", "Forget purchase", "Reset progress", "Reset found keys") sit in the dialog of the Home screen's "Development" button, behind `import.meta.env.DEV`.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.
 - Level modules and everything they import must stay free of browser/Vue APIs (the validator runs them in Node),
   and TS imports use explicit `.ts` extensions.

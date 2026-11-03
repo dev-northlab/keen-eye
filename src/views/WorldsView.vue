@@ -2,11 +2,14 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
+import KeyBadge from '../components/KeyBadge.vue'
+import LevelId from '../components/LevelId.vue'
 import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // "Spot the difference" worlds: one card per world; a card opens the chapter's level grid (ChapterView).
+// Each card shows whether the world's hidden key is found (docs/hidden-item-feature.md); a tap on the key says so.
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -41,6 +44,7 @@ useBackButton(toModes)
             :disabled="!c.first"
             @click="open(c.chapter)"
           >
+            <LevelId :id="c.levels.map((l) => l.id)" />
             <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="c.chapter.icon" />
             <span class="text">
               <span class="name">{{ $t(`chapters.${c.chapter.id}`) }}</span>
@@ -51,10 +55,17 @@ useBackButton(toModes)
                 <template v-else>{{ $t('map.progress', { done: done(c), total: c.total }) }} · ★ {{ stars(c) }}</template>
               </span>
             </span>
+            <span class="key-space" aria-hidden="true" />
             <span v-if="c.first !== undefined && !progress.isUnlocked(c.first)" class="lock" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
             </span>
           </button>
+          <KeyBadge
+            class="key"
+            :class="{ 'by-lock': c.first !== undefined && !progress.isUnlocked(c.first) }"
+            :found="progress.hasKey(c.chapter.id)"
+            :text="progress.hasKey(c.chapter.id) ? $t('secret.foundHere') : $t('secret.findHere')"
+          />
         </li>
       </ul>
     </main>
@@ -107,6 +118,7 @@ main {
   color: var(--fg);
   border: 2px solid var(--chapter);
   border-left-width: 10px;
+  position: relative;
 }
 
 .icon {
@@ -133,6 +145,29 @@ main {
 .sub {
   font-size: 14px;
   color: var(--muted);
+}
+
+/* The world's key: a button of its own over the card, in the place kept by `.key-space` (before the lock). */
+.list li {
+  position: relative;
+}
+
+.key-space {
+  flex: none;
+  width: 34px;
+  height: 34px;
+}
+
+.key {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  /* The card's right border and padding; with a lock, also the lock and the gap before it. */
+  right: 18px;
+}
+
+.key.by-lock {
+  right: 56px;
 }
 
 .lock {

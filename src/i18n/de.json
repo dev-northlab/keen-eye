@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye ist ein Fehlersuchbild-Spiel mit lebendigen Szenen. Ohne Werbung, ohne Internet.",
     "version": "Version {v}",
     "privacy": "Datenschutz",
-    "privacyText": "Wir sammeln keinerlei Daten. Fortschritt und Einstellungen werden nur auf deinem Gerät gespeichert."
+    "privacyText": "Wir sammeln keinerlei Daten. Fortschritt und Einstellungen werden nur auf deinem Gerät gespeichert.",
+    "contact": "Kontakt",
+    "contactText": "Hast du eine Frage oder eine Idee oder einen Fehler gefunden? Schreib uns – wir lesen jede Nachricht und antworten gern."
   },
   "about": {
     "shareGame": "Spiel teilen",
     "social": "In sozialen Netzwerken teilen",
-    "rate": "Spiel bewerten"
+    "rate": "Spiel bewerten",
+    "features": "Was steckt drin",
+    "stats": {
+      "levels": "Level",
+      "modes": "Spielmodi",
+      "languages": "Sprachen"
+    },
+    "perks": {
+      "calm": "Ruhiger Modus",
+      "living": "Lebendige Szenen",
+      "keys": "Versteckte Schlüssel",
+      "offline": "Ohne Internet",
+      "noAds": "Keine Werbung"
+    }
   },
   "share": {
     "button": "Teilen",
@@ -149,6 +164,7 @@
     "dev": "Entwicklung",
     "unlockAll": "Alle Level abschließen",
     "resetProgress": "Fortschritt zurücksetzen",
+    "resetKeys": "Gefundene Schlüssel zurücksetzen",
     "music": "Musik",
     "sound": "Töne",
     "vibration": "Vibration",
@@ -176,7 +192,8 @@
     "time": "Zeit",
     "memory": "Gedächtnis",
     "travel": "Weltreise",
-    "detective": "Detektivgeschichte"
+    "detective": "Detektivgeschichte",
+    "treasury": "Schatzkammer"
   },
   "levelTitles": {
     "barnyard": "Hof",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "Skiraum",
     "lodgeYard": "Hof",
     "lodgeChairlift": "Sessellift",
-    "lodgeSummit": "Gipfel"
+    "lodgeSummit": "Gipfel",
+    "treasury": "Schatzkammer"
   },
   "mode": {
     "label": "Modus",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Stiefelspuren führen hinauf zum Gipfel",
       "skiPoleLeft": "Ein Skistock steckt im Schnee"
     }
+  },
+  "secret": {
+    "found": "Geheimer Schlüssel gefunden!",
+    "keys": "Schlüssel: {n} / {total}",
+    "keyFound": "Schlüssel gefunden",
+    "keyHidden": "Schlüssel nicht gefunden",
+    "findHere": "In einem der Level hier ist ein goldener Schlüssel versteckt. Finde ihn!",
+    "foundHere": "Den Schlüssel von hier hast du schon gefunden!",
+    "findWorlds": "Jede Welt versteckt einen goldenen Schlüssel. Gefunden: {n} / {total}",
+    "foundWorlds": "Du hast die Schlüssel aller Welten gefunden!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Finde die goldenen Schlüssel in allen Kapiteln",
+    "congrats": "Du bist der aufmerksamste Spieler!"
   }
 }

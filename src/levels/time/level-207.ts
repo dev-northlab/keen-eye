@@ -14,7 +14,7 @@ export default svgLevel({
   title: 'snowStreet',
   pair: 'summer-winter',
   parTimeSec: 85,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, secret }) =>
     time(sky(false, 330), winterSky(330)) +
     building(30, 330, 220, 250, '#81b29a') +
     time('', snowCap(26, 72, 228)) +
@@ -38,6 +38,8 @@ export default svgLevel({
     trap(320, 316, 38, person(320, 348, '#ff006e'), winterPerson(320, 348, '#8338ec'), 'clothes') +
     diff(400, 330, 35, bike(400, 348, '#ffb703'), bike(400, 348, '#3a86ff')) +
     diff(560, 330, 24, bin(560, 348, '#5c8d5a'), bin(560, 348, '#e07a5f')) +
+    // The category's hidden key on the pavement, behind the passer-by's legs
+    secret(646, 344, -10) +
     winterPerson(640, 348, '#2a9d8f', true) +
     car(680, 430, '#e63946') +
     trap(690, 392, 26, '', carSnow(680, 430), 'snow') +

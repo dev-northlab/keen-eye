@@ -26,12 +26,27 @@
     "aboutText": "A Keen Eye egy különbségkereső játék élő jelenetekkel. Reklám és internet nélkül.",
     "version": "Verzió: {v}",
     "privacy": "Adatvédelem",
-    "privacyText": "Semmilyen adatot nem gyűjtünk. Az előrehaladás és a beállítások csak az eszközödön maradnak."
+    "privacyText": "Semmilyen adatot nem gyűjtünk. Az előrehaladás és a beállítások csak az eszközödön maradnak.",
+    "contact": "Kapcsolat",
+    "contactText": "Kérdésed vagy ötleted van, esetleg hibát találtál? Írj nekünk — minden üzenetet elolvasunk, és szívesen válaszolunk."
   },
   "about": {
     "shareGame": "Játék megosztása",
     "social": "Megosztás a közösségi médiában",
-    "rate": "Játék értékelése"
+    "rate": "Játék értékelése",
+    "features": "Mi van benne",
+    "stats": {
+      "levels": "Pályák",
+      "modes": "Játékmódok",
+      "languages": "Nyelvek"
+    },
+    "perks": {
+      "calm": "Nyugodt mód",
+      "living": "Élő jelenetek",
+      "keys": "Rejtett kulcsok",
+      "offline": "Internet nélkül",
+      "noAds": "Reklám nélkül"
+    }
   },
   "share": {
     "button": "Megosztás",
@@ -149,6 +164,7 @@
     "dev": "Fejlesztés",
     "unlockAll": "Minden pálya teljesítése",
     "resetProgress": "Előrehaladás törlése",
+    "resetKeys": "Megtalált kulcsok visszaállítása",
     "music": "Zene",
     "sound": "Hangok",
     "vibration": "Rezgés",
@@ -176,7 +192,8 @@
     "time": "Idő",
     "memory": "Memória",
     "travel": "Világkörüli utazás",
-    "detective": "Detektívtörténet"
+    "detective": "Detektívtörténet",
+    "treasury": "Kincskamra"
   },
   "levelTitles": {
     "barnyard": "Udvar",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "A sítároló",
     "lodgeYard": "Az udvar",
     "lodgeChairlift": "A sífelvonó",
-    "lodgeSummit": "A csúcs"
+    "lodgeSummit": "A csúcs",
+    "treasury": "Kincskamra"
   },
   "mode": {
     "label": "Mód",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Bakancsnyomok vezetnek fel a csúcsra",
       "skiPoleLeft": "Egy síbot a hóba szúrva"
     }
+  },
+  "secret": {
+    "found": "Megvan a titkos kulcs!",
+    "keys": "Kulcsok: {n} / {total}",
+    "keyFound": "Kulcs megtalálva",
+    "keyHidden": "Kulcs nincs meg",
+    "findHere": "Az itteni pályák egyikén egy aranykulcs rejtőzik. Keresd meg!",
+    "foundHere": "Az innen való kulcsot már megtaláltad!",
+    "findWorlds": "Minden világ egy aranykulcsot rejt. Megtalálva: {n} / {total}",
+    "foundWorlds": "Minden világ kulcsát megtaláltad!"
+  },
+  "treasury": {
+    "tag": "Bónusz",
+    "locked": "Keresd meg az aranykulcsokat minden fejezetben",
+    "congrats": "Te vagy a legfigyelmesebb játékos!"
   }
 }

@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye is een zoek-de-verschillen-spel met levendige scènes. Geen reclame, geen internet.",
     "version": "Versie {v}",
     "privacy": "Privacy",
-    "privacyText": "We verzamelen helemaal geen gegevens. Voortgang en instellingen blijven alleen op je apparaat."
+    "privacyText": "We verzamelen helemaal geen gegevens. Voortgang en instellingen blijven alleen op je apparaat.",
+    "contact": "Contact",
+    "contactText": "Heb je een vraag of een idee, of een fout gevonden? Schrijf ons — we lezen elk bericht en antwoorden graag."
   },
   "about": {
     "shareGame": "Deel het spel",
     "social": "Delen op sociale media",
-    "rate": "Beoordeel het spel"
+    "rate": "Beoordeel het spel",
+    "features": "Wat zit erin",
+    "stats": {
+      "levels": "Levels",
+      "modes": "Spelmodi",
+      "languages": "Talen"
+    },
+    "perks": {
+      "calm": "Rustige modus",
+      "living": "Levende scènes",
+      "keys": "Verborgen sleutels",
+      "offline": "Zonder internet",
+      "noAds": "Geen advertenties"
+    }
   },
   "share": {
     "button": "Delen",
@@ -149,6 +164,7 @@
     "dev": "Ontwikkeling",
     "unlockAll": "Alle levels voltooien",
     "resetProgress": "Voortgang wissen",
+    "resetKeys": "Gevonden sleutels resetten",
     "music": "Muziek",
     "sound": "Geluiden",
     "vibration": "Trillen",
@@ -176,7 +192,8 @@
     "time": "Tijd",
     "memory": "Geheugen",
     "travel": "Wereldreis",
-    "detective": "Detectiveverhaal"
+    "detective": "Detectiveverhaal",
+    "treasury": "Schatkamer"
   },
   "levelTitles": {
     "barnyard": "Erf",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "De skiruimte",
     "lodgeYard": "Het erf",
     "lodgeChairlift": "De stoeltjeslift",
-    "lodgeSummit": "De top"
+    "lodgeSummit": "De top",
+    "treasury": "Schatkamer"
   },
   "mode": {
     "label": "Modus",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "Laarsafdrukken lopen omhoog naar de top",
       "skiPoleLeft": "Een skistok steekt in de sneeuw"
     }
+  },
+  "secret": {
+    "found": "Geheime sleutel gevonden!",
+    "keys": "Sleutels: {n} / {total}",
+    "keyFound": "Sleutel gevonden",
+    "keyHidden": "Sleutel niet gevonden",
+    "findHere": "In een van de levels hier is een gouden sleutel verstopt. Vind hem!",
+    "foundHere": "Je hebt de sleutel van hier al gevonden!",
+    "findWorlds": "Elke wereld verbergt een gouden sleutel. Gevonden: {n} / {total}",
+    "foundWorlds": "Je hebt de sleutels van alle werelden gevonden!"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Vind de gouden sleutels in alle hoofdstukken",
+    "congrats": "Jij bent de oplettendste speler!"
   }
 }

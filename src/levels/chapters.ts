@@ -181,12 +181,38 @@ export const DETECTIVE_CHAPTER: Chapter = {
 /** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
 export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER]
 
-const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES]
+/**
+ * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category, one level each
+ * (`Level.secret`; the key's id is the chapter id). The first is in the free part of the farm.
+ */
+export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES]
+
+/**
+ * "Treasury" (docs/hidden-item-feature.md, `treasury/`): the bonus level, opened once the key of every
+ * chapter in KEY_CHAPTERS is found; reached from its banner on the game modes screen.
+ */
+export const TREASURY_CHAPTER: Chapter = {
+  id: 'treasury',
+  ranges: [[900, 900]],
+  color: '#d99a00',
+  soft: '#fff3cf',
+  backdrop: 'meadow',
+  icon:
+    `<path d="M6 22q0-12 18-12t18 12Z" fill="#a8743f" stroke="#5e3b1a" stroke-width="2.5" stroke-linejoin="round"/>` +
+    `<rect x="6" y="22" width="36" height="20" rx="2" fill="#8a5a2b" stroke="#5e3b1a" stroke-width="2.5"/>` +
+    `<path d="M6 28H42M14 14V42M34 14V42" stroke="#f7c948" stroke-width="3"/>` +
+    `<rect x="20" y="24" width="8" height="9" rx="2" fill="#f7c948" stroke="#5e3b1a" stroke-width="1.5"/>`,
+}
+
+const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES, TREASURY_CHAPTER]
 
 export const chapterById = (id: string): Chapter | undefined => ALL_CHAPTERS.find((c) => c.id === id)
 
 export const chapterOf = (levelId: number): Chapter | undefined =>
   ALL_CHAPTERS.find((c) => c.ranges.some(([from, to]) => levelId >= from && levelId <= to))
+
+/** The level of the chapter hiding its key. */
+export const secretLevel = (chapter: Chapter) => chapterLevels(chapter).find((l) => l.secret)
 
 /** Number of levels the chapter will have ("N of M" on its card). */
 export const chapterSize = (chapter: Chapter) => chapter.ranges.reduce((n, [from, to]) => n + to - from + 1, 0)
@@ -212,14 +238,16 @@ export const categoryOf = (level: Level) => CATEGORIES.find((c) => c.id === leve
 
 /**
  * Route of the screen listing a level: the world map open at its region for "travel", the case for
- * "detective", its chapter's grid otherwise.
+ * "detective", the game modes for the treasury, its chapter's grid otherwise.
  */
 export const levelsScreen = (level: Level) =>
   level.travel
     ? { name: 'travel', query: { region: level.travel.region } }
     : level.detective
       ? { name: 'case', params: { case: level.detective.case } }
-      : { name: 'chapter', params: { chapter: level.chapter } }
+      : level.chapter === TREASURY_CHAPTER.id
+        ? { name: 'levels' }
+        : { name: 'chapter', params: { chapter: level.chapter } }
 
 /** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
 export function levelNumber(level: Level): number {

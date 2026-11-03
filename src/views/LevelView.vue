@@ -5,14 +5,17 @@ import { useRouter } from 'vue-router'
 import ClueList from '../components/ClueList.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
+import LevelId from '../components/LevelId.vue'
 import PauseDialog from '../components/PauseDialog.vue'
+import SecretFound from '../components/SecretFound.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
 import TravelFact from '../components/TravelFact.vue'
+import TreasureChest from '../components/TreasureChest.vue'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
-import { levelNumber, levelsScreen, nextLevel as nextLevelOf } from '../levels/chapters.ts'
+import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
@@ -32,6 +35,8 @@ const nextLevel = nextLevelOf(level)
 const number = levelNumber(level)
 /** The screen listing this level: its chapter's grid, the world map of "travel" or the case of "detective". */
 const grid = levelsScreen(level)
+/** The bonus level for all the hidden keys: named instead of numbered, a chest opens after it. */
+const treasury = level.chapter === TREASURY_CHAPTER.id
 /** "Travel" levels: the first visit earns a passport stamp (shown with the place's fact). */
 const newStamp = ref(false)
 
@@ -56,6 +61,9 @@ const animationFrozen = ref(false)
  */
 const note = ref<string | null>(null)
 let noteTimer = 0
+/** "Secret key found!" is shown (docs/hidden-item-feature.md). */
+const secretShown = ref(false)
+let secretTimer = 0
 const result = ref<LevelResult | null>(null)
 let scene: GameScene | undefined
 const isDev = import.meta.env.DEV
@@ -64,6 +72,16 @@ const total = level.differences.length
 
 /** How long a note stays on screen. */
 const NOTE_MS = 2600
+
+/** The chapter's hidden key was tapped: it is kept for good, even if the level is not finished. */
+function collectSecret() {
+  progress.collectKey(level.chapter)
+  playSfx('secret')
+  vibrateFound()
+  clearTimeout(secretTimer)
+  secretShown.value = true
+  secretTimer = window.setTimeout(() => (secretShown.value = false), NOTE_MS)
+}
 
 function showNote(text: string) {
   clearTimeout(noteTimer)
@@ -88,6 +106,8 @@ function start() {
   animationFrozen.value = false
   clearTimeout(noteTimer)
   note.value = null
+  clearTimeout(secretTimer)
+  secretShown.value = false
   result.value = null
   calm.value = settings.calm
   playMusic(calm.value ? 'calm' : 'level')
@@ -111,6 +131,7 @@ function start() {
       onTick: (s) => (seconds.value = s),
       onZoom: (s) => (zoom.value = s),
       onHint: (active) => (hintActive.value = active),
+      onSecret: collectSecret,
       onComplete: (r) => {
         newStamp.value = !!level.travel && !progress.isCompleted(level.id)
         result.value = r
@@ -123,6 +144,7 @@ function start() {
       // Calm mode and "reduce motion" both slow the scene down.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * (calm.value ? 0.6 : 1),
       missLock: !calm.value,
+      secretTaken: progress.hasKey(level.chapter),
     },
   )
 }
@@ -177,6 +199,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener('visibilitychange', onVisibility)
   clearTimeout(noteTimer)
+  clearTimeout(secretTimer)
   scene?.destroy()
 })
 </script>
@@ -185,7 +208,7 @@ onBeforeUnmount(() => {
   <div class="level">
     <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
       <span class="title">
-        {{ $t('level.level', { n: number }) }}
+        {{ treasury ? $t('chapters.treasury') : $t('level.level', { n: number }) }}
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
         <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>
@@ -196,8 +219,10 @@ onBeforeUnmount(() => {
     <div class="board" :class="{ locked }">
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
+      <LevelId :id="level.id" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <div class="note" role="status">{{ note }}</div>
+      <SecretFound v-if="secretShown" :still="settings.effectiveReduceMotion" />
     </div>
 
     <footer class="toolbar">
@@ -242,12 +267,13 @@ onBeforeUnmount(() => {
       :calm="calm"
       :time="time"
       :has-next="!!nextLevel"
-      :share-text="$t('share.level', { n: number })"
+      :share-text="treasury ? undefined : $t('share.level', { n: number })"
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
       @menu="router.push(grid)"
     >
       <TravelFact v-if="level.travel" :level="level" :new-stamp="newStamp" />
+      <TreasureChest v-if="treasury" :still="settings.effectiveReduceMotion" />
       <template v-if="level.detective">
         <ClueList class="clues" :title="$t('detective.notebook')" :clues="level.detective.clues" />
         <!-- The case's last scene: on to naming the culprit. -->

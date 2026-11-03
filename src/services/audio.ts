@@ -7,7 +7,7 @@ import menuUrl from '../../assets/music/main_menu.mp3'
 // Browsers allow audio only after a user gesture, so playback is (re)started on the first touch/key.
 
 export type Track = 'menu' | 'level' | 'calm' | 'complete'
-export type Sfx = 'found' | 'miss' | 'hint' | 'star' | 'click'
+export type Sfx = 'found' | 'miss' | 'hint' | 'star' | 'click' | 'secret'
 
 const TRACKS: Record<Track, { url: string; loop: boolean }> = {
   menu: { url: menuUrl, loop: true },
@@ -126,6 +126,10 @@ export function playSfx(name: Sfx, index = 0): void {
       break
     case 'click':
       tone(c, 1200, 0, 0.05, 'sine', v * 0.4)
+      break
+    // The hidden key: a rising sparkling arpeggio.
+    case 'secret':
+      ;[784, 988, 1175, 1568, 1976].forEach((f, i) => tone(c, f, i * 0.06, 0.4, 'triangle', v * 0.7))
       break
   }
 }

@@ -26,12 +26,27 @@
     "aboutText": "Keen Eye는 살아 움직이는 장면에서 즐기는 틀린 그림 찾기 게임입니다. 광고 없음, 인터넷 불필요.",
     "version": "버전 {v}",
     "privacy": "개인정보 처리방침",
-    "privacyText": "어떤 데이터도 수집하지 않습니다. 진행 상황과 설정은 기기에만 저장됩니다."
+    "privacyText": "어떤 데이터도 수집하지 않습니다. 진행 상황과 설정은 기기에만 저장됩니다.",
+    "contact": "문의하기",
+    "contactText": "궁금한 점이나 아이디어가 있거나 오류를 발견하셨나요? 메일을 보내 주세요. 모든 메시지를 읽고 기꺼이 답변해 드립니다."
   },
   "about": {
     "shareGame": "게임 공유하기",
     "social": "소셜 미디어에 공유",
-    "rate": "게임 평가하기"
+    "rate": "게임 평가하기",
+    "features": "게임 구성",
+    "stats": {
+      "levels": "레벨",
+      "modes": "게임 모드",
+      "languages": "언어"
+    },
+    "perks": {
+      "calm": "편안한 모드",
+      "living": "살아 있는 장면",
+      "keys": "숨겨진 열쇠",
+      "offline": "인터넷 없이",
+      "noAds": "광고 없음"
+    }
   },
   "share": {
     "button": "공유",
@@ -149,6 +164,7 @@
     "dev": "개발",
     "unlockAll": "모든 레벨 완료",
     "resetProgress": "진행 상황 초기화",
+    "resetKeys": "찾은 열쇠 초기화",
     "music": "음악",
     "sound": "효과음",
     "vibration": "진동",
@@ -176,7 +192,8 @@
     "time": "시간",
     "memory": "기억력",
     "travel": "세계 여행",
-    "detective": "탐정 이야기"
+    "detective": "탐정 이야기",
+    "treasury": "보물 창고"
   },
   "levelTitles": {
     "barnyard": "농가 마당",
@@ -450,7 +467,8 @@
     "lodgeSkiRoom": "스키실",
     "lodgeYard": "마당",
     "lodgeChairlift": "리프트",
-    "lodgeSummit": "정상"
+    "lodgeSummit": "정상",
+    "treasury": "보물 창고"
   },
   "mode": {
     "label": "모드",
@@ -882,5 +900,20 @@
       "bootPrintsUp": "부츠 발자국이 정상까지 이어져요",
       "skiPoleLeft": "눈에 꽂힌 스키 폴"
     }
+  },
+  "secret": {
+    "found": "비밀 열쇠를 찾았어요!",
+    "keys": "열쇠: {n} / {total}",
+    "keyFound": "열쇠 찾음",
+    "keyHidden": "열쇠 못 찾음",
+    "findHere": "여기 레벨 중 하나에 황금 열쇠가 숨겨져 있어요. 찾아보세요!",
+    "foundHere": "여기 열쇠는 이미 찾았어요!",
+    "findWorlds": "모든 세계에 황금 열쇠가 숨겨져 있어요. 찾은 열쇠: {n} / {total}",
+    "foundWorlds": "모든 세계의 열쇠를 찾았어요!"
+  },
+  "treasury": {
+    "tag": "보너스",
+    "locked": "모든 챕터에서 황금 열쇠를 찾으세요",
+    "congrats": "당신은 가장 눈썰미 좋은 플레이어예요!"
   }
 }

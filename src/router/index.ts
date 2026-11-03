@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TRAVEL_CHAPTER } from '../levels/chapters.ts'
+import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
@@ -68,7 +68,7 @@ export const router = createRouter({
 })
 
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
-// Unknown chapter → worlds, "travel" → its world map, "detective" → its cases (an unknown case too). Unknown level → home; paid level not bought → purchase
+// Unknown chapter → worlds, "travel" → its world map, "detective" → its cases (an unknown case too), the treasury → game modes. Unknown level → home; paid level not bought → purchase
 // screen; not reached yet → its chapter's grid (or the world map). Two-player matches need no order, only the purchase for paid levels.
 // Unknown "find the odd one out" level → home. A "memory" level plays only on its own
 // screen (/level/<id> leads there), no other level does.
@@ -76,6 +76,7 @@ router.beforeEach((to) => {
   if (to.name === 'chapter') {
     if (to.params.chapter === TRAVEL_CHAPTER.id) return { name: 'travel' }
     if (to.params.chapter === DETECTIVE_CHAPTER.id) return { name: 'detective' }
+    if (to.params.chapter === TREASURY_CHAPTER.id) return { name: 'levels' }
     return chapterById(String(to.params.chapter)) ? true : { name: 'worlds' }
   }
   if (to.name === 'case') return caseById(String(to.params.case)) ? true : { name: 'detective' }

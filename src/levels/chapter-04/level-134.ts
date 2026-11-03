@@ -34,7 +34,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'umbrellaBeach',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     let sand = ''
     for (let i = 0; i < 24; i++) sand += `<ellipse cx="${(rand() * 800).toFixed(1)}" cy="${(280 + rand() * 214).toFixed(1)}" rx="5" ry="2" fill="#e0c47e"/>`
     let prints = ''
@@ -65,6 +65,8 @@ export default svgLevel({
       panelParasol(640, 330, ['#ff9f1c', '#ffffff', '#ff9f1c', '#ffffff']) +
       diff(640, 352, 28, stripedTowel(640, 352, '#e63946', 2), stripedTowel(640, 352, '#e63946', 3)) +
       person(320, 340, '#ff006e') + person(600, 392, '#3a86ff', true, '#c68b5e', '#2b2b2b') +
+      // The chapter's hidden key in the sand, behind the surfboard
+      secret(68, 418, 0) +
       // Surfboard, sandcastle, ball, crab
       `<g transform="rotate(-10 60 450)"><ellipse cx="60" cy="400" rx="12" ry="50" fill="#ffb703"/><path d="M60 352v96" stroke="#e63946" stroke-width="4"/></g>` +
       sandcastle(380, 450) + diff(398, 390, 22, castleFlag(380, 450, '#e63946'), '') +
