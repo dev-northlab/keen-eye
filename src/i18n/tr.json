@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Oyunu paylaş",
     "social": "Sosyal medyada paylaş",
-    "rate": "Oyunu değerlendir"
+    "rate": "Oyunu değerlendir",
+    "features": "İçinde neler var",
+    "stats": {
+      "levels": "Bölümler",
+      "modes": "Oyun modları",
+      "languages": "Diller"
+    },
+    "perks": {
+      "calm": "Sakin mod",
+      "living": "Canlı sahneler",
+      "keys": "Gizli anahtarlar",
+      "offline": "İnternetsiz",
+      "noAds": "Reklamsız"
+    }
   },
   "share": {
     "button": "Paylaş",

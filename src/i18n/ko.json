@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "게임 공유하기",
     "social": "소셜 미디어에 공유",
-    "rate": "게임 평가하기"
+    "rate": "게임 평가하기",
+    "features": "게임 구성",
+    "stats": {
+      "levels": "레벨",
+      "modes": "게임 모드",
+      "languages": "언어"
+    },
+    "perks": {
+      "calm": "편안한 모드",
+      "living": "살아 있는 장면",
+      "keys": "숨겨진 열쇠",
+      "offline": "인터넷 없이",
+      "noAds": "광고 없음"
+    }
   },
   "share": {
     "button": "공유",

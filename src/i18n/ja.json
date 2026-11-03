@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "ゲームをシェア",
     "social": "SNS でシェア",
-    "rate": "ゲームを評価"
+    "rate": "ゲームを評価",
+    "features": "ゲームの内容",
+    "stats": {
+      "levels": "レベル",
+      "modes": "ゲームモード",
+      "languages": "言語"
+    },
+    "perks": {
+      "calm": "のんびりモード",
+      "living": "動くシーン",
+      "keys": "隠された鍵",
+      "offline": "オフラインで遊べる",
+      "noAds": "広告なし"
+    }
   },
   "share": {
     "button": "シェア",

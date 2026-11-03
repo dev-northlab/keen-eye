@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Deel het spel",
     "social": "Delen op sociale media",
-    "rate": "Beoordeel het spel"
+    "rate": "Beoordeel het spel",
+    "features": "Wat zit erin",
+    "stats": {
+      "levels": "Levels",
+      "modes": "Spelmodi",
+      "languages": "Talen"
+    },
+    "perks": {
+      "calm": "Rustige modus",
+      "living": "Levende scènes",
+      "keys": "Verborgen sleutels",
+      "offline": "Zonder internet",
+      "noAds": "Geen advertenties"
+    }
   },
   "share": {
     "button": "Delen",

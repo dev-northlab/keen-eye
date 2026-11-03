@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Udostępnij grę",
     "social": "Udostępnij w mediach społecznościowych",
-    "rate": "Oceń grę"
+    "rate": "Oceń grę",
+    "features": "Co w środku",
+    "stats": {
+      "levels": "Poziomy",
+      "modes": "Tryby gry",
+      "languages": "Języki"
+    },
+    "perks": {
+      "calm": "Tryb spokojny",
+      "living": "Żywe sceny",
+      "keys": "Ukryte klucze",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam"
+    }
   },
   "share": {
     "button": "Udostępnij",

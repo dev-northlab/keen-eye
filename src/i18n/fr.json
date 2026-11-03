@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Partager le jeu",
     "social": "Partager sur les réseaux sociaux",
-    "rate": "Noter le jeu"
+    "rate": "Noter le jeu",
+    "features": "Au programme",
+    "stats": {
+      "levels": "Niveaux",
+      "modes": "Modes de jeu",
+      "languages": "Langues"
+    },
+    "perks": {
+      "calm": "Mode zen",
+      "living": "Scènes vivantes",
+      "keys": "Clés cachées",
+      "offline": "Sans Internet",
+      "noAds": "Sans publicité"
+    }
   },
   "share": {
     "button": "Partager",

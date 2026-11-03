@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "分享游戏",
     "social": "分享到社交平台",
-    "rate": "给游戏评分"
+    "rate": "给游戏评分",
+    "features": "游戏内容",
+    "stats": {
+      "levels": "关卡",
+      "modes": "游戏模式",
+      "languages": "语言"
+    },
+    "perks": {
+      "calm": "休闲模式",
+      "living": "生动场景",
+      "keys": "隐藏钥匙",
+      "offline": "无需联网",
+      "noAds": "无广告"
+    }
   },
   "share": {
     "button": "分享",

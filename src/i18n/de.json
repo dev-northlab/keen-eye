@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Spiel teilen",
     "social": "In sozialen Netzwerken teilen",
-    "rate": "Spiel bewerten"
+    "rate": "Spiel bewerten",
+    "features": "Was steckt drin",
+    "stats": {
+      "levels": "Level",
+      "modes": "Spielmodi",
+      "languages": "Sprachen"
+    },
+    "perks": {
+      "calm": "Ruhiger Modus",
+      "living": "Lebendige Szenen",
+      "keys": "Versteckte Schlüssel",
+      "offline": "Ohne Internet",
+      "noAds": "Keine Werbung"
+    }
   },
   "share": {
     "button": "Teilen",

@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Share the game",
     "social": "Share on social media",
-    "rate": "Rate the game"
+    "rate": "Rate the game",
+    "features": "What's inside",
+    "stats": {
+      "levels": "Levels",
+      "modes": "Game modes",
+      "languages": "Languages"
+    },
+    "perks": {
+      "calm": "Calm mode",
+      "living": "Living scenes",
+      "keys": "Hidden keys",
+      "offline": "Works offline",
+      "noAds": "No ads"
+    }
   },
   "share": {
     "button": "Share",

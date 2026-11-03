@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Distribuie jocul",
     "social": "Distribuie pe rețelele sociale",
-    "rate": "Evaluează jocul"
+    "rate": "Evaluează jocul",
+    "features": "Ce conține",
+    "stats": {
+      "levels": "Niveluri",
+      "modes": "Moduri de joc",
+      "languages": "Limbi"
+    },
+    "perks": {
+      "calm": "Mod calm",
+      "living": "Scene vii",
+      "keys": "Chei ascunse",
+      "offline": "Fără internet",
+      "noAds": "Fără reclame"
+    }
   },
   "share": {
     "button": "Distribuie",

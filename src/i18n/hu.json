@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Játék megosztása",
     "social": "Megosztás a közösségi médiában",
-    "rate": "Játék értékelése"
+    "rate": "Játék értékelése",
+    "features": "Mi van benne",
+    "stats": {
+      "levels": "Pályák",
+      "modes": "Játékmódok",
+      "languages": "Nyelvek"
+    },
+    "perks": {
+      "calm": "Nyugodt mód",
+      "living": "Élő jelenetek",
+      "keys": "Rejtett kulcsok",
+      "offline": "Internet nélkül",
+      "noAds": "Reklám nélkül"
+    }
   },
   "share": {
     "button": "Megosztás",

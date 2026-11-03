@@ -33,7 +33,20 @@
   "about": {
     "shareGame": "Sdílet hru",
     "social": "Sdílet na sociálních sítích",
-    "rate": "Ohodnotit hru"
+    "rate": "Ohodnotit hru",
+    "features": "Co uvnitř najdeš",
+    "stats": {
+      "levels": "Úrovně",
+      "modes": "Herní režimy",
+      "languages": "Jazyky"
+    },
+    "perks": {
+      "calm": "Klidný režim",
+      "living": "Živé scény",
+      "keys": "Skryté klíče",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam"
+    }
   },
   "share": {
     "button": "Sdílet",
