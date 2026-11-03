@@ -90,13 +90,13 @@ const devToolsOpen = ref(false)
     <button class="row link" @click="purchase.dialogOpen = true">
       <span>{{ $t('settings.fullGame') }}</span>
       <span class="muted">
-        {{ purchase.fullGame ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›
+        {{ purchase.fullGame ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} <span class="flip-rtl">›</span>
       </span>
     </button>
 
     <button v-if="settings.developer" class="row link" @click="devToolsOpen = true">
       <span>{{ $t('settings.dev') }}</span>
-      <span class="muted">›</span>
+      <span class="muted flip-rtl">›</span>
     </button>
     <label v-else class="row">
       <span>{{ $t('settings.developer') }}</span>
@@ -155,7 +155,7 @@ main {
 
 .row.volumes output {
   width: 3em;
-  text-align: right;
+  text-align: end;
   font-variant-numeric: tabular-nums;
   color: var(--muted);
 }
@@ -164,7 +164,7 @@ button.row.link {
   width: 100%;
   font: inherit;
   color: var(--fg);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 

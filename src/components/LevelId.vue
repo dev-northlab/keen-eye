@@ -18,7 +18,7 @@ const text = computed(() => {
 </script>
 
 <template>
-  <span v-if="text !== '#'" class="level-id" :class="{ boxed }" aria-hidden="true">{{ text }}</span>
+  <span v-if="text !== '#'" class="level-id" :class="{ boxed }" dir="ltr" aria-hidden="true">{{ text }}</span>
 </template>
 
 <style scoped>

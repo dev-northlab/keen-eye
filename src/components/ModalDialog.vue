@@ -68,7 +68,7 @@ h2 {
   margin: 0;
   padding: 0;
   list-style: none;
-  text-align: left;
+  text-align: start;
 }
 
 :slotted(.points li) {

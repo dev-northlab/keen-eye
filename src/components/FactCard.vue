@@ -42,7 +42,7 @@ onBeforeUnmount(() => clearTimeout(timer))
   border-radius: 16px;
   background: var(--panel);
   color: var(--fg);
-  text-align: left;
+  text-align: start;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.35;

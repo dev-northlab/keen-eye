@@ -220,7 +220,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  text-align: left;
+  text-align: start;
   background: var(--gold-bg);
   color: var(--gold-fg);
   border: 2px solid #f5b301;
@@ -248,7 +248,7 @@ h2 {
   align-items: center;
   gap: 12px;
   padding: 10px 14px;
-  text-align: left;
+  text-align: start;
   background: var(--panel);
   color: var(--fg);
   border: 2px solid var(--soft);

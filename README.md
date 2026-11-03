@@ -7,7 +7,7 @@
 **A cozy spot-the-difference game for Android and iOS.**
 Two hand-drawn cartoon scenes, a few sneaky changes — find them all.
 
-Fully offline · no ads · no analytics · 21 languages
+Fully offline · no ads · no analytics · 32 languages
 
 [**Play in the browser**](https://dev-northlab.github.io/keen-eye/) · [Google Play](https://play.google.com/store/apps/details?id=com.keeneye.app)
 
@@ -47,8 +47,9 @@ drift, boats bob, birds fly, and some differences hide *in the motion itself*.
 - **Hints** from a shared pool, earned back with three-star finishes.
 - **Light and dark themes**, four seasons for the home meadow, music, sound effects and vibration.
 - **Reduce motion** support and SVG-only interface icons.
-- **21 languages**: English, Русский, Հայերեն, Deutsch, Français, Español, Italiano, Português, Nederlands, Polski,
-  Čeština, Română, Български, Українська, Ελληνικά, Magyar, Türkçe, हिन्दी, 中文, 日本語, 한국어.
+- **32 languages**: English, Русский, Հայերեն, Deutsch, Français, Español, Italiano, Português, Nederlands, Polski,
+  Čeština, Română, Български, Українська, Ελληνικά, Magyar, Svenska, Dansk, Norsk, Suomi, Türkçe, العربية, हिन्दी,
+  Bahasa Indonesia, Bahasa Melayu, Filipino, Tiếng Việt, ไทย, 简体中文, 繁體中文, 日本語, 한국어.
 - **One purchase, no ads.** The first levels of every mode are free; a single "full game" purchase opens the rest.
   Progress is stored on the device only — nothing ever leaves it.
 

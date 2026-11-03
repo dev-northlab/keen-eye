@@ -2,11 +2,14 @@ import type { Locale } from './index.ts'
 
 // What the language picker shows for each locale. Adding a locale without an entry here fails the type check.
 
-/** Five-pointed star centred at (cx, cy) with outer radius r; one point aims at angle `deg` (−90 = up). */
-function star(cx: number, cy: number, r: number, fill: string, deg = -90): string {
-  const points = Array.from({ length: 10 }, (_, i) => {
-    const a = ((deg + i * 36) * Math.PI) / 180
-    const k = i % 2 ? r * 0.382 : r
+/**
+ * Star with `n` points (five by default) centred at (cx, cy) with outer radius r and inner radius `inner`·r;
+ * one point aims at angle `deg` (−90 = up).
+ */
+function star(cx: number, cy: number, r: number, fill: string, deg = -90, n = 5, inner = 0.382): string {
+  const points = Array.from({ length: 2 * n }, (_, i) => {
+    const a = ((deg + (i * 180) / n) * Math.PI) / 180
+    const k = i % 2 ? r * inner : r
     return `${(cx + k * Math.cos(a)).toFixed(2)},${(cy + k * Math.sin(a)).toFixed(2)}`
   })
   return `<polygon points="${points.join(' ')}" fill="${fill}"/>`
@@ -39,6 +42,26 @@ const koreaTrigrams = [33.69, 146.31, 213.69, 326.31]
 const chakraSpokes = Array.from({ length: 24 }, (_, i) => {
   const a = (i * 15 * Math.PI) / 180
   return `M112.5 75L${(112.5 + 18 * Math.cos(a)).toFixed(2)} ${(75 + 18 * Math.sin(a)).toFixed(2)}`
+}).join('')
+
+/** A Nordic cross: `cross` (x, y, thickness) on `bg` in a w×h flag, optionally inside a wider `border` cross. */
+function nordic(w: number, h: number, bg: string, x: number, y: number, t: number, cross: string, border?: [number, string]) {
+  const bar = (t: number, fill: string) =>
+    `<rect x="${x - t / 2}" width="${t}" height="${h}" fill="${fill}"/><rect y="${y - t / 2}" width="${w}" height="${t}" fill="${fill}"/>`
+  return {
+    viewBox: `0 0 ${w} ${h}`,
+    svg: `<rect width="${w}" height="${h}" fill="${bg}"/>` + (border ? bar(border[0], border[1]) : '') + bar(t, cross),
+  }
+}
+
+/** Fourteen red and white stripes of the Malaysian flag (28×14). */
+const malaysiaStripes = Array.from({ length: 7 }, (_, i) => `<rect y="${i * 2 + 1}" width="28" height="1" fill="#fff"/>`).join('')
+
+/** Eight rays of the Philippine sun at (3.46, 6). */
+const philippineRays = Array.from({ length: 8 }, (_, i) => {
+  const a = ((i * 45 + 22.5) * Math.PI) / 180
+  const p = (k: number) => `${(3.46 + k * Math.cos(a)).toFixed(2)} ${(6 + k * Math.sin(a)).toFixed(2)}`
+  return `M${p(1.6)}L${p(2.6)}`
 }).join('')
 
 /** Per language: its name in that language and a flag (SVG markup in its own viewBox, shown cropped to 3:2). */
@@ -142,6 +165,23 @@ export const LANGUAGES: Record<Locale, { name: string; flag: { viewBox: string; 
     name: 'Magyar',
     flag: tricolor(['#ce2939', '#fff', '#477050']),
   },
+  sv: {
+    name: 'Svenska',
+    flag: nordic(16, 10, '#006aa7', 6, 5, 2, '#fecc02'),
+  },
+  da: {
+    name: 'Dansk',
+    flag: nordic(37, 28, '#c8102e', 14, 14, 4, '#fff'),
+  },
+  nb: {
+    // Norwegian Bokmål.
+    name: 'Norsk',
+    flag: nordic(22, 16, '#ba0c2f', 8, 8, 2, '#00205b', [4, '#fff']),
+  },
+  fi: {
+    name: 'Suomi',
+    flag: nordic(18, 11, '#fff', 6.5, 5.5, 3, '#002f6c'),
+  },
   tr: {
     name: 'Türkçe',
     flag: {
@@ -150,6 +190,16 @@ export const LANGUAGES: Record<Locale, { name: string; flag: { viewBox: string; 
         '<rect width="30" height="20" fill="#e30a17"/>' +
         '<circle cx="10" cy="10" r="5" fill="#fff"/><circle cx="11.25" cy="10" r="4" fill="#e30a17"/>' +
         star(18.6, 10, 2.5, '#fff', 180),
+    },
+  },
+  ar: {
+    // The flag of the United Arab Emirates: Arabic has no single country.
+    name: 'العربية',
+    flag: {
+      viewBox: '0 0 12 6',
+      svg:
+        '<rect width="12" height="2" fill="#009639"/><rect y="2" width="12" height="2" fill="#fff"/><rect y="4" width="12" height="2" fill="#000"/>' +
+        '<rect width="3" height="6" fill="#ef3340"/>',
     },
   },
   hi: {
@@ -162,12 +212,66 @@ export const LANGUAGES: Record<Locale, { name: string; flag: { viewBox: string; 
         '<circle cx="112.5" cy="75" r="3.5" fill="#000080"/>',
     },
   },
+  id: {
+    name: 'Bahasa Indonesia',
+    flag: {
+      viewBox: '0 0 3 2',
+      svg: '<rect width="3" height="1" fill="#ce1126"/><rect y="1" width="3" height="1" fill="#fff"/>',
+    },
+  },
+  ms: {
+    name: 'Bahasa Melayu',
+    flag: {
+      viewBox: '0 0 28 14',
+      svg:
+        `<rect width="28" height="14" fill="#cc0001"/>${malaysiaStripes}<rect width="14" height="8" fill="#010066"/>` +
+        '<circle cx="5.6" cy="4" r="3" fill="#fc0"/><circle cx="6.5" cy="4" r="2.55" fill="#010066"/>' +
+        star(10.6, 4, 2.4, '#fc0', -90, 14, 0.45),
+    },
+  },
+  fil: {
+    name: 'Filipino',
+    flag: {
+      viewBox: '0 0 24 12',
+      svg:
+        '<rect width="24" height="6" fill="#0038a8"/><rect y="6" width="24" height="6" fill="#ce1126"/>' +
+        '<path d="M0 0L10.39 6 0 12z" fill="#fff"/>' +
+        `<circle cx="3.46" cy="6" r="1.3" fill="#fcd116"/><path d="${philippineRays}" stroke="#fcd116" stroke-width="0.5"/>` +
+        star(0.95, 1.3, 0.6, '#fcd116') + star(0.95, 10.7, 0.6, '#fcd116') + star(8.7, 6, 0.6, '#fcd116'),
+    },
+  },
+  vi: {
+    name: 'Tiếng Việt',
+    flag: {
+      viewBox: '0 0 30 20',
+      svg: `<rect width="30" height="20" fill="#da251d"/>${star(15, 10, 6, '#ffcd00')}`,
+    },
+  },
+  th: {
+    name: 'ไทย',
+    flag: {
+      viewBox: '0 0 9 6',
+      svg:
+        '<rect width="9" height="6" fill="#a51931"/><rect y="1" width="9" height="4" fill="#f4f5f8"/>' +
+        '<rect y="2" width="9" height="2" fill="#2d2a4a"/>',
+    },
+  },
   zh: {
     // Simplified Chinese.
     name: '简体中文',
     flag: {
       viewBox: '0 0 30 20',
       svg: `<rect width="30" height="20" fill="#ee1c25"/>${star(5, 5, 3, '#ffde00')}${chinaStars}`,
+    },
+  },
+  'zh-Hant': {
+    // Traditional Chinese: its own name in a badge rather than one region's flag.
+    name: '繁體中文',
+    flag: {
+      viewBox: '0 0 30 20',
+      svg:
+        '<rect width="30" height="20" fill="#f4e9d8"/>' +
+        '<text x="15" y="10.5" font-size="13" font-weight="700" fill="#a3122a" text-anchor="middle" dominant-baseline="central">繁</text>',
     },
   },
   ja: {

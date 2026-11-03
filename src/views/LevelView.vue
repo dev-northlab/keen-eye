@@ -304,11 +304,11 @@ onBeforeUnmount(() => {
 
 .hud .title {
   font-weight: 700;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .hud .pair {
-  margin-left: 4px;
+  margin-inline-start: 4px;
   padding: 2px 8px;
   border-radius: 999px;
   background: var(--soft);

@@ -12,7 +12,7 @@ const back = () => (props.onBack ? props.onBack() : router.push({ name: 'home' }
   <footer class="back-bar">
     <button class="back" @click="back">
       <span class="chevron" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
+        <svg class="flip-rtl" viewBox="0 0 24 24">
           <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </span>

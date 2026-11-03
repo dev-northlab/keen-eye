@@ -102,7 +102,7 @@ defineEmits<{ hint: [] }>()
   flex: none;
   width: 30px;
   height: 30px;
-  margin-left: -6px;
+  margin-inline-start: -6px;
 }
 
 .name {

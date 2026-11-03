@@ -263,7 +263,7 @@ onBeforeUnmount(() => {
 
 .hud .title {
   font-weight: 700;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .hud.still * {
