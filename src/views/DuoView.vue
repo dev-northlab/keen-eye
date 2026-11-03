@@ -58,23 +58,27 @@ const turnOptions = computed(() =>
 const hintOptions = computed(() => DUEL_HINTS.map((v) => ({ value: v, label: v ? t('duo.hintsOne') : t('duo.hintsNone') })))
 
 /**
- * Mode card pictures (48×48 viewBox): two players with a spark between them (duel), a phone passed
- * round (hot seat), two players under one heart (co-op).
+ * Mode card pictures: the boy and the girl, their shirts in the given colors, under a spark (duel),
+ * the phone the boy passes to the girl (hot seat) or a heart (co-op); badges are 30×20.
  */
-const MODE_ICONS: Record<MatchMode, string> = {
-  duel:
-    '<circle cx="11" cy="19" r="5.5" fill="#3b82f6"/><path d="M2 41c0-7.5 4-11.5 9-11.5s9 4 9 11.5Z" fill="#3b82f6"/>' +
-    '<circle cx="37" cy="19" r="5.5" fill="#ef4444"/><path d="M28 41c0-7.5 4-11.5 9-11.5s9 4 9 11.5Z" fill="#ef4444"/>' +
-    '<path d="M26.5 5l-7.5 13h5.5l-3 12 8.5-14.5h-5.5Z" fill="#ffc933" stroke="#e0a100" stroke-width="1.4" stroke-linejoin="round"/>',
-  hotseat:
-    '<rect x="16" y="8" width="16" height="32" rx="3.5" fill="#3b82f6"/><rect x="18.5" y="12" width="11" height="22" rx="1.5" fill="#dbe8ff"/>' +
-    '<circle cx="24" cy="37" r="1.4" fill="#dbe8ff"/>' +
-    '<path d="M9 30A15 15 0 0 1 13 12M39 18a15 15 0 0 1-4 18" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>' +
-    '<path d="M9.5 12.5L13 12l.8 3.6M38.5 35.5L35 36l-.8-3.6" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
-  coop:
-    '<path d="M24 16s-6.5-4-6.5-8.2a3.5 3.5 0 0 1 6.5-1.9 3.5 3.5 0 0 1 6.5 1.9C30.5 12 24 16 24 16Z" fill="#ef4444"/>' +
-    '<circle cx="16" cy="25" r="5.5" fill="#f59e0b"/><path d="M6 45c0-8 4.5-12 10-12s10 4 10 12Z" fill="#f59e0b"/>' +
-    '<circle cx="32" cy="25" r="5.5" fill="#22c55e"/><path d="M22 45c0-8 4.5-12 10-12s10 4 10 12Z" fill="#22c55e"/>',
+const MODE_PAIRS: Record<MatchMode, { colors: [string, string]; badge: string }> = {
+  duel: {
+    colors: [PLAYER_COLORS[0].value, PLAYER_COLORS[1].value],
+    badge: '<path d="M18.5 0.8 11 11.8h4.8l-2.2 7.6 8-11.4h-4.8Z" fill="#ffc933" stroke="#e0a100" stroke-width="1.3" stroke-linejoin="round"/>',
+  },
+  hotseat: {
+    colors: [PLAYER_COLORS[0].value, PLAYER_COLORS[5].value],
+    badge:
+      '<path d="M2 11.5q2.5-5.5 8-7.5M3.5 15.5q1.5-2.5 4-4" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-opacity="0.75"/>' +
+      '<g transform="rotate(18 15 10)"><rect x="10.5" y="1.5" width="9" height="17" rx="2" fill="#3b82f6"/>' +
+      '<rect x="12" y="3.5" width="6" height="11" rx="0.8" fill="#dbe8ff"/><circle cx="15" cy="16.6" r="0.9" fill="#dbe8ff"/></g>' +
+      '<path d="M22 3.5q4.5 2 6 7.5" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round"/>' +
+      '<path d="M25.4 9.6l2.6 1.6 1.2-2.9" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>',
+  },
+  coop: {
+    colors: [PLAYER_COLORS[3].value, PLAYER_COLORS[2].value],
+    badge: '<path d="M15 19s-8.5-5.1-8.5-10.6A4.5 4.5 0 0 1 15 6a4.5 4.5 0 0 1 8.5 2.4C23.5 13.9 15 19 15 19Z" fill="#ef4444"/>',
+  },
 }
 
 /** A color is taken when the other player has it. */
@@ -90,7 +94,11 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
         <ul class="modes">
           <li v-for="m in MATCH_MODES" :key="m">
             <button class="mode" :class="[m, { current: setup.mode === m }]" @click="chooseMode(m)">
-              <svg class="mode-icon" viewBox="0 0 48 48" aria-hidden="true" v-html="MODE_ICONS[m]" />
+              <span class="mode-icon" aria-hidden="true">
+                <PlayerAvatar class="kid boy" avatar="boy" :color="MODE_PAIRS[m].colors[0]" />
+                <PlayerAvatar class="kid girl" avatar="girl" :color="MODE_PAIRS[m].colors[1]" />
+                <svg class="badge" viewBox="0 0 30 20" v-html="MODE_PAIRS[m].badge" />
+              </span>
               <span class="text">
                 <span class="name">{{ $t(`duo.modes.${m}`) }}</span>
                 <small>{{ $t(`duo.modeHints.${m}`) }}</small>
@@ -314,12 +322,38 @@ h2 {
 }
 
 .mode-icon {
+  position: relative;
   flex: none;
   width: 64px;
   height: 64px;
-  padding: 8px;
   border-radius: 18px;
   background: var(--mode-soft);
+}
+
+.mode-icon .kid {
+  position: absolute;
+  bottom: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--panel);
+}
+
+.mode-icon .boy {
+  left: 1px;
+}
+
+.mode-icon .girl {
+  right: 1px;
+}
+
+.mode-icon .badge {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  width: 30px;
+  height: 20px;
+  transform: translateX(-50%);
 }
 
 .mode .text {

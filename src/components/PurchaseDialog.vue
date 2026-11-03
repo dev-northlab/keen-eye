@@ -58,6 +58,15 @@ async function restore() {
           <li>
             <span class="point-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.5 20.5l7-12 4 6.5 2.5-3.5 5.5 9Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M9.5 8.5V3.5l4 1.5-4 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            {{ $t('purchase.harder') }}
+          </li>
+          <li>
+            <span class="point-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2" />
                 <path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
