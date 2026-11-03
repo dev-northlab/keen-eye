@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Zapomnij zakup (pamięć podręczna)",
     "resetPurchaseStore": "Zapomnij zakup (także w „sklepie”)",
     "developer": "Deweloper",
-    "developerApply": "Zastosuj",
-    "developerInvalid": "Nieprawidłowy kod",
     "devOff": "Wyłącz tryb dewelopera"
   },
   "common": {

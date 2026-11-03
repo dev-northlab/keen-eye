@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Uită achiziția (cache)",
     "resetPurchaseStore": "Uită achiziția (și în „magazin”)",
     "developer": "Dezvoltator",
-    "developerApply": "Aplică",
-    "developerInvalid": "Cod greșit",
     "devOff": "Dezactivează modul dezvoltator"
   },
   "common": {

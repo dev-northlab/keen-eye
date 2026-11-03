@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Satın almayı unut (önbellek)",
     "resetPurchaseStore": "Satın almayı unut (\"mağazada\" da)",
     "developer": "Geliştirici",
-    "developerApply": "Uygula",
-    "developerInvalid": "Yanlış kod",
     "devOff": "Geliştirici modunu kapat"
   },
   "common": {

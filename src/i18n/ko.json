@@ -186,8 +186,6 @@
     "resetPurchaseCache": "구매 잊기 (캐시)",
     "resetPurchaseStore": "구매 잊기 (\"스토어\"에서도)",
     "developer": "개발자",
-    "developerApply": "적용",
-    "developerInvalid": "잘못된 코드",
     "devOff": "개발자 모드 끄기"
   },
   "common": {

@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Aankoop vergeten (cache)",
     "resetPurchaseStore": "Aankoop vergeten (ook in de \"winkel\")",
     "developer": "Ontwikkelaar",
-    "developerApply": "Toepassen",
-    "developerInvalid": "Onjuiste code",
     "devOff": "Ontwikkelaarsmodus uitschakelen"
   },
   "common": {

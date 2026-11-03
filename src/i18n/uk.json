@@ -186,8 +186,6 @@
     "resetPurchaseCache": "Забути покупку (кеш)",
     "resetPurchaseStore": "Забути покупку (і в «магазині»)",
     "developer": "Розробник",
-    "developerApply": "Застосувати",
-    "developerInvalid": "Неправильний код",
     "devOff": "Вимкнути режим розробника"
   },
   "common": {
