@@ -151,6 +151,7 @@
     "dev": "Desenvolvimento",
     "unlockAll": "Concluir todas as fases",
     "resetProgress": "Apagar progresso",
+    "resetKeys": "Redefinir as chaves encontradas",
     "music": "Música",
     "sound": "Sons",
     "vibration": "Vibração",
@@ -178,7 +179,8 @@
     "time": "Tempo",
     "memory": "Memória",
     "travel": "Volta ao mundo",
-    "detective": "História de detetive"
+    "detective": "História de detetive",
+    "treasury": "Sala do tesouro"
   },
   "levelTitles": {
     "barnyard": "Terreiro",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "A sala dos esquis",
     "lodgeYard": "O quintal",
     "lodgeChairlift": "O teleférico",
-    "lodgeSummit": "O cume"
+    "lodgeSummit": "O cume",
+    "treasury": "Sala do tesouro"
   },
   "mode": {
     "label": "Modo",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Pegadas de botas subindo até o cume",
       "skiPoleLeft": "Um bastão de esqui fincado na neve"
     }
+  },
+  "secret": {
+    "found": "Chave secreta encontrada!",
+    "keys": "Chaves: {n} / {total}",
+    "keyFound": "Chave encontrada",
+    "keyHidden": "Chave não encontrada"
+  },
+  "treasury": {
+    "tag": "Bônus",
+    "locked": "Encontre as chaves douradas em todos os capítulos",
+    "congrats": "Você é o jogador mais atento!"
   }
 }

@@ -1,6 +1,6 @@
 // Level previews: npm run preview-levels [-- <level id> ...]
 // Writes previews/level-NNN.png: picture A | picture B with the difference zones outlined
-// (and the traps of "time" levels, dashed blue).
+// (and the traps of "time" levels, dashed blue; the hidden key's tap zone, dashed gold).
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { zoneCenter } from '../src/engine/animation.ts'
 import { allLevels } from '../src/levels/index.ts'
@@ -31,7 +31,11 @@ for (const level of allLevels) {
     const traps = (level.traps ?? [])
       .map((t) => `<circle cx="${t.x}" cy="${t.y}" r="${t.r}" fill="none" stroke="#2563eb" stroke-width="2.5" stroke-dasharray="6 4"/>`)
       .join('')
-    return `<g transform="translate(${v * (w + GAP)} 0)"><svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${posedSvg(scene, T)}${zones}${traps}</svg></g>`
+    const s = level.secret
+    const secret = s && (s.on === 'both' || v === 1)
+      ? `<circle cx="${s.x}" cy="${s.y}" r="${s.r}" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4 3"/>`
+      : ''
+    return `<g transform="translate(${v * (w + GAP)} 0)"><svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${posedSvg(scene, T)}${zones}${traps}${secret}</svg></g>`
   })
   const png = rasterize(`<rect width="${2 * w + GAP}" height="${h}" fill="#333"/>${pictures.join('')}`, 2 * w + GAP, h).asPng()
   const file = `${OUT}/level-${String(level.id).padStart(3, '0')}.png`

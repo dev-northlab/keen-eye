@@ -126,6 +126,7 @@ async function applyPromo() {
       <button class="secondary" @click="purchase.resetForDev(false)">{{ $t('settings.resetPurchaseCache') }}</button>
       <button class="secondary" @click="purchase.resetForDev(true)">{{ $t('settings.resetPurchaseStore') }}</button>
       <button class="secondary" @click="progress.reset()">{{ $t('settings.resetProgress') }}</button>
+      <button class="secondary" @click="progress.resetKeys()">{{ $t('settings.resetKeys') }}</button>
     </section>
   </main>
 </template>

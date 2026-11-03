@@ -17,7 +17,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'nightCity',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     let stars = ''
     for (let i = 0; i < 16; i++) {
       const x = rand() * 800
@@ -55,6 +55,8 @@ export default svgLevel({
       lampHead(620, 340) +
       `<circle cx="260" cy="244" r="40" fill="#ffd166" fill-opacity="0.1"/><circle cx="620" cy="244" r="40" fill="#ffd166" fill-opacity="0.1"/>` +
       cityTree(40, 340, 1, '#2f5e3a') +
+      // The chapter's hidden key on the pavement, behind the purple passer-by's legs
+      secret(304, 337, -6) +
       bin(720, 340, '#3d4a55') +
       person(300, 340, '#8338ec') +
       person(680, 340, '#e63946', true) +

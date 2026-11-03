@@ -151,6 +151,7 @@
     "dev": "Vývoj",
     "unlockAll": "Dokončit všechny úrovně",
     "resetProgress": "Smazat postup",
+    "resetKeys": "Vynulovat nalezené klíče",
     "music": "Hudba",
     "sound": "Zvuky",
     "vibration": "Vibrace",
@@ -178,7 +179,8 @@
     "time": "Čas",
     "memory": "Paměť",
     "travel": "Cesta kolem světa",
-    "detective": "Detektivní příběh"
+    "detective": "Detektivní příběh",
+    "treasury": "Klenotnice"
   },
   "levelTitles": {
     "barnyard": "Dvůr",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Lyžárna",
     "lodgeYard": "Dvůr",
     "lodgeChairlift": "Sedačková lanovka",
-    "lodgeSummit": "Vrchol"
+    "lodgeSummit": "Vrchol",
+    "treasury": "Klenotnice"
   },
   "mode": {
     "label": "Režim",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Stopy bot vedou nahoru na vrchol",
       "skiPoleLeft": "Lyžařská hůlka zapíchnutá ve sněhu"
     }
+  },
+  "secret": {
+    "found": "Tajný klíč nalezen!",
+    "keys": "Klíče: {n} / {total}",
+    "keyFound": "Klíč nalezen",
+    "keyHidden": "Klíč nenalezen"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Najděte zlaté klíče ve všech kapitolách",
+    "congrats": "Jste nejpozornější hráč!"
   }
 }

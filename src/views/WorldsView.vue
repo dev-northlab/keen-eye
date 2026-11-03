@@ -2,11 +2,13 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
+import KeyIcon from '../components/KeyIcon.vue'
 import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // "Spot the difference" worlds: one card per world; a card opens the chapter's level grid (ChapterView).
+// Each card shows whether the world's hidden key is found (docs/hidden-item-feature.md).
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -51,6 +53,7 @@ useBackButton(toModes)
                 <template v-else>{{ $t('map.progress', { done: done(c), total: c.total }) }} · ★ {{ stars(c) }}</template>
               </span>
             </span>
+            <KeyIcon :found="progress.hasKey(c.chapter.id)" />
             <span v-if="c.first !== undefined && !progress.isUnlocked(c.first)" class="lock" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
             </span>

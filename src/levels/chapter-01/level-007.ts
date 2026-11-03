@@ -17,7 +17,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'apiary',
   parTimeSec: 75,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 350 + rand() * 145)
     let flowers = ''
@@ -52,6 +52,8 @@ export default svgLevel({
       `<rect y="330" width="800" height="170" fill="#97cf6e"/>` +
       tree(760, 340) +
       tufts +
+      // The chapter's hidden key on the table, behind the first honey jar
+      secret(92, 353, -8) +
       // Honey table
       `<rect x="90" y="370" width="10" height="50" fill="#8a5a33"/><rect x="230" y="370" width="10" height="50" fill="#8a5a33"/>` +
       `<rect x="80" y="360" width="170" height="12" rx="3" fill="#a0703f"/>` +

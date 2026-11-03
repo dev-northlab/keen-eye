@@ -89,6 +89,19 @@ export interface DetectiveScene {
   clues: string[]
 }
 
+/**
+ * The hidden golden key of a chapter (docs/hidden-item-feature.md): drawn by `secret()` in one level of
+ * each chapter, not a difference; a tap on it collects the chapter's key and is never a miss.
+ */
+export interface SecretKey {
+  /** Tap zone in viewBox coordinates, a little larger than the key; the key never moves. */
+  x: number
+  y: number
+  r: number
+  /** Pictures the key is drawn on: both in the same place, or only B ("memory" levels search B alone). */
+  on: 'both' | 'b'
+}
+
 export interface Level {
   id: number
   /** Chapter theme key (i18n: chapters.<chapter>). */
@@ -122,6 +135,8 @@ export interface Level {
   travel?: TravelPlace
   /** "Detective" levels only: a scene of a case, each difference a clue. */
   detective?: DetectiveScene
+  /** The chapter's hidden key, on exactly one level of the chapter. */
+  secret?: SecretKey
 }
 
 export type Stars = 1 | 2 | 3

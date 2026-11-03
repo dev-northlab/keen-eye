@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
-import { categoryOf, chapterById, chapterLevels } from '../levels/chapters.ts'
+import { categoryOf, chapterById, chapterLevels, KEY_CHAPTERS, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
 import { allLevels, levelById, levels } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
@@ -41,6 +41,12 @@ const parseTimeTravel = (raw: unknown) => parseRecords(raw, (id) => timeTravelLe
 const parseCases = (raw: unknown): string[] =>
   Array.isArray(raw) ? [...new Set(raw.filter((id): id is string => typeof id === 'string' && caseById(id) !== undefined))] : []
 
+/** Hidden keys found (docs/hidden-item-feature.md), by chapter id: only chapters that hide one, each once. */
+const parseKeys = (raw: unknown): string[] =>
+  Array.isArray(raw)
+    ? [...new Set(raw.filter((id): id is string => typeof id === 'string' && KEY_CHAPTERS.some((c) => c.id === id)))]
+    : []
+
 function parseHints(raw: unknown): number {
   return Number.isInteger(raw) && (raw as number) >= 0 ? (raw as number) : START_HINTS
 }
@@ -51,18 +57,22 @@ export const useProgressStore = defineStore('progress', () => {
   const timeTravel = ref<Record<string, LevelRecord>>({})
   /** "Detective" cases whose culprit the player has named (docs/detective-mode.md). */
   const solvedCases = ref<string[]>([])
+  /** Chapters whose hidden golden key the player has found (docs/hidden-item-feature.md). */
+  const keys = ref<string[]>([])
   /** Shared hint pool of normal mode (calm mode hints are unlimited). */
   const hints = ref(START_HINTS)
   /** Development only (Home checkbox): every level is playable, ignoring order and the purchase. */
   const devOpenAll = ref(false)
 
-  const save = () => saveJson(KEY, { levels: records.value, hints: hints.value, timeTravel: timeTravel.value, cases: solvedCases.value })
+  const save = () =>
+    saveJson(KEY, { levels: records.value, hints: hints.value, timeTravel: timeTravel.value, cases: solvedCases.value, keys: keys.value })
 
   async function load() {
-    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown; timeTravel?: unknown; cases?: unknown }
+    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; hints?: unknown; timeTravel?: unknown; cases?: unknown; keys?: unknown }
     records.value = parseLevels(raw.levels)
     timeTravel.value = parseTimeTravel(raw.timeTravel)
     solvedCases.value = parseCases(raw.cases)
+    keys.value = parseKeys(raw.keys)
     hints.value = parseHints(raw.hints)
     devOpenAll.value = import.meta.env.DEV && (await loadJson(DEV_OPEN_ALL_KEY)) === true
   }
@@ -71,15 +81,21 @@ export const useProgressStore = defineStore('progress', () => {
 
   const isCompleted = (id: number) => id in records.value
 
+  const hasKey = (chapter: string) => keys.value.includes(chapter)
+
+  /** Every chapter's key is found: the treasury opens. */
+  const allKeysFound = computed(() => KEY_CHAPTERS.every((c) => hasKey(c.id)))
+
   /**
    * Levels open one after another: the first one, then each after the previous level of its chapter
    * is completed. A world's first level follows level id − 1 (the previous world's first 20), so
    * the harder levels added at a world's end never hold back the next world. A category ("time",
-   * "memory") starts open.
+   * "memory") starts open. The treasury opens with the last key.
    */
   function isReached(id: number): boolean {
     const level = levelById(id)
     if (!level || devOpenAll.value) return !!level
+    if (level.chapter === TREASURY_CHAPTER.id) return allKeysFound.value
     const own = chapterLevels(chapterById(level.chapter)!)
     const i = own.indexOf(level)
     if (i > 0) return isCompleted(own[i - 1].id)
@@ -133,6 +149,19 @@ export const useProgressStore = defineStore('progress', () => {
     await save()
   }
 
+  /** The hidden key of `chapter` was found. */
+  async function collectKey(chapter: string) {
+    if (hasKey(chapter)) return
+    keys.value.push(chapter)
+    await save()
+  }
+
+  /** Development only: forget the hidden keys found, so they show on the pictures again. */
+  async function resetKeys() {
+    keys.value = []
+    await save()
+  }
+
   /** Takes one hint from the pool; false when it is empty. */
   async function spendHint(): Promise<boolean> {
     if (hints.value <= 0) return false
@@ -151,6 +180,7 @@ export const useProgressStore = defineStore('progress', () => {
     records.value = {}
     timeTravel.value = {}
     solvedCases.value = []
+    keys.value = []
     hints.value = START_HINTS
     await remove(KEY)
   }
@@ -159,6 +189,7 @@ export const useProgressStore = defineStore('progress', () => {
     records,
     timeTravel,
     solvedCases,
+    keys,
     hints,
     devOpenAll,
     load,
@@ -172,6 +203,10 @@ export const useProgressStore = defineStore('progress', () => {
     recordTimeTravel,
     isCaseSolved,
     solveCase,
+    hasKey,
+    allKeysFound,
+    collectKey,
+    resetKeys,
     spendHint,
     unlockAll,
     reset,

@@ -6,7 +6,7 @@ export default memoryLevel({
   id: 308,
   title: 'memorySpace',
   showSeconds: 4,
-  scene: ({ diff, rand }) =>
+  scene: ({ diff, rand, secret }) =>
     `<rect width="800" height="500" fill="#1b1f4b"/>` +
     starField(rand, 0, 340, 50) +
     diff(...around(68, 70, 212, 150), planet(140, 110, 40, '#ff9f43'), planet(140, 110, 40, '#ff9f43', '#ffd23f')) +
@@ -15,6 +15,8 @@ export default memoryLevel({
     crater(560, 450, 50) +
     crater(330, 470, 34) +
     dome(110, 420, 60) +
+    // The category's hidden key (on B only), half under the rocket
+    secret(600, 376, -15) +
     rocket(620, 380, '#f1f1f1', '#e63946', 1.6) +
     diff(...around(246, 310, 293, 400), big(250, 400, 1.8, flag(0, 0, '#e63946')), big(250, 400, 1.8, flag(0, 0, '#3a86ff'))) +
     big(420, 420, 1.8, astronaut(0, 0)) +

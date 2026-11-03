@@ -38,10 +38,12 @@ export default detectiveLevel({
   case: 'vase',
   title: 'vaseCorridor',
   parTimeSec: 82,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, secret }) =>
     `<rect width="800" height="500" fill="#e8eef5"/><rect y="260" width="800" height="120" fill="#c9d6e3"/><rect y="254" width="800" height="10" fill="#b3c3d4"/>` +
     `<rect y="380" width="800" height="120" fill="#c69563"/>` +
     boards(380, '#a8743f') +
+    // The category's hidden key, peeking out from under the carpet
+    secret(560, 473, 8) +
     `<rect y="402" width="800" height="70" fill="#b83236"/><path d="M0 410H800M0 464H800" stroke="#f2c14e" stroke-width="3"/>` +
     windowBox(50, 90, 90, 120) +
     clue('windowShut', 95, 150, 66, openPanes(50, 90, 90, 120), panes(50, 90, 90, 120) + `<rect x="89" y="144" width="12" height="8" rx="2" fill="#c9953f"/>`) +

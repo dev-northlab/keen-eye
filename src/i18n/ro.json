@@ -151,6 +151,7 @@
     "dev": "Dezvoltare",
     "unlockAll": "Termină toate nivelurile",
     "resetProgress": "Resetează progresul",
+    "resetKeys": "Resetează cheile găsite",
     "music": "Muzică",
     "sound": "Sunete",
     "vibration": "Vibrații",
@@ -178,7 +179,8 @@
     "time": "Timpul",
     "memory": "Memorie",
     "travel": "Călătorie în jurul lumii",
-    "detective": "Poveste polițistă"
+    "detective": "Poveste polițistă",
+    "treasury": "Camera comorii"
   },
   "levelTitles": {
     "barnyard": "Curtea fermei",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Camera schiurilor",
     "lodgeYard": "Curtea",
     "lodgeChairlift": "Telescaunul",
-    "lodgeSummit": "Vârful"
+    "lodgeSummit": "Vârful",
+    "treasury": "Camera comorii"
   },
   "mode": {
     "label": "Mod",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Urme de bocanci urcă spre vârf",
       "skiPoleLeft": "Un băț de schi înfipt în zăpadă"
     }
+  },
+  "secret": {
+    "found": "Cheie secretă găsită!",
+    "keys": "Chei: {n} / {total}",
+    "keyFound": "Cheie găsită",
+    "keyHidden": "Cheie negăsită"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Găsește cheile de aur în toate capitolele",
+    "congrats": "Ești cel mai atent jucător!"
   }
 }

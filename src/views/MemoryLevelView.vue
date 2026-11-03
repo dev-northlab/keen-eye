@@ -3,6 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import FoundSlots from '../components/FoundSlots.vue'
 import PauseDialog from '../components/PauseDialog.vue'
+import SecretFound from '../components/SecretFound.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import StarRating from '../components/StarRating.vue'
 import ToolButton from '../components/ToolButton.vue'
@@ -47,6 +48,21 @@ const calm = ref(false)
 const result = ref<MemoryResult | null>(null)
 let scene: MemoryScene | undefined
 const starTimers: number[] = []
+/** "Secret key found!" is shown (docs/hidden-item-feature.md). */
+const secretShown = ref(false)
+let secretTimer = 0
+/** How long "Secret key found!" stays on screen. */
+const SECRET_MS = 2600
+
+/** The category's hidden key on B was tapped: it is kept for good, whatever the round's result. */
+function collectSecret() {
+  progress.collectKey(level.chapter)
+  playSfx('secret')
+  vibrateFound()
+  clearTimeout(secretTimer)
+  secretShown.value = true
+  secretTimer = window.setTimeout(() => (secretShown.value = false), SECRET_MS)
+}
 
 /** The status line: what to do now (the curtain keeps the line of the phase before it). */
 const status = ref('show')
@@ -63,6 +79,8 @@ function start() {
   paused.value = false
   settingsOpen.value = false
   result.value = null
+  clearTimeout(secretTimer)
+  secretShown.value = false
   calm.value = settings.calm
   peeksLeft.value = calm.value ? Infinity : level.memory!.peeks
   playMusic(calm.value ? 'calm' : 'level')
@@ -86,6 +104,7 @@ function start() {
         playSfx('miss')
         vibrateMiss()
       },
+      onSecret: collectSecret,
       onComplete: (r) => {
         result.value = r
         playMusic('complete')
@@ -102,6 +121,7 @@ function start() {
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * (calm.value ? 0.6 : 1),
       maxMisses: calm.value ? Infinity : MAX_MISSES,
       peeks: peeksLeft.value,
+      secretTaken: progress.hasKey(level.chapter),
     },
   )
 }
@@ -144,6 +164,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener('visibilitychange', onVisibility)
   starTimers.forEach(clearTimeout)
+  clearTimeout(secretTimer)
   scene?.destroy()
 })
 </script>
@@ -177,6 +198,7 @@ onBeforeUnmount(() => {
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
       <div v-if="phase === 'curtain'" :key="phaseKey" class="curtain" :class="{ still: settings.effectiveReduceMotion }" />
+      <SecretFound v-if="secretShown" :still="settings.effectiveReduceMotion" />
     </div>
 
     <section v-if="result" class="result" :aria-label="$t('level.complete')">

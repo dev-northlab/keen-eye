@@ -151,6 +151,7 @@
     "dev": "Entwicklung",
     "unlockAll": "Alle Level abschließen",
     "resetProgress": "Fortschritt zurücksetzen",
+    "resetKeys": "Gefundene Schlüssel zurücksetzen",
     "music": "Musik",
     "sound": "Töne",
     "vibration": "Vibration",
@@ -178,7 +179,8 @@
     "time": "Zeit",
     "memory": "Gedächtnis",
     "travel": "Weltreise",
-    "detective": "Detektivgeschichte"
+    "detective": "Detektivgeschichte",
+    "treasury": "Schatzkammer"
   },
   "levelTitles": {
     "barnyard": "Hof",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Skiraum",
     "lodgeYard": "Hof",
     "lodgeChairlift": "Sessellift",
-    "lodgeSummit": "Gipfel"
+    "lodgeSummit": "Gipfel",
+    "treasury": "Schatzkammer"
   },
   "mode": {
     "label": "Modus",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Stiefelspuren führen hinauf zum Gipfel",
       "skiPoleLeft": "Ein Skistock steckt im Schnee"
     }
+  },
+  "secret": {
+    "found": "Geheimer Schlüssel gefunden!",
+    "keys": "Schlüssel: {n} / {total}",
+    "keyFound": "Schlüssel gefunden",
+    "keyHidden": "Schlüssel nicht gefunden"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Finde die goldenen Schlüssel in allen Kapiteln",
+    "congrats": "Du bist der aufmerksamste Spieler!"
   }
 }

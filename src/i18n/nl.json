@@ -151,6 +151,7 @@
     "dev": "Ontwikkeling",
     "unlockAll": "Alle levels voltooien",
     "resetProgress": "Voortgang wissen",
+    "resetKeys": "Gevonden sleutels resetten",
     "music": "Muziek",
     "sound": "Geluiden",
     "vibration": "Trillen",
@@ -178,7 +179,8 @@
     "time": "Tijd",
     "memory": "Geheugen",
     "travel": "Wereldreis",
-    "detective": "Detectiveverhaal"
+    "detective": "Detectiveverhaal",
+    "treasury": "Schatkamer"
   },
   "levelTitles": {
     "barnyard": "Erf",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "De skiruimte",
     "lodgeYard": "Het erf",
     "lodgeChairlift": "De stoeltjeslift",
-    "lodgeSummit": "De top"
+    "lodgeSummit": "De top",
+    "treasury": "Schatkamer"
   },
   "mode": {
     "label": "Modus",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Laarsafdrukken lopen omhoog naar de top",
       "skiPoleLeft": "Een skistok steekt in de sneeuw"
     }
+  },
+  "secret": {
+    "found": "Geheime sleutel gevonden!",
+    "keys": "Sleutels: {n} / {total}",
+    "keyFound": "Sleutel gevonden",
+    "keyHidden": "Sleutel niet gevonden"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Vind de gouden sleutels in alle hoofdstukken",
+    "congrats": "Jij bent de oplettendste speler!"
   }
 }

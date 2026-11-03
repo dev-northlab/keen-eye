@@ -151,6 +151,7 @@
     "dev": "Desarrollo",
     "unlockAll": "Completar todos los niveles",
     "resetProgress": "Borrar progreso",
+    "resetKeys": "Restablecer las llaves encontradas",
     "music": "Música",
     "sound": "Sonidos",
     "vibration": "Vibración",
@@ -178,7 +179,8 @@
     "time": "El tiempo",
     "memory": "Memoria",
     "travel": "Viaje por el mundo",
-    "detective": "Historia de detectives"
+    "detective": "Historia de detectives",
+    "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
     "barnyard": "Corral",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "La sala de esquís",
     "lodgeYard": "El patio",
     "lodgeChairlift": "El telesilla",
-    "lodgeSummit": "La cumbre"
+    "lodgeSummit": "La cumbre",
+    "treasury": "Cámara del tesoro"
   },
   "mode": {
     "label": "Modo",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Huellas de botas que suben a la cumbre",
       "skiPoleLeft": "Un bastón de esquí clavado en la nieve"
     }
+  },
+  "secret": {
+    "found": "¡Llave secreta encontrada!",
+    "keys": "Llaves: {n} / {total}",
+    "keyFound": "Llave encontrada",
+    "keyHidden": "Llave no encontrada"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Encuentra las llaves doradas en todos los capítulos",
+    "congrats": "¡Eres el jugador más observador!"
   }
 }

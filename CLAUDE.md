@@ -92,7 +92,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   Detective (cases), Case (one case),
   Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Purchase, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
-- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool), `settings`
+- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool, hidden keys found), `settings`
   (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
@@ -158,6 +158,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
   `chapters.<chapter>` for a new chapter) to all locales, run `check-levels` and look at the preview.
 - Zones must not overlap. Run `npm run check-levels` after touching levels and look at `npm run preview-levels`.
+- Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
+  key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on
+  it before hit/miss (never a miss, never hinted), `GameScene`/`MemoryScene` report `onSecret`, `progress.keys` stores the
+  chapter ids. `check-levels` checks the key is visible but at least 25% covered, and clear of zones and traps; `npm test` one key per chapter, the
+  farm's in the free levels. All keys open the bonus level 900, chapter `treasury` (`treasury/level-900.ts`, banner on
+  the game modes screen, `TreasureChest` in its result dialog).
 - Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, unlimited hints, slower animation, soft sounds,
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.

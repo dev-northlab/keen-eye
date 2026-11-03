@@ -31,7 +31,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'waterfall',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     let streaks = ''
     for (let i = 0; i < 14; i++) streaks += `<path d="M${340 + rand() * 120} ${120 + rand() * 200}v${16 + rand() * 20}" stroke="#fff" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>`
     let ripples = ''
@@ -71,6 +71,8 @@ export default svgLevel({
       diff(208, 430, 30, rail(180, 236, 440), '') +
       person(560, 440, '#ffb703') +
       diff(544, 402, 18, backpack(560, 440, '#e63946'), backpack(560, 440, '#3a86ff')) +
+      // The chapter's hidden key on the bank, under the fern
+      secret(690, 482, 15) +
       fern(700, 490) +
       floor(rand, 384, 396, 4)
     )

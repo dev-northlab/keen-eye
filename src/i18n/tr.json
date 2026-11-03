@@ -151,6 +151,7 @@
     "dev": "Geliştirme",
     "unlockAll": "Tüm bölümleri tamamla",
     "resetProgress": "İlerlemeyi sıfırla",
+    "resetKeys": "Bulunan anahtarları sıfırla",
     "music": "Müzik",
     "sound": "Sesler",
     "vibration": "Titreşim",
@@ -178,7 +179,8 @@
     "time": "Zaman",
     "memory": "Hafıza",
     "travel": "Dünya turu",
-    "detective": "Dedektif hikâyesi"
+    "detective": "Dedektif hikâyesi",
+    "treasury": "Hazine odası"
   },
   "levelTitles": {
     "barnyard": "Çiftlik avlusu",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Kayak odası",
     "lodgeYard": "Avlu",
     "lodgeChairlift": "Telesiyej",
-    "lodgeSummit": "Zirve"
+    "lodgeSummit": "Zirve",
+    "treasury": "Hazine odası"
   },
   "mode": {
     "label": "Mod",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Zirveye çıkan bot izleri",
       "skiPoleLeft": "Kara saplanmış bir kayak batonu"
     }
+  },
+  "secret": {
+    "found": "Gizli anahtar bulundu!",
+    "keys": "Anahtarlar: {n} / {total}",
+    "keyFound": "Anahtar bulundu",
+    "keyHidden": "Anahtar bulunmadı"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Tüm bölümlerdeki altın anahtarları bul",
+    "congrats": "Sen en dikkatli oyuncusun!"
   }
 }

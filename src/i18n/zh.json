@@ -151,6 +151,7 @@
     "dev": "开发",
     "unlockAll": "完成所有关卡",
     "resetProgress": "重置进度",
+    "resetKeys": "重置已找到的钥匙",
     "music": "音乐",
     "sound": "音效",
     "vibration": "振动",
@@ -178,7 +179,8 @@
     "time": "时间",
     "memory": "记忆",
     "travel": "环游世界",
-    "detective": "侦探故事"
+    "detective": "侦探故事",
+    "treasury": "藏宝室"
   },
   "levelTitles": {
     "barnyard": "农家院",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "雪具室",
     "lodgeYard": "院子",
     "lodgeChairlift": "缆椅",
-    "lodgeSummit": "山顶"
+    "lodgeSummit": "山顶",
+    "treasury": "藏宝室"
   },
   "mode": {
     "label": "模式",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "靴印一路通向山顶",
       "skiPoleLeft": "一根雪杖插在雪里"
     }
+  },
+  "secret": {
+    "found": "找到了秘密钥匙！",
+    "keys": "钥匙：{n} / {total}",
+    "keyFound": "已找到钥匙",
+    "keyHidden": "未找到钥匙"
+  },
+  "treasury": {
+    "tag": "奖励",
+    "locked": "在每一章中找到金钥匙",
+    "congrats": "你是最细心的玩家！"
   }
 }

@@ -76,6 +76,8 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 516, to: 520, differences: [8, 8], motion: [0, 0], minRadius: 20, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
   { from: 521, to: 525, differences: [9, 9], motion: [0, 0], minRadius: 18, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
   { from: 526, to: 530, differences: [10, 10], motion: [0, 0], minRadius: 18, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
+  // "Treasury" (docs/hidden-item-feature.md): the bonus level for all the keys, 8–10 differences, some moving.
+  { from: 900, to: 900, differences: [8, 10], motion: [2, 3], minRadius: 20, minGap: 56, kinds: HARD },
 ]
 
 /**

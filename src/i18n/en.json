@@ -151,6 +151,7 @@
     "dev": "Development",
     "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",
+    "resetKeys": "Reset found keys",
     "music": "Music",
     "sound": "Sounds",
     "vibration": "Vibration",
@@ -178,7 +179,8 @@
     "time": "Time",
     "memory": "Memory",
     "travel": "World travel",
-    "detective": "Detective story"
+    "detective": "Detective story",
+    "treasury": "Treasury"
   },
   "levelTitles": {
     "barnyard": "Barnyard",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Ski room",
     "lodgeYard": "Yard",
     "lodgeChairlift": "Chairlift",
-    "lodgeSummit": "Summit"
+    "lodgeSummit": "Summit",
+    "treasury": "Treasury"
   },
   "mode": {
     "label": "Mode",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Boot prints going up to the summit",
       "skiPoleLeft": "A ski pole stuck in the snow"
     }
+  },
+  "secret": {
+    "found": "Secret key found!",
+    "keys": "Keys: {n} / {total}",
+    "keyFound": "Key found",
+    "keyHidden": "Key not found"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Find the golden keys in every chapter",
+    "congrats": "You are the keenest player of all!"
   }
 }

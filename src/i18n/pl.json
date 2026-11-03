@@ -151,6 +151,7 @@
     "dev": "Programowanie",
     "unlockAll": "Ukończ wszystkie poziomy",
     "resetProgress": "Resetuj postęp",
+    "resetKeys": "Zresetuj znalezione klucze",
     "music": "Muzyka",
     "sound": "Dźwięki",
     "vibration": "Wibracje",
@@ -178,7 +179,8 @@
     "time": "Czas",
     "memory": "Pamięć",
     "travel": "Podróż dookoła świata",
-    "detective": "Historia detektywistyczna"
+    "detective": "Historia detektywistyczna",
+    "treasury": "Skarbiec"
   },
   "levelTitles": {
     "barnyard": "Podwórko",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Narciarnia",
     "lodgeYard": "Podwórze",
     "lodgeChairlift": "Wyciąg krzesełkowy",
-    "lodgeSummit": "Szczyt"
+    "lodgeSummit": "Szczyt",
+    "treasury": "Skarbiec"
   },
   "mode": {
     "label": "Tryb",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Ślady butów prowadzą na szczyt",
       "skiPoleLeft": "Kijek narciarski wbity w śnieg"
     }
+  },
+  "secret": {
+    "found": "Znaleziono sekretny klucz!",
+    "keys": "Klucze: {n} / {total}",
+    "keyFound": "Klucz znaleziony",
+    "keyHidden": "Klucz nieznaleziony"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Znajdź złote klucze we wszystkich rozdziałach",
+    "congrats": "Jesteś najbardziej spostrzegawczym graczem!"
   }
 }

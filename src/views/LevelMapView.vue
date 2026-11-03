@@ -2,16 +2,20 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
+import KeyIcon from '../components/KeyIcon.vue'
 import {
   CHAPTERS,
   chapterLevels,
   chapterSize,
   DETECTIVE_CHAPTER,
+  KEY_CHAPTERS,
   MEMORY_CHAPTER,
   TIME_CHAPTER,
   TRAVEL_CHAPTER,
+  TREASURY_CHAPTER,
   type Chapter,
 } from '../levels/chapters.ts'
+import { treasuryLevel } from '../levels/index.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -19,7 +23,9 @@ import { useProgressStore } from '../stores/progress.ts'
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
 // in time" (docs/time-differences-mode.md) and "memory" (docs/memory-mode.md) their level grids
 // (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView),
-// "detective" (docs/detective-mode.md) its cases (DetectiveView).
+// "detective" (docs/detective-mode.md) its cases (DetectiveView). Category banners show whether their
+// hidden key is found; the last banner, the treasury (docs/hidden-item-feature.md), counts the keys
+// and opens its bonus level once all are found.
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -43,6 +49,15 @@ const time = category(TIME_CHAPTER)
 const memory = category(MEMORY_CHAPTER)
 const travel = category(TRAVEL_CHAPTER)
 const detective = category(DETECTIVE_CHAPTER)
+
+const keysFound = () => KEY_CHAPTERS.filter((c) => progress.hasKey(c.id)).length
+/** All keys found (or every level opened for testing). */
+const treasuryOpen = () => progress.allKeysFound || progress.devOpenAll
+
+function openTreasury() {
+  if (progress.needsPurchase(treasuryLevel.id)) router.push({ name: 'purchase' })
+  else if (progress.isUnlocked(treasuryLevel.id)) router.push({ name: 'level', params: { id: treasuryLevel.id } })
+}
 
 const timeTravel = {
   total: timeTravelLevels.length,
@@ -81,6 +96,8 @@ const timeTravel = {
                 {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
               </span>
             </span>
+            <!-- Golden once the key of every world is found. -->
+            <KeyIcon class="key" :found="CHAPTERS.every((c) => progress.hasKey(c.id))" />
           </button>
         </li>
         <li>
@@ -98,6 +115,7 @@ const timeTravel = {
                 {{ $t('map.progress', { done: time.done(), total: time.total }) }} · ★ {{ time.stars() }}
               </span>
             </span>
+            <KeyIcon class="key" :found="progress.hasKey(TIME_CHAPTER.id)" />
           </button>
         </li>
         <li>
@@ -115,6 +133,7 @@ const timeTravel = {
                 {{ $t('map.progress', { done: memory.done(), total: memory.total }) }} · ★ {{ memory.stars() }}
               </span>
             </span>
+            <KeyIcon class="key" :found="progress.hasKey(MEMORY_CHAPTER.id)" />
           </button>
         </li>
         <li>
@@ -132,6 +151,7 @@ const timeTravel = {
                 {{ $t('map.progress', { done: travel.done(), total: travel.total }) }} · ★ {{ travel.stars() }}
               </span>
             </span>
+            <KeyIcon class="key" :found="progress.hasKey(TRAVEL_CHAPTER.id)" />
           </button>
         </li>
         <li>
@@ -152,6 +172,7 @@ const timeTravel = {
                 {{ $t('map.progress', { done: detective.done(), total: detective.total }) }} · ★ {{ detective.stars() }}
               </span>
             </span>
+            <KeyIcon class="key" :found="progress.hasKey(DETECTIVE_CHAPTER.id)" />
           </button>
         </li>
         <li>
@@ -180,6 +201,25 @@ const timeTravel = {
               <span class="sub">
                 {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
               </span>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="mode treasury" :class="{ closed: !treasuryOpen() }" :aria-disabled="!treasuryOpen()" @click="treasuryOpen() && openTreasury()">
+            <!-- A big faint key behind the text. -->
+            <svg class="art" viewBox="0 0 100 100" aria-hidden="true">
+              <circle cx="28" cy="50" r="18" fill="none" stroke="#fff" stroke-width="8" />
+              <path d="M46 50h46M80 50v16M66 50v12" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" />
+            </svg>
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="TREASURY_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('treasury.tag') }}</span>
+              <span class="name">{{ $t('chapters.treasury') }}</span>
+              <span class="sub">{{ $t('secret.keys', { n: keysFound(), total: KEY_CHAPTERS.length }) }}</span>
+              <span v-if="!treasuryOpen()" class="sub">{{ $t('treasury.locked') }}</span>
+            </span>
+            <span v-if="!treasuryOpen()" class="key lock" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
             </span>
           </button>
         </li>
@@ -264,6 +304,20 @@ main {
   --mode-icon-bg: #fff3dd;
 }
 
+/* The treasury: gold, dimmed until every key is found. */
+.treasury {
+  --mode-from: #ffd66b;
+  --mode-mid: #e0a100;
+  --mode-to: #a86b00;
+  --mode-shadow: rgb(140 90 0 / 0.6);
+  --mode-icon-bg: #fff3cf;
+}
+
+.treasury.closed {
+  filter: saturate(0.45);
+  cursor: default;
+}
+
 .mode {
   position: relative;
   overflow: hidden;
@@ -325,5 +379,21 @@ main {
 .sub {
   font-size: 14px;
   opacity: 0.9;
+}
+
+/* The banner's hidden key (grey or gold) or the treasury's lock, in a light badge. */
+.key {
+  position: relative;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  padding: 5px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.85);
+}
+
+.lock {
+  display: grid;
+  color: #8a6400;
 }
 </style>

@@ -3,6 +3,7 @@ import { detectiveLevels } from './detective/index.ts'
 import { memoryLevels } from './memory/index.ts'
 import { timeLevels } from './time/index.ts'
 import { travelLevels } from './travel/index.ts'
+import treasuryLevel from './treasury/level-900.ts'
 import level001 from './chapter-01/level-001.ts'
 import level002 from './chapter-01/level-002.ts'
 import level003 from './chapter-01/level-003.ts'
@@ -308,9 +309,11 @@ export const levels: Level[] = [
 ]
 
 /**
- * Every numbered level: the worlds (`levels`) and the categories "time" (ids from 201), "memory" (from 301),
- * "travel" (from 401) and "detective" (from 501).
+ * Every numbered level: the worlds (`levels`), the categories "time" (ids from 201), "memory" (from 301),
+ * "travel" (from 401) and "detective" (from 501), and the bonus "treasury" (900).
  */
-export const allLevels: Level[] = [...levels, ...timeLevels, ...memoryLevels, ...travelLevels, ...detectiveLevels]
+export const allLevels: Level[] = [...levels, ...timeLevels, ...memoryLevels, ...travelLevels, ...detectiveLevels, treasuryLevel]
+
+export { treasuryLevel }
 
 export const levelById = (id: number): Level | undefined => allLevels.find((l) => l.id === id)

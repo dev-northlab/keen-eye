@@ -151,6 +151,7 @@
     "dev": "डेवलपमेंट",
     "unlockAll": "सभी लेवल पूरे करें",
     "resetProgress": "प्रगति रीसेट करें",
+    "resetKeys": "मिली चाबियाँ रीसेट करें",
     "music": "संगीत",
     "sound": "आवाज़ें",
     "vibration": "वाइब्रेशन",
@@ -178,7 +179,8 @@
     "time": "समय",
     "memory": "याददाश्त",
     "travel": "दुनिया की सैर",
-    "detective": "जासूसी कहानी"
+    "detective": "जासूसी कहानी",
+    "treasury": "ख़ज़ाना"
   },
   "levelTitles": {
     "barnyard": "खेत का आँगन",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "स्की कमरा",
     "lodgeYard": "आँगन",
     "lodgeChairlift": "चेयरलिफ़्ट",
-    "lodgeSummit": "चोटी"
+    "lodgeSummit": "चोटी",
+    "treasury": "ख़ज़ाना"
   },
   "mode": {
     "label": "मोड",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "जूतों के निशान चोटी की ओर जाते हैं",
       "skiPoleLeft": "बर्फ़ में गड़ी स्की स्टिक"
     }
+  },
+  "secret": {
+    "found": "गुप्त चाबी मिल गई!",
+    "keys": "चाबियाँ: {n} / {total}",
+    "keyFound": "चाबी मिल गई",
+    "keyHidden": "चाबी नहीं मिली"
+  },
+  "treasury": {
+    "tag": "बोनस",
+    "locked": "हर अध्याय में सुनहरी चाबियाँ खोजें",
+    "congrats": "आप सबसे चौकस खिलाड़ी हैं!"
   }
 }

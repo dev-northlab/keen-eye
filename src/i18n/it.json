@@ -151,6 +151,7 @@
     "dev": "Sviluppo",
     "unlockAll": "Completa tutti i livelli",
     "resetProgress": "Azzera i progressi",
+    "resetKeys": "Azzera le chiavi trovate",
     "music": "Musica",
     "sound": "Suoni",
     "vibration": "Vibrazione",
@@ -178,7 +179,8 @@
     "time": "Il tempo",
     "memory": "Memoria",
     "travel": "Giro del mondo",
-    "detective": "Storia investigativa"
+    "detective": "Storia investigativa",
+    "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
     "barnyard": "Aia",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Il deposito sci",
     "lodgeYard": "Il cortile",
     "lodgeChairlift": "La seggiovia",
-    "lodgeSummit": "La vetta"
+    "lodgeSummit": "La vetta",
+    "treasury": "Stanza del tesoro"
   },
   "mode": {
     "label": "Modalità",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Impronte di scarponi che salgono in vetta",
       "skiPoleLeft": "Un bastoncino da sci piantato nella neve"
     }
+  },
+  "secret": {
+    "found": "Chiave segreta trovata!",
+    "keys": "Chiavi: {n} / {total}",
+    "keyFound": "Chiave trovata",
+    "keyHidden": "Chiave non trovata"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Trova le chiavi d’oro in tutti i capitoli",
+    "congrats": "Sei il giocatore più attento!"
   }
 }

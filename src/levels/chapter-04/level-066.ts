@@ -26,7 +26,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'fishingVillage',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${400 + rand() * 90}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const line = drying(300, 250)
@@ -50,6 +50,8 @@ export default svgLevel({
       // Quay
       `<rect y="340" width="800" height="50" fill="#8d99ae"/><rect y="336" width="800" height="6" fill="#5c677d"/>` +
       diff(60, 305, 20, person(60, 340, '#3a86ff'), person(60, 340, '#ffb703')) +
+      // The chapter's hidden key on the quay, behind the fisherman's legs
+      secret(294, 337, 8) +
       person(300, 340, '#e63946', true) +
       diff(330, 324, 20, fishBucket(330, 340, 2), fishBucket(330, 340, 1)) +
       oar(470, 340) +

@@ -151,6 +151,7 @@
     "dev": "Développement",
     "unlockAll": "Terminer tous les niveaux",
     "resetProgress": "Réinitialiser la progression",
+    "resetKeys": "Réinitialiser les clés trouvées",
     "music": "Musique",
     "sound": "Sons",
     "vibration": "Vibration",
@@ -178,7 +179,8 @@
     "time": "Le temps",
     "memory": "Mémoire",
     "travel": "Tour du monde",
-    "detective": "Histoire de détective"
+    "detective": "Histoire de détective",
+    "treasury": "Salle au trésor"
   },
   "levelTitles": {
     "barnyard": "Basse-cour",
@@ -452,7 +454,8 @@
     "lodgeSkiRoom": "Le local à skis",
     "lodgeYard": "La cour",
     "lodgeChairlift": "Le télésiège",
-    "lodgeSummit": "Le sommet"
+    "lodgeSummit": "Le sommet",
+    "treasury": "Salle au trésor"
   },
   "mode": {
     "label": "Mode",
@@ -884,5 +887,16 @@
       "bootPrintsUp": "Des traces de bottes montent vers le sommet",
       "skiPoleLeft": "Un bâton de ski planté dans la neige"
     }
+  },
+  "secret": {
+    "found": "Clé secrète trouvée !",
+    "keys": "Clés : {n} / {total}",
+    "keyFound": "Clé trouvée",
+    "keyHidden": "Clé non trouvée"
+  },
+  "treasury": {
+    "tag": "Bonus",
+    "locked": "Trouvez les clés d’or dans tous les chapitres",
+    "congrats": "Vous êtes le joueur le plus attentif !"
   }
 }

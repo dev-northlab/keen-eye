@@ -39,6 +39,8 @@ export interface MemoryHandlers {
   onMiss?: (mistakes: number) => void
   /** The answer is revealed. */
   onComplete?: (result: MemoryResult) => void
+  /** The hidden key on B was tapped and taken (docs/hidden-item-feature.md): neither a find nor a miss. */
+  onSecret?: () => void
 }
 
 export interface MemoryOptions {
@@ -48,6 +50,8 @@ export interface MemoryOptions {
   maxMisses?: number
   /** Looks at A while searching (default: the level's; calm mode: Infinity). */
   peeks?: number
+  /** The hidden key was collected before: not shown. */
+  secretTaken?: boolean
 }
 
 type Step = [phase: MemoryPhase, ms: number]
@@ -84,7 +88,11 @@ export class MemoryScene {
     this.peeks = options.peeks ?? level.memory.peeks
     this.found = level.differences.map(() => false)
     // No zoom: a picture is seen whole, and every tap counts at once.
-    this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), { zoom: false })
+    this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), {
+      zoom: false,
+      onSecret: (tap) => this.secret(tap),
+      secretTaken: options.secretTaken,
+    })
     this.run([['show', level.memory.showSeconds * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)
   }
@@ -161,6 +169,13 @@ export class MemoryScene {
     this.board.markFound(hit)
     this.handlers.onFound?.(this.foundCount, this.found.length)
     if (this.foundCount === this.found.length) this.end()
+  }
+
+  /** The key is drawn on B only, so it can be taken while searching. */
+  private secret(tap: Tap): void {
+    if (this.phase !== 'search' || this.done || this.loop.paused || tap.picture !== 1) return
+    this.board.takeSecret()
+    this.handlers.onSecret?.()
   }
 
   /** All found or out of misses: the last mark stays a moment, then the answer. */

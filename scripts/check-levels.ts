@@ -1,10 +1,10 @@
 // Level validator: npm run check-levels
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER } from '../src/levels/chapters.ts'
+import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
 import { detectiveLevels } from '../src/levels/detective/index.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
-import { levels } from '../src/levels/index.ts'
+import { levels, treasuryLevel } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
 import { travelLevels } from '../src/levels/travel/index.ts'
 import { timeLevels } from '../src/levels/time/index.ts'
@@ -21,6 +21,9 @@ const PIXEL_THRESHOLD = 8
 const ZONE_TOLERANCE_PX = 2
 /** A zone must show at least this many differing pixels at some sampled time. */
 const MIN_VISIBLE_PX = 40
+/** The hidden key shows at least this many pixels, and at most this share of itself: part of it is covered. */
+const SECRET_MIN_VISIBLE_PX = 25
+const SECRET_MAX_SHOWN = 0.75
 
 type Zone = { x: number; y: number; r: number }
 
@@ -55,6 +58,8 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
           perZone[ti][i]++
           continue
         }
+        // A "memory" level's key is drawn on B only: not a difference.
+        if (level.secret?.on === 'b' && inside(level.secret)) continue
         outside++
         box = { x0: Math.min(box.x0, x), y0: Math.min(box.y0, y), x1: Math.max(box.x1, x), y1: Math.max(box.y1, y) }
       }
@@ -114,6 +119,32 @@ function checkTraps(level: Level, a: SceneSvg, aAtB: SceneSvg, range: [number, n
   pixelsInZones(level, a, aAtB, traps).forEach((n, i) => {
     if (n < MIN_VISIBLE_PX) errors.push(`trap #${i} ("${traps[i].hint}") shows no natural change (${n} px)`)
   })
+}
+
+/**
+ * The hidden key (docs/hidden-item-feature.md) keeps clear of the traps, really shows (the picture it
+ * is drawn on differs from the same picture without it inside the tap zone) and is partly covered (it
+ * shows less than when drawn on top of everything). Zones over time are checked with the zones.
+ */
+function checkSecret(level: Level, scene: SceneSvg, errors: string[]) {
+  const s = level.secret!
+  const { w, h } = level.viewBox
+  if (s.x - s.r < 0 || s.y - s.r < 0 || s.x + s.r > w || s.y + s.r > h) errors.push(`the secret key goes outside the ${w}×${h} viewBox`)
+  if (s.on !== (level.memory ? 'b' : 'both')) errors.push(`the secret key is on "${s.on}", expected ${level.memory ? 'B only' : 'both pictures'}`)
+  ;(level.traps ?? []).forEach((t, i) => {
+    if (Math.hypot(t.x - s.x, t.y - s.y) < t.r + s.r) errors.push(`the secret key overlaps trap #${i}`)
+  })
+  const key = scene.svg.match(/<g data-secret=""[^>]*>.*?<\/g><\/g>/)?.[0]
+  if (!key) {
+    errors.push('the secret key is not drawn: use secret()')
+    return
+  }
+  const without = { ...scene, svg: scene.svg.replace(key, '') }
+  const onTop = { ...without, svg: without.svg + key }
+  const [shown, whole] = pixelsInZones(level, scene, without, [s]).concat(pixelsInZones(level, onTop, without, [s]))
+  if (shown < SECRET_MIN_VISIBLE_PX) errors.push(`the secret key is hidden (${shown} px visible)`)
+  else if (shown > whole * SECRET_MAX_SHOWN)
+    errors.push(`the secret key is too easy: ${shown} of its ${whole} px show, cover at least ${Math.round((1 - SECRET_MAX_SHOWN) * 100)}%`)
 }
 
 type Report = (problem: string, detail: string) => void
@@ -178,9 +209,12 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
           if (gap < z.r + zones[j].r) report(`zones #${i} and #${j} overlap`, when)
           else if (gap < minGap) report(`zones #${i} and #${j} are closer than ${minGap}`, when)
         }
+        const s = level.secret
+        if (s && Math.hypot(z.x - s.x, z.y - s.y) < z.r + s.r) report(`the secret key overlaps zone #${i}`, when)
       })
     })
   }
+  if (level.secret) checkSecret(level, b, errors)
 
   if (timed) {
     // The moments change the whole picture: differences are compared at B's moment, traps at A's.
@@ -204,6 +238,7 @@ const expected = new Map([
   ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
   ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
   ...detectiveLevels.map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
+  [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
 ])
 const selected = [...expected.keys()].filter((l) => ids.length === 0 || ids.includes(l.id))
 
