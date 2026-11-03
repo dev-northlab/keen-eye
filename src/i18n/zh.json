@@ -892,7 +892,11 @@
     "found": "找到了秘密钥匙！",
     "keys": "钥匙：{n} / {total}",
     "keyFound": "已找到钥匙",
-    "keyHidden": "未找到钥匙"
+    "keyHidden": "未找到钥匙",
+    "findHere": "这里的某一关藏着一把金钥匙。找到它！",
+    "foundHere": "这里的钥匙已经找到了！",
+    "findWorlds": "每个世界都藏着一把金钥匙。已找到：{n} / {total}",
+    "foundWorlds": "所有世界的钥匙都找到了！"
   },
   "treasury": {
     "tag": "奖励",

@@ -892,7 +892,11 @@
     "found": "Secret key found!",
     "keys": "Keys: {n} / {total}",
     "keyFound": "Key found",
-    "keyHidden": "Key not found"
+    "keyHidden": "Key not found",
+    "findHere": "A golden key is hidden in one of the levels here. Find it!",
+    "foundHere": "You have found the key from here!",
+    "findWorlds": "Every world hides a golden key. Found: {n} / {total}",
+    "foundWorlds": "You have found the keys of all worlds!"
   },
   "treasury": {
     "tag": "Bonus",

@@ -892,7 +892,11 @@
     "found": "Chave secreta encontrada!",
     "keys": "Chaves: {n} / {total}",
     "keyFound": "Chave encontrada",
-    "keyHidden": "Chave não encontrada"
+    "keyHidden": "Chave não encontrada",
+    "findHere": "Uma chave dourada está escondida em um dos níveis daqui. Encontre-a!",
+    "foundHere": "Você já encontrou a chave daqui!",
+    "findWorlds": "Cada mundo esconde uma chave dourada. Encontradas: {n} / {total}",
+    "foundWorlds": "Você encontrou as chaves de todos os mundos!"
   },
   "treasury": {
     "tag": "Bônus",

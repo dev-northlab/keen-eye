@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
-import KeyIcon from '../components/KeyIcon.vue'
+import KeyBadge from '../components/KeyBadge.vue'
 import LevelId from '../components/LevelId.vue'
 import {
   CHAPTERS,
@@ -53,6 +53,8 @@ const memory = category(MEMORY_CHAPTER)
 const travel = category(TRAVEL_CHAPTER)
 const detective = category(DETECTIVE_CHAPTER)
 
+/** Worlds whose key is found (the "spot the difference" banner stands for all of them). */
+const worldKeys = () => CHAPTERS.filter((c) => progress.hasKey(c.id)).length
 const keysFound = () => KEY_CHAPTERS.filter((c) => progress.hasKey(c.id)).length
 /** All keys found (or every level opened for testing). */
 const treasuryOpen = () => progress.allKeysFound || progress.devOpenAll
@@ -101,9 +103,14 @@ const timeTravel = {
                 {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
               </span>
             </span>
-            <!-- Golden once the key of every world is found. -->
-            <KeyIcon class="key" :found="CHAPTERS.every((c) => progress.hasKey(c.id))" />
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <!-- Golden once the key of every world is found. -->
+          <KeyBadge
+            class="key"
+            :found="worldKeys() === CHAPTERS.length"
+            :text="worldKeys() === CHAPTERS.length ? $t('secret.foundWorlds') : $t('secret.findWorlds', { n: worldKeys(), total: CHAPTERS.length })"
+          />
         </li>
         <li>
           <button class="mode time" @click="router.push({ name: 'chapter', params: { chapter: TIME_CHAPTER.id } })">
@@ -121,8 +128,9 @@ const timeTravel = {
                 {{ $t('map.progress', { done: time.done(), total: time.total }) }} · ★ {{ time.stars() }}
               </span>
             </span>
-            <KeyIcon class="key" :found="progress.hasKey(TIME_CHAPTER.id)" />
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(TIME_CHAPTER.id)" :text="progress.hasKey(TIME_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode memory" @click="router.push({ name: 'chapter', params: { chapter: MEMORY_CHAPTER.id } })">
@@ -140,8 +148,9 @@ const timeTravel = {
                 {{ $t('map.progress', { done: memory.done(), total: memory.total }) }} · ★ {{ memory.stars() }}
               </span>
             </span>
-            <KeyIcon class="key" :found="progress.hasKey(MEMORY_CHAPTER.id)" />
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(MEMORY_CHAPTER.id)" :text="progress.hasKey(MEMORY_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode world" @click="router.push({ name: 'travel' })">
@@ -159,8 +168,9 @@ const timeTravel = {
                 {{ $t('map.progress', { done: travel.done(), total: travel.total }) }} · ★ {{ travel.stars() }}
               </span>
             </span>
-            <KeyIcon class="key" :found="progress.hasKey(TRAVEL_CHAPTER.id)" />
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(TRAVEL_CHAPTER.id)" :text="progress.hasKey(TRAVEL_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode detective" @click="router.push({ name: 'detective' })">
@@ -181,8 +191,9 @@ const timeTravel = {
                 {{ $t('map.progress', { done: detective.done(), total: detective.total }) }} · ★ {{ detective.stars() }}
               </span>
             </span>
-            <KeyIcon class="key" :found="progress.hasKey(DETECTIVE_CHAPTER.id)" />
+            <span class="key-space" aria-hidden="true" />
           </button>
+          <KeyBadge class="key" :found="progress.hasKey(DETECTIVE_CHAPTER.id)" :text="progress.hasKey(DETECTIVE_CHAPTER.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
         </li>
         <li>
           <button class="mode travel" @click="router.push({ name: 'eras' })">
@@ -392,15 +403,37 @@ main {
   opacity: 0.9;
 }
 
-/* The banner's hidden key (grey or gold) or the treasury's lock, in a light badge. */
-.key {
+/* The banner's hidden key (grey or gold): a button of its own over the banner, in the place kept by
+   `.key-space`; the treasury's lock in the same light badge. */
+.list li {
+  position: relative;
+}
+
+.key-space {
+  flex: none;
+  width: 34px;
+  height: 34px;
+}
+
+li > .key {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.key :deep(.key-button),
+.key.lock {
+  background: rgb(255 255 255 / 0.85);
+}
+
+.key.lock {
   position: relative;
   flex: none;
   width: 34px;
   height: 34px;
   padding: 5px;
   border-radius: 50%;
-  background: rgb(255 255 255 / 0.85);
 }
 
 .lock {

@@ -892,7 +892,11 @@
     "found": "Geheime sleutel gevonden!",
     "keys": "Sleutels: {n} / {total}",
     "keyFound": "Sleutel gevonden",
-    "keyHidden": "Sleutel niet gevonden"
+    "keyHidden": "Sleutel niet gevonden",
+    "findHere": "In een van de levels hier is een gouden sleutel verstopt. Vind hem!",
+    "foundHere": "Je hebt de sleutel van hier al gevonden!",
+    "findWorlds": "Elke wereld verbergt een gouden sleutel. Gevonden: {n} / {total}",
+    "foundWorlds": "Je hebt de sleutels van alle werelden gevonden!"
   },
   "treasury": {
     "tag": "Bonus",

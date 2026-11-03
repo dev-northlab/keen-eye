@@ -892,7 +892,11 @@
     "found": "비밀 열쇠를 찾았어요!",
     "keys": "열쇠: {n} / {total}",
     "keyFound": "열쇠 찾음",
-    "keyHidden": "열쇠 못 찾음"
+    "keyHidden": "열쇠 못 찾음",
+    "findHere": "여기 레벨 중 하나에 황금 열쇠가 숨겨져 있어요. 찾아보세요!",
+    "foundHere": "여기 열쇠는 이미 찾았어요!",
+    "findWorlds": "모든 세계에 황금 열쇠가 숨겨져 있어요. 찾은 열쇠: {n} / {total}",
+    "foundWorlds": "모든 세계의 열쇠를 찾았어요!"
   },
   "treasury": {
     "tag": "보너스",

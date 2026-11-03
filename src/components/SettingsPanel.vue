@@ -6,16 +6,13 @@ import ThemeSwitch from './ThemeSwitch.vue'
 import { playSfx } from '../services/audio.ts'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 
 const settings = useSettingsStore()
-const progress = useProgressStore()
 const purchase = usePurchaseStore()
 const router = useRouter()
 
-const isDev = import.meta.env.DEV
 const percent = (v: number) => `${Math.round(v * 100)}%`
 
 // TEMPORARY promo code for testing staging builds (see PROMO_CODE in stores/purchase.ts).
@@ -119,15 +116,6 @@ async function applyPromo() {
       </div>
       <small v-if="promoInvalid" class="error" role="alert">{{ $t('settings.promoInvalid') }}</small>
     </form>
-
-    <section v-if="isDev" class="dev">
-      <h2>{{ $t('settings.dev') }}</h2>
-      <button class="secondary" @click="progress.unlockAll()">{{ $t('settings.unlockAll') }}</button>
-      <button class="secondary" @click="purchase.resetForDev(false)">{{ $t('settings.resetPurchaseCache') }}</button>
-      <button class="secondary" @click="purchase.resetForDev(true)">{{ $t('settings.resetPurchaseStore') }}</button>
-      <button class="secondary" @click="progress.reset()">{{ $t('settings.resetProgress') }}</button>
-      <button class="secondary" @click="progress.resetKeys()">{{ $t('settings.resetKeys') }}</button>
-    </section>
   </main>
 </template>
 
@@ -223,19 +211,5 @@ input[type='checkbox'] {
 
 .row .error {
   color: var(--danger-fg);
-}
-
-.dev {
-  display: grid;
-  gap: 8px;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--line);
-}
-
-.dev h2 {
-  font-size: 15px;
-  margin: 0;
-  color: var(--muted);
 }
 </style>

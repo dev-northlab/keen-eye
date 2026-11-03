@@ -53,12 +53,16 @@ describe('hidden keys and the treasury (docs/hidden-item-feature.md)', () => {
         t.secret?.found,
         t.secret?.keyFound,
         t.secret?.keyHidden,
+        t.secret?.findHere,
+        t.secret?.foundHere,
+        t.secret?.foundWorlds,
         t.treasury?.tag,
         t.treasury?.locked,
         t.treasury?.congrats,
       ])
         assert.ok(typeof text === 'string' && text.length > 0, file)
       assert.match(t.secret.keys, /\{n\}.*\{total\}/, file)
+      assert.match(t.secret.findWorlds, /\{n\}.*\{total\}/, file)
     }
   })
 })

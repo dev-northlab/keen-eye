@@ -892,7 +892,11 @@
     "found": "Megvan a titkos kulcs!",
     "keys": "Kulcsok: {n} / {total}",
     "keyFound": "Kulcs megtalálva",
-    "keyHidden": "Kulcs nincs meg"
+    "keyHidden": "Kulcs nincs meg",
+    "findHere": "Az itteni pályák egyikén egy aranykulcs rejtőzik. Keresd meg!",
+    "foundHere": "Az innen való kulcsot már megtaláltad!",
+    "findWorlds": "Minden világ egy aranykulcsot rejt. Megtalálva: {n} / {total}",
+    "foundWorlds": "Minden világ kulcsát megtaláltad!"
   },
   "treasury": {
     "tag": "Bónusz",

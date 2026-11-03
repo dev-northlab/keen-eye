@@ -32,7 +32,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienMarket',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, secret }) => {
     const left = lantern(200, 92.5, '#ff6b8b')
     const right = lantern(600, 92.5, '#3ae0ff')
     const swinging = (period: number) => anim({ type: 'sway', angle: 14, pivot: [200, 92.5], period }, left)
@@ -46,8 +46,10 @@ export default svgLevel({
       // Stalls
       stall(150, 380, '#8338ec') +
       counter(150, 380) +
+      // The chapter's hidden key standing behind the fruit, its bow between the last two
+      secret(165, 328, 90) +
       `<g fill="#ffd23f"><circle cx="110" cy="332" r="8"/><circle cx="150" cy="332" r="8"/><circle cx="170" cy="332" r="8"/><circle cx="140" cy="320" r="8"/></g>` +
-      diff(130, 332, 18, `<circle cx="130" cy="332" r="8" fill="#ffd23f"/>`, `<circle cx="130" cy="332" r="8" fill="#8ac926"/>`) +
+      diff(130, 332, 18, `<circle cx="130" cy="332" r="8" fill="#ffd23f"/>`, `<ellipse cx="130" cy="332" rx="10.5" ry="7" fill="#ffd23f"/>`) +
       stall(400, 380, '#2a9d8f') +
       diff(400, 314, 18, alien(400, 345, '#8ac926'), alien(400, 345, '#8ac926', 2)) +
       counter(400, 380) +

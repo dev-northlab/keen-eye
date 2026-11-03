@@ -22,7 +22,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'observatory',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand, secret }) => {
+  scene: ({ diff, anim, rand }) => {
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.6, period }, fireflies(120, 440))
 
     return (
@@ -42,8 +42,6 @@ export default svgLevel({
       pine(40, 380) +
       pine(80, 390, 0.8) +
       pine(760, 360, 1.1) +
-      // The chapter's hidden key in the grass, half behind the observatory
-      secret(497, 324, -12) +
       // Observatory
       `<rect x="500" y="250" width="120" height="80" fill="#d0d4de"/><path d="M500 250a60 60 0 0 1 120 0Z" fill="#e6e6f0"/><rect x="552" y="190" width="16" height="60" fill="#1d2433"/>` +
       diff(543, 210, 50, telescope, anim({ type: 'sway', angle: 10, pivot: [560, 240], period: 5 }, telescope)) +

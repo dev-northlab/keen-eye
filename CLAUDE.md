@@ -177,7 +177,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.
-- Development-only tools (Settings → "Complete all levels", "Reset progress", "Forget purchase") are behind `import.meta.env.DEV`.
+- Development-only tools ("Open all levels", "Complete all levels", "Forget purchase", "Reset progress", "Reset found keys") sit in the dialog of the Home screen's "Development" button, behind `import.meta.env.DEV`.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.
 - Level modules and everything they import must stay free of browser/Vue APIs (the validator runs them in Node),
   and TS imports use explicit `.ts` extensions.

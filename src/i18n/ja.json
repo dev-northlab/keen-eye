@@ -892,7 +892,11 @@
     "found": "秘密の鍵を見つけた！",
     "keys": "鍵：{n} / {total}",
     "keyFound": "鍵を発見",
-    "keyHidden": "鍵は未発見"
+    "keyHidden": "鍵は未発見",
+    "findHere": "ここのどこかのレベルに金の鍵が隠されています。見つけよう！",
+    "foundHere": "ここの鍵はもう見つけました！",
+    "findWorlds": "どの世界にも金の鍵が隠されています。発見：{n} / {total}",
+    "foundWorlds": "すべての世界の鍵を見つけました！"
   },
   "treasury": {
     "tag": "ボーナス",

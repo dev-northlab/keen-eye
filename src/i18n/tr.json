@@ -892,7 +892,11 @@
     "found": "Gizli anahtar bulundu!",
     "keys": "Anahtarlar: {n} / {total}",
     "keyFound": "Anahtar bulundu",
-    "keyHidden": "Anahtar bulunmadı"
+    "keyHidden": "Anahtar bulunmadı",
+    "findHere": "Buradaki seviyelerden birinde altın bir anahtar saklı. Bul onu!",
+    "foundHere": "Buradaki anahtarı zaten buldun!",
+    "findWorlds": "Her dünyada altın bir anahtar saklı. Bulunan: {n} / {total}",
+    "foundWorlds": "Tüm dünyaların anahtarlarını buldun!"
   },
   "treasury": {
     "tag": "Bonus",

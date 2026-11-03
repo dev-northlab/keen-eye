@@ -892,7 +892,11 @@
     "found": "Cheie secretă găsită!",
     "keys": "Chei: {n} / {total}",
     "keyFound": "Cheie găsită",
-    "keyHidden": "Cheie negăsită"
+    "keyHidden": "Cheie negăsită",
+    "findHere": "Într-unul dintre nivelurile de aici e ascunsă o cheie de aur. Găsește-o!",
+    "foundHere": "Ai găsit deja cheia de aici!",
+    "findWorlds": "Fiecare lume ascunde o cheie de aur. Găsite: {n} / {total}",
+    "foundWorlds": "Ai găsit cheile tuturor lumilor!"
   },
   "treasury": {
     "tag": "Bonus",

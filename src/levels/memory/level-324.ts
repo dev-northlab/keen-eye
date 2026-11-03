@@ -44,7 +44,7 @@ export default memoryLevel({
   id: 324,
   title: 'memoryLab',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, secret }) =>
     room(360, '#e3eef5', '#9aa5b1') +
     tileLines(352) +
     chart() +
@@ -53,6 +53,8 @@ export default memoryLevel({
     `<rect x="480" y="150" width="280" height="10" fill="#8a5a33"/>` +
     labJar(520, 150, '#8ac926') +
     diff(...around(560, 92, 600, 150), labJar(580, 150, '#ff6b8b'), labJar(580, 150, '#4dabf7')) +
+    // The category's hidden key (on B only), behind the yellow jar
+    secret(627, 144) +
     labJar(640, 150, '#ffd23f') +
     diff(...around(686, 84, 734, 150), '', big(710, 150, 0.6, pottedPlant(0, 0))) +
     // Bench and cabinets

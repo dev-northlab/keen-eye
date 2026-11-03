@@ -892,7 +892,11 @@
     "found": "Chiave segreta trovata!",
     "keys": "Chiavi: {n} / {total}",
     "keyFound": "Chiave trovata",
-    "keyHidden": "Chiave non trovata"
+    "keyHidden": "Chiave non trovata",
+    "findHere": "In uno dei livelli qui è nascosta una chiave d’oro. Trovala!",
+    "foundHere": "Hai già trovato la chiave di qui!",
+    "findWorlds": "Ogni mondo nasconde una chiave d’oro. Trovate: {n} / {total}",
+    "foundWorlds": "Hai trovato le chiavi di tutti i mondi!"
   },
   "treasury": {
     "tag": "Bonus",

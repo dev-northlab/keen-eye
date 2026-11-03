@@ -892,7 +892,11 @@
     "found": "Tajný klíč nalezen!",
     "keys": "Klíče: {n} / {total}",
     "keyFound": "Klíč nalezen",
-    "keyHidden": "Klíč nenalezen"
+    "keyHidden": "Klíč nenalezen",
+    "findHere": "V jedné z úrovní tady je ukrytý zlatý klíč. Najděte ho!",
+    "foundHere": "Klíč odsud už máte!",
+    "findWorlds": "Každý svět skrývá zlatý klíč. Nalezeno: {n} / {total}",
+    "foundWorlds": "Našli jste klíče všech světů!"
   },
   "treasury": {
     "tag": "Bonus",
