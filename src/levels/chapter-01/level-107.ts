@@ -1,6 +1,7 @@
 // Motion differences: the owl turns its head only on picture B; the kitten's tail swishes faster on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { hayBale, hen } from '../shapes.ts'
+import { chick, eggNest, hayBale, hen, milkCan, pumpkin } from '../shapes.ts'
 
 /** Square hay bale, 80 × 40; (x, y) = top-left corner; `bands` twine bands of `twine` color. */
 const bale = (x: number, y: number, bands = 2, twine = '#c0392b') => {
@@ -110,7 +111,12 @@ export default svgLevel({
       kitten(190, 456) + diff(150, 436, 22, swish(1.6), swish(0.6)) +
       `<g transform="translate(250 472)"><ellipse cy="-7" rx="16" ry="8" fill="#bdbdbd"/><circle cx="12" cy="-12" r="8" fill="#bdbdbd"/><path d="M7 -18l1 -6l4 3ZM17 -18l-1 -6l-4 3Z" fill="#bdbdbd"/></g>` +
       diff(320, 466, 24, yarn(316, 470), yarn(328, 468)) +
-      `<path d="M430 500q4 -40 30 -40h50q20 0 22 40Z" fill="#e3cfa0"/><path d="M452 470h56" stroke="#a08a63" stroke-width="2"/>`
+      `<path d="M430 500q4 -40 30 -40h50q20 0 22 40Z" fill="#e3cfa0"/><path d="M452 470h56" stroke="#a08a63" stroke-width="2"/>` +
+      chick(320, 410) +
+      eggNest(720, 440) +
+      bird(250, 125) +
+      milkCan(640, 392) +
+      pumpkin(390, 488)
     )
   },
 })

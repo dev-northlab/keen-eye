@@ -1,6 +1,6 @@
 // Motion differences: the bus arrives faster on picture B; the kiosk's flag waves only on B.
 import { svgLevel } from '../helpers.ts'
-import { bin, building, bus, cityTree, cloud, dog, lampHead, lampPost, person, pigeon, skyline, street, sun } from './shapes.ts'
+import { bin, building, bus, cityTree, cloud, dog, lampHead, lampPost, mailbox, manhole, newspaperBox, person, pigeon, scooter, shoppingBag, skyline, street, sun } from './shapes.ts'
 
 /** Bus shelter; (x, y) = ground center. The timetable is separate. Bounds: x ±76, y from −110 to 0. */
 const shelter = (x: number, y: number) =>
@@ -55,7 +55,12 @@ export default svgLevel({
       cityTree(40, 340, 1.1) +
       pigeon(140, 340) +
       diff(180, 333, 18, pigeon(180, 340, true), '') +
-      diff(150, 430, 68, arriving(12), arriving(6), 'bus')
+      diff(150, 430, 68, arriving(12), arriving(6), 'bus') +
+      mailbox(95, 352) +
+      newspaperBox(262, 352) +
+      shoppingBag(442, 352) +
+      scooter(783, 352) +
+      manhole(620, 470)
     )
   },
 })

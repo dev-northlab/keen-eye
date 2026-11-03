@@ -1,6 +1,6 @@
 // Motion differences: the owl blinks only on picture B; the glowing mushroom pulses faster on B; the bat flies faster on B.
 import { svgLevel } from '../helpers.ts'
-import { floor, fox, hedgehog, mushroom, pine, tent } from './shapes.ts'
+import { acorn, anthill, backpack, floor, fox, hedgehog, lantern, mushroom, pine, pineCone, tent } from './shapes.ts'
 
 /** Owl on a branch; (x, y) = feet. The eyes are separate. Bounds: x ±16, y from −36 to 0. */
 const owlBody = (x: number, y: number) =>
@@ -70,7 +70,12 @@ export default svgLevel({
       `<circle cx="560" cy="460" r="30" fill="#d9ff7a" fill-opacity="0.12"/>` +
       mushroom(610, 486, '#a0703f', 0.8) +
       floor(rand, 330, 480, 10) +
-      flies
+      flies +
+      lantern(608, 442) +
+      backpack(752, 444) +
+      pineCone(300, 478) +
+      acorn(230, 482) +
+      anthill(480, 412)
     )
   },
 })

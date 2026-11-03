@@ -1,6 +1,6 @@
 // Motion differences: the dog runs faster on picture B; the pharmacy sign swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { building, cityTree, cloud, dog, door, person, skyline, street, sun } from './shapes.ts'
+import { bollard, building, cityTree, cloud, dog, door, mailbox, newspaperBox, person, sandwichBoard, shoppingBag, skyline, street, sun } from './shapes.ts'
 
 /** Tram, faces right; (x, y) = rail level under the middle. The board and the door are separate. Bounds: x ±76, y from −90 to 0. */
 const tram = (x: number, y: number, color: string) => {
@@ -70,7 +70,12 @@ export default svgLevel({
       diff(560, 327, 26, running(9), running(4.5), 'dog') +
       tram(300, 470, '#e63946') +
       diff(300, 406, 18, board(300, 470, '#ffd166'), board(300, 470, '#8ac926')) +
-      diff(334, 434, 26, tramDoor(300, 470, false), tramDoor(300, 470, true))
+      diff(334, 434, 26, tramDoor(300, 470, false), tramDoor(300, 470, true)) +
+      mailbox(180, 352) +
+      newspaperBox(300, 352) +
+      bollard(397, 352) +
+      shoppingBag(522, 354) +
+      sandwichBoard(765, 352)
     )
   },
 })

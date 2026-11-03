@@ -1,6 +1,7 @@
 // Motion differences: the bullfinch on the log hops faster on picture B; the far cabin's smoke drifts only on B.
 import { svgLevel } from '../helpers.ts'
-import { deer, rabbit } from './shapes.ts'
+import { stones } from '../shapes.ts'
+import { backpack, deer, feather, lantern, rabbit, trailSign } from './shapes.ts'
 
 /** Snowy pine; (x, y) = trunk foot, scale s. Bounds: x ±32·s, y from −104·s to 0. */
 const snowPine = (x: number, y: number, s = 1) =>
@@ -86,6 +87,11 @@ export default svgLevel({
       diff(559, 454, 30, rabbit(552, 470, true, '#e9e3d6'), rabbit(566, 470, true, '#e9e3d6')) +
       diff(684, 470, 28, tracks(660, 470, 3), tracks(660, 470, 4)) +
       cone(60, 486) + diff(122, 472, 22, '', cone(122, 472)) + cone(170, 490) +
+      lantern(676, 272) +
+      feather(570, 380) +
+      backpack(447, 478) +
+      trailSign(310, 345) +
+      stones(620, 482) +
       flakes
     )
   },

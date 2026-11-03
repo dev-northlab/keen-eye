@@ -1,6 +1,6 @@
 // Motion differences: the propeller spins faster on picture B; the periscope light blinks only on B; the squid jets faster on B.
 import { svgLevel } from '../helpers.ts'
-import { fish, rock, seaweed, turtle } from './shapes.ts'
+import { anchor, bottleMessage, clam, fish, rock, seahorse, seaUrchin, seaweed, turtle } from './shapes.ts'
 
 /** Submarine, faces right; (x, y) = center. The propeller, lamp and a porthole are separate. Bounds: x ±90, y from −50 to +30. */
 const sub = (x: number, y: number, color: string) =>
@@ -61,6 +61,11 @@ export default svgLevel({
       seaweed(740, 480, 1.4, '#2a9d8f') +
       diff(560, 466, 26, seaweed(560, 490, 1.2), seaweed(560, 490, 1.2, '#4caf6a')) +
       seaweed(60, 492, 1) +
+      clam(215, 470) +
+      seaUrchin(355, 470) +
+      bottleMessage(510, 472) +
+      seahorse(700, 300) +
+      anchor(680, 470) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles)
     )
   },

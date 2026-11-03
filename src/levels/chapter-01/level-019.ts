@@ -1,6 +1,7 @@
 // Motion differences: the bat flies faster on picture B; the cat's tail swings only on B.
+import { mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { fence, grass, hayBale } from '../shapes.ts'
+import { fence, grass, hayBale, milkCan, pumpkin, stones } from '../shapes.ts'
 
 /** Bat, faces right; (x, y) = body center. Bounds: x ±20, y from −10 to +8. */
 const bat = (x: number, y: number) =>
@@ -89,7 +90,12 @@ export default svgLevel({
       diff(632, 378, 22, catTail, anim({ type: 'sway', angle: 18, pivot: [640, 384], period: 1.6 }, catTail)) +
       cat(640, 390) +
       tufts +
-      flies
+      flies +
+      pumpkin(240, 352) +
+      stump(550, 470) +
+      mushroom(360, 440) +
+      milkCan(545, 348) +
+      stones(740, 470)
     )
   },
 })

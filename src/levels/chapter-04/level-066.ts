@@ -1,6 +1,6 @@
 // Motion differences: the drying fish sway only on picture B; the net float bobs faster on B; the gull flies the other way round on B.
 import { svgLevel } from '../helpers.ts'
-import { buoy, cloud, fish, gull, gullStanding, lifeRing, person, rock, sun, waves } from './shapes.ts'
+import { beachBall, bucket, buoy, cloud, fish, flipFlops, gull, gullStanding, lifeRing, person, rock, sun, sunglasses, sunHat, waves } from './shapes.ts'
 
 /** Village house; (x, y) = ground center. Bounds: x ±(w/2 + 6), y from −(h + 30) to 0. */
 const house = (x: number, y: number, w: number, h: number, wall: string, roof: string) =>
@@ -64,7 +64,12 @@ export default svgLevel({
       diff(600, 440, 18, bobbing(2), bobbing(0.9), 'float') +
       float(680, 440) +
       diff(200, 450, 20, buoy(200, 454), buoy(200, 454, '#8ac926')) +
-      rock(740, 490, 1.1, '#5c677d')
+      rock(740, 490, 1.1, '#5c677d') +
+      sunHat(150, 370) +
+      bucket(260, 372) +
+      beachBall(420, 372) +
+      flipFlops(590, 372) +
+      sunglasses(720, 372)
     )
   },
 })

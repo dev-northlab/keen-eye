@@ -1,6 +1,7 @@
 // Motion differences: the chimney smoke rises faster on picture B; the bird hops only on B; the lantern swings faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bird, cabin, deer, rabbit } from './shapes.ts'
+import { stones } from '../shapes.ts'
+import { backpack, bird, cabin, deer, feather, pineCone, rabbit, trailSign } from './shapes.ts'
 
 /** Snowy pine; (x, y) = bottom of the trunk. The snow cap is separate. Bounds: x ±30·s, y from −100·s to 0. */
 const pine = (x: number, y: number, s = 1) =>
@@ -69,6 +70,11 @@ export default svgLevel({
       diff(80, 464, 22, rabbit(80, 480, false, '#c9bfae'), rabbit(80, 480, true, '#c9bfae')) +
       tracks +
       diff(680, 468, 26, berryBush(680, 480, '#e63946'), berryBush(680, 480, '#3a86ff')) +
+      stones(445, 402) +
+      pineCone(90, 330) +
+      feather(380, 445) +
+      backpack(615, 402) +
+      trailSign(340, 350) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes)
     )
   },

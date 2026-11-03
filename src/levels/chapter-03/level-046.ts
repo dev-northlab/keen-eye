@@ -1,6 +1,6 @@
 // Motion differences: the chimney smoke rises faster on picture B; the well bucket swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { bush, cabin, cloud, floor, fox, pine, stump, sun } from './shapes.ts'
+import { acorn, anthill, backpack, bush, cabin, cloud, floor, fox, lantern, pine, pineCone, stump, sun } from './shapes.ts'
 import { dog, person } from '../chapter-02/shapes.ts'
 
 /** Smoke over the chimney top at (x, y). Bounds: x from −12 to +14, y from −44 to +4. */
@@ -77,7 +77,12 @@ export default svgLevel({
       diff(680, 387, 18, pail, anim({ type: 'sway', angle: 14, pivot: [680, 374], period: 1.4 }, pail)) +
       fox(740, 490, true) +
       bush(320, 470, 1.1) +
-      floor(rand, 410, 490, 8)
+      floor(rand, 410, 490, 8) +
+      lantern(285, 402) +
+      backpack(470, 428) +
+      pineCone(95, 486) +
+      acorn(360, 478) +
+      anthill(760, 426)
     )
   },
 })

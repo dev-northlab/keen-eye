@@ -1,6 +1,6 @@
 // Motion differences: the cyclist rides the other way round on picture B; the balloon bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { awning, balloon, bike, bin, building, car, cityTree, cloud, dog, door, flowerBox, lampHead, lampPost, person, pigeon, signBoard, skyline, street, sun } from './shapes.ts'
+import { awning, balloon, bike, bin, building, car, cityTree, cloud, dog, door, flowerBox, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person, pigeon, sandwichBoard, signBoard, skyline, street, sun } from './shapes.ts'
 
 export default svgLevel({
   id: 21,
@@ -45,7 +45,12 @@ export default svgLevel({
       // Traffic
       diff(200, 421, 47, car(200, 440, '#ffb703'), car(200, 440, '#8ac926')) +
       car(380, 430, '#e63946', true) +
-      diff(560, 453, 34, ride(false), ride(true), 'bike')
+      diff(560, 453, 34, ride(false), ride(true), 'bike') +
+      mailbox(130, 352) +
+      sandwichBoard(240, 352) +
+      newspaperBox(375, 352) +
+      parkingMeter(575, 352) +
+      manhole(330, 472)
     )
   },
 })

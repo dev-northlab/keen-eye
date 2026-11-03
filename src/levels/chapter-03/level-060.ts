@@ -1,6 +1,6 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bear drums faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bear, fireLogs, flame, floor, fox, hedgehog, pine, rabbit } from './shapes.ts'
+import { acorn, backpack, bear, feather, fireLogs, flame, floor, fox, hedgehog, pine, pineCone, rabbit, wildStrawberry } from './shapes.ts'
 import { balloon } from '../chapter-02/shapes.ts'
 
 /** Paper lantern hanging from (x, y). Bounds: x ±10, y from 0 to +30. */
@@ -64,7 +64,12 @@ export default svgLevel({
       diff(700, 408, 34, balloon(700, 396, '#ff006e'), '') +
       `<rect x="80" y="400" width="80" height="12" fill="#8a5a3b"/><rect x="90" y="412" width="6" height="30" fill="#8a5a3b"/><rect x="144" y="412" width="6" height="30" fill="#8a5a3b"/>` +
       diff(120, 384, 22, cake(120, 400, 3), cake(120, 400, 2)) +
-      floor(rand, 350, 490, 8)
+      floor(rand, 350, 490, 8) +
+      feather(325, 472) +
+      backpack(470, 475) +
+      pineCone(670, 480) +
+      acorn(230, 412) +
+      wildStrawberry(50, 480)
     )
   },
 })

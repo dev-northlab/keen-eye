@@ -1,6 +1,6 @@
 // Motion differences: the turtle paddles faster on picture B; the seahorse bobs only on B.
 import { svgLevel } from '../helpers.ts'
-import { coral, fish, jellyfish, sandBits, seaweed, shell, starfish, turtle } from './shapes.ts'
+import { anchor, bottleMessage, clam, coral, fish, jellyfish, sandBits, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
 
 /** Clownfish, faces right; (x, y) = center. Bounds: x ±13, y ±7. */
 const clownfish = (x: number, y: number, body: string) =>
@@ -83,6 +83,11 @@ export default svgLevel({
       starfish(390, 476, '#ff6b8b') + starfish(720, 480) + shell(560, 488) + shell(660, 492, '#ffd1dc') +
       diff(612, 474, 22, shell(612, 482, '#f4f1e8'), '') +
       diff(480, 468, 22, '', urchin(480, 476)) +
+      seaUrchin(150, 472) +
+      bottleMessage(420, 490) +
+      snorkelMask(680, 452) +
+      anchor(212, 468) +
+      clam(518, 490) +
       weeds + bubbles
     )
   },

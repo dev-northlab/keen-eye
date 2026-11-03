@@ -1,6 +1,8 @@
 // Motion differences: the mixer drum turns faster on picture B; the excavator beacon blinks only on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, cone, person, pigeon, skyline } from './shapes.ts'
+import { stones, wheelbarrow } from '../shapes.ts'
+import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline } from './shapes.ts'
 
 /** Hard hat on a person standing at (x, y). Bounds: x ±10, y from −66 to −56. */
 const hardHat = (x: number, y: number, color: string) => `<path d="M${x - 10} ${y - 56}a10 10 0 0 1 20 0Z" fill="${color}"/><rect x="${x - 11}" y="${y - 58}" width="22" height="3" fill="${color}"/>`
@@ -94,7 +96,12 @@ export default svgLevel({
       diff(420, 362, 24, warning(420, 362), `<g transform="rotate(20 420 362)">${warning(420, 362)}</g>`) +
       brick(536, 486) + brick(560, 486) + brick(548, 477) + diff(560, 468, 22, brick(548, 468), brick(556, 468)) + brick(584, 486) +
       `<rect x="760" y="410" width="36" height="64" rx="4" fill="#2a9d8f"/><rect x="772" y="420" width="12" height="4" fill="#1d7468"/>` +
-      person(612, 488, '#ff9f1c', true) + hardHat(612, 488, '#ffd23f')
+      person(612, 488, '#ff9f1c', true) + hardHat(612, 488, '#ffd23f') +
+      wheelbarrow(60, 425) +
+      coffeeCup(265, 470) +
+      stones(392, 486) +
+      sandwichBoard(700, 490) +
+      bird(470, 48)
     )
   },
 })

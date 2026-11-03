@@ -1,6 +1,8 @@
 // Motion differences: the crane's hook swings only on picture B; the mixer drum turns faster on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, cone, person, pigeon, skyline, sun } from './shapes.ts'
+import { stones, wheelbarrow } from '../shapes.ts'
+import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline, sun } from './shapes.ts'
 
 /** Worker with a hard hat; (x, y) = feet. The hat is separate. Bounds: x ±13, y from −62 to 0. */
 const worker = (x: number, y: number, vest = '#fb8500', flip = false) => person(x, y, vest, flip)
@@ -84,7 +86,12 @@ export default svgLevel({
       truck(620, 492) +
       cone(400, 492) +
       diff(430, 478, 18, cone(430, 490), '') +
-      cone(760, 486)
+      cone(760, 486) +
+      coffeeCup(262, 470) +
+      wheelbarrow(140, 470) +
+      sandwichBoard(500, 472) +
+      bird(400, 197) +
+      stones(690, 482)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the neon sign blinks only on picture B; the taxi drives faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bin, building, car, cityTree, door, lampHead, lampPost, person, signBoard, skyline, street } from './shapes.ts'
+import { bin, bollard, building, car, cityTree, door, lampHead, lampPost, mailbox, manhole, newspaperBox, person, shoppingBag, signBoard, skyline, street } from './shapes.ts'
 
 const LIT = '#ffd166'
 const DARK = '#2d3a55'
@@ -62,7 +62,12 @@ export default svgLevel({
       person(680, 340, '#e63946', true) +
       car(160, 440, '#3a86ff') +
       diff(160, 398, 18, roofSign(160, 440, '#ffb703'), roofSign(160, 440, '#e63946')) +
-      diff(560, 451, 47, driving(14), driving(7), 'taxi')
+      diff(560, 451, 47, driving(14), driving(7), 'taxi') +
+      mailbox(165, 352) +
+      bollard(360, 352) +
+      newspaperBox(520, 352) +
+      shoppingBag(752, 352) +
+      manhole(700, 470)
     )
   },
 })

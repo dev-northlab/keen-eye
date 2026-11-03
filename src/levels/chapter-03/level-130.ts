@@ -1,6 +1,7 @@
 // Motion differences: the left owlet blinks only on picture B; the spider on its thread bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { squirrel } from './shapes.ts'
+import { ladybug } from '../shapes.ts'
+import { acorn, bird, feather, pineCone, squirrel } from './shapes.ts'
 
 /** Owl eyes; (x, y) = between them. Bounds: x ±20, y ±10. */
 const owlEyes = (x: number, y: number, iris: string) =>
@@ -85,7 +86,12 @@ export default svgLevel({
       // Right branch with the squirrel
       `<path d="M580 370Q690 350 800 360" stroke="#6b4a33" stroke-width="16" fill="none"/>` +
       leaf(760, 352) + leaf(620, 360) +
-      diff(690, 340, 28, squirrel(690, 360, false, '#c0692b'), squirrel(690, 360, true, '#c0692b'))
+      diff(690, 340, 28, squirrel(690, 360, false, '#c0692b'), squirrel(690, 360, true, '#c0692b')) +
+      acorn(650, 354) +
+      pineCone(40, 144) +
+      feather(740, 372) +
+      ladybug(520, 232) +
+      bird(205, 140)
     )
   },
 })

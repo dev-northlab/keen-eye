@@ -1,7 +1,8 @@
 // Motion difference: the duck swims faster on picture B.
 import type { AnimSpec } from '../helpers.ts'
+import { bird, frog, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
+import { cloud, duck, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, tree } from '../shapes.ts'
 
 const swim = (period: number): AnimSpec => ({
   id: 'duck',
@@ -73,7 +74,12 @@ export default svgLevel({
       diff(254, 364, 40, anim(swim(12), duck(250, 370)), anim(swim(7), duck(250, 370)), 'duck') +
       tufts +
       diff(320, 455, 28, mushroom(320, 468, '#e63946'), mushroom(320, 468, '#a0703f')) +
-      flowers
+      flowers +
+      frog(390, 467) +
+      stump(590, 294) +
+      bird(690, 118) +
+      snail(160, 472) +
+      stones(240, 480)
     )
   },
 })

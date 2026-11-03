@@ -1,6 +1,6 @@
 // Motion differences: the owl in the hollow blinks only on picture B; the fern by the fox sways faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bird, bush, deer, fern, fox, mushroom, pine, rock } from './shapes.ts'
+import { acorn, anthill, bird, bush, deer, feather, fern, fox, mushroom, pine, pineCone, rock, trailSign } from './shapes.ts'
 
 /** Spider web with `spokes` radial threads; (x, y) = center, radius r. */
 const web = (x: number, y: number, r: number, spokes: number) => {
@@ -62,6 +62,11 @@ export default svgLevel({
       mushroom(410, 486, '#c9622c', 0.8) + diff(382, 474, 22, '', mushroom(382, 486, '#c9622c', 0.65)) +
       rock(640, 492, 1.1, '#9aa39a') + diff(704, 474, 24, rock(698, 488, 0.8, '#8a948a'), rock(710, 488, 0.8, '#8a948a')) +
       fern(770, 492, '#3f7a4a') +
+      pineCone(470, 445) +
+      acorn(320, 425) +
+      anthill(660, 440) +
+      feather(200, 385) +
+      trailSign(785, 415) +
       fog(430, 0.25)
     )
   },

@@ -1,6 +1,7 @@
 // Motion differences: one firefly over the clearing blinks only on picture B; the frog puffs its throat only on B.
 import { svgLevel } from '../helpers.ts'
-import { hedgehog } from './shapes.ts'
+import { snail } from '../shapes.ts'
+import { acorn, bluebells, hedgehog, lantern, pineCone } from './shapes.ts'
 
 /** Glowing mushroom; (x, y) = stem foot; `spots` light spots on the cap. Bounds: x ±16, y from −30 to 0. */
 const glowShroom = (x: number, y: number, cap: string, spots = 3) => {
@@ -81,7 +82,12 @@ export default svgLevel({
       glowShroom(190, 486, '#b38cff') + diff(234, 458, 24, glowShroom(234, 476, '#b38cff'), glowShroom(234, 476, '#b38cff', 1)) +
       diff(419, 470, 28, hedgehog(412, 482), hedgehog(426, 482)) +
       diff(300, 250, 22, firefly(300, 250), anim({ type: 'blink', duty: 0.5, period: 1.1 }, firefly(300, 250))) +
-      flies
+      flies +
+      lantern(300, 470) +
+      pineCone(520, 480) +
+      acorn(690, 470) +
+      snail(580, 460) +
+      bluebells(150, 352)
     )
   },
 })

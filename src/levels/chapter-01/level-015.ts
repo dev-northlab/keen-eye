@@ -1,6 +1,7 @@
 // Motion difference: the flag on the tent waves only on picture B.
+import { butterfly, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { basket, cloud, grass, sun } from '../shapes.ts'
+import { basket, chick, cloud, flowerPot, grass, milkCan, sun } from '../shapes.ts'
 
 const flag = `<path d="M190 120L232 131L190 142Z" fill="#e63946"/>`
 
@@ -80,7 +81,12 @@ export default svgLevel({
         balloon(730, 170, '#ff006e') +
           diff(765, 150, 30, balloon(765, 150, '#ffd166'), balloon(765, 150, '#8ac926'), 'balloons') +
           balloon(745, 120, '#3a86ff'),
-      )
+      ) +
+      chick(540, 440) +
+      milkCan(500, 402) +
+      flowerPot(40, 400) +
+      stump(650, 450) +
+      butterfly(240, 410)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the walk signal blinks only on picture B; the rooftop flag flaps faster on B.
 import { svgLevel } from '../helpers.ts'
-import { awning, bike, bin, building, bus, car, cityTree, cloud, cone, hydrant, lampHead, lampPost, person, pigeon, skyline, trafficLight } from './shapes.ts'
+import { awning, bike, bin, bollard, building, bus, car, cityTree, cloud, cone, hydrant, lampHead, lampPost, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, trafficLight } from './shapes.ts'
 
 /** Wall clock; (x, y) = center, radius r. */
 const clock = (x: number, y: number, r: number) =>
@@ -73,7 +73,12 @@ export default svgLevel({
       diff(120, 477, 22, pigeon(120, 490), '') + pigeon(150, 496, true) + pigeon(176, 494, false, '#a3aab3') +
       bike(240, 496, '#ff006e') + bike(560, 498, '#3a86ff', true) +
       diff(646, 476, 24, cone(640, 494), cone(652, 494)) + cone(700, 498) +
-      lampPost(780, 498) + lampHead(780, 498)
+      lampPost(780, 498) + lampHead(780, 498) +
+      mailbox(385, 332) +
+      newspaperBox(505, 332) +
+      shoppingBag(710, 334) +
+      skateboard(400, 494) +
+      bollard(600, 494)
     )
   },
 })

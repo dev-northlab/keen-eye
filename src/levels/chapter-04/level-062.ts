@@ -1,6 +1,6 @@
 // Motion differences: the moored boat rocks faster on picture B; the gull on the post hops only on B; the crane hook swings only on B.
 import { svgLevel } from '../helpers.ts'
-import { anchor, buoy, cloud, gullStanding, lifeRing, person, sun, waves } from './shapes.ts'
+import { anchor, bottleMessage, bucket, buoy, cloud, gullStanding, lifeRing, person, starfish, sun, sunHat, waves } from './shapes.ts'
 
 /** Fishing boat, faces right; (x, y) = waterline center. Bounds: x ±44, y from −50 to +8. */
 const boat = (x: number, y: number, hull: string) =>
@@ -62,7 +62,12 @@ export default svgLevel({
       diff(560, 400, 46, rocking(2.6), rocking(1.2), 'boat') +
       boat(220, 440, '#3a86ff') +
       diff(700, 440, 20, buoy(700, 444), buoy(700, 444, '#8ac926')) +
-      buoy(80, 460, '#ffb703')
+      buoy(80, 460, '#ffb703') +
+      sunHat(185, 340) +
+      bucket(560, 340) +
+      starfish(675, 330) +
+      bottleMessage(320, 470) +
+      gullStanding(645, 300)
     )
   },
 })

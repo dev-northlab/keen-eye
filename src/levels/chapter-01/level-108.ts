@@ -1,8 +1,8 @@
 // Motion differences: a wasp by the basket hovers faster on picture B; a cherry pair swings only on B.
 import { person } from '../chapter-02/shapes.ts'
-import { bird, hedgehog } from '../chapter-03/shapes.ts'
+import { bird, butterfly, hedgehog, mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, basket, cloud, grass } from '../shapes.ts'
+import { apple, basket, cloud, grass, snail } from '../shapes.ts'
 
 /** Tree crown of overlapping circles [cx, cy, r] with leaf flecks from `rand`. */
 const crown = (circles: [number, number, number][], rand: () => number, dark: string, light: string) => {
@@ -97,7 +97,12 @@ export default svgLevel({
       `<g fill="#c9d84a"><circle cx="358" cy="434" r="8"/><circle cx="374" cy="430" r="8"/><circle cx="390" cy="434" r="8"/><circle cx="404" cy="436" r="7"/></g>` +
       pear(560, 488, '#c9d84a') + apple(250, 488) +
       hedgehog(610, 470) + apple(626, 446) +
-      `<rect x="700" y="436" width="80" height="8" fill="#a0703f"/><rect x="700" y="418" width="80" height="6" fill="#a0703f"/><path d="M708 444v24M772 444v24" stroke="#6b4226" stroke-width="5"/>`
+      `<rect x="700" y="436" width="80" height="8" fill="#a0703f"/><rect x="700" y="418" width="80" height="6" fill="#a0703f"/><path d="M708 444v24M772 444v24" stroke="#6b4226" stroke-width="5"/>` +
+      bird(760, 418) +
+      mushroom(500, 480) +
+      snail(675, 490) +
+      butterfly(580, 330) +
+      stump(300, 395)
     )
   },
 })

@@ -1,5 +1,8 @@
 // Motion differences: the low firework on the right blinks only on picture B; the right boat bobs faster on B.
+import { bird } from '../chapter-03/shapes.ts'
+import { gullStanding, lifeRing } from '../chapter-04/shapes.ts'
 import { svgLevel } from '../helpers.ts'
+import { bike, bollard } from './shapes.ts'
 
 /** Firework burst of `n` rays of length r around (x, y). */
 const burst = (x: number, y: number, r: number, color: string, n = 12) => {
@@ -94,7 +97,12 @@ export default svgLevel({
       // Embankment with the crowd
       `<rect y="444" width="800" height="56" fill="#2a2d4a"/><path d="M0 444H800" stroke="#4a4f78" stroke-width="4"/>` +
       crowd +
-      diff(380, 412, 24, '', balloon(380, 408))
+      diff(380, 412, 24, '', balloon(380, 408)) +
+      gullStanding(300, 291) +
+      bird(40, 291) +
+      bike(130, 304, '#ffb703') +
+      bollard(345, 303) +
+      lifeRing(120, 335)
     )
   },
 })

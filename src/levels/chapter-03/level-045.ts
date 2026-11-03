@@ -1,6 +1,6 @@
 // Motion differences: the geese fly faster on picture B; the swing swings faster on B; the falling leaf spins the other way on B.
 import { svgLevel } from '../helpers.ts'
-import { bear, bush, cloud, floor, mushroom, oak, pine, squirrel, stump } from './shapes.ts'
+import { anthill, backpack, bear, bush, cloud, feather, floor, mushroom, oak, pine, pineCone, squirrel, stump, trailSign } from './shapes.ts'
 
 /** Flying goose V; (x, y) = lead goose. Bounds: x ±46, y from −6 to +26. */
 const geese = (x: number, y: number) => {
@@ -66,6 +66,11 @@ export default svgLevel({
       mushroom(560, 470, '#a0703f') +
       bush(730, 440, 1.2, '#e9a23b') +
       floor(rand, 330, 480, 10) +
+      backpack(395, 482) +
+      pineCone(80, 292) +
+      anthill(625, 482) +
+      feather(480, 330) +
+      trailSign(240, 330) +
       anim({ type: 'path', points: [[0, 0], [-20, 60]], period: 5 }, leaves)
     )
   },

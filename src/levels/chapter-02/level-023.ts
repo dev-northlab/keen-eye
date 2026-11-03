@@ -1,7 +1,8 @@
 // Motion differences: the kite flies faster on picture B; the fountain jet bobs slower on B.
+import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { duck, flower, FLOWER_COLORS } from '../shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bench, bin, cityTree, cloud, dog, grass, lampHead, lampPost, person, pick, sun } from './shapes.ts'
+import { ball, bench, bin, cityTree, cloud, coffeeCup, dog, grass, lampHead, lampPost, person, pick, scooter, sun } from './shapes.ts'
 
 /** Kite with a tail; (x, y) = kite center. Bounds: x ±20, y from −24 to +44. */
 const kite = (x: number, y: number, color: string) =>
@@ -76,7 +77,12 @@ export default svgLevel({
       diff(620, 394, 38, cartParasol(620, 480), '') +
       person(670, 480, '#8338ec', true) +
       tufts +
-      flowers
+      flowers +
+      ball(455, 305) +
+      scooter(455, 478) +
+      bird(530, 410) +
+      butterfly(330, 290) +
+      coffeeCup(505, 424)
     )
   },
 })

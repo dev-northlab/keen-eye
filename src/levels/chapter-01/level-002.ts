@@ -1,5 +1,6 @@
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
+import { cat, cloud, flower, FLOWER_COLORS, grass, pick, pumpkin, snail, sun, wheelbarrow } from '../shapes.ts'
 
 /** (x, y) is the top of the root. Bounds: x ±10, y from −26 to +12. */
 const carrot = (x: number, y: number) =>
@@ -75,7 +76,12 @@ export default svgLevel({
       `<rect x="270" y="440" width="500" height="34" rx="10" fill="#8d5b3a"/>` +
       carrots +
       flowers +
-      diff(160, 430, 64, wateringCan(160, 430, false), wateringCan(160, 430, true))
+      diff(160, 430, 64, wateringCan(160, 430, false), wateringCan(160, 430, true)) +
+      bird(600, 257) +
+      pumpkin(440, 362) +
+      cat(292, 336) +
+      wheelbarrow(770, 362) +
+      snail(560, 494)
     )
   },
 })

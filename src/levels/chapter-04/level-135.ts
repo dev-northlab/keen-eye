@@ -1,6 +1,6 @@
 // Motion differences: a second lightning bolt flashes only on picture B; smoke drifts from the keeper's chimney only on B.
 import { svgLevel } from '../helpers.ts'
-import { buoy, rock } from './shapes.ts'
+import { bottleMessage, bucket, buoy, crab, gullStanding, rock, starfish } from './shapes.ts'
 
 /** Lightning bolt from (x, y) down. Bounds: x from −10 to +14, y from 0 to +50. */
 const bolt = (x: number, y: number) => `<path d="M${x + 4} ${y}l-14 26h10l-8 24l22 -32h-10l8 -18Z" fill="#fff6a8"/>`
@@ -75,6 +75,11 @@ export default svgLevel({
       diff(260, 160, 22, '', gull(260, 160)) + gull(420, 200) +
       diff(380, 400, 26, buoy(374, 404, '#ffb703'), buoy(388, 404, '#ffb703')) +
       rock(470, 430, 1.2, '#5c6470') + diff(520, 418, 24, rock(520, 430, 0.9, '#6b7480'), '') + rock(760, 430, 1.4, '#5c6470') +
+      gullStanding(770, 354) +
+      bucket(490, 372) +
+      bottleMessage(300, 462) +
+      starfish(605, 376) +
+      crab(462, 412) +
       rain
     )
   },

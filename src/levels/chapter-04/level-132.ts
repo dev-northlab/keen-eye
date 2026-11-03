@@ -1,6 +1,6 @@
 // Motion differences: the mizzen pennant flaps faster on picture B; a fish leaps by the bow only on B.
 import { svgLevel } from '../helpers.ts'
-import { cloud, fish, gull, palm, person, waves } from './shapes.ts'
+import { bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, lifeRing, palm, person, waves } from './shapes.ts'
 
 /** Square sail between x0..x1 and y0..y1, bellied by the wind. */
 const sail = (x0: number, x1: number, y0: number, y1: number) =>
@@ -82,7 +82,12 @@ export default svgLevel({
       anim({ type: 'bob', dx: 10, dy: 2, period: 4 }, `<g transform="translate(-40 0)">${waves(380, 15, 64, '#3aa0cc')}</g>`) +
       anim({ type: 'bob', dx: -8, dy: 2, period: 5 }, `<g transform="translate(-40 0)">${waves(430, 15, 64, '#2a86b0')}</g>`) +
       diff(98, 384, 30, leap, anim({ type: 'bob', dx: 4, dy: -10, period: 1.6 }, leap)) +
-      fish(500, 470, '#ffb703', 1.1) + fish(700, 456, '#ff6b8b', 1, true)
+      fish(500, 470, '#ffb703', 1.1) + fish(700, 456, '#ff6b8b', 1, true) +
+      bucket(205, 272) +
+      gullStanding(530, 107) +
+      bottleMessage(300, 452) +
+      coconut(745, 262) +
+      lifeRing(600, 312)
     )
   },
 })

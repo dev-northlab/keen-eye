@@ -1,6 +1,6 @@
 // Motion differences: the rowboat rocks faster on picture B; the fish leaps only on B; the reeds sway faster on B.
 import { svgLevel } from '../helpers.ts'
-import { cloud, floor, pine, rock, sun } from './shapes.ts'
+import { backpack, bluebells, cloud, floor, lantern, pine, pineCone, rock, sun, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
 /** Rowboat with a rower; (x, y) = waterline center. Bounds: x ±36, y from −50 to +8. */
@@ -71,7 +71,12 @@ export default svgLevel({
       diff(740, 308, 26, swaying(2.4), swaying(1)) +
       diff(660, 470, 24, rock(660, 480, 1.1), rock(660, 480, 1.1, '#6f8f6a')) +
       rock(60, 492, 0.9) +
-      floor(rand, 280, 306, 8)
+      floor(rand, 280, 306, 8) +
+      backpack(25, 420) +
+      lantern(125, 420) +
+      trailSign(400, 296) +
+      pineCone(600, 302) +
+      bluebells(165, 300)
     )
   },
 })

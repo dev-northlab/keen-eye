@@ -1,6 +1,6 @@
 // Motion differences: the sun pulses faster on picture B; the lantern on the pier swings only on B; the rowboat rocks faster on B.
 import { svgLevel } from '../helpers.ts'
-import { gull, gullStanding, palm, person, rock, sailboat, waves } from './shapes.ts'
+import { bottleMessage, fish, gull, gullStanding, lifeRing, palm, person, rock, sailboat, sunglasses, waves } from './shapes.ts'
 
 /** Sun disc without its own fill (recolored by the animation); (x, y) = center. Bounds: radius 44. */
 const disc = (x: number, y: number) => `<circle cx="${x}" cy="${y}" r="42"/>`
@@ -55,7 +55,12 @@ export default svgLevel({
       diff(200, 418, 46, rocking(2.4), rocking(1.1), 'row') +
       diff(80, 459, 30, rock(80, 470, 1.1, '#7a3f6e'), rock(80, 470, 1.4, '#7a3f6e')) +
       rock(420, 480, 1, '#7a3f6e') +
-      anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(470, 10, 100, '#f28c6a'))
+      anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(470, 10, 100, '#f28c6a')) +
+      bottleMessage(560, 425) +
+      lifeRing(705, 382) +
+      fish(420, 430, '#ffb703') +
+      sunglasses(780, 345) +
+      gullStanding(250, 258)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the butterfly flutters faster on picture B; the bird hops only on B; the big flower sways faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bird, butterfly, cloud, deer, floor, flower, FLOWER_COLORS, fox, log, mushroom, oak, pick, pine, rabbit, rock, stump, sun } from './shapes.ts'
+import { acorn, anthill, bird, bluebells, butterfly, cloud, deer, floor, flower, FLOWER_COLORS, fox, log, mushroom, oak, pick, pine, pineCone, rabbit, rock, stump, sun, trailSign } from './shapes.ts'
 
 export default svgLevel({
   id: 41,
@@ -43,7 +43,12 @@ export default svgLevel({
       mushroom(110, 486, '#ffb703', 0.8) +
       floor(rand, 340, 480) +
       flowers +
-      diff(700, 455, 20, swaying(2.5), swaying(1))
+      diff(700, 455, 20, swaying(2.5), swaying(1)) +
+      trailSign(330, 345) +
+      pineCone(30, 415) +
+      anthill(510, 492) +
+      acorn(640, 330) +
+      bluebells(765, 480)
     )
   },
 })

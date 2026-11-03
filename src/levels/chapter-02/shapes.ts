@@ -155,6 +155,66 @@ export const cone = (x: number, y: number) =>
   `<path d="M${x - 5} ${y - 24}h10l5 22h-20Z" fill="#fb8500"/><rect x="${x - 10}" y="${y - 3}" width="20" height="3" fill="#2b2b2b"/>` +
   `<path d="M${x - 7} ${y - 12}h14" stroke="#fff" stroke-width="3"/>`
 
+/** Small street items for the city scenes. */
+
+/** Mailbox on a post; (x, y) = foot. Bounds: x ±11, y from −40 to 0. */
+export const mailbox = (x: number, y: number, color = '#3a86ff') =>
+  `<g transform="translate(${x} ${y})"><rect x="-2" y="-22" width="4" height="22" fill="#555"/>` +
+  `<path d="M-11 -22V-32A6 6 0 0 1-5 -38H5A6 6 0 0 1 11 -32V-22Z" fill="${color}"/>` +
+  `<rect x="-6" y="-33" width="12" height="2.5" rx="1" fill="#1d3557"/></g>`
+
+/** Parking meter; (x, y) = foot. Bounds: x ±7, y from −40 to 0. */
+export const parkingMeter = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><rect x="-1.5" y="-24" width="3" height="24" fill="#6c757d"/>` +
+  `<rect x="-7" y="-38" width="14" height="15" rx="5" fill="#adb5bd"/><rect x="-4" y="-35" width="8" height="5" rx="1" fill="#e9f5db"/>` +
+  `<rect x="-1" y="-28" width="2" height="3" fill="#495057"/></g>`
+
+/** Kick scooter, handlebar on the right; (x, y) = ground under the middle. Bounds: x ±16, y from −30 to 0. */
+export const scooter = (x: number, y: number, color = '#ff006e') =>
+  `<g transform="translate(${x} ${y})"><path d="M-11 -6H10L12 -28M8 -28H16" stroke="${color}" stroke-width="3" fill="none" stroke-linecap="round"/>` +
+  `<circle cx="-11" cy="-4" r="4" fill="#333"/><circle cx="12" cy="-4" r="4" fill="#333"/></g>`
+
+/** Skateboard; (x, y) = ground center. Bounds: x ±16, y from −7 to 0. */
+export const skateboard = (x: number, y: number, color = '#fb8500') =>
+  `<g transform="translate(${x} ${y})"><rect x="-16" y="-7" width="32" height="4" rx="2" fill="${color}"/>` +
+  `<circle cx="-9" cy="-1.8" r="1.8" fill="#333"/><circle cx="9" cy="-1.8" r="1.8" fill="#333"/></g>`
+
+/** Ball; (x, y) = bottom center. Bounds: x ±8, y from −16 to 0. */
+export const ball = (x: number, y: number, color = '#e63946') =>
+  `<g transform="translate(${x} ${y - 8})"><circle r="8" fill="${color}"/>` +
+  `<path d="M-8 0H8M0 -8Q-5 0 0 8" stroke="#fff" stroke-width="1.6" fill="none"/></g>`
+
+/** Newspaper box; (x, y) = bottom center. Bounds: x ±10, y from −30 to 0. */
+export const newspaperBox = (x: number, y: number, color = '#ffb703') =>
+  `<g transform="translate(${x} ${y})"><rect x="-9" y="-6" width="3" height="6" fill="#555"/><rect x="6" y="-6" width="3" height="6" fill="#555"/>` +
+  `<rect x="-10" y="-30" width="20" height="24" rx="2" fill="${color}"/><rect x="-7" y="-26" width="14" height="9" fill="#f4efe6"/>` +
+  `<path d="M-5 -23H5M-5 -20H3" stroke="#8d99ae" stroke-width="1.2"/></g>`
+
+/** Bollard; (x, y) = bottom center. Bounds: x ±5, y from −22 to 0. */
+export const bollard = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><rect x="-5" y="-20" width="10" height="20" rx="2" fill="#495057"/>` +
+  `<ellipse cy="-20" rx="5" ry="2" fill="#6c757d"/><rect x="-5" y="-15" width="10" height="3" fill="#ffd23f"/></g>`
+
+/** Shopping bag with greens; (x, y) = bottom center. Bounds: x ±9, y from −24 to 0. */
+export const shoppingBag = (x: number, y: number, color = '#e9c46a') =>
+  `<g transform="translate(${x} ${y})"><path d="M-3 -16L-6 -24M2 -16L4 -23" stroke="#5fae4b" stroke-width="3" stroke-linecap="round"/>` +
+  `<path d="M-9 -16H9L8 0H-8Z" fill="${color}"/><path d="M-4 -16V-19A4 4 0 0 1 4 -19V-16" stroke="#8a5a33" stroke-width="1.5" fill="none"/></g>`
+
+/** Manhole cover in the road; (x, y) = center. Bounds: x ±14, y ±5. */
+export const manhole = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><ellipse rx="14" ry="5" fill="#495057"/>` +
+  `<path d="M-9 -1.5H9M-9 1.5H9" stroke="#6c757d" stroke-width="1.2"/></g>`
+
+/** Paper cup of coffee; (x, y) = bottom center. Bounds: x ±5, y from −13 to 0. */
+export const coffeeCup = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><path d="M-4 -10H4L3 0H-3Z" fill="#f4efe6"/><rect x="-5" y="-13" width="10" height="3" rx="1" fill="#6b3f1d"/>` +
+  `<rect x="-3.6" y="-7" width="7.2" height="3" fill="#c68b5e"/></g>`
+
+/** Shop sign on a stand (sandwich board); (x, y) = ground center. Bounds: x ±11, y from −28 to 0. */
+export const sandwichBoard = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})"><path d="M-11 0L-6 -28H6L11 0" stroke="#8a5a33" stroke-width="2.5" fill="none"/>` +
+  `<path d="M-9 -3L-5 -25H5L9 -3Z" fill="#2b2d42"/><path d="M-4 -19H4M-5 -14H5M-5 -9H3" stroke="#fff" stroke-width="1.4"/></g>`
+
 /** Road from x0 to x1 with its top at y: asphalt with a dashed line, a sidewalk above. */
 export const street = (y: number, h = 120, sidewalk = 20) =>
   `<rect y="${y - sidewalk}" width="800" height="${sidewalk}" fill="#cfd5da"/>` +

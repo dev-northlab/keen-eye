@@ -1,7 +1,7 @@
 // Motion differences: the pinwheel on the path spins the other way on picture B; the bee hovers faster on B.
-import { bird } from '../chapter-03/shapes.ts'
+import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bee, cloud, fence, flower, FLOWER_COLORS, grass, pick, sun, sunflower } from '../shapes.ts'
+import { bee, cloud, fence, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, sunflower } from '../shapes.ts'
 
 /** Raised bed, wooden frame around soil; (x, y) = top-left corner, w × h. */
 const bed = (x: number, y: number, w: number, h: number) =>
@@ -129,7 +129,12 @@ export default svgLevel({
       `<path d="M560 488q-30 -6 -24 -16q10 -10 30 -2q14 8 0 14q-14 6 -20 -2" stroke="#3a9a5a" stroke-width="4" fill="none"/>` +
       `<g transform="translate(720 494)"><ellipse cy="-12" rx="12" ry="10" fill="#d9d2c5"/><circle cx="10" cy="-22" r="7" fill="#d9d2c5"/>` +
       `<ellipse cx="8" cy="-34" rx="3" ry="9" fill="#d9d2c5"/><ellipse cx="14" cy="-33" rx="3" ry="9" fill="#d9d2c5"/><circle cx="13" cy="-23" r="1.5" fill="#222"/></g>` +
-      tufts
+      tufts +
+      bird(491, 137) +
+      snail(400, 392) +
+      butterfly(610, 195) +
+      stones(775, 482) +
+      mushroom(35, 480)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the middle pier lamp flickers only on picture B; the fishing float bobs faster on B.
 import { svgLevel } from '../helpers.ts'
-import { gullStanding, person } from './shapes.ts'
+import { bottleMessage, fish, gullStanding, lifeRing, person, sunglasses, sunHat } from './shapes.ts'
 
 /** Pier lamp; (x, y) = post foot on the deck. Head separate. Bounds: x ±4, y from −72 to 0. */
 const lampPost = (x: number, y: number) => `<rect x="${x - 2}" y="${y - 72}" width="4" height="72" fill="#3a2a3a"/><path d="M${x - 8} ${y - 72}h16" stroke="#3a2a3a" stroke-width="3"/>`
@@ -74,7 +74,12 @@ export default svgLevel({
       diff(352, 424, 22, bobbing(2.4), bobbing(0.8)) +
       diff(620, 330, 22, person(620, 360, '#e63946'), person(620, 360, '#d9504a')) + person(646, 360, '#3a86ff', true, '#c68b5e', '#2b2b2b') +
       `<rect x="680" y="338" width="40" height="5" fill="#5a3a3a"/><rect x="680" y="328" width="40" height="5" fill="#5a3a3a"/><path d="M684 343v17M716 343v17" stroke="#3a2a2a" stroke-width="3"/>` +
-      gullStanding(130, 336) + gullStanding(590, 336, true)
+      gullStanding(130, 336) + gullStanding(590, 336, true) +
+      sunHat(450, 362) +
+      lifeRing(772, 374) +
+      bottleMessage(560, 452) +
+      fish(460, 442, '#ffb703') +
+      sunglasses(180, 360)
     )
   },
 })

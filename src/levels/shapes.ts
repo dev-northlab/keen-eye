@@ -155,6 +155,104 @@ export const apple = (x: number, y: number, color = '#e63946') =>
   `<path d="M${x} ${y - 9}q2 -6 7 -7" stroke="#6b3f1d" stroke-width="2" fill="none"/>` +
   `<circle cx="${x}" cy="${y}" r="10" fill="${color}"/>`
 
+/** Small decoration items for the farm scenes. */
+
+/** Faces right; (x, y) = body center. Bounds: x from −10 to +12, y from −14 to +9. */
+export const chick = (x: number, y: number, flip = false) =>
+  `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)">` +
+  `<path d="M-2 5V9M3 5V9" stroke="#ff9f1c" stroke-width="1.6"/>` +
+  `<ellipse rx="9" ry="7" fill="#ffd43b"/><circle cx="5" cy="-7" r="5.5" fill="#ffd43b"/>` +
+  `<path d="M10 -8L13 -6.5L10 -5Z" fill="#ff9f1c"/><circle cx="7" cy="-8" r="1" fill="#222"/>` +
+  `<path d="M-6 -1q3 3 7 1" stroke="#fab005" stroke-width="1.6" fill="none"/></g>`
+
+/** (x, y) = bottom center. Bounds: x ±16, y from −26 to 0. */
+export const pumpkin = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M0 -18q1 -6 5 -8" stroke="#5c7a2a" stroke-width="3" fill="none"/>` +
+  `<ellipse cx="-7" cy="-9" rx="9" ry="9" fill="#e8772e"/><ellipse cx="7" cy="-9" rx="9" ry="9" fill="#e8772e"/>` +
+  `<ellipse cy="-9" rx="7" ry="10" fill="#f28c38"/></g>`
+
+/** Carrot growing in the ground; (x, y) = ground. Bounds: x ±9, y from −18 to +4. */
+export const carrot = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M0 -4L-7 -17M0 -4L0 -18M0 -4L7 -16" stroke="#4c9a3f" stroke-width="3" stroke-linecap="round"/>` +
+  `<path d="M-5 -3H5L0 4Z" fill="#f08c2e"/></g>`
+
+/** (x, y) = bottom center. Bounds: x ±10, y from −32 to 0. */
+export const milkCan = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M-9 0V-18L-5 -24H5L9 -18V0Z" fill="#c9d1d9"/>` +
+  `<rect x="-6" y="-29" width="12" height="5" rx="1" fill="#a7b1bc"/><rect x="-4" y="-32" width="8" height="3" rx="1.5" fill="#8d99ae"/>` +
+  `<rect x="-9" y="-12" width="18" height="3" fill="#8d99ae"/></g>`
+
+/** Spout to the right; (x, y) = bottom center. Bounds: x from −16 to +20, y from −22 to 0. */
+export const wateringCan = (x: number, y: number, color = '#4dabf7') =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M-6 -16Q-16 -20 -12 -8" stroke="${color}" stroke-width="3" fill="none"/>` +
+  `<path d="M8 -9L18 -19" stroke="${color}" stroke-width="3.5"/><rect x="15" y="-22" width="5" height="5" rx="1" fill="${color}"/>` +
+  `<rect x="-9" y="-16" width="18" height="16" rx="2" fill="${color}"/></g>`
+
+/** A few stones; (x, y) = ground center. Bounds: x ±17, y from −11 to 0. */
+export const stones = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<ellipse cx="-7" cy="-5" rx="10" ry="6" fill="#9aa5ad"/><ellipse cx="7" cy="-4" rx="9" ry="5" fill="#b4bec5"/>` +
+  `<ellipse cx="1" cy="-8" rx="6" ry="4" fill="#c6ced3"/></g>`
+
+/** Faces right; (x, y) = bottom center. Bounds: x from −12 to +13, y from −15 to 0. */
+export const snail = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M-12 0H10Q13 0 12 -4L9 -10M9 -6L12 -12" stroke="#d6b07a" stroke-width="2.5" fill="none" stroke-linecap="round"/>` +
+  `<path d="M-12 -1H9" stroke="#d6b07a" stroke-width="3"/>` +
+  `<circle cx="-2" cy="-7" r="7" fill="#b5651d"/><path d="M-2 -7m-3.5 0a3.5 3.5 0 1 1 3.5 3.5" stroke="#8a4b16" stroke-width="1.5" fill="none"/></g>`
+
+/** Three eggs in a nest; (x, y) = bottom center. Bounds: x ±15, y from −14 to 0. */
+export const eggNest = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<ellipse cx="-6" cy="-7" rx="4.5" ry="6" fill="#fdf6e3"/><ellipse cx="6" cy="-7" rx="4.5" ry="6" fill="#f3e3c3"/>` +
+  `<ellipse cy="-8" rx="4.5" ry="6" fill="#fffaf0"/>` +
+  `<path d="M-15 -5Q0 4 15 -5Q14 1 0 1Q-14 1 -15 -5Z" fill="#a8743f"/>` +
+  `<path d="M-12 -3l5 2M3 -1l6 -2" stroke="#7a5230" stroke-width="1.2"/></g>`
+
+/** Birdhouse on a pole; (x, y) = bottom of the pole. Bounds: x ±13, y from −52 to 0. */
+export const birdhouse = (x: number, y: number, color = '#e9a23b') =>
+  `<g transform="translate(${x} ${y})">` +
+  `<rect x="-2" y="-30" width="4" height="30" fill="#8a5a33"/>` +
+  `<rect x="-9" y="-44" width="18" height="16" fill="${color}"/><path d="M-13 -42L0 -52L13 -42Z" fill="#8e2c27"/>` +
+  `<circle cy="-37" r="3.5" fill="#4a2f17"/></g>`
+
+/** Flower pot; (x, y) = bottom center. Bounds: x ±11, y from −28 to 0. */
+export const flowerPot = (x: number, y: number, color = '#ff6b8b') =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M0 -12V-20" stroke="#3f8f3a" stroke-width="2"/>` +
+  `<circle cy="-23" r="5" fill="${color}"/><circle cy="-23" r="2" fill="#ffe36e"/>` +
+  `<path d="M-9 -13H9L6 0H-6Z" fill="#c8623b"/><rect x="-11" y="-15" width="22" height="4" rx="1" fill="#a84f2e"/></g>`
+
+/** Small wheelbarrow, handles left; (x, y) = ground under the wheel. Bounds: x from −36 to +8, y from −22 to 0. */
+export const wheelbarrow = (x: number, y: number, load = '#8a5a33') =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M-12 -10L-20 0M-26 -12L-36 -16" stroke="#6b4a2b" stroke-width="2.5" stroke-linecap="round"/>` +
+  `<ellipse cx="-10" cy="-16" rx="10" ry="4" fill="${load}"/>` +
+  `<path d="M-24 -16H4L-4 -6H-18Z" fill="#4c9a3f"/>` +
+  `<circle cy="-6" r="6" fill="#333"/><circle cy="-6" r="2" fill="#aaa"/></g>`
+
+/** Horseshoe lying in the grass; (x, y) = center. Bounds: x ±9, y ±9. */
+export const horseshoe = (x: number, y: number) =>
+  `<path d="M${x - 6} ${y + 8}V${y}A6 6 0 0 1 ${x + 6} ${y}V${y + 8}" stroke="#7d8790" stroke-width="4" fill="none" stroke-linecap="round"/>`
+
+/** Ladybug; (x, y) = center. Bounds: x ±7, y ±6. */
+export const ladybug = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
+  `<circle cx="6" r="3" fill="#222"/><ellipse rx="6" ry="5" fill="#e63946"/><path d="M0 -5V5" stroke="#222" stroke-width="1"/>` +
+  `<circle cx="-3" cy="-2" r="1.2" fill="#222"/><circle cx="3" cy="2" r="1.2" fill="#222"/><circle cx="-2" cy="3" r="1" fill="#222"/></g>`
+
+/** Sitting cat, faces right; (x, y) = bottom center. Bounds: x from −14 to +12, y from −30 to 0. */
+export const cat = (x: number, y: number, color = '#f08c2e') =>
+  `<g transform="translate(${x} ${y})">` +
+  `<path d="M-8 -2Q-16 -2 -13 -12" stroke="${color}" stroke-width="3" fill="none" stroke-linecap="round"/>` +
+  `<ellipse cy="-9" rx="9" ry="10" fill="${color}"/><circle cx="3" cy="-21" r="7" fill="${color}"/>` +
+  `<path d="M-2 -25L-2 -30L2 -27ZM5 -27L9 -30L9 -25Z" fill="${color}"/>` +
+  `<circle cx="5" cy="-22" r="1.1" fill="#222"/><circle cx="8.5" cy="-22" r="1.1" fill="#222"/></g>`
+
 export const FLOWER_COLORS = ['#ff6b8b', '#ffffff', '#b38cff', '#ff9f43', '#4dabf7']
 
 /** Picks a random element of `items`. */

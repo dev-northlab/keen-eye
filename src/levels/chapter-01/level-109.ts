@@ -1,6 +1,6 @@
 // Motion differences: the fish leaps only on picture B; the last duckling bobs faster on B.
 import { person } from '../chapter-02/shapes.ts'
-import { frog, pine } from '../chapter-03/shapes.ts'
+import { bird, butterfly, frog, mushroom, pine, stump } from '../chapter-03/shapes.ts'
 import { fish } from '../chapter-04/shapes.ts'
 import { svgLevel } from '../helpers.ts'
 import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
@@ -114,7 +114,12 @@ export default svgLevel({
       diff(568, 456, 22, bobbing(1.4), bobbing(0.6)) +
       diff(740, 436, 28, leap, anim({ type: 'bob', dx: 0, dy: -10, period: 1.8 }, leap)) +
       diff(152, 394, 28, sack(146, 410), sack(158, 410)) + sack(110, 412) +
-      `<path d="M330 404l20 -8M326 412l26 -6" stroke="#8a5a33" stroke-width="3"/>`
+      `<path d="M330 404l20 -8M326 412l26 -6" stroke="#8a5a33" stroke-width="3"/>` +
+      frog(110, 485) +
+      bird(530, 347) +
+      stump(590, 330) +
+      mushroom(500, 325) +
+      butterfly(785, 345)
     )
   },
 })

@@ -1,6 +1,7 @@
 // Motion differences: the grey horse twitches its ear only on picture B; the dog wags its tail faster on B.
+import { bird } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { bucket, hayBale } from '../shapes.ts'
+import { bucket, cat, flowerPot, hayBale, milkCan, wheelbarrow } from '../shapes.ts'
 
 /** Horse looking over a stall door; (x, y) = door top under its neck. Ears separate (`ear`). Bounds: x from −30 to +34, y from −84 to +8. */
 const horseHead = (x: number, y: number, coat: string, mane: string, blaze = false) =>
@@ -115,7 +116,12 @@ export default svgLevel({
       `<rect x="580" y="402" width="22" height="10" rx="3" fill="#c68b4e"/><path d="M582 412v4M588 412v4M594 412v4M600 412v4" stroke="#3d3d3d" stroke-width="2"/>` +
       bucket(660, 476, '#8d99ae') + hayBale(748, 456) +
       `<path d="M290 470q-14 -10 0 -18q20 -6 28 4q6 12 -12 16Z" fill="none" stroke="#d9c08c" stroke-width="5"/>` +
-      `<path d="M40 500l18 -70M50 430l16 4" stroke="#a0703f" stroke-width="4"/>`
+      `<path d="M40 500l18 -70M50 430l16 4" stroke="#a0703f" stroke-width="4"/>` +
+      cat(355, 475) +
+      bird(555, 230) +
+      milkCan(480, 415) +
+      wheelbarrow(130, 490) +
+      flowerPot(240, 72)
     )
   },
 })

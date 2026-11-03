@@ -1,6 +1,6 @@
 // Motion differences: the bell swings only on picture B; the beacon flashes only on B.
 import { svgLevel } from '../helpers.ts'
-import { cloud, dog, door, hydrant, person, skyline, street, sun, window } from './shapes.ts'
+import { bollard, cloud, dog, door, hydrant, mailbox, manhole, newspaperBox, person, sandwichBoard, skyline, street, sun, window } from './shapes.ts'
 
 /** Fire engine, faces left; (x, y) = ground center. The beacon is separate. Bounds: x ±70, y from −60 to 0. */
 const engine = (x: number, y: number) =>
@@ -66,7 +66,12 @@ export default svgLevel({
       helmet(730, 470, '#ffb703') +
       dog(640, 470, '#ffffff') +
       `<circle cx="652" cy="451" r="2" fill="#333"/><circle cx="636" cy="455" r="2" fill="#333"/><circle cx="628" cy="449" r="2" fill="#333"/>` +
-      diff(580, 457, 26, dog(580, 470, '#ffffff') + spots, '')
+      diff(580, 457, 26, dog(580, 470, '#ffffff') + spots, '') +
+      bollard(135, 378) +
+      newspaperBox(310, 378) +
+      mailbox(700, 378) +
+      manhole(180, 472) +
+      sandwichBoard(490, 378)
     )
   },
 })

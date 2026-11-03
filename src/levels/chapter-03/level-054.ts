@@ -1,6 +1,6 @@
 // Motion differences: the mill wheel turns faster on picture B; the lantern swings only on B; the dragonfly flies the other way round on B.
 import { svgLevel } from '../helpers.ts'
-import { cloud, floor, frog, oak, pine, sun } from './shapes.ts'
+import { acorn, anthill, backpack, bluebells, cloud, floor, frog, oak, pine, pineCone, sun } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 import { duck } from '../shapes.ts'
 
@@ -67,7 +67,12 @@ export default svgLevel({
       diff(380, 325, 20, person(380, 360, '#ffb703'), person(380, 360, '#8338ec')) +
       duck(540, 470) +
       diff(620, 480, 18, frog(620, 490), '') +
-      floor(rand, 346, 380, 8)
+      floor(rand, 346, 380, 8) +
+      backpack(250, 360) +
+      pineCone(45, 370) +
+      bluebells(470, 364) +
+      anthill(570, 366) +
+      acorn(525, 274)
     )
   },
 })

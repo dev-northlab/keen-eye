@@ -1,6 +1,6 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bird flies the other way round on B.
 import { svgLevel } from '../helpers.ts'
-import { bush, fireLogs, flame, floor, log, pine, rock, tent } from './shapes.ts'
+import { acorn, anthill, bush, feather, fireLogs, flame, floor, log, pine, pineCone, rock, tent, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
 /** Owl on a branch, faces right; (x, y) = feet. Bounds: x ±16, y from −36 to 0. */
@@ -72,7 +72,12 @@ export default svgLevel({
       log(250, 496) +
       rock(720, 490, 1.2) +
       bush(40, 440, 1.2, '#3f9a5a') +
-      floor(rand, 350, 490, 10)
+      floor(rand, 350, 490, 10) +
+      acorn(255, 478) +
+      anthill(450, 486) +
+      pineCone(80, 482) +
+      trailSign(330, 380) +
+      feather(640, 470)
     )
   },
 })

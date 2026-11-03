@@ -1,6 +1,6 @@
 // Motion differences: the fish jumps faster on picture B; the bird flies the other way round on B; the mist bobs only on B.
 import { svgLevel } from '../helpers.ts'
-import { bear, fern, floor, pine, rock } from './shapes.ts'
+import { acorn, anthill, bear, bluebells, fern, floor, pine, pineCone, rock, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
 /** Short rainbow; (x, y) = base center. Bounds: x ±40, y from −30 to +4. */
@@ -74,7 +74,12 @@ export default svgLevel({
       // The chapter's hidden key on the bank, under the fern
       secret(690, 482, 15) +
       fern(700, 490) +
-      floor(rand, 384, 396, 4)
+      floor(rand, 384, 396, 4) +
+      trailSign(530, 170) +
+      pineCone(270, 170) +
+      anthill(760, 405) +
+      acorn(30, 390) +
+      bluebells(200, 170)
     )
   },
 })

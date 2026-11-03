@@ -1,6 +1,6 @@
 // Motion differences: the eel sways faster on picture B; the diver's bubbles rise only on B; the fish circles faster on B.
 import { svgLevel } from '../helpers.ts'
-import { anchor, coral, fish, jellyfish, seaweed, starfish } from './shapes.ts'
+import { anchor, bottleMessage, clam, coral, fish, jellyfish, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
 /** Diver, faces right; (x, y) = feet. Bounds: x ±16, y from −62 to 0. */
 const diver = (x: number, y: number, suit: string) =>
@@ -62,6 +62,11 @@ export default svgLevel({
       seaweed(60, 480, 1.3) +
       diff(760, 462, 32, coral(760, 480, '#ff6b8b'), coral(760, 480, '#8ac926')) +
       seaweed(300, 490, 1) +
+      seaUrchin(212, 472) +
+      clam(380, 472) +
+      seahorse(150, 260) +
+      bottleMessage(600, 474) +
+      snorkelMask(172, 490) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, drifting)
     )
   },

@@ -1,6 +1,6 @@
 // Motion differences: the right pink jellyfish drifts faster on picture B; the lanternfish's light blinks only on B.
 import { svgLevel } from '../helpers.ts'
-import { rock, starfish } from './shapes.ts'
+import { anchor, bottleMessage, clam, rock, seahorse, seaUrchin, starfish } from './shapes.ts'
 
 /** Jellyfish with `tentacles` tentacles; (x, y) = bell center, bell radius r. */
 const jelly = (x: number, y: number, r: number, color: string, tentacles = 4) => {
@@ -71,7 +71,12 @@ export default svgLevel({
       `<path d="M0 470Q200 450 400 466T800 460V500H0Z" fill="#1b2440"/>` +
       rock(80, 490, 1.6, '#2b3556') + rock(560, 492, 1.3, '#2b3556') + rock(760, 494, 1.5, '#2b3556') +
       diff(120, 464, 22, '', starfish(120, 468, '#c96a5a')) +
-      `<path d="M300 490q-4 -30 6 -50M312 490q8 -26 0 -46" stroke="#3a5a6a" stroke-width="4" fill="none"/>`
+      `<path d="M300 490q-4 -30 6 -50M312 490q8 -26 0 -46" stroke="#3a5a6a" stroke-width="4" fill="none"/>` +
+      seaUrchin(430, 478) +
+      clam(222, 484) +
+      seahorse(170, 360) +
+      bottleMessage(660, 480) +
+      anchor(370, 470)
     )
   },
 })

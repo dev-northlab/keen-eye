@@ -1,6 +1,6 @@
 // Motion differences: the snail crawls faster on picture B; the frog hops only on B; the chimney smoke rises faster on B.
 import { svgLevel } from '../helpers.ts'
-import { fern, floor, frog, hedgehog, mushroom, oak, pine, rock } from './shapes.ts'
+import { acorn, bluebells, fern, floor, frog, hedgehog, lantern, leafPile, mushroom, oak, pine, pineCone, rock } from './shapes.ts'
 
 /** Fly agaric with `spots`; (x, y) = bottom of the stem. Bounds: x ±20, y from −44 to 0. */
 const agaric = (x: number, y: number, spots: number) =>
@@ -71,7 +71,12 @@ export default svgLevel({
       rock(40, 495, 1.1, '#6f8f6a') +
       fern(760, 480) +
       fern(330, 490) +
-      floor(rand, 330, 420, 10)
+      floor(rand, 330, 420, 10) +
+      lantern(460, 452) +
+      acorn(215, 432) +
+      pineCone(380, 488) +
+      leafPile(510, 432) +
+      bluebells(700, 352)
     )
   },
 })

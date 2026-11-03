@@ -1,6 +1,7 @@
 // Motion differences: the chimney smoke rises faster on picture B; the bird on the feeder hops only on B.
+import { stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { fence } from '../shapes.ts'
+import { cat, fence, milkCan, stones, wheelbarrow } from '../shapes.ts'
 
 /** Snow-capped pine; (x, y) = bottom of the trunk. Bounds: x ±40, y from −124 to 0. */
 const pine = (x: number, y: number) =>
@@ -90,6 +91,11 @@ export default svgLevel({
       diff(158, 400, 20, carrot(150, 400), '') +
       diff(300, 456, 42, sled(300, 468, '#e63946'), sled(300, 468, '#3a86ff')) +
       drifts +
+      milkCan(30, 430) +
+      cat(470, 350) +
+      stump(700, 440) +
+      stones(410, 480) +
+      wheelbarrow(290, 370) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes)
     )
   },

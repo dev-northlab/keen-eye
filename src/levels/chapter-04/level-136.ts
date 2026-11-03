@@ -1,6 +1,6 @@
 // Motion differences: the rowboat bobs faster on picture B; the sailboat's masthead pennant flaps only on B.
 import { svgLevel } from '../helpers.ts'
-import { buoy, cloud, gull, gullStanding, lifeRing, person } from './shapes.ts'
+import { bottleMessage, bucket, buoy, cloud, fish, gull, gullStanding, lifeRing, person } from './shapes.ts'
 
 /** Harbor house; (x, y) = bottom-left, w × h. */
 const house = (x: number, y: number, w: number, h: number, wall: string, roof: string) =>
@@ -73,7 +73,12 @@ export default svgLevel({
       `<path d="M740 456h56l-8 12h-40Z" fill="#3a86ff"/><path d="M766 456V296" stroke="#6b6b70" stroke-width="3"/><path d="M770 300l26 140h-26Z" fill="#f4f4f4"/><path d="M762 310l-30 130h30Z" fill="#f4f4f4" fill-opacity="0.85"/>` +
       diff(776, 302, 22, flapping(false), flapping(true)) +
       diff(120, 440, 26, buoy(114, 446, '#ffb703'), buoy(128, 446, '#ffb703')) +
-      gull(480, 120) + anim({ type: 'path', points: [[0, 0], [-160, 20]], period: 16 }, gull(760, 80))
+      gull(480, 120) + anim({ type: 'path', points: [[0, 0], [-160, 20]], period: 16 }, gull(760, 80)) +
+      gullStanding(420, 247) +
+      bucket(60, 248) +
+      bottleMessage(160, 394) +
+      lifeRing(596, 440) +
+      fish(470, 420, '#ffb703')
     )
   },
 })

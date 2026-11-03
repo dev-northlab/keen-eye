@@ -1,6 +1,7 @@
 // Motion differences: a maple leaf swings on its twig only on picture B; the squirrel flicks its tail faster on B.
 import { svgLevel } from '../helpers.ts'
-import { deer, fox, hedgehog, mushroom, oak, stump } from './shapes.ts'
+import { stones } from '../shapes.ts'
+import { anthill, deer, feather, fox, hedgehog, mushroom, oak, pineCone, stump, trailSign } from './shapes.ts'
 
 /** Maple-ish leaf; (x, y) = center, `turn` degrees. Bounds: radius 8. */
 const leaf = (x: number, y: number, color: string, turn = 0) =>
@@ -81,6 +82,11 @@ export default svgLevel({
       mushroom(400, 486, '#e63946', 0.8) + diff(440, 474, 22, '', mushroom(440, 486, '#c9622c', 0.7)) +
       diff(560, 452, 28, hedgehog(552, 466), hedgehog(566, 466)) +
       mushroom(610, 488, '#f2b134', 0.6) + mushroom(626, 490, '#f2b134', 0.5) +
+      stones(380, 450) +
+      pineCone(40, 490) +
+      anthill(497, 490) +
+      feather(330, 300) +
+      trailSign(585, 348) +
       falling
     )
   },

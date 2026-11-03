@@ -1,5 +1,6 @@
+import { butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
+import { cloud, duck, flower, FLOWER_COLORS, grass, ladybug, pick, snail, sun, tree } from '../shapes.ts'
 
 const bird = (x: number, y: number) =>
   `<path d="M${x - 18} ${y}Q${x - 9} ${y - 10} ${x} ${y}Q${x + 9} ${y - 10} ${x + 18} ${y}" stroke="#34495e" stroke-width="3" fill="none" stroke-linecap="round"/>`
@@ -74,7 +75,12 @@ export default svgLevel({
       anim({ type: 'sway', angle: 4, pivot: [145, 350], period: 3, phase: 0.5 }, cattail(145, 350, 75)) +
       anim({ type: 'sway', angle: 4, pivot: [735, 340], period: 3.4 }, cattail(735, 340, 80)) +
       anim({ type: 'sway', angle: 4, pivot: [758, 345], period: 3.4, phase: 0.4 }, cattail(758, 345, 60)) +
-      stones
+      stones +
+      ladybug(455, 452) +
+      butterfly(605, 302) +
+      mushroom(520, 305) +
+      snail(207, 302) +
+      stump(690, 488)
     )
   },
 })

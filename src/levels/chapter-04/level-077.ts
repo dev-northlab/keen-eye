@@ -1,6 +1,6 @@
 // Motion differences: the penguin slides faster on picture B; the seal claps only on B; the floe drifts faster on B.
 import { svgLevel } from '../helpers.ts'
-import { fish, waves } from './shapes.ts'
+import { bottleMessage, dolphin, fish, gullStanding, lifeRing, waves } from './shapes.ts'
 
 /** Penguin standing, faces right; (x, y) = feet. Bounds: x ±12, y from −36 to 0. */
 const penguin = (x: number, y: number, flip = false) =>
@@ -60,6 +60,11 @@ export default svgLevel({
       diff(300, 470, 20, '', fish(300, 470, '#8d99ae', 1.1, true)) +
       diff(740, 299, 36, floe(740, 300, 40), floe(740, 300, 70)) +
       anim({ type: 'bob', dx: 8, dy: 0, period: 3 }, waves(480, 10, 100, '#5ca3c9')) +
+      bottleMessage(450, 452) +
+      gullStanding(590, 212) +
+      fish(560, 470, '#8d99ae') +
+      lifeRing(200, 462) +
+      dolphin(482, 288) +
       anim({ type: 'path', points: [[0, 0], [-8, 40]], period: 4 }, flakes)
     )
   },

@@ -1,6 +1,6 @@
 // Motion differences: the woodpecker pecks faster on picture B; the beetle crawls the other way round on B; the spider bobs only on B.
 import { svgLevel } from '../helpers.ts'
-import { bird, floor, mushroom, pine, squirrel } from './shapes.ts'
+import { acorn, anthill, bird, bluebells, floor, leafPile, mushroom, pine, pineCone, squirrel } from './shapes.ts'
 
 /** Woodpecker clinging to the trunk, faces left; (x, y) = feet. Bounds: x ±14, y from −30 to +2. */
 const woodpecker = (x: number, y: number) =>
@@ -71,7 +71,12 @@ export default svgLevel({
       diff(120, 470, 18, '', nut(120, 476)) +
       nut(150, 486) +
       diff(520, 475, 18, crawling(false), crawling(true), 'beetle') +
-      floor(rand, 450, 490, 8)
+      floor(rand, 450, 490, 8) +
+      pineCone(50, 485) +
+      acorn(230, 480) +
+      bluebells(340, 480) +
+      leafPile(470, 480) +
+      anthill(730, 482)
     )
   },
 })

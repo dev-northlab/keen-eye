@@ -1,6 +1,6 @@
 // Motion differences: chimney smoke drifts only on picture B; the dog wags its tail faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bird, flower, oak, pine, rabbit, stump } from './shapes.ts'
+import { acorn, anthill, backpack, bird, bluebells, flower, oak, pine, pineCone, rabbit, stump } from './shapes.ts'
 
 /** Window, 34 × 34, with `cols` columns of panes; (x, y) = center. */
 const window = (x: number, y: number, cols: number) => {
@@ -80,7 +80,12 @@ export default svgLevel({
       `<path d="M0 400h130M0 424h130M10 392v48M50 392v48M90 392v48M126 392v48" stroke="#c9a06c" stroke-width="5"/>` +
       `<path d="M90 392V320" stroke="#6b4226" stroke-width="5"/><rect x="74" y="296" width="32" height="26" fill="#e07a5f"/><path d="M70 298l20 -14l20 14Z" fill="#8c3a2b"/><circle cx="90" cy="310" r="5" fill="#2b2b2b"/>` +
       oak(772, 460, 1.6, '#4c9a3f') + pine(736, 500, 1.2, '#2f6b4a') +
-      rabbit(420, 470, true) + flowers
+      rabbit(420, 470, true) + flowers +
+      backpack(470, 412) +
+      pineCone(240, 478) +
+      acorn(475, 478) +
+      anthill(600, 482) +
+      bluebells(165, 420)
     )
   },
 })

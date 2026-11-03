@@ -1,6 +1,7 @@
 // Motion differences: the boat sails faster on picture B; the gull flies the other way round on B.
+import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { car, cityTree, cloud, lampHead, lampPost, person, skyline, sun } from './shapes.ts'
+import { ball, car, cityTree, cloud, coffeeCup, lampHead, lampPost, person, skateboard, skyline, sun } from './shapes.ts'
 import { duck } from '../shapes.ts'
 
 /** Small boat, faces right; (x, y) = waterline center. Bounds: x ±30, y from −44 to +8. */
@@ -68,7 +69,12 @@ export default svgLevel({
       diff(120, 442, 42, sailing(16), sailing(8), 'boat') +
       diff(700, 436, 18, buoy(700, 440, '#e63946'), buoy(700, 440, '#3a86ff')) +
       duck(560, 470) +
-      diff(630, 464, 36, '', duck(626, 470))
+      diff(630, 464, 36, '', duck(626, 470)) +
+      bird(190, 271) +
+      ball(150, 330) +
+      butterfly(720, 340) +
+      skateboard(705, 300) +
+      coffeeCup(125, 390)
     )
   },
 })

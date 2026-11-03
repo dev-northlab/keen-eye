@@ -1,6 +1,6 @@
 // Motion differences: the hanging sign swings only on picture B; the coffee steam rises faster on B.
 import { svgLevel } from '../helpers.ts'
-import { awning, bike, cloud, door, flowerBox, person, pigeon, street, window } from './shapes.ts'
+import { awning, ball, bike, cloud, door, flowerBox, manhole, newspaperBox, person, pigeon, shoppingBag, skateboard, street, window } from './shapes.ts'
 
 /** Round table with two chairs; (x, y) = ground center. Bounds: x ±36, y from −40 to 0. */
 const table = (x: number, y: number) =>
@@ -95,7 +95,12 @@ export default svgLevel({
       diff(720, 307, 44, plant(720, 340), plant(720, 340, 1.3)) +
       bike(60, 400, '#3a86ff') +
       pigeon(760, 380, true) +
-      curb
+      curb +
+      skateboard(110, 380) +
+      newspaperBox(262, 380) +
+      shoppingBag(600, 382) +
+      ball(705, 380) +
+      manhole(420, 470)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the bees fly faster on picture B; the honey drip bobs only on B; the leafy twig sways faster on B.
 import { svgLevel } from '../helpers.ts'
-import { bear, bird, bush, cloud, floor, flower, pine, sun } from './shapes.ts'
+import { acorn, anthill, bear, bird, bluebells, bush, cloud, floor, flower, pine, pineCone, sun, wildStrawberry } from './shapes.ts'
 import { bee } from '../shapes.ts'
 
 /** Tree hollow; (x, y) = center, scale s. Bounds: x ±16·s, y ±22·s. */
@@ -56,7 +56,12 @@ export default svgLevel({
       diff(220, 468, 18, flower(220, 486, '#ff6b8b'), flower(220, 486, '#b38cff')) +
       flower(250, 490, '#ffffff') +
       flower(660, 492, '#ff9f43') +
-      floor(rand, 410, 490, 8)
+      floor(rand, 410, 490, 8) +
+      wildStrawberry(300, 472) +
+      pineCone(85, 306) +
+      acorn(612, 480) +
+      anthill(55, 490) +
+      bluebells(455, 484)
     )
   },
 })

@@ -1,6 +1,6 @@
 // Motion differences: the lead yacht rocks faster on picture B; the pennants wave only on B; the motorboat crosses the other way round on B.
 import { svgLevel } from '../helpers.ts'
-import { buoy, cloud, gull, person, sailboat, sun, waves } from './shapes.ts'
+import { beachBall, bottleMessage, buoy, cloud, dolphin, gull, gullStanding, lifeRing, person, sailboat, sun, waves } from './shapes.ts'
 
 /** Pennant string from (x, y) to the right. Bounds: x from −2 to +62, y from −2 to +14. */
 const pennants = (x: number, y: number) =>
@@ -51,7 +51,12 @@ export default svgLevel({
       diff(700, 400, 18, number(700, 400, '#ffb703'), number(700, 400, '#8ac926')) +
       diff(60, 440, 20, buoy(60, 444), buoy(60, 444, '#ffb703')) +
       buoy(760, 330, '#ffb703') +
-      diff(240, 470, 20, buoy(240, 474, '#8ac926'), '')
+      diff(240, 470, 20, buoy(240, 474, '#8ac926'), '') +
+      bottleMessage(470, 470) +
+      beachBall(560, 335) +
+      gullStanding(590, 180) +
+      dolphin(470, 300) +
+      lifeRing(770, 430)
     )
   },
 })

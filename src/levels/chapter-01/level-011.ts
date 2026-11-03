@@ -1,6 +1,7 @@
 // Motion difference: the windmill blades turn the other way on picture B.
+import { frog, mushroom } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree } from '../shapes.ts'
+import { birdhouse, cat, cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
 
 const blades = () => {
   let s = ''
@@ -64,7 +65,12 @@ export default svgLevel({
       // Pond with a swimming duck (the same on both pictures)
       `<ellipse cx="265" cy="420" rx="215" ry="55" fill="#4fa9d8"/>` +
       `<ellipse cx="265" cy="424" rx="190" ry="42" fill="#63b8e3"/>` +
-      anim({ type: 'path', points: [[0, 0], [220, 0]], flipX: 154, period: 12 }, duck(150, 418))
+      anim({ type: 'path', points: [[0, 0], [220, 0]], flipX: 154, period: 12 }, duck(150, 418)) +
+      frog(510, 467) +
+      mushroom(300, 352) +
+      cat(225, 332) +
+      birdhouse(520, 345) +
+      wateringCan(745, 470)
     )
   },
 })

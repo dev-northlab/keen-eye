@@ -1,6 +1,7 @@
 // Motion differences: the porch lantern swings only on picture B; one firefly by the doghouse blinks only on B.
+import { bird, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
-import { sheep } from '../shapes.ts'
+import { milkCan, sheep, stones, wheelbarrow } from '../shapes.ts'
 
 /** Star; (x, y) = center. Bounds: radius 7. */
 const star = (x: number, y: number) =>
@@ -128,7 +129,12 @@ export default svgLevel({
       [530, 590, 650, 710, 770].map((x) => `<rect x="${x}" y="398" width="12" height="58" rx="3" fill="#6b5a48"/>`).join('') +
       diff(560, 402, 26, cat(552, 412), cat(566, 412)) +
       sheep(640, 470, false, '#e3e1d6') + sheep(740, 476, true, '#d6d3c6') +
-      flies
+      flies +
+      stump(255, 482) +
+      milkCan(510, 392) +
+      wheelbarrow(340, 345) +
+      stones(565, 478) +
+      bird(656, 399)
     )
   },
 })
