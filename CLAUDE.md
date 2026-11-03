@@ -107,8 +107,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
   (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
   three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
-  (the only code that talks to the app store: price, purchase, ownership; currently a dev-only stub — RevenueCat goes
-  here; in production builds the stub sells nothing)
+  (the only code that talks to the app store: price, purchase, restore, ownership of the product `full_game`; Google Play
+  Billing / StoreKit straight through `capacitor-plugin-cdv-purchase`, no receipt server; in `npm run dev` in the
+  browser a stub store, a production web build sells nothing)
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and
   levels not reached yet to the map
 - `src/i18n/` — one `<locale>.json` per language, named by its BCP 47 tag (ru, en, hy, de, fr, es, it, pt, nl, pl,
