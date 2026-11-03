@@ -19,6 +19,13 @@
     "updates": {
       "text": "Kami terus memperbaiki level yang ada dan menambahkan level baru lewat pembaruan gratis.",
       "title": "Permainan terus berkembang"
+    },
+    "support": {
+      "title": "Dukung game ini",
+      "text": "Suka Keen Eye? Dukunganmu memotivasi dan menginspirasi kami untuk membuat level, mode, dan fitur baru.",
+      "note": "Tip tidak membuka apa pun di dalam game: ini hanya ucapan terima kasih untuk pengembang.",
+      "tip": "Beri tip {price}",
+      "thanks": "Terima kasih banyak atas dukunganmu! Ini sangat berarti bagi kami."
     }
   },
   "chapters": {

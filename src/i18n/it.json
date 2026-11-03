@@ -58,6 +58,13 @@
       "keys": "Chiavi nascoste",
       "offline": "Senza internet",
       "noAds": "Senza pubblicità"
+    },
+    "support": {
+      "title": "Sostieni il gioco",
+      "text": "Ti piace Keen Eye? Il tuo sostegno ci motiva e ci ispira a creare nuovi livelli, modalità e funzioni.",
+      "note": "La mancia non sblocca nulla nel gioco: è semplicemente un grazie agli sviluppatori.",
+      "tip": "Lascia una mancia di {price}",
+      "thanks": "Grazie mille per il tuo sostegno! Significa molto per noi."
     }
   },
   "share": {

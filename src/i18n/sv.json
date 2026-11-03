@@ -19,6 +19,13 @@
     "updates": {
       "text": "Vi förbättrar hela tiden de befintliga nivåerna och lägger till nya i gratis uppdateringar.",
       "title": "Spelet fortsätter att växa"
+    },
+    "support": {
+      "title": "Stöd spelet",
+      "text": "Gillar du Keen Eye? Ditt stöd motiverar och inspirerar oss att skapa nya nivåer, lägen och funktioner.",
+      "note": "Dricks låser inte upp något i spelet: det är bara ett tack till utvecklarna.",
+      "tip": "Ge dricks på {price}",
+      "thanks": "Stort tack för ditt stöd! Det betyder mycket för oss."
     }
   },
   "chapters": {

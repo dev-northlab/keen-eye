@@ -58,6 +58,13 @@
       "keys": "Llaves ocultas",
       "offline": "Sin internet",
       "noAds": "Sin anuncios"
+    },
+    "support": {
+      "title": "Apoya el juego",
+      "text": "¿Te gusta Keen Eye? Tu apoyo nos motiva e inspira a crear nuevos niveles, modos y funciones.",
+      "note": "La propina no desbloquea nada en el juego: es simplemente un agradecimiento a los desarrolladores.",
+      "tip": "Dejar una propina de {price}",
+      "thanks": "¡Muchísimas gracias por tu apoyo! Significa mucho para nosotros."
     }
   },
   "share": {

@@ -58,6 +58,13 @@
       "keys": "Versteckte Schlüssel",
       "offline": "Ohne Internet",
       "noAds": "Keine Werbung"
+    },
+    "support": {
+      "title": "Das Spiel unterstützen",
+      "text": "Gefällt dir Keen Eye? Deine Unterstützung motiviert und inspiriert uns, neue Level, Modi und Funktionen zu entwickeln.",
+      "note": "Ein Trinkgeld schaltet im Spiel nichts frei: Es ist einfach ein Dankeschön an die Entwickler.",
+      "tip": "Trinkgeld von {price} geben",
+      "thanks": "Vielen Dank für deine Unterstützung! Sie bedeutet uns sehr viel."
     }
   },
   "share": {

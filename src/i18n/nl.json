@@ -58,6 +58,13 @@
       "keys": "Verborgen sleutels",
       "offline": "Zonder internet",
       "noAds": "Geen advertenties"
+    },
+    "support": {
+      "title": "Steun het spel",
+      "text": "Vind je Keen Eye leuk? Jouw steun motiveert en inspireert ons om nieuwe levels, modi en functies te maken.",
+      "note": "Een fooi ontgrendelt niets in het spel: het is gewoon een bedankje aan de makers.",
+      "tip": "Geef een fooi van {price}",
+      "thanks": "Heel erg bedankt voor je steun! Het betekent veel voor ons."
     }
   },
   "share": {

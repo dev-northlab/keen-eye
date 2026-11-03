@@ -19,6 +19,13 @@
     "updates": {
       "text": "Chúng tôi liên tục cải thiện các màn chơi hiện có và thêm màn mới qua các bản cập nhật miễn phí.",
       "title": "Trò chơi không ngừng lớn lên"
+    },
+    "support": {
+      "title": "Ủng hộ trò chơi",
+      "text": "Bạn thích Keen Eye chứ? Sự ủng hộ của bạn là động lực và nguồn cảm hứng để chúng tôi tạo thêm màn chơi, chế độ và tính năng mới.",
+      "note": "Tiền tip không mở khóa gì trong trò chơi: đó chỉ là lời cảm ơn gửi đến nhà phát triển.",
+      "tip": "Gửi tip {price}",
+      "thanks": "Cảm ơn bạn rất nhiều vì đã ủng hộ! Điều đó rất có ý nghĩa với chúng tôi."
     }
   },
   "chapters": {

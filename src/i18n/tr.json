@@ -58,6 +58,13 @@
       "keys": "Gizli anahtarlar",
       "offline": "İnternetsiz",
       "noAds": "Reklamsız"
+    },
+    "support": {
+      "title": "Oyunu destekle",
+      "text": "Keen Eye'ı sevdin mi? Desteğin bizi yeni seviyeler, modlar ve özellikler yapmak için motive ediyor ve ilham veriyor.",
+      "note": "Bahşiş oyunda hiçbir şeyin kilidini açmaz: yalnızca geliştiricilere bir teşekkürdür.",
+      "tip": "{price} bahşiş bırak",
+      "thanks": "Desteğin için çok teşekkür ederiz! Bizim için çok değerli."
     }
   },
   "share": {

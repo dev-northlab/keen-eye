@@ -44,7 +44,7 @@ export const router = createRouter({
       component: MemoryLevelView,
       props: (route) => ({ id: Number(route.params.id) }),
     },
-    // "Find the odd one out" (docs/anachronism-mode.md): open to everyone, no unlock order.
+    // "Find the odd one out" (docs/anachronism-mode.md): no unlock order; all eras but the first need the purchase.
     { path: '/time-travel', name: 'eras', component: TimeTravelView },
     { path: '/time-travel/:id', name: 'time-travel', component: AnachronismLevelView, props: true },
     // "Travel" (docs/world-travel-mode.md): numbered levels of the 'travel' category, listed on a world map.
@@ -69,7 +69,7 @@ export const router = createRouter({
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
 // Unknown chapter → worlds, "travel" → its world map, "detective" → its cases (an unknown case too), the treasury → game modes. Unknown level → home; paid level not bought → purchase
 // screen; not reached yet → its chapter's grid (or the world map). Two-player matches need no order, only the purchase for paid levels.
-// Unknown "find the odd one out" level → home. A "memory" level plays only on its own
+// Unknown "find the odd one out" level → home, a paid one not bought → purchase screen. A "memory" level plays only on its own
 // screen (/level/<id> leads there), no other level does.
 router.beforeEach((to, from) => {
   if (to.name === 'chapter') {
@@ -79,19 +79,24 @@ router.beforeEach((to, from) => {
     return chapterById(String(to.params.chapter)) ? true : { name: 'worlds' }
   }
   if (to.name === 'case') return caseById(String(to.params.case)) ? true : { name: 'detective' }
-  if (to.name === 'time-travel') return timeTravelLevelById(String(to.params.id)) ? true : { name: 'home' }
+  const progress = useProgressStore()
+  // Offer the full game over the current screen; a direct link to the level lands on the home screen.
+  const offerPurchase = () => {
+    usePurchaseStore().dialogOpen = true
+    return from.matched.length ? false : { name: 'home' }
+  }
+  if (to.name === 'time-travel') {
+    const era = timeTravelLevelById(String(to.params.id))
+    if (!era) return { name: 'home' }
+    return progress.needsPurchase(era.number) ? offerPurchase() : true
+  }
   if (to.name !== 'level' && to.name !== 'match' && to.name !== 'memory') return true
   const id = Number(to.params.id)
-  const progress = useProgressStore()
   const level = levelById(id)
   if (!level) return { name: 'home' }
   if ((to.name === 'memory') !== !!level.memory)
     return level.memory && to.name === 'level' ? { name: 'memory', params: { id } } : { name: 'home' }
-  if (progress.needsPurchase(id)) {
-    // Offer the full game over the current screen; a direct link to the level lands on the home screen.
-    usePurchaseStore().dialogOpen = true
-    return from.matched.length ? false : { name: 'home' }
-  }
+  if (progress.needsPurchase(id)) return offerPurchase()
   if (to.name === 'match') return true
   return progress.isUnlocked(id) ? true : levelsScreen(level)
 })

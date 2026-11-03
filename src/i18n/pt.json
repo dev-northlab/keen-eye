@@ -58,6 +58,13 @@
       "keys": "Chaves escondidas",
       "offline": "Sem internet",
       "noAds": "Sem anúncios"
+    },
+    "support": {
+      "title": "Apoie o jogo",
+      "text": "Está gostando de Keen Eye? Seu apoio nos motiva e inspira a criar novos níveis, modos e recursos.",
+      "note": "A gorjeta não desbloqueia nada no jogo: é apenas um agradecimento aos desenvolvedores.",
+      "tip": "Deixar uma gorjeta de {price}",
+      "thanks": "Muito obrigado pelo seu apoio! Isso significa muito para nós."
     }
   },
   "share": {

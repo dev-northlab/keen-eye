@@ -58,6 +58,13 @@
       "keys": "Clés cachées",
       "offline": "Sans Internet",
       "noAds": "Sans publicité"
+    },
+    "support": {
+      "title": "Soutenir le jeu",
+      "text": "Vous aimez Keen Eye ? Votre soutien nous motive et nous inspire à créer de nouveaux niveaux, modes et fonctionnalités.",
+      "note": "Un pourboire ne débloque rien dans le jeu : c'est simplement un merci aux développeurs.",
+      "tip": "Laisser un pourboire de {price}",
+      "thanks": "Merci infiniment pour votre soutien ! Cela compte beaucoup pour nous."
     }
   },
   "share": {

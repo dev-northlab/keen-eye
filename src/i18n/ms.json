@@ -19,6 +19,13 @@
     "updates": {
       "text": "Kami sentiasa menambah baik tahap sedia ada dan menambah tahap baharu melalui kemas kini percuma.",
       "title": "Permainan terus berkembang"
+    },
+    "support": {
+      "title": "Sokong permainan ini",
+      "text": "Seronok bermain Keen Eye? Sokongan anda memberi kami motivasi dan inspirasi untuk mencipta tahap, mod dan ciri baharu.",
+      "note": "Tip tidak membuka apa-apa dalam permainan: ia hanyalah ucapan terima kasih kepada pembangun.",
+      "tip": "Beri tip {price}",
+      "thanks": "Terima kasih banyak atas sokongan anda! Ia sangat bermakna bagi kami."
     }
   },
   "chapters": {
