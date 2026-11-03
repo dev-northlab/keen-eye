@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye 是一款画面会动的找不同游戏。无广告，无需联网。",
     "version": "版本 {v}",
     "privacy": "隐私政策",
-    "privacyText": "我们不收集任何数据。进度和设置只保存在你的设备上。",
+    "privacyPoints": {
+      "noData": "我们不收集任何数据",
+      "onDevice": "进度和设置只保存在你的设备上",
+      "noAds": "没有广告，也没有追踪"
+    },
     "contact": "联系我们",
-    "contactText": "有问题或想法，或者发现了错误？给我们写信吧——我们会认真阅读每一封邮件，并乐意回复。"
+    "contactText": "有问题或想法，或者发现了错误？给我们写信吧——我们会认真阅读每一封邮件，并乐意回复。",
+    "writeUs": "给我们写信",
+    "copyEmail": "复制地址",
+    "emailCopied": "地址已复制"
   },
   "about": {
     "shareGame": "分享游戏",
     "social": "分享到社交平台",
     "rate": "给游戏评分",
+    "updates": {
+      "title": "游戏不断成长",
+      "text": "我们会持续改进现有关卡，并通过免费更新不断加入新关卡。"
+    },
     "features": "游戏内容",
     "stats": {
       "levels": "关卡",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "完整版",
+    "tagline": "畅玩游戏，无广告，无需联网",
     "owned": "完整版已解锁。谢谢！",
     "what": "你将获得",
     "allLevels": "所有关卡：现有 {n} 关以及主线游戏今后的所有关卡",
     "allLevelsNone": "主线游戏今后的所有关卡",
+    "harder": "更有趣、更具挑战的关卡：更多不同之处，更多动态",
     "noAds": "无广告，无订阅",
     "once": "一次购买，永久有效，离线可用",
     "buy": "购买 {price}",
-    "buyNoPrice": "购买",
     "restore": "恢复购买",
     "wait": "请稍候…",
     "success": "完成！所有关卡已解锁。",
     "restored": "购买已恢复。",
     "none": "未找到购买记录。",
     "error": "无法连接商店，请稍后再试。",
-    "play": "开始游戏",
     "unavailable": "商店不可用"
   },
   "timeMode": {

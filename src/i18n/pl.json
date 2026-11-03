@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye to gra w szukanie różnic z żywymi scenami. Bez reklam i bez internetu.",
     "version": "Wersja {v}",
     "privacy": "Prywatność",
-    "privacyText": "Nie zbieramy żadnych danych. Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu.",
+    "privacyPoints": {
+      "noData": "Nie zbieramy żadnych danych",
+      "onDevice": "Postęp i ustawienia są zapisywane tylko na Twoim urządzeniu",
+      "noAds": "Bez reklam i śledzenia"
+    },
     "contact": "Kontakt",
-    "contactText": "Masz pytanie lub pomysł, a może znalazłeś błąd? Napisz do nas — czytamy każdą wiadomość i chętnie odpowiemy."
+    "contactText": "Masz pytanie lub pomysł, a może znalazłeś błąd? Napisz do nas — czytamy każdą wiadomość i chętnie odpowiemy.",
+    "writeUs": "Napisz do nas",
+    "copyEmail": "Kopiuj adres",
+    "emailCopied": "Adres skopiowany"
   },
   "about": {
     "shareGame": "Udostępnij grę",
     "social": "Udostępnij w mediach społecznościowych",
     "rate": "Oceń grę",
+    "updates": {
+      "title": "Gra wciąż rośnie",
+      "text": "Ulepszamy istniejące poziomy i stale dodajemy nowe w darmowych aktualizacjach."
+    },
     "features": "Co w środku",
     "stats": {
       "levels": "Poziomy",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Pełna wersja",
+    "tagline": "Ciesz się grą bez reklam i internetu",
     "owned": "Pełna wersja jest odblokowana. Dziękujemy!",
     "what": "Co otrzymujesz",
     "allLevels": "Wszystkie poziomy: teraz {n} i wszystkie przyszłe poziomy głównej gry",
     "allLevelsNone": "Wszystkie przyszłe poziomy głównej gry",
+    "harder": "Ciekawsze i trudniejsze poziomy: więcej różnic i więcej ruchu",
     "noAds": "Bez reklam i bez subskrypcji",
     "once": "Jeden zakup na zawsze, działa offline",
     "buy": "Kup za {price}",
-    "buyNoPrice": "Kup",
     "restore": "Przywróć zakupy",
     "wait": "Proszę czekać…",
     "success": "Gotowe! Wszystkie poziomy są odblokowane.",
     "restored": "Zakup przywrócony.",
     "none": "Nie znaleziono zakupów.",
     "error": "Nie udało się połączyć ze sklepem. Spróbuj później.",
-    "play": "Graj",
     "unavailable": "Sklep niedostępny"
   },
   "timeMode": {

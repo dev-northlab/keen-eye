@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye è un gioco trova le differenze con scene animate. Senza pubblicità, senza internet.",
     "version": "Versione {v}",
     "privacy": "Privacy",
-    "privacyText": "Non raccogliamo alcun dato. Progressi e impostazioni restano solo sul tuo dispositivo.",
+    "privacyPoints": {
+      "noData": "Non raccogliamo alcun dato",
+      "onDevice": "Progressi e impostazioni restano solo sul tuo dispositivo",
+      "noAds": "Niente pubblicità né tracciamento"
+    },
     "contact": "Contattaci",
-    "contactText": "Hai una domanda, un'idea o hai trovato un errore? Scrivici: leggiamo ogni messaggio e ti risponderemo volentieri."
+    "contactText": "Hai una domanda, un'idea o hai trovato un errore? Scrivici: leggiamo ogni messaggio e ti risponderemo volentieri.",
+    "writeUs": "Scrivici",
+    "copyEmail": "Copia indirizzo",
+    "emailCopied": "Indirizzo copiato"
   },
   "about": {
     "shareGame": "Condividi il gioco",
     "social": "Condividi sui social",
     "rate": "Valuta il gioco",
+    "updates": {
+      "title": "Il gioco cresce",
+      "text": "Miglioriamo i livelli esistenti e ne aggiungiamo sempre di nuovi con aggiornamenti gratuiti."
+    },
     "features": "Cosa c'è dentro",
     "stats": {
       "levels": "Livelli",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Gioco completo",
+    "tagline": "Goditi il gioco senza pubblicità né internet",
     "owned": "Il gioco completo è sbloccato. Grazie!",
     "what": "Cosa ottieni",
     "allLevels": "Tutti i livelli: {n} ora e tutti i futuri livelli del gioco principale",
     "allLevelsNone": "Tutti i futuri livelli del gioco principale",
+    "harder": "Livelli più interessanti e difficili: più differenze e più movimento",
     "noAds": "Niente pubblicità né abbonamento",
     "once": "Un solo acquisto per sempre, funziona offline",
     "buy": "Acquista a {price}",
-    "buyNoPrice": "Acquista",
     "restore": "Ripristina acquisti",
     "wait": "Attendi…",
     "success": "Fatto! Tutti i livelli sono sbloccati.",
     "restored": "Acquisto ripristinato.",
     "none": "Nessun acquisto trovato.",
     "error": "Impossibile contattare lo store. Riprova più tardi.",
-    "play": "Gioca",
     "unavailable": "Store non disponibile"
   },
   "timeMode": {

@@ -26,14 +26,25 @@
     "aboutText": "A Keen Eye egy különbségkereső játék élő jelenetekkel. Reklám és internet nélkül.",
     "version": "Verzió: {v}",
     "privacy": "Adatvédelem",
-    "privacyText": "Semmilyen adatot nem gyűjtünk. Az előrehaladás és a beállítások csak az eszközödön maradnak.",
+    "privacyPoints": {
+      "noData": "Semmilyen adatot nem gyűjtünk",
+      "onDevice": "Az előrehaladás és a beállítások csak az eszközödön maradnak",
+      "noAds": "Nincs reklám és nincs követés"
+    },
     "contact": "Kapcsolat",
-    "contactText": "Kérdésed vagy ötleted van, esetleg hibát találtál? Írj nekünk — minden üzenetet elolvasunk, és szívesen válaszolunk."
+    "contactText": "Kérdésed vagy ötleted van, esetleg hibát találtál? Írj nekünk — minden üzenetet elolvasunk, és szívesen válaszolunk.",
+    "writeUs": "Írj nekünk",
+    "copyEmail": "Cím másolása",
+    "emailCopied": "Cím kimásolva"
   },
   "about": {
     "shareGame": "Játék megosztása",
     "social": "Megosztás a közösségi médiában",
     "rate": "Játék értékelése",
+    "updates": {
+      "title": "A játék folyamatosan bővül",
+      "text": "Fejlesztjük a meglévő pályákat, és ingyenes frissítésekben folyamatosan újakat adunk hozzá."
+    },
     "features": "Mi van benne",
     "stats": {
       "levels": "Pályák",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Teljes verzió",
+    "tagline": "Élvezd a játékot reklámok és internet nélkül",
     "owned": "A teljes verzió feloldva. Köszönjük!",
     "what": "Mit kapsz",
     "allLevels": "Minden pálya: most {n}, és a fő játék összes jövőbeli pályája",
     "allLevelsNone": "A fő játék összes jövőbeli pályája",
+    "harder": "Érdekesebb és nehezebb pályák: több különbség és több mozgás",
     "noAds": "Reklám és előfizetés nélkül",
     "once": "Egyszeri vásárlás örökre, offline is működik",
     "buy": "Megvétel: {price}",
-    "buyNoPrice": "Megvétel",
     "restore": "Vásárlások visszaállítása",
     "wait": "Kérlek, várj…",
     "success": "Kész! Minden pálya feloldva.",
     "restored": "Vásárlás visszaállítva.",
     "none": "Nem található vásárlás.",
     "error": "Nem sikerült elérni a boltot. Próbáld újra később.",
-    "play": "Játék",
     "unavailable": "A bolt nem érhető el"
   },
   "timeMode": {

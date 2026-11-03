@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye is een zoek-de-verschillen-spel met levendige scènes. Geen reclame, geen internet.",
     "version": "Versie {v}",
     "privacy": "Privacy",
-    "privacyText": "We verzamelen helemaal geen gegevens. Voortgang en instellingen blijven alleen op je apparaat.",
+    "privacyPoints": {
+      "noData": "We verzamelen helemaal geen gegevens",
+      "onDevice": "Voortgang en instellingen blijven alleen op je apparaat",
+      "noAds": "Geen advertenties en geen tracking"
+    },
     "contact": "Contact",
-    "contactText": "Heb je een vraag of een idee, of een fout gevonden? Schrijf ons — we lezen elk bericht en antwoorden graag."
+    "contactText": "Heb je een vraag of een idee, of een fout gevonden? Schrijf ons — we lezen elk bericht en antwoorden graag.",
+    "writeUs": "Schrijf ons",
+    "copyEmail": "Adres kopiëren",
+    "emailCopied": "Adres gekopieerd"
   },
   "about": {
     "shareGame": "Deel het spel",
     "social": "Delen op sociale media",
     "rate": "Beoordeel het spel",
+    "updates": {
+      "title": "De game groeit",
+      "text": "We verbeteren de bestaande levels en voegen steeds nieuwe toe in gratis updates."
+    },
     "features": "Wat zit erin",
     "stats": {
       "levels": "Levels",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Volledige game",
+    "tagline": "Geniet van de game zonder advertenties of internet",
     "owned": "De volledige game is ontgrendeld. Bedankt!",
     "what": "Wat je krijgt",
     "allLevels": "Alle levels: nu {n} en alle toekomstige levels van de hoofdgame",
     "allLevelsNone": "Alle toekomstige levels van de hoofdgame",
+    "harder": "Interessantere en moeilijkere levels: meer verschillen en meer beweging",
     "noAds": "Geen reclame, geen abonnement",
     "once": "Eén keer kopen, voor altijd, werkt offline",
     "buy": "Kopen voor {price}",
-    "buyNoPrice": "Kopen",
     "restore": "Aankopen herstellen",
     "wait": "Even geduld…",
     "success": "Klaar! Alle levels zijn ontgrendeld.",
     "restored": "Aankoop hersteld.",
     "none": "Geen aankopen gevonden.",
     "error": "Kan de winkel niet bereiken. Probeer het later opnieuw.",
-    "play": "Spelen",
     "unavailable": "Winkel niet beschikbaar"
   },
   "timeMode": {

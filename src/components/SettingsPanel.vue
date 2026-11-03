@@ -5,13 +5,11 @@ import ModeSwitch from './ModeSwitch.vue'
 import ThemeSwitch from './ThemeSwitch.vue'
 import { playSfx } from '../services/audio.ts'
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 
 const settings = useSettingsStore()
 const purchase = usePurchaseStore()
-const router = useRouter()
 
 const percent = (v: number) => `${Math.round(v * 100)}%`
 
@@ -88,7 +86,7 @@ async function applyPromo() {
       />
     </label>
 
-    <button class="row link" @click="router.push({ name: 'purchase' })">
+    <button class="row link" @click="purchase.dialogOpen = true">
       <span>{{ $t('settings.fullGame') }}</span>
       <span class="muted">
         {{ purchase.owned ? $t('settings.fullGameOwned') : $t('settings.fullGameOpen') }} ›

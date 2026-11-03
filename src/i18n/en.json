@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
     "version": "Version {v}",
     "privacy": "Privacy policy",
-    "privacyText": "We collect no data at all. Progress and settings are stored only on your device.",
+    "privacyPoints": {
+      "noData": "We collect no data at all",
+      "onDevice": "Progress and settings are stored only on your device",
+      "noAds": "No ads and no tracking"
+    },
     "contact": "Contact us",
-    "contactText": "Have a question or an idea, or found a bug? Write to us — we read every message and will be glad to answer."
+    "contactText": "Have a question or an idea, or found a bug? Write to us — we read every message and will be glad to answer.",
+    "writeUs": "Write to us",
+    "copyEmail": "Copy address",
+    "emailCopied": "Address copied"
   },
   "about": {
     "shareGame": "Share the game",
     "social": "Share on social media",
     "rate": "Rate the game",
+    "updates": {
+      "title": "The game keeps growing",
+      "text": "We keep improving the existing levels and add new ones in free updates."
+    },
     "features": "What's inside",
     "stats": {
       "levels": "Levels",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Full game",
+    "tagline": "Enjoy the game without ads or internet",
     "owned": "The full game is unlocked. Thank you!",
     "what": "What you get",
     "allLevels": "All levels: {n} now and every future level of the main game",
     "allLevelsNone": "Every future level of the main game",
+    "harder": "More interesting and challenging levels: more differences and more motion",
     "noAds": "No ads, no subscription",
     "once": "One purchase forever, works offline",
     "buy": "Buy for {price}",
-    "buyNoPrice": "Buy",
     "restore": "Restore purchases",
     "wait": "Please wait…",
     "success": "Done! All levels are unlocked.",
     "restored": "Purchase restored.",
     "none": "No purchases found.",
     "error": "Could not reach the store. Please try again later.",
-    "play": "Play",
     "unavailable": "Store unavailable"
   },
   "timeMode": {

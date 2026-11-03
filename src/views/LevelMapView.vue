@@ -19,6 +19,7 @@ import {
 import { treasuryLevel } from '../levels/index.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
@@ -29,6 +30,7 @@ import { useProgressStore } from '../stores/progress.ts'
 // and opens its bonus level once all are found.
 
 const router = useRouter()
+const purchase = usePurchaseStore()
 const progress = useProgressStore()
 
 const levels = CHAPTERS.flatMap(chapterLevels)
@@ -60,7 +62,7 @@ const keysFound = () => KEY_CHAPTERS.filter((c) => progress.hasKey(c.id)).length
 const treasuryOpen = () => progress.allKeysFound || progress.devOpenAll
 
 function openTreasury() {
-  if (progress.needsPurchase(treasuryLevel.id)) router.push({ name: 'purchase' })
+  if (progress.needsPurchase(treasuryLevel.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(treasuryLevel.id)) router.push({ name: 'level', params: { id: treasuryLevel.id } })
 }
 

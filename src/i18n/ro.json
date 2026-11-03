@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye este un joc de găsit diferențe cu scene vii. Fără reclame, fără internet.",
     "version": "Versiunea {v}",
     "privacy": "Confidențialitate",
-    "privacyText": "Nu colectăm niciun fel de date. Progresul și setările rămân doar pe dispozitivul tău.",
+    "privacyPoints": {
+      "noData": "Nu colectăm niciun fel de date",
+      "onDevice": "Progresul și setările rămân doar pe dispozitivul tău",
+      "noAds": "Fără reclame și fără urmărire"
+    },
     "contact": "Contactează-ne",
-    "contactText": "Ai o întrebare sau o idee ori ai găsit o eroare? Scrie-ne — citim fiecare mesaj și îți răspundem cu plăcere."
+    "contactText": "Ai o întrebare sau o idee ori ai găsit o eroare? Scrie-ne — citim fiecare mesaj și îți răspundem cu plăcere.",
+    "writeUs": "Scrie-ne",
+    "copyEmail": "Copiază adresa",
+    "emailCopied": "Adresă copiată"
   },
   "about": {
     "shareGame": "Distribuie jocul",
     "social": "Distribuie pe rețelele sociale",
     "rate": "Evaluează jocul",
+    "updates": {
+      "title": "Jocul crește",
+      "text": "Îmbunătățim nivelurile existente și adăugăm mereu altele noi în actualizări gratuite."
+    },
     "features": "Ce conține",
     "stats": {
       "levels": "Niveluri",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Jocul complet",
+    "tagline": "Bucură-te de joc fără reclame și fără internet",
     "owned": "Jocul complet este deblocat. Mulțumim!",
     "what": "Ce primești",
     "allLevels": "Toate nivelurile: {n} acum și toate nivelurile viitoare ale jocului principal",
     "allLevelsNone": "Toate nivelurile viitoare ale jocului principal",
+    "harder": "Niveluri mai interesante și mai dificile: mai multe diferențe și mai multă mișcare",
     "noAds": "Fără reclame, fără abonament",
     "once": "O singură achiziție, pentru totdeauna, merge offline",
     "buy": "Cumpără cu {price}",
-    "buyNoPrice": "Cumpără",
     "restore": "Restaurează achizițiile",
     "wait": "Te rugăm să aștepți…",
     "success": "Gata! Toate nivelurile sunt deblocate.",
     "restored": "Achiziția a fost restaurată.",
     "none": "Nu s-au găsit achiziții.",
     "error": "Nu ne-am putut conecta la magazin. Încearcă mai târziu.",
-    "play": "Joacă",
     "unavailable": "Magazin indisponibil"
   },
   "timeMode": {

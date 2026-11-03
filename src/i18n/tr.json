@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye, canlı sahnelerle oynanan bir fark bulma oyunudur. Reklam yok, internet gerekmez.",
     "version": "Sürüm {v}",
     "privacy": "Gizlilik politikası",
-    "privacyText": "Hiçbir veri toplamıyoruz. İlerleme ve ayarlar yalnızca cihazında saklanır.",
+    "privacyPoints": {
+      "noData": "Hiçbir veri toplamıyoruz",
+      "onDevice": "İlerleme ve ayarlar yalnızca cihazında saklanır",
+      "noAds": "Reklam ve takip yok"
+    },
     "contact": "Bize ulaşın",
-    "contactText": "Bir sorunuz ya da fikriniz mi var, bir hata mı buldunuz? Bize yazın — her mesajı okuyor ve memnuniyetle yanıtlıyoruz."
+    "contactText": "Bir sorunuz ya da fikriniz mi var, bir hata mı buldunuz? Bize yazın — her mesajı okuyor ve memnuniyetle yanıtlıyoruz.",
+    "writeUs": "Bize yazın",
+    "copyEmail": "Adresi kopyala",
+    "emailCopied": "Adres kopyalandı"
   },
   "about": {
     "shareGame": "Oyunu paylaş",
     "social": "Sosyal medyada paylaş",
     "rate": "Oyunu değerlendir",
+    "updates": {
+      "title": "Oyun büyümeye devam ediyor",
+      "text": "Mevcut seviyeleri geliştiriyor ve ücretsiz güncellemelerle sürekli yenilerini ekliyoruz."
+    },
     "features": "İçinde neler var",
     "stats": {
       "levels": "Bölümler",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Tam sürüm",
+    "tagline": "Oyunun keyfini reklamsız ve internetsiz çıkarın",
     "owned": "Tam sürüm açık. Teşekkürler!",
     "what": "Neler var",
     "allLevels": "Tüm bölümler: şimdi {n} ve ana oyunun gelecekteki tüm bölümleri",
     "allLevelsNone": "Ana oyunun gelecekteki tüm bölümleri",
+    "harder": "Daha ilginç ve zorlu seviyeler: daha fazla fark ve daha fazla hareket",
     "noAds": "Reklam yok, abonelik yok",
     "once": "Tek seferlik satın alma, sonsuza dek, çevrimdışı çalışır",
     "buy": "{price} karşılığında satın al",
-    "buyNoPrice": "Satın al",
     "restore": "Satın alımları geri yükle",
     "wait": "Lütfen bekle…",
     "success": "Tamam! Tüm bölümlerin kilidi açıldı.",
     "restored": "Satın alma geri yüklendi.",
     "none": "Satın alma bulunamadı.",
     "error": "Mağazaya bağlanılamadı. Lütfen daha sonra tekrar dene.",
-    "play": "Oyna",
     "unavailable": "Mağaza kullanılamıyor"
   },
   "timeMode": {

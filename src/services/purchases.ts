@@ -23,7 +23,7 @@ function stubOwned(): boolean {
 
 /** Localized price from the store, or null when the store is unavailable. */
 export async function fetchPrice(): Promise<string | null> {
-  return stubAvailable ? '$1.99' : null
+  return stubAvailable ? '$1.49' : null
 }
 
 /** Opens the store's purchase sheet. */

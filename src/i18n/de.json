@@ -26,14 +26,25 @@
     "aboutText": "Keen Eye ist ein Fehlersuchbild-Spiel mit lebendigen Szenen. Ohne Werbung, ohne Internet.",
     "version": "Version {v}",
     "privacy": "Datenschutz",
-    "privacyText": "Wir sammeln keinerlei Daten. Fortschritt und Einstellungen werden nur auf deinem Gerät gespeichert.",
+    "privacyPoints": {
+      "noData": "Wir sammeln keinerlei Daten",
+      "onDevice": "Fortschritt und Einstellungen werden nur auf deinem Gerät gespeichert",
+      "noAds": "Keine Werbung, kein Tracking"
+    },
     "contact": "Kontakt",
-    "contactText": "Hast du eine Frage oder eine Idee oder einen Fehler gefunden? Schreib uns – wir lesen jede Nachricht und antworten gern."
+    "contactText": "Hast du eine Frage oder eine Idee oder einen Fehler gefunden? Schreib uns – wir lesen jede Nachricht und antworten gern.",
+    "writeUs": "Schreib uns",
+    "copyEmail": "Adresse kopieren",
+    "emailCopied": "Adresse kopiert"
   },
   "about": {
     "shareGame": "Spiel teilen",
     "social": "In sozialen Netzwerken teilen",
     "rate": "Spiel bewerten",
+    "updates": {
+      "title": "Das Spiel wächst",
+      "text": "Wir verbessern die vorhandenen Level und fügen in kostenlosen Updates ständig neue hinzu."
+    },
     "features": "Was steckt drin",
     "stats": {
       "levels": "Level",
@@ -478,21 +489,21 @@
   },
   "purchase": {
     "title": "Vollversion",
+    "tagline": "Genieß das Spiel ohne Werbung und ohne Internet",
     "owned": "Die Vollversion ist freigeschaltet. Danke!",
     "what": "Was du bekommst",
     "allLevels": "Alle Level: jetzt {n} und alle künftigen Level des Hauptspiels",
     "allLevelsNone": "Alle künftigen Level des Hauptspiels",
+    "harder": "Spannendere und schwierigere Level: mehr Unterschiede und mehr Bewegung",
     "noAds": "Keine Werbung, kein Abo",
     "once": "Einmal kaufen, für immer, funktioniert offline",
     "buy": "Kaufen für {price}",
-    "buyNoPrice": "Kaufen",
     "restore": "Käufe wiederherstellen",
     "wait": "Bitte warten…",
     "success": "Fertig! Alle Level sind freigeschaltet.",
     "restored": "Kauf wiederhergestellt.",
     "none": "Keine Käufe gefunden.",
     "error": "Store nicht erreichbar. Bitte versuche es später noch einmal.",
-    "play": "Spielen",
     "unavailable": "Store nicht verfügbar"
   },
   "timeMode": {

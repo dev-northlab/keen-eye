@@ -27,8 +27,25 @@ watch(dialog, (open) => {
   if (open) removeBack = pushBackHandler(() => (dialog.value = null))
 })
 
+const [emailUser, emailDomain] = CONTACT_EMAIL.split('@')
 const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(APP_NAME)}`
-onBeforeUnmount(() => removeBack())
+/** True for a moment after the address was copied (for players without a mail app). */
+const emailCopied = ref(false)
+let copiedTimer = 0
+async function copyEmail() {
+  try {
+    await navigator.clipboard.writeText(CONTACT_EMAIL)
+  } catch {
+    return
+  }
+  emailCopied.value = true
+  clearTimeout(copiedTimer)
+  copiedTimer = window.setTimeout(() => (emailCopied.value = false), 2000)
+}
+onBeforeUnmount(() => {
+  removeBack()
+  clearTimeout(copiedTimer)
+})
 
 function play() {
   const id = progress.continueLevelId
@@ -118,16 +135,89 @@ function play() {
     </nav>
 
     <ModalDialog v-if="dialog === 'privacy'" :title="$t('info.privacy')">
+      <template #icon>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6l7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </template>
       <div class="info-body">
-        <p>{{ $t('info.privacyText') }}</p>
+        <ul class="points">
+          <li>
+            <span class="point-icon">
+              <!-- A cloud crossed out: nothing leaves the device. -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7.5 18.5h9.8a3.7 3.7 0 0 0 1-7.3 6 6 0 0 0-9.9-3.5M5.6 9.6A4.5 4.5 0 0 0 7.5 18.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4 4l16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            {{ $t('info.privacyPoints.noData') }}
+          </li>
+          <li>
+            <span class="point-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="6.5" y="2.5" width="11" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M10.5 18h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            {{ $t('info.privacyPoints.onDevice') }}
+          </li>
+          <li>
+            <span class="point-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M4 4l16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            {{ $t('info.privacyPoints.noAds') }}
+          </li>
+        </ul>
         <button @click="dialog = null">{{ $t('common.close') }}</button>
       </div>
     </ModalDialog>
 
     <ModalDialog v-if="dialog === 'contact'" :title="$t('info.contact')">
+      <template #icon>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M4 7.5l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </template>
       <div class="info-body">
         <p>{{ $t('info.contactText') }}</p>
-        <a class="email" :href="mailto">{{ CONTACT_EMAIL }}</a>
+        <div class="email-card">
+          <svg class="at" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M15.6 12v1.4a2.5 2.5 0 0 0 5 0V12a8.6 8.6 0 1 0-3.4 6.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <!-- A narrow screen wraps the address after the @, not inside a word. -->
+          <span class="address">{{ emailUser }}@<wbr />{{ emailDomain }}</span>
+          <button
+            class="copy"
+            :class="{ done: emailCopied }"
+            :aria-label="emailCopied ? $t('info.emailCopied') : $t('info.copyEmail')"
+            :title="emailCopied ? $t('info.emailCopied') : $t('info.copyEmail')"
+            @click="copyEmail"
+          >
+            <svg v-if="emailCopied" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8.5" y="8.5" width="11" height="11" rx="2.2" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M15.5 5.5v-.3a1.7 1.7 0 0 0-1.7-1.7H6.2a1.7 1.7 0 0 0-1.7 1.7v7.6a1.7 1.7 0 0 0 1.7 1.7h.3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <p class="copied" :class="{ shown: emailCopied }" aria-live="polite">
+          {{ emailCopied ? $t('info.emailCopied') : '' }}
+        </p>
+        <a class="write" :href="mailto">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 3.5L10.5 13.5M21 3.5l-6.5 17-4-7-7-4 17.5-6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {{ $t('info.writeUs') }}
+        </a>
         <button class="secondary" @click="dialog = null">{{ $t('common.close') }}</button>
       </div>
     </ModalDialog>
@@ -247,12 +337,89 @@ button,
   line-height: 1.45;
 }
 
-.info-body .email {
-  justify-self: center;
-  font-weight: 700;
+.email-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 6px 6px 10px;
+  border-radius: 14px;
+  background: var(--soft-2);
+  border: 1px solid var(--soft);
+  text-align: left;
+}
+
+.email-card .at {
+  flex: none;
+  width: 20px;
+  height: 20px;
   color: var(--accent);
+}
+
+.email-card .address {
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
+  font-weight: 700;
   overflow-wrap: anywhere;
   user-select: text;
+}
+
+.info-body .copy {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgb(35 48 43 / 0.12);
+  transition: background 0.2s, color 0.2s;
+}
+
+.info-body .copy.done {
+  background: var(--accent);
+  color: #fff;
+}
+
+.copy svg {
+  width: 22px;
+  height: 22px;
+}
+
+.info-body .copied {
+  min-height: 1.2em;
+  margin: -8px 0 -4px;
+  font-size: 14px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.info-body .copied.shown {
+  opacity: 1;
+}
+
+.write {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.write svg {
+  width: 22px;
+  height: 22px;
 }
 
 .info-body button {

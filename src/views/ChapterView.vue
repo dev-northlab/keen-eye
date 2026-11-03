@@ -9,11 +9,13 @@ import type { Level } from '../engine/types.ts'
 import { CHAPTERS, chapterById, chapterLevels, chapterSize, levelNumber } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // Level grid of one chapter, or of a category ("time", "memory"). The router guard guarantees the chapter exists.
 
 const props = defineProps<{ chapter: string }>()
 const router = useRouter()
+const purchase = usePurchaseStore()
 const progress = useProgressStore()
 const { t } = useI18n()
 
@@ -26,11 +28,11 @@ const toParent = () => router.push({ name: CHAPTERS.includes(chapter) ? 'worlds'
 useBackButton(toParent)
 
 function open(level: Level) {
-  if (progress.needsPurchase(level.id)) router.push({ name: 'purchase' })
+  if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: level.memory ? 'memory' : 'level', params: { id: level.id } })
 }
 
-/** Paid levels stay tappable (they lead to the purchase screen); levels not reached yet are disabled. */
+/** Paid levels stay tappable (they open the full-game dialog); levels not reached yet are disabled. */
 function tileLabel(level: Level) {
   const name = progress.needsPurchase(level.id)
     ? t('map.paid')
