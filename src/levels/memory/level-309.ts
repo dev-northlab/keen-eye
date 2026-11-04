@@ -1,6 +1,6 @@
-import { coral, fish, jellyfish, octopus, seaweed, starfish, turtle } from '../chapter-04/shapes.ts'
+import { clam, coral, fish, jellyfish, octopus, seaUrchin, seaweed, shell, starfish, turtle } from '../chapter-04/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { around, big } from './shapes.ts'
+import { around, big, bubble } from './shapes.ts'
 
 /** Treasure chest; (x, y) = bottom center. Bounds: x ±50, y from −76 to 0. */
 const chest = (x: number, y: number) =>
@@ -33,5 +33,21 @@ export default memoryLevel({
     diff(...around(330, 384, 430, 460), chest(380, 460), '') +
     big(500, 470, 2, seaweed(0, 0, 1, '#3fa46f')) +
     diff(...around(602, 378, 698, 450), big(650, 450, 2, octopus(0, 0, '#8338ec')), big(650, 450, 2, octopus(0, 0, '#e63946'))) +
+    // Decor: small things that fill the scene, the same in both pictures
+    fish(80, 60, '#ff6b8b', 1.4) +
+    fish(520, 60, '#ff9f43') +
+    fish(760, 80, '#ffd23f', 1.2, true) +
+    fish(200, 280, '#4dabf7', 1.5, true) +
+    fish(740, 260, '#8ac926', 1.4) +
+    fish(130, 330, '#ff9f43', 1.3) +
+    bubble(220, 100, 6) +
+    bubble(230, 70, 4) +
+    bubbles(30, 330) +
+    bubbles(760, 360) +
+    jellyfish(540, 300, '#ff6b8b') +
+    coral(20, 440, '#ffb703') +
+    seaUrchin(190, 490) +
+    clam(545, 490) +
+    shell(785, 490) +
     big(750, 470, 2, seaweed(0, 0)),
 })

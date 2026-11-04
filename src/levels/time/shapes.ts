@@ -1,11 +1,12 @@
 // "Time" category: flat cartoon shapes for the moments of a scene (evening light, snow, bare trees)
 // and the details that differ. Each returns SVG markup positioned at (x, y); the bounds in the
 // comments are what a difference or trap zone must cover.
+import { window } from '../chapter-02/shapes.ts'
 import { rng } from '../helpers.ts'
-export { beehive, cloud, cow, duck, hayBale, hen, pick, pig, sheep, sun, sunflower, tractor } from '../shapes.ts'
-export { awning, balloon, bench, bike, bin, building, bus, car, cityTree, cone, door, dog, flowerBox, hydrant, lampPost, person, pigeon, signBoard, street, window } from '../chapter-02/shapes.ts'
-export { bird, bush, cabin, deer, fern, fireLogs, flame, fox, hedgehog, mushroom, oak, pine, rabbit, rock, squirrel, stump, tent } from '../chapter-03/shapes.ts'
-export { buoy, gull, lifeRing, palm, parasol, sailboat, towel, waves } from '../chapter-04/shapes.ts'
+export { beehive, bucket, cloud, cow, duck, grass, hayBale, hen, pick, pig, sheep, stones, sun, sunflower, tractor } from '../shapes.ts'
+export { awning, balloon, bench, bike, bin, bollard, building, bus, car, cityTree, cone, door, dog, flowerBox, hydrant, lampPost, person, pigeon, signBoard, street, window } from '../chapter-02/shapes.ts'
+export { bird, bush, butterfly, cabin, deer, fern, fireLogs, flame, fox, hedgehog, mushroom, oak, pine, rabbit, rock, squirrel, stump, tent } from '../chapter-03/shapes.ts'
+export { anchor, buoy, gull, lifeRing, palm, parasol, sailboat, shell, starfish, towel, waves } from '../chapter-04/shapes.ts'
 
 /** Zone around the box (x0, y0)–(x1, y1): its center and a radius reaching the corners, at least `min`. */
 export const around = (x0: number, y0: number, x1: number, y1: number, min = 20): [number, number, number] => [
@@ -400,3 +401,58 @@ export const wallLamp = (x: number, y: number, lit: boolean) =>
   (lit ? `<circle cx="${x + 18}" cy="${y + 10}" r="22" fill="#ffe08a" fill-opacity="0.3"/>` : '') +
   `<path d="M${x} ${y}h18v4" stroke="#3d4a55" stroke-width="2.5" fill="none"/><path d="M${x + 12} ${y + 4}h12l-2 14h-8Z" fill="#3d4a55"/>` +
   `<rect x="${x + 14}" y="${y + 7}" width="8" height="9" fill="${lit ? '#fff3b0' : '#d8dee4'}"/>`
+
+// --- Decor: small things that fill a scene, drawn the same in both pictures ---
+
+
+
+
+/** Flower pot with a small plant; (x, y) = bottom center. Bounds: x ±12, y from −31 to 0. */
+export const pot = (x: number, y: number, color = '#e07a5f', leaves = '#3fa46f') =>
+  `<g transform="translate(${x} ${y})"><g fill="${leaves}"><ellipse cx="-6" cy="-20" rx="4" ry="9" transform="rotate(-25 -6 -20)"/>` +
+  `<ellipse cx="6" cy="-20" rx="4" ry="9" transform="rotate(25 6 -20)"/><ellipse cy="-22" rx="4" ry="9"/></g>` +
+  `<path d="M-9 -12h18l-3 12h-12Z" fill="${color}"/><rect x="-11" y="-14" width="22" height="5" rx="2" fill="${color}"/></g>`
+
+
+
+/** Lily pad, with a flower when given its color; (x, y) = center. Bounds: x from −13 to +11, y ±6. */
+export const lilyPad = (x: number, y: number, flower?: string) =>
+  `<path d="M${x} ${y}L${x + 11} ${y - 3}A12 6 0 1 0 ${x + 11} ${y + 2}Z" fill="#4c9a3f"/>` +
+  (flower ? `<circle cx="${x - 3}" cy="${y - 1}" r="3.5" fill="${flower}"/>` : '')
+
+/** Reeds with cattails; (x, y) = bottom center. Bounds: x from −13 to +11, y from −40 to 0. */
+export const reeds = (x: number, y: number) =>
+  `<path d="M${x - 6} ${y}q-2 -18 -4 -28M${x} ${y}v-34M${x + 6} ${y}q2 -16 4 -24" stroke="#5a8f3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>` +
+  `<g fill="#7a4e33"><rect x="${x - 13}" y="${y - 36}" width="5" height="12" rx="2.5"/><rect x="${x - 2.5}" y="${y - 40}" width="5" height="12" rx="2.5"/></g>`
+
+/** Pile of three logs, cut ends to the viewer; (x, y) = bottom center. Bounds: x ±18, y from −30 to 0. */
+export const logPile = (x: number, y: number) =>
+  [[-10, -8], [10, -8], [0, -22]]
+    .map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="8" fill="#a0703f"/><circle cx="${x + dx}" cy="${y + dy}" r="4" fill="#e3c08f"/>`)
+    .join('')
+
+
+/** Coil of rope lying on the ground; (x, y) = center. Bounds: x ±12, y ±6. */
+export const ropeCoil = (x: number, y: number) =>
+  `<ellipse cx="${x}" cy="${y}" rx="12" ry="6" fill="#d9b77a"/><ellipse cx="${x}" cy="${y}" rx="8" ry="4" fill="none" stroke="#a8844a" stroke-width="2"/>` +
+  `<ellipse cx="${x}" cy="${y}" rx="3.5" ry="1.8" fill="#a8844a"/>`
+
+
+
+/** Round road sign on a pole; (x, y) = foot. Bounds: x ±10, y from −58 to 0. */
+export const roadSign = (x: number, y: number, color = '#3a86ff') =>
+  `<rect x="${x - 2}" y="${y - 40}" width="4" height="40" fill="#8d99ae"/><circle cx="${x}" cy="${y - 48}" r="10" fill="${color}"/>` +
+  `<path d="M${x - 5} ${y - 48}h10" stroke="#ffffff" stroke-width="3"/>`
+
+/** Poster on a wall; (x, y) = top-left corner, w × h. Bounds: the rectangle. */
+export const poster = (x: number, y: number, w: number, h: number, color: string) =>
+  `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${color}"/><circle cx="${x + w / 2}" cy="${y + h * 0.38}" r="${Math.min(w, h) * 0.2}" fill="#ffffff" fill-opacity="0.7"/>` +
+  `<path d="M${x + w * 0.2} ${y + h * 0.72}h${w * 0.6}M${x + w * 0.3} ${y + h * 0.86}h${w * 0.4}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2.5"/>`
+
+/** City `window` with curtains; (x, y) = center. Bounds: x ±14, y from −16 to +19. */
+export const curtainWindow = (x: number, y: number, curtain = '#ff6b8b') =>
+  window(x, y) + `<path d="M${x - 10} ${y - 13}h7q-5 9 0 26h-7ZM${x + 10} ${y - 13}h-7q5 9 0 26h7Z" fill="${curtain}"/>`
+
+/** Grain sack; (x, y) = bottom center. Bounds: x ±12, y from −26 to 0. */
+export const sack = (x: number, y: number, color = '#d9c08f') =>
+  `<path d="M${x - 12} ${y}q-2 -14 6 -20l-2 -4h16l-2 4q8 6 6 20Z" fill="${color}"/><path d="M${x - 6} ${y - 20}h12" stroke="#a0703f" stroke-width="2.5"/>`

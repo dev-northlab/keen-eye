@@ -1,7 +1,8 @@
-import { bench, lampHead, lampPost, person, pigeon } from '../chapter-02/shapes.ts'
+import { balloon, bench, bin, lampHead, lampPost, person, pigeon } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud } from '../shapes.ts'
 import { around, big, daySky, hills, suitcase } from './shapes.ts'
+import { bird, birds, pot } from '../time/shapes.ts'
 
 /** Train wheels under a car from x0 to x1, on the rail at y. */
 const wheels = (x0: number, x1: number, y: number) =>
@@ -56,6 +57,22 @@ export default memoryLevel({
     diff(...around(136, 442, 184, 470, 30), '', big(160, 470, 2, pigeon(0, 0))) +
     big(300, 480, 1.6, person(0, 0, '#e63946')) +
     big(420, 470, 1.8, bench(0, 0)) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(300, 40, 0.5) +
+    cloud(600, 30, 0.4) +
+    birds(230, 90) +
+    birds(560, 150) +
+    balloon(640, 120, '#ff6b8b') +
+    bird(500, 232, '#e63946') +
+    passenger(455, '#ffd23f') +
+    passenger(550, '#e63946') +
+    passenger(715, '#8338ec') +
+    pot(25, 420) +
+    bin(25, 480) +
+    suitcase(240, 480, '#ffb703') +
+    pigeon(350, 410) +
+    pigeon(440, 490, true) +
+    pot(788, 492, '#3a86ff') +
     suitcase(520, 476, '#8338ec') +
     diff(...around(502, 418, 583, 476), suitcase(565, 476, '#3a86ff'), '') +
     diff(

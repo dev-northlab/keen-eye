@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bareTree, barrel, chimney, fence, hayBale, hen, house, icicles, kennel, oak, pane, picket, pond, roofSnow, sheep, sky, small, smoke, snowCap, snowfall, sunflower, tractor, vane, winterSky } from './shapes.ts'
+import { around, bareTree, barrel, bird, bucket, bush, butterfly, chimney, cloud, crate, fence, grass, hayBale, hen, house, icicles, kennel, logPile, oak, pane, picket, pine, pineSnow, pond, roofSnow, sack, sheep, sky, small, smoke, snowCap, snowfall, stones, sunflower, tractor, vane, winterSky } from './shapes.ts'
 
 export default svgLevel({
   id: 227,
@@ -44,5 +44,25 @@ export default svgLevel({
     time('', snowCap(38, 438, 192)) +
     diff(...around(128, 426, 138, 470), picket(128, 470), '') +
     diff(...around(246, 436, 274, 470), barrel(260, 470), barrel(260, 470, '#3a86ff')) +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    cloud(300, 80, 0.6) +
+    cloud(500, 120, 0.4) +
+    cloud(780, 40, 0.3) +
+    bird(60, 157) +
+    pine(20, 330, 0.6) +
+    time('', pineSnow(20, 330, 0.6)) +
+    bucket(20, 420) +
+    time('', snowCap(4, 394, 32)) +
+    sack(240, 325) +
+    time('', snowCap(230, 302, 20)) +
+    logPile(430, 340) +
+    time('', snowCap(415, 308, 30)) +
+    crate(640, 340, 26) +
+    time('', snowCap(627, 314, 26)) +
+    bucket(680, 345) +
+    time('', snowCap(664, 319, 32)) +
+    bush(775, 300, 0.7) +
+    time('', snowCap(761, 283, 28)) +
+    time(butterfly(480, 330) + grass(510, 495) + stones(350, 492) + grass(620, 495), '') +
     time('', snowfall(227, 270, 46)),
 })

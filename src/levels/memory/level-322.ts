@@ -1,7 +1,9 @@
 import { star } from '../chapter-05/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud } from '../shapes.ts'
-import { around, big, daySky } from './shapes.ts'
+import { around, big, cube, daySky } from './shapes.ts'
+import { bench, bin, cone, pigeon } from '../chapter-02/shapes.ts'
+import { birds, flagPole } from '../time/shapes.ts'
 
 /** Tent walls of alternating stripes from x0 to x1, y0 to y1. */
 const stripedWall = (x0: number, x1: number, y0: number, y1: number, w: number, a: string, b: string) =>
@@ -55,6 +57,22 @@ export default memoryLevel({
     diff(...around(677, 347, 773, 440), balloon(755, 382, '#8ac926', 725, 440), '') +
     // Podium with a ball
     `<rect x="200" y="410" width="100" height="60" fill="#e63946"/><path d="M200 430h100M200 450h100" stroke="#ffd23f" stroke-width="4"/><ellipse cx="250" cy="410" rx="50" ry="12" fill="#ffd23f"/>` +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(320, 30, 0.4) +
+    cloud(760, 40, 0.4) +
+    balloon(250, 60, '#ff6b8b', 250, 110) +
+    birds(520, 50) +
+    birds(200, 120) +
+    star(300, 170, 12, '#ffd23f') +
+    star(500, 170, 12, '#ffd23f') +
+    flagPole(110, 232, '#ffd23f') +
+    balloon(20, 300, '#8ac926', 20, 350) +
+    bin(30, 480, '#e63946') +
+    cone(100, 480) +
+    cube(150, 480, 30, '#3a86ff') +
+    cube(540, 400, 26, '#ffd23f') +
+    bench(560, 480, '#e63946') +
+    pigeon(620, 480) +
     diff(...around(224, 358, 276, 410), circusBall(250, 384, '#3a86ff'), circusBall(250, 384, '#ff9f1c')) +
     diff(
       ...around(364, 419, 476, 451),

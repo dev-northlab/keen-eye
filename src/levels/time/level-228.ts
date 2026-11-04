@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, ball, bike, bin, bulbs, buoy, dog, DUSK, lampHead, lampPost, moon, palm, parasol, person, sailboat, sky, stars, sun, towel, waves } from './shapes.ts'
+import { around, ball, bike, bin, bucket, bulbs, buoy, cloud, dog, DUSK, lampHead, lampPost, moon, palm, parasol, person, pigeon, sailboat, shell, sky, starfish, stars, sun, towel, waves } from './shapes.ts'
 
 /** Café table; (x, y) = ground center. Bounds: x ±22, y from −36 to 0. */
 const table = (x: number, y: number, color: string) =>
@@ -46,6 +46,22 @@ export default svgLevel({
     person(340, 492, '#e76f51', true) +
     lampPost(40, 480) +
     lampPost(760, 480) +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(40, 150, 0.4) +
+    cloud(150, 80, 0.6) +
+    cloud(300, 150, 0.4) +
+    cloud(520, 130, 0.5) +
+    buoy(30, 260, '#ffb703') +
+    buoy(300, 280, '#ffb703') +
+    buoy(625, 300, '#ffffff') +
+    sailboat(760, 300, '#3a86ff') +
+    shell(130, 360) +
+    bucket(110, 390, '#ff6b8b') +
+    starfish(200, 380) +
+    shell(700, 350, '#ffd6e0') +
+    starfish(700, 395, '#ff6b8b') +
+    bin(100, 490, '#3a86ff') +
+    pigeon(125, 490) +
     time('', DUSK) +
     trap(157, 417, 22, bulbs(120, 405, 340, 405, 9, false), bulbs(120, 405, 340, 405, 9, true), 'lights') +
     trap(40, 380, 34, lampHead(40, 480, false), lampHead(40, 480, true), 'lights') +

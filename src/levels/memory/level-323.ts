@@ -1,6 +1,6 @@
 import { memoryLevel } from '../helpers.ts'
-import { cloud } from '../shapes.ts'
-import { barrel } from '../time/shapes.ts'
+import { cloud, hayBale, hen } from '../shapes.ts'
+import { barrel, bird, birds, bucket, crate, pot, sack } from '../time/shapes.ts'
 import { around, big, daySky } from './shapes.ts'
 
 /** Tower from x0 to x1 standing on y = 330 with a cone roof (apex 60 above its top at y0). */
@@ -62,6 +62,22 @@ export default memoryLevel({
     `<rect x="150" y="400" width="100" height="60" fill="#8d99ae"/><path d="M150 420h100M150 440h100M180 400v20M220 420v20M190 440v20" stroke="#6b7685" stroke-width="2.5"/><ellipse cx="200" cy="400" rx="52" ry="10" fill="#6b7685"/>` +
     diff(...around(186, 350, 214, 410, 30), '', `<path d="M200 352V386" stroke="#6b766f" stroke-width="2"/><path d="M190 386h20l-3 20h-14Z" fill="#5c677d"/>`) +
     diff(...around(325, 384, 465, 450), cart(370, 450), cart(420, 450)) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(740, 80, 0.4) +
+    birds(450, 60) +
+    birds(760, 120) +
+    bird(260, 150, '#3a86ff') +
+    bird(580, 150, '#e63946') +
+    torch(200, 220) +
+    shield(300, 262, '#3fa46f') +
+    banner(770, '#3a86ff') +
+    crate(30, 420, 30) +
+    pot(110, 400) +
+    sack(30, 480) +
+    hen(100, 470) +
+    bucket(275, 490) +
+    crate(700, 360, 30) +
+    hayBale(740, 440) +
     big(560, 470, 1.6, barrel(0, 0)) +
     big(605, 470, 1.6, barrel(0, 0)) +
     diff(...around(537, 362, 628, 470), big(582, 416, 1.6, barrel(0, 0)), ''),

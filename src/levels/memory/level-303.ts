@@ -1,7 +1,7 @@
 import { ball } from '../time/shapes.ts'
-import { crab, palm, parasol, sailboat, sandcastle, towel, waves } from '../chapter-04/shapes.ts'
+import { bottleMessage, bucket, buoy, castleFlag, crab, dolphin, flipFlops, gull, palm, parasol, sailboat, sandcastle, shell, starfish, sunHat, towel, waves } from '../chapter-04/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { sun } from '../shapes.ts'
+import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky } from './shapes.ts'
 
 export default memoryLevel({
@@ -20,5 +20,21 @@ export default memoryLevel({
     big(520, 440, 1.6, towel(0, 0, '#3a86ff')) +
     big(650, 400, 1.3, sandcastle(0, 0)) +
     big(220, 480, 2, ball(0, 0, '#ffb703')) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(300, 60, 0.6) +
+    cloud(720, 50, 0.5) +
+    gull(400, 120) +
+    gull(250, 150) +
+    buoy(250, 270) +
+    buoy(760, 300, '#ffb703') +
+    dolphin(720, 270) +
+    castleFlag(650, 400, '#e63946') +
+    bucket(480, 400, '#e63946') +
+    flipFlops(560, 400) +
+    bottleMessage(520, 480) +
+    shell(600, 490) +
+    sunHat(775, 470) +
+    shell(40, 470, '#ffc8a8') +
+    starfish(130, 470) +
     diff(...around(658, 441, 722, 470), '', big(690, 470, 1.6, crab(0, 0))),
 })

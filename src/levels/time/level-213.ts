@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { barrel, crate, DUSK, glow, gull, lampHead, lampPost, lifeRing, moon, pane, sky, stars, sun, waves } from './shapes.ts'
+import { anchor, barrel, buoy, cloud, crate, DUSK, glow, gull, lampHead, lampPost, lifeRing, moon, pane, poster, ropeCoil, sack, sky, stars, sun, waves } from './shapes.ts'
 
 /** Mooring bollard; (x, y) = bottom center. Bounds: x ±10, y from −18 to 0. */
 const bollard = (x: number, y: number) =>
@@ -41,6 +41,22 @@ export default svgLevel({
     diff(520, 412, 20, bollard(520, 420), '') +
     bollard(640, 420) +
     lampPost(200, 470) +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(450, 80, 0.6) +
+    cloud(600, 150, 0.4) +
+    poster(30, 350, 26, 34, '#3a86ff') +
+    buoy(280, 320, '#ffb703') +
+    buoy(770, 340, '#ffffff') +
+    crate(370, 330, 26, '#e63946') +
+    barrel(40, 470) +
+    crate(80, 470, 28, '#b07a42') +
+    ropeCoil(140, 480) +
+    anchor(250, 464) +
+    sack(450, 480) +
+    barrel(590, 480, '#2f6e8c') +
+    crate(700, 480, 28) +
+    crate(730, 480, 28, '#b07a42') +
+    ropeCoil(770, 486) +
     time('', DUSK) +
     time('', glow(170, 286, 30, 24)) +
     trap(640, 296, 30, '', portholes('#ffe08a'), 'lights') +

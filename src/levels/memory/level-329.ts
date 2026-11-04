@@ -1,8 +1,9 @@
 import { tent } from '../chapter-03/shapes.ts'
-import { gull, palm } from '../chapter-04/shapes.ts'
+import { gull, palm, rock } from '../chapter-04/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { sun } from '../shapes.ts'
+import { cloud, grass, stones, sun } from '../shapes.ts'
 import { around, big } from './shapes.ts'
+import { birds, lilyPad } from '../time/shapes.ts'
 
 /** Camel facing right; (x, y) = feet under the middle. The saddle is `saddle`. Bounds: x from −62 to +112, y from −158 to 0. */
 const camel = (x: number, y: number) =>
@@ -50,6 +51,22 @@ export default memoryLevel({
     diff(...around(15, 362, 145, 440), big(80, 440, 1.3, tent(0, 0, '#e63946')), big(80, 440, 1.3, tent(0, 0, '#3a86ff'))) +
     camel(230, 450) +
     diff(...around(198, 338, 252, 368, 30), saddle(230, 450, '#8338ec'), saddle(230, 450, '#3fa46f')) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(60, 60, 0.5) +
+    cloud(350, 50, 0.4) +
+    birds(160, 140) +
+    birds(250, 80) +
+    birds(580, 160) +
+    pyramid(740, 800, 300, 40) +
+    big(40, 300, 0.4, cactus(0, 0)) +
+    rock(90, 295, 0.6, '#c9953f') +
+    rock(520, 365, 0.8, '#c9953f') +
+    lilyPad(560, 405) +
+    lilyPad(600, 395) +
+    stones(320, 492) +
+    grass(520, 490) +
+    rock(570, 490, 0.9, '#c9953f') +
+    big(600, 492, 0.5, cactus(0, 0)) +
     pot(400, 465) +
     pot(434, 465) +
     diff(...around(387, 419, 481, 465), pot(468, 465), '') +

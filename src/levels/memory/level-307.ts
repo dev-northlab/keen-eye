@@ -1,7 +1,8 @@
-import { car, dog, hydrant, trafficLight } from '../chapter-02/shapes.ts'
+import { balloon, bike, bin, car, cone, dog, flowerBox, hydrant, pigeon, trafficLight } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky, stallAwning, windowPane } from './shapes.ts'
+import { bird, birds, pot, roadSign } from '../time/shapes.ts'
 
 /** Lit-up window grid of the tall building on the right. */
 const windows = () =>
@@ -32,5 +33,21 @@ export default memoryLevel({
     big(400, 330, 1.6, trafficLight(0, 0, 0)) +
     diff(...around(520, 298, 600, 345), big(560, 345, 1.8, dog(0, 0, '#c48a5a', true)), '') +
     diff(...around(674, 287, 706, 345, 34), '', big(690, 345, 1.8, hydrant(0, 0))) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(20, 40, 0.4) +
+    cloud(460, 230, 0.4) +
+    birds(330, 230) +
+    balloon(470, 120, '#e63946') +
+    flowerBox(542, 142, '#ff6b8b') +
+    flowerBox(702, 212, '#ffd23f') +
+    bird(600, 40, '#e63946') +
+    pot(30, 345) +
+    roadSign(330, 348) +
+    bin(370, 345) +
+    pot(450, 345, '#3a86ff') +
+    pigeon(475, 348) +
+    cone(775, 345) +
+    car(620, 480, '#e63946', true) +
+    bike(760, 470, '#8338ec') +
     diff(...around(144, 377, 296, 445), big(220, 445, 1.8, car(0, 0, '#3a86ff')), big(220, 445, 1.8, car(0, 0, '#ffb703'))),
 })

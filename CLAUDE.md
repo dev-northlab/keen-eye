@@ -70,7 +70,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   scenes with 8–10 differences, `difficulty.ts`), open from the start, the
   first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks), 6–10 big
-  objects (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
+  objects among 15 small decor ones (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
   5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`); a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
@@ -175,6 +175,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Add a level: new `chapter-NN/level-NNN.ts`, register it in `levels/index.ts`, add `levelTitles.<title>` (and
   `chapters.<chapter>` for a new chapter) to all locales, run `check-levels` and look at the preview.
 - Zones must not overlap. Run `npm run check-levels` after touching levels and look at `npm run preview-levels`.
+- "Time" and "memory" scenes also carry about 15 decor objects each (the decor sections of `time/shapes.ts` and
+  `memory/shapes.ts`, plus the chapters' shapes), drawn the same in both pictures and kept 20+ units clear of every zone; in
+  "time" levels decor that changes with the moment (snow on it in winter, summer-only grass and butterflies) goes through
+  `time()`, never `diff`.
 - Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
   key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on
   it before hit/miss (never a miss, never hinted), `GameScene`/`MemoryScene` report `onSecret`, `progress.keys` stores the

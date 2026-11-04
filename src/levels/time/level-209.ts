@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { barrel, buoy, crate, gull, icicles, lifeRing, pier, rowboat, sailboat, sky, snowCap, snowfall, waves, winterSky } from './shapes.ts'
+import { barrel, bollard, bucket, buoy, cloud, crate, gull, icicles, lifeRing, pier, pine, pineSnow, rock, ropeCoil, rowboat, sack, sailboat, shell, sky, snowCap, snowfall, starfish, waves, winterSky } from './shapes.ts'
 
 /** Flag cloth on a pole at foot (x, y). Bounds: x from +2 to +30, y from −68 to −50. */
 const flagCloth = (x: number, y: number, color: string) => `<path d="M${x + 2} ${y - 68}h28l-6 9l6 9h-28Z" fill="${color}"/>`
@@ -36,5 +36,29 @@ export default svgLevel({
     trap(560, 440, 60, '', `<path d="M500 500Q520 420 560 390Q600 420 620 500Z" fill="#dcecf5"/><path d="M540 450l30 -10M550 480l40 -12" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>`, 'ice') +
     rowboat(100, 460, '#e63946') +
     trap(420, 80, 40, gull(400, 70) + gull(442, 92), '', 'birds') +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    cloud(200, 80, 0.6) +
+    cloud(620, 60, 0.5) +
+    pine(60, 240, 0.5) +
+    time('', pineSnow(60, 240, 0.5)) +
+    pine(200, 230, 0.4) +
+    time('', pineSnow(200, 230, 0.4)) +
+    bollard(20, 330) +
+    time('', snowCap(13, 308, 14)) +
+    ropeCoil(50, 336) +
+    sack(340, 330) +
+    time('', snowCap(330, 307, 20)) +
+    bucket(370, 330) +
+    time('', snowCap(354, 304, 32)) +
+    crate(480, 330, 24) +
+    time('', snowCap(468, 306, 24)) +
+    bollard(640, 300) +
+    time('', snowCap(633, 278, 14)) +
+    rock(770, 330, 0.8) +
+    time('', snowCap(758, 318, 24)) +
+    time(shell(680, 410), '') +
+    time(starfish(740, 470), '') +
+    buoy(320, 470, '#ffffff') +
+    buoy(460, 460, '#3a86ff') +
     time('', snowfall(209, 300, 36)),
 })

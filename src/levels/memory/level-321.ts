@@ -1,8 +1,10 @@
 import { dog } from '../chapter-02/shapes.ts'
 import { butterfly } from '../chapter-03/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { basket, cloud, flower, sun } from '../shapes.ts'
-import { around, big, cup, daySky, fruit, hills, kite, roundTree } from './shapes.ts'
+import { basket, cloud, flower, sheep, sun } from '../shapes.ts'
+import { around, big, books, cup, daySky, fruit, hills, kite, mug, roundTree } from './shapes.ts'
+import { beachBall, flipFlops, sunHat } from '../chapter-04/shapes.ts'
+import { bird, birds, bush, flowers, grass, rabbit } from '../time/shapes.ts'
 
 /** Red and white checked blanket from (x0, y0) to (x1, y1). */
 const blanket = (x0: number, y0: number, x1: number, y1: number) => {
@@ -55,5 +57,21 @@ export default memoryLevel({
     fruit(494, 446, 12, '#e63946') +
     melonSlice(565, 452) +
     diff(...around(286, 428, 354, 472), cup(320, 472, '#3a86ff'), cup(320, 472, '#3fa46f')) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(420, 40, 0.5) +
+    birds(420, 150) +
+    cloud(760, 200, 0.5) +
+    big(760, 320, 0.6, sheep(0, 0)) +
+    bird(90, 141, '#e63946') +
+    flowers(250, 340, '#ff6b8b') +
+    rabbit(30, 420) +
+    bush(150, 380, 0.7) +
+    beachBall(110, 470) +
+    flipFlops(200, 480) +
+    grass(650, 360) +
+    grass(785, 420) +
+    big(450, 492, 0.5, books(0, 0, ['#3a86ff', '#ffd23f'])) +
+    mug(520, 490, '#e63946') +
+    sunHat(580, 490) +
     diff(...around(636, 418, 724, 470), big(680, 470, 2, dog(0, 0, '#c48a5a', true)), ''),
 })

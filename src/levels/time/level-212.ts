@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { bareTree, barrel, birdHouse, chimney, cloud, door, fence, flowers, house, icicles, oak, pane, picket, pond, roofSnow, sky, smoke, snowCap, snowfall, snowman, winterSky } from './shapes.ts'
+import { bareTree, barrel, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, crate, door, fence, flowers, grass, house, icicles, logPile, oak, pane, picket, pine, pineSnow, pond, rock, roofSnow, sack, sky, smoke, snowCap, snowfall, snowman, stones, winterSky } from './shapes.ts'
 
 /** Apples on an `oak` (forest shapes) at (x, y), scale 1.2. Bounds: inside its crown. */
 const apples = (x: number, y: number) =>
@@ -56,5 +56,28 @@ export default svgLevel({
     trap(420, 452, 46, pond(420, 452, 100, 30, false), pond(420, 452, 100, 30, true), 'ice') +
     trap(560, 470, 26, flowers(560, 488, '#b38cff'), '', 'flowers') +
     trap(260, 430, 44, '', snowman(260, 474), 'snowman') +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    cloud(450, 60, 0.6) +
+    cloud(520, 110, 0.4) +
+    cloud(60, 160, 0.4) +
+    bird(180, 176) +
+    pine(40, 330, 0.6) +
+    time('', pineSnow(40, 330, 0.6)) +
+    bush(90, 340, 0.8) +
+    time('', snowCap(74, 321, 32)) +
+    logPile(20, 410) +
+    time('', snowCap(7, 378, 26)) +
+    sack(330, 390) +
+    time('', snowCap(320, 367, 20)) +
+    bucket(370, 392) +
+    time('', snowCap(354, 366, 32)) +
+    crate(725, 345, 26) +
+    time('', snowCap(712, 319, 26)) +
+    pine(780, 330, 0.5) +
+    time('', pineSnow(780, 330, 0.5)) +
+    rock(200, 490, 0.8) +
+    time('', snowCap(188, 478, 24)) +
+    time(butterfly(390, 340, '#ff6b8b'), '') +
+    time(grass(150, 490) + stones(500, 495), '') +
     time('', snowfall(212, 300, 36)),
 })

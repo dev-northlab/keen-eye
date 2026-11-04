@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bareTree, bench, birdHouse, chimney, flowers, house, icicles, mountains, oak, pane, person, pine, pineSnow, pond, roofSnow, signBoard, signpost, sky, smoke, snowCap, snowfall, vane, winterPerson, winterSky } from './shapes.ts'
+import { around, bareTree, bench, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, dog, flowers, fox, grass, house, icicles, logPile, mountains, oak, pane, person, pine, pineSnow, pond, rock, roofSnow, signBoard, signpost, sky, smoke, snowCap, snowfall, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
 /** Height of the cable at x. */
 const cableY = (x: number) => 100 + 0.1625 * x
@@ -58,6 +58,26 @@ export default svgLevel({
       time('', snowCap(617, 436, 66)) +
       trap(740, 434, 39, person(740, 470, '#2a9d8f', true), winterPerson(740, 470, '#ffb703', true, '#3a86ff'), 'clothes') +
       trap(60, 470, 26, flowers(60, 488, '#b38cff'), '', 'flowers') +
+      // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+      cloud(300, 60, 0.5) +
+      cloud(550, 60, 0.5) +
+      cloud(60, 180, 0.4) +
+      bird(110, 272) +
+      pine(30, 360, 0.6) +
+      time('', pineSnow(30, 360, 0.6)) +
+      bush(310, 320, 0.7) +
+      time('', snowCap(296, 303, 28)) +
+      fox(520, 340) +
+      logPile(610, 380) +
+      time('', snowCap(595, 348, 30)) +
+      stump(780, 392) +
+      time('', snowCap(766, 372, 28)) +
+      dog(150, 490) +
+      bucket(380, 490) +
+      time('', snowCap(364, 464, 32)) +
+      rock(430, 492, 0.8) +
+      time('', snowCap(418, 480, 24)) +
+      time(butterfly(345, 335) + grass(588, 495) + grass(110, 495), '') +
       time('', snowfall(229, 300, 46))
     )
   },

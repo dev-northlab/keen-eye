@@ -49,13 +49,13 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 216, to: 220, differences: [8, 8], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
   { from: 221, to: 225, differences: [9, 9], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
   { from: 226, to: 230, differences: [10, 10], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
-  // "Memory" category (docs/memory-mode.md): 6–10 big objects, changes seen at a glance (an object
+  // "Memory" category (docs/memory-mode.md): 6–10 big objects among 15 small decor ones, changes seen at a glance (an object
   // gone or new, recolored, moved, fewer of them); the zone of a move covers both places, that of a
   // count the whole group. Less time to look as the changes grow.
   { from: 301, to: 305, differences: [3, 3], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   { from: 306, to: 310, differences: [4, 4], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
   { from: 311, to: 315, differences: [5, 6], motion: [0, 0], minRadius: 30, showSeconds: 3, kinds: MEMORY },
-  // 316–330: busier, more detailed scenes (12–18 objects), so a little more time to look.
+  // 316–330: busier, more detailed scenes (12–18 objects plus the decor), so a little more time to look.
   { from: 316, to: 320, differences: [5, 5], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   { from: 321, to: 330, differences: [6, 6], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
   // "Travel" category (docs/world-travel-mode.md): 5 → 6 → 7 differences tied to the place (the

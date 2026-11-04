@@ -1,8 +1,8 @@
 import { fireLogs, flame } from '../chapter-03/shapes.ts'
 import { star } from '../chapter-05/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { cat } from '../time/shapes.ts'
-import { around, big, candle, gift, room, rug } from './shapes.ts'
+import { ball, cat } from '../time/shapes.ts'
+import { around, big, candle, cube, gift, painting, room, rug, slipperPair, sticker, teddy, wallClock } from './shapes.ts'
 
 /** Christmas stocking hanging from the mantel at x. Bounds: x from −16 to +40, y from 212 to 292. */
 const stocking = (x: number, color: string) =>
@@ -72,5 +72,21 @@ export default memoryLevel({
     gift(720, 470, 60, '#ffd23f', '#3a86ff') +
     armchair() +
     diff(...around(91, 322, 149, 380), '', big(120, 380, 1.6, cat(0, 0, '#3d3d3d', true))) +
+    // Decor: small things that fill the room, the same in both pictures
+    painting(225, 90, 50, 60, '#e63946') +
+    wallClock(255, 240, 22, '#3fa46f') +
+    sticker(360, 100, '#ffd23f') +
+    sticker(440, 90, '#ffffff') +
+    sticker(780, 150, '#e63946') +
+    sticker(20, 260, '#3fa46f') +
+    ornament(655, 225, '#ffd23f') +
+    ornament(700, 330, '#ff6b8b') +
+    ornament(740, 385, '#3a86ff') +
+    slipperPair(420, 405, '#e63946') +
+    big(470, 480, 0.5, teddy(0, 0)) +
+    gift(570, 490, 30, '#e63946', '#ffffff') +
+    gift(780, 490, 30, '#8338ec', '#ffd23f') +
+    ball(60, 490, '#e63946') +
+    cube(130, 490, 24, '#3a86ff') +
     diff(...around(210, 396, 325, 462), gift(300, 462, 50, '#8338ec', '#ffd23f'), gift(235, 462, 50, '#8338ec', '#ffd23f')),
 })

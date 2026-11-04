@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { awning, bench, car, cityTree, door, DUSK, glow, hangingSign, hydrant, lampHead, lampPost, moon, person, pigeon, sky, street, sun, window, windowLight } from './shapes.ts'
+import { awning, bench, bin, bird, bollard, car, cityTree, cloud, cone, door, DUSK, flowerBox, glow, hangingSign, hydrant, lampHead, lampPost, moon, person, pigeon, poster, pot, roadSign, sky, street, sun, window, windowLight } from './shapes.ts'
 
 /** Headlight beam to the left of a car (city shapes) standing at (x, y). Bounds: x from −110 to −40, y from −28 to +12. */
 const beam = (x: number, y: number) =>
@@ -47,6 +47,22 @@ export default svgLevel({
       pigeon(500, 348) +
       diff(560, 333, 35, bench(560, 348), bench(560, 348, '#3a86ff')) +
       car(650, 430, '#ffb703') +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(330, 60, 0.6) +
+      cloud(110, 50, 0.5) +
+      flowerBox(145, 266, '#ffd23f') +
+      bird(280, 246, '#e63946') +
+      poster(478, 272, 22, 30, '#ffb703') +
+      roadSign(160, 348) +
+      pot(650, 348) +
+      pigeon(765, 348, true) +
+      cone(20, 492) +
+      bin(180, 490) +
+      bench(320, 492, '#3a86ff') +
+      pigeon(366, 492) +
+      bollard(520, 492) +
+      bollard(600, 492) +
+      bin(700, 492, '#e07a5f') +
       time('', DUSK) +
       trap(200, 245, 36, lampHead(200, 345, false), lampHead(200, 345, true), 'lights') +
       trap(605, 158, 26, '', windowLight(605, 158), 'lights') +

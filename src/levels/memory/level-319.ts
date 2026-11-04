@@ -1,9 +1,10 @@
-import { lampHead, lampPost, person } from '../chapter-02/shapes.ts'
-import { squirrel } from '../chapter-03/shapes.ts'
+import { balloon, lampHead, lampPost, person } from '../chapter-02/shapes.ts'
+import { bush, fox, hedgehog, mushroom, rock, squirrel, stump } from '../chapter-03/shapes.ts'
 import { bench } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { duck, sun } from '../shapes.ts'
-import { around, big, daySky, kite, roundTree } from './shapes.ts'
+import { cloud, duck, sun } from '../shapes.ts'
+import { around, big, daySky, kite, pumpkin, roundTree } from './shapes.ts'
+import { bird, birds, grass } from '../time/shapes.ts'
 
 /** Fallen leaf; (x, y) = center. Bounds: radius 9. */
 const leaf = (x: number, y: number, color: string, turn = 0) =>
@@ -45,5 +46,21 @@ export default memoryLevel({
     leaf(120, 420, '#f2c14e', -40) +
     leaf(280, 480, '#f28c28', 60) +
     leaf(540, 480, '#d64545', -10) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(260, 30, 0.4) +
+    cloud(510, 40, 0.5) +
+    birds(510, 120) +
+    bird(66, 175, '#3a86ff') +
+    balloon(510, 220, '#e63946') +
+    bush(290, 330, 0.8, '#c98f2a') +
+    fox(740, 350) +
+    hedgehog(120, 380) +
+    mushroom(30, 400) +
+    big(60, 480, 0.5, pumpkin(0, 0)) +
+    big(110, 470, 0.35, pumpkin(0, 0)) +
+    mushroom(140, 480, '#ff9f43', 0.8) +
+    rock(20, 470, 0.6) +
+    stump(200, 490) +
+    grass(250, 490) +
     leaf(770, 400, '#f2c14e', 30),
 })

@@ -1,8 +1,9 @@
 import { bench, lampHead, lampPost } from '../chapter-02/shapes.ts'
-import { bird, pine } from '../chapter-03/shapes.ts'
+import { bird, bush, pine, rabbit } from '../chapter-03/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
-import { pineSnow, snowman, winterPerson, winterSky } from '../time/shapes.ts'
-import { around, big } from './shapes.ts'
+import { birds, logPile, pineSnow, sled, small, snowCap, snowman, winterPerson, winterSky } from '../time/shapes.ts'
+import { around, big, snowballs } from './shapes.ts'
+import { cloud } from '../shapes.ts'
 
 /** Hot chocolate stand; (x, y) = ground center. The roof is `standRoof`. Bounds: x ±65, y from −100 to 0. */
 const stand = (x: number, y: number) =>
@@ -42,5 +43,26 @@ export default memoryLevel({
     big(610, 330, 1.3, lampPost(0, 0) + lampHead(0, 0)) +
     diff(...around(152, 418, 248, 466), big(200, 466, 1.6, bench(0, 0)), '') +
     stand(715, 400) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(80, 50, 0.5) +
+    cloud(400, 60, 0.6) +
+    cloud(560, 40, 0.4) +
+    birds(500, 150) +
+    bird(610, 155, '#3a86ff') +
+    rabbit(30, 300, false, '#f4f4f4') +
+    bush(240, 260, 0.7) +
+    snowCap(226, 244, 28) +
+    pine(280, 290, 0.6) +
+    pineSnow(280, 290, 0.6) +
+    pine(560, 280, 0.7) +
+    pineSnow(560, 280, 0.7) +
+    small(360, 495, winterPerson(360, 495, '#ff6b8b')) +
+    sled(450, 490, '#3a86ff') +
+    snowballs(540, 495, 2) +
+    logPile(620, 490) +
+    snowCap(605, 458, 30) +
+    small(680, 490, winterPerson(680, 490, '#3fa46f', true)) +
+    pine(770, 480, 0.6) +
+    pineSnow(770, 480, 0.6) +
     diff(...around(640, 256, 790, 300), standRoof(715, 256, '#e63946'), standRoof(715, 256, '#3fa46f')),
 })

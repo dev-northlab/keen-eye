@@ -1,6 +1,6 @@
 import { memoryLevel } from '../helpers.ts'
-import { cat } from '../time/shapes.ts'
-import { around, big, cake, candle, cup, garland, gift, painting, partyBalloon, room, table } from './shapes.ts'
+import { ball, cat } from '../time/shapes.ts'
+import { around, big, cake, candle, cube, cup, flowerVase, garland, gift, glassJar, painting, partyBalloon, plate, room, shelf, sticker, table, teddy } from './shapes.ts'
 
 export default memoryLevel({
   id: 314,
@@ -20,5 +20,21 @@ export default memoryLevel({
     diff(...around(216, 330, 284, 374), cup(250, 374, '#3fa46f'), cup(250, 374, '#ff6b8b')) +
     diff(...around(530, 298, 590, 374), gift(560, 374, 60, '#3a86ff', '#ffd23f'), '') +
     gift(120, 480, 70, '#ff6b8b', '#ffffff') +
+    // Decor: small things that fill the room, the same in both pictures
+    partyBalloon(300, 130, '#8338ec') +
+    partyBalloon(500, 120, '#3fa46f') +
+    partyBalloon(770, 290, '#4dabf7') +
+    shelf(340, 170, 120) +
+    flowerVase(370, 170, '#ff6b8b', '#ffd23f') +
+    cube(410, 170, 22, '#3a86ff') +
+    glassJar(445, 170, '#e63946', '#ff9f43') +
+    sticker(320, 220, '#ff6b8b') +
+    sticker(480, 240, '#ffd23f') +
+    plate(480, 376) +
+    gift(40, 490, 40, '#8338ec', '#ff6b8b') +
+    gift(260, 490, 44, '#ffd23f', '#e63946') +
+    ball(350, 490, '#ff6b8b') +
+    big(500, 490, 0.5, teddy(0, 0, '#ff9f43')) +
+    gift(590, 490, 36, '#3fa46f', '#ffffff') +
     diff(...around(664, 408, 736, 480), '', big(700, 480, 2, cat(0, 0, '#8d99ae', true))),
 })

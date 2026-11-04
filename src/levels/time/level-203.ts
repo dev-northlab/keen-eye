@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { birds, cloud, DUSK, fireLogs, flame, moon, mushroom, pine, rabbit, rock, signpost, sky, stars, stump, sun, tent } from './shapes.ts'
+import { birds, bucket, bush, butterfly, cloud, DUSK, fern, fireLogs, flame, grass, hedgehog, logPile, moon, mushroom, pine, rabbit, rock, signpost, sky, squirrel, stars, stones, stump, sun, tent } from './shapes.ts'
 
 export default svgLevel({
   id: 203,
@@ -28,6 +28,22 @@ export default svgLevel({
       rock(410, 470, 1.2) +
       rock(760, 384, 0.8) +
       fireLogs(520, 440) +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(330, 140, 0.45) +
+      cloud(700, 140, 0.5) +
+      squirrel(30, 330) +
+      bush(400, 330, 0.8) +
+      logPile(250, 350) +
+      hedgehog(545, 345) +
+      butterfly(400, 380, '#ffd23f') +
+      bucket(440, 405) +
+      grass(380, 440) +
+      grass(760, 330) +
+      stones(310, 470) +
+      mushroom(130, 470, '#ff9f43', 0.8) +
+      fern(30, 470) +
+      mushroom(60, 480, '#e63946', 0.7) +
+      stump(590, 470) +
       time('', DUSK) +
       trap(520, 412, 30, '', flame(520, 440), 'lights') +
       trap(440, 60, 40, birds(440, 60), '', 'birds') +

@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { bush, cat, cloud, door, DUSK, fence, flowers, glow, house, mailbox, moon, oak, pane, picket, shadow, sky, stars, sun, vane } from './shapes.ts'
+import { birdHouse, bucket, bush, cat, cloud, door, duck, DUSK, fence, flowerBox, flowers, glow, grass, hayBale, hen, house, mailbox, moon, oak, pane, picket, shadow, sky, stars, stones, stump, sun, sunflower, vane } from './shapes.ts'
 
 export default svgLevel({
   id: 201,
@@ -30,6 +30,22 @@ export default svgLevel({
     diff(653, 378, 24, picket(648, 400), '') +
     diff(380, 335, 30, mailbox(380, 360, '#3a86ff'), mailbox(380, 360, '#e63946')) +
     diff(130, 402, 27, cat(130, 420), cat(130, 420, '#3d3d3d')) +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(560, 150, 0.5) +
+    cloud(330, 55, 0.45) +
+    cloud(110, 165, 0.5) +
+    sunflower(110, 330, 30) +
+    birdHouse(40, 400, '#3a86ff') +
+    flowerBox(310, 292, '#ff6b8b') +
+    grass(200, 365) +
+    grass(345, 420) +
+    bucket(420, 410) +
+    stones(300, 470) +
+    flowers(40, 470, '#b38cff') +
+    duck(470, 470) +
+    hen(560, 455) +
+    hayBale(735, 455) +
+    stump(770, 340) +
     time('', DUSK) +
     trap(190, 250, 30, '', glow(170, 230, 40, 40), 'lights') +
     trap(120, 70, 42, '', stars(120, 70), 'stars') +

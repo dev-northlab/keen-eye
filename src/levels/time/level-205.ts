@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { ball, bench, cat, DUSK, glow, lampHead, lampPost, laundry, moon, oak, pane, shirt, sky, slide, stars, sun, swingFrame, swingSeat } from './shapes.ts'
+import { ball, bench, bin, bird, birdHouse, bucket, bush, butterfly, cat, cloud, dog, DUSK, flowers, glow, grass, lampHead, lampPost, laundry, moon, oak, pane, pigeon, pot, shirt, sky, slide, stars, stones, sun, swingFrame, swingSeat } from './shapes.ts'
 
 export default svgLevel({
   id: 205,
@@ -32,6 +32,22 @@ export default svgLevel({
       laundry(690, 780, 306, ['#ff6b8b', null, '#4dabf7']) +
       diff(735, 325, 24, shirt(735, 312, '#ffd23f'), shirt(735, 312, '#8ac926')) +
       lampPost(350, 470) +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(330, 30, 0.4) +
+      bird(200, 52) +
+      bush(185, 300, 0.8) +
+      pot(330, 300) +
+      bin(440, 300) +
+      bush(600, 300, 0.9) +
+      flowers(660, 300, '#ffd23f') +
+      butterfly(420, 330) +
+      dog(30, 410) +
+      bucket(130, 455, '#ff6b8b') +
+      stones(450, 470) +
+      pigeon(700, 470) +
+      birdHouse(770, 470) +
+      grass(40, 490) +
+      grass(400, 490) +
       time('', DUSK) +
       trap(350, 370, 36, lampHead(350, 470, false), lampHead(350, 470, true), 'lights') +
       trap(270, 149, 28, '', glow(255, 132, 30, 34), 'lights') +
