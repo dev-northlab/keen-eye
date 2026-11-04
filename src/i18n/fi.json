@@ -4,9 +4,7 @@
     "perks": {
       "calm": "Rauhallinen tila",
       "keys": "Piilotetut avaimet",
-      "living": "Elävät maisemat",
-      "noAds": "Ei mainoksia",
-      "offline": "Toimii ilman verkkoa"
+      "living": "Elävät maisemat"
     },
     "rate": "Arvioi peli",
     "shareGame": "Jaa peli",
