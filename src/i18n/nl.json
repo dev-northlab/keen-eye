@@ -6,6 +6,7 @@
     "levels": "Levels",
     "duo": "Met z'n tweeën",
     "settings": "Instellingen",
+    "exit": "Afsluiten",
     "stars": "Sterren: {n}",
     "needsPurchase": "Level {n} — volledige game",
     "devOpenAll": "Alle levels openen (test)",
@@ -187,6 +188,8 @@
     "dev": "Ontwikkeling",
     "unlockAll": "Alle levels voltooien",
     "resetProgress": "Voortgang wissen",
+    "resetProgressText": "Alle sterren, records, gevonden sleutels, opgeloste zaken en de geschiedenis van spellen met z'n tweeën worden gewist. De aankoop en instellingen blijven bewaard.",
+    "resetProgressConfirm": "Wissen",
     "resetKeys": "Gevonden sleutels resetten",
     "music": "Muziek",
     "sound": "Geluiden",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Terug",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "cancel": "Annuleren"
   },
   "chapters": {
     "farm": "Boerderij",

@@ -6,6 +6,7 @@
     "levels": "Poziomy",
     "duo": "Dwóch graczy",
     "settings": "Ustawienia",
+    "exit": "Wyjdź",
     "stars": "Gwiazdki: {n}",
     "needsPurchase": "Poziom {n} — pełna wersja",
     "devOpenAll": "Otwórz wszystkie poziomy (test)",
@@ -187,6 +188,8 @@
     "dev": "Programowanie",
     "unlockAll": "Ukończ wszystkie poziomy",
     "resetProgress": "Resetuj postęp",
+    "resetProgressText": "Wszystkie gwiazdki, rekordy, znalezione klucze, rozwiązane sprawy i historia gier we dwoje zostaną usunięte. Zakup i ustawienia pozostaną.",
+    "resetProgressConfirm": "Wyczyść",
     "resetKeys": "Zresetuj znalezione klucze",
     "music": "Muzyka",
     "sound": "Dźwięki",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Wstecz",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "cancel": "Anuluj"
   },
   "chapters": {
     "farm": "Farma",

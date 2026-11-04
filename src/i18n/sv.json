@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Tillbaka",
-    "close": "Stäng"
+    "close": "Stäng",
+    "cancel": "Avbryt"
   },
   "detective": {
     "accuse": "Anklaga: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Nivå {n} – hela spelet",
     "play": "Spela",
     "settings": "Inställningar",
+    "exit": "Avsluta",
     "stars": "Stjärnor: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Scenerna rör sig långsammare och mjukare",
     "resetKeys": "Återställ hittade nycklar",
     "resetProgress": "Återställ framsteg",
+    "resetProgressText": "Alla stjärnor, rekord, hittade nycklar, lösta fall och historiken för spel med två spelare raderas. Köpet och inställningarna finns kvar.",
+    "resetProgressConfirm": "Återställ",
     "resetPurchaseCache": "Glöm köpet (cache)",
     "resetPurchaseStore": "Glöm köpet (även i ”butiken”)",
     "sound": "Ljud",

@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Bumalik",
-    "close": "Isara"
+    "close": "Isara",
+    "cancel": "Kanselahin"
   },
   "detective": {
     "accuse": "Akusahan: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Level {n} – buong laro",
     "play": "Maglaro",
     "settings": "Mga setting",
+    "exit": "Lumabas",
     "stars": "Bituin: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Mas mabagal at mas malumanay ang galaw ng mga eksena",
     "resetKeys": "I-reset ang mga nahanap na susi",
     "resetProgress": "I-reset ang progreso",
+    "resetProgressText": "Mabubura ang lahat ng bituin, rekord, nahanap na susi, nalutas na kaso at ang kasaysayan ng laro ng dalawang manlalaro. Mananatili ang pagbili at mga setting.",
+    "resetProgressConfirm": "I-reset",
     "resetPurchaseCache": "Kalimutan ang binili (cache)",
     "resetPurchaseStore": "Kalimutan ang binili (pati sa “tindahan”)",
     "sound": "Mga tunog",

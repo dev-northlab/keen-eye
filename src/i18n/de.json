@@ -6,6 +6,7 @@
     "levels": "Level",
     "duo": "Zu zweit",
     "settings": "Einstellungen",
+    "exit": "Beenden",
     "stars": "Sterne: {n}",
     "needsPurchase": "Level {n} — Vollversion",
     "devOpenAll": "Alle Level öffnen (Test)",
@@ -187,6 +188,8 @@
     "dev": "Entwicklung",
     "unlockAll": "Alle Level abschließen",
     "resetProgress": "Fortschritt zurücksetzen",
+    "resetProgressText": "Alle Sterne, Rekorde, gefundenen Schlüssel, gelösten Fälle und der Verlauf der Spiele zu zweit werden gelöscht. Kauf und Einstellungen bleiben erhalten.",
+    "resetProgressConfirm": "Zurücksetzen",
     "resetKeys": "Gefundene Schlüssel zurücksetzen",
     "music": "Musik",
     "sound": "Töne",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Zurück",
-    "close": "Schließen"
+    "close": "Schließen",
+    "cancel": "Abbrechen"
   },
   "chapters": {
     "farm": "Bauernhof",

@@ -3,6 +3,7 @@
 import DevToolsDialog from './DevToolsDialog.vue'
 import LanguageSelect from './LanguageSelect.vue'
 import ModeSwitch from './ModeSwitch.vue'
+import ResetProgressDialog from './ResetProgressDialog.vue'
 import ThemeSwitch from './ThemeSwitch.vue'
 import { playSfx } from '../services/audio.ts'
 import { ref } from 'vue'
@@ -21,6 +22,7 @@ function onDeveloperCode() {
   if (settings.enableDeveloper(developerCode.value)) developerCode.value = ''
 }
 const devToolsOpen = ref(false)
+const resetOpen = ref(false)
 </script>
 
 <template>
@@ -95,6 +97,11 @@ const devToolsOpen = ref(false)
       </span>
     </button>
 
+    <button class="row link" @click="resetOpen = true">
+      <span class="danger">{{ $t('settings.resetProgress') }}</span>
+      <span class="muted flip-rtl">›</span>
+    </button>
+
     <button v-if="settings.developer" class="row link" @click="devToolsOpen = true">
       <span>{{ $t('settings.dev') }}</span>
       <span class="muted flip-rtl">›</span>
@@ -110,6 +117,7 @@ const devToolsOpen = ref(false)
       />
     </label>
 
+    <ResetProgressDialog v-if="resetOpen" @close="resetOpen = false" />
     <DevToolsDialog v-if="settings.developer && devToolsOpen" @close="devToolsOpen = false" />
   </main>
 </template>
@@ -188,6 +196,10 @@ input[type='checkbox'] {
 
 .muted {
   color: var(--muted);
+}
+
+.danger {
+  color: var(--mode-hard);
 }
 
 input.code {

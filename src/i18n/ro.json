@@ -6,6 +6,7 @@
     "levels": "Niveluri",
     "duo": "Doi jucători",
     "settings": "Setări",
+    "exit": "Ieșire",
     "stars": "Stele: {n}",
     "needsPurchase": "Nivelul {n} — jocul complet",
     "devOpenAll": "Deschide toate nivelurile (test)",
@@ -187,6 +188,8 @@
     "dev": "Dezvoltare",
     "unlockAll": "Termină toate nivelurile",
     "resetProgress": "Resetează progresul",
+    "resetProgressText": "Toate stelele, recordurile, cheile găsite, cazurile rezolvate și istoricul jocurilor în doi vor fi șterse. Achiziția și setările rămân.",
+    "resetProgressConfirm": "Resetează",
     "resetKeys": "Resetează cheile găsite",
     "music": "Muzică",
     "sound": "Sunete",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Înapoi",
-    "close": "Închide"
+    "close": "Închide",
+    "cancel": "Anulează"
   },
   "chapters": {
     "farm": "Fermă",

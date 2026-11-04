@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Kembali",
-    "close": "Tutup"
+    "close": "Tutup",
+    "cancel": "Batal"
   },
   "detective": {
     "accuse": "Tuduh: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Level {n} – permainan lengkap",
     "play": "Main",
     "settings": "Pengaturan",
+    "exit": "Keluar",
     "stars": "Bintang: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Adegan bergerak lebih lambat dan lembut",
     "resetKeys": "Atur ulang kunci yang ditemukan",
     "resetProgress": "Atur ulang progres",
+    "resetProgressText": "Semua bintang, rekor, kunci yang ditemukan, kasus yang terpecahkan, dan riwayat permainan berdua akan dihapus. Pembelian dan pengaturan tetap tersimpan.",
+    "resetProgressConfirm": "Atur ulang",
     "resetPurchaseCache": "Lupakan pembelian (cache)",
     "resetPurchaseStore": "Lupakan pembelian (juga di “toko”)",
     "sound": "Suara",

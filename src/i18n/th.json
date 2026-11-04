@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "กลับ",
-    "close": "ปิด"
+    "close": "ปิด",
+    "cancel": "ยกเลิก"
   },
   "detective": {
     "accuse": "กล่าวหา: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "ด่าน {n} – เกมเต็ม",
     "play": "เล่น",
     "settings": "การตั้งค่า",
+    "exit": "ออก",
     "stars": "ดาว: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "ฉากเคลื่อนไหวช้าลงและนุ่มนวลขึ้น",
     "resetKeys": "รีเซ็ตกุญแจที่พบ",
     "resetProgress": "รีเซ็ตความคืบหน้า",
+    "resetProgressText": "ดาว สถิติ กุญแจที่พบ คดีที่ไขแล้ว และประวัติการเล่นสองคนทั้งหมดจะถูกลบ การซื้อและการตั้งค่ายังคงอยู่",
+    "resetProgressConfirm": "รีเซ็ต",
     "resetPurchaseCache": "ลืมรายการซื้อ (แคช)",
     "resetPurchaseStore": "ลืมรายการซื้อ (รวมถึงใน “ร้านค้า”)",
     "sound": "เสียง",

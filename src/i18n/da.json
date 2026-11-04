@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Tilbage",
-    "close": "Luk"
+    "close": "Luk",
+    "cancel": "Annuller"
   },
   "detective": {
     "accuse": "Anklag: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Bane {n} – hele spillet",
     "play": "Spil",
     "settings": "Indstillinger",
+    "exit": "Afslut",
     "stars": "Stjerner: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Scenerne bevæger sig langsommere og blødere",
     "resetKeys": "Nulstil fundne nøgler",
     "resetProgress": "Nulstil fremskridt",
+    "resetProgressText": "Alle stjerner, rekorder, fundne nøgler, opklarede sager og historikken for spil for to slettes. Købet og indstillingerne bevares.",
+    "resetProgressConfirm": "Nulstil",
     "resetPurchaseCache": "Glem købet (cache)",
     "resetPurchaseStore": "Glem købet (også i »butikken«)",
     "sound": "Lyde",

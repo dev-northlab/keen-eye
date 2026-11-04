@@ -6,6 +6,7 @@
     "levels": "레벨",
     "duo": "2인 플레이",
     "settings": "설정",
+    "exit": "종료",
     "stars": "별: {n}",
     "needsPurchase": "레벨 {n} — 정식판",
     "devOpenAll": "모든 레벨 열기 (테스트)",
@@ -187,6 +188,8 @@
     "dev": "개발",
     "unlockAll": "모든 레벨 완료",
     "resetProgress": "진행 상황 초기화",
+    "resetProgressText": "모든 별, 기록, 찾은 열쇠, 해결한 사건, 2인 대전 기록이 삭제됩니다. 구매 내역과 설정은 유지됩니다.",
+    "resetProgressConfirm": "초기화",
     "resetKeys": "찾은 열쇠 초기화",
     "music": "음악",
     "sound": "효과음",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "뒤로",
-    "close": "닫기"
+    "close": "닫기",
+    "cancel": "취소"
   },
   "chapters": {
     "farm": "농장",

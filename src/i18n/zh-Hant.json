@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "返回",
-    "close": "關閉"
+    "close": "關閉",
+    "cancel": "取消"
   },
   "detective": {
     "accuse": "指控：{suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "第 {n} 關 — 完整版",
     "play": "開始遊戲",
     "settings": "設定",
+    "exit": "離開",
     "stars": "星星：{n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "畫面動得更慢、更柔和",
     "resetKeys": "重設已找到的鑰匙",
     "resetProgress": "重設進度",
+    "resetProgressText": "所有星星、紀錄、找到的鑰匙、已破的案件和雙人對戰紀錄都將被刪除。購買和設定會保留。",
+    "resetProgressConfirm": "重設",
     "resetPurchaseCache": "忘記購買（快取）",
     "resetPurchaseStore": "忘記購買（包括「商店」）",
     "sound": "音效",

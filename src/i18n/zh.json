@@ -6,6 +6,7 @@
     "levels": "关卡",
     "duo": "双人",
     "settings": "设置",
+    "exit": "退出",
     "stars": "星星：{n}",
     "needsPurchase": "第 {n} 关 — 完整版",
     "devOpenAll": "开放所有关卡（测试）",
@@ -187,6 +188,8 @@
     "dev": "开发",
     "unlockAll": "完成所有关卡",
     "resetProgress": "重置进度",
+    "resetProgressText": "所有星星、纪录、找到的钥匙、已破的案件和双人对战记录都将被删除。购买和设置会保留。",
+    "resetProgressConfirm": "重置",
     "resetKeys": "重置已找到的钥匙",
     "music": "音乐",
     "sound": "音效",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "返回",
-    "close": "关闭"
+    "close": "关闭",
+    "cancel": "取消"
   },
   "chapters": {
     "farm": "农场",

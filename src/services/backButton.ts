@@ -1,4 +1,5 @@
 import { App } from '@capacitor/app'
+import { Capacitor } from '@capacitor/core'
 import { onBeforeUnmount, onMounted } from 'vue'
 
 // Android system back button. Screens with their own behavior register a handler while mounted;
@@ -11,6 +12,9 @@ const handlers: Handler[] = []
 export function initBackButton(fallback: Handler): void {
   App.addListener('backButton', () => (handlers.at(-1) ?? fallback)()).catch(() => {})
 }
+
+/** Only Android lets an app close itself: iOS forbids it and a browser tab stays open. */
+export const canExitApp = Capacitor.getPlatform() === 'android'
 
 export function exitApp(): void {
   App.exitApp().catch(() => {})
