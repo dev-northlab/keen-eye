@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bareTree, bird, birdHouse, bush, cabin, chimney, cloud, fern, fox, grass, logPile, mushroom, oak, pine, pineSnow, pond, rabbit, rock, signpost, sky, smoke, snowCap, snowfall, squirrel, stones, stump, winterSky } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   title: 'snowForest',
   pair: 'summer-winter',
   parTimeSec: 85,
-  scene: ({ diff, time, trap, rand }) => {
+  scene: ({ diff, time, trap, rand, extra, anim }) => {
     let back = ''
     let backSnow = ''
     for (let x = 10; x < 800; x += 50 + rand() * 24) {
@@ -58,6 +59,11 @@ export default svgLevel({
       time(fern(30, 490), '') +
       time(grass(560, 480), '') +
       time(stones(400, 490), '') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 554, 123],
+        ['birds', 94, 63],
+      ]) +
       time('', snowfall(208, 290, 36))
     )
   },

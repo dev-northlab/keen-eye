@@ -6,6 +6,7 @@
     "levels": "Livelli",
     "duo": "In due",
     "settings": "Impostazioni",
+    "exit": "Esci",
     "stars": "Stelle: {n}",
     "needsPurchase": "Livello {n} — gioco completo",
     "devOpenAll": "Apri tutti i livelli (test)",
@@ -187,6 +188,8 @@
     "dev": "Sviluppo",
     "unlockAll": "Completa tutti i livelli",
     "resetProgress": "Azzera i progressi",
+    "resetProgressText": "Verranno cancellati stelle, record, chiavi trovate, casi risolti e la cronologia delle partite a due. Acquisto e impostazioni restano.",
+    "resetProgressConfirm": "Azzera",
     "resetKeys": "Azzera le chiavi trovate",
     "music": "Musica",
     "sound": "Suoni",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Indietro",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "cancel": "Annulla"
   },
   "chapters": {
     "farm": "Fattoria",

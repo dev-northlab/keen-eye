@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bareTree, bench, bike, bird, bollard, building, car, cityTree, cloud, cone, curtainWindow, door, hangingSign, hydrant, icicles, person, pigeon, sky, snowCap, snowfall, street, winterPerson, winterSky } from './shapes.ts'
 
@@ -14,7 +15,7 @@ export default svgLevel({
   title: 'snowStreet',
   pair: 'summer-winter',
   parTimeSec: 85,
-  scene: ({ diff, time, trap, secret }) =>
+  scene: ({ diff, time, trap, secret, extra, anim }) =>
     time(sky(false, 330), winterSky(330)) +
     building(30, 330, 220, 250, '#81b29a') +
     time('', snowCap(26, 72, 228)) +
@@ -62,5 +63,10 @@ export default svgLevel({
     bollard(520, 492) +
     pigeon(600, 492, true) +
     bin(770, 490, '#5c8d5a') +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 337, 92],
+      ['birds', 690, 51],
+    ]) +
     time('', snowfall(207, 330, 34)),
 })

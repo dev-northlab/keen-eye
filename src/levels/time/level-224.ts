@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bench, bin, buoy, cloud, dog, duck, DUSK, flowerBox, glow, lampHead, lampPost, moon, oak, pane, person, pigeon, pot, rowboat, sky, stars, sun } from './shapes.ts'
 
@@ -17,7 +18,7 @@ export default svgLevel({
   title: 'riverTown',
   pair: 'day-night',
   parTimeSec: 140,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     let houses = ''
     for (let i = 0; i < 6; i++) {
       const x0 = 5 + i * 133
@@ -73,6 +74,12 @@ export default svgLevel({
       bin(470, 490) +
       pigeon(740, 492, true) +
       pot(760, 490) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 304, 54],
+        ['birds', 598, 51],
+        ['birds', 73, 71],
+      ]) +
       time('', DUSK) +
       time('', lampHead(260, 254, true) + lampHead(540, 254, true) + glow(155, 188, 22, 26) + glow(626, 172, 22, 26)) +
       trap(400, 154, 34, lampHead(400, 254, false), lampHead(400, 254, true), 'lights') +

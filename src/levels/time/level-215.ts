@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bike, bird, birdHouse, bucket, bush, butterfly, cat, chimney, cloud, dog, DUSK, fence, flowerBox, flowers, glow, grass, house, lampHead, lampPost, mailbox, moon, oak, pane, rock, sky, stars, stones, sun, vane } from './shapes.ts'
 
@@ -23,7 +24,7 @@ export default svgLevel({
   title: 'yardNight',
   pair: 'day-night',
   parTimeSec: 110,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 300) +
     // House with a porch
     house(195, 330, 260, 170, 80, '#bde0fe', '#6b4f3a') +
@@ -64,6 +65,11 @@ export default svgLevel({
     flowers(600, 470, '#ffd23f') +
     bucket(660, 470) +
     dog(740, 475) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 644, 170],
+      ['birds', 94, 79],
+    ]) +
     time('', DUSK) +
     time('', glow(95, 262, 40, 44)) +
     trap(115, 212, 30, '', glow(95, 190, 40, 44), 'lights') +

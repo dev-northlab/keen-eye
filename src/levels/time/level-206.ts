@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bareTree, barrel, bird, bucket, butterfly, cloud, crate, fence, flowers, grass, hayBale, hen, kennel, oak, pane, picket, pine, pineSnow, pond, rock, roofSnow, sack, sky, snowCap, snowfall, snowman, stump, vane, winterSky } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   title: 'snowFarm',
   pair: 'summer-winter',
   parTimeSec: 85,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 290), winterSky(290)) +
     cloud(250, 80, 0.7) +
     `<rect y="290" width="800" height="210" fill="${time('#9ccc65', '#f4f8fb')}"/>` +
@@ -57,5 +58,10 @@ export default svgLevel({
     time('', snowCap(546, 450, 28)) +
     bucket(760, 470) +
     time('', snowCap(744, 444, 32)) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 446, 76],
+      ['birds', 139, 191],
+    ]) +
     time('', snowfall(206, 280, 30)),
 })

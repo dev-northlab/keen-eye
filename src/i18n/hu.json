@@ -6,6 +6,7 @@
     "levels": "Pályák",
     "duo": "Két játékos",
     "settings": "Beállítások",
+    "exit": "Kilépés",
     "stars": "Csillagok: {n}",
     "needsPurchase": "{n}. pálya — teljes verzió",
     "devOpenAll": "Minden pálya megnyitása (teszt)",
@@ -187,6 +188,8 @@
     "dev": "Fejlesztés",
     "unlockAll": "Minden pálya teljesítése",
     "resetProgress": "Előrehaladás törlése",
+    "resetProgressText": "Minden csillag, rekord, megtalált kulcs, megoldott ügy és a kétszemélyes játékok előzménye törlődik. A vásárlás és a beállítások megmaradnak.",
+    "resetProgressConfirm": "Törlés",
     "resetKeys": "Megtalált kulcsok visszaállítása",
     "music": "Zene",
     "sound": "Hangok",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Vissza",
-    "close": "Bezárás"
+    "close": "Bezárás",
+    "cancel": "Mégse"
   },
   "chapters": {
     "farm": "Tanya",

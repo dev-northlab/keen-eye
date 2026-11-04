@@ -6,6 +6,7 @@
     "levels": "レベル",
     "duo": "ふたりで",
     "settings": "設定",
+    "exit": "終了",
     "stars": "星：{n}",
     "needsPurchase": "レベル {n} — 完全版",
     "devOpenAll": "全レベルを開く（テスト）",
@@ -187,6 +188,8 @@
     "dev": "開発",
     "unlockAll": "全レベルをクリア",
     "resetProgress": "進行状況をリセット",
+    "resetProgressText": "すべての星、記録、見つけた鍵、解決した事件、2人対戦の履歴が削除されます。購入と設定はそのまま残ります。",
+    "resetProgressConfirm": "リセット",
     "resetKeys": "見つけた鍵をリセット",
     "music": "音楽",
     "sound": "効果音",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "戻る",
-    "close": "閉じる"
+    "close": "閉じる",
+    "cancel": "キャンセル"
   },
   "chapters": {
     "farm": "牧場",

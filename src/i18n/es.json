@@ -6,6 +6,7 @@
     "levels": "Niveles",
     "duo": "Dos jugadores",
     "settings": "Ajustes",
+    "exit": "Salir",
     "stars": "Estrellas: {n}",
     "needsPurchase": "Nivel {n}: juego completo",
     "devOpenAll": "Abrir todos los niveles (prueba)",
@@ -187,6 +188,8 @@
     "dev": "Desarrollo",
     "unlockAll": "Completar todos los niveles",
     "resetProgress": "Borrar progreso",
+    "resetProgressText": "Se borrarán todas las estrellas, récords, llaves encontradas, casos resueltos y el historial de partidas a dos. La compra y los ajustes se conservan.",
+    "resetProgressConfirm": "Restablecer",
     "resetKeys": "Restablecer las llaves encontradas",
     "music": "Música",
     "sound": "Sonidos",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Atrás",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "cancel": "Cancelar"
   },
   "chapters": {
     "farm": "Granja",

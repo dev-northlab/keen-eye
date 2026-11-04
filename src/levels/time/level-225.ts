@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bareTree, bench, bin, birdHouse, bush, butterfly, cloud, dog, duck, flowers, grass, hangingSign, lilyPad, oak, person, pigeon, pine, pineSnow, pond, reeds, rock, signpost, sky, small, snowCap, snowfall, snowman, squirrel, winterPerson, winterSky } from './shapes.ts'
 
@@ -18,7 +19,7 @@ export default svgLevel({
   title: 'parkPond',
   pair: 'summer-winter',
   parTimeSec: 140,
-  scene: ({ diff, time, trap, rand }) => {
+  scene: ({ diff, time, trap, rand, extra, anim }) => {
     let skyline = ''
     for (let x = -10; x < 800; x += 50 + rand() * 30) {
       const h = 40 + rand() * 70
@@ -71,6 +72,12 @@ export default svgLevel({
       bench(650, 480) +
       time('', snowCap(620, 450, 60)) +
       time(lilyPad(540, 320) + lilyPad(600, 350, '#ff6b8b') + butterfly(330, 410) + grass(125, 495), '') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 534, 91],
+        ['birds', 106, 100],
+        ['birds', 315, 120],
+      ]) +
       time('', snowfall(225, 240, 44))
     )
   },

@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, balloon, bench, bin, bucket, bunting, cloud, cone, DUSK, ferrisWheel, glow, gondola, lampHead, lampPost, moon, person, pigeon, rim, sky, stall, stars, sun } from './shapes.ts'
 
@@ -43,7 +44,7 @@ export default svgLevel({
   title: 'funfair',
   pair: 'day-night',
   parTimeSec: 135,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     const colors = ['#e63946', '#3a86ff', '#ffb703', '#2a9d8f', '#8338ec', '#ff6b8b', '#8ac926', '#fb8500']
     let gondolas = ''
     for (let i = 0; i < 8; i++) {
@@ -92,6 +93,12 @@ export default svgLevel({
       cone(560, 490) +
       bench(740, 490) +
       bin(780, 490) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 104, 221],
+        ['birds', 690, 86],
+        ['birds', 388, 237],
+      ]) +
       time('', DUSK) +
       time('', glow(385, 405, 30, 20)) +
       trap(560, 70, 24, '', rimLights(true), 'lights') +

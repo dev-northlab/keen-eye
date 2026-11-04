@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Takaisin",
-    "close": "Sulje"
+    "close": "Sulje",
+    "cancel": "Peruuta"
   },
   "detective": {
     "accuse": "Syytä: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Taso {n} – koko peli",
     "play": "Pelaa",
     "settings": "Asetukset",
+    "exit": "Lopeta",
     "stars": "Tähdet: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Maisemat liikkuvat hitaammin ja pehmeämmin",
     "resetKeys": "Nollaa löydetyt avaimet",
     "resetProgress": "Nollaa edistyminen",
+    "resetProgressText": "Kaikki tähdet, ennätykset, löydetyt avaimet, ratkaistut tapaukset ja kahden pelaajan pelien historia poistetaan. Osto ja asetukset säilyvät.",
+    "resetProgressConfirm": "Nollaa",
     "resetPurchaseCache": "Unohda ostos (välimuisti)",
     "resetPurchaseStore": "Unohda ostos (myös ”kaupassa”)",
     "sound": "Äänet",

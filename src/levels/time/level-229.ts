@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bareTree, bench, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, dog, flowers, fox, grass, house, icicles, logPile, mountains, oak, pane, person, pine, pineSnow, pond, rock, roofSnow, signBoard, signpost, sky, smoke, snowCap, snowfall, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
@@ -20,7 +21,7 @@ export default svgLevel({
   title: 'cableCar',
   pair: 'summer-winter',
   parTimeSec: 150,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     let logs = ''
     for (let row = 0; row < 3; row++)
       for (let col = 0; col < 4; col++) if (row !== 2 || col !== 3) logs += `<circle cx="${320 + col * 10}" cy="${414 - row * 12}" r="6" fill="#c9a06c" stroke="#8a5a33" stroke-width="2"/>`
@@ -78,6 +79,12 @@ export default svgLevel({
       rock(430, 492, 0.8) +
       time('', snowCap(418, 480, 24)) +
       time(butterfly(345, 335) + grass(588, 495) + grass(110, 495), '') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 407, 85],
+        ['birds', 105, 79],
+        ['birds', 728, 139],
+      ]) +
       time('', snowfall(229, 300, 46))
     )
   },

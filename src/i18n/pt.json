@@ -6,6 +6,7 @@
     "levels": "Fases",
     "duo": "Dois jogadores",
     "settings": "Configurações",
+    "exit": "Sair",
     "stars": "Estrelas: {n}",
     "needsPurchase": "Fase {n} — jogo completo",
     "devOpenAll": "Abrir todas as fases (teste)",
@@ -187,6 +188,8 @@
     "dev": "Desenvolvimento",
     "unlockAll": "Concluir todas as fases",
     "resetProgress": "Apagar progresso",
+    "resetProgressText": "Todas as estrelas, recordes, chaves encontradas, casos resolvidos e o histórico de partidas a dois serão apagados. A compra e as configurações continuam.",
+    "resetProgressConfirm": "Redefinir",
     "resetKeys": "Redefinir as chaves encontradas",
     "music": "Música",
     "sound": "Sons",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Voltar",
-    "close": "Fechar"
+    "close": "Fechar",
+    "cancel": "Cancelar"
   },
   "chapters": {
     "farm": "Fazenda",

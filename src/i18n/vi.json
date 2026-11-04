@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Quay lại",
-    "close": "Đóng"
+    "close": "Đóng",
+    "cancel": "Hủy"
   },
   "detective": {
     "accuse": "Buộc tội: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Màn {n} – trò chơi đầy đủ",
     "play": "Chơi",
     "settings": "Cài đặt",
+    "exit": "Thoát",
     "stars": "Sao: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Cảnh chuyển động chậm và nhẹ nhàng hơn",
     "resetKeys": "Đặt lại chìa khóa đã tìm",
     "resetProgress": "Đặt lại tiến trình",
+    "resetProgressText": "Tất cả sao, kỷ lục, chìa khóa đã tìm thấy, vụ án đã phá và lịch sử chơi hai người sẽ bị xóa. Giao dịch mua và cài đặt vẫn được giữ.",
+    "resetProgressConfirm": "Đặt lại",
     "resetPurchaseCache": "Quên giao dịch mua (bộ nhớ đệm)",
     "resetPurchaseStore": "Quên giao dịch mua (cả trong “cửa hàng”)",
     "sound": "Âm thanh",

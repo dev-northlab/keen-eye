@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import { MATCH_MODES, type MatchMode, type MatchRules } from '../engine/match.ts'
 import type { Level } from '../engine/types.ts'
 import { levels } from '../levels/index.ts'
-import { loadJson, saveJson } from '../services/storage.ts'
+import { loadJson, remove, saveJson } from '../services/storage.ts'
 import { useProgressStore } from './progress.ts'
 
 // Two players on one device: the match setup (kept between matches) and the match history.
@@ -148,6 +148,12 @@ export const useDuoStore = defineStore('duo', () => {
     await saveJson(HISTORY_KEY, history.value)
   }
 
+  /** Forgets the match history (resetting the progress); the setup stays. */
+  async function clearHistory() {
+    history.value = []
+    await remove(HISTORY_KEY)
+  }
+
   /** Wins by player name over the stored history (duels and hot-seat), most wins first. */
   const wins = computed(() => {
     const byName = new Map<string, number>()
@@ -170,5 +176,5 @@ export const useDuoStore = defineStore('duo', () => {
     return pool[Math.floor(Math.random() * pool.length)]
   }
 
-  return { setup, history, rules, wins, load, recordMatch, isAvailable, randomLevel }
+  return { setup, history, rules, wins, load, recordMatch, clearHistory, isAvailable, randomLevel }
 })

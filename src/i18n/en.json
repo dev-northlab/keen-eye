@@ -6,6 +6,7 @@
     "levels": "Levels",
     "duo": "Two players",
     "settings": "Settings",
+    "exit": "Exit",
     "stars": "Stars: {n}",
     "needsPurchase": "Level {n} — full game",
     "devOpenAll": "Open all levels (testing)",
@@ -187,6 +188,8 @@
     "dev": "Development",
     "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",
+    "resetProgressText": "All stars, records, found keys, solved cases and the two-player history will be deleted. Your purchase and settings stay.",
+    "resetProgressConfirm": "Reset",
     "resetKeys": "Reset found keys",
     "music": "Music",
     "sound": "Sounds",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Back",
-    "close": "Close"
+    "close": "Close",
+    "cancel": "Cancel"
   },
   "chapters": {
     "farm": "Farm",

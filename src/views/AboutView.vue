@@ -18,7 +18,12 @@ const icon = `${import.meta.env.BASE_URL}favicon.svg`
     <ScreenBackdrop theme="meadow" />
     <main>
       <section class="card title">
-        <img :src="icon" alt="" width="88" height="88" />
+        <!-- The owl blinks: a lid slides down over each eye of the icon. Like the backdrops, it always moves. -->
+        <span class="owl">
+          <img :src="icon" alt="" width="88" height="88" />
+          <span class="lid" />
+          <span class="lid" />
+        </span>
         <h1>{{ APP_NAME }}</h1>
         <p>{{ $t('info.aboutText') }}</p>
         <p class="muted">{{ $t('info.version', { v: version }) }}</p>
@@ -99,9 +104,52 @@ main {
   gap: 6px;
 }
 
-.title img {
+.owl {
+  position: relative;
+  display: block;
   border-radius: 22px;
   box-shadow: 0 6px 14px rgb(35 48 43 / 0.2);
+}
+
+.owl img {
+  display: block;
+}
+
+/* The icon's eyes (favicon.svg, viewBox 16 16 76 76): whites of r 9.6 at x 42.5 and 65.5, y 54. */
+.lid {
+  position: absolute;
+  top: 37%;
+  left: 21.9%;
+  width: 26%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.lid + .lid {
+  left: 52.1%;
+}
+
+.lid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #8b5a2b;
+  border-bottom: 2px solid #5e3a17;
+  transform: translateY(-102%);
+  animation: blink 9s ease-in-out infinite;
+}
+
+/* Once every 9 s, about a quarter of a second down and up. */
+@keyframes blink {
+  0%,
+  97%,
+  100% {
+    transform: translateY(-102%);
+  }
+  98.5% {
+    transform: translateY(0);
+  }
 }
 
 .title h1 {

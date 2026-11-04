@@ -101,7 +101,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   (mode calm/normal/hard, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
-- `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
+- `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit; `canExitApp` — only Android shows the home screen's "Exit", iOS forbids quitting),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
   starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
@@ -184,6 +184,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   chapter ids. `check-levels` checks the key is visible but at least 25% covered, and clear of zones and traps; `npm test` one key per chapter, the
   farm's in the free levels. All keys open the bonus level 900, chapter `treasury` (`treasury/level-900.ts`, banner on
   the game modes screen, `TreasureChest` in its result dialog).
+- Settings → "Reset progress" (`ResetProgressDialog`, asks first): `progress.reset()` and the duel history (`duo.clearHistory()`); the purchase and the settings stay.
 - Stored data is untrusted: validate its shape when loading (the parsers of `stores/progress-data.ts`, unit-tested).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, 3 free hints per attempt (`MODE_RULES.calm.hints`), slower animation, soft sounds,
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.
@@ -195,7 +196,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   a pass also completes the level like calm mode. A normal finish with fewer than 3 red stars offers "Play on hard":
   that level in hard mode until the screen is left (`hardChallenge`), the setting unchanged; the level HUD shows the
   attempt's mode (`ModeChip`). Not in duels.
-- Extra objects of hard mode (`docs/hard-mode-extra-objects.md`, all five worlds and "memory", 3–5 there): the scene's
+- Extra objects of hard mode (`docs/hard-mode-extra-objects.md`, all five worlds, "memory" (3–5) and "time" (1–3 flocks of birds in the sky, before `DUSK`/snowfall)): the scene's
   `extra(x, y, r, markup)` draws decor only in the hard pictures, the same in A and B (`Level.extras`,
   `build(variant, moment, true)`); levels list them with `extras({ extra, anim }, [[kind, x, y, color?], …])` from
   `levels/extras.ts` (chapter shapes with their boxes; animals and things on water bob or sway on the spot, the circle

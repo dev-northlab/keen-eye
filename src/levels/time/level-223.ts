@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bareTree, barrel, beehive, bird, birdHouse, birds, bucket, butterfly, chimney, cloud, crate, fence, grass, hen, house, icicles, logPile, oak, pane, person, picket, rabbit, roofSnow, sack, sky, small, smoke, snowCap, snowfall, snowman, squirrel, stones, winterPerson, winterSky } from './shapes.ts'
 
@@ -24,7 +25,7 @@ export default svgLevel({
   title: 'orchardHives',
   pair: 'summer-winter',
   parTimeSec: 135,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     const winter = time(false, true)
     // Two apple trees that change on their own; the middle one is the trap.
     const tree = (x: number, y: number, s: number) => (winter ? bareTree(x, y, s * 0.9) : oak(x, y, s) + apples(x, y, s))
@@ -81,6 +82,12 @@ export default svgLevel({
       time('', snowCap(684, 369, 32)) +
       hen(40, 470) +
       time(butterfly(340, 320) + grass(560, 360) + stones(235, 490), '') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 130, 185],
+        ['birds', 501, 171],
+        ['birds', 697, 51],
+      ]) +
       time('', snowfall(223, 290, 44))
     )
   },

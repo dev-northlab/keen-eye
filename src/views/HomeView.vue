@@ -8,7 +8,7 @@ import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SeasonSwitch from '../components/SeasonSwitch.vue'
 import ThemeSwitch from '../components/ThemeSwitch.vue'
 import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
-import { pushBackHandler } from '../services/backButton.ts'
+import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -102,6 +102,12 @@ function play() {
       </span>
       <span class="label">{{ $t('home.settings') }}</span>
       <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </button>
+    <button v-if="canExitApp" class="entry" @click="exitApp">
+      <span class="badge exit" aria-hidden="true">
+        <svg class="flip-rtl" viewBox="0 0 24 24"><path d="M14 4.5H6.5v15H14M10.5 12H20M16.5 8.5 20 12l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+      <span class="label">{{ $t('home.exit') }}</span>
     </button>
 
     <nav class="info-links">
@@ -514,6 +520,10 @@ button {
 
 .badge.settings {
   background: var(--muted);
+}
+
+.badge.exit {
+  background: var(--mode-hard);
 }
 
 /* Two players: the two characters, overlapping. */

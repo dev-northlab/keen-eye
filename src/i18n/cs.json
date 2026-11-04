@@ -6,6 +6,7 @@
     "levels": "Úrovně",
     "duo": "Dva hráči",
     "settings": "Nastavení",
+    "exit": "Ukončit",
     "stars": "Hvězdy: {n}",
     "needsPurchase": "Úroveň {n} — plná verze",
     "devOpenAll": "Otevřít všechny úrovně (test)",
@@ -187,6 +188,8 @@
     "dev": "Vývoj",
     "unlockAll": "Dokončit všechny úrovně",
     "resetProgress": "Smazat postup",
+    "resetProgressText": "Všechny hvězdy, rekordy, nalezené klíče, vyřešené případy a historie her ve dvou budou smazány. Nákup a nastavení zůstanou.",
+    "resetProgressConfirm": "Vymazat",
     "resetKeys": "Vynulovat nalezené klíče",
     "music": "Hudba",
     "sound": "Zvuky",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Zpět",
-    "close": "Zavřít"
+    "close": "Zavřít",
+    "cancel": "Zrušit"
   },
   "chapters": {
     "farm": "Farma",

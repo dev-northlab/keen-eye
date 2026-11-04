@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birds, bucket, bush, butterfly, cloud, DUSK, fern, fireLogs, flame, grass, hedgehog, logPile, moon, mushroom, pine, rabbit, rock, signpost, sky, squirrel, stars, stones, stump, sun, tent } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   title: 'duskCamp',
   pair: 'day-night',
   parTimeSec: 75,
-  scene: ({ diff, time, trap, rand }) => {
+  scene: ({ diff, time, trap, rand, extra, anim }) => {
     let backPines = ''
     for (let x = 20; x < 800; x += 46 + rand() * 20) backPines += pine(x, 300, 0.9 + rand() * 0.5, '#2f6e4c')
     return (
@@ -44,6 +45,11 @@ export default svgLevel({
       fern(30, 470) +
       mushroom(60, 480, '#e63946', 0.7) +
       stump(590, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 601, 129],
+        ['birds', 727, 58],
+      ]) +
       time('', DUSK) +
       trap(520, 412, 30, '', flame(520, 440), 'lights') +
       trap(440, 60, 40, birds(440, 60), '', 'birds') +

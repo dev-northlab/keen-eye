@@ -42,7 +42,8 @@
   },
   "common": {
     "back": "Tilbake",
-    "close": "Lukk"
+    "close": "Lukk",
+    "cancel": "Avbryt"
   },
   "detective": {
     "accuse": "Anklag: {suspect}",
@@ -394,6 +395,7 @@
     "needsPurchase": "Brett {n} – hele spillet",
     "play": "Spill",
     "settings": "Innstillinger",
+    "exit": "Avslutt",
     "stars": "Stjerner: {n}"
   },
   "info": {
@@ -799,6 +801,8 @@
     "reduceMotionHint": "Scenene beveger seg saktere og mykere",
     "resetKeys": "Tilbakestill funnede nøkler",
     "resetProgress": "Tilbakestill fremgang",
+    "resetProgressText": "Alle stjerner, rekorder, funne nøkler, oppklarte saker og historikken for spill for to slettes. Kjøpet og innstillingene beholdes.",
+    "resetProgressConfirm": "Tilbakestill",
     "resetPurchaseCache": "Glem kjøpet (buffer)",
     "resetPurchaseStore": "Glem kjøpet (også i «butikken»)",
     "sound": "Lyder",

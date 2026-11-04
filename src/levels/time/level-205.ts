@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, bin, bird, birdHouse, bucket, bush, butterfly, cat, cloud, dog, DUSK, flowers, glow, grass, lampHead, lampPost, laundry, moon, oak, pane, pigeon, pot, shirt, sky, slide, stars, stones, sun, swingFrame, swingSeat } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   title: 'duskYard',
   pair: 'day-night',
   parTimeSec: 75,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     // Apartment block: 6 columns × 4 floors of windows; one is a difference.
     let windows = ''
     for (let row = 0; row < 4; row++)
@@ -48,6 +49,10 @@ export default svgLevel({
       birdHouse(770, 470) +
       grass(40, 490) +
       grass(400, 490) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 662, 199],
+      ]) +
       time('', DUSK) +
       trap(350, 370, 36, lampHead(350, 470, false), lampHead(350, 470, true), 'lights') +
       trap(270, 149, 28, '', glow(255, 132, 30, 34), 'lights') +

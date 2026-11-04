@@ -6,6 +6,7 @@
     "levels": "Bölümler",
     "duo": "İki oyuncu",
     "settings": "Ayarlar",
+    "exit": "Çıkış",
     "stars": "Yıldız: {n}",
     "needsPurchase": "Bölüm {n} — tam sürüm",
     "devOpenAll": "Tüm bölümleri aç (test)",
@@ -187,6 +188,8 @@
     "dev": "Geliştirme",
     "unlockAll": "Tüm bölümleri tamamla",
     "resetProgress": "İlerlemeyi sıfırla",
+    "resetProgressText": "Tüm yıldızlar, rekorlar, bulunan anahtarlar, çözülen davalar ve iki kişilik oyun geçmişi silinecek. Satın alma ve ayarlar korunur.",
+    "resetProgressConfirm": "Sıfırla",
     "resetKeys": "Bulunan anahtarları sıfırla",
     "music": "Müzik",
     "sound": "Sesler",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Geri",
-    "close": "Kapat"
+    "close": "Kapat",
+    "cancel": "İptal"
   },
   "chapters": {
     "farm": "Çiftlik",

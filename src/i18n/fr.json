@@ -6,6 +6,7 @@
     "levels": "Niveaux",
     "duo": "À deux",
     "settings": "Réglages",
+    "exit": "Quitter",
     "stars": "Étoiles : {n}",
     "needsPurchase": "Niveau {n} — jeu complet",
     "devOpenAll": "Ouvrir tous les niveaux (test)",
@@ -187,6 +188,8 @@
     "dev": "Développement",
     "unlockAll": "Terminer tous les niveaux",
     "resetProgress": "Réinitialiser la progression",
+    "resetProgressText": "Toutes les étoiles, records, clés trouvées, enquêtes résolues et l'historique des parties à deux seront effacés. L'achat et les réglages sont conservés.",
+    "resetProgressConfirm": "Réinitialiser",
     "resetKeys": "Réinitialiser les clés trouvées",
     "music": "Musique",
     "sound": "Sons",
@@ -201,7 +204,8 @@
   },
   "common": {
     "back": "Retour",
-    "close": "Fermer"
+    "close": "Fermer",
+    "cancel": "Annuler"
   },
   "chapters": {
     "farm": "Ferme",

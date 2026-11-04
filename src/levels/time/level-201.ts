@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birdHouse, bucket, bush, cat, cloud, door, duck, DUSK, fence, flowerBox, flowers, glow, grass, hayBale, hen, house, mailbox, moon, oak, pane, picket, shadow, sky, stars, stones, stump, sun, sunflower, vane } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   title: 'duskFarm',
   pair: 'day-night',
   parTimeSec: 75,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 300) +
     cloud(430, 90, 0.7) +
     `<rect y="300" width="800" height="200" fill="#9ccc65"/>` +
@@ -46,6 +47,11 @@ export default svgLevel({
     hen(560, 455) +
     hayBale(735, 455) +
     stump(770, 340) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 390, 198],
+      ['birds', 624, 190],
+    ]) +
     time('', DUSK) +
     trap(190, 250, 30, '', glow(170, 230, 40, 40), 'lights') +
     trap(120, 70, 42, '', stars(120, 70), 'stars') +
