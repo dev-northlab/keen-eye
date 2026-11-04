@@ -1,4 +1,5 @@
 // Motion differences: the woodpecker pecks faster on picture B; the beetle crawls the other way round on B; the spider bobs only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bird, bluebells, floor, leafPile, mushroom, pine, pineCone, squirrel } from './shapes.ts'
 
@@ -33,7 +34,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'woodpecker',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let chips = ''
     for (let i = 0; i < 6; i++) chips += `<rect x="${410 + rand() * 30}" y="${200 + rand() * 60}" width="4" height="3" fill="#c9a06c"/>`
     const pecking = (period: number) => anim({ id: 'woodpecker', type: 'bob', dx: 5, dy: 0, period }, woodpecker(450, 220))
@@ -76,7 +77,20 @@ export default svgLevel({
       acorn(230, 480) +
       bluebells(340, 480) +
       leafPile(470, 480) +
-      anthill(730, 482)
+      anthill(730, 482) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['feather', 137, 310],
+        ['rabbit', 713, 394],
+        ['frog', 317, 311],
+        ['anthill', 521, 340],
+        ['mushroom', 273, 433],
+        ['fern', 82, 415],
+        ['pineCone', 451, 457],
+        ['cloud', 154, 68],
+        ['birds', 674, 60],
+        ['butterfly', 490, 76],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the dragonfly darts faster on picture B; the floating log drifts faster on B; the reeds sway only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bluebells, bush, cloud, floor, log, oak, pine, pineCone, rock, sun } from './shapes.ts'
 import { duck, snail } from '../shapes.ts'
@@ -40,7 +41,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'beavers',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${350 + rand() * 120}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const darting = (period: number) => anim({ id: 'dragonfly', type: 'path', points: [[0, 0], [50, -14], [90, 6]], period }, dragonfly(300, 300))
@@ -80,7 +81,20 @@ export default svgLevel({
       pineCone(505, 338) +
       bluebells(45, 338) +
       anthill(735, 340) +
-      snail(590, 340)
+      snail(590, 340) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['feather', 724, 275],
+        ['rabbit', 527, 296],
+        ['frog', 53, 305],
+        ['anthill', 239, 287],
+        ['fish', 262, 457, '#9ef01a'],
+        ['frog', 53, 394],
+        ['fish', 737, 463, '#ff9f43'],
+        ['birds', 480, 74],
+        ['butterfly', 51, 95],
+        ['cloud', 286, 140],
+      ])
     )
   },
 })

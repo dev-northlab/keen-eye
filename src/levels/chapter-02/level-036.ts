@@ -1,5 +1,6 @@
 // Motion differences: the skater glides faster on picture B; the star on the tree blinks only on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, building, cloud, mailbox, newspaperBox, parkingMeter, person, shoppingBag } from './shapes.ts'
 
@@ -36,7 +37,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'iceRink',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 40; i++) flakes += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 2}" fill="#fff" fill-opacity="0.9"/>`
     const gliding = (period: number) =>
@@ -74,7 +75,20 @@ export default svgLevel({
       mailbox(500, 345) +
       newspaperBox(300, 345) +
       parkingMeter(150, 345) +
-      anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes)
+      anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 739, 278, '#ff006e'],
+        ['flowerBox', 497, 282, '#e63946'],
+        ['cloud', 397, 71],
+        ['birds', 707, 49],
+        ['bird', 594, 459],
+        ['stones', 170, 364],
+        ['pine', 60, 363],
+        ['bird', 350, 328],
+        ['stones', 561, 362],
+        ['bird', 239, 323],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the mill wheel turns faster on picture B; the lantern swings only on B; the dragonfly flies the other way round on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, backpack, bluebells, cloud, floor, frog, oak, pine, pineCone, sun } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'creekBridge',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${400 + rand() * 80}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const turning = (period: number) => anim({ type: 'rotate', pivot: [660, 330], period }, wheel(660, 330))
@@ -72,7 +73,20 @@ export default svgLevel({
       pineCone(45, 370) +
       bluebells(470, 364) +
       anthill(570, 366) +
-      acorn(525, 274)
+      acorn(525, 274) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['pineCone', 471, 331],
+        ['bluebells', 577, 307],
+        ['acorn', 157, 363],
+        ['wildStrawberry', 531, 387],
+        ['frog', 389, 459],
+        ['fish', 684, 479, '#4dabf7'],
+        ['frog', 64, 468],
+        ['birds', 502, 130],
+        ['butterfly', 258, 100],
+        ['cloud', 741, 143],
+      ])
     )
   },
 })

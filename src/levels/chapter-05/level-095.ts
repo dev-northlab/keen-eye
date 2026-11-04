@@ -1,4 +1,5 @@
 // Motion differences: the gardening robot rolls faster on picture B; the alien flower nods faster on B; the sprinkler sprays only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { wateringCan } from '../shapes.ts'
 import { fuelCanister, helmet, planet, probe, robot, starField, toolbox } from './shapes.ts'
@@ -32,7 +33,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceGarden',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const rolling = (period: number) => anim({ id: 'robot', type: 'path', points: [[0, 0], [240, 0]], flipX: 160, period }, robot(160, 480, '#ffb703'))
     const nodding = (period: number) => anim({ type: 'sway', angle: 10, pivot: [700, 420], period }, tallFlower(700, 420))
 
@@ -73,7 +74,20 @@ export default svgLevel({
       wateringCan(610, 465) +
       helmet(700, 465) +
       fuelCanister(440, 464) +
-      probe(460, 200)
+      probe(460, 200) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ringPlanet', 297, 115],
+        ['asteroid', 137, 209],
+        ['ufo', 284, 323],
+        ['spaceStar', 494, 99],
+        ['sparkle', 143, 56],
+        ['planet', 650, 78, '#9ef01a'],
+        ['asteroid', 585, 323],
+        ['sparkle', 53, 403],
+        ['moonPebbles', 578, 470],
+        ['crater', 665, 465],
+      ])
     )
   },
 })

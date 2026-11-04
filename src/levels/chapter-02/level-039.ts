@@ -1,4 +1,5 @@
 // Motion differences: the skater rides the ramp faster on picture B; the bird on the wire hops only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, cityTree, cloud, cone, dog, mailbox, newspaperBox, person, scooter, skateboard, skyline, sun } from './shapes.ts'
 
@@ -27,7 +28,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'skatepark',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const riding = (period: number) =>
       anim({ id: 'skater', type: 'path', points: [[0, 0], [60, -30], [120, 0]], flipX: 300, period }, skater(300, 440, '#e63946'))
     const perched = bird(500, 150)
@@ -64,7 +65,20 @@ export default svgLevel({
       ball(562, 490) +
       mailbox(230, 345) +
       scooter(485, 355) +
-      newspaperBox(150, 345)
+      newspaperBox(150, 345) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 563, 304, '#ffb703'],
+        ['flowerBox', 361, 299, '#e63946'],
+        ['flowerBox', 116, 304, '#e63946'],
+        ['birds', 103, 86],
+        ['cloud', 433, 92],
+        ['balloon', 584, 39, '#ff006e'],
+        ['skateboard', 722, 348],
+        ['newspaperBox', 51, 413],
+        ['pigeon', 208, 355],
+        ['cone', 124, 391],
+      ])
     )
   },
 })

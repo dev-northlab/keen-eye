@@ -1,4 +1,5 @@
 // Motion differences: the big asteroid spins faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, astronaut, beacon, flag, flame, fuelCanister, planet, probe, rocket, sparkle, star, starField, toolbox, wrench } from './shapes.ts'
 
@@ -13,7 +14,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'asteroidBelt',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const spinning = (period: number) => anim({ type: 'rotate', pivot: [220, 170], period }, asteroid(220, 170, 2))
     const flying = (period: number) => anim({ id: 'ship', type: 'path', points: [[0, 0], [220, 0]], flipX: 140, period }, `<g transform="translate(140 440)">${ship}</g>`)
     const twinkle = sparkle(360, 80, 10)
@@ -47,7 +48,20 @@ export default svgLevel({
       toolbox(690, 447) +
       probe(410, 360) +
       fuelCanister(250, 245) +
-      wrench(470, 335)
+      wrench(470, 335) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ringPlanet', 579, 224],
+        ['asteroid', 74, 198],
+        ['ufo', 453, 63],
+        ['spaceStar', 50, 476],
+        ['sparkle', 611, 476],
+        ['planet', 390, 214, '#ff9f43'],
+        ['asteroid', 291, 349],
+        ['sparkle', 156, 53],
+        ['probe', 725, 147],
+        ['spaceStar', 448, 399],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the sparkle above the nebula twinkles only on picture B; the pulsar on the right spins faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, comet, helmet, planet, probe, rocket, satellite, sparkle, star, starField } from './shapes.ts'
 
@@ -30,7 +31,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'starNebula',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const constellation: [number, number][] = [[60, 80], [100, 60], [140, 74], [180, 62], [204, 110], [160, 130], [120, 118]]
     let lines = `<path d="M${constellation.map(([x, y]) => `${x} ${y}`).join('L')}Z" stroke="#bde3f2" stroke-opacity="0.45" stroke-width="1.2" fill="none"/>`
     for (const [x, y] of constellation) if (x !== 180) lines += star(x, y, 6, '#fff6c4')
@@ -65,7 +66,15 @@ export default svgLevel({
       asteroid(600, 200, 0.5) +
       rocket(150, 345, '#f1f1f1', '#8ac926', 0.35) +
       satellite(700, 330) +
-      helmet(320, 460)
+      helmet(320, 460) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['planet', 51, 321, '#ff6b8b'],
+        ['asteroid', 287, 99],
+        ['sparkle', 367, 410],
+        ['probe', 716, 156],
+        ['spaceStar', 746, 312],
+      ])
     )
   },
 })

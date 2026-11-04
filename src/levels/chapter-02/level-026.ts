@@ -1,4 +1,5 @@
 // Motion differences: the hanging lamp swings only on picture B; the balloon bunch bobs faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, balloon, building, cloud, manhole, newspaperBox, parkingMeter, person, pigeon, scooter, shoppingBag, street, sun } from './shapes.ts'
 
@@ -35,7 +36,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'market',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const hanging = lamp(400, 180)
     const bunch = (period: number) =>
       anim({ id: 'balloons', type: 'bob', dx: 3, dy: 5, period }, balloon(690, 250, '#e63946') + balloon(712, 236, '#ffb703') + balloon(700, 272, '#3a86ff'))
@@ -83,7 +84,20 @@ export default svgLevel({
       newspaperBox(55, 398) +
       parkingMeter(700, 398) +
       scooter(770, 398) +
-      manhole(600, 478)
+      manhole(600, 478) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 50, 327, '#8338ec'],
+        ['balloon', 557, 51, '#e63946'],
+        ['birds', 385, 62],
+        ['cloud', 105, 55],
+        ['pigeon', 513, 429],
+        ['pigeon', 332, 433],
+        ['cone', 240, 441],
+        ['pigeon', 104, 433],
+        ['pigeon', 747, 378],
+        ['shoppingBag', 675, 379],
+      ])
     )
   },
 })

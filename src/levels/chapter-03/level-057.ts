@@ -1,4 +1,5 @@
 // Motion differences: the chimney smoke rises faster on picture B; the bird hops only on B; the lantern swings faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones } from '../shapes.ts'
 import { backpack, bird, cabin, deer, feather, pineCone, rabbit, trailSign } from './shapes.ts'
@@ -34,7 +35,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'winterForest',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 40; i++) flakes += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 2}" fill="#fff" fill-opacity="0.9"/>`
     let tracks = ''
@@ -75,7 +76,20 @@ export default svgLevel({
       feather(380, 445) +
       backpack(615, 402) +
       trailSign(340, 350) +
-      anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes)
+      anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['feather', 362, 386],
+        ['pine', 151, 444],
+        ['bird', 583, 455],
+        ['pineCone', 722, 382],
+        ['rabbit', 245, 319],
+        ['feather', 462, 463],
+        ['birds', 650, 75],
+        ['cloud', 188, 64],
+        ['birds', 355, 201],
+        ['cloud', 445, 54],
+      ])
     )
   },
 })

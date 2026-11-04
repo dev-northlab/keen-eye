@@ -1,4 +1,5 @@
 // Motion differences: the flock flies faster on picture B; the butterfly flutters faster on B; the reeds sway only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anthill, bluebells, butterfly, cloud, deer, feather, floor, flower, oak, pine, pineCone, rock, trailSign } from './shapes.ts'
 
@@ -23,7 +24,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'deerMeadow',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let blooms = ''
     for (let i = 0; i < 10; i++) blooms += flower(20 + rand() * 300, 420 + rand() * 70, '#ffffff')
     const migrating = (period: number) => anim({ id: 'flock', type: 'path', points: [[0, 0], [180, -14]], period }, flock(160, 90))
@@ -61,7 +62,20 @@ export default svgLevel({
       anthill(660, 400) +
       pineCone(80, 285) +
       trailSign(200, 310) +
-      feather(420, 330)
+      feather(420, 330) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 625, 427],
+        ['butterfly', 420, 431],
+        ['squirrel', 332, 307],
+        ['feather', 56, 361],
+        ['rabbit', 746, 387],
+        ['frog', 487, 286],
+        ['anthill', 161, 282],
+        ['cloud', 743, 98],
+        ['birds', 504, 94],
+        ['cloud', 601, 206],
+      ])
     )
   },
 })

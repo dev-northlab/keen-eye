@@ -1,4 +1,5 @@
 // Motion differences: the telescope scans only on picture B; the meteor flashes only on B; the fireflies blink faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beacon, comet, moonPebbles, person, solarPanel, starField, toolbox, wrench } from './shapes.ts'
 
@@ -22,7 +23,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'observatory',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.6, period }, fireflies(120, 440))
 
     return (
@@ -56,7 +57,20 @@ export default svgLevel({
       solarPanel(470, 334) +
       moonPebbles(560, 442) +
       beacon(690, 332) +
-      wrench(170, 440)
+      wrench(170, 440) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 668, 460],
+        ['hedgehog', 463, 462],
+        ['frog', 204, 462],
+        ['mushroom', 52, 474],
+        ['fern', 299, 459],
+        ['pineCone', 582, 472],
+        ['sparkle', 51, 162],
+        ['spaceStar', 200, 81],
+        ['sparkle', 589, 96],
+        ['spaceStar', 381, 66],
+      ])
     )
   },
 })

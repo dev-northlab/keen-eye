@@ -1,4 +1,5 @@
 // Motion differences: the middle fountain jet bobs faster on picture B; the flags wave only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, bench, bollard, building, cloud, coffeeCup, newspaperBox, person, pigeon, sandwichBoard, shoppingBag, sun } from './shapes.ts'
 
@@ -30,7 +31,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fountainSquare',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tiles = ''
     for (let i = 0; i < 30; i++) tiles += `<rect x="${rand() * 800}" y="${340 + rand() * 160}" width="24" height="10" fill="#d9d2c5"/>`
     const splashing = (period: number) => anim({ id: 'jet', type: 'bob', dx: 0, dy: 6, period }, jet(470, 410, 50))
@@ -75,7 +76,20 @@ export default svgLevel({
       sandwichBoard(650, 470) +
       coffeeCup(215, 442) +
       shoppingBag(570, 488) +
-      bollard(775, 480)
+      bollard(775, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 83, 307, '#e63946'],
+        ['balloon', 445, 35, '#ffb703'],
+        ['birds', 109, 68],
+        ['cloud', 563, 75],
+        ['pigeon', 257, 390],
+        ['cone', 601, 384],
+        ['bin', 150, 461],
+        ['ball', 167, 369, '#3a86ff'],
+        ['bollard', 536, 357],
+        ['coffeeCup', 359, 396],
+      ])
     )
   },
 })

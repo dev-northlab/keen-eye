@@ -1,4 +1,5 @@
 // Motion differences: the cyclist rides the other way round on picture B; the balloon bobs faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, balloon, bike, bin, building, car, cityTree, cloud, dog, door, flowerBox, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person, pigeon, sandwichBoard, signBoard, skyline, street, sun } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'shopStreet',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const ride = (reverse: boolean) =>
       anim({ id: 'bike', type: 'path', points: [[0, 0], [180, 0]], flipX: 560, period: 11, reverse }, bike(560, 470, '#e63946'))
     const bobbing = (period: number) => anim({ id: 'balloon', type: 'bob', dx: 0, dy: 4, period }, balloon(436, 268, '#ff006e'))
@@ -50,7 +51,15 @@ export default svgLevel({
       sandwichBoard(240, 352) +
       newspaperBox(375, 352) +
       parkingMeter(575, 352) +
-      manhole(330, 472)
+      manhole(330, 472) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['balloon', 593, 41, '#ff006e'],
+        ['pigeon', 467, 414],
+        ['cone', 112, 398],
+        ['pigeon', 290, 415],
+        ['pigeon', 65, 478],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the bullfinch on the log hops faster on picture B; the far cabin's smoke drifts only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones } from '../shapes.ts'
 import { backpack, deer, feather, lantern, rabbit, trailSign } from './shapes.ts'
@@ -47,7 +48,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'snowyWoods',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let farPines = ''
     for (let x = -10; x < 820; x += 30) farPines += snowPine(x + rand() * 8, 270, 0.5 + rand() * 0.3)
     let flakes = ''
@@ -91,7 +92,15 @@ export default svgLevel({
       backpack(447, 478) +
       trailSign(310, 345) +
       stones(620, 482) +
-      flakes
+      flakes +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bird', 378, 298],
+        ['pineCone', 617, 429],
+        ['rabbit', 504, 400],
+        ['cloud', 496, 83],
+        ['birds', 312, 53],
+      ])
     )
   },
 })

@@ -1,5 +1,6 @@
 // Motion differences: the mixer drum turns faster on picture B; the excavator beacon blinks only on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones, wheelbarrow } from '../shapes.ts'
 import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline } from './shapes.ts'
@@ -45,7 +46,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'buildingSite',
   parTimeSec: 85,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let frame = ''
     for (let y = 140; y <= 400; y += 65) frame += `<rect x="60" y="${y}" width="300" height="8" fill="#5b7fa8"/>`
     for (let x = 60; x <= 360; x += 60) frame += `<rect x="${x - 4}" y="140" width="8" height="270" fill="#5b7fa8"/>`
@@ -100,7 +101,15 @@ export default svgLevel({
       coffeeCup(265, 470) +
       stones(392, 486) +
       sandwichBoard(700, 490) +
-      bird(470, 48)
+      bird(470, 48) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['balloon', 702, 175, '#ff006e'],
+        ['birds', 94, 92],
+        ['bin', 396, 465],
+        ['ball', 247, 429, '#ffb703'],
+        ['shoppingBag', 158, 439],
+      ])
     )
   },
 })

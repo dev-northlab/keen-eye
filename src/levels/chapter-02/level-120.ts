@@ -1,6 +1,7 @@
 // Motion differences: the low firework on the right blinks only on picture B; the right boat bobs faster on B.
 import { bird } from '../chapter-03/shapes.ts'
 import { gullStanding, lifeRing } from '../chapter-04/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bike, bollard } from './shapes.ts'
 
@@ -43,7 +44,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'citySalute',
   parTimeSec: 80,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 40; i++) {
       const x = rand() * 800
@@ -101,7 +102,15 @@ export default svgLevel({
       bird(40, 291) +
       bike(130, 304, '#ffb703') +
       bollard(345, 303) +
-      lifeRing(120, 335)
+      lifeRing(120, 335) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 546, 32],
+        ['sparkle', 579, 345],
+        ['spaceStar', 149, 241],
+        ['sparkle', 382, 39],
+        ['spaceStar', 749, 223],
+      ])
     )
   },
 })

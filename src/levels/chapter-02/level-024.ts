@@ -1,4 +1,5 @@
 // Motion differences: the station clock runs backwards on picture B; the engine's smoke rises faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bench, bollard, cloud, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, window } from './shapes.ts'
 
@@ -50,7 +51,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'station',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const ticking = (reverse: boolean) => anim({ type: 'rotate', pivot: [400, 150], period: 12, reverse }, hands(400, 150))
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -22]], period }, smoke(557, 390))
 
@@ -94,7 +95,20 @@ export default svgLevel({
       shoppingBag(215, 368) +
       bollard(330, 368) +
       mailbox(770, 368) +
-      skateboard(685, 368)
+      skateboard(685, 368) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 415, 250, '#ff006e'],
+        ['flowerBox', 577, 242, '#e63946'],
+        ['birds', 410, 50],
+        ['cloud', 59, 247],
+        ['balloon', 85, 49, '#8ac926'],
+        ['balloon', 580, 34, '#ffb703'],
+        ['cone', 706, 463],
+        ['bollard', 201, 458],
+        ['coffeeCup', 78, 391],
+        ['skateboard', 677, 392],
+      ])
     )
   },
 })

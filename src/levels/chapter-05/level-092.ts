@@ -1,4 +1,5 @@
 // Motion differences: the lantern over the fruit stall swings faster on picture B; the lantern on the right swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { alien, alienPlant, crystal, fuelCanister, moonPebbles, probe, robot, star, starField } from './shapes.ts'
 
@@ -32,7 +33,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienMarket',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand, secret }) => {
+  scene: ({ diff, anim, rand, secret, extra }) => {
     const left = lantern(200, 92.5, '#ff6b8b')
     const right = lantern(600, 92.5, '#3ae0ff')
     const swinging = (period: number) => anim({ type: 'sway', angle: 14, pivot: [200, 92.5], period }, left)
@@ -80,7 +81,20 @@ export default svgLevel({
       crystal(262, 378) +
       fuelCanister(505, 378) +
       moonPebbles(640, 466) +
-      probe(450, 210)
+      probe(450, 210) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['crater', 688, 478],
+        ['crystal', 436, 467, '#9ef01a'],
+        ['alienPlant', 280, 354],
+        ['wrench', 191, 461],
+        ['fuelCanister', 559, 351],
+        ['helmet', 746, 384],
+        ['ufo', 478, 52],
+        ['sparkle', 286, 168],
+        ['planet', 641, 176, '#b38cff'],
+        ['asteroid', 130, 125],
+      ])
     )
   },
 })

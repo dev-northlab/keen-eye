@@ -1,4 +1,5 @@
 // Motion differences: the ant on the grass blade runs faster on picture B; the caterpillar wiggles only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { snail } from '../shapes.ts'
 import { acorn, feather, leafPile, pineCone } from './shapes.ts'
@@ -47,7 +48,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'anthill',
   parTimeSec: 105,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let far = ''
     for (let i = 0; i < 30; i++) far += blade(rand() * 800, 340, -20 + rand() * 40, 120 + rand() * 120, '#a3c98c', 18)
     let grains = ''
@@ -89,7 +90,15 @@ export default svgLevel({
       feather(455, 482) +
       pineCone(115, 492) +
       leafPile(728, 494) +
-      snail(280, 494)
+      snail(280, 494) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['butterfly', 230, 111],
+        ['bee', 669, 55],
+        ['butterfly', 428, 128],
+        ['bee', 663, 421],
+        ['butterfly', 66, 120],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the warning light blinks only on picture B; the hanging mascot swings faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { comet, crystal, helmet, planet, probe, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
@@ -36,7 +37,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'cockpit',
   parTimeSec: 135,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const btnColors = ['#e63946', '#ffb703', '#3a86ff', '#8ac926', '#ff6b8b', '#b38cff']
     let buttons = ''
     for (let r = 0; r < 3; r++)
@@ -84,7 +85,15 @@ export default svgLevel({
       helmet(60, 468) +
       probe(620, 200) +
       toolbox(650, 472) +
-      crystal(510, 340)
+      crystal(510, 340) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['helmet', 491, 294],
+        ['fuelCanister', 300, 321],
+        ['probe', 64, 277],
+        ['probe', 490, 93],
+        ['spaceStar', 157, 46],
+      ])
     )
   },
 })

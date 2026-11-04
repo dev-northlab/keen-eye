@@ -1,4 +1,5 @@
 // Motion differences: the big firework bursts at another moment on picture B; the lantern swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, balloon, bollard, coffeeCup, person, sandwichBoard, shoppingBag, skyline } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fireworks',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 18; i++) {
       const x = rand() * 800
@@ -74,7 +75,15 @@ export default svgLevel({
       ball(560, 438) +
       coffeeCup(520, 438) +
       sandwichBoard(670, 438) +
-      bollard(150, 438)
+      bollard(150, 438) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 226, 327],
+        ['sparkle', 474, 122],
+        ['spaceStar', 559, 385],
+        ['sparkle', 324, 123],
+        ['spaceStar', 635, 119],
+      ])
     )
   },
 })

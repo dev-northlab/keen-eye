@@ -1,4 +1,5 @@
 // Motion differences: chimney smoke drifts only on picture B; the dog wags its tail faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, backpack, bird, bluebells, flower, oak, pine, pineCone, rabbit, stump } from './shapes.ts'
 
@@ -34,7 +35,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'foresterHouse',
   parTimeSec: 105,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let back = ''
     for (let x = -10; x < 820; x += 30) back += pine(x + rand() * 10, 236, 0.8 + rand() * 0.4, rand() < 0.5 ? '#3f7a5a' : '#356b4e')
     let logs = ''
@@ -85,7 +86,15 @@ export default svgLevel({
       pineCone(240, 478) +
       acorn(475, 478) +
       anthill(600, 482) +
-      bluebells(165, 420)
+      bluebells(165, 420) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 385, 418],
+        ['butterfly', 543, 275],
+        ['squirrel', 196, 451],
+        ['butterfly', 687, 92],
+        ['cloud', 513, 68],
+      ])
     )
   },
 })

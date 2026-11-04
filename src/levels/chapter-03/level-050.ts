@@ -1,4 +1,5 @@
 // Motion differences: the wasp buzzes faster on picture B; the bird hops only on B; the berry branch sways only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, backpack, bear, bird, bush, cloud, floor, oak, pine, pineCone, sun, trailSign, wildStrawberry } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
@@ -30,7 +31,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'berries',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const buzzing = (period: number) => anim({ id: 'wasp', type: 'path', points: [[0, 0], [30, -16], [60, 0], [30, 14]], period }, wasp(420, 350))
     const perched = bird(640, 236, '#ffb703')
     const twig = branch(560, 262)
@@ -63,7 +64,20 @@ export default svgLevel({
       backpack(522, 478) +
       trailSign(85, 332) +
       pineCone(745, 482) +
-      acorn(662, 326)
+      acorn(662, 326) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 57, 371],
+        ['butterfly', 750, 395],
+        ['squirrel', 277, 449],
+        ['feather', 219, 280],
+        ['rabbit', 561, 366],
+        ['frog', 365, 305],
+        ['anthill', 719, 291],
+        ['cloud', 462, 112],
+        ['birds', 166, 86],
+        ['butterfly', 604, 70],
+      ])
     )
   },
 })

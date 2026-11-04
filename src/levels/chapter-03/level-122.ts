@@ -1,4 +1,5 @@
 // Motion differences: the frog hops only on picture B; the spider on its thread bobs faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, feather, fern, frog, lantern, mushroom, pineCone } from './shapes.ts'
 
@@ -36,7 +37,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'mushroomHollow',
   parTimeSec: 115,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let trunks = ''
     for (const [x, w, c] of [[90, 60, '#4a3426'], [300, 34, '#5a4030'], [470, 40, '#4f3829'], [620, 30, '#5a4030'], [760, 54, '#4a3426']] as const)
       trunks += `<rect x="${x - w / 2}" y="0" width="${w}" height="380" fill="${c}"/>`
@@ -87,7 +88,15 @@ export default svgLevel({
       anthill(445, 486) +
       acorn(566, 480) +
       feather(470, 418) +
-      pineCone(720, 408)
+      pineCone(720, 408) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['frog', 655, 399],
+        ['mushroom', 433, 450],
+        ['pineCone', 208, 366],
+        ['bluebells', 84, 457],
+        ['acorn', 741, 412],
+      ])
     )
   },
 })

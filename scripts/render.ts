@@ -12,7 +12,9 @@ export function posedSvg(scene: SceneSvg, t: number): string {
     const { matrix, opacity, fill } = pose(animation, t)
     let attrs = ''
     if (matrix) attrs += ` transform="matrix(${matrix.join(' ')})"`
-    if (opacity !== undefined) attrs += ` opacity="${opacity}"`
+    // A blink that is off is left out: resvg panics on a fully transparent group inside a nested <svg> (previews).
+    if (opacity === 0) attrs += ' display="none"'
+    else if (opacity !== undefined) attrs += ` opacity="${opacity}"`
     if (fill) attrs += ` fill="${fill}"`
     return `<g data-anim="${key}"${attrs}>`
   })

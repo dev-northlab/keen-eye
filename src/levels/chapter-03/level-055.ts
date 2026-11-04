@@ -1,4 +1,5 @@
 // Motion differences: the dog runs faster on picture B; the kite flies faster on B; the frisbee spins the other way on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anthill, backpack, bluebells, bush, cloud, feather, floor, oak, pine, sun, wildStrawberry } from './shapes.ts'
 import { dog, person } from '../chapter-02/shapes.ts'
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'picnic',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const running = (period: number) => anim({ id: 'dog', type: 'path', points: [[0, 0], [140, 0]], flipX: 540, period }, dog(540, 470, '#c48a5a'))
     const flying = (period: number) => anim({ id: 'kite', type: 'path', points: [[0, 0], [30, -16], [60, 0]], period }, kite(640, 110, '#3a86ff'))
     const spinning = (reverse: boolean) => anim({ type: 'rotate', pivot: [360, 180], period: 2, reverse }, frisbee(360, 180))
@@ -65,7 +66,20 @@ export default svgLevel({
       backpack(512, 405) +
       bluebells(440, 354) +
       feather(230, 362) +
-      anthill(770, 482)
+      anthill(770, 482) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['frog', 175, 364],
+        ['anthill', 641, 360],
+        ['mushroom', 319, 368],
+        ['fern', 473, 361],
+        ['pineCone', 746, 456],
+        ['bluebells', 248, 296],
+        ['hedgehog', 122, 298],
+        ['butterfly', 212, 97],
+        ['cloud', 528, 123],
+        ['birds', 446, 206],
+      ])
     )
   },
 })

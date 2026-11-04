@@ -1,4 +1,5 @@
 // Motion differences: the marker buoy's beacon blinks only on picture B; the sparkle in the lower left twinkles only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, helmet, planet, rocket, satellite, sparkle, starField, wrench } from './shapes.ts'
 
@@ -31,7 +32,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'gasGiantRings',
   parTimeSec: 105,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const cx = 300
     const cy = 320
     const R = 210
@@ -87,7 +88,15 @@ export default svgLevel({
       satellite(220, 50) +
       asteroid(770, 470, 0.6) +
       rocket(40, 300, '#f1f1f1', '#3a86ff', 0.35) +
-      wrench(760, 60)
+      wrench(760, 60) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 101, 195],
+        ['ringPlanet', 430, 45],
+        ['asteroid', 588, 168],
+        ['ufo', 733, 108],
+        ['spaceStar', 276, 93],
+      ])
     )
   },
 })

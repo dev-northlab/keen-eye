@@ -1,5 +1,6 @@
 // Motion differences: the crane's hook swings only on picture B; the mixer drum turns faster on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones, wheelbarrow } from '../shapes.ts'
 import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline, sun } from './shapes.ts'
@@ -48,7 +49,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'construction',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const hanging = hook(620, 130)
     const turning = (period: number) => anim({ type: 'rotate', pivot: [470, 414], period }, drum(470, 414))
 
@@ -91,7 +92,20 @@ export default svgLevel({
       wheelbarrow(140, 470) +
       sandwichBoard(500, 472) +
       bird(400, 197) +
-      stones(690, 482)
+      stones(690, 482) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['balloon', 578, 345, '#ffb703'],
+        ['birds', 662, 53],
+        ['cloud', 53, 304],
+        ['balloon', 746, 292, '#e63946'],
+        ['pigeon', 367, 471],
+        ['bollard', 707, 472],
+        ['coffeeCup', 164, 465],
+        ['ball', 289, 464, '#ffb703'],
+        ['bollard', 531, 468],
+        ['coffeeCup', 108, 474],
+      ])
     )
   },
 })

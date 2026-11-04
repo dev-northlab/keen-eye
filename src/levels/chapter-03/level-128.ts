@@ -1,4 +1,5 @@
 // Motion differences: one firefly over the clearing blinks only on picture B; the frog puffs its throat only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { snail } from '../shapes.ts'
 import { acorn, bluebells, hedgehog, lantern, pineCone } from './shapes.ts'
@@ -36,7 +37,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'fireflyNight',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 36; i++) {
       const x = 180 + rand() * 440
@@ -86,7 +87,15 @@ export default svgLevel({
       pineCone(520, 480) +
       acorn(690, 470) +
       snail(580, 460) +
-      bluebells(150, 352)
+      bluebells(150, 352) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['hedgehog', 247, 395],
+        ['frog', 416, 359],
+        ['mushroom', 660, 359],
+        ['star', 201, 108],
+        ['star', 688, 188],
+      ])
     )
   },
 })

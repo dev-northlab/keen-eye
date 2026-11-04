@@ -1,4 +1,5 @@
 // Motion differences: the big geyser puffs faster on picture B; the small geyser erupts only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { alien, astronaut, beacon, dome, flag, fuelCanister, helmet, planet, probe, sparkle, starField, toolbox } from './shapes.ts'
 
@@ -16,7 +17,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'iceMoon',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const puffing = (period: number) => anim({ id: 'geyser', type: 'bob', dx: 0, dy: 10, period }, plume(180, 330, 34, 100))
     const small = plume(520, 340, 26, 58)
 
@@ -48,7 +49,20 @@ export default svgLevel({
       fuelCanister(520, 410) +
       toolbox(330, 470) +
       probe(380, 220) +
-      helmet(740, 470)
+      helmet(740, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['crater', 493, 401],
+        ['crystal', 322, 332, '#ff6bd6'],
+        ['moonPebbles', 173, 392],
+        ['crater', 675, 466],
+        ['crystal', 744, 389, '#7bdff2'],
+        ['sparkle', 194, 148],
+        ['probe', 631, 262],
+        ['spaceStar', 435, 155],
+        ['ringPlanet', 70, 263],
+        ['asteroid', 352, 30],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the left astronaut drifts faster on picture B; the status light on the satellite blinks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, astronaut, fuelCanister, helmet, probe, rocket, sparkle, starField } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'satelliteRepair',
   parTimeSec: 105,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let foil = ''
     for (let i = 0; i < 14; i++) foil += `<path d="M${(364 + rand() * 110).toFixed(1)} ${(190 + rand() * 80).toFixed(1)}l${(6 + rand() * 10).toFixed(1)} ${(-4 + rand() * 8).toFixed(1)}" stroke="#b8862b" stroke-width="1.5"/>`
     const drifting = (period: number) => anim({ type: 'bob', dx: 3, dy: -4, period }, astronaut(300, 382, '#f1f1f1', '#ffb703'))
@@ -65,7 +66,15 @@ export default svgLevel({
       probe(700, 300) +
       fuelCanister(560, 448) +
       helmet(330, 462) +
-      asteroid(250, 100, 0.5)
+      asteroid(250, 100, 0.5) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 680, 117],
+        ['ringPlanet', 521, 53],
+        ['asteroid', 749, 312],
+        ['ufo', 295, 60],
+        ['spaceStar', 676, 475],
+      ])
     )
   },
 })

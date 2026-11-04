@@ -1,4 +1,5 @@
 // Motion differences: the lantern swings only on picture B; the sun brightens faster on B; the fog puff drifts faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anthill, backpack, deer, feather, floor, mushroom, pine, pineCone, stump, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
@@ -33,7 +34,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'foggyMorning',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let haze = ''
     for (let i = 0; i < 5; i++) haze += `<rect y="${300 + i * 40}" width="800" height="18" fill="#fff" fill-opacity="${0.25 + i * 0.08}"/>`
     const lamp = lantern(364, 420)
@@ -72,7 +73,14 @@ export default svgLevel({
       pineCone(470, 480) +
       trailSign(620, 425) +
       feather(740, 480) +
-      anthill(70, 480)
+      anthill(70, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['birds', 84, 138],
+        ['birds', 584, 211],
+        ['birds', 260, 149],
+        ['birds', 432, 129],
+      ])
     )
   },
 })

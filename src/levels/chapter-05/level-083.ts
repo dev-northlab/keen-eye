@@ -1,4 +1,5 @@
 // Motion differences: the astronaut floats faster on picture B; the satellite flies faster on B; the antenna light blinks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, comet, fuelCanister, helmet, probe, satellite, starField, toolbox, wrench } from './shapes.ts'
 
@@ -11,7 +12,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spacewalk',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const floating = (period: number) => anim({ id: 'walker', type: 'bob', dx: 0, dy: 12, period }, astronaut(360, 320, '#f1f1f1', '#ffb703'))
     const orbiting = (period: number) => anim({ id: 'sat', type: 'path', points: [[0, 0], [160, -40]], period }, satellite(120, 430, '#ffb703'))
     const light = `<circle cx="400" cy="142" r="8" fill="#ff6b6b" fill-opacity="0.4"/><circle cx="400" cy="142" r="4" fill="#ff3b3b"/>`
@@ -46,7 +47,20 @@ export default svgLevel({
       wrench(250, 335) +
       fuelCanister(700, 330) +
       toolbox(480, 120) +
-      helmet(90, 330)
+      helmet(90, 330) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ringPlanet', 738, 340],
+        ['asteroid', 489, 337],
+        ['ufo', 740, 103],
+        ['spaceStar', 136, 48],
+        ['sparkle', 392, 85],
+        ['planet', 251, 293, '#9ef01a'],
+        ['asteroid', 52, 249],
+        ['sparkle', 541, 145],
+        ['probe', 255, 120],
+        ['spaceStar', 670, 238],
+      ])
     )
   },
 })

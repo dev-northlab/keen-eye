@@ -1,4 +1,5 @@
 // Motion differences: the rowboat rocks faster on picture B; the fish leaps only on B; the reeds sway faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { backpack, bluebells, cloud, floor, lantern, pine, pineCone, rock, sun, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
@@ -35,7 +36,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestLake',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${330 + rand() * 150}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const rocking = (period: number) => anim({ id: 'boat', type: 'bob', dx: 0, dy: 5, period }, boat(400, 400))
@@ -76,7 +77,20 @@ export default svgLevel({
       lantern(125, 420) +
       trailSign(400, 296) +
       pineCone(600, 302) +
-      bluebells(165, 300)
+      bluebells(165, 300) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['duck', 281, 415],
+        ['frog', 695, 384],
+        ['fish', 482, 446, '#ff6b8b'],
+        ['frog', 53, 373],
+        ['fish', 749, 476, '#4dabf7'],
+        ['frog', 564, 469],
+        ['butterfly', 61, 55],
+        ['cloud', 439, 136],
+        ['birds', 588, 56],
+        ['butterfly', 187, 165],
+      ])
     )
   },
 })

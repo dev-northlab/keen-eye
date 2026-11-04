@@ -1,4 +1,5 @@
 // Motion differences: the astronaut floats faster on picture B; the apple spins faster on B; the panel light blinks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, fuelCanister, helmet, probe, rocket, toolbox, wrench } from './shapes.ts'
 
@@ -15,7 +16,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceStation',
   parTimeSec: 140,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const floating = (period: number) => anim({ id: 'walker', type: 'bob', dx: 0, dy: 10, period }, astronaut(180, 300, '#f1f1f1', '#ffb703'))
     const spinning = (period: number) => anim({ type: 'rotate', pivot: [300, 150], period }, apple(300, 150))
     const light = `<circle cx="240" cy="420" r="6" fill="#ff3b3b"/>`
@@ -55,7 +56,20 @@ export default svgLevel({
       toolbox(270, 401) +
       helmet(720, 345) +
       probe(260, 330) +
-      fuelCanister(500, 472)
+      fuelCanister(500, 472) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['probe', 234, 197],
+        ['wrench', 70, 113],
+        ['toolbox', 744, 410],
+        ['helmet', 80, 356],
+        ['fuelCanister', 475, 90],
+        ['probe', 525, 225],
+        ['wrench', 728, 251],
+        ['toolbox', 350, 338],
+        ['helmet', 549, 422],
+        ['fuelCanister', 415, 467],
+      ])
     )
   },
 })

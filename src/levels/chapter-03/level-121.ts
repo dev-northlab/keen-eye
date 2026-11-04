@@ -1,4 +1,5 @@
 // Motion differences: a maple leaf swings on its twig only on picture B; the squirrel flicks its tail faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones } from '../shapes.ts'
 import { anthill, deer, feather, fox, hedgehog, mushroom, oak, pineCone, stump, trailSign } from './shapes.ts'
@@ -36,7 +37,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'autumnGlade',
   parTimeSec: 115,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const autumn = ['#e07a2c', '#d9482b', '#f2b134', '#c9622c', '#e8a33c']
     let backTrees = ''
     for (let x = -10; x < 820; x += 46) backTrees += oak(x + rand() * 12, 268, 1 + rand() * 0.4, autumn[Math.floor(rand() * autumn.length)])
@@ -87,7 +88,15 @@ export default svgLevel({
       anthill(497, 490) +
       feather(330, 300) +
       trailSign(585, 348) +
-      falling
+      falling +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['squirrel', 147, 370],
+        ['feather', 338, 331],
+        ['leafPile', 490, 341],
+        ['birds', 573, 61],
+        ['cloud', 420, 102],
+      ])
     )
   },
 })

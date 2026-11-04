@@ -1,4 +1,5 @@
 // Motion differences: the rover drives faster on picture B; the drone hovers faster on B; the dust devil sways only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, beacon, crater, crystal, fuelCanister, rock, rover, solarPanel, starField, toolbox } from './shapes.ts'
 
@@ -16,7 +17,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'marsRover',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const driving = (period: number) => anim({ id: 'rover', type: 'path', points: [[0, 0], [150, 0]], flipX: 400, period }, rover(400, 420, '#e6e6f0'))
     const hovering = (period: number) => anim({ id: 'drone', type: 'bob', dx: 0, dy: 10, period }, drone(250, 180))
     const devil = dustDevil(700, 360)
@@ -51,7 +52,20 @@ export default svgLevel({
       toolbox(380, 330) +
       fuelCanister(175, 335) +
       beacon(590, 336) +
-      solarPanel(760, 402)
+      solarPanel(760, 402) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['wrench', 733, 405],
+        ['fuelCanister', 150, 184],
+        ['helmet', 612, 178],
+        ['toolbox', 182, 368],
+        ['beacon', 399, 215],
+        ['moonPebbles', 523, 307],
+        ['asteroid', 482, 78],
+        ['probe', 318, 79],
+        ['ufo', 59, 57],
+        ['planet', 304, 477, '#4dabf7'],
+      ])
     )
   },
 })

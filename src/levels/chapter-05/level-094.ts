@@ -1,4 +1,5 @@
 // Motion differences: the crystals glow faster on picture B; the cart rolls faster on B; the bat flutters faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { alien, alienPlant, beacon, helmet, moonPebbles, star, toolbox } from './shapes.ts'
 
@@ -28,7 +29,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'crystalCave',
   parTimeSec: 140,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const glowing = (period: number) => anim({ type: 'color', colors: ['#3ae0ff', '#b38cff', '#ff9ff3', '#3ae0ff'], period }, cluster(160, 380))
     const rolling = (period: number) => anim({ id: 'cart', type: 'path', points: [[0, 0], [280, 0]], period }, cart(420, 470))
     const fluttering = (period: number) => anim({ id: 'bat', type: 'bob', dx: 20, dy: 6, period }, bat(480, 150))
@@ -65,7 +66,20 @@ export default svgLevel({
       toolbox(140, 472) +
       helmet(760, 412) +
       alienPlant(300, 416) +
-      moonPebbles(40, 482)
+      moonPebbles(40, 482) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['crystal', 711, 247, '#7bdff2'],
+        ['crystal', 424, 276, '#7bdff2'],
+        ['crystal', 212, 214, '#ff6bd6'],
+        ['crystal', 73, 310, '#9ef01a'],
+        ['crystal', 334, 109, '#9ef01a'],
+        ['crystal', 266, 385, '#7bdff2'],
+        ['crystal', 88, 93, '#ff6bd6'],
+        ['crystal', 561, 181, '#ff6bd6'],
+        ['crystal', 537, 376, '#9ef01a'],
+        ['crater', 112, 462],
+      ])
     )
   },
 })

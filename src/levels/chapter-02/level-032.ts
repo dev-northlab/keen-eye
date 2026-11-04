@@ -1,5 +1,6 @@
 // Motion differences: the boat sails faster on picture B; the gull flies the other way round on B.
 import { bird, butterfly } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, car, cityTree, cloud, coffeeCup, lampHead, lampPost, person, skateboard, skyline, sun } from './shapes.ts'
 import { duck } from '../shapes.ts'
@@ -31,7 +32,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'bridge',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${420 + rand() * 70}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const sailing = (period: number) => anim({ id: 'boat', type: 'path', points: [[0, 0], [260, 0]], period }, boat(120, 460, '#e63946'))
@@ -74,7 +75,20 @@ export default svgLevel({
       ball(150, 330) +
       butterfly(720, 340) +
       skateboard(705, 300) +
-      coffeeCup(125, 390)
+      coffeeCup(125, 390) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 560, 423, '#ff6b8b'],
+        ['fish', 483, 469, '#4dabf7'],
+        ['birds', 587, 91],
+        ['cloud', 60, 79],
+        ['balloon', 474, 339, '#e63946'],
+        ['horseshoe', 166, 344],
+        ['eggNest', 686, 333],
+        ['bee', 634, 380],
+        ['ladybug', 739, 375],
+        ['grass', 100, 317],
+      ])
     )
   },
 })

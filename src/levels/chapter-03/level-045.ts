@@ -1,4 +1,5 @@
 // Motion differences: the geese fly faster on picture B; the swing swings faster on B; the falling leaf spins the other way on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anthill, backpack, bear, bush, cloud, feather, floor, mushroom, oak, pine, pineCone, squirrel, stump, trailSign } from './shapes.ts'
 
@@ -33,7 +34,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'autumn',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let leaves = ''
     for (let i = 0; i < 24; i++) leaves += leaf(rand() * 800, rand() * 500, ['#e9a23b', '#c0392b', '#ffb703'][i % 3])
     const migrating = (period: number) => anim({ id: 'geese', type: 'path', points: [[0, 0], [160, -20]], period }, geese(240, 80))
@@ -71,7 +72,20 @@ export default svgLevel({
       anthill(625, 482) +
       feather(480, 330) +
       trailSign(240, 330) +
-      anim({ type: 'path', points: [[0, 0], [-20, 60]], period: 5 }, leaves)
+      anim({ type: 'path', points: [[0, 0], [-20, 60]], period: 5 }, leaves) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['pineCone', 564, 401],
+        ['hedgehog', 132, 366],
+        ['squirrel', 707, 362],
+        ['feather', 404, 335],
+        ['leafPile', 460, 475],
+        ['mushroom', 270, 355],
+        ['acorn', 696, 465],
+        ['cloud', 70, 132],
+        ['birds', 742, 66],
+        ['cloud', 523, 122],
+      ])
     )
   },
 })

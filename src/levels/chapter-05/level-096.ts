@@ -1,4 +1,5 @@
 // Motion differences: the space whale swims faster on picture B; the star jelly pulses faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { jellyfish } from '../chapter-04/shapes.ts'
 import { asteroid, comet, fuelCanister, planet, probe, rocket, satellite, sparkle, star, starField, ufo, wrench } from './shapes.ts'
@@ -15,7 +16,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'nebula',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const swimming = (period: number) => anim({ id: 'whale', type: 'path', points: [[0, 0], [260, 0]], flipX: 260, period }, whale(260, 300))
     const pulsing = (period: number) => anim({ id: 'jelly', type: 'bob', dx: 0, dy: 14, period }, jellyfish(640, 160, '#ff9ff3'))
 
@@ -41,7 +42,20 @@ export default svgLevel({
       asteroid(330, 140, 0.6) +
       rocket(760, 310, '#f1f1f1', '#ff6b8b', 0.35) +
       wrench(620, 380) +
-      fuelCanister(150, 340)
+      fuelCanister(150, 340) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['probe', 189, 185],
+        ['spaceStar', 674, 287],
+        ['ringPlanet', 653, 59],
+        ['asteroid', 394, 75],
+        ['ufo', 729, 206],
+        ['spaceStar', 559, 418],
+        ['sparkle', 148, 352],
+        ['planet', 409, 473, '#9ef01a'],
+        ['asteroid', 200, 39],
+        ['sparkle', 54, 38],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the owl blinks only on picture B; the glowing mushroom pulses faster on B; the bat flies faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, backpack, floor, fox, hedgehog, lantern, mushroom, pine, pineCone, tent } from './shapes.ts'
 
@@ -30,7 +31,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'nightOwls',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 16; i++) {
       const x = rand() * 800
@@ -75,7 +76,20 @@ export default svgLevel({
       backpack(752, 444) +
       pineCone(300, 478) +
       acorn(230, 482) +
-      anthill(480, 412)
+      anthill(480, 412) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 183, 274],
+        ['hedgehog', 349, 300],
+        ['frog', 55, 439],
+        ['mushroom', 479, 469],
+        ['fern', 666, 305],
+        ['pineCone', 256, 421],
+        ['leafPile', 655, 476],
+        ['hedgehog', 573, 391],
+        ['star', 632, 124],
+        ['star', 329, 68],
+      ])
     )
   },
 })
