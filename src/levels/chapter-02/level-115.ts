@@ -1,4 +1,5 @@
 // Motion differences: a hand strap in the train swings only on picture B; a dot on the departure board blinks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bench, bin, coffeeCup, newspaperBox, person, scooter, shoppingBag, skateboard } from './shapes.ts'
 
@@ -43,7 +44,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'metroStation',
   parTimeSec: 95,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     let tiles = ''
     for (let y = 70; y < 360; y += 16) tiles += `<path d="M0 ${y}H800" stroke="#d6dde2" stroke-width="1.5"/>`
     for (let x = 12; x < 800; x += 24) tiles += `<path d="M${x} 60V360" stroke="#d6dde2" stroke-width="1.5"/>`
@@ -98,7 +99,15 @@ export default svgLevel({
       coffeeCup(575, 440) +
       shoppingBag(185, 462) +
       scooter(472, 482) +
-      skateboard(775, 492)
+      skateboard(775, 492) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bollard', 219, 422],
+        ['coffeeCup', 705, 398],
+        ['ball', 379, 405, '#3a86ff'],
+        ['coffeeCup', 52, 447],
+        ['skateboard', 322, 478],
+      ])
     )
   },
 })

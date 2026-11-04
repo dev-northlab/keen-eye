@@ -1,5 +1,6 @@
 // Motion differences: the left lantern swings wider and faster on picture B; the cat's tail swishes only on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, chick, eggNest, hayBale, hen, pumpkin, wateringCan } from '../shapes.ts'
 
@@ -62,7 +63,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'barnInside',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let planks = ''
     for (let x = 12; x < 800; x += 26) planks += `<path d="M${x} 88V420" stroke="#9a6841" stroke-width="2"/>`
     let straw = ''
@@ -132,7 +133,15 @@ export default svgLevel({
       eggNest(340, 488) +
       pumpkin(520, 488) +
       wateringCan(650, 490) +
-      chick(270, 425)
+      chick(270, 425) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['eggNest', 322, 446],
+        ['horseshoe', 509, 444],
+        ['horseshoe', 735, 433],
+        ['horseshoe', 139, 401],
+        ['horseshoe', 233, 325],
+      ])
     )
   },
 })

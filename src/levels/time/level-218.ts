@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bench, carriage, carriageWindows, clockFace, DUSK, glow, moon, pane, person, pigeon, sky, stars, sun } from './shapes.ts'
+import { around, bench, bin, carriage, carriageWindows, chimney, clockFace, cloud, DUSK, glow, moon, pane, person, pigeon, poster, pot, sky, stars, sun } from './shapes.ts'
 
 /** Lamp hanging from the canopy at x. Bounds: x ±14 (lit: ±24), y from 252 to 296. */
 const hangLamp = (x: number, lit: boolean) =>
@@ -47,6 +47,22 @@ export default svgLevel({
       `<rect x="340" y="442" width="20" height="12" fill="#ffffff"/><path d="M345 445h6l-4 6" stroke="#2b2b2b" stroke-width="2" fill="none"/>`) +
     `<path d="M670 408h80q20 0 26 20v24h-106Z" fill="#e63946"/><rect x="742" y="414" width="22" height="18" rx="3" fill="#bde3f2"/>` +
     `<circle cx="694" cy="464" r="7" fill="#2b2b2b"/><circle cx="752" cy="464" r="7" fill="#2b2b2b"/>` +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(150, 50, 0.4) +
+    cloud(300, 60, 0.6) +
+    cloud(580, 150, 0.5) +
+    chimney(80, 132, '#7a3b22') +
+    poster(290, 280, 26, 30, '#e63946') +
+    poster(606, 280, 20, 28, '#3a86ff') +
+    pigeon(560, 240) +
+    pigeon(780, 240, true) +
+    bin(30, 396) +
+    pot(55, 396) +
+    bench(100, 396) +
+    suitcase(320, 396, '#3a86ff') +
+    bin(500, 396) +
+    pigeon(530, 392) +
+    bench(760, 396) +
     time('', DUSK) +
     time('', glow(64, 180, 32, 56) + glow(124, 180, 32, 56) + carriageWindows(40, 470, 200, '#ffe08a') + carriageWindows(250, 470, 200, '#ffe08a')) +
     trap(190, 124, 22, clockFace(190, 124, 16, 9, 0), clockFace(190, 124, 16, 6, 45), 'clock') +

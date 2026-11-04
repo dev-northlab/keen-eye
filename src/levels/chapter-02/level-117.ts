@@ -1,5 +1,6 @@
 // Motion differences: the right duck in the pool bobs faster on picture B; the squirrel flicks its tail only on B.
 import { butterfly } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, cityTree, cloud, coffeeCup, dog, flowerBox, lampHead, lampPost, person, pigeon, scooter, shoppingBag, skateboard, skyline } from './shapes.ts'
 
@@ -35,8 +36,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fountainPark',
   parTimeSec: 85,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let backTrees = ''
     for (let x = 10; x < 800; x += 52) backTrees += cityTree(x + rand() * 10, 262, 1 + rand() * 0.3, rand() < 0.5 ? '#4caf6a' : '#3f9a5a')
     let flowers = ''
@@ -85,7 +85,15 @@ export default svgLevel({
       scooter(660, 472) +
       shoppingBag(198, 422) +
       butterfly(310, 330) +
-      coffeeCup(158, 412)
+      coffeeCup(158, 412) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['cloud', 481, 56],
+        ['birds', 720, 69],
+        ['ladybug', 645, 287],
+        ['mushroom', 178, 325],
+        ['chick', 287, 289],
+      ])
     )
   },
 })

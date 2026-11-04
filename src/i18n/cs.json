@@ -106,7 +106,11 @@
     "revealAll": "Ukázat místa",
     "animPause": "Zastavit pohyb",
     "animPlay": "Pohyb",
-    "calmDone": "Klidný režim — bez hvězd"
+    "calmDone": "Klidný režim — bez hvězd",
+    "failed": "Příliš mnoho chyb",
+    "failedHint": "V těžkém režimu končí úroveň u chyby č. {n}",
+    "hardDone": "Splněno na těžký!",
+    "playHard": "Hrát na těžký"
   },
   "duo": {
     "modeTitle": "Jak budete hrát?",
@@ -490,7 +494,10 @@
     "label": "Režim",
     "normal": "Běžný",
     "calm": "Klidný",
-    "calmHint": "Bez času, chyb a hvězd"
+    "calmHint": "Bez času, chyb a hvězd",
+    "hard": "Těžký",
+    "hardHint": "Bez nápověd, 3 chyby ukončí úroveň, červené hvězdy",
+    "hardStars": "Těžký režim: {n}/3"
   },
   "purchase": {
     "title": "Plná verze",

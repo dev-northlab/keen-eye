@@ -1,4 +1,5 @@
 // Motion differences: the saucer hovers faster on picture B; the bulb plant sways faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { alien, alienPlant, crystal, moonPebbles, planet, probe, solarPanel, star, starField, ufo } from './shapes.ts'
 
@@ -22,7 +23,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienVillage',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const hovering = (period: number) => anim({ id: 'ufo', type: 'bob', dx: 0, dy: 8, period }, ufo(680, 150, '#ffb703', '#ffffff'))
     const swaying = (period: number) => anim({ type: 'sway', angle: 10, pivot: [60, 440], period }, bulb(60, 440))
 
@@ -61,7 +62,20 @@ export default svgLevel({
       crystal(465, 432) +
       moonPebbles(600, 452) +
       probe(280, 210) +
-      solarPanel(218, 428)
+      solarPanel(218, 428) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['alienPlant', 437, 446],
+        ['crystal', 183, 436, '#ff6bd6'],
+        ['moonPebbles', 722, 399],
+        ['crater', 239, 470],
+        ['crystal', 592, 438, '#7bdff2'],
+        ['moonPebbles', 117, 475],
+        ['spaceStar', 215, 131],
+        ['ringPlanet', 65, 144],
+        ['asteroid', 571, 155],
+        ['ufo', 394, 136],
+      ])
     )
   },
 })

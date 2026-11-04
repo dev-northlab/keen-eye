@@ -1,15 +1,16 @@
-import { buoy, gull, sailboat, waves } from '../chapter-04/shapes.ts'
+import { buoy, dolphin, gull, lifeRing, rock, sailboat, waves } from '../chapter-04/shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
-import { crate, lighthouse } from '../time/shapes.ts'
+import { barrel, bollard, crate, lighthouse, ropeCoil, rowboat } from '../time/shapes.ts'
 import { around, big, daySky } from './shapes.ts'
 
 export default memoryLevel({
   id: 313,
   title: 'memoryHarbor',
   showSeconds: 3,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(270) +
     sun(100, 70) +
     big(420, 80, 1, cloud(0, 0)) +
@@ -27,5 +28,28 @@ export default memoryLevel({
     crate(80, 330, 50) +
     crate(140, 330, 50) +
     diff(...around(55, 230, 165, 330), crate(110, 280, 50), '') +
-    big(240, 330, 1.6, person(0, 0, '#3a86ff')),
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(200, 30, 0.4) +
+    cloud(580, 50, 0.5) +
+    gull(340, 60) +
+    gull(560, 120) +
+    gull(500, 180) +
+    barrel(316, 330) +
+    ropeCoil(285, 338) +
+    lifeRing(200, 380) +
+    rock(770, 300, 0.7) +
+    buoy(590, 300, '#ffb703') +
+    rowboat(100, 480, '#e63946') +
+    buoy(200, 470, '#ffb703') +
+    bollard(370, 470) +
+    buoy(760, 400, '#ffffff') +
+    dolphin(760, 470) +
+    big(240, 330, 1.6, person(0, 0, '#3a86ff')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['bottle', 247, 383],
+      ['buoy', 425, 474],
+      ['cloud', 421, 159],
+      ['gull', 142, 137],
+    ]),
 })

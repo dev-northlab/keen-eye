@@ -1,4 +1,5 @@
 // Motion differences: the turtle paddles faster on picture B; the seahorse bobs only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, clam, coral, fish, jellyfish, sandBits, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
 
@@ -46,7 +47,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'coralReef',
   parTimeSec: 125,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let bubbles = ''
     for (let i = 0; i < 10; i++)
       bubbles += anim({ type: 'bob', dx: 3, dy: -14, period: 2 + rand() * 2, phase: rand() }, `<circle cx="${(40 + rand() * 720).toFixed(1)}" cy="${(300 + rand() * 120).toFixed(1)}" r="${(2 + rand() * 3).toFixed(1)}" fill="#e3f6fd" fill-opacity="0.7"/>`)
@@ -88,7 +89,15 @@ export default svgLevel({
       snorkelMask(680, 452) +
       anchor(212, 468) +
       clam(518, 490) +
-      weeds + bubbles
+      weeds + bubbles +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 192, 236, '#ffb703'],
+        ['jellyfish', 352, 267],
+        ['fish', 460, 63, '#ffb703'],
+        ['seahorse', 89, 84],
+        ['seaUrchin', 722, 461],
+      ])
     )
   },
 })

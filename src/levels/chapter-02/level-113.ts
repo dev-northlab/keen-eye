@@ -1,5 +1,6 @@
 // Motion differences: smoke rises from the middle chimney only on picture B; the red shirt on the line swings faster on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { flowerPot, wateringCan } from '../shapes.ts'
 import { ball, coffeeCup, flowerBox, pigeon, skyline } from './shapes.ts'
@@ -49,7 +50,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'antennaRoofs',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let midRoofs = ''
     for (let i = 0; i < 6; i++) {
       const x = i * 140 - 20
@@ -107,7 +108,15 @@ export default svgLevel({
       ball(150, 488) +
       flowerPot(380, 482) +
       coffeeCup(650, 482) +
-      wateringCan(720, 482)
+      wateringCan(720, 482) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['birds', 324, 57],
+        ['cloud', 712, 59],
+        ['balloon', 471, 45, '#8ac926'],
+        ['bin', 232, 302],
+        ['ball', 721, 302, '#e63946'],
+      ])
     )
   },
 })

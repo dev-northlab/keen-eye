@@ -1,4 +1,5 @@
 // Motion differences: the right pink jellyfish drifts faster on picture B; the lanternfish's light blinks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, clam, rock, seahorse, seaUrchin, starfish } from './shapes.ts'
 
@@ -44,8 +45,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'jellyDeep',
   parTimeSec: 100,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let plankton = ''
     for (let i = 0; i < 60; i++) plankton += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(rand() * 470).toFixed(1)}" r="${(0.8 + rand() * 1.4).toFixed(1)}" fill="${rand() < 0.5 ? '#4df0ff' : '#b38cff'}" fill-opacity="0.6"/>`
     let drifters = ''
@@ -76,7 +76,15 @@ export default svgLevel({
       clam(222, 484) +
       seahorse(170, 360) +
       bottleMessage(660, 480) +
-      anchor(370, 470)
+      anchor(370, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['jellyfish', 161, 242],
+        ['fish', 121, 52, '#ff6b8b'],
+        ['seahorse', 705, 304],
+        ['fish', 332, 368, '#4dabf7'],
+        ['fish', 739, 71, '#4dabf7'],
+      ])
     )
   },
 })

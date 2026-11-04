@@ -1,5 +1,6 @@
 // Motion differences: the weathervane turns the other way on picture B; the horse's tail swings faster on B.
 import { stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, cat, chick, cloud, fence, grass, hen, pumpkin, sun, tree, wateringCan } from '../shapes.ts'
 
@@ -48,7 +49,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'stable',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 400 + rand() * 95)
     const turning = (reverse: boolean) => anim({ type: 'rotate', pivot: [300, 118], period: 7, reverse }, vane(300, 118))
@@ -89,7 +90,20 @@ export default svgLevel({
       cat(490, 368) +
       wateringCan(50, 430) +
       stump(250, 410) +
-      pumpkin(640, 385)
+      pumpkin(640, 385) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['butterfly', 447, 385],
+        ['flower', 149, 466, '#b38cff'],
+        ['bee', 663, 314],
+        ['flower', 78, 324, '#4dabf7'],
+        ['stones', 746, 385],
+        ['snail', 255, 478],
+        ['ladybug', 515, 479],
+        ['cloud', 494, 85],
+        ['birds', 52, 65],
+        ['butterfly', 276, 42],
+      ])
     )
   },
 })

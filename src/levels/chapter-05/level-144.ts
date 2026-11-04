@@ -1,4 +1,5 @@
 // Motion differences: the mining drone's lamp blinks only on picture B; the top asteroid spins faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, beacon, comet, flame, fuelCanister, planet, probe, rocket, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
@@ -25,7 +26,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'asteroidField',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let field = ''
     for (const [x, y, s, p] of [[60, 60, 0.7, 9], [300, 300, 0.6, 11], [760, 180, 0.9, 13], [480, 470, 0.8, 10], [770, 440, 1.1, 15], [180, 250, 0.5, 8], [620, 220, 0.5, 9]] as const)
       field += anim({ type: 'rotate', pivot: [x, y], period: p }, asteroid(x, y, s, '#8d7b6a'))
@@ -58,7 +59,15 @@ export default svgLevel({
       toolbox(345, 420) +
       probe(480, 300) +
       fuelCanister(230, 335) +
-      wrench(650, 420)
+      wrench(650, 420) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ufo', 106, 122],
+        ['spaceStar', 225, 297],
+        ['sparkle', 734, 380],
+        ['planet', 443, 311, '#ff6b8b'],
+        ['asteroid', 666, 202],
+      ])
     )
   },
 })

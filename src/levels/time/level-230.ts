@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bus, car, dog, door, DUSK, flowerBox, hydrant, lampHead, lampPost, moon, person, sky, stars, sun } from './shapes.ts'
+import { around, bench, bin, bird, bus, car, cloud, cone, dog, door, DUSK, flowerBox, hydrant, lampHead, lampPost, moon, person, pigeon, pot, roadSign, sky, stars, sun } from './shapes.ts'
 
 /** Grid of office windows from (x0, y0): cols × rows, 14 × 18 each, 28 and 34 apart; `skip` = "col,row" keys. */
 const officeWindows = (x0: number, y0: number, cols: number, rows: number, glass: string, skip: string[] = []) => {
@@ -54,6 +54,22 @@ export default svgLevel({
     lampPost(40, 330) +
     lampPost(760, 330) +
     time(lampHead(40, 330, false), '') +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(160, 40, 0.4) +
+    cloud(480, 70, 0.4) +
+    cloud(700, 40, 0.4) +
+    bird(80, 60) +
+    bird(700, 70, '#e63946') +
+    bin(190, 328) +
+    pot(230, 328) +
+    roadSign(470, 328, '#e63946') +
+    bench(650, 328) +
+    pigeon(720, 328, true) +
+    bench(150, 490) +
+    pigeon(220, 492) +
+    cone(300, 490) +
+    pot(520, 490, '#3a86ff') +
+    bench(740, 490, '#3a86ff') +
     time('', DUSK) +
     time('', lampHead(40, 330, true) + officeWindows(32, 76, 4, 2, '#ffe08a') + officeWindows(636, 86, 5, 1, '#ffe08a') + officeWindows(484, 150, 5, 1, '#ffe08a')) +
     trap(407, 126, 30, '', officeWindows(372, 100, 3, 2, '#ffe08a'), 'lights') +

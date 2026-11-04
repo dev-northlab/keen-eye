@@ -30,9 +30,10 @@ function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, 
 
 /**
  * `flipped` turns the content by 180° inside the svg (the far player's copy in a face-to-face duel);
- * the viewBox (zoom) stays unturned, so the board turns tap points back itself.
+ * the viewBox (zoom) stays unturned, so the board turns tap points back itself. `extras`: with the extra
+ * objects of hard mode (`Level.extras`).
  */
-export function createPicture(level: Level, variant: 0 | 1, flipped = false): Picture {
+export function createPicture(level: Level, variant: 0 | 1, flipped = false, extras = false): Picture {
   const { w, h } = level.viewBox
   const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, class: 'ke-picture' })
   svg.style.userSelect = 'none'
@@ -41,7 +42,7 @@ export function createPicture(level: Level, variant: 0 | 1, flipped = false): Pi
   const scene = el('g', {})
   let animations: Animation[] = []
   if (level.kind === 'svg' && level.build) {
-    const built = level.build(variant)
+    const built = level.build(variant, variant, extras)
     scene.innerHTML = built.svg
     animations = built.animations
   } else {

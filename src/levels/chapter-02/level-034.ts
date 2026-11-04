@@ -1,4 +1,5 @@
 // Motion differences: the bell swings only on picture B; the beacon flashes only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, cloud, dog, door, hydrant, mailbox, manhole, newspaperBox, person, sandwichBoard, skyline, street, sun, window } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fireStation',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const hanging = bell(400, 150)
     const light = beacon(480, 470)
     const spots = Array.from({ length: 5 }, () => `<circle cx="${580 + rand() * 16 - 8}" cy="${452 + rand() * 8 - 4}" r="2" fill="#333"/>`).join('')
@@ -71,7 +72,18 @@ export default svgLevel({
       newspaperBox(310, 378) +
       mailbox(700, 378) +
       manhole(180, 472) +
-      sandwichBoard(490, 378)
+      sandwichBoard(490, 378) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 712, 175, '#ffb703'],
+        ['flowerBox', 296, 156, '#ffb703'],
+        ['flowerBox', 145, 208, '#e63946'],
+        ['balloon', 58, 238, '#ffb703'],
+        ['pigeon', 228, 475],
+        ['pigeon', 680, 478],
+        ['cone', 72, 479],
+        ['pigeon', 117, 413],
+      ])
     )
   },
 })

@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, buoy, cat, crate, door, DUSK, flowerBox, glow, gull, hangingSign, lampHead, lampPost, moon, pane, rowboat, sky, stars, sun, wallLamp, waves } from './shapes.ts'
+import { anchor, around, barrel, bollard, bucket, buoy, cat, cloud, crate, curtainWindow, door, DUSK, flowerBox, glow, gull, hangingSign, lampHead, lampPost, moon, pane, poster, pot, ropeCoil, rowboat, sack, sky, stars, sun, wallLamp, waves } from './shapes.ts'
 
 /** Narrow harbour house from x0, w wide, wall from top down to 330 under a gable 40 high. */
 const narrowHouse = (x0: number, w: number, top: number, wall: string, roof: string) =>
@@ -52,6 +52,22 @@ export default svgLevel({
     diff(...around(160, 434, 240, 456), rowboat(200, 450, '#e63946'), rowboat(200, 450, '#ffffff')) +
     rowboat(420, 470, '#3a86ff') +
     diff(...around(510, 438, 530, 468), buoy(520, 460), buoy(520, 460, '#2a9d8f')) +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(200, 50, 0.5) +
+    cloud(470, 40, 0.4) +
+    poster(762, 190, 26, 34, '#ffd23f') +
+    curtainWindow(770, 270) +
+    pot(520, 330) +
+    pot(560, 330, '#3a86ff') +
+    barrel(40, 392) +
+    ropeCoil(90, 388) +
+    anchor(130, 376) +
+    sack(400, 392) +
+    bucket(460, 392) +
+    crate(600, 392, 26, '#b07a42') +
+    barrel(640, 392, '#2f6e8c') +
+    bollard(770, 396) +
+    buoy(330, 470, '#ffb703') +
     time('', DUSK) +
     time('', glow(20, 180, 30, 34) + glow(530, 240, 30, 34) + glow(700, 250, 30, 34)) +
     trap(325, 207, 24, '', glow(310, 190, 30, 34), 'lights') +

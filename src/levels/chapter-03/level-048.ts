@@ -1,4 +1,5 @@
 // Motion differences: the fish jumps faster on picture B; the bird flies the other way round on B; the mist bobs only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bear, bluebells, fern, floor, pine, pineCone, rock, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
@@ -31,7 +32,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'waterfall',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand, secret }) => {
+  scene: ({ diff, anim, rand, secret, extra }) => {
     let streaks = ''
     for (let i = 0; i < 14; i++) streaks += `<path d="M${340 + rand() * 120} ${120 + rand() * 200}v${16 + rand() * 20}" stroke="#fff" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>`
     let ripples = ''
@@ -79,7 +80,20 @@ export default svgLevel({
       pineCone(270, 170) +
       anthill(760, 405) +
       acorn(30, 390) +
-      bluebells(200, 170)
+      bluebells(200, 170) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bird', 498, 199],
+        ['fern', 666, 277],
+        ['bird', 485, 356],
+        ['frog', 656, 424],
+        ['fish', 431, 477, '#4dabf7'],
+        ['fish', 544, 477, '#4dabf7'],
+        ['cloud', 422, 79],
+        ['butterfly', 677, 44],
+        ['cloud', 555, 72],
+        ['butterfly', 74, 35],
+      ])
     )
   },
 })

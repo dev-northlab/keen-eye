@@ -1,4 +1,5 @@
 // Motion differences: the marquee bulbs blink only on picture B; the balloon bobs faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, bollard, building, car, coffeeCup, mailbox, manhole, person, pigeon, sandwichBoard, skyline, street } from './shapes.ts'
 
@@ -20,7 +21,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'cinema',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const row = bulbs(400, 182)
     const bobbing = (period: number) => anim({ id: 'balloon', type: 'bob', dx: 0, dy: 4, period }, balloon(596, 268, '#ffb703'))
 
@@ -61,7 +62,16 @@ export default svgLevel({
       sandwichBoard(420, 358) +
       coffeeCup(525, 358) +
       mailbox(620, 358) +
-      manhole(400, 472)
+      manhole(400, 472) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['sparkle', 660, 37],
+        ['spaceStar', 128, 36],
+        ['pigeon', 505, 410],
+        ['cone', 125, 424],
+        ['pigeon', 353, 393],
+        ['pigeon', 738, 478],
+      ])
     )
   },
 })

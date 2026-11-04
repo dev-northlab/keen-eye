@@ -1,4 +1,5 @@
 // Motion differences: the moored boat rocks faster on picture B; the gull on the post hops only on B; the crane hook swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, bucket, buoy, cloud, gullStanding, lifeRing, person, starfish, sun, sunHat, waves } from './shapes.ts'
 
@@ -26,7 +27,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'harbor',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${380 + rand() * 100}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const rocking = (period: number) => anim({ id: 'boat', type: 'bob', dx: 0, dy: 4, period }, boat(560, 420, '#e63946'))
@@ -67,7 +68,20 @@ export default svgLevel({
       bucket(560, 340) +
       starfish(675, 330) +
       bottleMessage(320, 470) +
-      gullStanding(645, 300)
+      gullStanding(645, 300) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 64, 453, '#ffb703'],
+        ['lifeRing', 372, 403],
+        ['fish', 753, 403, '#ffb703'],
+        ['bottle', 456, 412],
+        ['buoy', 160, 415],
+        ['fish', 641, 444, '#ff9f43'],
+        ['gull', 602, 213],
+        ['cloud', 285, 78],
+        ['gull', 92, 178],
+        ['gull', 607, 52],
+      ])
     )
   },
 })

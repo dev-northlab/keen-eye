@@ -1,4 +1,5 @@
 // Motion differences: the little moon orbits faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, comet, flame, fuelCanister, helmet, planet, probe, rocket, sparkle, starField, toolbox, ufo, wrench } from './shapes.ts'
 
@@ -15,7 +16,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'ringedPlanet',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const orbiting = (period: number) => anim({ id: 'moonlet', type: 'rotate', pivot: [680, 110], period }, `<circle cx="724" cy="110" r="7" fill="#d0d4de"/>`)
     const flying = (period: number) => anim({ id: 'ship', type: 'path', points: [[0, 0], [120, -30]], period }, `<g transform="translate(130 420)">${ship}</g>`)
     const twinkle = sparkle(110, 300, 12)
@@ -47,7 +48,20 @@ export default svgLevel({
       wrench(330, 90) +
       helmet(765, 250) +
       toolbox(60, 225) +
-      fuelCanister(225, 335)
+      fuelCanister(225, 335) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 66, 348],
+        ['sparkle', 487, 175],
+        ['planet', 677, 250, '#ff9f43'],
+        ['asteroid', 485, 366],
+        ['sparkle', 312, 471],
+        ['probe', 258, 176],
+        ['spaceStar', 55, 40],
+        ['ringPlanet', 406, 50],
+        ['asteroid', 287, 55],
+        ['spaceStar', 51, 193],
+      ])
     )
   },
 })

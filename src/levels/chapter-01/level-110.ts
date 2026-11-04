@@ -1,5 +1,6 @@
 // Motion differences: the porch lantern swings only on picture B; one firefly by the doghouse blinks only on B.
 import { bird, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { milkCan, sheep, stones, wheelbarrow } from '../shapes.ts'
 
@@ -67,8 +68,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'lanternNight',
   parTimeSec: 70,
-  hintLimit: 1,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 46; i++) {
       const x = rand() * 800
@@ -134,7 +134,15 @@ export default svgLevel({
       milkCan(510, 392) +
       wheelbarrow(340, 345) +
       stones(565, 478) +
-      bird(656, 399)
+      bird(656, 399) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['stones', 493, 476],
+        ['mushroom', 271, 454],
+        ['grass', 57, 398],
+        ['horseshoe', 673, 373],
+        ['star', 286, 181],
+      ])
     )
   },
 })

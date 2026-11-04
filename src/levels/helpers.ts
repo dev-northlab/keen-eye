@@ -35,6 +35,12 @@ export type TrapAt = (x: number, y: number, r: number, a: string, b: string, hin
  */
 export type SecretAt = (x: number, y: number, angle?: number) => string
 
+/**
+ * An extra object of hard mode (docs/hard-mode-extra-objects.md): `markup` is drawn only in the hard
+ * pictures, the same in A and B, and must fit inside the circle (x, y, r), which keeps clear of the zones.
+ */
+export type ExtraAt = (x: number, y: number, r: number, markup: string) => string
+
 export interface SceneContext {
   diff: Diff
   anim: Anim
@@ -43,6 +49,7 @@ export interface SceneContext {
   time: Time
   trap: TrapAt
   secret: SecretAt
+  extra: ExtraAt
 }
 
 /** Tap zone radius of the key: the key is about 20 units long (2.5% of an 800 wide picture). */
@@ -77,7 +84,6 @@ interface SvgLevelDef {
   chapter: string
   title: string
   parTimeSec: number
-  hintLimit?: number
   viewBox?: { w: number; h: number }
   /** Level.multiplayerReady; default: at least MULTIPLAYER_MIN_DIFFERENCES differences. */
   multiplayerReady?: boolean
@@ -95,7 +101,7 @@ export function svgLevel(def: SvgLevelDef): Level {
   // `diff` picks by the variant, `time` and `trap` by the moment (only the validator makes them differ).
   const secretOn: SecretKey['on'] = def.memory ? 'b' : 'both'
   let secretKey: SecretKey | undefined
-  const render = (variant: 0 | 1, moment: 0 | 1, zones?: Difference[], traps?: Trap[]) => {
+  const render = (variant: 0 | 1, moment: 0 | 1, extras: boolean, zones?: Difference[], traps?: Trap[], extraZones?: Level['extras']) => {
     // Both arguments of diff() are evaluated, so anim() registers the animations of
     // both variants; only those whose group ends up in the markup are kept.
     const registered: Animation[] = []
@@ -135,29 +141,34 @@ export function svgLevel(def: SvgLevelDef): Level {
       if (secretOn === 'b' && variant === 0) return ''
       return `<g data-secret="" transform="translate(${x} ${y}) rotate(${angle})">${KEY_MARKUP}</g>`
     }
-    const svg = def.scene({ diff, anim, rand: rng(def.id), time, trap, secret })
+    const extra: ExtraAt = (x, y, r, markup) => {
+      extraZones?.push({ x, y, r })
+      return extras ? markup : ''
+    }
+    const svg = def.scene({ diff, anim, rand: rng(def.id), time, trap, secret, extra })
     return { svg, animations: registered.filter((a) => svg.includes(`data-anim="${a.key}"`)) }
   }
 
   const differences: Difference[] = []
   const traps: Trap[] = []
-  render(0, 0, differences, traps)
+  const extras: NonNullable<Level['extras']> = []
+  render(0, 0, false, differences, traps, extras)
 
   return {
     id: def.id,
     chapter: def.chapter,
     title: def.title,
     kind: 'svg',
-    build: (variant, moment = variant) => render(variant, moment),
+    build: (variant, moment = variant, withExtras = false) => render(variant, moment, withExtras),
     viewBox: def.viewBox ?? { w: 800, h: 500 },
     differences,
     parTimeSec: def.parTimeSec,
-    ...(def.hintLimit !== undefined && { hintLimit: def.hintLimit }),
     multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
     ...(def.pair !== undefined && { pair: def.pair, traps }),
     ...(def.memory !== undefined && { memory: def.memory }),
     ...(def.travel !== undefined && { travel: def.travel }),
     ...(secretKey !== undefined && { secret: secretKey }),
+    ...(extras.length > 0 && { extras }),
   }
 }
 

@@ -1,4 +1,5 @@
 // Motion differences: the hanging sign swings only on picture B; the coffee steam rises faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, bike, cloud, door, flowerBox, manhole, newspaperBox, person, pigeon, shoppingBag, skateboard, street, window } from './shapes.ts'
 
@@ -49,7 +50,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'cafe',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let bulbs = ''
     for (let i = 0; i < 12; i++) bulbs += `<circle cx="${160 + i * 44}" cy="${230 + Math.sin((i / 11) * Math.PI) * 14}" r="4" fill="#ffe08a"/>`
     const sign = hangingSign(400, 232)
@@ -100,7 +101,18 @@ export default svgLevel({
       newspaperBox(262, 380) +
       shoppingBag(600, 382) +
       ball(705, 380) +
-      manhole(420, 470)
+      manhole(420, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 127, 253, '#ffb703'],
+        ['birds', 344, 78],
+        ['cloud', 180, 66],
+        ['balloon', 744, 130, '#3a86ff'],
+        ['pigeon', 724, 424],
+        ['pigeon', 498, 470],
+        ['cone', 245, 479],
+        ['pigeon', 83, 477],
+      ])
     )
   },
 })

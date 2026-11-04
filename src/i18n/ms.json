@@ -428,7 +428,11 @@
     "resetZoom": "Set semula zum",
     "retry": "Cuba lagi",
     "revealAll": "Tunjukkan tempat",
-    "time": "Masa: {t}"
+    "time": "Masa: {t}",
+    "failed": "Terlalu banyak kesilapan",
+    "failedHint": "Dalam mod sukar, tahap tamat pada kesilapan ke-{n}",
+    "hardDone": "Lulus dalam mod sukar!",
+    "playHard": "Main dalam mod sukar"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Tenang",
     "calmHint": "Tiada pemasa, kesilapan atau bintang",
     "label": "Mod",
-    "normal": "Biasa"
+    "normal": "Biasa",
+    "hard": "Sukar",
+    "hardHint": "Tiada petunjuk, 3 kesilapan menamatkan tahap, bintang merah",
+    "hardStars": "Mod sukar: {n}/3"
   },
   "pause": {
     "exit": "Keluar ke menu",

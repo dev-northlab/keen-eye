@@ -1,5 +1,6 @@
 // Motion difference: the flag on the tent waves only on picture B.
 import { butterfly, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { basket, chick, cloud, flowerPot, grass, milkCan, sun } from '../shapes.ts'
 
@@ -43,7 +44,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'fair',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 400 + rand() * 95)
 
@@ -86,7 +87,20 @@ export default svgLevel({
       milkCan(500, 402) +
       flowerPot(40, 400) +
       stump(650, 450) +
-      butterfly(240, 410)
+      butterfly(240, 410) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flower', 707, 466, '#ff6b8b'],
+        ['bee', 152, 456],
+        ['flower', 496, 450, '#ff9f43'],
+        ['stones', 290, 464],
+        ['snail', 625, 476],
+        ['flower', 62, 477, '#4dabf7'],
+        ['ladybug', 316, 361],
+        ['butterfly', 435, 206],
+        ['cloud', 661, 168],
+        ['birds', 125, 175],
+      ])
     )
   },
 })

@@ -1,5 +1,6 @@
 // Motion differences: the laundry sways only on picture B; the chimney smoke rises faster on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { flowerPot, wateringCan } from '../shapes.ts'
 import { ball, cloud, coffeeCup, pigeon, skyline, sun } from './shapes.ts'
@@ -44,7 +45,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'rooftops',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const wash = laundry(500, 230)
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -20]], period }, smoke(160, 226))
 
@@ -81,7 +82,20 @@ export default svgLevel({
       ball(380, 482) +
       flowerPot(590, 448) +
       wateringCan(720, 478) +
-      coffeeCup(265, 462)
+      coffeeCup(265, 462) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 91, 369, '#e63946'],
+        ['flowerBox', 325, 366, '#ff006e'],
+        ['flowerBox', 632, 367, '#8338ec'],
+        ['birds', 581, 76],
+        ['cloud', 178, 63],
+        ['balloon', 383, 52, '#3a86ff'],
+        ['hydrant', 460, 476],
+        ['shoppingBag', 743, 442],
+        ['pigeon', 589, 480],
+        ['bollard', 236, 431],
+      ])
     )
   },
 })

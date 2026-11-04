@@ -10,7 +10,8 @@ Two pictures look the same – but they are not. Find every difference in hand-d
 • Two players on one device – a duel, taking turns or playing together
 
 FOR EVERYONE
-• Calm mode: no timer, no mistakes, unlimited hints
+• Calm mode: no timer, no mistakes, 3 free hints on every level
+• Hard mode: no hints, 3 mistakes end the level, red stars for your best
 • Pinch to zoom both pictures at once
 • Hidden golden keys open a bonus treasury
 • Light and dark theme, music and sounds

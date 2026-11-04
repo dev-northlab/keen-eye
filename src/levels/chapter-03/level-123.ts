@@ -1,4 +1,5 @@
 // Motion differences: the campfire flame flickers faster on picture B; the heron dips its head only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { backpack, bluebells, feather, fireLogs, flame, lantern, pine, pineCone, rock } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'woodlandLake',
   parTimeSec: 115,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let farPines = ''
     for (let x = -10; x < 820; x += 22) farPines += pine(x + rand() * 8, 252, 0.45 + rand() * 0.25, rand() < 0.5 ? '#3a4f4a' : '#2f4540')
     let shimmer = ''
@@ -82,7 +83,15 @@ export default svgLevel({
       lantern(500, 472) +
       pineCone(395, 486) +
       feather(80, 366) +
-      bluebells(690, 456)
+      bluebells(690, 456) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['birds', 263, 49],
+        ['cloud', 562, 143],
+        ['fish', 359, 281, '#4dabf7'],
+        ['frog', 531, 385],
+        ['anthill', 275, 450],
+      ])
     )
   },
 })

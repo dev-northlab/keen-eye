@@ -1,4 +1,5 @@
 // Motion differences: the rover drives faster on picture B; the dish scans only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, beacon, crater, crystal, dome, flag, planet, rover, satellite, solarPanel, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
@@ -14,7 +15,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'moonBase',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const driving = (period: number) => anim({ id: 'rover', type: 'path', points: [[0, 0], [140, 0]], flipX: 560, period }, rover(560, 380))
 
     return (
@@ -49,7 +50,20 @@ export default svgLevel({
       crystal(650, 302) +
       wrench(320, 422) +
       toolbox(540, 432) +
-      beacon(770, 320)
+      beacon(770, 320) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['helmet', 215, 480],
+        ['toolbox', 58, 371],
+        ['beacon', 713, 455],
+        ['moonPebbles', 568, 473],
+        ['crater', 376, 433],
+        ['spaceStar', 446, 198],
+        ['sparkle', 672, 31],
+        ['planet', 148, 103, '#b38cff'],
+        ['asteroid', 672, 218],
+        ['sparkle', 369, 45],
+      ])
     )
   },
 })

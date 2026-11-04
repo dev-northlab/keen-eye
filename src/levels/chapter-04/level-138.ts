@@ -1,4 +1,5 @@
 // Motion differences: the middle crab waves its claw only on picture B; the little fish in the right pool darts faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, crab, flipFlops, gull, seaUrchin, seaweed, shell, snorkelMask, starfish, sunglasses, sunHat, waves } from './shapes.ts'
 
@@ -47,8 +48,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'crabPools',
   parTimeSec: 100,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let speckles = ''
     for (let i = 0; i < 50; i++) speckles += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(160 + rand() * 340).toFixed(1)}" r="${(1 + rand() * 2).toFixed(1)}" fill="#6f6a60"/>`
     let barnacles = ''
@@ -85,7 +85,15 @@ export default svgLevel({
       sunHat(380, 302) +
       snorkelMask(580, 362) +
       seaUrchin(680, 464) +
-      sunglasses(150, 470)
+      sunglasses(150, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['crab', 742, 239],
+        ['starfish', 394, 324],
+        ['shell', 176, 422],
+        ['fish', 481, 410, '#ff9f43'],
+        ['gull', 338, 64],
+      ])
     )
   },
 })

@@ -10,7 +10,8 @@ To bilder ser like ut – men det er de ikke. Finn alle forskjellene i håndtegn
 • To spillere på én enhet – duell, etter tur eller sammen
 
 FOR ALLE
-• Rolig modus: ingen tid, ingen feil, ubegrenset med hint
+• Rolig modus: ingen tid, ingen feil, 3 gratis hint på hvert nivå
+• Vanskelig modus: ingen hint, 3 feil avslutter nivået, røde stjerner til de beste
 • Zoom med to fingre på begge bildene samtidig
 • Skjulte gylne nøkler åpner et bonusskattkammer
 • Lyst og mørkt tema, musikk og lyder

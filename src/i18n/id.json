@@ -428,7 +428,11 @@
     "resetZoom": "Atur ulang zoom",
     "retry": "Coba lagi",
     "revealAll": "Tampilkan tempatnya",
-    "time": "Waktu: {t}"
+    "time": "Waktu: {t}",
+    "failed": "Terlalu banyak kesalahan",
+    "failedHint": "Di mode sulit, level berakhir pada kesalahan ke-{n}",
+    "hardDone": "Lulus di mode sulit!",
+    "playHard": "Main di mode sulit"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Santai",
     "calmHint": "Tanpa waktu, kesalahan, atau bintang",
     "label": "Mode",
-    "normal": "Normal"
+    "normal": "Normal",
+    "hard": "Sulit",
+    "hardHint": "Tanpa petunjuk, 3 kesalahan mengakhiri level, bintang merah",
+    "hardStars": "Mode sulit: {n}/3"
   },
   "pause": {
     "exit": "Keluar ke menu",

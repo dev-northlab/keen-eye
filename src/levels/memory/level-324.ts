@@ -1,5 +1,7 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { around, big, pottedPlant, room, wallClock } from './shapes.ts'
+import { around, big, bottle, cube, glassJar, pottedPlant, room, shelf, sticker, wallClock } from './shapes.ts'
+import { bucket, crate, poster, pot } from '../time/shapes.ts'
 
 /** Lab jar with a liquid; (x, y) = bottom center. Bounds: x ±20, y from −58 to 0. */
 const labJar = (x: number, y: number, liquid: string) =>
@@ -44,7 +46,7 @@ export default memoryLevel({
   id: 324,
   title: 'memoryLab',
   showSeconds: 4,
-  scene: ({ diff, secret }) =>
+  scene: ({ diff, secret, extra, anim }) =>
     room(360, '#e3eef5', '#9aa5b1') +
     tileLines(352) +
     chart() +
@@ -76,6 +78,30 @@ export default memoryLevel({
     `<path d="M592 270h36v56q0 4 -4 4h-28q-4 0 -4 -4Z" fill="#e6f4fb"/><rect x="592" y="296" width="36" height="34" rx="3" fill="#b38cff"/>` +
     `<circle cx="604" cy="284" r="4" fill="none" stroke="#b38cff" stroke-width="2"/><circle cx="616" cy="274" r="5" fill="none" stroke="#b38cff" stroke-width="2"/>` +
     `<rect x="680" y="300" width="20" height="30" fill="#5c677d"/><path d="M690 300q12 -16 0 -30q-12 14 0 30Z" fill="#4dabf7"/>` +
+    // Decor: small things that fill the room, the same in both pictures
+    poster(400, 30, 50, 66, '#4dabf7') +
+    shelf(390, 170, 80) +
+    glassJar(408, 170, '#8ac926', '#ff6b8b') +
+    bottle(435, 170, '#3a86ff') +
+    bottle(455, 170, '#e63946') +
+    poster(730, 200, 40, 56, '#ff6b8b') +
+    bottle(730, 330, '#8ac926') +
+    glassJar(755, 330, '#5c677d', '#4dabf7') +
+    sticker(100, 400, '#ffd23f') +
+    cube(40, 490, 30, '#ffb703') +
+    bucket(90, 490, '#5c677d') +
+    pot(200, 490) +
+    cube(470, 490, 34, '#3a86ff') +
+    crate(540, 490, 30) +
+    pot(620, 490, '#3a86ff') +
     diff(...around(272, 396, 388, 460), stool(300, 460), stool(360, 460)) +
-    `<path d="M700 440h40l-4 50h-32Z" fill="#5c677d"/>`,
+    `<path d="M700 440h40l-4 50h-32Z" fill="#5c677d"/>` +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['books', 132, 486, '#3fa46f'],
+      ['ball', 499, 461, '#3a86ff'],
+      ['cube', 691, 474, '#3a86ff'],
+      ['frame', 279, 62, '#3fa46f'],
+      ['frame', 523, 57, '#e63946'],
+    ]),
 })

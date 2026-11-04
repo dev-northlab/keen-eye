@@ -106,7 +106,11 @@
     "revealAll": "場所を見る",
     "animPause": "動きを止める",
     "animPlay": "動き",
-    "calmDone": "のんびりモード — 星なし"
+    "calmDone": "のんびりモード — 星なし",
+    "failed": "ミスが多すぎます",
+    "failedHint": "むずかしいモードでは {n} 回目のミスで終了します",
+    "hardDone": "むずかしいでクリア！",
+    "playHard": "むずかしいで遊ぶ"
   },
   "duo": {
     "modeTitle": "どうやって遊ぶ？",
@@ -490,7 +494,10 @@
     "label": "モード",
     "normal": "ふつう",
     "calm": "のんびり",
-    "calmHint": "タイマー、ミス、星なし"
+    "calmHint": "タイマー、ミス、星なし",
+    "hard": "むずかしい",
+    "hardHint": "ヒントなし、3回ミスで終了、赤い星",
+    "hardStars": "むずかしい：{n}/3"
   },
   "purchase": {
     "title": "完全版",

@@ -1,4 +1,5 @@
 // Motion differences: the right paper lantern bobs faster on picture B; the parked saucer's lights blink only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { alien, alienPlant, fuelCanister, moonPebbles, probe, robot, sparkle, starField, toolbox } from './shapes.ts'
 
@@ -36,8 +37,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienBazaar',
   parTimeSec: 105,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const stall = (x: number, w: number, a: string, b: string) =>
       `<rect x="${x + 4}" y="176" width="6" height="140" fill="#2b1d3a"/><rect x="${x + w - 10}" y="176" width="6" height="140" fill="#2b1d3a"/>` +
       awning(x, 170, w, a, b) + `<rect x="${x}" y="296" width="${w}" height="40" fill="#6b4a8a"/><path d="M${x} 304h${w}" stroke="#5a3a78" stroke-width="3"/>`
@@ -81,7 +81,15 @@ export default svgLevel({
       moonPebbles(540, 474) +
       fuelCanister(650, 470) +
       probe(560, 80) +
-      toolbox(775, 474)
+      toolbox(775, 474) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['crater', 162, 376],
+        ['alienPlant', 526, 458],
+        ['crystal', 355, 416, '#7bdff2'],
+        ['ufo', 655, 73],
+        ['spaceStar', 54, 116],
+      ])
     )
   },
 })

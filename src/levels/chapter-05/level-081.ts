@@ -1,4 +1,5 @@
 // Motion differences: the warning light on the tower blinks faster on picture B; the astronaut walks faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, dish, flag, fuelCanister, helmet, moonPebbles, rock, rocket, solarPanel, starField, toolbox } from './shapes.ts'
 
@@ -15,7 +16,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'launchPad',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const beacon = `<circle cx="487" cy="124" r="10" fill="#ff6b6b" fill-opacity="0.35"/><circle cx="487" cy="124" r="5" fill="#ff3b3b"/>`
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.5, period }, beacon)
     const walking = (period: number) =>
@@ -60,7 +61,20 @@ export default svgLevel({
       fuelCanister(570, 360) +
       solarPanel(770, 362) +
       moonPebbles(400, 470) +
-      helmet(640, 430)
+      helmet(640, 430) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['moonPebbles', 58, 426],
+        ['crater', 736, 374],
+        ['crystal', 569, 253, '#ff6bd6'],
+        ['alienPlant', 168, 218],
+        ['wrench', 383, 403],
+        ['planet', 690, 86, '#9ef01a'],
+        ['asteroid', 288, 71],
+        ['sparkle', 439, 152],
+        ['probe', 52, 94],
+        ['spaceStar', 559, 40],
+      ])
     )
   },
 })

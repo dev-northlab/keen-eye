@@ -106,7 +106,11 @@
     "revealAll": "Pokaż miejsca",
     "animPause": "Zatrzymaj ruch",
     "animPlay": "Ruch",
-    "calmDone": "Tryb spokojny — bez gwiazdek"
+    "calmDone": "Tryb spokojny — bez gwiazdek",
+    "failed": "Za dużo błędów",
+    "failedHint": "Na trudnym poziom kończy się na błędzie nr {n}",
+    "hardDone": "Ukończono na trudnym!",
+    "playHard": "Zagraj na trudnym"
   },
   "duo": {
     "modeTitle": "Jak gracie?",
@@ -490,7 +494,10 @@
     "label": "Tryb",
     "normal": "Zwykły",
     "calm": "Spokojny",
-    "calmHint": "Bez czasu, błędów i gwiazdek"
+    "calmHint": "Bez czasu, błędów i gwiazdek",
+    "hard": "Trudny",
+    "hardHint": "Bez podpowiedzi, 3 błędy kończą poziom, czerwone gwiazdki",
+    "hardStars": "Tryb trudny: {n}/3"
   },
   "purchase": {
     "title": "Pełna wersja",

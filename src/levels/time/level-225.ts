@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bareTree, bench, bin, birdHouse, dog, duck, flowers, hangingSign, oak, person, pond, signpost, sky, small, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
+import { around, bareTree, bench, bin, birdHouse, bush, butterfly, cloud, dog, duck, flowers, grass, hangingSign, lilyPad, oak, person, pigeon, pine, pineSnow, pond, reeds, rock, signpost, sky, small, snowCap, snowfall, snowman, squirrel, winterPerson, winterSky } from './shapes.ts'
 
 /** Gazebo; (x, y) = ground center. Its spire ball is apart. Bounds: x ±70, y from −130 to 0. */
 const gazebo = (x: number, y: number) =>
@@ -53,6 +53,24 @@ export default svgLevel({
       trap(500, 420, 44, '', snowman(500, 464), 'snowman') +
       diff(...around(538, 454, 582, 480), dog(560, 480), dog(560, 480, '#3d3d3d')) +
       diff(...around(739, 392, 771, 470), birdHouse(755, 470, '#e07a5f'), birdHouse(755, 470, '#8ac926')) +
+      // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+      cloud(300, 60, 0.6) +
+      cloud(600, 50, 0.5) +
+      cloud(450, 100, 0.4) +
+      pine(25, 330, 0.6) +
+      time('', pineSnow(25, 330, 0.6)) +
+      squirrel(40, 370) +
+      bush(250, 270, 0.7) +
+      time('', snowCap(236, 254, 28)) +
+      bench(400, 275) +
+      time('', snowCap(370, 245, 60)) +
+      reeds(232, 310) +
+      rock(350, 490, 0.8) +
+      time('', snowCap(338, 478, 24)) +
+      pigeon(640, 420) +
+      bench(650, 480) +
+      time('', snowCap(620, 450, 60)) +
+      time(lilyPad(540, 320) + lilyPad(600, 350, '#ff6b8b') + butterfly(330, 410) + grass(125, 495), '') +
       time('', snowfall(225, 240, 44))
     )
   },

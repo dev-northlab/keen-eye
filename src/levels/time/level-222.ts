@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, balloon, bin, bunting, cone, DUSK, ferrisWheel, glow, gondola, lampHead, lampPost, moon, person, rim, sky, stall, stars, sun } from './shapes.ts'
+import { around, balloon, bench, bin, bucket, bunting, cloud, cone, DUSK, ferrisWheel, glow, gondola, lampHead, lampPost, moon, person, pigeon, rim, sky, stall, stars, sun } from './shapes.ts'
 
 /** Merry-go-round; (x, y) = ground center. Its flag and horses are drawn apart. Bounds: x ±86, y from −150 to 0. */
 const carousel = (x: number, y: number) => {
@@ -76,6 +76,22 @@ export default svgLevel({
       diff(...around(470, 452, 490, 480), bin(480, 480, '#5c8d5a'), bin(480, 480, '#e63946')) +
       diff(...around(610, 444, 630, 480), cone(620, 480), '') +
       lampPost(310, 480) +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(200, 60, 0.5) +
+      cloud(250, 150, 0.5) +
+      cloud(750, 150, 0.5) +
+      balloon(380, 160, '#ff6b8b') +
+      balloon(540, 380, '#ff6b8b') +
+      balloon(600, 370, '#8ac926') +
+      pigeon(650, 420) +
+      bench(210, 480, '#e63946') +
+      pigeon(160, 490) +
+      pigeon(260, 490, true) +
+      bucket(400, 490, '#e63946') +
+      cone(15, 490) +
+      cone(560, 490) +
+      bench(740, 490) +
+      bin(780, 490) +
       time('', DUSK) +
       time('', glow(385, 405, 30, 20)) +
       trap(560, 70, 24, '', rimLights(true), 'lights') +

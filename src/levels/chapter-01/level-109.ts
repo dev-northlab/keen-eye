@@ -2,6 +2,7 @@
 import { person } from '../chapter-02/shapes.ts'
 import { bird, butterfly, frog, mushroom, pine, stump } from '../chapter-03/shapes.ts'
 import { fish } from '../chapter-04/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
 
@@ -49,8 +50,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'creekMill',
   parTimeSec: 75,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stones = ''
     for (let y = 252; y < 380; y += 16)
       for (let x = 122 + ((y / 16) % 2) * 14; x < 318; x += 28) stones += `<rect x="${x}" y="${y}" width="24" height="13" rx="5" fill="${rand() < 0.5 ? '#a9a39a' : '#bdb7ad'}"/>`
@@ -119,7 +119,15 @@ export default svgLevel({
       bird(530, 347) +
       stump(590, 330) +
       mushroom(500, 325) +
-      butterfly(785, 345)
+      butterfly(785, 345) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ladybug', 457, 275],
+        ['mushroom', 75, 312],
+        ['fish', 458, 436, '#ff6b8b'],
+        ['birds', 372, 116],
+        ['butterfly', 520, 83],
+      ])
     )
   },
 })

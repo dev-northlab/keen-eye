@@ -1,5 +1,6 @@
 // Motion differences: steam rises from the right cup only on picture B; the hanging plant swings faster on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, bike, cityTree, flowerBox, lampHead, lampPost, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
 
@@ -53,7 +54,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'cornerCafe',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let bricks = ''
     for (let y = 46; y < 200; y += 14)
       for (let x = 60 + ((y / 14) % 2) * 14; x < 740; x += 28) if (rand() < 0.22) bricks += `<rect x="${x}" y="${y}" width="22" height="8" rx="1" fill="#c9694f" fill-opacity="0.5"/>`
@@ -115,7 +116,15 @@ export default svgLevel({
       ball(48, 472) +
       scooter(262, 482) +
       shoppingBag(735, 440) +
-      newspaperBox(322, 380)
+      newspaperBox(322, 380) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 450, 170, '#ffb703'],
+        ['flowerBox', 208, 171, '#ff006e'],
+        ['skateboard', 320, 450],
+        ['cone', 733, 374],
+        ['ball', 87, 390, '#e63946'],
+      ])
     )
   },
 })

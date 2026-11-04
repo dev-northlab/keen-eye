@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref, watch, watchSyncEffect } from 'vue'
+import type { GameMode } from '../engine/rules.ts'
 import { isLocale, setLocale, systemLocale, type Locale } from '../i18n/index.ts'
 import { setMusicVolume, setSfxVolume, setSoftSounds } from '../services/audio.ts'
 import { setHapticsEnabled } from '../services/haptics.ts'
@@ -11,7 +12,9 @@ const KEY = 'settings'
 // Remove DEVELOPER_CODE, `developer`/`enableDeveloper` and the code row in SettingsPanel before release.
 const DEVELOPER_CODE = '6561'
 
-export type GameMode = 'normal' | 'calm'
+export type { GameMode }
+/** In the order of the settings switch. */
+export const GAME_MODES: GameMode[] = ['calm', 'normal', 'hard']
 
 /** Season of the home screen's meadow. */
 export const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const
@@ -70,7 +73,7 @@ export const useSettingsStore = defineStore('settings', () => {
     const storedLocale = raw.locale
     locale.value = isLocale(storedLocale) ? storedLocale : null
     reduceMotion.value = typeof raw.reduceMotion === 'boolean' ? raw.reduceMotion : null
-    mode.value = raw.mode === 'calm' ? 'calm' : 'normal'
+    mode.value = GAME_MODES.includes(raw.mode as GameMode) ? (raw.mode as GameMode) : 'normal'
     musicVolume.value = parseVolume(raw.musicVolume, raw.music, DEFAULT_MUSIC_VOLUME)
     soundVolume.value = parseVolume(raw.soundVolume, raw.sound, DEFAULT_SOUND_VOLUME)
     vibration.value = bool(raw.vibration, true)

@@ -1,4 +1,5 @@
 // Motion differences: the beacon on the main module blinks only on picture B; the floating wrench spins faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, astronaut, fuelCanister, helmet, probe, sparkle, starField, toolbox } from './shapes.ts'
 
@@ -35,7 +36,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'orbitalStation',
   parTimeSec: 135,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let clouds = ''
     for (let i = 0; i < 9; i++) clouds += `<ellipse cx="${(160 + rand() * 480).toFixed(1)}" cy="${(436 + rand() * 54).toFixed(1)}" rx="${(30 + rand() * 40).toFixed(1)}" ry="8" fill="#ffffff" fill-opacity="0.75"/>`
     const panels = (x: number, skip = -1) => [0, 1].map((r) => [0, 1].map((c) => (r * 2 + c === skip ? '' : panel(x + c * 44, r === 0 ? 150 : 250, 3))).join('')).join('')
@@ -75,7 +76,15 @@ export default svgLevel({
       fuelCanister(690, 320) +
       helmet(80, 310) +
       asteroid(260, 90, 0.5) +
-      toolbox(410, 335)
+      toolbox(410, 335) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['planet', 699, 418, '#4dabf7'],
+        ['asteroid', 87, 370],
+        ['sparkle', 489, 95],
+        ['probe', 94, 35],
+        ['spaceStar', 233, 131],
+      ])
     )
   },
 })

@@ -1,5 +1,7 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { around, cake, hangingLamp, room } from './shapes.ts'
+import { around, cake, flowerVase, glassJar, hangingLamp, mug, painting, room, shelf } from './shapes.ts'
+import { crate, poster, sack } from '../time/shapes.ts'
 
 /** Loaf of bread; (x, y) = bottom center. Bounds: x ±26, y from −36 to 0. */
 const loaf = (x: number, y: number) =>
@@ -39,7 +41,7 @@ export default memoryLevel({
   id: 317,
   title: 'memoryBakery',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(450, '#fbe3c8', '#e9dcc7') +
     tiles(450) +
     `<rect y="220" width="800" height="10" fill="#e07a5f" fill-opacity="0.5"/>` +
@@ -69,5 +71,28 @@ export default memoryLevel({
     cake(660, 324, diff(...around(604, 234, 716, 286), '#ffffff', '#ff8fb1')) +
     // Basket of baguettes
     `<path d="M690 440l20 -60M712 440l12 -64M734 440l4 -58" stroke="#d9a05b" stroke-width="12" stroke-linecap="round"/>` +
-    `<path d="M680 440h70l-8 40h-54Z" fill="#a0703f"/>`,
+    // Decor: small things that fill the room, the same in both pictures
+    painting(10, 40, 36, 44, '#3a86ff') +
+    painting(290, 40, 46, 40, '#ffb703') +
+    shelf(285, 170, 60) +
+    mug(300, 170, '#3a86ff') +
+    mug(330, 170, '#e63946') +
+    painting(450, 60, 50, 60, '#3fa46f') +
+    painting(766, 40, 26, 36, '#e63946') +
+    flowerVase(480, 230, '#3a86ff', '#ffd23f') +
+    poster(100, 345, 36, 50, '#ffd23f') +
+    poster(440, 345, 36, 50, '#ff6b8b') +
+    glassJar(570, 324, '#ff6b8b', '#ff9f43') +
+    mug(745, 324, '#3a86ff') +
+    sack(40, 490, '#f4efe6') +
+    sack(70, 492) +
+    crate(540, 490, 30) +
+    `<path d="M680 440h70l-8 40h-54Z" fill="#a0703f"/>` +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['cube', 456, 471, '#3fa46f'],
+      ['slippers', 260, 472, '#3a86ff'],
+      ['frame', 539, 101, '#3fa46f'],
+      ['frame', 746, 185, '#c9953f'],
+    ]),
 })

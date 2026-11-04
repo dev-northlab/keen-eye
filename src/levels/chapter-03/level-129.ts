@@ -1,4 +1,5 @@
 // Motion differences: the splash at the foot of the falls bubbles faster on picture B; the salmon leaps only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, backpack, bluebells, butterfly, feather, fern, pine, pineCone } from './shapes.ts'
 
@@ -41,8 +42,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestFalls',
   parTimeSec: 90,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let topTrees = ''
     for (let x = -10; x < 820; x += 34) if (x < 300 || x > 500) topTrees += pine(x + rand() * 10, 112, 0.7 + rand() * 0.4, rand() < 0.5 ? '#2f7d55' : '#3a8a5e')
     let strata = ''
@@ -85,7 +85,15 @@ export default svgLevel({
       acorn(560, 488) +
       backpack(645, 484) +
       bluebells(398, 484) +
-      feather(88, 281)
+      feather(88, 281) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bird', 90, 358],
+        ['bird', 503, 125],
+        ['frog', 681, 404],
+        ['fish', 376, 425, '#ff6b8b'],
+        ['butterfly', 349, 35],
+      ])
     )
   },
 })

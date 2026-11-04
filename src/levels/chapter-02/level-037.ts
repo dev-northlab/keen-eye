@@ -1,4 +1,5 @@
 // Motion differences: the dog runs faster on picture B; the pharmacy sign swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, building, cityTree, cloud, dog, door, mailbox, newspaperBox, person, sandwichBoard, shoppingBag, skyline, street, sun } from './shapes.ts'
 
@@ -39,7 +40,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'tramLine',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const running = (period: number) =>
       anim({ id: 'dog', type: 'path', points: [[0, 0], [150, 0]], flipX: 560, period }, dog(560, 340, '#c48a5a'))
     const pharmacy = sign(150, 240)
@@ -75,7 +76,16 @@ export default svgLevel({
       newspaperBox(300, 352) +
       bollard(397, 352) +
       shoppingBag(522, 354) +
-      sandwichBoard(765, 352)
+      sandwichBoard(765, 352) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['birds', 177, 61],
+        ['balloon', 610, 34, '#8ac926'],
+        ['cone', 484, 412],
+        ['pigeon', 189, 401],
+        ['pigeon', 655, 414],
+        ['cone', 54, 409],
+      ])
     )
   },
 })

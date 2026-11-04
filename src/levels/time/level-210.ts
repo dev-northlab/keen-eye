@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { ball, bareTree, bench, cat, cloud, flowers, house, mailbox, oak, pane, person, roofSnow, sky, slide, snowCap, snowfall, snowman, swingFrame, swingSeat, winterPerson, winterSky } from './shapes.ts'
+import { ball, bareTree, bench, bin, bird, birdHouse, bush, butterfly, cat, cloud, dog, flowerBox, flowers, grass, house, mailbox, oak, pane, person, pot, roofSnow, sky, slide, snowCap, snowfall, snowman, stones, swingFrame, swingSeat, winterPerson, winterSky } from './shapes.ts'
 
 export default svgLevel({
   id: 210,
@@ -37,5 +37,24 @@ export default svgLevel({
     trap(240, 400, 40, person(240, 432, '#ff9f43'), winterPerson(240, 432, '#3a86ff'), 'clothes') +
     trap(500, 420, 44, '', snowman(500, 462), 'snowman') +
     trap(60, 470, 28, flowers(60, 488), '', 'flowers') +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    cloud(330, 140, 0.5) +
+    cloud(730, 60, 0.5) +
+    flowerBox(107, 240, '#ff6b8b') +
+    flowerBox(233, 240, '#ffd23f') +
+    flowerBox(637, 218, '#ff6b8b') +
+    time('', snowCap(89, 222, 36) + snowCap(215, 222, 36) + snowCap(619, 200, 36)) +
+    bush(40, 290, 0.9) +
+    time('', snowCap(22, 268, 36)) +
+    bush(310, 290, 0.8) +
+    time('', snowCap(294, 270, 32)) +
+    bin(400, 290) +
+    time('', snowCap(390, 262, 20)) +
+    pot(530, 290) +
+    bird(610, 300, '#e63946') +
+    time(butterfly(380, 300), '') +
+    time(grass(200, 480) + stones(240, 490), '') +
+    birdHouse(700, 470) +
+    dog(770, 470) +
     time('', snowfall(210, 290, 34)),
 })

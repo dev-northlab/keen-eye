@@ -1,6 +1,7 @@
-// "Memory" category: big flat cartoon objects, few per scene, so that a glance is enough to remember
-// them. Each returns SVG markup positioned at (x, y); the bounds in the comments are what a
-// difference zone must cover.
+// "Memory" category: big flat cartoon objects that a glance is enough to remember, and small decor
+// that fills the scene around them (the same in both pictures). Each returns SVG markup positioned
+// at (x, y); the bounds in the comments are what a difference zone must cover.
+export { shelf } from '../detective/shapes.ts'
 export { around } from '../time/shapes.ts'
 
 /** Markup drawn around the origin, moved to (x, y) and scaled by s: other chapters' shapes made big. */
@@ -346,3 +347,54 @@ export const suitcase = (x: number, y: number, color: string) =>
   `<path d="M${x - 8} ${y - 48}v-8h16v8" stroke="#3d4a55" stroke-width="4" fill="none"/>` +
   `<rect x="${x - 18}" y="${y - 48}" width="36" height="48" rx="5" fill="${color}"/>` +
   `<path d="M${x - 18} ${y - 30}h36" stroke="#ffffff" stroke-opacity="0.5" stroke-width="3"/>`
+
+// --- Decor: small things that fill a scene (the same in both pictures) ---
+
+/** Vase with three flowers; (x, y) = bottom center. Bounds: x ±13, y from −51 to 0. */
+export const flowerVase = (x: number, y: number, color: string, flower = '#ff6b8b') =>
+  `<path d="M${x} ${y - 24}l-8 -18M${x} ${y - 24}v-20M${x} ${y - 24}l8 -16" stroke="#3fa46f" stroke-width="2.5"/>` +
+  `<g fill="${flower}"><circle cx="${x - 8}" cy="${y - 43}" r="5"/><circle cx="${x}" cy="${y - 46}" r="5"/><circle cx="${x + 8}" cy="${y - 41}" r="5"/></g>` +
+  `<path d="M${x - 6} ${y - 26}h12q8 10 4 22q-2 4 -10 4q-8 0 -10 -4q-4 -12 4 -22Z" fill="${color}"/>`
+
+/** Pillow; (x, y) = center. Bounds: x ±18, y ±12. */
+export const pillow = (x: number, y: number, color: string) =>
+  `<path d="M${x - 18} ${y - 12}q18 6 36 0q-4 12 0 24q-18 -6 -36 0q4 -12 0 -24Z" fill="${color}"/><circle cx="${x}" cy="${y}" r="2.5" fill="#ffffff" fill-opacity="0.6"/>`
+
+/** Mug; (x, y) = bottom center. Bounds: x from −9 to +15, y from −18 to 0. */
+export const mug = (x: number, y: number, color: string) =>
+  `<path d="M${x + 8} ${y - 13}h3a4 4 0 0 1 0 8h-3" stroke="${color}" stroke-width="3" fill="none"/><rect x="${x - 9}" y="${y - 18}" width="18" height="18" rx="3" fill="${color}"/>`
+
+/** Glass jar with a lid; (x, y) = bottom center. Bounds: x ±11, y from −28 to 0. */
+export const glassJar = (x: number, y: number, lid: string, fill = '#ffd23f') =>
+  `<rect x="${x - 10}" y="${y - 22}" width="20" height="22" rx="4" fill="#e3f2fa"/><rect x="${x - 8}" y="${y - 14}" width="16" height="12" rx="2" fill="${fill}"/>` +
+  `<rect x="${x - 11}" y="${y - 28}" width="22" height="7" rx="2" fill="${lid}"/>`
+
+/** Bottle with a label; (x, y) = bottom center. Bounds: x ±8, y from −36 to 0. */
+export const bottle = (x: number, y: number, color: string) =>
+  `<rect x="${x - 3}" y="${y - 36}" width="6" height="10" fill="${color}"/><rect x="${x - 8}" y="${y - 28}" width="16" height="28" rx="5" fill="${color}"/>` +
+  `<rect x="${x - 6}" y="${y - 18}" width="12" height="8" fill="#ffffff" fill-opacity="0.6"/>`
+
+/** Toy cube with a dot; (x, y) = bottom center, side s. Bounds: x ±s/2, y from −s to 0. */
+export const cube = (x: number, y: number, s: number, color: string) =>
+  `<rect x="${x - s / 2}" y="${y - s}" width="${s}" height="${s}" rx="${s * 0.12}" fill="${color}"/><circle cx="${x}" cy="${y - s / 2}" r="${s * 0.2}" fill="#ffffff" fill-opacity="0.7"/>`
+
+/** Star sticker; (x, y) = center. Bounds: x ±14, y from −14 to +11. */
+export const sticker = (x: number, y: number, color: string) =>
+  `<path d="M${x} ${y - 14}l4 9h10l-8 6l3 10l-9 -6l-9 6l3 -10l-8 -6h10Z" fill="${color}"/>`
+
+/** Plate lying on a table; (x, y) = center. Bounds: x ±18, y ±5. */
+export const plate = (x: number, y: number) =>
+  `<ellipse cx="${x}" cy="${y}" rx="18" ry="5" fill="#ffffff"/><ellipse cx="${x}" cy="${y}" rx="11" ry="3" fill="#e9edf2"/>`
+
+/** Pair of slippers seen from above; (x, y) = center. Bounds: x ±19, y ±6. */
+export const slipperPair = (x: number, y: number, color: string) =>
+  `<g fill="${color}"><ellipse cx="${x - 9}" cy="${y}" rx="9" ry="5.5"/><ellipse cx="${x + 9}" cy="${y}" rx="9" ry="5.5"/></g>` +
+  `<g fill="#ffffff" fill-opacity="0.5"><ellipse cx="${x - 13}" cy="${y}" rx="3.5" ry="3.5"/><ellipse cx="${x + 5}" cy="${y}" rx="3.5" ry="3.5"/></g>`
+
+
+
+/** Bubble; (x, y) = center. Bounds: radius r + 2. */
+export const bubble = (x: number, y: number, r: number) =>
+  `<circle cx="${x}" cy="${y}" r="${r}" fill="none" stroke="#ffffff" stroke-opacity="0.8" stroke-width="2.5"/>`
+
+

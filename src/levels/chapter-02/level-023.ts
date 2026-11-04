@@ -1,6 +1,7 @@
 // Motion differences: the kite flies faster on picture B; the fountain jet bobs slower on B.
 import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { duck, flower, FLOWER_COLORS } from '../shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, bin, cityTree, cloud, coffeeCup, dog, grass, lampHead, lampPost, person, pick, scooter, sun } from './shapes.ts'
 
@@ -34,7 +35,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'park',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 16; i++) tufts += grass(10 + rand() * 780, 300 + rand() * 190)
     let flowers = ''
@@ -82,7 +83,20 @@ export default svgLevel({
       scooter(455, 478) +
       bird(530, 410) +
       butterfly(330, 290) +
-      coffeeCup(505, 424)
+      coffeeCup(505, 424) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['balloon', 369, 164, '#3a86ff'],
+        ['birds', 262, 62],
+        ['cloud', 499, 166],
+        ['bee', 556, 307],
+        ['flower', 325, 373, '#ff6b8b'],
+        ['stones', 749, 306],
+        ['snail', 182, 245],
+        ['flower', 190, 479, '#4dabf7'],
+        ['ladybug', 515, 448],
+        ['mushroom', 50, 330],
+      ])
     )
   },
 })

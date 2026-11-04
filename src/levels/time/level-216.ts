@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, balloon, bulbs, clockFace, dog, door, DUSK, flowerBox, fruit, glow, lampHead, lampPost, moon, pane, person, sky, small, stall, stars, sun } from './shapes.ts'
+import { around, balloon, barrel, bench, bin, bird, bulbs, clockFace, cloud, crate, dog, door, DUSK, flowerBox, fruit, glow, lampHead, lampPost, moon, pane, person, pigeon, poster, pot, sack, sky, small, stall, stars, sun } from './shapes.ts'
 
 export default svgLevel({
   id: 216,
@@ -54,6 +54,22 @@ export default svgLevel({
       person(580, 486, '#e76f51') +
       diff(...around(498, 454, 542, 480), dog(520, 480), dog(520, 480, '#3d3d3d')) +
       lampPost(740, 470) +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(250, 60, 0.5) +
+      cloud(530, 50, 0.4) +
+      bird(200, 122, '#e63946') +
+      poster(280, 215, 26, 34, '#e63946') +
+      poster(500, 215, 26, 34, '#3a86ff') +
+      flowerBox(188, 280, '#ffd23f') +
+      flowerBox(605, 292, '#ff6b8b') +
+      flowerBox(745, 292, '#ffd23f') +
+      bin(40, 400) +
+      sack(520, 360) +
+      crate(480, 415, 26) +
+      barrel(560, 410) +
+      bench(80, 480) +
+      pot(400, 490) +
+      pigeon(660, 490, true) +
       time('', DUSK) +
       time('', glow(290, 140, 30, 50) + glow(480, 140, 30, 50) + glow(30, 220, 36, 40)) +
       trap(400, 82, 26, clockFace(400, 82, 20, 8, 0), clockFace(400, 82, 20, 7, 30), 'clock') +

@@ -1,4 +1,5 @@
 // Motion differences: the right hanging lamp swings only on picture B; the platform signal blinks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bench, coffeeCup, mailbox, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
 
@@ -30,8 +31,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'railwayStation',
   parTimeSec: 85,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ribs = ''
     for (let i = 0; i <= 12; i++) {
       const a = Math.PI - (i * Math.PI) / 12
@@ -91,7 +91,15 @@ export default svgLevel({
       coffeeCup(408, 440) +
       shoppingBag(375, 472) +
       scooter(745, 482) +
-      mailbox(588, 440)
+      mailbox(588, 440) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['birds', 68, 51],
+        ['cone', 185, 443],
+        ['bin', 638, 431],
+        ['ball', 379, 440, '#e63946'],
+        ['shoppingBag', 728, 438],
+      ])
     )
   },
 })

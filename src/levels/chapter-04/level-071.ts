@@ -1,4 +1,5 @@
 // Motion differences: the lead dolphin leaps faster on picture B; the gull flies the other way round on B; the boat rocks only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beachBall, bottleMessage, buoy, cloud, dolphin, fish, gull, lifeRing, person, sun, sunHat, waves } from './shapes.ts'
 
@@ -15,7 +16,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'dolphins',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${300 + rand() * 180}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const leaping = (period: number) => anim({ id: 'lead', type: 'path', points: [[0, 0], [60, -50], [120, 0]], period }, dolphin(300, 330))
@@ -47,7 +48,20 @@ export default svgLevel({
       beachBall(445, 468) +
       fish(150, 270, '#ffb703') +
       lifeRing(130, 460) +
-      sunHat(720, 462)
+      sunHat(720, 462) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bottle', 110, 313],
+        ['buoy', 209, 468],
+        ['fish', 543, 296, '#ff9f43'],
+        ['lifeRing', 748, 413],
+        ['fish', 358, 416, '#ffb703'],
+        ['bottle', 251, 265],
+        ['buoy', 681, 477],
+        ['gull', 442, 36],
+        ['gull', 740, 39],
+        ['cloud', 75, 168],
+      ])
     )
   },
 })

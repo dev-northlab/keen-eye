@@ -1,4 +1,5 @@
 // Motion differences: the bus arrives faster on picture B; the kiosk's flag waves only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bin, building, bus, cityTree, cloud, dog, lampHead, lampPost, mailbox, manhole, newspaperBox, person, pigeon, scooter, shoppingBag, skyline, street, sun } from './shapes.ts'
 
@@ -24,7 +25,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'busStop',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const arriving = (period: number) =>
       anim({ id: 'bus', type: 'path', points: [[0, 0], [220, 0]], period }, bus(150, 458, '#ffb703'))
     const kioskFlag = flag(680, 340)
@@ -60,7 +61,14 @@ export default svgLevel({
       newspaperBox(262, 352) +
       shoppingBag(442, 352) +
       scooter(783, 352) +
-      manhole(620, 470)
+      manhole(620, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['pigeon', 675, 474],
+        ['pigeon', 546, 469],
+        ['cone', 726, 401],
+        ['pigeon', 474, 394],
+      ])
     )
   },
 })

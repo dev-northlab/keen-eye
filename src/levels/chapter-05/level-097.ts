@@ -1,4 +1,5 @@
 // Motion differences: the neon planet blinks faster on picture B; the robot waiter rolls faster on B; the arriving saucer hovers faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { parasol } from '../chapter-04/shapes.ts'
 import { alien, alienPlant, crystal, fuelCanister, helmet, robot, rocket, star, starField, toolbox, ufo } from './shapes.ts'
@@ -22,7 +23,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceCafe',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.6, period }, neon(400, 172))
     const rolling = (period: number) => anim({ id: 'waiter', type: 'path', points: [[0, 0], [240, 0]], period }, robot(200, 440, '#bfc7d5', '#8ac926'))
     const hovering = (period: number) => anim({ id: 'saucer', type: 'bob', dx: 0, dy: 10, period }, ufo(620, 120, '#8ac926', '#ffffff'))
@@ -64,7 +65,20 @@ export default svgLevel({
       helmet(250, 350) +
       toolbox(480, 460) +
       fuelCanister(140, 455) +
-      crystal(700, 455)
+      crystal(700, 455) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['asteroid', 214, 134],
+        ['sparkle', 702, 36],
+        ['probe', 539, 153],
+        ['spaceStar', 707, 256],
+        ['ringPlanet', 63, 58],
+        ['asteroid', 417, 46],
+        ['fuelCanister', 515, 432],
+        ['helmet', 84, 456],
+        ['toolbox', 678, 439],
+        ['beacon', 583, 399],
+      ])
     )
   },
 })

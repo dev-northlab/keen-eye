@@ -1,4 +1,5 @@
 // Motion differences: the chimney smoke rises faster on picture B; the well bucket swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, backpack, bush, cabin, cloud, floor, fox, lantern, pine, pineCone, stump, sun } from './shapes.ts'
 import { dog, person } from '../chapter-02/shapes.ts'
@@ -42,7 +43,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'rangerCabin',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -22]], period }, smoke(460, 190))
     const pail = bucket(680, 440)
 
@@ -82,7 +83,20 @@ export default svgLevel({
       backpack(470, 428) +
       pineCone(95, 486) +
       acorn(360, 478) +
-      anthill(760, 426)
+      anthill(760, 426) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['pineCone', 396, 429],
+        ['bluebells', 657, 341],
+        ['hedgehog', 257, 353],
+        ['acorn', 86, 382],
+        ['wildStrawberry', 517, 370],
+        ['leafPile', 749, 456],
+        ['butterfly', 123, 290],
+        ['butterfly', 571, 121],
+        ['cloud', 389, 72],
+        ['birds', 264, 153],
+      ])
     )
   },
 })

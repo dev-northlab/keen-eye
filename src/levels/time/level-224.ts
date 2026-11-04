@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bench, buoy, dog, DUSK, glow, lampHead, lampPost, moon, oak, pane, person, rowboat, sky, stars, sun } from './shapes.ts'
+import { around, bench, bin, buoy, cloud, dog, duck, DUSK, flowerBox, glow, lampHead, lampPost, moon, oak, pane, person, pigeon, pot, rowboat, sky, stars, sun } from './shapes.ts'
 
 const HOUSES = ['#e07a5f', '#f2cc8f', '#81b29a', '#e9c46a', '#bdb2ff', '#8ecae6']
 
@@ -57,6 +57,22 @@ export default svgLevel({
       person(640, 488, '#3a86ff', true) +
       lampPost(700, 480) +
       time(lampHead(260, 254, false) + lampHead(540, 254, false), '') +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(450, 60, 0.6) +
+      cloud(330, 100, 0.4) +
+      flowerBox(167, 232, '#ff6b8b') +
+      flowerBox(367, 216, '#ffd23f') +
+      flowerBox(766, 232, '#ff6b8b') +
+      duck(60, 330) +
+      buoy(140, 380, '#ffb703') +
+      buoy(400, 380, '#3a86ff') +
+      duck(680, 270) +
+      bin(20, 490) +
+      pigeon(280, 490) +
+      bench(400, 490, '#3a86ff') +
+      bin(470, 490) +
+      pigeon(740, 492, true) +
+      pot(760, 490) +
       time('', DUSK) +
       time('', lampHead(260, 254, true) + lampHead(540, 254, true) + glow(155, 188, 22, 26) + glow(626, 172, 22, 26)) +
       trap(400, 154, 34, lampHead(400, 254, false), lampHead(400, 254, true), 'lights') +

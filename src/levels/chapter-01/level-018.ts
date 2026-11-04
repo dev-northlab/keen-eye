@@ -1,5 +1,6 @@
 // Motion differences: the weathervane turns the other way on picture B; the lantern swings only on B.
 import { mushroom } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birdhouse, duck, grass, hen, milkCan, snail, stones } from '../shapes.ts'
 
@@ -43,7 +44,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'rainyDay',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let rain = ''
     for (let i = 0; i < 70; i++) {
       const x = rand() * 800
@@ -91,7 +92,20 @@ export default svgLevel({
       mushroom(720, 385) +
       milkCan(50, 380) +
       birdhouse(690, 345) +
-      anim({ type: 'path', points: [[0, 0], [-12, 48]], period: 0.8 }, rain)
+      anim({ type: 'path', points: [[0, 0], [-12, 48]], period: 0.8 }, rain) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['snail', 715, 471],
+        ['stones', 507, 400],
+        ['flower', 53, 423, '#4dabf7'],
+        ['grass', 299, 387],
+        ['horseshoe', 722, 325],
+        ['mushroom', 163, 386],
+        ['snail', 338, 479],
+        ['stones', 361, 296],
+        ['birds', 112, 163],
+        ['birds', 265, 185],
+      ])
     )
   },
 })

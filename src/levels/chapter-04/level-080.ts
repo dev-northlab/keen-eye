@@ -1,4 +1,5 @@
 // Motion differences: the bats fly faster on picture B; the drip falls only on B; the glowing crystals pulse faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, clam, crab, fish, jellyfish, rock, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'seaCave',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let glints = ''
     for (let i = 0; i < 10; i++) glints += `<path d="M${rand() * 700 + 50} ${380 + rand() * 60}h${10 + rand() * 20}" stroke="#9fd8f0" stroke-width="3" stroke-linecap="round"/>`
     const flapping = (period: number) => anim({ id: 'bats', type: 'path', points: [[0, 0], [80, -20], [160, 0]], period }, bat(300, 110) + bat(330, 126))
@@ -73,7 +74,15 @@ export default svgLevel({
       clam(625, 442) +
       bottleMessage(300, 412) +
       seahorse(575, 460) +
-      snorkelMask(770, 462)
+      snorkelMask(770, 462) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['lifeRing', 241, 435],
+        ['fish', 479, 421, '#4dabf7'],
+        ['fish', 375, 477, '#ff6b8b'],
+        ['shell', 749, 456],
+        ['seaUrchin', 163, 463],
+      ])
     )
   },
 })

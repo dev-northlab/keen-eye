@@ -106,7 +106,11 @@
     "revealAll": "显示位置",
     "animPause": "停止动画",
     "animPlay": "动画",
-    "calmDone": "休闲模式 — 不计星星"
+    "calmDone": "休闲模式 — 不计星星",
+    "failed": "错误太多",
+    "failedHint": "困难模式下，第 {n} 次错误时关卡结束",
+    "hardDone": "困难模式通关！",
+    "playHard": "挑战困难模式"
   },
   "duo": {
     "modeTitle": "怎么玩？",
@@ -490,7 +494,10 @@
     "label": "模式",
     "normal": "普通",
     "calm": "休闲",
-    "calmHint": "不计时、不计错、没有星星"
+    "calmHint": "不计时、不计错、没有星星",
+    "hard": "困难",
+    "hardHint": "没有提示，错 3 次即结束本关，红色星星",
+    "hardStars": "困难模式：{n}/3"
   },
   "purchase": {
     "title": "完整版",

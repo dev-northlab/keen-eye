@@ -10,7 +10,8 @@ Dos imágenes parecen iguales, pero no lo son. Encuentra todas las diferencias e
 • Dos jugadores en un dispositivo: duelo, por turnos o en equipo
 
 PARA TODOS
-• Modo tranquilo: sin cronómetro ni errores, pistas ilimitadas
+• Modo tranquilo: sin cronómetro ni errores, 3 pistas gratis en cada nivel
+• Modo difícil: sin pistas, 3 errores terminan el nivel, estrellas rojas para los mejores
 • Zoom con dos dedos en ambas imágenes a la vez
 • Llaves doradas escondidas abren una cámara del tesoro extra
 • Tema claro y oscuro, música y sonidos

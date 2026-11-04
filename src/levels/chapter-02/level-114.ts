@@ -1,4 +1,5 @@
 // Motion differences: one string-light bulb blinks only on picture B; the hanging scale pan swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, building, coffeeCup, dog, newspaperBox, person, scooter, shoppingBag } from './shapes.ts'
 
@@ -53,7 +54,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'streetMarket',
   parTimeSec: 95,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let bulbs = ''
     const lineY = (x: number) => 60 + 26 * Math.sin((x / 800) * Math.PI)
     for (let x = 30; x < 800; x += 50) if (x !== 130 && x !== 530) bulbs += anim({ type: 'blink', duty: 0.85, period: 2 + (x % 7) * 0.3 }, bulb(x, lineY(x)))
@@ -107,7 +108,15 @@ export default svgLevel({
       ball(372, 482) +
       newspaperBox(450, 400) +
       coffeeCup(660, 465) +
-      scooter(770, 482)
+      scooter(770, 482) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 249, 217, '#ffb703'],
+        ['ball', 673, 406, '#e63946'],
+        ['hydrant', 321, 394],
+        ['shoppingBag', 495, 464],
+        ['pigeon', 737, 464],
+      ])
     )
   },
 })

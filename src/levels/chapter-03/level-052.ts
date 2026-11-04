@@ -1,4 +1,5 @@
 // Motion differences: the crow hops only on picture B; the hawk circles faster on B; the dandelion sways faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bluebells, bush, feather, floor, fox, log, mushroom, pine, pineCone, rock } from './shapes.ts'
 
@@ -32,7 +33,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'foxDen',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const perched = crow(560, 468)
     const circling = (period: number) => anim({ id: 'hawk', type: 'path', points: [[0, 0], [60, -30], [120, 0], [60, 30]], period }, hawk(560, 110))
     const swaying = (period: number) => anim({ type: 'sway', angle: 10, pivot: [720, 480], period }, dandelion(720, 480))
@@ -67,7 +68,20 @@ export default svgLevel({
       pineCone(82, 312) +
       anthill(585, 432) +
       acorn(365, 482) +
-      feather(185, 490)
+      feather(185, 490) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['butterfly', 592, 376],
+        ['squirrel', 272, 328],
+        ['feather', 135, 423],
+        ['rabbit', 742, 352],
+        ['frog', 432, 348],
+        ['anthill', 339, 478],
+        ['mushroom', 144, 315],
+        ['cloud', 383, 71],
+        ['birds', 500, 208],
+        ['cloud', 241, 119],
+      ])
     )
   },
 })

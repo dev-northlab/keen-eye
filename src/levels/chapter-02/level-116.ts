@@ -1,4 +1,5 @@
 // Motion differences: the neon cup flickers only on picture B; the wall fan spins faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, car, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person } from './shapes.ts'
 
@@ -44,7 +45,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'neonStreet',
   parTimeSec: 95,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const facades: [number, number, number, string][] = [[0, 170, 40, '#2e2a4f'], [170, 190, 60, '#3a2f55'], [360, 160, 30, '#262c4a'], [520, 150, 70, '#33284a'], [670, 130, 50, '#2a3352']]
     let blocks = ''
     for (const [x, w, top, c] of facades) {
@@ -102,7 +103,15 @@ export default svgLevel({
       bollard(405, 370) +
       parkingMeter(560, 370) +
       manhole(460, 470) +
-      rain
+      rain +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 635, 54],
+        ['sparkle', 356, 314],
+        ['hydrant', 75, 447],
+        ['shoppingBag', 620, 395],
+        ['pigeon', 503, 479],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cloud, grass, sheep, stones, sun, tree } from '../shapes.ts'
 
@@ -27,7 +28,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'meadow',
   parTimeSec: 75,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 360 + rand() * 135)
     // Dry stone wall: two rows, one stone is a difference.
@@ -69,7 +70,20 @@ export default svgLevel({
       mushroom(275, 478) +
       bird(400, 293) +
       butterfly(430, 445) +
-      stones(610, 480)
+      stones(610, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flower', 627, 439, '#4dabf7'],
+        ['stones', 457, 381],
+        ['snail', 557, 264],
+        ['flower', 67, 467, '#ff9f43'],
+        ['ladybug', 337, 256],
+        ['mushroom', 224, 366],
+        ['chick', 747, 219],
+        ['butterfly', 599, 44],
+        ['cloud', 140, 125],
+        ['birds', 377, 50],
+      ])
     )
   },
 })

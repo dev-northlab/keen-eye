@@ -1,4 +1,5 @@
 // Motion difference: the duck swims faster on picture B.
+import { extras } from '../extras.ts'
 import type { AnimSpec } from '../helpers.ts'
 import { bird, frog, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
@@ -40,7 +41,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'river',
   parTimeSec: 85,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 10; i++) tufts += grass(10 + rand() * 780, 440 + rand() * 55)
     let flowers = ''
@@ -79,7 +80,20 @@ export default svgLevel({
       stump(590, 294) +
       bird(690, 118) +
       snail(160, 472) +
-      stones(240, 480)
+      stones(240, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['stones', 689, 476],
+        ['snail', 203, 475],
+        ['ladybug', 405, 479],
+        ['grass', 109, 459],
+        ['fish', 161, 330, '#4dabf7'],
+        ['fish', 56, 351, '#ff9f43'],
+        ['fish', 733, 402, '#ffb703'],
+        ['cloud', 400, 140],
+        ['birds', 721, 71],
+        ['butterfly', 581, 141],
+      ])
     )
   },
 })

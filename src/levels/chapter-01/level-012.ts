@@ -1,5 +1,6 @@
 // Motion difference: a window light blinks only on picture B.
 import { mushroom, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { fence, grass, milkCan, stones, wheelbarrow } from '../shapes.ts'
 
@@ -32,7 +33,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'evening',
   parTimeSec: 85,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 380 + rand() * 115).replace('#5fae4b', '#4c8a3c')
     let flies = ''
@@ -75,7 +76,20 @@ export default svgLevel({
       stump(70, 430) +
       mushroom(360, 470) +
       wheelbarrow(770, 470) +
-      stones(505, 475)
+      stones(505, 475) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flower', 496, 447, '#ff9f43'],
+        ['bee', 169, 412],
+        ['flower', 150, 290, '#4dabf7'],
+        ['stones', 657, 445],
+        ['snail', 352, 411],
+        ['flower', 61, 389, '#b38cff'],
+        ['ladybug', 276, 290],
+        ['birds', 517, 50],
+        ['birds', 251, 54],
+        ['cloud', 58, 53],
+      ])
     )
   },
 })

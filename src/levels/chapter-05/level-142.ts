@@ -1,4 +1,5 @@
 // Motion differences: a landing pad light blinks only on picture B; the left astronaut hops only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, beacon, crater, crystal, dome, flag, fuelCanister, moonPebbles, rover, sparkle, starField, toolbox } from './shapes.ts'
 
@@ -31,7 +32,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'lunarBase',
   parTimeSec: 135,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let prints = ''
     for (let i = 0; i < 8; i++) prints += `<ellipse cx="${236 + i * 16}" cy="${474 - (i % 2) * 6}" rx="4" ry="2" fill="#8f8ca2"/>`
     const hop = (moving: boolean) => (moving ? anim({ type: 'bob', dx: 0, dy: -6, period: 1.6 }, astronaut(200, 470, '#f1f1f1', '#ffb703')) : astronaut(200, 470, '#f1f1f1', '#ffb703'))
@@ -65,7 +66,15 @@ export default svgLevel({
       toolbox(480, 395) +
       fuelCanister(440, 474) +
       crystal(770, 470) +
-      moonPebbles(40, 420)
+      moonPebbles(40, 420) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['probe', 321, 240],
+        ['spaceStar', 592, 171],
+        ['ringPlanet', 133, 84],
+        ['crater', 367, 416],
+        ['crystal', 217, 366, '#b38cff'],
+      ])
     )
   },
 })

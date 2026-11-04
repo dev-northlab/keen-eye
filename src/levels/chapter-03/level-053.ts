@@ -1,4 +1,5 @@
 // Motion differences: the rope ladder sways only on picture B; the flag waves faster on B; the bucket goes up and down faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, backpack, bush, cloud, floor, lantern, mushroom, pine, pineCone, squirrel, sun, trailSign } from './shapes.ts'
 
@@ -31,7 +32,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'treehouse',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const rope = ladder(330, 300)
     const waving = (period: number) => anim({ type: 'sway', angle: 10, pivot: [482, 120], period }, flag(482, 122, '#e63946'))
     const hauling = (period: number) => anim({ id: 'bucket', type: 'path', points: [[0, 0], [0, 60]], period }, bucket(560, 300))
@@ -72,7 +73,20 @@ export default svgLevel({
       lantern(255, 410) +
       pineCone(620, 480) +
       acorn(200, 480) +
-      trailSign(720, 412)
+      trailSign(720, 412) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['squirrel', 150, 381],
+        ['feather', 261, 468],
+        ['rabbit', 471, 368],
+        ['frog', 677, 352],
+        ['anthill', 718, 474],
+        ['mushroom', 555, 475],
+        ['fern', 396, 476],
+        ['cloud', 212, 123],
+        ['birds', 651, 193],
+        ['butterfly', 545, 54],
+      ])
     )
   },
 })

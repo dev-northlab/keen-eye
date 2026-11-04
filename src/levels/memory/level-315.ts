@@ -1,13 +1,15 @@
-import { pigeon } from '../chapter-02/shapes.ts'
+import { balloon, bin, cityTree, pigeon } from '../chapter-02/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, banana, big, daySky, produce, pumpkin, signPost, stall, stallAwning, watermelon } from './shapes.ts'
+import { bird, birds, crate, poster, sack } from '../time/shapes.ts'
 
 export default memoryLevel({
   id: 315,
   title: 'memoryMarket',
   showSeconds: 3,
-  scene: ({ diff }) => {
+  scene: ({ diff, extra, anim }) => {
     const bananas = diff(...around(358, 242, 442, 304), '#ffd23f', '#8ac926')
     return (
       daySky(300) +
@@ -26,7 +28,30 @@ export default memoryLevel({
       produce(540, 340, '#e63946', 5) +
       diff(...around(74, 408, 166, 470), watermelon(120, 470), '') +
       diff(...around(286, 402, 374, 476), '', pumpkin(330, 476)) +
-      diff(...around(630, 350, 770, 460), signPost(680, 460), signPost(720, 460))
+      // Decor: small things that fill the scene, the same in both pictures
+      cloud(300, 60, 0.6) +
+      birds(450, 80) +
+      balloon(200, 100, '#ff6b8b') +
+      pigeon(250, 160) +
+      pigeon(460, 160, true) +
+      cityTree(740, 290, 1.5) +
+      bird(760, 190, '#e63946') +
+      sack(40, 350) +
+      sack(70, 352, '#c9a86a') +
+      crate(130, 350, 30) +
+      bin(20, 480) +
+      poster(490, 370, 40, 50, '#ffd23f') +
+      crate(450, 490, 30, '#b07a42') +
+      crate(482, 490, 30) +
+      sack(540, 490) +
+      diff(...around(630, 350, 770, 460), signPost(680, 460), signPost(720, 460)) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bin', 234, 489],
+        ['ball', 62, 322, '#8338ec'],
+        ['shoppingBag', 583, 486],
+        ['balloon', 635, 50, '#3a86ff'],
+      ])
     )
   },
 })

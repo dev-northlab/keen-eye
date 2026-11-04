@@ -1,4 +1,5 @@
 // Motion differences: the owl in the hollow blinks only on picture B; the fern by the fox sways faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bird, bush, deer, feather, fern, fox, mushroom, pine, pineCone, rock, trailSign } from './shapes.ts'
 
@@ -31,7 +32,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'mistyThicket',
   parTimeSec: 105,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let far = ''
     for (let x = -10; x < 820; x += 34) far += pine(x + rand() * 10, 230 + rand() * 10, 0.9 + rand() * 0.5, '#a9bfae')
     let mid = ''
@@ -67,7 +68,15 @@ export default svgLevel({
       anthill(660, 440) +
       feather(200, 385) +
       trailSign(785, 415) +
-      fog(430, 0.25)
+      fog(430, 0.25) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 666, 389],
+        ['mushroom', 486, 395],
+        ['fern', 256, 408],
+        ['birds', 453, 58],
+        ['birds', 644, 54],
+      ])
     )
   },
 })

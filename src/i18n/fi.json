@@ -428,7 +428,11 @@
     "resetZoom": "Palauta zoomaus",
     "retry": "Yritä uudelleen",
     "revealAll": "Näytä paikat",
-    "time": "Aika: {t}"
+    "time": "Aika: {t}",
+    "failed": "Liikaa virheitä",
+    "failedHint": "Vaikealla taso päättyy virheeseen numero {n}",
+    "hardDone": "Läpäisty vaikealla!",
+    "playHard": "Pelaa vaikealla"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Rauhallinen",
     "calmHint": "Ei ajastinta, virheitä eikä tähtiä",
     "label": "Tila",
-    "normal": "Tavallinen"
+    "normal": "Tavallinen",
+    "hard": "Vaikea",
+    "hardHint": "Ei vihjeitä, 3 virhettä päättää tason, punaiset tähdet",
+    "hardStars": "Vaikea: {n}/3"
   },
   "pause": {
     "exit": "Valikkoon",

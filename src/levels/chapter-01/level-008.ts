@@ -1,4 +1,5 @@
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birdhouse, cat, cloud, fence, hayBale, pumpkin, sun, tractor, wheelbarrow } from '../shapes.ts'
 
@@ -25,7 +26,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'wheat',
   parTimeSec: 75,
-  scene: ({ diff, anim }) =>
+  scene: ({ diff, anim, extra }) =>
     `<rect width="800" height="500" fill="#a9daf2"/>` +
     sun(560, 70) +
     anim({ type: 'path', points: [[0, 0], [60, 0]], period: 22 }, cloud(320, 70, 0.8)) +
@@ -51,5 +52,18 @@ export default svgLevel({
     birdhouse(318, 300) +
     wheelbarrow(110, 400) +
     pumpkin(470, 488) +
-    cat(770, 492),
+    cat(770, 492) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['bee', 196, 412],
+      ['stones', 720, 329],
+      ['bird', 569, 364],
+      ['butterfly', 59, 400],
+      ['bee', 491, 435],
+      ['horseshoe', 437, 272],
+      ['butterfly', 350, 274],
+      ['butterfly', 237, 164],
+      ['cloud', 595, 191],
+      ['birds', 456, 50],
+    ]),
 })

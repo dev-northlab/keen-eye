@@ -106,7 +106,11 @@
     "revealAll": "Show places",
     "animPause": "Stop motion",
     "animPlay": "Motion",
-    "calmDone": "Calm mode — no stars"
+    "calmDone": "Calm mode — no stars",
+    "failed": "Too many mistakes",
+    "failedHint": "Hard mode ends the level at mistake number {n}",
+    "hardDone": "Passed on hard!",
+    "playHard": "Play on hard"
   },
   "duo": {
     "modeTitle": "How do you play?",
@@ -490,7 +494,10 @@
     "label": "Mode",
     "normal": "Normal",
     "calm": "Calm",
-    "calmHint": "No timer, mistakes or stars"
+    "calmHint": "No timer, mistakes or stars",
+    "hard": "Hard",
+    "hardHint": "No hints, 3 mistakes end the level, red stars",
+    "hardStars": "Hard mode: {n}/3"
   },
   "purchase": {
     "title": "Full game",

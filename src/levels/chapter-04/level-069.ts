@@ -1,4 +1,5 @@
 // Motion differences: the eel sways faster on picture B; the diver's bubbles rise only on B; the fish circles faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, clam, coral, fish, jellyfish, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
@@ -27,7 +28,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'shipwreck',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let drifting = ''
     for (let i = 0; i < 12; i++) drifting += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 3}" fill="#fff" fill-opacity="0.4"/>`
     const snake = eel(470, 300)
@@ -67,7 +68,20 @@ export default svgLevel({
       seahorse(150, 260) +
       bottleMessage(600, 474) +
       snorkelMask(172, 490) +
-      anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, drifting)
+      anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, drifting) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 51, 77, '#ffb703'],
+        ['fish', 317, 86, '#9ef01a'],
+        ['jellyfish', 467, 46],
+        ['fish', 473, 206, '#ff9f43'],
+        ['seahorse', 131, 356],
+        ['fish', 750, 145, '#ffb703'],
+        ['fish', 655, 351, '#9ef01a'],
+        ['jellyfish', 247, 231],
+        ['fish', 459, 374, '#4dabf7'],
+        ['seahorse', 604, 44],
+      ])
     )
   },
 })

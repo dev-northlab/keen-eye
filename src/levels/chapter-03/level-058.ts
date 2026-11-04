@@ -1,4 +1,5 @@
 // Motion differences: the bees fly faster on picture B; the honey drip bobs only on B; the leafy twig sways faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bear, bird, bluebells, bush, cloud, floor, flower, pine, pineCone, sun, wildStrawberry } from './shapes.ts'
 import { bee } from '../shapes.ts'
@@ -23,7 +24,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'beeTree',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const buzzing = (period: number) =>
       anim({ id: 'bees', type: 'path', points: [[0, 0], [30, -20], [60, 0], [30, 16]], period }, bee(500, 240) + bee(520, 256) + bee(488, 262))
     const honey = drip(420, 344)
@@ -61,7 +62,20 @@ export default svgLevel({
       pineCone(85, 306) +
       acorn(612, 480) +
       anthill(55, 490) +
-      bluebells(455, 484)
+      bluebells(455, 484) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['feather', 442, 414],
+        ['rabbit', 68, 347],
+        ['frog', 641, 454],
+        ['anthill', 245, 339],
+        ['mushroom', 736, 340],
+        ['fern', 86, 478],
+        ['pineCone', 553, 343],
+        ['birds', 122, 109],
+        ['butterfly', 605, 31],
+        ['cloud', 181, 232],
+      ])
     )
   },
 })

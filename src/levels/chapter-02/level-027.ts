@@ -1,4 +1,5 @@
 // Motion differences: the neon sign blinks only on picture B; the taxi drives faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bin, bollard, building, car, cityTree, door, lampHead, lampPost, mailbox, manhole, newspaperBox, person, shoppingBag, signBoard, skyline, street } from './shapes.ts'
 
@@ -17,7 +18,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'nightCity',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand, secret }) => {
+  scene: ({ diff, anim, rand, secret, extra }) => {
     let stars = ''
     for (let i = 0; i < 16; i++) {
       const x = rand() * 800
@@ -67,7 +68,17 @@ export default svgLevel({
       bollard(360, 352) +
       newspaperBox(520, 352) +
       shoppingBag(752, 352) +
-      manhole(700, 470)
+      manhole(700, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['spaceStar', 252, 65],
+        ['sparkle', 650, 71],
+        ['spaceStar', 389, 46],
+        ['pigeon', 77, 469],
+        ['cone', 670, 460],
+        ['pigeon', 224, 412],
+        ['cone', 88, 392],
+      ])
     )
   },
 })

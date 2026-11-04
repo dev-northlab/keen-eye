@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bench, birdHouse, chimney, door, flowerBox, house, icicles, mailbox, mountains, pane, person, pine, pineSnow, roofSnow, signpost, sky, small, smoke, snowCap, snowfall, snowman, vane, winterPerson, winterSky } from './shapes.ts'
+import { around, bench, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, dog, door, flowerBox, flowers, grass, house, icicles, logPile, mailbox, mountains, pane, person, pine, pineSnow, rock, roofSnow, signpost, sky, small, smoke, snowCap, snowfall, snowman, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
 /** Window with shutters; (x, y) = top-left of the 40 × 40 glass. Bounds: x from −11 to +51, y from −3 to +43. */
 const shuttered = (x: number, y: number, shutters: string) =>
@@ -40,5 +40,24 @@ export default svgLevel({
     trap(240, 442, 31, small(240, 470, person(240, 470, '#ffb703')), small(240, 470, winterPerson(240, 470, '#e63946')), 'clothes') +
     trap(640, 430, 44, '', snowman(640, 474), 'snowman') +
     trap(620, 120, 40, '', `<path d="M590 140L620 90L652 140L630 132L620 146L608 132Z" fill="#ffffff"/>`, 'snow') +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    cloud(150, 60, 0.6) +
+    cloud(480, 50, 0.45) +
+    cloud(700, 170, 0.4) +
+    pine(720, 330, 0.8) +
+    time('', pineSnow(720, 330, 0.8)) +
+    stump(780, 350) +
+    time('', snowCap(766, 330, 28)) +
+    rock(680, 360, 0.8) +
+    time('', snowCap(668, 348, 24)) +
+    bird(565, 292, '#e63946') +
+    logPile(40, 470) +
+    time('', snowCap(25, 438, 30)) +
+    bush(100, 480, 0.7) +
+    time('', snowCap(86, 463, 28)) +
+    bucket(350, 480) +
+    time('', snowCap(334, 454, 32)) +
+    dog(390, 480) +
+    time(flowers(520, 296, '#ffd23f') + butterfly(450, 280) + grass(470, 490) + grass(160, 490), '') +
     time('', snowfall(217, 280, 40)),
 })

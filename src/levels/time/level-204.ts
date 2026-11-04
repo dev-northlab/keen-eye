@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { beam, buoy, crate, DUSK, glow, gull, lampHead, lampPost, lifeRing, lighthouse, moon, pier, rowboat, sailboat, sky, sun, waves } from './shapes.ts'
+import { anchor, beam, bollard, buoy, chimney, cloud, crate, DUSK, flowerBox, glow, gull, lampHead, lampPost, lifeRing, lighthouse, moon, pier, pine, rock, ropeCoil, rowboat, sailboat, sky, sun, waves } from './shapes.ts'
 
 /** Flag cloth on a pole at foot (x, y). Bounds: x from +2 to +30, y from −68 to −50. */
 const flagCloth = (x: number, y: number, color: string) => `<path d="M${x + 2} ${y - 68}h28l-6 9l6 9h-28Z" fill="${color}"/>`
@@ -30,6 +30,22 @@ export default svgLevel({
     diff(360, 360, 24, lifeRing(360, 358), '') +
     `<rect x="356" y="344" width="10" height="46" fill="#6b4f3a"/>` +
     lampPost(400, 330) +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(300, 80, 0.6) +
+    cloud(560, 160, 0.5) +
+    cloud(200, 160, 0.4) +
+    chimney(60, 236, '#6b4f3a') +
+    flowerBox(74, 318, '#ff6b8b') +
+    anchor(15, 314) +
+    ropeCoil(255, 336) +
+    bollard(412, 330) +
+    pine(610, 292, 0.4) +
+    pine(770, 290, 0.45) +
+    rock(735, 298, 0.6) +
+    lifeRing(150, 455, '#ffffff') +
+    buoy(250, 480, '#ffb703') +
+    buoy(620, 470, '#3a86ff') +
+    sailboat(740, 440, '#e63946') +
     time('', DUSK) +
     trap(400, 230, 36, lampHead(400, 330, false), lampHead(400, 330, true), 'lights') +
     trap(690, 135, 50, '', beam(690, 290), 'lights') +

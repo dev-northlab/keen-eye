@@ -1,4 +1,5 @@
 // Motion differences: the exhaust puff bobs only on picture B; the cyclist weaves through faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bike, bollard, building, bus, car, cloud, mailbox, newspaperBox, parkingMeter, person, sandwichBoard, skyline, street, trafficLight } from './shapes.ts'
 
@@ -13,7 +14,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'trafficJam',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const weaving = (period: number) =>
       anim({ id: 'bike', type: 'path', points: [[0, 0], [120, 0]], period }, bike(560, 456, '#8ac926'))
     const exhaust = puff(126, 462)
@@ -52,7 +53,17 @@ export default svgLevel({
       parkingMeter(155, 312) +
       newspaperBox(300, 312) +
       sandwichBoard(450, 312) +
-      bollard(570, 312)
+      bollard(570, 312) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 344, 279, '#ff006e'],
+        ['balloon', 727, 43, '#8ac926'],
+        ['birds', 205, 56],
+        ['cone', 717, 353],
+        ['pigeon', 463, 356],
+        ['cone', 167, 350],
+        ['pigeon', 53, 465],
+      ])
     )
   },
 })

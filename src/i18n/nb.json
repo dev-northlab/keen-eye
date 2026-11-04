@@ -428,7 +428,11 @@
     "resetZoom": "Tilbakestill zoom",
     "retry": "Prøv igjen",
     "revealAll": "Vis stedene",
-    "time": "Tid: {t}"
+    "time": "Tid: {t}",
+    "failed": "For mange feil",
+    "failedHint": "På vanskelig slutter nivået ved feil nummer {n}",
+    "hardDone": "Klart på vanskelig!",
+    "playHard": "Spill på vanskelig"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Rolig",
     "calmHint": "Ingen tid, feil eller stjerner",
     "label": "Modus",
-    "normal": "Normal"
+    "normal": "Normal",
+    "hard": "Vanskelig",
+    "hardHint": "Ingen hint, 3 feil avslutter nivået, røde stjerner",
+    "hardStars": "Vanskelig: {n}/3"
   },
   "pause": {
     "exit": "Til menyen",

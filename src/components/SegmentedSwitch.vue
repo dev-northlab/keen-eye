@@ -1,6 +1,7 @@
 <script setup lang="ts" generic="T">
-// Segmented radio switch: one button per option, the chosen one raised over the track.
-defineProps<{ options: { value: T; label: string }[]; label: string }>()
+// Segmented radio switch: one button per option, the chosen one raised over the track (filled with the
+// option's `tone` colour, white text, when it has one).
+defineProps<{ options: { value: T; label: string; tone?: string }[]; label: string }>()
 const model = defineModel<T>({ required: true })
 </script>
 
@@ -11,7 +12,8 @@ const model = defineModel<T>({ required: true })
       :key="i"
       role="radio"
       :aria-checked="model === o.value"
-      :class="{ active: model === o.value }"
+      :class="{ active: model === o.value, toned: !!o.tone }"
+      :style="o.tone ? { '--tone': o.tone } : undefined"
       @click="model = o.value"
     >
       {{ o.label }}
@@ -39,5 +41,10 @@ button.active {
   background: var(--raised);
   font-weight: 600;
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.15);
+}
+
+button.active.toned {
+  background: var(--tone);
+  color: #fff;
 }
 </style>

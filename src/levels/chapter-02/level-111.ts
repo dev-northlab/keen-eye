@@ -1,4 +1,5 @@
 // Motion differences: the walk signal blinks only on picture B; the rooftop flag flaps faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, bike, bin, bollard, building, bus, car, cityTree, cloud, cone, hydrant, lampHead, lampPost, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, trafficLight } from './shapes.ts'
 
@@ -27,7 +28,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'rushHour',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let zebra = ''
     for (let x = 344; x < 456; x += 16) zebra += `<rect x="${x}" y="336" width="9" height="120" fill="#f4f4f4"/>`
     let marks = ''
@@ -78,7 +79,15 @@ export default svgLevel({
       newspaperBox(505, 332) +
       shoppingBag(710, 334) +
       skateboard(400, 494) +
-      bollard(600, 494)
+      bollard(600, 494) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 401, 279, '#e63946'],
+        ['pigeon', 310, 374],
+        ['cone', 543, 432],
+        ['pigeon', 163, 434],
+        ['cone', 683, 369],
+      ])
     )
   },
 })

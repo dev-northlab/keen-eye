@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bench, clockFace, door, DUSK, flowerBox, fountain, glow, hangingSign, lampHead, lampPost, moon, pane, parasol, person, pigeon, sky, small, stars, sun } from './shapes.ts'
+import { around, bench, bin, bird, clockFace, cloud, door, DUSK, flowerBox, fountain, glow, hangingSign, lampHead, lampPost, moon, pane, parasol, person, pigeon, pot, sky, small, stars, sun } from './shapes.ts'
 
 /** Café table; (x, y) = ground center. Bounds: x ±22, y from −36 to 0. */
 const table = (x: number, y: number, color: string) =>
@@ -59,6 +59,22 @@ export default svgLevel({
       small(680, 486, person(680, 486, '#8ac926')) +
       lampPost(300, 470) +
       lampPost(700, 470) +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(250, 60, 0.6) +
+      cloud(520, 80, 0.5) +
+      cloud(720, 120, 0.4) +
+      bird(60, 142) +
+      bird(300, 122, '#e63946') +
+      bench(50, 380) +
+      bin(110, 360) +
+      pigeon(220, 360) +
+      bench(530, 380, '#3a86ff') +
+      pigeon(600, 380, true) +
+      pot(630, 345) +
+      pigeon(30, 480) +
+      pot(80, 480, '#3a86ff') +
+      pot(330, 492) +
+      bin(780, 490) +
       time('', DUSK) +
       time('', glow(20, 180, 34, 40) + glow(250, 160, 30, 36) + glow(590, 170, 30, 36)) +
       trap(400, 110, 28, clockFace(400, 110, 22, 10, 10), clockFace(400, 110, 22, 8, 40), 'clock') +

@@ -428,7 +428,11 @@
     "resetZoom": "Återställ zoom",
     "retry": "Försök igen",
     "revealAll": "Visa platserna",
-    "time": "Tid: {t}"
+    "time": "Tid: {t}",
+    "failed": "För många misstag",
+    "failedHint": "På svår slutar nivån vid misstag nummer {n}",
+    "hardDone": "Klarad på svår!",
+    "playHard": "Spela på svår"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Lugnt",
     "calmHint": "Ingen tid, inga misstag eller stjärnor",
     "label": "Läge",
-    "normal": "Normalt"
+    "normal": "Normalt",
+    "hard": "Svår",
+    "hardHint": "Inga tips, 3 misstag avslutar nivån, röda stjärnor",
+    "hardStars": "Svår: {n}/3"
   },
   "pause": {
     "exit": "Till menyn",

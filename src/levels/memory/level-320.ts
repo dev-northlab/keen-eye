@@ -1,8 +1,9 @@
 import { car } from '../chapter-02/shapes.ts'
-import { robot, rocket } from '../chapter-05/shapes.ts'
+import { alien, robot, rocket } from '../chapter-05/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball } from '../time/shapes.ts'
-import { around, big, books, room, teddy } from './shapes.ts'
+import { around, big, books, cube, kite, painting, room, slipperPair, sticker, teddy, wallClock } from './shapes.ts'
 
 /** Toy drum with sticks; (x, y) = bottom center. Bounds: x ±40, y from −78 to 0. */
 const drum = (x: number, y: number) =>
@@ -32,15 +33,11 @@ const toyTrain = (x: number, y: number) =>
   `<path d="M${x + 80} ${y - 26}h20M${x + 180} ${y - 26}h20" stroke="#3d4a55" stroke-width="4"/>` +
   [x + 20, x + 60, x + 120, x + 160, x + 220, x + 260].map((cx) => `<circle cx="${cx}" cy="${y - 8}" r="8" fill="#3d3d3d"/>`).join('')
 
-/** Sticker star on the wall; (x, y) = center. */
-const sticker = (x: number, y: number, color: string) =>
-  `<path d="M${x} ${y - 14}l4 9h10l-8 6l3 10l-9 -6l-9 6l3 -10l-8 -6h10Z" fill="${color}"/>`
-
 export default memoryLevel({
   id: 320,
   title: 'memoryToyShelf',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(470, '#e6dcff', '#c98f5a') +
     sticker(50, 80, '#ffd23f') +
     sticker(60, 300, '#ff6b8b') +
@@ -64,5 +61,28 @@ export default memoryLevel({
     // Bottom shelf
     toyTrain(150, 460) +
     books(500, 460, ['#ff6b8b', '#4dabf7', '#ffd23f']) +
-    `<rect x="580" y="410" width="90" height="50" rx="4" fill="#8ac926"/><path d="M590 420h20v20h-20ZM620 420h20v20h-20ZM650 420h10v20h-10Z" fill="#ffffff" fill-opacity="0.5"/>`,
+    // Decor: small things that fill the room, the same in both pictures
+    cube(250, 30, 24, '#e63946') +
+    cube(560, 30, 24, '#3fa46f') +
+    alien(645, 170, '#8ac926') +
+    cube(455, 460, 22, '#3a86ff') +
+    cube(555, 460, 30, '#ff6b8b') +
+    painting(20, 150, 50, 60, '#3a86ff') +
+    sticker(30, 250, '#8ac926') +
+    wallClock(50, 400, 26, '#ffb703') +
+    kite(760, 200, '#ff6b8b') +
+    sticker(780, 300, '#ff6b8b') +
+    painting(715, 390, 60, 50, '#8ac926') +
+    ball(40, 495, '#ffd23f') +
+    slipperPair(300, 485, '#ff6b8b') +
+    cube(620, 495, 20, '#3a86ff') +
+    cube(760, 495, 24, '#ffd23f') +
+    `<rect x="580" y="410" width="90" height="50" rx="4" fill="#8ac926"/><path d="M590 420h20v20h-20ZM620 420h20v20h-20ZM650 420h10v20h-10Z" fill="#ffffff" fill-opacity="0.5"/>` +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['frame', 71, 68, '#e63946'],
+      ['sticker', 728, 100, '#ff6b8b'],
+      ['frame', 70, 281, '#e63946'],
+      ['sticker', 723, 299, '#ff6b8b'],
+    ]),
 })

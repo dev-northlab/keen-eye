@@ -24,6 +24,8 @@ const MIN_VISIBLE_PX = 40
 /** The hidden key shows at least this many pixels, and at most this share of itself: part of it is covered. */
 const SECRET_MIN_VISIBLE_PX = 25
 const SECRET_MAX_SHOWN = 0.75
+/** Extra objects of hard mode keep at least this far from the zones, the key and the traps. */
+const EXTRA_GAP = 20
 
 type Zone = { x: number; y: number; r: number }
 
@@ -147,6 +149,43 @@ function checkSecret(level: Level, scene: SceneSvg, errors: string[]) {
     errors.push(`the secret key is too easy: ${shown} of its ${whole} px show, cover at least ${Math.round((1 - SECRET_MAX_SHOWN) * 100)}%`)
 }
 
+/**
+ * Extra objects of hard mode (docs/hard-mode-extra-objects.md): each stays inside the picture, clear of the key,
+ * the traps and the other extras, shows, and draws nothing outside its circle (the hard picture against the
+ * normal one at the sampled times). Their gap to the zones over time is checked with the zones.
+ */
+function checkExtras(level: Level, a: SceneSvg, aHard: SceneSvg, report: Report, errors: string[]) {
+  const extras = level.extras!
+  const { w, h } = level.viewBox
+  const clear = (e: Zone, o: Zone) => Math.hypot(e.x - o.x, e.y - o.y) >= e.r + o.r + EXTRA_GAP
+  extras.forEach((e, i) => {
+    if (e.x - e.r < 0 || e.y - e.r < 0 || e.x + e.r > w || e.y + e.r > h) errors.push(`extra #${i} goes outside the ${w}×${h} viewBox`)
+    if (level.secret && !clear(e, level.secret)) errors.push(`extra #${i} is closer than ${EXTRA_GAP} to the secret key`)
+    ;(level.traps ?? []).forEach((t, j) => clear(e, t) || errors.push(`extra #${i} is closer than ${EXTRA_GAP} to trap #${j}`))
+    for (let j = i + 1; j < extras.length; j++)
+      if (Math.hypot(e.x - extras[j].x, e.y - extras[j].y) < e.r + extras[j].r) errors.push(`extras #${i} and #${j} overlap`)
+  })
+  // The extras may move on a level that is otherwise still.
+  const times = aHard.animations.length > 0 ? PIXEL_TIMES_S : [0]
+  const shown = extras.map(() => 0)
+  for (const t of times) {
+    const pa = rasterize(posedSvg(a, t), w, h).pixels
+    const px = rasterize(posedSvg(aHard, t), w, h).pixels
+    let outside = 0
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        const k = (y * w + x) * 4
+        if (Math.abs(pa[k] - px[k]) + Math.abs(pa[k + 1] - px[k + 1]) + Math.abs(pa[k + 2] - px[k + 2]) <= PIXEL_THRESHOLD) continue
+        const i = extras.findIndex((e) => (x + 0.5 - e.x) ** 2 + (y + 0.5 - e.y) ** 2 <= (e.r + ZONE_TOLERANCE_PX) ** 2)
+        if (i >= 0) shown[i]++
+        else outside++
+      }
+    }
+    if (outside > 0) report('extra objects draw outside their circles', `${outside} px, t=${t}s`)
+  }
+  shown.forEach((n, i) => n < MIN_VISIBLE_PX * times.length && errors.push(`extra #${i} hardly shows (${n} px over ${times.length} samples)`))
+}
+
 type Report = (problem: string, detail: string) => void
 
 function check(level: Level, expectedId: number): { errors: string[]; motion: number } {
@@ -211,10 +250,21 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
         }
         const s = level.secret
         if (s && Math.hypot(z.x - s.x, z.y - s.y) < z.r + s.r) report(`the secret key overlaps zone #${i}`, when)
+        ;(level.extras ?? []).forEach((e, j) => {
+          if (Math.hypot(z.x - e.x, z.y - e.y) < z.r + e.r + EXTRA_GAP) report(`extra #${j} is closer than ${EXTRA_GAP} to zone #${i}`, when)
+        })
       })
     })
   }
   if (level.secret) checkSecret(level, b, errors)
+  if (level.extras) {
+    if (timed) errors.push('no extra objects on "time" levels yet (docs/hard-mode-extra-objects.md)')
+    const aHard = level.build(0, 0, true)
+    if (JSON.stringify(aHard) !== JSON.stringify(level.build(0, 0, true))) errors.push('build(0, 0, true) is not deterministic')
+    checkExtras(level, a, aHard, report, errors)
+    // The extras are the same in both pictures: A and B still differ only in the zones.
+    comparePixels(level, aHard, level.build(1, 1, true), pictures, report)
+  }
 
   if (timed) {
     // The moments change the whole picture: differences are compared at B's moment, traps at A's.

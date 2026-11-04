@@ -1,6 +1,7 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { cat } from '../time/shapes.ts'
-import { around, big, books, cup, curtains, painting, pottedPlant, room, rug, wallClock, windowPane } from './shapes.ts'
+import { ball, cat, pot } from '../time/shapes.ts'
+import { around, big, books, cup, curtains, flowerVase, glassJar, mug, painting, pillow, pottedPlant, room, rug, shelf, slipperPair, tableLamp, wallClock, windowPane } from './shapes.ts'
 
 /** Sofa; (x, y) = floor under the middle, w wide. Bounds: x ±(w/2 + 20), y from −130 to 0. */
 const sofa = (x: number, y: number, w: number, color: string) =>
@@ -55,7 +56,7 @@ export default memoryLevel({
   id: 316,
   title: 'memoryLivingRoom',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(330, '#cfe3c8', '#b98b5e') +
     stripes(322) +
     windowPane(30, 50, 100, 110) +
@@ -77,5 +78,28 @@ export default memoryLevel({
     books(340, 400, ['#3a86ff', '#e63946']) +
     cup(425, 400, '#ffb703') +
     pottedPlant(60, 480) +
-    diff(...around(527, 385, 673, 450), big(560, 450, 1.8, cat(0, 0, '#8d99ae', true)), big(640, 450, 1.8, cat(0, 0, '#8d99ae', true))),
+    // Decor: small things that fill the room, the same in both pictures
+    pot(80, 166, '#3a86ff') +
+    painting(165, 30, 40, 50, '#3a86ff') +
+    painting(30, 210, 50, 40, '#3fa46f') +
+    shelf(20, 280, 120) +
+    mug(50, 280, '#e63946') +
+    flowerVase(100, 280, '#3a86ff') +
+    glassJar(125, 280, '#3fa46f', '#ff9f43') +
+    painting(535, 180, 40, 50, '#ffb703') +
+    big(740, 40, 0.35, tableLamp(0, 0, '#ff6b8b')) +
+    pot(235, 360) +
+    pillow(240, 380, '#3fa46f') +
+    ball(150, 470, '#ff6b8b') +
+    slipperPair(250, 470, '#8338ec') +
+    big(450, 490, 0.6, books(0, 0, ['#3fa46f', '#ffb703'])) +
+    pot(780, 480) +
+    diff(...around(527, 385, 673, 450), big(560, 450, 1.8, cat(0, 0, '#8d99ae', true)), big(640, 450, 1.8, cat(0, 0, '#8d99ae', true))) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['books', 732, 471, '#3fa46f'],
+      ['ball', 202, 384, '#e63946'],
+      ['cube', 484, 390, '#ffb703'],
+      ['slippers', 104, 471, '#3a86ff'],
+    ]),
 })

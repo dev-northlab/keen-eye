@@ -1,12 +1,14 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { sun } from '../shapes.ts'
+import { cloud, hen, sun, sunflower } from '../shapes.ts'
 import { around, birdhouse, cabbage, carrotPlant, daySky, hills, scarecrow, strawHat, wateringCan, wheelbarrow } from './shapes.ts'
+import { bird, birds, bucket, butterfly, flowers, grass, rabbit, stones } from '../time/shapes.ts'
 
 export default memoryLevel({
   id: 306,
   title: 'memoryGarden',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(300) +
     sun(380, 70) +
     hills(240, '#a5d67a') +
@@ -25,5 +27,27 @@ export default memoryLevel({
     carrotPlant(190, 410) +
     diff(...around(104, 370, 276, 424), carrotPlant(260, 410), '') +
     wheelbarrow(420, 490, '#8d99ae') +
-    diff(...around(494, 376, 662, 440), wateringCan(540, 440, '#ffb703'), wateringCan(600, 440, '#ffb703')),
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(500, 60, 0.6) +
+    cloud(740, 60, 0.5) +
+    birds(300, 150) +
+    butterfly(480, 200) +
+    grass(280, 310) +
+    flowers(320, 300, '#ff6b8b') +
+    flowers(380, 290, '#ffd23f') +
+    bucket(440, 300) +
+    sunflower(740, 320, 40) +
+    sunflower(780, 330, 50) +
+    bird(760, 250, '#e63946') +
+    hen(750, 450) +
+    grass(30, 340) +
+    stones(40, 380) +
+    rabbit(30, 470) +
+    diff(...around(494, 376, 662, 440), wateringCan(540, 440, '#ffb703'), wateringCan(600, 440, '#ffb703')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['flower', 373, 418, '#ffffff'],
+      ['stones', 64, 484],
+      ['birds', 373, 170],
+    ]),
 })

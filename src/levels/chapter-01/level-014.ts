@@ -1,4 +1,5 @@
 // Motion difference: the swing is out of sync between the pictures (different phase).
+import { extras } from '../extras.ts'
 import type { AnimSpec } from '../helpers.ts'
 import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
@@ -41,7 +42,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'swing',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 380 + rand() * 115)
     let flowers = ''
@@ -75,7 +76,20 @@ export default svgLevel({
       butterfly(450, 380) +
       stones(650, 470) +
       flowerPot(240, 420) +
-      wateringCan(80, 385)
+      wateringCan(80, 385) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ladybug', 90, 427],
+        ['mushroom', 706, 406],
+        ['chick', 326, 431],
+        ['grass', 510, 471],
+        ['horseshoe', 454, 333],
+        ['eggNest', 183, 402],
+        ['butterfly', 615, 460],
+        ['butterfly', 729, 99],
+        ['cloud', 304, 71],
+        ['birds', 64, 277],
+      ])
     )
   },
 })

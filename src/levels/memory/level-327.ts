@@ -1,6 +1,9 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { cloud } from '../shapes.ts'
+import { cloud, grass, sheep } from '../shapes.ts'
 import { around, big, hills } from './shapes.ts'
+import { cone } from '../chapter-02/shapes.ts'
+import { birds, bush, flagPole, roadSign } from '../time/shapes.ts'
 
 /** Hot air balloon with stripes; envelope center at the origin. Bounds: x ±50, y from −58 to +100. */
 const hotAirBalloon = (a: string, b: string) =>
@@ -19,7 +22,7 @@ export default memoryLevel({
   id: 327,
   title: 'memoryAirfield',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     `<rect width="800" height="390" fill="#bfe6f7"/>` +
     big(330, 300, 0.9, cloud(0, 0)) +
     diff(...around(570, 31, 670, 97), big(620, 75, 1, cloud(0, 0)), '') +
@@ -40,5 +43,28 @@ export default memoryLevel({
       '',
       `<rect x="618" y="330" width="4" height="100" fill="#5c677d"/><path d="M622 336L680 344V356L622 364Z" fill="#ff9f1c"/><path d="M640 338.5V361.5M660 341V359" stroke="#ffffff" stroke-width="6"/>`,
     ) +
-    diff(...around(346, 390, 490, 442), plane(420, 440, '#ffffff'), plane(420, 440, '#ffd23f')),
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(25, 40, 0.4) +
+    cloud(575, 220, 0.4) +
+    cloud(760, 160, 0.4) +
+    birds(280, 60) +
+    birds(500, 290) +
+    big(760, 80, 0.4, hotAirBalloon('#ff6b8b', '#ffffff')) +
+    big(275, 200, 0.35, hotAirBalloon('#ffb703', '#3a86ff')) +
+    flagPole(770, 430, '#e63946') +
+    bush(20, 400, 0.7) +
+    cone(270, 410) +
+    cone(300, 410) +
+    grass(30, 495) +
+    grass(290, 490) +
+    big(540, 485, 0.4, sheep(0, 0)) +
+    roadSign(770, 495) +
+    diff(...around(346, 390, 490, 442), plane(420, 440, '#ffffff'), plane(420, 440, '#ffd23f')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['birds', 52, 277],
+      ['cloud', 571, 277],
+      ['balloon', 251, 256, '#3a86ff'],
+      ['butterfly', 708, 474],
+    ]),
 })

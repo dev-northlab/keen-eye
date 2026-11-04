@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, ball, bareTree, bench, bike, bin, birds, icicles, oak, pane, person, signBoard, sky, small, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
+import { around, ball, bareTree, bench, bike, bin, bird, birds, bush, cloud, cone, flowers, icicles, oak, pane, person, pigeon, signBoard, sky, small, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
 
 /** Hopscotch drawn in chalk; (x, y) = center. Bounds: x ±30, y ±40. */
 const hopscotch = (x: number, y: number) =>
@@ -49,6 +49,26 @@ export default svgLevel({
       trap(530, 373, 29, small(530, 400, person(530, 400, '#ff6b8b')), small(530, 400, winterPerson(530, 400, '#8338ec')), 'clothes') +
       trap(760, 432, 40, '', snowman(760, 474), 'snowman') +
       trap(300, 60, 32, birds(300, 60), '', 'birds') +
+      // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+      cloud(150, 60, 0.6) +
+      cloud(480, 60, 0.6) +
+      bird(160, 112) +
+      bird(520, 112, '#e63946') +
+      bush(120, 320, 0.8) +
+      bush(260, 320, 0.8) +
+      bush(500, 320, 0.8) +
+      bush(700, 320, 0.8) +
+      time('', snowCap(104, 301, 32) + snowCap(244, 301, 32) + snowCap(484, 301, 32) + snowCap(684, 301, 32)) +
+      bin(230, 380) +
+      time('', snowCap(220, 352, 20)) +
+      bench(740, 380) +
+      time('', snowCap(710, 350, 60)) +
+      pigeon(560, 440) +
+      bench(100, 490, '#e63946') +
+      time('', snowCap(70, 460, 60)) +
+      cone(30, 490) +
+      cone(580, 490) +
+      time(flowers(450, 380, '#ffd23f'), '') +
       time('', snowfall(221, 320, 44))
     )
   },

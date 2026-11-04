@@ -1,6 +1,7 @@
 // Motion differences: one bunting flag flutters only on picture B; the blue balloon bobs faster on B.
 import { awning, person } from '../chapter-02/shapes.ts'
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, chick, cloud, flowerPot, grass, hayBale, milkCan, stones } from '../shapes.ts'
 
@@ -52,7 +53,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'harvestFair',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const colors = ['#e63946', '#ffb703', '#3a86ff', '#8ac926', '#ff6b8b']
     // Bunting along a sagging string; the flag at x = 400 is the motion difference.
     const sag = (x: number) => 40 + 30 * Math.sin((x / 800) * Math.PI)
@@ -123,7 +124,15 @@ export default svgLevel({
       milkCan(520, 470) +
       bird(100, 178) +
       stones(275, 415) +
-      flowerPot(780, 480)
+      flowerPot(780, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['mushroom', 68, 282],
+        ['chick', 541, 364],
+        ['grass', 274, 334],
+        ['birds', 86, 105],
+        ['butterfly', 299, 127],
+      ])
     )
   },
 })

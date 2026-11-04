@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { bareTree, bench, birdHouse, cabin, chimney, mushroom, oak, pane, pine, pineSnow, rock, roofSnow, signpost, sky, smoke, snowCap, snowfall, stump, winterSky } from './shapes.ts'
+import { bareTree, bench, bird, birdHouse, bush, cabin, chimney, cloud, fern, grass, hedgehog, lilyPad, logPile, mushroom, oak, pane, pine, pineSnow, rabbit, reeds, rock, roofSnow, signpost, sky, smoke, snowCap, snowfall, stones, stump, winterSky } from './shapes.ts'
 
 /** Height of the bridge deck (a curve from x 330 to 470) at x. */
 const deckY = (x: number) => {
@@ -58,6 +58,23 @@ export default svgLevel({
       diff(620, 460, 34, bench(620, 475), bench(620, 475, '#2f6e8c')) +
       time('', snowCap(588, 442, 64)) +
       rock(730, 470, 1.3) +
+      // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+      cloud(300, 70, 0.6) +
+      cloud(520, 110, 0.4) +
+      pine(30, 320, 0.6) +
+      time('', pineSnow(30, 320, 0.6)) +
+      bush(260, 290, 0.8) +
+      time('', snowCap(243, 270, 34)) +
+      logPile(330, 300) +
+      time('', snowCap(315, 268, 30)) +
+      rabbit(375, 320) +
+      bird(560, 305, '#e63946') +
+      reeds(290, 360) +
+      time(fern(220, 330) + lilyPad(260, 380, '#ff6b8b') + lilyPad(560, 395), '') +
+      stump(740, 440) +
+      time('', snowCap(726, 420, 28)) +
+      time(hedgehog(780, 450, true), '') +
+      time(grass(150, 480) + stones(420, 480), '') +
       time('', snowfall(214, 270, 40))
     )
   },

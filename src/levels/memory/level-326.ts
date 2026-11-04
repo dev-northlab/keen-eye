@@ -1,6 +1,8 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { duck } from '../shapes.ts'
-import { around, pottedPlant } from './shapes.ts'
+import { bucket, duck } from '../shapes.ts'
+import { around, bottle, glassJar, painting, pottedPlant, shelf, slipperPair } from './shapes.ts'
+import { pot } from '../time/shapes.ts'
 
 /** Shampoo bottle; (x, y) = bottom center. Bounds: x ±13, y from −54 to 0. */
 const shampoo = (x: number, y: number, color: string) =>
@@ -35,7 +37,7 @@ export default memoryLevel({
   id: 326,
   title: 'memoryBathroom',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     `<rect width="800" height="340" fill="#d6eef8"/><rect y="340" width="800" height="160" fill="#c9d6df"/>` +
     tiles(340) +
     // Shower and tub
@@ -62,5 +64,29 @@ export default memoryLevel({
     diff(...around(150, 424, 250, 460), mat('#4dabf7'), mat('#ff6b8b')) +
     diff(...around(414, 444, 486, 466), slippers(450, 455), '') +
     `<path d="M520 420h80l-6 60h-68Z" fill="#d9b48a"/><path d="M528 440h64M530 460h60" stroke="#a0703f" stroke-width="3"/>` +
-    pottedPlant(750, 480),
+    // Decor: small things that fill the room, the same in both pictures
+    painting(20, 30, 36, 44, '#4dabf7') +
+    shelf(10, 170, 140) +
+    bottle(30, 170, '#ff6b8b') +
+    glassJar(60, 170, '#4dabf7', '#ffffff') +
+    painting(334, 30, 30, 40, '#3fa46f') +
+    bottle(40, 270, '#ffd23f') +
+    painting(745, 40, 40, 50, '#ff6b8b') +
+    shelf(740, 170, 55) +
+    bottle(758, 170, '#8338ec') +
+    glassJar(782, 170, '#ff6b8b', '#ffffff') +
+    slipperPair(60, 470, '#ff6b8b') +
+    bucket(100, 490, '#4dabf7') +
+    pot(330, 490) +
+    bucket(540, 395, '#3fa46f') +
+    slipperPair(640, 380, '#3fa46f') +
+    pottedPlant(750, 480) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['ball', 383, 370, '#ffb703'],
+      ['cube', 612, 471, '#3a86ff'],
+      ['slippers', 50, 424, '#ff6b8b'],
+      ['frame', 108, 222, '#c9953f'],
+      ['frame', 602, 73, '#3fa46f'],
+    ]),
 })

@@ -1,4 +1,5 @@
 // Motion differences: the snail crawls faster on picture B; the frog hops only on B; the chimney smoke rises faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, bluebells, fern, floor, frog, hedgehog, lantern, leafPile, mushroom, oak, pine, pineCone, rock } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'mushrooms',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const crawling = (period: number) => anim({ id: 'snail', type: 'path', points: [[0, 0], [60, 0]], period }, snail(560, 480))
     const sitting = frog(180, 440)
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -14]], period }, smoke(399, 340))
@@ -76,7 +77,20 @@ export default svgLevel({
       acorn(215, 432) +
       pineCone(380, 488) +
       leafPile(510, 432) +
-      bluebells(700, 352)
+      bluebells(700, 352) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bluebells', 286, 331],
+        ['hedgehog', 106, 361],
+        ['acorn', 701, 320],
+        ['wildStrawberry', 542, 361],
+        ['leafPile', 324, 439],
+        ['butterfly', 487, 464],
+        ['squirrel', 203, 372],
+        ['feather', 636, 356],
+        ['frog', 475, 360],
+        ['pineCone', 536, 419],
+      ])
     )
   },
 })

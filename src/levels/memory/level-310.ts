@@ -1,7 +1,9 @@
-import { fireLogs, flame, mushroom, pine, tent } from '../chapter-03/shapes.ts'
+import { fern, fireLogs, flame, hedgehog, mushroom, pine, rabbit, squirrel, stump, tent } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
-import { sun } from '../shapes.ts'
+import { cloud, sun } from '../shapes.ts'
 import { around, backpack, big, daySky } from './shapes.ts'
+import { birds, bucket, lilyPad, logPile, stones } from '../time/shapes.ts'
 
 /** Canoe on the water; (x, y) = waterline center. Bounds: x ±70, y from −16 to +12. */
 const canoe = (x: number, y: number) =>
@@ -12,7 +14,7 @@ export default memoryLevel({
   id: 310,
   title: 'memoryCamp',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(240) +
     sun(120, 70) +
     pine(330, 250, 1.4) +
@@ -25,5 +27,27 @@ export default memoryLevel({
     big(470, 430, 1.8, fireLogs(0, 0) + flame(0, 0)) +
     diff(...around(352, 420, 408, 480), '', big(380, 480, 2, mushroom(0, 0))) +
     pine(80, 480, 1.5) +
-    diff(...around(570, 384, 700, 460), backpack(600, 460, '#8338ec'), backpack(670, 460, '#8338ec')),
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(240, 60, 0.6) +
+    cloud(660, 60, 0.6) +
+    birds(560, 130) +
+    rabbit(60, 290) +
+    fern(100, 290) +
+    mushroom(30, 300, '#ff9f43') +
+    stones(160, 490) +
+    hedgehog(420, 300) +
+    logPile(500, 345) +
+    bucket(480, 480) +
+    lilyPad(500, 270) +
+    lilyPad(760, 280, '#ffffff') +
+    squirrel(770, 350, true) +
+    logPile(770, 400) +
+    stump(770, 470) +
+    diff(...around(570, 384, 700, 460), backpack(600, 460, '#8338ec'), backpack(670, 460, '#8338ec')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['wildStrawberry', 427, 346],
+      ['mushroom', 736, 366],
+      ['cloud', 122, 197],
+    ]),
 })

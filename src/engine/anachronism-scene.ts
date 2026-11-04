@@ -14,8 +14,8 @@ import {
   removeHintMarks,
   type Picture,
 } from './render.ts'
-import { computeStars, LOCK_MS, MissGuard } from './rules.ts'
-import type { AnachronismLevel, LevelResult } from './types.ts'
+import { computeStars, LOCK_MS, MissGuard, type StarInput } from './rules.ts'
+import type { AnachronismLevel, LevelResult, Stars } from './types.ts'
 import { Viewport } from './zoom.ts'
 
 /** Double tap zoom factor. */
@@ -32,13 +32,19 @@ export interface AnachronismHandlers {
   /** A hint is shown (true) or its item was found (false). */
   onHint?: (active: boolean) => void
   onComplete?: (result: LevelResult) => void
+  /** `AnachronismOptions.maxMistakes` reached (hard mode): the level is lost; `stars` mean nothing. */
+  onFail?: (result: LevelResult) => void
 }
 
 export interface AnachronismOptions {
   /** Animation time multiplier: 1 = normal, < 1 = softer motion (reduced motion, calm mode). */
   animationSpeed?: number
-  /** Anti-spam lock after quick misses (off in calm mode). Default true. */
+  /** Anti-spam lock after quick misses (off in calm and hard mode). Default true. */
   missLock?: boolean
+  /** The level is lost at this many mistakes (hard mode). Default Infinity. */
+  maxMistakes?: number
+  /** Star rule of the mode (ModeRules.stars). Default computeStars. */
+  stars?: (p: StarInput) => Stars
 }
 
 /**
@@ -51,6 +57,8 @@ export class AnachronismScene {
   private readonly handlers: AnachronismHandlers
   private readonly animationSpeed: number
   private readonly missLock: boolean
+  private readonly maxMistakes: number
+  private readonly stars: (p: StarInput) => Stars
   private readonly round: AnachronismRound
   private readonly picture: Picture
   /** Item circles in image pixels: found, hint and reveal marks. */
@@ -86,6 +94,8 @@ export class AnachronismScene {
     this.handlers = handlers
     this.animationSpeed = options.animationSpeed ?? 1
     this.missLock = options.missLock ?? true
+    this.maxMistakes = options.maxMistakes ?? Infinity
+    this.stars = options.stars ?? computeStars
     this.round = new AnachronismRound(level)
     const size = { w: level.width, h: level.height }
     this.zones = level.items.map((s) => shapeCircle(s, size))
@@ -215,6 +225,11 @@ export class AnachronismScene {
     this.mistakes++
     addMissMark(this.picture, (miss.x * this.level.width) / 100, (miss.y * this.level.height) / 100, this.viewport.scale)
     this.handlers.onMiss?.(this.mistakes)
+    if (this.mistakes >= this.maxMistakes) {
+      this.done = true
+      this.handlers.onFail?.(this.result())
+      return
+    }
     if (this.missLock && this.guard.miss(performance.now())) {
       this.handlers.onLock?.(true)
       this.lockTimer = window.setTimeout(() => this.handlers.onLock?.(false), LOCK_MS)
@@ -223,13 +238,12 @@ export class AnachronismScene {
 
   private complete(): void {
     this.done = true
+    this.handlers.onComplete?.(this.result())
+  }
+
+  private result(): LevelResult {
     const timeSec = Math.floor(this.elapsedMs / 1000)
     const { mistakes, hintsUsed } = this
-    this.handlers.onComplete?.({
-      timeSec,
-      mistakes,
-      hintsUsed,
-      stars: computeStars({ timeSec, parTimeSec: this.level.parTimeSec, mistakes, hintsUsed }),
-    })
+    return { timeSec, mistakes, hintsUsed, stars: this.stars({ timeSec, parTimeSec: this.level.parTimeSec, mistakes, hintsUsed }) }
   }
 }

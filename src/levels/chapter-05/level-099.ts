@@ -1,4 +1,5 @@
 // Motion differences: the robot head rides the belt faster on picture B; the ceiling arm swings faster on B; the warning light flashes faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beacon, fuelCanister, probe, robot, toolbox, wrench } from './shapes.ts'
 
@@ -28,7 +29,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'robotFactory',
   parTimeSec: 140,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const riding = (period: number) => anim({ id: 'head', type: 'path', points: [[0, 0], [200, 0]], period }, head(300, 360))
     const swinging = (period: number) => anim({ type: 'sway', angle: 10, pivot: [620, 56], period }, arm)
     const flashing = (period: number) =>
@@ -70,7 +71,20 @@ export default svgLevel({
       wrench(440, 460) +
       fuelCanister(500, 474) +
       probe(420, 270) +
-      beacon(780, 472)
+      beacon(780, 472) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['toolbox', 192, 323],
+        ['helmet', 741, 313],
+        ['fuelCanister', 564, 316],
+        ['probe', 319, 215],
+        ['wrench', 53, 238],
+        ['toolbox', 83, 82],
+        ['helmet', 421, 89],
+        ['fuelCanister', 469, 460],
+        ['probe', 235, 101],
+        ['wrench', 286, 423],
+      ])
     )
   },
 })

@@ -1,6 +1,7 @@
 // Motion differences: a wasp by the basket hovers faster on picture B; a cherry pair swings only on B.
 import { person } from '../chapter-02/shapes.ts'
 import { bird, butterfly, hedgehog, mushroom, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cloud, grass, snail } from '../shapes.ts'
 
@@ -47,8 +48,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'fruitGarden',
   parTimeSec: 75,
-  hintLimit: 2,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let farTrees = ''
     for (let x = 20; x < 800; x += 46) farTrees += `<rect x="${x - 2}" y="226" width="4" height="14" fill="#8a6a4a"/><circle cx="${x}" cy="218" r="14" fill="#86c26a"/>`
     let tufts = ''
@@ -102,7 +102,15 @@ export default svgLevel({
       mushroom(500, 480) +
       snail(675, 490) +
       butterfly(580, 330) +
-      stump(300, 395)
+      stump(300, 395) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ladybug', 52, 359],
+        ['mushroom', 358, 369],
+        ['chick', 584, 362],
+        ['birds', 258, 106],
+        ['butterfly', 736, 60],
+      ])
     )
   },
 })

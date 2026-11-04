@@ -1,4 +1,5 @@
 // Motion differences: the cow floats faster on picture B; the saucer lights blink faster on B; the weathervane spins only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cow, hayBale, sheep } from '../shapes.ts'
 import { alienPlant, crystal, fuelCanister, person, probe, starField, toolbox, ufo } from './shapes.ts'
@@ -11,7 +12,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'ufoFarm',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const floating = (period: number) => anim({ id: 'cow', type: 'bob', dx: 0, dy: 12, period }, `<g transform="translate(402 290) scale(0.6)">${cow(0, 0)}</g>`)
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.5, period }, lights)
 
@@ -45,7 +46,20 @@ export default svgLevel({
       crystal(500, 440) +
       probe(250, 250) +
       fuelCanister(775, 385) +
-      toolbox(340, 450)
+      toolbox(340, 450) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['pineCone', 666, 394],
+        ['leafPile', 422, 457],
+        ['hedgehog', 535, 479],
+        ['frog', 265, 345],
+        ['mushroom', 201, 471],
+        ['fern', 512, 386],
+        ['sparkle', 248, 175],
+        ['spaceStar', 747, 68],
+        ['sparkle', 445, 46],
+        ['spaceStar', 545, 174],
+      ])
     )
   },
 })

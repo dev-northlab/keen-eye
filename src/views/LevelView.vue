@@ -6,6 +6,7 @@ import ClueList from '../components/ClueList.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
 import LevelId from '../components/LevelId.vue'
+import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import SecretFound from '../components/SecretFound.vue'
 import ResultDialog from '../components/ResultDialog.vue'
@@ -13,6 +14,7 @@ import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
 import TravelFact from '../components/TravelFact.vue'
 import TreasureChest from '../components/TreasureChest.vue'
+import { MODE_RULES, type GameMode } from '../engine/rules.ts'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TREASURY_CHAPTER } from '../levels/chapters.ts'
@@ -51,9 +53,18 @@ const paused = ref(false)
 /** Settings opened from the pause menu, over the paused level. */
 const settingsOpen = ref(false)
 /** Mode of the current attempt (read when the level starts). */
-const calm = ref(false)
+const mode = ref<GameMode>('normal')
+const rules = computed(() => MODE_RULES[mode.value])
+const calm = computed(() => mode.value === 'calm')
+/** Hard mode: lost on too many mistakes; `result` then holds the attempt's numbers. */
+const failed = ref(false)
+/**
+ * "Play on hard" from the result: this level's attempts (retries included) are in hard mode until the
+ * screen is left, whatever the settings say.
+ */
+const hardChallenge = ref(false)
 const hintActive = ref(false)
-/** Normal mode hints taken in this attempt (some levels allow only a few, `Level.hintLimit`). */
+/** Hints taken in this attempt (the mode gives a few, `ModeRules.hints`). */
 const hintsUsed = ref(0)
 const animationFrozen = ref(false)
 /**
@@ -108,7 +119,8 @@ function start() {
   clearTimeout(secretTimer)
   secretShown.value = false
   result.value = null
-  calm.value = settings.calm
+  failed.value = false
+  mode.value = hardChallenge.value ? 'hard' : settings.mode
   playMusic(calm.value ? 'calm' : 'level')
   scene = new GameScene(
     board.value!,
@@ -125,7 +137,7 @@ function start() {
         playSfx('miss')
         vibrateMiss()
       },
-      onTrap: (i) => showNote(t(`timeMode.traps.${level.traps![i].hint}`)),
+      onTrap: (i) => rules.value.trapNotes && showNote(t(`timeMode.traps.${level.traps![i].hint}`)),
       onLock: (l) => (locked.value = l),
       onTick: (s) => (seconds.value = s),
       onZoom: (s) => (zoom.value = s),
@@ -135,31 +147,42 @@ function start() {
         newStamp.value = !!level.travel && !progress.isCompleted(level.id)
         result.value = r
         playMusic('complete')
-        if (calm.value) progress.recordCalmCompletion(level.id)
+        if (mode.value === 'calm') progress.recordCalmCompletion(level.id)
+        else if (mode.value === 'hard') progress.recordHardPass(level.id, r.stars)
         else progress.recordResult(level.id, r)
-        if (calm.value || r.stars === 3) askForReview(Object.keys(progress.records).length)
+        if (mode.value !== 'normal' || r.stars === 3) askForReview(Object.keys(progress.records).length)
+      },
+      onFail: (r) => {
+        failed.value = true
+        result.value = r
       },
     },
     {
       // Calm mode and "reduce motion" both slow the scene down.
-      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * (calm.value ? 0.6 : 1),
-      missLock: !calm.value,
+      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      missLock: rules.value.missLock,
+      maxMistakes: rules.value.maxMistakes,
+      stars: rules.value.stars,
+      extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
     },
   )
 }
 
-/** Hints this attempt can still take in normal mode: the pool, capped by the level's limit. */
-const hintsLeft = computed(() => Math.min(progress.hints, (level.hintLimit ?? Infinity) - hintsUsed.value))
-const canHint = computed(() => !result.value && !hintActive.value && (calm.value || hintsLeft.value > 0))
+/** Hints this attempt can still take (calm mode 3, normal 1, hard none). */
+const hintsLeft = computed(() => rules.value.hints - hintsUsed.value)
+const canHint = computed(() => !result.value && !hintActive.value && hintsLeft.value > 0)
 
-/** Calm mode hints are free; normal mode takes one from the shared pool (at most `hintLimit` per attempt). */
-async function showHint() {
+function showHint() {
   if (!canHint.value || !scene?.hint()) return
   playSfx('hint')
-  if (calm.value) return
   hintsUsed.value++
-  await progress.spendHint()
+}
+
+/** The same level again, in hard mode. */
+function playHard() {
+  hardChallenge.value = true
+  start()
 }
 
 function toggleAnimation() {
@@ -209,11 +232,19 @@ onBeforeUnmount(() => {
     <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
       <span class="title">
         {{ treasury ? $t('chapters.treasury') : $t('level.level', { n: number }) }}
+        <ModeChip :mode="mode" />
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
         <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>
       <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
-      <HudCounters v-if="!calm" :time="time" :mistakes="mistakes" :locked="locked" :still="settings.effectiveReduceMotion" />
+      <HudCounters
+        v-if="!calm"
+        :time="time"
+        :mistakes="mistakes"
+        :max-mistakes="rules.maxMistakes"
+        :locked="locked"
+        :still="settings.effectiveReduceMotion"
+      />
     </header>
 
     <div class="board" :class="{ locked }">
@@ -226,7 +257,13 @@ onBeforeUnmount(() => {
     </div>
 
     <footer class="toolbar">
-      <ToolButton tone="hint" :label="`${$t('level.hint')} ${calm ? '∞' : hintsLeft}`" :disabled="!canHint" @click="showHint">
+      <ToolButton
+        v-if="rules.hints !== 0"
+        tone="hint"
+        :label="`${$t('level.hint')} ${hintsLeft}`"
+        :disabled="!canHint"
+        @click="showHint"
+      >
         <svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </ToolButton>
       <!-- Developer mode (a checkbox in the developer tools): outlines all differences in red. -->
@@ -264,12 +301,15 @@ onBeforeUnmount(() => {
     <ResultDialog
       v-if="result"
       :result="result"
-      :calm="calm"
+      :mode="mode"
+      :failed="failed"
+      :offer-hard="mode === 'normal' && progress.hardStars(level.id) < 3"
       :time="time"
-      :has-next="!!nextLevel"
+      :has-next="!!nextLevel && (!failed || progress.isCompleted(level.id))"
       :share-text="treasury ? undefined : $t('share.level', { n: number })"
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
+      @hard="playHard"
       @menu="router.push(grid)"
     >
       <TravelFact v-if="level.travel" :level="level" :new-stamp="newStamp" />

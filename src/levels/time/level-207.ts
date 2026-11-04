@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { bareTree, bike, building, car, cityTree, door, hangingSign, hydrant, icicles, person, sky, snowCap, snowfall, street, winterPerson, winterSky } from './shapes.ts'
+import { bareTree, bench, bike, bird, bollard, building, car, cityTree, cloud, cone, curtainWindow, door, hangingSign, hydrant, icicles, person, pigeon, sky, snowCap, snowfall, street, winterPerson, winterSky } from './shapes.ts'
 
 /** Snow lying on the roof of a `car` (city shapes) at (x, y). Bounds: x from −14 to +30, y from −42 to −32. */
 const carSnow = (x: number, y: number) => `<path d="M${x - 14} ${y - 34}q2 -8 10 -8h20q10 0 14 8Z" fill="#ffffff"/>`
@@ -43,5 +43,24 @@ export default svgLevel({
     winterPerson(640, 348, '#2a9d8f', true) +
     car(680, 430, '#e63946') +
     trap(690, 392, 26, '', carSnow(680, 430), 'snow') +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    cloud(400, 60, 0.6) +
+    cloud(560, 40, 0.4) +
+    bird(200, 72) +
+    bird(700, 112, '#e63946') +
+    curtainWindow(320, 190) +
+    curtainWindow(390, 190, '#ffd23f') +
+    time('', snowCap(306, 205, 28) + snowCap(376, 205, 28)) +
+    bollard(30, 348) +
+    bench(740, 348) +
+    time('', snowCap(710, 318, 60)) +
+    bin(60, 490, '#3a86ff') +
+    bench(220, 492) +
+    time('', snowCap(190, 462, 60)) +
+    pigeon(290, 492) +
+    cone(420, 492) +
+    bollard(520, 492) +
+    pigeon(600, 492, true) +
+    bin(770, 490, '#5c8d5a') +
     time('', snowfall(207, 330, 34)),
 })

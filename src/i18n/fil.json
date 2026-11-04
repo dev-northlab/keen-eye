@@ -428,7 +428,11 @@
     "resetZoom": "I-reset ang zoom",
     "retry": "Subukan muli",
     "revealAll": "Ipakita ang mga lugar",
-    "time": "Oras: {t}"
+    "time": "Oras: {t}",
+    "failed": "Sobrang daming mali",
+    "failedHint": "Sa mahirap, natatapos ang level sa ika-{n} na mali",
+    "hardDone": "Natapos sa mahirap!",
+    "playHard": "Laruin sa mahirap"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Kalmado",
     "calmHint": "Walang timer, mali o bituin",
     "label": "Mode",
-    "normal": "Normal"
+    "normal": "Normal",
+    "hard": "Mahirap",
+    "hardHint": "Walang hint, 3 mali ang tatapos sa level, pulang bituin",
+    "hardStars": "Mahirap: {n}/3"
   },
   "pause": {
     "exit": "Bumalik sa menu",

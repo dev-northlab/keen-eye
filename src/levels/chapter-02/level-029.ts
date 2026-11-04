@@ -1,5 +1,6 @@
 // Motion differences: the swing swings faster on picture B; the pinwheel turns the other way on B.
 import { butterfly } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones } from '../shapes.ts'
 import { bench, cityTree, cloud, coffeeCup, grass, person, pigeon, scooter, skateboard, sun } from './shapes.ts'
@@ -40,7 +41,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'playground',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 330 + rand() * 160)
     const swinging = (period: number) => anim({ type: 'sway', angle: 18, pivot: [200, 240], period }, swing(200, 240))
@@ -80,7 +81,20 @@ export default svgLevel({
       skateboard(520, 482) +
       scooter(775, 480) +
       coffeeCup(575, 424) +
-      butterfly(390, 300)
+      butterfly(390, 300) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['birds', 530, 125],
+        ['cloud', 75, 73],
+        ['balloon', 330, 154, '#ffb703'],
+        ['bee', 314, 344],
+        ['flower', 53, 477, '#ff6b8b'],
+        ['stones', 638, 472],
+        ['snail', 146, 347],
+        ['flower', 484, 379, '#ff9f43'],
+        ['ladybug', 699, 323],
+        ['mushroom', 260, 462],
+      ])
     )
   },
 })

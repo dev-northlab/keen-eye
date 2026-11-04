@@ -1,4 +1,5 @@
 // Motion differences: the Moon circles the Earth faster on picture B; Jupiter's moon orbits only on B; the solar flare flashes faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { asteroid, comet, planet, probe, rocket, satellite, starField, wrench } from './shapes.ts'
 
@@ -9,7 +10,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'solarSystem',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const moon = (period: number) => anim({ id: 'moon', type: 'rotate', pivot: [307, 201], period }, `<circle cx="333" cy="201" r="5" fill="#d0d4de"/>`)
     const io = `<circle cx="553" cy="194" r="5" fill="#ffd166"/>`
     const flashing = (period: number) => anim({ type: 'blink', duty: 0.5, period }, flare)
@@ -48,7 +49,20 @@ export default svgLevel({
       rocket(320, 450, '#f1f1f1', '#3a86ff', 0.35) +
       satellite(690, 230) +
       asteroid(470, 470, 0.5) +
-      wrench(110, 470)
+      wrench(110, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['asteroid', 336, 112],
+        ['ufo', 695, 164],
+        ['spaceStar', 523, 442],
+        ['sparkle', 524, 55],
+        ['planet', 184, 44, '#9ef01a'],
+        ['asteroid', 538, 305],
+        ['sparkle', 697, 447],
+        ['probe', 98, 450],
+        ['spaceStar', 307, 362],
+        ['ringPlanet', 167, 156],
+      ])
     )
   },
 })

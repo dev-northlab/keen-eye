@@ -1,4 +1,5 @@
 // Motion differences: the school clock runs backwards on picture B; the ball bounces faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, bus, cityTree, cloud, door, mailbox, person, scooter, shoppingBag, skateboard, street, sun, window } from './shapes.ts'
 
@@ -39,7 +40,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'school',
   parTimeSec: 110,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const ticking = (reverse: boolean) => anim({ type: 'rotate', pivot: [400, 110], period: 12, reverse }, hands(400, 110))
     const bouncing = (period: number) => anim({ id: 'ball', type: 'bob', dx: 0, dy: 10, period }, ball(560, 420))
 
@@ -87,7 +88,20 @@ export default svgLevel({
       shoppingBag(545, 368) +
       scooter(150, 368) +
       skateboard(670, 368) +
-      mailbox(30, 368)
+      mailbox(30, 368) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['flowerBox', 321, 252, '#ffb703'],
+        ['flowerBox', 522, 326, '#ffb703'],
+        ['flowerBox', 484, 217, '#8338ec'],
+        ['cloud', 603, 101],
+        ['balloon', 731, 156, '#8ac926'],
+        ['birds', 277, 100],
+        ['pigeon', 109, 470],
+        ['cone', 682, 402],
+        ['pigeon', 245, 462],
+        ['pigeon', 56, 410],
+      ])
     )
   },
 })

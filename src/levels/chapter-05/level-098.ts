@@ -1,4 +1,5 @@
 // Motion differences: the rocket lands and lifts off faster on picture B; the pad beacon blinks faster on B; the tower radar turns only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { astronaut, flame, fuelCanister, helmet, moonPebbles, rocket, solarPanel, starField, toolbox, ufo } from './shapes.ts'
 
@@ -17,7 +18,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceport',
   parTimeSec: 140,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const landing = (period: number) =>
       anim({ id: 'lander', type: 'path', points: [[0, 0], [0, -120]], period }, rocket(330, 380, '#f1f1f1', '#e63946', 0.8) + flame(330, 380, 0.8))
     const beacon = (period: number) => anim({ type: 'blink', duty: 0.5, period }, `<circle cx="680" cy="410" r="9" fill="#ff6b6b" fill-opacity="0.4"/><circle cx="680" cy="410" r="5" fill="#ff3b3b"/>`)
@@ -61,7 +62,20 @@ export default svgLevel({
       toolbox(560, 474) +
       moonPebbles(165, 364) +
       helmet(730, 472) +
-      solarPanel(645, 356)
+      solarPanel(645, 356) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['probe', 413, 477],
+        ['wrench', 211, 411],
+        ['toolbox', 58, 407],
+        ['helmet', 736, 396],
+        ['fuelCanister', 488, 372],
+        ['probe', 220, 478],
+        ['sparkle', 558, 139],
+        ['spaceStar', 387, 111],
+        ['sparkle', 746, 154],
+        ['spaceStar', 80, 62],
+      ])
     )
   },
 })

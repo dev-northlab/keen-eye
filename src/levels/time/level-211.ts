@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { awning, dog, door, DUSK, glow, lampHead, lampPost, moon, pane, sky, stars, street, sun, window } from './shapes.ts'
+import { awning, bench, bin, bird, cloud, cone, dog, door, DUSK, flowerBox, glow, lampHead, lampPost, moon, pane, pigeon, poster, pot, roadSign, sky, stars, street, sun, window } from './shapes.ts'
 
 /** Tram, faces right; body from x0 to x0 + 250 standing on rails at y. Its windows are `tramWindows`. Bounds: x0…x0 + 250, y from −86 to 0. */
 const tram = (x0: number, y: number) =>
@@ -65,6 +65,22 @@ export default svgLevel({
       tramWindows(470, 452, '#bde3f2') +
       diff(705, 395, 20, `<circle cx="705" cy="395" r="10" fill="#ffd23f"/><path d="M702 390h5v10" stroke="#2b2b2b" stroke-width="2.5" fill="none"/>`,
         `<circle cx="705" cy="395" r="10" fill="#ffffff"/><path d="M701 390h7l-5 10" stroke="#2b2b2b" stroke-width="2.5" fill="none"/>`) +
+      // Decor: the same at both moments, darkened by the evening with the rest
+      cloud(330, 60, 0.5) +
+      cloud(600, 50, 0.6) +
+      bird(120, 133) +
+      poster(560, 270, 30, 40, '#ffb703') +
+      poster(720, 265, 30, 40, '#e63946') +
+      flowerBox(60, 356, '#ff6b8b') +
+      bin(250, 356) +
+      pigeon(300, 358) +
+      roadSign(545, 358) +
+      bench(600, 358) +
+      pot(760, 358) +
+      bin(60, 490, '#3a86ff') +
+      bench(200, 492, '#3a86ff') +
+      pigeon(260, 492, true) +
+      cone(360, 492) +
       time('', DUSK) +
       time('', tramWindows(470, 452, '#ffe08a') + glow(328, 284, 112, 42)) +
       trap(150, 250, 34, lampHead(150, 350, false), lampHead(150, 350, true), 'lights') +

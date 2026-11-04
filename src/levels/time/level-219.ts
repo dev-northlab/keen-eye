@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { around, bareTree, buoy, canoe, chimney, door, duck, house, kennel, lifeRing, mountains, oak, pane, person, pier, pine, pineSnow, pond, roofSnow, sky, small, smoke, snowfall, snowman, vane, winterPerson, winterSky } from './shapes.ts'
+import { around, bareTree, bird, bucket, buoy, canoe, chimney, cloud, door, duck, grass, house, kennel, lifeRing, lilyPad, logPile, mountains, oak, pane, person, pier, pine, pineSnow, pond, reeds, rock, roofSnow, sky, small, smoke, snowCap, snowfall, snowman, squirrel, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
 /** Picnic table; (x, y) = ground center. Bounds: x ±30, y from −30 to 0. */
 const picnicTable = (x: number, y: number, color: string) =>
@@ -50,6 +50,24 @@ export default svgLevel({
       trap(400, 430, 44, '', snowman(400, 474), 'snowman') +
       trap(560, 436, 38, person(560, 474, '#ff9f43'), winterPerson(560, 474, '#3a86ff', false, '#2a9d8f'), 'clothes') +
       small(640, 480, person(640, 480, '#ffd23f', true)) +
+      // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+      cloud(400, 60, 0.6) +
+      cloud(650, 100, 0.4) +
+      cloud(250, 120, 0.4) +
+      bird(40, 278) +
+      squirrel(330, 262) +
+      reeds(440, 275) +
+      reeds(560, 272) +
+      time(lilyPad(250, 295, '#ff6b8b') + lilyPad(400, 340) + lilyPad(660, 300, '#ffffff'), '') +
+      logPile(30, 480) +
+      time('', snowCap(15, 448, 30)) +
+      bucket(170, 490) +
+      time('', snowCap(154, 464, 32)) +
+      rock(740, 490, 0.9) +
+      time('', snowCap(727, 476, 26)) +
+      stump(778, 470) +
+      time('', snowCap(764, 450, 28)) +
+      time(grass(90, 490), '') +
       time('', snowfall(219, 260, 40))
     )
   },

@@ -1,4 +1,5 @@
 // Motion differences: the lifeguard flag flaps faster on picture B; the swimmer bobs faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { castleFlag, cloud, coconut, crab, flipFlops, gull, person, sailboat, sandcastle, shell, snorkelMask, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
@@ -34,7 +35,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'umbrellaBeach',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand, secret }) => {
+  scene: ({ diff, anim, rand, secret, extra }) => {
     let sand = ''
     for (let i = 0; i < 24; i++) sand += `<ellipse cx="${(rand() * 800).toFixed(1)}" cy="${(280 + rand() * 214).toFixed(1)}" rx="5" ry="2" fill="#e0c47e"/>`
     let prints = ''
@@ -80,7 +81,15 @@ export default svgLevel({
       sunHat(522, 388) +
       sunglasses(680, 422) +
       coconut(530, 302) +
-      snorkelMask(145, 442)
+      snorkelMask(145, 442) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['clam', 734, 428],
+        ['flipFlops', 209, 394],
+        ['sunglasses', 570, 325],
+        ['fish', 270, 201, '#ff9f43'],
+        ['gull', 473, 88],
+      ])
     )
   },
 })

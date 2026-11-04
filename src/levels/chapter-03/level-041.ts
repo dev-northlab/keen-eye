@@ -1,4 +1,5 @@
 // Motion differences: the butterfly flutters faster on picture B; the bird hops only on B; the big flower sways faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bird, bluebells, butterfly, cloud, deer, floor, flower, FLOWER_COLORS, fox, log, mushroom, oak, pick, pine, pineCone, rabbit, rock, stump, sun, trailSign } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'clearing',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let flowers = ''
     for (let i = 0; i < 14; i++) flowers += flower(20 + rand() * 760, 400 + rand() * 90, pick(rand, FLOWER_COLORS))
     const fluttering = (period: number) =>
@@ -48,7 +49,20 @@ export default svgLevel({
       pineCone(30, 415) +
       anthill(510, 492) +
       acorn(640, 330) +
-      bluebells(765, 480)
+      bluebells(765, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['mushroom', 99, 286],
+        ['fern', 679, 388],
+        ['pineCone', 290, 402],
+        ['bluebells', 491, 470],
+        ['acorn', 146, 479],
+        ['wildStrawberry', 552, 282],
+        ['leafPile', 749, 287],
+        ['butterfly', 321, 64],
+        ['cloud', 670, 133],
+        ['birds', 445, 175],
+      ])
     )
   },
 })

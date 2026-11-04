@@ -1,4 +1,5 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bird flies the other way round on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, anthill, bush, feather, fireLogs, flame, floor, log, pine, pineCone, rock, tent, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
@@ -36,7 +37,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'camp',
   parTimeSec: 120,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const flicker = (period: number) => anim({ type: 'sway', angle: 6, pivot: [400, 470], period }, flame(400, 470))
     const hanging = lantern(560, 250)
     const flying = (reverse: boolean) =>
@@ -77,7 +78,20 @@ export default svgLevel({
       anthill(450, 486) +
       pineCone(80, 482) +
       trailSign(330, 380) +
-      feather(640, 470)
+      feather(640, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['leafPile', 53, 471],
+        ['butterfly', 408, 371],
+        ['squirrel', 704, 390],
+        ['feather', 228, 441],
+        ['rabbit', 277, 319],
+        ['frog', 72, 372],
+        ['anthill', 613, 313],
+        ['cloud', 437, 206],
+        ['birds', 591, 63],
+        ['cloud', 95, 77],
+      ])
     )
   },
 })

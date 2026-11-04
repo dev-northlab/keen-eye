@@ -1,5 +1,5 @@
 import { svgLevel } from '../helpers.ts'
-import { bike, cat, DUSK, fence, glow, house, lampHead, lampPost, mailbox, moon, oak, pane, sky, stars, sun, vane } from './shapes.ts'
+import { bike, bird, birdHouse, bucket, bush, butterfly, cat, chimney, cloud, dog, DUSK, fence, flowerBox, flowers, glow, grass, house, lampHead, lampPost, mailbox, moon, oak, pane, rock, sky, stars, stones, sun, vane } from './shapes.ts'
 
 /** Garden gnome; (x, y) = bottom center. Bounds: x ±10, y from −34 to 0. */
 const gnome = (x: number, y: number, hat: string) =>
@@ -48,6 +48,22 @@ export default svgLevel({
     diff(520, 457, 22, gnome(520, 474, '#e63946'), gnome(520, 474, '#ffb703')) +
     diff(400, 444, 35, bike(400, 462, '#e63946'), bike(400, 462, '#8338ec')) +
     lampPost(80, 470) +
+    // Decor: the same at both moments, darkened by the evening with the rest
+    cloud(330, 50, 0.5) +
+    cloud(460, 110, 0.4) +
+    chimney(270, 126) +
+    bird(372, 236) +
+    flowerBox(275, 252, '#ff6b8b') +
+    bush(530, 330, 0.8) +
+    rock(470, 360) +
+    butterfly(600, 395) +
+    bird(787, 376, '#e63946') +
+    birdHouse(30, 490, '#ffb703') +
+    stones(200, 470) +
+    grass(300, 480) +
+    flowers(600, 470, '#ffd23f') +
+    bucket(660, 470) +
+    dog(740, 475) +
     time('', DUSK) +
     time('', glow(95, 262, 40, 44)) +
     trap(115, 212, 30, '', glow(95, 190, 40, 44), 'lights') +

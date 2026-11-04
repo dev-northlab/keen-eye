@@ -1,4 +1,5 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bear drums faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { acorn, backpack, bear, feather, fireLogs, flame, floor, fox, hedgehog, pine, pineCone, rabbit, wildStrawberry } from './shapes.ts'
 import { balloon } from '../chapter-02/shapes.ts'
@@ -26,7 +27,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestFestival',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let lights = ''
     for (let i = 0; i < 14; i++) lights += anim({ type: 'blink', period: 1.4 + rand(), phase: rand(), duty: 0.7 }, `<circle cx="${60 + i * 52}" cy="${150 + Math.sin((i / 13) * Math.PI) * 30}" r="4" fill="#ffe08a"/>`)
     let pennants = ''
@@ -69,7 +70,20 @@ export default svgLevel({
       backpack(470, 475) +
       pineCone(670, 480) +
       acorn(230, 412) +
-      wildStrawberry(50, 480)
+      wildStrawberry(50, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fern', 396, 390],
+        ['pineCone', 216, 395],
+        ['leafPile', 542, 328],
+        ['hedgehog', 495, 424],
+        ['frog', 51, 444],
+        ['mushroom', 124, 323],
+        ['fern', 290, 326],
+        ['pineCone', 741, 332],
+        ['star', 214, 101],
+        ['star', 549, 157],
+      ])
     )
   },
 })

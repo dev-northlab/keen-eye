@@ -1,4 +1,5 @@
 // Motion differences: the big firework bursts faster on picture B; the dancer on stage hops faster on B; the disco ball spins only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { alien, alienPlant, astronaut, crystal, helmet, moonPebbles, probe, robot, star, starField } from './shapes.ts'
 
@@ -33,7 +34,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'starFestival',
   parTimeSec: 150,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const bursting = (period: number) => anim({ type: 'blink', duty: 0.55, period }, burst(140, 160, 44, '#ffd166'))
     const hopping = (period: number) => anim({ id: 'dancer', type: 'bob', dx: 0, dy: 10, period }, alien(400, 340, '#8ac926', 2))
     const ball = disco(400, 230)
@@ -85,7 +86,20 @@ export default svgLevel({
       alienPlant(165, 472) +
       crystal(555, 476) +
       helmet(645, 476) +
-      moonPebbles(390, 476)
+      moonPebbles(390, 476) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['crater', 635, 341],
+        ['alienPlant', 60, 432],
+        ['crystal', 486, 457, '#7bdff2'],
+        ['moonPebbles', 224, 280],
+        ['crater', 256, 452],
+        ['ringPlanet', 744, 110],
+        ['asteroid', 503, 98],
+        ['ufo', 306, 147],
+        ['spaceStar', 50, 83],
+        ['sparkle', 55, 226],
+      ])
     )
   },
 })
