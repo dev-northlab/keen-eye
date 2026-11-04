@@ -106,7 +106,11 @@
     "revealAll": "Stellen zeigen",
     "animPause": "Bewegung stoppen",
     "animPlay": "Bewegung",
-    "calmDone": "Ruhiger Modus — ohne Sterne"
+    "calmDone": "Ruhiger Modus — ohne Sterne",
+    "failed": "Zu viele Fehler",
+    "failedHint": "Auf Schwer endet das Level beim {n}. Fehler",
+    "hardDone": "Auf Schwer geschafft!",
+    "playHard": "Auf Schwer spielen"
   },
   "duo": {
     "modeTitle": "Wie spielt ihr?",
@@ -490,7 +494,10 @@
     "label": "Modus",
     "normal": "Normal",
     "calm": "Ruhig",
-    "calmHint": "Ohne Zeit, Fehler und Sterne"
+    "calmHint": "Ohne Zeit, Fehler und Sterne",
+    "hard": "Schwer",
+    "hardHint": "Ohne Tipps, 3 Fehler beenden das Level, rote Sterne",
+    "hardStars": "Schwer: {n}/3"
   },
   "purchase": {
     "title": "Vollversion",

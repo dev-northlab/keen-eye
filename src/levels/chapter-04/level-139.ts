@@ -47,7 +47,6 @@ export default svgLevel({
   chapter: 'sea',
   title: 'underwaterCave',
   parTimeSec: 100,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let stalactites = ''
     for (const [x, h] of [[90, 60], [150, 40], [220, 70], [300, 36], [380, 52], [460, 44], [540, 66], [680, 50], [740, 72]]) stalactites += stalactite(x, h)

@@ -44,7 +44,6 @@ export default svgLevel({
   chapter: 'sea',
   title: 'jellyDeep',
   parTimeSec: 100,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let plankton = ''
     for (let i = 0; i < 60; i++) plankton += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(rand() * 470).toFixed(1)}" r="${(0.8 + rand() * 1.4).toFixed(1)}" fill="${rand() < 0.5 ? '#4df0ff' : '#b38cff'}" fill-opacity="0.6"/>`

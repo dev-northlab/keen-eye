@@ -106,7 +106,11 @@
     "revealAll": "Mostrar lugares",
     "animPause": "Detener movimiento",
     "animPlay": "Movimiento",
-    "calmDone": "Modo tranquilo: sin estrellas"
+    "calmDone": "Modo tranquilo: sin estrellas",
+    "failed": "Demasiados errores",
+    "failedHint": "En difícil, el nivel termina en el error n.º {n}",
+    "hardDone": "¡Superado en difícil!",
+    "playHard": "Jugar en difícil"
   },
   "duo": {
     "modeTitle": "¿Cómo jugáis?",
@@ -490,7 +494,10 @@
     "label": "Modo",
     "normal": "Normal",
     "calm": "Tranquilo",
-    "calmHint": "Sin tiempo, errores ni estrellas"
+    "calmHint": "Sin tiempo, errores ni estrellas",
+    "hard": "Difícil",
+    "hardHint": "Sin pistas, 3 errores terminan el nivel, estrellas rojas",
+    "hardStars": "Difícil: {n}/3"
   },
   "purchase": {
     "title": "Juego completo",

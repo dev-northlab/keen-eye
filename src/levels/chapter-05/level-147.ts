@@ -29,7 +29,6 @@ export default svgLevel({
   chapter: 'space',
   title: 'satelliteRepair',
   parTimeSec: 105,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let foil = ''
     for (let i = 0; i < 14; i++) foil += `<path d="M${(364 + rand() * 110).toFixed(1)} ${(190 + rand() * 80).toFixed(1)}l${(6 + rand() * 10).toFixed(1)} ${(-4 + rand() * 8).toFixed(1)}" stroke="#b8862b" stroke-width="1.5"/>`

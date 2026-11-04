@@ -41,7 +41,6 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestFalls',
   parTimeSec: 90,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let topTrees = ''
     for (let x = -10; x < 820; x += 34) if (x < 300 || x > 500) topTrees += pine(x + rand() * 10, 112, 0.7 + rand() * 0.4, rand() < 0.5 ? '#2f7d55' : '#3a8a5e')

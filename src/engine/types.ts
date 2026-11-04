@@ -122,8 +122,6 @@ export interface Level {
   differences: Difference[]
   /** Time limit for three stars. */
   parTimeSec: number
-  /** Most hints a normal mode round may take from the pool (hardest levels); none = only the pool limits them. */
-  hintLimit?: number
   /** Suits a two-player match (enough differences for a long race); preferred by "random level". */
   multiplayerReady: boolean
   /** "Time" levels only: the moments of A and B and the natural changes between them. */

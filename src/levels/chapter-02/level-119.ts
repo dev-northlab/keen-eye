@@ -30,7 +30,6 @@ export default svgLevel({
   chapter: 'city',
   title: 'railwayStation',
   parTimeSec: 85,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let ribs = ''
     for (let i = 0; i <= 12; i++) {

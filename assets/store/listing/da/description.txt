@@ -10,7 +10,8 @@ To billeder ser ens ud – men det er de ikke. Find alle forskellene i håndtegn
 • To spillere på én enhed – duel, på skift eller sammen
 
 FOR ALLE
-• Rolig tilstand: ingen tid, ingen fejl, ubegrænsede hints
+• Rolig tilstand: ingen tid, ingen fejl, 3 gratis hints på hver bane
+• Svær tilstand: ingen hints, 3 fejl afslutter banen, røde stjerner til de bedste
 • Zoom med to fingre på begge billeder på én gang
 • Skjulte gyldne nøgler åbner et bonus-skatkammer
 • Lyst og mørkt tema, musik og lyde

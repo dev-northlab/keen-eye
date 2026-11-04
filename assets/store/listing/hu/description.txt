@@ -10,7 +10,8 @@ A két kép ugyanolyannak tűnik – pedig nem az. Keresd meg az összes külön
 • Ketten egy eszközön – párbaj, felváltva vagy együtt
 
 MINDENKINEK
-• Nyugodt mód: nincs időzítő, nincsenek hibák, korlátlan segítség
+• Nyugodt mód: nincs időzítő, nincsenek hibák, minden pályán 3 ingyenes segítség
+• Nehéz mód: nincs segítség, 3 hiba véget vet a pályának, piros csillagok a legjobbaknak
 • Két ujjas nagyítás egyszerre mindkét képen
 • Rejtett aranykulcsok nyitnak meg egy bónusz kincskamrát
 • Világos és sötét téma, zene és hangok

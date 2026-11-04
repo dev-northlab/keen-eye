@@ -428,7 +428,11 @@
     "resetZoom": "Nulstil zoom",
     "retry": "Prøv igen",
     "revealAll": "Vis stederne",
-    "time": "Tid: {t}"
+    "time": "Tid: {t}",
+    "failed": "For mange fejl",
+    "failedHint": "På svær slutter banen ved fejl nummer {n}",
+    "hardDone": "Klaret på svær!",
+    "playHard": "Spil på svær"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Rolig",
     "calmHint": "Ingen tid, fejl eller stjerner",
     "label": "Tilstand",
-    "normal": "Normal"
+    "normal": "Normal",
+    "hard": "Svær",
+    "hardHint": "Ingen hints, 3 fejl afslutter banen, røde stjerner",
+    "hardStars": "Svær: {n}/3"
   },
   "pause": {
     "exit": "Til menuen",

@@ -34,6 +34,7 @@ const devToolsOpen = ref(false)
       <span>
         {{ $t('mode.label') }}
         <small>{{ $t('mode.calm') }}: {{ $t('mode.calmHint') }}</small>
+        <small>{{ $t('mode.hard') }}: {{ $t('mode.hardHint') }}</small>
       </span>
       <ModeSwitch />
     </div>

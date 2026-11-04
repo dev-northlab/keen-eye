@@ -39,6 +39,7 @@ const worlds = {
   total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
   done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
+  hard: () => levels.reduce((s, l) => s + progress.hardStars(l.id), 0),
 }
 
 function category(chapter: Chapter) {
@@ -48,6 +49,7 @@ function category(chapter: Chapter) {
     total: chapterSize(chapter),
     done: () => own.filter((l) => progress.isCompleted(l.id)).length,
     stars: () => own.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
+    hard: () => own.reduce((s, l) => s + progress.hardStars(l.id), 0),
   }
 }
 const time = category(TIME_CHAPTER)
@@ -71,6 +73,7 @@ const timeTravel = {
   total: timeTravelLevels.length,
   done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
   stars: () => timeTravelLevels.reduce((s, l) => s + (progress.timeTravel[l.id]?.stars ?? 0), 0),
+  hard: () => timeTravelLevels.reduce((s, l) => s + progress.hardStars(l.id), 0),
 }
 </script>
 
@@ -103,6 +106,7 @@ const timeTravel = {
               <span class="name">{{ $t('map.title') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
+                <template v-if="worlds.hard() > 0"> · <span class="star-hard">★</span> {{ worlds.hard() }}</template>
               </span>
             </span>
             <span class="key-space" aria-hidden="true" />
@@ -128,6 +132,7 @@ const timeTravel = {
               <span class="name">{{ $t('chapters.time') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: time.done(), total: time.total }) }} · ★ {{ time.stars() }}
+                <template v-if="time.hard() > 0"> · <span class="star-hard">★</span> {{ time.hard() }}</template>
               </span>
             </span>
             <span class="key-space" aria-hidden="true" />
@@ -148,6 +153,7 @@ const timeTravel = {
               <span class="name">{{ $t('chapters.memory') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: memory.done(), total: memory.total }) }} · ★ {{ memory.stars() }}
+                <template v-if="memory.hard() > 0"> · <span class="star-hard">★</span> {{ memory.hard() }}</template>
               </span>
             </span>
             <span class="key-space" aria-hidden="true" />
@@ -168,6 +174,7 @@ const timeTravel = {
               <span class="name">{{ $t('chapters.travel') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: travel.done(), total: travel.total }) }} · ★ {{ travel.stars() }}
+                <template v-if="travel.hard() > 0"> · <span class="star-hard">★</span> {{ travel.hard() }}</template>
               </span>
             </span>
             <span class="key-space" aria-hidden="true" />
@@ -191,6 +198,7 @@ const timeTravel = {
               <span class="name">{{ $t('chapters.detective') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: detective.done(), total: detective.total }) }} · ★ {{ detective.stars() }}
+                <template v-if="detective.hard() > 0"> · <span class="star-hard">★</span> {{ detective.hard() }}</template>
               </span>
             </span>
             <span class="key-space" aria-hidden="true" />
@@ -223,6 +231,7 @@ const timeTravel = {
               <span class="name">{{ $t('timeTravel.title') }}</span>
               <span class="sub">
                 {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
+                <template v-if="timeTravel.hard() > 0"> · <span class="star-hard">★</span> {{ timeTravel.hard() }}</template>
               </span>
             </span>
           </button>

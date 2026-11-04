@@ -45,7 +45,6 @@ export default svgLevel({
   chapter: 'forest',
   title: 'owlHollow',
   parTimeSec: 85,
-  hintLimit: 1,
   scene: ({ diff, anim, rand }) => {
     let bark = ''
     for (let x = 232; x < 570; x += 18) bark += `<path d="M${x} 0q${-6 + rand() * 12} 120 ${-4 + rand() * 8} 250t${-4 + rand() * 8} 250" stroke="#5a3f2c" stroke-width="3" fill="none"/>`

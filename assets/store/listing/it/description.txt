@@ -10,7 +10,8 @@ Due immagini sembrano uguali, ma non lo sono. Trova tutte le differenze in scene
 • In due sullo stesso dispositivo – sfida, a turno o insieme
 
 PER TUTTI
-• Modalità calma: niente timer, niente errori, suggerimenti illimitati
+• Modalità calma: niente timer, niente errori, 3 suggerimenti gratis in ogni livello
+• Modalità difficile: niente suggerimenti, 3 errori chiudono il livello, stelle rosse per i migliori
 • Zoom con due dita su entrambe le immagini insieme
 • Chiavi d'oro nascoste aprono una stanza del tesoro bonus
 • Tema chiaro e scuro, musica e suoni

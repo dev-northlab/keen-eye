@@ -106,7 +106,11 @@
     "revealAll": "Arată locurile",
     "animPause": "Oprește mișcarea",
     "animPlay": "Mișcare",
-    "calmDone": "Mod liniștit — fără stele"
+    "calmDone": "Mod liniștit — fără stele",
+    "failed": "Prea multe greșeli",
+    "failedHint": "Pe greu, nivelul se termină la greșeala nr. {n}",
+    "hardDone": "Trecut pe greu!",
+    "playHard": "Joacă pe greu"
   },
   "duo": {
     "modeTitle": "Cum jucați?",
@@ -490,7 +494,10 @@
     "label": "Mod",
     "normal": "Normal",
     "calm": "Liniștit",
-    "calmHint": "Fără cronometru, greșeli sau stele"
+    "calmHint": "Fără cronometru, greșeli sau stele",
+    "hard": "Greu",
+    "hardHint": "Fără indicii, 3 greșeli încheie nivelul, stele roșii",
+    "hardStars": "Greu: {n}/3"
   },
   "purchase": {
     "title": "Jocul complet",

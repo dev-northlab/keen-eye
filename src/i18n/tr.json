@@ -106,7 +106,11 @@
     "revealAll": "Yerleri göster",
     "animPause": "Hareketi durdur",
     "animPlay": "Hareket",
-    "calmDone": "Sakin mod — yıldız yok"
+    "calmDone": "Sakin mod — yıldız yok",
+    "failed": "Çok fazla hata",
+    "failedHint": "Zor modda bölüm {n}. hatada biter",
+    "hardDone": "Zor modda geçildi!",
+    "playHard": "Zor modda oyna"
   },
   "duo": {
     "modeTitle": "Nasıl oynuyorsunuz?",
@@ -490,7 +494,10 @@
     "label": "Mod",
     "normal": "Normal",
     "calm": "Sakin",
-    "calmHint": "Süre, hata ve yıldız yok"
+    "calmHint": "Süre, hata ve yıldız yok",
+    "hard": "Zor",
+    "hardHint": "İpucu yok, 3 hata bölümü bitirir, kırmızı yıldızlar",
+    "hardStars": "Zor mod: {n}/3"
   },
   "purchase": {
     "title": "Tam sürüm",

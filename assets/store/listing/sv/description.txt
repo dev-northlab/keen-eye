@@ -10,7 +10,8 @@ Två bilder ser likadana ut – men det är de inte. Hitta alla skillnader i han
 • Två spelare på samma enhet – duell, turas om eller tillsammans
 
 FÖR ALLA
-• Lugnt läge: ingen tidtagning, inga misstag, obegränsat med tips
+• Lugnt läge: ingen tidtagning, inga misstag, 3 gratis tips på varje nivå
+• Svårt läge: inga tips, 3 misstag avslutar nivån, röda stjärnor för de bästa
 • Zooma med två fingrar på båda bilderna samtidigt
 • Gömda gyllene nycklar öppnar en bonusskattkammare
 • Ljust och mörkt tema, musik och ljud

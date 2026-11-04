@@ -428,7 +428,11 @@
     "resetZoom": "重設縮放",
     "retry": "重玩",
     "revealAll": "顯示位置",
-    "time": "用時：{t}"
+    "time": "用時：{t}",
+    "failed": "錯誤太多",
+    "failedHint": "困難模式下，第 {n} 次錯誤時關卡結束",
+    "hardDone": "困難模式過關！",
+    "playHard": "挑戰困難模式"
   },
   "levelTitles": {
     "agra": "阿格拉",
@@ -735,7 +739,10 @@
     "calm": "休閒",
     "calmHint": "不計時、不計錯、沒有星星",
     "label": "模式",
-    "normal": "普通"
+    "normal": "普通",
+    "hard": "困難",
+    "hardHint": "沒有提示，錯 3 次即結束本關，紅色星星",
+    "hardStars": "困難模式：{n}/3"
   },
   "pause": {
     "exit": "返回選單",

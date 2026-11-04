@@ -48,7 +48,7 @@ useBackButton(toMap)
             <img class="thumb" :src="base + level.image" alt="" />
             <span class="text">
               <span class="name">{{ localized(level.era, locale) }}</span>
-              <StarRating :stars="progress.timeTravel[level.id]?.stars ?? 0" :size="16" />
+              <StarRating :stars="progress.timeTravel[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="16" />
             </span>
             <span v-if="progress.needsPurchase(level.number)" class="lock" aria-hidden="true">🔒</span>
           </button>

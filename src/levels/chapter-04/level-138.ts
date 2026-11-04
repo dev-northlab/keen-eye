@@ -47,7 +47,6 @@ export default svgLevel({
   chapter: 'sea',
   title: 'crabPools',
   parTimeSec: 100,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let speckles = ''
     for (let i = 0; i < 50; i++) speckles += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(160 + rand() * 340).toFixed(1)}" r="${(1 + rand() * 2).toFixed(1)}" fill="#6f6a60"/>`

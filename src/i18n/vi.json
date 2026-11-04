@@ -428,7 +428,11 @@
     "resetZoom": "Đặt lại thu phóng",
     "retry": "Chơi lại",
     "revealAll": "Hiện các vị trí",
-    "time": "Thời gian: {t}"
+    "time": "Thời gian: {t}",
+    "failed": "Quá nhiều lỗi",
+    "failedHint": "Ở chế độ khó, màn chơi kết thúc ở lỗi thứ {n}",
+    "hardDone": "Đã qua ở chế độ khó!",
+    "playHard": "Chơi ở chế độ khó"
   },
   "levelTitles": {
     "agra": "Agra",
@@ -735,7 +739,10 @@
     "calm": "Thư giãn",
     "calmHint": "Không đồng hồ, không lỗi, không sao",
     "label": "Chế độ",
-    "normal": "Thường"
+    "normal": "Thường",
+    "hard": "Khó",
+    "hardHint": "Không gợi ý, 3 lỗi là hết màn, sao đỏ",
+    "hardStars": "Chế độ khó: {n}/3"
   },
   "pause": {
     "exit": "Về menu",

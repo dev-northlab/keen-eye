@@ -10,7 +10,8 @@
 • Tek cihazda iki oyuncu – düello, sırayla ya da birlikte
 
 HERKES İÇİN
-• Sakin mod: süre yok, hata yok, sınırsız ipucu
+• Sakin mod: süre yok, hata yok, her bölümde 3 ücretsiz ipucu
+• Zor mod: ipucu yok, 3 hata bölümü bitirir, en iyilere kırmızı yıldızlar
 • İki parmakla iki resmi birden yakınlaştır
 • Gizli altın anahtarlar bonus hazine odasını açar
 • Açık ve koyu tema, müzik ve sesler

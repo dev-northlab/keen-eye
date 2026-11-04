@@ -54,7 +54,6 @@ export default svgLevel({
   chapter: 'farm',
   title: 'hayloft',
   parTimeSec: 75,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let planks = ''
     for (let x = 16; x < 800; x += 32) planks += `<path d="M${x} 0V360" stroke="#8f5c37" stroke-width="2"/>`

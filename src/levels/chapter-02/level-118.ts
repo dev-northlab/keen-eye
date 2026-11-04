@@ -45,7 +45,6 @@ export default svgLevel({
   chapter: 'city',
   title: 'buildingSite',
   parTimeSec: 85,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let frame = ''
     for (let y = 140; y <= 400; y += 65) frame += `<rect x="60" y="${y}" width="300" height="8" fill="#5b7fa8"/>`

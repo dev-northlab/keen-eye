@@ -49,7 +49,6 @@ export default svgLevel({
   chapter: 'farm',
   title: 'creekMill',
   parTimeSec: 75,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let stones = ''
     for (let y = 252; y < 380; y += 16)

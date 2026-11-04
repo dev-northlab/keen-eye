@@ -36,7 +36,6 @@ export default svgLevel({
   chapter: 'forest',
   title: 'fireflyNight',
   parTimeSec: 90,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let stars = ''
     for (let i = 0; i < 36; i++) {

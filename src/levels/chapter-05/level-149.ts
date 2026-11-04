@@ -31,7 +31,6 @@ export default svgLevel({
   chapter: 'space',
   title: 'gasGiantRings',
   parTimeSec: 105,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     const cx = 300
     const cy = 320

@@ -106,7 +106,11 @@
     "revealAll": "Mostra i punti",
     "animPause": "Ferma il movimento",
     "animPlay": "Movimento",
-    "calmDone": "Modalità calma — senza stelle"
+    "calmDone": "Modalità calma — senza stelle",
+    "failed": "Troppi errori",
+    "failedHint": "In difficile il livello finisce all’errore n. {n}",
+    "hardDone": "Superato in difficile!",
+    "playHard": "Gioca in difficile"
   },
   "duo": {
     "modeTitle": "Come giocate?",
@@ -490,7 +494,10 @@
     "label": "Modalità",
     "normal": "Normale",
     "calm": "Calma",
-    "calmHint": "Senza tempo, errori o stelle"
+    "calmHint": "Senza tempo, errori o stelle",
+    "hard": "Difficile",
+    "hardHint": "Senza indizi, 3 errori chiudono il livello, stelle rosse",
+    "hardStars": "Difficile: {n}/3"
   },
   "purchase": {
     "title": "Gioco completo",

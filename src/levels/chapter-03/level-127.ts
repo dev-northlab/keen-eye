@@ -47,7 +47,6 @@ export default svgLevel({
   chapter: 'forest',
   title: 'snowyWoods',
   parTimeSec: 90,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let farPines = ''
     for (let x = -10; x < 820; x += 30) farPines += snowPine(x + rand() * 8, 270, 0.5 + rand() * 0.3)

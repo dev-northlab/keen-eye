@@ -1,6 +1,6 @@
 import { Board, type Tap } from './board.ts'
 import { FrameLoop } from './loop.ts'
-import { memoryStars } from './rules.ts'
+import { memoryStars, type MemoryStarInput } from './rules.ts'
 import type { Level, Stars } from './types.ts'
 
 /**
@@ -16,7 +16,7 @@ const VISIBLE: Record<MemoryPhase, (0 | 1)[]> = { show: [0], curtain: [], search
 export const CURTAIN_MS = 500
 /** "Look again": how long A comes back. */
 export const PEEK_MS = 2000
-/** Normal mode: the round ends at this many misses. */
+/** Default of `MemoryOptions.maxMisses`: the round ends at this many misses. */
 export const MAX_MISSES = 3
 /** The last find or miss stays on screen this long before the answer is revealed. */
 const END_DELAY_MS = 700
@@ -46,9 +46,13 @@ export interface MemoryHandlers {
 export interface MemoryOptions {
   /** Animation time multiplier (reduced motion, calm mode). */
   animationSpeed?: number
-  /** Misses that end the round (default MAX_MISSES; calm mode: Infinity). */
+  /** Misses that end the round (default MAX_MISSES; ModeRules.memoryMaxMisses). */
   maxMisses?: number
-  /** Looks at A while searching (default: the level's; calm mode: Infinity). */
+  /** Seconds picture A is shown (default: the level's; hard mode: less). */
+  showSeconds?: number
+  /** Star rule of the mode (ModeRules.memoryStars). Default memoryStars. */
+  stars?: (p: MemoryStarInput) => Stars | 0
+  /** Looks at A while searching (default: the level's; ModeRules.memoryPeeks). */
   peeks?: number
   /** The hidden key was collected before: not shown. */
   secretTaken?: boolean
@@ -68,6 +72,7 @@ export class MemoryScene {
   private readonly loop: FrameLoop
   private readonly found: boolean[]
   private readonly peeks: number
+  private readonly stars: (p: MemoryStarInput) => Stars | 0
   private phase: MemoryPhase | null = null
   /** Phases still to come; the current one ends after `left` ms. */
   private steps: Step[] = []
@@ -86,6 +91,7 @@ export class MemoryScene {
     this.animationSpeed = options.animationSpeed ?? 1
     this.maxMisses = options.maxMisses ?? MAX_MISSES
     this.peeks = options.peeks ?? level.memory.peeks
+    this.stars = options.stars ?? memoryStars
     this.found = level.differences.map(() => false)
     // No zoom: a picture is seen whole, and every tap counts at once.
     this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), {
@@ -93,7 +99,7 @@ export class MemoryScene {
       onSecret: (tap) => this.secret(tap),
       secretTaken: options.secretTaken,
     })
-    this.run([['show', level.memory.showSeconds * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
+    this.run([['show', (options.showSeconds ?? level.memory.showSeconds) * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)
   }
 
@@ -186,6 +192,6 @@ export class MemoryScene {
 
   private complete(): void {
     const result = { found: this.foundCount, total: this.found.length, mistakes: this.mistakes, peeks: this.peeksUsed }
-    this.handlers.onComplete?.({ ...result, timeSec: Math.floor(this.searchMs / 1000), stars: memoryStars(result) })
+    this.handlers.onComplete?.({ ...result, timeSec: Math.floor(this.searchMs / 1000), stars: this.stars(result) })
   }
 }

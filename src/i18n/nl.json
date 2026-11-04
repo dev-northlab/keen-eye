@@ -106,7 +106,11 @@
     "revealAll": "Plekken tonen",
     "animPause": "Beweging stoppen",
     "animPlay": "Beweging",
-    "calmDone": "Rustige modus — zonder sterren"
+    "calmDone": "Rustige modus — zonder sterren",
+    "failed": "Te veel fouten",
+    "failedHint": "Op moeilijk eindigt het level bij fout nummer {n}",
+    "hardDone": "Gehaald op moeilijk!",
+    "playHard": "Speel op moeilijk"
   },
   "duo": {
     "modeTitle": "Hoe spelen jullie?",
@@ -490,7 +494,10 @@
     "label": "Modus",
     "normal": "Normaal",
     "calm": "Rustig",
-    "calmHint": "Geen tijd, fouten of sterren"
+    "calmHint": "Geen tijd, fouten of sterren",
+    "hard": "Moeilijk",
+    "hardHint": "Geen hints, 3 fouten beëindigen het level, rode sterren",
+    "hardStars": "Moeilijk: {n}/3"
   },
   "purchase": {
     "title": "Volledige game",

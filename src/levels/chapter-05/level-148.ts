@@ -36,7 +36,6 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienBazaar',
   parTimeSec: 105,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     const stall = (x: number, w: number, a: string, b: string) =>
       `<rect x="${x + 4}" y="176" width="6" height="140" fill="#2b1d3a"/><rect x="${x + w - 10}" y="176" width="6" height="140" fill="#2b1d3a"/>` +

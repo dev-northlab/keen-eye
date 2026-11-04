@@ -60,7 +60,7 @@ function tileLabel(level: Level) {
             <LevelId :id="level.id" />
             <span class="num">{{ levelNumber(level) }}</span>
             <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
-            <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :size="14" />
+            <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="14" />
           </button>
         </li>
       </ul>

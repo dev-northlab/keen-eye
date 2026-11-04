@@ -97,8 +97,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   Detective (cases), Case (one case),
   Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result, the full-game offer `PurchaseDialog`: mounted once in `App.vue`, opened from any screen by `purchase.dialogOpen`; `ModalDialog` has an `icon` slot and the `points` icon list), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`), the small level id in a corner of level tiles and the board, id ranges on world, mode and case cards (`LevelId`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
-- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hint pool, hidden keys found), `settings`
-  (mode normal/calm, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
+- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, red stars of hard mode, sequential unlocking, hidden keys found), `settings`
+  (mode calm/normal/hard, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
 - `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit),
@@ -163,8 +163,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   41–60 → 8, 61–100 → 9–10 (r ≥ 18 after 15); motion differences 0 → 1 → 1–2 → 2–3. The harder ten of each
   chapter (`harder()`): 7, 8, 9 differences in steps of three levels and 10 on the last, never fewer than the
   chapter's first 20 have; 2–3 motion differences, r ≥ 22 (a finger) and zone centers ≥ 64 apart (`minGap`); their
-  `parTimeSec` is the chapter's last par time −10/−20/−30/−35%, levels 7–9 allow 2 hints and the 10th 1
-  (`hintLimit`). `check-levels` enforces it and that each level's `chapter` matches the chapter covering its id.
+  `parTimeSec` is the chapter's last par time −10/−20/−30/−35%. `check-levels` enforces it and that each level's `chapter` matches the chapter covering its id.
 - Every zone must contain everything its `a`/`b` draw (over the whole motion for moving objects: use the rest
   position as the zone center and pass the animation id as `diff`'s 6th argument). Draw only the differing part
   inside `diff` (a hat, a canopy, a roof stripe) so zones stay small and never overlap.
@@ -185,12 +184,20 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   chapter ids. `check-levels` checks the key is visible but at least 25% covered, and clear of zones and traps; `npm test` one key per chapter, the
   farm's in the free levels. All keys open the bonus level 900, chapter `treasury` (`treasury/level-900.ts`, banner on
   the game modes screen, `TreasureChest` in its result dialog).
-- Stored data is untrusted: validate its shape when loading (see `parseLevels` in `stores/progress.ts`).
-- Calm mode (spec, section 6): no timer/mistakes/lock/stars, unlimited hints, slower animation, soft sounds,
+- Stored data is untrusted: validate its shape when loading (the parsers of `stores/progress-data.ts`, unit-tested).
+- Calm mode (spec, section 6): no timer/mistakes/lock/stars, 3 free hints per attempt (`MODE_RULES.calm.hints`), slower animation, soft sounds,
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.
-- Hints: shared pool (start 5, +1 for the first 3-star finish of a level), capped per attempt in normal mode by
-  `Level.hintLimit` where a level sets one; `GameScene.hint()` returns false
-  when nothing can be hinted, so a hint is only spent when it is shown.
+- Hard mode (`docs/difficulty-modes.md`): the same levels under stricter rules — no hints, the 3rd mistake loses the level
+  (`onFail`; so no miss lock), no trap notes; "memory" shows A a second less, no peeks, 2 misses. Every mode's
+  numbers live in `MODE_RULES` (`engine/rules.ts`); scenes take them through their options, screens read them there
+  instead of checking the mode. Red stars (`hardStars`, `memoryHardStars`: 3 = no mistake within par time, 2 = one
+  mistake, 1 = passed) are kept in `progress.hard`, apart from the yellow ones of normal mode, shown under them on tiles;
+  a pass also completes the level like calm mode. A normal finish with fewer than 3 red stars offers "Play on hard":
+  that level in hard mode until the screen is left (`hardChallenge`), the setting unchanged; the level HUD shows the
+  attempt's mode (`ModeChip`). Not in duels.
+- Hints: no pool to collect — every attempt of a level gets the mode's hints again (`MODE_RULES.<mode>.hints`: calm 3,
+  normal 1, hard none); `GameScene.hint()` returns false when nothing can be hinted, so a hint is only spent when it is
+  shown. Duels have their own hints (`duo`).
 - Monetization (spec, section 10): levels 1–`FREE_LEVELS` (15, `stores/purchase.ts`) are free, the rest need the one
   "full game" purchase. Lock checks go through `progress.isUnlocked` / `progress.needsPurchase` only.
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`

@@ -10,7 +10,8 @@ Mukhang magkapareho ang dalawang larawan – pero hindi. Hanapin ang lahat ng pa
 • Dalawang manlalaro sa iisang device – duwelo, salitan o magkasama
 
 PARA SA LAHAT
-• Kalmadong mode: walang timer, walang mali, walang limitasyong hint
+• Kalmadong mode: walang timer, walang mali, 3 libreng hint sa bawat level
+• Mahirap na mode: walang hint, 3 mali ang tatapos sa level, pulang bituin sa pinakamagaling
 • Mag-zoom gamit ang dalawang daliri sa dalawang larawan nang sabay
 • Nagbubukas ang mga nakatagong gintong susi ng bonus na silid ng kayamanan
 • Maliwanag at madilim na tema, musika at tunog

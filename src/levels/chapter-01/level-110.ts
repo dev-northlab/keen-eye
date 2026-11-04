@@ -67,7 +67,6 @@ export default svgLevel({
   chapter: 'farm',
   title: 'lanternNight',
   parTimeSec: 70,
-  hintLimit: 1,
   scene: ({ diff, anim, rand }) => {
     let stars = ''
     for (let i = 0; i < 46; i++) {

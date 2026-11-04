@@ -43,7 +43,6 @@ export default svgLevel({
   chapter: 'city',
   title: 'citySalute',
   parTimeSec: 80,
-  hintLimit: 1,
   scene: ({ diff, anim, rand }) => {
     let stars = ''
     for (let i = 0; i < 40; i++) {

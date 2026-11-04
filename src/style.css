@@ -26,6 +26,13 @@
   --hint: #f2a900;
   --danger: #e5484d;
   --star-empty: #d6d6d6;
+  /* Stars: yellow of normal mode, red of hard mode (docs/difficulty-modes.md). */
+  --star: #f5b301;
+  --star-hard: #e23b3b;
+  /* Game modes (docs/difficulty-modes.md): the chosen switch button and the level's mode chip; white text on them. */
+  --mode-calm: #237ea6;
+  --mode-normal: #2f9e6e;
+  --mode-hard: #c94a24;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--fg);
   background: var(--bg);
@@ -93,6 +100,11 @@ button.secondary {
   --hint: #d99a0b;
   --danger: #d6454a;
   --star-empty: #46546e;
+  --star: #f5b301;
+  --star-hard: #ff5c5c;
+  --mode-calm: #2a7fa6;
+  --mode-normal: #2a8f63;
+  --mode-hard: #c4502e;
 }
 
 /* Disable browser double-tap zoom on UI; pictures handle their own gestures. */
@@ -104,4 +116,9 @@ html {
 [dir='rtl'] .flip-rtl {
   display: inline-block;
   transform: scaleX(-1);
+}
+
+/* A red star in running text: the red stars of hard mode on world and mode cards. */
+.star-hard {
+  color: var(--star-hard);
 }

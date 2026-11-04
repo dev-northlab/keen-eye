@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useSettingsStore, type GameMode } from '../stores/settings.ts'
+import { GAME_MODES, useSettingsStore } from '../stores/settings.ts'
 import SegmentedSwitch from './SegmentedSwitch.vue'
 
 const settings = useSettingsStore()
 const { t } = useI18n()
-const MODES: GameMode[] = ['normal', 'calm']
-const options = computed(() => MODES.map((m) => ({ value: m, label: t(`mode.${m}`) })))
+const options = computed(() => GAME_MODES.map((m) => ({ value: m, label: t(`mode.${m}`), tone: `var(--mode-${m})` })))
 </script>
 
 <template>

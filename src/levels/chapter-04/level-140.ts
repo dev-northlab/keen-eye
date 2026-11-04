@@ -29,7 +29,6 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pierSunset',
   parTimeSec: 90,
-  hintLimit: 1,
   scene: ({ diff, anim, rand }) => {
     let streaks = ''
     for (let i = 0; i < 30; i++) {

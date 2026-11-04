@@ -106,7 +106,11 @@
     "revealAll": "Helyek mutatása",
     "animPause": "Mozgás leállítása",
     "animPlay": "Mozgás",
-    "calmDone": "Nyugodt mód — csillagok nélkül"
+    "calmDone": "Nyugodt mód — csillagok nélkül",
+    "failed": "Túl sok hiba",
+    "failedHint": "Nehéz módban a pálya a(z) {n}. hibánál véget ér",
+    "hardDone": "Teljesítve nehéz módban!",
+    "playHard": "Játék nehéz módban"
   },
   "duo": {
     "modeTitle": "Hogyan játszotok?",
@@ -490,7 +494,10 @@
     "label": "Mód",
     "normal": "Normál",
     "calm": "Nyugodt",
-    "calmHint": "Idő, hibák és csillagok nélkül"
+    "calmHint": "Idő, hibák és csillagok nélkül",
+    "hard": "Nehéz",
+    "hardHint": "Tippek nélkül, 3 hiba véget vet a pályának, piros csillagok",
+    "hardStars": "Nehéz mód: {n}/3"
   },
   "purchase": {
     "title": "Teljes verzió",

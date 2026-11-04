@@ -35,7 +35,6 @@ export default svgLevel({
   chapter: 'city',
   title: 'fountainPark',
   parTimeSec: 85,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let backTrees = ''
     for (let x = 10; x < 800; x += 52) backTrees += cityTree(x + rand() * 10, 262, 1 + rand() * 0.3, rand() < 0.5 ? '#4caf6a' : '#3f9a5a')

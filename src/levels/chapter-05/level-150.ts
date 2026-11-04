@@ -26,7 +26,6 @@ export default svgLevel({
   chapter: 'space',
   title: 'blackHole',
   parTimeSec: 100,
-  hintLimit: 1,
   scene: ({ diff, anim, rand }) => {
     let streaks = ''
     for (let i = 0; i < 16; i++) {

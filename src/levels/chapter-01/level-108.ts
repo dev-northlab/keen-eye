@@ -47,7 +47,6 @@ export default svgLevel({
   chapter: 'farm',
   title: 'fruitGarden',
   parTimeSec: 75,
-  hintLimit: 2,
   scene: ({ diff, anim, rand }) => {
     let farTrees = ''
     for (let x = 20; x < 800; x += 46) farTrees += `<rect x="${x - 2}" y="226" width="4" height="14" fill="#8a6a4a"/><circle cx="${x}" cy="218" r="14" fill="#86c26a"/>`
