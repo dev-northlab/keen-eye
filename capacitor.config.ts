@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli'
 
 const config: CapacitorConfig = {
-  appId: 'com.keeneye.app',
+  appId: 'com.northlab.keeneye',
   appName: 'Keen Eye',
   webDir: 'dist',
   plugins: {

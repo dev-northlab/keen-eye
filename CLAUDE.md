@@ -215,6 +215,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   shown. Duels have their own hints (`duo`).
 - Monetization (spec, section 10): levels 1–`FREE_LEVELS` (15, `stores/purchase.ts`) are free, the rest need the one
   "full game" purchase. Lock checks go through `progress.isUnlocked` / `progress.needsPurchase` only.
+- App id `com.northlab.keeneye` — Google Play package name and iOS bundle id (`appId` in `capacitor.config.ts`,
+  `namespace`/`applicationId` in `android/app/build.gradle`, the Java package of `MainActivity`, `strings.xml`,
+  `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project, `codemagic.yaml`, store links in `src/config/links.ts` and README).
+  The stores never let it change after the first upload: updates, saved progress and purchases are tied to it.
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
   passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. Use SVG icons,
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).

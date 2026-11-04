@@ -1,4 +1,4 @@
-package com.keeneye.app;
+package com.northlab.keeneye;
 
 import com.getcapacitor.BridgeActivity;
 
