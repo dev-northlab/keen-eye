@@ -23,9 +23,6 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm test` — unit tests (`tests/*.test.ts`, Node's built-in `node:test`, no extra dependencies)
 - `npm run icons` — renders the app icon, splash and store icon (Android, iOS, Play, favicon) from the SVG in
   `scripts/make-icons.ts`; the iOS 1024 px icon is written without an alpha channel (App Store requirement)
-- `npm run og` — renders `public/og-image.png` (1200×630 link preview of the web version, Open Graph/Twitter tags in
-  `index.html`) from the home screen's own meadow (`MeadowScene.vue` via Vite SSR) with the title and play button;
-  needs the Roboto font installed
 - `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
   installed Chrome (`playwright-core`, `/usr/bin/google-chrome`) with a seeded mid-game progress, taps some
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
@@ -127,6 +124,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
   limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
   update every description when levels, modes or languages are added)
+- `public/privacy.html` — the privacy policy (English + Russian) the store listings link to,
+  https://dev-northlab.github.io/keen-eye/privacy.html; a static page, not a route, so GitHub Pages answers 200
+  (routes are served by `404.html`). The Pages web build is only for the developer's own testing, not a product, so the
+  policy covers the Android and iOS apps only. Keep it true when adding anything that touches data, network or permissions
 
 ## Rules
 
