@@ -434,7 +434,15 @@
     "failed": "Terlalu banyak kesilapan",
     "failedHint": "Dalam mod sukar, tahap tamat pada kesilapan ke-{n}",
     "hardDone": "Lulus dalam mod sukar!",
-    "playHard": "Main dalam mod sukar"
+    "playHard": "Main dalam mod sukar",
+    "transformB": {
+      "mirror-x": "Cermin",
+      "rotate-180": "Terbalik"
+    },
+    "transformNotice": {
+      "mirror-x": "Perhatian! Gambar kedua dicerminkan",
+      "rotate-180": "Perhatian! Gambar kedua terbalik"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

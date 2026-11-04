@@ -111,7 +111,15 @@
     "failed": "Te veel fouten",
     "failedHint": "Op moeilijk eindigt het level bij fout nummer {n}",
     "hardDone": "Gehaald op moeilijk!",
-    "playHard": "Speel op moeilijk"
+    "playHard": "Speel op moeilijk",
+    "transformB": {
+      "mirror-x": "Gespiegeld",
+      "rotate-180": "Ondersteboven"
+    },
+    "transformNotice": {
+      "mirror-x": "Let op! De tweede afbeelding is gespiegeld",
+      "rotate-180": "Let op! De tweede afbeelding staat ondersteboven"
+    }
   },
   "duo": {
     "modeTitle": "Hoe spelen jullie?",

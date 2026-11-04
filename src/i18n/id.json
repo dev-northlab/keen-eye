@@ -434,7 +434,15 @@
     "failed": "Terlalu banyak kesalahan",
     "failedHint": "Di mode sulit, level berakhir pada kesalahan ke-{n}",
     "hardDone": "Lulus di mode sulit!",
-    "playHard": "Main di mode sulit"
+    "playHard": "Main di mode sulit",
+    "transformB": {
+      "mirror-x": "Cermin",
+      "rotate-180": "Terbalik"
+    },
+    "transformNotice": {
+      "mirror-x": "Perhatian! Gambar kedua dicerminkan",
+      "rotate-180": "Perhatian! Gambar kedua terbalik"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

@@ -434,7 +434,15 @@
     "failed": "Quá nhiều lỗi",
     "failedHint": "Ở chế độ khó, màn chơi kết thúc ở lỗi thứ {n}",
     "hardDone": "Đã qua ở chế độ khó!",
-    "playHard": "Chơi ở chế độ khó"
+    "playHard": "Chơi ở chế độ khó",
+    "transformB": {
+      "mirror-x": "Gương",
+      "rotate-180": "Lộn ngược"
+    },
+    "transformNotice": {
+      "mirror-x": "Chú ý! Hình thứ hai bị lật như gương",
+      "rotate-180": "Chú ý! Hình thứ hai bị lộn ngược"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

@@ -14,6 +14,7 @@ import {
   type Picture,
 } from './render.ts'
 import { hitTest } from './rules.ts'
+import { combineTransforms, inverseTransformPoint, type PictureTransform } from './transform.ts'
 import type { Level } from './types.ts'
 import { Viewport } from './zoom.ts'
 
@@ -34,6 +35,8 @@ export interface BoardOptions {
   zoom?: boolean
   /** Content turned by 180°: the far player's copy in a face-to-face duel. */
   flipped?: boolean
+  /** Picture B shown mirrored or turned (`Level.transformB`, single player only); taps are turned back. */
+  transformB?: PictureTransform
   onZoom?: (scale: number) => void
   /** A tap on the level's hidden key: never a hit or a miss; the scene decides whether to `takeSecret()`. */
   onSecret?: (tap: Tap) => void
@@ -58,7 +61,8 @@ export class Board {
   private readonly level: Level
   private readonly onTap: (hit: number, tap: Tap) => void
   private readonly zoom: boolean
-  private readonly flipped: boolean
+  /** How each picture shows the scene: B of late levels mirrored or turned, a duel's far copy turned. */
+  private readonly transforms: [PictureTransform, PictureTransform]
   private readonly pictures: Picture[]
   private readonly viewport: Viewport
   private readonly gestures: Gestures
@@ -76,13 +80,14 @@ export class Board {
     this.level = level
     this.onTap = onTap
     this.zoom = options.zoom ?? true
-    this.flipped = options.flipped ?? false
+    const turn: PictureTransform = options.flipped ? 'rotate-180' : 'none'
+    this.transforms = [turn, combineTransforms(options.transformB ?? 'none', turn)]
     this.onSecret = options.onSecret
-    this.pictures = [createPicture(level, 0, this.flipped, options.extras), createPicture(level, 1, this.flipped, options.extras)]
+    this.pictures = this.transforms.map((t, i) => createPicture(level, i as 0 | 1, t, options.extras))
     this.secretLeft = !!level.secret && !options.secretTaken
     if (level.secret && !this.secretLeft) for (const p of this.pictures) takeSecret(p, level.secret, false)
     const svgs = this.pictures.map((p) => p.svg)
-    this.viewport = new Viewport(svgs, level.viewBox.w, level.viewBox.h, (s) => options.onZoom?.(s))
+    this.viewport = new Viewport(svgs, level.viewBox.w, level.viewBox.h, (s) => options.onZoom?.(s), this.transforms)
     this.gestures = new Gestures(
       container,
       svgs,
@@ -172,22 +177,23 @@ export class Board {
     return zonesAt(p, this.level.differences, this.time)[index]
   }
 
-  /** Visible (viewBox) point of a client point, or null outside the visible scene (letterbox). */
-  private viewPoint(picture: 0 | 1, clientX: number, clientY: number) {
+  /**
+   * Scene point of a client point, or null outside the visible scene (letterbox). The viewBox is in shown
+   * coordinates: a mirrored or turned picture's point is turned back.
+   */
+  private scenePoint(picture: 0 | 1, clientX: number, clientY: number) {
     const svg = this.pictures[picture].svg
     const pt = toViewBox(svg, clientX, clientY)
     const vb = svg.viewBox.baseVal
     if (!pt || pt.x < vb.x || pt.y < vb.y || pt.x > vb.x + vb.width || pt.y > vb.y + vb.height) return null
-    return pt
+    return inverseTransformPoint(this.transforms[picture], pt, this.level.viewBox)
   }
 
   private tap(picture: 0 | 1, clientX: number, clientY: number): void {
     this.commitMiss()
-    const pt = this.viewPoint(picture, clientX, clientY)
+    const pt = this.scenePoint(picture, clientX, clientY)
     if (!pt) return
-    const { w, h } = this.level.viewBox
-    const time = performance.now()
-    const tap: Tap = this.flipped ? { picture, x: w - pt.x, y: h - pt.y, time } : { picture, x: pt.x, y: pt.y, time }
+    const tap: Tap = { picture, x: pt.x, y: pt.y, time: performance.now() }
     const hit = hitTest(zonesAt(this.pictures[picture], this.level.differences, this.time), tap.x, tap.y)
     if (hit < 0 && this.onSecretKey(picture, tap)) {
       this.onSecret?.(tap)
@@ -211,8 +217,7 @@ export class Board {
       clearTimeout(this.pendingMiss.timer)
       this.pendingMiss = null
     }
-    // The viewport works in visible (unturned) coordinates.
-    const pt = this.viewPoint(picture, clientX, clientY)
+    const pt = this.scenePoint(picture, clientX, clientY)
     if (this.viewport.scale > 1) this.viewport.reset()
     else if (pt) this.viewport.zoomTo(DOUBLE_TAP_SCALE, pt.x, pt.y)
   }

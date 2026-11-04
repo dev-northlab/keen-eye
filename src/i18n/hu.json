@@ -111,7 +111,15 @@
     "failed": "Túl sok hiba",
     "failedHint": "Nehéz módban a pálya a(z) {n}. hibánál véget ér",
     "hardDone": "Teljesítve nehéz módban!",
-    "playHard": "Játék nehéz módban"
+    "playHard": "Játék nehéz módban",
+    "transformB": {
+      "mirror-x": "Tükör",
+      "rotate-180": "Fejjel lefelé"
+    },
+    "transformNotice": {
+      "mirror-x": "Figyelem! A második kép tükrözött",
+      "rotate-180": "Figyelem! A második kép fejjel lefelé áll"
+    }
   },
   "duo": {
     "modeTitle": "Hogyan játszotok?",

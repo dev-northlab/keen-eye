@@ -111,7 +111,15 @@
     "failed": "ミスが多すぎます",
     "failedHint": "むずかしいモードでは {n} 回目のミスで終了します",
     "hardDone": "むずかしいでクリア！",
-    "playHard": "むずかしいで遊ぶ"
+    "playHard": "むずかしいで遊ぶ",
+    "transformB": {
+      "mirror-x": "左右反転",
+      "rotate-180": "さかさま"
+    },
+    "transformNotice": {
+      "mirror-x": "注意！2枚目の絵は左右反転しています",
+      "rotate-180": "注意！2枚目の絵はさかさまです"
+    }
   },
   "duo": {
     "modeTitle": "どうやって遊ぶ？",

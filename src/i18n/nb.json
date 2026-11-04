@@ -434,7 +434,15 @@
     "failed": "For mange feil",
     "failedHint": "På vanskelig slutter nivået ved feil nummer {n}",
     "hardDone": "Klart på vanskelig!",
-    "playHard": "Spill på vanskelig"
+    "playHard": "Spill på vanskelig",
+    "transformB": {
+      "mirror-x": "Speil",
+      "rotate-180": "Opp ned"
+    },
+    "transformNotice": {
+      "mirror-x": "Obs! Det andre bildet er speilvendt",
+      "rotate-180": "Obs! Det andre bildet er opp ned"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

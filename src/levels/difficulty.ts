@@ -1,5 +1,6 @@
 // Difficulty curve by level id (spec, section 7). `check-levels` enforces the counts and the
 // zone sizes; the kinds are guidance for whoever draws the level.
+import type { PictureTransform } from '../engine/transform.ts'
 
 export type DifferenceKind = 'missing' | 'extra' | 'color' | 'size' | 'shape' | 'shift' | 'rotate' | 'motion' | 'count'
 
@@ -96,6 +97,27 @@ function harder(first: number, floor: number): Difficulty[] {
     minGap: 64,
     kinds: HARD,
   }))
+}
+
+/**
+ * Picture B shown mirrored or turned (docs/mirror-rotate-feature.md): the last five levels of every world
+ * and of "travel" and "detective", alternating mirror-x and rotate-180. Not "time" and "memory" (hard
+ * enough already), nor the bonus "treasury".
+ */
+const TRANSFORMED_B: [from: number, to: number][] = [
+  [106, 110],
+  [116, 120],
+  [126, 130],
+  [136, 140],
+  [146, 150],
+  [428, 432],
+  [526, 530],
+]
+
+export function transformBOf(levelId: number): PictureTransform {
+  const range = TRANSFORMED_B.find(([from, to]) => levelId >= from && levelId <= to)
+  if (!range) return 'none'
+  return (levelId - range[0]) % 2 === 0 ? 'mirror-x' : 'rotate-180'
 }
 
 export function difficultyOf(levelId: number): Difficulty {

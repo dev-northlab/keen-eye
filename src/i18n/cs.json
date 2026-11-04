@@ -111,7 +111,15 @@
     "failed": "Příliš mnoho chyb",
     "failedHint": "V těžkém režimu končí úroveň u chyby č. {n}",
     "hardDone": "Splněno na těžký!",
-    "playHard": "Hrát na těžký"
+    "playHard": "Hrát na těžký",
+    "transformB": {
+      "mirror-x": "Zrcadlo",
+      "rotate-180": "Vzhůru nohama"
+    },
+    "transformNotice": {
+      "mirror-x": "Pozor! Druhý obrázek je zrcadlově obrácený",
+      "rotate-180": "Pozor! Druhý obrázek je vzhůru nohama"
+    }
   },
   "duo": {
     "modeTitle": "Jak budete hrát?",

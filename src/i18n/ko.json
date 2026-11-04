@@ -111,7 +111,15 @@
     "failed": "실수가 너무 많아요",
     "failedHint": "어려움 모드에서는 {n}번째 실수에서 레벨이 끝나요",
     "hardDone": "어려움으로 통과!",
-    "playHard": "어려움으로 플레이"
+    "playHard": "어려움으로 플레이",
+    "transformB": {
+      "mirror-x": "거울",
+      "rotate-180": "거꾸로"
+    },
+    "transformNotice": {
+      "mirror-x": "주의! 두 번째 그림은 좌우가 반전되어 있어요",
+      "rotate-180": "주의! 두 번째 그림은 거꾸로 되어 있어요"
+    }
   },
   "duo": {
     "modeTitle": "어떻게 플레이할까요?",

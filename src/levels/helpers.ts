@@ -1,3 +1,4 @@
+import { transformBOf } from './difficulty.ts'
 import type { Animation, AnimationMotion, Difference, Level, MemoryRules, SecretKey, TimePair, TravelPlace, Trap } from '../engine/types.ts'
 
 /**
@@ -153,6 +154,7 @@ export function svgLevel(def: SvgLevelDef): Level {
   const traps: Trap[] = []
   const extras: NonNullable<Level['extras']> = []
   render(0, 0, false, differences, traps, extras)
+  const transformB = transformBOf(def.id)
 
   return {
     id: def.id,
@@ -169,6 +171,7 @@ export function svgLevel(def: SvgLevelDef): Level {
     ...(def.travel !== undefined && { travel: def.travel }),
     ...(secretKey !== undefined && { secret: secretKey }),
     ...(extras.length > 0 && { extras }),
+    ...(transformB !== 'none' && { transformB }),
   }
 }
 

@@ -111,7 +111,15 @@
     "failed": "Troppi errori",
     "failedHint": "In difficile il livello finisce all’errore n. {n}",
     "hardDone": "Superato in difficile!",
-    "playHard": "Gioca in difficile"
+    "playHard": "Gioca in difficile",
+    "transformB": {
+      "mirror-x": "Specchio",
+      "rotate-180": "Capovolta"
+    },
+    "transformNotice": {
+      "mirror-x": "Attenzione! La seconda immagine è specchiata",
+      "rotate-180": "Attenzione! La seconda immagine è capovolta"
+    }
   },
   "duo": {
     "modeTitle": "Come giocate?",

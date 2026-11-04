@@ -434,7 +434,15 @@
     "failed": "För många misstag",
     "failedHint": "På svår slutar nivån vid misstag nummer {n}",
     "hardDone": "Klarad på svår!",
-    "playHard": "Spela på svår"
+    "playHard": "Spela på svår",
+    "transformB": {
+      "mirror-x": "Spegel",
+      "rotate-180": "Upp och ner"
+    },
+    "transformNotice": {
+      "mirror-x": "Obs! Den andra bilden är spegelvänd",
+      "rotate-180": "Obs! Den andra bilden är upp och ner"
+    }
   },
   "levelTitles": {
     "agra": "Agra",
