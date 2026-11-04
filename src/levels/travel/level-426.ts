@@ -1,6 +1,7 @@
 // Cape Town: Table Mountain with its "tablecloth" of cloud and the cable car, Lion's Head, the bright
 // Bo-Kaap houses, the harbour with a yacht and a striped lighthouse, penguins on the beach and a protea.
 // Motion difference: the cable car rides quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { gull, sky, sun, water } from './shapes.ts'
 
@@ -60,7 +61,7 @@ export default travelLevel({
   title: 'capeTown',
   parTimeSec: 126,
   place: { region: 'africa', country: 'za', lat: -33.92, lon: 18.42 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const [ex, ey] = cableAt(1)
     const ride = (period: number) => anim({ id: 'cabin', type: 'path', points: [[0, 0], [ex - 300, ey - 252]], period }, cabin())
     return (
@@ -95,7 +96,24 @@ export default travelLevel({
       penguin(196, 480) +
       penguin(236, 452) +
       proteaStem(40, 496) +
-      diff(40, 453, 24, proteaHead(40, 496, '#e85d8a'), proteaHead(40, 496, '#fbfbf7'))
+      diff(40, 453, 24, proteaHead(40, 496, '#e85d8a'), proteaHead(40, 496, '#fbfbf7')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bottle', 416, 392],
+        ['lifeRing', 668, 468],
+        ['buoy', 80, 376, '#ffd23f'],
+        ['bottle', 252, 396],
+        ['birds', 96, 84],
+        ['cloud', 616, 72],
+        ['birds', 344, 52],
+      ]) +
+      extras({ extra, anim }, [
+        ['buoy', 528, 464, '#e63946'],
+        ['bottle', 168, 404],
+        ['lifeRing', 336, 388],
+        ['balloon', 216, 36, '#ffd23f'],
+        ['balloon', 476, 32, '#ffd23f'],
+      ])
     )
   },
 })

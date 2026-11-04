@@ -1,4 +1,5 @@
 // Agra: the Taj Mahal on its white platform, four minarets, the long pool with cypresses, a peacock.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, sky, sun } from './shapes.ts'
 
@@ -63,7 +64,7 @@ export default travelLevel({
   title: 'agra',
   parTimeSec: 68,
   place: { region: 'asia', country: 'in', lat: 27.18, lon: 78.04 },
-  scene: ({ diff, anim }) =>
+  scene: ({ diff, anim, extra }) =>
     sky('#a9d6ef') +
     sun(700, 90, '#ffc94a') +
     anim({ type: 'path', points: [[0, 0], [60, 0]], period: 44 }, cloud(130, 90, 0.6)) +
@@ -89,5 +90,22 @@ export default travelLevel({
     diff(408, 440, 24, lotus(408, 440, '#f28fb1'), lotus(408, 440, '#ffffff')) +
     lotus(380, 476, '#f28fb1') +
     diff(662, 433, 54, fan(640, 470), folded(640, 470)) +
-    peacock(640, 470),
+    peacock(640, 470) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bird', 84, 396, '#8a5a33'],
+      ['flower', 560, 384, '#ffd23f'],
+      ['flower', 320, 464, '#ff6b8b'],
+      ['butterfly', 736, 352, '#ffd23f'],
+      ['stones', 208, 360],
+      ['balloon', 264, 32, '#ffd23f'],
+      ['birds', 500, 92],
+    ]) +
+    extras({ extra, anim }, [
+      ['grass', 180, 488],
+      ['ladybug', 480, 472],
+      ['flower', 100, 484, '#b38cff'],
+      ['cloud', 92, 196],
+      ['birds', 700, 192],
+    ]),
 })

@@ -1,6 +1,7 @@
 // Toronto: the CN Tower over the skyline and the domed stadium, Lake Ontario with a yacht and a canoe,
 // a red maple, a Canada goose, the flag on the shore and a red streetcar.
 // Motion difference: the flag on the shore waves quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, sky, sun, water } from './shapes.ts'
 
@@ -80,7 +81,7 @@ export default travelLevel({
   title: 'toronto',
   parTimeSec: 128,
   place: { region: 'americas', country: 'ca', lat: 43.65, lon: -79.38 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const wave = (period: number) => anim({ id: 'flag', type: 'sway', angle: 8, pivot: [470, 392], period }, flag(470, 392))
     return (
       sky('#9fd3ee') +
@@ -115,7 +116,24 @@ export default travelLevel({
       `<path d="M470 470V388" stroke="#3d4a55" stroke-width="3"/>` +
       diff(486, 400, 22, wave(1), wave(2.4), 'flag') +
       streetcar(680, 496) +
-      diff(597, 440, 20, sign(680, 496, '#ffd23f'), sign(680, 496, '#ffffff'))
+      diff(597, 440, 20, sign(680, 496, '#ffd23f'), sign(680, 496, '#ffffff')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bird', 180, 464, '#8a5a33'],
+        ['flower', 420, 484, '#ffd23f'],
+        ['flower', 532, 484, '#ff6b8b'],
+        ['lifeRing', 732, 356],
+        ['buoy', 332, 372, '#ffd23f'],
+        ['cloud', 540, 68],
+        ['birds', 160, 156],
+      ]) +
+      extras({ extra, anim }, [
+        ['butterfly', 124, 476, '#ffd23f'],
+        ['bottle', 180, 356],
+        ['buoy', 428, 368, '#e63946'],
+        ['balloon', 712, 160, '#ffd23f'],
+        ['birds', 308, 52],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // New York: the Statue of Liberty on its island, the Manhattan skyline with the Empire State Building, a ferry.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, sky, water } from './shapes.ts'
 
@@ -63,7 +64,7 @@ export default travelLevel({
   title: 'newYork',
   parTimeSec: 80,
   place: { region: 'americas', country: 'us', lat: 40.71, lon: -74.01 },
-  scene: ({ diff, anim, rand }) =>
+  scene: ({ diff, anim, rand, extra }) =>
     sky('#9fd3ee') +
     anim({ type: 'path', points: [[0, 0], [70, 0]], period: 44 }, cloud(420, 70, 0.6)) +
     anim({ type: 'path', points: [[0, 0], [-60, 0]], period: 50 }, cloud(730, 110, 0.5)) +
@@ -89,5 +90,22 @@ export default travelLevel({
     diff(150, 92, 22, flame(130, 364), '') +
     diff(130, 152, 26, crown(130, 364, [-160, -135, -110, -90, -70, -45, -20]), crown(130, 364, [-160, -110, -90, -70, -20])) +
     ferryTop(430, 428) +
-    diff(430, 417, 74, hull(430, 428, '#f28c28'), hull(430, 428, '#3a86ff')),
+    diff(430, 417, 74, hull(430, 428, '#f28c28'), hull(430, 428, '#3a86ff')) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['buoy', 684, 432, '#e63946'],
+      ['bottle', 164, 476],
+      ['lifeRing', 304, 388],
+      ['buoy', 540, 480, '#ffd23f'],
+      ['birds', 224, 152],
+      ['balloon', 660, 36, '#ffd23f'],
+      ['birds', 352, 52],
+    ]) +
+    extras({ extra, anim }, [
+      ['bottle', 64, 412],
+      ['buoy', 596, 400, '#e63946'],
+      ['bottle', 252, 472],
+      ['cloud', 204, 300],
+      ['birds', 632, 172],
+    ]),
 })

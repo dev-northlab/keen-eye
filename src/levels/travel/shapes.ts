@@ -46,3 +46,10 @@ export const lantern = (x: number, y: number, color = '#e63946') =>
 /** Rounded hill silhouette across the picture from x0 to x1, its top at `top`, foot at `foot`. */
 export const hill = (x0: number, x1: number, top: number, foot: number, color: string) =>
   `<path d="M${x0} ${foot}Q${(x0 + x1) / 2} ${2 * top - foot} ${x1} ${foot}Z" fill="${color}"/>`
+
+/** Travel suitcase standing on its wheels; (x, y) = ground under the middle. Bounds: x ±10, y from −32 to 0. */
+export const suitcase = (x: number, y: number, color = '#e63946') =>
+  `<path d="M${x - 4} ${y - 25}v-6h8v6" fill="none" stroke="#3d4a55" stroke-width="2"/>` +
+  `<rect x="${x - 9}" y="${y - 26}" width="18" height="22" rx="3" fill="${color}"/>` +
+  `<path d="M${x - 4} ${y - 23}v16M${x + 4} ${y - 23}v16" stroke="#1d1d1d" stroke-opacity="0.25" stroke-width="2"/>` +
+  `<circle cx="${x - 5}" cy="${y - 2}" r="2" fill="#3d4a55"/><circle cx="${x + 5}" cy="${y - 2}" r="2" fill="#3d4a55"/>`

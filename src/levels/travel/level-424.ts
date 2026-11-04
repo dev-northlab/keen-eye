@@ -1,6 +1,7 @@
 // Seoul: the palace gate with curved roofs, N Seoul Tower on its mountain, the golden statue of King
 // Sejong on the square, a gate guard, a woman in hanbok and a magpie in a pine.
 // Motion difference: the banner by the gate waves quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, lantern, person, sky, sun } from './shapes.ts'
 
@@ -64,7 +65,7 @@ export default travelLevel({
   title: 'seoul',
   parTimeSec: 118,
   place: { region: 'asia', country: 'kr', lat: 37.57, lon: 126.98 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const wave = (period: number) => anim({ id: 'banner', type: 'sway', angle: 8, pivot: [470, 236], period }, banner(470, 236))
     return (
       sky('#a6d5ef') +
@@ -93,7 +94,24 @@ export default travelLevel({
       diff(360, 461, 38, skirt(360, 488, '#d6338a'), skirt(360, 488, '#2a9d8f')) +
       // Pine with the magpie
       `<rect x="752" y="330" width="12" height="150" fill="#6b4a3a"/><ellipse cx="740" cy="330" rx="46" ry="16" fill="#2f6b45"/><ellipse cx="770" cy="296" rx="36" ry="14" fill="#2f6b45"/><ellipse cx="748" cy="266" rx="28" ry="12" fill="#3f7d4f"/>` +
-      diff(722, 306, 22, magpie(716, 314), '')
+      diff(722, 306, 22, magpie(716, 314), '') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['ball', 704, 472, '#ffd23f'],
+        ['bollard', 408, 400],
+        ['skateboard', 212, 416, '#e63946'],
+        ['suitcase', 68, 476, '#ffd23f'],
+        ['birds', 436, 104],
+        ['cloud', 708, 140],
+        ['birds', 184, 56],
+      ]) +
+      extras({ extra, anim }, [
+        ['newspaperBox', 512, 488, '#e63946'],
+        ['pigeon', 152, 476],
+        ['suitcase', 276, 488, '#3a86ff'],
+        ['cloud', 92, 192],
+        ['birds', 276, 116],
+      ])
     )
   },
 })

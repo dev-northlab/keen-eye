@@ -1,5 +1,6 @@
 // New Zealand: snowy mountains over a turquoise lake, green hills with sheep, a kiwi, a tree fern and a hut.
 // Motion difference: a sailing boat on the lake bobs quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { sheep } from '../shapes.ts'
 import { cloud, sky, water } from './shapes.ts'
@@ -57,7 +58,7 @@ export default travelLevel({
   title: 'southernAlps',
   parTimeSec: 92,
   place: { region: 'oceania', country: 'nz', lat: -44, lon: 170.5 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const bob = (period: number) => anim({ id: 'boat', type: 'bob', dx: 0, dy: 4, period }, boat(490, 312))
     return (
       sky('#9fd6f0') +
@@ -88,7 +89,24 @@ export default travelLevel({
       sheep(560, 466) +
       kiwi(360, 486) +
       fern(50, 500) +
-      diff(78, 373, 40, frond(50, 390, 50, -30), '')
+      diff(78, 373, 40, frond(50, 390, 50, -30), '') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['mushroom', 644, 428, '#e63946'],
+        ['bird', 160, 364, '#8a5a33'],
+        ['flower', 352, 392, '#ffd23f'],
+        ['flower', 496, 484, '#ff6b8b'],
+        ['bottle', 736, 308],
+        ['cloud', 240, 60],
+        ['birds', 600, 80],
+      ]) +
+      extras({ extra, anim }, [
+        ['butterfly', 96, 476, '#ffd23f'],
+        ['stones', 284, 480],
+        ['grass', 732, 488],
+        ['lifeRing', 400, 316],
+        ['balloon', 412, 120, '#ffd23f'],
+      ])
     )
   },
 })

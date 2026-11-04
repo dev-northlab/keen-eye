@@ -1,6 +1,7 @@
 // Marrakesh: the Koutoubia minaret over the red city walls with a stork, a market stall with spice
 // cones and a metal lantern, a hanging rug, tagines and an orange tree.
 // Motion difference: the lantern under the awning swings quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { palm, person, sky, sun } from './shapes.ts'
 
@@ -68,7 +69,7 @@ export default travelLevel({
   title: 'marrakesh',
   parTimeSec: 120,
   place: { region: 'africa', country: 'ma', lat: 31.63, lon: -7.99 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const swing = (period: number) => anim({ id: 'lantern', type: 'sway', angle: 14, pivot: [550, 380], period }, metalLantern(550, 380))
     return (
       sky('#a9d6ee') +
@@ -102,7 +103,24 @@ export default travelLevel({
       orangeTree(90, 490) +
       [[70, 380], [110, 370], [60, 410], [124, 404]].map(([x, y]) => orange(x, y)).join('') +
       diff(92, 398, 18, orange(92, 398), '') +
-      person(170, 494, '#c9a227', true, '#c68b59', '#1d1d1d')
+      person(170, 494, '#c9a227', true, '#c68b59', '#1d1d1d') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bollard', 320, 448],
+        ['skateboard', 628, 472, '#e63946'],
+        ['suitcase', 120, 472, '#ffd23f'],
+        ['newspaperBox', 212, 376, '#e63946'],
+        ['cloud', 340, 96],
+        ['birds', 88, 108],
+        ['cloud', 612, 140],
+      ]) +
+      extras({ extra, anim }, [
+        ['pigeon', 632, 372],
+        ['suitcase', 296, 384, '#3a86ff'],
+        ['bin', 156, 412, '#2a9d8f'],
+        ['birds', 488, 60],
+        ['balloon', 580, 32, '#ffd23f'],
+      ])
     )
   },
 })

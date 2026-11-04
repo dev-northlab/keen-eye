@@ -1,6 +1,7 @@
 // Tbilisi: the old fortress on its hill, a cable car over old town houses with wooden balconies,
 // the brick domes of the sulfur baths and a churchkhela stall by the river.
 // Motion difference: the cable car cabin rides quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, person, sky, water } from './shapes.ts'
 
@@ -60,7 +61,7 @@ export default travelLevel({
   title: 'tbilisi',
   parTimeSec: 78,
   place: { region: 'caucasus', country: 'ge', lat: 41.72, lon: 44.79 },
-  scene: ({ diff, anim, rand, secret }) => {
+  scene: ({ diff, anim, rand, secret, extra }) => {
     const ride = (period: number) => anim({ id: 'cabin', type: 'path', points: [[0, 0], [240, cableY(660) - cableY(420)]], period }, cabin(420))
     return (
       sky('#a9d6ef') +
@@ -99,7 +100,24 @@ export default travelLevel({
       diff(330, 362, 24, sweet(330, 344, '#6d2e46'), sweet(330, 344, '#c8762e')) +
       person(386, 404, '#e63946', true, '#f2d29b', '#1d1d1d') +
       water(416, '#5f9a96', rand, 12) +
-      diff(560, 453, 40, boat(560, 456, '#ffd23f'), boat(560, 456, '#e63946'))
+      diff(560, 453, 40, boat(560, 456, '#ffd23f'), boat(560, 456, '#e63946')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bin', 420, 408, '#2a9d8f'],
+        ['bottle', 172, 476],
+        ['bottle', 716, 444],
+        ['stones', 168, 264],
+        ['grass', 352, 232],
+        ['cloud', 704, 112],
+        ['birds', 236, 52],
+      ]) +
+      extras({ extra, anim }, [
+        ['coffeeCup', 56, 372],
+        ['lifeRing', 308, 464],
+        ['bottle', 64, 464],
+        ['ladybug', 272, 312],
+        ['balloon', 472, 36, '#ffd23f'],
+      ])
     )
   },
 })

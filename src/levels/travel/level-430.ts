@@ -1,6 +1,7 @@
 // Buenos Aires: the bright houses of La Boca with a balcony, shutters and a filete sign, laundry on a
 // line, the Obelisco behind, a jacaranda in bloom, a couple dancing tango and a bandoneon player.
 // Motion difference: a shirt on the laundry line flutters quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, person, sky, sun } from './shapes.ts'
 
@@ -64,7 +65,7 @@ export default travelLevel({
   title: 'buenosAires',
   parTimeSec: 134,
   place: { region: 'americas', country: 'ar', lat: -34.6, lon: -58.38 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const flutter = (period: number) => anim({ id: 'shirt', type: 'sway', angle: 12, pivot: [432, 204], period }, shirt(432, 204, '#ffffff'))
     return (
       sky('#9fd6f2') +
@@ -105,7 +106,24 @@ export default travelLevel({
       dancerTop(330, 488) +
       diff(334, 455, 42, dress(330, 488, '#c9302c'), dress(330, 488, '#8338ec')) +
       player(680, 490) +
-      diff(672, 437, 20, bellows(676, 490, '#c9302c'), bellows(676, 490, '#3fa46f'))
+      diff(672, 437, 20, bellows(676, 490, '#c9302c'), bellows(676, 490, '#3fa46f')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['suitcase', 184, 468, '#3a86ff'],
+        ['bin', 588, 468, '#2a9d8f'],
+        ['coffeeCup', 396, 416],
+        ['shoppingBag', 732, 420, '#ff6b8b'],
+        ['pigeon', 68, 444],
+        ['birds', 132, 96],
+        ['cloud', 644, 140],
+      ]) +
+      extras({ extra, anim }, [
+        ['ball', 480, 484, '#ffd23f'],
+        ['bollard', 736, 492],
+        ['skateboard', 424, 464, '#e63946'],
+        ['suitcase', 120, 488, '#ffd23f'],
+        ['birds', 332, 60],
+      ])
     )
   },
 })

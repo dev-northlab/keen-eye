@@ -2,6 +2,7 @@
 // with red roofs and a carved wooden balcony, an Inca stone wall, a llama with tassels, a woman in a
 // traditional hat with a basket of corn and the rainbow flag of the city.
 // Motion difference: the rainbow flag waves quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, sky, sun } from './shapes.ts'
 
@@ -72,7 +73,7 @@ export default travelLevel({
   title: 'cusco',
   parTimeSec: 132,
   place: { region: 'americas', country: 'pe', lat: -13.53, lon: -71.97 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const wave = (period: number) => anim({ id: 'flag', type: 'sway', angle: 8, pivot: [690, 196], period }, flag(690, 196))
     return (
       sky('#9fd3ee') +
@@ -108,7 +109,24 @@ export default travelLevel({
       basket(484, 494) +
       diff(484, 466, 22, cobs(484, 494, '#ffd23f'), cobs(484, 494, '#6b2d6b')) +
       llama(650, 486) +
-      diff(630, 374, 18, tassels(650, 486, '#ff6b8b'), tassels(650, 486, '#4dabf7'))
+      diff(630, 374, 18, tassels(650, 486, '#ff6b8b'), tassels(650, 486, '#4dabf7')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['pigeon', 532, 412],
+        ['suitcase', 304, 376, '#3a86ff'],
+        ['bin', 732, 444, '#2a9d8f'],
+        ['coffeeCup', 64, 364],
+        ['balloon', 280, 68, '#ffd23f'],
+        ['birds', 708, 92],
+        ['cloud', 184, 124],
+      ]) +
+      extras({ extra, anim }, [
+        ['shoppingBag', 364, 488, '#ff6b8b'],
+        ['pigeon', 176, 368],
+        ['ball', 612, 476, '#ffd23f'],
+        ['bollard', 464, 364],
+        ['balloon', 412, 100, '#ffd23f'],
+      ])
     )
   },
 })

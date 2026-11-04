@@ -1,4 +1,5 @@
 // Paris: the Eiffel Tower between two Haussmann houses, a café and a painter at an easel.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { bike, cityTree, cloud, lampHead, lampPost, person, pigeon, sky, sun } from './shapes.ts'
 
@@ -67,7 +68,7 @@ export default travelLevel({
   title: 'paris',
   parTimeSec: 60,
   place: { region: 'europe', country: 'fr', lat: 48.86, lon: 2.35 },
-  scene: ({ diff, anim }) =>
+  scene: ({ diff, anim, extra }) =>
     sky() +
     sun(690, 80) +
     anim({ type: 'path', points: [[0, 0], [70, 0]], period: 40 }, cloud(150, 90, 0.7)) +
@@ -103,5 +104,22 @@ export default travelLevel({
     diff(716, 436, 24, baguette(716, 436), '') +
     `<rect x="704" y="446" width="20" height="12" rx="2" fill="#c8935a"/>` +
     pigeon(380, 476) +
-    pigeon(428, 488, true),
+    pigeon(428, 488, true) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['pigeon', 648, 468],
+      ['ball', 272, 476, '#ffd23f'],
+      ['bollard', 68, 480],
+      ['skateboard', 460, 476, '#e63946'],
+      ['cloud', 280, 172],
+      ['birds', 580, 64],
+      ['cloud', 484, 264],
+    ]) +
+    extras({ extra, anim }, [
+      ['suitcase', 348, 468, '#ffd23f'],
+      ['newspaperBox', 224, 464, '#e63946'],
+      ['pigeon', 416, 456],
+      ['birds', 88, 56],
+      ['balloon', 324, 32, '#ffd23f'],
+    ]),
 })

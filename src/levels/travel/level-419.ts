@@ -1,6 +1,7 @@
 // Prague: the Old Town Hall tower with the astronomical clock, Charles Bridge with its statues over
 // the Vltava, red roofs and the castle with St. Vitus Cathedral on the hill, a tram on the embankment.
 // Motion difference: a swan on the river bobs quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, person, pigeon, sky, water } from './shapes.ts'
 
@@ -67,7 +68,7 @@ export default travelLevel({
   title: 'prague',
   parTimeSec: 106,
   place: { region: 'europe', country: 'cz', lat: 50.09, lon: 14.42 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const bob = (period: number) => anim({ id: 'swan', type: 'bob', dx: 0, dy: 3, period }, swan(330, 352))
     return (
       sky('#a8d4ec') +
@@ -102,7 +103,24 @@ export default travelLevel({
       pigeon(300, 492) +
       hallTower(30, 130) +
       diff(80, 54, 18, ball(80), '') +
-      diff(80, 300, 22, sunHand(80, 60), sunHand(80, 150))
+      diff(80, 300, 22, sunHand(80, 60), sunHand(80, 150)) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['suitcase', 636, 464, '#3a86ff'],
+        ['bin', 288, 452, '#2a9d8f'],
+        ['coffeeCup', 448, 400],
+        ['bottle', 148, 328],
+        ['bottle', 736, 336],
+        ['cloud', 464, 136],
+        ['birds', 196, 108],
+      ]) +
+      extras({ extra, anim }, [
+        ['shoppingBag', 164, 464, '#ff6b8b'],
+        ['lifeRing', 256, 332],
+        ['bottle', 524, 332],
+        ['cloud', 328, 156],
+        ['birds', 712, 52],
+      ])
     )
   },
 })

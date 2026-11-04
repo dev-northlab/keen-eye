@@ -1,6 +1,7 @@
 // Mexico City: papel picado over the street, the Palace of Fine Arts with its orange dome, the golden
 // Angel of Independence, a colorful trajinera boat on a canal, a cactus and two mariachis.
 // Motion difference: one papel picado flag flutters quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { sky, sun, water } from './shapes.ts'
 
@@ -77,7 +78,7 @@ export default travelLevel({
   title: 'mexicoCity',
   parTimeSec: 130,
   place: { region: 'americas', country: 'mx', lat: 19.43, lon: -99.13 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const flutter = (period: number) => anim({ id: 'picado', type: 'sway', angle: 12, pivot: [630, stringY(630)], period }, picado(630, PICADO[3]))
     return (
       sky('#9fd6f2') +
@@ -107,7 +108,24 @@ export default travelLevel({
       [30, 90, 210, 270, 330, 450, 510, 570, 690, 750].map((x, i) => picado(x, PICADO[i % PICADO.length])).join('') +
       diff(150, stringY(150) + 16, 22, picado(150, PICADO[1]), picado(150, PICADO[6])) +
       diff(390, stringY(390) + 16, 22, picado(390, PICADO[2]), '') +
-      diff(630, stringY(630) + 16, 24, flutter(1), flutter(2.4), 'picado')
+      diff(630, stringY(630) + 16, 24, flutter(1), flutter(2.4), 'picado') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['newspaperBox', 500, 488, '#e63946'],
+        ['pigeon', 280, 476],
+        ['suitcase', 112, 488, '#3a86ff'],
+        ['bottle', 732, 392],
+        ['bottle', 588, 360],
+        ['birds', 380, 180],
+        ['balloon', 636, 148, '#ffd23f'],
+      ]) +
+      extras({ extra, anim }, [
+        ['bin', 624, 488, '#2a9d8f'],
+        ['coffeeCup', 392, 452],
+        ['lifeRing', 164, 356],
+        ['birds', 504, 268],
+        ['cloud', 708, 280],
+      ])
     )
   },
 })

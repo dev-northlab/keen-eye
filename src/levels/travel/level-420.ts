@@ -1,6 +1,7 @@
 // Istanbul: a mosque with domes and minarets, the Galata Tower across the Bosphorus, a ferry with
 // gulls, a simit cart, a street cat and tulips.
 // Motion difference: the flag on the ferry waves quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, person, sky, sun, water } from './shapes.ts'
 
@@ -69,7 +70,7 @@ export default travelLevel({
   title: 'istanbul',
   parTimeSec: 108,
   place: { region: 'europe', country: 'tr', lat: 41.01, lon: 28.98 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const wave = (period: number) => anim({ id: 'flag', type: 'sway', angle: 8, pivot: [364, 308], period }, flag(364, 308))
     return (
       sky('#a6d3ee') +
@@ -107,7 +108,24 @@ export default travelLevel({
       diff(330, 471, 26, cat(326, 484, '#f4a261'), cat(326, 484, '#8d99ae')) +
       stems(600, 490) +
       diff(600, 461, 22, heads(600, 490, '#e63946'), heads(600, 490, '#ffd23f')) +
-      person(720, 492, '#8338ec')
+      person(720, 492, '#8338ec') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bin', 448, 488, '#2a9d8f'],
+        ['coffeeCup', 692, 428],
+        ['shoppingBag', 72, 476, '#ff6b8b'],
+        ['buoy', 244, 356, '#e63946'],
+        ['bottle', 100, 336],
+        ['birds', 596, 176],
+        ['cloud', 184, 104],
+      ]) +
+      extras({ extra, anim }, [
+        ['pigeon', 532, 440],
+        ['ball', 388, 436, '#ffd23f'],
+        ['lifeRing', 624, 340],
+        ['buoy', 732, 352, '#ffd23f'],
+        ['birds', 436, 52],
+      ])
     )
   },
 })

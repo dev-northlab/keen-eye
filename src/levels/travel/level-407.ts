@@ -1,5 +1,6 @@
 // Yerevan: Mount Ararat over pink tuff buildings with arcades and a clock tower, a fountain, an apricot tree.
 // Motion difference: the middle fountain jet bounces quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, person, pigeon, sky } from './shapes.ts'
 
@@ -55,7 +56,7 @@ export default travelLevel({
   title: 'yerevan',
   parTimeSec: 74,
   place: { region: 'caucasus', country: 'am', lat: 40.18, lon: 44.51 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const bounce = (period: number) => anim({ id: 'jet', type: 'bob', dx: 0, dy: 6, period }, jet(580, 446, 54))
     return (
       sky('#a9d6ef') +
@@ -93,7 +94,24 @@ export default travelLevel({
       person(420, 488, '#5b7fd6') +
       person(760, 482, '#e63946', true) +
       pigeon(220, 480) +
-      pigeon(250, 470, true)
+      pigeon(250, 470, true) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['pigeon', 184, 468],
+        ['suitcase', 728, 488, '#3a86ff'],
+        ['bin', 384, 472, '#2a9d8f'],
+        ['coffeeCup', 512, 492],
+        ['cloud', 428, 76],
+        ['birds', 88, 136],
+        ['cloud', 256, 64],
+      ]) +
+      extras({ extra, anim }, [
+        ['shoppingBag', 284, 476, '#ff6b8b'],
+        ['pigeon', 244, 436],
+        ['ball', 64, 484, '#ffd23f'],
+        ['birds', 336, 208],
+        ['balloon', 716, 108, '#ffd23f'],
+      ])
     )
   },
 })

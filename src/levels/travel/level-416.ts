@@ -1,6 +1,7 @@
 // London: Big Ben's clock tower, the Houses of Parliament, the London Eye over the Thames, a red
 // double-decker bus, a black cab and a red telephone box.
 // Motion difference: the flag on Parliament waves quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { car, cloud, gull, lampHead, lampPost, person, pigeon, sky, water } from './shapes.ts'
 
@@ -83,7 +84,7 @@ export default travelLevel({
   title: 'london',
   parTimeSec: 100,
   place: { region: 'europe', country: 'gb', lat: 51.5, lon: -0.12 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const wave = (period: number) => anim({ id: 'flag', type: 'sway', angle: 8, pivot: [420, 100], period }, flag(420, 100))
     return (
       sky('#b8d4e8') +
@@ -116,7 +117,24 @@ export default travelLevel({
       `<path d="M700 470V412" stroke="#3d4a55" stroke-width="2"/>` +
       diff(700, 414, 30, umbrella(700, 490, '#1d1d1d'), umbrella(700, 490, '#e63946')) +
       pigeon(380, 496) +
-      pigeon(640, 494, true)
+      pigeon(640, 494, true) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['pigeon', 384, 468],
+        ['cone', 176, 476],
+        ['pigeon', 540, 480],
+        ['bottle', 644, 368],
+        ['lifeRing', 84, 368],
+        ['birds', 200, 176],
+        ['balloon', 372, 32, '#ffd23f'],
+      ]) +
+      extras({ extra, anim }, [
+        ['cone', 736, 488],
+        ['bottle', 276, 364],
+        ['bottle', 464, 364],
+        ['birds', 344, 176],
+        ['birds', 176, 84],
+      ])
     )
   },
 })

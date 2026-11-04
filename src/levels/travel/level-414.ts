@@ -1,5 +1,6 @@
 // Sydney: the Opera House with its white shells, the Harbour Bridge, a green and yellow ferry, yachts and a kookaburra.
 // Motion difference: a yacht rocks quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, sky, sun, water } from './shapes.ts'
 
@@ -61,7 +62,7 @@ export default travelLevel({
   title: 'sydney',
   parTimeSec: 90,
   place: { region: 'oceania', country: 'au', lat: -33.86, lon: 151.21 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const rock = (period: number) => anim({ id: 'yacht', type: 'sway', angle: 6, pivot: [700, 440], period }, yacht(700, 440, '#ffd23f'))
     return (
       sky('#8fd3f4') +
@@ -87,7 +88,24 @@ export default travelLevel({
       diff(488, 470, 20, buoy(488, 470, '#e63946'), buoy(488, 470, '#ffd23f')) +
       diff(700, 410, 46, rock(1.4), rock(3), 'yacht') +
       post(46, 440) +
-      diff(46, 425, 24, kookaburra(46, 440), '')
+      diff(46, 425, 24, kookaburra(46, 440), '') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bottle', 120, 452],
+        ['buoy', 452, 368, '#e63946'],
+        ['bottle', 704, 320],
+        ['lifeRing', 608, 464],
+        ['birds', 200, 84],
+        ['cloud', 696, 96],
+        ['birds', 448, 80],
+      ]) +
+      extras({ extra, anim }, [
+        ['buoy', 372, 476, '#ffd23f'],
+        ['bottle', 216, 480],
+        ['buoy', 184, 404, '#e63946'],
+        ['balloon', 272, 200, '#ffd23f'],
+        ['birds', 108, 196],
+      ])
     )
   },
 })

@@ -1,6 +1,7 @@
 // Singapore: Marina Bay Sands with its sky park, the Supertrees, the observation wheel, the lotus-shaped
 // museum, a bumboat on the bay, an orchid and the Merlion spouting water.
 // Motion difference: the Merlion's water stream ripples quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, sky, sun, water } from './shapes.ts'
 
@@ -73,7 +74,7 @@ export default travelLevel({
   title: 'singapore',
   parTimeSec: 116,
   place: { region: 'asia', country: 'sg', lat: 1.29, lon: 103.85 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const ripple = (period: number) => anim({ id: 'spout', type: 'bob', dx: 0, dy: 3, period }, stream())
     return (
       sky('#a3d6f0') +
@@ -106,7 +107,24 @@ export default travelLevel({
       pot(80, 496) +
       diff(88, 444, 22, flowers(80, 496, '#b04fbf'), flowers(80, 496, '#ffffff')) +
       merlion(724, 470) +
-      diff(654, 390, 62, ripple(0.8), ripple(2), 'spout')
+      diff(654, 390, 62, ripple(0.8), ripple(2), 'spout') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['buoy', 536, 364, '#ffd23f'],
+        ['bottle', 168, 412],
+        ['buoy', 368, 364, '#e63946'],
+        ['bottle', 464, 480],
+        ['balloon', 552, 40, '#ffd23f'],
+        ['birds', 288, 52],
+        ['cloud', 708, 228],
+      ]) +
+      extras({ extra, anim }, [
+        ['bollard', 228, 492],
+        ['lifeRing', 72, 372],
+        ['buoy', 568, 472, '#ffd23f'],
+        ['bottle', 240, 356],
+        ['balloon', 432, 224, '#ffd23f'],
+      ])
     )
   },
 })

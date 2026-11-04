@@ -1,6 +1,7 @@
 // Barcelona: the spires of the Sagrada Família with a construction crane, a palm with a parakeet, the
 // mosaic bench and the mosaic lizard of Park Güell.
 // Motion difference: the load on the crane hook swings quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, palm, person, sky, sun } from './shapes.ts'
 
@@ -65,7 +66,7 @@ export default travelLevel({
   title: 'barcelona',
   parTimeSec: 102,
   place: { region: 'europe', country: 'es', lat: 41.4, lon: 2.17 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const swing = (period: number) => anim({ id: 'hook', type: 'sway', angle: 6, pivot: [640, 104], period }, hook(640, 104))
     return (
       sky('#9fd3ee') +
@@ -95,7 +96,24 @@ export default travelLevel({
       person(560, 488, '#3fa46f') +
       `<path d="M568 460L575 412" stroke="#3d4a55" stroke-width="1.2"/>` +
       diff(575, 406, 22, balloon(575, 488, '#e63946'), balloon(575, 488, '#8338ec')) +
-      person(620, 486, '#f28c28', true, '#e0b48a', '#1d1d1d')
+      person(620, 486, '#f28c28', true, '#e0b48a', '#1d1d1d') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['newspaperBox', 660, 480, '#e63946'],
+        ['pigeon', 692, 420],
+        ['bin', 644, 424, '#2a9d8f'],
+        ['coffeeCup', 412, 408],
+        ['balloon', 464, 184, '#ffd23f'],
+        ['birds', 172, 216],
+        ['cloud', 596, 288],
+      ]) +
+      extras({ extra, anim }, [
+        ['shoppingBag', 592, 488, '#ff6b8b'],
+        ['ball', 220, 488, '#ffd23f'],
+        ['bollard', 68, 420],
+        ['birds', 188, 52],
+        ['cloud', 140, 344],
+      ])
     )
   },
 })
