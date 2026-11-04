@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Lugnt läge",
       "keys": "Gömda nycklar",
+      "offline": "Fungerar offline",
+      "noAds": "Ingen reklam",
+      "mirror": "Spegelvända nivåer",
       "living": "Levande scener"
     },
     "rate": "Betygsätt spelet",
@@ -398,7 +401,7 @@
   },
   "info": {
     "about": "Om spelet",
-    "aboutText": "Keen Eye är ett hitta fel-spel med levande scener. Ingen reklam, inget internet.",
+    "aboutText": "Keen Eye är ett hitta fel-spel med levande scener.",
     "contact": "Kontakta oss",
     "contactText": "Har du en fråga eller en idé, eller har du hittat en bugg? Skriv till oss – vi läser varje meddelande och svarar gärna.",
     "copyEmail": "Kopiera adressen",
@@ -746,6 +749,7 @@
   "mode": {
     "calm": "Lugnt",
     "calmHint": "Ingen tid, inga misstag eller stjärnor",
+    "normalHint": "Timer, 1 ledtråd, stjärnor för snabbhet och precision",
     "label": "Läge",
     "normal": "Normalt",
     "hard": "Svår",
@@ -766,7 +770,7 @@
     "harder": "Mer spännande och utmanande nivåer: fler skillnader och mer rörelse",
     "noAds": "Ingen reklam, ingen prenumeration",
     "none": "Inga köp hittades.",
-    "once": "Ett köp för alltid, fungerar offline",
+    "once": "Ett köp för alltid, på alla dina enheter med samma konto",
     "owned": "Hela spelet är upplåst. Tack!",
     "restore": "Återställ köp",
     "restored": "Köpet har återställts.",

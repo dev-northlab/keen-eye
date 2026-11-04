@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "关于游戏",
-    "aboutText": "Keen Eye 是一款画面会动的找不同游戏。无广告，无需联网。",
+    "aboutText": "Keen Eye 是一款画面会动的找不同游戏。",
     "version": "版本 {v}",
     "privacy": "隐私政策",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "休闲模式",
       "living": "生动场景",
-      "keys": "隐藏钥匙"
+      "keys": "隐藏钥匙",
+      "offline": "无需联网",
+      "noAds": "无广告",
+      "mirror": "镜像关卡"
     },
     "support": {
       "title": "支持本游戏",
@@ -505,6 +508,7 @@
     "normal": "普通",
     "calm": "休闲",
     "calmHint": "不计时、不计错、没有星星",
+    "normalHint": "计时，1 次提示，按速度和准确度评星",
     "hard": "困难",
     "hardHint": "没有提示，错 3 次即结束本关，红色星星",
     "hardStars": "困难模式：{n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "主线游戏今后的所有关卡",
     "harder": "更有趣、更具挑战的关卡：更多不同之处，更多动态",
     "noAds": "无广告，无订阅",
-    "once": "一次购买，永久有效，离线可用",
+    "once": "一次购买，永久有效，同一账号的所有设备通用",
     "buy": "购买 {price}",
     "restore": "恢复购买",
     "wait": "请稍候…",

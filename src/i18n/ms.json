@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Mod tenang",
       "keys": "Kunci tersembunyi",
+      "offline": "Boleh dimain tanpa talian",
+      "noAds": "Tiada iklan",
+      "mirror": "Tahap cermin",
       "living": "Adegan hidup"
     },
     "rate": "Nilai permainan",
@@ -398,7 +401,7 @@
   },
   "info": {
     "about": "Perihal",
-    "aboutText": "Keen Eye ialah permainan cari perbezaan dengan adegan yang hidup. Tiada iklan, tiada internet.",
+    "aboutText": "Keen Eye ialah permainan cari perbezaan dengan adegan yang hidup.",
     "contact": "Hubungi kami",
     "contactText": "Ada soalan atau idea, atau menemui pepijat? Tulis kepada kami – kami membaca setiap mesej dan gembira untuk menjawab.",
     "copyEmail": "Salin alamat",
@@ -746,6 +749,7 @@
   "mode": {
     "calm": "Tenang",
     "calmHint": "Tiada pemasa, kesilapan atau bintang",
+    "normalHint": "Pemasa, 1 petunjuk, bintang untuk kepantasan dan ketepatan",
     "label": "Mod",
     "normal": "Biasa",
     "hard": "Sukar",
@@ -766,7 +770,7 @@
     "harder": "Tahap yang lebih menarik dan mencabar: lebih banyak perbezaan dan gerakan",
     "noAds": "Tiada iklan, tiada langganan",
     "none": "Tiada pembelian ditemui.",
-    "once": "Sekali beli untuk selama-lamanya, boleh dimain tanpa talian",
+    "once": "Sekali beli untuk selama-lamanya, pada semua peranti anda dengan akaun yang sama",
     "owned": "Permainan penuh telah dibuka. Terima kasih!",
     "restore": "Pulihkan pembelian",
     "restored": "Pembelian dipulihkan.",

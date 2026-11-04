@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Chế độ thư giãn",
       "keys": "Chìa khóa ẩn",
+      "offline": "Chơi không cần mạng",
+      "noAds": "Không quảng cáo",
+      "mirror": "Màn chơi gương",
       "living": "Cảnh sống động"
     },
     "rate": "Đánh giá trò chơi",
@@ -398,7 +401,7 @@
   },
   "info": {
     "about": "Giới thiệu",
-    "aboutText": "Keen Eye là trò chơi tìm điểm khác biệt với những khung cảnh sống động. Không quảng cáo, không cần mạng.",
+    "aboutText": "Keen Eye là trò chơi tìm điểm khác biệt với những khung cảnh sống động.",
     "contact": "Liên hệ",
     "contactText": "Bạn có câu hỏi, ý tưởng hay phát hiện lỗi? Hãy viết cho chúng tôi – chúng tôi đọc mọi tin nhắn và rất vui được trả lời.",
     "copyEmail": "Sao chép địa chỉ",
@@ -746,6 +749,7 @@
   "mode": {
     "calm": "Thư giãn",
     "calmHint": "Không đồng hồ, không lỗi, không sao",
+    "normalHint": "Bấm giờ, 1 gợi ý, sao cho tốc độ và độ chính xác",
     "label": "Chế độ",
     "normal": "Thường",
     "hard": "Khó",
@@ -766,7 +770,7 @@
     "harder": "Màn chơi thú vị và thử thách hơn: nhiều điểm khác biệt và chuyển động hơn",
     "noAds": "Không quảng cáo, không đăng ký định kỳ",
     "none": "Không tìm thấy giao dịch mua nào.",
-    "once": "Mua một lần dùng mãi mãi, chơi không cần mạng",
+    "once": "Mua một lần dùng mãi mãi, trên mọi thiết bị của bạn cùng một tài khoản",
     "owned": "Trò chơi đầy đủ đã được mở khóa. Cảm ơn bạn!",
     "restore": "Khôi phục giao dịch mua",
     "restored": "Đã khôi phục giao dịch mua.",

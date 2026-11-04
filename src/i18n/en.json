@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "About",
-    "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
+    "aboutText": "Keen Eye is a spot-the-difference game with living scenes.",
     "version": "Version {v}",
     "privacy": "Privacy policy",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Calm mode",
       "living": "Living scenes",
-      "keys": "Hidden keys"
+      "keys": "Hidden keys",
+      "offline": "Works offline",
+      "noAds": "No ads",
+      "mirror": "Mirrored levels"
     },
     "support": {
       "title": "Support the game",
@@ -505,6 +508,7 @@
     "normal": "Normal",
     "calm": "Calm",
     "calmHint": "No timer, mistakes or stars",
+    "normalHint": "Timer, 1 hint, stars for speed and accuracy",
     "hard": "Hard",
     "hardHint": "No hints, 3 mistakes end the level, red stars",
     "hardStars": "Hard mode: {n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "Every future level of the main game",
     "harder": "More interesting and challenging levels: more differences and more motion",
     "noAds": "No ads, no subscription",
-    "once": "One purchase forever, works offline",
+    "once": "One purchase forever, on all your devices with the same account",
     "buy": "Buy for {price}",
     "restore": "Restore purchases",
     "wait": "Please wait…",

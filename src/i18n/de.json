@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "Über das Spiel",
-    "aboutText": "Keen Eye ist ein Fehlersuchbild-Spiel mit lebendigen Szenen. Ohne Werbung, ohne Internet.",
+    "aboutText": "Keen Eye ist ein Fehlersuchbild-Spiel mit lebendigen Szenen.",
     "version": "Version {v}",
     "privacy": "Datenschutz",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Ruhiger Modus",
       "living": "Lebendige Szenen",
-      "keys": "Versteckte Schlüssel"
+      "keys": "Versteckte Schlüssel",
+      "offline": "Ohne Internet",
+      "noAds": "Keine Werbung",
+      "mirror": "Gespiegelte Level"
     },
     "support": {
       "title": "Das Spiel unterstützen",
@@ -505,6 +508,7 @@
     "normal": "Normal",
     "calm": "Ruhig",
     "calmHint": "Ohne Zeit, Fehler und Sterne",
+    "normalHint": "Timer, 1 Tipp, Sterne für Tempo und Genauigkeit",
     "hard": "Schwer",
     "hardHint": "Ohne Tipps, 3 Fehler beenden das Level, rote Sterne",
     "hardStars": "Schwer: {n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "Alle künftigen Level des Hauptspiels",
     "harder": "Spannendere und schwierigere Level: mehr Unterschiede und mehr Bewegung",
     "noAds": "Keine Werbung, kein Abo",
-    "once": "Einmal kaufen, für immer, funktioniert offline",
+    "once": "Einmal kaufen, für immer, auf allen deinen Geräten mit demselben Konto",
     "buy": "Kaufen für {price}",
     "restore": "Käufe wiederherstellen",
     "wait": "Bitte warten…",

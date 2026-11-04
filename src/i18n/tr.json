@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "Oyun hakkında",
-    "aboutText": "Keen Eye, canlı sahnelerle oynanan bir fark bulma oyunudur. Reklam yok, internet gerekmez.",
+    "aboutText": "Keen Eye, canlı sahnelerle oynanan bir fark bulma oyunudur.",
     "version": "Sürüm {v}",
     "privacy": "Gizlilik politikası",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Sakin mod",
       "living": "Canlı sahneler",
-      "keys": "Gizli anahtarlar"
+      "keys": "Gizli anahtarlar",
+      "offline": "İnternetsiz",
+      "noAds": "Reklamsız",
+      "mirror": "Aynalı bölümler"
     },
     "support": {
       "title": "Oyunu destekle",
@@ -505,6 +508,7 @@
     "normal": "Normal",
     "calm": "Sakin",
     "calmHint": "Süre, hata ve yıldız yok",
+    "normalHint": "Süre, 1 ipucu, hız ve doğruluk için yıldızlar",
     "hard": "Zor",
     "hardHint": "İpucu yok, 3 hata bölümü bitirir, kırmızı yıldızlar",
     "hardStars": "Zor mod: {n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "Ana oyunun gelecekteki tüm bölümleri",
     "harder": "Daha ilginç ve zorlu seviyeler: daha fazla fark ve daha fazla hareket",
     "noAds": "Reklam yok, abonelik yok",
-    "once": "Tek seferlik satın alma, sonsuza dek, çevrimdışı çalışır",
+    "once": "Tek seferlik satın alma, sonsuza dek, aynı hesapla tüm cihazlarınızda",
     "buy": "{price} karşılığında satın al",
     "restore": "Satın alımları geri yükle",
     "wait": "Lütfen bekle…",

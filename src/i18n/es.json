@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "Acerca del juego",
-    "aboutText": "Keen Eye es un juego de buscar diferencias con escenas vivas. Sin anuncios y sin internet.",
+    "aboutText": "Keen Eye es un juego de buscar diferencias con escenas vivas.",
     "version": "Versión {v}",
     "privacy": "Privacidad",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Modo tranquilo",
       "living": "Escenas vivas",
-      "keys": "Llaves ocultas"
+      "keys": "Llaves ocultas",
+      "offline": "Sin internet",
+      "noAds": "Sin anuncios",
+      "mirror": "Niveles espejo"
     },
     "support": {
       "title": "Apoya el juego",
@@ -505,6 +508,7 @@
     "normal": "Normal",
     "calm": "Tranquilo",
     "calmHint": "Sin tiempo, errores ni estrellas",
+    "normalHint": "Cronómetro, 1 pista, estrellas por rapidez y precisión",
     "hard": "Difícil",
     "hardHint": "Sin pistas, 3 errores terminan el nivel, estrellas rojas",
     "hardStars": "Difícil: {n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "Todos los futuros niveles del juego principal",
     "harder": "Niveles más interesantes y difíciles: más diferencias y más movimiento",
     "noAds": "Sin anuncios ni suscripción",
-    "once": "Una sola compra para siempre, funciona sin conexión",
+    "once": "Una sola compra para siempre, en todos tus dispositivos con la misma cuenta",
     "buy": "Comprar por {price}",
     "restore": "Restaurar compras",
     "wait": "Espera…",

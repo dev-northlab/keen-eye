@@ -44,7 +44,7 @@ async function restore() {
 
     <div class="body">
       <!-- Right after a purchase or restore its own message says it. -->
-      <p v-if="purchase.fullGame && !message">{{ $t('purchase.fullGame') }}</p>
+      <p v-if="purchase.fullGame && !message">{{ $t('purchase.owned') }}</p>
 
       <template v-if="!purchase.fullGame">
         <p class="tagline">{{ $t('purchase.tagline') }}</p>

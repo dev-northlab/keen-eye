@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "O hře",
-    "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami. Bez reklam a bez internetu.",
+    "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami.",
     "version": "Verze {v}",
     "privacy": "Ochrana soukromí",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Klidný režim",
       "living": "Živé scény",
-      "keys": "Skryté klíče"
+      "keys": "Skryté klíče",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam",
+      "mirror": "Zrcadlové úrovně"
     },
     "support": {
       "title": "Podpořit hru",
@@ -505,6 +508,7 @@
     "normal": "Běžný",
     "calm": "Klidný",
     "calmHint": "Bez času, chyb a hvězd",
+    "normalHint": "Časomíra, 1 nápověda, hvězdy za rychlost a přesnost",
     "hard": "Těžký",
     "hardHint": "Bez nápověd, 3 chyby ukončí úroveň, červené hvězdy",
     "hardStars": "Těžký režim: {n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "Všechny budoucí úrovně hlavní hry",
     "harder": "Zajímavější a těžší úrovně: více rozdílů a více pohybu",
     "noAds": "Bez reklam a bez předplatného",
-    "once": "Jeden nákup navždy, funguje offline",
+    "once": "Jeden nákup navždy, na všech vašich zařízeních se stejným účtem",
     "buy": "Koupit za {price}",
     "restore": "Obnovit nákupy",
     "wait": "Počkejte prosím…",

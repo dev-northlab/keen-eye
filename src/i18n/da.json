@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Rolig tilstand",
       "keys": "Skjulte nøgler",
+      "offline": "Virker offline",
+      "noAds": "Ingen reklamer",
+      "mirror": "Spejlvendte baner",
       "living": "Levende scener"
     },
     "rate": "Bedøm spillet",
@@ -398,7 +401,7 @@
   },
   "info": {
     "about": "Om spillet",
-    "aboutText": "Keen Eye er et find forskellen-spil med levende scener. Ingen reklamer, intet internet.",
+    "aboutText": "Keen Eye er et find forskellen-spil med levende scener.",
     "contact": "Kontakt os",
     "contactText": "Har du et spørgsmål eller en idé, eller har du fundet en fejl? Skriv til os – vi læser hver besked og svarer gerne.",
     "copyEmail": "Kopiér adressen",
@@ -746,6 +749,7 @@
   "mode": {
     "calm": "Rolig",
     "calmHint": "Ingen tid, fejl eller stjerner",
+    "normalHint": "Timer, 1 hint, stjerner for hurtighed og præcision",
     "label": "Tilstand",
     "normal": "Normal",
     "hard": "Svær",
@@ -766,7 +770,7 @@
     "harder": "Mere spændende og udfordrende baner: flere forskelle og mere bevægelse",
     "noAds": "Ingen reklamer, intet abonnement",
     "none": "Ingen køb fundet.",
-    "once": "Ét køb for altid, virker offline",
+    "once": "Ét køb for altid, på alle dine enheder med samme konto",
     "owned": "Hele spillet er låst op. Tak!",
     "restore": "Gendan køb",
     "restored": "Købet er gendannet.",

@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Kalmadong mode",
       "keys": "Nakatagong susi",
+      "offline": "Gumagana offline",
+      "noAds": "Walang ads",
+      "mirror": "Mga salaming level",
       "living": "Buhay na mga eksena"
     },
     "rate": "I-rate ang laro",
@@ -398,7 +401,7 @@
   },
   "info": {
     "about": "Tungkol sa laro",
-    "aboutText": "Ang Keen Eye ay isang larong paghahanap ng pagkakaiba na may buhay na mga eksena. Walang ads, walang internet.",
+    "aboutText": "Ang Keen Eye ay isang larong paghahanap ng pagkakaiba na may buhay na mga eksena.",
     "contact": "Makipag-ugnayan sa amin",
     "contactText": "May tanong o ideya ka ba, o may nakita kang bug? Sumulat sa amin – binabasa namin ang bawat mensahe at masaya kaming sumagot.",
     "copyEmail": "Kopyahin ang address",
@@ -746,6 +749,7 @@
   "mode": {
     "calm": "Kalmado",
     "calmHint": "Walang timer, mali o bituin",
+    "normalHint": "Timer, 1 pahiwatig, mga bituin sa bilis at katumpakan",
     "label": "Mode",
     "normal": "Normal",
     "hard": "Mahirap",
@@ -766,7 +770,7 @@
     "harder": "Mas kawili-wili at mas mahirap na mga level: mas maraming pagkakaiba at mas maraming galaw",
     "noAds": "Walang ads, walang subscription",
     "none": "Walang nakitang biniling item.",
-    "once": "Isang bili habambuhay, gumagana offline",
+    "once": "Isang bili habambuhay, sa lahat ng device mo na may parehong account",
     "owned": "Naka-unlock na ang buong laro. Salamat!",
     "restore": "Ibalik ang mga binili",
     "restored": "Naibalik ang binili.",

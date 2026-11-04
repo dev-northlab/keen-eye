@@ -46,6 +46,24 @@ const perks = [
     label: 'about.perks.keys',
     color: '#d99a0b',
     icon: '<path d="M7 6.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm0 3.6a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8Z" fill-rule="evenodd"/><path d="M12 10.3h10v3.4h-1.6v3.5h-2.6v-3.5h-1.4v2.5H14v-2.5h-2Z"/>',
+  },  {
+    key: 'offline',
+    label: 'about.perks.offline',
+    color: '#1f9bb5',
+    icon: '<path d="M21.6 3.1c-1-1-2.6-.9-3.6.1l-3.6 3.7-9.3-2.7-2 2 7.6 4.4-3.7 3.9-3-.5-1.6 1.6 3.9 1.8 1.8 3.9 1.6-1.6-.5-3 3.9-3.7 4.4 7.6 2-2-2.7-9.3 3.7-3.6c1-1 1.1-2.6.1-3.6Z"/>',
+  },
+  {
+    key: 'noAds',
+    label: 'about.perks.noAds',
+    color: '#e5484d',
+    icon: '<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2.6a7.4 7.4 0 0 1 5.9 11.9L7.5 6.1A7.4 7.4 0 0 1 12 4.6Zm-5.9 3 10.4 10.4A7.4 7.4 0 0 1 6.1 7.6Z" fill-rule="evenodd"/>',
+  },
+  {
+    // Picture B shown mirrored or upside down on the last levels of a category (docs/mirror-rotate-feature.md).
+    key: 'mirror',
+    label: 'about.perks.mirror',
+    color: '#6d5dfc',
+    icon: '<path d="M10.5 5v14H3Z"/><path d="M13.5 5v14H21Z" fill-opacity="0.55"/><path d="M11.2 2h1.6v3h-1.6ZM11.2 7h1.6v3h-1.6ZM11.2 12h1.6v3h-1.6ZM11.2 17h1.6v3h-1.6Z"/>',
   },
 ]
 
@@ -259,6 +277,11 @@ dl {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
+}
+
+/* An odd last perk takes the whole row. */
+.perk:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 .perk svg {

@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "Despre joc",
-    "aboutText": "Keen Eye este un joc de găsit diferențe cu scene vii. Fără reclame, fără internet.",
+    "aboutText": "Keen Eye este un joc de găsit diferențe cu scene vii.",
     "version": "Versiunea {v}",
     "privacy": "Confidențialitate",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Mod calm",
       "living": "Scene vii",
-      "keys": "Chei ascunse"
+      "keys": "Chei ascunse",
+      "offline": "Fără internet",
+      "noAds": "Fără reclame",
+      "mirror": "Niveluri în oglindă"
     },
     "support": {
       "title": "Susține jocul",
@@ -505,6 +508,7 @@
     "normal": "Normal",
     "calm": "Liniștit",
     "calmHint": "Fără cronometru, greșeli sau stele",
+    "normalHint": "Cronometru, 1 indiciu, stele pentru viteză și precizie",
     "hard": "Greu",
     "hardHint": "Fără indicii, 3 greșeli încheie nivelul, stele roșii",
     "hardStars": "Greu: {n}/3"
@@ -518,7 +522,7 @@
     "allLevelsNone": "Toate nivelurile viitoare ale jocului principal",
     "harder": "Niveluri mai interesante și mai dificile: mai multe diferențe și mai multă mișcare",
     "noAds": "Fără reclame, fără abonament",
-    "once": "O singură achiziție, pentru totdeauna, merge offline",
+    "once": "O singură achiziție, pentru totdeauna, pe toate dispozitivele tale cu același cont",
     "buy": "Cumpără cu {price}",
     "restore": "Restaurează achizițiile",
     "wait": "Te rugăm să aștepți…",
