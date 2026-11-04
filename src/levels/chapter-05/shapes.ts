@@ -6,11 +6,11 @@ export { rock } from '../chapter-04/shapes.ts'
 
 const r1 = (n: number) => Math.round(n * 10) / 10
 
-/** Star dots from `rand` between y0 and y1 (whole width). */
-export const starField = (rand: () => number, y0: number, y1: number, n = 40) => {
+/** Star dots from `rand` between y0 and y1 (whole width w). */
+export const starField = (rand: () => number, y0: number, y1: number, n = 40, w = 800) => {
   let out = ''
   for (let i = 0; i < n; i++) {
-    const x = r1(5 + rand() * 790)
+    const x = r1(5 + rand() * (w - 10))
     const y = r1(y0 + rand() * (y1 - y0))
     out += `<circle cx="${x}" cy="${y}" r="${r1(0.8 + rand() * 1.4)}" fill="#fff" fill-opacity="${r1(0.4 + rand() * 0.6)}"/>`
   }

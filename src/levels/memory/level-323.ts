@@ -39,55 +39,57 @@ export default memoryLevel({
   showSeconds: 4,
   scene: ({ diff, extra, anim }) =>
     daySky(340) +
-    big(300, 70, 0.9, cloud(0, 0)) +
-    big(520, 100, 0.7, cloud(0, 0)) +
+    big(250, 55, 0.9, cloud(0, 0)) +
+    big(330, 128, 0.5, cloud(0, 0)) +
     // Wall with battlements
-    `<rect y="170" width="800" height="160" fill="#b9b3a6"/>` +
-    Array.from({ length: 20 }, (_, i) => `<rect x="${i * 40 + 8}" y="150" width="24" height="22" fill="#b9b3a6"/>`).join('') +
-    `<path d="M0 210H800M0 250H800M0 290H800" stroke="#9c968a" stroke-width="2"/>` +
-    tower(60, 180, 110, '#5b4bd6') +
-    diff(...around(118, 18, 158, 48, 30), pennant(120, 20, '#e63946'), pennant(120, 20, '#ffd23f')) +
-    tower(620, 740, 110, '#5b4bd6') +
-    pennant(680, 20, '#e63946') +
+    `<rect y="170" width="500" height="160" fill="#b9b3a6"/>` +
+    Array.from({ length: 13 }, (_, i) => `<rect x="${i * 40 + 8}" y="150" width="24" height="22" fill="#b9b3a6"/>`).join('') +
+    `<path d="M0 210H500M0 250H500M0 290H500" stroke="#9c968a" stroke-width="2"/>` +
+    tower(10, 130, 110, '#5b4bd6') +
+    diff(...around(68, 18, 108, 48, 30), pennant(70, 20, '#e63946'), pennant(70, 20, '#ffd23f')) +
+    tower(370, 490, 110, '#5b4bd6') +
+    pennant(430, 20, '#e63946') +
     // Gate with a shield over it
-    `<path d="M340 330V250Q400 190 460 250V330Z" fill="#6b4226"/><path d="M360 230V330M380 216V330M400 212V330M420 216V330M440 230V330M340 270H460M340 300H460" stroke="#3d2a20" stroke-width="4"/>` +
-    diff(...around(376, 166, 424, 222), shield(400, 166, '#3a86ff'), shield(400, 166, '#e63946')) +
-    banner(250, '#8338ec') +
-    diff(...around(525, 190, 575, 280), banner(550, '#8338ec'), '') +
-    torch(300, 220) +
-    torch(480, 220) +
+    `<path d="M190 330V250Q250 190 310 250V330Z" fill="#6b4226"/><path d="M210 230V330M230 216V330M250 212V330M270 216V330M290 230V330M190 270H310M190 300H310" stroke="#3d2a20" stroke-width="4"/>` +
+    diff(...around(226, 166, 274, 222), shield(250, 166, '#3a86ff'), shield(250, 166, '#e63946')) +
+    banner(160, '#8338ec') +
+    diff(...around(315, 190, 365, 280), banner(340, '#8338ec'), '') +
+    torch(30, 230) +
+    torch(110, 230) +
     // Courtyard
-    `<rect y="330" width="800" height="170" fill="#d9c9a3"/><path d="M0 380H800M0 440H800M120 330V380M300 330V380M520 330V380M700 330V380M60 380V440M250 380V440M460 380V440M650 380V440" stroke="#c4b48d" stroke-width="3"/>` +
+    `<rect y="330" width="500" height="420" fill="#d9c9a3"/>` +
+    `<path d="M0 390H500M0 450H500M0 510H500M0 570H500M0 630H500M0 690H500` +
+    `M60 330V390M260 330V390M440 330V390M160 390V450M360 390V450M60 450V510M260 450V510M440 450V510M160 510V570M360 510V570` +
+    `M60 570V630M260 570V630M440 570V630M160 630V690M360 630V690M60 690V750M260 690V750M440 690V750" stroke="#c4b48d" stroke-width="3"/>` +
     // Well
-    `<path d="M160 400V350M240 400V350" stroke="#6b4226" stroke-width="8"/><path d="M140 347L200 315L260 347Z" fill="#a0703f"/><path d="M160 350H240" stroke="#6b4226" stroke-width="5"/>` +
-    `<rect x="150" y="400" width="100" height="60" fill="#8d99ae"/><path d="M150 420h100M150 440h100M180 400v20M220 420v20M190 440v20" stroke="#6b7685" stroke-width="2.5"/><ellipse cx="200" cy="400" rx="52" ry="10" fill="#6b7685"/>` +
-    diff(...around(186, 350, 214, 410, 30), '', `<path d="M200 352V386" stroke="#6b766f" stroke-width="2"/><path d="M190 386h20l-3 20h-14Z" fill="#5c677d"/>`) +
-    diff(...around(325, 384, 465, 450), cart(370, 450), cart(420, 450)) +
+    `<path d="M100 440V390M180 440V390" stroke="#6b4226" stroke-width="8"/><path d="M80 387L140 355L200 387Z" fill="#a0703f"/><path d="M100 390H180" stroke="#6b4226" stroke-width="5"/>` +
+    `<rect x="90" y="440" width="100" height="60" fill="#8d99ae"/><path d="M90 460h100M90 480h100M120 440v20M160 460v20M130 480v20" stroke="#6b7685" stroke-width="2.5"/><ellipse cx="140" cy="440" rx="52" ry="10" fill="#6b7685"/>` +
+    diff(...around(126, 390, 154, 450, 30), '', `<path d="M140 392V426" stroke="#6b766f" stroke-width="2"/><path d="M130 426h20l-3 20h-14Z" fill="#5c677d"/>`) +
+    diff(...around(205, 454, 345, 520), cart(250, 520), cart(300, 520)) +
     // Decor: small things that fill the scene, the same in both pictures
-    cloud(740, 80, 0.4) +
-    birds(450, 60) +
-    birds(760, 120) +
-    bird(260, 150, '#3a86ff') +
-    bird(580, 150, '#e63946') +
-    torch(200, 220) +
-    shield(300, 262, '#3fa46f') +
-    banner(770, '#3a86ff') +
-    crate(30, 420, 30) +
-    pot(110, 400) +
-    sack(30, 480) +
-    hen(100, 470) +
-    bucket(275, 490) +
-    crate(700, 360, 30) +
-    hayBale(740, 440) +
-    big(560, 470, 1.6, barrel(0, 0)) +
-    big(605, 470, 1.6, barrel(0, 0)) +
-    diff(...around(537, 362, 628, 470), big(582, 416, 1.6, barrel(0, 0)), '') +
+    big(160, 30, 0.4, cloud(0, 0)) +
+    birds(255, 120) +
+    bird(180, 150, '#3a86ff') +
+    bird(320, 150, '#e63946') +
+    torch(450, 230) +
+    shield(160, 286, '#3fa46f') +
+    banner(430, '#3a86ff') +
+    crate(30, 525, 30) +
+    pot(40, 400) +
+    sack(30, 605) +
+    hen(100, 640) +
+    bucket(230, 740) +
+    crate(470, 380, 30) +
+    hayBale(450, 470) +
+    big(390, 720, 1.6, barrel(0, 0)) +
+    big(435, 720, 1.6, barrel(0, 0)) +
+    diff(...around(367, 612, 458, 720), big(412, 666, 1.6, barrel(0, 0)), '') +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['chick', 85, 419],
-      ['eggNest', 703, 399],
-      ['horseshoe', 286, 375],
-      ['cloud', 403, 92],
-      ['birds', 608, 56],
+      ['chick', 40, 685],
+      ['eggNest', 460, 560],
+      ['horseshoe', 330, 380],
+      ['cloud', 335, 60],
+      ['birds', 165, 95],
     ]),
 })

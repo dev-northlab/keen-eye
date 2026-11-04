@@ -175,6 +175,9 @@ export function svgLevel(def: SvgLevelDef): Level {
   }
 }
 
+/** "Memory" pictures are portrait: one fills a phone held upright, as A and then B are each shown alone. */
+export const MEMORY_VIEWBOX = { w: 500, h: 750 }
+
 /**
  * "Memory" level (docs/memory-mode.md), chapter 'memory': A is shown for `showSeconds`, then B alone;
  * `peeks` extra looks at A (default 1). The stars count finds, misses and looks, not time.
@@ -182,6 +185,7 @@ export function svgLevel(def: SvgLevelDef): Level {
 export const memoryLevel = (def: { id: number; title: string; showSeconds: number; peeks?: number; scene: SvgLevelDef['scene'] }) =>
   svgLevel({
     id: def.id,
+    viewBox: MEMORY_VIEWBOX,
     chapter: 'memory',
     title: def.title,
     parTimeSec: 0,

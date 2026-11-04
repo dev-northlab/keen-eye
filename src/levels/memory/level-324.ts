@@ -40,68 +40,68 @@ const chart = () => {
 
 /** Wall tiles over the wall above y. */
 const tileLines = (y: number) =>
-  `<path d="${Array.from({ length: 9 }, (_, i) => `M0 ${i * 40}H800`).join('')}${Array.from({ length: 20 }, (_, i) => `M${i * 40} 0V${y}`).join('')}" stroke="#ffffff" stroke-width="2"/>`
+  `<path d="${Array.from({ length: Math.floor(y / 40) + 1 }, (_, i) => `M0 ${i * 40}H500`).join('')}${Array.from({ length: 13 }, (_, i) => `M${i * 40} 0V${y}`).join('')}" stroke="#ffffff" stroke-width="2"/>`
 
 export default memoryLevel({
   id: 324,
   title: 'memoryLab',
   showSeconds: 4,
   scene: ({ diff, secret, extra, anim }) =>
-    room(360, '#e3eef5', '#9aa5b1') +
-    tileLines(352) +
+    room(500, '#e3eef5', '#9aa5b1') +
+    tileLines(492) +
     chart() +
-    wallClock(330, 100, 34, '#5c677d') +
+    wallClock(300, 100, 34, '#5c677d') +
     // Shelf with jars
-    `<rect x="480" y="150" width="280" height="10" fill="#8a5a33"/>` +
-    labJar(520, 150, '#8ac926') +
-    diff(...around(560, 92, 600, 150), labJar(580, 150, '#ff6b8b'), labJar(580, 150, '#4dabf7')) +
+    `<rect x="200" y="300" width="280" height="10" fill="#8a5a33"/>` +
+    labJar(240, 300, '#8ac926') +
+    diff(...around(280, 242, 320, 300), labJar(300, 300, '#ff6b8b'), labJar(300, 300, '#4dabf7')) +
     // The category's hidden key (on B only), behind the yellow jar
-    secret(627, 144) +
-    labJar(640, 150, '#ffd23f') +
-    diff(...around(686, 84, 734, 150), '', big(710, 150, 0.6, pottedPlant(0, 0))) +
+    secret(347, 294) +
+    labJar(360, 300, '#ffd23f') +
+    diff(...around(406, 234, 454, 300), '', big(430, 300, 0.6, pottedPlant(0, 0))) +
     // Bench and cabinets
-    `<rect x="40" y="350" width="720" height="80" fill="#cfd8e0"/><path d="M220 350V430M400 350V430M580 350V430" stroke="#9aa5b1" stroke-width="3"/>` +
-    `<g fill="#5c677d"><rect x="200" y="380" width="10" height="20" rx="3"/><rect x="410" y="380" width="10" height="20" rx="3"/><rect x="560" y="380" width="10" height="20" rx="3"/></g>` +
-    `<rect x="30" y="330" width="740" height="20" rx="4" fill="#5c677d"/>` +
-    diff(...around(95, 228, 155, 330), microscope(125, 330), '') +
-    flask(230, 330, '#ffd23f') +
-    diff(...around(274, 250, 326, 330), flask(300, 330, '#8ac926'), flask(300, 330, '#ff6b8b')) +
-    flask(370, 330, '#4dabf7') +
+    `<rect x="30" y="490" width="440" height="80" fill="#cfd8e0"/><path d="M140 490V570M250 490V570M360 490V570" stroke="#9aa5b1" stroke-width="3"/>` +
+    `<g fill="#5c677d"><rect x="120" y="520" width="10" height="20" rx="3"/><rect x="260" y="520" width="10" height="20" rx="3"/><rect x="370" y="520" width="10" height="20" rx="3"/></g>` +
+    `<rect x="20" y="470" width="460" height="20" rx="4" fill="#5c677d"/>` +
+    diff(...around(35, 368, 95, 470), microscope(65, 470), '') +
+    flask(128, 470, '#ffd23f') +
+    diff(...around(164, 390, 216, 470), flask(190, 470, '#8ac926'), flask(190, 470, '#ff6b8b')) +
+    flask(252, 470, '#4dabf7') +
     // Test tube rack
-    `<rect x="425" y="318" width="110" height="12" rx="3" fill="#a0703f"/><path d="M430 318V296M530 318V296" stroke="#a0703f" stroke-width="6"/>` +
-    tube(440, 312, '#ff6b8b') +
-    tube(465, 312, '#ffd23f') +
-    tube(490, 312, '#8ac926') +
-    diff(...around(425, 250, 535, 330), tube(515, 312, '#4dabf7'), '') +
-    `<rect x="425" y="290" width="110" height="8" rx="3" fill="#a0703f"/>` +
-    // Beaker with bubbles and a burner
-    `<path d="M592 270h36v56q0 4 -4 4h-28q-4 0 -4 -4Z" fill="#e6f4fb"/><rect x="592" y="296" width="36" height="34" rx="3" fill="#b38cff"/>` +
-    `<circle cx="604" cy="284" r="4" fill="none" stroke="#b38cff" stroke-width="2"/><circle cx="616" cy="274" r="5" fill="none" stroke="#b38cff" stroke-width="2"/>` +
-    `<rect x="680" y="300" width="20" height="30" fill="#5c677d"/><path d="M690 300q12 -16 0 -30q-12 14 0 30Z" fill="#4dabf7"/>` +
+    `<rect x="290" y="458" width="110" height="12" rx="3" fill="#a0703f"/><path d="M295 458V436M395 458V436" stroke="#a0703f" stroke-width="6"/>` +
+    tube(305, 452, '#ff6b8b') +
+    tube(330, 452, '#ffd23f') +
+    tube(355, 452, '#8ac926') +
+    diff(...around(290, 390, 400, 470), tube(380, 452, '#4dabf7'), '') +
+    `<rect x="290" y="430" width="110" height="8" rx="3" fill="#a0703f"/>` +
+    // Beaker with bubbles
+    `<path d="M437 410h36v56q0 4 -4 4h-28q-4 0 -4 -4Z" fill="#e6f4fb"/><rect x="437" y="436" width="36" height="34" rx="3" fill="#b38cff"/>` +
+    `<circle cx="449" cy="424" r="4" fill="none" stroke="#b38cff" stroke-width="2"/><circle cx="461" cy="414" r="5" fill="none" stroke="#b38cff" stroke-width="2"/>` +
     // Decor: small things that fill the room, the same in both pictures
-    poster(400, 30, 50, 66, '#4dabf7') +
-    shelf(390, 170, 80) +
-    glassJar(408, 170, '#8ac926', '#ff6b8b') +
-    bottle(435, 170, '#3a86ff') +
-    bottle(455, 170, '#e63946') +
-    poster(730, 200, 40, 56, '#ff6b8b') +
-    bottle(730, 330, '#8ac926') +
-    glassJar(755, 330, '#5c677d', '#4dabf7') +
-    sticker(100, 400, '#ffd23f') +
-    cube(40, 490, 30, '#ffb703') +
-    bucket(90, 490, '#5c677d') +
-    pot(200, 490) +
-    cube(470, 490, 34, '#3a86ff') +
-    crate(540, 490, 30) +
-    pot(620, 490, '#3a86ff') +
-    diff(...around(272, 396, 388, 460), stool(300, 460), stool(360, 460)) +
-    `<path d="M700 440h40l-4 50h-32Z" fill="#5c677d"/>` +
+    poster(390, 40, 50, 66, '#4dabf7') +
+    shelf(30, 300, 90) +
+    glassJar(48, 300, '#8ac926', '#ff6b8b') +
+    bottle(75, 300, '#3a86ff') +
+    bottle(97, 300, '#e63946') +
+    poster(140, 230, 40, 56, '#ff6b8b') +
+    shelf(420, 190, 70) +
+    bottle(440, 190, '#8ac926') +
+    glassJar(468, 190, '#5c677d', '#4dabf7') +
+    sticker(80, 535, '#ffd23f') +
+    cube(30, 745, 30, '#ffb703') +
+    bucket(80, 745, '#5c677d') +
+    pot(130, 745) +
+    cube(330, 745, 34, '#3a86ff') +
+    crate(380, 745, 30) +
+    pot(120, 605, '#3a86ff') +
+    diff(...around(172, 636, 288, 700), stool(200, 700), stool(260, 700)) +
+    `<path d="M440 690h40l-4 50h-32Z" fill="#5c677d"/>` +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['books', 132, 486, '#3fa46f'],
-      ['ball', 499, 461, '#3a86ff'],
-      ['cube', 691, 474, '#3a86ff'],
-      ['frame', 279, 62, '#3fa46f'],
-      ['frame', 523, 57, '#e63946'],
+      ['books', 60, 690, '#3fa46f'],
+      ['ball', 470, 630, '#3a86ff'],
+      ['cube', 400, 640, '#3a86ff'],
+      ['frame', 60, 235, '#3fa46f'],
+      ['frame', 355, 180, '#e63946'],
     ]),
 })

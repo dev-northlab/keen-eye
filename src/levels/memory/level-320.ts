@@ -38,51 +38,49 @@ export default memoryLevel({
   title: 'memoryToyShelf',
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
-    room(470, '#e6dcff', '#c98f5a') +
-    sticker(50, 80, '#ffd23f') +
-    sticker(60, 300, '#ff6b8b') +
-    sticker(750, 120, '#4dabf7') +
-    sticker(740, 360, '#ffd23f') +
+    room(720, '#e6dcff', '#c98f5a') +
     // Shelf unit
-    `<rect x="100" y="30" width="600" height="440" rx="6" fill="#a0703f"/><rect x="120" y="40" width="560" height="420" fill="#f2d7b0"/>` +
-    [170, 320, 460].map((y) => `<rect x="110" y="${y}" width="580" height="10" fill="#8a5a33"/>`).join('') +
+    `<rect x="20" y="150" width="460" height="570" rx="6" fill="#a0703f"/><rect x="40" y="160" width="420" height="550" fill="#f2d7b0"/>` +
+    [300, 440, 580, 710].map((y) => `<rect x="30" y="${y}" width="440" height="10" fill="#8a5a33"/>`).join('') +
     // Top shelf
-    diff(...around(167, 94, 213, 170), big(190, 170, 1.4, robot(0, 0, '#8d99ae')), big(190, 170, 1.4, robot(0, 0, '#e63946'))) +
-    rocket(300, 170, '#f1f1f1', '#3a86ff', 0.9) +
-    diff(...around(384, 78, 456, 170), teddy(420, 170), '') +
-    drum(560, 170) +
-    // Middle shelf
-    block(200, 320, '#e63946', 'dot') +
-    block(200, 276, '#3a86ff', 'star') +
-    diff(...around(178, 188, 222, 320), block(200, 232, '#ffb703', 'heart'), '') +
-    diff(...around(325, 271, 435, 320), big(380, 320, 1.3, car(0, 0, '#3fa46f')), big(380, 320, 1.3, car(0, 0, '#8338ec'))) +
-    diff(...around(508, 276, 552, 320, 30), '', big(530, 320, 1.8, ball(0, 0, '#ff6b8b'))) +
-    dollhouse(630, 320) +
+    diff(...around(107, 224, 153, 300), big(130, 300, 1.4, robot(0, 0, '#8d99ae')), big(130, 300, 1.4, robot(0, 0, '#e63946'))) +
+    rocket(215, 300, '#f1f1f1', '#3a86ff', 0.9) +
+    diff(...around(264, 208, 336, 300), teddy(300, 300), '') +
+    alien(410, 300, '#8ac926') +
+    // Second shelf
+    block(80, 440, '#e63946', 'dot') +
+    block(80, 396, '#3a86ff', 'star') +
+    diff(...around(58, 308, 102, 440), block(80, 352, '#ffb703', 'heart'), '') +
+    drum(220, 440) +
+    dollhouse(380, 440) +
+    // Third shelf
+    diff(...around(75, 531, 185, 580), big(130, 580, 1.3, car(0, 0, '#3fa46f')), big(130, 580, 1.3, car(0, 0, '#8338ec'))) +
+    diff(...around(278, 536, 322, 580, 30), '', big(300, 580, 1.8, ball(0, 0, '#ff6b8b'))) +
+    books(395, 580, ['#ff6b8b', '#4dabf7', '#ffd23f']) +
     // Bottom shelf
-    toyTrain(150, 460) +
-    books(500, 460, ['#ff6b8b', '#4dabf7', '#ffd23f']) +
+    toyTrain(50, 710) +
     // Decor: small things that fill the room, the same in both pictures
-    cube(250, 30, 24, '#e63946') +
-    cube(560, 30, 24, '#3fa46f') +
-    alien(645, 170, '#8ac926') +
-    cube(455, 460, 22, '#3a86ff') +
-    cube(555, 460, 30, '#ff6b8b') +
-    painting(20, 150, 50, 60, '#3a86ff') +
-    sticker(30, 250, '#8ac926') +
-    wallClock(50, 400, 26, '#ffb703') +
-    kite(760, 200, '#ff6b8b') +
-    sticker(780, 300, '#ff6b8b') +
-    painting(715, 390, 60, 50, '#8ac926') +
-    ball(40, 495, '#ffd23f') +
-    slipperPair(300, 485, '#ff6b8b') +
-    cube(620, 495, 20, '#3a86ff') +
-    cube(760, 495, 24, '#ffd23f') +
-    `<rect x="580" y="410" width="90" height="50" rx="4" fill="#8ac926"/><path d="M590 420h20v20h-20ZM620 420h20v20h-20ZM650 420h10v20h-10Z" fill="#ffffff" fill-opacity="0.5"/>` +
+    cube(150, 150, 24, '#e63946') +
+    cube(350, 150, 24, '#3fa46f') +
+    cube(355, 710, 22, '#3a86ff') +
+    cube(452, 580, 30, '#ff6b8b') +
+    painting(20, 30, 50, 60, '#3a86ff') +
+    sticker(110, 60, '#8ac926') +
+    wallClock(180, 70, 26, '#ffb703') +
+    kite(250, 45, '#ff6b8b') +
+    sticker(320, 80, '#ff6b8b') +
+    painting(375, 40, 60, 50, '#8ac926') +
+    sticker(470, 30, '#ffd23f') +
+    ball(40, 745, '#ffd23f') +
+    slipperPair(300, 738, '#ff6b8b') +
+    cube(420, 745, 20, '#3a86ff') +
+    cube(465, 745, 24, '#ffd23f') +
+    `<rect x="370" y="660" width="90" height="50" rx="4" fill="#8ac926"/><path d="M380 670h20v20h-20ZM410 670h20v20h-20ZM440 670h10v20h-10Z" fill="#ffffff" fill-opacity="0.5"/>` +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['frame', 71, 68, '#e63946'],
-      ['sticker', 728, 100, '#ff6b8b'],
-      ['frame', 70, 281, '#e63946'],
-      ['sticker', 723, 299, '#ff6b8b'],
+      ['frame', 115, 122, '#e63946'],
+      ['sticker', 330, 25, '#ff6b8b'],
+      ['frame', 440, 122, '#e63946'],
+      ['sticker', 30, 125, '#ff6b8b'],
     ]),
 })

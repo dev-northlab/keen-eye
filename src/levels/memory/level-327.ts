@@ -1,7 +1,7 @@
 import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, grass, sheep } from '../shapes.ts'
-import { around, big, hills } from './shapes.ts'
+import { around, big, ground, hills } from './shapes.ts'
 import { cone } from '../chapter-02/shapes.ts'
 import { birds, bush, flagPole, roadSign } from '../time/shapes.ts'
 
@@ -23,48 +23,49 @@ export default memoryLevel({
   title: 'memoryAirfield',
   showSeconds: 4,
   scene: ({ diff, extra, anim }) =>
-    `<rect width="800" height="390" fill="#bfe6f7"/>` +
-    big(330, 300, 0.9, cloud(0, 0)) +
-    diff(...around(570, 31, 670, 97), big(620, 75, 1, cloud(0, 0)), '') +
-    diff(...around(110, 104, 190, 230), big(150, 150, 0.8, hotAirBalloon('#e63946', '#ffd23f')), big(150, 150, 0.8, hotAirBalloon('#3a86ff', '#ffffff'))) +
-    diff(...around(360, 64, 500, 210), big(400, 110, 0.8, hotAirBalloon('#8338ec', '#ff6b8b')), big(460, 130, 0.8, hotAirBalloon('#8338ec', '#ff6b8b'))) +
-    big(660, 190, 0.7, hotAirBalloon('#3fa46f', '#ffd23f')) +
-    hills(380, '#a5d67a') +
-    `<rect y="380" width="800" height="120" fill="#8fd16a"/><rect y="410" width="800" height="40" fill="#5c5f66"/>` +
-    `<path d="M260 430H800" stroke="#ffffff" stroke-width="4" stroke-dasharray="30 20"/>` +
+    `<rect width="500" height="520" fill="#bfe6f7"/>` +
+    big(330, 450, 0.9, cloud(0, 0)) +
+    diff(...around(330, 30, 430, 96), big(380, 74, 1, cloud(0, 0)), '') +
+    diff(...around(60, 124, 140, 250), big(100, 170, 0.8, hotAirBalloon('#e63946', '#ffd23f')), big(100, 170, 0.8, hotAirBalloon('#3a86ff', '#ffffff'))) +
+    diff(...around(190, 214, 330, 360), big(230, 260, 0.8, hotAirBalloon('#8338ec', '#ff6b8b')), big(290, 280, 0.8, hotAirBalloon('#8338ec', '#ff6b8b'))) +
+    big(440, 220, 0.7, hotAirBalloon('#3fa46f', '#ffd23f')) +
+    hills(510, '#a5d67a') +
+    ground(510, '#8fd16a') +
+    `<rect y="660" width="500" height="40" fill="#5c5f66"/>` +
+    `<path d="M20 680H480" stroke="#ffffff" stroke-width="4" stroke-dasharray="30 20"/>` +
     // Hangar
-    `<path d="M30 430V330Q140 260 250 330V430Z" fill="#8d99ae"/><path d="M60 312V430M100 295V430M180 295V430M220 312V430" stroke="#6b7685" stroke-width="3"/>` +
-    diff(...around(80, 350, 200, 430), `<rect x="80" y="350" width="120" height="80" fill="#3d4a55"/>`, `<rect x="80" y="350" width="120" height="80" fill="#e07a5f"/>`) +
+    `<path d="M30 600V500Q140 430 250 500V600Z" fill="#8d99ae"/><path d="M60 482V600M100 465V600M180 465V600M220 482V600" stroke="#6b7685" stroke-width="3"/>` +
+    diff(...around(80, 520, 200, 600), `<rect x="80" y="520" width="120" height="80" fill="#3d4a55"/>`, `<rect x="80" y="520" width="120" height="80" fill="#e07a5f"/>`) +
     // Control tower
-    `<rect x="712" y="240" width="36" height="190" fill="#e9e4dc"/><rect x="684" y="200" width="92" height="12" rx="3" fill="#3d4a55"/><rect x="690" y="210" width="80" height="34" fill="#bde3f2"/>` +
-    `<path d="M710 210v34M730 210v34M750 210v34" stroke="#3d4a55" stroke-width="2"/>` +
+    `<rect x="422" y="410" width="36" height="190" fill="#e9e4dc"/><rect x="394" y="370" width="92" height="12" rx="3" fill="#3d4a55"/><rect x="400" y="380" width="80" height="34" fill="#bde3f2"/>` +
+    `<path d="M420 380v34M440 380v34M460 380v34" stroke="#3d4a55" stroke-width="2"/>` +
     diff(
-      ...around(616, 330, 682, 430),
+      ...around(326, 500, 392, 600),
       '',
-      `<rect x="618" y="330" width="4" height="100" fill="#5c677d"/><path d="M622 336L680 344V356L622 364Z" fill="#ff9f1c"/><path d="M640 338.5V361.5M660 341V359" stroke="#ffffff" stroke-width="6"/>`,
+      `<rect x="328" y="500" width="4" height="100" fill="#5c677d"/><path d="M332 506L390 514V526L332 534Z" fill="#ff9f1c"/><path d="M350 508.5V531.5M370 511V529" stroke="#ffffff" stroke-width="6"/>`,
     ) +
     // Decor: small things that fill the scene, the same in both pictures
-    cloud(25, 40, 0.4) +
-    cloud(575, 220, 0.4) +
-    cloud(760, 160, 0.4) +
-    birds(280, 60) +
-    birds(500, 290) +
-    big(760, 80, 0.4, hotAirBalloon('#ff6b8b', '#ffffff')) +
-    big(275, 200, 0.35, hotAirBalloon('#ffb703', '#3a86ff')) +
-    flagPole(770, 430, '#e63946') +
-    bush(20, 400, 0.7) +
-    cone(270, 410) +
-    cone(300, 410) +
-    grass(30, 495) +
-    grass(290, 490) +
-    big(540, 485, 0.4, sheep(0, 0)) +
-    roadSign(770, 495) +
-    diff(...around(346, 390, 490, 442), plane(420, 440, '#ffffff'), plane(420, 440, '#ffd23f')) +
+    cloud(40, 40, 0.4) +
+    cloud(470, 110, 0.4) +
+    cloud(200, 470, 0.4) +
+    birds(210, 40) +
+    birds(300, 430) +
+    big(478, 50, 0.4, hotAirBalloon('#ff6b8b', '#ffffff')) +
+    big(120, 45, 0.35, hotAirBalloon('#ffb703', '#3a86ff')) +
+    flagPole(480, 600, '#e63946') +
+    bush(15, 560, 0.7) +
+    cone(400, 725) +
+    cone(430, 725) +
+    grass(30, 740) +
+    grass(150, 740) +
+    big(370, 735, 0.4, sheep(0, 0)) +
+    roadSign(475, 745) +
+    diff(...around(186, 640, 330, 692), plane(260, 690, '#ffffff'), plane(260, 690, '#ffd23f')) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['birds', 52, 277],
-      ['cloud', 571, 277],
-      ['balloon', 251, 256, '#3a86ff'],
-      ['butterfly', 708, 474],
+      ['birds', 455, 330],
+      ['cloud', 60, 352],
+      ['balloon', 150, 405, '#3a86ff'],
+      ['butterfly', 60, 725],
     ]),
 })

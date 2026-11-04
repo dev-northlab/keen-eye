@@ -8,40 +8,40 @@ export default memoryLevel({
   title: 'memoryKitchen',
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
-    room(330, '#ffe8c2', '#c98f5a') +
-    windowPane(80, 60, 180, 150) +
-    curtains(80, 260, 54, 170, '#e63946') +
-    painting(420, 70, 120, 90) +
-    diff(640, 120, 52, wallClock(640, 120, 46, '#3a86ff'), '') +
-    pottedPlant(80, 470) +
-    table(140, 660, 320, 470) +
-    diff(...around(192, 226, 336, 314), teapot(260, 314, '#e63946'), teapot(260, 314, '#3a86ff')) +
-    bowl(440, 314, '#ffd23f') +
-    fruit(410, 262, 22, '#ff9f1c') +
-    fruit(470, 262, 22, '#ff9f1c') +
-    diff(...around(380, 200, 500, 300), fruit(440, 232, 22, '#ff9f1c'), '') +
-    cup(590, 314, '#3fa46f') +
+    room(500, '#ffe8c2', '#c98f5a') +
+    windowPane(50, 70, 180, 150) +
+    curtains(50, 230, 64, 170, '#e63946') +
+    painting(320, 90, 120, 90) +
+    diff(380, 260, 52, wallClock(380, 260, 46, '#3a86ff'), '') +
+    pottedPlant(458, 738) +
+    table(20, 420, 560, 690) +
+    diff(...around(42, 466, 186, 554), teapot(110, 554, '#e63946'), teapot(110, 554, '#3a86ff')) +
+    bowl(290, 554, '#ffd23f') +
+    fruit(260, 502, 22, '#ff9f1c') +
+    fruit(320, 502, 22, '#ff9f1c') +
+    diff(...around(230, 440, 350, 540), fruit(290, 472, 22, '#ff9f1c'), '') +
+    cup(388, 554, '#3fa46f') +
     // Decor: small things that fill the room, the same in both pictures
-    hangingLamp(480, 15, '#3fa46f') +
-    shelf(290, 110, 110) +
-    big(320, 110, 0.5, books(0, 0, ['#e63946', '#3a86ff'])) +
-    flowerVase(370, 110, '#3a86ff') +
-    pot(130, 216) +
-    painting(8, 250, 30, 40, '#c9953f', '#bde3f2') +
-    painting(735, 210, 40, 50, '#3a86ff') +
-    shelf(570, 240, 130) +
-    glassJar(590, 240, '#e63946') +
-    glassJar(625, 240, '#3a86ff', '#8ac926') +
-    mug(670, 240, '#ffb703') +
-    big(300, 470, 0.4, bowl(0, 0, '#3a86ff')) +
-    ball(380, 480, '#8338ec') +
-    sack(480, 470) +
-    slipperPair(560, 480, '#ff6b8b') +
-    big(710, 470, 2.2, cat(0, 0, '#f08c3a', true)) +
+    hangingLamp(275, 40, '#3fa46f') +
+    shelf(40, 300, 110) +
+    big(70, 300, 0.5, books(0, 0, ['#e63946', '#3a86ff'])) +
+    flowerVase(120, 300, '#3a86ff') +
+    pot(140, 226) +
+    painting(462, 250, 28, 40, '#c9953f', '#bde3f2') +
+    painting(200, 300, 40, 50, '#3a86ff') +
+    shelf(320, 390, 130) +
+    glassJar(340, 390, '#e63946') +
+    glassJar(375, 390, '#3a86ff', '#8ac926') +
+    mug(420, 390, '#ffb703') +
+    big(230, 730, 0.4, bowl(0, 0, '#3a86ff')) +
+    ball(150, 735, '#8338ec') +
+    sack(310, 730) +
+    slipperPair(370, 735, '#ff6b8b') +
+    big(60, 730, 2.2, cat(0, 0, '#f08c3a', true)) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['cube', 116, 354, '#e63946'],
-      ['slippers', 607, 431, '#3a86ff'],
-      ['frame', 573, 58, '#e63946'],
+      ['cube', 190, 660, '#e63946'],
+      ['slippers', 300, 640, '#3a86ff'],
+      ['frame', 470, 140, '#e63946'],
     ]),
 })

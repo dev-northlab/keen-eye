@@ -8,35 +8,35 @@ export default memoryLevel({
   title: 'memoryBedroom',
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
-    room(340, '#d9ecff', '#e9b872') +
-    windowPane(520, 60, 170, 140) +
-    curtains(520, 690, 54, 160, '#ffb703') +
-    diff(...around(102, 72, 248, 178), painting(110, 80, 130, 90, '#3a86ff'), '') +
-    rug(330, 470, 150, '#ff6b8b') +
-    bed(290, 430, 300, diff(...around(210, 360, 430, 404), '#4dabf7', '#8ac926')) +
-    drawers(740, 440) +
-    tableLamp(740, 330, '#ff6b8b') +
+    room(360, '#d9ecff', '#e9b872') +
+    windowPane(320, 70, 150, 140) +
+    curtains(320, 470, 64, 160, '#ffb703') +
+    diff(...around(32, 82, 178, 188), painting(40, 90, 130, 90, '#3a86ff'), '') +
+    rug(385, 690, 100, '#ff6b8b') +
+    bed(200, 520, 240, diff(...around(150, 450, 310, 494), '#4dabf7', '#8ac926')) +
+    drawers(430, 470) +
+    tableLamp(430, 360, '#ff6b8b') +
     // Decor: small things that fill the room, the same in both pictures
-    painting(330, 40, 60, 50, '#ff6b8b') +
-    sticker(450, 60, '#ffd23f') +
-    shelf(320, 160, 150) +
-    big(350, 160, 0.5, books(0, 0, ['#3fa46f', '#ff6b8b', '#4dabf7'])) +
-    cube(395, 160, 24, '#ffb703') +
-    flowerVase(440, 160, '#8338ec') +
-    painting(730, 60, 50, 60, '#8ac926') +
-    wallClock(760, 170, 18, '#ff6b8b') +
-    sticker(540, 260, '#4dabf7') +
-    sticker(660, 250, '#ffd23f') +
-    painting(10, 260, 36, 44, '#3fa46f') +
-    big(60, 420, 0.5, backpack(0, 0, '#ff6b8b')) +
-    ball(110, 470, '#ffd23f') +
-    slipperPair(60, 480, '#3a86ff') +
-    cube(760, 490, 28, '#3a86ff') +
-    diff(...around(524, 363, 676, 455), teddy(560, 455), teddy(640, 455)) +
+    painting(225, 110, 50, 60, '#ff6b8b') +
+    sticker(250, 70, '#ffd23f') +
+    shelf(60, 290, 140) +
+    big(90, 290, 0.5, books(0, 0, ['#3fa46f', '#ff6b8b', '#4dabf7'])) +
+    cube(135, 290, 24, '#ffb703') +
+    flowerVase(180, 290, '#8338ec') +
+    painting(215, 250, 60, 50, '#8ac926') +
+    wallClock(355, 255, 18, '#ff6b8b') +
+    sticker(300, 235, '#4dabf7') +
+    sticker(482, 250, '#ffd23f') +
+    painting(10, 300, 30, 44, '#3fa46f') +
+    big(40, 570, 0.5, backpack(0, 0, '#ff6b8b')) +
+    ball(30, 625, '#ffd23f') +
+    slipperPair(300, 585, '#3a86ff') +
+    cube(470, 560, 28, '#3a86ff') +
+    diff(...around(84, 608, 236, 700), teddy(120, 700), teddy(200, 700)) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['ball', 116, 436, '#ffb703'],
-      ['cube', 472, 383, '#e63946'],
-      ['frame', 693, 320, '#3a86ff'],
+      ['ball', 310, 640, '#ffb703'],
+      ['cube', 440, 615, '#e63946'],
+      ['frame', 300, 310, '#3a86ff'],
     ]),
 })

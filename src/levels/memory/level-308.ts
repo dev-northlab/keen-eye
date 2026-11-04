@@ -8,38 +8,38 @@ export default memoryLevel({
   title: 'memorySpace',
   showSeconds: 4,
   scene: ({ diff, rand, extra, anim }) =>
-    `<rect width="800" height="500" fill="#1b1f4b"/>` +
-    starField(rand, 0, 340, 50) +
+    `<rect width="500" height="750" fill="#1b1f4b"/>` +
+    starField(rand, 0, 460, 50, 500) +
     diff(...around(68, 70, 212, 150), planet(140, 110, 40, '#ff9f43'), planet(140, 110, 40, '#ff9f43', '#ffd23f')) +
-    diff(...around(376, 88, 554, 134), big(430, 120, 1.6, ufo(0, 0)), big(500, 120, 1.6, ufo(0, 0))) +
-    `<path d="M0 360Q200 330 400 350T800 340V500H0Z" fill="#8f89a8"/>` +
-    crater(560, 450, 50) +
-    crater(330, 470, 34) +
-    dome(110, 420, 60) +
-    rocket(620, 380, '#f1f1f1', '#e63946', 1.6) +
-    diff(...around(246, 310, 293, 400), big(250, 400, 1.8, flag(0, 0, '#e63946')), big(250, 400, 1.8, flag(0, 0, '#3a86ff'))) +
-    big(420, 420, 1.8, astronaut(0, 0)) +
+    diff(...around(176, 228, 354, 274), big(230, 260, 1.6, ufo(0, 0)), big(300, 260, 1.6, ufo(0, 0))) +
+    `<path d="M0 470Q125 440 250 460T500 450V750H0Z" fill="#8f89a8"/>` +
+    crater(130, 680, 50) +
+    crater(385, 612, 34) +
+    dome(100, 560, 60) +
+    rocket(400, 560, '#f1f1f1', '#e63946', 1.6) +
+    diff(...around(216, 470, 263, 560), big(220, 560, 1.8, flag(0, 0, '#e63946')), big(220, 560, 1.8, flag(0, 0, '#3a86ff'))) +
+    big(275, 700, 1.8, astronaut(0, 0)) +
     // Decor: small things that fill the scene, the same in both pictures
-    planet(720, 90, 26, '#4dabf7', '#ffd23f') +
-    planet(60, 270, 14, '#8ac926') +
-    satellite(300, 60) +
-    comet(620, 200) +
-    asteroid(290, 200, 0.7) +
-    star(760, 250, 10) +
-    probe(170, 260) +
-    beacon(25, 440) +
-    moonPebbles(100, 470) +
-    alienPlant(160, 470) +
-    alien(200, 490) +
-    solarPanel(500, 410) +
-    fuelCanister(545, 405) +
-    toolbox(420, 470) +
-    crystal(470, 480) +
-    diff(...around(652, 393, 748, 460), big(700, 460, 1.6, rover(0, 0)), '') +
+    planet(420, 90, 26, '#4dabf7', '#ffd23f') +
+    planet(50, 300, 14, '#8ac926') +
+    satellite(290, 50) +
+    comet(380, 160) +
+    asteroid(90, 225, 0.7) +
+    star(30, 420, 10) +
+    probe(120, 390) +
+    beacon(25, 560) +
+    moonPebbles(60, 620) +
+    alienPlant(190, 620) +
+    alien(200, 740) +
+    solarPanel(450, 555) +
+    fuelCanister(484, 560) +
+    toolbox(330, 592) +
+    crystal(470, 640) +
+    diff(...around(352, 653, 448, 720), big(400, 720, 1.6, rover(0, 0)), '') +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['planet', 509, 260, '#4dabf7'],
-      ['asteroid', 116, 316],
-      ['crater', 285, 479],
+      ['planet', 450, 330, '#4dabf7'],
+      ['asteroid', 185, 380],
+      ['crater', 50, 728],
     ]),
 })

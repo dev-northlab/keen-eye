@@ -29,64 +29,63 @@ export default memoryLevel({
   title: 'memoryStation',
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
-    daySky(340) +
-    big(470, 90, 1, cloud(0, 0)) +
-    big(700, 60, 0.8, cloud(0, 0)) +
-    hills(330, '#a5d67a') +
-    // Track
-    `<rect y="330" width="800" height="30" fill="#9c8f80"/><path d="M0 338H800M0 350H800" stroke="#5c677d" stroke-width="4"/>` +
+    daySky(460) +
+    big(380, 90, 1, cloud(0, 0)) +
+    big(120, 60, 0.8, cloud(0, 0)) +
+    hills(450, '#a5d67a') +
+    // Track and train, drawn 120 lower than their helpers' rows (the zones are given in the picture's coordinates)
+    `<g transform="translate(0 120)">` +
+    `<rect y="330" width="500" height="30" fill="#9c8f80"/><path d="M0 338H500M0 350H500" stroke="#5c677d" stroke-width="4"/>` +
     // Locomotive
     `<circle cx="70" cy="180" r="14" fill="#ffffff" fill-opacity="0.8"/><circle cx="92" cy="160" r="18" fill="#ffffff" fill-opacity="0.7"/><circle cx="122" cy="138" r="22" fill="#ffffff" fill-opacity="0.6"/>` +
     `<rect x="58" y="200" width="24" height="44" fill="#3d4a55"/>` +
     `<rect x="30" y="240" width="145" height="90" rx="8" fill="#2f5d8a"/><circle cx="34" cy="285" r="22" fill="#3d4a55"/><circle cx="30" cy="285" r="8" fill="#ffd23f"/>` +
     diff(
-      ...around(165, 194, 255, 330),
+      ...around(165, 314, 255, 450),
       `<rect x="165" y="194" width="90" height="12" rx="4" fill="#3d4a55"/><rect x="170" y="200" width="80" height="130" rx="6" fill="#e63946"/><rect x="185" y="215" width="50" height="36" rx="5" fill="#bde3f2"/>`,
       `<rect x="165" y="194" width="90" height="12" rx="4" fill="#3d4a55"/><rect x="170" y="200" width="80" height="130" rx="6" fill="#3fa46f"/><rect x="185" y="215" width="50" height="36" rx="5" fill="#bde3f2"/>`,
     ) +
     wheels(30, 250, 334) +
-    `<path d="M250 300h20M510 300h20" stroke="#3d4a55" stroke-width="6"/>` +
+    `<path d="M250 300h20" stroke="#3d4a55" stroke-width="6"/>` +
+    // The first passenger car, running on out of the picture
     wagon(270, 510, '#e07a5f') +
-    wagon(530, 770, '#e07a5f') +
     passenger(290, '#5a3d2b') +
-    diff(...around(345, 255, 385, 295, 30), '', passenger(345, '#e3a14f')) +
-    passenger(660, '#3d3d3d') +
-    // Platform
-    `<rect y="360" width="800" height="140" fill="#d3cbb9"/><rect y="360" width="800" height="8" fill="#ffd23f"/>` +
-    `<path d="M0 420H800M200 368V500M400 368V500M600 368V500" stroke="#bdb39f" stroke-width="3"/>` +
-    big(60, 470, 1.5, lampPost(0, 0) + lampHead(0, 0)) +
-    diff(...around(136, 442, 184, 470, 30), '', big(160, 470, 2, pigeon(0, 0))) +
-    big(300, 480, 1.6, person(0, 0, '#e63946')) +
-    big(420, 470, 1.8, bench(0, 0)) +
-    // Decor: small things that fill the scene, the same in both pictures
-    cloud(300, 40, 0.5) +
-    cloud(600, 30, 0.4) +
-    birds(230, 90) +
-    birds(560, 150) +
-    balloon(640, 120, '#ff6b8b') +
-    bird(500, 232, '#e63946') +
+    diff(...around(345, 375, 385, 415, 30), '', passenger(345, '#e3a14f')) +
     passenger(455, '#ffd23f') +
-    passenger(550, '#e63946') +
-    passenger(715, '#8338ec') +
-    pot(25, 420) +
-    bin(25, 480) +
-    suitcase(240, 480, '#ffb703') +
-    pigeon(350, 410) +
-    pigeon(440, 490, true) +
-    pot(788, 492, '#3a86ff') +
-    suitcase(520, 476, '#8338ec') +
-    diff(...around(502, 418, 583, 476), suitcase(565, 476, '#3a86ff'), '') +
+    `</g>` +
+    // Platform
+    `<rect y="480" width="500" height="270" fill="#d3cbb9"/><rect y="480" width="500" height="8" fill="#ffd23f"/>` +
+    `<path d="M0 640H500M170 488V750M340 488V750" stroke="#bdb39f" stroke-width="3"/>` +
+    big(30, 735, 1.5, lampPost(0, 0) + lampHead(0, 0)) +
+    diff(...around(106, 692, 154, 720, 30), '', big(130, 720, 2, pigeon(0, 0))) +
+    big(265, 705, 1.6, person(0, 0, '#e63946')) +
+    big(380, 725, 1.8, bench(0, 0)) +
+    // Decor: small things that fill the scene, the same in both pictures
+    cloud(250, 40, 0.5) +
+    cloud(460, 190, 0.4) +
+    birds(220, 150) +
+    birds(320, 230) +
+    balloon(60, 200, '#ff6b8b') +
+    bird(440, 352, '#e63946') +
+    pot(25, 560) +
+    bin(470, 745) +
+    suitcase(228, 600, '#ffb703') +
+    pigeon(300, 560) +
+    pigeon(305, 742, true) +
+    pot(485, 700, '#3a86ff') +
+    suitcase(110, 600, '#8338ec') +
+    diff(...around(92, 542, 173, 600), suitcase(155, 600, '#3a86ff'), '') +
     diff(
-      ...around(672, 362, 728, 470),
-      `<rect x="696" y="410" width="8" height="60" fill="#3d4a55"/><circle cx="700" cy="390" r="28" fill="#3d4a55"/><circle cx="700" cy="390" r="22" fill="#ffffff"/>` +
-        `<path d="M700 390V374M700 390h12" stroke="#23302b" stroke-width="4" stroke-linecap="round"/>`,
+      ...around(402, 532, 458, 640),
+      `<rect x="426" y="580" width="8" height="60" fill="#3d4a55"/><circle cx="430" cy="560" r="28" fill="#3d4a55"/><circle cx="430" cy="560" r="22" fill="#ffffff"/>` +
+        `<path d="M430 560V544M430 560h12" stroke="#23302b" stroke-width="4" stroke-linecap="round"/>`,
       '',
     ) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['ball', 256, 396, '#3a86ff'],
-      ['shoppingBag', 462, 406],
-      ['coffeeCup', 68, 486],
-      ['balloon', 383, 54, '#8ac926'],
+      ['ball', 262, 522, '#3a86ff'],
+      ['shoppingBag', 300, 640],
+      ['coffeeCup', 40, 625],
+      ['balloon', 300, 140, '#8ac926'],
     ]),
 })

@@ -4,7 +4,7 @@ import { bench } from '../chapter-02/shapes.ts'
 import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, duck, sun } from '../shapes.ts'
-import { around, big, daySky, kite, pumpkin, roundTree } from './shapes.ts'
+import { around, big, daySky, ground, kite, pumpkin, roundTree } from './shapes.ts'
 import { bird, birds, grass } from '../time/shapes.ts'
 
 /** Fallen leaf; (x, y) = center. Bounds: radius 9. */
@@ -23,52 +23,52 @@ export default memoryLevel({
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
     daySky(330, '#ffe9c7') +
-    sun(160, 70) +
-    `<rect y="300" width="800" height="200" fill="#c9cf6a"/>` +
-    `<path d="M0 500Q200 420 330 400T480 360" stroke="#e9d3a7" stroke-width="40" fill="none"/>` +
-    roundTree(110, 330, '#f28c28') +
-    big(250, 300, 0.7, roundTree(0, 0, '#f2c14e')) +
-    roundTree(680, 330, diff(...around(600, 110, 760, 246), '#d64545', '#f2c14e')) +
-    diff(...around(356, 56, 404, 174), kite(380, 90, '#3a86ff'), kite(380, 90, '#e63946')) +
-    `<path d="M380 124Q520 300 612 412" stroke="#6b766f" stroke-width="1.5" fill="none"/>` +
-    leaf(520, 150, '#f28c28', 20) +
-    leaf(260, 100, '#d64545', -30) +
+    sun(70, 60) +
+    ground(300, '#c9cf6a') +
+    `<path d="M0 700Q120 640 250 660T500 640" stroke="#e9d3a7" stroke-width="40" fill="none"/>` +
+    roundTree(90, 330, '#f28c28') +
+    big(215, 330, 0.7, roundTree(0, 0, '#f2c14e')) +
+    roundTree(390, 340, diff(...around(310, 120, 470, 256), '#d64545', '#f2c14e')) +
+    diff(...around(206, 36, 254, 154), kite(230, 70, '#3a86ff'), kite(230, 70, '#e63946')) +
+    `<path d="M230 104Q300 330 392 552" stroke="#6b766f" stroke-width="1.5" fill="none"/>` +
+    leaf(330, 60, '#f28c28', 20) +
+    leaf(130, 70, '#d64545', -30) +
     // Pond with ducks
-    `<ellipse cx="480" cy="400" rx="140" ry="45" fill="#5aa9d6"/><path d="M400 420q10 -6 20 0t20 0M520 380q10 -6 20 0t20 0" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.5" fill="none"/>` +
-    duck(420, 395) +
-    duck(480, 410) +
-    diff(...around(390, 368, 578, 424), duck(540, 395), '') +
-    big(320, 470, 1.5, lampPost(0, 0) + lampHead(0, 0)) +
-    big(200, 450, 1.8, bench(0, 0)) +
-    diff(...around(192, 378, 238, 422, 30), '', big(215, 421, 1.4, squirrel(0, 0))) +
-    big(600, 470, 1.6, person(0, 0, '#3fa46f', true)) +
-    diff(...around(645, 412, 755, 460), leafPile(700, 445), '') +
-    leaf(60, 470, '#d64545', 10) +
-    leaf(120, 420, '#f2c14e', -40) +
-    leaf(280, 480, '#f28c28', 60) +
-    leaf(540, 480, '#d64545', -10) +
+    `<ellipse cx="250" cy="470" rx="140" ry="45" fill="#5aa9d6"/><path d="M170 490q10 -6 20 0t20 0M290 450q10 -6 20 0t20 0" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.5" fill="none"/>` +
+    duck(190, 465) +
+    duck(250, 480) +
+    diff(...around(160, 438, 348, 494), duck(310, 465), '') +
+    big(40, 690, 1.5, lampPost(0, 0) + lampHead(0, 0)) +
+    big(130, 650, 1.8, bench(0, 0)) +
+    diff(...around(122, 578, 168, 622, 30), '', big(145, 621, 1.4, squirrel(0, 0))) +
+    big(380, 610, 1.6, person(0, 0, '#3fa46f', true)) +
+    diff(...around(335, 657, 445, 705), leafPile(390, 690), '') +
+    leaf(40, 740, '#d64545', 10) +
+    leaf(60, 560, '#f2c14e', -40) +
+    leaf(250, 740, '#f28c28', 60) +
+    leaf(470, 620, '#d64545', -10) +
     // Decor: small things that fill the scene, the same in both pictures
-    cloud(260, 30, 0.4) +
-    cloud(510, 40, 0.5) +
-    birds(510, 120) +
-    bird(66, 175, '#3a86ff') +
-    balloon(510, 220, '#e63946') +
-    bush(290, 330, 0.8, '#c98f2a') +
-    fox(740, 350) +
-    hedgehog(120, 380) +
-    mushroom(30, 400) +
-    big(60, 480, 0.5, pumpkin(0, 0)) +
-    big(110, 470, 0.35, pumpkin(0, 0)) +
-    mushroom(140, 480, '#ff9f43', 0.8) +
-    rock(20, 470, 0.6) +
-    stump(200, 490) +
-    grass(250, 490) +
-    leaf(770, 400, '#f2c14e', 30) +
+    cloud(300, 25, 0.4) +
+    cloud(460, 40, 0.5) +
+    birds(370, 40) +
+    bird(60, 160, '#3a86ff') +
+    balloon(440, 400, '#e63946') +
+    bush(300, 365, 0.8, '#c98f2a') +
+    fox(470, 360) +
+    hedgehog(40, 400) +
+    mushroom(85, 420) +
+    big(100, 740, 0.5, pumpkin(0, 0)) +
+    big(150, 735, 0.35, pumpkin(0, 0)) +
+    mushroom(200, 740, '#ff9f43', 0.8) +
+    rock(15, 745, 0.6) +
+    stump(250, 690) +
+    grass(300, 740) +
+    leaf(470, 460, '#f2c14e', 30) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['acorn', 153, 353],
-      ['hedgehog', 642, 345],
-      ['squirrel', 64, 354],
-      ['birds', 75, 49],
+      ['acorn', 135, 375],
+      ['hedgehog', 440, 525],
+      ['squirrel', 30, 320],
+      ['birds', 150, 250],
     ]),
 })

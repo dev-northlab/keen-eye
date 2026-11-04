@@ -8,41 +8,41 @@ export default memoryLevel({
   title: 'memoryParty',
   showSeconds: 3,
   scene: ({ diff, extra, anim }) =>
-    room(380, '#ffe3ef', '#c98f5a') +
-    garland(40, 760, 24, ['#e63946', '#ffb703', '#3fa46f', '#3a86ff', '#8338ec', '#ff6b8b', '#ffd23f', '#4dabf7']) +
-    diff(...around(70, 112, 130, 260), partyBalloon(100, 150, '#e63946'), partyBalloon(100, 150, '#3a86ff')) +
+    room(470, '#ffe3ef', '#c98f5a') +
+    garland(20, 480, 24, ['#e63946', '#ffb703', '#3fa46f', '#3a86ff', '#8338ec', '#ff6b8b', '#ffd23f', '#4dabf7']) +
+    diff(...around(60, 142, 120, 290), partyBalloon(90, 180, '#e63946'), partyBalloon(90, 180, '#3a86ff')) +
     partyBalloon(215, 150, '#ffd23f') +
-    diff(...around(592, 102, 748, 188), painting(600, 110, 100, 70, '#3a86ff'), painting(640, 110, 100, 70, '#3a86ff')) +
-    table(170, 630, 380, 480, '#f4efe6') +
-    cake(400, 374, '#ff8fb1') +
-    candle(380, 278, '#3a86ff') +
-    candle(400, 278, '#3a86ff') +
-    diff(...around(372, 236, 428, 278), candle(420, 278, '#3a86ff'), '') +
-    diff(...around(216, 330, 284, 374), cup(250, 374, '#3fa46f'), cup(250, 374, '#ff6b8b')) +
-    diff(...around(530, 298, 590, 374), gift(560, 374, 60, '#3a86ff', '#ffd23f'), '') +
-    gift(120, 480, 70, '#ff6b8b', '#ffffff') +
+    diff(...around(312, 112, 468, 198), painting(320, 120, 100, 70, '#3a86ff'), painting(360, 120, 100, 70, '#3a86ff')) +
+    table(30, 470, 560, 690, '#f4efe6') +
+    cake(250, 554, '#ff8fb1') +
+    candle(230, 458, '#3a86ff') +
+    candle(250, 458, '#3a86ff') +
+    diff(...around(222, 416, 278, 458), candle(270, 458, '#3a86ff'), '') +
+    diff(...around(66, 510, 134, 554), cup(100, 554, '#3fa46f'), cup(100, 554, '#ff6b8b')) +
+    diff(...around(370, 478, 430, 554), gift(400, 554, 60, '#3a86ff', '#ffd23f'), '') +
+    gift(430, 738, 70, '#ff6b8b', '#ffffff') +
     // Decor: small things that fill the room, the same in both pictures
-    partyBalloon(300, 130, '#8338ec') +
-    partyBalloon(500, 120, '#3fa46f') +
-    partyBalloon(770, 290, '#4dabf7') +
-    shelf(340, 170, 120) +
-    flowerVase(370, 170, '#ff6b8b', '#ffd23f') +
-    cube(410, 170, 22, '#3a86ff') +
-    glassJar(445, 170, '#e63946', '#ff9f43') +
-    sticker(320, 220, '#ff6b8b') +
-    sticker(480, 240, '#ffd23f') +
-    plate(480, 376) +
-    gift(40, 490, 40, '#8338ec', '#ff6b8b') +
-    gift(260, 490, 44, '#ffd23f', '#e63946') +
-    ball(350, 490, '#ff6b8b') +
-    big(500, 490, 0.5, teddy(0, 0, '#ff9f43')) +
-    gift(590, 490, 36, '#3fa46f', '#ffffff') +
-    diff(...around(664, 408, 736, 480), '', big(700, 480, 2, cat(0, 0, '#8d99ae', true))) +
+    partyBalloon(445, 292, '#8338ec') +
+    partyBalloon(30, 380, '#3fa46f') +
+    partyBalloon(150, 362, '#4dabf7') +
+    shelf(240, 300, 120) +
+    flowerVase(270, 300, '#ff6b8b', '#ffd23f') +
+    cube(310, 300, 22, '#3a86ff') +
+    glassJar(345, 300, '#e63946', '#ff9f43') +
+    sticker(262, 240, '#ff6b8b') +
+    sticker(305, 400, '#ffd23f') +
+    plate(345, 556) +
+    gift(150, 740, 40, '#8338ec', '#ff6b8b') +
+    gift(210, 738, 44, '#ffd23f', '#e63946') +
+    ball(262, 740, '#ff6b8b') +
+    big(312, 740, 0.5, teddy(0, 0, '#ff9f43')) +
+    gift(362, 740, 36, '#3fa46f', '#ffffff') +
+    diff(...around(24, 648, 96, 720), '', big(60, 720, 2, cat(0, 0, '#8d99ae', true))) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['slippers', 341, 437, '#8ac926'],
-      ['books', 54, 422, '#e63946'],
-      ['frame', 387, 115, '#c9953f'],
-      ['sticker', 692, 301, '#3a86ff'],
+      ['slippers', 250, 640, '#8ac926'],
+      ['books', 480, 625, '#e63946'],
+      ['frame', 215, 345, '#c9953f'],
+      ['sticker', 395, 420, '#3a86ff'],
     ]),
 })

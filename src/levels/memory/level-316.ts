@@ -57,49 +57,49 @@ export default memoryLevel({
   title: 'memoryLivingRoom',
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
-    room(330, '#cfe3c8', '#b98b5e') +
-    stripes(322) +
+    room(470, '#cfe3c8', '#b98b5e') +
+    stripes(462) +
     windowPane(30, 50, 100, 110) +
     curtains(30, 130, 44, 140, '#5c8fbf') +
-    diff(...around(262, 52, 388, 148), painting(270, 60, 110, 80, '#e07a5f'), '') +
-    diff(470, 100, 38, wallClock(470, 100, 32, '#e07a5f'), wallClock(470, 100, 32, '#3a86ff')) +
-    `<rect x="236" y="188" width="14" height="22" rx="3" fill="#ffffff"/>` +
-    bookcase(600, 760, 40, 340, [120, 190, 260, 330]) +
-    diff(...around(630, 49, 670, 120), vase(650, 120), '') +
-    `<circle cx="720" cy="104" r="16" fill="#ffb703"/><rect x="700" y="116" width="40" height="4" fill="#8a5a33"/>` +
-    floorLamp(190, 360) +
-    sofa(380, 360, 280, '#e07a5f') +
-    cushion(300, 270, '#ffd23f') +
-    diff(...around(350, 245, 410, 295), cushion(380, 270, '#3fa46f'), cushion(380, 270, '#8338ec')) +
-    cushion(460, 270, '#ffd23f') +
-    rug(380, 455, 200, '#c98bb9') +
+    diff(...around(192, 52, 318, 148), painting(200, 60, 110, 80, '#e07a5f'), '') +
+    diff(420, 90, 38, wallClock(420, 90, 32, '#e07a5f'), wallClock(420, 90, 32, '#3a86ff')) +
+    `<rect x="300" y="318" width="14" height="22" rx="3" fill="#ffffff"/>` +
+    bookcase(340, 490, 180, 470, [260, 330, 400, 470]) +
+    diff(...around(370, 189, 410, 260), vase(390, 260), '') +
+    `<circle cx="460" cy="244" r="16" fill="#ffb703"/><rect x="440" y="256" width="40" height="4" fill="#8a5a33"/>` +
+    floorLamp(60, 620) +
+    sofa(250, 620, 220, '#e07a5f') +
+    cushion(180, 530, '#ffd23f') +
+    diff(...around(220, 505, 280, 555), cushion(250, 530, '#3fa46f'), cushion(250, 530, '#8338ec')) +
+    cushion(320, 530, '#ffd23f') +
+    rug(230, 700, 170, '#c98bb9') +
     // Coffee table with a cup and books
-    `<rect x="300" y="412" width="10" height="34" fill="#6b4f3a"/><rect x="450" y="412" width="10" height="34" fill="#6b4f3a"/><rect x="290" y="400" width="180" height="14" rx="5" fill="#a0703f"/>` +
-    books(340, 400, ['#3a86ff', '#e63946']) +
-    cup(425, 400, '#ffb703') +
-    pottedPlant(60, 480) +
+    `<rect x="130" y="672" width="10" height="34" fill="#6b4f3a"/><rect x="280" y="672" width="10" height="34" fill="#6b4f3a"/><rect x="120" y="660" width="180" height="14" rx="5" fill="#a0703f"/>` +
+    books(170, 660, ['#3a86ff', '#e63946']) +
+    cup(255, 660, '#ffb703') +
+    pottedPlant(40, 745) +
     // Decor: small things that fill the room, the same in both pictures
     pot(80, 166, '#3a86ff') +
-    painting(165, 30, 40, 50, '#3a86ff') +
-    painting(30, 210, 50, 40, '#3fa46f') +
-    shelf(20, 280, 120) +
-    mug(50, 280, '#e63946') +
-    flowerVase(100, 280, '#3a86ff') +
-    glassJar(125, 280, '#3fa46f', '#ff9f43') +
-    painting(535, 180, 40, 50, '#ffb703') +
-    big(740, 40, 0.35, tableLamp(0, 0, '#ff6b8b')) +
-    pot(235, 360) +
-    pillow(240, 380, '#3fa46f') +
-    ball(150, 470, '#ff6b8b') +
-    slipperPair(250, 470, '#8338ec') +
-    big(450, 490, 0.6, books(0, 0, ['#3fa46f', '#ffb703'])) +
-    pot(780, 480) +
-    diff(...around(527, 385, 673, 450), big(560, 450, 1.8, cat(0, 0, '#8d99ae', true)), big(640, 450, 1.8, cat(0, 0, '#8d99ae', true))) +
+    painting(165, 205, 40, 50, '#3a86ff') +
+    painting(30, 230, 50, 40, '#3fa46f') +
+    shelf(20, 330, 120) +
+    mug(50, 330, '#e63946') +
+    flowerVase(100, 330, '#3a86ff') +
+    glassJar(125, 330, '#3fa46f', '#ff9f43') +
+    painting(270, 210, 40, 50, '#ffb703') +
+    big(460, 180, 0.35, tableLamp(0, 0, '#ff6b8b')) +
+    pot(310, 470) +
+    pillow(440, 515, '#3fa46f') +
+    ball(110, 692, '#ff6b8b') +
+    slipperPair(110, 740, '#8338ec') +
+    big(300, 740, 0.6, books(0, 0, ['#3fa46f', '#ffb703'])) +
+    pot(20, 470) +
+    diff(...around(337, 635, 483, 700), big(370, 700, 1.8, cat(0, 0, '#8d99ae', true)), big(450, 700, 1.8, cat(0, 0, '#8d99ae', true))) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['books', 732, 471, '#3fa46f'],
-      ['ball', 202, 384, '#e63946'],
-      ['cube', 484, 390, '#ffb703'],
-      ['slippers', 104, 471, '#3a86ff'],
+      ['books', 200, 728, '#3fa46f'],
+      ['ball', 40, 500, '#e63946'],
+      ['cube', 200, 462, '#ffb703'],
+      ['slippers', 95, 575, '#3a86ff'],
     ]),
 })

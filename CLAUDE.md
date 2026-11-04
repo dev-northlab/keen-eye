@@ -71,7 +71,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   (`/levels/time`, a banner on the modes screen, not a world), numbered 1–30 (`levelNumber`; 216–230 are the busier
   scenes with 8–10 differences, `difficulty.ts`), open from the start, the
   first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
-  written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks), 6–10 big
+  written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks) in portrait
+  pictures 500×750 (`MEMORY_VIEWBOX`; the reveal puts A and B side by side), 6–10 big
   objects among 15 small decor ones (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
   5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`); a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`

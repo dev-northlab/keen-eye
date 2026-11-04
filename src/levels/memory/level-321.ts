@@ -3,7 +3,7 @@ import { butterfly } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { basket, cloud, flower, sheep, sun } from '../shapes.ts'
-import { around, big, books, cup, daySky, fruit, hills, kite, mug, roundTree } from './shapes.ts'
+import { around, big, books, cup, daySky, fruit, ground, hills, kite, mug, roundTree } from './shapes.ts'
 import { beachBall, flipFlops, sunHat } from '../chapter-04/shapes.ts'
 import { bird, birds, bush, flowers, grass, rabbit } from '../time/shapes.ts'
 
@@ -34,53 +34,53 @@ export default memoryLevel({
   title: 'memoryPicnic',
   showSeconds: 4,
   scene: ({ diff, extra, anim }) =>
-    daySky(340) +
-    sun(300, 70) +
-    big(160, 60, 0.8, cloud(0, 0)) +
-    diff(...around(536, 56, 664, 194), kite(560, 90, '#ffb703'), kite(640, 110, '#ffb703')) +
-    hills(330, '#a5d67a') +
-    `<rect y="330" width="800" height="170" fill="#9ccc65"/>` +
-    roundTree(90, 360) +
-    flower(60, 480, '#ff6b8b') +
-    flower(170, 474, '#ffffff') +
-    flower(760, 470, '#b38cff') +
-    flower(600, 340, '#ffd23f') +
-    big(170, 300, 2, butterfly(0, 0, '#4dabf7')) +
-    diff(...around(350, 227, 410, 273), '', big(380, 250, 2.5, butterfly(0, 0, '#ff6b8b'))) +
-    blanket(200, 360, 600, 460) +
-    big(260, 420, 1.8, basket(0, 0, '#e63946')) +
-    `<ellipse cx="400" cy="408" rx="62" ry="14" fill="#f4efe6"/>` +
-    sandwich(370, 404) +
-    sandwich(400, 404) +
-    diff(...around(354, 376, 446, 406), sandwich(430, 404), '') +
-    diff(...around(505, 334, 535, 420), bottle(520, 420, '#ff9f1c'), bottle(520, 420, '#8338ec')) +
-    fruit(470, 440, 12, '#e63946') +
-    fruit(494, 446, 12, '#e63946') +
-    melonSlice(565, 452) +
-    diff(...around(286, 428, 354, 472), cup(320, 472, '#3a86ff'), cup(320, 472, '#3fa46f')) +
+    daySky(400) +
+    sun(70, 80) +
+    big(180, 60, 0.8, cloud(0, 0)) +
+    diff(...around(276, 56, 404, 194), kite(300, 90, '#ffb703'), kite(380, 110, '#ffb703')) +
+    hills(390, '#a5d67a') +
+    ground(390, '#9ccc65') +
+    roundTree(80, 440) +
+    flower(30, 465, '#ff6b8b') +
+    flower(240, 665, '#ffffff') +
+    flower(480, 722, '#b38cff') +
+    flower(370, 440, '#ffd23f') +
+    big(200, 260, 2, butterfly(0, 0, '#4dabf7')) +
+    diff(...around(270, 277, 330, 323), '', big(300, 300, 2.5, butterfly(0, 0, '#ff6b8b'))) +
+    blanket(25, 470, 475, 620) +
+    big(110, 540, 1.8, basket(0, 0, '#e63946')) +
+    `<ellipse cx="250" cy="528" rx="62" ry="14" fill="#f4efe6"/>` +
+    sandwich(220, 524) +
+    sandwich(250, 524) +
+    diff(...around(204, 496, 296, 526), sandwich(280, 524), '') +
+    diff(...around(355, 454, 385, 540), bottle(370, 540, '#ff9f1c'), bottle(370, 540, '#8338ec')) +
+    fruit(320, 560, 12, '#e63946') +
+    fruit(344, 566, 12, '#e63946') +
+    melonSlice(415, 572) +
+    diff(...around(136, 548, 204, 592), cup(170, 592, '#3a86ff'), cup(170, 592, '#3fa46f')) +
     // Decor: small things that fill the scene, the same in both pictures
-    cloud(420, 40, 0.5) +
-    birds(420, 150) +
-    cloud(760, 200, 0.5) +
-    big(760, 320, 0.6, sheep(0, 0)) +
-    bird(90, 141, '#e63946') +
-    flowers(250, 340, '#ff6b8b') +
-    rabbit(30, 420) +
-    bush(150, 380, 0.7) +
-    beachBall(110, 470) +
-    flipFlops(200, 480) +
-    grass(650, 360) +
-    grass(785, 420) +
-    big(450, 492, 0.5, books(0, 0, ['#3a86ff', '#ffd23f'])) +
-    mug(520, 490, '#e63946') +
-    sunHat(580, 490) +
-    diff(...around(636, 418, 724, 470), big(680, 470, 2, dog(0, 0, '#c48a5a', true)), '') +
+    cloud(460, 40, 0.5) +
+    birds(100, 170) +
+    cloud(465, 200, 0.5) +
+    big(440, 410, 0.6, sheep(0, 0)) +
+    bird(80, 222, '#e63946') +
+    flowers(250, 425, '#ff6b8b') +
+    rabbit(30, 690) +
+    bush(195, 445, 0.7) +
+    beachBall(70, 735) +
+    flipFlops(200, 690) +
+    grass(320, 425) +
+    grass(480, 645) +
+    big(270, 735, 0.5, books(0, 0, ['#3a86ff', '#ffd23f'])) +
+    mug(320, 735, '#e63946') +
+    sunHat(130, 735) +
+    diff(...around(356, 648, 444, 700), big(400, 700, 2, dog(0, 0, '#c48a5a', true)), '') +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['stones', 177, 402],
-      ['snail', 731, 361],
-      ['ladybug', 478, 475],
-      ['mushroom', 54, 364],
-      ['birds', 299, 167],
+      ['stones', 40, 640],
+      ['snail', 470, 448],
+      ['ladybug', 300, 655],
+      ['mushroom', 150, 425],
+      ['birds', 440, 320],
     ]),
 })

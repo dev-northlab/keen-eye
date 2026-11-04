@@ -1,8 +1,13 @@
 // "Memory" category: big flat cartoon objects that a glance is enough to remember, and small decor
 // that fills the scene around them (the same in both pictures). Each returns SVG markup positioned
 // at (x, y); the bounds in the comments are what a difference zone must cover.
+import { MEMORY_VIEWBOX } from '../helpers.ts'
+
 export { shelf } from '../detective/shapes.ts'
 export { around } from '../time/shapes.ts'
+
+/** Size of a "memory" picture (portrait, `MEMORY_VIEWBOX`). */
+const { w: W, h: H } = MEMORY_VIEWBOX
 
 /** Markup drawn around the origin, moved to (x, y) and scaled by s: other chapters' shapes made big. */
 export const big = (x: number, y: number, s: number, markup: string) =>
@@ -12,8 +17,8 @@ export const big = (x: number, y: number, s: number, markup: string) =>
 
 /** Wall down to y, floor below it with a skirting board. */
 export const room = (y: number, wall: string, floor: string) =>
-  `<rect width="800" height="${y}" fill="${wall}"/><rect y="${y}" width="800" height="${500 - y}" fill="${floor}"/>` +
-  `<rect y="${y - 8}" width="800" height="10" fill="#ffffff" fill-opacity="0.55"/>`
+  `<rect width="${W}" height="${y}" fill="${wall}"/><rect y="${y}" width="${W}" height="${H - y}" fill="${floor}"/>` +
+  `<rect y="${y - 8}" width="${W}" height="10" fill="#ffffff" fill-opacity="0.55"/>`
 
 /** Window with a cross bar; (x, y) = top-left corner, w × h. Bounds: the rectangle plus 6. */
 export const windowPane = (x: number, y: number, w: number, h: number, sky = '#bfe6f7') =>
@@ -195,11 +200,14 @@ export const backpack = (x: number, y: number, color: string) =>
 // --- Outdoors ---
 
 /** Day sky down to y. */
-export const daySky = (y = 500, color = '#bfe6f7') => `<rect width="800" height="${y}" fill="${color}"/>`
+export const daySky = (y = H, color = '#bfe6f7') => `<rect width="${W}" height="${y}" fill="${color}"/>`
 
 /** Soft hills along y (their tops reach y − 50), filling down to the bottom. */
 export const hills = (y: number, color: string) =>
-  `<path d="M0 ${y}Q120 ${y - 70} 260 ${y - 10}T540 ${y - 20}T800 ${y - 10}V500H0Z" fill="${color}"/>`
+  `<path d="M0 ${y}Q80 ${y - 70} 170 ${y - 10}T340 ${y - 20}T${W} ${y - 10}V${H}H0Z" fill="${color}"/>`
+
+/** Ground (grass, sand, snow) from y down to the bottom. */
+export const ground = (y: number, color: string) => `<rect y="${y}" width="${W}" height="${H - y}" fill="${color}"/>`
 
 /** Barn; (x, y) = ground center. Bounds: x ±96, y from −190 to 0. The door is `barnDoor`. */
 export const barn = (x: number, y: number, wall = '#d64545') =>

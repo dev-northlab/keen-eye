@@ -37,47 +37,47 @@ export default memoryLevel({
   title: 'memoryOasis',
   showSeconds: 4,
   scene: ({ diff, extra, anim }) =>
-    `<rect width="800" height="320" fill="#ffe0a3"/><rect y="250" width="800" height="70" fill="#ffd08a"/>` +
-    sun(680, 80, '#ffb703') +
-    diff(...around(448, 104, 512, 132, 32), '', big(480, 120, 2, gull(0, 0))) +
-    pyramid(100, 260, 300, 110) +
-    diff(...around(250, 230, 350, 300), pyramid(250, 350, 300, 70), '') +
-    `<path d="M0 300Q200 270 400 300T800 290V500H0Z" fill="#f2c879"/>` +
+    `<rect width="500" height="420" fill="#ffe0a3"/><rect y="350" width="500" height="70" fill="#ffd08a"/>` +
+    sun(420, 80, '#ffb703') +
+    diff(...around(268, 144, 332, 172, 32), '', big(300, 160, 2, gull(0, 0))) +
+    pyramid(40, 240, 360, 110) +
+    diff(...around(190, 290, 290, 360), pyramid(190, 290, 360, 70), '') +
+    `<path d="M0 400Q125 370 250 400T500 390V750H0Z" fill="#f2c879"/>` +
     // Oasis
-    `<ellipse cx="560" cy="400" rx="120" ry="30" fill="#4dabf7"/><path d="M500 400q10 -6 20 0t20 0M580 410q10 -6 20 0t20 0" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.5" fill="none"/>` +
-    `<path d="M448 400l-4 -24M456 402l2 -26M672 400l4 -22" stroke="#3f8f3a" stroke-width="3"/>` +
-    palm(470, 385, 1.1) +
-    palm(660, 385, 1.1, true) +
-    `<path d="M0 430Q300 390 520 440T800 430V500H0Z" fill="#e8b85a"/>` +
-    diff(...around(15, 362, 145, 440), big(80, 440, 1.3, tent(0, 0, '#e63946')), big(80, 440, 1.3, tent(0, 0, '#3a86ff'))) +
-    camel(230, 450) +
-    diff(...around(198, 338, 252, 368, 30), saddle(230, 450, '#8338ec'), saddle(230, 450, '#3fa46f')) +
+    `<ellipse cx="330" cy="500" rx="120" ry="30" fill="#4dabf7"/><path d="M270 500q10 -6 20 0t20 0M350 510q10 -6 20 0t20 0" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2.5" fill="none"/>` +
+    `<path d="M218 500l-4 -24M226 502l2 -26M442 500l4 -22" stroke="#3f8f3a" stroke-width="3"/>` +
+    palm(240, 485, 1.1) +
+    palm(430, 485, 1.1, true) +
+    `<path d="M0 560Q190 520 330 570T500 560V750H0Z" fill="#e8b85a"/>` +
+    diff(...around(15, 482, 145, 560), big(80, 560, 1.3, tent(0, 0, '#e63946')), big(80, 560, 1.3, tent(0, 0, '#3a86ff'))) +
+    camel(230, 700) +
+    diff(...around(198, 590, 252, 620, 30), saddle(230, 700, '#8338ec'), saddle(230, 700, '#3fa46f')) +
     // Decor: small things that fill the scene, the same in both pictures
     cloud(60, 60, 0.5) +
-    cloud(350, 50, 0.4) +
-    birds(160, 140) +
-    birds(250, 80) +
-    birds(580, 160) +
-    pyramid(740, 800, 300, 40) +
-    big(40, 300, 0.4, cactus(0, 0)) +
-    rock(90, 295, 0.6, '#c9953f') +
-    rock(520, 365, 0.8, '#c9953f') +
-    lilyPad(560, 405) +
-    lilyPad(600, 395) +
-    stones(320, 492) +
-    grass(520, 490) +
-    rock(570, 490, 0.9, '#c9953f') +
-    big(600, 492, 0.5, cactus(0, 0)) +
-    pot(400, 465) +
-    pot(434, 465) +
-    diff(...around(387, 419, 481, 465), pot(468, 465), '') +
-    diff(...around(669, 380, 771, 470), cactus(700, 470), cactus(740, 470)) +
+    cloud(220, 50, 0.4) +
+    birds(110, 170) +
+    birds(380, 200) +
+    birds(440, 270) +
+    pyramid(430, 490, 360, 40) +
+    big(15, 385, 0.4, cactus(0, 0)) +
+    rock(25, 410, 0.6, '#c9953f') +
+    rock(190, 480, 0.8, '#c9953f') +
+    lilyPad(330, 505) +
+    lilyPad(370, 495) +
+    stones(300, 742) +
+    grass(470, 740) +
+    rock(160, 745, 0.9, '#c9953f') +
+    big(485, 540, 0.5, cactus(0, 0)) +
+    pot(40, 715) +
+    pot(74, 715) +
+    diff(...around(27, 669, 121, 715), pot(108, 715), '') +
+    diff(...around(369, 610, 471, 700), cactus(400, 700), cactus(440, 700)) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['bird', 200, 479],
-      ['stones', 399, 329],
-      ['rock', 601, 361],
-      ['birds', 176, 72],
-      ['birds', 719, 183],
+      ['bird', 200, 736],
+      ['stones', 330, 410],
+      ['rock', 150, 628],
+      ['birds', 130, 110],
+      ['birds', 450, 175],
     ]),
 })

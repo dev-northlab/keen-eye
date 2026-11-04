@@ -22,56 +22,52 @@ export default memoryLevel({
   title: 'memoryIceRink',
   showSeconds: 4,
   scene: ({ diff, extra, anim }) =>
-    winterSky(280) +
-    `<path d="M0 270Q200 230 400 262T800 250V500H0Z" fill="#f4f8fb"/>` +
-    pine(40, 280, 1.2) +
-    pineSnow(40, 280, 1.2) +
-    pine(130, 270, 1) +
-    pineSnow(130, 270, 1) +
-    pine(690, 260, 1.1) +
-    pineSnow(690, 260, 1.1) +
-    pine(770, 270, 1.3) +
-    pineSnow(770, 270, 1.3) +
+    winterSky(300) +
+    `<path d="M0 290Q125 250 250 282T500 270V750H0Z" fill="#f4f8fb"/>` +
+    pine(28, 300, 1.2) +
+    pineSnow(28, 300, 1.2) +
+    pine(190, 290, 1) +
+    pineSnow(190, 290, 1) +
+    pine(470, 300, 0.7) +
+    pineSnow(470, 300, 0.7) +
     // Rink
-    `<ellipse cx="400" cy="385" rx="240" ry="65" fill="#cfe9f7" stroke="#8fb3d9" stroke-width="6"/>` +
-    `<path d="M260 400q60 -30 120 0M420 360q60 -24 120 6" stroke="#ffffff" stroke-width="3" fill="none"/>` +
-    big(300, 430, 1.6, winterPerson(0, 0, diff(...around(276, 353, 324, 404), '#e63946', '#3a86ff'))) +
-    diff(...around(396, 285, 444, 400), big(420, 400, 1.6, winterPerson(0, 0, '#3fa46f', false, '#ffd23f')), '') +
-    big(540, 430, 1.6, winterPerson(0, 0, '#ffb703', true, '#3a86ff')) +
-    diff(...around(36, 361, 104, 470), big(70, 470, 1.3, snowman(0, 0, '#e63946')), big(70, 470, 1.3, snowman(0, 0, '#8338ec'))) +
-    big(190, 330, 1.3, lampPost(0, 0) + lampHead(0, 0)) +
-    diff(...around(172, 162, 208, 184, 30), '', big(190, 184, 1.6, bird(0, 0, '#e63946'))) +
-    big(610, 330, 1.3, lampPost(0, 0) + lampHead(0, 0)) +
-    diff(...around(152, 418, 248, 466), big(200, 466, 1.6, bench(0, 0)), '') +
-    stand(715, 400) +
+    `<ellipse cx="250" cy="560" rx="220" ry="80" fill="#cfe9f7" stroke="#8fb3d9" stroke-width="6"/>` +
+    `<path d="M110 575q60 -30 120 0M270 535q60 -24 120 6" stroke="#ffffff" stroke-width="3" fill="none"/>` +
+    big(150, 600, 1.6, winterPerson(0, 0, diff(...around(126, 523, 174, 574), '#e63946', '#3a86ff'))) +
+    diff(...around(236, 455, 284, 570), big(260, 570, 1.6, winterPerson(0, 0, '#3fa46f', false, '#ffd23f')), '') +
+    big(370, 600, 1.6, winterPerson(0, 0, '#ffb703', true, '#3a86ff')) +
+    diff(...around(36, 616, 104, 725), big(70, 725, 1.3, snowman(0, 0, '#e63946')), big(70, 725, 1.3, snowman(0, 0, '#8338ec'))) +
+    big(110, 440, 1.3, lampPost(0, 0) + lampHead(0, 0)) +
+    diff(...around(92, 272, 128, 294, 30), '', big(110, 294, 1.6, bird(0, 0, '#e63946'))) +
+    big(485, 480, 1.3, lampPost(0, 0) + lampHead(0, 0)) +
+    diff(...around(182, 664, 278, 712), big(230, 712, 1.6, bench(0, 0)), '') +
+    stand(400, 420) +
     // Decor: small things that fill the scene, the same in both pictures
     cloud(80, 50, 0.5) +
-    cloud(400, 60, 0.6) +
-    cloud(560, 40, 0.4) +
-    birds(500, 150) +
-    bird(610, 155, '#3a86ff') +
-    rabbit(30, 300, false, '#f4f4f4') +
-    bush(240, 260, 0.7) +
-    snowCap(226, 244, 28) +
-    pine(280, 290, 0.6) +
-    pineSnow(280, 290, 0.6) +
-    pine(560, 280, 0.7) +
-    pineSnow(560, 280, 0.7) +
-    small(360, 495, winterPerson(360, 495, '#ff6b8b')) +
-    sled(450, 490, '#3a86ff') +
-    snowballs(540, 495, 2) +
-    logPile(620, 490) +
-    snowCap(605, 458, 30) +
-    small(680, 490, winterPerson(680, 490, '#3fa46f', true)) +
-    pine(770, 480, 0.6) +
-    pineSnow(770, 480, 0.6) +
-    diff(...around(640, 256, 790, 300), standRoof(715, 256, '#e63946'), standRoof(715, 256, '#3fa46f')) +
+    cloud(300, 60, 0.6) +
+    cloud(450, 40, 0.4) +
+    birds(330, 170) +
+    bird(485, 334, '#3a86ff') +
+    rabbit(30, 335, false, '#f4f4f4') +
+    bush(265, 305, 0.7) +
+    snowCap(251, 289, 28) +
+    pine(25, 445, 0.6) +
+    pineSnow(25, 445, 0.6) +
+    pine(480, 655, 0.6) +
+    pineSnow(480, 655, 0.6) +
+    small(330, 740, winterPerson(330, 740, '#ff6b8b')) +
+    sled(410, 740, '#3a86ff') +
+    snowballs(390, 690, 2) +
+    logPile(150, 745) +
+    snowCap(135, 713, 30) +
+    small(470, 745, winterPerson(470, 745, '#3fa46f', true)) +
+    diff(...around(325, 276, 475, 320), standRoof(400, 276, '#e63946'), standRoof(400, 276, '#3fa46f')) +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['pine', 712, 457],
-      ['bird', 395, 481],
-      ['stones', 155, 332],
-      ['cloud', 395, 123],
-      ['birds', 97, 122],
+      ['pine', 350, 705],
+      ['bird', 30, 480],
+      ['stones', 200, 345],
+      ['cloud', 180, 120],
+      ['birds', 60, 140],
     ]),
 })
