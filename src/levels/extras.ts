@@ -75,6 +75,7 @@ import {
   wrench,
 } from './chapter-05/shapes.ts'
 import type { SceneContext } from './helpers.ts'
+import { big, books, cube, painting, slipperPair, sticker } from './memory/shapes.ts'
 import { bee, chick, cloud, duck, eggNest, flower, grass, horseshoe, ladybug, snail, stones } from './shapes.ts'
 import { birds, pineSnow, star } from './time/shapes.ts'
 
@@ -175,6 +176,12 @@ const KINDS = {
   seahorse: { draw: (x, y, c) => seahorse(x, y, c), box: [-6, 7, -14, 16], move: { motion: bob(0, 4), period: 3, reach: 4 } },
   seaUrchin: { draw: (x, y, c) => seaUrchin(x, y, c), box: [-12, 11, -17, -1] },
   seaweed: { draw: (x, y, c) => seaweed(x, y, 0.6, c), box: [-5, 8, -26, 1], move: { motion: swing(8), period: 3, reach: 4 } },
+  // "Memory" rooms: the floor (with the city's ball) and the walls.
+  slippers: { draw: (x, y, c) => slipperPair(x, y, c ?? '#ff6b8b'), box: [-18, 17, -6, 5] },
+  cube: { draw: (x, y, c) => cube(x, y, 14, c ?? '#3a86ff'), box: [-7, 6, -14, -1] },
+  books: { draw: (x, y, c) => big(x, y, 0.5, books(0, 0, [c ?? '#e63946', '#3a86ff'])), box: [-16, 15, -18, -1] },
+  sticker: { draw: (x, y, c) => sticker(x, y, c ?? '#ffd23f'), box: [-14, 13, -14, 10] },
+  frame: { draw: (x, y, c) => painting(x - 10, y - 22, 20, 14, c ?? '#c9953f'), box: [-18, 17, -30, -1] },
 } satisfies Record<string, Kind>
 
 export type ExtraKind = keyof typeof KINDS

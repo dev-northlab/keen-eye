@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { bucket, duck } from '../shapes.ts'
 import { around, bottle, glassJar, painting, pottedPlant, shelf, slipperPair } from './shapes.ts'
@@ -36,7 +37,7 @@ export default memoryLevel({
   id: 326,
   title: 'memoryBathroom',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     `<rect width="800" height="340" fill="#d6eef8"/><rect y="340" width="800" height="160" fill="#c9d6df"/>` +
     tiles(340) +
     // Shower and tub
@@ -79,5 +80,13 @@ export default memoryLevel({
     pot(330, 490) +
     bucket(540, 395, '#3fa46f') +
     slipperPair(640, 380, '#3fa46f') +
-    pottedPlant(750, 480),
+    pottedPlant(750, 480) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['ball', 383, 370, '#ffb703'],
+      ['cube', 612, 471, '#3a86ff'],
+      ['slippers', 50, 424, '#ff6b8b'],
+      ['frame', 108, 222, '#c9953f'],
+      ['frame', 602, 73, '#3fa46f'],
+    ]),
 })

@@ -56,6 +56,8 @@ export interface MemoryOptions {
   peeks?: number
   /** The hidden key was collected before: not shown. */
   secretTaken?: boolean
+  /** Draw the extra objects of hard mode (`Level.extras`). */
+  extras?: boolean
 }
 
 type Step = [phase: MemoryPhase, ms: number]
@@ -98,6 +100,7 @@ export class MemoryScene {
       zoom: false,
       onSecret: (tap) => this.secret(tap),
       secretTaken: options.secretTaken,
+      extras: options.extras,
     })
     this.run([['show', (options.showSeconds ?? level.memory.showSeconds) * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)

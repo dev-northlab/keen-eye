@@ -1,4 +1,5 @@
 import { alien, alienPlant, asteroid, astronaut, beacon, comet, crater, crystal, dome, flag, fuelCanister, moonPebbles, planet, probe, rocket, rover, satellite, solarPanel, star, starField, toolbox, ufo } from '../chapter-05/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big } from './shapes.ts'
 
@@ -6,7 +7,7 @@ export default memoryLevel({
   id: 308,
   title: 'memorySpace',
   showSeconds: 4,
-  scene: ({ diff, rand }) =>
+  scene: ({ diff, rand, extra, anim }) =>
     `<rect width="800" height="500" fill="#1b1f4b"/>` +
     starField(rand, 0, 340, 50) +
     diff(...around(68, 70, 212, 150), planet(140, 110, 40, '#ff9f43'), planet(140, 110, 40, '#ff9f43', '#ffd23f')) +
@@ -34,5 +35,11 @@ export default memoryLevel({
     fuelCanister(545, 405) +
     toolbox(420, 470) +
     crystal(470, 480) +
-    diff(...around(652, 393, 748, 460), big(700, 460, 1.6, rover(0, 0)), ''),
+    diff(...around(652, 393, 748, 460), big(700, 460, 1.6, rover(0, 0)), '') +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['planet', 509, 260, '#4dabf7'],
+      ['asteroid', 116, 316],
+      ['crater', 285, 479],
+    ]),
 })

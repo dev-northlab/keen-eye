@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big, bottle, cube, glassJar, pottedPlant, room, shelf, sticker, wallClock } from './shapes.ts'
 import { bucket, crate, poster, pot } from '../time/shapes.ts'
@@ -45,7 +46,7 @@ export default memoryLevel({
   id: 324,
   title: 'memoryLab',
   showSeconds: 4,
-  scene: ({ diff, secret }) =>
+  scene: ({ diff, secret, extra, anim }) =>
     room(360, '#e3eef5', '#9aa5b1') +
     tileLines(352) +
     chart() +
@@ -94,5 +95,13 @@ export default memoryLevel({
     crate(540, 490, 30) +
     pot(620, 490, '#3a86ff') +
     diff(...around(272, 396, 388, 460), stool(300, 460), stool(360, 460)) +
-    `<path d="M700 440h40l-4 50h-32Z" fill="#5c677d"/>`,
+    `<path d="M700 440h40l-4 50h-32Z" fill="#5c677d"/>` +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['books', 132, 486, '#3fa46f'],
+      ['ball', 499, 461, '#3a86ff'],
+      ['cube', 691, 474, '#3a86ff'],
+      ['frame', 279, 62, '#3fa46f'],
+      ['frame', 523, 57, '#e63946'],
+    ]),
 })

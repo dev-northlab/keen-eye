@@ -1,5 +1,6 @@
 import { fireLogs, flame } from '../chapter-03/shapes.ts'
 import { star } from '../chapter-05/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball, cat } from '../time/shapes.ts'
 import { around, big, candle, cube, gift, painting, room, rug, slipperPair, sticker, teddy, wallClock } from './shapes.ts'
@@ -40,7 +41,7 @@ export default memoryLevel({
   id: 330,
   title: 'memoryHoliday',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(380, '#f3e3c3', '#a0703f') +
     Array.from({ length: 48 }, (_, i) => `<circle cx="${(i % 12) * 70 + 20 + (Math.floor(i / 12) % 2) * 35}" cy="${Math.floor(i / 12) * 90 + 70}" r="4" fill="#e07a5f" fill-opacity="0.35"/>`).join('') +
     lights() +
@@ -88,5 +89,13 @@ export default memoryLevel({
     gift(780, 490, 30, '#8338ec', '#ffd23f') +
     ball(60, 490, '#e63946') +
     cube(130, 490, 24, '#3a86ff') +
-    diff(...around(210, 396, 325, 462), gift(300, 462, 50, '#8338ec', '#ffd23f'), gift(235, 462, 50, '#8338ec', '#ffd23f')),
+    diff(...around(210, 396, 325, 462), gift(300, 462, 50, '#8338ec', '#ffd23f'), gift(235, 462, 50, '#8338ec', '#ffd23f')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['cube', 538, 447, '#3a86ff'],
+      ['slippers', 97, 477, '#3a86ff'],
+      ['books', 667, 485, '#3fa46f'],
+      ['sticker', 179, 282, '#ffd23f'],
+      ['frame', 737, 232, '#e63946'],
+    ]),
 })

@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, grass, sheep } from '../shapes.ts'
 import { around, big, hills } from './shapes.ts'
@@ -21,7 +22,7 @@ export default memoryLevel({
   id: 327,
   title: 'memoryAirfield',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     `<rect width="800" height="390" fill="#bfe6f7"/>` +
     big(330, 300, 0.9, cloud(0, 0)) +
     diff(...around(570, 31, 670, 97), big(620, 75, 1, cloud(0, 0)), '') +
@@ -58,5 +59,12 @@ export default memoryLevel({
     grass(290, 490) +
     big(540, 485, 0.4, sheep(0, 0)) +
     roadSign(770, 495) +
-    diff(...around(346, 390, 490, 442), plane(420, 440, '#ffffff'), plane(420, 440, '#ffd23f')),
+    diff(...around(346, 390, 490, 442), plane(420, 440, '#ffffff'), plane(420, 440, '#ffd23f')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['birds', 52, 277],
+      ['cloud', 571, 277],
+      ['balloon', 251, 256, '#3a86ff'],
+      ['butterfly', 708, 474],
+    ]),
 })

@@ -1,4 +1,5 @@
 import { balloon, bin, cityTree, pigeon } from '../chapter-02/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, banana, big, daySky, produce, pumpkin, signPost, stall, stallAwning, watermelon } from './shapes.ts'
@@ -8,7 +9,7 @@ export default memoryLevel({
   id: 315,
   title: 'memoryMarket',
   showSeconds: 3,
-  scene: ({ diff }) => {
+  scene: ({ diff, extra, anim }) => {
     const bananas = diff(...around(358, 242, 442, 304), '#ffd23f', '#8ac926')
     return (
       daySky(300) +
@@ -43,7 +44,14 @@ export default memoryLevel({
       crate(450, 490, 30, '#b07a42') +
       crate(482, 490, 30) +
       sack(540, 490) +
-      diff(...around(630, 350, 770, 460), signPost(680, 460), signPost(720, 460))
+      diff(...around(630, 350, 770, 460), signPost(680, 460), signPost(720, 460)) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bin', 234, 489],
+        ['ball', 62, 322, '#8338ec'],
+        ['shoppingBag', 583, 486],
+        ['balloon', 635, 50, '#3a86ff'],
+      ])
     )
   },
 })

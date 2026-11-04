@@ -1,4 +1,5 @@
 import { fern, fireLogs, flame, hedgehog, mushroom, pine, rabbit, squirrel, stump, tent } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, backpack, big, daySky } from './shapes.ts'
@@ -13,7 +14,7 @@ export default memoryLevel({
   id: 310,
   title: 'memoryCamp',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(240) +
     sun(120, 70) +
     pine(330, 250, 1.4) +
@@ -42,5 +43,11 @@ export default memoryLevel({
     squirrel(770, 350, true) +
     logPile(770, 400) +
     stump(770, 470) +
-    diff(...around(570, 384, 700, 460), backpack(600, 460, '#8338ec'), backpack(670, 460, '#8338ec')),
+    diff(...around(570, 384, 700, 460), backpack(600, 460, '#8338ec'), backpack(670, 460, '#8338ec')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['wildStrawberry', 427, 346],
+      ['mushroom', 736, 366],
+      ['cloud', 122, 197],
+    ]),
 })

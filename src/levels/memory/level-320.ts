@@ -1,5 +1,6 @@
 import { car } from '../chapter-02/shapes.ts'
 import { alien, robot, rocket } from '../chapter-05/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball } from '../time/shapes.ts'
 import { around, big, books, cube, kite, painting, room, slipperPair, sticker, teddy, wallClock } from './shapes.ts'
@@ -36,7 +37,7 @@ export default memoryLevel({
   id: 320,
   title: 'memoryToyShelf',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(470, '#e6dcff', '#c98f5a') +
     sticker(50, 80, '#ffd23f') +
     sticker(60, 300, '#ff6b8b') +
@@ -76,5 +77,12 @@ export default memoryLevel({
     slipperPair(300, 485, '#ff6b8b') +
     cube(620, 495, 20, '#3a86ff') +
     cube(760, 495, 24, '#ffd23f') +
-    `<rect x="580" y="410" width="90" height="50" rx="4" fill="#8ac926"/><path d="M590 420h20v20h-20ZM620 420h20v20h-20ZM650 420h10v20h-10Z" fill="#ffffff" fill-opacity="0.5"/>`,
+    `<rect x="580" y="410" width="90" height="50" rx="4" fill="#8ac926"/><path d="M590 420h20v20h-20ZM620 420h20v20h-20ZM650 420h10v20h-10Z" fill="#ffffff" fill-opacity="0.5"/>` +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['frame', 71, 68, '#e63946'],
+      ['sticker', 728, 100, '#ff6b8b'],
+      ['frame', 70, 281, '#e63946'],
+      ['sticker', 723, 299, '#ff6b8b'],
+    ]),
 })

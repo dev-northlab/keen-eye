@@ -141,6 +141,7 @@ function start() {
       peeks: peeksLeft.value,
       showSeconds: rules.value.memoryShowSeconds(level.memory!.showSeconds),
       stars: rules.value.memoryStars,
+      extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
     },
   )

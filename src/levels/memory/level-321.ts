@@ -1,5 +1,6 @@
 import { dog } from '../chapter-02/shapes.ts'
 import { butterfly } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { basket, cloud, flower, sheep, sun } from '../shapes.ts'
 import { around, big, books, cup, daySky, fruit, hills, kite, mug, roundTree } from './shapes.ts'
@@ -32,7 +33,7 @@ export default memoryLevel({
   id: 321,
   title: 'memoryPicnic',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(340) +
     sun(300, 70) +
     big(160, 60, 0.8, cloud(0, 0)) +
@@ -73,5 +74,13 @@ export default memoryLevel({
     big(450, 492, 0.5, books(0, 0, ['#3a86ff', '#ffd23f'])) +
     mug(520, 490, '#e63946') +
     sunHat(580, 490) +
-    diff(...around(636, 418, 724, 470), big(680, 470, 2, dog(0, 0, '#c48a5a', true)), ''),
+    diff(...around(636, 418, 724, 470), big(680, 470, 2, dog(0, 0, '#c48a5a', true)), '') +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['stones', 177, 402],
+      ['snail', 731, 361],
+      ['ladybug', 478, 475],
+      ['mushroom', 54, 364],
+      ['birds', 299, 167],
+    ]),
 })

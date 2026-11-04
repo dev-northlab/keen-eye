@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, cake, flowerVase, glassJar, hangingLamp, mug, painting, room, shelf } from './shapes.ts'
 import { crate, poster, sack } from '../time/shapes.ts'
@@ -40,7 +41,7 @@ export default memoryLevel({
   id: 317,
   title: 'memoryBakery',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(450, '#fbe3c8', '#e9dcc7') +
     tiles(450) +
     `<rect y="220" width="800" height="10" fill="#e07a5f" fill-opacity="0.5"/>` +
@@ -86,5 +87,12 @@ export default memoryLevel({
     sack(40, 490, '#f4efe6') +
     sack(70, 492) +
     crate(540, 490, 30) +
-    `<path d="M680 440h70l-8 40h-54Z" fill="#a0703f"/>`,
+    `<path d="M680 440h70l-8 40h-54Z" fill="#a0703f"/>` +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['cube', 456, 471, '#3fa46f'],
+      ['slippers', 260, 472, '#3a86ff'],
+      ['frame', 539, 101, '#3fa46f'],
+      ['frame', 746, 185, '#c9953f'],
+    ]),
 })

@@ -1,5 +1,6 @@
 import { tent } from '../chapter-03/shapes.ts'
 import { gull, palm, rock } from '../chapter-04/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, grass, stones, sun } from '../shapes.ts'
 import { around, big } from './shapes.ts'
@@ -35,7 +36,7 @@ export default memoryLevel({
   id: 329,
   title: 'memoryOasis',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     `<rect width="800" height="320" fill="#ffe0a3"/><rect y="250" width="800" height="70" fill="#ffd08a"/>` +
     sun(680, 80, '#ffb703') +
     diff(...around(448, 104, 512, 132, 32), '', big(480, 120, 2, gull(0, 0))) +
@@ -70,5 +71,13 @@ export default memoryLevel({
     pot(400, 465) +
     pot(434, 465) +
     diff(...around(387, 419, 481, 465), pot(468, 465), '') +
-    diff(...around(669, 380, 771, 470), cactus(700, 470), cactus(740, 470)),
+    diff(...around(669, 380, 771, 470), cactus(700, 470), cactus(740, 470)) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['bird', 200, 479],
+      ['stones', 399, 329],
+      ['rock', 601, 361],
+      ['birds', 176, 72],
+      ['birds', 719, 183],
+    ]),
 })

@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball, cat } from '../time/shapes.ts'
 import { around, big, cake, candle, cube, cup, flowerVase, garland, gift, glassJar, painting, partyBalloon, plate, room, shelf, sticker, table, teddy } from './shapes.ts'
@@ -6,7 +7,7 @@ export default memoryLevel({
   id: 314,
   title: 'memoryParty',
   showSeconds: 3,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(380, '#ffe3ef', '#c98f5a') +
     garland(40, 760, 24, ['#e63946', '#ffb703', '#3fa46f', '#3a86ff', '#8338ec', '#ff6b8b', '#ffd23f', '#4dabf7']) +
     diff(...around(70, 112, 130, 260), partyBalloon(100, 150, '#e63946'), partyBalloon(100, 150, '#3a86ff')) +
@@ -36,5 +37,12 @@ export default memoryLevel({
     ball(350, 490, '#ff6b8b') +
     big(500, 490, 0.5, teddy(0, 0, '#ff9f43')) +
     gift(590, 490, 36, '#3fa46f', '#ffffff') +
-    diff(...around(664, 408, 736, 480), '', big(700, 480, 2, cat(0, 0, '#8d99ae', true))),
+    diff(...around(664, 408, 736, 480), '', big(700, 480, 2, cat(0, 0, '#8d99ae', true))) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['slippers', 341, 437, '#8ac926'],
+      ['books', 54, 422, '#e63946'],
+      ['frame', 387, 115, '#c9953f'],
+      ['sticker', 692, 301, '#3a86ff'],
+    ]),
 })

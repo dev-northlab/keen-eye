@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball, cat, pot, sack } from '../time/shapes.ts'
 import { around, big, books, bowl, cup, curtains, flowerVase, fruit, glassJar, hangingLamp, mug, painting, pottedPlant, room, shelf, slipperPair, table, teapot, wallClock, windowPane } from './shapes.ts'
@@ -6,7 +7,7 @@ export default memoryLevel({
   id: 301,
   title: 'memoryKitchen',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(330, '#ffe8c2', '#c98f5a') +
     windowPane(80, 60, 180, 150) +
     curtains(80, 260, 54, 170, '#e63946') +
@@ -36,5 +37,11 @@ export default memoryLevel({
     ball(380, 480, '#8338ec') +
     sack(480, 470) +
     slipperPair(560, 480, '#ff6b8b') +
-    big(710, 470, 2.2, cat(0, 0, '#f08c3a', true)),
+    big(710, 470, 2.2, cat(0, 0, '#f08c3a', true)) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['cube', 116, 354, '#e63946'],
+      ['slippers', 607, 431, '#3a86ff'],
+      ['frame', 573, 58, '#e63946'],
+    ]),
 })

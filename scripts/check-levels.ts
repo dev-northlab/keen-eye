@@ -258,7 +258,7 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
   }
   if (level.secret) checkSecret(level, b, errors)
   if (level.extras) {
-    if (timed || level.memory) errors.push('extra objects only on world levels so far (docs/hard-mode-extra-objects.md)')
+    if (timed) errors.push('no extra objects on "time" levels yet (docs/hard-mode-extra-objects.md)')
     const aHard = level.build(0, 0, true)
     if (JSON.stringify(aHard) !== JSON.stringify(level.build(0, 0, true))) errors.push('build(0, 0, true) is not deterministic')
     checkExtras(level, a, aHard, report, errors)

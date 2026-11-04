@@ -1,5 +1,6 @@
 import { ball } from '../time/shapes.ts'
 import { bottleMessage, bucket, buoy, castleFlag, crab, dolphin, flipFlops, gull, palm, parasol, sailboat, sandcastle, shell, starfish, sunHat, towel, waves } from '../chapter-04/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky } from './shapes.ts'
@@ -8,7 +9,7 @@ export default memoryLevel({
   id: 303,
   title: 'memoryBeach',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(260) +
     sun(110, 80) +
     `<rect y="230" width="800" height="110" fill="#3ba7cc"/>` +
@@ -36,5 +37,11 @@ export default memoryLevel({
     sunHat(775, 470) +
     shell(40, 470, '#ffc8a8') +
     starfish(130, 470) +
-    diff(...around(658, 441, 722, 470), '', big(690, 470, 1.6, crab(0, 0))),
+    diff(...around(658, 441, 722, 470), '', big(690, 470, 1.6, crab(0, 0))) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['flipFlops', 608, 429],
+      ['lifeRing', 213, 265],
+      ['cloud', 402, 59],
+    ]),
 })

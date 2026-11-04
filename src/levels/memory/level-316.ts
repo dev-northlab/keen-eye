@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball, cat, pot } from '../time/shapes.ts'
 import { around, big, books, cup, curtains, flowerVase, glassJar, mug, painting, pillow, pottedPlant, room, rug, shelf, slipperPair, tableLamp, wallClock, windowPane } from './shapes.ts'
@@ -55,7 +56,7 @@ export default memoryLevel({
   id: 316,
   title: 'memoryLivingRoom',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(330, '#cfe3c8', '#b98b5e') +
     stripes(322) +
     windowPane(30, 50, 100, 110) +
@@ -93,5 +94,12 @@ export default memoryLevel({
     slipperPair(250, 470, '#8338ec') +
     big(450, 490, 0.6, books(0, 0, ['#3fa46f', '#ffb703'])) +
     pot(780, 480) +
-    diff(...around(527, 385, 673, 450), big(560, 450, 1.8, cat(0, 0, '#8d99ae', true)), big(640, 450, 1.8, cat(0, 0, '#8d99ae', true))),
+    diff(...around(527, 385, 673, 450), big(560, 450, 1.8, cat(0, 0, '#8d99ae', true)), big(640, 450, 1.8, cat(0, 0, '#8d99ae', true))) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['books', 732, 471, '#3fa46f'],
+      ['ball', 202, 384, '#e63946'],
+      ['cube', 484, 390, '#ffb703'],
+      ['slippers', 104, 471, '#3a86ff'],
+    ]),
 })

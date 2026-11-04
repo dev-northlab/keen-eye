@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, backpack, bed, big, books, cube, curtains, drawers, flowerVase, painting, room, rug, shelf, slipperPair, sticker, tableLamp, teddy, wallClock, windowPane } from './shapes.ts'
 import { ball } from '../time/shapes.ts'
@@ -6,7 +7,7 @@ export default memoryLevel({
   id: 304,
   title: 'memoryBedroom',
   showSeconds: 5,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     room(340, '#d9ecff', '#e9b872') +
     windowPane(520, 60, 170, 140) +
     curtains(520, 690, 54, 160, '#ffb703') +
@@ -31,5 +32,11 @@ export default memoryLevel({
     ball(110, 470, '#ffd23f') +
     slipperPair(60, 480, '#3a86ff') +
     cube(760, 490, 28, '#3a86ff') +
-    diff(...around(524, 363, 676, 455), teddy(560, 455), teddy(640, 455)),
+    diff(...around(524, 363, 676, 455), teddy(560, 455), teddy(640, 455)) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['ball', 116, 436, '#ffb703'],
+      ['cube', 472, 383, '#e63946'],
+      ['frame', 693, 320, '#3a86ff'],
+    ]),
 })

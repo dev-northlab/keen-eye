@@ -1,4 +1,5 @@
 import { balloon, bike, bin, car, cone, dog, flowerBox, hydrant, pigeon, trafficLight } from '../chapter-02/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky, stallAwning, windowPane } from './shapes.ts'
@@ -14,7 +15,7 @@ export default memoryLevel({
   id: 307,
   title: 'memoryStreet',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(300) +
     sun(380, 60) +
     big(380, 150, 0.9, cloud(0, 0)) +
@@ -49,5 +50,11 @@ export default memoryLevel({
     cone(775, 345) +
     car(620, 480, '#e63946', true) +
     bike(760, 470, '#8338ec') +
-    diff(...around(144, 377, 296, 445), big(220, 445, 1.8, car(0, 0, '#3a86ff')), big(220, 445, 1.8, car(0, 0, '#ffb703'))),
+    diff(...around(144, 377, 296, 445), big(220, 445, 1.8, car(0, 0, '#3a86ff')), big(220, 445, 1.8, car(0, 0, '#ffb703'))) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['cone', 427, 379],
+      ['pigeon', 82, 404],
+      ['cone', 638, 387],
+    ]),
 })

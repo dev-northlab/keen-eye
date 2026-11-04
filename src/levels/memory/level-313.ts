@@ -1,5 +1,6 @@
 import { buoy, dolphin, gull, lifeRing, rock, sailboat, waves } from '../chapter-04/shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { barrel, bollard, crate, lighthouse, ropeCoil, rowboat } from '../time/shapes.ts'
@@ -9,7 +10,7 @@ export default memoryLevel({
   id: 313,
   title: 'memoryHarbor',
   showSeconds: 3,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     daySky(270) +
     sun(100, 70) +
     big(420, 80, 1, cloud(0, 0)) +
@@ -43,5 +44,12 @@ export default memoryLevel({
     bollard(370, 470) +
     buoy(760, 400, '#ffffff') +
     dolphin(760, 470) +
-    big(240, 330, 1.6, person(0, 0, '#3a86ff')),
+    big(240, 330, 1.6, person(0, 0, '#3a86ff')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['bottle', 247, 383],
+      ['buoy', 425, 474],
+      ['cloud', 421, 159],
+      ['gull', 142, 137],
+    ]),
 })

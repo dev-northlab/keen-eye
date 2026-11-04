@@ -1,5 +1,6 @@
 import { bench, lampHead, lampPost } from '../chapter-02/shapes.ts'
 import { bird, bush, pine, rabbit } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { birds, logPile, pineSnow, sled, small, snowCap, snowman, winterPerson, winterSky } from '../time/shapes.ts'
 import { around, big, snowballs } from './shapes.ts'
@@ -20,7 +21,7 @@ export default memoryLevel({
   id: 325,
   title: 'memoryIceRink',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     winterSky(280) +
     `<path d="M0 270Q200 230 400 262T800 250V500H0Z" fill="#f4f8fb"/>` +
     pine(40, 280, 1.2) +
@@ -64,5 +65,13 @@ export default memoryLevel({
     small(680, 490, winterPerson(680, 490, '#3fa46f', true)) +
     pine(770, 480, 0.6) +
     pineSnow(770, 480, 0.6) +
-    diff(...around(640, 256, 790, 300), standRoof(715, 256, '#e63946'), standRoof(715, 256, '#3fa46f')),
+    diff(...around(640, 256, 790, 300), standRoof(715, 256, '#e63946'), standRoof(715, 256, '#3fa46f')) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['pine', 712, 457],
+      ['bird', 395, 481],
+      ['stones', 155, 332],
+      ['cloud', 395, 123],
+      ['birds', 97, 122],
+    ]),
 })

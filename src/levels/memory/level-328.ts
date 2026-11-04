@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { bucket } from '../shapes.ts'
 import { around, big, books, bottle, cube, glassJar, hangingLamp, mug, shelf, wallClock } from './shapes.ts'
@@ -26,7 +27,7 @@ export default memoryLevel({
   id: 328,
   title: 'memoryWorkshop',
   showSeconds: 4,
-  scene: ({ diff }) =>
+  scene: ({ diff, extra, anim }) =>
     `<rect width="800" height="360" fill="#d9b48a"/><path d="${Array.from({ length: 12 }, (_, i) => `M0 ${i * 30 + 15}H800`).join('')}" stroke="#c49a6c" stroke-width="2"/>` +
     `<rect y="360" width="800" height="140" fill="#7d6a5a"/>` +
     diff(400, 50, 50, hangingLamp(400, 50, '#e63946'), hangingLamp(400, 50, '#3a86ff')) +
@@ -65,5 +66,13 @@ export default memoryLevel({
     sack(700, 490) +
     bucket(770, 490, '#3fa46f') +
     diff(...around(502, 412, 618, 460), big(530, 460, 1.6, bucket(0, 0)), big(590, 460, 1.6, bucket(0, 0))) +
-    diff(200, 455, 44, '', `<circle cx="200" cy="455" r="34" fill="none" stroke="#3d3d3d" stroke-width="16"/><circle cx="200" cy="455" r="26" fill="none" stroke="#5c5f66" stroke-width="2"/>`),
+    diff(200, 455, 44, '', `<circle cx="200" cy="455" r="34" fill="none" stroke="#3d3d3d" stroke-width="16"/><circle cx="200" cy="455" r="26" fill="none" stroke="#5c5f66" stroke-width="2"/>`) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    extras({ extra, anim }, [
+      ['wrench', 279, 409],
+      ['toolbox', 53, 470],
+      ['fuelCanister', 664, 485],
+      ['frame', 639, 62, '#3a86ff'],
+      ['wrench', 123, 35],
+    ]),
 })
