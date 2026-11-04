@@ -98,7 +98,7 @@ Debug builds allow WebView DevTools via `chrome://inspect`.
 [Codemagic](https://codemagic.io): the `ios-testflight` workflow in [`codemagic.yaml`](codemagic.yaml) builds and
 uploads to TestFlight (setup steps are at the top of the file).
 
-**Web** — every push to `main` publishes the web version to
+**Web** — every push to `main` publishes a test build to
 [GitHub Pages](https://dev-northlab.github.io/keen-eye/) ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
 
 ---
