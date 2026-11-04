@@ -1,4 +1,5 @@
 // Motion differences: the liner's pennants wave only on picture B; the tug boat rocks faster on B; the gull flies the other way round on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beachBall, bottleMessage, buoy, cloud, dolphin, fish, gull, gullStanding, lifeRing, person, sun, waves } from './shapes.ts'
 
@@ -28,7 +29,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'cruise',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${380 + rand() * 100}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const string = pennants(200, 240)
@@ -64,7 +65,20 @@ export default svgLevel({
       bottleMessage(300, 452) +
       fish(560, 432, '#ffb703') +
       gullStanding(520, 276) +
-      dolphin(420, 445)
+      dolphin(420, 445) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 286, 417, '#ff9f43'],
+        ['bottle', 625, 406],
+        ['buoy', 493, 440],
+        ['fish', 374, 419, '#ffb703'],
+        ['lifeRing', 194, 474],
+        ['gull', 576, 55],
+        ['cloud', 695, 209],
+        ['gull', 362, 193],
+        ['gull', 86, 198],
+        ['cloud', 576, 253],
+      ])
     )
   },
 })

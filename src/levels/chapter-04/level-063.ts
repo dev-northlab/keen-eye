@@ -1,4 +1,5 @@
 // Motion differences: the fish school swims faster on picture B; the jellyfish bobs faster on B; the seaweed sways only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, coral, fish, jellyfish, octopus, rock, seahorse, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
 
@@ -20,7 +21,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'reef',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let bubbles = ''
     for (let i = 0; i < 12; i++) bubbles += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 3}" fill="#fff" fill-opacity="0.5"/>`
     let rays = ''
@@ -61,7 +62,20 @@ export default svgLevel({
       bottleMessage(55, 490) +
       shell(440, 428) +
       snorkelMask(705, 488) +
-      anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles)
+      anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['jellyfish', 673, 100],
+        ['fish', 141, 221, '#ff9f43'],
+        ['seahorse', 456, 381],
+        ['fish', 265, 39, '#ffb703'],
+        ['fish', 458, 61, '#ffb703'],
+        ['jellyfish', 215, 372],
+        ['fish', 50, 45, '#9ef01a'],
+        ['seahorse', 719, 314],
+        ['fish', 397, 247, '#ff9f43'],
+        ['rock', 602, 470],
+      ])
     )
   },
 })

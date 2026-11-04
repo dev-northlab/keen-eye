@@ -1,5 +1,6 @@
 // Motion differences: the chimney smoke rises faster on picture B; the bird on the feeder hops only on B.
 import { stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cat, fence, milkCan, stones, wheelbarrow } from '../shapes.ts'
 
@@ -48,7 +49,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'winter',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 40; i++) {
       const x = rand() * 800
@@ -96,7 +97,20 @@ export default svgLevel({
       stump(700, 440) +
       stones(410, 480) +
       wheelbarrow(290, 370) +
-      anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes)
+      anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['pine', 513, 471],
+        ['bird', 210, 306],
+        ['stones', 79, 446],
+        ['pine', 742, 443],
+        ['bird', 359, 385],
+        ['stones', 85, 315],
+        ['cloud', 199, 110],
+        ['birds', 567, 162],
+        ['cloud', 734, 56],
+        ['birds', 510, 63],
+      ])
     )
   },
 })

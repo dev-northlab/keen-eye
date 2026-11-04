@@ -1,4 +1,5 @@
 // Motion differences: the whale's spout rises faster on picture B; the tail fluke sways only on B; the pilot fish circles faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beachBall, bottleMessage, cloud, fish, gull, gullStanding, lifeRing, sailboat, sun, waves } from './shapes.ts'
 
@@ -17,7 +18,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'whale',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${260 + rand() * 220}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const blowing = (period: number) => anim({ id: 'spout', type: 'path', points: [[0, 0], [0, -14]], period }, spout(400, 380))
@@ -51,7 +52,20 @@ export default svgLevel({
       beachBall(770, 300) +
       lifeRing(420, 460) +
       gullStanding(705, 243) +
-      fish(140, 470, '#4dabf7')
+      fish(140, 470, '#4dabf7') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 477, 467, '#ff9f43'],
+        ['bottle', 728, 467],
+        ['buoy', 618, 326],
+        ['fish', 184, 363, '#9ef01a'],
+        ['lifeRing', 446, 296],
+        ['fish', 70, 293, '#4dabf7'],
+        ['bottle', 359, 460],
+        ['gull', 428, 78],
+        ['cloud', 217, 182],
+        ['gull', 137, 35],
+      ])
     )
   },
 })

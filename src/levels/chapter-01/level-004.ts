@@ -1,4 +1,5 @@
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
 
@@ -37,7 +38,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'orchard',
   parTimeSec: 70,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 345 + rand() * 150)
     let flowers = ''
@@ -80,7 +81,20 @@ export default svgLevel({
       mushroom(110, 342) +
       stump(320, 478) +
       butterfly(560, 330) +
-      wateringCan(705, 346)
+      wateringCan(705, 346) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['stones', 58, 414],
+        ['snail', 677, 449],
+        ['flower', 388, 384, '#4dabf7'],
+        ['ladybug', 563, 302],
+        ['mushroom', 76, 303],
+        ['chick', 749, 303],
+        ['grass', 223, 304],
+        ['butterfly', 405, 123],
+        ['cloud', 690, 63],
+        ['birds', 253, 50],
+      ])
     )
   },
 })

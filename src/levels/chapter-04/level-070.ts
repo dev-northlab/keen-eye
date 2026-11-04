@@ -1,4 +1,5 @@
 // Motion differences: the propeller spins faster on picture B; the periscope light blinks only on B; the squid jets faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, clam, fish, rock, seahorse, seaUrchin, seaweed, turtle } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'submarine',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let bubbles = ''
     for (let i = 0; i < 14; i++) bubbles += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 3}" fill="#fff" fill-opacity="0.4"/>`
     const spinning = (period: number) => anim({ type: 'rotate', pivot: [308, 250], period }, propeller(400, 250))
@@ -66,7 +67,20 @@ export default svgLevel({
       bottleMessage(510, 472) +
       seahorse(700, 300) +
       anchor(680, 470) +
-      anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles)
+      anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 243, 368, '#ffb703'],
+        ['fish', 640, 73, '#ffb703'],
+        ['jellyfish', 284, 122],
+        ['fish', 459, 343, '#ff9f43'],
+        ['seahorse', 87, 246],
+        ['fish', 717, 324, '#ffb703'],
+        ['fish', 131, 47, '#9ef01a'],
+        ['jellyfish', 596, 227],
+        ['clam', 412, 475],
+        ['rock', 242, 467],
+      ])
     )
   },
 })

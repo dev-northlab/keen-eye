@@ -1,4 +1,5 @@
 // Motion differences: the parrot bobs only on picture B; the coconut swings faster on B; the raft drifts faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { clam, cloud, crab, fish, gull, palm, rock, sandBits, shell, starfish, sun, sunglasses, sunHat, waves } from './shapes.ts'
 
@@ -27,7 +28,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'island',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const bird = parrot(416, 232, '#8ac926')
     const swinging = (period: number) => anim({ type: 'sway', angle: 12, pivot: [370, 250], period }, coconut(370, 250))
     const drifting = (period: number) => anim({ id: 'raft', type: 'path', points: [[0, 0], [-120, 0]], period }, raft(700, 440, '#f4f1de'))
@@ -61,7 +62,20 @@ export default svgLevel({
       sunHat(325, 346) +
       sunglasses(405, 346) +
       clam(205, 348) +
-      fish(320, 440, '#ff6b8b')
+      fish(320, 440, '#ff6b8b') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 420, 402, '#4dabf7'],
+        ['lifeRing', 248, 397],
+        ['fish', 51, 371, '#ff6b8b'],
+        ['bottle', 94, 479],
+        ['buoy', 747, 337],
+        ['fish', 310, 475, '#ff6b8b'],
+        ['gull', 154, 237],
+        ['cloud', 480, 144],
+        ['gull', 209, 56],
+        ['gull', 739, 155],
+      ])
     )
   },
 })

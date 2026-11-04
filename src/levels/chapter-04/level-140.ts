@@ -1,4 +1,5 @@
 // Motion differences: the middle pier lamp flickers only on picture B; the fishing float bobs faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, fish, gullStanding, lifeRing, person, sunglasses, sunHat } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pierSunset',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let streaks = ''
     for (let i = 0; i < 30; i++) {
       const y = 262 + rand() * 230
@@ -78,7 +79,15 @@ export default svgLevel({
       lifeRing(772, 374) +
       bottleMessage(560, 452) +
       fish(460, 442, '#ffb703') +
-      sunglasses(180, 360)
+      sunglasses(180, 360) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['buoy', 60, 472],
+        ['fish', 141, 293, '#ffb703'],
+        ['lifeRing', 513, 453],
+        ['cloud', 466, 54],
+        ['gull', 589, 151],
+      ])
     )
   },
 })

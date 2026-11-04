@@ -1,5 +1,6 @@
 // Motion differences: the grey horse twitches its ear only on picture B; the dog wags its tail faster on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, cat, flowerPot, hayBale, milkCan, wheelbarrow } from '../shapes.ts'
 
@@ -54,7 +55,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'horseStables',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const bays = [115, 305, 495, 685]
     let stalls = ''
     for (const bx of bays) {
@@ -121,7 +122,13 @@ export default svgLevel({
       bird(555, 230) +
       milkCan(480, 415) +
       wheelbarrow(130, 490) +
-      flowerPot(240, 72)
+      flowerPot(240, 72) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['horseshoe', 682, 44],
+        ['horseshoe', 438, 290],
+        ['horseshoe', 178, 311],
+      ])
     )
   },
 })

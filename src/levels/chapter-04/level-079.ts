@@ -1,4 +1,5 @@
 // Motion differences: the hanging scale swings only on picture B; the gull hops faster on B; the shop sign sways faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, clam, coconut, crab, fish, gullStanding, person, starfish, sun, sunHat, waves } from './shapes.ts'
 import { awning } from '../chapter-02/shapes.ts'
@@ -32,7 +33,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'seaMarket',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let cobbles = ''
     for (let i = 0; i < 30; i++) cobbles += `<ellipse cx="${rand() * 800}" cy="${410 + rand() * 90}" rx="10" ry="4" fill="#a3aebf"/>`
     const balance = scale(400, 290)
@@ -73,7 +74,20 @@ export default svgLevel({
       sunHat(560, 454) +
       clam(320, 462) +
       coconut(250, 456) +
-      starfish(645, 452)
+      starfish(645, 452) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['shell', 181, 477],
+        ['starfish', 91, 345],
+        ['bottle', 566, 429],
+        ['shell', 738, 371],
+        ['lifeRing', 471, 251],
+        ['fish', 574, 258, '#ff9f43'],
+        ['gull', 247, 124],
+        ['gull', 539, 78],
+        ['cloud', 746, 140],
+        ['gull', 68, 180],
+      ])
     )
   },
 })

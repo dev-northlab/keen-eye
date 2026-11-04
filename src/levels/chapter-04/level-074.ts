@@ -1,4 +1,5 @@
 // Motion differences: the shrimp darts faster on picture B; the anemone sways only on B; the gull hops faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, clam, crab, flipFlops, gullStanding, person, rock, seaweed, shell, snorkelMask, starfish, sun, sunHat, waves } from './shapes.ts'
 
@@ -25,7 +26,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'tidePools',
   parTimeSec: 130,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const darting = (period: number) => anim({ id: 'shrimp', type: 'path', points: [[0, 0], [40, 10], [0, 20], [-30, 8]], period }, shrimp(560, 400))
     const tentacles = anemone(230, 440)
     const hopping = (period: number) => anim({ id: 'gull', type: 'bob', dx: 0, dy: 5, period }, gullStanding(680, 300))
@@ -64,7 +65,20 @@ export default svgLevel({
       sunHat(255, 332) +
       clam(420, 486) +
       flipFlops(170, 342) +
-      snorkelMask(700, 372)
+      snorkelMask(700, 372) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['clam', 73, 353],
+        ['crab', 372, 456],
+        ['starfish', 218, 288],
+        ['shell', 533, 353],
+        ['seaUrchin', 706, 450],
+        ['bottle', 385, 239],
+        ['buoy', 706, 232],
+        ['gull', 579, 54],
+        ['gull', 93, 91],
+        ['cloud', 285, 114],
+      ])
     )
   },
 })

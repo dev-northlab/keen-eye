@@ -1,5 +1,6 @@
 // Motion differences: the pinwheel on the path spins the other way on picture B; the bee hovers faster on B.
 import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bee, cloud, fence, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, sunflower } from '../shapes.ts'
 
@@ -71,7 +72,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'vegetableBeds',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 10; i++) tufts += grass(10 + rand() * 780, 478 + rand() * 18)
     let flowers = ''
@@ -134,7 +135,15 @@ export default svgLevel({
       snail(400, 392) +
       butterfly(610, 195) +
       stones(775, 482) +
-      mushroom(35, 480)
+      mushroom(35, 480) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['ladybug', 146, 207],
+        ['grass', 725, 393],
+        ['horseshoe', 283, 296],
+        ['birds', 352, 51],
+        ['butterfly', 643, 56],
+      ])
     )
   },
 })

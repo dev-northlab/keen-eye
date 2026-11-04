@@ -1,4 +1,5 @@
 // Motion differences: the sun pulses faster on picture B; the lantern on the pier swings only on B; the rowboat rocks faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, fish, gull, gullStanding, lifeRing, palm, person, rock, sailboat, sunglasses, waves } from './shapes.ts'
 
@@ -23,7 +24,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'sunsetBay',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let glints = ''
     for (let i = 0; i < 14; i++) glints += `<path d="M${300 + rand() * 300} ${300 + rand() * 60}h${10 + rand() * 20}" stroke="#ffe08a" stroke-width="3" stroke-linecap="round"/>`
     const glowing = (period: number) => anim({ type: 'color', colors: ['#ffb703', '#ff7b54', '#ffb703'], period }, disc(400, 230))
@@ -60,7 +61,20 @@ export default svgLevel({
       lifeRing(705, 382) +
       fish(420, 430, '#ffb703') +
       sunglasses(780, 345) +
-      gullStanding(250, 258)
+      gullStanding(250, 258) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['buoy', 110, 349],
+        ['fish', 326, 391, '#ff9f43'],
+        ['lifeRing', 571, 468],
+        ['fish', 750, 456, '#9ef01a'],
+        ['bottle', 229, 313],
+        ['buoy', 466, 411],
+        ['gull', 372, 76],
+        ['gull', 90, 66],
+        ['cloud', 585, 75],
+        ['gull', 742, 33],
+      ])
     )
   },
 })

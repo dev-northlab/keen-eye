@@ -1,5 +1,6 @@
 // Motion differences: the owl turns its head only on picture B; the kitten's tail swishes faster on B.
 import { bird } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { chick, eggNest, hayBale, hen, milkCan, pumpkin } from '../shapes.ts'
 
@@ -54,7 +55,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'hayloft',
   parTimeSec: 75,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let planks = ''
     for (let x = 16; x < 800; x += 32) planks += `<path d="M${x} 0V360" stroke="#8f5c37" stroke-width="2"/>`
     let boards = ''
@@ -115,7 +116,13 @@ export default svgLevel({
       eggNest(720, 440) +
       bird(250, 125) +
       milkCan(640, 392) +
-      pumpkin(390, 488)
+      pumpkin(390, 488) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['horseshoe', 62, 33],
+        ['horseshoe', 681, 56],
+        ['horseshoe', 703, 200],
+      ])
     )
   },
 })

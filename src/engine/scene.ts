@@ -33,6 +33,8 @@ export interface SceneOptions {
   stars?: (p: StarInput) => Stars
   /** The hidden key was collected before: not shown. */
   secretTaken?: boolean
+  /** Draw the extra objects of hard mode (`Level.extras`). */
+  extras?: boolean
 }
 
 /**
@@ -77,6 +79,7 @@ export class GameScene {
       onZoom: (s) => handlers.onZoom?.(s),
       onSecret: () => this.secret(),
       secretTaken: options.secretTaken,
+      extras: options.extras,
     })
     this.loop = new FrameLoop(this.frame)
   }

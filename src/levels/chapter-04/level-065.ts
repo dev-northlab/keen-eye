@@ -1,4 +1,5 @@
 // Motion differences: the flag waves faster on picture B; the lantern swings only on B; the shark fin cruises the other way round on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, person, sun, waves } from './shapes.ts'
 
@@ -44,7 +45,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pirateShip',
   parTimeSec: 130,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const waving = (period: number) => anim({ type: 'sway', angle: 8, pivot: [402, 40], period }, flag(402, 42))
     const hanging = lantern(560, 250)
     const cruising = (reverse: boolean) => anim({ id: 'fin', type: 'path', points: [[0, 0], [100, 0]], flipX: 100, period: 8, reverse }, fin(100, 440))
@@ -89,7 +90,20 @@ export default svgLevel({
       coconut(375, 331) +
       bottleMessage(510, 331) +
       gullStanding(470, 104) +
-      fish(600, 445, '#ffb703')
+      fish(600, 445, '#ffb703') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 541, 471, '#ff6b8b'],
+        ['lifeRing', 366, 449],
+        ['fish', 722, 461, '#9ef01a'],
+        ['bottle', 253, 472],
+        ['buoy', 629, 431],
+        ['fish', 460, 476, '#ffb703'],
+        ['gull', 238, 121],
+        ['gull', 91, 197],
+        ['cloud', 750, 264],
+        ['gull', 528, 199],
+      ])
     )
   },
 })

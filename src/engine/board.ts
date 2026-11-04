@@ -39,6 +39,8 @@ export interface BoardOptions {
   onSecret?: (tap: Tap) => void
   /** The key was collected on an earlier visit: it is not shown and its place taps like any other. */
   secretTaken?: boolean
+  /** Draw the extra objects of hard mode (`Level.extras`). */
+  extras?: boolean
 }
 
 /** Index of a random unfound difference, or -1 when all are found. */
@@ -76,7 +78,7 @@ export class Board {
     this.zoom = options.zoom ?? true
     this.flipped = options.flipped ?? false
     this.onSecret = options.onSecret
-    this.pictures = [createPicture(level, 0, this.flipped), createPicture(level, 1, this.flipped)]
+    this.pictures = [createPicture(level, 0, this.flipped, options.extras), createPicture(level, 1, this.flipped, options.extras)]
     this.secretLeft = !!level.secret && !options.secretTaken
     if (level.secret && !this.secretLeft) for (const p of this.pictures) takeSecret(p, level.secret, false)
     const svgs = this.pictures.map((p) => p.svg)

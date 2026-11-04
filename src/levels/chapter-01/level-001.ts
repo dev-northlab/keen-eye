@@ -1,4 +1,5 @@
 import { bird, mushroom } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, chick, cloud, flower, FLOWER_COLORS, grass, hen, milkCan, pick, pumpkin, sun, tree } from '../shapes.ts'
 
@@ -19,7 +20,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'barnyard',
   parTimeSec: 60,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let flowers = ''
     for (let i = 0; i < 12; i++) {
       const x = 20 + rand() * 760
@@ -61,7 +62,20 @@ export default svgLevel({
       milkCan(472, 362) +
       pumpkin(705, 488) +
       mushroom(50, 482) +
-      bird(331, 339)
+      bird(331, 339) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['horseshoe', 227, 289],
+        ['eggNest', 574, 389],
+        ['butterfly', 397, 415],
+        ['flower', 70, 431, '#ff9f43'],
+        ['bee', 208, 446],
+        ['flower', 503, 457, '#ffffff'],
+        ['stones', 669, 466],
+        ['cloud', 426, 252],
+        ['birds', 575, 75],
+        ['butterfly', 749, 166],
+      ])
     )
   },
 })

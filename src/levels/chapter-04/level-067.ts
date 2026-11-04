@@ -1,4 +1,5 @@
 // Motion differences: the surfer rides faster on picture B; the kite bobs only on B; the gull flies faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beachBall, cloud, coconut, flipFlops, gull, palm, parasol, person, rock, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
@@ -26,7 +27,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'surfers',
   parTimeSec: 130,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const riding = (period: number) => anim({ id: 'surfer', type: 'path', points: [[0, 0], [60, -16], [120, 0]], period }, surfer(200, 300, '#ffb703'))
     const sail = kite(620, 200)
     const soaring = (period: number) => anim({ id: 'gull', type: 'path', points: [[0, 0], [-200, 10]], period }, gull(700, 90))
@@ -63,7 +64,20 @@ export default svgLevel({
       flipFlops(470, 465) +
       sunHat(760, 450) +
       coconut(85, 410) +
-      sunglasses(205, 470)
+      sunglasses(205, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['coconut', 138, 392],
+        ['bottle', 455, 440],
+        ['shell', 284, 397],
+        ['starfish', 63, 464],
+        ['fish', 644, 327, '#ff9f43'],
+        ['lifeRing', 473, 278],
+        ['fish', 75, 247, '#9ef01a'],
+        ['bottle', 749, 242],
+        ['gull', 386, 136],
+        ['cloud', 199, 163],
+      ])
     )
   },
 })

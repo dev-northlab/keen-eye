@@ -1,4 +1,5 @@
 // Motion differences: the drying fish sway only on picture B; the net float bobs faster on B; the gull flies the other way round on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beachBall, bucket, buoy, cloud, fish, flipFlops, gull, gullStanding, lifeRing, person, rock, sun, sunglasses, sunHat, waves } from './shapes.ts'
 
@@ -26,7 +27,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'fishingVillage',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${400 + rand() * 90}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
     const line = drying(300, 250)
@@ -69,7 +70,20 @@ export default svgLevel({
       bucket(260, 372) +
       beachBall(420, 372) +
       flipFlops(590, 372) +
-      sunglasses(720, 372)
+      sunglasses(720, 372) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['lifeRing', 457, 436],
+        ['fish', 711, 413, '#ff9f43'],
+        ['bottle', 92, 425],
+        ['buoy', 291, 463],
+        ['fish', 543, 432, '#9ef01a'],
+        ['gull', 565, 145],
+        ['gull', 439, 41],
+        ['cloud', 384, 182],
+        ['horseshoe', 470, 270],
+        ['grass', 624, 267],
+      ])
     )
   },
 })

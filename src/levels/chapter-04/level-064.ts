@@ -1,4 +1,5 @@
 // Motion differences: the lighthouse beam turns faster on picture B; the flag waves only on B; the boat sails faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, bucket, cloud, gull, gullStanding, rock, sailboat, shell, starfish, sunHat, waves } from './shapes.ts'
 
@@ -21,7 +22,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'lighthouse',
   parTimeSec: 130,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const sweeping = (period: number) => anim({ type: 'rotate', pivot: [400, 110], period }, beam(400, 110))
     const cloth = flag(500, 170)
     const sailing = (period: number) => anim({ id: 'boat', type: 'path', points: [[0, 0], [-100, 0]], period }, sailboat(700, 440, '#3a86ff'))
@@ -63,7 +64,20 @@ export default svgLevel({
       bottleMessage(470, 348) +
       starfish(675, 340) +
       bucket(720, 338) +
-      shell(420, 358)
+      shell(420, 358) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['lifeRing', 274, 446],
+        ['fish', 458, 388, '#9ef01a'],
+        ['bottle', 154, 409],
+        ['buoy', 374, 455],
+        ['fish', 514, 466, '#ff9f43'],
+        ['fish', 50, 405, '#ff6b8b'],
+        ['gull', 626, 141],
+        ['cloud', 238, 59],
+        ['gull', 148, 197],
+        ['gull', 749, 226],
+      ])
     )
   },
 })

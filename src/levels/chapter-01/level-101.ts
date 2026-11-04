@@ -1,5 +1,6 @@
 // Motion differences: the chick by the trough bobs faster on picture B; the butterfly flutters only on B.
 import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, bucket, cat, cloud, fence, flower, FLOWER_COLORS, flowerPot, grass, hen, pick, stones, sun, tree } from '../shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'coopMorning',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 18; i++) tufts += grass(10 + rand() * 780, 380 + rand() * 115)
     let flowers = ''
@@ -109,7 +110,15 @@ export default svgLevel({
       bird(491, 306) +
       mushroom(375, 470) +
       stones(640, 398) +
-      flowerPot(165, 348)
+      flowerPot(165, 348) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['butterfly', 748, 442],
+        ['flower', 62, 317, '#4dabf7'],
+        ['bee', 181, 450],
+        ['cloud', 564, 122],
+        ['birds', 209, 116],
+      ])
     )
   },
 })

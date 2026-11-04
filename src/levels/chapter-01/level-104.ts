@@ -1,5 +1,6 @@
 // Motion differences: the windsock flaps faster on picture B; the bee over the blue hive hovers faster on B.
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bee, beehive, cloud, fence, flower, FLOWER_COLORS, grass, pick, sun, wateringCan } from '../shapes.ts'
 
@@ -45,7 +46,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'beeYard',
   parTimeSec: 90,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let lavender = ''
     for (const y of [222, 238, 254]) for (let x = 430 + (y % 2) * 6; x < 800; x += 15) lavender += `<ellipse cx="${x}" cy="${y}" rx="5" ry="8" fill="${y === 238 ? '#9b7fd1' : '#a98de0'}"/>`
     let tufts = ''
@@ -108,7 +109,15 @@ export default svgLevel({
       stump(255, 430) +
       butterfly(505, 430) +
       wateringCan(460, 420) +
-      mushroom(360, 430)
+      mushroom(360, 430) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['mushroom', 127, 306],
+        ['chick', 186, 233],
+        ['grass', 449, 368],
+        ['birds', 391, 162],
+        ['butterfly', 655, 52],
+      ])
     )
   },
 })

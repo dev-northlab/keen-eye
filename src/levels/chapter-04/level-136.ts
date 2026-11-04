@@ -1,4 +1,5 @@
 // Motion differences: the rowboat bobs faster on picture B; the sailboat's masthead pennant flaps only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, bucket, buoy, cloud, fish, gull, gullStanding, lifeRing, person } from './shapes.ts'
 
@@ -30,7 +31,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'boatPort',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let reflections = ''
     for (let i = 0; i < 24; i++) reflections += `<rect x="${(rand() * 780).toFixed(1)}" y="${(270 + rand() * 220).toFixed(1)}" width="${(14 + rand() * 20).toFixed(1)}" height="2" fill="#bde3f2" fill-opacity="0.5"/>`
     let stones = ''
@@ -78,7 +79,15 @@ export default svgLevel({
       bucket(60, 248) +
       bottleMessage(160, 394) +
       lifeRing(596, 440) +
-      fish(470, 420, '#ffb703')
+      fish(470, 420, '#ffb703') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bottle', 462, 319],
+        ['buoy', 297, 478],
+        ['fish', 658, 454, '#ffb703'],
+        ['gull', 184, 70],
+        ['cloud', 362, 90],
+      ])
     )
   },
 })

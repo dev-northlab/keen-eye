@@ -74,6 +74,8 @@ export interface ModeRules {
   memoryPeeks: (levelPeeks: number) => number
   /** "Memory": misses that end the round. */
   memoryMaxMisses: number
+  /** Extra objects in the pictures (docs/hard-mode-extra-objects.md; levels that have them). */
+  extras: boolean
   /** Stars of a finished level (calm mode shows none). */
   stars: (p: StarInput) => Stars
   /** Stars of a "memory" round; 0 = failed. */
@@ -90,6 +92,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     memoryShowSeconds: (s) => s,
     memoryPeeks: () => 3,
     memoryMaxMisses: Infinity,
+    extras: false,
     stars: computeStars,
     memoryStars,
   },
@@ -102,6 +105,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     memoryShowSeconds: (s) => s,
     memoryPeeks: (p) => p,
     memoryMaxMisses: 3,
+    extras: false,
     stars: computeStars,
     memoryStars,
   },
@@ -115,6 +119,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     memoryShowSeconds: (s) => Math.max(2, s - 1),
     memoryPeeks: () => 0,
     memoryMaxMisses: 2,
+    extras: true,
     stars: hardStars,
     memoryStars: memoryHardStars,
   },

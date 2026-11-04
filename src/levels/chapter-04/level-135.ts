@@ -1,4 +1,5 @@
 // Motion differences: a second lightning bolt flashes only on picture B; smoke drifts from the keeper's chimney only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, bucket, buoy, crab, gullStanding, rock, starfish } from './shapes.ts'
 
@@ -28,7 +29,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'stormLighthouse',
   parTimeSec: 110,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let rain = ''
     for (let i = 0; i < 60; i++) rain += `<path d="M${(rand() * 820).toFixed(1)} ${(rand() * 480).toFixed(1)}l-8 18" stroke="#c9d6e6" stroke-opacity="0.35" stroke-width="1.5"/>`
     let bands = ''
@@ -80,7 +81,15 @@ export default svgLevel({
       bottleMessage(300, 462) +
       starfish(605, 376) +
       crab(462, 412) +
-      rain
+      rain +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['lifeRing', 436, 462],
+        ['fish', 665, 468, '#ff9f43'],
+        ['bottle', 64, 474],
+        ['gull', 664, 78],
+        ['gull', 438, 153],
+      ])
     )
   },
 })

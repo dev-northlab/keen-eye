@@ -1,5 +1,6 @@
 // Motion differences: the bat flies faster on picture B; the cat's tail swings only on B.
 import { mushroom, stump } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { fence, grass, hayBale, milkCan, pumpkin, stones } from '../shapes.ts'
 
@@ -44,7 +45,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'nightBarn',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 14; i++) {
       const x = rand() * 800
@@ -95,7 +96,20 @@ export default svgLevel({
       stump(550, 470) +
       mushroom(360, 440) +
       milkCan(545, 348) +
-      stones(740, 470)
+      stones(740, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['snail', 193, 307],
+        ['grass', 630, 302],
+        ['horseshoe', 425, 388],
+        ['flower', 734, 418, '#ffffff'],
+        ['stones', 95, 412],
+        ['mushroom', 252, 480],
+        ['snail', 580, 437],
+        ['grass', 665, 480],
+        ['star', 76, 175],
+        ['star', 539, 44],
+      ])
     )
   },
 })

@@ -1,4 +1,5 @@
 // Motion differences: the mizzen pennant flaps faster on picture B; a fish leaps by the bow only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, lifeRing, palm, person, waves } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pirateGalleon',
   parTimeSec: 125,
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     let ports = ''
     for (let x = 200; x <= 520; x += 40) if (x !== 360) ports += port(x, 334)
     const flapping = (period: number) => anim({ type: 'sway', angle: 12, pivot: [552, 66], period }, pennant(552, 60))
@@ -87,7 +88,15 @@ export default svgLevel({
       gullStanding(530, 107) +
       bottleMessage(300, 452) +
       coconut(745, 262) +
-      lifeRing(600, 312)
+      lifeRing(600, 312) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bottle', 489, 409],
+        ['buoy', 714, 343],
+        ['fish', 131, 465, '#ffb703'],
+        ['gull', 82, 193],
+        ['gull', 727, 164],
+      ])
     )
   },
 })

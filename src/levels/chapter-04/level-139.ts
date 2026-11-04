@@ -1,4 +1,5 @@
 // Motion differences: the diver's bubbles rise faster on picture B; the octopus waves an arm only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, bottleMessage, crab, fish, seahorse, seaUrchin } from './shapes.ts'
 
@@ -47,7 +48,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'underwaterCave',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stalactites = ''
     for (const [x, h] of [[90, 60], [150, 40], [220, 70], [300, 36], [380, 52], [460, 44], [540, 66], [680, 50], [740, 72]]) stalactites += stalactite(x, h)
     let specks = ''
@@ -83,7 +84,15 @@ export default svgLevel({
       bottleMessage(422, 484) +
       seahorse(700, 400) +
       anchor(112, 462) +
-      fish(260, 320, '#ff6b8b')
+      fish(260, 320, '#ff6b8b') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 598, 222, '#4dabf7'],
+        ['jellyfish', 404, 88],
+        ['fish', 365, 302, '#ff6b8b'],
+        ['starfish', 62, 459],
+        ['shell', 439, 470],
+      ])
     )
   },
 })

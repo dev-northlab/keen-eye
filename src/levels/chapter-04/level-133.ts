@@ -1,4 +1,5 @@
 // Motion differences: the moray peeks out of its hole only on picture B; the jellyfish pulses faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, clam, crab, fish, jellyfish, octopus, sandBits, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
@@ -27,7 +28,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'sunkenChest',
   parTimeSec: 125,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let coins = ''
     for (const [x, y] of [[280, 480], [318, 484], [340, 474], [372, 488], [440, 486], [500, 470]]) coins += coin(x, y)
     let weeds = ''
@@ -71,7 +72,15 @@ export default svgLevel({
       clam(660, 480) +
       seahorse(450, 322) +
       snorkelMask(140, 472) +
-      fish(130, 150, '#ffb703')
+      fish(130, 150, '#ffb703') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 167, 139, '#4dabf7'],
+        ['fish', 469, 122, '#ffb703'],
+        ['jellyfish', 736, 54],
+        ['fish', 441, 279, '#ff9f43'],
+        ['shell', 164, 441],
+      ])
     )
   },
 })

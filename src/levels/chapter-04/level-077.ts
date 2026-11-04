@@ -1,4 +1,5 @@
 // Motion differences: the penguin slides faster on picture B; the seal claps only on B; the floe drifts faster on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, dolphin, fish, gullStanding, lifeRing, waves } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'iceFloes',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 30; i++) flakes += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 2}" fill="#fff" fill-opacity="0.9"/>`
     const sliding = (period: number) => anim({ id: 'slider', type: 'path', points: [[0, 0], [100, 0]], period }, slider(160, 330))
@@ -65,7 +66,20 @@ export default svgLevel({
       fish(560, 470, '#8d99ae') +
       lifeRing(200, 462) +
       dolphin(482, 288) +
-      anim({ type: 'path', points: [[0, 0], [-8, 40]], period: 4 }, flakes)
+      anim({ type: 'path', points: [[0, 0], [-8, 40]], period: 4 }, flakes) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 625, 269, '#ff9f43'],
+        ['lifeRing', 350, 422],
+        ['fish', 185, 405, '#ffb703'],
+        ['bottle', 540, 451],
+        ['buoy', 452, 237],
+        ['fish', 54, 473, '#ff6b8b'],
+        ['lifeRing', 451, 384],
+        ['cloud', 211, 139],
+        ['gull', 420, 72],
+        ['gull', 678, 63],
+      ])
     )
   },
 })

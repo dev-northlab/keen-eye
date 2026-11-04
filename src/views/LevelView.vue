@@ -163,6 +163,7 @@ function start() {
       missLock: rules.value.missLock,
       maxMistakes: rules.value.maxMistakes,
       stars: rules.value.stars,
+      extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
     },
   )

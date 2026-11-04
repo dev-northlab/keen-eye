@@ -1,4 +1,5 @@
 // Motion differences: the lightning flashes at another moment on picture B; the ship pitches faster on B; the buoy bell swings only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { beachBall, bottleMessage, dolphin, fish, gull, lifeRing, rock, sunHat, waves } from './shapes.ts'
 
@@ -24,7 +25,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'storm',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let rain = ''
     for (let i = 0; i < 60; i++) rain += `<path d="M${rand() * 800} ${rand() * 500}l-4 14" stroke="#9fc5e8" stroke-width="2" stroke-linecap="round"/>`
     const flash = (phase: number) => anim({ type: 'blink', period: 3, phase, duty: 0.2 }, bolt(200, 120))
@@ -55,7 +56,20 @@ export default svgLevel({
       sunHat(500, 462) +
       fish(420, 470, '#ffb703') +
       dolphin(160, 330) +
-      anim({ type: 'path', points: [[0, 0], [-14, 50]], period: 0.7 }, rain)
+      anim({ type: 'path', points: [[0, 0], [-14, 50]], period: 0.7 }, rain) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['fish', 260, 319, '#ffb703'],
+        ['lifeRing', 676, 456],
+        ['fish', 727, 274, '#ff9f43'],
+        ['bottle', 80, 292],
+        ['buoy', 460, 471],
+        ['fish', 578, 321, '#ff6b8b'],
+        ['lifeRing', 92, 464],
+        ['gull', 378, 39],
+        ['gull', 63, 138],
+        ['gull', 307, 180],
+      ])
     )
   },
 })

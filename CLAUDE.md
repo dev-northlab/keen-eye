@@ -195,6 +195,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   a pass also completes the level like calm mode. A normal finish with fewer than 3 red stars offers "Play on hard":
   that level in hard mode until the screen is left (`hardChallenge`), the setting unchanged; the level HUD shows the
   attempt's mode (`ModeChip`). Not in duels.
+- Extra objects of hard mode (`docs/hard-mode-extra-objects.md`, so far the whole farm and sea): the scene's
+  `extra(x, y, r, markup)` draws decor only in the hard pictures, the same in A and B (`Level.extras`,
+  `build(variant, moment, true)`); levels list them with `extras({ extra, anim }, [[kind, x, y, color?], …])` from
+  `levels/extras.ts` (chapter shapes with their boxes; animals and things on water bob or sway on the spot, the circle
+  grown by the motion's reach). `check-levels` keeps them 20+ units clear of zones, key and
+  traps and inside their circles; `npm run preview-levels -- --hard <id>` shows them.
 - Hints: no pool to collect — every attempt of a level gets the mode's hints again (`MODE_RULES.<mode>.hints`: calm 3,
   normal 1, hard none); `GameScene.hint()` returns false when nothing can be hinted, so a hint is only spent when it is
   shown. Duels have their own hints (`duo`).

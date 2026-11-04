@@ -1,5 +1,6 @@
 // Motion differences: the crow flies the other way round on picture B; the tractor's exhaust puff bobs only on B.
 import { mushroom } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cat, cloud, eggNest, grass, hayBale, milkCan, stones, sun, tractor, tree } from '../shapes.ts'
 
@@ -40,7 +41,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'harvest',
   parTimeSec: 100,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let stalks = ''
     for (let i = 0; i < 90; i++) {
       const x = 10 + rand() * 780
@@ -84,7 +85,20 @@ export default svgLevel({
       milkCan(460, 470) +
       cat(775, 480) +
       eggNest(268, 490) +
-      stones(420, 488)
+      stones(420, 488) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['stones', 339, 264],
+        ['snail', 483, 436],
+        ['flower', 529, 275, '#b38cff'],
+        ['ladybug', 51, 473],
+        ['mushroom', 186, 286],
+        ['chick', 731, 275],
+        ['grass', 629, 268],
+        ['cloud', 51, 118],
+        ['birds', 588, 105],
+        ['butterfly', 281, 40],
+      ])
     )
   },
 })

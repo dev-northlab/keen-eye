@@ -1,4 +1,5 @@
 // Motion differences: the gull flies faster on picture B; the crab scuttles faster on B; the ball bounces only on B.
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bottleMessage, bucket, castleFlag, cloud, coconut, crab, flipFlops, gull, palm, parasol, person, sailboat, sandBits, sandcastle, shell, starfish, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
@@ -11,7 +12,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'beach',
   parTimeSec: 130,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const soaring = (period: number) => anim({ id: 'gull', type: 'path', points: [[0, 0], [160, -20], [300, 0]], period }, gull(200, 90))
     const scuttling = (period: number) => anim({ id: 'crab', type: 'path', points: [[0, 0], [80, 0]], period }, crab(560, 470))
     const beachBall = ball(400, 440)
@@ -49,7 +50,20 @@ export default svgLevel({
       flipFlops(505, 412) +
       sunHat(565, 398) +
       coconut(85, 345) +
-      bottleMessage(440, 332)
+      bottleMessage(440, 332) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['clam', 76, 434],
+        ['flipFlops', 698, 372],
+        ['sunglasses', 545, 378],
+        ['rock', 353, 353],
+        ['coconut', 177, 459],
+        ['fish', 593, 228, '#4dabf7'],
+        ['bottle', 194, 269],
+        ['buoy', 374, 228],
+        ['gull', 84, 99],
+        ['gull', 564, 65],
+      ])
     )
   },
 })

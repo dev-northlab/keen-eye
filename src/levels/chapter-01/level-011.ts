@@ -1,5 +1,6 @@
 // Motion difference: the windmill blades turn the other way on picture B.
 import { frog, mushroom } from '../chapter-03/shapes.ts'
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birdhouse, cat, cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
 
@@ -21,7 +22,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'windmill',
   parTimeSec: 85,
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 340 + rand() * 150)
     let flowers = ''
@@ -70,7 +71,20 @@ export default svgLevel({
       mushroom(300, 352) +
       cat(225, 332) +
       birdhouse(520, 345) +
-      wateringCan(745, 470)
+      wateringCan(745, 470) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      extras({ extra, anim }, [
+        ['bee', 556, 434],
+        ['flower', 726, 415, '#b38cff'],
+        ['stones', 79, 375],
+        ['snail', 682, 299],
+        ['ladybug', 332, 344],
+        ['mushroom', 57, 473],
+        ['birds', 56, 104],
+        ['butterfly', 207, 86],
+        ['cloud', 713, 63],
+        ['fish', 404, 433, '#9ef01a'],
+      ])
     )
   },
 })
