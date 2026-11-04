@@ -1,5 +1,6 @@
 // Baku: the Flame Towers on the hill, the Maiden Tower and the old city walls, a carpet stall on the
 // seaside boulevard and a sailing boat on the Caspian Sea.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, lampPost, person, sky, sun, water } from './shapes.ts'
 
@@ -60,7 +61,7 @@ export default travelLevel({
   title: 'baku',
   parTimeSec: 76,
   place: { region: 'caucasus', country: 'az', lat: 40.41, lon: 49.87 },
-  scene: ({ diff, anim, rand }) =>
+  scene: ({ diff, anim, rand, extra }) =>
     sky('#a9d6ef') +
     sun(90, 80) +
     anim({ type: 'path', points: [[0, 0], [70, 0]], period: 46 }, cloud(380, 80, 0.55)) +
@@ -88,5 +89,22 @@ export default travelLevel({
     diff(440, 308, 22, standingGull(440, 316), '') +
     person(560, 414, '#f28fb1', false, '#e0b48a', '#3a2a1c') +
     boat(640, 476) +
-    diff(656, 440, 30, sail(640, 476, '#ffffff'), sail(640, 476, '#ffd23f')),
+    diff(656, 440, 30, sail(640, 476, '#ffffff'), sail(640, 476, '#ffd23f')) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['buoy', 96, 480, '#ffd23f'],
+      ['bottle', 524, 472],
+      ['buoy', 304, 472, '#e63946'],
+      ['butterfly', 676, 336, '#ffd23f'],
+      ['birds', 276, 144],
+      ['cloud', 584, 60],
+      ['birds', 88, 236],
+    ]) +
+    extras({ extra, anim }, [
+      ['bottle', 728, 476],
+      ['lifeRing', 420, 456],
+      ['stones', 596, 348],
+      ['balloon', 464, 208, '#ffd23f'],
+      ['birds', 180, 52],
+    ]),
 })

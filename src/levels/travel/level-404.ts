@@ -1,4 +1,5 @@
 // Tokyo: Mount Fuji behind the city, Tokyo Tower, a bullet train on a viaduct, cherry blossoms and lanterns.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, lantern, person, sky } from './shapes.ts'
 
@@ -59,7 +60,7 @@ export default travelLevel({
   title: 'tokyo',
   parTimeSec: 66,
   place: { region: 'asia', country: 'jp', lat: 35.68, lon: 139.69 },
-  scene: ({ diff, anim }) =>
+  scene: ({ diff, anim, extra }) =>
     sky('#bfe3f2') +
     anim({ type: 'path', points: [[0, 0], [60, 0]], period: 40 }, cloud(560, 160, 0.5)) +
     fuji(110, 530, 340) +
@@ -84,5 +85,22 @@ export default travelLevel({
     // Lantern string across the top
     `<path d="M0 30Q400 90 800 30" fill="none" stroke="#3d4a55" stroke-width="2"/>` +
     [100, 220, 340, 460, 700].map((lx) => lantern(lx, 30 + 120 * (lx / 800) * (1 - lx / 800))).join('') +
-    diff(580, 71, 24, lantern(580, 30 + 120 * 0.725 * 0.275), lantern(580, 30 + 120 * 0.725 * 0.275, '#ffd23f')),
+    diff(580, 71, 24, lantern(580, 30 + 120 * 0.725 * 0.275), lantern(580, 30 + 120 * 0.725 * 0.275, '#ffd23f')) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['mushroom', 192, 488, '#e63946'],
+      ['bird', 436, 480, '#8a5a33'],
+      ['flower', 652, 484, '#ffd23f'],
+      ['flower', 320, 480, '#ff6b8b'],
+      ['butterfly', 528, 460, '#ffd23f'],
+      ['birds', 160, 180],
+      ['balloon', 560, 228, '#ffd23f'],
+    ]) +
+    extras({ extra, anim }, [
+      ['stones', 248, 412],
+      ['grass', 60, 484],
+      ['ladybug', 592, 404],
+      ['birds', 712, 228],
+      ['cloud', 456, 144],
+    ]),
 })

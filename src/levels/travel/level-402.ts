@@ -1,4 +1,5 @@
 // Venice: palaces along a canal, a bell tower, a gondola with its gondolier and a mooring pole.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, person, sky, sun, water } from './shapes.ts'
 
@@ -51,7 +52,7 @@ export default travelLevel({
   title: 'venice',
   parTimeSec: 62,
   place: { region: 'europe', country: 'it', lat: 45.44, lon: 12.33 },
-  scene: ({ diff, anim, rand }) =>
+  scene: ({ diff, anim, rand, extra }) =>
     sky() +
     sun(110, 70) +
     anim({ type: 'path', points: [[0, 0], [60, 0]], period: 38 }, cloud(300, 70, 0.6)) +
@@ -84,5 +85,22 @@ export default travelLevel({
     diff(330, 401, 24, stripes(330, 436, '#2b59c3'), stripes(330, 436, '#e63946')) +
     boater(330, 436) +
     gull(240, 110) +
-    gull(470, 80, '#5c677d'),
+    gull(470, 80, '#5c677d') +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['lifeRing', 632, 468],
+      ['duck', 88, 440],
+      ['bottle', 424, 396],
+      ['duck', 240, 456],
+      ['birds', 216, 60],
+      ['cloud', 532, 100],
+      ['birds', 420, 112],
+    ]) +
+    extras({ extra, anim }, [
+      ['bottle', 500, 480],
+      ['lifeRing', 516, 364],
+      ['bottle', 640, 360],
+      ['bottle', 356, 480],
+      ['lifeRing', 184, 364],
+    ]),
 })

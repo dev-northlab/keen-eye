@@ -4,6 +4,7 @@
 // at the shapes' own anchor points (their x, y arguments); the circle each one needs is worked out here from
 // the shape's box and its motion. Animals and things on the water move on the spot (the same in A and B, so
 // never a difference); `check-levels` checks they stay in their circles and keep clear of the zones.
+// `decor` draws the same shapes in every mode: plain scenery of a level, also the same in A and B.
 import {
   balloon,
   ball,
@@ -75,6 +76,7 @@ import {
   wrench,
 } from './chapter-05/shapes.ts'
 import type { SceneContext } from './helpers.ts'
+import { suitcase } from './travel/shapes.ts'
 import { big, books, cube, painting, slipperPair, sticker } from './memory/shapes.ts'
 import { bee, chick, cloud, duck, eggNest, flower, grass, horseshoe, ladybug, snail, stones } from './shapes.ts'
 import { birds, pineSnow, star } from './time/shapes.ts'
@@ -182,6 +184,8 @@ const KINDS = {
   books: { draw: (x, y, c) => big(x, y, 0.5, books(0, 0, [c ?? '#e63946', '#3a86ff'])), box: [-16, 15, -18, -1] },
   sticker: { draw: (x, y, c) => sticker(x, y, c ?? '#ffd23f'), box: [-14, 13, -14, 10] },
   frame: { draw: (x, y, c) => painting(x - 10, y - 22, 20, 14, c ?? '#c9953f'), box: [-18, 17, -30, -1] },
+  // "Travel": a tourist's suitcase on the pavement (with the city's shapes).
+  suitcase: { draw: (x, y, c) => suitcase(x, y, c), box: [-10, 10, -32, 0] },
 } satisfies Record<string, Kind>
 
 export type ExtraKind = keyof typeof KINDS
@@ -189,24 +193,31 @@ export type ExtraKind = keyof typeof KINDS
 /** Anti-aliasing margin of the circles. */
 const MARGIN = 2
 
-/**
- * Draws the listed extra objects through the scene's `extra` (each in the circle around its box and motion);
- * the moving ones through `anim`, their period and phase taken from the place so that they never move in step.
- */
-export function extras(
-  { extra, anim }: Pick<SceneContext, 'extra' | 'anim'>,
-  items: [kind: ExtraKind, x: number, y: number, color?: string][],
-): string {
+type Item = [kind: ExtraKind, x: number, y: number, color?: string]
+
+/** One shape at its anchor: the markup (the moving ones through `anim`, their period and phase taken from the
+ * place so that they never move in step) and the circle around its box and motion. */
+function place(anim: SceneContext['anim'], [kind, x, y, color]: Item) {
+  const { draw, box, move } = KINDS[kind] as Kind
+  const [x0, x1, y0, y1] = box
+  const r = Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 2) + (move?.reach ?? 0) + MARGIN
+  const spot = (x * 7 + y * 13) % 100
+  const markup = move
+    ? anim({ ...move.motion(x, y), period: move.period * (0.85 + (spot % 30) / 100), phase: spot / 100 }, draw(x, y, color))
+    : draw(x, y, color)
+  return { markup, x: x + (x0 + x1) / 2, y: y + (y0 + y1) / 2, r }
+}
+
+/** Draws the listed extra objects through the scene's `extra`, each in its circle. */
+export function extras({ extra, anim }: Pick<SceneContext, 'extra' | 'anim'>, items: Item[]): string {
   return items
-    .map(([kind, x, y, color]) => {
-      const { draw, box, move } = KINDS[kind] as Kind
-      const [x0, x1, y0, y1] = box
-      const r = Math.ceil(Math.hypot(x1 - x0, y1 - y0) / 2) + (move?.reach ?? 0) + MARGIN
-      const spot = (x * 7 + y * 13) % 100
-      const markup = move
-        ? anim({ ...move.motion(x, y), period: move.period * (0.85 + (spot % 30) / 100), phase: spot / 100 }, draw(x, y, color))
-        : draw(x, y, color)
-      return extra(x + (x0 + x1) / 2, y + (y0 + y1) / 2, r, markup)
+    .map((item) => {
+      const { markup, x, y, r } = place(anim, item)
+      return extra(x, y, r, markup)
     })
     .join('')
 }
+
+/** Draws the listed shapes as plain decor of every mode, kept clear of the zones by the level itself. */
+export const decor = ({ anim }: Pick<SceneContext, 'anim'>, items: Item[]): string =>
+  items.map((item) => place(anim, item).markup).join('')

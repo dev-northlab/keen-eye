@@ -1,6 +1,7 @@
 // Athens: the Parthenon on the Acropolis with an owl and the flag, white houses of the old town with
 // blue doors and bougainvillea, an olive tree, a cat on the wall and an amphora.
 // Motion difference: the flag on the Acropolis waves quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, sky, sun } from './shapes.ts'
 
@@ -55,7 +56,7 @@ export default travelLevel({
   title: 'athens',
   parTimeSec: 104,
   place: { region: 'europe', country: 'gr', lat: 37.97, lon: 23.73 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const wave = (period: number) => anim({ id: 'flag', type: 'sway', angle: 8, pivot: [640, 112], period }, flag(640, 112))
     return (
       sky('#9fd6f2') +
@@ -86,7 +87,24 @@ export default travelLevel({
       diff(84, 404, 22, olives(84, 404, '#4b5a2a'), olives(84, 404, '#1d1d1d')) +
       diff(380, 428, 26, cat(380, 440), '') +
       amphora(680, 492) +
-      diff(680, 463, 20, band(680, 492, '#1d1d1d'), band(680, 492, '#f4ead2'))
+      diff(680, 463, 20, band(680, 492, '#1d1d1d'), band(680, 492, '#f4ead2')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['pigeon', 524, 476],
+        ['suitcase', 144, 480, '#3a86ff'],
+        ['bin', 324, 488, '#2a9d8f'],
+        ['stones', 584, 280],
+        ['birds', 212, 84],
+        ['cloud', 592, 56],
+        ['birds', 88, 204],
+      ]) +
+      extras({ extra, anim }, [
+        ['coffeeCup', 744, 472],
+        ['shoppingBag', 616, 476, '#ff6b8b'],
+        ['pigeon', 232, 476],
+        ['rock', 368, 284, '#a8743f'],
+        ['balloon', 716, 176, '#ffd23f'],
+      ])
     )
   },
 })

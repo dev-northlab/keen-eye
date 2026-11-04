@@ -1,6 +1,7 @@
 // Dubai: the Burj Khalifa over the skyline, the sail-shaped hotel on its island, a dhow, the fountain,
 // a hot-air balloon, a camel and a date palm on the sand.
 // Motion difference: the middle fountain jet bounces quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { palm, sky, sun, water } from './shapes.ts'
 
@@ -72,7 +73,7 @@ export default travelLevel({
   title: 'dubai',
   parTimeSec: 112,
   place: { region: 'asia', country: 'ae', lat: 25.2, lon: 55.27 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const bounce = (period: number) => anim({ id: 'jet', type: 'bob', dx: 0, dy: 6, period }, jet(430, 392, 46))
     return (
       sky('#9fd3ee') +
@@ -105,7 +106,24 @@ export default travelLevel({
       palm(90, 486, 1.1, 8) +
       diff(96, 384, 20, dates(96, 384), '') +
       camel(600, 486) +
-      diff(600, 408, 24, saddle(600, 486, '#e63946'), saddle(600, 486, '#2a9d8f'))
+      diff(600, 408, 24, saddle(600, 486, '#e63946'), saddle(600, 486, '#2a9d8f')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['starfish', 256, 440, '#f28c28'],
+        ['flipFlops', 476, 448, '#3a86ff'],
+        ['crab', 704, 460, '#e63946'],
+        ['bottle', 352, 384],
+        ['lifeRing', 292, 380],
+        ['cloud', 136, 136],
+        ['birds', 576, 220],
+      ]) +
+      extras({ extra, anim }, [
+        ['sunglasses', 64, 464],
+        ['coconut', 368, 488],
+        ['bottle', 512, 380],
+        ['balloon', 412, 36, '#ffd23f'],
+        ['birds', 668, 56],
+      ])
     )
   },
 })

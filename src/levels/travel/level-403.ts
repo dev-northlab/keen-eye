@@ -1,4 +1,5 @@
 // Amsterdam: narrow canal houses with stepped, bell and neck gables, bikes on the quay, a houseboat.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { bike, cloud, cityTree, gull, sky, water } from './shapes.ts'
 
@@ -61,7 +62,7 @@ export default travelLevel({
   title: 'amsterdam',
   parTimeSec: 64,
   place: { region: 'europe', country: 'nl', lat: 52.37, lon: 4.9 },
-  scene: ({ diff, anim, rand }) =>
+  scene: ({ diff, anim, rand, extra }) =>
     sky('#a8d8ee') +
     anim({ type: 'path', points: [[0, 0], [80, 0]], period: 42 }, cloud(120, 70, 0.6)) +
     anim({ type: 'path', points: [[0, 0], [-60, 0]], period: 50 }, cloud(620, 60, 0.7)) +
@@ -92,5 +93,22 @@ export default travelLevel({
     diff(470, 323, 24, tulips(470, 364, '#e63946'), tulips(470, 364, '#ffd23f')) +
     cityTree(770, 364, 1.3) +
     houseboat(620, 440) +
-    diff(560, 402, 24, lifebuoy(560, 402), ''),
+    diff(560, 402, 24, lifebuoy(560, 402), '') +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['duck', 376, 456],
+      ['bottle', 624, 480],
+      ['duck', 100, 420],
+      ['bottle', 724, 388],
+      ['cloud', 704, 92],
+      ['birds', 300, 56],
+      ['balloon', 500, 100, '#ffd23f'],
+    ]) +
+    extras({ extra, anim }, [
+      ['lifeRing', 240, 428],
+      ['bottle', 512, 476],
+      ['bottle', 716, 476],
+      ['balloon', 592, 104, '#ffd23f'],
+      ['balloon', 380, 80, '#ffd23f'],
+    ]),
 })

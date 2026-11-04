@@ -1,5 +1,6 @@
 // Giza: the three great pyramids, the small queens' pyramids, the Sphinx, camels and a date palm.
 // Motion difference: a camel swishes its tail quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, palm, sky, sun } from './shapes.ts'
 
@@ -44,7 +45,7 @@ export default travelLevel({
   title: 'giza',
   parTimeSec: 86,
   place: { region: 'africa', country: 'eg', lat: 29.98, lon: 31.13 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const swish = (period: number) => anim({ id: 'tail', type: 'sway', angle: 16, pivot: [768, 428], period }, tail(730, 490))
     return (
       sky('#9fd3ee') +
@@ -69,7 +70,24 @@ export default travelLevel({
       diff(520, 398, 24, saddle(520, 476, '#e63946'), saddle(520, 476, '#2b59c3')) +
       camel(730, 490) +
       saddle(730, 490, '#2a9d8f') +
-      diff(772, 439, 22, swish(1), swish(2.4), 'tail')
+      diff(772, 439, 22, swish(1), swish(2.4), 'tail') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['stones', 380, 448],
+        ['rock', 108, 480, '#b9853f'],
+        ['stones', 612, 480],
+        ['rock', 240, 464, '#a8743f'],
+        ['birds', 640, 228],
+        ['cloud', 372, 140],
+        ['birds', 92, 236],
+      ]) +
+      extras({ extra, anim }, [
+        ['stones', 468, 464],
+        ['rock', 672, 440, '#b9853f'],
+        ['stones', 172, 468],
+        ['cloud', 188, 60],
+        ['birds', 540, 52],
+      ])
     )
   },
 })

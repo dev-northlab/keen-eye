@@ -1,5 +1,6 @@
 // Kenya: a safari in the savanna — acacias, a giraffe, an elephant, zebras, a termite mound and a jeep.
 // Motion difference: a zebra swishes its tail quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, sky, sun } from './shapes.ts'
 
@@ -67,7 +68,7 @@ export default travelLevel({
   title: 'safari',
   parTimeSec: 88,
   place: { region: 'africa', country: 'ke', lat: -1.5, lon: 35.14 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const swish = (period: number) => anim({ id: 'tail', type: 'sway', angle: 18, pivot: [687, 403], period }, tail(720, 455))
     let grass = ''
     for (let i = 0; i < 40; i++) {
@@ -96,7 +97,24 @@ export default travelLevel({
       stripe(730, 455) +
       diff(683, 418, 22, swish(1.1), swish(2.6), 'tail') +
       wheels(150, 470) +
-      diff(150, 432, 68, jeepBody(150, 470, '#5f8f45'), jeepBody(150, 470, '#e8762e'))
+      diff(150, 432, 68, jeepBody(150, 470, '#5f8f45'), jeepBody(150, 470, '#e8762e')) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bee', 544, 336],
+        ['stones', 72, 340],
+        ['butterfly', 732, 476, '#ffd23f'],
+        ['grass', 332, 372],
+        ['bird', 448, 488, '#8a5a33'],
+        ['cloud', 108, 92],
+        ['birds', 532, 96],
+      ]) +
+      extras({ extra, anim }, [
+        ['rock', 716, 324, '#b9853f'],
+        ['bee', 612, 464],
+        ['stones', 264, 456],
+        ['cloud', 312, 180],
+        ['birds', 708, 180],
+      ])
     )
   },
 })

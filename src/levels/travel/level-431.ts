@@ -1,6 +1,7 @@
 // Moscow: Red Square with the Kremlin wall and the Spasskaya Tower, St. Basil's Cathedral with its
 // bright onion domes, a matryoshka stall, a balloon seller, pigeons and a street lamp.
 // Motion difference: the balloons sway quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, lampHead, lampPost, person, pigeon, sky } from './shapes.ts'
 
@@ -83,7 +84,7 @@ export default travelLevel({
   title: 'moscow',
   parTimeSec: 136,
   place: { region: 'europe', country: 'ru', lat: 55.75, lon: 37.62 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const sway = (period: number) => anim({ id: 'balloons', type: 'sway', angle: 6, pivot: [720, 432], period }, balloons(720, 432))
     let cobbles = ''
     for (let i = 0; i < 46; i++) cobbles += `<rect x="${(rand() * 790).toFixed(0)}" y="${(350 + rand() * 140).toFixed(0)}" width="14" height="7" rx="2" fill="#8d8a86"/>`
@@ -118,7 +119,24 @@ export default travelLevel({
       pigeon(560, 488) +
       diff(612, 481, 18, pigeon(612, 488, true), '') +
       person(706, 490, '#ffb703') +
-      diff(720, 382, 66, sway(1.2), sway(2.6), 'balloons')
+      diff(720, 382, 66, sway(1.2), sway(2.6), 'balloons') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['bin', 240, 380, '#2a9d8f'],
+        ['coffeeCup', 608, 420],
+        ['shoppingBag', 416, 468, '#ff6b8b'],
+        ['pigeon', 100, 440],
+        ['cloud', 280, 136],
+        ['birds', 520, 64],
+        ['cloud', 712, 84],
+      ]) +
+      extras({ extra, anim }, [
+        ['ball', 504, 364, '#ffd23f'],
+        ['bollard', 228, 492],
+        ['skateboard', 524, 480, '#e63946'],
+        ['birds', 88, 92],
+        ['balloon', 420, 152, '#ffd23f'],
+      ])
     )
   },
 })

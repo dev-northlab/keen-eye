@@ -1,5 +1,6 @@
 // The Great Wall: the wall winds over green ridges between two watchtowers; a child flies a kite.
 // Motion difference: the kite wobbles quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, lantern, person, sky, sun } from './shapes.ts'
 
@@ -59,7 +60,7 @@ export default travelLevel({
   title: 'greatWall',
   parTimeSec: 72,
   place: { region: 'asia', country: 'cn', lat: 40.43, lon: 116.57 },
-  scene: ({ diff, anim }) => {
+  scene: ({ diff, anim, extra }) => {
     const wobble = (period: number) => anim({ id: 'kite', type: 'sway', angle: 12, pivot: [730, 100], period }, kite(730, 100))
     return (
       sky('#a9d6ef') +
@@ -85,7 +86,24 @@ export default travelLevel({
       pine(780, 408) +
       `<path d="M730 100L724 404" stroke="#3d4a55" stroke-width="1.2"/>` +
       person(716, 440, '#ffb703', true) +
-      diff(730, 110, 52, wobble(1.6), wobble(3.4), 'kite')
+      diff(730, 110, 52, wobble(1.6), wobble(3.4), 'kite') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['flower', 220, 420, '#ffd23f'],
+        ['flower', 596, 328, '#ff6b8b'],
+        ['butterfly', 424, 460, '#ffd23f'],
+        ['stones', 732, 476],
+        ['grass', 72, 488],
+        ['birds', 372, 148],
+        ['cloud', 600, 56],
+      ]) +
+      extras({ extra, anim }, [
+        ['ladybug', 364, 320],
+        ['flower', 88, 364, '#b38cff'],
+        ['snail', 252, 288],
+        ['birds', 184, 60],
+        ['cloud', 524, 164],
+      ])
     )
   },
 })

@@ -1,6 +1,7 @@
 // Astana: the Bayterek tower with its golden sphere, the tent-shaped Khan Shatyr, glass towers, a yurt and
 // a lamb in the park, a horse, a falconer with a golden eagle and a kite in the sky.
 // Motion difference: the kite wobbles quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, person, sky, sun } from './shapes.ts'
 
@@ -69,7 +70,7 @@ export default travelLevel({
   title: 'astana',
   parTimeSec: 138,
   place: { region: 'asia', country: 'kz', lat: 51.13, lon: 71.43 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const wobble = (period: number) => anim({ id: 'kite', type: 'sway', angle: 10, pivot: [250, 90], period }, kite(250, 90))
     let grass = ''
     for (let i = 0; i < 30; i++) grass += `<path d="M${(rand() * 800).toFixed(0)} ${(380 + rand() * 115).toFixed(0)}l-3 -10M${(rand() * 800).toFixed(0)} ${(380 + rand() * 115).toFixed(0)}l3 -10" stroke="#5aa84c" stroke-width="2"/>`
@@ -103,7 +104,24 @@ export default travelLevel({
       diff(430, 417, 24, saddle(430, 480, '#c9302c'), saddle(430, 480, '#2b59c3')) +
       person(600, 484, '#2a9d8f', false, '#e0b48a', '#1d1d1d') +
       `<path d="M610 444L626 420" stroke="#7a5233" stroke-width="5" stroke-linecap="round"/>` +
-      diff(628, 403, 24, eagle(628, 420), '')
+      diff(628, 403, 24, eagle(628, 420), '') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['grass', 276, 388],
+        ['ladybug', 488, 472],
+        ['flower', 724, 420, '#b38cff'],
+        ['snail', 72, 396],
+        ['birds', 528, 148],
+        ['cloud', 108, 64],
+        ['birds', 320, 200],
+      ]) +
+      extras({ extra, anim }, [
+        ['bee', 568, 372],
+        ['mushroom', 352, 484, '#e63946'],
+        ['bird', 392, 372, '#8a5a33'],
+        ['balloon', 716, 152, '#ffd23f'],
+        ['birds', 488, 292],
+      ])
     )
   },
 })

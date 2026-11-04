@@ -1,5 +1,6 @@
 // Rio de Janeiro: Christ the Redeemer on Corcovado, the Sugarloaf with its cable car, the beach and the wave pavement.
 // Motion difference: the cable car cabin rides quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, gull, palm, person, sky, sun, water } from './shapes.ts'
 
@@ -56,7 +57,7 @@ export default travelLevel({
   title: 'rio',
   parTimeSec: 84,
   place: { region: 'americas', country: 'br', lat: -22.91, lon: -43.17 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const ride = (period: number) => anim({ id: 'cabin', type: 'path', points: [[0, 0], [70, cableY(630) - cableY(560)]], period }, cabin(560))
     let waves = ''
     for (let x = -20; x < 800; x += 40) waves += `<path d="M${x} 470q10 -10 20 0t20 0" fill="none" stroke="#2b2b2b" stroke-width="5"/>`
@@ -89,7 +90,24 @@ export default travelLevel({
       person(580, 448, '#ffb703', true, '#c68b59', '#1d1d1d') +
       toucan(660, 410) +
       diff(645, 395, 20, beak(660, 410, '#f79a2e'), beak(660, 410, '#7ac74f')) +
-      palm(740, 452, 1, -12)
+      palm(740, 452, 1, -12) +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['coconut', 112, 428],
+        ['shell', 312, 412, '#ff6b8b'],
+        ['shell', 708, 424, '#ff9f43'],
+        ['bottle', 528, 364],
+        ['lifeRing', 420, 356],
+        ['balloon', 228, 52, '#ffd23f'],
+        ['birds', 548, 112],
+      ]) +
+      extras({ extra, anim }, [
+        ['flipFlops', 68, 428, '#3a86ff'],
+        ['sunglasses', 436, 408],
+        ['bottle', 580, 364],
+        ['bottle', 472, 364],
+        ['cloud', 360, 204],
+      ])
     )
   },
 })

@@ -1,6 +1,7 @@
 // Bangkok: the prangs of Wat Arun by the Chao Phraya, a temple with tiered roofs and golden horns, a
 // long-tail boat, a floating market boat and a tuk-tuk.
 // Motion difference: a lantern under the temple eave swings quickly on picture A and slowly on picture B.
+import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
 import { cloud, lantern, person, sky, sun, water } from './shapes.ts'
 
@@ -65,7 +66,7 @@ export default travelLevel({
   title: 'bangkok',
   parTimeSec: 114,
   place: { region: 'asia', country: 'th', lat: 13.75, lon: 100.49 },
-  scene: ({ diff, anim, rand }) => {
+  scene: ({ diff, anim, rand, extra }) => {
     const swing = (period: number) => anim({ id: 'lantern', type: 'sway', angle: 14, pivot: [104, 232], period }, lantern(104, 232))
     return (
       sky('#9fd6ef') +
@@ -95,7 +96,24 @@ export default travelLevel({
       `<rect y="414" width="800" height="86" fill="#8d8a86"/><path d="M0 456H800" stroke="#f4f4f4" stroke-width="3" stroke-dasharray="26 18"/>` +
       tukTuk(200, 488) +
       diff(193, 442, 38, tukRoof(200, 488, '#ffd23f'), tukRoof(200, 488, '#3fa46f')) +
-      person(500, 494, '#f28c28', true, '#c68b59', '#1d1d1d')
+      person(500, 494, '#f28c28', true, '#c68b59', '#1d1d1d') +
+      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      decor({ anim }, [
+        ['cone', 308, 444],
+        ['cone', 636, 488],
+        ['lifeRing', 116, 348],
+        ['bottle', 480, 324],
+        ['birds', 100, 60],
+        ['balloon', 488, 64, '#ffd23f'],
+        ['birds', 712, 172],
+      ]) +
+      extras({ extra, anim }, [
+        ['cone', 456, 488],
+        ['bottle', 732, 356],
+        ['lifeRing', 236, 336],
+        ['cloud', 288, 124],
+        ['birds', 416, 212],
+      ])
     )
   },
 })
