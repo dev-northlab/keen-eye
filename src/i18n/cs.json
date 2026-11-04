@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Klidný režim",
       "living": "Živé scény",
-      "keys": "Skryté klíče",
-      "offline": "Bez internetu",
-      "noAds": "Bez reklam"
+      "keys": "Skryté klíče"
     },
     "support": {
       "title": "Podpořit hru",
@@ -111,7 +109,15 @@
     "failed": "Příliš mnoho chyb",
     "failedHint": "V těžkém režimu končí úroveň u chyby č. {n}",
     "hardDone": "Splněno na těžký!",
-    "playHard": "Hrát na těžký"
+    "playHard": "Hrát na těžký",
+    "transformB": {
+      "mirror-x": "Zrcadlo",
+      "rotate-180": "Vzhůru nohama"
+    },
+    "transformNotice": {
+      "mirror-x": "Pozor! Druhý obrázek je zrcadlově obrácený",
+      "rotate-180": "Pozor! Druhý obrázek je vzhůru nohama"
+    }
   },
   "duo": {
     "modeTitle": "Jak budete hrát?",

@@ -42,6 +42,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `render.ts` (SVG pictures and marks), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
+  `transform.ts` (`PictureTransform`, `docs/mirror-rotate-feature.md`: picture B of `Level.transformB` shown mirrored or
+  turned inside the svg — zones stay in scene coordinates, taps go back through `inverseTransformPoint`, the shared zoom
+  shows the same scene part on both; single player only (`GameScene`), not in calm mode (`MODE_RULES.<mode>.transformB`), set by `transformBOf` in `difficulty.ts` for the last
+  five levels of every world, "travel" and "detective", alternating mirror-x / rotate-180; the HUD shows `TransformChip`
+  and, until such a level is completed, a warning note),
   `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
   `hit-test.ts`, `anachronism.ts`, `anachronism-scene.ts` ("find the odd one out", `docs/anachronism-mode.md`: screen →
   percent of the image and hitboxes; level JSON checks and the DOM-free round; `AnachronismScene`, one picture with the

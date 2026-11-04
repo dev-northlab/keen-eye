@@ -24,7 +24,6 @@ watch(dialog, (open) => {
   if (open) removeBack = pushBackHandler(() => (dialog.value = null))
 })
 
-const [emailUser, emailDomain] = CONTACT_EMAIL.split('@')
 const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(APP_NAME)}`
 /** True for a moment after the address was copied (for players without a mail app). */
 const emailCopied = ref(false)
@@ -188,12 +187,8 @@ function play() {
       <div class="info-body">
         <p>{{ $t('info.contactText') }}</p>
         <div class="email-card">
-          <svg class="at" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M15.6 12v1.4a2.5 2.5 0 0 0 5 0V12a8.6 8.6 0 1 0-3.4 6.9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          <!-- A narrow screen wraps the address after the @, not inside a word. -->
-          <span class="address">{{ emailUser }}@<wbr />{{ emailDomain }}</span>
+          <!-- One line: the font shrinks with the card on narrow screens. -->
+          <span class="address">{{ CONTACT_EMAIL }}</span>
           <button
             class="copy"
             :class="{ done: emailCopied }"
@@ -326,29 +321,30 @@ button,
 }
 
 .email-card {
+  /* The address's font follows the card's width (cqi). */
+  container-type: inline-size;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 6px 6px 10px;
+  padding: 6px;
+  padding-inline-start: 14px;
   border-radius: 14px;
   background: var(--soft-2);
   border: 1px solid var(--soft);
   text-align: start;
 }
 
-.email-card .at {
-  flex: none;
-  width: 20px;
-  height: 20px;
-  color: var(--accent);
-}
-
 .email-card .address {
   flex: 1;
   min-width: 0;
-  font-size: 16px;
+  /* Older WebViews without container units keep 15px. Room for the address: the card less its
+     padding, the gap and the copy button (72px); the address is about 12.5em wide. */
+  font-size: 15px;
+  font-size: clamp(12px, calc((100cqi - 72px) / 12.5), 17px);
   font-weight: 700;
-  overflow-wrap: anywhere;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   user-select: text;
 }
 

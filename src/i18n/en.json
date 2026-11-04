@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Calm mode",
       "living": "Living scenes",
-      "keys": "Hidden keys",
-      "offline": "Works offline",
-      "noAds": "No ads"
+      "keys": "Hidden keys"
     },
     "support": {
       "title": "Support the game",
@@ -111,7 +109,15 @@
     "failed": "Too many mistakes",
     "failedHint": "Hard mode ends the level at mistake number {n}",
     "hardDone": "Passed on hard!",
-    "playHard": "Play on hard"
+    "playHard": "Play on hard",
+    "transformB": {
+      "mirror-x": "Mirrored",
+      "rotate-180": "Upside down"
+    },
+    "transformNotice": {
+      "mirror-x": "Heads up! The second picture is mirrored",
+      "rotate-180": "Heads up! The second picture is upside down"
+    }
   },
   "duo": {
     "modeTitle": "How do you play?",

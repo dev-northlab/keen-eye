@@ -1,6 +1,7 @@
 import { Board, randomUnfound, type Tap } from './board.ts'
 import { FrameLoop } from './loop.ts'
 import { computeStars, hitTest, LOCK_MS, MissGuard, type StarInput } from './rules.ts'
+import type { PictureTransform } from './transform.ts'
 import type { Level, LevelResult, Stars } from './types.ts'
 
 export interface SceneHandlers {
@@ -35,6 +36,8 @@ export interface SceneOptions {
   secretTaken?: boolean
   /** Draw the extra objects of hard mode (`Level.extras`). */
   extras?: boolean
+  /** Show picture B mirrored or turned (`Level.transformB` where the mode allows it, `ModeRules.transformB`). */
+  transformB?: PictureTransform
 }
 
 /**
@@ -80,6 +83,7 @@ export class GameScene {
       onSecret: () => this.secret(),
       secretTaken: options.secretTaken,
       extras: options.extras,
+      transformB: options.transformB,
     })
     this.loop = new FrameLoop(this.frame)
   }

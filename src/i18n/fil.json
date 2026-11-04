@@ -4,9 +4,7 @@
     "perks": {
       "calm": "Kalmadong mode",
       "keys": "Nakatagong susi",
-      "living": "Buhay na mga eksena",
-      "noAds": "Walang ads",
-      "offline": "Gumagana offline"
+      "living": "Buhay na mga eksena"
     },
     "rate": "I-rate ang laro",
     "shareGame": "Ibahagi ang laro",
@@ -434,7 +432,15 @@
     "failed": "Sobrang daming mali",
     "failedHint": "Sa mahirap, natatapos ang level sa ika-{n} na mali",
     "hardDone": "Natapos sa mahirap!",
-    "playHard": "Laruin sa mahirap"
+    "playHard": "Laruin sa mahirap",
+    "transformB": {
+      "mirror-x": "Salamin",
+      "rotate-180": "Baligtad"
+    },
+    "transformNotice": {
+      "mirror-x": "Pansinin! Naka-salamin ang ikalawang larawan",
+      "rotate-180": "Pansinin! Baligtad ang ikalawang larawan"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

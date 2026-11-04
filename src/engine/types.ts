@@ -1,3 +1,5 @@
+import type { PictureTransform } from './transform.ts'
+
 /** A picture: SVG markup (contents of <svg>) and the animations of its `data-anim` groups. */
 export interface SceneSvg {
   svg: string
@@ -140,6 +142,11 @@ export interface Level {
   detective?: DetectiveScene
   /** The chapter's hidden key, on exactly one level of the chapter. */
   secret?: SecretKey
+  /**
+   * Picture B is shown mirrored or turned (docs/mirror-rotate-feature.md) when played alone (`GameScene`; not
+   * in calm mode, `ModeRules.transformB`, nor in two-player matches); everything above stays in the scene's own coordinates. Default 'none'.
+   */
+  transformB?: PictureTransform
 }
 
 export type Stars = 1 | 2 | 3

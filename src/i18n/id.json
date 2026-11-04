@@ -4,9 +4,7 @@
     "perks": {
       "calm": "Mode santai",
       "keys": "Kunci tersembunyi",
-      "living": "Adegan hidup",
-      "noAds": "Tanpa iklan",
-      "offline": "Bisa dimainkan offline"
+      "living": "Adegan hidup"
     },
     "rate": "Beri nilai permainan",
     "shareGame": "Bagikan permainan",
@@ -434,7 +432,15 @@
     "failed": "Terlalu banyak kesalahan",
     "failedHint": "Di mode sulit, level berakhir pada kesalahan ke-{n}",
     "hardDone": "Lulus di mode sulit!",
-    "playHard": "Main di mode sulit"
+    "playHard": "Main di mode sulit",
+    "transformB": {
+      "mirror-x": "Cermin",
+      "rotate-180": "Terbalik"
+    },
+    "transformNotice": {
+      "mirror-x": "Perhatian! Gambar kedua dicerminkan",
+      "rotate-180": "Perhatian! Gambar kedua terbalik"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

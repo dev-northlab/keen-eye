@@ -4,9 +4,7 @@
     "perks": {
       "calm": "休閒模式",
       "keys": "隱藏鑰匙",
-      "living": "生動場景",
-      "noAds": "無廣告",
-      "offline": "不需連網"
+      "living": "生動場景"
     },
     "rate": "為遊戲評分",
     "shareGame": "分享遊戲",
@@ -434,7 +432,15 @@
     "failed": "錯誤太多",
     "failedHint": "困難模式下，第 {n} 次錯誤時關卡結束",
     "hardDone": "困難模式過關！",
-    "playHard": "挑戰困難模式"
+    "playHard": "挑戰困難模式",
+    "transformB": {
+      "mirror-x": "鏡像",
+      "rotate-180": "倒轉"
+    },
+    "transformNotice": {
+      "mirror-x": "注意！第二張圖片是鏡像的",
+      "rotate-180": "注意！第二張圖片是倒過來的"
+    }
   },
   "levelTitles": {
     "agra": "阿格拉",

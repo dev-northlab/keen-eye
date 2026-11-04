@@ -1,4 +1,5 @@
 import { pose, zoneCenter } from './animation.ts'
+import { svgTransform, type PictureTransform } from './transform.ts'
 import type { Animation, Difference, Level } from './types.ts'
 
 const SVG_NS = 'http://www.w3.org/2000/svg'
@@ -29,15 +30,17 @@ function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, 
 }
 
 /**
- * `flipped` turns the content by 180° inside the svg (the far player's copy in a face-to-face duel);
- * the viewBox (zoom) stays unturned, so the board turns tap points back itself. `extras`: with the extra
+ * `transform` mirrors or turns the content inside the svg (picture B of late levels, the far player's copy
+ * in a face-to-face duel); marks are drawn in scene coordinates inside it, so they turn along. The viewBox
+ * (zoom) is in shown coordinates, so the board turns tap points back itself. `extras`: with the extra
  * objects of hard mode (`Level.extras`).
  */
-export function createPicture(level: Level, variant: 0 | 1, flipped = false, extras = false): Picture {
+export function createPicture(level: Level, variant: 0 | 1, transform: PictureTransform = 'none', extras = false): Picture {
   const { w, h } = level.viewBox
   const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, class: 'ke-picture' })
   svg.style.userSelect = 'none'
-  const content = flipped ? el('g', { transform: `rotate(180 ${w / 2} ${h / 2})` }) : svg
+  const turn = svgTransform(transform, level.viewBox)
+  const content = turn ? el('g', { transform: turn }) : svg
 
   const scene = el('g', {})
   let animations: Animation[] = []
@@ -52,7 +55,7 @@ export function createPicture(level: Level, variant: 0 | 1, flipped = false, ext
 
   const marks = el('g', { 'pointer-events': 'none' })
   content.append(scene, marks)
-  if (flipped) svg.append(content)
+  if (turn) svg.append(content)
   return {
     svg,
     marks,

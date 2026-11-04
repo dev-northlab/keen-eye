@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Modo calmo",
       "living": "Cenas vivas",
-      "keys": "Chaves escondidas",
-      "offline": "Sem internet",
-      "noAds": "Sem anúncios"
+      "keys": "Chaves escondidas"
     },
     "support": {
       "title": "Apoie o jogo",
@@ -111,7 +109,15 @@
     "failed": "Erros demais",
     "failedHint": "No difícil, o nível termina no erro nº {n}",
     "hardDone": "Concluído no difícil!",
-    "playHard": "Jogar no difícil"
+    "playHard": "Jogar no difícil",
+    "transformB": {
+      "mirror-x": "Espelho",
+      "rotate-180": "Virada"
+    },
+    "transformNotice": {
+      "mirror-x": "Atenção! A segunda imagem está espelhada",
+      "rotate-180": "Atenção! A segunda imagem está de cabeça para baixo"
+    }
   },
   "duo": {
     "modeTitle": "Como vocês vão jogar?",

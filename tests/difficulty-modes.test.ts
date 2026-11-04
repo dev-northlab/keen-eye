@@ -11,6 +11,10 @@ describe('difficulty modes (docs/difficulty-modes.md)', () => {
     assert.ok(MODE_RULES.calm.animationSpeed < MODE_RULES.normal.animationSpeed)
   })
 
+  test('picture B mirrored or turned (docs/mirror-rotate-feature.md): off in calm mode, on in normal and hard', () => {
+    assert.deepEqual([MODE_RULES.calm.transformB, MODE_RULES.normal.transformB, MODE_RULES.hard.transformB], [false, true, true])
+  })
+
   test('hard: no hints, lost at the 3rd mistake (before a lock could start), traps unexplained', () => {
     const hard = MODE_RULES.hard
     assert.deepEqual([hard.hints, hard.maxMistakes, hard.trapNotes], [0, 3, false])

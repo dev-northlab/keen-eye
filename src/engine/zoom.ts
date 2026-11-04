@@ -1,3 +1,5 @@
+import { inverseTransformPoint, transformPoint, transformRect, type PictureTransform, type Size } from './transform.ts'
+
 export const MAX_SCALE = 4
 const ANIM_MS = 200
 
@@ -8,30 +10,44 @@ interface View {
   y: number
 }
 
+/** What the viewport needs of a picture's svg: its screen placement, and its viewBox to set. */
+export interface ViewSvg {
+  getScreenCTM(): { a: number; d: number; e: number; f: number } | null
+  setAttribute(name: string, value: string): void
+}
+
 /** Client-space placement of the whole scene (scale 1) inside one picture. */
 export interface Frame {
   left: number
   top: number
   /** Client px per viewBox unit at scale 1. */
   k: number
+  /** How the picture shows the scene: its viewBox is in shown coordinates. */
+  transform: PictureTransform
 }
 
 /**
- * Shared zoom/pan state of both pictures. Applied as the svg viewBox, so
+ * Shared zoom/pan state of both pictures, in scene coordinates: a mirrored or turned picture
+ * (`transforms`) shows the same part of the scene, turned. Applied as the svg viewBox, so
  * hit testing through getScreenCTM() stays correct at any zoom.
  */
 export class Viewport {
-  private readonly svgs: SVGSVGElement[]
+  private readonly svgs: ViewSvg[]
+  private readonly transforms: PictureTransform[]
   private readonly w: number
   private readonly h: number
+  private readonly size: Size
   private readonly onScale: (scale: number) => void
   private view: View = { scale: 1, x: 0, y: 0 }
   private anim: { from: View; to: View; start: number } | null = null
 
-  constructor(svgs: SVGSVGElement[], w: number, h: number, onScale: (scale: number) => void) {
+  /** `transforms`: of each svg, default 'none'. */
+  constructor(svgs: ViewSvg[], w: number, h: number, onScale: (scale: number) => void, transforms: PictureTransform[] = []) {
     this.svgs = svgs
+    this.transforms = svgs.map((_, i) => transforms[i] ?? 'none')
     this.w = w
     this.h = h
+    this.size = { w, h }
     this.onScale = onScale
   }
 
@@ -39,23 +55,29 @@ export class Viewport {
     return this.view.scale
   }
 
-  frame(svg: SVGSVGElement): Frame | null {
+  frame(svg: ViewSvg): Frame | null {
     const ctm = svg.getScreenCTM()
     if (!ctm) return null
-    return { left: ctm.e + this.view.x * ctm.a, top: ctm.f + this.view.y * ctm.d, k: ctm.a / this.view.scale }
+    const transform = this.transforms[this.svgs.indexOf(svg)] ?? 'none'
+    const shown = this.shownView(transform)
+    return { left: ctm.e + shown.x * ctm.a, top: ctm.f + shown.y * ctm.d, k: ctm.a / this.view.scale, transform }
   }
 
   /** Scene point under client point (cx, cy). */
   toScene(f: Frame, cx: number, cy: number) {
+    const shown = this.shownView(f.transform)
     const k = f.k * this.view.scale
-    return { x: this.view.x + (cx - f.left) / k, y: this.view.y + (cy - f.top) / k }
+    return inverseTransformPoint(f.transform, { x: shown.x + (cx - f.left) / k, y: shown.y + (cy - f.top) / k }, this.size)
   }
 
   /** Sets `scale` and moves the view so that scene point (ax, ay) is under client point (cx, cy). */
   anchor(f: Frame, ax: number, ay: number, cx: number, cy: number, scale: number): void {
     this.anim = null
     const s = clamp(scale, 1, MAX_SCALE)
-    this.apply({ scale: s, x: ax - (cx - f.left) / (f.k * s), y: ay - (cy - f.top) / (f.k * s) })
+    const a = transformPoint(f.transform, { x: ax, y: ay }, this.size)
+    const shown = { x: a.x - (cx - f.left) / (f.k * s), y: a.y - (cy - f.top) / (f.k * s), w: this.w / s, h: this.h / s }
+    const { x, y } = transformRect(f.transform, shown, this.size)
+    this.apply({ scale: s, x, y })
   }
 
   /** Animated zoom to `scale` keeping scene point (ax, ay) in place on screen. */
@@ -99,10 +121,17 @@ export class Viewport {
   private apply(v: View): void {
     const prevScale = this.view.scale
     this.view = this.clamped(v)
+    this.svgs.forEach((svg, i) => {
+      const { x, y, w, h } = this.shownView(this.transforms[i])
+      svg.setAttribute('viewBox', `${x} ${y} ${w} ${h}`)
+    })
+    if (this.view.scale !== prevScale) this.onScale(this.view.scale)
+  }
+
+  /** The view as a picture shown with `transform` sees it (its viewBox). */
+  private shownView(transform: PictureTransform) {
     const { scale, x, y } = this.view
-    const viewBox = `${x} ${y} ${this.w / scale} ${this.h / scale}`
-    for (const svg of this.svgs) svg.setAttribute('viewBox', viewBox)
-    if (scale !== prevScale) this.onScale(scale)
+    return transformRect(transform, { x, y, w: this.w / scale, h: this.h / scale }, this.size)
   }
 }
 

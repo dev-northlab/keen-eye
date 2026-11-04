@@ -4,9 +4,7 @@
     "perks": {
       "calm": "Rauhallinen tila",
       "keys": "Piilotetut avaimet",
-      "living": "Elävät maisemat",
-      "noAds": "Ei mainoksia",
-      "offline": "Toimii ilman verkkoa"
+      "living": "Elävät maisemat"
     },
     "rate": "Arvioi peli",
     "shareGame": "Jaa peli",
@@ -434,7 +432,15 @@
     "failed": "Liikaa virheitä",
     "failedHint": "Vaikealla taso päättyy virheeseen numero {n}",
     "hardDone": "Läpäisty vaikealla!",
-    "playHard": "Pelaa vaikealla"
+    "playHard": "Pelaa vaikealla",
+    "transformB": {
+      "mirror-x": "Peili",
+      "rotate-180": "Ylösalaisin"
+    },
+    "transformNotice": {
+      "mirror-x": "Huomio! Toinen kuva on peilattu",
+      "rotate-180": "Huomio! Toinen kuva on ylösalaisin"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

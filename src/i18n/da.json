@@ -4,9 +4,7 @@
     "perks": {
       "calm": "Rolig tilstand",
       "keys": "Skjulte nøgler",
-      "living": "Levende scener",
-      "noAds": "Ingen reklamer",
-      "offline": "Virker offline"
+      "living": "Levende scener"
     },
     "rate": "Bedøm spillet",
     "shareGame": "Del spillet",
@@ -434,7 +432,15 @@
     "failed": "For mange fejl",
     "failedHint": "På svær slutter banen ved fejl nummer {n}",
     "hardDone": "Klaret på svær!",
-    "playHard": "Spil på svær"
+    "playHard": "Spil på svær",
+    "transformB": {
+      "mirror-x": "Spejl",
+      "rotate-180": "På hovedet"
+    },
+    "transformNotice": {
+      "mirror-x": "Bemærk! Det andet billede er spejlvendt",
+      "rotate-180": "Bemærk! Det andet billede står på hovedet"
+    }
   },
   "levelTitles": {
     "agra": "Agra",

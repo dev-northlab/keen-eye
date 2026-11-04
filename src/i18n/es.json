@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Modo tranquilo",
       "living": "Escenas vivas",
-      "keys": "Llaves ocultas",
-      "offline": "Sin internet",
-      "noAds": "Sin anuncios"
+      "keys": "Llaves ocultas"
     },
     "support": {
       "title": "Apoya el juego",
@@ -111,7 +109,15 @@
     "failed": "Demasiados errores",
     "failedHint": "En difícil, el nivel termina en el error n.º {n}",
     "hardDone": "¡Superado en difícil!",
-    "playHard": "Jugar en difícil"
+    "playHard": "Jugar en difícil",
+    "transformB": {
+      "mirror-x": "Espejo",
+      "rotate-180": "Al revés"
+    },
+    "transformNotice": {
+      "mirror-x": "¡Atención! La segunda imagen está reflejada",
+      "rotate-180": "¡Atención! La segunda imagen está al revés"
+    }
   },
   "duo": {
     "modeTitle": "¿Cómo jugáis?",

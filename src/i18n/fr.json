@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Mode zen",
       "living": "Scènes vivantes",
-      "keys": "Clés cachées",
-      "offline": "Sans Internet",
-      "noAds": "Sans publicité"
+      "keys": "Clés cachées"
     },
     "support": {
       "title": "Soutenir le jeu",
@@ -111,7 +109,15 @@
     "failed": "Trop d’erreurs",
     "failedHint": "En mode difficile, le niveau s’arrête à l’erreur n° {n}",
     "hardDone": "Réussi en difficile !",
-    "playHard": "Jouer en difficile"
+    "playHard": "Jouer en difficile",
+    "transformB": {
+      "mirror-x": "Miroir",
+      "rotate-180": "À l’envers"
+    },
+    "transformNotice": {
+      "mirror-x": "Attention ! La deuxième image est en miroir",
+      "rotate-180": "Attention ! La deuxième image est à l’envers"
+    }
   },
   "duo": {
     "modeTitle": "Comment jouez-vous ?",

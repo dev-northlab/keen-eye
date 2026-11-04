@@ -76,6 +76,8 @@ export interface ModeRules {
   memoryMaxMisses: number
   /** Extra objects in the pictures (docs/hard-mode-extra-objects.md; levels that have them). */
   extras: boolean
+  /** Picture B mirrored or turned on the levels that have it (`Level.transformB`); calm mode shows it as drawn. */
+  transformB: boolean
   /** Stars of a finished level (calm mode shows none). */
   stars: (p: StarInput) => Stars
   /** Stars of a "memory" round; 0 = failed. */
@@ -93,6 +95,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     memoryPeeks: () => 3,
     memoryMaxMisses: Infinity,
     extras: false,
+    transformB: false,
     stars: computeStars,
     memoryStars,
   },
@@ -106,6 +109,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     memoryPeeks: (p) => p,
     memoryMaxMisses: 3,
     extras: false,
+    transformB: true,
     stars: computeStars,
     memoryStars,
   },
@@ -120,6 +124,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     memoryPeeks: () => 0,
     memoryMaxMisses: 2,
     extras: true,
+    transformB: true,
     stars: hardStars,
     memoryStars: memoryHardStars,
   },

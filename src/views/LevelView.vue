@@ -12,13 +12,15 @@ import SecretFound from '../components/SecretFound.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
+import TransformChip from '../components/TransformChip.vue'
+import TransformNotice from '../components/TransformNotice.vue'
 import TravelFact from '../components/TravelFact.vue'
 import TreasureChest from '../components/TreasureChest.vue'
 import { MODE_RULES, type GameMode } from '../engine/rules.ts'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TREASURY_CHAPTER } from '../levels/chapters.ts'
-import { levelById } from '../levels/index.ts'
+import { allLevels, levelById } from '../levels/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
@@ -56,6 +58,8 @@ const settingsOpen = ref(false)
 const mode = ref<GameMode>('normal')
 const rules = computed(() => MODE_RULES[mode.value])
 const calm = computed(() => mode.value === 'calm')
+/** How picture B is shown in this attempt: the level's transform, unless the mode shows B as drawn (calm). */
+const transformB = computed(() => (rules.value.transformB ? level.transformB : undefined))
 /** Hard mode: lost on too many mistakes; `result` then holds the attempt's numbers. */
 const failed = ref(false)
 /**
@@ -73,6 +77,10 @@ const animationFrozen = ref(false)
  */
 const note = ref<string | null>(null)
 let noteTimer = 0
+/** The warning that picture B is mirrored or turned is open: the scene waits, its clock stopped. */
+const transformNotice = ref(false)
+/** The warning was shown on this visit: a retry starts at once. */
+let transformWarned = false
 /** "Secret key found!" is shown (docs/hidden-item-feature.md). */
 const secretShown = ref(false)
 let secretTimer = 0
@@ -82,6 +90,12 @@ const total = level.differences.length
 
 /** How long a note stays on screen. */
 const NOTE_MS = 2600
+/**
+ * Picture B is mirrored or turned (docs/mirror-rotate-feature.md) and the player has not finished a level
+ * shown this way yet: warn them as the level starts.
+ */
+const warnTransform = () =>
+  !!transformB.value && !allLevels.some((l) => l.transformB === transformB.value && progress.isCompleted(l.id))
 
 /** The chapter's hidden key was tapped: it is kept for good, even if the level is not finished. */
 function collectSecret() {
@@ -165,8 +179,20 @@ function start() {
       stars: rules.value.stars,
       extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
+      transformB: transformB.value,
     },
   )
+  transformNotice.value = !transformWarned && warnTransform()
+  if (transformNotice.value) {
+    transformWarned = true
+    scene.pause()
+  }
+}
+
+/** The warning is closed: the level starts (unless the pause menu opened over it). */
+function closeTransformNotice() {
+  transformNotice.value = false
+  if (!paused.value) scene?.resume()
 }
 
 /** Hints this attempt can still take (calm mode 3, normal 1, hard none). */
@@ -198,7 +224,8 @@ function pause() {
 
 function resume() {
   paused.value = false
-  scene?.resume()
+  // The warning about picture B is still open: the level starts when it is closed.
+  if (!transformNotice.value) scene?.resume()
 }
 
 // Android back: pause first; back again on the pause dialog leaves to the menu (from its settings, back
@@ -233,6 +260,7 @@ onBeforeUnmount(() => {
       <span class="title">
         {{ treasury ? $t('chapters.treasury') : $t('level.level', { n: number }) }}
         <ModeChip :mode="mode" />
+        <TransformChip v-if="transformB" :transform="transformB" />
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
         <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>
@@ -298,6 +326,7 @@ onBeforeUnmount(() => {
       @settings="settingsOpen = true"
       @exit="router.push({ name: 'home' })"
     />
+    <TransformNotice v-else-if="transformNotice && transformB" :transform="transformB" @close="closeTransformNotice" />
     <ResultDialog
       v-if="result"
       :result="result"

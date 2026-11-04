@@ -33,6 +33,10 @@
   --mode-calm: #237ea6;
   --mode-normal: #2f9e6e;
   --mode-hard: #c94a24;
+  /* Badge of a mirrored or turned picture B (docs/mirror-rotate-feature.md). */
+  --twist: #6a4fd8;
+  --twist-bg: #efeaff;
+  --twist-line: #cfc4fb;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--fg);
   background: var(--bg);
@@ -105,6 +109,9 @@ button.secondary {
   --mode-calm: #2a7fa6;
   --mode-normal: #2a8f63;
   --mode-hard: #c4502e;
+  --twist: #b3a1ff;
+  --twist-bg: #2c2550;
+  --twist-line: #4a3f86;
 }
 
 /* Disable browser double-tap zoom on UI; pictures handle their own gestures. */

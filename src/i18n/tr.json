@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Sakin mod",
       "living": "Canlı sahneler",
-      "keys": "Gizli anahtarlar",
-      "offline": "İnternetsiz",
-      "noAds": "Reklamsız"
+      "keys": "Gizli anahtarlar"
     },
     "support": {
       "title": "Oyunu destekle",
@@ -111,7 +109,15 @@
     "failed": "Çok fazla hata",
     "failedHint": "Zor modda bölüm {n}. hatada biter",
     "hardDone": "Zor modda geçildi!",
-    "playHard": "Zor modda oyna"
+    "playHard": "Zor modda oyna",
+    "transformB": {
+      "mirror-x": "Ayna",
+      "rotate-180": "Ters"
+    },
+    "transformNotice": {
+      "mirror-x": "Dikkat! İkinci resim aynalanmış",
+      "rotate-180": "Dikkat! İkinci resim baş aşağı"
+    }
   },
   "duo": {
     "modeTitle": "Nasıl oynuyorsunuz?",

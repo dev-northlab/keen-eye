@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Mod calm",
       "living": "Scene vii",
-      "keys": "Chei ascunse",
-      "offline": "Fără internet",
-      "noAds": "Fără reclame"
+      "keys": "Chei ascunse"
     },
     "support": {
       "title": "Susține jocul",
@@ -111,7 +109,15 @@
     "failed": "Prea multe greșeli",
     "failedHint": "Pe greu, nivelul se termină la greșeala nr. {n}",
     "hardDone": "Trecut pe greu!",
-    "playHard": "Joacă pe greu"
+    "playHard": "Joacă pe greu",
+    "transformB": {
+      "mirror-x": "Oglindă",
+      "rotate-180": "Răsturnată"
+    },
+    "transformNotice": {
+      "mirror-x": "Atenție! A doua imagine este în oglindă",
+      "rotate-180": "Atenție! A doua imagine este cu susul în jos"
+    }
   },
   "duo": {
     "modeTitle": "Cum jucați?",

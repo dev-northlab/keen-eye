@@ -56,9 +56,7 @@
     "perks": {
       "calm": "休闲模式",
       "living": "生动场景",
-      "keys": "隐藏钥匙",
-      "offline": "无需联网",
-      "noAds": "无广告"
+      "keys": "隐藏钥匙"
     },
     "support": {
       "title": "支持本游戏",
@@ -111,7 +109,15 @@
     "failed": "错误太多",
     "failedHint": "困难模式下，第 {n} 次错误时关卡结束",
     "hardDone": "困难模式通关！",
-    "playHard": "挑战困难模式"
+    "playHard": "挑战困难模式",
+    "transformB": {
+      "mirror-x": "镜像",
+      "rotate-180": "倒转"
+    },
+    "transformNotice": {
+      "mirror-x": "注意！第二张图片是镜像的",
+      "rotate-180": "注意！第二张图片是倒过来的"
+    }
   },
   "duo": {
     "modeTitle": "怎么玩？",

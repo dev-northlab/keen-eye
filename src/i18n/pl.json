@@ -56,9 +56,7 @@
     "perks": {
       "calm": "Tryb spokojny",
       "living": "Żywe sceny",
-      "keys": "Ukryte klucze",
-      "offline": "Bez internetu",
-      "noAds": "Bez reklam"
+      "keys": "Ukryte klucze"
     },
     "support": {
       "title": "Wesprzyj grę",
@@ -111,7 +109,15 @@
     "failed": "Za dużo błędów",
     "failedHint": "Na trudnym poziom kończy się na błędzie nr {n}",
     "hardDone": "Ukończono na trudnym!",
-    "playHard": "Zagraj na trudnym"
+    "playHard": "Zagraj na trudnym",
+    "transformB": {
+      "mirror-x": "Lustro",
+      "rotate-180": "Odwrócony"
+    },
+    "transformNotice": {
+      "mirror-x": "Uwaga! Drugi obrazek jest odbity lustrzanie",
+      "rotate-180": "Uwaga! Drugi obrazek jest odwrócony do góry nogami"
+    }
   },
   "duo": {
     "modeTitle": "Jak gracie?",
