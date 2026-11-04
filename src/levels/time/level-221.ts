@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, ball, bareTree, bench, bike, bin, bird, birds, bush, cloud, cone, flowers, icicles, oak, pane, person, pigeon, signBoard, sky, small, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
 
@@ -16,7 +17,7 @@ export default svgLevel({
   title: 'schoolYard',
   pair: 'summer-winter',
   parTimeSec: 135,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     let windows = ''
     for (let i = 0; i < 8; i++) {
       const x = 110 + i * 76
@@ -69,6 +70,12 @@ export default svgLevel({
       cone(30, 490) +
       cone(580, 490) +
       time(flowers(450, 380, '#ffd23f'), '') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 609, 52],
+        ['birds', 75, 56],
+        ['birds', 407, 74],
+      ]) +
       time('', snowfall(221, 320, 44))
     )
   },

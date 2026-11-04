@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, barrel, buoy, cloud, crate, DUSK, glow, gull, lampHead, lampPost, lifeRing, moon, pane, poster, ropeCoil, sack, sky, stars, sun, waves } from './shapes.ts'
 
@@ -14,7 +15,7 @@ export default svgLevel({
   title: 'harborEvening',
   pair: 'day-night',
   parTimeSec: 100,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 270) +
     `<path d="M0 270V236h40v-20h30v30h50v-14h40v18h60v-24h30v34Z" fill="#9aa9bd"/>` +
     `<rect y="270" width="800" height="130" fill="#3ba7cc"/>` +
@@ -57,6 +58,11 @@ export default svgLevel({
     crate(700, 480, 28) +
     crate(730, 480, 28, '#b07a42') +
     ropeCoil(770, 486) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 366, 110],
+      ['birds', 616, 53],
+    ]) +
     time('', DUSK) +
     time('', glow(170, 286, 30, 24)) +
     trap(640, 296, 30, '', portholes('#ffe08a'), 'lights') +

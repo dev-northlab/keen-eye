@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, bench, bin, bird, bollard, car, cityTree, cloud, cone, door, DUSK, flowerBox, glow, hangingSign, hydrant, lampHead, lampPost, moon, person, pigeon, poster, pot, roadSign, sky, street, sun, window, windowLight } from './shapes.ts'
 
@@ -11,7 +12,7 @@ export default svgLevel({
   title: 'duskStreet',
   pair: 'day-night',
   parTimeSec: 75,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     let corner = ''
     for (const y of [146, 188, 230]) for (const x of [55, 100, 145]) if (x !== 100 || y !== 188) corner += window(x, y)
     let tower = ''
@@ -63,6 +64,11 @@ export default svgLevel({
       bollard(520, 492) +
       bollard(600, 492) +
       bin(700, 492, '#e07a5f') +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 202, 58],
+        ['birds', 699, 191],
+      ]) +
       time('', DUSK) +
       trap(200, 245, 36, lampHead(200, 345, false), lampHead(200, 345, true), 'lights') +
       trap(605, 158, 26, '', windowLight(605, 158), 'lights') +

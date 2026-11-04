@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { anchor, beam, bollard, buoy, chimney, cloud, crate, DUSK, flowerBox, glow, gull, lampHead, lampPost, lifeRing, lighthouse, moon, pier, pine, rock, ropeCoil, rowboat, sailboat, sky, sun, waves } from './shapes.ts'
 
@@ -10,7 +11,7 @@ export default svgLevel({
   title: 'duskPier',
   pair: 'day-night',
   parTimeSec: 75,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 270) +
     `<path d="M560 300q60 -50 140 -40q70 6 100 40Z" fill="#8d99ae"/>` +
     lighthouse(690, 290) +
@@ -46,6 +47,11 @@ export default svgLevel({
     buoy(250, 480, '#ffb703') +
     buoy(620, 470, '#3a86ff') +
     sailboat(740, 440, '#e63946') +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 274, 162],
+      ['birds', 582, 79],
+    ]) +
     time('', DUSK) +
     trap(400, 230, 36, lampHead(400, 330, false), lampHead(400, 330, true), 'lights') +
     trap(690, 135, 50, '', beam(690, 290), 'lights') +

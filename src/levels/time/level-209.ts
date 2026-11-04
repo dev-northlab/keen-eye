@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { barrel, bollard, bucket, buoy, cloud, crate, gull, icicles, lifeRing, pier, pine, pineSnow, rock, ropeCoil, rowboat, sack, sailboat, shell, sky, snowCap, snowfall, starfish, waves, winterSky } from './shapes.ts'
 
@@ -10,7 +11,7 @@ export default svgLevel({
   title: 'snowPier',
   pair: 'summer-winter',
   parTimeSec: 85,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 250), winterSky(250)) +
     `<path d="M0 250q120 -60 260 -40q90 14 160 40Z" fill="${time('#6aa86f', '#e9f0f5')}"/>` +
     `<rect y="250" width="800" height="250" fill="#3ba7cc"/>` +
@@ -60,5 +61,10 @@ export default svgLevel({
     time(starfish(740, 470), '') +
     buoy(320, 470, '#ffffff') +
     buoy(460, 460, '#3a86ff') +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 309, 86],
+      ['birds', 725, 68],
+    ]) +
     time('', snowfall(209, 300, 36)),
 })

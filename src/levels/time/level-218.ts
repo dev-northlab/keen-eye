@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bench, bin, carriage, carriageWindows, chimney, clockFace, cloud, DUSK, glow, moon, pane, person, pigeon, poster, pot, sky, stars, sun } from './shapes.ts'
 
@@ -17,7 +18,7 @@ export default svgLevel({
   title: 'railwayEvening',
   pair: 'day-night',
   parTimeSec: 125,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 330) +
     // Station house
     `<rect x="40" y="140" width="300" height="190" fill="#d9a066"/><path d="M30 142L190 100L350 142Z" fill="#8d5a3b"/>` +
@@ -63,6 +64,11 @@ export default svgLevel({
     bin(500, 396) +
     pigeon(530, 392) +
     bench(760, 396) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 565, 76],
+      ['birds', 77, 61],
+    ]) +
     time('', DUSK) +
     time('', glow(64, 180, 32, 56) + glow(124, 180, 32, 56) + carriageWindows(40, 470, 200, '#ffe08a') + carriageWindows(250, 470, 200, '#ffe08a')) +
     trap(190, 124, 22, clockFace(190, 124, 16, 9, 0), clockFace(190, 124, 16, 6, 45), 'clock') +

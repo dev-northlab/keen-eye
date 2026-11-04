@@ -258,12 +258,14 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
   }
   if (level.secret) checkSecret(level, b, errors)
   if (level.extras) {
-    if (timed) errors.push('no extra objects on "time" levels yet (docs/hard-mode-extra-objects.md)')
-    const aHard = level.build(0, 0, true)
-    if (JSON.stringify(aHard) !== JSON.stringify(level.build(0, 0, true))) errors.push('build(0, 0, true) is not deterministic')
-    checkExtras(level, a, aHard, report, errors)
-    // The extras are the same in both pictures: A and B still differ only in the zones.
-    comparePixels(level, aHard, level.build(1, 1, true), pictures, report)
+    // A "time" level's extras are checked at both moments.
+    for (const moment of timed ? ([0, 1] as const) : ([0] as const)) {
+      const aHard = level.build(0, moment, true)
+      if (JSON.stringify(aHard) !== JSON.stringify(level.build(0, moment, true))) errors.push(`build(0, ${moment}, true) is not deterministic`)
+      checkExtras(level, level.build(0, moment), aHard, report, errors)
+    }
+    // The extras are the same in both pictures: A (at B's moment) and B still differ only in the zones.
+    comparePixels(level, level.build(0, timed ? 1 : 0, true), level.build(1, 1, true), pictures, report)
   }
 
   if (timed) {

@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, ball, bike, bin, bucket, bulbs, buoy, cloud, dog, DUSK, lampHead, lampPost, moon, palm, parasol, person, pigeon, sailboat, shell, sky, starfish, stars, sun, towel, waves } from './shapes.ts'
 
@@ -19,7 +20,7 @@ export default svgLevel({
   title: 'seaPromenade',
   pair: 'day-night',
   parTimeSec: 150,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 230) +
     `<rect y="230" width="800" height="100" fill="#3ba7cc"/>` +
     waves(250, 8, 100, '#2f93ba', 330) +
@@ -62,6 +63,12 @@ export default svgLevel({
     starfish(700, 395, '#ff6b8b') +
     bin(100, 490, '#3a86ff') +
     pigeon(125, 490) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 214, 122],
+      ['birds', 552, 57],
+      ['birds', 76, 56],
+    ]) +
     time('', DUSK) +
     trap(157, 417, 22, bulbs(120, 405, 340, 405, 9, false), bulbs(120, 405, 340, 405, 9, true), 'lights') +
     trap(40, 380, 34, lampHead(40, 480, false), lampHead(40, 480, true), 'lights') +

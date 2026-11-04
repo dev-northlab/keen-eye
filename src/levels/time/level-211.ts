@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, bench, bin, bird, cloud, cone, dog, door, DUSK, flowerBox, glow, lampHead, lampPost, moon, pane, pigeon, poster, pot, roadSign, sky, stars, street, sun, window } from './shapes.ts'
 
@@ -17,7 +18,7 @@ export default svgLevel({
   title: 'nightAvenue',
   pair: 'day-night',
   parTimeSec: 95,
-  scene: ({ diff, time, trap }) => {
+  scene: ({ diff, time, trap, extra, anim }) => {
     let corner = ''
     for (const y of [176, 218, 260]) for (const x of [40, 110]) if (x !== 40 || y !== 218) corner += window(x, y, '#cfe3ee')
     let bank = ''
@@ -81,6 +82,11 @@ export default svgLevel({
       bench(200, 492, '#3a86ff') +
       pigeon(260, 492, true) +
       cone(360, 492) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 533, 57],
+        ['birds', 688, 57],
+      ]) +
       time('', DUSK) +
       time('', tramWindows(470, 452, '#ffe08a') + glow(328, 284, 112, 42)) +
       trap(150, 250, 34, lampHead(150, 350, false), lampHead(150, 350, true), 'lights') +

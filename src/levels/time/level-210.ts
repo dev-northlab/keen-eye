@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bareTree, bench, bin, bird, birdHouse, bush, butterfly, cat, cloud, dog, flowerBox, flowers, grass, house, mailbox, oak, pane, person, pot, roofSnow, sky, slide, snowCap, snowfall, snowman, stones, swingFrame, swingSeat, winterPerson, winterSky } from './shapes.ts'
 
@@ -7,7 +8,7 @@ export default svgLevel({
   title: 'snowYard',
   pair: 'summer-winter',
   parTimeSec: 85,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 290), winterSky(290)) +
     cloud(400, 70, 0.6) +
     // Two family houses behind the yard
@@ -56,5 +57,10 @@ export default svgLevel({
     time(grass(200, 480) + stones(240, 490), '') +
     birdHouse(700, 470) +
     dog(770, 470) +
+    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 269, 77],
+      ['birds', 729, 154],
+    ]) +
     time('', snowfall(210, 290, 34)),
 })

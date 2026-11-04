@@ -1,3 +1,4 @@
+import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bench, bin, bird, clockFace, cloud, door, DUSK, flowerBox, fountain, glow, hangingSign, lampHead, lampPost, moon, pane, parasol, person, pigeon, pot, sky, small, stars, sun } from './shapes.ts'
 
@@ -11,7 +12,7 @@ export default svgLevel({
   title: 'oldTownSquare',
   pair: 'day-night',
   parTimeSec: 150,
-  scene: ({ diff, time, trap, rand }) => {
+  scene: ({ diff, time, trap, rand, extra, anim }) => {
     let cobbles = ''
     for (let i = 0; i < 46; i++) cobbles += `<ellipse cx="${(rand() * 800).toFixed(0)}" cy="${(310 + rand() * 185).toFixed(0)}" rx="9" ry="4" fill="#b8a585"/>`
     return (
@@ -75,6 +76,10 @@ export default svgLevel({
       pot(80, 480, '#3a86ff') +
       pot(330, 492) +
       bin(780, 490) +
+      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      extras({ extra, anim }, [
+        ['birds', 727, 62],
+      ]) +
       time('', DUSK) +
       time('', glow(20, 180, 34, 40) + glow(250, 160, 30, 36) + glow(590, 170, 30, 36)) +
       trap(400, 110, 28, clockFace(400, 110, 22, 10, 10), clockFace(400, 110, 22, 8, 40), 'clock') +
