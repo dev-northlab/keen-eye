@@ -78,6 +78,11 @@
         "ending": "Det var turisten! När turisten tog ett steg bakåt för en selfie välte vasen, och turisten skyndade iväg för att köpa lim. Sneakersavtryck, ett objektivlock, en avsliten rem och selfiepinnen berättade vad som hänt. Turisten bad om ursäkt och hjälpte till att limma ihop vasen.",
         "intro": "Museets berömda blå vas ligger i bitar. Någon välte den och smet iväg. Följ ledtrådarna genom museet.",
         "title": "Den trasiga vasen"
+      },
+      "chickens": {
+        "title": "De försvunna hönorna",
+        "intro": "I morse skulle en flicka i byn mata sina hönor – men hönshuset är tomt och dörren står öppen! Sök efter ledtrådar på hennes gård och ta reda på vem som släppte ut hönorna.",
+        "ending": "Det var geten! Hon lyfte hönshusets regel med hornen för att komma åt säden och välte säcken, och hönorna följde den spillda säden ända till ängen. Klövavtrycken, hennes borttappade bjällra och säden på mulen avslöjade henne. Alla hönor är oskadda, och hönshuset har fått en ny regel."
       }
     },
     "clueTexts": {
@@ -274,7 +279,34 @@
       "windowLit": "Det har tänts i fönstret",
       "windowOpen": "Fönstret är öppet",
       "windowShut": "Fönstret är ordentligt stängt – ingenting flög in",
-      "yetiPrints": "Stora lurviga fotspår går förbi staketet – yetin kom aldrig in"
+      "yetiPrints": "Stora lurviga fotspår går förbi staketet – yetin kom aldrig in",
+      "chickensGone": "Hönorna är borta från sittpinnen",
+      "coopDoorOpen": "Hönshusets dörr står öppen",
+      "eggsLeft": "Äggen ligger kvar i boet – en räv hade tagit dem",
+      "grainSpilled": "Sädessäcken är vält",
+      "whiteFur": "En tuss vit päls på staketet",
+      "featherTrail": "Vita fjädrar leder bort över gräset",
+      "dogAsleep": "Hunden sov i sin kedja hela natten – den når inte hönshuset",
+      "goosePenShut": "Gåsens hage var låst hela natten",
+      "laundryChewed": "Någon har tuggat på skjortan på tvättlinan",
+      "wellBucketDown": "Brunnens hink har firats ner",
+      "grainTrail": "Ett spår av säd längs stigen",
+      "cabbageNibbled": "Ett kålhuvud är gnagt på",
+      "hoofPrints": "Små kluvna klövavtryck",
+      "scarecrowHat": "Fågelskrämman har tappat hatten",
+      "fenceBent": "En staketspjäla lutar – någon hoppade över",
+      "wateringCanTipped": "Vattenkannan har vält",
+      "sunflowerBent": "Solrosen har böjts ner",
+      "bellInHay": "En liten guldbjällra på ett rött band i höet",
+      "ladderRungBroken": "En stegpinne är trasig",
+      "milkSpilled": "Mjölkhinken har spillts ut",
+      "troughEmpty": "Hästens havre är borta från krubban",
+      "chickensFound": "Hönorna är hittade – de pickar säd på ängen!",
+      "sackEmpty": "En tom sädessäck i gräset",
+      "grainOnBeard": "Säd på getens mule",
+      "daisiesEaten": "Prästkragarna är uppätna ner till stjälkarna",
+      "basketTipped": "Bärkorgen har vält",
+      "plankMoved": "En planka i spången har flyttats"
     },
     "clues": "Ledtrådar: {n} av {total}",
     "findAll": "Hitta ledtrådarna i varje scen och peka sedan ut den skyldige.",
@@ -318,7 +350,11 @@
       "snowboarder": "Snowboardåkaren",
       "strongman": "Kraftkarlen",
       "tourist": "Turisten",
-      "yeti": "Yetin"
+      "yeti": "Yetin",
+      "fox": "Räven",
+      "goose": "Gåsen",
+      "yardDog": "Hunden",
+      "goat": "Geten"
     },
     "suspectsTitle": "Misstänkta",
     "task": "Lös fallet",
@@ -718,7 +754,12 @@
     "woodlandLake": "Stilla skogssjö",
     "woodpecker": "Hackspett",
     "yardNight": "Trädgården på kvällen",
-    "yerevan": "Jerevan"
+    "yerevan": "Jerevan",
+    "chickensCoop": "Hönshus",
+    "chickensYard": "Bygård",
+    "chickensGarden": "Köksträdgård",
+    "chickensBarn": "Lada",
+    "chickensMeadow": "Äng vid bäcken"
   },
   "map": {
     "level": "Nivå {n}",

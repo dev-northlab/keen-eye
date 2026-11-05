@@ -501,7 +501,12 @@
     "lodgeYard": "Az udvar",
     "lodgeChairlift": "A sífelvonó",
     "lodgeSummit": "A csúcs",
-    "treasury": "Kincskamra"
+    "treasury": "Kincskamra",
+    "chickensCoop": "Tyúkól",
+    "chickensYard": "Falusi udvar",
+    "chickensGarden": "Veteményes",
+    "chickensBarn": "Pajta",
+    "chickensMeadow": "Rét a pataknál"
   },
   "mode": {
     "label": "Mód",
@@ -714,6 +719,11 @@
         "title": "A hegyi menedékház rejtélye",
         "intro": "A nagy verseny előtti estén eltűnt a hópehely alakú aranykupa a menedékház kandallópárkányáról. Mindenki a jetit gyanúsítja — de tényleg a jeti volt? Kövesd a nyomokat fel a hegyre.",
         "ending": "A síelőlány volt! Annyira vágyott a győzelemre, hogy éjjel felment a csúcsra, hogy lefényképezze magát a kupával — és a hóember kezében felejtette. Elárulták a sínyomok, a botok lyukai és egy ottfelejtett síbot. Visszahozta a kupát, és becsületesen megnyerte a versenyt."
+      },
+      "chickens": {
+        "title": "Az eltűnt tyúkok",
+        "intro": "Ma reggel egy falusi lány megetetni indult a tyúkjait – de az ól üres, és nyitva az ajtaja! Kutasd át az udvarát nyomok után, és derítsd ki, ki engedte ki a tyúkokat.",
+        "ending": "A kecske volt! A szarvacskáival felemelte az ól reteszét, hogy hozzáférjen a magokhoz, és feldöntötte a zsákot, a tyúkok pedig a kiszóródott magokat követve egészen a rétig mentek. A patanyomok, az elveszett csengője és az orrán maradt magok elárulták. Minden tyúk épségben van, és az ólon új retesz van."
       }
     },
     "suspects": {
@@ -739,7 +749,11 @@
       "yeti": "Jeti",
       "skier": "Síelőlány",
       "snowboarder": "Snowboardos",
-      "innkeeper": "Menedékház-gondnok"
+      "innkeeper": "Menedékház-gondnok",
+      "fox": "Róka",
+      "goose": "Liba",
+      "yardDog": "Kutya",
+      "goat": "Kecske"
     },
     "clueTexts": {
       "cakeGone": "A torta eltűnt — csak morzsák a tányéron",
@@ -935,7 +949,34 @@
       "snowmanScarf": "A hóember piros sálat visel",
       "tripodMarks": "Egy állvány három kis nyoma",
       "bootPrintsUp": "Bakancsnyomok vezetnek fel a csúcsra",
-      "skiPoleLeft": "Egy síbot a hóba szúrva"
+      "skiPoleLeft": "Egy síbot a hóba szúrva",
+      "chickensGone": "A tyúkok eltűntek az ülőrúdról",
+      "coopDoorOpen": "Az ól ajtaja nyitva van",
+      "eggsLeft": "A tojások még a fészekben vannak – egy róka elvitte volna őket",
+      "grainSpilled": "A magos zsák fel van borulva",
+      "whiteFur": "Egy csomó fehér szőr a kerítésen",
+      "featherTrail": "Fehér tollak vezetnek át a füvön",
+      "dogAsleep": "A kutya egész éjjel a láncán aludt – nem ér el az ólig",
+      "goosePenShut": "A liba karámja egész éjjel zárva volt",
+      "laundryChewed": "Valaki megrágta az inget a szárítókötélen",
+      "wellBucketDown": "A kút vödre le van eresztve",
+      "grainTrail": "Magok nyoma az ösvényen",
+      "cabbageNibbled": "Egy káposztafej meg van rágcsálva",
+      "hoofPrints": "Kis hasított patanyomok",
+      "scarecrowHat": "A madárijesztő elvesztette a kalapját",
+      "fenceBent": "Egy kerítésléc ferdén áll – valaki átugrott rajta",
+      "wateringCanTipped": "A locsolókanna fel van borulva",
+      "sunflowerBent": "A napraforgó meghajlott",
+      "bellInHay": "Egy aranycsengő piros szalagon a szénában",
+      "ladderRungBroken": "A létra egyik foka eltört",
+      "milkSpilled": "A tejesvödör kiborult",
+      "troughEmpty": "A ló zabja eltűnt a jászolból",
+      "chickensFound": "Megvannak a tyúkok – magot csipegetnek a réten!",
+      "sackEmpty": "Egy üres magos zsák a fűben",
+      "grainOnBeard": "Magok a kecske orrán",
+      "daisiesEaten": "A százszorszépek tőből le vannak legelve",
+      "basketTipped": "A bogyós kosár fel van borulva",
+      "plankMoved": "A pallóhíd egyik deszkája elmozdult"
     }
   },
   "secret": {

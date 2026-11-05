@@ -45,7 +45,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `transform.ts` (`PictureTransform`, `docs/mirror-rotate-feature.md`: picture B of `Level.transformB` shown mirrored or
   turned inside the svg — zones stay in scene coordinates, taps go back through `inverseTransformPoint`, the shared zoom
   shows the same scene part on both; single player only (`GameScene`), not in calm mode (`MODE_RULES.<mode>.transformB`), set by `transformBOf` in `difficulty.ts` for the last
-  five levels of every world, "travel" and "detective", alternating mirror-x / rotate-180; the HUD shows `TransformChip`
+  five levels of every world and "travel" and the hardest "detective" case (526–530), alternating mirror-x / rotate-180; the HUD shows `TransformChip`
   and, until such a level is completed, a warning note),
   `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
   `hit-test.ts`, `anachronism.ts`, `anachronism-scene.ts` ("find the odd one out", `docs/anachronism-mode.md`: screen →
@@ -85,14 +85,17 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
   world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
   `/travel/passport`; open and paid like "time" (first 3 free);
-  `detective/` — "detective story" (`docs/detective-mode.md`): levels 501–530 of chapter `detective` in 6 cases of 5 scenes
+  `detective/` — "detective story" (`docs/detective-mode.md`): levels 501–535 of chapter `detective` in 7 cases of 5 scenes
   (`cases.ts`: suspects, culprit and `fits` — the suspects each clue fits; only the culprit fits all, `npm test` checks it;
   portraits in `suspects.ts`), written with `detectiveLevel({ id, case, title, parTimeSec, scene })` whose `clue(key, x, y, r, a, b)`
   is `diff` plus the clue text key (`Level.detective`: case, clue per difference, i18n `detective.clueTexts.<key>`); A = before,
-  B = after; 5 → 6 → 7 clues, then the three harder cases (516–530) 8 → 9 → 10; played by `LevelView` (a found clue
+  B = after; 5 → 6 → 7 clues, then the three harder cases (516–530) 8 → 9 → 10; 531–535 "The missing chickens" (case `chickens`,
+  6 clues, listed first in `CASES`): a village girl's chickens are gone — she is in every scene, each time in another outfit
+  (`Outfit`), drawn with her animals and her village yard by `detective/village.ts` (`villageGirl`); played by `LevelView` (a found clue
   pops up, the result dialog lists the scene's clues), listed
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
-  cases in `progress.solvedCases`); the first case is free (`Chapter.freeLevels`), the rest need the purchase;
+  cases in `progress.solvedCases`); the first case and "The missing chickens" are free (`Chapter.free` ranges; a free case opens
+  without the case before it, `progress.isReached`), the rest need the purchase;
   `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),

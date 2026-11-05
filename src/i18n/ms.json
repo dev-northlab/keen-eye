@@ -78,6 +78,11 @@
         "ending": "Rupa-rupanya si pelancong! Ketika berundur untuk swafoto, dia terlanggar pasu itu dan bergegas keluar membeli gam. Kesan kasut sukan, penutup kanta, tali yang putus dan tongkat swafoto menceritakan segalanya. Si pelancong meminta maaf dan membantu melekatkan semula pasu itu.",
         "intro": "Pasu biru terkenal milik muzium pecah berkecai. Seseorang telah menjatuhkannya lalu menyelinap pergi. Ikut petunjuk di seluruh muzium.",
         "title": "Pasu yang pecah"
+      },
+      "chickens": {
+        "title": "Ayam-ayam yang hilang",
+        "intro": "Pagi tadi seorang gadis kampung datang untuk memberi makan ayam-ayamnya — tetapi reban kosong dan pintunya terbuka! Cari petunjuk di halaman rumahnya dan ketahui siapa yang melepaskan ayam-ayam itu.",
+        "ending": "Rupa-rupanya kambing! Ia mengangkat selak reban dengan tanduknya untuk mendapatkan bijirin dan menjatuhkan guni, lalu ayam-ayam mengikut bijirin yang bertaburan hingga ke padang rumput. Kesan kuku, locengnya yang hilang dan bijirin di muncungnya membongkar rahsianya. Semua ayam selamat, dan reban kini ada selak baharu."
       }
     },
     "clueTexts": {
@@ -274,7 +279,34 @@
       "windowLit": "Lampu di tingkap telah menyala",
       "windowOpen": "Tingkap terbuka",
       "windowShut": "Tingkap tertutup rapat – tiada apa yang terbang masuk",
-      "yetiPrints": "Kesan tapak kaki besar berbulu melalui tepi pagar – yeti tidak pernah masuk"
+      "yetiPrints": "Kesan tapak kaki besar berbulu melalui tepi pagar – yeti tidak pernah masuk",
+      "chickensGone": "Ayam-ayam hilang dari tempat bertenggek",
+      "coopDoorOpen": "Pintu reban terbuka",
+      "eggsLeft": "Telur masih di dalam sarang — rubah tentu akan mengambilnya",
+      "grainSpilled": "Guni bijirin terbalik",
+      "whiteFur": "Segumpal bulu putih pada pagar",
+      "featherTrail": "Bulu pelepah putih menghala merentasi rumput",
+      "dogAsleep": "Anjing tidur berantai sepanjang malam — ia tidak sampai ke reban",
+      "goosePenShut": "Kandang angsa berkunci sepanjang malam",
+      "laundryChewed": "Seseorang mengunyah baju di ampaian",
+      "wellBucketDown": "Baldi perigi sudah diturunkan",
+      "grainTrail": "Jejak bijirin di sepanjang lorong",
+      "cabbageNibbled": "Sebiji kubis digigit",
+      "hoofPrints": "Kesan kuku belah yang kecil",
+      "scarecrowHat": "Orang-orang sawah kehilangan topinya",
+      "fenceBent": "Sebilah pagar senget — ada yang melompat",
+      "wateringCanTipped": "Penyiram terbalik",
+      "sunflowerBent": "Bunga matahari bengkok",
+      "bellInHay": "Loceng emas kecil berreben merah di dalam jerami",
+      "ladderRungBroken": "Satu anak tangga patah",
+      "milkSpilled": "Baldi susu tumpah",
+      "troughEmpty": "Oat kuda hilang dari palung",
+      "chickensFound": "Ayam-ayam dijumpai — sedang mematuk bijirin di padang rumput!",
+      "sackEmpty": "Guni bijirin kosong di atas rumput",
+      "grainOnBeard": "Bijirin di muncung kambing",
+      "daisiesEaten": "Bunga daisi dimakan hingga ke batangnya",
+      "basketTipped": "Bakul buah beri terbalik",
+      "plankMoved": "Sebilah papan titi beralih tempat"
     },
     "clues": "Petunjuk: {n} daripada {total}",
     "findAll": "Cari petunjuk dalam setiap adegan, kemudian namakan pesalahnya.",
@@ -318,7 +350,11 @@
       "snowboarder": "Pemain papan luncur salji",
       "strongman": "Lelaki kuat",
       "tourist": "Pelancong",
-      "yeti": "Yeti"
+      "yeti": "Yeti",
+      "fox": "Rubah",
+      "goose": "Angsa",
+      "yardDog": "Anjing",
+      "goat": "Kambing"
     },
     "suspectsTitle": "Suspek",
     "task": "Selesaikan kes",
@@ -718,7 +754,12 @@
     "woodlandLake": "Tasik hutan yang tenang",
     "woodpecker": "Burung belatuk",
     "yardNight": "Taman pada waktu petang",
-    "yerevan": "Yerevan"
+    "yerevan": "Yerevan",
+    "chickensCoop": "Reban ayam",
+    "chickensYard": "Halaman kampung",
+    "chickensGarden": "Kebun sayur",
+    "chickensBarn": "Bangsal",
+    "chickensMeadow": "Padang rumput di tepi anak sungai"
   },
   "map": {
     "level": "Tahap {n}",

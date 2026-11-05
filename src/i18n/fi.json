@@ -78,6 +78,11 @@
         "ending": "Se oli turisti! Turisti otti askeleen taaksepäin selfietä varten, kaatoi maljakon ja kiiruhti ostamaan liimaa. Lenkkarinjäljet, objektiivin suojus, revennyt hihna ja selfiekeppi kertoivat tarinan. Turisti pyysi anteeksi ja auttoi liimaamaan maljakon takaisin yhteen.",
         "intro": "Museon kuuluisa sininen maljakko on sirpaleina. Joku kaatoi sen ja livahti pois. Seuraa johtolankoja museon läpi.",
         "title": "Rikkoutunut maljakko"
+      },
+      "chickens": {
+        "title": "Kadonneet kanat",
+        "intro": "Aamulla kylän tyttö tuli ruokkimaan kanojaan – mutta kanala on tyhjä ja ovi auki! Etsi johtolankoja hänen pihaltaan ja selvitä, kuka päästi kanat karkuun.",
+        "ending": "Se oli vuohi! Se nosti sarvillaan kanalan salpaa päästäkseen jyviin ja kaatoi säkin, ja kanat seurasivat varisseita jyviä aina niitylle asti. Sorkanjäljet, kadonnut kello ja jyvät turvassa paljastivat sen. Kaikki kanat ovat kunnossa, ja kanalassa on uusi salpa."
       }
     },
     "clueTexts": {
@@ -274,7 +279,34 @@
       "windowLit": "Ikkunaan on syttynyt valo",
       "windowOpen": "Ikkuna on auki",
       "windowShut": "Ikkuna on tiukasti kiinni – mitään ei lentänyt sisään",
-      "yetiPrints": "Valtavat karvaiset jalanjäljet kulkevat aidan ohi – jeti ei koskaan tullut sisään"
+      "yetiPrints": "Valtavat karvaiset jalanjäljet kulkevat aidan ohi – jeti ei koskaan tullut sisään",
+      "chickensGone": "Kanat ovat kadonneet orrelta",
+      "coopDoorOpen": "Kanalan ovi on auki",
+      "eggsLeft": "Munat ovat yhä pesässä – kettu olisi vienyt ne",
+      "grainSpilled": "Jyväsäkki on kaatunut",
+      "whiteFur": "Tupsu valkoista turkkia aidassa",
+      "featherTrail": "Valkoiset höyhenet johtavat nurmen poikki",
+      "dogAsleep": "Koira nukkui ketjussa koko yön – se ei ylety kanalaan",
+      "goosePenShut": "Hanhen aitaus oli lukossa koko yön",
+      "laundryChewed": "Joku on järsinyt pyykkinarulla olevaa paitaa",
+      "wellBucketDown": "Kaivon ämpäri on laskettu alas",
+      "grainTrail": "Jyvien jono polulla",
+      "cabbageNibbled": "Kaalinpäätä on nakerrettu",
+      "hoofPrints": "Pieniä halkinaisia sorkanjälkiä",
+      "scarecrowHat": "Linnunpelätin on hukannut hattunsa",
+      "fenceBent": "Aidan säle on vinossa – joku hyppäsi yli",
+      "wateringCanTipped": "Kastelukannu on kaatunut",
+      "sunflowerBent": "Auringonkukka on taipunut",
+      "bellInHay": "Pieni kultainen kello punaisessa nauhassa heinissä",
+      "ladderRungBroken": "Tikkaiden askelma on katki",
+      "milkSpilled": "Maitoämpäri on kaatunut",
+      "troughEmpty": "Hevosen kaurat ovat kadonneet kaukalosta",
+      "chickensFound": "Kanat löytyivät – ne nokkivat jyviä niityllä!",
+      "sackEmpty": "Tyhjä jyväsäkki nurmikolla",
+      "grainOnBeard": "Jyviä vuohen turvassa",
+      "daisiesEaten": "Päivänkakkarat on syöty varsiin asti",
+      "basketTipped": "Marjakori on kaatunut",
+      "plankMoved": "Pitkospuun lauta on siirtynyt"
     },
     "clues": "Johtolankoja: {n}/{total}",
     "findAll": "Löydä johtolangat joka kohtauksesta ja nimeä sitten syyllinen.",
@@ -318,7 +350,11 @@
       "snowboarder": "Lumilautailija",
       "strongman": "Voimamies",
       "tourist": "Turisti",
-      "yeti": "Jeti"
+      "yeti": "Jeti",
+      "fox": "Kettu",
+      "goose": "Hanhi",
+      "yardDog": "Koira",
+      "goat": "Vuohi"
     },
     "suspectsTitle": "Epäillyt",
     "task": "Ratkaise tapaus",
@@ -718,7 +754,12 @@
     "woodlandLake": "Tyyni metsälampi",
     "woodpecker": "Tikka",
     "yardNight": "Puutarha illalla",
-    "yerevan": "Jerevan"
+    "yerevan": "Jerevan",
+    "chickensCoop": "Kanala",
+    "chickensYard": "Kyläpiha",
+    "chickensGarden": "Kasvimaa",
+    "chickensBarn": "Lato",
+    "chickensMeadow": "Niitty puron varrella"
   },
   "map": {
     "level": "Taso {n}",

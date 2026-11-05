@@ -501,7 +501,12 @@
     "lodgeYard": "마당",
     "lodgeChairlift": "리프트",
     "lodgeSummit": "정상",
-    "treasury": "보물 창고"
+    "treasury": "보물 창고",
+    "chickensCoop": "닭장",
+    "chickensYard": "시골 마당",
+    "chickensGarden": "채소밭",
+    "chickensBarn": "헛간",
+    "chickensMeadow": "시냇가 풀밭"
   },
   "mode": {
     "label": "모드",
@@ -714,6 +719,11 @@
         "title": "산장의 수수께끼",
         "intro": "큰 경주 전날 밤, 눈송이 모양의 황금 트로피가 산장 벽난로 선반에서 사라졌어요. 모두 예티를 의심하지만, 정말 예티일까요? 단서를 따라 산을 올라가 보세요.",
         "ending": "범인은 스키 타는 소녀였어요! 우승이 너무 간절해서 밤에 트로피와 사진을 찍으러 정상까지 올라갔다가 눈사람 손에 두고 왔대요. 스키 자국, 폴 구멍, 잊고 간 스키 폴이 결정적이었죠. 소녀는 트로피를 돌려주고 경주에서 정정당당하게 우승했어요."
+      },
+      "chickens": {
+        "title": "사라진 닭들",
+        "intro": "오늘 아침 시골 소녀가 닭들에게 모이를 주러 왔는데, 닭장은 텅 비어 있고 문이 열려 있었어요! 마당에서 단서를 찾아 누가 닭들을 풀어 줬는지 밝혀내세요.",
+        "ending": "범인은 염소였어요! 곡식을 먹으려고 뿔로 닭장 빗장을 들어 올리고 자루를 넘어뜨렸고, 닭들은 쏟아진 곡식을 따라 풀밭까지 가 버렸어요. 발굽 자국, 잃어버린 방울, 코에 묻은 곡식이 염소를 들키게 했어요. 닭들은 모두 무사하고, 닭장에는 새 빗장이 달렸어요."
       }
     },
     "suspects": {
@@ -739,7 +749,11 @@
       "yeti": "예티",
       "skier": "스키 타는 소녀",
       "snowboarder": "스노보더",
-      "innkeeper": "산장 주인"
+      "innkeeper": "산장 주인",
+      "fox": "여우",
+      "goose": "거위",
+      "yardDog": "강아지",
+      "goat": "염소"
     },
     "clueTexts": {
       "cakeGone": "케이크가 없어졌어요 — 접시엔 부스러기뿐",
@@ -935,7 +949,34 @@
       "snowmanScarf": "눈사람이 빨간 목도리를 둘렀어요",
       "tripodMarks": "삼각대가 남긴 작은 자국 세 개",
       "bootPrintsUp": "부츠 발자국이 정상까지 이어져요",
-      "skiPoleLeft": "눈에 꽂힌 스키 폴"
+      "skiPoleLeft": "눈에 꽂힌 스키 폴",
+      "chickensGone": "횃대에서 닭들이 사라졌어요",
+      "coopDoorOpen": "닭장 문이 열려 있어요",
+      "eggsLeft": "알이 아직 둥지에 있어요 — 여우라면 가져갔을 거예요",
+      "grainSpilled": "곡식 자루가 넘어져 있어요",
+      "whiteFur": "울타리에 하얀 털 뭉치",
+      "featherTrail": "하얀 깃털이 풀밭을 가로질러 이어져요",
+      "dogAsleep": "강아지는 밤새 사슬에 묶여 잤어요 — 닭장까지 닿지 않아요",
+      "goosePenShut": "거위 우리는 밤새 잠겨 있었어요",
+      "laundryChewed": "누군가 빨랫줄의 셔츠를 씹었어요",
+      "wellBucketDown": "우물 두레박이 내려가 있어요",
+      "grainTrail": "길을 따라 이어진 곡식 자국",
+      "cabbageNibbled": "양배추 한 통이 갉아 먹혔어요",
+      "hoofPrints": "작게 갈라진 발굽 자국",
+      "scarecrowHat": "허수아비가 모자를 잃어버렸어요",
+      "fenceBent": "울타리 널빤지 하나가 기울었어요 — 누군가 뛰어넘었어요",
+      "wateringCanTipped": "물뿌리개가 넘어져 있어요",
+      "sunflowerBent": "해바라기가 꺾여 있어요",
+      "bellInHay": "건초 속에 빨간 리본이 달린 작은 금방울",
+      "ladderRungBroken": "사다리 가로대 하나가 부러졌어요",
+      "milkSpilled": "우유 양동이가 엎질러졌어요",
+      "troughEmpty": "말 여물통에서 귀리가 사라졌어요",
+      "chickensFound": "닭들을 찾았어요 — 풀밭에서 곡식을 쪼아 먹고 있어요!",
+      "sackEmpty": "풀밭 위의 빈 곡식 자루",
+      "grainOnBeard": "염소 코에 묻은 곡식",
+      "daisiesEaten": "데이지가 줄기만 남기고 먹혔어요",
+      "basketTipped": "산딸기 바구니가 넘어져 있어요",
+      "plankMoved": "작은 다리의 널빤지 하나가 어긋나 있어요"
     }
   },
   "secret": {

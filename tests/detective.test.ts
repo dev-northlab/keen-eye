@@ -10,21 +10,31 @@ import { allLevels, levelById } from '../src/levels/index.ts'
 const cluesOf = (caseId: string) => caseLevels(caseId).flatMap((l) => l.detective!.clues)
 
 describe('"detective" mode (docs/detective-mode.md)', () => {
-  test('6 cases of 5 scenes from 501: 5, 6, 7, 8, 9, then 10 clues per scene', () => {
-    assert.deepEqual(detectiveLevels.map((l) => l.id), Array.from({ length: 30 }, (_, i) => 501 + i))
-    assert.deepEqual(CASES.map((c) => c.id), ['cake', 'cheese', 'vase', 'circus', 'train', 'lodge'])
-    CASES.forEach((c, i) => {
+  test('7 cases of 5 scenes from 501: 5, 6, 7, 8, 9, 10 clues per scene, then "The missing chickens" with 6, listed first', () => {
+    assert.deepEqual(detectiveLevels.map((l) => l.id), Array.from({ length: 35 }, (_, i) => 501 + i))
+    assert.deepEqual(CASES.map((c) => c.id), ['chickens', 'cake', 'cheese', 'vase', 'circus', 'train', 'lodge'])
+    const plan: Record<string, [first: number, clues: number]> = {
+      cake: [501, 5],
+      cheese: [506, 6],
+      vase: [511, 7],
+      circus: [516, 8],
+      train: [521, 9],
+      lodge: [526, 10],
+      chickens: [531, 6],
+    }
+    for (const c of CASES) {
+      const [first, clues] = plan[c.id]
       const levels = caseLevels(c.id)
-      assert.deepEqual(levels, detectiveLevels.slice(i * 5, i * 5 + 5), c.id)
+      assert.deepEqual(levels, detectiveLevels.filter((l) => l.id >= first && l.id < first + 5), c.id)
       for (const level of levels) {
         assert.equal(level.chapter, DETECTIVE_CHAPTER.id)
         assert.equal(chapterOf(level.id), DETECTIVE_CHAPTER)
         assert.equal(levelById(level.id), level)
-        assert.equal(level.differences.length, 5 + i, `level ${level.id}`)
+        assert.equal(level.differences.length, clues, `level ${level.id}`)
         assert.equal(level.detective!.clues.length, level.differences.length, `level ${level.id}`)
         assert.equal(new Set(level.detective!.clues).size, level.detective!.clues.length, `level ${level.id}: a clue twice`)
       }
-    })
+    }
   })
 
   test('only "detective" levels have a case', () => {
@@ -44,16 +54,17 @@ describe('"detective" mode (docs/detective-mode.md)', () => {
     }
   })
 
-  test('the first case is free, the others need the full game', () => {
-    // isFreeLevel (stores/purchase.ts) frees the first `freeLevels` levels of a category.
-    const [first] = caseLevels(CASES[0].id)
-    assert.equal(first.id, DETECTIVE_CHAPTER.ranges[0][0])
-    assert.equal(DETECTIVE_CHAPTER.freeLevels, caseLevels(CASES[0].id).length)
+  test('the first case and "The missing chickens" are free, the others need the full game', () => {
+    // isFreeLevel (stores/purchase.ts) frees the category's `free` ranges; a free case opens from the start (progress.isReached).
+    const range = (id: string) => {
+      const scenes = caseLevels(id)
+      return [scenes[0].id, scenes[scenes.length - 1].id]
+    }
+    assert.deepEqual(DETECTIVE_CHAPTER.free, [range('cake'), range('chickens')])
   })
 
   test('"next" stays in the case; the menu leads to the case', () => {
-    const [cake] = CASES
-    const scenes = caseLevels(cake.id)
+    const scenes = caseLevels('cake')
     assert.equal(nextLevel(scenes[0]), scenes[1])
     assert.equal(nextLevel(scenes[4]), undefined)
     assert.deepEqual(levelsScreen(scenes[2]), { name: 'case', params: { case: 'cake' } })

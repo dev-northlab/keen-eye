@@ -32,8 +32,13 @@ import level527 from './level-527.ts'
 import level528 from './level-528.ts'
 import level529 from './level-529.ts'
 import level530 from './level-530.ts'
+import level531 from './level-531.ts'
+import level532 from './level-532.ts'
+import level533 from './level-533.ts'
+import level534 from './level-534.ts'
+import level535 from './level-535.ts'
 
-export const detectiveLevels: Level[] = [level501, level502, level503, level504, level505, level506, level507, level508, level509, level510, level511, level512, level513, level514, level515, level516, level517, level518, level519, level520, level521, level522, level523, level524, level525, level526, level527, level528, level529, level530]
+export const detectiveLevels: Level[] = [level501, level502, level503, level504, level505, level506, level507, level508, level509, level510, level511, level512, level513, level514, level515, level516, level517, level518, level519, level520, level521, level522, level523, level524, level525, level526, level527, level528, level529, level530, level531, level532, level533, level534, level535]
 
 /** The scenes of a case, in play order. */
 export const caseLevels = (caseId: string) => detectiveLevels.filter((l) => l.detective!.case === caseId)

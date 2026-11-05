@@ -15,6 +15,42 @@ function detectiveCase(id: string, suspects: string[], culprit: string, fits: Re
 }
 
 export const CASES: DetectiveCase[] = [
+  // The village girl's case (levels 531–535, free, listed first): her chickens are gone. The eggs were left,
+  // so not the fox; the goose was bolted in its pen and the dog slept on its chain all night; hoof
+  // prints, the bell in the hay and grain on the beard belong to the goat, who lifted the latch for
+  // the grain — the chickens followed the spilt grain to the meadow.
+  detectiveCase('chickens', ['fox', 'goose', 'yardDog', 'goat'], 'goat', {
+    chickensGone: 'all',
+    coopDoorOpen: 'all',
+    eggsLeft: ['goose', 'yardDog', 'goat'],
+    grainSpilled: 'all',
+    whiteFur: ['yardDog', 'goat'],
+    featherTrail: 'all',
+    dogAsleep: ['fox', 'goose', 'goat'],
+    goosePenShut: ['fox', 'yardDog', 'goat'],
+    laundryChewed: ['yardDog', 'goat'],
+    gateOpen: 'all',
+    wellBucketDown: 'all',
+    grainTrail: 'all',
+    cabbageNibbled: ['goose', 'goat'],
+    hoofPrints: ['goat'],
+    scarecrowHat: 'all',
+    fenceBent: ['fox', 'goat'],
+    wateringCanTipped: 'all',
+    sunflowerBent: 'all',
+    hayScattered: 'all',
+    bellInHay: ['goat'],
+    ladderRungBroken: 'all',
+    lanternOut: 'all',
+    milkSpilled: 'all',
+    troughEmpty: 'all',
+    chickensFound: 'all',
+    sackEmpty: 'all',
+    grainOnBeard: ['goat'],
+    daisiesEaten: ['goose', 'goat'],
+    basketTipped: 'all',
+    plankMoved: 'all',
+  }),
   // Paw prints and fur rule out the people; big muddy tracks rule out the cat.
   detectiveCase('cake', ['cat', 'cook', 'neighbour', 'dog'], 'dog', {
     cakeGone: 'all',

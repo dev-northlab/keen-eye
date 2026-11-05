@@ -501,7 +501,12 @@
     "lodgeYard": "Curtea",
     "lodgeChairlift": "Telescaunul",
     "lodgeSummit": "Vârful",
-    "treasury": "Camera comorii"
+    "treasury": "Camera comorii",
+    "chickensCoop": "Coteț",
+    "chickensYard": "Curte de la țară",
+    "chickensGarden": "Grădina de legume",
+    "chickensBarn": "Hambar",
+    "chickensMeadow": "Pajiște lângă pârâu"
   },
   "mode": {
     "label": "Mod",
@@ -714,6 +719,11 @@
         "title": "Misterul cabanei de munte",
         "intro": "În seara dinaintea marii curse, trofeul de aur în formă de fulg a dispărut de pe polița șemineului. Toți îl bănuiesc pe yeti — dar oare chiar el a fost? Urmează indiciile în sus pe munte.",
         "ending": "A fost schioarea! Visa atât de mult la victorie încât noaptea a urcat pe vârf să-și facă o poză cu trofeul — și l-a uitat în mâna omului de zăpadă. Urmele de schiuri, găurile de bețe și un băț uitat au dat-o de gol. A adus trofeul înapoi și a câștigat cursa cinstit."
+      },
+      "chickens": {
+        "title": "Găinile dispărute",
+        "intro": "Azi-dimineață o fată de la țară a venit să-și hrănească găinile – dar cotețul e gol și ușa e deschisă! Caută indicii prin curtea ei și află cine a dat drumul găinilor.",
+        "ending": "A fost capra! A ridicat cu cornițele zăvorul cotețului ca să ajungă la grăunțe și a răsturnat sacul, iar găinile au urmat grăunțele împrăștiate până pe pajiște. Au dat-o de gol urmele de copite, clopoțelul pierdut și grăunțele de pe bot. Toate găinile sunt teafere, iar cotețul are un zăvor nou."
       }
     },
     "suspects": {
@@ -739,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Schioare",
       "snowboarder": "Snowboarder",
-      "innkeeper": "Cabaniera"
+      "innkeeper": "Cabaniera",
+      "fox": "Vulpea",
+      "goose": "Gâsca",
+      "yardDog": "Câinele",
+      "goat": "Capra"
     },
     "clueTexts": {
       "cakeGone": "Tortul a dispărut — doar firimituri pe farfurie",
@@ -935,7 +949,34 @@
       "snowmanScarf": "Omul de zăpadă poartă un fular roșu",
       "tripodMarks": "Trei urme mici de trepied",
       "bootPrintsUp": "Urme de bocanci urcă spre vârf",
-      "skiPoleLeft": "Un băț de schi înfipt în zăpadă"
+      "skiPoleLeft": "Un băț de schi înfipt în zăpadă",
+      "chickensGone": "Găinile au dispărut de pe stinghie",
+      "coopDoorOpen": "Ușa cotețului e deschisă",
+      "eggsLeft": "Ouăle sunt încă în cuib – o vulpe le-ar fi luat",
+      "grainSpilled": "Sacul cu grăunțe e răsturnat",
+      "whiteFur": "Un smoc de blană albă pe gard",
+      "featherTrail": "Pene albe duc prin iarbă",
+      "dogAsleep": "Câinele a dormit legat în lanț toată noaptea – nu ajunge la coteț",
+      "goosePenShut": "Țarcul gâștei a fost încuiat toată noaptea",
+      "laundryChewed": "Cineva a ronțăit cămașa de pe sârma de rufe",
+      "wellBucketDown": "Găleata fântânii a fost coborâtă",
+      "grainTrail": "O dâră de grăunțe pe cărare",
+      "cabbageNibbled": "O varză e ronțăită",
+      "hoofPrints": "Urme mici de copite despicate",
+      "scarecrowHat": "Sperietoarea și-a pierdut pălăria",
+      "fenceBent": "O șipcă a gardului e strâmbă – cineva a sărit peste",
+      "wateringCanTipped": "Stropitoarea e răsturnată",
+      "sunflowerBent": "Floarea-soarelui e îndoită",
+      "bellInHay": "Un clopoțel auriu pe o panglică roșie în fân",
+      "ladderRungBroken": "O treaptă a scării e ruptă",
+      "milkSpilled": "Găleata cu lapte e vărsată",
+      "troughEmpty": "Ovăzul calului a dispărut din iesle",
+      "chickensFound": "Găinile au fost găsite – ciugulesc grăunțe pe pajiște!",
+      "sackEmpty": "Un sac de grăunțe gol în iarbă",
+      "grainOnBeard": "Grăunțe pe botul caprei",
+      "daisiesEaten": "Margaretele sunt mâncate până la tulpină",
+      "basketTipped": "Coșul cu fructe de pădure e răsturnat",
+      "plankMoved": "O scândură a podețului e mutată"
     }
   },
   "secret": {

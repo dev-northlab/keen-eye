@@ -501,7 +501,12 @@
     "lodgeYard": "Hof",
     "lodgeChairlift": "Sessellift",
     "lodgeSummit": "Gipfel",
-    "treasury": "Schatzkammer"
+    "treasury": "Schatzkammer",
+    "chickensCoop": "Hühnerstall",
+    "chickensYard": "Dorfhof",
+    "chickensGarden": "Gemüsegarten",
+    "chickensBarn": "Scheune",
+    "chickensMeadow": "Wiese am Bach"
   },
   "mode": {
     "label": "Modus",
@@ -714,6 +719,11 @@
         "title": "Das Rätsel der Berghütte",
         "intro": "Am Abend vor dem großen Rennen ist der goldene Schneeflocken-Pokal vom Kaminsims der Hütte verschwunden. Alle verdächtigen den Yeti — aber war es wirklich der Yeti? Folge den Spuren den Berg hinauf.",
         "ending": "Es war die Skifahrerin! Sie träumte so sehr vom Sieg, dass sie nachts mit dem Pokal zum Gipfel fuhr, um ein Foto zu machen — und ihn in der Hand des Schneemanns vergaß. Skispuren, Stocklöcher und ein vergessener Skistock haben sie verraten. Sie brachte den Pokal zurück und gewann das Rennen ganz ehrlich."
+      },
+      "chickens": {
+        "title": "Die verschwundenen Hühner",
+        "intro": "Heute Morgen wollte ein Mädchen aus dem Dorf ihre Hühner füttern – doch der Hühnerstall ist leer und die Tür steht offen! Durchsuche ihren Hof nach Hinweisen und finde heraus, wer die Hühner hinausgelassen hat.",
+        "ending": "Es war die Ziege! Sie hob mit ihren Hörnchen den Riegel des Hühnerstalls an, um ans Korn zu kommen, und warf den Sack um – und die Hühner folgten dem verstreuten Korn bis auf die Wiese. Hufspuren, ihr verlorenes Glöckchen und Körner an ihrem Maul haben sie verraten. Alle Hühner sind wohlauf, und der Stall hat einen neuen Riegel."
       }
     },
     "suspects": {
@@ -739,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Skifahrerin",
       "snowboarder": "Snowboarder",
-      "innkeeper": "Hüttenwirtin"
+      "innkeeper": "Hüttenwirtin",
+      "fox": "Fuchs",
+      "goose": "Gans",
+      "yardDog": "Hund",
+      "goat": "Ziege"
     },
     "clueTexts": {
       "cakeGone": "Der Kuchen ist weg — nur Krümel auf dem Teller",
@@ -935,7 +949,34 @@
       "snowmanScarf": "Der Schneemann trägt einen roten Schal",
       "tripodMarks": "Drei kleine Abdrücke eines Stativs",
       "bootPrintsUp": "Stiefelspuren führen hinauf zum Gipfel",
-      "skiPoleLeft": "Ein Skistock steckt im Schnee"
+      "skiPoleLeft": "Ein Skistock steckt im Schnee",
+      "chickensGone": "Die Hühner sind von der Stange verschwunden",
+      "coopDoorOpen": "Die Tür des Hühnerstalls steht offen",
+      "eggsLeft": "Die Eier liegen noch im Nest – ein Fuchs hätte sie mitgenommen",
+      "grainSpilled": "Der Kornsack ist umgekippt",
+      "whiteFur": "Ein Büschel weißes Fell am Zaun",
+      "featherTrail": "Weiße Federn führen über das Gras",
+      "dogAsleep": "Der Hund schlief die ganze Nacht an der Kette – bis zum Stall reicht sie nicht",
+      "goosePenShut": "Das Gänsegehege war die ganze Nacht abgeschlossen",
+      "laundryChewed": "Jemand hat am Hemd auf der Wäscheleine gekaut",
+      "wellBucketDown": "Der Brunneneimer wurde hinabgelassen",
+      "grainTrail": "Eine Spur aus Körnern auf dem Weg",
+      "cabbageNibbled": "Ein Kohlkopf ist angeknabbert",
+      "hoofPrints": "Kleine gespaltene Hufspuren",
+      "scarecrowHat": "Die Vogelscheuche hat ihren Hut verloren",
+      "fenceBent": "Eine Zaunlatte steht schief – jemand ist darübergesprungen",
+      "wateringCanTipped": "Die Gießkanne ist umgekippt",
+      "sunflowerBent": "Die Sonnenblume ist umgeknickt",
+      "bellInHay": "Ein goldenes Glöckchen an einem roten Band im Heu",
+      "ladderRungBroken": "Eine Leitersprosse ist gebrochen",
+      "milkSpilled": "Der Milcheimer ist ausgelaufen",
+      "troughEmpty": "Der Hafer des Pferdes ist aus dem Trog verschwunden",
+      "chickensFound": "Die Hühner sind gefunden – sie picken Körner auf der Wiese!",
+      "sackEmpty": "Ein leerer Kornsack im Gras",
+      "grainOnBeard": "Körner am Maul der Ziege",
+      "daisiesEaten": "Die Gänseblümchen sind bis auf die Stiele abgefressen",
+      "basketTipped": "Der Beerenkorb ist umgekippt",
+      "plankMoved": "Ein Brett des Stegs ist verrutscht"
     }
   },
   "secret": {

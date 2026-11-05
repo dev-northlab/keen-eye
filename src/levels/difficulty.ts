@@ -77,6 +77,8 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 516, to: 520, differences: [8, 8], motion: [0, 0], minRadius: 20, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
   { from: 521, to: 525, differences: [9, 9], motion: [0, 0], minRadius: 18, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
   { from: 526, to: 530, differences: [10, 10], motion: [0, 0], minRadius: 18, minGap: 56, kinds: [...EASY, 'shift', 'rotate'] },
+  // 531–535: "The missing chickens", a free case open from the start for newcomers, 6 clues per scene.
+  { from: 531, to: 535, differences: [6, 6], motion: [0, 0], minRadius: 22, minGap: 56, kinds: [...EASY, 'shift'] },
   // "Treasury" (docs/hidden-item-feature.md): the bonus level for all the keys, 8–10 differences, some moving.
   { from: 900, to: 900, differences: [8, 10], motion: [2, 3], minRadius: 20, minGap: 56, kinds: HARD },
 ]
@@ -101,7 +103,7 @@ function harder(first: number, floor: number): Difficulty[] {
 
 /**
  * Picture B shown mirrored or turned (docs/mirror-rotate-feature.md): the last five levels of every world
- * and of "travel" and "detective", alternating mirror-x and rotate-180. Not "time" and "memory" (hard
+ * and of "travel", and the hardest "detective" case (526–530), alternating mirror-x and rotate-180. Not "time" and "memory" (hard
  * enough already), nor the bonus "treasury".
  */
 const TRANSFORMED_B: [from: number, to: number][] = [

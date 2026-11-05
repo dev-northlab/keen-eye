@@ -78,6 +78,11 @@
         "ending": "是遊客做的！為了自拍往後退時，他碰倒了花瓶，然後跑去買膠水。運動鞋印、鏡頭蓋、扯斷的背帶和自拍棒說明了一切。遊客道了歉，並幫忙把花瓶黏好了。",
         "intro": "博物館那只著名的藍色花瓶摔得粉碎。有人把它碰倒後悄悄溜走了。跟著線索走遍博物館吧。",
         "title": "打破的花瓶"
+      },
+      "chickens": {
+        "title": "失蹤的雞",
+        "intro": "今天早上，一個鄉下姑娘去餵她的雞，可是雞舍空空的，門也開著！在她的院子裡尋找線索，查出是誰把雞放了出去。",
+        "ending": "是山羊！牠用角頂開雞舍的門閂去吃穀子，還撞翻了袋子，雞群就跟著撒落的穀粒一路走到了草地上。蹄印、牠弄丟的鈴鐺和嘴上的穀粒出賣了牠。所有的雞都平安無事，雞舍也換上了新門閂。"
       }
     },
     "clueTexts": {
@@ -274,7 +279,34 @@
       "windowLit": "窗戶裡亮起了燈",
       "windowOpen": "窗戶開著",
       "windowShut": "窗戶關得緊緊的——沒有東西飛進來",
-      "yetiPrints": "巨大的毛茸茸腳印從籬笆旁走過——雪怪從沒進來"
+      "yetiPrints": "巨大的毛茸茸腳印從籬笆旁走過——雪怪從沒進來",
+      "chickensGone": "棲木上的雞不見了",
+      "coopDoorOpen": "雞舍的門開著",
+      "eggsLeft": "蛋還在窩裡——要是狐狸早就叼走了",
+      "grainSpilled": "穀子袋被撞翻了",
+      "whiteFur": "籬笆上掛著一撮白毛",
+      "featherTrail": "白色羽毛一路穿過草地",
+      "dogAsleep": "狗整夜拴著鏈子睡覺——搆不到雞舍",
+      "goosePenShut": "鵝圈整夜都鎖著",
+      "laundryChewed": "有人啃了曬衣繩上的襯衫",
+      "wellBucketDown": "井裡的水桶放下去了",
+      "grainTrail": "小路上有一串穀粒",
+      "cabbageNibbled": "一顆白菜被啃過",
+      "hoofPrints": "小小的分趾蹄印",
+      "scarecrowHat": "稻草人的帽子不見了",
+      "fenceBent": "一根籬笆板歪了——有人跳了過去",
+      "wateringCanTipped": "澆水壺倒了",
+      "sunflowerBent": "向日葵彎下了腰",
+      "bellInHay": "乾草裡有一個繫著紅絲帶的小金鈴",
+      "ladderRungBroken": "梯子的一根橫檔斷了",
+      "milkSpilled": "牛奶桶灑了",
+      "troughEmpty": "馬槽裡的燕麥不見了",
+      "chickensFound": "找到雞了——牠們在草地上啄穀粒！",
+      "sackEmpty": "草地上有一個空穀子袋",
+      "grainOnBeard": "山羊嘴上沾著穀粒",
+      "daisiesEaten": "雛菊被啃得只剩莖了",
+      "basketTipped": "漿果籃翻倒了",
+      "plankMoved": "小木橋的一塊木板挪了位置"
     },
     "clues": "線索：{n}/{total}",
     "findAll": "找出所有場景中的線索，才能指出真兇。",
@@ -318,7 +350,11 @@
       "snowboarder": "單板滑雪者",
       "strongman": "大力士",
       "tourist": "遊客",
-      "yeti": "雪怪"
+      "yeti": "雪怪",
+      "fox": "狐狸",
+      "goose": "鵝",
+      "yardDog": "狗",
+      "goat": "山羊"
     },
     "suspectsTitle": "嫌疑人",
     "task": "破案",
@@ -718,7 +754,12 @@
     "woodlandLake": "靜謐林中湖",
     "woodpecker": "啄木鳥",
     "yardNight": "花園的傍晚",
-    "yerevan": "葉里溫"
+    "yerevan": "葉里溫",
+    "chickensCoop": "雞舍",
+    "chickensYard": "鄉村院子",
+    "chickensGarden": "菜園",
+    "chickensBarn": "穀倉",
+    "chickensMeadow": "小溪邊的草地"
   },
   "map": {
     "level": "第 {n} 關",

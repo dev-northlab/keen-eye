@@ -501,7 +501,12 @@
     "lodgeYard": "Avlu",
     "lodgeChairlift": "Telesiyej",
     "lodgeSummit": "Zirve",
-    "treasury": "Hazine odası"
+    "treasury": "Hazine odası",
+    "chickensCoop": "Kümes",
+    "chickensYard": "Köy avlusu",
+    "chickensGarden": "Sebze bahçesi",
+    "chickensBarn": "Ahır",
+    "chickensMeadow": "Dere kenarındaki çayır"
   },
   "mode": {
     "label": "Mod",
@@ -714,6 +719,11 @@
         "title": "Dağ evinin gizemi",
         "intro": "Büyük yarıştan önceki gece, kar tanesi biçimindeki altın kupa dağ evinin şömine rafından kayboldu. Herkes yetiyi suçluyor — ama gerçekten yeti mi? İpuçlarını dağın yukarısına kadar takip et.",
         "ending": "Kayakçı kızmış! Kazanmayı o kadar çok istiyordu ki gece kupayla fotoğraf çektirmek için zirveye çıktı — ve kupayı kardan adamın elinde unuttu. Kayak izleri, baton delikleri ve unutulmuş bir baton onu ele verdi. Kupayı geri getirdi ve yarışı dürüstçe kazandı."
+      },
+      "chickens": {
+        "title": "Kaybolan tavuklar",
+        "intro": "Bu sabah köylü bir kız tavuklarını beslemeye geldi ama kümes boş ve kapısı açık! Avlusunda ipucu ara ve tavukları kimin dışarı saldığını bul.",
+        "ending": "Keçiymiş! Yeme ulaşmak için boynuzlarıyla kümesin mandalını kaldırmış ve çuvalı devirmiş; tavuklar da dökülen yemin peşinden ta çayıra kadar gitmiş. Toynak izleri, kaybolan çıngırağı ve burnundaki yem onu ele verdi. Bütün tavuklar sağ salim, kümesin de yeni bir mandalı var."
       }
     },
     "suspects": {
@@ -739,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Kayakçı kız",
       "snowboarder": "Snowboardcu",
-      "innkeeper": "Dağ evinin sahibi"
+      "innkeeper": "Dağ evinin sahibi",
+      "fox": "Tilki",
+      "goose": "Kaz",
+      "yardDog": "Köpek",
+      "goat": "Keçi"
     },
     "clueTexts": {
       "cakeGone": "Pasta yok — tabakta sadece kırıntılar var",
@@ -935,7 +949,34 @@
       "snowmanScarf": "Kardan adam kırmızı bir atkı takmış",
       "tripodMarks": "Bir tripodun üç küçük izi",
       "bootPrintsUp": "Zirveye çıkan bot izleri",
-      "skiPoleLeft": "Kara saplanmış bir kayak batonu"
+      "skiPoleLeft": "Kara saplanmış bir kayak batonu",
+      "chickensGone": "Tavuklar tünekten kaybolmuş",
+      "coopDoorOpen": "Kümesin kapısı açık",
+      "eggsLeft": "Yumurtalar hâlâ yuvada – tilki olsa alırdı",
+      "grainSpilled": "Yem çuvalı devrilmiş",
+      "whiteFur": "Çitte bir tutam beyaz tüy",
+      "featherTrail": "Beyaz tüyler çimenlerin üzerinden uzaklaşıyor",
+      "dogAsleep": "Köpek bütün gece zincirinde uyudu – kümese yetişemez",
+      "goosePenShut": "Kazın ağılı bütün gece kilitliydi",
+      "laundryChewed": "Biri çamaşır ipindeki gömleği çiğnemiş",
+      "wellBucketDown": "Kuyunun kovası aşağı sarkıtılmış",
+      "grainTrail": "Patika boyunca bir yem izi",
+      "cabbageNibbled": "Bir lahana kemirilmiş",
+      "hoofPrints": "Küçük çatal toynak izleri",
+      "scarecrowHat": "Korkuluk şapkasını kaybetmiş",
+      "fenceBent": "Çitin bir tahtası eğilmiş – biri üstünden atlamış",
+      "wateringCanTipped": "Sulama kabı devrilmiş",
+      "sunflowerBent": "Ayçiçeği bükülmüş",
+      "bellInHay": "Samanın içinde kırmızı kurdeleli altın bir çıngırak",
+      "ladderRungBroken": "Merdivenin bir basamağı kırık",
+      "milkSpilled": "Süt kovası dökülmüş",
+      "troughEmpty": "Atın yulafı yemlikten kaybolmuş",
+      "chickensFound": "Tavuklar bulundu – çayırda yem gagalıyorlar!",
+      "sackEmpty": "Çimenlerin üzerinde boş bir yem çuvalı",
+      "grainOnBeard": "Keçinin burnunda yem",
+      "daisiesEaten": "Papatyalar saplarına kadar yenmiş",
+      "basketTipped": "Meyve sepeti devrilmiş",
+      "plankMoved": "Küçük köprünün bir tahtası yerinden oynamış"
     }
   },
   "secret": {

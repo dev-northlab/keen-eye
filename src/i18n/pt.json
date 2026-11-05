@@ -501,7 +501,12 @@
     "lodgeYard": "O quintal",
     "lodgeChairlift": "O teleférico",
     "lodgeSummit": "O cume",
-    "treasury": "Sala do tesouro"
+    "treasury": "Sala do tesouro",
+    "chickensCoop": "Galinheiro",
+    "chickensYard": "Quintal da aldeia",
+    "chickensGarden": "Horta",
+    "chickensBarn": "Celeiro",
+    "chickensMeadow": "Prado junto ao riacho"
   },
   "mode": {
     "label": "Modo",
@@ -714,6 +719,11 @@
         "title": "O mistério do abrigo na montanha",
         "intro": "Na véspera da grande corrida, o troféu dourado em forma de floco de neve sumiu da lareira do abrigo. Todos culpam o yeti — mas será que foi mesmo o yeti? Siga as pistas montanha acima.",
         "ending": "Foi a esquiadora! Ela sonhava tanto em vencer que à noite subiu ao cume para tirar uma foto com o troféu — e o deixou na mão do boneco de neve. Rastros de esqui, furos de bastões e um bastão esquecido a entregaram. Ela devolveu o troféu e venceu a corrida de forma justa."
+      },
+      "chickens": {
+        "title": "As galinhas sumidas",
+        "intro": "Hoje de manhã uma moça da aldeia foi dar comida às galinhas, mas o galinheiro está vazio e a porta está aberta! Procure pistas no quintal dela e descubra quem deixou as galinhas saírem.",
+        "ending": "Foi a cabra! Ela levantou o trinco do galinheiro com os chifres para chegar ao grão e derrubou o saco, e as galinhas seguiram o grão espalhado até o prado. As marcas de cascos, o sininho perdido e o grão no focinho a denunciaram. Todas as galinhas estão bem, e o galinheiro ganhou um trinco novo."
       }
     },
     "suspects": {
@@ -739,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Esquiadora",
       "snowboarder": "Snowboarder",
-      "innkeeper": "Dona do abrigo"
+      "innkeeper": "Dona do abrigo",
+      "fox": "Raposa",
+      "goose": "Ganso",
+      "yardDog": "Cachorro",
+      "goat": "Cabra"
     },
     "clueTexts": {
       "cakeGone": "O bolo sumiu — só migalhas no prato",
@@ -935,7 +949,34 @@
       "snowmanScarf": "O boneco de neve está usando um cachecol vermelho",
       "tripodMarks": "Três marquinhas de um tripé",
       "bootPrintsUp": "Pegadas de botas subindo até o cume",
-      "skiPoleLeft": "Um bastão de esqui fincado na neve"
+      "skiPoleLeft": "Um bastão de esqui fincado na neve",
+      "chickensGone": "As galinhas sumiram do poleiro",
+      "coopDoorOpen": "A porta do galinheiro está aberta",
+      "eggsLeft": "Os ovos ainda estão no ninho: uma raposa os teria levado",
+      "grainSpilled": "O saco de grãos está derrubado",
+      "whiteFur": "Um tufo de pelo branco na cerca",
+      "featherTrail": "Penas brancas seguem pela grama",
+      "dogAsleep": "O cachorro dormiu preso na corrente a noite toda: ela não alcança o galinheiro",
+      "goosePenShut": "O cercado do ganso ficou trancado a noite toda",
+      "laundryChewed": "Alguém mastigou a camisa no varal",
+      "wellBucketDown": "O balde do poço foi baixado",
+      "grainTrail": "Um rastro de grãos pelo caminho",
+      "cabbageNibbled": "Um repolho foi mordiscado",
+      "hoofPrints": "Pequenas marcas de cascos fendidos",
+      "scarecrowHat": "O espantalho perdeu o chapéu",
+      "fenceBent": "Uma ripa da cerca está torta: alguém pulou por cima",
+      "wateringCanTipped": "O regador está tombado",
+      "sunflowerBent": "O girassol está dobrado",
+      "bellInHay": "Um sininho dourado com uma fita vermelha no feno",
+      "ladderRungBroken": "Um degrau da escada está quebrado",
+      "milkSpilled": "O balde de leite está derramado",
+      "troughEmpty": "A aveia do cavalo sumiu do cocho",
+      "chickensFound": "As galinhas foram encontradas: estão bicando grãos no prado!",
+      "sackEmpty": "Um saco de grãos vazio na grama",
+      "grainOnBeard": "Grãos no focinho da cabra",
+      "daisiesEaten": "As margaridas foram comidas até o talo",
+      "basketTipped": "A cesta de frutinhas está tombada",
+      "plankMoved": "Uma tábua da pontezinha saiu do lugar"
     }
   },
   "secret": {
