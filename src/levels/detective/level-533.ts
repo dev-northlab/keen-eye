@@ -5,7 +5,7 @@ import { carrot, wateringCan } from '../shapes.ts'
 import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, fence, grass, picket, sky, sun, tree } from './shapes.ts'
-import { cabbage, hoof, rabbit, villageGirl } from './village.ts'
+import { cabbage, flutter, flyingBirds, hoof, hopping, rabbit, sunRays, villageGirl } from './village.ts'
 
 /** Sunflower by the fence: upright (A) or bent over (B); the stem below y 250 is drawn by the scene. Bounds: x 678–756, y 168–272. */
 const sunflowerTop = (bent: boolean) => {
@@ -30,12 +30,14 @@ export default detectiveLevel({
   parTimeSec: 74,
   scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
+    anim({ type: 'rotate', pivot: [110, 70], period: 40 }, sunRays(110, 70)) +
     sun(110, 70) +
-    cloud(330, 80) +
-    cloud(560, 60, 0.8) +
+    anim({ type: 'path', points: [[0, 0], [60, 0]], period: 40 }, cloud(330, 80)) +
+    anim({ type: 'path', points: [[0, 0], [-50, 0]], period: 32 }, cloud(560, 60, 0.8)) +
+    flyingBirds(anim, 300, 40, 240, 28) +
     grass(260, '#7cc25a') +
-    tree(200, 260) +
-    tree(640, 260) +
+    anim({ type: 'sway', angle: 1.5, pivot: [200, 260], period: 5 }, tree(200, 260)) +
+    anim({ type: 'sway', angle: 1.5, pivot: [640, 260], period: 5.6 }, tree(640, 260)) +
     fence(0, 800, 260, '#f5ecd8', [394]) +
     clue('fenceBent', 413, 221, 47, picket(394, 260), `<g transform="rotate(18 402 260)">${picket(394, 260)}</g>`) +
     // The sunflower's stem below the bend
@@ -47,7 +49,7 @@ export default detectiveLevel({
     clue('cabbageNibbled', 290, 316, 26, cabbage(290, 332), cabbage(290, 332, true)) +
     Array.from({ length: 13 }, (_, i) => carrot(70 + i * 26, 400)).join('') +
     clue('hoofPrints', 158, 357, 38, '', hoof(130, 360) + hoof(158, 352) + hoof(186, 362)) +
-    villageGirl(300, 496, 'overalls') +
+    villageGirl(300, 496, 'overalls', anim) +
     // The scarecrow
     `<path d="M600 300V470" stroke="#8a5a2b" stroke-width="8"/><path d="M556 336H644" stroke="#8a5a2b" stroke-width="7"/>` +
     `<path d="M580 322H620L630 392H570Z" fill="#5a8de0"/><path d="M580 322L556 344M620 322L644 344" stroke="#5a8de0" stroke-width="12" stroke-linecap="round"/>` +
@@ -56,8 +58,10 @@ export default detectiveLevel({
     `<circle cx="594" cy="300" r="2" fill="#2b2b38"/><circle cx="606" cy="300" r="2" fill="#2b2b38"/><path d="M594 309q6 4 12 0" stroke="#8a5a2b" stroke-width="2" fill="none"/>` +
     clue('scarecrowHat', 600, 276, 31, `<ellipse cx="600" cy="287" rx="26" ry="5" fill="#c9953f"/><path d="M586 287V266Q600 260 614 266V287Z" fill="#c9953f"/><path d="M586 280H614" stroke="#e5484d" stroke-width="4"/>`, '') +
     clue('wateringCanTipped', 490, 446, 50, can(false), can(true)) +
-    rabbit(40, 482) +
-    rabbit(720, 470) +
+    hopping(anim, 40, 36, 6, rabbit(40, 482)) +
+    hopping(anim, 720, -36, 7, rabbit(720, 470), 0.4) +
+    flutter(anim, 180, 300, '#ffd23f') +
+    flutter(anim, 700, 380, '#ff8fab', true, 10) +
     // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
     decor({ anim }, [
       ['birdhouse', 109, 476],

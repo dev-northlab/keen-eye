@@ -5,7 +5,7 @@ import { basket, flower, hen } from '../shapes.ts'
 import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { bush, cloud, grass, sky, sun, tree } from './shapes.ts'
-import { goat, grain, rooster, villageGirl, whiteDuck } from './village.ts'
+import { flutter, flyingBirds, goatBody, goatHead, grain, pecking, ripples, rooster, sunRays, swimmingDuck, villageGirl } from './village.ts'
 
 const smallHen = (x: number, y: number, flip: boolean, color: string) => `<g transform="translate(${x} ${y}) scale(0.7)">${hen(0, 0, flip, color)}</g>`
 
@@ -31,33 +31,39 @@ export default detectiveLevel({
   parTimeSec: 78,
   scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
+    anim({ type: 'rotate', pivot: [640, 70], period: 40 }, sunRays(640, 70)) +
     sun(640, 70) +
-    cloud(200, 70) +
-    cloud(440, 110, 0.8) +
+    anim({ type: 'path', points: [[0, 0], [60, 0]], period: 40 }, cloud(200, 70)) +
+    anim({ type: 'path', points: [[0, 0], [-50, 0]], period: 34 }, cloud(440, 110, 0.8)) +
+    flyingBirds(anim, 140, 40, 280, 28) +
     grass(260, '#8cd068') +
-    tree(380, 262) +
-    tree(740, 262) +
+    anim({ type: 'sway', angle: 1.5, pivot: [380, 262], period: 5 }, tree(380, 262)) +
+    anim({ type: 'sway', angle: 1.5, pivot: [740, 262], period: 5.6 }, tree(740, 262)) +
     bush(90, 300, '#3f8f4b') +
     `<g fill="#d9384a"><circle cx="60" cy="270" r="4"/><circle cx="96" cy="262" r="4"/><circle cx="122" cy="280" r="4"/><circle cx="80" cy="288" r="4"/></g>` +
     // The stream with ducks and the footbridge
     `<path d="M430 296Q600 270 800 284V316Q600 302 430 326Z" fill="#7cc6e8"/>` +
-    whiteDuck(520, 302) +
-    whiteDuck(752, 294, true) +
+    ripples(anim, 540, 312, '#e8f6ff') +
+    swimmingDuck(anim, 500, 304, 70, 14) +
+    swimmingDuck(anim, 700, 294, 70, 12, 0.5) +
     `<g fill="#c98d55" stroke="#8a5a2b" stroke-width="1.5"><rect x="604" y="278" width="12" height="44" rx="2"/><rect x="618" y="278" width="12" height="44" rx="2"/><rect x="646" y="278" width="12" height="44" rx="2"/></g>` +
     clue('plankMoved', 638, 300, 30, plank(false), plank(true)) +
     // The girl waving, the rooster, the found chickens
-    villageGirl(150, 460, 'sundress', true) +
-    rooster(230, 450, true) +
-    clue('chickensFound', 317, 418, 66, '', smallHen(280, 424, false, '#ffffff') + smallHen(318, 412, true, '#c9884a') + smallHen(354, 426, false, '#e8d7b8') + grain(318, 448, 50)) +
+    villageGirl(150, 460, 'sundress', anim, true) +
+    pecking(anim, 230, 476, rooster(230, 450, true), 12, 2.2) +
+    clue('chickensFound', 317, 418, 66, '', pecking(anim, 280, 442, smallHen(280, 424, false, '#ffffff'), 16, 1.4) + pecking(anim, 318, 430, smallHen(318, 412, true, '#c9884a'), 16, 1.7, 0.3) + pecking(anim, 354, 444, smallHen(354, 426, false, '#e8d7b8'), 16, 1.5, 0.6) + grain(318, 448, 50)) +
     clue('basketTipped', 490, 378, 56, berries(false), berries(true)) +
     clue('sackEmpty', 410, 460, 34, '', `<path d="M384 466Q386 450 404 452L434 448Q440 458 434 468Q410 476 384 466Z" fill="#c9a66b"/><path d="M434 448q6 10 0 20" stroke="#7a5233" stroke-width="2" fill="none"/>`) +
     // The goat grazing by the stream, her bell lost in the barn
-    goat(600, 400, false, false) +
-    clue('grainOnBeard', 642, 382, 22, '', grain(642, 382, 14)) +
+    // The goat grazes: the grain on her beard moves with her head
+    goatBody(600, 400, false) +
+    anim({ id: 'goatHead', type: 'sway', angle: 20, pivot: [616, 394], period: 3.2 }, goatHead(600, 400) + clue('grainOnBeard', 642, 382, 22, '', grain(642, 382, 14), 'goatHead')) +
+    flutter(anim, 250, 340, '#ffd23f') +
+    flutter(anim, 740, 380, '#ff8fab', true, 10) +
     clue('daisiesEaten', 732, 450, 44, daisies(false), daisies(true)) +
-    flower(40, 480, '#ff6b8b') +
-    flower(560, 480, '#b38cff') +
-    flower(470, 486, '#ff9f43') +
+    anim({ type: 'sway', angle: 7, pivot: [40, 480], period: 2.8 }, flower(40, 480, '#ff6b8b')) +
+    anim({ type: 'sway', angle: 7, pivot: [560, 480], period: 3.2 }, flower(560, 480, '#b38cff')) +
+    anim({ type: 'sway', angle: 7, pivot: [470, 486], period: 3 }, flower(470, 486, '#ff9f43')) +
     // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
     decor({ anim }, [
       ['wateringCan', 98, 482],
