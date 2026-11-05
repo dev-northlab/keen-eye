@@ -1,6 +1,7 @@
 // Drawing helpers of "The missing chickens" (levels 531–535): the village girl (in a different outfit in every scene),
 // her animals and her village yard.
 // Coordinates are in the 800×500 viewBox; "bounds" are relative to the given point.
+import type { Anim } from '../helpers.ts'
 
 const SKIN = '#f2c9a0'
 const HAIR = '#5a3a22'
@@ -76,10 +77,11 @@ const HEAD: Record<Outfit, string> = {
 }
 
 /**
- * The village girl with her long dark hair, in one of her outfits; (x, y) = between her feet. `wave` raises her
- * right hand; `s` scales her. Bounds: x ±30·s (±34·s waving), y from −136·s to 0.
+ * The village girl with her long dark hair, in one of her outfits; (x, y) = between her feet. She is alive through
+ * `anim`: sways a little on her feet, blinks, and waves her raised right hand (`wave`). `s` scales her.
+ * Bounds: x ±32·s (±40·s waving), y from −136·s to 0.
  */
-export function villageGirl(x: number, y: number, outfit: Outfit, wave = false, s = 1.15) {
+export function villageGirl(x: number, y: number, outfit: Outfit, anim: Anim, wave = false, s = 1.15) {
   const { body, sleeve, arm } = BODY[outfit]
   const inJeans = outfit === 'jeans' || outfit === 'overalls' || outfit === 'flannel'
   const legs = inJeans ? `<path d="M-8 -60V-6M8 -60V-6" stroke="${JEANS}" stroke-width="12"/>` : `<path d="M-8 -28V-4M8 -28V-4" stroke="${SKIN}" stroke-width="6"/>`
@@ -89,8 +91,16 @@ export function villageGirl(x: number, y: number, outfit: Outfit, wave = false, 
       : `<ellipse cx="-9" cy="-3" rx="7" ry="3.5" fill="#7a3b2a"/><ellipse cx="9" cy="-3" rx="7" ry="3.5" fill="#7a3b2a"/>`
   const line = (d: string) => `<path d="${d}" stroke="${arm}" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`
   const hand = (hx: number, hy: number) => `<circle cx="${hx}" cy="${hy}" r="3.4" fill="${SKIN}"/>`
-  const arms = line('M-17 -86L-24 -60') + hand(-24, -60) + (wave ? line('M17 -86L30 -104L32 -122') + hand(32, -122) : line('M17 -86L24 -60') + hand(24, -60))
-  return (
+  // Pivots are in her own coordinates: the animated groups sit inside her translate and scale.
+  const waving = anim({ type: 'sway', angle: 16, pivot: [17, -86], period: 1.1 }, line('M17 -86L30 -104L32 -122') + hand(32, -122))
+  const swinging = (side: 1 | -1, phase: number) =>
+    anim({ type: 'sway', angle: 7, pivot: [17 * side, -86], period: 2.6, phase }, line(`M${17 * side} -86L${24 * side} -60`) + hand(24 * side, -60))
+  const arms = swinging(-1, 0) + (wave ? waving : swinging(1, 0.5))
+  const eyes =
+    `<path d="M-9 -111h6M3 -111h6" stroke="#2b2b38" stroke-width="1.8" stroke-linecap="round"/>` +
+    anim({ type: 'blink', duty: 0.93, period: 3.8 + (x % 7) / 10 }, `<circle cx="-6" cy="-111" r="2.2" fill="#2b2b38"/><circle cx="6" cy="-111" r="2.2" fill="#2b2b38"/>`)
+  return anim(
+    { type: 'sway', angle: 2.2, pivot: [x, y], period: 4.4 },
     `<g transform="translate(${x} ${y}) scale(${s})">` +
     `<path d="M-21 -112Q-26 -70 -19 -50H19Q26 -70 21 -112Z" fill="${HAIR}"/>` +
     legs +
@@ -98,30 +108,39 @@ export function villageGirl(x: number, y: number, outfit: Outfit, wave = false, 
     arms +
     body +
     `<circle cx="-16" cy="-89" r="6" fill="${sleeve}"/><circle cx="16" cy="-89" r="6" fill="${sleeve}"/>` +
-    `<rect x="-4" y="-102" width="8" height="9" fill="${SKIN}"/><circle cy="-112" r="15" fill="${SKIN}"/>` +
-    `<path d="M-15 -112Q-18 -98 -15 -88M15 -112Q18 -98 15 -88" stroke="${HAIR}" stroke-width="5" fill="none" stroke-linecap="round"/>` +
-    HEAD[outfit] +
-    `<circle cx="-6" cy="-111" r="2" fill="#2b2b38"/><circle cx="6" cy="-111" r="2" fill="#2b2b38"/>` +
-    `<circle cx="-10" cy="-105" r="3" fill="#f29a9a" fill-opacity="0.6"/><circle cx="10" cy="-105" r="3" fill="#f29a9a" fill-opacity="0.6"/>` +
-    (wave ? `<path d="M-5 -104q5 5 10 0" stroke="#a8433a" stroke-width="2" fill="none" stroke-linecap="round"/>` : `<ellipse cy="-103" rx="2.6" ry="3" fill="#a8433a"/>`) +
-    `</g>`
+    `<rect x="-4" y="-102" width="8" height="9" fill="${SKIN}"/>` +
+    // The head tilts from side to side at the neck.
+    anim(
+      { type: 'sway', angle: 6, pivot: [0, -98], period: 3.4, phase: 0.3 },
+      `<circle cy="-112" r="15" fill="${SKIN}"/>` +
+        `<path d="M-15 -112Q-18 -98 -15 -88M15 -112Q18 -98 15 -88" stroke="${HAIR}" stroke-width="5" fill="none" stroke-linecap="round"/>` +
+        HEAD[outfit] +
+        eyes +
+        `<circle cx="-10" cy="-105" r="3" fill="#f29a9a" fill-opacity="0.6"/><circle cx="10" cy="-105" r="3" fill="#f29a9a" fill-opacity="0.6"/>` +
+        (wave ? `<path d="M-5 -104q5 5 10 0" stroke="#a8433a" stroke-width="2" fill="none" stroke-linecap="round"/>` : `<ellipse cy="-103" rx="2.6" ry="3" fill="#a8433a"/>`),
+    ) +
+    `</g>`,
   )
 }
 
 /**
  * White goat kid with a red bow and a golden bell (`bell` false: lost), facing right; (x, y) = body center.
- * Bounds: x from −32 to +42, y from −42 to +30.
+ * Bounds: x from −32 to +42, y from −42 to +30. `goatHead` is drawn apart so it can graze: it turns around the
+ * foot of the neck, (x + 16, y − 6).
  */
-export const goat = (x: number, y: number, flip = false, bell = true) =>
-  `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)">` +
+export const goatBody = (x: number, y: number, bell = true) =>
+  `<g transform="translate(${x} ${y})">` +
   `<path d="M-18 8V28M-8 10V28M10 10V28M20 8V28" stroke="#ece8de" stroke-width="6"/><path d="M-18 26v3M-8 26v3M10 26v3M20 26v3" stroke="#5e4a3a" stroke-width="6"/>` +
   `<path d="M-26 -6l-6 -6l4 8Z" fill="#ece8de"/><ellipse rx="27" ry="15" fill="#f7f5ef"/>` +
+  `<path d="M14 -10L20 -18L24 -8Z M20 -12l-8 0" fill="#d32f3a"/><path d="M16 -14l-7 -5v10Z M24 -14l7 -5v10Z" fill="#d32f3a"/>` +
+  (bell ? `<circle cx="20" cy="-6" r="4" fill="#f2b632" stroke="#c98a10" stroke-width="1.2"/>` : '') +
+  `</g>`
+export const goatHead = (x: number, y: number) =>
+  `<g transform="translate(${x} ${y})">` +
   `<path d="M16 -6L26 -22" stroke="#f7f5ef" stroke-width="12" stroke-linecap="round"/>` +
   `<path d="M24 -36q-2 -6 -8 -6M30 -36q2 -6 -2 -8" stroke="#b8b0a0" stroke-width="3" fill="none" stroke-linecap="round"/>` +
   `<ellipse cx="32" cy="-26" rx="10" ry="8" fill="#f7f5ef"/><ellipse cx="18" cy="-30" rx="7" ry="3" fill="#ece8de" transform="rotate(-20 18 -30)"/>` +
   `<circle cx="34" cy="-28" r="1.8" fill="#2b2b38"/><ellipse cx="41" cy="-24" rx="1.6" ry="1.2" fill="#c98a8a"/>` +
-  `<path d="M14 -10L20 -18L24 -8Z M20 -12l-8 0" fill="#d32f3a"/><path d="M16 -14l-7 -5v10Z M24 -14l7 -5v10Z" fill="#d32f3a"/>` +
-  (bell ? `<circle cx="20" cy="-6" r="4" fill="#f2b632" stroke="#c98a10" stroke-width="1.2"/>` : '') +
   `</g>`
 
 /** Grey-and-white goose with a long neck, facing right; (x, y) = body center. Bounds: x from −30 to +34, y from −52 to +26. */
@@ -199,6 +218,61 @@ export function logHouse(x: number, y: number, w: number, h: number) {
     `<rect x="${wx - 6}" y="${wy + 54}" width="72" height="7" fill="#fff"/>`
   )
 }
+
+// ---- Living village: motion drawn the same in A and B, like the meadow of the home screen.
+
+/** A white duck swimming `dx` across and back, turning at each end and bobbing on the water. */
+export const swimmingDuck = (anim: Anim, x: number, y: number, dx: number, period: number, phase = 0) =>
+  anim({ type: 'path', points: [[0, 0], [dx, 0]], flipX: x, period, phase }, anim({ type: 'bob', dx: 0, dy: 1.5, period: 1.4, phase }, whiteDuck(x, y)))
+
+/** Hops `dx` along in two hops, then back (turned); `markup` faces right, its middle at x. */
+export const hopping = (anim: Anim, x: number, dx: number, period: number, markup: string, phase = 0) => {
+  const h = (k: number) => [(dx * k) / 4, k % 2 ? -14 : 0] as [number, number]
+  return anim({ type: 'path', points: [h(0), h(1), h(2), h(3), h(4), h(3), h(2), h(1)], flipX: x, period, phase }, markup)
+}
+
+/** Quick pecks: `markup` tips forward over its feet at (x, y). */
+export const pecking = (anim: Anim, x: number, y: number, markup: string, angle = 18, period = 1.6, phase = 0) =>
+  anim({ type: 'sway', angle, pivot: [x, y], period, phase }, markup)
+
+/** Butterfly wandering around (x, y) and flapping (the open and the folded wings take turns). */
+export function flutter(anim: Anim, x: number, y: number, color: string, alt = false, period = 9) {
+  const open = `<ellipse cx="-4.5" cy="-2.5" rx="4.8" ry="3.8"/><ellipse cx="4.5" cy="-2.5" rx="4.8" ry="3.8"/><ellipse cx="-3.5" cy="2.5" rx="3.2" ry="2.6"/><ellipse cx="3.5" cy="2.5" rx="3.2" ry="2.6"/>`
+  const folded = `<ellipse cx="-1.6" cy="-2" rx="1.6" ry="4"/><ellipse cx="1.6" cy="-2" rx="1.6" ry="4"/>`
+  const wings = (markup: string, phase: number) => anim({ type: 'blink', period: 0.3, phase }, `<g fill="${color}">${markup}</g>`)
+  const route: [number, number][] = alt ? [[0, 0], [-40, -30], [-90, -6], [-36, -48]] : [[0, 0], [36, -26], [84, -8], [44, -44], [10, -20]]
+  return anim(
+    { type: 'path', points: route, period },
+    `<g transform="translate(${x} ${y})">${wings(open, 0)}${wings(folded, 0.5)}<rect x="-0.9" y="-5" width="1.8" height="10" rx="0.9" fill="#3d3d3d"/></g>`,
+  )
+}
+
+/** A flock of three birds flapping as it flies `dx` across the sky and back. */
+export function flyingBirds(anim: Anim, x: number, y: number, dx: number, period: number) {
+  const bird = (bx: number, by: number, k: number) =>
+    anim({ type: 'blink', period: 0.5, phase: k * 0.3 }, `<path d="M${bx - 8} ${by - 5}q4 -3 8 4q4 -7 8 -4" stroke="#3d4a55" stroke-width="2.2" fill="none" stroke-linecap="round"/>`) +
+    anim({ type: 'blink', period: 0.5, phase: k * 0.3 + 0.5 }, `<path d="M${bx - 8} ${by}q4 -2 8 0q4 -2 8 0" stroke="#3d4a55" stroke-width="2.2" fill="none" stroke-linecap="round"/>`)
+  return anim({ type: 'path', points: [[0, 0], [dx, -12]], period }, bird(x - 18, y - 4, 0) + bird(x, y + 6, 1) + bird(x + 18, y - 8, 2))
+}
+
+/** Rings spreading on the water: they come and go one after another around (x, y). */
+export const ripples = (anim: Anim, x: number, y: number, color = '#ffffff') =>
+  [
+    [-20, 2, 10],
+    [16, -2, 14],
+    [0, 4, 7],
+  ]
+    .map(([dx, dy, rx], k) =>
+      anim({ type: 'blink', duty: 0.35, period: 3.6, phase: k / 3 }, `<ellipse cx="${x + dx}" cy="${y + dy}" rx="${rx}" ry="${rx / 4}" fill="none" stroke="${color}" stroke-opacity="0.8" stroke-width="1.5"/>`),
+    )
+    .join('')
+
+/** Rays around the sun (drawn under `sun` of `shapes.ts`); turn them with `anim` rotate around (x, y). Bounds: r 54. */
+export const sunRays = (x: number, y: number) =>
+  `<g stroke="#ffd54a" stroke-width="5" stroke-linecap="round">${Array.from({ length: 10 }, (_, i) => {
+    const a = (i * Math.PI) / 5
+    return `<path d="M${(x + 40 * Math.cos(a)).toFixed(1)} ${(y + 40 * Math.sin(a)).toFixed(1)}L${(x + 52 * Math.cos(a)).toFixed(1)} ${(y + 52 * Math.sin(a)).toFixed(1)}"/>`
+  }).join('')}</g>`
 
 /** Plank wall or gable of a barn or a coop: vertical boards from (x, y), w × h. */
 export const planks = (x: number, y: number, w: number, h: number, color = '#b5835a', line = '#8a5a2b') =>

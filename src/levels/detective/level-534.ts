@@ -5,7 +5,7 @@ import { bucket, cat, horseshoe } from '../shapes.ts'
 import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { lantern } from './shapes.ts'
-import { horseHead, planks, villageGirl } from './village.ts'
+import { flyingBirds, horseHead, pecking, planks, villageGirl } from './village.ts'
 
 /** Ladder up to the loft; the rung at y 270 is drawn by the clue. */
 const ladder = () =>
@@ -39,7 +39,7 @@ export default detectiveLevel({
     // Beam, loft and its hay
     `<rect y="104" width="800" height="16" fill="#6b4a2b"/><rect x="520" y="120" width="280" height="18" fill="#8a5a2b"/><rect x="520" y="138" width="12" height="242" fill="#6b4a2b"/>` +
     `<path d="M560 104Q600 60 660 64Q740 60 780 104Z" fill="#f2c14e"/>` +
-    cat(600, 104, '#8a8f99') +
+    anim({ type: 'sway', angle: 6, pivot: [600, 104], period: 3.4 }, cat(600, 104, '#8a8f99')) +
     // Window with daylight
     `<rect x="600" y="160" width="90" height="70" fill="#bfe6ff" stroke="#6b4a2b" stroke-width="6"/><path d="M645 160V230M600 195H690" stroke="#6b4a2b" stroke-width="4"/>` +
     clue('lanternOut', 360, 142, 26, lantern(360, 120, true), lantern(360, 120, false)) +
@@ -47,10 +47,12 @@ export default detectiveLevel({
     horseshoe(280, 180) +
     // Horse stall and its trough
     `<rect x="30" y="200" width="180" height="180" fill="#5e3b1a"/>` +
-    horseHead(140, 304) +
+    pecking(anim, 140, 304, horseHead(140, 304), 7, 3) +
     `<rect x="30" y="300" width="180" height="80" fill="#a06a38" stroke="#6b4a2b" stroke-width="3"/><path d="M34 304L206 376" stroke="#c98d55" stroke-width="7"/>` +
     `<path d="M222 350H308L300 378H230Z" fill="#8a5a2b"/>` +
-    villageGirl(170, 470, 'flannel') +
+    villageGirl(170, 470, 'flannel', anim) +
+    // Swallows under the roof
+    flyingBirds(anim, 120, 70, 300, 20) +
     clue('troughEmpty', 265, 346, 36, `<path d="M228 352Q265 332 302 352Z" fill="#e8c27a"/><path d="M244 346h4M262 342h4M280 346h4" stroke="#c09440" stroke-width="2"/>`, '') +
     // The ladder up to the loft
     ladder() +

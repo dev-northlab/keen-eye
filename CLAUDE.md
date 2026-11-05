@@ -91,7 +91,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   is `diff` plus the clue text key (`Level.detective`: case, clue per difference, i18n `detective.clueTexts.<key>`); A = before,
   B = after; 5 → 6 → 7 clues, then the three harder cases (516–530) 8 → 9 → 10; 531–535 "The missing chickens" (case `chickens`,
   6 clues, listed first in `CASES`): a village girl's chickens are gone — she is in every scene, each time in another outfit
-  (`Outfit`), drawn with her animals and her village yard by `detective/village.ts` (`villageGirl`); played by `LevelView` (a found clue
+  (`Outfit`), drawn with her animals and her village yard by `detective/village.ts` (`villageGirl`, alive through `anim` like the home meadow: she sways, tilts her head, blinks, swings her arms; ducks swim across and turn, rabbits hop, birds peck, the goat grazes, butterflies and flocks fly, ripples, clouds, sun rays, trees and flowers move — `swimmingDuck`, `hopping`, `pecking`, `flutter`, `flyingBirds`, `ripples`, `sunRays`); played by `LevelView` (a found clue
   pops up, the result dialog lists the scene's clues), listed
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
   cases in `progress.solvedCases`); the first case and "The missing chickens" are free (`Chapter.free` ranges; a free case opens

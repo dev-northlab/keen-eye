@@ -5,7 +5,7 @@ import { flower } from '../shapes.ts'
 import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, fence, grass, sky } from './shapes.ts'
-import { goose, grain, kennel, logHouse, rabbit, rooster, shaggyDog, villageGirl, wicket } from './village.ts'
+import { flutter, flyingBirds, goose, grain, hopping, kennel, logHouse, pecking, rabbit, rooster, shaggyDog, villageGirl, wicket } from './village.ts'
 
 /** Shirt pegged on the line at (x, y); `bitten` chews its hem. Bounds: x ±30, y from 0 to +50. */
 const shirt = (x: number, y: number, bitten: boolean) =>
@@ -41,8 +41,9 @@ export default detectiveLevel({
   parTimeSec: 72,
   scene: ({ clue, anim, extra }) =>
     sky('#c7e8ff') +
-    cloud(560, 70) +
-    cloud(740, 120, 0.8) +
+    anim({ type: 'path', points: [[0, 0], [-60, 0]], period: 38 }, cloud(560, 70)) +
+    anim({ type: 'path', points: [[0, 0], [-40, 0]], period: 30 }, cloud(740, 120, 0.8)) +
+    flyingBirds(anim, 620, 40, -240, 26) +
     grass(320, '#86c95f') +
     // Log house with its door
     logHouse(40, 150, 240, 176) +
@@ -51,12 +52,12 @@ export default detectiveLevel({
     fence(290, 470, 320) +
     fence(530, 800, 320) +
     clue('gateOpen', 500, 285, 47, wicket(470, 320, 60, false), wicket(470, 320, 60, true)) +
-    rooster(740, 214, true) +
+    pecking(anim, 740, 240, rooster(740, 214, true), 10, 2.2) +
     // Washing line
     `<path d="M280 160L460 150" stroke="#5e656b" stroke-width="2"/><rect x="456" y="146" width="8" height="176" fill="#a06a38"/>` +
-    `<rect x="296" y="158" width="30" height="40" fill="#ffd54a"/><path d="M296 190H326" stroke="#e0a82a" stroke-width="3"/>` +
+    anim({ type: 'sway', angle: 4, pivot: [311, 158], period: 2.6 }, `<rect x="296" y="158" width="30" height="40" fill="#ffd54a"/><path d="M296 190H326" stroke="#e0a82a" stroke-width="3"/>`) +
     clue('laundryChewed', 380, 195, 40, shirt(380, 155, false), shirt(380, 155, true)) +
-    `<path d="M418 154H446L450 196H414Z" fill="#7ab8e8"/>` +
+    anim({ type: 'sway', angle: 4, pivot: [432, 154], period: 3 }, `<path d="M418 154H446L450 196H414Z" fill="#7ab8e8"/>`) +
     // Kennel and the dog
     kennel(320, 440) +
     clue('dogAsleep', 410, 418, 48, dogOnChain(false), dogOnChain(true)) +
@@ -69,14 +70,16 @@ export default detectiveLevel({
     `<path d="M556 400h24M592 412h30M552 426h28" stroke="#8a8f99" stroke-width="3"/>` +
     // Goose pen
     `<path d="M650 384V462M790 384V462M650 396H790M650 446H790" stroke="#c98d55" stroke-width="7"/>` +
-    goose(722, 426) +
+    pecking(anim, 722, 450, goose(722, 426), 9, 2.6) +
     clue('goosePenShut', 650, 418, 24, penBolt(false), penBolt(true)) +
-    villageGirl(110, 470, 'jeans') +
+    villageGirl(110, 470, 'jeans', anim) +
     clue('grainTrail', 222, 451, 46, '', grain(200, 456, 36) + grain(246, 446, 30)) +
-    rabbit(304, 486) +
-    flower(30, 470, '#ff6b8b') +
-    flower(500, 476, '#b38cff') +
-    flower(540, 488, '#ffffff') +
+    hopping(anim, 290, 36, 6, rabbit(290, 486)) +
+    flutter(anim, 150, 380, '#ff8fab', true, 10) +
+    flutter(anim, 470, 400, '#ffd23f') +
+    anim({ type: 'sway', angle: 7, pivot: [30, 470], period: 2.8 }, flower(30, 470, '#ff6b8b')) +
+    anim({ type: 'sway', angle: 7, pivot: [500, 476], period: 3.2 }, flower(500, 476, '#b38cff')) +
+    anim({ type: 'sway', angle: 7, pivot: [540, 488], period: 3 }, flower(540, 488, '#ffffff')) +
     // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
     decor({ anim }, [
       ['molehill', 73, 484],
