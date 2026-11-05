@@ -10,7 +10,8 @@ import type { Season } from '../stores/settings.ts'
 // summer, the house's chimney smokes and the snow sparkles in winter. Animals: rabbits hop (white in
 // winter), a goat grazes, a sheep nods, a hen and her chick peck by the house. A river runs from the far
 // hills (narrow) past the house into a lake on the front hill: it flows, the lake ripples, a duck and
-// her ducklings swim among lily pads and reeds; in winter both are frozen.
+// her ducklings swim among lily pads and reeds; in winter both are frozen. In summer a family has a
+// picnic on the front hill and looks for differences in a picture book.
 
 /** `lights`: draw only the lit house windows (an unfiltered layer over the night-dimmed scene). */
 const props = defineProps<{ season: Season; lights?: boolean }>()
@@ -141,6 +142,18 @@ const LAKE = { cx: 1040, cy: 358, rx: 92, ry: 22 }
 const inLake = (x: number, y: number) =>
   ((x - LAKE.cx) / (LAKE.rx + 20)) ** 2 + ((y - LAKE.cy) / (LAKE.ry + 12)) ** 2 < 1 || (x > 1075 && x < 1150 && y < 350)
 
+/**
+ * The family's picnic blanket in summer (its centre front edge), in the middle of the front hill so
+ * phones show it below the menu. Flowers keep clear of it and of the family on it.
+ */
+const FAMILY = { x: 650, y: 384 }
+const onBlanket = (x: number, y: number) => Math.abs(x - FAMILY.x) < 92 && y > FAMILY.y - 70 && y < FAMILY.y + 12
+/** The blanket's checks: two stripes along it and five across (top edge −66…62, front edge −80…75). */
+const BLANKET_CHECKS = [
+  'M-71-11H66M-76-4H71',
+  ...[-44, -22, 0, 22, 44].map((t) => `M${t - 2}-16L${t * 1.2 - 2.5} 2`),
+].join('')
+
 /** Water, its glints and its darker banks per season (winter: ice). */
 const WATER: Record<Season, { water: string; light: string; edge: string }> = {
   spring: { water: '#5bb8e0', light: '#c6ecf8', edge: '#3f9fcc' },
@@ -227,7 +240,7 @@ const ground = Array.from({ length: 140 }, (_, i) => {
   const top = frontY(x) + 10
   return { i, x, y: top + ((i * 53) % Math.max(1, 392 - top)), kind: FLOWER_KINDS[i % FLOWER_KINDS.length] }
 })
-  .filter((g) => !inLake(g.x, g.y))
+  .filter((g) => !inLake(g.x, g.y) && !onBlanket(g.x, g.y))
   .sort((a, b) => a.y - b.y)
 
 const FLOWER_COLORS: Record<'spring' | 'summer', { tulip: string[]; petal: string[]; center: string; dot: string[] }> = {
@@ -694,6 +707,106 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
       </g>
     </g>
 
+    <!-- Summer: the family's picnic. Dad nods, mom waves, the boy peers through a magnifier and the girl
+         holds up a picture book with two pictures that differ in one flower, like the game. -->
+    <g v-if="season === 'summer'" :transform="`translate(${FAMILY.x} ${FAMILY.y})`">
+      <ellipse cy="3" rx="84" ry="6" fill="#000" fill-opacity="0.08" />
+      <path d="M-80 2L75 2L62-16L-66-16Z" fill="#e5484d" />
+      <path :d="BLANKET_CHECKS" stroke="#fff" stroke-opacity="0.5" stroke-width="3.5" />
+
+      <!-- Dad, sitting cross-legged. -->
+      <g transform="translate(-48 -6)">
+        <ellipse rx="21" ry="7" fill="#3d4f6e" />
+        <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
+        <ellipse cx="15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
+        <path d="M-13-2V-26Q-13-36 0-36Q13-36 13-26V-2Z" fill="#5b8def" />
+        <path d="M-11-30Q-19-16-8-8M11-30Q19-16 8-8" fill="none" stroke="#4a7bd8" stroke-width="6" stroke-linecap="round" />
+        <circle cx="-8" cy="-8" r="3" fill="#e0a77c" />
+        <circle cx="8" cy="-8" r="3" fill="#e0a77c" />
+        <rect x="-3" y="-40" width="6" height="6" fill="#c98f66" />
+        <g class="tilt">
+          <circle cx="-10" cy="-48" r="2.6" fill="#e0a77c" />
+          <circle cx="10" cy="-48" r="2.6" fill="#e0a77c" />
+          <circle cy="-48" r="10" fill="#e0a77c" />
+          <path d="M-10.5-48Q-11-60 0-60Q11-60 10.5-48Q7-54 0-54Q-6-54-10.5-48Z" fill="#3a2a20" />
+          <circle cx="-3.6" cy="-48" r="1.3" fill="#23302b" />
+          <circle cx="3.6" cy="-48" r="1.3" fill="#23302b" />
+          <path d="M-3.5-43.5Q0-40.5 3.5-43.5" fill="none" stroke="#7a3b2a" stroke-width="1.3" stroke-linecap="round" />
+        </g>
+      </g>
+
+      <!-- Mom, sitting, waving with her right hand. -->
+      <g transform="translate(48 -6)">
+        <ellipse rx="21" ry="7" fill="#1f8a80" />
+        <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#c8553d" />
+        <ellipse cx="15" cy="2" rx="5" ry="3" fill="#c8553d" />
+        <path d="M-12-2V-26Q-12-36 0-36Q12-36 12-26V-2Z" fill="#2fa39a" />
+        <path d="M-10-30Q-18-16-7-8" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
+        <circle cx="-7" cy="-8" r="2.8" fill="#f2c39b" />
+        <g class="wave">
+          <path d="M10-30Q20-38 18-52" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
+          <circle cx="18" cy="-54" r="3" fill="#f2c39b" />
+        </g>
+        <rect x="-3" y="-40" width="6" height="6" fill="#e0a77c" />
+        <path d="M-11.5-46Q-13-62 0-62Q13-62 11.5-46L13-33Q8-34 6-39H-6Q-8-34-13-33Z" fill="#6b3420" />
+        <circle cy="-48" r="9.5" fill="#f2c39b" />
+        <path d="M-10-47Q-10-59 0-59Q10-59 10-47Q6-53-2-53Q-7-52-10-47Z" fill="#6b3420" />
+        <circle cx="-3.4" cy="-48" r="1.3" fill="#23302b" />
+        <circle cx="3.4" cy="-48" r="1.3" fill="#23302b" />
+        <ellipse cx="-6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
+        <ellipse cx="6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
+        <path d="M-3.2-43.5Q0-40.5 3.2-43.5" fill="none" stroke="#a8433a" stroke-width="1.3" stroke-linecap="round" />
+      </g>
+
+      <!-- Boy, standing, with a magnifier at his eye (it moves a little as he searches). -->
+      <g transform="translate(-14 -10)">
+        <path d="M-5 0V-10M5 0V-10" stroke="#e0a77c" stroke-width="3.6" stroke-linecap="round" />
+        <path d="M-8-9V-15H8V-9Z" fill="#3d4f6e" />
+        <path d="M-8-14V-27Q-8-33 0-33Q8-33 8-27V-14Z" fill="#ffb02e" />
+        <path d="M-7-28Q-12-20-6-15" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
+        <circle cx="-6" cy="-15" r="2.4" fill="#e0a77c" />
+        <circle cy="-41" r="8.5" fill="#e0a77c" />
+        <path d="M-8.8-41Q-9-51 0-51Q9-51 8.8-41Q6-46 1-46Q-5-46-8.8-41Z" fill="#3a2a20" />
+        <circle cx="-3.2" cy="-41" r="1.2" fill="#23302b" />
+        <path d="M-3-36.5Q0-34 3-36.5" fill="none" stroke="#7a3b2a" stroke-width="1.2" stroke-linecap="round" />
+        <g class="peer">
+          <path d="M7-28Q13-30 9-36" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
+          <path d="M8-37L5.6-41" stroke="#7a4e33" stroke-width="2.6" stroke-linecap="round" />
+          <circle cx="3.4" cy="-43.4" r="5.6" fill="#fff" fill-opacity="0.45" stroke="#7a4e33" stroke-width="1.8" />
+          <circle cx="3.4" cy="-43" r="2.4" fill="#23302b" />
+          <circle cx="4.2" cy="-43.8" r="0.8" fill="#fff" />
+          <circle cx="9" cy="-36" r="2.4" fill="#e0a77c" />
+        </g>
+      </g>
+
+      <!-- Girl, standing, holding up the open book. -->
+      <g transform="translate(16 -10)">
+        <path d="M-4 0V-10M4 0V-10" stroke="#f2c39b" stroke-width="3.4" stroke-linecap="round" />
+        <path d="M-9-8L-7-30Q0-34 7-30L9-8Z" fill="#b07cff" />
+        <g class="tilt">
+          <circle cx="-9" cy="-44" r="3.6" fill="#6b3420" />
+          <circle cx="9" cy="-44" r="3.6" fill="#6b3420" />
+          <circle cy="-41" r="8.2" fill="#f2c39b" />
+          <path d="M-8.6-41Q-9-50 0-50Q9-50 8.6-41Q5-46-1-45.5Q-6-45-8.6-41Z" fill="#6b3420" />
+          <circle cx="-3" cy="-41" r="1.2" fill="#23302b" />
+          <circle cx="3" cy="-41" r="1.2" fill="#23302b" />
+          <path d="M-2.8-37Q0-34.5 2.8-37" fill="none" stroke="#a8433a" stroke-width="1.2" stroke-linecap="round" />
+        </g>
+        <path d="M-15-30H-1V-18H-15ZM1-30H15V-18H1Z" fill="#fff" stroke="#8a5a3a" stroke-width="1.4" stroke-linejoin="round" />
+        <path d="M-14.3-22H-1.7V-18.7H-14.3ZM1.7-22H14.3V-18.7H1.7Z" fill="#7cc46a" />
+        <circle cx="-11" cy="-27" r="1.8" fill="#ffc933" />
+        <circle cx="5" cy="-27" r="1.8" fill="#ffc933" />
+        <circle cx="-5" cy="-23.4" r="1.6" fill="#e5484d" />
+        <circle cx="-15" cy="-22" r="2.4" fill="#f2c39b" />
+        <circle cx="15" cy="-22" r="2.4" fill="#f2c39b" />
+      </g>
+
+      <!-- A slice of watermelon on the blanket. -->
+      <path d="M-8 0A8 8 0 0 1 8 0Z" fill="#e5484d" stroke="#4caf6a" stroke-width="2" />
+      <circle cx="-2.5" cy="-3" r="0.8" fill="#23302b" />
+      <circle cx="2.5" cy="-3" r="0.8" fill="#23302b" />
+    </g>
+
     <!-- Butterflies: placed by the outer group, wandering by the middle one, flapping by the inner one. -->
     <g v-for="(b, k) in butterflies" :key="k" :transform="`translate(${b.x} ${b.y})`">
       <g
@@ -1016,6 +1129,63 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
   40%,
   70% {
     transform: rotate(28deg);
+  }
+}
+
+/* The family: heads tilt a little, mom's arm waves from the shoulder now and then, the boy's magnifier
+   wanders around his eye. */
+.tilt,
+.wave,
+.peer {
+  transform-box: fill-box;
+}
+
+.tilt {
+  transform-origin: 50% 100%;
+  animation: tilt 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes tilt {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+.wave {
+  transform-origin: 0% 100%;
+  animation: wave 5s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  40%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50%,
+  70% {
+    transform: rotate(18deg);
+  }
+  60%,
+  80% {
+    transform: rotate(-6deg);
+  }
+}
+
+.peer {
+  transform-origin: 30% 100%;
+  animation: peer 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes peer {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(6deg);
   }
 }
 
