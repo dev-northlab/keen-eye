@@ -1,6 +1,7 @@
 // "The ski lodge mystery", scene 5 — the summit in the morning: the trophy in the snowman's hand, a red
 // scarf round its neck, a flag planted on the cairn, a camera left on a rock, tripod marks, a thermos,
 // a snow angel, snow fallen off the fir, boot prints going up and a ski pole stuck in the snow.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { fir, trophy } from './shapes.ts'
 
@@ -19,7 +20,7 @@ export default detectiveLevel({
   case: 'lodge',
   title: 'lodgeSummit',
   parTimeSec: 126,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="500" fill="#8fc8ef"/><circle cx="110" cy="80" r="34" fill="#fff3b0"/>` +
     anim({ type: 'path', points: [[0, 0], [60, 0]], period: 40 }, `<g fill="#fff"><ellipse cx="300" cy="70" rx="46" ry="14"/><circle cx="286" cy="60" r="16"/><circle cx="312" cy="56" r="18"/></g>`) +
     `<path d="M0 260L90 200L170 250L260 190L360 250L470 180L560 240L680 170L800 230V300H0Z" fill="#c7dcef"/>` +
@@ -47,5 +48,25 @@ export default detectiveLevel({
     clue('snowmanScarf', 401, 368, 30, '', `<path d="M378 352Q400 362 422 352L422 360Q400 370 378 360Z" fill="#e5484d"/><path d="M408 360L416 386L424 384L416 358Z" fill="#e5484d"/><path d="M412 372l8 -2" stroke="#fff" stroke-width="2.4"/>`) +
     clue('tripodMarks', 500, 471, 20, '', tripodHole(490, 476) + tripodHole(510, 476) + tripodHole(500, 462)) +
     clue('bootPrintsUp', 620, 447, 32, '', bootPrint(612, 466) + bootPrint(628, 446) + bootPrint(614, 428)) +
-    clue('skiPoleLeft', 722, 376, 42, '', `<path d="M716 346L724 414" stroke="#2b2b38" stroke-width="4"/><rect x="711" y="336" width="9" height="14" rx="3" fill="#e5484d"/><ellipse cx="723" cy="404" rx="9" ry="3" fill="none" stroke="#2b2b38" stroke-width="2"/>`),
+    clue('skiPoleLeft', 722, 376, 42, '', `<path d="M716 346L724 414" stroke="#2b2b38" stroke-width="4"/><rect x="711" y="336" width="9" height="14" rx="3" fill="#e5484d"/><ellipse cx="723" cy="404" rx="9" ry="3" fill="none" stroke="#2b2b38" stroke-width="2"/>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['mittens', 40, 482],
+      ['snowShovel', 313, 483],
+      ['tent', 492, 353],
+      ['mailbox', 603, 383],
+      ['snowballs', 736, 480],
+    ]) +
+    extras({ extra, anim }, [
+      ['plane', 50, 43],
+      ['sparrow', 86, 374],
+      ['owl', 155, 320],
+      ['crow', 218, 375],
+      ['paperPlane', 222, 196],
+      ['bench', 279, 412],
+      ['swallow', 473, 196],
+      ['sled', 527, 410],
+      ['bullfinch', 660, 325],
+      ['dragonfly', 680, 85],
+    ]),
 })

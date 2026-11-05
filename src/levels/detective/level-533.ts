@@ -2,6 +2,7 @@
 // cross the bed, the scarecrow lost its hat, a fence picket is knocked aslant, the watering can is
 // tipped over and the sunflower is bent.
 import { carrot, wateringCan } from '../shapes.ts'
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, fence, grass, picket, sky, sun, tree } from './shapes.ts'
 import { cabbage, hoof, rabbit, villageGirl } from './village.ts'
@@ -27,7 +28,7 @@ export default detectiveLevel({
   case: 'chickens',
   title: 'chickensGarden',
   parTimeSec: 74,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
     sun(110, 70) +
     cloud(330, 80) +
@@ -56,5 +57,25 @@ export default detectiveLevel({
     clue('scarecrowHat', 600, 276, 31, `<ellipse cx="600" cy="287" rx="26" ry="5" fill="#c9953f"/><path d="M586 287V266Q600 260 614 266V287Z" fill="#c9953f"/><path d="M586 280H614" stroke="#e5484d" stroke-width="4"/>`, '') +
     clue('wateringCanTipped', 490, 446, 50, can(false), can(true)) +
     rabbit(40, 482) +
-    rabbit(720, 470),
+    rabbit(720, 470) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['birdhouse', 109, 476],
+      ['shovel', 378, 465],
+      ['rake', 524, 352],
+      ['bucket', 578, 486],
+      ['haybale', 678, 360],
+    ]) +
+    extras({ extra, anim }, [
+      ['crow', 43, 365],
+      ['paperPlane', 57, 161],
+      ['gnome', 246, 483],
+      ['swallow', 253, 31],
+      ['molehill', 413, 359],
+      ['plane', 460, 103],
+      ['cat', 672, 458, '#4a4a4a'],
+      ['dragonfly', 710, 30],
+      ['flowerPot', 756, 477],
+      ['sparrow', 761, 359],
+    ]),
 })

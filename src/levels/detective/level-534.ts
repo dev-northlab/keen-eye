@@ -2,6 +2,7 @@
 // pile, a ladder rung is broken, the lantern went out, the milk bucket is spilt and the horse's oats
 // are eaten from the trough.
 import { bucket, cat, horseshoe } from '../shapes.ts'
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { lantern } from './shapes.ts'
 import { horseHead, planks, villageGirl } from './village.ts'
@@ -32,7 +33,7 @@ export default detectiveLevel({
   case: 'chickens',
   title: 'chickensBarn',
   parTimeSec: 76,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     planks(0, 0, 800, 380) +
     `<rect y="380" width="800" height="120" fill="#d9b56a"/><path d="M40 410h30M150 460h24M260 420h20M520 470h26M700 450h30M740 400h20" stroke="#c09440" stroke-width="3" stroke-linecap="round"/>` +
     // Beam, loft and its hay
@@ -58,5 +59,25 @@ export default detectiveLevel({
     `<path d="M560 382Q580 286 662 276Q752 284 782 382Z" fill="#f2c14e"/><path d="M600 340q16 -10 30 0M660 310q16 -10 30 0M690 360q16 -10 30 0M620 368q14 -8 26 0" stroke="#d9a43a" stroke-width="3" fill="none"/>` +
     clue('bellInHay', 704, 334, 22, '', bell(704, 334)) +
     clue('hayScattered', 602, 425, 46, '', tufts()) +
-    clue('milkSpilled', 388, 444, 48, milkBucket(false), milkBucket(true)),
+    clue('milkSpilled', 388, 444, 48, milkBucket(false), milkBucket(true)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bucket', 68, 456],
+      ['garlic', 320, 189],
+      ['wallPhone', 409, 330],
+      ['keyRack', 462, 54],
+      ['boots', 491, 477, '#4fa3c7'],
+    ]) +
+    extras({ extra, anim }, [
+      ['spider', 135, 117],
+      ['shovel', 138, 455],
+      ['wateringCan', 208, 437, '#4c9a52'],
+      ['mouse', 277, 454, '#b9a58a'],
+      ['sconce', 282, 59],
+      ['rake', 509, 397],
+      ['birdcage', 558, 246],
+      ['crow', 703, 480],
+      ['sparrow', 721, 404],
+      ['owl', 745, 135],
+    ]),
 })

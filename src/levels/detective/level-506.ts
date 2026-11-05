@@ -1,5 +1,6 @@
 // "The cheese shop mystery", scene 1 — the shop: the big cheese is gone from the counter, the skylight
 // is open, the coins vanished, the scales tipped, crumbs on the top shelf, and the door padlocked.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { boards, cheese, coins, crumbs, door, room, shelf } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default detectiveLevel({
   case: 'cheese',
   title: 'cheeseShop',
   parTimeSec: 70,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     room('#f3e2b3', '#b5835a', 360) +
     boards(360, '#9b6a3f') +
     `<rect width="800" height="64" fill="#e0c995"/><path d="M0 64H800" stroke="#c9b07a" stroke-width="6"/>` +
@@ -65,5 +66,25 @@ export default detectiveLevel({
     clue('cheeseGone', 300, 236, 48, cheese(300, 256, 42), crumbs(300, 252, '#e6a22a')) +
     `<rect x="400" y="248" width="40" height="14" rx="3" fill="#8a6a3a"/><rect x="417" y="200" width="6" height="50" fill="#8a6a3a"/>` +
     clue('scalesTipped', 420, 218, 52, scales(false), scales(true)) +
-    clue('coinsGone', 520, 254, 24, coins(520, 260, 4), ''),
+    clue('coinsGone', 520, 254, 24, coins(520, 260, 4), '') +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['calendar', 118, 282],
+      ['hatBox', 392, 446, '#f2c14e'],
+      ['sconce', 407, 129],
+      ['wateringCan', 638, 447, '#4c9a52'],
+      ['garlic', 760, 189],
+    ]) +
+    extras({ extra, anim }, [
+      ['newspapers', 43, 423],
+      ['photoOval', 63, 71],
+      ['pouf', 183, 484, '#e5484d'],
+      ['globe', 273, 402],
+      ['keyRack', 277, 84],
+      ['cactus', 513, 403],
+      ['birdcage', 543, 76],
+      ['butterflyFrame', 585, 238],
+      ['dartboard', 705, 55],
+      ['boots', 756, 397, '#e5484d'],
+    ]),
 })

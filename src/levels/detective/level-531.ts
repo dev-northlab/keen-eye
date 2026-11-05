@@ -2,6 +2,7 @@
 // open, the eggs were left in the nest, the grain sack is knocked over, a tuft of white fur hangs on
 // the fence and white feathers lead away over the grass.
 import { eggNest, flower, hen } from '../shapes.ts'
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, fence, furTuft, grass, sky, sun, tree } from './shapes.ts'
 import { coop, coopDoor, rooster, sack, sackSpilt, villageGirl, whiteDuck, whiteFeather } from './village.ts'
@@ -14,7 +15,7 @@ export default detectiveLevel({
   case: 'chickens',
   title: 'chickensCoop',
   parTimeSec: 70,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
     sun(690, 80) +
     cloud(420, 70) +
@@ -44,5 +45,25 @@ export default detectiveLevel({
     clue('featherTrail', 368, 444, 48, '', whiteFeather(340, 446) + whiteFeather(368, 434, 10) + whiteFeather(396, 452, -30)) +
     `<ellipse cx="720" cy="466" rx="72" ry="20" fill="#7cc6e8"/><ellipse cx="720" cy="462" rx="60" ry="12" fill="#a8dcf2"/>` +
     whiteDuck(700, 462) +
-    whiteDuck(748, 470, true),
+    whiteDuck(748, 470, true) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bucket', 38, 356],
+      ['tent', 247, 453],
+      ['beehive', 386, 363],
+      ['haybale', 488, 470],
+      ['mailbox', 733, 418],
+    ]) +
+    extras({ extra, anim }, [
+      ['crow', 43, 485],
+      ['kite', 64, 47, '#7cc25a'],
+      ['flowerPot', 136, 442],
+      ['wateringCan', 188, 482, '#e5484d'],
+      ['tortoise', 191, 393],
+      ['molehill', 303, 384],
+      ['hotAirBalloon', 315, 183],
+      ['owl', 525, 365],
+      ['dragonfly', 560, 100],
+      ['paperPlane', 757, 171],
+    ]),
 })

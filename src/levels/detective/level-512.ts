@@ -1,6 +1,7 @@
 // "The broken vase", scene 2 — the corridor: a camera lens cap on the carpet, the window shut tight
 // (nothing flew in), the security camera turned away, a plant knocked over, a gum wrapper, the
 // storeroom key gone from its hook and the brochure stand emptied.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { boards, clockFace, openPanes, panes, pendulum, picture, plant, windowBox } from './shapes.ts'
 
@@ -38,7 +39,7 @@ export default detectiveLevel({
   case: 'vase',
   title: 'vaseCorridor',
   parTimeSec: 82,
-  scene: ({ clue, anim, secret }) =>
+  scene: ({ clue, anim, secret, extra }) =>
     `<rect width="800" height="500" fill="#e8eef5"/><rect y="260" width="800" height="120" fill="#c9d6e3"/><rect y="254" width="800" height="10" fill="#b3c3d4"/>` +
     `<rect y="380" width="800" height="120" fill="#c69563"/>` +
     boards(380, '#a8743f') +
@@ -64,5 +65,25 @@ export default detectiveLevel({
     clue('cameraTurned', 742, 62, 50, camera(-25), camera(70)) +
     clue('plantTipped', 638, 355, 50, smallPlant(660, 380), plantDown(660, 380)) +
     clue('lensCap', 260, 432, 24, '', lensCap(260, 432)) +
-    clue('gumWrapper', 430, 444, 22, '', gumWrapper(430, 444)),
+    clue('gumWrapper', 430, 444, 22, '', gumWrapper(430, 444)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['sconce', 42, 59],
+      ['photoOval', 228, 166],
+      ['pouf', 318, 484, '#4fb3a9'],
+      ['wallPhone', 484, 55],
+      ['yarnBasket', 738, 476],
+    ]) +
+    extras({ extra, anim }, [
+      ['scarfHook', 41, 244, '#7b5ea7'],
+      ['cat', 102, 483, '#9aa0a8'],
+      ['boots', 196, 412],
+      ['butterflyFrame', 330, 53],
+      ['mouse', 377, 409],
+      ['calendar', 378, 312],
+      ['newspapers', 498, 478],
+      ['bucket', 613, 456],
+      ['treasureMap', 644, 75],
+      ['spider', 650, 252],
+    ]),
 })

@@ -1,6 +1,7 @@
 // "The cheese shop mystery", scene 4 — the cellar: the mouse hole is plugged with a cork (the mouse
 // couldn't get out), the silver spoon is gone from its hook, a black feather on the stairs, a bottle
 // fallen over, the candle blown out and a torn cobweb.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { candle, cheese, cobweb, feather, flame, shelf, smoke } from './shapes.ts'
 
@@ -33,7 +34,7 @@ export default detectiveLevel({
   case: 'cheese',
   title: 'cheeseCellar',
   parTimeSec: 76,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     stones() +
     `<rect y="390" width="800" height="110" fill="#57535e"/><path d="M0 390H800" stroke="#45424b" stroke-width="6"/>` +
     // Stairs down from the shop
@@ -68,5 +69,25 @@ export default detectiveLevel({
     clue('candleOut', 310, 266, 26, glow(310, 318), smoke(310, 318)) +
     // The mouse hole
     `<path d="M684 390V378A16 16 0 0 1 716 378V390Z" fill="#1f1d24"/>` +
-    clue('corkedHole', 700, 378, 24, '', `<path d="M687 390V379A13 13 0 0 1 713 379V390Z" fill="#c69563"/><circle cx="694" cy="380" r="2" fill="#a8743f"/><circle cx="705" cy="384" r="2" fill="#a8743f"/>`),
+    clue('corkedHole', 700, 378, 24, '', `<path d="M687 390V379A13 13 0 0 1 713 379V390Z" fill="#c69563"/><circle cx="694" cy="380" r="2" fill="#a8743f"/><circle cx="705" cy="384" r="2" fill="#a8743f"/>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['keyRack', 42, 49],
+      ['hatBox', 207, 481, '#f2c14e'],
+      ['butterflyFrame', 350, 53],
+      ['newspapers', 518, 483],
+      ['pan', 647, 319],
+    ]) +
+    extras({ extra, anim }, [
+      ['globe', 93, 442],
+      ['birdcage', 198, 126],
+      ['sconce', 222, 309],
+      ['cactus', 323, 468],
+      ['garlic', 390, 234],
+      ['treasureMap', 514, 55],
+      ['wallPhone', 604, 180],
+      ['fireExtinguisher', 637, 470],
+      ['calendar', 758, 182],
+      ['pouf', 758, 484, '#4fb3a9'],
+    ]),
 })

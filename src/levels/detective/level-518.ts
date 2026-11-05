@@ -1,6 +1,7 @@
 // "The circus mystery", scene 3 — the animal yard: the monkey asleep in its locked cage, the lantern
 // out, the white rabbit gone from its hutch, carrots gone from its bowl, peanut shells by the wagon,
 // the water barrel knocked over, hay scattered and the seal's ball fallen off its nose.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, grass, lantern, sky } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default detectiveLevel({
   case: 'circus',
   title: 'circusMenagerie',
   parTimeSec: 100,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#cfe8f5') +
     cloud(420, 70, 0.8) +
     // The big top behind
@@ -82,5 +83,25 @@ export default detectiveLevel({
     `<ellipse cx="700" cy="396" rx="50" ry="18" fill="#8a8f99"/>` +
     `<path d="M672 388Q666 346 700 330Q716 322 728 334Q720 346 716 362Q714 378 730 390Z" fill="#5b6b7a"/><circle cx="724" cy="338" r="14" fill="#5b6b7a"/>` +
     `<ellipse cx="740" cy="342" rx="6" ry="4" fill="#2b2b38"/><circle cx="726" cy="334" r="2.4" fill="#fff"/>` +
-    clue('sealBall', 746, 352, 46, ball(742, 324), ball(752, 382)),
+    clue('sealBall', 746, 352, 46, ball(742, 324), ball(752, 382)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['shovel', 58, 425],
+      ['pouf', 198, 484, '#4fb3a9'],
+      ['broom', 416, 478],
+      ['hatBox', 537, 381],
+      ['newspapers', 748, 483],
+    ]) +
+    extras({ extra, anim }, [
+      ['bucket', 113, 486],
+      ['swallow', 143, 56],
+      ['rake', 154, 342],
+      ['crow', 258, 355],
+      ['tent', 302, 458],
+      ['paperPlane', 362, 96],
+      ['haybale', 488, 430],
+      ['sparrow', 541, 484],
+      ['hotAirBalloon', 570, 43],
+      ['dragonfly', 755, 155],
+    ]),
 })

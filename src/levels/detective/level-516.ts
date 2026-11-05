@@ -1,6 +1,7 @@
 // "The circus mystery", scene 1 — the ring before the show: the ringmaster's top hat gone from its
 // pole, the rope ladder let down, unicycle tracks in the sawdust, the spotlight off, white glove prints
 // on the drum, a stool knocked over, a pennant missing from the string and a banana peel.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { bananaPeel, glovePrint, spotlight, topHat } from './shapes.ts'
 
@@ -25,7 +26,7 @@ export default detectiveLevel({
   case: 'circus',
   title: 'circusRing',
   parTimeSec: 96,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     // Tent wall, stands full of people, sawdust floor and the ring
     `<rect width="800" height="240" fill="#fff1dc"/>` +
     Array.from({ length: 10 }, (_, i) => `<path d="M${i * 80} 0h40l-6 240h-28Z" fill="#e5484d"/>`).join('') +
@@ -63,5 +64,25 @@ export default detectiveLevel({
     // Ball by the ring and the sawdust tracks
     `<circle cx="700" cy="444" r="26" fill="#f2b632"/><path d="M676 436q24 14 48 0M680 456q20 10 40 0" stroke="#e5484d" stroke-width="5" fill="none"/>` +
     clue('unicycleTracks', 300, 424, 62, '', `<ellipse cx="300" cy="424" rx="58" ry="14" fill="none" stroke="#a8743f" stroke-width="3" stroke-dasharray="8 6"/>`) +
-    clue('bananaPeel', 540, 452, 22, '', bananaPeel(540, 452)),
+    clue('bananaPeel', 540, 452, 22, '', bananaPeel(540, 452)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['boots', 41, 487, '#4fa3c7'],
+      ['teddy', 195, 470, '#c98a6a'],
+      ['toyDrum', 475, 435],
+      ['haybale', 628, 405],
+      ['pouf', 758, 484, '#4fb3a9'],
+    ]) +
+    extras({ extra, anim }, [
+      ['bucket', 38, 406],
+      ['spider', 65, 117],
+      ['mouse', 107, 479],
+      ['broom', 136, 438],
+      ['bunting', 392, 118],
+      ['sparrow', 426, 444],
+      ['birdcage', 543, 46],
+      ['umbrellaStand', 613, 472],
+      ['newspapers', 663, 483],
+      ['wateringCan', 708, 412],
+    ]),
 })

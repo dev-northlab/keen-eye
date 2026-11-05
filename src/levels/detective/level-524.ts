@@ -2,6 +2,7 @@
 // dinosaur sticker on the countess's trunk, the trunk's lid lifted, a parcel tipped on the pile, the
 // lantern out, letters spilled from the mail sack, a luggage label torn off, the cobweb torn and a box
 // opened.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { box, cobweb, lantern, shelf } from './shapes.ts'
 
@@ -33,7 +34,7 @@ export default detectiveLevel({
   case: 'train',
   title: 'trainLuggageCar',
   parTimeSec: 112,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="400" fill="#a8743f"/>` +
     `<path d="${Array.from({ length: 16 }, (_, i) => `M${i * 50 + 25} 0V400`).join('')}" stroke="#8a5a2b" stroke-width="3"/>` +
     `<rect y="400" width="800" height="100" fill="#6b4a2b"/><path d="M0 400H800" stroke="#4a3220" stroke-width="5"/>` +
@@ -75,5 +76,25 @@ export default detectiveLevel({
       22,
       `<g transform="rotate(-12 708 164)"><rect x="700" y="164" width="16" height="24" rx="2" fill="#f5ecd8" stroke="#c9953f" stroke-width="1.4"/><path d="M704 174h8M704 180h6" stroke="#8a8f99" stroke-width="1.6"/></g>`,
       `<path d="M703 163l6 6l-3 2l6 3" stroke="#f5ecd8" stroke-width="2" fill="none"/>`,
-    ),
+    ) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['keyRack', 42, 144],
+      ['hatBox', 352, 486, '#f2c14e'],
+      ['roundMirror', 445, 240],
+      ['butterflyFrame', 745, 238],
+      ['newspapers', 758, 473],
+    ]) +
+    extras({ extra, anim }, [
+      ['calendar', 123, 282],
+      ['globe', 178, 487],
+      ['sconce', 207, 74],
+      ['yarnBasket', 273, 476],
+      ['treasureMap', 279, 220],
+      ['pouf', 398, 429, '#f2994a'],
+      ['bucket', 513, 486],
+      ['wallPhone', 574, 65],
+      ['mouse', 592, 424],
+      ['dartboard', 755, 55],
+    ]),
 })

@@ -1,5 +1,6 @@
 // "The missing cake", scene 4 — the attic: cake crumbs by the hatch, a box knocked open, a chewed
 // slipper, paw prints on the dusty floor and a torn cobweb.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { boards, box, cobweb, crumbs, pawTrail } from './shapes.ts'
 
@@ -29,7 +30,7 @@ export default detectiveLevel({
   case: 'cake',
   title: 'cakeAttic',
   parTimeSec: 66,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="500" fill="#b48a63"/>` +
     Array.from({ length: 16 }, (_, i) => `<path d="M${i * 52 + 20} 0V370" stroke="#a07650" stroke-width="3"/>`).join('') +
     `<rect y="370" width="800" height="130" fill="#9b6a3f"/>` +
@@ -48,5 +49,25 @@ export default detectiveLevel({
     `<rect x="300" y="420" width="130" height="50" rx="4" fill="#5e3b1a"/><path d="M320 470V428M410 470V428M320 444H410M320 460H410" stroke="#a8743f" stroke-width="5"/>` +
     clue('crumbs', 486, 436, 30, '', crumbs(486, 436, '#d9a35a') + `<circle cx="478" cy="442" r="3" fill="#f7c6d9"/><circle cx="496" cy="430" r="3" fill="#f7c6d9"/>`) +
     clue('chewedSlipper', 180, 432, 36, '', slipper(180, 432)) +
-    clue('pawPrints', 650, 444, 40, '', pawTrail([[628, 452], [650, 432], [674, 450]], '#3b2a1a')),
+    clue('pawPrints', 650, 444, 40, '', pawTrail([[628, 452], [650, 432], [674, 450]], '#3b2a1a')) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['sconce', 162, 254],
+      ['hatBox', 277, 486, '#f7a1c4'],
+      ['butterflyFrame', 295, 73],
+      ['boots', 556, 472],
+      ['scarfHook', 566, 144, '#4c9a52'],
+    ]) +
+    extras({ extra, anim }, [
+      ['tortoise', 66, 443],
+      ['wallPhone', 259, 185],
+      ['pouf', 318, 399, '#e5484d'],
+      ['birdcage', 348, 281],
+      ['newspapers', 418, 413],
+      ['keyRack', 442, 69],
+      ['dartboard', 450, 190],
+      ['photoOval', 513, 306],
+      ['toyDrum', 575, 410],
+      ['mouse', 757, 424, '#b9a58a'],
+    ]),
 })

@@ -1,5 +1,6 @@
 // "The cheese shop mystery", scene 2 — the storeroom: peck marks on a cheese, a black feather on the
 // crates, the little window open, a barrel and a sack knocked over, and the mousetrap still set.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cheese, feather, openPanes, panes, windowBox } from './shapes.ts'
 
@@ -50,7 +51,7 @@ export default detectiveLevel({
   case: 'cheese',
   title: 'cheeseStoreroom',
   parTimeSec: 72,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     bricks() +
     `<rect y="380" width="800" height="120" fill="#8f8a80"/><path d="M0 380H800M0 430H800M0 470H800M120 380V430M330 380V430M560 380V430M220 430V470M450 430V470M680 430V470" stroke="#76716a" stroke-width="3"/>` +
     windowBox(60, 60, 100, 80) +
@@ -73,5 +74,25 @@ export default detectiveLevel({
     cheese(595, 340, 28) +
     clue('barrelTipped', 724, 348, 50, barrel(720, 380), barrelDown(720, 380)) +
     clue('sackSpilled', 350, 346, 56, sack(352, 380), sackDown(350, 380)) +
-    clue('trapUntouched', 470, 444, 30, '', mousetrap(470, 446)),
+    clue('trapUntouched', 470, 444, 30, '', mousetrap(470, 446)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['boots', 41, 417],
+      ['pouf', 323, 469, '#4fb3a9'],
+      ['calendar', 423, 162],
+      ['sconce', 657, 99],
+      ['bucket', 758, 486],
+    ]) +
+    extras({ extra, anim }, [
+      ['butterflyFrame', 40, 263],
+      ['umbrellaStand', 108, 482],
+      ['birdcage', 208, 151],
+      ['newspapers', 218, 413],
+      ['wallPhone', 314, 255],
+      ['pan', 482, 289],
+      ['keyRack', 522, 49],
+      ['puppy', 583, 429],
+      ['fireExtinguisher', 667, 490],
+      ['garlic', 760, 249],
+    ]),
 })

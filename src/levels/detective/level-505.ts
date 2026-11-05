@@ -1,5 +1,6 @@
 // "The missing cake", scene 5 — the yard: cream on the doghouse roof, a cake candle in the grass, the
 // dog's bowl filled and left untouched, a gap in the fence and the neighbour's clean boots at his door.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, door, fence, grass, picket, sky, sun, tree } from './shapes.ts'
 
@@ -36,7 +37,7 @@ export default detectiveLevel({
   case: 'cake',
   title: 'cakeYard',
   parTimeSec: 68,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
     sun(90, 70) +
     anim({ type: 'path', points: [[0, 0], [-80, 0]], period: 46 }, cloud(470, 70, 0.8)) +
@@ -55,5 +56,25 @@ export default detectiveLevel({
     bowl(432, 346) +
     clue('bowlFull', 432, 330, 26, '', kibble(432, 346)) +
     clue('candleByDoghouse', 360, 396, 26, '', candle(360, 396)) +
-    anim({ type: 'bob', dx: 0, dy: -8, period: 1.6 }, `<circle cx="120" cy="430" r="18" fill="#e5484d"/><path d="M104 424q16 10 32 0" stroke="#fff" stroke-width="4" fill="none"/>`),
+    anim({ type: 'bob', dx: 0, dy: -8, period: 1.6 }, `<circle cx="120" cy="430" r="18" fill="#e5484d"/><path d="M104 424q16 10 32 0" stroke="#fff" stroke-width="4" fill="none"/>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['gnome', 46, 488],
+      ['haybale', 268, 475],
+      ['molehill', 303, 359],
+      ['bucket', 598, 486],
+      ['bench', 699, 392],
+    ]) +
+    extras({ extra, anim }, [
+      ['crow', 123, 330],
+      ['beehive', 156, 448],
+      ['swallow', 158, 71],
+      ['flowerPot', 376, 487],
+      ['paperPlane', 392, 141],
+      ['sparrow', 476, 469],
+      ['dragonfly', 545, 30],
+      ['owl', 555, 365],
+      ['plane', 735, 68],
+      ['wheelbarrow', 759, 481],
+    ]),
 })
