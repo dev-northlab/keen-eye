@@ -1,6 +1,7 @@
 // "The night train mystery", scene 1 — the countess's compartment: the pearl necklace gone from its
 // case, the window let down, small handprints on the glass, tea spilled, only the lowest drawer pulled
 // out, a candy wrapper on the carpet, the suitcase unstrapped, the hatbox tipped and a pillow fallen.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { smallHand, windowBox } from './shapes.ts'
 
@@ -46,7 +47,7 @@ export default detectiveLevel({
   case: 'train',
   title: 'trainCompartment',
   parTimeSec: 108,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="380" fill="#8a5a2b"/>` +
     [0, 1, 2, 3, 4, 5, 6, 7].map((i) => `<rect x="${i * 100 + 8}" y="12" width="84" height="140" rx="6" fill="#000" fill-opacity="0.08"/>`).join('') +
     `<rect y="380" width="800" height="120" fill="#5b3a4a"/><rect x="260" y="390" width="280" height="110" fill="#8e2f45"/><path d="M276 390V500M524 390V500" stroke="#f2c14e" stroke-width="3"/>` +
@@ -86,5 +87,25 @@ export default detectiveLevel({
     `<rect x="40" y="290" width="40" height="26" rx="10" fill="#f2c14e"/>` +
     clue('candyWrapper', 300, 440, 22, '', candy(300, 440)) +
     // Wall lamp
-    `<path d="M510 140h14v-30" stroke="#c9953f" stroke-width="4" fill="none"/><path d="M510 110L538 110L532 90H516Z" fill="#fff3b0"/>`,
+    `<path d="M510 140h14v-30" stroke="#c9953f" stroke-width="4" fill="none"/><path d="M510 110L538 110L532 90H516Z" fill="#fff3b0"/>` +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['newspapers', 43, 468],
+      ['wallPhone', 194, 55],
+      ['sconce', 502, 74],
+      ['bucket', 553, 486],
+      ['dartboard', 705, 65],
+    ]) +
+    extras({ extra, anim }, [
+      ['pouf', 123, 464, '#e5484d'],
+      ['butterflyFrame', 190, 148],
+      ['hatBox', 207, 476, '#f7a1c4'],
+      ['spider', 290, 122],
+      ['treasureMap', 559, 150],
+      ['cactus', 598, 473],
+      ['mouse', 652, 459, '#b9a58a'],
+      ['globe', 698, 487],
+      ['fireExtinguisher', 752, 475],
+      ['keyRack', 757, 149],
+    ]),
 })

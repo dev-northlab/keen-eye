@@ -1,6 +1,7 @@
 // "The broken vase", scene 4 — the courtyard: the fountain switched off, a selfie stick left against
 // it, a ticket stub on the bench, more shards under it, the keeper's lunch box in the booth (he was on
 // his break), the pigeons flown away and a balloon caught in the tree.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, shards, sky, tree } from './shapes.ts'
 
@@ -39,7 +40,7 @@ export default detectiveLevel({
   case: 'vase',
   title: 'vaseCourtyard',
   parTimeSec: 86,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
     anim({ type: 'path', points: [[0, 0], [80, 0]], period: 44 }, cloud(380, 50, 0.8)) +
     facade() +
@@ -62,5 +63,25 @@ export default detectiveLevel({
     `<rect x="660" y="240" width="90" height="70" fill="#2b3a33"/><rect x="654" y="306" width="102" height="10" fill="#f5ecd8"/>` +
     clue('lunchBox', 705, 290, 30, '', lunchBox(705, 306)) +
     clue('pigeonsGone', 591, 437, 38, pigeon(574, 452) + pigeon(608, 446), '') +
-    anim({ type: 'path', points: [[0, 0], [50, -24], [100, 0], [50, 16]], period: 8 }, `<path d="M300 200l-9 -7v14Zm0 0l9 -7v14Z" fill="#ba68c8"/>`),
+    anim({ type: 'path', points: [[0, 0], [50, -24], [100, 0], [50, 16]], period: 8 }, `<path d="M300 200l-9 -7v14Zm0 0l9 -7v14Z" fill="#ba68c8"/>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['mailbox', 43, 358],
+      ['bucket', 68, 486],
+      ['cactus', 248, 418],
+      ['newspapers', 618, 338],
+      ['scooter', 702, 482],
+    ]) +
+    extras({ extra, anim }, [
+      ['dragonfly', 45, 30],
+      ['broom', 66, 433],
+      ['swallow', 223, 71],
+      ['sparrow', 256, 339],
+      ['puppy', 303, 474],
+      ['mouse', 347, 354, '#b9a58a'],
+      ['flowerPot', 406, 432],
+      ['crow', 508, 455],
+      ['kite', 604, 42, '#f2c14e'],
+      ['wheelbarrow', 759, 421],
+    ]),
 })

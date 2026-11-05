@@ -2,6 +2,7 @@
 // empty grain sack lies on the grass, the goat has grain on her muzzle, the daisies are eaten, the
 // berry basket is tipped over and a plank of the footbridge is out of place.
 import { basket, flower, hen } from '../shapes.ts'
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { bush, cloud, grass, sky, sun, tree } from './shapes.ts'
 import { goat, grain, rooster, villageGirl, whiteDuck } from './village.ts'
@@ -28,7 +29,7 @@ export default detectiveLevel({
   case: 'chickens',
   title: 'chickensMeadow',
   parTimeSec: 78,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
     sun(640, 70) +
     cloud(200, 70) +
@@ -56,5 +57,25 @@ export default detectiveLevel({
     clue('daisiesEaten', 732, 450, 44, daisies(false), daisies(true)) +
     flower(40, 480, '#ff6b8b') +
     flower(560, 480, '#b38cff') +
-    flower(470, 486, '#ff9f43'),
+    flower(470, 486, '#ff9f43') +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['wateringCan', 98, 482],
+      ['haybale', 233, 350],
+      ['molehill', 533, 484],
+      ['gnome', 586, 363],
+      ['bucket', 648, 486],
+    ]) +
+    extras({ extra, anim }, [
+      ['swallow', 48, 31],
+      ['flowerPot', 51, 392],
+      ['beehive', 196, 413],
+      ['crow', 203, 485],
+      ['hotAirBalloon', 220, 138],
+      ['sparrow', 396, 349],
+      ['dragonfly', 430, 65],
+      ['scooter', 592, 462],
+      ['mouse', 712, 349, '#b9a58a'],
+      ['paperPlane', 752, 51],
+    ]),
 })

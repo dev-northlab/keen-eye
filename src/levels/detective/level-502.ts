@@ -1,5 +1,6 @@
 // "The missing cake", scene 2 — the garden behind the house: the gate stands open, tulips are
 // trampled, someone dug a hole by the bush, the cake's paper doily lies under it, big muddy tracks.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { bush, cloud, door, fence, grass, paw, sky, sun, tree } from './shapes.ts'
 
@@ -36,7 +37,7 @@ export default detectiveLevel({
   case: 'cake',
   title: 'cakeGarden',
   parTimeSec: 62,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#bfe6ff') +
     sun(720, 80) +
     anim({ type: 'path', points: [[0, 0], [70, 0]], period: 40 }, cloud(330, 80)) +
@@ -64,5 +65,25 @@ export default detectiveLevel({
     clue('doily', 578, 380, 26, '', doily(578, 380)) +
     clue('holeDug', 445, 420, 44, '', hole(445, 420)) +
     clue('bigTracks', 640, 446, 50, '', bigPaw(612, 454) + bigPaw(640, 434) + bigPaw(668, 454)) +
-    anim({ type: 'path', points: [[0, 0], [60, -30], [120, 0], [60, 20]], period: 9 }, `<path d="M150 200l-10 -8v16Zm0 0l10 -8v16Z" fill="#ff8a65"/>`),
+    anim({ type: 'path', points: [[0, 0], [60, -30], [120, 0], [60, 20]], period: 9 }, `<path d="M150 200l-10 -8v16Zm0 0l10 -8v16Z" fill="#ff8a65"/>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['rake', 49, 472],
+      ['haybale', 193, 355],
+      ['beehive', 226, 423],
+      ['molehill', 328, 474],
+      ['bucket', 543, 466],
+    ]) +
+    extras({ extra, anim }, [
+      ['wheelbarrow', 69, 411],
+      ['dragonfly', 75, 45],
+      ['owl', 120, 445],
+      ['mouse', 192, 479, '#b9a58a'],
+      ['swallow', 253, 156],
+      ['gnome', 261, 483],
+      ['paperPlane', 437, 221],
+      ['plane', 520, 43],
+      ['crow', 733, 485],
+      ['sparrow', 746, 374],
+    ]),
 })

@@ -1,6 +1,7 @@
 // "The circus mystery", scene 5 — the trailers at night: a light on in the magician's trailer, its door
 // ajar, white rabbit fur on the grass, the campfire out, a shirt gone from the washing line, playing
 // cards dropped along the path, a flat tyre on the clown's trailer and a deck chair folded up.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { furTuft, playingCard } from './shapes.ts'
 
@@ -21,7 +22,7 @@ export default detectiveLevel({
   case: 'circus',
   title: 'circusTrailers',
   parTimeSec: 102,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="500" fill="#2b3a67"/>` +
     STARS.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.2" fill="#fff3b0"/>`).join('') +
     `<circle cx="700" cy="70" r="30" fill="#fff3b0"/><circle cx="712" cy="62" r="26" fill="#2b3a67"/>` +
@@ -67,5 +68,25 @@ export default detectiveLevel({
       `<circle cx="650" cy="350" r="20" fill="#2b2b38"/><circle cx="650" cy="350" r="7" fill="#c9953f"/>`,
       `<ellipse cx="650" cy="357" rx="24" ry="13" fill="#2b2b38"/><circle cx="650" cy="354" r="6" fill="#c9953f"/>`,
     ) +
-    clue('chairFolded', 720, 392, 40, chair(true), chair(false)),
+    clue('chairFolded', 720, 392, 40, chair(true), chair(false)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['shovel', 98, 455],
+      ['wheelbarrow', 269, 481],
+      ['bench', 334, 472],
+      ['molehill', 658, 484],
+      ['bucket', 753, 486],
+    ]) +
+    extras({ extra, anim }, [
+      ['mouse', 47, 379],
+      ['bat', 48, 151],
+      ['firefly', 209, 484],
+      ['hotAirBalloon', 240, 93],
+      ['fox', 261, 402],
+      ['tortoise', 331, 368],
+      ['crow', 478, 485],
+      ['owl', 545, 380],
+      ['plane', 550, 83],
+      ['skyLantern', 757, 35],
+    ]),
 })

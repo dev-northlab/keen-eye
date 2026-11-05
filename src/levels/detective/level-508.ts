@@ -1,6 +1,7 @@
 // "The cheese shop mystery", scene 3 — the street in the morning: the paperboy's bike still chained up,
 // crumbs on the shop's roof, bird tracks on the windowsill, a torn awning, the shopkeeper's curtains
 // drawn (he slept all night) and a flower pot tipped over on his sill.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { birdTrack, cloud, crumbs, panes, sky, sun, windowBox } from './shapes.ts'
 
@@ -44,7 +45,7 @@ export default detectiveLevel({
   case: 'cheese',
   title: 'cheeseStreet',
   parTimeSec: 74,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#ffe3c4') +
     sun(130, 90) +
     anim({ type: 'path', points: [[0, 0], [90, 0]], period: 50 }, cloud(320, 50, 0.7)) +
@@ -73,5 +74,25 @@ export default detectiveLevel({
     Array.from({ length: 30 }, (_, i) => `<ellipse cx="${(i % 10) * 82 + (Math.floor(i / 10) % 2) * 41 + 20}" cy="${424 + Math.floor(i / 10) * 28}" rx="34" ry="10" fill="#bdb7ad"/>`).join('') +
     `<rect x="198" y="330" width="14" height="62" rx="4" fill="#5b6b7a"/>` +
     bike() +
-    clue('bikeChained', 194, 366, 26, '', chain()),
+    clue('bikeChained', 194, 366, 26, '', chain()) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['newspapers', 43, 398],
+      ['bucket', 198, 461],
+      ['broom', 386, 428],
+      ['cactus', 603, 483],
+      ['bench', 734, 437],
+    ]) +
+    extras({ extra, anim }, [
+      ['plane', 50, 173],
+      ['hotAirBalloon', 65, 38],
+      ['scooter', 97, 487],
+      ['swallow', 198, 46],
+      ['mailbox', 268, 428],
+      ['wheelbarrow', 344, 481],
+      ['cat', 472, 423, '#e8d7b8'],
+      ['dragonfly', 510, 30],
+      ['puppy', 643, 404, '#8a5a2b'],
+      ['paperPlane', 747, 61],
+    ]),
 })

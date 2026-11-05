@@ -1,5 +1,6 @@
 // "The missing cake", scene 1 — the kitchen: the cake is gone from its stand, the window is open,
 // paw prints by the counter, a stool knocked over and drops of cream leading to the door.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { clockFace, crumbs, door, hangingLamp, jar, openPanes, panes, pawTrail, pendulum, room, shelf, table, tiles, windowBox } from './shapes.ts'
 
@@ -33,7 +34,7 @@ export default detectiveLevel({
   case: 'cake',
   title: 'cakeKitchen',
   parTimeSec: 60,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     room('#f6e3c4', '#e9d3b0', 330) +
     tiles(330, '#dcc29b', '#d2b48c') +
     // Window over the counter
@@ -61,5 +62,25 @@ export default detectiveLevel({
     clue('cakeGone', 380, 262, 42, cake(380, 288), crumbs(380, 285)) +
     clue('stoolTipped', 575, 370, 46, stool(580, 400), stoolDown(578, 400)) +
     clue('pawPrints', 209, 444, 40, '', pawTrail([[186, 452], [208, 432], [232, 450]])) +
-    clue('creamDrops', 690, 386, 30, '', creamDrops(690, 386)),
+    clue('creamDrops', 690, 386, 30, '', creamDrops(690, 386)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['butterflyFrame', 40, 63],
+      ['teddy', 125, 485, '#c98a6a'],
+      ['pan', 282, 224],
+      ['cactus', 508, 453],
+      ['sconce', 762, 259],
+    ]) +
+    extras({ extra, anim }, [
+      ['globe', 58, 397],
+      ['boots', 221, 372, '#4c9a52'],
+      ['wallPhone', 234, 55],
+      ['newspapers', 298, 478],
+      ['mouse', 387, 364, '#b9a58a'],
+      ['scarfHook', 451, 49, '#4c9a52'],
+      ['garlic', 565, 234],
+      ['toyDrum', 620, 485],
+      ['spider', 695, 82],
+      ['tortoise', 736, 453],
+    ]),
 })

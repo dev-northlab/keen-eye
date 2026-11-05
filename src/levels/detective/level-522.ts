@@ -1,6 +1,7 @@
 // "The night train mystery", scene 2 — the corridor: every ticket on the board punched, a compartment
 // curtain drawn, a ceiling lamp out, a painting knocked crooked, a suitcase fallen off the pile, a
 // flower pot tipped over, and on the carpet a newspaper, one pearl and small shoe prints.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { hills, picture, sneaker } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default detectiveLevel({
   case: 'train',
   title: 'trainCorridor',
   parTimeSec: 110,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="380" fill="#c69563"/><rect width="800" height="14" fill="#8a5a2b"/><path d="M0 70H800M0 300H800" stroke="#a8743f" stroke-width="6"/>` +
     `<rect y="380" width="800" height="120" fill="#3a3a5a"/><rect y="404" width="800" height="84" fill="#8e2f45"/><path d="M0 410H800M0 482H800" stroke="#f2c14e" stroke-width="3"/>` +
     lamp(200, true) +
@@ -61,5 +62,25 @@ export default detectiveLevel({
     clue('plantTipped', 728, 352, 58, flowerPot(), `<g transform="rotate(-80 744 380)">${flowerPot()}</g>`) +
     clue('newspaperDropped', 300, 450, 30, '', newspaper(300, 450)) +
     clue('pearlOnCarpet', 470, 432, 20, '', `<circle cx="470" cy="434" r="5.5" fill="#fffaf0" stroke="#c9c2b6" stroke-width="1"/><circle cx="468" cy="432" r="1.6" fill="#fff"/>`) +
-    clue('smallShoePrints', 601, 458, 24, '', `<g transform="translate(601 458) scale(0.6) translate(-601 -458)">${sneaker(590, 470, '#2b2b38') + sneaker(612, 446, '#2b2b38')}</g>`),
+    clue('smallShoePrints', 601, 458, 24, '', `<g transform="translate(601 458) scale(0.6) translate(-601 -458)">${sneaker(590, 470, '#2b2b38') + sneaker(612, 446, '#2b2b38')}</g>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['fireExtinguisher', 132, 490],
+      ['photoOval', 178, 96],
+      ['dartboard', 455, 245],
+      ['boots', 751, 482, '#4c9a52'],
+      ['keyRack', 757, 49],
+    ]) +
+    extras({ extra, anim }, [
+      ['butterflyFrame', 40, 248],
+      ['globe', 58, 472],
+      ['cactus', 203, 488],
+      ['scarfHook', 231, 329, '#4c9a52'],
+      ['wallPhone', 359, 60],
+      ['bucket', 393, 481],
+      ['sconce', 542, 79],
+      ['pouf', 548, 424],
+      ['hatBox', 672, 451, '#7b5ea7'],
+      ['roundMirror', 750, 245],
+    ]),
 })

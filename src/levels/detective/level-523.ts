@@ -1,6 +1,7 @@
 // "The night train mystery", scene 3 — the dining car: a tall stack of fresh pancakes (the chef cooked
 // all night), the sugar bowl tipped, a bar stool knocked over, the candle out, the menu fallen flat,
 // the cookie jar opened, a bottle fallen on the shelf, the rose gone and a window blind pulled down.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { candle, flame, shelf, smoke, tiles, windowBox } from './shapes.ts'
 
@@ -38,7 +39,7 @@ export default detectiveLevel({
   case: 'train',
   title: 'trainDiningCar',
   parTimeSec: 112,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="400" fill="#f5ecd8"/><rect y="290" width="800" height="110" fill="#8a5a2b"/><rect width="800" height="16" fill="#8a5a2b"/>` +
     tiles(400, '#2b2b38', '#e8e2d6') +
     anim({ type: 'sway', angle: 4, pivot: [260, 16], period: 2.2 }, hangingLamp(260)) +
@@ -81,5 +82,25 @@ export default detectiveLevel({
       `<g transform="rotate(8 758 246)"><rect x="742" y="242" width="32" height="8" rx="3" fill="#e5484d"/><circle cx="758" cy="239" r="4" fill="#e5484d"/></g>`,
     ) +
     stool(600, true) +
-    clue('stoolTipped', 704, 370, 54, stool(700, true), stool(700, false)),
+    clue('stoolTipped', 704, 370, 54, stool(700, true), stool(700, false)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['newspapers', 43, 423],
+      ['dartboard', 300, 85],
+      ['bucket', 333, 466],
+      ['yarnBasket', 738, 481],
+      ['wallPhone', 749, 70],
+    ]) +
+    extras({ extra, anim }, [
+      ['sconce', 47, 129],
+      ['pouf', 158, 464, '#4fb3a9'],
+      ['garlic', 165, 49],
+      ['calendar', 228, 317],
+      ['hatBox', 247, 426, '#7b5ea7'],
+      ['butterflyFrame', 375, 318],
+      ['cat', 512, 448],
+      ['roundMirror', 520, 85],
+      ['photoOval', 538, 251],
+      ['fireExtinguisher', 627, 485],
+    ]),
 })

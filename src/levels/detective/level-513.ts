@@ -1,6 +1,7 @@
 // "The broken vase", scene 3 — the museum storeroom: a cobweb over the cleaner's bucket (unused all
 // day), the glue tube taken, a box opened, a torn backpack strap on a nail, tape unrolled, the light
 // bulb off and sneaker prints in the dust.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { box, cobweb, sneaker } from './shapes.ts'
 
@@ -26,7 +27,7 @@ export default detectiveLevel({
   case: 'vase',
   title: 'vaseStoreroom',
   parTimeSec: 84,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="380" fill="#d9d2c3"/><rect y="380" width="800" height="120" fill="#a9a39a"/><path d="M0 380H800" stroke="#8f8a80" stroke-width="5"/>` +
     // The cleaner's closet, door open: bucket and mop inside
     `<rect x="30" y="180" width="140" height="200" fill="#5e5a54"/><rect x="24" y="174" width="152" height="8" fill="#8a8f99"/>` +
@@ -56,5 +57,25 @@ export default detectiveLevel({
     // Ladder against the wall
     `<path d="M730 380L746 130M776 380L792 130" stroke="#c69563" stroke-width="8"/>` +
     [170, 220, 270, 320, 360].map((y) => `<path d="M${730 + ((380 - y) * 16) / 250} ${y}h46" stroke="#c69563" stroke-width="6"/>`).join('') +
-    clue('sneakerPrints', 450, 438, 38, '', sneaker(438, 448) + sneaker(462, 430)),
+    clue('sneakerPrints', 450, 438, 38, '', sneaker(438, 448) + sneaker(462, 430)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bucket', 38, 486],
+      ['wallPhone', 39, 55],
+      ['roundMirror', 465, 325],
+      ['calendar', 743, 87],
+      ['boots', 746, 442],
+    ]) +
+    extras({ extra, anim }, [
+      ['puppy', 138, 434, '#8a5a2b'],
+      ['photoOval', 163, 141],
+      ['fireExtinguisher', 252, 490],
+      ['cactus', 338, 418],
+      ['sconce', 427, 89],
+      ['mouse', 532, 469, '#b9a58a'],
+      ['keyRack', 582, 54],
+      ['cuckooClock', 587, 223],
+      ['hatBox', 632, 416],
+      ['butterflyFrame', 760, 253],
+    ]),
 })

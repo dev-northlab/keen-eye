@@ -1,6 +1,7 @@
 // "The ski lodge mystery", scene 1 — the lounge: the golden snowflake trophy gone from the mantel, the
 // fire out, the log pile toppled, a painting crooked, the clock stopped, the window open, a pair of
 // ski boots missing from the mat, melted snow on the floor, the rug folded and the cocoa spilled.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { boards, openPanes, panes, picture, trophy, windowBox } from './shapes.ts'
 
@@ -35,7 +36,7 @@ export default detectiveLevel({
   case: 'lodge',
   title: 'lodgeLounge',
   parTimeSec: 118,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="390" fill="#b5835a"/><path d="${Array.from({ length: 13 }, (_, i) => `M0 ${i * 30 + 15}H800`).join('')}" stroke="#8a5a2b" stroke-width="3"/>` +
     `<rect y="390" width="800" height="110" fill="#a8743f"/>` +
     boards(390, '#7a5233') +
@@ -79,5 +80,25 @@ export default detectiveLevel({
     `<rect x="630" y="240" width="96" height="100" rx="20" fill="#3f6f99"/><rect x="618" y="300" width="22" height="70" rx="10" fill="#335d82"/><rect x="716" y="300" width="22" height="70" rx="10" fill="#335d82"/>` +
     `<rect x="636" y="326" width="84" height="30" rx="8" fill="#4a7aa8"/><path d="M632 370v18M724 370v18" stroke="#5e3b1a" stroke-width="6"/>` +
     `<rect x="740" y="300" width="56" height="8" rx="2" fill="#6b4a2b"/><path d="M768 308V390" stroke="#6b4a2b" stroke-width="6"/>` +
-    clue('cocoaSpilled', 766, 292, 28, mug(true), mug(false)),
+    clue('cocoaSpilled', 766, 292, 28, mug(true), mug(false)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['scarfHook', 41, 84, '#7b5ea7'],
+      ['cuckooClock', 202, 283],
+      ['sconce', 597, 279],
+      ['keyRack', 752, 49],
+      ['newspapers', 758, 483],
+    ]) +
+    extras({ extra, anim }, [
+      ['wallPhone', 39, 250],
+      ['broom', 46, 468],
+      ['teddy', 120, 490, '#d9a35a'],
+      ['calendar', 303, 57],
+      ['mouse', 332, 414],
+      ['butterflyFrame', 530, 128],
+      ['globe', 583, 487],
+      ['yarnBasket', 643, 451],
+      ['cactus', 718, 428],
+      ['roundMirror', 755, 220],
+    ]),
 })

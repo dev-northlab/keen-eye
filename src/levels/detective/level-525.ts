@@ -1,6 +1,7 @@
 // "The night train mystery", scene 5 — the boy's sleeping compartment: pearls mixed in with his
 // marbles, the blanket half off the upper bunk, the teddy gone, a comic on the floor, one slipper
 // missing, the cocoa cup empty, the night light on, the clock stopped and the toy train off its track.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { windowBox } from './shapes.ts'
 
@@ -31,7 +32,7 @@ export default detectiveLevel({
   case: 'train',
   title: 'trainSleeper',
   parTimeSec: 114,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="400" fill="#3f6f99"/>` +
     WALL_STARS.map(([x, y]) => `<path d="M${x} ${y - 6}l2 4l5 1l-4 3l1 5l-4 -3l-4 3l1 -5l-4 -3l5 -1Z" fill="#f2c14e" fill-opacity="0.6"/>`).join('') +
     `<rect y="400" width="800" height="100" fill="#6b4a2b"/><rect x="80" y="420" width="640" height="70" rx="10" fill="#4a6b8a"/>` +
@@ -72,5 +73,25 @@ export default detectiveLevel({
     clue('marblesPearls', 568, 445, 26, '', `<g fill="#fffaf0" stroke="#c9c2b6" stroke-width="0.8">${[[550, 450], [566, 436], [586, 452]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5"/>`).join('')}</g>`) +
     `<ellipse cx="690" cy="448" rx="86" ry="22" fill="none" stroke="#8a8f99" stroke-width="4" stroke-dasharray="3 5"/>` +
     `<rect x="700" y="456" width="30" height="16" rx="2" fill="#3a6ea5"/><g fill="#2b2b38"><circle cx="706" cy="474" r="4"/><circle cx="724" cy="474" r="4"/></g>` +
-    clue('toyTrainOff', 642, 444, 38, engine(), `<g transform="rotate(-70 642 444)">${engine()}</g>`),
+    clue('toyTrainOff', 642, 444, 38, engine(), `<g transform="rotate(-70 642 444)">${engine()}</g>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['roundMirror', 40, 55],
+      ['pouf', 63, 464, '#e5484d'],
+      ['antlers', 417, 347],
+      ['scarfHook', 751, 54, '#7b5ea7'],
+      ['boots', 756, 427, '#4c9a52'],
+    ]) +
+    extras({ extra, anim }, [
+      ['birdcage', 88, 231],
+      ['yarnBasket', 128, 431],
+      ['butterflyFrame', 255, 98],
+      ['mouse', 277, 479],
+      ['globe', 413, 487],
+      ['keyRack', 442, 49],
+      ['bucket', 458, 426],
+      ['cactus', 498, 488],
+      ['wallPhone', 584, 170],
+      ['calendar', 743, 237],
+    ]),
 })

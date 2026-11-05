@@ -1,6 +1,7 @@
 // "The circus mystery", scene 4 — the entrance: the ticket booth's window flung open, tickets spilled,
 // the poster torn, the balloons flown off, a star fallen from the arch, the rope barrier unhooked,
 // prints of pointed shoes going in and popcorn spilled by the cart.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { openPanes, panes, sky, windowBox } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default detectiveLevel({
   case: 'circus',
   title: 'circusEntrance',
   parTimeSec: 100,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#ffd9b0') +
     `<circle cx="720" cy="80" r="36" fill="#ffb36b" fill-opacity="0.7"/>` +
     // Big top behind the arch
@@ -76,5 +77,25 @@ export default detectiveLevel({
     `<rect x="700" y="330" width="90" height="60" fill="#e5484d"/><rect x="706" y="262" width="78" height="68" fill="#e8f6ff" fill-opacity="0.8" stroke="#c9953f" stroke-width="4"/>` +
     kernels([[716, 320], [728, 316], [740, 320], [752, 314], [764, 320], [774, 316], [722, 306], [746, 304], [768, 306]]) +
     `<path d="M696 262L745 236L794 262Z" fill="#f2b632"/><g fill="#5e3b1a"><circle cx="716" cy="396" r="12"/><circle cx="774" cy="396" r="12"/></g>` +
-    clue('popcornSpilled', 740, 446, 30, '', kernels([[720, 446], [732, 438], [744, 450], [756, 440], [764, 452], [738, 458], [750, 432]])),
+    clue('popcornSpilled', 740, 446, 30, '', kernels([[720, 446], [732, 438], [744, 450], [756, 440], [764, 452], [738, 458], [750, 432]])) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['newspapers', 43, 483],
+      ['rake', 74, 412],
+      ['bucket', 223, 426],
+      ['toyDrum', 300, 430],
+      ['tent', 497, 468],
+    ]) +
+    extras({ extra, anim }, [
+      ['airship', 172, 67],
+      ['mouse', 262, 479, '#b9a58a'],
+      ['hatBox', 337, 486, '#f7a1c4'],
+      ['wateringCan', 373, 427, '#e5484d'],
+      ['hotAirBalloon', 400, 73],
+      ['pouf', 423, 484, '#e5484d'],
+      ['haybale', 443, 420],
+      ['swallow', 628, 56],
+      ['sparrow', 676, 419],
+      ['paperPlane', 757, 181],
+    ]),
 })

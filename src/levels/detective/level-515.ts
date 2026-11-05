@@ -1,6 +1,7 @@
 // "The broken vase", scene 5 — the gift shop: the vase postcards sold out, a receipt for glue and a
 // glue smear on the counter, the cash drawer open, a mini vase gone from the shelf, one umbrella taken
 // and a backpack by the door with a strap torn off.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { boards, door, room, shelf, vase } from './shapes.ts'
 
@@ -41,7 +42,7 @@ export default detectiveLevel({
   case: 'vase',
   title: 'vaseGiftShop',
   parTimeSec: 88,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     room('#f7e9f0', '#c69563', 380) +
     boards(380, '#a8743f') +
     // Poster of the vase
@@ -73,5 +74,25 @@ export default detectiveLevel({
     clue('cashOpen', 545, 280, 40, '', drawer()) +
     door(660, 170, 100, 210, '#8e6bbf') +
     anim({ type: 'sway', angle: 14, pivot: [710, 142], period: 1.8 }, `<path d="M710 142V152" stroke="#8a6a3a" stroke-width="2"/><path d="M700 166q0 -14 10 -14t10 14Z" fill="#f2c14e"/>`) +
-    clue('backpack', 620, 376, 34, '', backpack(620, 400)),
+    clue('backpack', 620, 376, 34, '', backpack(620, 400)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['wateringCan', 43, 472, '#4c9a52'],
+      ['photoOval', 353, 56],
+      ['pouf', 538, 479, '#e5484d'],
+      ['scarfHook', 641, 274, '#4a90d9'],
+      ['keyRack', 732, 49],
+    ]) +
+    extras({ extra, anim }, [
+      ['sconce', 52, 274],
+      ['bunting', 72, 73],
+      ['dartboard', 240, 225],
+      ['hatBox', 242, 471, '#f7a1c4'],
+      ['boots', 341, 487, '#4fa3c7'],
+      ['calendar', 408, 192],
+      ['bucket', 438, 476],
+      ['wallPhone', 544, 140],
+      ['yarnBasket', 643, 481],
+      ['cactus', 758, 483],
+    ]),
 })

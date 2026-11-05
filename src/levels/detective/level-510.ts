@@ -1,5 +1,6 @@
 // "The cheese shop mystery", scene 5 — the rooftop: a nest of shiny things on the chimney, cheese rind
 // on the tiles, the antenna bent, the weather vane turned, a brick fallen out and a coin in the gutter.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, sky, sun } from './shapes.ts'
 
@@ -37,7 +38,7 @@ export default detectiveLevel({
   case: 'cheese',
   title: 'cheeseRoof',
   parTimeSec: 78,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#9fd8ff') +
     sun(80, 70) +
     anim({ type: 'path', points: [[0, 0], [-100, 0]], period: 52 }, cloud(420, 60)) +
@@ -64,5 +65,25 @@ export default detectiveLevel({
     clue('cheeseRind', 330, 330, 26, '', rind(330, 330)) +
     // Gutter and the wall below
     `<rect y="450" width="800" height="50" fill="#f5d48a"/><path d="M0 446H800V462Q400 474 0 462Z" fill="#9aa3ad"/>` +
-    clue('coinInGutter', 620, 452, 22, '', `<ellipse cx="620" cy="453" rx="10" ry="5" fill="#f2c14e" stroke="#c9953f" stroke-width="2"/>`),
+    clue('coinInGutter', 620, 452, 22, '', `<ellipse cx="620" cy="453" rx="10" ry="5" fill="#f2c14e" stroke="#c9953f" stroke-width="2"/>`) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bucket', 73, 286],
+      ['kite', 404, 197, '#4a90d9'],
+      ['broom', 431, 488],
+      ['cat', 692, 453, '#9aa0a8'],
+      ['dragonfly', 755, 195],
+    ]) +
+    extras({ extra, anim }, [
+      ['bullfinch', 40, 485],
+      ['airship', 57, 142],
+      ['paperPlane', 137, 31],
+      ['owl', 215, 275],
+      ['flowerPot', 226, 422],
+      ['hotAirBalloon', 310, 138],
+      ['plane', 475, 118],
+      ['sparrow', 511, 274],
+      ['swallow', 613, 36],
+      ['birdhouse', 644, 306],
+    ]),
 })

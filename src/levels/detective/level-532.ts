@@ -2,6 +2,7 @@
 // padlock, a shirt on the line is chewed, the wicket gate stands open, the well bucket was let down
 // and grain lies along the path.
 import { flower } from '../shapes.ts'
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { cloud, fence, grass, sky } from './shapes.ts'
 import { goose, grain, kennel, logHouse, rabbit, rooster, shaggyDog, villageGirl, wicket } from './village.ts'
@@ -38,7 +39,7 @@ export default detectiveLevel({
   case: 'chickens',
   title: 'chickensYard',
   parTimeSec: 72,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     sky('#c7e8ff') +
     cloud(560, 70) +
     cloud(740, 120, 0.8) +
@@ -75,5 +76,25 @@ export default detectiveLevel({
     rabbit(304, 486) +
     flower(30, 470, '#ff6b8b') +
     flower(500, 476, '#b38cff') +
-    flower(540, 488, '#ffffff'),
+    flower(540, 488, '#ffffff') +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['molehill', 73, 484],
+      ['gnome', 271, 373],
+      ['shovel', 508, 420],
+      ['tent', 587, 478],
+      ['wheelbarrow', 759, 366],
+    ]) +
+    extras({ extra, anim }, [
+      ['owl', 45, 390],
+      ['airship', 87, 37],
+      ['flowerPot', 156, 362],
+      ['swallow', 303, 126],
+      ['sparrow', 341, 484],
+      ['haybale', 358, 350],
+      ['paperPlane', 542, 121],
+      ['bucket', 663, 356],
+      ['crow', 688, 485],
+      ['plane', 745, 33],
+    ]),
 })

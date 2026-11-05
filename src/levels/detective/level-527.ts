@@ -1,6 +1,7 @@
 // "The ski lodge mystery", scene 2 — the ski room: a pair of skis gone from the rack, fresh wax shavings
 // on the snowboard in the vice, a route drawn on the trail map, the bulb out, a locker open, the helmet
 // knocked over, goggles and a scarf gone from their hooks, snow on the bench and the sled turned over.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 
 const SKIS: [number, string][] = [[50, '#3a6ea5'], [100, '#f2b632'], [150, '#e5484d'], [200, '#3fbf5f']]
@@ -41,7 +42,7 @@ export default detectiveLevel({
   case: 'lodge',
   title: 'lodgeSkiRoom',
   parTimeSec: 120,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="400" fill="#c7d8e8"/><path d="${Array.from({ length: 20 }, (_, i) => `M${i * 40 + 20} 0V400`).join('')}" stroke="#b3c6d8" stroke-width="2"/>` +
     `<rect y="400" width="800" height="100" fill="#5b6b7a"/><path d="${Array.from({ length: 4 }, (_, i) => `M0 ${420 + i * 22}H800`).join('')}" stroke="#4a5866" stroke-width="2"/>` +
     // Ski rack
@@ -80,5 +81,25 @@ export default detectiveLevel({
     `<path d="M736 256Q750 250 764 256L776 300L768 302V340H732V302L724 300Z" fill="#3a6ea5"/><path d="M750 258V340" stroke="#2a5585" stroke-width="2"/>` +
     `<rect x="580" y="352" width="210" height="12" rx="3" fill="#a8743f"/><path d="M596 364V400M774 364V400" stroke="#6b4a2b" stroke-width="8"/>` +
     clue('snowOnBench', 620, 344, 26, '', `<path d="M602 352Q600 336 614 338Q620 328 630 336Q642 336 640 352Z" fill="#f4f8fc" stroke="#c7d8e8" stroke-width="1.4"/><ellipse cx="636" cy="358" rx="8" ry="2.4" fill="#bfe6ff"/>`) +
-    clue('sledTipped', 700, 432, 58, sled(true), sled(false)),
+    clue('sledTipped', 700, 432, 58, sled(true), sled(false)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bucket', 38, 486],
+      ['antlers', 202, 127],
+      ['fireExtinguisher', 422, 435],
+      ['sconce', 467, 59],
+      ['keyRack', 757, 69],
+    ]) +
+    extras({ extra, anim }, [
+      ['roundMirror', 40, 210],
+      ['calendar', 48, 57],
+      ['hatBox', 107, 446, '#7b5ea7'],
+      ['pouf', 173, 484, '#f2994a'],
+      ['newspapers', 223, 428],
+      ['photoOval', 328, 56],
+      ['cactus', 328, 488],
+      ['spider', 360, 272],
+      ['puppy', 538, 439, '#e8d7b8'],
+      ['dartboard', 555, 195],
+    ]),
 })

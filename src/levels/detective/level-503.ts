@@ -1,5 +1,6 @@
 // "The missing cake", scene 3 — the living room: fur on the sofa, cream on a cushion, the rug's
 // corner folded over, the lamp shade knocked crooked and fresh scratches low on the door.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { boards, door, hills, picture, room, stripes } from './shapes.ts'
 
@@ -43,7 +44,7 @@ export default detectiveLevel({
   case: 'cake',
   title: 'cakeLivingRoom',
   parTimeSec: 64,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     room('#dfe8d0', '#c69563', 380) +
     stripes(370, '#d3e0c0') +
     boards(380, '#a8743f') +
@@ -63,5 +64,25 @@ export default detectiveLevel({
     clue('furOnSofa', 316, 280, 30, '', fur(316, 280)) +
     cushion(400, 282, '#f28fb1') +
     cushion(484, 280, '#7cc25a') +
-    clue('creamOnCushion', 484, 280, 28, '', cream(484, 280)),
+    clue('creamOnCushion', 484, 280, 28, '', cream(484, 280)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['antlers', 72, 242],
+      ['cactus', 218, 478],
+      ['sconce', 352, 209],
+      ['calendar', 573, 62],
+      ['teddy', 755, 480],
+    ]) +
+    extras({ extra, anim }, [
+      ['butterflyFrame', 40, 58],
+      ['mouse', 47, 459],
+      ['bucket', 138, 486],
+      ['wallPhone', 204, 60],
+      ['roundMirror', 410, 55],
+      ['bunting', 497, 358],
+      ['treasureMap', 619, 230],
+      ['toyDrum', 620, 485],
+      ['pouf', 693, 474, '#e5484d'],
+      ['photoOval', 758, 131],
+    ]),
 })

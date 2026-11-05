@@ -1,6 +1,7 @@
 // "The broken vase", scene 1 — the museum hall: the vase is gone from its stand, shards on the floor,
 // the rope unhooked, sneaker prints, a painting knocked crooked, a museum map dropped on the bench and
 // the spotlight switched off.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { hills, picture, shards, sneaker, spotlight, tiles, vase } from './shapes.ts'
 
@@ -28,7 +29,7 @@ export default detectiveLevel({
   case: 'vase',
   title: 'vaseHall',
   parTimeSec: 80,
-  scene: ({ clue, anim }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="500" fill="#efe6d8"/><rect y="370" width="800" height="130" fill="#e4dccd"/>` +
     tiles(370, '#d6cdbd', '#cfc6b6') +
     `<rect y="360" width="800" height="10" fill="#d6cdbd"/>` +
@@ -58,5 +59,25 @@ export default detectiveLevel({
     bench() +
     clue('mapDropped', 150, 348, 26, '', museumMap(150, 348)) +
     clue('shards', 470, 436, 34, '', shards(470, 436)) +
-    clue('sneakerPrints', 640, 438, 36, '', sneaker(630, 446) + sneaker(650, 432)),
+    clue('sneakerPrints', 640, 438, 36, '', sneaker(630, 446) + sneaker(650, 432)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['newspapers', 43, 478],
+      ['roundMirror', 295, 240],
+      ['bucket', 363, 461],
+      ['scarfHook', 716, 79, '#7b5ea7'],
+      ['fireExtinguisher', 757, 490],
+    ]) +
+    extras({ extra, anim }, [
+      ['butterflyFrame', 90, 248],
+      ['bunting', 122, 53],
+      ['wateringCan', 153, 437],
+      ['mouse', 257, 479],
+      ['sconce', 332, 59],
+      ['wallPhone', 494, 265],
+      ['photoOval', 533, 61],
+      ['pouf', 563, 484, '#e5484d'],
+      ['treasureMap', 709, 310],
+      ['boots', 711, 412, '#e5484d'],
+    ]),
 })

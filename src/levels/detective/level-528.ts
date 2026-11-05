@@ -2,6 +2,7 @@
 // no smoke from the chimney, an icicle broken off, the lantern out, the shovel gone, ski tracks from
 // the door, a red mitten on the fence, the snowman's carrot nose gone, the bird feeder empty and huge
 // furry footprints walking past the fence and away.
+import { decor, extras } from '../extras.ts'
 import { detectiveLevel } from '../helpers.ts'
 import { fence, fir, lantern, snowGround } from './shapes.ts'
 
@@ -24,7 +25,7 @@ export default detectiveLevel({
   case: 'lodge',
   title: 'lodgeYard',
   parTimeSec: 122,
-  scene: ({ clue }) =>
+  scene: ({ clue, anim, extra }) =>
     `<rect width="800" height="500" fill="#22305a"/>` +
     STARS.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2" fill="#fff3b0"/>`).join('') +
     `<circle cx="620" cy="70" r="26" fill="#fff3b0"/>` +
@@ -64,5 +65,25 @@ export default detectiveLevel({
     `<path d="M484 342h32l-4 -18h-24Z" fill="#2b2b38"/><path d="M478 392L446 372M522 392L556 374" stroke="#6b4a2b" stroke-width="4" stroke-linecap="round"/>` +
     clue('snowmanNose', 516, 356, 20, `<path d="M506 353L528 357L506 360Z" fill="#f2994a"/>`, '') +
     clue('skiTracks', 408, 425, 58, '', `<path d="M356 446Q400 430 460 418M356 432Q400 416 460 404" stroke="#a9bfd4" stroke-width="3" fill="none"/>`) +
-    clue('yetiPrints', 680, 425, 52, '', yetiPrint(646, 438) + yetiPrint(684, 420) + yetiPrint(716, 438)),
+    clue('yetiPrints', 680, 425, 52, '', yetiPrint(646, 438) + yetiPrint(684, 420) + yetiPrint(716, 438)) +
+    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    decor({ anim }, [
+      ['bench', 89, 467],
+      ['windmill', 215, 454],
+      ['tent', 272, 478],
+      ['sled', 302, 410],
+      ['iceSkates', 598, 481],
+    ]) +
+    extras({ extra, anim }, [
+      ['sparrow', 41, 479],
+      ['owl', 45, 425],
+      ['bat', 83, 41],
+      ['snowballs', 111, 415],
+      ['mailbox', 143, 488],
+      ['bullfinch', 325, 480],
+      ['skyLantern', 427, 70],
+      ['hotAirBalloon', 590, 193],
+      ['plane', 725, 43],
+      ['crow', 758, 485],
+    ]),
 })
