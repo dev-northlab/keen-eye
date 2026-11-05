@@ -8,7 +8,7 @@ export const CONTACT_EMAIL = 'dev.northlab@gmail.com'
 
 /** Store pages; `ios` stays null until the game is in the App Store. */
 export const STORE_LINKS: { android: string; ios: string | null } = {
-  android: 'https://play.google.com/store/apps/details?id=com.keeneye.app',
+  android: 'https://play.google.com/store/apps/details?id=com.northlab.keeneye',
   ios: null,
 }
 

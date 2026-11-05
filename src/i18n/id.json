@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Mode santai",
       "keys": "Kunci tersembunyi",
+      "offline": "Bisa dimainkan offline",
+      "noAds": "Tanpa iklan",
+      "mirror": "Level cermin",
       "living": "Adegan hidup"
     },
     "rate": "Beri nilai permainan",
@@ -75,6 +78,11 @@
         "ending": "Ternyata si turis! Saat mundur untuk berswafoto, ia menyenggol vas hingga jatuh, lalu bergegas membeli lem. Jejak sepatu kets, tutup lensa, tali yang robek, dan tongsis menceritakan semuanya. Si turis meminta maaf dan membantu merekatkan vas itu kembali.",
         "intro": "Vas biru terkenal milik museum hancur berkeping-keping. Seseorang menjatuhkannya lalu menyelinap pergi. Ikuti petunjuk di seluruh museum.",
         "title": "Vas yang pecah"
+      },
+      "chickens": {
+        "title": "Ayam-ayam yang hilang",
+        "intro": "Pagi ini seorang gadis desa datang untuk memberi makan ayam-ayamnya — tetapi kandangnya kosong dan pintunya terbuka! Cari petunjuk di halaman rumahnya, lalu cari tahu siapa yang melepaskan ayam-ayam itu.",
+        "ending": "Ternyata kambing! Ia mengangkat palang kandang dengan tanduknya untuk meraih biji-bijian dan menjatuhkan karungnya, lalu ayam-ayam mengikuti biji yang tercecer sampai ke padang rumput. Jejak kuku, loncengnya yang hilang, dan biji di moncongnya membongkar rahasianya. Semua ayam selamat, dan kandang kini punya palang baru."
       }
     },
     "clueTexts": {
@@ -271,7 +279,34 @@
       "windowLit": "Lampu di jendela menyala",
       "windowOpen": "Jendelanya terbuka",
       "windowShut": "Jendela tertutup rapat – tidak ada yang terbang masuk",
-      "yetiPrints": "Jejak kaki besar berbulu melewati pagar – yeti tidak pernah masuk"
+      "yetiPrints": "Jejak kaki besar berbulu melewati pagar – yeti tidak pernah masuk",
+      "chickensGone": "Ayam-ayam hilang dari tempat bertengger",
+      "coopDoorOpen": "Pintu kandang ayam terbuka",
+      "eggsLeft": "Telurnya masih di sarang — rubah pasti akan membawanya",
+      "grainSpilled": "Karung biji-bijian terguling",
+      "whiteFur": "Sejumput bulu putih di pagar",
+      "featherTrail": "Bulu-bulu putih mengarah melintasi rumput",
+      "dogAsleep": "Anjing tidur dirantai sepanjang malam — ia tak bisa mencapai kandang",
+      "goosePenShut": "Kandang angsa terkunci sepanjang malam",
+      "laundryChewed": "Seseorang mengunyah kemeja di tali jemuran",
+      "wellBucketDown": "Ember sumur sudah diturunkan",
+      "grainTrail": "Jejak biji-bijian di sepanjang jalan setapak",
+      "cabbageNibbled": "Sebuah kubis digerogoti",
+      "hoofPrints": "Jejak kuku belah yang kecil",
+      "scarecrowHat": "Orang-orangan sawah kehilangan topinya",
+      "fenceBent": "Sebilah pagar miring — ada yang melompatinya",
+      "wateringCanTipped": "Gembor terguling",
+      "sunflowerBent": "Bunga matahari bengkok",
+      "bellInHay": "Lonceng emas kecil berpita merah di dalam jerami",
+      "ladderRungBroken": "Satu anak tangga patah",
+      "milkSpilled": "Ember susu tumpah",
+      "troughEmpty": "Gandum kuda hilang dari palung",
+      "chickensFound": "Ayam-ayam ditemukan — mematuki biji di padang rumput!",
+      "sackEmpty": "Karung biji kosong di atas rumput",
+      "grainOnBeard": "Biji-bijian di moncong kambing",
+      "daisiesEaten": "Bunga aster dimakan habis sampai ke batangnya",
+      "basketTipped": "Keranjang buah beri terguling",
+      "plankMoved": "Sebilah papan jembatan kecil bergeser"
     },
     "clues": "Petunjuk: {n} dari {total}",
     "findAll": "Temukan petunjuk di setiap adegan, lalu sebut pelakunya.",
@@ -315,7 +350,11 @@
       "snowboarder": "Pemain snowboard",
       "strongman": "Orang kuat",
       "tourist": "Turis",
-      "yeti": "Yeti"
+      "yeti": "Yeti",
+      "fox": "Rubah",
+      "goose": "Angsa",
+      "yardDog": "Anjing",
+      "goat": "Kambing"
     },
     "suspectsTitle": "Tersangka",
     "task": "Pecahkan kasusnya",
@@ -398,7 +437,7 @@
   },
   "info": {
     "about": "Tentang",
-    "aboutText": "Keen Eye adalah permainan cari perbedaan dengan adegan yang hidup. Tanpa iklan, tanpa internet.",
+    "aboutText": "Keen Eye adalah permainan cari perbedaan dengan adegan yang hidup.",
     "contact": "Hubungi kami",
     "contactText": "Punya pertanyaan atau ide, atau menemukan galat? Tulis kepada kami – kami membaca setiap pesan dan senang menjawabnya.",
     "copyEmail": "Salin alamat",
@@ -715,7 +754,12 @@
     "woodlandLake": "Danau hutan yang tenang",
     "woodpecker": "Burung pelatuk",
     "yardNight": "Kebun di sore hari",
-    "yerevan": "Yerevan"
+    "yerevan": "Yerevan",
+    "chickensCoop": "Kandang ayam",
+    "chickensYard": "Halaman desa",
+    "chickensGarden": "Kebun sayur",
+    "chickensBarn": "Lumbung",
+    "chickensMeadow": "Padang rumput di tepi sungai kecil"
   },
   "map": {
     "level": "Level {n}",
@@ -746,6 +790,7 @@
   "mode": {
     "calm": "Santai",
     "calmHint": "Tanpa waktu, kesalahan, atau bintang",
+    "normalHint": "Pengatur waktu, 1 petunjuk, bintang untuk kecepatan dan ketepatan",
     "label": "Mode",
     "normal": "Normal",
     "hard": "Sulit",
@@ -766,7 +811,7 @@
     "harder": "Level yang lebih seru dan menantang: lebih banyak perbedaan dan gerakan",
     "noAds": "Tanpa iklan, tanpa langganan",
     "none": "Tidak ada pembelian yang ditemukan.",
-    "once": "Sekali beli untuk selamanya, bisa dimainkan offline",
+    "once": "Sekali beli untuk selamanya, di semua perangkatmu dengan akun yang sama",
     "owned": "Permainan lengkap sudah terbuka. Terima kasih!",
     "restore": "Pulihkan pembelian",
     "restored": "Pembelian dipulihkan.",

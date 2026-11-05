@@ -25,8 +25,11 @@ export interface Chapter {
   backdrop: BackdropTheme
   /** Categories: i18n key of the rules shown above the level grid. */
   rules?: string
-  /** Categories: how many first levels need no purchase (default FREE_CATEGORY_LEVELS, stores/purchase.ts). */
-  freeLevels?: number
+  /**
+   * Categories: level id ranges that need no purchase, inclusive (default: the first FREE_CATEGORY_LEVELS,
+   * stores/purchase.ts).
+   */
+  free?: [from: number, to: number][]
 }
 
 export const CHAPTERS: Chapter[] = [
@@ -161,16 +164,20 @@ export const TRAVEL_CHAPTER: Chapter = {
 
 /**
  * "Detective" (docs/detective-mode.md, levels in `detective/`): cases of 5 scenes, each difference a
- * clue, then the player names the culprit (CaseView). The first case is free.
+ * clue, then the player names the culprit (CaseView). The first case and "The missing chickens" (531–535,
+ * listed first) are free.
  */
 export const DETECTIVE_CHAPTER: Chapter = {
   id: 'detective',
-  ranges: [[501, 530]],
+  ranges: [[501, 535]],
   color: '#8a5a2b',
   soft: '#f6eadc',
   backdrop: 'city',
   rules: 'detective.rules',
-  freeLevels: 5,
+  free: [
+    [501, 505],
+    [531, 535],
+  ],
   icon:
     `<path d="M8 40l4-14h24l4 14Z" fill="#8a5a2b"/><path d="M6 26h36" stroke="#5e3b1a" stroke-width="3" stroke-linecap="round"/>` +
     `<path d="M14 26q2-14 10-14t10 14" fill="#a8743f"/><path d="M14 22h20" stroke="#3b2a1a" stroke-width="3"/>` +

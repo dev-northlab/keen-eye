@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Rolig modus",
       "keys": "Skjulte nøkler",
+      "offline": "Virker uten nett",
+      "noAds": "Ingen reklame",
+      "mirror": "Speilvendte brett",
       "living": "Levende scener"
     },
     "rate": "Vurder spillet",
@@ -75,6 +78,11 @@
         "ending": "Det var turisten! Turisten tok et skritt bakover for å ta en selfie, veltet vasen og skyndte seg ut for å kjøpe lim. Joggeskoavtrykk, et objektivlokk, en avrevet stropp og selfiestanga fortalte historien. Turisten ba om unnskyldning og hjalp til med å lime vasen sammen igjen.",
         "intro": "Museets berømte blå vase ligger i biter. Noen veltet den og smatt unna. Følg sporene gjennom museet.",
         "title": "Den knuste vasen"
+      },
+      "chickens": {
+        "title": "De forsvunne hønene",
+        "intro": "I dag tidlig kom ei jente fra bygda for å fôre hønene sine – men hønsehuset er tomt, og døra står åpen! Let etter spor på tunet hennes, og finn ut hvem som slapp ut hønene.",
+        "ending": "Det var geita! Hun løftet hønsehusets slå med hornene for å komme til kornet og veltet sekken, og hønene fulgte det sølte kornet helt ned på enga. Klovavtrykkene, den mistede bjella og kornet på mulen avslørte henne. Alle hønene er i god behold, og hønsehuset har fått ny slå."
       }
     },
     "clueTexts": {
@@ -271,7 +279,34 @@
       "windowLit": "Det er tent lys i vinduet",
       "windowOpen": "Vinduet er åpent",
       "windowShut": "Vinduet er godt lukket – ingenting fløy inn",
-      "yetiPrints": "Svære lodne fotspor går forbi gjerdet – yetien kom aldri inn"
+      "yetiPrints": "Svære lodne fotspor går forbi gjerdet – yetien kom aldri inn",
+      "chickensGone": "Hønene er borte fra vagla",
+      "coopDoorOpen": "Døra til hønsehuset står åpen",
+      "eggsLeft": "Eggene ligger fortsatt i reiret – en rev ville tatt dem",
+      "grainSpilled": "Kornsekken er veltet",
+      "whiteFur": "En dott hvit pels på gjerdet",
+      "featherTrail": "Hvite fjær fører bort over gresset",
+      "dogAsleep": "Hunden sov i lenka hele natta – den rekker ikke bort til hønsehuset",
+      "goosePenShut": "Gåsas innhegning var låst hele natta",
+      "laundryChewed": "Noen har gnagd på skjorta på klessnora",
+      "wellBucketDown": "Brønnbøtta er firt ned",
+      "grainTrail": "Et spor av korn langs stien",
+      "cabbageNibbled": "Et kålhode er gnagd på",
+      "hoofPrints": "Små kløvde klovavtrykk",
+      "scarecrowHat": "Fugleskremselet har mistet hatten",
+      "fenceBent": "En stakittspile står skjevt – noen hoppet over",
+      "wateringCanTipped": "Vannkanna har veltet",
+      "sunflowerBent": "Solsikken er bøyd",
+      "bellInHay": "En liten gullbjelle på et rødt bånd i høyet",
+      "ladderRungBroken": "Et trinn på stigen er knekt",
+      "milkSpilled": "Melkebøtta er veltet",
+      "troughEmpty": "Hestens havre er borte fra krybba",
+      "chickensFound": "Hønene er funnet – de plukker korn på enga!",
+      "sackEmpty": "En tom kornsekk i gresset",
+      "grainOnBeard": "Korn på geitas mule",
+      "daisiesEaten": "Prestekragene er spist ned til stilkene",
+      "basketTipped": "Bærkurven har veltet",
+      "plankMoved": "En planke på kloppen har flyttet seg"
     },
     "clues": "Spor: {n} av {total}",
     "findAll": "Finn sporene i hver scene, og pek så ut den skyldige.",
@@ -315,7 +350,11 @@
       "snowboarder": "Snøbrettkjøreren",
       "strongman": "Kraftkaren",
       "tourist": "Turisten",
-      "yeti": "Yetien"
+      "yeti": "Yetien",
+      "fox": "Reven",
+      "goose": "Gåsa",
+      "yardDog": "Hunden",
+      "goat": "Geita"
     },
     "suspectsTitle": "Mistenkte",
     "task": "Løs saken",
@@ -398,7 +437,7 @@
   },
   "info": {
     "about": "Om spillet",
-    "aboutText": "Keen Eye er et finn feilene-spill med levende scener. Ingen reklame, ikke noe internett.",
+    "aboutText": "Keen Eye er et finn feilene-spill med levende scener.",
     "contact": "Kontakt oss",
     "contactText": "Har du et spørsmål eller en idé, eller har du funnet en feil? Skriv til oss – vi leser hver melding og svarer gjerne.",
     "copyEmail": "Kopier adressen",
@@ -715,7 +754,12 @@
     "woodlandLake": "Stille skogsvann",
     "woodpecker": "Hakkespett",
     "yardNight": "Hagen om kvelden",
-    "yerevan": "Jerevan"
+    "yerevan": "Jerevan",
+    "chickensCoop": "Hønsehus",
+    "chickensYard": "Tun i bygda",
+    "chickensGarden": "Kjøkkenhage",
+    "chickensBarn": "Låve",
+    "chickensMeadow": "Eng ved bekken"
   },
   "map": {
     "level": "Brett {n}",
@@ -746,6 +790,7 @@
   "mode": {
     "calm": "Rolig",
     "calmHint": "Ingen tid, feil eller stjerner",
+    "normalHint": "Tidtaker, 1 hint, stjerner for fart og presisjon",
     "label": "Modus",
     "normal": "Normal",
     "hard": "Vanskelig",
@@ -766,7 +811,7 @@
     "harder": "Mer spennende og utfordrende brett: flere forskjeller og mer bevegelse",
     "noAds": "Ingen reklame, ikke noe abonnement",
     "none": "Fant ingen kjøp.",
-    "once": "Ett kjøp for alltid, virker uten nett",
+    "once": "Ett kjøp for alltid, på alle enhetene dine med samme konto",
     "owned": "Hele spillet er låst opp. Takk!",
     "restore": "Gjenopprett kjøp",
     "restored": "Kjøpet er gjenopprettet.",

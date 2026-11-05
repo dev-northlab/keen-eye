@@ -172,4 +172,29 @@ export const SUSPECT_ART: Record<string, string> = {
     `<circle cx="25" cy="36" r="5" fill="none" stroke="#2b2b38" stroke-width="1.8"/><circle cx="39" cy="36" r="5" fill="none" stroke="#2b2b38" stroke-width="1.8"/>` +
     eyes(36, 7, '#2b2b38') +
     smile(44),
+  // The village girl's case ("chickens")
+  fox:
+    disc('#fff0dc') +
+    `<path d="M12 30L14 8L28 20ZM52 30L50 8L36 20Z" fill="#e8742a"/><path d="M16 26L17 14L25 21ZM48 26L47 14L39 21Z" fill="#3b2a1a"/>` +
+    `<path d="M10 30Q32 14 54 30Q48 52 32 58Q16 52 10 30Z" fill="#e8742a"/><path d="M18 40Q32 34 46 40Q42 54 32 58Q22 54 18 40Z" fill="#fff"/>` +
+    eyes(34, 9) +
+    `<ellipse cx="32" cy="50" rx="4" ry="3" fill="#2b2b38"/>`,
+  goose:
+    disc('#e3f1ff') +
+    `<path d="M22 64Q20 40 26 26Q30 16 38 18Q44 22 40 34Q36 46 42 64Z" fill="#f4f4f0"/>` +
+    `<path d="M40 22L56 28L42 32Z" fill="#f08a24"/><circle cx="42" cy="20" r="3.4" fill="#f08a24"/>` +
+    `<circle cx="34" cy="24" r="2.6" fill="#2b2b38"/>`,
+  yardDog:
+    disc('#eef3e0') +
+    `<circle cx="32" cy="36" r="20" fill="#eeeae4"/><path d="M14 22Q4 40 14 50Q20 38 20 26ZM50 22Q60 40 50 50Q44 38 44 26Z" fill="#9aa0a6"/>` +
+    `<path d="M16 26Q32 12 48 26Q40 22 32 26Q24 22 16 26Z" fill="#d6d1c8"/>` +
+    eyes(33) +
+    `<ellipse cx="32" cy="42" rx="5" ry="3.6" fill="#2b2b38"/><path d="M28 48q4 4 8 0" stroke="#7a3b2a" stroke-width="2" fill="none" stroke-linecap="round"/>`,
+  goat:
+    disc('#ffe6ee') +
+    `<path d="M24 18q-4 -10 -12 -10M40 18q4 -10 12 -10" stroke="#b8b0a0" stroke-width="4" fill="none" stroke-linecap="round"/>` +
+    `<path d="M20 26L4 22L14 32ZM44 26L60 22L50 32Z" fill="#ece8de"/><ellipse cx="32" cy="34" rx="15" ry="18" fill="#f7f5ef"/>` +
+    eyes(30, 7) +
+    `<ellipse cx="32" cy="44" rx="4" ry="2.6" fill="#c98a8a"/>` +
+    `<path d="M22 56l10 -5l10 5l-10 5Z" fill="#d32f3a"/><circle cx="32" cy="58" r="4" fill="#f2b632" stroke="#c98a10" stroke-width="1.2"/>`,
 }

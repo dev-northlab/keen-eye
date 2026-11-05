@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "Informazioni",
-    "aboutText": "Keen Eye è un gioco trova le differenze con scene animate. Senza pubblicità, senza internet.",
+    "aboutText": "Keen Eye è un gioco trova le differenze con scene animate.",
     "version": "Versione {v}",
     "privacy": "Privacy",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Modalità rilassata",
       "living": "Scene animate",
-      "keys": "Chiavi nascoste"
+      "keys": "Chiavi nascoste",
+      "offline": "Senza internet",
+      "noAds": "Senza pubblicità",
+      "mirror": "Livelli a specchio"
     },
     "support": {
       "title": "Sostieni il gioco",
@@ -498,13 +501,19 @@
     "lodgeYard": "Il cortile",
     "lodgeChairlift": "La seggiovia",
     "lodgeSummit": "La vetta",
-    "treasury": "Stanza del tesoro"
+    "treasury": "Stanza del tesoro",
+    "chickensCoop": "Pollaio",
+    "chickensYard": "Cortile del villaggio",
+    "chickensGarden": "Orto",
+    "chickensBarn": "Fienile",
+    "chickensMeadow": "Prato vicino al ruscello"
   },
   "mode": {
     "label": "Modalità",
     "normal": "Normale",
     "calm": "Calma",
     "calmHint": "Senza tempo, errori o stelle",
+    "normalHint": "Timer, 1 suggerimento, stelle per velocità e precisione",
     "hard": "Difficile",
     "hardHint": "Senza indizi, 3 errori chiudono il livello, stelle rosse",
     "hardStars": "Difficile: {n}/3"
@@ -518,7 +527,7 @@
     "allLevelsNone": "Tutti i futuri livelli del gioco principale",
     "harder": "Livelli più interessanti e difficili: più differenze e più movimento",
     "noAds": "Niente pubblicità né abbonamento",
-    "once": "Un solo acquisto per sempre, funziona offline",
+    "once": "Un solo acquisto per sempre, su tutti i tuoi dispositivi con lo stesso account",
     "buy": "Acquista a {price}",
     "restore": "Ripristina acquisti",
     "wait": "Attendi…",
@@ -710,6 +719,11 @@
         "title": "Il mistero del rifugio di montagna",
         "intro": "La sera prima della grande gara la coppa d'oro a forma di fiocco di neve è sparita dalla mensola del camino. Tutti danno la colpa allo yeti, ma è stato davvero lui? Segui gli indizi su per la montagna.",
         "ending": "È stata la sciatrice! Sognava così tanto di vincere che di notte è salita in vetta per farsi una foto con la coppa, e l'ha lasciata in mano al pupazzo di neve. Le tracce degli sci, i buchi dei bastoncini e un bastoncino dimenticato l'hanno tradita. Ha riportato la coppa e ha vinto la gara lealmente."
+      },
+      "chickens": {
+        "title": "Le galline scomparse",
+        "intro": "Stamattina una ragazza del villaggio è andata a dare da mangiare alle sue galline, ma il pollaio è vuoto e la porta è aperta! Cerca indizi nel suo cortile e scopri chi ha fatto uscire le galline.",
+        "ending": "È stata la capra! Ha sollevato il chiavistello del pollaio con le corna per arrivare al grano e ha rovesciato il sacco, e le galline hanno seguito il grano sparso fino al prato. Le impronte di zoccoli, il campanello perduto e il grano sul muso l'hanno tradita. Tutte le galline stanno bene e il pollaio ha un chiavistello nuovo."
       }
     },
     "suspects": {
@@ -735,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Sciatrice",
       "snowboarder": "Snowboarder",
-      "innkeeper": "Gestrice del rifugio"
+      "innkeeper": "Gestrice del rifugio",
+      "fox": "Volpe",
+      "goose": "Oca",
+      "yardDog": "Cane",
+      "goat": "Capra"
     },
     "clueTexts": {
       "cakeGone": "La torta è sparita: solo briciole sul piatto",
@@ -931,7 +949,34 @@
       "snowmanScarf": "Il pupazzo di neve porta una sciarpa rossa",
       "tripodMarks": "Tre piccoli segni di un treppiede",
       "bootPrintsUp": "Impronte di scarponi che salgono in vetta",
-      "skiPoleLeft": "Un bastoncino da sci piantato nella neve"
+      "skiPoleLeft": "Un bastoncino da sci piantato nella neve",
+      "chickensGone": "Le galline sono sparite dal posatoio",
+      "coopDoorOpen": "La porta del pollaio è aperta",
+      "eggsLeft": "Le uova sono ancora nel nido: una volpe le avrebbe prese",
+      "grainSpilled": "Il sacco del grano è rovesciato",
+      "whiteFur": "Un ciuffo di pelo bianco sulla staccionata",
+      "featherTrail": "Piume bianche si allontanano sull'erba",
+      "dogAsleep": "Il cane ha dormito alla catena tutta la notte: non arriva al pollaio",
+      "goosePenShut": "Il recinto dell'oca è rimasto chiuso a chiave tutta la notte",
+      "laundryChewed": "Qualcuno ha masticato la camicia sullo stendibiancheria",
+      "wellBucketDown": "Il secchio del pozzo è stato calato",
+      "grainTrail": "Una scia di grano lungo il sentiero",
+      "cabbageNibbled": "Un cavolo è stato rosicchiato",
+      "hoofPrints": "Piccole impronte di zoccoli divisi",
+      "scarecrowHat": "Lo spaventapasseri ha perso il cappello",
+      "fenceBent": "Un'asse della staccionata è storta: qualcuno l'ha saltata",
+      "wateringCanTipped": "L'annaffiatoio è rovesciato",
+      "sunflowerBent": "Il girasole è piegato",
+      "bellInHay": "Un campanellino dorato con un nastro rosso nel fieno",
+      "ladderRungBroken": "Un piolo della scala è rotto",
+      "milkSpilled": "Il secchio del latte è rovesciato",
+      "troughEmpty": "L'avena del cavallo è sparita dalla mangiatoia",
+      "chickensFound": "Le galline sono state ritrovate: beccano il grano nel prato!",
+      "sackEmpty": "Un sacco del grano vuoto sull'erba",
+      "grainOnBeard": "Grano sul muso della capra",
+      "daisiesEaten": "Le margherite sono mangiate fino agli steli",
+      "basketTipped": "Il cestino di bacche è rovesciato",
+      "plankMoved": "Un'asse della passerella è fuori posto"
     }
   },
   "secret": {

@@ -35,8 +35,8 @@ const resetOpen = ref(false)
     <div class="row column">
       <span>
         {{ $t('mode.label') }}
-        <small>{{ $t('mode.calm') }}: {{ $t('mode.calmHint') }}</small>
-        <small>{{ $t('mode.hard') }}: {{ $t('mode.hardHint') }}</small>
+        <!-- What the chosen mode means; changes with the switch below. -->
+        <small aria-live="polite">{{ $t(`mode.${settings.mode}Hint`) }}</small>
       </span>
       <ModeSwitch />
     </div>

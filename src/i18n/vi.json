@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Chế độ thư giãn",
       "keys": "Chìa khóa ẩn",
+      "offline": "Chơi không cần mạng",
+      "noAds": "Không quảng cáo",
+      "mirror": "Màn chơi gương",
       "living": "Cảnh sống động"
     },
     "rate": "Đánh giá trò chơi",
@@ -75,6 +78,11 @@
         "ending": "Thủ phạm là du khách! Khi lùi lại để chụp ảnh tự sướng, du khách đã làm đổ chiếc bình và vội đi mua keo. Dấu giày thể thao, nắp ống kính, dây đeo bị đứt và cây gậy tự sướng đã kể lại câu chuyện. Du khách đã xin lỗi và giúp dán chiếc bình lại.",
         "intro": "Chiếc bình xanh nổi tiếng của bảo tàng đã vỡ tan tành. Ai đó đã làm đổ nó rồi lẳng lặng bỏ đi. Hãy lần theo manh mối khắp bảo tàng.",
         "title": "Chiếc bình vỡ"
+      },
+      "chickens": {
+        "title": "Đàn gà mất tích",
+        "intro": "Sáng nay một cô gái trong làng ra cho gà ăn — nhưng chuồng gà trống trơn và cửa thì mở! Hãy tìm manh mối trong sân nhà cô ấy và tìm ra ai đã thả đàn gà ra.",
+        "ending": "Thủ phạm là cô dê! Nó dùng sừng nhấc then cửa chuồng gà để lấy thóc và làm đổ bao, rồi đàn gà cứ theo thóc rơi vãi đi mãi tới bãi cỏ. Dấu móng, chiếc chuông bị mất và hạt thóc trên mõm đã tố cáo nó. Cả đàn gà đều bình an, và chuồng gà đã có then mới."
       }
     },
     "clueTexts": {
@@ -271,7 +279,34 @@
       "windowLit": "Cửa sổ đã sáng đèn",
       "windowOpen": "Cửa sổ đang mở",
       "windowShut": "Cửa sổ đóng chặt – không có gì bay vào",
-      "yetiPrints": "Những dấu chân lông lá khổng lồ đi ngang qua hàng rào – yeti chưa từng vào trong"
+      "yetiPrints": "Những dấu chân lông lá khổng lồ đi ngang qua hàng rào – yeti chưa từng vào trong",
+      "chickensGone": "Đàn gà đã biến mất khỏi sào đậu",
+      "coopDoorOpen": "Cửa chuồng gà đang mở",
+      "eggsLeft": "Trứng vẫn còn trong ổ — nếu là cáo thì đã lấy mất",
+      "grainSpilled": "Bao thóc bị đổ",
+      "whiteFur": "Một nhúm lông trắng trên hàng rào",
+      "featherTrail": "Những chiếc lông trắng dẫn đi qua bãi cỏ",
+      "dogAsleep": "Chú chó ngủ bị xích cả đêm — không với tới chuồng gà",
+      "goosePenShut": "Chuồng ngỗng bị khóa suốt đêm",
+      "laundryChewed": "Ai đó đã gặm chiếc áo trên dây phơi",
+      "wellBucketDown": "Gầu giếng đã được thả xuống",
+      "grainTrail": "Một vệt thóc dọc lối đi",
+      "cabbageNibbled": "Một cây bắp cải bị gặm",
+      "hoofPrints": "Những dấu móng chẻ nhỏ",
+      "scarecrowHat": "Bù nhìn đã mất mũ",
+      "fenceBent": "Một thanh hàng rào bị nghiêng — có ai đã nhảy qua",
+      "wateringCanTipped": "Bình tưới bị đổ",
+      "sunflowerBent": "Cây hướng dương bị gập",
+      "bellInHay": "Một chiếc chuông vàng nhỏ buộc ruy băng đỏ trong đống cỏ khô",
+      "ladderRungBroken": "Một bậc thang bị gãy",
+      "milkSpilled": "Xô sữa bị đổ",
+      "troughEmpty": "Yến mạch của ngựa đã biến mất khỏi máng",
+      "chickensFound": "Đã tìm thấy đàn gà — chúng đang mổ thóc trên bãi cỏ!",
+      "sackEmpty": "Một bao thóc rỗng trên cỏ",
+      "grainOnBeard": "Hạt thóc trên mõm cô dê",
+      "daisiesEaten": "Hoa cúc bị ăn trụi tới tận cuống",
+      "basketTipped": "Giỏ quả mọng bị đổ",
+      "plankMoved": "Một tấm ván cầu nhỏ bị xô lệch"
     },
     "clues": "Manh mối: {n}/{total}",
     "findAll": "Hãy tìm manh mối trong từng cảnh, rồi gọi tên thủ phạm.",
@@ -315,7 +350,11 @@
       "snowboarder": "Người chơi ván trượt tuyết",
       "strongman": "Lực sĩ",
       "tourist": "Du khách",
-      "yeti": "Yeti"
+      "yeti": "Yeti",
+      "fox": "Con cáo",
+      "goose": "Con ngỗng",
+      "yardDog": "Chú chó",
+      "goat": "Cô dê"
     },
     "suspectsTitle": "Nghi phạm",
     "task": "Phá án",
@@ -398,7 +437,7 @@
   },
   "info": {
     "about": "Giới thiệu",
-    "aboutText": "Keen Eye là trò chơi tìm điểm khác biệt với những khung cảnh sống động. Không quảng cáo, không cần mạng.",
+    "aboutText": "Keen Eye là trò chơi tìm điểm khác biệt với những khung cảnh sống động.",
     "contact": "Liên hệ",
     "contactText": "Bạn có câu hỏi, ý tưởng hay phát hiện lỗi? Hãy viết cho chúng tôi – chúng tôi đọc mọi tin nhắn và rất vui được trả lời.",
     "copyEmail": "Sao chép địa chỉ",
@@ -715,7 +754,12 @@
     "woodlandLake": "Hồ rừng yên tĩnh",
     "woodpecker": "Chim gõ kiến",
     "yardNight": "Khu vườn buổi tối",
-    "yerevan": "Yerevan"
+    "yerevan": "Yerevan",
+    "chickensCoop": "Chuồng gà",
+    "chickensYard": "Sân quê",
+    "chickensGarden": "Vườn rau",
+    "chickensBarn": "Nhà kho",
+    "chickensMeadow": "Bãi cỏ bên suối"
   },
   "map": {
     "level": "Màn {n}",
@@ -746,6 +790,7 @@
   "mode": {
     "calm": "Thư giãn",
     "calmHint": "Không đồng hồ, không lỗi, không sao",
+    "normalHint": "Bấm giờ, 1 gợi ý, sao cho tốc độ và độ chính xác",
     "label": "Chế độ",
     "normal": "Thường",
     "hard": "Khó",
@@ -766,7 +811,7 @@
     "harder": "Màn chơi thú vị và thử thách hơn: nhiều điểm khác biệt và chuyển động hơn",
     "noAds": "Không quảng cáo, không đăng ký định kỳ",
     "none": "Không tìm thấy giao dịch mua nào.",
-    "once": "Mua một lần dùng mãi mãi, chơi không cần mạng",
+    "once": "Mua một lần dùng mãi mãi, trên mọi thiết bị của bạn cùng một tài khoản",
     "owned": "Trò chơi đầy đủ đã được mở khóa. Cảm ơn bạn!",
     "restore": "Khôi phục giao dịch mua",
     "restored": "Đã khôi phục giao dịch mua.",

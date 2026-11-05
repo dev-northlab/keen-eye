@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "关于游戏",
-    "aboutText": "Keen Eye 是一款画面会动的找不同游戏。无广告，无需联网。",
+    "aboutText": "Keen Eye 是一款画面会动的找不同游戏。",
     "version": "版本 {v}",
     "privacy": "隐私政策",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "休闲模式",
       "living": "生动场景",
-      "keys": "隐藏钥匙"
+      "keys": "隐藏钥匙",
+      "offline": "无需联网",
+      "noAds": "无广告",
+      "mirror": "镜像关卡"
     },
     "support": {
       "title": "支持本游戏",
@@ -498,13 +501,19 @@
     "lodgeYard": "院子",
     "lodgeChairlift": "缆椅",
     "lodgeSummit": "山顶",
-    "treasury": "藏宝室"
+    "treasury": "藏宝室",
+    "chickensCoop": "鸡舍",
+    "chickensYard": "乡村院子",
+    "chickensGarden": "菜园",
+    "chickensBarn": "谷仓",
+    "chickensMeadow": "小溪边的草地"
   },
   "mode": {
     "label": "模式",
     "normal": "普通",
     "calm": "休闲",
     "calmHint": "不计时、不计错、没有星星",
+    "normalHint": "计时，1 次提示，按速度和准确度评星",
     "hard": "困难",
     "hardHint": "没有提示，错 3 次即结束本关，红色星星",
     "hardStars": "困难模式：{n}/3"
@@ -518,7 +527,7 @@
     "allLevelsNone": "主线游戏今后的所有关卡",
     "harder": "更有趣、更具挑战的关卡：更多不同之处，更多动态",
     "noAds": "无广告，无订阅",
-    "once": "一次购买，永久有效，离线可用",
+    "once": "一次购买，永久有效，同一账号的所有设备通用",
     "buy": "购买 {price}",
     "restore": "恢复购买",
     "wait": "请稍候…",
@@ -710,6 +719,11 @@
         "title": "山间小屋之谜",
         "intro": "大赛前一晚，雪花形状的金奖杯从小屋的壁炉架上不见了。大家都怪雪人怪——可真的是它吗？沿着线索往山上走吧。",
         "ending": "是滑雪女孩！她太想赢了，夜里带着奖杯上山顶拍照——结果把奖杯忘在了雪人手里。滑雪痕迹、雪杖洞和一根落下的雪杖出卖了她。她把奖杯送了回来，并公平地赢得了比赛。"
+      },
+      "chickens": {
+        "title": "失踪的鸡",
+        "intro": "今天早上，一个乡下姑娘去喂她的鸡，可是鸡舍空空的，门也开着！在她的院子里寻找线索，查出是谁把鸡放了出去。",
+        "ending": "是山羊！它用角顶开鸡舍的门闩去吃谷子，还撞翻了袋子，鸡群就跟着撒落的谷粒一路走到了草地上。蹄印、它弄丢的铃铛和嘴上的谷粒出卖了它。所有的鸡都平安无事，鸡舍也换上了新门闩。"
       }
     },
     "suspects": {
@@ -735,7 +749,11 @@
       "yeti": "雪人怪",
       "skier": "滑雪女孩",
       "snowboarder": "单板滑雪者",
-      "innkeeper": "小屋主人"
+      "innkeeper": "小屋主人",
+      "fox": "狐狸",
+      "goose": "鹅",
+      "yardDog": "狗",
+      "goat": "山羊"
     },
     "clueTexts": {
       "cakeGone": "蛋糕不见了——盘子里只剩碎屑",
@@ -931,7 +949,34 @@
       "snowmanScarf": "雪人围着一条红围巾",
       "tripodMarks": "三脚架留下的三个小印子",
       "bootPrintsUp": "靴印一路通向山顶",
-      "skiPoleLeft": "一根雪杖插在雪里"
+      "skiPoleLeft": "一根雪杖插在雪里",
+      "chickensGone": "栖木上的鸡不见了",
+      "coopDoorOpen": "鸡舍的门开着",
+      "eggsLeft": "蛋还在窝里——要是狐狸早就叼走了",
+      "grainSpilled": "谷子袋被撞翻了",
+      "whiteFur": "篱笆上挂着一撮白毛",
+      "featherTrail": "白色羽毛一路穿过草地",
+      "dogAsleep": "狗整夜拴着链子睡觉——够不到鸡舍",
+      "goosePenShut": "鹅圈整夜都锁着",
+      "laundryChewed": "有人啃了晾衣绳上的衬衫",
+      "wellBucketDown": "井里的水桶放下去了",
+      "grainTrail": "小路上有一串谷粒",
+      "cabbageNibbled": "一棵白菜被啃过",
+      "hoofPrints": "小小的分趾蹄印",
+      "scarecrowHat": "稻草人的帽子不见了",
+      "fenceBent": "一根篱笆板歪了——有人跳了过去",
+      "wateringCanTipped": "洒水壶倒了",
+      "sunflowerBent": "向日葵弯下了腰",
+      "bellInHay": "干草里有一个系着红丝带的小金铃",
+      "ladderRungBroken": "梯子的一根横档断了",
+      "milkSpilled": "牛奶桶洒了",
+      "troughEmpty": "马槽里的燕麦不见了",
+      "chickensFound": "找到鸡了——它们在草地上啄谷粒！",
+      "sackEmpty": "草地上有一个空谷子袋",
+      "grainOnBeard": "山羊嘴上沾着谷粒",
+      "daisiesEaten": "雏菊被啃得只剩茎了",
+      "basketTipped": "浆果篮翻倒了",
+      "plankMoved": "小木桥的一块木板挪了位置"
     }
   },
   "secret": {

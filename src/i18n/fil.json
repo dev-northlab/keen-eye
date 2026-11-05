@@ -4,6 +4,9 @@
     "perks": {
       "calm": "Kalmadong mode",
       "keys": "Nakatagong susi",
+      "offline": "Gumagana offline",
+      "noAds": "Walang ads",
+      "mirror": "Mga salaming level",
       "living": "Buhay na mga eksena"
     },
     "rate": "I-rate ang laro",
@@ -75,6 +78,11 @@
         "ending": "Ang turista pala! Habang umaatras para mag-selfie, natabig niya ang plorera at nagmadaling umalis para bumili ng pandikit. Ikinuwento ng bakas ng sneakers, takip ng lente, napunit na strap at selfie stick ang buong pangyayari. Humingi ng paumanhin ang turista at tumulong na idikit muli ang plorera.",
         "intro": "Basag-basag na ang sikat na asul na plorera ng museo. May nakatabig dito at palihim na umalis. Sundan ang mga palatandaan sa buong museo.",
         "title": "Ang basag na plorera"
+      },
+      "chickens": {
+        "title": "Ang mga nawawalang manok",
+        "intro": "Kaninang umaga, pumunta ang isang dalagang taga-nayon para pakainin ang kanyang mga manok — pero walang laman ang kulungan at bukas ang pinto! Maghanap ng mga palatandaan sa bakuran niya, at alamin kung sino ang nagpalabas sa mga manok.",
+        "ending": "Ang kambing pala! Inangat nito ng sungay ang trangka ng kulungan para maabot ang butil at natumba nito ang sako, kaya sinundan ng mga manok ang nagkalat na butil hanggang sa parang. Ang bakas ng kuko, ang nawawala nitong kampanilya at ang butil sa nguso nito ang naglantad dito. Ligtas ang lahat ng manok, at may bagong trangka na ang kulungan."
       }
     },
     "clueTexts": {
@@ -271,7 +279,34 @@
       "windowLit": "May ilaw nang bumukas sa bintana",
       "windowOpen": "Bukas ang bintana",
       "windowShut": "Mahigpit na nakasara ang bintana – walang lumipad papasok",
-      "yetiPrints": "Malalaking mabalahibong bakas ng paa na dumaan sa bakod – hindi kailanman pumasok ang yeti"
+      "yetiPrints": "Malalaking mabalahibong bakas ng paa na dumaan sa bakod – hindi kailanman pumasok ang yeti",
+      "chickensGone": "Wala na ang mga manok sa dapuan",
+      "coopDoorOpen": "Bukas ang pinto ng kulungan ng manok",
+      "eggsLeft": "Nasa pugad pa ang mga itlog — kukunin sana iyon ng soro",
+      "grainSpilled": "Natumba ang sako ng butil",
+      "whiteFur": "Isang kumpol ng puting balahibo sa bakod",
+      "featherTrail": "Mga puting balahibo patungo sa damuhan",
+      "dogAsleep": "Natulog ang aso na nakakadena buong gabi — hindi nito maabot ang kulungan",
+      "goosePenShut": "Nakakandado buong gabi ang kural ng gansa",
+      "laundryChewed": "May ngumuya sa kamiseta sa sampayan",
+      "wellBucketDown": "Ibinaba ang timba ng balon",
+      "grainTrail": "Bakas ng butil sa daan",
+      "cabbageNibbled": "May kinagat sa isang repolyo",
+      "hoofPrints": "Maliliit na bakas ng hating kuko",
+      "scarecrowHat": "Nawala ang sombrero ng panakot",
+      "fenceBent": "Nakatagilid ang isang tabla ng bakod — may tumalon",
+      "wateringCanTipped": "Natumba ang regadera",
+      "sunflowerBent": "Nakabaluktot ang mirasol",
+      "bellInHay": "Isang maliit na gintong kampanilya na may pulang laso sa dayami",
+      "ladderRungBroken": "Sira ang isang baitang ng hagdan",
+      "milkSpilled": "Natapon ang timba ng gatas",
+      "troughEmpty": "Nawala ang oats ng kabayo sa labangan",
+      "chickensFound": "Nahanap ang mga manok — tumutuka ng butil sa parang!",
+      "sackEmpty": "Isang walang lamang sako ng butil sa damuhan",
+      "grainOnBeard": "Butil sa nguso ng kambing",
+      "daisiesEaten": "Kinain ang mga daisy hanggang sa tangkay",
+      "basketTipped": "Natumba ang basket ng berry",
+      "plankMoved": "Naalis sa puwesto ang isang tabla ng maliit na tulay"
     },
     "clues": "Palatandaan: {n} sa {total}",
     "findAll": "Hanapin ang mga palatandaan sa bawat eksena, saka pangalanan ang salarin.",
@@ -315,7 +350,11 @@
       "snowboarder": "Snowboarder",
       "strongman": "Malakas na tao",
       "tourist": "Turista",
-      "yeti": "Yeti"
+      "yeti": "Yeti",
+      "fox": "Soro",
+      "goose": "Gansa",
+      "yardDog": "Aso",
+      "goat": "Kambing"
     },
     "suspectsTitle": "Mga suspek",
     "task": "Lutasin ang kaso",
@@ -398,7 +437,7 @@
   },
   "info": {
     "about": "Tungkol sa laro",
-    "aboutText": "Ang Keen Eye ay isang larong paghahanap ng pagkakaiba na may buhay na mga eksena. Walang ads, walang internet.",
+    "aboutText": "Ang Keen Eye ay isang larong paghahanap ng pagkakaiba na may buhay na mga eksena.",
     "contact": "Makipag-ugnayan sa amin",
     "contactText": "May tanong o ideya ka ba, o may nakita kang bug? Sumulat sa amin – binabasa namin ang bawat mensahe at masaya kaming sumagot.",
     "copyEmail": "Kopyahin ang address",
@@ -715,7 +754,12 @@
     "woodlandLake": "Tahimik na lawa sa gubat",
     "woodpecker": "Karpintero",
     "yardNight": "Hardin sa gabi",
-    "yerevan": "Yerevan"
+    "yerevan": "Yerevan",
+    "chickensCoop": "Kulungan ng manok",
+    "chickensYard": "Bakuran sa nayon",
+    "chickensGarden": "Taniman ng gulay",
+    "chickensBarn": "Kamalig",
+    "chickensMeadow": "Parang sa tabi ng sapa"
   },
   "map": {
     "level": "Level {n}",
@@ -746,6 +790,7 @@
   "mode": {
     "calm": "Kalmado",
     "calmHint": "Walang timer, mali o bituin",
+    "normalHint": "Timer, 1 pahiwatig, mga bituin sa bilis at katumpakan",
     "label": "Mode",
     "normal": "Normal",
     "hard": "Mahirap",
@@ -766,7 +811,7 @@
     "harder": "Mas kawili-wili at mas mahirap na mga level: mas maraming pagkakaiba at mas maraming galaw",
     "noAds": "Walang ads, walang subscription",
     "none": "Walang nakitang biniling item.",
-    "once": "Isang bili habambuhay, gumagana offline",
+    "once": "Isang bili habambuhay, sa lahat ng device mo na may parehong account",
     "owned": "Naka-unlock na ang buong laro. Salamat!",
     "restore": "Ibalik ang mga binili",
     "restored": "Naibalik ang binili.",

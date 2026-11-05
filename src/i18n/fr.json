@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "À propos",
-    "aboutText": "Keen Eye est un jeu des différences avec des scènes vivantes. Sans publicité, sans internet.",
+    "aboutText": "Keen Eye est un jeu des différences avec des scènes vivantes.",
     "version": "Version {v}",
     "privacy": "Confidentialité",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Mode zen",
       "living": "Scènes vivantes",
-      "keys": "Clés cachées"
+      "keys": "Clés cachées",
+      "offline": "Sans Internet",
+      "noAds": "Sans publicité",
+      "mirror": "Niveaux miroirs"
     },
     "support": {
       "title": "Soutenir le jeu",
@@ -498,13 +501,19 @@
     "lodgeYard": "La cour",
     "lodgeChairlift": "Le télésiège",
     "lodgeSummit": "Le sommet",
-    "treasury": "Salle au trésor"
+    "treasury": "Salle au trésor",
+    "chickensCoop": "Poulailler",
+    "chickensYard": "Cour du village",
+    "chickensGarden": "Potager",
+    "chickensBarn": "Grange",
+    "chickensMeadow": "Pré au bord du ruisseau"
   },
   "mode": {
     "label": "Mode",
     "normal": "Normal",
     "calm": "Calme",
     "calmHint": "Sans chrono, erreurs ni étoiles",
+    "normalHint": "Chrono, 1 indice, étoiles pour la vitesse et la précision",
     "hard": "Difficile",
     "hardHint": "Sans indices, 3 erreurs terminent le niveau, étoiles rouges",
     "hardStars": "Difficile : {n}/3"
@@ -518,7 +527,7 @@
     "allLevelsNone": "Tous les futurs niveaux du jeu principal",
     "harder": "Des niveaux plus captivants et plus difficiles : plus de différences et de mouvement",
     "noAds": "Sans publicité ni abonnement",
-    "once": "Un seul achat pour toujours, fonctionne hors ligne",
+    "once": "Un seul achat pour toujours, sur tous tes appareils avec le même compte",
     "buy": "Acheter pour {price}",
     "restore": "Restaurer les achats",
     "wait": "Patiente…",
@@ -710,6 +719,11 @@
         "title": "Le mystère du refuge de montagne",
         "intro": "La veille de la grande course, le trophée doré en forme de flocon a disparu de la cheminée du refuge. Tout le monde accuse le yéti — mais est-ce vraiment lui ? Suis les indices jusqu'en haut de la montagne.",
         "ending": "C'était la skieuse ! Elle rêvait tant de gagner qu'elle est montée de nuit au sommet pour se prendre en photo avec le trophée — et l'a oublié dans la main du bonhomme de neige. Les traces de skis, les trous de bâtons et un bâton oublié l'ont trahie. Elle a rapporté le trophée et a gagné la course à la loyale."
+      },
+      "chickens": {
+        "title": "Les poules disparues",
+        "intro": "Ce matin, une jeune fille du village est venue nourrir ses poules — mais le poulailler est vide et sa porte est ouverte ! Fouille sa cour à la recherche d'indices et découvre qui a laissé sortir les poules.",
+        "ending": "C'était la chèvre ! Elle a soulevé le loquet du poulailler avec ses cornes pour atteindre le grain et a renversé le sac, et les poules ont suivi le grain répandu jusqu'au pré. Les traces de sabots, sa clochette perdue et le grain sur son museau l'ont trahie. Toutes les poules vont bien, et le poulailler a un nouveau loquet."
       }
     },
     "suspects": {
@@ -735,7 +749,11 @@
       "yeti": "Yéti",
       "skier": "Skieuse",
       "snowboarder": "Snowboardeur",
-      "innkeeper": "Gardienne du refuge"
+      "innkeeper": "Gardienne du refuge",
+      "fox": "Renard",
+      "goose": "Oie",
+      "yardDog": "Chien",
+      "goat": "Chèvre"
     },
     "clueTexts": {
       "cakeGone": "Le gâteau a disparu — il ne reste que des miettes",
@@ -931,7 +949,34 @@
       "snowmanScarf": "Le bonhomme de neige porte une écharpe rouge",
       "tripodMarks": "Trois petites marques de trépied",
       "bootPrintsUp": "Des traces de bottes montent vers le sommet",
-      "skiPoleLeft": "Un bâton de ski planté dans la neige"
+      "skiPoleLeft": "Un bâton de ski planté dans la neige",
+      "chickensGone": "Les poules ont disparu du perchoir",
+      "coopDoorOpen": "La porte du poulailler est ouverte",
+      "eggsLeft": "Les œufs sont encore dans le nid — un renard les aurait pris",
+      "grainSpilled": "Le sac de grain est renversé",
+      "whiteFur": "Une touffe de poils blancs sur la clôture",
+      "featherTrail": "Des plumes blanches s'éloignent dans l'herbe",
+      "dogAsleep": "Le chien a dormi à sa chaîne toute la nuit — il n'atteint pas le poulailler",
+      "goosePenShut": "L'enclos de l'oie était fermé à clé toute la nuit",
+      "laundryChewed": "Quelqu'un a mâchouillé la chemise sur la corde à linge",
+      "wellBucketDown": "Le seau du puits a été descendu",
+      "grainTrail": "Une traînée de grain le long du chemin",
+      "cabbageNibbled": "Un chou a été grignoté",
+      "hoofPrints": "De petites traces de sabots fendus",
+      "scarecrowHat": "L'épouvantail a perdu son chapeau",
+      "fenceBent": "Une latte de la clôture penche — quelqu'un a sauté par-dessus",
+      "wateringCanTipped": "L'arrosoir est renversé",
+      "sunflowerBent": "Le tournesol est plié",
+      "bellInHay": "Une petite clochette dorée sur un ruban rouge dans le foin",
+      "ladderRungBroken": "Un barreau de l'échelle est cassé",
+      "milkSpilled": "Le seau de lait est renversé",
+      "troughEmpty": "L'avoine du cheval a disparu de la mangeoire",
+      "chickensFound": "Les poules sont retrouvées — elles picorent du grain dans le pré !",
+      "sackEmpty": "Un sac de grain vide dans l'herbe",
+      "grainOnBeard": "Du grain sur le museau de la chèvre",
+      "daisiesEaten": "Les pâquerettes sont mangées jusqu'aux tiges",
+      "basketTipped": "Le panier de baies est renversé",
+      "plankMoved": "Une planche de la passerelle a bougé"
     }
   },
   "secret": {

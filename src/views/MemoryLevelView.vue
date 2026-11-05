@@ -371,16 +371,10 @@ onBeforeUnmount(() => {
 
 .pictures {
   height: 100%;
+  /* Portrait pictures (MEMORY_VIEWBOX): A and B of the reveal side by side on any screen. */
   display: flex;
-  flex-direction: column;
   gap: 6px;
   padding: 6px;
-}
-
-@media (orientation: landscape) {
-  .pictures {
-    flex-direction: row;
-  }
 }
 
 /* Pictures are created by the engine, hence :deep. */

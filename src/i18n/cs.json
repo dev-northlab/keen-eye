@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "O hře",
-    "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami. Bez reklam a bez internetu.",
+    "aboutText": "Keen Eye je hra „Najdi rozdíly“ s živými scénami.",
     "version": "Verze {v}",
     "privacy": "Ochrana soukromí",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Klidný režim",
       "living": "Živé scény",
-      "keys": "Skryté klíče"
+      "keys": "Skryté klíče",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam",
+      "mirror": "Zrcadlové úrovně"
     },
     "support": {
       "title": "Podpořit hru",
@@ -498,13 +501,19 @@
     "lodgeYard": "Dvůr",
     "lodgeChairlift": "Sedačková lanovka",
     "lodgeSummit": "Vrchol",
-    "treasury": "Klenotnice"
+    "treasury": "Klenotnice",
+    "chickensCoop": "Kurník",
+    "chickensYard": "Vesnický dvůr",
+    "chickensGarden": "Zeleninová zahrádka",
+    "chickensBarn": "Stodola",
+    "chickensMeadow": "Louka u potoka"
   },
   "mode": {
     "label": "Režim",
     "normal": "Běžný",
     "calm": "Klidný",
     "calmHint": "Bez času, chyb a hvězd",
+    "normalHint": "Časomíra, 1 nápověda, hvězdy za rychlost a přesnost",
     "hard": "Těžký",
     "hardHint": "Bez nápověd, 3 chyby ukončí úroveň, červené hvězdy",
     "hardStars": "Těžký režim: {n}/3"
@@ -518,7 +527,7 @@
     "allLevelsNone": "Všechny budoucí úrovně hlavní hry",
     "harder": "Zajímavější a těžší úrovně: více rozdílů a více pohybu",
     "noAds": "Bez reklam a bez předplatného",
-    "once": "Jeden nákup navždy, funguje offline",
+    "once": "Jeden nákup navždy, na všech vašich zařízeních se stejným účtem",
     "buy": "Koupit za {price}",
     "restore": "Obnovit nákupy",
     "wait": "Počkejte prosím…",
@@ -710,6 +719,11 @@
         "title": "Záhada horské chaty",
         "intro": "Večer před velkým závodem zmizel z krbové římsy chaty zlatý pohár ve tvaru vločky. Všichni obviňují yettiho — ale byl to opravdu on? Jdi po stopách nahoru do hor.",
         "ending": "Byla to lyžařka! Tolik toužila po vítězství, že v noci vystoupala na vrchol, aby se vyfotila s pohárem — a nechala ho v ruce sněhuláka. Prozradily ji stopy lyží, důlky od holí a zapomenutá hůlka. Pohár vrátila a závod vyhrála poctivě."
+      },
+      "chickens": {
+        "title": "Ztracené slepice",
+        "intro": "Ráno přišla dívka z vesnice nakrmit slepice – jenže kurník je prázdný a dveře otevřené! Prohledej její dvůr, najdi stopy a zjisti, kdo slepice vypustil.",
+        "ending": "Byla to koza! Růžky nadzvedla západku kurníku, aby se dostala k zrní, a převrhla pytel, a slepice šly za rozsypaným zrním až na louku. Prozradily ji stopy kopýtek, ztracený zvoneček a zrní na čumáčku. Všechny slepice jsou v pořádku a kurník má novou západku."
       }
     },
     "suspects": {
@@ -735,7 +749,11 @@
       "yeti": "Yetti",
       "skier": "Lyžařka",
       "snowboarder": "Snowboardista",
-      "innkeeper": "Chatařka"
+      "innkeeper": "Chatařka",
+      "fox": "Liška",
+      "goose": "Husa",
+      "yardDog": "Pes",
+      "goat": "Koza"
     },
     "clueTexts": {
       "cakeGone": "Dort zmizel — na talíři jsou jen drobky",
@@ -931,7 +949,34 @@
       "snowmanScarf": "Sněhulák má červenou šálu",
       "tripodMarks": "Tři malé otisky stativu",
       "bootPrintsUp": "Stopy bot vedou nahoru na vrchol",
-      "skiPoleLeft": "Lyžařská hůlka zapíchnutá ve sněhu"
+      "skiPoleLeft": "Lyžařská hůlka zapíchnutá ve sněhu",
+      "chickensGone": "Slepice zmizely z hřadu",
+      "coopDoorOpen": "Dveře kurníku jsou otevřené",
+      "eggsLeft": "Vejce zůstala v hnízdě – liška by je vzala",
+      "grainSpilled": "Pytel se zrním je převržený",
+      "whiteFur": "Chomáč bílé srsti na plotě",
+      "featherTrail": "Bílá pírka vedou přes trávu",
+      "dogAsleep": "Pes celou noc spal na řetězu – ke kurníku nedosáhne",
+      "goosePenShut": "Ohrádka husy byla celou noc zamčená",
+      "laundryChewed": "Někdo okousal košili na šňůře",
+      "wellBucketDown": "Vědro studny je spuštěné dolů",
+      "grainTrail": "Cestička ze zrní",
+      "cabbageNibbled": "Hlávka zelí je okousaná",
+      "hoofPrints": "Malé stopy rozdvojených kopýtek",
+      "scarecrowHat": "Strašák ztratil klobouk",
+      "fenceBent": "Laťka plotu je nakřivo – někdo přeskočil",
+      "wateringCanTipped": "Konev je převržená",
+      "sunflowerBent": "Slunečnice je ohnutá",
+      "bellInHay": "Zlatý zvoneček na červené stužce v seně",
+      "ladderRungBroken": "Příčka žebříku je zlomená",
+      "milkSpilled": "Vědro s mlékem je vylité",
+      "troughEmpty": "Oves koně zmizel ze žlabu",
+      "chickensFound": "Slepice se našly – zobou zrní na louce!",
+      "sackEmpty": "Prázdný pytel od zrní v trávě",
+      "grainOnBeard": "Zrní na čumáčku kozy",
+      "daisiesEaten": "Sedmikrásky jsou spásané až ke stonkům",
+      "basketTipped": "Košík s bobulemi je převržený",
+      "plankMoved": "Prkno lávky je posunuté"
     }
   },
   "secret": {

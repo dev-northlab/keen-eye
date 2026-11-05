@@ -58,7 +58,7 @@ export const useProgressStore = defineStore('progress', () => {
    * Levels open one after another: the first one, then each after the previous level of its chapter
    * is completed. A world's first level follows level id − 1 (the previous world's first 20), so
    * the harder levels added at a world's end never hold back the next world. A category ("time",
-   * "memory") starts open. The treasury opens with the last key.
+   * "memory") starts open, and so does a free "detective" case. The treasury opens with the last key.
    */
   function isReached(id: number): boolean {
     const level = levelById(id)
@@ -66,7 +66,8 @@ export const useProgressStore = defineStore('progress', () => {
     if (level.chapter === TREASURY_CHAPTER.id) return allKeysFound.value
     const own = chapterLevels(chapterById(level.chapter)!)
     const i = own.indexOf(level)
-    if (i > 0) return isCompleted(own[i - 1].id)
+    const opensFreeCase = !!level.detective && level.detective.case !== own[i - 1]?.detective!.case && isFreeLevel(id)
+    if (i > 0 && !opensFreeCase) return isCompleted(own[i - 1].id)
     return id === 1 || categoryOf(level) !== undefined || isCompleted(id - 1)
   }
 

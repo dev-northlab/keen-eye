@@ -9,7 +9,7 @@ Two hand-drawn cartoon scenes, a few sneaky changes — find them all.
 
 Fully offline · no ads · no analytics · 32 languages
 
-[**Play in the browser**](https://dev-northlab.github.io/keen-eye/) · [Google Play](https://play.google.com/store/apps/details?id=com.keeneye.app)
+[**Play in the browser**](https://dev-northlab.github.io/keen-eye/) · [Google Play](https://play.google.com/store/apps/details?id=com.northlab.keeneye)
 
 ![Vue 3](https://img.shields.io/badge/Vue-3-42b883?logo=vuedotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)

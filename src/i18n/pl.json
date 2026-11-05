@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "O grze",
-    "aboutText": "Keen Eye to gra w szukanie różnic z żywymi scenami. Bez reklam i bez internetu.",
+    "aboutText": "Keen Eye to gra w szukanie różnic z żywymi scenami.",
     "version": "Wersja {v}",
     "privacy": "Prywatność",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Tryb spokojny",
       "living": "Żywe sceny",
-      "keys": "Ukryte klucze"
+      "keys": "Ukryte klucze",
+      "offline": "Bez internetu",
+      "noAds": "Bez reklam",
+      "mirror": "Lustrzane poziomy"
     },
     "support": {
       "title": "Wesprzyj grę",
@@ -498,13 +501,19 @@
     "lodgeYard": "Podwórze",
     "lodgeChairlift": "Wyciąg krzesełkowy",
     "lodgeSummit": "Szczyt",
-    "treasury": "Skarbiec"
+    "treasury": "Skarbiec",
+    "chickensCoop": "Kurnik",
+    "chickensYard": "Wiejskie podwórko",
+    "chickensGarden": "Ogródek warzywny",
+    "chickensBarn": "Stodoła",
+    "chickensMeadow": "Łąka nad strumykiem"
   },
   "mode": {
     "label": "Tryb",
     "normal": "Zwykły",
     "calm": "Spokojny",
     "calmHint": "Bez czasu, błędów i gwiazdek",
+    "normalHint": "Czas, 1 podpowiedź, gwiazdki za szybkość i celność",
     "hard": "Trudny",
     "hardHint": "Bez podpowiedzi, 3 błędy kończą poziom, czerwone gwiazdki",
     "hardStars": "Tryb trudny: {n}/3"
@@ -518,7 +527,7 @@
     "allLevelsNone": "Wszystkie przyszłe poziomy głównej gry",
     "harder": "Ciekawsze i trudniejsze poziomy: więcej różnic i więcej ruchu",
     "noAds": "Bez reklam i bez subskrypcji",
-    "once": "Jeden zakup na zawsze, działa offline",
+    "once": "Jeden zakup na zawsze, na wszystkich twoich urządzeniach z tym samym kontem",
     "buy": "Kup za {price}",
     "restore": "Przywróć zakupy",
     "wait": "Proszę czekać…",
@@ -710,6 +719,11 @@
         "title": "Zagadka górskiego schroniska",
         "intro": "W przeddzień wielkich zawodów z kominka schroniska zniknął złoty puchar w kształcie płatka śniegu. Wszyscy obwiniają yeti — ale czy to naprawdę yeti? Idź za tropami w górę.",
         "ending": "To była narciarka! Tak marzyła o zwycięstwie, że nocą wspięła się na szczyt, by zrobić sobie zdjęcie z pucharem — i zostawiła go w ręce bałwana. Zdradziły ją ślady nart, dziurki po kijkach i zapomniany kijek. Oddała puchar i uczciwie wygrała zawody."
+      },
+      "chickens": {
+        "title": "Zaginione kury",
+        "intro": "Rano dziewczyna ze wsi przyszła nakarmić kury – a kurnik jest pusty i drzwi są otwarte! Przeszukaj jej podwórko, znajdź tropy i dowiedz się, kto wypuścił kury.",
+        "ending": "To była koza! Podniosła różkami zasuwkę kurnika, żeby dostać się do ziarna, i przewróciła worek, a kury poszły za rozsypanym ziarnem aż na łąkę. Zdradziły ją ślady kopytek, zgubiony dzwoneczek i ziarno na pyszczku. Wszystkie kury są całe, a kurnik ma nową zasuwkę."
       }
     },
     "suspects": {
@@ -735,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Narciarka",
       "snowboarder": "Snowboardzista",
-      "innkeeper": "Gospodyni schroniska"
+      "innkeeper": "Gospodyni schroniska",
+      "fox": "Lis",
+      "goose": "Gęś",
+      "yardDog": "Pies",
+      "goat": "Koza"
     },
     "clueTexts": {
       "cakeGone": "Tort zniknął — na talerzu same okruszki",
@@ -931,7 +949,34 @@
       "snowmanScarf": "Bałwan ma na szyi czerwony szalik",
       "tripodMarks": "Trzy małe ślady statywu",
       "bootPrintsUp": "Ślady butów prowadzą na szczyt",
-      "skiPoleLeft": "Kijek narciarski wbity w śnieg"
+      "skiPoleLeft": "Kijek narciarski wbity w śnieg",
+      "chickensGone": "Kury zniknęły z grzędy",
+      "coopDoorOpen": "Drzwi kurnika są otwarte",
+      "eggsLeft": "Jajka zostały w gnieździe – lis by je zabrał",
+      "grainSpilled": "Worek z ziarnem jest przewrócony",
+      "whiteFur": "Kłębek białej sierści na płocie",
+      "featherTrail": "Białe pióra prowadzą przez trawę",
+      "dogAsleep": "Pies całą noc spał na łańcuchu – nie dosięgnie kurnika",
+      "goosePenShut": "Zagroda gęsi była zamknięta całą noc",
+      "laundryChewed": "Ktoś pogryzł koszulę na sznurze",
+      "wellBucketDown": "Wiadro studni jest opuszczone",
+      "grainTrail": "Ścieżka z ziarna",
+      "cabbageNibbled": "Główka kapusty jest nadgryziona",
+      "hoofPrints": "Małe ślady rozdwojonych kopytek",
+      "scarecrowHat": "Strach na wróble zgubił kapelusz",
+      "fenceBent": "Sztacheta płotu się przekrzywiła – ktoś przeskoczył",
+      "wateringCanTipped": "Konewka jest przewrócona",
+      "sunflowerBent": "Słonecznik jest zgięty",
+      "bellInHay": "Złoty dzwoneczek na czerwonej wstążce w sianie",
+      "ladderRungBroken": "Szczebel drabiny jest złamany",
+      "milkSpilled": "Wiadro z mlekiem jest wylane",
+      "troughEmpty": "Owies konia zniknął ze żłobu",
+      "chickensFound": "Kury się znalazły – dziobią ziarno na łące!",
+      "sackEmpty": "Pusty worek po ziarnie na trawie",
+      "grainOnBeard": "Ziarno na pyszczku kozy",
+      "daisiesEaten": "Stokrotki są zjedzone do łodyżek",
+      "basketTipped": "Koszyk z jagodami jest przewrócony",
+      "plankMoved": "Deska kładki jest przesunięta"
     }
   },
   "secret": {

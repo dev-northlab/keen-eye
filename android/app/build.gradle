@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.keeneye.app"
+    namespace = "com.northlab.keeneye"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.keeneye.app"
+        applicationId "com.northlab.keeneye"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

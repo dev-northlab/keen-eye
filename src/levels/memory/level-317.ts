@@ -42,57 +42,57 @@ export default memoryLevel({
   title: 'memoryBakery',
   showSeconds: 5,
   scene: ({ diff, extra, anim }) =>
-    room(450, '#fbe3c8', '#e9dcc7') +
-    tiles(450) +
-    `<rect y="220" width="800" height="10" fill="#e07a5f" fill-opacity="0.5"/>` +
-    hangingLamp(150, 50, '#3fa46f') +
-    hangingLamp(400, 50, '#3fa46f') +
-    diff(650, 50, 50, hangingLamp(650, 50, '#3fa46f'), '') +
+    room(580, '#fbe3c8', '#e9dcc7') +
+    tiles(580) +
+    `<rect y="345" width="500" height="10" fill="#e07a5f" fill-opacity="0.5"/>` +
+    hangingLamp(100, 50, '#3fa46f') +
+    hangingLamp(250, 50, '#3fa46f') +
+    diff(400, 50, 50, hangingLamp(400, 50, '#3fa46f'), '') +
     // Bread shelf
-    `<rect x="60" y="200" width="230" height="10" fill="#8a5a33"/><path d="M80 210l12 16M270 210l-12 16" stroke="#8a5a33" stroke-width="5"/>` +
-    loaf(110, 200) +
-    loaf(165, 200) +
-    diff(...around(84, 164, 246, 200), loaf(220, 200), '') +
-    sign(385, 150, '#3a86ff') +
+    `<rect x="30" y="210" width="230" height="10" fill="#8a5a33"/><path d="M50 220l12 16M240 220l-12 16" stroke="#8a5a33" stroke-width="5"/>` +
+    loaf(80, 210) +
+    loaf(135, 210) +
+    diff(...around(54, 174, 216, 210), loaf(190, 210), '') +
+    sign(380, 170, '#3a86ff') +
     // Jar shelf
-    `<rect x="470" y="200" width="270" height="10" fill="#8a5a33"/><path d="M490 210l12 16M720 210l-12 16" stroke="#8a5a33" stroke-width="5"/>` +
-    jar(510, 200, '#e63946') +
-    diff(...around(566, 136, 614, 200), jar(590, 200, '#ffb703'), jar(590, 200, '#8338ec')) +
-    jar(670, 200, '#e63946') +
+    `<rect x="200" y="330" width="270" height="10" fill="#8a5a33"/><path d="M220 340l12 16M450 340l-12 16" stroke="#8a5a33" stroke-width="5"/>` +
+    jar(240, 330, '#e63946') +
+    diff(...around(296, 266, 344, 330), jar(320, 330, '#ffb703'), jar(320, 330, '#8338ec')) +
+    jar(400, 330, '#e63946') +
     // Counter with a glass display case
-    `<rect x="60" y="300" width="460" height="150" rx="6" fill="#c98b5a"/><path d="M80 330h420M80 420h420" stroke="#a0703f" stroke-width="5"/>` +
-    `<rect x="80" y="230" width="420" height="70" rx="6" fill="#e6f4fb" fill-opacity="0.7" stroke="#ffffff" stroke-width="5"/>` +
-    croissant(140, 296) +
-    croissant(220, 296) +
-    donut(310, 296) +
-    diff(...around(400, 245, 440, 296, 30), '', cupcake(420, 296)) +
+    `<rect x="30" y="430" width="440" height="150" rx="6" fill="#c98b5a"/><path d="M50 460h400M50 550h400" stroke="#a0703f" stroke-width="5"/>` +
+    `<rect x="50" y="360" width="400" height="70" rx="6" fill="#e6f4fb" fill-opacity="0.7" stroke="#ffffff" stroke-width="5"/>` +
+    croissant(110, 426) +
+    croissant(185, 426) +
+    donut(270, 426) +
+    diff(...around(340, 375, 380, 426, 30), '', cupcake(360, 426)) +
     // Cake table
-    `<rect x="576" y="330" width="12" height="120" fill="#6b4f3a"/><rect x="732" y="330" width="12" height="120" fill="#6b4f3a"/><rect x="560" y="324" width="200" height="14" rx="5" fill="#a0703f"/>` +
-    cake(660, 324, diff(...around(604, 234, 716, 286), '#ffffff', '#ff8fb1')) +
+    `<rect x="296" y="706" width="12" height="44" fill="#6b4f3a"/><rect x="452" y="706" width="12" height="44" fill="#6b4f3a"/><rect x="280" y="700" width="200" height="14" rx="5" fill="#a0703f"/>` +
+    cake(380, 700, diff(...around(324, 610, 436, 662), '#ffffff', '#ff8fb1')) +
     // Basket of baguettes
-    `<path d="M690 440l20 -60M712 440l12 -64M734 440l4 -58" stroke="#d9a05b" stroke-width="12" stroke-linecap="round"/>` +
+    `<path d="M130 690l20 -60M152 690l12 -64M174 690l4 -58" stroke="#d9a05b" stroke-width="12" stroke-linecap="round"/>` +
     // Decor: small things that fill the room, the same in both pictures
-    painting(10, 40, 36, 44, '#3a86ff') +
-    painting(290, 40, 46, 40, '#ffb703') +
-    shelf(285, 170, 60) +
-    mug(300, 170, '#3a86ff') +
-    mug(330, 170, '#e63946') +
-    painting(450, 60, 50, 60, '#3fa46f') +
-    painting(766, 40, 26, 36, '#e63946') +
-    flowerVase(480, 230, '#3a86ff', '#ffd23f') +
-    poster(100, 345, 36, 50, '#ffd23f') +
-    poster(440, 345, 36, 50, '#ff6b8b') +
-    glassJar(570, 324, '#ff6b8b', '#ff9f43') +
-    mug(745, 324, '#3a86ff') +
-    sack(40, 490, '#f4efe6') +
-    sack(70, 492) +
-    crate(540, 490, 30) +
-    `<path d="M680 440h70l-8 40h-54Z" fill="#a0703f"/>` +
+    painting(10, 110, 36, 44, '#3a86ff') +
+    painting(160, 60, 46, 40, '#ffb703') +
+    shelf(430, 236, 60) +
+    mug(445, 236, '#3a86ff') +
+    mug(475, 236, '#e63946') +
+    painting(280, 160, 50, 60, '#3fa46f') +
+    painting(466, 110, 26, 36, '#e63946') +
+    flowerVase(430, 360, '#3a86ff', '#ffd23f') +
+    poster(90, 470, 36, 50, '#ffd23f') +
+    poster(380, 468, 36, 50, '#ff6b8b') +
+    glassJar(300, 700, '#ff6b8b', '#ff9f43') +
+    mug(462, 700, '#3a86ff') +
+    sack(30, 740, '#f4efe6') +
+    sack(62, 742) +
+    crate(240, 745, 30) +
+    `<path d="M120 690h70l-8 40h-54Z" fill="#a0703f"/>` +
     // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
     extras({ extra, anim }, [
-      ['cube', 456, 471, '#3fa46f'],
-      ['slippers', 260, 472, '#3a86ff'],
-      ['frame', 539, 101, '#3fa46f'],
-      ['frame', 746, 185, '#c9953f'],
+      ['cube', 220, 650, '#3fa46f'],
+      ['slippers', 60, 620, '#3a86ff'],
+      ['frame', 40, 300, '#3fa46f'],
+      ['frame', 470, 300, '#c9953f'],
     ]),
 })

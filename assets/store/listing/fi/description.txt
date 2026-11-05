@@ -1,15 +1,16 @@
 Kaksi kuvaa näyttää samalta – mutta ne eivät ole samat. Etsi kaikki erot käsin piirretyistä kohtauksista, jotka heräävät eloon: pilvet lipuvat, veneet keinuvat aalloilla, linnut lentävät, ja osa eroista piileskelee itse liikkeessä.
 
-283 TASOA, 7 TAPAA PELATA
+288 TASOA, 7 TAPAA PELATA
 • Maailmat – 150 tasoa maatilalla, kaupungissa, metsässä, merellä ja avaruudessa, 5–10 eroa
 • Aika – sama paikka aamulla ja illalla, kesällä ja talvella: löydä, mikä todella muuttui
 • Muisti – katso kuvaa muutama sekunti ja löydä muutokset muistinvaraisesti
 • Maailmanmatka – kuuluisia paikkoja 32 maasta, hauska tieto jokaisesta ja leima passiin jokaisesta voitosta
-• Salapoliisi – jokainen ero on johtolanka: kerää ne ja nimeä syyllinen kuudessa tapauksessa
+• Salapoliisi – jokainen ero on johtolanka: kerää ne ja nimeä syyllinen seitsemässä tapauksessa
 • Mikä ei kuulu joukkoon – mikä ei sovi muinaiseen Egyptiin, Roomaan, viikinkiaikaan ja muihin aikakausiin
 • Kaksi pelaajaa samalla laitteella – kaksintaistelu, vuorotellen tai yhdessä
 
-KAIKILLE
+KOKO PERHEELLE
+• Lapset ja aikuiset pelaavat yhdessä: rauhallinen tila pienimmille, vaikea tarkimmille silmille
 • Rauhallinen tila: ei ajastinta, ei virheitä, 3 ilmaista vihjettä joka tasolla
 • Vaikea tila: ei vihjeitä, 3 virhettä päättää tason, punaiset tähdet parhaille
 • Kahden sormen zoomaus molempiin kuviin yhtä aikaa
@@ -18,4 +19,4 @@ KAIKILLE
 • 32 kieltä
 
 EI MAINOKSIA, EI INTERNETIÄ
-Peli toimii täysin ilman verkkoa eikä kerää mitään tietoja: edistymisesi pysyy laitteellasi. Jokaisen pelitilan ensimmäiset tasot ovat ilmaisia; yksi ostos avaa koko pelin pysyvästi, ilman tilausta.
+Ei mainoksia eikä chatteja – pelin voi huoletta antaa lapselle. Peli toimii täysin ilman verkkoa eikä kerää mitään tietoja: edistymisesi pysyy laitteellasi. Jokaisen pelitilan ensimmäiset tasot ovat ilmaisia; yksi ostos avaa koko pelin pysyvästi, ilman tilausta. Ostos toimii kaikilla laitteillasi samalla tilillä.

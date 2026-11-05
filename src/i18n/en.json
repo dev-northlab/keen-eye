@@ -25,7 +25,7 @@
   },
   "info": {
     "about": "About",
-    "aboutText": "Keen Eye is a spot-the-difference game with living scenes. No ads, no internet.",
+    "aboutText": "Keen Eye is a spot-the-difference game with living scenes.",
     "version": "Version {v}",
     "privacy": "Privacy policy",
     "privacyPoints": {
@@ -56,7 +56,10 @@
     "perks": {
       "calm": "Calm mode",
       "living": "Living scenes",
-      "keys": "Hidden keys"
+      "keys": "Hidden keys",
+      "offline": "Works offline",
+      "noAds": "No ads",
+      "mirror": "Mirrored levels"
     },
     "support": {
       "title": "Support the game",
@@ -498,13 +501,19 @@
     "lodgeYard": "Yard",
     "lodgeChairlift": "Chairlift",
     "lodgeSummit": "Summit",
-    "treasury": "Treasury"
+    "treasury": "Treasury",
+    "chickensCoop": "Chicken coop",
+    "chickensYard": "Village yard",
+    "chickensGarden": "Vegetable garden",
+    "chickensBarn": "Barn",
+    "chickensMeadow": "Meadow by the stream"
   },
   "mode": {
     "label": "Mode",
     "normal": "Normal",
     "calm": "Calm",
     "calmHint": "No timer, mistakes or stars",
+    "normalHint": "Timer, 1 hint, stars for speed and accuracy",
     "hard": "Hard",
     "hardHint": "No hints, 3 mistakes end the level, red stars",
     "hardStars": "Hard mode: {n}/3"
@@ -518,7 +527,7 @@
     "allLevelsNone": "Every future level of the main game",
     "harder": "More interesting and challenging levels: more differences and more motion",
     "noAds": "No ads, no subscription",
-    "once": "One purchase forever, works offline",
+    "once": "One purchase forever, on all your devices with the same account",
     "buy": "Buy for {price}",
     "restore": "Restore purchases",
     "wait": "Please wait…",
@@ -710,6 +719,11 @@
         "title": "The ski lodge mystery",
         "intro": "The night before the big race, the golden snowflake trophy vanished from the lodge's mantel. Everyone blames the yeti — but was it really the yeti? Follow the clues up the mountain.",
         "ending": "It was the skier! She dreamed of winning so much that at night she skied up to the summit for a photo with the trophy — and left it in the snowman's hand. Ski tracks, pole holes and a forgotten ski pole gave her away. She brought the trophy back and won the race fair and square."
+      },
+      "chickens": {
+        "title": "The missing chickens",
+        "intro": "This morning a village girl came to feed her chickens — but the coop is empty and its door is open! Search her yard for clues and find out who let the chickens out.",
+        "ending": "It was the goat! She lifted the coop latch with her horns to get at the grain and knocked the sack over, and the chickens followed the spilt grain all the way to the meadow. Hoof prints, her lost bell and grain on her muzzle gave her away. All the chickens are safe, and the coop has a new latch."
       }
     },
     "suspects": {
@@ -735,7 +749,11 @@
       "yeti": "Yeti",
       "skier": "Skier",
       "snowboarder": "Snowboarder",
-      "innkeeper": "Innkeeper"
+      "innkeeper": "Innkeeper",
+      "fox": "Fox",
+      "goose": "Goose",
+      "yardDog": "Dog",
+      "goat": "Goat"
     },
     "clueTexts": {
       "cakeGone": "The cake is gone — only crumbs on the plate",
@@ -931,7 +949,34 @@
       "snowmanScarf": "The snowman is wearing a red scarf",
       "tripodMarks": "Three little marks from a tripod",
       "bootPrintsUp": "Boot prints going up to the summit",
-      "skiPoleLeft": "A ski pole stuck in the snow"
+      "skiPoleLeft": "A ski pole stuck in the snow",
+      "chickensGone": "The chickens are gone from the perch",
+      "coopDoorOpen": "The coop door is open",
+      "eggsLeft": "The eggs are still in the nest — a fox would have taken them",
+      "grainSpilled": "The grain sack is knocked over",
+      "whiteFur": "A tuft of white fur on the fence",
+      "featherTrail": "White feathers lead away across the grass",
+      "dogAsleep": "The dog slept on its chain all night — it can't reach the coop",
+      "goosePenShut": "The goose pen was locked all night",
+      "laundryChewed": "Someone chewed the shirt on the washing line",
+      "wellBucketDown": "The well bucket has been let down",
+      "grainTrail": "A trail of grain along the path",
+      "cabbageNibbled": "A cabbage has been nibbled",
+      "hoofPrints": "Small cloven hoof prints",
+      "scarecrowHat": "The scarecrow has lost its hat",
+      "fenceBent": "A fence picket is knocked aslant — someone jumped over",
+      "wateringCanTipped": "The watering can is tipped over",
+      "sunflowerBent": "The sunflower is bent over",
+      "bellInHay": "A little golden bell on a red ribbon in the hay",
+      "ladderRungBroken": "A ladder rung is broken",
+      "milkSpilled": "The milk bucket is spilt",
+      "troughEmpty": "The horse's oats are gone from the trough",
+      "chickensFound": "The chickens are found — pecking grain in the meadow!",
+      "sackEmpty": "An empty grain sack on the grass",
+      "grainOnBeard": "Grain on the goat's muzzle",
+      "daisiesEaten": "The daisies are eaten down to the stems",
+      "basketTipped": "The berry basket is tipped over",
+      "plankMoved": "A plank of the footbridge is out of place"
     }
   },
   "secret": {
