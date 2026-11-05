@@ -1,1 +1,1 @@
-Najdi rozdíly ve 283 živých, ručně kreslených scénách. Funguje offline.
+Najdi rozdíly ve 283 živých kreslených scénách. Pro celou rodinu, offline.
