@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import type { Season } from '../stores/settings.ts'
 
 // Home screen meadow for ScreenBackdrop's landscape strip (viewBox 0 0 1600 400). Wide windows cut the
@@ -10,10 +10,14 @@ import type { Season } from '../stores/settings.ts'
 // summer, the house's chimney smokes and the snow sparkles in winter. Animals: rabbits hop (white in
 // winter), a goat grazes, a sheep nods, a hen and her chick peck by the house. A river runs from the far
 // hills (narrow) past the house into a lake on the front hill: it flows, the lake ripples, a duck and
-// her ducklings swim among lily pads and reeds; in winter both are frozen. In summer a family has a
-// picnic on the front hill and looks for differences in a picture book.
+// her ducklings swim among lily pads and reeds; in winter both are frozen. On the front hill a family
+// has a picnic and looks for differences in a picture book (spring to autumn; a kite in spring, scarves
+// and apples in autumn) or plays in the snow (winter); at night two lanterns light them up.
 
-/** `lights`: draw only the lit house windows (an unfiltered layer over the night-dimmed scene). */
+/**
+ * `lights`: draw only the night lights — lit house windows, street lamps and the picnic lanterns (an
+ * unfiltered layer over the night-dimmed scene).
+ */
 const props = defineProps<{ season: Season; lights?: boolean }>()
 
 type Kind = 'oak' | 'pine' | 'birch' | 'poplar' | 'apple' | 'house' | 'lamp'
@@ -143,11 +147,16 @@ const inLake = (x: number, y: number) =>
   ((x - LAKE.cx) / (LAKE.rx + 20)) ** 2 + ((y - LAKE.cy) / (LAKE.ry + 12)) ** 2 < 1 || (x > 1075 && x < 1150 && y < 350)
 
 /**
- * The family's picnic blanket in summer (its centre front edge), in the middle of the front hill so
- * phones show it below the menu. Flowers keep clear of it and of the family on it.
+ * The family (the centre front edge of their picnic blanket), in the middle of the front hill so phones
+ * show it below the menu. Flowers keep clear of the blanket and the family on it.
  */
 const FAMILY = { x: 650, y: 384 }
+const BLANKETS: Record<Exclude<Season, 'winter'>, string> = { spring: '#ff9ec4', summer: '#e5484d', autumn: '#5b8def' }
 const onBlanket = (x: number, y: number) => Math.abs(x - FAMILY.x) < 92 && y > FAMILY.y - 70 && y < FAMILY.y + 12
+/** Night: camping lanterns on the ground at both ends of the blanket (x from FAMILY). */
+const PICNIC_LANTERNS = [-88, 86]
+/** The lanterns' soft glow (a gradient: ids must be unique on the page). */
+const lanternGlow = useId()
 /** The blanket's checks: two stripes along it and five across (top edge −66…62, front edge −80…75). */
 const BLANKET_CHECKS = [
   'M-71-11H66M-76-4H71',
@@ -371,6 +380,26 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
       <circle cy="-46" r="16" fill="#ffcf5a" fill-opacity="0.22" />
     </g>
     <path d="M-5-50H5L3.5-42H-3.5Z" fill="#ffe08a" />
+  </g>
+  <!-- Two camping lanterns light up the family, at the ends of the blanket (or in the snow). -->
+  <g :transform="`translate(${FAMILY.x} ${FAMILY.y})`">
+    <radialGradient :id="lanternGlow">
+      <stop offset="0" stop-color="#ffcf5a" stop-opacity="0.5" />
+      <stop offset="0.35" stop-color="#ffcf5a" stop-opacity="0.22" />
+      <stop offset="1" stop-color="#ffcf5a" stop-opacity="0" />
+    </radialGradient>
+    <g v-for="(x, k) in PICNIC_LANTERNS" :key="x" :transform="`translate(${x} 0)`">
+      <g class="lamp-glow" :style="{ animationDelay: `${-k * 1.1}s` }">
+        <ellipse cy="-1" rx="40" ry="9" :fill="`url(#${lanternGlow})`" />
+        <circle cy="-10" r="40" :fill="`url(#${lanternGlow})`" />
+      </g>
+      <rect x="-5" y="-3" width="10" height="3" rx="1" fill="#3d3a36" />
+      <rect x="-4" y="-15" width="8" height="12" rx="1.5" fill="#ffe08a" />
+      <ellipse cy="-9" rx="1.6" ry="3" fill="#fff7d6" />
+      <path d="M-4-15V-3M4-15V-3" stroke="#3d3a36" stroke-width="1.2" />
+      <path d="M-6-15H6L3-19H-3Z" fill="#3d3a36" />
+      <path d="M-3-19Q0-25 3-19" fill="none" stroke="#3d3a36" stroke-width="1.2" />
+    </g>
   </g>
   </g>
 
@@ -707,104 +736,237 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
       </g>
     </g>
 
-    <!-- Summer: the family's picnic. Dad nods, mom waves, the boy peers through a magnifier and the girl
-         holds up a picture book with two pictures that differ in one flower, like the game. -->
-    <g v-if="season === 'summer'" :transform="`translate(${FAMILY.x} ${FAMILY.y})`">
-      <ellipse cy="3" rx="84" ry="6" fill="#000" fill-opacity="0.08" />
-      <path d="M-80 2L75 2L62-16L-66-16Z" fill="#e5484d" />
-      <path :d="BLANKET_CHECKS" stroke="#fff" stroke-opacity="0.5" stroke-width="3.5" />
+    <!-- The family, in front of everyone on the front hill; each keeps their colour all year (dad blue,
+         mom teal, the boy orange, the girl purple). Spring to autumn: a picnic — dad nods (and flies a
+         kite in spring), mom waves, the boy peers through a magnifier and the girl holds up a picture book
+         with two pictures that differ in one flower, like the game; autumn brings scarves and apples.
+         Winter: they stand in the snow in hats and scarves; the boy throws snowballs at mom, who waves,
+         and the girl rolls a big snowball. -->
+    <g :transform="`translate(${FAMILY.x} ${FAMILY.y})`">
+      <template v-if="season !== 'winter'">
+        <ellipse cy="3" rx="84" ry="6" fill="#000" fill-opacity="0.08" />
+        <path d="M-80 2L75 2L62-16L-66-16Z" :fill="BLANKETS[season]" />
+        <path :d="BLANKET_CHECKS" stroke="#fff" stroke-opacity="0.5" stroke-width="3.5" />
 
-      <!-- Dad, sitting cross-legged. -->
-      <g transform="translate(-48 -6)">
-        <ellipse rx="21" ry="7" fill="#3d4f6e" />
-        <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
-        <ellipse cx="15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
-        <path d="M-13-2V-26Q-13-36 0-36Q13-36 13-26V-2Z" fill="#5b8def" />
-        <path d="M-11-30Q-19-16-8-8M11-30Q19-16 8-8" fill="none" stroke="#4a7bd8" stroke-width="6" stroke-linecap="round" />
-        <circle cx="-8" cy="-8" r="3" fill="#e0a77c" />
-        <circle cx="8" cy="-8" r="3" fill="#e0a77c" />
-        <rect x="-3" y="-40" width="6" height="6" fill="#c98f66" />
-        <g class="tilt">
-          <circle cx="-10" cy="-48" r="2.6" fill="#e0a77c" />
-          <circle cx="10" cy="-48" r="2.6" fill="#e0a77c" />
-          <circle cy="-48" r="10" fill="#e0a77c" />
-          <path d="M-10.5-48Q-11-60 0-60Q11-60 10.5-48Q7-54 0-54Q-6-54-10.5-48Z" fill="#3a2a20" />
-          <circle cx="-3.6" cy="-48" r="1.3" fill="#23302b" />
-          <circle cx="3.6" cy="-48" r="1.3" fill="#23302b" />
-          <path d="M-3.5-43.5Q0-40.5 3.5-43.5" fill="none" stroke="#7a3b2a" stroke-width="1.3" stroke-linecap="round" />
+        <!-- Spring: dad's kite, swaying around his hand. -->
+        <g v-if="season === 'spring'" class="kite">
+          <path d="M-26-57Q10-70 40-102" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="0.8" />
+          <path d="M40-102q-5 6 0 11q5 6 0 11" fill="none" stroke="#3d3d3d" stroke-width="0.8" />
+          <path d="M37-92l6 2-6 2ZM37-82l6 2-6 2Z" fill="#ffd23f" />
+          <path d="M40-134L51-118L40-102L29-118Z" fill="#ff6b8a" />
+          <path d="M40-134L51-118L40-118ZM40-118L29-118L40-102Z" fill="#ffd23f" />
         </g>
-      </g>
 
-      <!-- Mom, sitting, waving with her right hand. -->
-      <g transform="translate(48 -6)">
-        <ellipse rx="21" ry="7" fill="#1f8a80" />
-        <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#c8553d" />
-        <ellipse cx="15" cy="2" rx="5" ry="3" fill="#c8553d" />
-        <path d="M-12-2V-26Q-12-36 0-36Q12-36 12-26V-2Z" fill="#2fa39a" />
-        <path d="M-10-30Q-18-16-7-8" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
-        <circle cx="-7" cy="-8" r="2.8" fill="#f2c39b" />
-        <g class="wave">
-          <path d="M10-30Q20-38 18-52" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
-          <circle cx="18" cy="-54" r="3" fill="#f2c39b" />
+        <!-- Dad, sitting cross-legged. -->
+        <g transform="translate(-48 -6)">
+          <ellipse rx="21" ry="7" fill="#3d4f6e" />
+          <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
+          <ellipse cx="15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
+          <path d="M-13-2V-26Q-13-36 0-36Q13-36 13-26V-2Z" fill="#5b8def" />
+          <path
+            :d="season === 'spring' ? 'M-11-30Q-19-16-8-8M11-30Q21-36 22-48' : 'M-11-30Q-19-16-8-8M11-30Q19-16 8-8'"
+            fill="none"
+            stroke="#4a7bd8"
+            stroke-width="6"
+            stroke-linecap="round"
+          />
+          <circle cx="-8" cy="-8" r="3" fill="#e0a77c" />
+          <circle v-if="season === 'spring'" cx="22" cy="-50" r="3" fill="#e0a77c" />
+          <circle v-else cx="8" cy="-8" r="3" fill="#e0a77c" />
+          <rect x="-3" y="-40" width="6" height="6" fill="#c98f66" />
+          <path v-if="season === 'autumn'" d="M-9-38H9V-33H-9ZM4-34V-22" stroke="#e5484d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <g class="tilt">
+            <circle cx="-10" cy="-48" r="2.6" fill="#e0a77c" />
+            <circle cx="10" cy="-48" r="2.6" fill="#e0a77c" />
+            <circle cy="-48" r="10" fill="#e0a77c" />
+            <path d="M-10.5-48Q-11-60 0-60Q11-60 10.5-48Q7-54 0-54Q-6-54-10.5-48Z" fill="#3a2a20" />
+            <circle cx="-3.6" cy="-48" r="1.3" fill="#23302b" />
+            <circle cx="3.6" cy="-48" r="1.3" fill="#23302b" />
+            <path d="M-3.5-43.5Q0-40.5 3.5-43.5" fill="none" stroke="#7a3b2a" stroke-width="1.3" stroke-linecap="round" />
+          </g>
         </g>
-        <rect x="-3" y="-40" width="6" height="6" fill="#e0a77c" />
-        <path d="M-11.5-46Q-13-62 0-62Q13-62 11.5-46L13-33Q8-34 6-39H-6Q-8-34-13-33Z" fill="#6b3420" />
-        <circle cy="-48" r="9.5" fill="#f2c39b" />
-        <path d="M-10-47Q-10-59 0-59Q10-59 10-47Q6-53-2-53Q-7-52-10-47Z" fill="#6b3420" />
-        <circle cx="-3.4" cy="-48" r="1.3" fill="#23302b" />
-        <circle cx="3.4" cy="-48" r="1.3" fill="#23302b" />
-        <ellipse cx="-6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
-        <ellipse cx="6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
-        <path d="M-3.2-43.5Q0-40.5 3.2-43.5" fill="none" stroke="#a8433a" stroke-width="1.3" stroke-linecap="round" />
-      </g>
 
-      <!-- Boy, standing, with a magnifier at his eye (it moves a little as he searches). -->
-      <g transform="translate(-14 -10)">
-        <path d="M-5 0V-10M5 0V-10" stroke="#e0a77c" stroke-width="3.6" stroke-linecap="round" />
-        <path d="M-8-9V-15H8V-9Z" fill="#3d4f6e" />
-        <path d="M-8-14V-27Q-8-33 0-33Q8-33 8-27V-14Z" fill="#ffb02e" />
-        <path d="M-7-28Q-12-20-6-15" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
-        <circle cx="-6" cy="-15" r="2.4" fill="#e0a77c" />
-        <circle cy="-41" r="8.5" fill="#e0a77c" />
-        <path d="M-8.8-41Q-9-51 0-51Q9-51 8.8-41Q6-46 1-46Q-5-46-8.8-41Z" fill="#3a2a20" />
-        <circle cx="-3.2" cy="-41" r="1.2" fill="#23302b" />
-        <path d="M-3-36.5Q0-34 3-36.5" fill="none" stroke="#7a3b2a" stroke-width="1.2" stroke-linecap="round" />
-        <g class="peer">
-          <path d="M7-28Q13-30 9-36" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
-          <path d="M8-37L5.6-41" stroke="#7a4e33" stroke-width="2.6" stroke-linecap="round" />
-          <circle cx="3.4" cy="-43.4" r="5.6" fill="#fff" fill-opacity="0.45" stroke="#7a4e33" stroke-width="1.8" />
-          <circle cx="3.4" cy="-43" r="2.4" fill="#23302b" />
-          <circle cx="4.2" cy="-43.8" r="0.8" fill="#fff" />
-          <circle cx="9" cy="-36" r="2.4" fill="#e0a77c" />
+        <!-- Mom, sitting, waving with her right hand. -->
+        <g transform="translate(48 -6)">
+          <ellipse rx="21" ry="7" fill="#1f8a80" />
+          <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#c8553d" />
+          <ellipse cx="15" cy="2" rx="5" ry="3" fill="#c8553d" />
+          <path d="M-12-2V-26Q-12-36 0-36Q12-36 12-26V-2Z" fill="#2fa39a" />
+          <path d="M-10-30Q-18-16-7-8" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
+          <circle cx="-7" cy="-8" r="2.8" fill="#f2c39b" />
+          <g class="wave">
+            <path d="M10-30Q20-38 18-52" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
+            <circle cx="18" cy="-54" r="3" fill="#f2c39b" />
+          </g>
+          <rect x="-3" y="-40" width="6" height="6" fill="#e0a77c" />
+          <path d="M-11.5-46Q-13-62 0-62Q13-62 11.5-46L13-33Q8-34 6-39H-6Q-8-34-13-33Z" fill="#6b3420" />
+          <path v-if="season === 'autumn'" d="M-8-37H8V-32H-8ZM-4-33V-22" stroke="#ffc933" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cy="-48" r="9.5" fill="#f2c39b" />
+          <path d="M-10-47Q-10-59 0-59Q10-59 10-47Q6-53-2-53Q-7-52-10-47Z" fill="#6b3420" />
+          <circle cx="-3.4" cy="-48" r="1.3" fill="#23302b" />
+          <circle cx="3.4" cy="-48" r="1.3" fill="#23302b" />
+          <ellipse cx="-6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
+          <ellipse cx="6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
+          <path d="M-3.2-43.5Q0-40.5 3.2-43.5" fill="none" stroke="#a8433a" stroke-width="1.3" stroke-linecap="round" />
         </g>
-      </g>
 
-      <!-- Girl, standing, holding up the open book. -->
-      <g transform="translate(16 -10)">
-        <path d="M-4 0V-10M4 0V-10" stroke="#f2c39b" stroke-width="3.4" stroke-linecap="round" />
-        <path d="M-9-8L-7-30Q0-34 7-30L9-8Z" fill="#b07cff" />
-        <g class="tilt">
-          <circle cx="-9" cy="-44" r="3.6" fill="#6b3420" />
-          <circle cx="9" cy="-44" r="3.6" fill="#6b3420" />
-          <circle cy="-41" r="8.2" fill="#f2c39b" />
-          <path d="M-8.6-41Q-9-50 0-50Q9-50 8.6-41Q5-46-1-45.5Q-6-45-8.6-41Z" fill="#6b3420" />
-          <circle cx="-3" cy="-41" r="1.2" fill="#23302b" />
-          <circle cx="3" cy="-41" r="1.2" fill="#23302b" />
-          <path d="M-2.8-37Q0-34.5 2.8-37" fill="none" stroke="#a8433a" stroke-width="1.2" stroke-linecap="round" />
+        <!-- Boy, standing, with a magnifier at his eye (it moves a little as he searches); trousers in autumn. -->
+        <g transform="translate(-14 -10)">
+          <path d="M-5 0V-10M5 0V-10" :stroke="season === 'autumn' ? '#3d4f6e' : '#e0a77c'" stroke-width="3.6" stroke-linecap="round" />
+          <path d="M-8-9V-15H8V-9Z" fill="#3d4f6e" />
+          <path d="M-8-14V-27Q-8-33 0-33Q8-33 8-27V-14Z" fill="#ffb02e" />
+          <path d="M-7-28Q-12-20-6-15" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
+          <circle cx="-6" cy="-15" r="2.4" fill="#e0a77c" />
+          <path v-if="season === 'autumn'" d="M-6-33H6M-3-32V-24" stroke="#4caf6a" stroke-width="3.4" stroke-linecap="round" />
+          <circle cy="-41" r="8.5" fill="#e0a77c" />
+          <path d="M-8.8-41Q-9-51 0-51Q9-51 8.8-41Q6-46 1-46Q-5-46-8.8-41Z" fill="#3a2a20" />
+          <circle cx="-3.2" cy="-41" r="1.2" fill="#23302b" />
+          <path d="M-3-36.5Q0-34 3-36.5" fill="none" stroke="#7a3b2a" stroke-width="1.2" stroke-linecap="round" />
+          <g class="peer">
+            <path d="M7-28Q13-30 9-36" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
+            <path d="M8-37L5.6-41" stroke="#7a4e33" stroke-width="2.6" stroke-linecap="round" />
+            <circle cx="3.4" cy="-43.4" r="5.6" fill="#fff" fill-opacity="0.45" stroke="#7a4e33" stroke-width="1.8" />
+            <circle cx="3.4" cy="-43" r="2.4" fill="#23302b" />
+            <circle cx="4.2" cy="-43.8" r="0.8" fill="#fff" />
+            <circle cx="9" cy="-36" r="2.4" fill="#e0a77c" />
+          </g>
         </g>
-        <path d="M-15-30H-1V-18H-15ZM1-30H15V-18H1Z" fill="#fff" stroke="#8a5a3a" stroke-width="1.4" stroke-linejoin="round" />
-        <path d="M-14.3-22H-1.7V-18.7H-14.3ZM1.7-22H14.3V-18.7H1.7Z" fill="#7cc46a" />
-        <circle cx="-11" cy="-27" r="1.8" fill="#ffc933" />
-        <circle cx="5" cy="-27" r="1.8" fill="#ffc933" />
-        <circle cx="-5" cy="-23.4" r="1.6" fill="#e5484d" />
-        <circle cx="-15" cy="-22" r="2.4" fill="#f2c39b" />
-        <circle cx="15" cy="-22" r="2.4" fill="#f2c39b" />
-      </g>
 
-      <!-- A slice of watermelon on the blanket. -->
-      <path d="M-8 0A8 8 0 0 1 8 0Z" fill="#e5484d" stroke="#4caf6a" stroke-width="2" />
-      <circle cx="-2.5" cy="-3" r="0.8" fill="#23302b" />
-      <circle cx="2.5" cy="-3" r="0.8" fill="#23302b" />
+        <!-- Girl, standing, holding up the open book. -->
+        <g transform="translate(16 -10)">
+          <path d="M-4 0V-10M4 0V-10" stroke="#f2c39b" stroke-width="3.4" stroke-linecap="round" />
+          <path d="M-9-8L-7-30Q0-34 7-30L9-8Z" fill="#b07cff" />
+          <path v-if="season === 'autumn'" d="M-5.5-31H5.5" stroke="#e98a2e" stroke-width="3.4" stroke-linecap="round" />
+          <g class="tilt">
+            <circle cx="-9" cy="-44" r="3.6" fill="#6b3420" />
+            <circle cx="9" cy="-44" r="3.6" fill="#6b3420" />
+            <circle cy="-41" r="8.2" fill="#f2c39b" />
+            <path d="M-8.6-41Q-9-50 0-50Q9-50 8.6-41Q5-46-1-45.5Q-6-45-8.6-41Z" fill="#6b3420" />
+            <circle cx="-3" cy="-41" r="1.2" fill="#23302b" />
+            <circle cx="3" cy="-41" r="1.2" fill="#23302b" />
+            <path d="M-2.8-37Q0-34.5 2.8-37" fill="none" stroke="#a8433a" stroke-width="1.2" stroke-linecap="round" />
+          </g>
+          <path d="M-15-30H-1V-18H-15ZM1-30H15V-18H1Z" fill="#fff" stroke="#8a5a3a" stroke-width="1.4" stroke-linejoin="round" />
+          <path d="M-14.3-22H-1.7V-18.7H-14.3ZM1.7-22H14.3V-18.7H1.7Z" fill="#7cc46a" />
+          <circle cx="-11" cy="-27" r="1.8" fill="#ffc933" />
+          <circle cx="5" cy="-27" r="1.8" fill="#ffc933" />
+          <circle cx="-5" cy="-23.4" r="1.6" fill="#e5484d" />
+          <circle cx="-15" cy="-22" r="2.4" fill="#f2c39b" />
+          <circle cx="15" cy="-22" r="2.4" fill="#f2c39b" />
+        </g>
+
+        <!-- On the blanket: a basket of apples in autumn, a slice of watermelon otherwise. -->
+        <g v-if="season === 'autumn'">
+          <path d="M-7-7Q0-17 7-7" fill="none" stroke="#8a5a2a" stroke-width="1.6" />
+          <circle cx="-3.5" cy="-7" r="3" fill="#e5484d" />
+          <circle cx="3" cy="-7.5" r="3" fill="#d9542b" />
+          <path d="M-9-7H9L7 1H-7Z" fill="#b07a3a" />
+          <path d="M-8-4H8" stroke="#8a5a2a" stroke-width="1" />
+        </g>
+        <g v-else>
+          <path d="M-8 0A8 8 0 0 1 8 0Z" fill="#e5484d" stroke="#4caf6a" stroke-width="2" />
+          <circle cx="-2.5" cy="-3" r="0.8" fill="#23302b" />
+          <circle cx="2.5" cy="-3" r="0.8" fill="#23302b" />
+        </g>
+      </template>
+
+      <template v-else>
+        <ellipse cy="2" rx="96" ry="6" fill="#c9d8e4" />
+
+        <!-- Dad, standing, in a red hat and a yellow scarf. -->
+        <g transform="translate(-62 0)">
+          <path d="M-5-2V-22M5-2V-22" stroke="#3d4f6e" stroke-width="6" stroke-linecap="round" />
+          <ellipse cx="-5" cy="-1" rx="4.6" ry="2.6" fill="#3d3a36" />
+          <ellipse cx="5" cy="-1" rx="4.6" ry="2.6" fill="#3d3a36" />
+          <path d="M-12-18V-46Q-12-56 0-56Q12-56 12-46V-18Z" fill="#5b8def" />
+          <path d="M-11-50Q-17-36-12-24M11-50Q17-36 12-24" fill="none" stroke="#4a7bd8" stroke-width="5.5" stroke-linecap="round" />
+          <circle cx="-12" cy="-23" r="3" fill="#ffc933" />
+          <circle cx="12" cy="-23" r="3" fill="#ffc933" />
+          <path d="M-8-56H8M4-55V-42" stroke="#ffc933" stroke-width="4.4" stroke-linecap="round" />
+          <g class="tilt">
+            <circle cx="-10" cy="-66" r="2.6" fill="#e0a77c" />
+            <circle cx="10" cy="-66" r="2.6" fill="#e0a77c" />
+            <circle cy="-66" r="10" fill="#e0a77c" />
+            <path d="M-10.5-68Q-11-80 0-80Q11-80 10.5-68Z" fill="#e5484d" />
+            <rect x="-11" y="-70" width="22" height="4.4" rx="2.2" fill="#c43a3f" />
+            <circle cy="-81" r="3" fill="#fff" />
+            <circle cx="-3.6" cy="-63" r="1.3" fill="#23302b" />
+            <circle cx="3.6" cy="-63" r="1.3" fill="#23302b" />
+            <path d="M-3.5-58.5Q0-55.5 3.5-58.5" fill="none" stroke="#7a3b2a" stroke-width="1.3" stroke-linecap="round" />
+          </g>
+        </g>
+
+        <!-- Boy, throwing snowballs at mom: one flies from his raised hand every few seconds. -->
+        <g transform="translate(-20 0)">
+          <path d="M-4-2V-12M4-2V-12" stroke="#3d4f6e" stroke-width="4" stroke-linecap="round" />
+          <ellipse cx="-4" cy="-1" rx="3.4" ry="2" fill="#3d3a36" />
+          <ellipse cx="4" cy="-1" rx="3.4" ry="2" fill="#3d3a36" />
+          <path d="M-8-10V-26Q-8-33 0-33Q8-33 8-26V-10Z" fill="#ffb02e" />
+          <path d="M-7-28Q-12-20-9-14M7-28Q14-34 12-44" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
+          <circle cx="-9" cy="-13" r="2.4" fill="#e5484d" />
+          <circle cx="12" cy="-46" r="2.4" fill="#e5484d" />
+          <path d="M-6-33H6M3-32V-25" stroke="#e5484d" stroke-width="3.4" stroke-linecap="round" />
+          <circle cy="-41" r="8.5" fill="#e0a77c" />
+          <path d="M-8.8-43Q-9-51 0-51Q9-51 8.8-43Z" fill="#5b8def" />
+          <rect x="-9.2" y="-45" width="18.4" height="3.4" rx="1.7" fill="#4a7bd8" />
+          <circle cy="-52" r="2.4" fill="#fff" />
+          <circle cx="-3.2" cy="-39" r="1.2" fill="#23302b" />
+          <circle cx="3.2" cy="-39" r="1.2" fill="#23302b" />
+          <path d="M-3-35.5Q0-33 3-35.5" fill="none" stroke="#7a3b2a" stroke-width="1.2" stroke-linecap="round" />
+          <circle class="snowball" cx="12" cy="-50" r="3" fill="#fff" stroke="#c9d8e4" stroke-width="0.8" />
+        </g>
+
+        <!-- Girl, rolling a big snowball. -->
+        <g transform="translate(9 0)">
+          <path d="M-4-2V-12M4-2V-12" stroke="#3d4f6e" stroke-width="3.6" stroke-linecap="round" />
+          <ellipse cx="-4" cy="-1" rx="3.2" ry="2" fill="#3d3a36" />
+          <ellipse cx="4" cy="-1" rx="3.2" ry="2" fill="#3d3a36" />
+          <path d="M-9-9L-7-27Q-7-33 0-33Q7-33 7-27L9-9Z" fill="#b07cff" />
+          <path d="M-6-28Q2-22 10-19M6-28Q12-24 15-19" fill="none" stroke="#9a66ea" stroke-width="4" stroke-linecap="round" />
+          <circle cx="10" cy="-18" r="2.4" fill="#ffc933" />
+          <circle cx="15" cy="-18" r="2.4" fill="#ffc933" />
+          <path d="M-6-33H6M-3-32V-25" stroke="#ffc933" stroke-width="3.4" stroke-linecap="round" />
+          <g class="tilt">
+            <circle cx="-9" cy="-39" r="3.4" fill="#6b3420" />
+            <circle cx="9" cy="-39" r="3.4" fill="#6b3420" />
+            <circle cy="-41" r="8.2" fill="#f2c39b" />
+            <path d="M-8.6-43Q-9-51 0-51Q9-51 8.6-43Z" fill="#ff6b8a" />
+            <rect x="-9" y="-45" width="18" height="3.4" rx="1.7" fill="#e5577a" />
+            <circle cy="-52" r="2.4" fill="#fff" />
+            <circle cx="-3" cy="-39" r="1.2" fill="#23302b" />
+            <circle cx="3" cy="-39" r="1.2" fill="#23302b" />
+            <path d="M-2.8-35.5Q0-33 2.8-35.5" fill="none" stroke="#a8433a" stroke-width="1.2" stroke-linecap="round" />
+          </g>
+          <ellipse cx="28" cy="0" rx="14" ry="3" fill="#b9cbd9" />
+          <circle cx="28" cy="-12" r="12" fill="#fff" stroke="#c9d8e4" stroke-width="1" />
+          <path d="M20-18q4-4 10-3" fill="none" stroke="#dde8f0" stroke-width="2" stroke-linecap="round" />
+        </g>
+
+        <!-- Mom, standing in a long coat and a yellow hat, waving. -->
+        <g transform="translate(66 0)">
+          <path d="M-4-2V-14M4-2V-14" stroke="#3d4f6e" stroke-width="4" stroke-linecap="round" />
+          <ellipse cx="-4" cy="-1" rx="4" ry="2.4" fill="#c8553d" />
+          <ellipse cx="4" cy="-1" rx="4" ry="2.4" fill="#c8553d" />
+          <path d="M-13-12L-11-46Q-11-56 0-56Q11-56 11-46L13-12Z" fill="#2fa39a" />
+          <path d="M-10-50Q-16-36-12-26" fill="none" stroke="#26948b" stroke-width="5" stroke-linecap="round" />
+          <circle cx="-12" cy="-25" r="2.8" fill="#ff6b8a" />
+          <g class="wave">
+            <path d="M10-50Q19-58 18-70" fill="none" stroke="#26948b" stroke-width="5" stroke-linecap="round" />
+            <circle cx="18" cy="-72" r="2.8" fill="#ff6b8a" />
+          </g>
+          <path d="M-11.5-64Q-13-80 0-80Q13-80 11.5-64L13-51Q8-52 6-57H-6Q-8-52-13-51Z" fill="#6b3420" />
+          <path d="M-8-56H8M-4-55V-42" stroke="#ff6b8a" stroke-width="4.4" stroke-linecap="round" />
+          <circle cy="-66" r="9.5" fill="#f2c39b" />
+          <path d="M-10-68Q-10.5-79 0-79Q10.5-79 10-68Z" fill="#ffc933" />
+          <rect x="-10.5" y="-70" width="21" height="4" rx="2" fill="#e0a820" />
+          <circle cy="-80" r="2.8" fill="#fff" />
+          <circle cx="-3.4" cy="-63.5" r="1.3" fill="#23302b" />
+          <circle cx="3.4" cy="-63.5" r="1.3" fill="#23302b" />
+          <ellipse cx="-6" cy="-60" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
+          <ellipse cx="6" cy="-60" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
+          <path d="M-3.2-59Q0-56 3.2-59" fill="none" stroke="#a8433a" stroke-width="1.3" stroke-linecap="round" />
+        </g>
+      </template>
     </g>
 
     <!-- Butterflies: placed by the outer group, wandering by the middle one, flapping by the inner one. -->
@@ -1186,6 +1348,51 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
   }
   to {
     transform: rotate(6deg);
+  }
+}
+
+/* Spring kite: swings around dad's hand (the lower left corner of its box). */
+.kite {
+  transform-box: fill-box;
+  transform-origin: 0% 100%;
+  animation: kite 3.8s ease-in-out infinite alternate;
+}
+
+@keyframes kite {
+  from {
+    transform: rotate(-4deg);
+  }
+  to {
+    transform: rotate(3deg);
+  }
+}
+
+/* Winter: a snowball leaves the boy's hand in an arc toward mom, then the next one is ready. */
+.snowball {
+  animation: snowball 3.2s ease-in infinite;
+}
+
+@keyframes snowball {
+  0%,
+  40% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  58% {
+    transform: translate(34px, -16px);
+  }
+  76% {
+    opacity: 1;
+    transform: translate(66px, -6px);
+  }
+  77%,
+  99% {
+    opacity: 0;
+    transform: translate(66px, -6px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
   }
 }
 
