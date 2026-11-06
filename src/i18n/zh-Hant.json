@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "珍珠養殖場",
+    "lifeguardTower": "救生員瞭望塔",
+    "researchShip": "科研船",
+    "stiltVillage": "高腳屋村落",
+    "kelpForest": "巨藻森林",
+    "icebreaker": "破冰船",
+    "seaplaneDock": "水上飛機碼頭",
+    "carFerry": "汽車渡輪",
+    "pelicanPier": "鵜鶘碼頭",
+    "lobsterHarbor": "龍蝦港",
     "raccoonCamp": "營地浣熊",
     "batCave": "蝙蝠洞",
     "forestRailway": "森林小火車",

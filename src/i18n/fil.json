@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "Bukid ng perlas",
+    "lifeguardTower": "Tore ng lifeguard",
+    "researchShip": "Barkong pansaliksik",
+    "stiltVillage": "Nayong nakatukod",
+    "kelpForest": "Gubat ng kelp",
+    "icebreaker": "Barkong pambasag ng yelo",
+    "seaplaneDock": "Daungan ng seaplane",
+    "carFerry": "Ferry ng sasakyan",
+    "pelicanPier": "Pantalan ng pelikano",
+    "lobsterHarbor": "Daungan ng ulang",
     "raccoonCamp": "Mga raccoon sa kampo",
     "batCave": "Kuweba ng mga paniki",
     "forestRailway": "Riles sa gubat",

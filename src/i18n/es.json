@@ -230,6 +230,16 @@
     "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
+    "pearlFarm": "Granja de perlas",
+    "lifeguardTower": "Torre de socorrista",
+    "researchShip": "Buque científico",
+    "stiltVillage": "Aldea de palafitos",
+    "kelpForest": "Bosque de algas",
+    "icebreaker": "Rompehielos",
+    "seaplaneDock": "Muelle del hidroavión",
+    "carFerry": "Transbordador",
+    "pelicanPier": "Muelle de pelícanos",
+    "lobsterHarbor": "Puerto de langostas",
     "raccoonCamp": "Mapaches en el campamento",
     "batCave": "La cueva de los murciélagos",
     "forestRailway": "El tren del bosque",

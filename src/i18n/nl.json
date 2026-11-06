@@ -230,6 +230,16 @@
     "treasury": "Schatkamer"
   },
   "levelTitles": {
+    "pearlFarm": "Parelkwekerij",
+    "lifeguardTower": "Reddingstoren",
+    "researchShip": "Onderzoeksschip",
+    "stiltVillage": "Paaldorp",
+    "kelpForest": "Kelpwoud",
+    "icebreaker": "IJsbreker",
+    "seaplaneDock": "Watervliegtuigsteiger",
+    "carFerry": "Autoveerboot",
+    "pelicanPier": "Pelikanenpier",
+    "lobsterHarbor": "Kreeftenhaven",
     "raccoonCamp": "Wasberen op de camping",
     "batCave": "Vleermuisgrot",
     "forestRailway": "Bosspoorlijn",

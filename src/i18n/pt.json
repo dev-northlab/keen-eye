@@ -230,6 +230,16 @@
     "treasury": "Sala do tesouro"
   },
   "levelTitles": {
+    "pearlFarm": "Fazenda de pérolas",
+    "lifeguardTower": "Torre do salva-vidas",
+    "researchShip": "Navio de pesquisa",
+    "stiltVillage": "Aldeia de palafitas",
+    "kelpForest": "Floresta de algas",
+    "icebreaker": "Quebra-gelo",
+    "seaplaneDock": "Cais do hidroavião",
+    "carFerry": "Ferry",
+    "pelicanPier": "Píer dos pelicanos",
+    "lobsterHarbor": "Porto das lagostas",
     "raccoonCamp": "Guaxinins no acampamento",
     "batCave": "A gruta dos morcegos",
     "forestRailway": "O comboio da floresta",

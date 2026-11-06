@@ -44,6 +44,7 @@ export const DIFFICULTY: Difficulty[] = [
   ...hardest(151),
   ...hardest(161),
   ...hardest(171),
+  ...hardest(181),
   // "Time" category (docs/time-differences-mode.md): 201–205 morning/evening, 206–210 summer/winter,
   // 211–215 both kinds, harder. Static differences only: the moments already change a lot.
   { from: 201, to: 205, differences: [5, 5], motion: [0, 0], minRadius: 24, traps: [3, 4], kinds: EASY },
@@ -105,7 +106,7 @@ function harder(first: number, floor: number): Difficulty[] {
 }
 
 /**
- * The ten hardest levels of a world after its harder ten, ids from `first` (151 farm, 161 city, 171 forest; hidden until
+ * The ten hardest levels of a world after its harder ten, ids from `first` (151 farm, 161 city, 171 forest, 181 sea; hidden until
  * released, levels/upcoming.ts): busy scenes of new animals, tools, houses and vehicles with 11 differences,
  * then 12 on the last five, 3 of them moving; picture B always turned (`transformBOf`).
  */

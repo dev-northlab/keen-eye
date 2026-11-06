@@ -230,6 +230,16 @@
     "treasury": "Salle au trésor"
   },
   "levelTitles": {
+    "pearlFarm": "Ferme perlière",
+    "lifeguardTower": "Poste de sauveteur",
+    "researchShip": "Navire de recherche",
+    "stiltVillage": "Village sur pilotis",
+    "kelpForest": "Forêt de varech",
+    "icebreaker": "Brise-glace",
+    "seaplaneDock": "Ponton de l’hydravion",
+    "carFerry": "Ferry",
+    "pelicanPier": "Jetée des pélicans",
+    "lobsterHarbor": "Port aux homards",
     "raccoonCamp": "Les ratons laveurs au camp",
     "batCave": "La grotte aux chauves-souris",
     "forestRailway": "Le petit train forestier",

@@ -230,6 +230,16 @@
     "treasury": "ख़ज़ाना"
   },
   "levelTitles": {
+    "pearlFarm": "मोती फ़ार्म",
+    "lifeguardTower": "लाइफ़गार्ड टावर",
+    "researchShip": "अनुसंधान जहाज़",
+    "stiltVillage": "खंभों पर बसा गाँव",
+    "kelpForest": "समुद्री शैवाल का जंगल",
+    "icebreaker": "बर्फ़तोड़ जहाज़",
+    "seaplaneDock": "सी-प्लेन घाट",
+    "carFerry": "कार फ़ेरी",
+    "pelicanPier": "पेलिकन घाट",
+    "lobsterHarbor": "लॉबस्टर बंदरगाह",
     "raccoonCamp": "शिविर में रैकून",
     "batCave": "चमगादड़ों की गुफा",
     "forestRailway": "जंगल की रेल",

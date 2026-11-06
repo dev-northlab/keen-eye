@@ -230,6 +230,16 @@
     "treasury": "Գանձարան"
   },
   "levelTitles": {
+    "pearlFarm": "Մարգարտի ֆերմա",
+    "lifeguardTower": "Փրկարարի աշտարակ",
+    "researchShip": "Գիտահետազոտական նավ",
+    "stiltVillage": "Ցցերի վրա գյուղ",
+    "kelpForest": "Ջրիմուռների անտառ",
+    "icebreaker": "Սառցահատ",
+    "seaplaneDock": "Հիդրոինքնաթիռի նավամատույց",
+    "carFerry": "Ավտոլաստանավ",
+    "pelicanPier": "Հավալուսնների նավամատույց",
+    "lobsterHarbor": "Օմարների նավահանգիստ",
     "raccoonCamp": "Ջրարջները ճամբարում",
     "batCave": "Չղջիկների քարանձավ",
     "forestRailway": "Անտառային երկաթուղի",

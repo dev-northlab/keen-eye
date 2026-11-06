@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "Trại nuôi ngọc trai",
+    "lifeguardTower": "Chòi cứu hộ",
+    "researchShip": "Tàu nghiên cứu",
+    "stiltVillage": "Làng nhà sàn",
+    "kelpForest": "Rừng tảo bẹ",
+    "icebreaker": "Tàu phá băng",
+    "seaplaneDock": "Bến thủy phi cơ",
+    "carFerry": "Phà chở ô tô",
+    "pelicanPier": "Cầu tàu bồ nông",
+    "lobsterHarbor": "Cảng tôm hùm",
     "raccoonCamp": "Gấu mèo ở khu cắm trại",
     "batCave": "Hang dơi",
     "forestRailway": "Đường sắt trong rừng",

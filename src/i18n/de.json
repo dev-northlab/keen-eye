@@ -230,6 +230,16 @@
     "treasury": "Schatzkammer"
   },
   "levelTitles": {
+    "pearlFarm": "Perlenfarm",
+    "lifeguardTower": "Rettungsturm",
+    "researchShip": "Forschungsschiff",
+    "stiltVillage": "Pfahldorf",
+    "kelpForest": "Kelpwald",
+    "icebreaker": "Eisbrecher",
+    "seaplaneDock": "Wasserflugzeug-Steg",
+    "carFerry": "Autofähre",
+    "pelicanPier": "Pelikansteg",
+    "lobsterHarbor": "Hummerhafen",
     "raccoonCamp": "Waschbären im Camp",
     "batCave": "Fledermaushöhle",
     "forestRailway": "Waldbahn",

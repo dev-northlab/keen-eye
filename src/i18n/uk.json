@@ -230,6 +230,16 @@
     "treasury": "Скарбниця"
   },
   "levelTitles": {
+    "pearlFarm": "Перлова ферма",
+    "lifeguardTower": "Рятувальна вежа",
+    "researchShip": "Дослідницьке судно",
+    "stiltVillage": "Село на палях",
+    "kelpForest": "Ламінарієвий ліс",
+    "icebreaker": "Криголам",
+    "seaplaneDock": "Причал гідролітака",
+    "carFerry": "Автопором",
+    "pelicanPier": "Пірс із пеліканами",
+    "lobsterHarbor": "Гавань ловців омарів",
     "raccoonCamp": "Єноти в таборі",
     "batCave": "Печера кажанів",
     "forestRailway": "Лісова вузькоколійка",

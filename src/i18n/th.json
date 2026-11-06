@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "ฟาร์มไข่มุก",
+    "lifeguardTower": "หอไลฟ์การ์ด",
+    "researchShip": "เรือสำรวจวิจัย",
+    "stiltVillage": "หมู่บ้านบ้านเสาสูง",
+    "kelpForest": "ป่าสาหร่ายเคลป์",
+    "icebreaker": "เรือตัดน้ำแข็ง",
+    "seaplaneDock": "ท่าเครื่องบินทะเล",
+    "carFerry": "เรือข้ามฟากรถยนต์",
+    "pelicanPier": "สะพานปลานกกระทุง",
+    "lobsterHarbor": "ท่าเรือกุ้งมังกร",
     "raccoonCamp": "แรคคูนในแคมป์",
     "batCave": "ถ้ำค้างคาว",
     "forestRailway": "รถไฟป่า",

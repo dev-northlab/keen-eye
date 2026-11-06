@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "Pärlodling",
+    "lifeguardTower": "Livräddartorn",
+    "researchShip": "Forskningsfartyg",
+    "stiltVillage": "By på pålar",
+    "kelpForest": "Kelpskog",
+    "icebreaker": "Isbrytare",
+    "seaplaneDock": "Sjöflygbrygga",
+    "carFerry": "Bilfärja",
+    "pelicanPier": "Pelikanpiren",
+    "lobsterHarbor": "Hummerhamnen",
     "raccoonCamp": "Tvättbjörnar i lägret",
     "batCave": "Fladdermusgrottan",
     "forestRailway": "Skogsbanan",

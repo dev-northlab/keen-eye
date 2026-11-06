@@ -230,6 +230,16 @@
     "treasury": "藏宝室"
   },
   "levelTitles": {
+    "pearlFarm": "珍珠养殖场",
+    "lifeguardTower": "救生员瞭望塔",
+    "researchShip": "科考船",
+    "stiltVillage": "高脚屋村",
+    "kelpForest": "巨藻森林",
+    "icebreaker": "破冰船",
+    "seaplaneDock": "水上飞机码头",
+    "carFerry": "汽车渡轮",
+    "pelicanPier": "鹈鹕码头",
+    "lobsterHarbor": "龙虾港",
     "raccoonCamp": "营地浣熊",
     "batCave": "蝙蝠洞",
     "forestRailway": "森林小火车",

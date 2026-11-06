@@ -230,6 +230,16 @@
     "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
+    "pearlFarm": "Allevamento di perle",
+    "lifeguardTower": "Torretta del bagnino",
+    "researchShip": "Nave da ricerca",
+    "stiltVillage": "Villaggio su palafitte",
+    "kelpForest": "Foresta di kelp",
+    "icebreaker": "Rompighiaccio",
+    "seaplaneDock": "Pontile dell’idrovolante",
+    "carFerry": "Traghetto",
+    "pelicanPier": "Molo dei pellicani",
+    "lobsterHarbor": "Porto delle aragoste",
     "raccoonCamp": "Procioni al campeggio",
     "batCave": "La grotta dei pipistrelli",
     "forestRailway": "La ferrovia nel bosco",

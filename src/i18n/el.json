@@ -230,6 +230,16 @@
     "treasury": "Θησαυροφυλάκιο"
   },
   "levelTitles": {
+    "pearlFarm": "Φάρμα μαργαριταριών",
+    "lifeguardTower": "Πύργος ναυαγοσώστη",
+    "researchShip": "Ερευνητικό σκάφος",
+    "stiltVillage": "Χωριό σε πασσάλους",
+    "kelpForest": "Δάσος από φύκια",
+    "icebreaker": "Παγοθραυστικό",
+    "seaplaneDock": "Προβλήτα υδροπλάνου",
+    "carFerry": "Οχηματαγωγό",
+    "pelicanPier": "Προβλήτα με πελεκάνους",
+    "lobsterHarbor": "Λιμάνι αστακών",
     "raccoonCamp": "Ρακούν στην κατασκήνωση",
     "batCave": "Η σπηλιά με τις νυχτερίδες",
     "forestRailway": "Ο δασικός σιδηρόδρομος",

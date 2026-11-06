@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "Helmifarmi",
+    "lifeguardTower": "Hengenpelastajan torni",
+    "researchShip": "Tutkimusalus",
+    "stiltVillage": "Paalukylä",
+    "kelpForest": "Kelpmetsä",
+    "icebreaker": "Jäänmurtaja",
+    "seaplaneDock": "Vesitasolaituri",
+    "carFerry": "Autolautta",
+    "pelicanPier": "Pelikaanilaituri",
+    "lobsterHarbor": "Hummerisatama",
     "raccoonCamp": "Pesukarhut leirissä",
     "batCave": "Lepakkoluola",
     "forestRailway": "Metsärata",

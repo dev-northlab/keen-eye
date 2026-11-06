@@ -230,6 +230,16 @@
     "treasury": "Hazine odası"
   },
   "levelTitles": {
+    "pearlFarm": "İnci çiftliği",
+    "lifeguardTower": "Cankurtaran kulesi",
+    "researchShip": "Araştırma gemisi",
+    "stiltVillage": "Kazıklı köy",
+    "kelpForest": "Yosun ormanı",
+    "icebreaker": "Buzkıran",
+    "seaplaneDock": "Deniz uçağı iskelesi",
+    "carFerry": "Araba vapuru",
+    "pelicanPier": "Pelikan iskelesi",
+    "lobsterHarbor": "Istakoz limanı",
     "raccoonCamp": "Kampta rakunlar",
     "batCave": "Yarasa mağarası",
     "forestRailway": "Orman treni",

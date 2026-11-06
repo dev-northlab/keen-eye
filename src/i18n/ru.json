@@ -230,6 +230,16 @@
     "treasury": "Сокровищница"
   },
   "levelTitles": {
+    "pearlFarm": "Жемчужная ферма",
+    "lifeguardTower": "Спасательная вышка",
+    "researchShip": "Научное судно",
+    "stiltVillage": "Деревня на сваях",
+    "kelpForest": "Ламинариевый лес",
+    "icebreaker": "Ледокол",
+    "seaplaneDock": "Причал гидросамолёта",
+    "carFerry": "Автопаром",
+    "pelicanPier": "Пирс с пеликанами",
+    "lobsterHarbor": "Гавань ловцов омаров",
     "raccoonCamp": "Еноты в лагере",
     "batCave": "Пещера летучих мышей",
     "forestRailway": "Лесная узкоколейка",

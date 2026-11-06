@@ -167,7 +167,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   chapter (ids after 100, files in its own `chapter-NN/`) open after its 20th level, one after another, and never
   hold back the next chapter (`progress.isReached`: a level follows the previous level of its chapter, a chapter's
   first level follows id − 1); "next" in the result dialog goes through the chapter (`nextLevel`). After the harder
-  ten come the ten hardest (151–160 farm, 161–170 city, 171–180 forest, later 181–200 for sea and space; `hardest()` in
+  ten come the ten hardest (151–160 farm, 161–170 city, 171–180 forest, 181–190 sea, later 191–200 for space; `hardest()` in
   `difficulty.ts`: 11 then 12 differences, 3 moving, picture B always turned), new animals, tools, houses and vehicles.
 - Hidden levels (`levels/upcoming.ts`): levels drawn ahead of a release live in `upcomingLevels`, not in their
   chapter's list; their ids are already in the chapter's `ranges` (`chapterSize` leaves them out). Players never see

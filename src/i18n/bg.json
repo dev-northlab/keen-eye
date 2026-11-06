@@ -230,6 +230,16 @@
     "treasury": "Съкровищница"
   },
   "levelTitles": {
+    "pearlFarm": "Перлена ферма",
+    "lifeguardTower": "Спасителна кула",
+    "researchShip": "Изследователски кораб",
+    "stiltVillage": "Село на колове",
+    "kelpForest": "Гора от водорасли",
+    "icebreaker": "Ледоразбивач",
+    "seaplaneDock": "Кей за хидроплан",
+    "carFerry": "Ферибот",
+    "pelicanPier": "Кей с пеликани",
+    "lobsterHarbor": "Пристанище за омари",
     "raccoonCamp": "Миещи мечки в лагера",
     "batCave": "Пещерата на прилепите",
     "forestRailway": "Горската железница",

@@ -230,6 +230,16 @@
     "treasury": "Kincskamra"
   },
   "levelTitles": {
+    "pearlFarm": "Gyöngyfarm",
+    "lifeguardTower": "Vízimentő-torony",
+    "researchShip": "Kutatóhajó",
+    "stiltVillage": "Cölöpfalu",
+    "kelpForest": "Moszaterdő",
+    "icebreaker": "Jégtörő",
+    "seaplaneDock": "Hidroplán-stég",
+    "carFerry": "Autókomp",
+    "pelicanPier": "Pelikános móló",
+    "lobsterHarbor": "Homárkikötő",
     "raccoonCamp": "Mosómedvék a táborban",
     "batCave": "Denevérbarlang",
     "forestRailway": "Erdei kisvasút",

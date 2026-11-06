@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "Ladang mutiara",
+    "lifeguardTower": "Menara penyelamat pantai",
+    "researchShip": "Kapal penyelidikan",
+    "stiltVillage": "Kampung bertiang",
+    "kelpForest": "Hutan kelp",
+    "icebreaker": "Kapal pemecah ais",
+    "seaplaneDock": "Jeti kapal terbang air",
+    "carFerry": "Feri kereta",
+    "pelicanPier": "Jeti pelikan",
+    "lobsterHarbor": "Pelabuhan udang karang",
     "raccoonCamp": "Rakun di tapak perkhemahan",
     "batCave": "Gua kelawar",
     "forestRailway": "Kereta api hutan",

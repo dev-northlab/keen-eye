@@ -230,6 +230,16 @@
     "treasury": "Camera comorii"
   },
   "levelTitles": {
+    "pearlFarm": "Fermă de perle",
+    "lifeguardTower": "Turnul salvamarului",
+    "researchShip": "Navă de cercetare",
+    "stiltVillage": "Sat pe piloni",
+    "kelpForest": "Pădure de alge",
+    "icebreaker": "Spărgător de gheață",
+    "seaplaneDock": "Debarcaderul hidroavionului",
+    "carFerry": "Feribot",
+    "pelicanPier": "Debarcaderul pelicanilor",
+    "lobsterHarbor": "Portul homarilor",
     "raccoonCamp": "Ratoni în tabără",
     "batCave": "Peștera liliecilor",
     "forestRailway": "Mocănița din pădure",

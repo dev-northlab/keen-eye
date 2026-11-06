@@ -230,6 +230,16 @@
     "treasury": "宝物庫"
   },
   "levelTitles": {
+    "pearlFarm": "真珠の養殖場",
+    "lifeguardTower": "ライフガードの監視塔",
+    "researchShip": "調査船",
+    "stiltVillage": "高床式の村",
+    "kelpForest": "ケルプの森",
+    "icebreaker": "砕氷船",
+    "seaplaneDock": "水上飛行機の桟橋",
+    "carFerry": "カーフェリー",
+    "pelicanPier": "ペリカン桟橋",
+    "lobsterHarbor": "ロブスター港",
     "raccoonCamp": "キャンプ場のアライグマ",
     "batCave": "コウモリの洞窟",
     "forestRailway": "森の軽便鉄道",

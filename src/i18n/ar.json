@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "مزرعة اللؤلؤ",
+    "lifeguardTower": "برج المنقذ",
+    "researchShip": "سفينة الأبحاث",
+    "stiltVillage": "قرية على ركائز",
+    "kelpForest": "غابة عشب البحر",
+    "icebreaker": "كاسحة الجليد",
+    "seaplaneDock": "رصيف الطائرة المائية",
+    "carFerry": "عبّارة السيارات",
+    "pelicanPier": "رصيف البجع",
+    "lobsterHarbor": "ميناء الكركند",
     "raccoonCamp": "راكونات في المخيم",
     "batCave": "كهف الخفافيش",
     "forestRailway": "قطار الغابة",

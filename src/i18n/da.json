@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "pearlFarm": "Perlefarm",
+    "lifeguardTower": "Livredderstårn",
+    "researchShip": "Forskningsskib",
+    "stiltVillage": "Landsby på pæle",
+    "kelpForest": "Tangskov",
+    "icebreaker": "Isbryder",
+    "seaplaneDock": "Vandflyverbro",
+    "carFerry": "Bilfærge",
+    "pelicanPier": "Pelikanmolen",
+    "lobsterHarbor": "Hummerhavnen",
     "raccoonCamp": "Vaskebjørne i lejren",
     "batCave": "Flagermusehulen",
     "forestRailway": "Skovbanen",

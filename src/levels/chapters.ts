@@ -87,6 +87,7 @@ export const CHAPTERS: Chapter[] = [
     ranges: [
       [61, 80],
       [131, 140],
+      [181, 190],
     ],
     color: '#1f8fbf',
     soft: '#dff3fb',

@@ -230,6 +230,16 @@
     "treasury": "Skarbiec"
   },
   "levelTitles": {
+    "pearlFarm": "Farma pereł",
+    "lifeguardTower": "Wieża ratownika",
+    "researchShip": "Statek badawczy",
+    "stiltVillage": "Wioska na palach",
+    "kelpForest": "Las wodorostów",
+    "icebreaker": "Lodołamacz",
+    "seaplaneDock": "Przystań hydroplanu",
+    "carFerry": "Prom samochodowy",
+    "pelicanPier": "Molo pelikanów",
+    "lobsterHarbor": "Port homarów",
     "raccoonCamp": "Szopy na biwaku",
     "batCave": "Jaskinia nietoperzy",
     "forestRailway": "Kolejka leśna",

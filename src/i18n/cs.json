@@ -230,6 +230,16 @@
     "treasury": "Klenotnice"
   },
   "levelTitles": {
+    "pearlFarm": "Perlová farma",
+    "lifeguardTower": "Plavčíkova věž",
+    "researchShip": "Výzkumná loď",
+    "stiltVillage": "Vesnice na kůlech",
+    "kelpForest": "Les chaluh",
+    "icebreaker": "Ledoborec",
+    "seaplaneDock": "Přístaviště hydroplánu",
+    "carFerry": "Trajekt",
+    "pelicanPier": "Molo pelikánů",
+    "lobsterHarbor": "Přístav humrů",
     "raccoonCamp": "Mývalové v kempu",
     "batCave": "Netopýří jeskyně",
     "forestRailway": "Lesní železnice",

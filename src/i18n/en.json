@@ -230,6 +230,16 @@
     "treasury": "Treasury"
   },
   "levelTitles": {
+    "pearlFarm": "Pearl farm",
+    "lifeguardTower": "Lifeguard tower",
+    "researchShip": "Research ship",
+    "stiltVillage": "Stilt village",
+    "kelpForest": "Kelp forest",
+    "icebreaker": "Icebreaker",
+    "seaplaneDock": "Seaplane dock",
+    "carFerry": "Car ferry",
+    "pelicanPier": "Pelican pier",
+    "lobsterHarbor": "Lobster harbor",
     "raccoonCamp": "Raccoon camp",
     "batCave": "Bat cave",
     "forestRailway": "Forest railway",
