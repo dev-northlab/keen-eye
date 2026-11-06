@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "Perkhemahan tasik",
+    "roofTerrace": "Teres bumbung",
+    "riverViaduct": "Jejambat kereta api",
+    "roadsideDiner": "Kedai makan tepi jalan",
+    "windmillPolder": "Kincir angin di tepi terusan",
+    "stadium": "Stadium",
+    "castleHill": "Bukit istana",
+    "outdoorCinema": "Pawagam terbuka",
+    "allotmentGardens": "Kebun sayur",
+    "airfield": "Lapangan terbang",
     "wormholeGate": "Gerbang lubang cacing",
     "cloudCity": "Kota awan",
     "spaceJunkyard": "Tempat besi buruk angkasa",

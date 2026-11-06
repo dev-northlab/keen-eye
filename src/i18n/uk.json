@@ -230,6 +230,16 @@
     "treasury": "Скарбниця"
   },
   "levelTitles": {
+    "lakeCamp": "Табір біля озера",
+    "roofTerrace": "Тераса на даху",
+    "riverViaduct": "Залізничний віадук",
+    "roadsideDiner": "Придорожня закусочна",
+    "windmillPolder": "Млини біля каналу",
+    "stadium": "Стадіон",
+    "castleHill": "Замок на пагорбі",
+    "outdoorCinema": "Кіно просто неба",
+    "allotmentGardens": "Городи",
+    "airfield": "Аеродром",
     "wormholeGate": "Брама кротовини",
     "cloudCity": "Хмарне місто",
     "spaceJunkyard": "Космічне звалище",

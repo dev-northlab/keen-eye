@@ -69,7 +69,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   draws by the picture's moment and `trap(x, y, r, a, b, hint)` marks a natural change (light, snow, leaves) whose tap is
   a miss that shows `timeMode.traps.<hint>` once (`GameScene` → `onTrap`); played by `LevelView`, grid by `ChapterView`
   (`/levels/time`, a banner on the modes screen, not a world), numbered 1–30 (`levelNumber`; 216–230 are the busier
-  scenes with 8–10 differences, `difficulty.ts`), open from the start, the
+  scenes with 8–10 differences, `difficulty.ts`; 231–240 the ten hardest, 11 then 12 differences among 6–8 traps, still
+  static and never turned, hidden until released in `upcoming.ts`), open from the start, the
   first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks) in portrait
   pictures 500×750 (`MEMORY_VIEWBOX`; the reveal puts A and B side by side), 6–10 big

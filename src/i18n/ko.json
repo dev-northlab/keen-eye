@@ -230,6 +230,16 @@
     "treasury": "보물 창고"
   },
   "levelTitles": {
+    "lakeCamp": "호숫가 캠프",
+    "roofTerrace": "옥상 테라스",
+    "riverViaduct": "철도 고가교",
+    "roadsideDiner": "길가 식당",
+    "windmillPolder": "운하의 풍차",
+    "stadium": "경기장",
+    "castleHill": "성이 있는 언덕",
+    "outdoorCinema": "야외 극장",
+    "allotmentGardens": "주말농장",
+    "airfield": "비행장",
     "wormholeGate": "웜홀 관문",
     "cloudCity": "구름 도시",
     "spaceJunkyard": "우주 고물상",

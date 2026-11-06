@@ -230,6 +230,16 @@
     "treasury": "Kincskamra"
   },
   "levelTitles": {
+    "lakeCamp": "Tábor a tónál",
+    "roofTerrace": "Tetőterasz",
+    "riverViaduct": "Vasúti viadukt",
+    "roadsideDiner": "Út menti büfé",
+    "windmillPolder": "Szélmalmok a csatornánál",
+    "stadium": "Stadion",
+    "castleHill": "Várdomb",
+    "outdoorCinema": "Szabadtéri mozi",
+    "allotmentGardens": "Kiskertek",
+    "airfield": "Repülőtér",
     "wormholeGate": "Féreglyukkapu",
     "cloudCity": "Felhőváros",
     "spaceJunkyard": "Űrroncstelep",

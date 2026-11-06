@@ -230,6 +230,16 @@
     "treasury": "Schatkamer"
   },
   "levelTitles": {
+    "lakeCamp": "Kamp aan het meer",
+    "roofTerrace": "Dakterras",
+    "riverViaduct": "Spoorwegviaduct",
+    "roadsideDiner": "Wegrestaurant",
+    "windmillPolder": "Molens aan de vaart",
+    "stadium": "Stadion",
+    "castleHill": "Kasteelheuvel",
+    "outdoorCinema": "Openluchtbioscoop",
+    "allotmentGardens": "Volkstuinen",
+    "airfield": "Vliegveld",
     "wormholeGate": "Wormgatpoort",
     "cloudCity": "Wolkenstad",
     "spaceJunkyard": "Ruimteschroothoop",

@@ -230,6 +230,16 @@
     "treasury": "Գանձարան"
   },
   "levelTitles": {
+    "lakeCamp": "Ճամբար լճի մոտ",
+    "roofTerrace": "Տանիքի պատշգամբ",
+    "riverViaduct": "Երկաթուղային կամուրջ",
+    "roadsideDiner": "Ճամփեզրի ճաշարան",
+    "windmillPolder": "Հողմաղացներ ջրանցքի մոտ",
+    "stadium": "Մարզադաշտ",
+    "castleHill": "Ամրոց բլրի վրա",
+    "outdoorCinema": "Բացօթյա կինոթատրոն",
+    "allotmentGardens": "Բանջարանոցներ",
+    "airfield": "Օդանավակայան",
     "wormholeGate": "Որդնախոռոչի դարպաս",
     "cloudCity": "Ամպային քաղաք",
     "spaceJunkyard": "Տիեզերական աղբանոց",

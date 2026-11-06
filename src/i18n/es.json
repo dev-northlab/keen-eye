@@ -230,6 +230,16 @@
     "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
+    "lakeCamp": "Campamento del lago",
+    "roofTerrace": "Terraza en la azotea",
+    "riverViaduct": "Viaducto ferroviario",
+    "roadsideDiner": "Restaurante de carretera",
+    "windmillPolder": "Molinos junto al canal",
+    "stadium": "Estadio",
+    "castleHill": "Colina del castillo",
+    "outdoorCinema": "Cine al aire libre",
+    "allotmentGardens": "Huertos urbanos",
+    "airfield": "Aeródromo",
     "wormholeGate": "Portal del agujero de gusano",
     "cloudCity": "Ciudad en las nubes",
     "spaceJunkyard": "Chatarrería espacial",

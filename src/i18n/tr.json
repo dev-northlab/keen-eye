@@ -230,6 +230,16 @@
     "treasury": "Hazine odası"
   },
   "levelTitles": {
+    "lakeCamp": "Göl kampı",
+    "roofTerrace": "Çatı terası",
+    "riverViaduct": "Demiryolu viyadüğü",
+    "roadsideDiner": "Yol kenarı lokantası",
+    "windmillPolder": "Kanal kenarında yel değirmenleri",
+    "stadium": "Stadyum",
+    "castleHill": "Kale tepesi",
+    "outdoorCinema": "Açık hava sineması",
+    "allotmentGardens": "Hobi bahçeleri",
+    "airfield": "Havaalanı",
     "wormholeGate": "Solucan deliği kapısı",
     "cloudCity": "Bulut şehri",
     "spaceJunkyard": "Uzay hurdalığı",

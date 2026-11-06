@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "ค่ายริมทะเลสาบ",
+    "roofTerrace": "ระเบียงบนดาดฟ้า",
+    "riverViaduct": "สะพานรถไฟข้ามแม่น้ำ",
+    "roadsideDiner": "ร้านอาหารริมทาง",
+    "windmillPolder": "กังหันลมริมคลอง",
+    "stadium": "สนามกีฬา",
+    "castleHill": "ปราสาทบนเนินเขา",
+    "outdoorCinema": "โรงหนังกลางแปลง",
+    "allotmentGardens": "แปลงผักชุมชน",
+    "airfield": "สนามบินเล็ก",
     "wormholeGate": "ประตูรูหนอน",
     "cloudCity": "เมืองบนเมฆ",
     "spaceJunkyard": "ลานเศษเหล็กอวกาศ",

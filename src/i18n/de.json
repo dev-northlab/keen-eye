@@ -230,6 +230,16 @@
     "treasury": "Schatzkammer"
   },
   "levelTitles": {
+    "lakeCamp": "Camp am See",
+    "roofTerrace": "Dachterrasse",
+    "riverViaduct": "Eisenbahnviadukt",
+    "roadsideDiner": "Diner an der Straße",
+    "windmillPolder": "Windmühlen am Kanal",
+    "stadium": "Stadion",
+    "castleHill": "Burgberg",
+    "outdoorCinema": "Freilichtkino",
+    "allotmentGardens": "Schrebergärten",
+    "airfield": "Flugplatz",
     "wormholeGate": "Wurmlochtor",
     "cloudCity": "Wolkenstadt",
     "spaceJunkyard": "Weltraumschrottplatz",

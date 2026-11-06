@@ -230,6 +230,16 @@
     "treasury": "Θησαυροφυλάκιο"
   },
   "levelTitles": {
+    "lakeCamp": "Κατασκήνωση στη λίμνη",
+    "roofTerrace": "Ταράτσα",
+    "riverViaduct": "Σιδηροδρομική γέφυρα",
+    "roadsideDiner": "Μαγαζί στον δρόμο",
+    "windmillPolder": "Ανεμόμυλοι στο κανάλι",
+    "stadium": "Γήπεδο",
+    "castleHill": "Λόφος με κάστρο",
+    "outdoorCinema": "Θερινό σινεμά",
+    "allotmentGardens": "Λαχανόκηποι",
+    "airfield": "Αεροδρόμιο",
     "wormholeGate": "Πύλη σκουληκότρυπας",
     "cloudCity": "Πόλη στα σύννεφα",
     "spaceJunkyard": "Διαστημικό σκραπάδικο",

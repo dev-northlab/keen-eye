@@ -230,6 +230,16 @@
     "treasury": "Сокровищница"
   },
   "levelTitles": {
+    "lakeCamp": "Лагерь у озера",
+    "roofTerrace": "Терраса на крыше",
+    "riverViaduct": "Железнодорожный виадук",
+    "roadsideDiner": "Придорожная закусочная",
+    "windmillPolder": "Мельницы у канала",
+    "stadium": "Стадион",
+    "castleHill": "Замок на холме",
+    "outdoorCinema": "Кино под открытым небом",
+    "allotmentGardens": "Огороды",
+    "airfield": "Аэродром",
     "wormholeGate": "Врата червоточины",
     "cloudCity": "Облачный город",
     "spaceJunkyard": "Космическая свалка",

@@ -230,6 +230,16 @@
     "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
+    "lakeCamp": "Campo al lago",
+    "roofTerrace": "Terrazza sul tetto",
+    "riverViaduct": "Viadotto ferroviario",
+    "roadsideDiner": "Tavola calda sulla strada",
+    "windmillPolder": "Mulini sul canale",
+    "stadium": "Stadio",
+    "castleHill": "Collina del castello",
+    "outdoorCinema": "Cinema all’aperto",
+    "allotmentGardens": "Orti",
+    "airfield": "Aeroporto",
     "wormholeGate": "Portale del wormhole",
     "cloudCity": "Città tra le nuvole",
     "spaceJunkyard": "Sfasciacarrozze spaziale",

@@ -230,6 +230,16 @@
     "treasury": "Salle au trésor"
   },
   "levelTitles": {
+    "lakeCamp": "Camp au bord du lac",
+    "roofTerrace": "Toit-terrasse",
+    "riverViaduct": "Viaduc ferroviaire",
+    "roadsideDiner": "Diner au bord de la route",
+    "windmillPolder": "Moulins au bord du canal",
+    "stadium": "Stade",
+    "castleHill": "Colline du château",
+    "outdoorCinema": "Cinéma en plein air",
+    "allotmentGardens": "Jardins familiaux",
+    "airfield": "Aérodrome",
     "wormholeGate": "Porte du trou de ver",
     "cloudCity": "Cité des nuages",
     "spaceJunkyard": "Casse spatiale",

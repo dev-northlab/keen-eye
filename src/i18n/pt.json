@@ -230,6 +230,16 @@
     "treasury": "Sala do tesouro"
   },
   "levelTitles": {
+    "lakeCamp": "Acampamento no lago",
+    "roofTerrace": "Terraço no telhado",
+    "riverViaduct": "Viaduto ferroviário",
+    "roadsideDiner": "Lanchonete de beira de estrada",
+    "windmillPolder": "Moinhos junto ao canal",
+    "stadium": "Estádio",
+    "castleHill": "Colina do castelo",
+    "outdoorCinema": "Cinema ao ar livre",
+    "allotmentGardens": "Hortas comunitárias",
+    "airfield": "Aeródromo",
     "wormholeGate": "Portal do buraco de minhoca",
     "cloudCity": "Cidade nas nuvens",
     "spaceJunkyard": "Ferro-velho espacial",

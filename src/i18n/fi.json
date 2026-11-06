@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "Järvileiri",
+    "roofTerrace": "Kattoterassi",
+    "riverViaduct": "Rautatiesilta",
+    "roadsideDiner": "Tienvarsikahvila",
+    "windmillPolder": "Tuulimyllyt kanavan varrella",
+    "stadium": "Stadion",
+    "castleHill": "Linnamäki",
+    "outdoorCinema": "Ulkoilmaelokuvat",
+    "allotmentGardens": "Siirtolapuutarha",
+    "airfield": "Lentokenttä",
     "wormholeGate": "Madonreikäportti",
     "cloudCity": "Pilvikaupunki",
     "spaceJunkyard": "Avaruusromuttamo",

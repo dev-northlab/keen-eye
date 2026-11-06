@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "Leir ved sjøen",
+    "roofTerrace": "Takterrasse",
+    "riverViaduct": "Jernbaneviadukt",
+    "roadsideDiner": "Veikro",
+    "windmillPolder": "Vindmøller ved kanalen",
+    "stadium": "Stadion",
+    "castleHill": "Slottshøyden",
+    "outdoorCinema": "Utekino",
+    "allotmentGardens": "Kolonihager",
+    "airfield": "Flyplass",
     "wormholeGate": "Ormehullsporten",
     "cloudCity": "Skybyen",
     "spaceJunkyard": "Romskraphaug",

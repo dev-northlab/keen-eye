@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "مخيم البحيرة",
+    "roofTerrace": "شرفة على السطح",
+    "riverViaduct": "جسر السكة الحديدية",
+    "roadsideDiner": "مطعم على الطريق",
+    "windmillPolder": "طواحين عند القناة",
+    "stadium": "ملعب",
+    "castleHill": "تلة القلعة",
+    "outdoorCinema": "سينما في الهواء الطلق",
+    "allotmentGardens": "حدائق الخضار",
+    "airfield": "مطار صغير",
     "wormholeGate": "بوابة الثقب الدودي",
     "cloudCity": "مدينة السحاب",
     "spaceJunkyard": "ساحة خردة فضائية",

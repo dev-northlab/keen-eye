@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "Läger vid sjön",
+    "roofTerrace": "Takterrass",
+    "riverViaduct": "Järnvägsviadukt",
+    "roadsideDiner": "Vägkrog",
+    "windmillPolder": "Väderkvarnar vid kanalen",
+    "stadium": "Stadion",
+    "castleHill": "Slottsberget",
+    "outdoorCinema": "Utomhusbio",
+    "allotmentGardens": "Kolonilotter",
+    "airfield": "Flygfält",
     "wormholeGate": "Maskhålsporten",
     "cloudCity": "Molnstaden",
     "spaceJunkyard": "Rymdskrot",

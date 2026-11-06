@@ -230,6 +230,16 @@
     "treasury": "藏宝室"
   },
   "levelTitles": {
+    "lakeCamp": "湖畔营地",
+    "roofTerrace": "屋顶露台",
+    "riverViaduct": "铁路高架桥",
+    "roadsideDiner": "路边餐馆",
+    "windmillPolder": "运河边的风车",
+    "stadium": "体育场",
+    "castleHill": "城堡山",
+    "outdoorCinema": "露天电影院",
+    "allotmentGardens": "菜园",
+    "airfield": "小机场",
     "wormholeGate": "虫洞之门",
     "cloudCity": "云中之城",
     "spaceJunkyard": "太空废品场",

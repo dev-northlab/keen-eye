@@ -230,6 +230,16 @@
     "treasury": "Skarbiec"
   },
   "levelTitles": {
+    "lakeCamp": "Obóz nad jeziorem",
+    "roofTerrace": "Taras na dachu",
+    "riverViaduct": "Wiadukt kolejowy",
+    "roadsideDiner": "Przydrożny bar",
+    "windmillPolder": "Wiatraki nad kanałem",
+    "stadium": "Stadion",
+    "castleHill": "Wzgórze zamkowe",
+    "outdoorCinema": "Kino plenerowe",
+    "allotmentGardens": "Ogródki działkowe",
+    "airfield": "Lotnisko",
     "wormholeGate": "Brama tunelu czasoprzestrzennego",
     "cloudCity": "Miasto w chmurach",
     "spaceJunkyard": "Kosmiczne złomowisko",

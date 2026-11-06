@@ -230,6 +230,16 @@
     "treasury": "Treasury"
   },
   "levelTitles": {
+    "lakeCamp": "Lake camp",
+    "roofTerrace": "Roof terrace",
+    "riverViaduct": "River viaduct",
+    "roadsideDiner": "Roadside diner",
+    "windmillPolder": "Windmills by the canal",
+    "stadium": "Stadium",
+    "castleHill": "Castle hill",
+    "outdoorCinema": "Outdoor cinema",
+    "allotmentGardens": "Allotment gardens",
+    "airfield": "Airfield",
     "wormholeGate": "Wormhole gate",
     "cloudCity": "Cloud city",
     "spaceJunkyard": "Space junkyard",

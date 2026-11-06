@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "Kampo sa lawa",
+    "roofTerrace": "Terasa sa bubong",
+    "riverViaduct": "Tulay ng tren",
+    "roadsideDiner": "Kainan sa tabing-daan",
+    "windmillPolder": "Mga windmill sa kanal",
+    "stadium": "Istadyum",
+    "castleHill": "Burol ng kastilyo",
+    "outdoorCinema": "Sinehan sa labas",
+    "allotmentGardens": "Mga taniman ng gulay",
+    "airfield": "Paliparan",
     "wormholeGate": "Pintuan ng wormhole",
     "cloudCity": "Lungsod sa ulap",
     "spaceJunkyard": "Bakuran ng basura sa kalawakan",

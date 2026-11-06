@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "lakeCamp": "Lejr ved søen",
+    "roofTerrace": "Tagterrasse",
+    "riverViaduct": "Jernbaneviadukt",
+    "roadsideDiner": "Vejkro",
+    "windmillPolder": "Vindmøller ved kanalen",
+    "stadium": "Stadion",
+    "castleHill": "Slotsbakken",
+    "outdoorCinema": "Udendørsbiograf",
+    "allotmentGardens": "Kolonihaver",
+    "airfield": "Flyveplads",
     "wormholeGate": "Ormehulsporten",
     "cloudCity": "Skybyen",
     "spaceJunkyard": "Rumskrotplads",

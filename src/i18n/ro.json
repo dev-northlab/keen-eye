@@ -230,6 +230,16 @@
     "treasury": "Camera comorii"
   },
   "levelTitles": {
+    "lakeCamp": "Tabără la lac",
+    "roofTerrace": "Terasă pe acoperiș",
+    "riverViaduct": "Viaduct feroviar",
+    "roadsideDiner": "Bistro la marginea drumului",
+    "windmillPolder": "Mori de vânt lângă canal",
+    "stadium": "Stadion",
+    "castleHill": "Dealul castelului",
+    "outdoorCinema": "Cinema în aer liber",
+    "allotmentGardens": "Grădini de legume",
+    "airfield": "Aerodrom",
     "wormholeGate": "Poarta găurii de vierme",
     "cloudCity": "Orașul din nori",
     "spaceJunkyard": "Fier vechi spațial",
