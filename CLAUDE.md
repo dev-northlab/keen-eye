@@ -232,7 +232,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project, `codemagic.yaml`, store links in `src/config/links.ts` and README).
   The stores never let it change after the first upload: updates, saved progress and purchases are tied to it.
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
-  passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. Use SVG icons,
+  passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. The bundle needs
+  Android System WebView 111+ (Vite's default target chrome111 / ios16.4, `color-mix()`): `android.minWebViewVersion` in `capacitor.config.ts` shows
+  `public/webview-update.html` (plain HTML + ES5, own texts per locale; on Android 7–9 Chrome is the WebView, so it asks
+  to update Chrome there) on older ones — raise it when the build uses newer
+  features; its `server.errorPath` is left out of `cap sync ios`, since iOS loads it after any failed navigation. On iOS
+  the WebView is the system's, so `IPHONEOS_DEPLOYMENT_TARGET` is 16.4 (the CLI copies its major into `CapApp-SPM/Package.swift`). Use SVG icons,
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.
