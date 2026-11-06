@@ -4,6 +4,7 @@
 // `levelTitles.*` texts in every locale.
 import type { Level } from '../engine/types.ts'
 import { allLevels } from './index.ts'
+import { upcomingLevels } from './upcoming.ts'
 
 /** Screen backdrop worlds (drawn by components/ScreenBackdrop.vue). */
 export type BackdropTheme = 'meadow' | 'farm' | 'forest' | 'sea' | 'city' | 'space'
@@ -38,6 +39,7 @@ export const CHAPTERS: Chapter[] = [
     ranges: [
       [1, 20],
       [101, 110],
+      [151, 160],
     ],
     color: '#e05a47',
     soft: '#ffe9e3',
@@ -53,6 +55,7 @@ export const CHAPTERS: Chapter[] = [
     ranges: [
       [21, 40],
       [111, 120],
+      [161, 170],
     ],
     color: '#3a86ff',
     soft: '#e3edff',
@@ -221,20 +224,27 @@ export const chapterOf = (levelId: number): Chapter | undefined =>
 /** The level of the chapter hiding its key. */
 export const secretLevel = (chapter: Chapter) => chapterLevels(chapter).find((l) => l.secret)
 
-/** Number of levels the chapter will have ("N of M" on its card). */
-export const chapterSize = (chapter: Chapter) => chapter.ranges.reduce((n, [from, to]) => n + to - from + 1, 0)
+/** Number of levels the chapter will have ("N of M" on its card), without the hidden ones of `upcoming.ts`. */
+export const chapterSize = (chapter: Chapter) =>
+  chapter.ranges.reduce((n, [from, to]) => n + to - from + 1, 0) - upcomingLevels.filter((l) => l.chapter === chapter.id).length
 
 /** Levels of the chapter that exist, in play order (`allLevels` is sorted by id, as are the ranges). */
 export const chapterLevels = (chapter: Chapter) => allLevels.filter((l) => l.chapter === chapter.id)
 
+/** The chapter's levels followed by its hidden ones (upcoming.ts, ids after the released): developer mode's grid. */
+export const chapterLevelsWithHidden = (chapter: Chapter) => [...chapterLevels(chapter), ...upcomingLevels.filter((l) => l.chapter === chapter.id)]
+
 /**
  * The level after `level` in its chapter, or at a world's end the next world's first one. A "detective"
- * case ends with its last scene: the player names the culprit before the next case.
+ * case ends with its last scene: the player names the culprit before the next case. None after a hidden level.
  */
 export function nextLevel(level: Level): Level | undefined {
   const chapter = chapterById(level.chapter)!
   const own = chapterLevels(chapter)
-  const after = own[own.indexOf(level) + 1]
+  const i = own.indexOf(level)
+  // A hidden level (upcoming.ts) is outside the order.
+  if (i < 0) return undefined
+  const after = own[i + 1]
   if (level.detective) return after?.detective!.case === level.detective.case ? after : undefined
   const next = CHAPTERS[CHAPTERS.indexOf(chapter) + 1]
   return after ?? (CHAPTERS.includes(chapter) && next ? chapterLevels(next)[0] : undefined)

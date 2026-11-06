@@ -3,6 +3,7 @@ import { detectiveLevels } from './detective/index.ts'
 import { memoryLevels } from './memory/index.ts'
 import { timeLevels } from './time/index.ts'
 import { travelLevels } from './travel/index.ts'
+import { upcomingLevels } from './upcoming.ts'
 import treasuryLevel from './treasury/level-900.ts'
 import level001 from './chapter-01/level-001.ts'
 import level002 from './chapter-01/level-002.ts'
@@ -316,4 +317,6 @@ export const allLevels: Level[] = [...levels, ...timeLevels, ...memoryLevels, ..
 
 export { treasuryLevel }
 
-export const levelById = (id: number): Level | undefined => allLevels.find((l) => l.id === id)
+/** Any level by id, the hidden ones of `upcoming.ts` included (the router and progress keep those to developer mode). */
+export const levelById = (id: number): Level | undefined =>
+  allLevels.find((l) => l.id === id) ?? upcomingLevels.find((l) => l.id === id)

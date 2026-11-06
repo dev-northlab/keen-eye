@@ -166,7 +166,15 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   111–120, 3 "forest" 41–60 + 121–130, 4 "sea" 61–80 + 131–140, 5 "space" 81–100 + 141–150; the harder ten of a
   chapter (ids after 100, files in its own `chapter-NN/`) open after its 20th level, one after another, and never
   hold back the next chapter (`progress.isReached`: a level follows the previous level of its chapter, a chapter's
-  first level follows id − 1); "next" in the result dialog goes through the chapter (`nextLevel`). Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+  first level follows id − 1); "next" in the result dialog goes through the chapter (`nextLevel`). After the harder
+  ten come the ten hardest (151–160 farm, 161–170 city, later 171–200 for the other worlds; `hardest()` in
+  `difficulty.ts`: 11 then 12 differences, 3 moving, picture B always turned), new animals, tools, houses and vehicles.
+- Hidden levels (`levels/upcoming.ts`): levels drawn ahead of a release live in `upcomingLevels`, not in their
+  chapter's list; their ids are already in the chapter's `ranges` (`chapterSize` leaves them out). Players never see
+  them (no tile, no count, no "next", the router sends a direct link home); developer mode shows them at their
+  place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
+  `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
+  store texts. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,

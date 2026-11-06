@@ -10,9 +10,10 @@ import {
   type PictureTransform,
 } from '../src/engine/transform.ts'
 import { Viewport, type ViewSvg } from '../src/engine/zoom.ts'
-import { CHAPTERS, chapterLevels, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER } from '../src/levels/chapters.ts'
+import { CHAPTERS, chapterLevels, chapterLevelsWithHidden, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER } from '../src/levels/chapters.ts'
 import { caseLevels } from '../src/levels/detective/index.ts'
 import { allLevels } from '../src/levels/index.ts'
+import { upcomingLevels } from '../src/levels/upcoming.ts'
 
 const SIZE = { w: 800, h: 500 }
 const POINTS = [
@@ -121,23 +122,26 @@ describe('shared zoom of a plain and a mirrored picture', () => {
 })
 
 describe('levels with a mirrored or turned picture B', () => {
-  /** The five transformed levels: the last five in play order, the hardest case ("lodge") of "detective". */
-  const lastFive = (chapter: typeof DETECTIVE_CHAPTER) =>
-    chapter === DETECTIVE_CHAPTER
-      ? caseLevels('lodge')
-      : chapter.ranges.flatMap(([from, to]) => chapterLevels(chapter).filter((l) => l.id >= from && l.id <= to)).slice(-5)
+  /** First transformed level: the harder ten's last five of a world (and every world level after them), the last five of "travel". */
+  const FIRST: Record<string, number> = { farm: 106, city: 116, forest: 126, sea: 136, space: 146, travel: 428 }
+  /** A chapter's levels in play order, the hidden ones of levels/upcoming.ts included. */
+  const own = chapterLevelsWithHidden
+  /** The transformed levels in play order; the hardest case ("lodge") of "detective". */
+  const transformed = (chapter: typeof DETECTIVE_CHAPTER) =>
+    chapter === DETECTIVE_CHAPTER ? caseLevels('lodge') : own(chapter).filter((l) => l.id >= FIRST[chapter.id])
 
-  test('the last five levels of every world and "travel", and the hardest "detective" case, alternate mirror-x and rotate-180', () => {
+  test('the last levels of every world and "travel", and the hardest "detective" case, alternate mirror-x and rotate-180', () => {
     for (const chapter of [...CHAPTERS, TRAVEL_CHAPTER, DETECTIVE_CHAPTER]) {
-      const transforms = lastFive(chapter).map((l) => l.transformB)
-      assert.deepEqual(transforms, ['mirror-x', 'rotate-180', 'mirror-x', 'rotate-180', 'mirror-x'], chapter.id)
-      for (const l of chapterLevels(chapter)) if (!lastFive(chapter).includes(l)) assert.equal(l.transformB, undefined, `level ${l.id}`)
+      const levels = transformed(chapter)
+      assert.ok(levels.length >= 5, chapter.id)
+      assert.deepEqual(levels.map((l) => l.transformB), levels.map((_, i) => (i % 2 ? 'rotate-180' : 'mirror-x')), chapter.id)
+      for (const l of own(chapter)) if (!levels.includes(l)) assert.equal(l.transformB, undefined, `level ${l.id}`)
     }
   })
 
   test('"time", "memory" and every other level keep picture B as drawn', () => {
-    const transformed = new Set([...CHAPTERS, TRAVEL_CHAPTER, DETECTIVE_CHAPTER].flatMap((c) => lastFive(c).map((l) => l.id)))
-    for (const l of allLevels) if (!transformed.has(l.id)) assert.equal(l.transformB, undefined, `level ${l.id}`)
+    const ids = new Set([...CHAPTERS, TRAVEL_CHAPTER, DETECTIVE_CHAPTER].flatMap((c) => transformed(c).map((l) => l.id)))
+    for (const l of [...allLevels, ...upcomingLevels]) if (!ids.has(l.id)) assert.equal(l.transformB, undefined, `level ${l.id}`)
     for (const c of [TIME_CHAPTER, MEMORY_CHAPTER]) for (const l of chapterLevels(c)) assert.equal(l.transformB, undefined)
   })
 

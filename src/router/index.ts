@@ -3,8 +3,10 @@ import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TRAVEL_CHAPTER, TREASURY_
 import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
+import { isUpcoming } from '../levels/upcoming.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 import AboutView from '../views/AboutView.vue'
 import AnachronismLevelView from '../views/AnachronismLevelView.vue'
 import CaseView from '../views/CaseView.vue'
@@ -93,7 +95,8 @@ router.beforeEach((to, from) => {
   if (to.name !== 'level' && to.name !== 'match' && to.name !== 'memory') return true
   const id = Number(to.params.id)
   const level = levelById(id)
-  if (!level) return { name: 'home' }
+  // Hidden levels (levels/upcoming.ts) play only in developer mode.
+  if (!level || (isUpcoming(id) && !useSettingsStore().developer)) return { name: 'home' }
   if ((to.name === 'memory') !== !!level.memory)
     return level.memory && to.name === 'level' ? { name: 'memory', params: { id } } : { name: 'home' }
   if (progress.needsPurchase(id)) return offerPurchase()

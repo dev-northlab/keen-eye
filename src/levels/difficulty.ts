@@ -41,6 +41,8 @@ export const DIFFICULTY: Difficulty[] = [
   ...harder(121, 8),
   ...harder(131, 10),
   ...harder(141, 10),
+  ...hardest(151),
+  ...hardest(161),
   // "Time" category (docs/time-differences-mode.md): 201–205 morning/evening, 206–210 summer/winter,
   // 211–215 both kinds, harder. Static differences only: the moments already change a lot.
   { from: 201, to: 205, differences: [5, 5], motion: [0, 0], minRadius: 24, traps: [3, 4], kinds: EASY },
@@ -102,8 +104,25 @@ function harder(first: number, floor: number): Difficulty[] {
 }
 
 /**
- * Picture B shown mirrored or turned (docs/mirror-rotate-feature.md): the last five levels of every world
- * and of "travel", and the hardest "detective" case (526–530), alternating mirror-x and rotate-180. Not "time" and "memory" (hard
+ * The ten hardest levels of a world after its harder ten, ids from `first` (151 farm, 161 city; hidden until
+ * released, levels/upcoming.ts): busy scenes of new animals, tools, houses and vehicles with 11 differences,
+ * then 12 on the last five, 3 of them moving; picture B always turned (`transformBOf`).
+ */
+function hardest(first: number): Difficulty[] {
+  return [11, 12].map((n, i) => ({
+    from: first + i * 5,
+    to: first + i * 5 + 4,
+    differences: [n, n],
+    motion: [3, 3],
+    minRadius: 22,
+    minGap: 60,
+    kinds: HARD,
+  }))
+}
+
+/**
+ * Picture B shown mirrored or turned (docs/mirror-rotate-feature.md): the last five levels of every world's
+ * harder ten and every world level after them, the last five of "travel", and the hardest "detective" case (526–530), alternating mirror-x and rotate-180. Not "time" and "memory" (hard
  * enough already), nor the bonus "treasury".
  */
 const TRANSFORMED_B: [from: number, to: number][] = [
@@ -117,6 +136,8 @@ const TRANSFORMED_B: [from: number, to: number][] = [
 ]
 
 export function transformBOf(levelId: number): PictureTransform {
+  // A world's ten hardest (151–200, ten per world) go on from the mirror-x of its harder ten's last level.
+  if (levelId >= 151 && levelId <= 200) return (levelId - 151) % 2 === 0 ? 'rotate-180' : 'mirror-x'
   const range = TRANSFORMED_B.find(([from, to]) => levelId >= from && levelId <= to)
   if (!range) return 'none'
   return (levelId - range[0]) % 2 === 0 ? 'mirror-x' : 'rotate-180'

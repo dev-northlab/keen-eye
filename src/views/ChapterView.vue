@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
@@ -6,22 +7,26 @@ import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
-import { CHAPTERS, chapterById, chapterLevels, chapterSize, levelNumber } from '../levels/chapters.ts'
+import { CHAPTERS, chapterById, chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber } from '../levels/chapters.ts'
+import { isUpcoming } from '../levels/upcoming.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 // Level grid of one chapter, or of a category ("time", "memory"). The router guard guarantees the chapter exists.
+// Developer mode also shows the hidden levels (levels/upcoming.ts) at their place, marked with a crossed-out eye.
 
 const props = defineProps<{ chapter: string }>()
 const router = useRouter()
 const purchase = usePurchaseStore()
 const progress = useProgressStore()
+const settings = useSettingsStore()
 const { t } = useI18n()
 
 const chapter = chapterById(props.chapter)!
-const levels = chapterLevels(chapter)
-const missing = chapterSize(chapter) - levels.length
+const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(chapter) : chapterLevels(chapter)))
+const missing = chapterSize(chapter) - chapterLevels(chapter).length
 
 /** A world's grid goes back to the worlds, a category to the game modes. */
 const toParent = () => router.push({ name: CHAPTERS.includes(chapter) ? 'worlds' : 'levels' })
@@ -39,7 +44,8 @@ function tileLabel(level: Level) {
     : progress.isUnlocked(level.id)
       ? t(`levelTitles.${level.title}`)
       : t('map.locked')
-  return `${t('map.level', { n: levelNumber(level) })}: ${name}`
+  const hidden = isUpcoming(level.id) ? ` (${t('map.hidden')})` : ''
+  return `${t('map.level', { n: levelNumber(level) })}: ${name}${hidden}`
 }
 </script>
 
@@ -52,12 +58,17 @@ function tileLabel(level: Level) {
         <li v-for="level in levels" :key="level.id">
           <button
             class="tile"
-            :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id) }"
+            :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id), hidden: isUpcoming(level.id) }"
             :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
             :aria-label="tileLabel(level)"
             @click="open(level)"
           >
             <LevelId :id="level.id" />
+            <svg v-if="isUpcoming(level.id)" class="hidden-mark" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M4 20 20 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            </svg>
             <span class="num">{{ levelNumber(level) }}</span>
             <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
             <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="14" />
@@ -133,6 +144,20 @@ main {
   background: var(--disabled-bg);
   color: var(--faint);
   cursor: default;
+}
+
+/* A hidden level (developer mode only): dashed border and a crossed-out eye in the top corner. */
+.tile.hidden {
+  border-style: dashed;
+}
+
+.hidden-mark {
+  position: absolute;
+  top: 4px;
+  inset-inline-start: 5px;
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
 }
 
 .num {

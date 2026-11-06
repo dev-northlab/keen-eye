@@ -5,6 +5,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { zoneCenter } from '../src/engine/animation.ts'
 import { allLevels } from '../src/levels/index.ts'
+import { upcomingLevels } from '../src/levels/upcoming.ts'
 import { posedSvg, rasterize } from './render.ts'
 
 /** Animation moment shown in the previews (seconds). */
@@ -16,7 +17,7 @@ const args = process.argv.slice(2)
 const hard = args.includes('--hard')
 const ids = args.filter((a) => a !== '--hard').map(Number)
 mkdirSync(OUT, { recursive: true })
-for (const level of allLevels) {
+for (const level of [...allLevels, ...upcomingLevels]) {
   if (ids.length > 0 && !ids.includes(level.id)) continue
   if (level.kind !== 'svg' || !level.build || (hard && !level.extras)) continue
   const { w, h } = level.viewBox
