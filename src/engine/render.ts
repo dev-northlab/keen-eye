@@ -53,7 +53,7 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     animations = built.animations
   } else {
     const href = variant === 0 ? level.imageA : level.imageB
-    if (href) scene.append(el('image', { href, width: w, height: h }))
+    if (href) scene.append(el('image', { href: import.meta.env.BASE_URL + href, width: w, height: h }))
   }
 
   const marks = el('g', { 'pointer-events': 'none' })

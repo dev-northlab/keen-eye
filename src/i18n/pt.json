@@ -227,7 +227,8 @@
     "memory": "Memória",
     "travel": "Volta ao mundo",
     "detective": "História de detetive",
-    "treasury": "Sala do tesouro"
+    "treasury": "Sala do tesouro",
+    "test": "Níveis de teste"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floricultura",
@@ -577,7 +578,8 @@
     "chickensYard": "Quintal da aldeia",
     "chickensGarden": "Horta",
     "chickensBarn": "Celeiro",
-    "chickensMeadow": "Prado junto ao riacho"
+    "chickensMeadow": "Prado junto ao riacho",
+    "cozyStudy": "Escritório aconchegante"
   },
   "mode": {
     "label": "Modo",

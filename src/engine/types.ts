@@ -117,7 +117,7 @@ export interface Level {
    * differences from the natural changes. `extras`: with the extra objects of hard mode (`Level.extras`).
    */
   build?: (variant: 0 | 1, moment?: 0 | 1, extras?: boolean) => SceneSvg
-  /** kind = 'image': asset URLs. */
+  /** kind = 'image': the pictures' paths relative to the app base (public/); viewBox = their size in pixels. */
   imageA?: string
   imageB?: string
   viewBox: { w: number; h: number }

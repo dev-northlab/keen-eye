@@ -227,7 +227,8 @@
     "memory": "Հիշողություն",
     "travel": "Ճամփորդություն աշխարհով",
     "detective": "Դետեկտիվ պատմություն",
-    "treasury": "Գանձարան"
+    "treasury": "Գանձարան",
+    "test": "Փորձնական մակարդակներ"
   },
   "levelTitles": {
     "memoryFlowerShop": "Ծաղկի խանութ",
@@ -577,7 +578,8 @@
     "chickensYard": "Գյուղական բակ",
     "chickensGarden": "Բանջարանոց",
     "chickensBarn": "Գոմ",
-    "chickensMeadow": "Մարգագետին առվակի մոտ"
+    "chickensMeadow": "Մարգագետին առվակի մոտ",
+    "cozyStudy": "Հարմարավետ աշխատասենյակ"
   },
   "mode": {
     "label": "Ռեժիմ",

@@ -39,7 +39,8 @@
     "space": "Avaruus",
     "time": "Aika",
     "travel": "Maailmanmatka",
-    "treasury": "Aarrekammio"
+    "treasury": "Aarrekammio",
+    "test": "Testitasot"
   },
   "common": {
     "back": "Takaisin",
@@ -829,7 +830,8 @@
     "chickensYard": "Kyläpiha",
     "chickensGarden": "Kasvimaa",
     "chickensBarn": "Lato",
-    "chickensMeadow": "Niitty puron varrella"
+    "chickensMeadow": "Niitty puron varrella",
+    "cozyStudy": "Kodikas työhuone"
   },
   "map": {
     "level": "Taso {n}",

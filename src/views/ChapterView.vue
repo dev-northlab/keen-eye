@@ -7,7 +7,7 @@ import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
-import { CHAPTERS, chapterById, chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber } from '../levels/chapters.ts'
+import { CHAPTERS, chapterById, chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TEST_CHAPTER } from '../levels/chapters.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -26,7 +26,8 @@ const { t } = useI18n()
 
 const chapter = chapterById(props.chapter)!
 const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(chapter) : chapterLevels(chapter)))
-const missing = chapterSize(chapter) - chapterLevels(chapter).length
+/** Levels still to come ("coming soon"); the "test" chapter's range is only room for test levels. */
+const missing = chapter === TEST_CHAPTER ? 0 : chapterSize(chapter) - chapterLevels(chapter).length
 
 /** A world's grid goes back to the worlds, a category to the game modes. */
 const toParent = () => router.push({ name: CHAPTERS.includes(chapter) ? 'worlds' : 'levels' })

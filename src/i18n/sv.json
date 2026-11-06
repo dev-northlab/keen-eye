@@ -39,7 +39,8 @@
     "space": "Rymden",
     "time": "Tiden",
     "travel": "Jorden runt",
-    "treasury": "Skattkammare"
+    "treasury": "Skattkammare",
+    "test": "Testnivåer"
   },
   "common": {
     "back": "Tillbaka",
@@ -829,7 +830,8 @@
     "chickensYard": "Bygård",
     "chickensGarden": "Köksträdgård",
     "chickensBarn": "Lada",
-    "chickensMeadow": "Äng vid bäcken"
+    "chickensMeadow": "Äng vid bäcken",
+    "cozyStudy": "Mysigt arbetsrum"
   },
   "map": {
     "level": "Nivå {n}",

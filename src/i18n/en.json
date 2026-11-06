@@ -227,7 +227,8 @@
     "memory": "Memory",
     "travel": "World travel",
     "detective": "Detective story",
-    "treasury": "Treasury"
+    "treasury": "Treasury",
+    "test": "Test levels"
   },
   "levelTitles": {
     "memoryFlowerShop": "Flower shop",
@@ -577,7 +578,8 @@
     "chickensYard": "Village yard",
     "chickensGarden": "Vegetable garden",
     "chickensBarn": "Barn",
-    "chickensMeadow": "Meadow by the stream"
+    "chickensMeadow": "Meadow by the stream",
+    "cozyStudy": "Cozy study"
   },
   "mode": {
     "label": "Mode",

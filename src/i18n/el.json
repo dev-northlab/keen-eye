@@ -227,7 +227,8 @@
     "memory": "Μνήμη",
     "travel": "Ταξίδι στον κόσμο",
     "detective": "Αστυνομική ιστορία",
-    "treasury": "Θησαυροφυλάκιο"
+    "treasury": "Θησαυροφυλάκιο",
+    "test": "Δοκιμαστικά επίπεδα"
   },
   "levelTitles": {
     "memoryFlowerShop": "Ανθοπωλείο",
@@ -577,7 +578,8 @@
     "chickensYard": "Αυλή του χωριού",
     "chickensGarden": "Λαχανόκηπος",
     "chickensBarn": "Αχυρώνας",
-    "chickensMeadow": "Λιβάδι δίπλα στο ρυάκι"
+    "chickensMeadow": "Λιβάδι δίπλα στο ρυάκι",
+    "cozyStudy": "Ζεστό γραφείο"
   },
   "mode": {
     "label": "Λειτουργία",
