@@ -121,7 +121,7 @@ export const CHAPTERS: Chapter[] = [
  */
 export const TIME_CHAPTER: Chapter = {
   id: 'time',
-  ranges: [[201, 230]],
+  ranges: [[201, 240]],
   color: '#7a5af5',
   soft: '#ece6ff',
   backdrop: 'meadow',
@@ -137,7 +137,7 @@ export const TIME_CHAPTER: Chapter = {
  */
 export const MEMORY_CHAPTER: Chapter = {
   id: 'memory',
-  ranges: [[301, 330]],
+  ranges: [[301, 340]],
   color: '#e8457a',
   soft: '#ffe6ee',
   backdrop: 'meadow',

@@ -69,12 +69,14 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   draws by the picture's moment and `trap(x, y, r, a, b, hint)` marks a natural change (light, snow, leaves) whose tap is
   a miss that shows `timeMode.traps.<hint>` once (`GameScene` → `onTrap`); played by `LevelView`, grid by `ChapterView`
   (`/levels/time`, a banner on the modes screen, not a world), numbered 1–30 (`levelNumber`; 216–230 are the busier
-  scenes with 8–10 differences, `difficulty.ts`), open from the start, the
+  scenes with 8–10 differences, `difficulty.ts`; 231–240 the ten hardest, 11 then 12 differences among 6–8 traps, still
+  static and never turned, hidden until released in `upcoming.ts`), open from the start, the
   first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks) in portrait
   pictures 500×750 (`MEMORY_VIEWBOX`; the reveal puts A and B side by side), 6–10 big
   objects among 15 small decor ones (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
-  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`); a move's zone
+  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`), and 331–340 the ten hardest, 7 then 8 changes
+  for 5 s, never turned, hidden until released in `upcoming.ts`; a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
   `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–432 of chapter `travel` written with

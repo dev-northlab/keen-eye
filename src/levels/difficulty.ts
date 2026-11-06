@@ -55,6 +55,10 @@ export const DIFFICULTY: Difficulty[] = [
   { from: 216, to: 220, differences: [8, 8], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
   { from: 221, to: 225, differences: [9, 9], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
   { from: 226, to: 230, differences: [10, 10], motion: [0, 0], minRadius: 20, minGap: 56, traps: [5, 7], kinds: [...EASY, 'shift', 'rotate'] },
+  // 231–240: the ten hardest (hidden until released, levels/upcoming.ts), 11 then 12 differences among more traps; still
+  // static and never turned, like the rest of the category.
+  { from: 231, to: 235, differences: [11, 11], motion: [0, 0], minRadius: 20, minGap: 56, traps: [6, 8], kinds: [...EASY, 'shift', 'rotate'] },
+  { from: 236, to: 240, differences: [12, 12], motion: [0, 0], minRadius: 20, minGap: 56, traps: [6, 8], kinds: [...EASY, 'shift', 'rotate'] },
   // "Memory" category (docs/memory-mode.md): 6–10 big objects among 15 small decor ones, changes seen at a glance (an object
   // gone or new, recolored, moved, fewer of them); the zone of a move covers both places, that of a
   // count the whole group. Less time to look as the changes grow.
@@ -64,6 +68,10 @@ export const DIFFICULTY: Difficulty[] = [
   // 316–330: busier, more detailed scenes (12–18 objects plus the decor), so a little more time to look.
   { from: 316, to: 320, differences: [5, 5], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   { from: 321, to: 330, differences: [6, 6], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
+  // 331–340: the ten hardest (hidden until released, levels/upcoming.ts), the busiest scenes with 7 then 8 changes, shown
+  // a little longer for so many to keep in mind.
+  { from: 331, to: 335, differences: [7, 7], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
+  { from: 336, to: 340, differences: [8, 8], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   // "Travel" category (docs/world-travel-mode.md): 5 → 6 → 7 differences tied to the place (the
   // gondola's color, the flag on the tower), smaller ones and one in motion later.
   { from: 401, to: 405, differences: [5, 5], motion: [0, 0], minRadius: 24, kinds: EASY },
