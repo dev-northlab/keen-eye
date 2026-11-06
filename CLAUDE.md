@@ -202,10 +202,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `time()`, never `diff`.
 - Redesigned pictures (`levels/picture-style.ts`): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
-  `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch` on the home screen, above a
+  `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen, above a
   grid with such levels and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
-  same id/progress/stars). `check-levels` checks the files,
+  same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
+  ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`. `check-levels` checks the files,
   the same number of differences as the scene, zones on the picture, big enough and apart, and no motion differences
   or key (pictures cannot show them yet).
 - Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden

@@ -58,6 +58,8 @@ function play() {
     <div class="corner">
       <SeasonSwitch />
       <ThemeSwitch />
+      <!-- Developer mode only while few levels have redesigned pictures. -->
+      <PictureStyleSwitch v-if="settings.developer" />
     </div>
     <h1>Keen Eye</h1>
     <p class="stars">
@@ -82,9 +84,6 @@ function play() {
       </span>
     </button>
     <ModeSwitch class="mode" />
-    <!-- Under the modes: the corner has no room for a third switch on a phone. Developer mode only while few
-         levels have redesigned pictures. -->
-    <PictureStyleSwitch v-if="settings.developer" />
     <!-- Menu entries: a raised pill with an icon on the left and a chevron on the right. -->
     <button class="entry" @click="router.push({ name: 'duo' })">
       <span class="pair" aria-hidden="true">
@@ -273,7 +272,7 @@ button,
   width: min(100%, var(--menu-width));
 }
 
-/* Season and day/night switches: top left, away from the sun (top right) and the centered menu. */
+/* Season, day/night and picture style switches: top left, away from the sun (top right) and the centered menu. */
 .corner {
   position: absolute;
   top: 12px;
