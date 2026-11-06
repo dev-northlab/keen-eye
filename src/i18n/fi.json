@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "memoryFlowerShop": "Kukkakauppa",
+    "memoryPirateDeck": "Merirosvolaivan kansi",
+    "memoryDinoMuseum": "Dinosaurusmuseo",
+    "memoryCandyShop": "Karkkikauppa",
+    "memoryMusicRoom": "Musiikkihuone",
+    "memoryTreehouse": "Puumaja",
+    "memoryAttic": "Ullakko",
+    "memoryArtStudio": "Taiteilijan ateljee",
+    "memoryPetShop": "Lemmikkikauppa",
+    "memoryLibrary": "Kirjasto",
     "lakeCamp": "Järvileiri",
     "roofTerrace": "Kattoterassi",
     "riverViaduct": "Rautatiesilta",

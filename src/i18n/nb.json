@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "memoryFlowerShop": "Blomsterbutikk",
+    "memoryPirateDeck": "Piratdekk",
+    "memoryDinoMuseum": "Dinosaurmuseum",
+    "memoryCandyShop": "Godtebutikk",
+    "memoryMusicRoom": "Musikkrom",
+    "memoryTreehouse": "Trehytte",
+    "memoryAttic": "Loft",
+    "memoryArtStudio": "Kunstneratelier",
+    "memoryPetShop": "Dyrebutikk",
+    "memoryLibrary": "Bibliotek",
     "lakeCamp": "Leir ved sjøen",
     "roofTerrace": "Takterrasse",
     "riverViaduct": "Jernbaneviadukt",

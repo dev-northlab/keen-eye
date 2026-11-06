@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "memoryFlowerShop": "محل الزهور",
+    "memoryPirateDeck": "سطح سفينة القراصنة",
+    "memoryDinoMuseum": "متحف الديناصورات",
+    "memoryCandyShop": "متجر الحلوى",
+    "memoryMusicRoom": "غرفة الموسيقى",
+    "memoryTreehouse": "بيت الشجرة",
+    "memoryAttic": "العلّية",
+    "memoryArtStudio": "مرسم الرسّام",
+    "memoryPetShop": "متجر الحيوانات الأليفة",
+    "memoryLibrary": "مكتبة",
     "lakeCamp": "مخيم البحيرة",
     "roofTerrace": "شرفة على السطح",
     "riverViaduct": "جسر السكة الحديدية",

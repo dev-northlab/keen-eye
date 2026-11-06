@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "memoryFlowerShop": "Toko bunga",
+    "memoryPirateDeck": "Dek bajak laut",
+    "memoryDinoMuseum": "Museum dinosaurus",
+    "memoryCandyShop": "Toko permen",
+    "memoryMusicRoom": "Ruang musik",
+    "memoryTreehouse": "Rumah pohon",
+    "memoryAttic": "Loteng",
+    "memoryArtStudio": "Studio pelukis",
+    "memoryPetShop": "Toko hewan peliharaan",
+    "memoryLibrary": "Perpustakaan",
     "lakeCamp": "Perkemahan danau",
     "roofTerrace": "Teras atap",
     "riverViaduct": "Jembatan kereta",

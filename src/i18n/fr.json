@@ -230,6 +230,16 @@
     "treasury": "Salle au trésor"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Fleuriste",
+    "memoryPirateDeck": "Pont du bateau pirate",
+    "memoryDinoMuseum": "Musée des dinosaures",
+    "memoryCandyShop": "Confiserie",
+    "memoryMusicRoom": "Salle de musique",
+    "memoryTreehouse": "Cabane dans l’arbre",
+    "memoryAttic": "Grenier",
+    "memoryArtStudio": "Atelier d’artiste",
+    "memoryPetShop": "Animalerie",
+    "memoryLibrary": "Bibliothèque",
     "lakeCamp": "Camp au bord du lac",
     "roofTerrace": "Toit-terrasse",
     "riverViaduct": "Viaduc ferroviaire",

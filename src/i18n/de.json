@@ -230,6 +230,16 @@
     "treasury": "Schatzkammer"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Blumenladen",
+    "memoryPirateDeck": "Piratendeck",
+    "memoryDinoMuseum": "Dinosauriermuseum",
+    "memoryCandyShop": "Süßwarenladen",
+    "memoryMusicRoom": "Musikzimmer",
+    "memoryTreehouse": "Baumhaus",
+    "memoryAttic": "Dachboden",
+    "memoryArtStudio": "Atelier",
+    "memoryPetShop": "Zoohandlung",
+    "memoryLibrary": "Bibliothek",
     "lakeCamp": "Camp am See",
     "roofTerrace": "Dachterrasse",
     "riverViaduct": "Eisenbahnviadukt",

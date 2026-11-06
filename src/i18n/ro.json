@@ -230,6 +230,16 @@
     "treasury": "Camera comorii"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Florărie",
+    "memoryPirateDeck": "Puntea piraților",
+    "memoryDinoMuseum": "Muzeul dinozaurilor",
+    "memoryCandyShop": "Magazin de dulciuri",
+    "memoryMusicRoom": "Camera muzicii",
+    "memoryTreehouse": "Căsuța din copac",
+    "memoryAttic": "Pod",
+    "memoryArtStudio": "Atelierul pictorului",
+    "memoryPetShop": "Magazin de animale",
+    "memoryLibrary": "Bibliotecă",
     "lakeCamp": "Tabără la lac",
     "roofTerrace": "Terasă pe acoperiș",
     "riverViaduct": "Viaduct feroviar",

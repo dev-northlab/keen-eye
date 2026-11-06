@@ -230,6 +230,16 @@
     "treasury": "Hazine odası"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Çiçekçi",
+    "memoryPirateDeck": "Korsan güvertesi",
+    "memoryDinoMuseum": "Dinozor müzesi",
+    "memoryCandyShop": "Şekerci",
+    "memoryMusicRoom": "Müzik odası",
+    "memoryTreehouse": "Ağaç ev",
+    "memoryAttic": "Tavan arası",
+    "memoryArtStudio": "Ressam atölyesi",
+    "memoryPetShop": "Evcil hayvan dükkânı",
+    "memoryLibrary": "Kütüphane",
     "lakeCamp": "Göl kampı",
     "roofTerrace": "Çatı terası",
     "riverViaduct": "Demiryolu viyadüğü",

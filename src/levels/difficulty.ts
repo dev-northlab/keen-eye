@@ -68,6 +68,10 @@ export const DIFFICULTY: Difficulty[] = [
   // 316–330: busier, more detailed scenes (12–18 objects plus the decor), so a little more time to look.
   { from: 316, to: 320, differences: [5, 5], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   { from: 321, to: 330, differences: [6, 6], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
+  // 331–340: the ten hardest (hidden until released, levels/upcoming.ts), the busiest scenes with 7 then 8 changes, shown
+  // a little longer for so many to keep in mind.
+  { from: 331, to: 335, differences: [7, 7], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
+  { from: 336, to: 340, differences: [8, 8], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
   // "Travel" category (docs/world-travel-mode.md): 5 → 6 → 7 differences tied to the place (the
   // gondola's color, the flag on the tower), smaller ones and one in motion later.
   { from: 401, to: 405, differences: [5, 5], motion: [0, 0], minRadius: 24, kinds: EASY },

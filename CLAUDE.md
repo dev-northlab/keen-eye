@@ -75,7 +75,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks) in portrait
   pictures 500×750 (`MEMORY_VIEWBOX`; the reveal puts A and B side by side), 6–10 big
   objects among 15 small decor ones (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
-  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`); a move's zone
+  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`), and 331–340 the ten hardest, 7 then 8 changes
+  for 5 s, never turned, hidden until released in `upcoming.ts`; a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
   `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–432 of chapter `travel` written with

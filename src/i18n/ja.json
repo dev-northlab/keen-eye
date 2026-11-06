@@ -230,6 +230,16 @@
     "treasury": "宝物庫"
   },
   "levelTitles": {
+    "memoryFlowerShop": "お花屋さん",
+    "memoryPirateDeck": "海賊船の甲板",
+    "memoryDinoMuseum": "恐竜博物館",
+    "memoryCandyShop": "お菓子屋さん",
+    "memoryMusicRoom": "音楽室",
+    "memoryTreehouse": "ツリーハウス",
+    "memoryAttic": "屋根裏部屋",
+    "memoryArtStudio": "画家のアトリエ",
+    "memoryPetShop": "ペットショップ",
+    "memoryLibrary": "図書室",
     "lakeCamp": "湖のキャンプ場",
     "roofTerrace": "屋上テラス",
     "riverViaduct": "鉄道の高架橋",

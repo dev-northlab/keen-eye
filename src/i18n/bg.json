@@ -230,6 +230,16 @@
     "treasury": "Съкровищница"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Цветарски магазин",
+    "memoryPirateDeck": "Пиратска палуба",
+    "memoryDinoMuseum": "Музей на динозаврите",
+    "memoryCandyShop": "Магазин за сладки",
+    "memoryMusicRoom": "Музикална стая",
+    "memoryTreehouse": "Къщичка на дърво",
+    "memoryAttic": "Таван",
+    "memoryArtStudio": "Ателие на художник",
+    "memoryPetShop": "Зоомагазин",
+    "memoryLibrary": "Библиотека",
     "lakeCamp": "Лагер край езерото",
     "roofTerrace": "Тераса на покрива",
     "riverViaduct": "Железопътен виадукт",

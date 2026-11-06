@@ -230,6 +230,16 @@
     "treasury": "Klenotnice"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Květinářství",
+    "memoryPirateDeck": "Pirátská paluba",
+    "memoryDinoMuseum": "Muzeum dinosaurů",
+    "memoryCandyShop": "Cukrárna",
+    "memoryMusicRoom": "Hudební pokoj",
+    "memoryTreehouse": "Domek na stromě",
+    "memoryAttic": "Půda",
+    "memoryArtStudio": "Malířský ateliér",
+    "memoryPetShop": "Zverimex",
+    "memoryLibrary": "Knihovna",
     "lakeCamp": "Tábor u jezera",
     "roofTerrace": "Střešní terasa",
     "riverViaduct": "Železniční viadukt",

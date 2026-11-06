@@ -230,6 +230,16 @@
     "treasury": "Θησαυροφυλάκιο"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Ανθοπωλείο",
+    "memoryPirateDeck": "Πειρατικό κατάστρωμα",
+    "memoryDinoMuseum": "Μουσείο δεινοσαύρων",
+    "memoryCandyShop": "Ζαχαροπλαστείο",
+    "memoryMusicRoom": "Δωμάτιο μουσικής",
+    "memoryTreehouse": "Δεντρόσπιτο",
+    "memoryAttic": "Σοφίτα",
+    "memoryArtStudio": "Εργαστήριο ζωγράφου",
+    "memoryPetShop": "Κατάστημα κατοικιδίων",
+    "memoryLibrary": "Βιβλιοθήκη",
     "lakeCamp": "Κατασκήνωση στη λίμνη",
     "roofTerrace": "Ταράτσα",
     "riverViaduct": "Σιδηροδρομική γέφυρα",

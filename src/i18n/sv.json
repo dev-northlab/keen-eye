@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "memoryFlowerShop": "Blomsteraffär",
+    "memoryPirateDeck": "Piratdäck",
+    "memoryDinoMuseum": "Dinosauriemuseum",
+    "memoryCandyShop": "Godisbutik",
+    "memoryMusicRoom": "Musikrum",
+    "memoryTreehouse": "Trädkoja",
+    "memoryAttic": "Vind",
+    "memoryArtStudio": "Konstnärsateljé",
+    "memoryPetShop": "Djuraffär",
+    "memoryLibrary": "Bibliotek",
     "lakeCamp": "Läger vid sjön",
     "roofTerrace": "Takterrass",
     "riverViaduct": "Järnvägsviadukt",

@@ -230,6 +230,16 @@
     "treasury": "Գանձարան"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Ծաղկի խանութ",
+    "memoryPirateDeck": "Ծովահենների տախտակամած",
+    "memoryDinoMuseum": "Դինոզավրերի թանգարան",
+    "memoryCandyShop": "Քաղցրավենիքի խանութ",
+    "memoryMusicRoom": "Երաժշտական սենյակ",
+    "memoryTreehouse": "Տնակ ծառի վրա",
+    "memoryAttic": "Ձեղնահարկ",
+    "memoryArtStudio": "Նկարչի արվեստանոց",
+    "memoryPetShop": "Կենդանիների խանութ",
+    "memoryLibrary": "Գրադարան",
     "lakeCamp": "Ճամբար լճի մոտ",
     "roofTerrace": "Տանիքի պատշգամբ",
     "riverViaduct": "Երկաթուղային կամուրջ",

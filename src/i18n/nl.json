@@ -230,6 +230,16 @@
     "treasury": "Schatkamer"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Bloemenwinkel",
+    "memoryPirateDeck": "Piratendek",
+    "memoryDinoMuseum": "Dinosaurusmuseum",
+    "memoryCandyShop": "Snoepwinkel",
+    "memoryMusicRoom": "Muziekkamer",
+    "memoryTreehouse": "Boomhut",
+    "memoryAttic": "Zolder",
+    "memoryArtStudio": "Schildersatelier",
+    "memoryPetShop": "Dierenwinkel",
+    "memoryLibrary": "Bibliotheek",
     "lakeCamp": "Kamp aan het meer",
     "roofTerrace": "Dakterras",
     "riverViaduct": "Spoorwegviaduct",

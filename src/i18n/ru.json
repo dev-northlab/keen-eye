@@ -230,6 +230,16 @@
     "treasury": "Сокровищница"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Цветочный магазин",
+    "memoryPirateDeck": "Пиратская палуба",
+    "memoryDinoMuseum": "Музей динозавров",
+    "memoryCandyShop": "Магазин сладостей",
+    "memoryMusicRoom": "Музыкальная комната",
+    "memoryTreehouse": "Домик на дереве",
+    "memoryAttic": "Чердак",
+    "memoryArtStudio": "Мастерская художника",
+    "memoryPetShop": "Зоомагазин",
+    "memoryLibrary": "Библиотека",
     "lakeCamp": "Лагерь у озера",
     "roofTerrace": "Терраса на крыше",
     "riverViaduct": "Железнодорожный виадук",

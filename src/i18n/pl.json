@@ -230,6 +230,16 @@
     "treasury": "Skarbiec"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Kwiaciarnia",
+    "memoryPirateDeck": "Pokład piratów",
+    "memoryDinoMuseum": "Muzeum dinozaurów",
+    "memoryCandyShop": "Sklep ze słodyczami",
+    "memoryMusicRoom": "Pokój muzyczny",
+    "memoryTreehouse": "Domek na drzewie",
+    "memoryAttic": "Strych",
+    "memoryArtStudio": "Pracownia malarza",
+    "memoryPetShop": "Sklep zoologiczny",
+    "memoryLibrary": "Biblioteka",
     "lakeCamp": "Obóz nad jeziorem",
     "roofTerrace": "Taras na dachu",
     "riverViaduct": "Wiadukt kolejowy",

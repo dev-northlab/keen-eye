@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "memoryFlowerShop": "Cửa hàng hoa",
+    "memoryPirateDeck": "Boong tàu cướp biển",
+    "memoryDinoMuseum": "Bảo tàng khủng long",
+    "memoryCandyShop": "Cửa hàng kẹo",
+    "memoryMusicRoom": "Phòng âm nhạc",
+    "memoryTreehouse": "Nhà trên cây",
+    "memoryAttic": "Gác mái",
+    "memoryArtStudio": "Xưởng vẽ",
+    "memoryPetShop": "Cửa hàng thú cưng",
+    "memoryLibrary": "Thư viện",
     "lakeCamp": "Trại bên hồ",
     "roofTerrace": "Sân thượng",
     "riverViaduct": "Cầu cạn đường sắt",

@@ -230,6 +230,16 @@
     "treasury": "Скарбниця"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Квіткова крамниця",
+    "memoryPirateDeck": "Піратська палуба",
+    "memoryDinoMuseum": "Музей динозаврів",
+    "memoryCandyShop": "Крамниця солодощів",
+    "memoryMusicRoom": "Музична кімната",
+    "memoryTreehouse": "Будиночок на дереві",
+    "memoryAttic": "Горище",
+    "memoryArtStudio": "Майстерня художника",
+    "memoryPetShop": "Зоомагазин",
+    "memoryLibrary": "Бібліотека",
     "lakeCamp": "Табір біля озера",
     "roofTerrace": "Тераса на даху",
     "riverViaduct": "Залізничний віадук",

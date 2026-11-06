@@ -230,6 +230,16 @@
     "treasury": "Treasury"
   },
   "levelTitles": {
+    "memoryFlowerShop": "Flower shop",
+    "memoryPirateDeck": "Pirate deck",
+    "memoryDinoMuseum": "Dinosaur museum",
+    "memoryCandyShop": "Candy shop",
+    "memoryMusicRoom": "Music room",
+    "memoryTreehouse": "Treehouse",
+    "memoryAttic": "Attic",
+    "memoryArtStudio": "Art studio",
+    "memoryPetShop": "Pet shop",
+    "memoryLibrary": "Library",
     "lakeCamp": "Lake camp",
     "roofTerrace": "Roof terrace",
     "riverViaduct": "River viaduct",

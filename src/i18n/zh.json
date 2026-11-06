@@ -230,6 +230,16 @@
     "treasury": "藏宝室"
   },
   "levelTitles": {
+    "memoryFlowerShop": "花店",
+    "memoryPirateDeck": "海盗船甲板",
+    "memoryDinoMuseum": "恐龙博物馆",
+    "memoryCandyShop": "糖果店",
+    "memoryMusicRoom": "音乐室",
+    "memoryTreehouse": "树屋",
+    "memoryAttic": "阁楼",
+    "memoryArtStudio": "画室",
+    "memoryPetShop": "宠物店",
+    "memoryLibrary": "图书馆",
     "lakeCamp": "湖畔营地",
     "roofTerrace": "屋顶露台",
     "riverViaduct": "铁路高架桥",

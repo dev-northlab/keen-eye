@@ -230,6 +230,16 @@
     "treasury": "ख़ज़ाना"
   },
   "levelTitles": {
+    "memoryFlowerShop": "फूलों की दुकान",
+    "memoryPirateDeck": "समुद्री डाकुओं का डेक",
+    "memoryDinoMuseum": "डायनासोर संग्रहालय",
+    "memoryCandyShop": "मिठाई की दुकान",
+    "memoryMusicRoom": "संगीत कक्ष",
+    "memoryTreehouse": "पेड़ पर घर",
+    "memoryAttic": "अटारी",
+    "memoryArtStudio": "चित्रकार का स्टूडियो",
+    "memoryPetShop": "पालतू जानवरों की दुकान",
+    "memoryLibrary": "पुस्तकालय",
     "lakeCamp": "झील किनारे शिविर",
     "roofTerrace": "छत का बरामदा",
     "riverViaduct": "रेलवे पुल",
