@@ -230,6 +230,16 @@
     "treasury": "Klenotnice"
   },
   "levelTitles": {
+    "raccoonCamp": "Mývalové v kempu",
+    "batCave": "Netopýří jeskyně",
+    "forestRailway": "Lesní železnice",
+    "marshBoardwalk": "Povalový chodník",
+    "ropePark": "Lanový park",
+    "mossyRuins": "Zarostlé ruiny",
+    "moonlitWolves": "Vlci za měsíčního svitu",
+    "canoeRiver": "Řeka s kánoemi",
+    "fireTower": "Požární hláska",
+    "sawmill": "Pila",
     "zooGate": "Vstup do zoo",
     "gasStation": "Čerpací stanice",
     "snowyAvenue": "Zasněžená třída",

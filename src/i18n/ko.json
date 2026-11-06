@@ -230,6 +230,16 @@
     "treasury": "보물 창고"
   },
   "levelTitles": {
+    "raccoonCamp": "캠핑장 너구리",
+    "batCave": "박쥐 동굴",
+    "forestRailway": "숲속 협궤 열차",
+    "marshBoardwalk": "습지 탐방로",
+    "ropePark": "로프 공원",
+    "mossyRuins": "이끼 낀 유적",
+    "moonlitWolves": "달빛 아래 늑대들",
+    "canoeRiver": "카누 강",
+    "fireTower": "산불 감시탑",
+    "sawmill": "제재소",
     "zooGate": "동물원 입구",
     "gasStation": "주유소",
     "snowyAvenue": "눈 덮인 거리",

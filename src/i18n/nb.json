@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "Vaskebjørner i leiren",
+    "batCave": "Flaggermushula",
+    "forestRailway": "Skogsbanen",
+    "marshBoardwalk": "Klopper over myra",
+    "ropePark": "Klatreparken",
+    "mossyRuins": "Mosegrodde ruiner",
+    "moonlitWolves": "Ulver i måneskinn",
+    "canoeRiver": "Kanoelva",
+    "fireTower": "Branntårnet",
+    "sawmill": "Sagbruket",
     "zooGate": "Dyreparkens inngang",
     "gasStation": "Bensinstasjonen",
     "snowyAvenue": "Snødekt aveny",

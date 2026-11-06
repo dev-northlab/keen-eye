@@ -230,6 +230,16 @@
     "treasury": "藏宝室"
   },
   "levelTitles": {
+    "raccoonCamp": "营地浣熊",
+    "batCave": "蝙蝠洞",
+    "forestRailway": "森林小火车",
+    "marshBoardwalk": "湿地栈道",
+    "ropePark": "树上绳索乐园",
+    "mossyRuins": "苔藓遗迹",
+    "moonlitWolves": "月光下的狼群",
+    "canoeRiver": "独木舟河",
+    "fireTower": "森林防火瞭望塔",
+    "sawmill": "锯木厂",
     "zooGate": "动物园大门",
     "gasStation": "加油站",
     "snowyAvenue": "雪中大道",

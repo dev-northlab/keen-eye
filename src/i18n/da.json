@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "Vaskebjørne i lejren",
+    "batCave": "Flagermusehulen",
+    "forestRailway": "Skovbanen",
+    "marshBoardwalk": "Gangbroen i mosen",
+    "ropePark": "Klatreparken",
+    "mossyRuins": "Mosgroede ruiner",
+    "moonlitWolves": "Ulve i måneskin",
+    "canoeRiver": "Kanofloden",
+    "fireTower": "Brandtårnet",
+    "sawmill": "Savværket",
     "zooGate": "Zoos indgang",
     "gasStation": "Tankstationen",
     "snowyAvenue": "Snedækket boulevard",

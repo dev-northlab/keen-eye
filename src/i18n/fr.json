@@ -230,6 +230,16 @@
     "treasury": "Salle au trésor"
   },
   "levelTitles": {
+    "raccoonCamp": "Les ratons laveurs au camp",
+    "batCave": "La grotte aux chauves-souris",
+    "forestRailway": "Le petit train forestier",
+    "marshBoardwalk": "Le sentier du marais",
+    "ropePark": "L’accrobranche",
+    "mossyRuins": "Les ruines moussues",
+    "moonlitWolves": "Les loups au clair de lune",
+    "canoeRiver": "La rivière en canoë",
+    "fireTower": "La tour de guet",
+    "sawmill": "La scierie",
     "zooGate": "L’entrée du zoo",
     "gasStation": "La station-service",
     "snowyAvenue": "L’avenue sous la neige",

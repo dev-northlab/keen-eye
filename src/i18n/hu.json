@@ -230,6 +230,16 @@
     "treasury": "Kincskamra"
   },
   "levelTitles": {
+    "raccoonCamp": "Mosómedvék a táborban",
+    "batCave": "Denevérbarlang",
+    "forestRailway": "Erdei kisvasút",
+    "marshBoardwalk": "Mocsári pallósor",
+    "ropePark": "Kalandpark",
+    "mossyRuins": "Mohos romok",
+    "moonlitWolves": "Farkasok holdfényben",
+    "canoeRiver": "Kenus folyó",
+    "fireTower": "Tűzfigyelő torony",
+    "sawmill": "Fűrésztelep",
     "zooGate": "Az állatkert bejárata",
     "gasStation": "Benzinkút",
     "snowyAvenue": "Havas sugárút",

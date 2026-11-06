@@ -230,6 +230,16 @@
     "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
+    "raccoonCamp": "Procioni al campeggio",
+    "batCave": "La grotta dei pipistrelli",
+    "forestRailway": "La ferrovia nel bosco",
+    "marshBoardwalk": "La passerella nella palude",
+    "ropePark": "Il parco avventura",
+    "mossyRuins": "Le rovine muschiose",
+    "moonlitWolves": "Lupi al chiaro di luna",
+    "canoeRiver": "Il fiume delle canoe",
+    "fireTower": "La torre antincendio",
+    "sawmill": "La segheria",
     "zooGate": "L’ingresso dello zoo",
     "gasStation": "Il distributore",
     "snowyAvenue": "Il viale innevato",

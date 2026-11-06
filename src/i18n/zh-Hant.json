@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "營地浣熊",
+    "batCave": "蝙蝠洞",
+    "forestRailway": "森林小火車",
+    "marshBoardwalk": "濕地棧道",
+    "ropePark": "樹上繩索樂園",
+    "mossyRuins": "苔蘚遺跡",
+    "moonlitWolves": "月光下的狼群",
+    "canoeRiver": "獨木舟河",
+    "fireTower": "森林防火瞭望塔",
+    "sawmill": "鋸木廠",
     "zooGate": "動物園大門",
     "gasStation": "加油站",
     "snowyAvenue": "雪中大道",

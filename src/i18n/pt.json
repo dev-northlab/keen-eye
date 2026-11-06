@@ -230,6 +230,16 @@
     "treasury": "Sala do tesouro"
   },
   "levelTitles": {
+    "raccoonCamp": "Guaxinins no acampamento",
+    "batCave": "A gruta dos morcegos",
+    "forestRailway": "O comboio da floresta",
+    "marshBoardwalk": "O passadiço do pântano",
+    "ropePark": "O parque de arvorismo",
+    "mossyRuins": "As ruínas com musgo",
+    "moonlitWolves": "Lobos ao luar",
+    "canoeRiver": "O rio das canoas",
+    "fireTower": "A torre de vigia",
+    "sawmill": "A serração",
     "zooGate": "A entrada do zoo",
     "gasStation": "A bomba de gasolina",
     "snowyAvenue": "A avenida com neve",

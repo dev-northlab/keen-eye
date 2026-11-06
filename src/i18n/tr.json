@@ -230,6 +230,16 @@
     "treasury": "Hazine odası"
   },
   "levelTitles": {
+    "raccoonCamp": "Kampta rakunlar",
+    "batCave": "Yarasa mağarası",
+    "forestRailway": "Orman treni",
+    "marshBoardwalk": "Bataklık yürüyüş yolu",
+    "ropePark": "Macera parkı",
+    "mossyRuins": "Yosunlu harabeler",
+    "moonlitWolves": "Ay ışığında kurtlar",
+    "canoeRiver": "Kano nehri",
+    "fireTower": "Yangın gözetleme kulesi",
+    "sawmill": "Kereste fabrikası",
     "zooGate": "Hayvanat bahçesi girişi",
     "gasStation": "Benzin istasyonu",
     "snowyAvenue": "Karlı cadde",

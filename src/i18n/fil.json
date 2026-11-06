@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "Mga raccoon sa kampo",
+    "batCave": "Kuweba ng mga paniki",
+    "forestRailway": "Riles sa gubat",
+    "marshBoardwalk": "Daanang kahoy sa latian",
+    "ropePark": "Parke ng lubid",
+    "mossyRuins": "Mga lumot na guho",
+    "moonlitWolves": "Mga lobo sa liwanag ng buwan",
+    "canoeRiver": "Ilog ng mga bangka",
+    "fireTower": "Tore ng bantay-sunog",
+    "sawmill": "Lagarian",
     "zooGate": "Pasukan ng zoo",
     "gasStation": "Gasolinahan",
     "snowyAvenue": "Maniyebeng abenida",

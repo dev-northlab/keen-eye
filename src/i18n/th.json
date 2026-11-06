@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "แรคคูนในแคมป์",
+    "batCave": "ถ้ำค้างคาว",
+    "forestRailway": "รถไฟป่า",
+    "marshBoardwalk": "สะพานไม้ในบึง",
+    "ropePark": "สวนผจญภัยบนต้นไม้",
+    "mossyRuins": "ซากปรักหักพังมีมอส",
+    "moonlitWolves": "หมาป่าใต้แสงจันทร์",
+    "canoeRiver": "แม่น้ำพายเรือแคนู",
+    "fireTower": "หอดับเพลิง",
+    "sawmill": "โรงเลื่อย",
     "zooGate": "ประตูสวนสัตว์",
     "gasStation": "ปั๊มน้ำมัน",
     "snowyAvenue": "ถนนหิมะ",

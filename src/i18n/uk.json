@@ -230,6 +230,16 @@
     "treasury": "Скарбниця"
   },
   "levelTitles": {
+    "raccoonCamp": "Єноти в таборі",
+    "batCave": "Печера кажанів",
+    "forestRailway": "Лісова вузькоколійка",
+    "marshBoardwalk": "Болотна стежка",
+    "ropePark": "Мотузковий парк",
+    "mossyRuins": "Руїни в моху",
+    "moonlitWolves": "Вовки при місяці",
+    "canoeRiver": "Річка з каное",
+    "fireTower": "Пожежна вежа",
+    "sawmill": "Лісопилка",
     "zooGate": "Вхід до зоопарку",
     "gasStation": "Заправка",
     "snowyAvenue": "Засніжений проспект",

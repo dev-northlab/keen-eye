@@ -230,6 +230,16 @@
     "treasury": "Treasury"
   },
   "levelTitles": {
+    "raccoonCamp": "Raccoon camp",
+    "batCave": "Bat cave",
+    "forestRailway": "Forest railway",
+    "marshBoardwalk": "Marsh boardwalk",
+    "ropePark": "Rope park",
+    "mossyRuins": "Mossy ruins",
+    "moonlitWolves": "Moonlit wolves",
+    "canoeRiver": "Canoe river",
+    "fireTower": "Fire tower",
+    "sawmill": "Sawmill",
     "zooGate": "Zoo gate",
     "gasStation": "Gas station",
     "snowyAvenue": "Snowy avenue",

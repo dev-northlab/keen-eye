@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "Pesukarhut leirissä",
+    "batCave": "Lepakkoluola",
+    "forestRailway": "Metsärata",
+    "marshBoardwalk": "Suon pitkospuut",
+    "ropePark": "Seikkailupuisto",
+    "mossyRuins": "Sammaloituneet rauniot",
+    "moonlitWolves": "Sudet kuutamossa",
+    "canoeRiver": "Kanoottijoki",
+    "fireTower": "Palovartiotorni",
+    "sawmill": "Saha",
     "zooGate": "Eläintarhan portti",
     "gasStation": "Huoltoasema",
     "snowyAvenue": "Luminen katu",

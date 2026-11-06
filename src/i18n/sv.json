@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "Tvättbjörnar i lägret",
+    "batCave": "Fladdermusgrottan",
+    "forestRailway": "Skogsbanan",
+    "marshBoardwalk": "Spången över myren",
+    "ropePark": "Klätterparken",
+    "mossyRuins": "Mossiga ruiner",
+    "moonlitWolves": "Vargar i månsken",
+    "canoeRiver": "Kanotfloden",
+    "fireTower": "Brandtornet",
+    "sawmill": "Sågverket",
     "zooGate": "Djurparkens entré",
     "gasStation": "Bensinmacken",
     "snowyAvenue": "Snöig aveny",

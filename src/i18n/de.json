@@ -230,6 +230,16 @@
     "treasury": "Schatzkammer"
   },
   "levelTitles": {
+    "raccoonCamp": "Waschbären im Camp",
+    "batCave": "Fledermaushöhle",
+    "forestRailway": "Waldbahn",
+    "marshBoardwalk": "Moorpfad",
+    "ropePark": "Kletterwald",
+    "mossyRuins": "Bemooste Ruinen",
+    "moonlitWolves": "Wölfe im Mondlicht",
+    "canoeRiver": "Kanufluss",
+    "fireTower": "Feuerwachturm",
+    "sawmill": "Sägewerk",
     "zooGate": "Zoo-Eingang",
     "gasStation": "Tankstelle",
     "snowyAvenue": "Verschneite Allee",

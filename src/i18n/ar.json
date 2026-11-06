@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "raccoonCamp": "راكونات في المخيم",
+    "batCave": "كهف الخفافيش",
+    "forestRailway": "قطار الغابة",
+    "marshBoardwalk": "ممشى المستنقع",
+    "ropePark": "منتزه الحبال",
+    "mossyRuins": "أطلال يكسوها الطحلب",
+    "moonlitWolves": "ذئاب تحت ضوء القمر",
+    "canoeRiver": "نهر الزوارق",
+    "fireTower": "برج مراقبة الحرائق",
+    "sawmill": "منشرة الخشب",
     "zooGate": "بوابة حديقة الحيوان",
     "gasStation": "محطة الوقود",
     "snowyAvenue": "جادة مثلجة",

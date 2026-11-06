@@ -230,6 +230,16 @@
     "treasury": "宝物庫"
   },
   "levelTitles": {
+    "raccoonCamp": "キャンプ場のアライグマ",
+    "batCave": "コウモリの洞窟",
+    "forestRailway": "森の軽便鉄道",
+    "marshBoardwalk": "湿原の木道",
+    "ropePark": "ロープアスレチック",
+    "mossyRuins": "苔むした遺跡",
+    "moonlitWolves": "月夜のオオカミ",
+    "canoeRiver": "カヌーの川",
+    "fireTower": "火の見やぐら",
+    "sawmill": "製材所",
     "zooGate": "動物園の入口",
     "gasStation": "ガソリンスタンド",
     "snowyAvenue": "雪の大通り",

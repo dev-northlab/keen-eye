@@ -230,6 +230,16 @@
     "treasury": "Skarbiec"
   },
   "levelTitles": {
+    "raccoonCamp": "Szopy na biwaku",
+    "batCave": "Jaskinia nietoperzy",
+    "forestRailway": "Kolejka leśna",
+    "marshBoardwalk": "Kładka na bagnach",
+    "ropePark": "Park linowy",
+    "mossyRuins": "Omszałe ruiny",
+    "moonlitWolves": "Wilki w blasku księżyca",
+    "canoeRiver": "Rzeka kajakowa",
+    "fireTower": "Wieża przeciwpożarowa",
+    "sawmill": "Tartak",
     "zooGate": "Wejście do zoo",
     "gasStation": "Stacja benzynowa",
     "snowyAvenue": "Zaśnieżona aleja",

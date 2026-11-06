@@ -230,6 +230,16 @@
     "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
+    "raccoonCamp": "Mapaches en el campamento",
+    "batCave": "La cueva de los murciélagos",
+    "forestRailway": "El tren del bosque",
+    "marshBoardwalk": "La pasarela del pantano",
+    "ropePark": "El parque de cuerdas",
+    "mossyRuins": "Las ruinas con musgo",
+    "moonlitWolves": "Lobos a la luz de la luna",
+    "canoeRiver": "El río de las canoas",
+    "fireTower": "La torre de vigilancia",
+    "sawmill": "El aserradero",
     "zooGate": "La entrada del zoo",
     "gasStation": "La gasolinera",
     "snowyAvenue": "La avenida nevada",

@@ -230,6 +230,16 @@
     "treasury": "Schatkamer"
   },
   "levelTitles": {
+    "raccoonCamp": "Wasberen op de camping",
+    "batCave": "Vleermuisgrot",
+    "forestRailway": "Bosspoorlijn",
+    "marshBoardwalk": "Vlonderpad in het moeras",
+    "ropePark": "Klimbos",
+    "mossyRuins": "Bemoste ruïnes",
+    "moonlitWolves": "Wolven bij maanlicht",
+    "canoeRiver": "Kanorivier",
+    "fireTower": "Brandtoren",
+    "sawmill": "Houtzagerij",
     "zooGate": "De dierentuiningang",
     "gasStation": "Tankstation",
     "snowyAvenue": "Besneeuwde laan",

@@ -230,6 +230,16 @@
     "treasury": "Сокровищница"
   },
   "levelTitles": {
+    "raccoonCamp": "Еноты в лагере",
+    "batCave": "Пещера летучих мышей",
+    "forestRailway": "Лесная узкоколейка",
+    "marshBoardwalk": "Болотная тропа",
+    "ropePark": "Верёвочный парк",
+    "mossyRuins": "Руины во мху",
+    "moonlitWolves": "Волки при луне",
+    "canoeRiver": "Река с каноэ",
+    "fireTower": "Пожарная вышка",
+    "sawmill": "Лесопилка",
     "zooGate": "Вход в зоопарк",
     "gasStation": "Заправка",
     "snowyAvenue": "Снежный проспект",
