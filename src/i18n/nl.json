@@ -230,6 +230,16 @@
     "treasury": "Schatkamer"
   },
   "levelTitles": {
+    "wormholeGate": "Wormgatpoort",
+    "cloudCity": "Wolkenstad",
+    "spaceJunkyard": "Ruimteschroothoop",
+    "spaceHotel": "Ruimtehotel",
+    "alienJungle": "Buitenaardse jungle",
+    "spaceElevator": "Ruimtelift",
+    "alienBeach": "Buitenaards strand",
+    "lunarRace": "Maanrace",
+    "spaceZoo": "Ruimtedierentuin",
+    "cometMining": "Komeetmijn",
     "pearlFarm": "Parelkwekerij",
     "lifeguardTower": "Reddingstoren",
     "researchShip": "Onderzoeksschip",

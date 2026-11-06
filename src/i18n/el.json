@@ -230,6 +230,16 @@
     "treasury": "Θησαυροφυλάκιο"
   },
   "levelTitles": {
+    "wormholeGate": "Πύλη σκουληκότρυπας",
+    "cloudCity": "Πόλη στα σύννεφα",
+    "spaceJunkyard": "Διαστημικό σκραπάδικο",
+    "spaceHotel": "Διαστημικό ξενοδοχείο",
+    "alienJungle": "Εξωγήινη ζούγκλα",
+    "spaceElevator": "Διαστημικός ανελκυστήρας",
+    "alienBeach": "Εξωγήινη παραλία",
+    "lunarRace": "Αγώνας στη Σελήνη",
+    "spaceZoo": "Διαστημικός ζωολογικός κήπος",
+    "cometMining": "Ορυχείο σε κομήτη",
     "pearlFarm": "Φάρμα μαργαριταριών",
     "lifeguardTower": "Πύργος ναυαγοσώστη",
     "researchShip": "Ερευνητικό σκάφος",

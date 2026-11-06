@@ -230,6 +230,16 @@
     "treasury": "Salle au trésor"
   },
   "levelTitles": {
+    "wormholeGate": "Porte du trou de ver",
+    "cloudCity": "Cité des nuages",
+    "spaceJunkyard": "Casse spatiale",
+    "spaceHotel": "Hôtel spatial",
+    "alienJungle": "Jungle extraterrestre",
+    "spaceElevator": "Ascenseur spatial",
+    "alienBeach": "Plage extraterrestre",
+    "lunarRace": "Course lunaire",
+    "spaceZoo": "Zoo spatial",
+    "cometMining": "Mine sur une comète",
     "pearlFarm": "Ferme perlière",
     "lifeguardTower": "Poste de sauveteur",
     "researchShip": "Navire de recherche",

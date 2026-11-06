@@ -230,6 +230,16 @@
     "treasury": "Hazine odası"
   },
   "levelTitles": {
+    "wormholeGate": "Solucan deliği kapısı",
+    "cloudCity": "Bulut şehri",
+    "spaceJunkyard": "Uzay hurdalığı",
+    "spaceHotel": "Uzay oteli",
+    "alienJungle": "Uzaylı ormanı",
+    "spaceElevator": "Uzay asansörü",
+    "alienBeach": "Uzaylı plajı",
+    "lunarRace": "Ay yarışı",
+    "spaceZoo": "Uzay hayvanat bahçesi",
+    "cometMining": "Kuyruklu yıldız madeni",
     "pearlFarm": "İnci çiftliği",
     "lifeguardTower": "Cankurtaran kulesi",
     "researchShip": "Araştırma gemisi",

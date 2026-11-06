@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "蟲洞之門",
+    "cloudCity": "雲中之城",
+    "spaceJunkyard": "太空廢料場",
+    "spaceHotel": "太空飯店",
+    "alienJungle": "外星叢林",
+    "spaceElevator": "太空電梯",
+    "alienBeach": "外星海灘",
+    "lunarRace": "月球賽車",
+    "spaceZoo": "太空動物園",
+    "cometMining": "彗星採礦",
     "pearlFarm": "珍珠養殖場",
     "lifeguardTower": "救生員瞭望塔",
     "researchShip": "科研船",

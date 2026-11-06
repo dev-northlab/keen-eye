@@ -230,6 +230,16 @@
     "treasury": "Sala do tesouro"
   },
   "levelTitles": {
+    "wormholeGate": "Portal do buraco de minhoca",
+    "cloudCity": "Cidade nas nuvens",
+    "spaceJunkyard": "Ferro-velho espacial",
+    "spaceHotel": "Hotel espacial",
+    "alienJungle": "Selva alienígena",
+    "spaceElevator": "Elevador espacial",
+    "alienBeach": "Praia alienígena",
+    "lunarRace": "Corrida lunar",
+    "spaceZoo": "Zoológico espacial",
+    "cometMining": "Mineração no cometa",
     "pearlFarm": "Fazenda de pérolas",
     "lifeguardTower": "Torre do salva-vidas",
     "researchShip": "Navio de pesquisa",

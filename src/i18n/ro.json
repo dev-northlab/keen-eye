@@ -230,6 +230,16 @@
     "treasury": "Camera comorii"
   },
   "levelTitles": {
+    "wormholeGate": "Poarta găurii de vierme",
+    "cloudCity": "Orașul din nori",
+    "spaceJunkyard": "Fier vechi spațial",
+    "spaceHotel": "Hotel spațial",
+    "alienJungle": "Junglă extraterestră",
+    "spaceElevator": "Lift spațial",
+    "alienBeach": "Plajă extraterestră",
+    "lunarRace": "Cursă pe Lună",
+    "spaceZoo": "Grădina zoologică spațială",
+    "cometMining": "Mină pe cometă",
     "pearlFarm": "Fermă de perle",
     "lifeguardTower": "Turnul salvamarului",
     "researchShip": "Navă de cercetare",

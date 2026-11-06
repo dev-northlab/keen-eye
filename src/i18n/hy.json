@@ -230,6 +230,16 @@
     "treasury": "Գանձարան"
   },
   "levelTitles": {
+    "wormholeGate": "Որդնախոռոչի դարպաս",
+    "cloudCity": "Ամպային քաղաք",
+    "spaceJunkyard": "Տիեզերական աղբանոց",
+    "spaceHotel": "Տիեզերական հյուրանոց",
+    "alienJungle": "Այլմոլորակային ջունգլիներ",
+    "spaceElevator": "Տիեզերական վերելակ",
+    "alienBeach": "Այլմոլորակային լողափ",
+    "lunarRace": "Մրցարշավ Լուսնի վրա",
+    "spaceZoo": "Տիեզերական կենդանաբանական այգի",
+    "cometMining": "Հանքեր գիսաստղի վրա",
     "pearlFarm": "Մարգարտի ֆերմա",
     "lifeguardTower": "Փրկարարի աշտարակ",
     "researchShip": "Գիտահետազոտական նավ",

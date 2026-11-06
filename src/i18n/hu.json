@@ -230,6 +230,16 @@
     "treasury": "Kincskamra"
   },
   "levelTitles": {
+    "wormholeGate": "Féreglyukkapu",
+    "cloudCity": "Felhőváros",
+    "spaceJunkyard": "Űrroncstelep",
+    "spaceHotel": "Űrhotel",
+    "alienJungle": "Földönkívüli dzsungel",
+    "spaceElevator": "Űrlift",
+    "alienBeach": "Földönkívüli strand",
+    "lunarRace": "Holdverseny",
+    "spaceZoo": "Űrállatkert",
+    "cometMining": "Bánya az üstökösön",
     "pearlFarm": "Gyöngyfarm",
     "lifeguardTower": "Vízimentő-torony",
     "researchShip": "Kutatóhajó",

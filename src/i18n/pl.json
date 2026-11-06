@@ -230,6 +230,16 @@
     "treasury": "Skarbiec"
   },
   "levelTitles": {
+    "wormholeGate": "Brama tunelu czasoprzestrzennego",
+    "cloudCity": "Miasto w chmurach",
+    "spaceJunkyard": "Kosmiczne złomowisko",
+    "spaceHotel": "Kosmiczny hotel",
+    "alienJungle": "Obca dżungla",
+    "spaceElevator": "Winda kosmiczna",
+    "alienBeach": "Obca plaża",
+    "lunarRace": "Wyścig na Księżycu",
+    "spaceZoo": "Kosmiczne zoo",
+    "cometMining": "Kopalnia na komecie",
     "pearlFarm": "Farma pereł",
     "lifeguardTower": "Wieża ratownika",
     "researchShip": "Statek badawczy",

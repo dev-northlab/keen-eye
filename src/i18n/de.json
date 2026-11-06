@@ -230,6 +230,16 @@
     "treasury": "Schatzkammer"
   },
   "levelTitles": {
+    "wormholeGate": "Wurmlochtor",
+    "cloudCity": "Wolkenstadt",
+    "spaceJunkyard": "Weltraumschrottplatz",
+    "spaceHotel": "Weltraumhotel",
+    "alienJungle": "Alien-Dschungel",
+    "spaceElevator": "Weltraumaufzug",
+    "alienBeach": "Alien-Strand",
+    "lunarRace": "Mondrennen",
+    "spaceZoo": "Weltraumzoo",
+    "cometMining": "Kometenbergbau",
     "pearlFarm": "Perlenfarm",
     "lifeguardTower": "Rettungsturm",
     "researchShip": "Forschungsschiff",

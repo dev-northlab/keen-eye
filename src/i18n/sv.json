@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Maskhålsporten",
+    "cloudCity": "Molnstaden",
+    "spaceJunkyard": "Rymdskrot",
+    "spaceHotel": "Rymdhotell",
+    "alienJungle": "Utomjordisk djungel",
+    "spaceElevator": "Rymdhiss",
+    "alienBeach": "Utomjordisk strand",
+    "lunarRace": "Månrace",
+    "spaceZoo": "Rymdzoo",
+    "cometMining": "Gruva på kometen",
     "pearlFarm": "Pärlodling",
     "lifeguardTower": "Livräddartorn",
     "researchShip": "Forskningsfartyg",

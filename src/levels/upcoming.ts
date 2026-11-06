@@ -46,7 +46,17 @@ import level187 from './chapter-04/level-187.ts'
 import level188 from './chapter-04/level-188.ts'
 import level189 from './chapter-04/level-189.ts'
 import level190 from './chapter-04/level-190.ts'
+import level191 from './chapter-05/level-191.ts'
+import level192 from './chapter-05/level-192.ts'
+import level193 from './chapter-05/level-193.ts'
+import level194 from './chapter-05/level-194.ts'
+import level195 from './chapter-05/level-195.ts'
+import level196 from './chapter-05/level-196.ts'
+import level197 from './chapter-05/level-197.ts'
+import level198 from './chapter-05/level-198.ts'
+import level199 from './chapter-05/level-199.ts'
+import level200 from './chapter-05/level-200.ts'
 
-export const upcomingLevels: Level[] = [level151, level152, level153, level154, level155, level156, level157, level158, level159, level160, level161, level162, level163, level164, level165, level166, level167, level168, level169, level170, level171, level172, level173, level174, level175, level176, level177, level178, level179, level180, level181, level182, level183, level184, level185, level186, level187, level188, level189, level190]
+export const upcomingLevels: Level[] = [level151, level152, level153, level154, level155, level156, level157, level158, level159, level160, level161, level162, level163, level164, level165, level166, level167, level168, level169, level170, level171, level172, level173, level174, level175, level176, level177, level178, level179, level180, level181, level182, level183, level184, level185, level186, level187, level188, level189, level190, level191, level192, level193, level194, level195, level196, level197, level198, level199, level200]
 
 export const isUpcoming = (id: number) => upcomingLevels.some((l) => l.id === id)

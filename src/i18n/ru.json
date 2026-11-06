@@ -230,6 +230,16 @@
     "treasury": "Сокровищница"
   },
   "levelTitles": {
+    "wormholeGate": "Врата червоточины",
+    "cloudCity": "Облачный город",
+    "spaceJunkyard": "Космическая свалка",
+    "spaceHotel": "Космический отель",
+    "alienJungle": "Инопланетные джунгли",
+    "spaceElevator": "Космический лифт",
+    "alienBeach": "Инопланетный пляж",
+    "lunarRace": "Гонки на Луне",
+    "spaceZoo": "Космический зоопарк",
+    "cometMining": "Шахта на комете",
     "pearlFarm": "Жемчужная ферма",
     "lifeguardTower": "Спасательная вышка",
     "researchShip": "Научное судно",

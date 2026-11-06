@@ -230,6 +230,16 @@
     "treasury": "Съкровищница"
   },
   "levelTitles": {
+    "wormholeGate": "Портал на червеева дупка",
+    "cloudCity": "Град в облаците",
+    "spaceJunkyard": "Космическо гробище за отпадъци",
+    "spaceHotel": "Космически хотел",
+    "alienJungle": "Извънземна джунгла",
+    "spaceElevator": "Космически асансьор",
+    "alienBeach": "Извънземен плаж",
+    "lunarRace": "Състезание на Луната",
+    "spaceZoo": "Космически зоопарк",
+    "cometMining": "Мина на комета",
     "pearlFarm": "Перлена ферма",
     "lifeguardTower": "Спасителна кула",
     "researchShip": "Изследователски кораб",

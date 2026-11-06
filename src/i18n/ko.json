@@ -230,6 +230,16 @@
     "treasury": "보물 창고"
   },
   "levelTitles": {
+    "wormholeGate": "웜홀 관문",
+    "cloudCity": "구름 도시",
+    "spaceJunkyard": "우주 고물상",
+    "spaceHotel": "우주 호텔",
+    "alienJungle": "외계 정글",
+    "spaceElevator": "우주 엘리베이터",
+    "alienBeach": "외계 해변",
+    "lunarRace": "달 레이스",
+    "spaceZoo": "우주 동물원",
+    "cometMining": "혜성 광산",
     "pearlFarm": "진주 양식장",
     "lifeguardTower": "인명구조 감시탑",
     "researchShip": "연구선",

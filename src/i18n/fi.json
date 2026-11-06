@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Madonreikäportti",
+    "cloudCity": "Pilvikaupunki",
+    "spaceJunkyard": "Avaruusromuttamo",
+    "spaceHotel": "Avaruushotelli",
+    "alienJungle": "Avaruusolentojen viidakko",
+    "spaceElevator": "Avaruushissi",
+    "alienBeach": "Avaruusolentojen ranta",
+    "lunarRace": "Kuukilpailu",
+    "spaceZoo": "Avaruuseläintarha",
+    "cometMining": "Komeettakaivos",
     "pearlFarm": "Helmifarmi",
     "lifeguardTower": "Hengenpelastajan torni",
     "researchShip": "Tutkimusalus",

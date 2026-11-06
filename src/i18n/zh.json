@@ -230,6 +230,16 @@
     "treasury": "藏宝室"
   },
   "levelTitles": {
+    "wormholeGate": "虫洞之门",
+    "cloudCity": "云中之城",
+    "spaceJunkyard": "太空废品场",
+    "spaceHotel": "太空酒店",
+    "alienJungle": "外星丛林",
+    "spaceElevator": "太空电梯",
+    "alienBeach": "外星海滩",
+    "lunarRace": "月球赛车",
+    "spaceZoo": "太空动物园",
+    "cometMining": "彗星采矿",
     "pearlFarm": "珍珠养殖场",
     "lifeguardTower": "救生员瞭望塔",
     "researchShip": "科考船",

@@ -230,6 +230,16 @@
     "treasury": "Klenotnice"
   },
   "levelTitles": {
+    "wormholeGate": "Brána červí díry",
+    "cloudCity": "Město v oblacích",
+    "spaceJunkyard": "Vesmírné vrakoviště",
+    "spaceHotel": "Vesmírný hotel",
+    "alienJungle": "Mimozemská džungle",
+    "spaceElevator": "Vesmírný výtah",
+    "alienBeach": "Mimozemská pláž",
+    "lunarRace": "Závod na Měsíci",
+    "spaceZoo": "Vesmírná zoo",
+    "cometMining": "Těžba na kometě",
     "pearlFarm": "Perlová farma",
     "lifeguardTower": "Plavčíkova věž",
     "researchShip": "Výzkumná loď",

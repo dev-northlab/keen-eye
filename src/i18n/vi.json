@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Cổng hố giun",
+    "cloudCity": "Thành phố trên mây",
+    "spaceJunkyard": "Bãi phế liệu vũ trụ",
+    "spaceHotel": "Khách sạn vũ trụ",
+    "alienJungle": "Rừng rậm ngoài hành tinh",
+    "spaceElevator": "Thang máy vũ trụ",
+    "alienBeach": "Bãi biển ngoài hành tinh",
+    "lunarRace": "Đua xe trên Mặt Trăng",
+    "spaceZoo": "Vườn thú vũ trụ",
+    "cometMining": "Mỏ trên sao chổi",
     "pearlFarm": "Trại nuôi ngọc trai",
     "lifeguardTower": "Chòi cứu hộ",
     "researchShip": "Tàu nghiên cứu",

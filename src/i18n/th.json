@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "ประตูรูหนอน",
+    "cloudCity": "เมืองบนเมฆ",
+    "spaceJunkyard": "ลานเศษเหล็กอวกาศ",
+    "spaceHotel": "โรงแรมอวกาศ",
+    "alienJungle": "ป่าต่างดาว",
+    "spaceElevator": "ลิฟต์อวกาศ",
+    "alienBeach": "ชายหาดต่างดาว",
+    "lunarRace": "แข่งรถบนดวงจันทร์",
+    "spaceZoo": "สวนสัตว์อวกาศ",
+    "cometMining": "เหมืองบนดาวหาง",
     "pearlFarm": "ฟาร์มไข่มุก",
     "lifeguardTower": "หอไลฟ์การ์ด",
     "researchShip": "เรือสำรวจวิจัย",

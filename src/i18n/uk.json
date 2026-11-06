@@ -230,6 +230,16 @@
     "treasury": "Скарбниця"
   },
   "levelTitles": {
+    "wormholeGate": "Брама кротовини",
+    "cloudCity": "Хмарне місто",
+    "spaceJunkyard": "Космічне звалище",
+    "spaceHotel": "Космічний готель",
+    "alienJungle": "Інопланетні джунглі",
+    "spaceElevator": "Космічний ліфт",
+    "alienBeach": "Інопланетний пляж",
+    "lunarRace": "Перегони на Місяці",
+    "spaceZoo": "Космічний зоопарк",
+    "cometMining": "Шахта на кометі",
     "pearlFarm": "Перлова ферма",
     "lifeguardTower": "Рятувальна вежа",
     "researchShip": "Дослідницьке судно",

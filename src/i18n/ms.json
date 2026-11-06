@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Gerbang lubang cacing",
+    "cloudCity": "Kota awan",
+    "spaceJunkyard": "Tempat besi buruk angkasa",
+    "spaceHotel": "Hotel angkasa",
+    "alienJungle": "Hutan makhluk asing",
+    "spaceElevator": "Lif angkasa",
+    "alienBeach": "Pantai makhluk asing",
+    "lunarRace": "Perlumbaan di Bulan",
+    "spaceZoo": "Zoo angkasa",
+    "cometMining": "Lombong komet",
     "pearlFarm": "Ladang mutiara",
     "lifeguardTower": "Menara penyelamat pantai",
     "researchShip": "Kapal penyelidikan",

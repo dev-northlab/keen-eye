@@ -230,6 +230,16 @@
     "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
+    "wormholeGate": "Portale del wormhole",
+    "cloudCity": "Città tra le nuvole",
+    "spaceJunkyard": "Sfasciacarrozze spaziale",
+    "spaceHotel": "Hotel spaziale",
+    "alienJungle": "Giungla aliena",
+    "spaceElevator": "Ascensore spaziale",
+    "alienBeach": "Spiaggia aliena",
+    "lunarRace": "Corsa lunare",
+    "spaceZoo": "Zoo spaziale",
+    "cometMining": "Miniera sulla cometa",
     "pearlFarm": "Allevamento di perle",
     "lifeguardTower": "Torretta del bagnino",
     "researchShip": "Nave da ricerca",

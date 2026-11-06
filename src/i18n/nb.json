@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Ormehullsporten",
+    "cloudCity": "Skybyen",
+    "spaceJunkyard": "Romskraphaug",
+    "spaceHotel": "Romhotell",
+    "alienJungle": "Fremmed jungel",
+    "spaceElevator": "Romheis",
+    "alienBeach": "Fremmed strand",
+    "lunarRace": "Måneløp",
+    "spaceZoo": "Romdyrehage",
+    "cometMining": "Gruve på kometen",
     "pearlFarm": "Perlefarm",
     "lifeguardTower": "Badevakttårn",
     "researchShip": "Forskningsskip",

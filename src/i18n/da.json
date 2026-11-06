@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Ormehulsporten",
+    "cloudCity": "Skybyen",
+    "spaceJunkyard": "Rumskrotplads",
+    "spaceHotel": "Rumhotel",
+    "alienJungle": "Fremmed jungle",
+    "spaceElevator": "Rumelevator",
+    "alienBeach": "Fremmed strand",
+    "lunarRace": "Månevæddeløb",
+    "spaceZoo": "Rumzoo",
+    "cometMining": "Mine på kometen",
     "pearlFarm": "Perlefarm",
     "lifeguardTower": "Livredderstårn",
     "researchShip": "Forskningsskib",

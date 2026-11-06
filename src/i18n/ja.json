@@ -230,6 +230,16 @@
     "treasury": "宝物庫"
   },
   "levelTitles": {
+    "wormholeGate": "ワームホールのゲート",
+    "cloudCity": "雲の都市",
+    "spaceJunkyard": "宇宙のスクラップ置き場",
+    "spaceHotel": "宇宙ホテル",
+    "alienJungle": "異星のジャングル",
+    "spaceElevator": "宇宙エレベーター",
+    "alienBeach": "異星のビーチ",
+    "lunarRace": "月面レース",
+    "spaceZoo": "宇宙動物園",
+    "cometMining": "彗星の採掘場",
     "pearlFarm": "真珠の養殖場",
     "lifeguardTower": "ライフガードの監視塔",
     "researchShip": "調査船",

@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "بوابة الثقب الدودي",
+    "cloudCity": "مدينة السحاب",
+    "spaceJunkyard": "ساحة خردة فضائية",
+    "spaceHotel": "فندق فضائي",
+    "alienJungle": "غابة فضائية",
+    "spaceElevator": "مصعد فضائي",
+    "alienBeach": "شاطئ فضائي",
+    "lunarRace": "سباق على القمر",
+    "spaceZoo": "حديقة حيوان فضائية",
+    "cometMining": "منجم على مذنّب",
     "pearlFarm": "مزرعة اللؤلؤ",
     "lifeguardTower": "برج المنقذ",
     "researchShip": "سفينة الأبحاث",

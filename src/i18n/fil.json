@@ -482,6 +482,16 @@
     }
   },
   "levelTitles": {
+    "wormholeGate": "Pintuan ng wormhole",
+    "cloudCity": "Lungsod sa ulap",
+    "spaceJunkyard": "Bakuran ng basura sa kalawakan",
+    "spaceHotel": "Hotel sa kalawakan",
+    "alienJungle": "Gubat ng alien",
+    "spaceElevator": "Elevator sa kalawakan",
+    "alienBeach": "Dalampasigan ng alien",
+    "lunarRace": "Karera sa Buwan",
+    "spaceZoo": "Zoo sa kalawakan",
+    "cometMining": "Minahan sa kometa",
     "pearlFarm": "Bukid ng perlas",
     "lifeguardTower": "Tore ng lifeguard",
     "researchShip": "Barkong pansaliksik",

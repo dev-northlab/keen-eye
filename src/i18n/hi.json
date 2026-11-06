@@ -230,6 +230,16 @@
     "treasury": "ख़ज़ाना"
   },
   "levelTitles": {
+    "wormholeGate": "वर्महोल द्वार",
+    "cloudCity": "बादलों का शहर",
+    "spaceJunkyard": "अंतरिक्ष कबाड़खाना",
+    "spaceHotel": "अंतरिक्ष होटल",
+    "alienJungle": "एलियन जंगल",
+    "spaceElevator": "अंतरिक्ष लिफ़्ट",
+    "alienBeach": "एलियन समुद्र तट",
+    "lunarRace": "चाँद पर रेस",
+    "spaceZoo": "अंतरिक्ष चिड़ियाघर",
+    "cometMining": "धूमकेतु पर खदान",
     "pearlFarm": "मोती फ़ार्म",
     "lifeguardTower": "लाइफ़गार्ड टावर",
     "researchShip": "अनुसंधान जहाज़",

@@ -230,6 +230,16 @@
     "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
+    "wormholeGate": "Portal del agujero de gusano",
+    "cloudCity": "Ciudad en las nubes",
+    "spaceJunkyard": "Chatarrería espacial",
+    "spaceHotel": "Hotel espacial",
+    "alienJungle": "Jungla alienígena",
+    "spaceElevator": "Ascensor espacial",
+    "alienBeach": "Playa alienígena",
+    "lunarRace": "Carrera lunar",
+    "spaceZoo": "Zoológico espacial",
+    "cometMining": "Minería en un cometa",
     "pearlFarm": "Granja de perlas",
     "lifeguardTower": "Torre de socorrista",
     "researchShip": "Buque científico",

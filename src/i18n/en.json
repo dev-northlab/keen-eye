@@ -230,6 +230,16 @@
     "treasury": "Treasury"
   },
   "levelTitles": {
+    "wormholeGate": "Wormhole gate",
+    "cloudCity": "Cloud city",
+    "spaceJunkyard": "Space junkyard",
+    "spaceHotel": "Space hotel",
+    "alienJungle": "Alien jungle",
+    "spaceElevator": "Space elevator",
+    "alienBeach": "Alien beach",
+    "lunarRace": "Lunar race",
+    "spaceZoo": "Space zoo",
+    "cometMining": "Comet mining",
     "pearlFarm": "Pearl farm",
     "lifeguardTower": "Lifeguard tower",
     "researchShip": "Research ship",
