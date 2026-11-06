@@ -18,6 +18,16 @@ const night = computed(() => settings.theme === 'dark')
 /** The meadow follows the season chosen on the home screen (sky colours, falling petals/leaves/snow). */
 const season = computed(() => (props.theme === 'meadow' ? settings.season : null))
 
+/**
+ * The meadow in the redesigned picture style (levels/picture-style.ts): one ready picture per season, day and night
+ * (public/backdrops/), cut to the window like the strip, instead of the drawn sky and landscape.
+ */
+const picture = computed(() =>
+  season.value && settings.pictureStyle === 'redesign'
+    ? `${import.meta.env.BASE_URL}backdrops/meadow-${season.value}-${night.value ? 'night' : 'day'}.webp`
+    : null,
+)
+
 const FALLING = {
   spring: { count: 14, size: 9, colors: ['#ffd1e0', '#ffffff', '#ffb3cb'] },
   summer: { count: 0, size: 0, colors: [] },
@@ -159,255 +169,258 @@ const craters = [
     :class="[theme, season, { night }]"
     aria-hidden="true"
   >
-    <svg v-if="theme === 'space' || night" class="stars" preserveAspectRatio="none">
-      <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
-    </svg>
-    <div class="sky">
-      <!-- The glow pulses and the rays turn slowly. Backdrops always move: "reduce motion" is for levels only. -->
-      <div class="sun">
-        <div class="glow" />
-        <svg viewBox="-20 -20 140 140">
-          <g class="rays">
-            <line v-for="(r, i) in rays" :key="i" v-bind="r" />
+    <img v-if="picture" class="picture" :src="picture" alt="" />
+    <template v-else>
+      <svg v-if="theme === 'space' || night" class="stars" preserveAspectRatio="none">
+        <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
+      </svg>
+      <div class="sky">
+        <!-- The glow pulses and the rays turn slowly. Backdrops always move: "reduce motion" is for levels only. -->
+        <div class="sun">
+          <div class="glow" />
+          <svg viewBox="-20 -20 140 140">
+            <g class="rays">
+              <line v-for="(r, i) in rays" :key="i" v-bind="r" />
+            </g>
+            <circle cx="50" cy="50" r="38" fill="#fff" fill-opacity="0.5" />
+            <circle class="disc" cx="50" cy="50" r="32" />
+            <circle cx="40" cy="40" r="9" fill="#fff" fill-opacity="0.35" />
+          </svg>
+        </div>
+
+        <svg
+          v-for="(c, i) in clouds"
+          :key="i"
+          class="cloud"
+          viewBox="0 0 120 50"
+          :style="{
+            top: `${c.top}%`,
+            width: `${c.w}px`,
+            animationDuration: `${c.dur}s`,
+            animationDelay: `${c.delay}s`,
+            opacity: c.opacity,
+          }"
+        >
+          <g fill="#fff">
+            <circle cx="35" cy="30" r="18" />
+            <circle cx="60" cy="22" r="22" />
+            <circle cx="85" cy="30" r="16" />
+            <rect x="20" y="30" width="80" height="18" rx="9" />
           </g>
-          <circle cx="50" cy="50" r="38" fill="#fff" fill-opacity="0.5" />
-          <circle class="disc" cx="50" cy="50" r="32" />
-          <circle cx="40" cy="40" r="9" fill="#fff" fill-opacity="0.35" />
         </svg>
       </div>
 
-      <svg
-        v-for="(c, i) in clouds"
-        :key="i"
-        class="cloud"
-        viewBox="0 0 120 50"
-        :style="{
-          top: `${c.top}%`,
-          width: `${c.w}px`,
-          animationDuration: `${c.dur}s`,
-          animationDelay: `${c.delay}s`,
-          opacity: c.opacity,
-        }"
-      >
-        <g fill="#fff">
-          <circle cx="35" cy="30" r="18" />
-          <circle cx="60" cy="22" r="22" />
-          <circle cx="85" cy="30" r="16" />
-          <rect x="20" y="30" width="80" height="18" rx="9" />
-        </g>
-      </svg>
-    </div>
+      <!-- Wide strip cut to the window: on a phone its middle part stays visible. -->
+      <svg class="strip" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
+        <MeadowScene v-if="theme === 'meadow'" :season="settings.season" />
 
-    <!-- Wide strip cut to the window: on a phone its middle part stays visible. -->
-    <svg class="strip" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
-      <MeadowScene v-if="theme === 'meadow'" :season="settings.season" />
-
-      <template v-else-if="theme === 'farm'">
-        <path d="M0 180Q300 120 640 170T1600 150V400H0Z" fill="#c7dd8f" />
-        <path d="M0 250Q400 220 800 250T1600 240V400H0Z" fill="#e9c46a" />
-        <path v-for="y in cropRows" :key="y" :d="`M0 ${y}Q400 ${y - 14} 800 ${y}T1600 ${y - 6}`" fill="none" stroke="#d9a43a" stroke-width="3" />
-        <g transform="translate(700 236)">
-          <path d="M-28 0L-18-90h36L28 0Z" fill="#f4efe6" />
-          <path d="M-32 0h64v10h-64Z" fill="#a0703f" />
-          <rect x="-8" y="-40" width="16" height="22" fill="#5a3d2b" />
-          <g class="sails">
-            <path d="M0-96L-56-52M0-96L56-52M0-96L-56-140M0-96L56-140" stroke="#6b4f3a" stroke-width="5" stroke-linecap="round" />
-            <path d="M-50-56l-6-40 24 10ZM50-56l6-40-24 10ZM-50-136l-6 40 24-10ZM50-136l6 40-24-10Z" fill="#fff" fill-opacity="0.9" />
-            <circle cy="-96" r="6" fill="#6b4f3a" />
-          </g>
-        </g>
-        <path d="M0 340Q400 310 800 335T1600 325V400H0Z" fill="#8fca68" />
-        <g v-for="(b, i) in bales" :key="i" :transform="`translate(${b.x} ${b.y}) scale(${b.s})`">
-          <ellipse rx="34" ry="26" fill="#f2c14e" />
-          <path d="M-20-10q8-6 16 0M2-14q8-6 16 0M-12 10q8-6 16 0M10 6q8-6 14 0" stroke="#d9a43a" stroke-width="3" fill="none" />
-        </g>
-        <g v-for="(f, i) in sunflowers" :key="i" :transform="`translate(${f.x} 372)`">
-          <path :d="`M0 0V-${f.h}`" stroke="#3f8f3a" stroke-width="4" />
-          <g :transform="`translate(0 -${f.h})`">
-            <circle v-for="k in 8" :key="k" :cx="12 * Math.cos((k * Math.PI) / 4)" :cy="12 * Math.sin((k * Math.PI) / 4)" r="6" fill="#ffc300" />
-            <circle r="8" fill="#6b3f1d" />
-          </g>
-        </g>
-        <rect x="320" y="344" width="960" height="6" fill="#d8bd8a" />
-        <rect x="320" y="362" width="960" height="6" fill="#d8bd8a" />
-        <rect v-for="k in 13" :key="k" :x="320 + (k - 1) * 80" y="334" width="12" height="44" rx="3" fill="#e9d3a7" />
-        <g transform="translate(900 372)">
-          <path d="M-10 0h-6v-10M10 0h6v-10M-14-10h28" stroke="#ff9f1c" stroke-width="3" />
-          <ellipse cy="-20" rx="18" ry="13" fill="#fff" />
-          <circle cx="14" cy="-32" r="8" fill="#fff" />
-          <path d="M22-34l6 2-6 3Z" fill="#ff9f1c" />
-          <circle cx="12" cy="-42" r="3" fill="#e63946" />
-          <circle cx="17" cy="-41" r="3" fill="#e63946" />
-        </g>
-      </template>
-
-      <template v-else-if="theme === 'forest'">
-        <path d="M0 200Q300 120 640 180T1300 160T1600 180V400H0Z" fill="#a9d3a0" />
-        <g v-for="(p, i) in farPines" :key="i" :transform="`translate(${p.x} ${p.y}) scale(${p.s})`">
-          <rect x="-4" y="0" width="8" height="16" fill="#8a6a4e" />
-          <path d="M0-70L-26-20h12L-32 4h64L14-20h12Z" fill="#7fb88a" />
-        </g>
-        <path d="M0 270Q350 220 800 260T1600 250V400H0Z" fill="#7cbf7a" />
-        <g v-for="(p, i) in nearPines" :key="i" :transform="`translate(${p.x} ${p.y}) scale(${p.s})`">
-          <rect x="-5" y="0" width="10" height="20" fill="#7a4e33" />
-          <path d="M0-70L-26-20h12L-32 4h64L14-20h12Z" :fill="p.c" />
-          <path d="M0-70L-13-45" stroke="#fff" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round" />
-        </g>
-        <path d="M0 320Q400 290 800 315T1600 305V400H0Z" fill="#5fae6a" />
-        <g v-for="(m, i) in mushrooms" :key="i" :transform="`translate(${m.x} ${m.y}) scale(${m.s})`">
-          <rect x="-5" y="-4" width="10" height="16" rx="3" fill="#fff4e0" />
-          <path d="M-18 -2a18 16 0 0 1 36 0Z" fill="#e05a47" />
-          <circle cx="-7" cy="-9" r="3" fill="#fff" />
-          <circle cx="6" cy="-11" r="2.5" fill="#fff" />
-        </g>
-        <circle
-          v-for="(f, i) in flowers.filter((_, k) => k % 3 === 0)"
-          :key="i"
-          :cx="f.x"
-          :cy="f.y + 10"
-          r="3.5"
-          :fill="f.color"
-        />
-      </template>
-
-      <template v-else-if="theme === 'sea'">
-        <path :d="crest(190, 16, 100)" fill="#8fd8ec" />
-        <rect y="200" width="1600" height="200" fill="#5cc0de" />
-        <!-- Sun glints on the water. -->
-        <path
-          d="M260 222h28M300 232h14M520 244h30M900 226h22M1290 236h30M1330 226h14M1480 246h24"
-          stroke="#fff"
-          stroke-opacity="0.6"
-          stroke-width="3"
-          stroke-linecap="round"
-        />
-        <!-- Island on the near water, behind the front wave; everything stays below y = 70
-             (wide windows cut the strip's top 60 units). -->
-        <g transform="translate(1010 262)">
-          <path d="M-150 0Q-80-50 0-52Q86-52 150 0Z" fill="#e3bf7d" />
-          <path d="M-128 0Q-66-40 6-42Q76-40 128 0Z" fill="#f4dca4" />
-          <path d="M-60-30q16-6 30-4M24-36q18-2 30 4" stroke="#fff" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round" fill="none" />
-          <!-- Small palm leaning left. -->
-          <g transform="translate(-52 -30)">
-            <path d="M0 0Q4-34-26-62" fill="none" stroke="#9a6b43" stroke-width="8" stroke-linecap="round" />
-            <path d="M0 0Q4-34-26-62" fill="none" stroke="#7d5434" stroke-width="8" stroke-dasharray="2 7" />
-            <g transform="translate(-26 -62) scale(0.7)">
-              <path v-for="(l, i) in palmLeaves" :key="i" :d="PALM_LEAF" :fill="l.c" :transform="l.t" />
+        <template v-else-if="theme === 'farm'">
+          <path d="M0 180Q300 120 640 170T1600 150V400H0Z" fill="#c7dd8f" />
+          <path d="M0 250Q400 220 800 250T1600 240V400H0Z" fill="#e9c46a" />
+          <path v-for="y in cropRows" :key="y" :d="`M0 ${y}Q400 ${y - 14} 800 ${y}T1600 ${y - 6}`" fill="none" stroke="#d9a43a" stroke-width="3" />
+          <g transform="translate(700 236)">
+            <path d="M-28 0L-18-90h36L28 0Z" fill="#f4efe6" />
+            <path d="M-32 0h64v10h-64Z" fill="#a0703f" />
+            <rect x="-8" y="-40" width="16" height="22" fill="#5a3d2b" />
+            <g class="sails">
+              <path d="M0-96L-56-52M0-96L56-52M0-96L-56-140M0-96L56-140" stroke="#6b4f3a" stroke-width="5" stroke-linecap="round" />
+              <path d="M-50-56l-6-40 24 10ZM50-56l6-40-24 10ZM-50-136l-6 40 24-10ZM50-136l6 40-24-10Z" fill="#fff" fill-opacity="0.9" />
+              <circle cy="-96" r="6" fill="#6b4f3a" />
             </g>
           </g>
-          <!-- Tall palm. -->
-          <g transform="translate(12 -40)">
-            <path d="M0 0Q-8-52 20-104" fill="none" stroke="#9a6b43" stroke-width="11" stroke-linecap="round" />
-            <path d="M0 0Q-8-52 20-104" fill="none" stroke="#7d5434" stroke-width="11" stroke-dasharray="2.5 9" />
-            <g transform="translate(20 -104)">
-              <path v-for="(l, i) in palmLeaves" :key="i" :d="PALM_LEAF" :fill="l.c" :transform="l.t" />
-              <circle cx="-5" cy="6" r="6" fill="#7a4e33" />
-              <circle cx="6" cy="7" r="6" fill="#6b4329" />
-              <circle cx="0" cy="13" r="5.5" fill="#7a4e33" />
+          <path d="M0 340Q400 310 800 335T1600 325V400H0Z" fill="#8fca68" />
+          <g v-for="(b, i) in bales" :key="i" :transform="`translate(${b.x} ${b.y}) scale(${b.s})`">
+            <ellipse rx="34" ry="26" fill="#f2c14e" />
+            <path d="M-20-10q8-6 16 0M2-14q8-6 16 0M-12 10q8-6 16 0M10 6q8-6 14 0" stroke="#d9a43a" stroke-width="3" fill="none" />
+          </g>
+          <g v-for="(f, i) in sunflowers" :key="i" :transform="`translate(${f.x} 372)`">
+            <path :d="`M0 0V-${f.h}`" stroke="#3f8f3a" stroke-width="4" />
+            <g :transform="`translate(0 -${f.h})`">
+              <circle v-for="k in 8" :key="k" :cx="12 * Math.cos((k * Math.PI) / 4)" :cy="12 * Math.sin((k * Math.PI) / 4)" r="6" fill="#ffc300" />
+              <circle r="8" fill="#6b3f1d" />
             </g>
           </g>
-          <path d="M-160 4q20-8 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round" />
-        </g>
-        <g transform="translate(640 222)">
-          <path d="M-56 0h112l-20 26h-72Z" fill="#e05a47" />
-          <path d="M4-4V-96L52-10Z" fill="#fff" />
-          <path d="M-4-4V-76L-42-10Z" fill="#ffe08a" />
-          <rect x="-1" y="-100" width="4" height="98" fill="#7a4e33" />
-        </g>
-        <!-- Gulls: two arched wings; the outer group places them, the inner one flaps. -->
-        <g v-for="(g, i) in gulls" :key="i" :transform="`translate(${g.x} ${g.y}) scale(${g.s})`">
+          <rect x="320" y="344" width="960" height="6" fill="#d8bd8a" />
+          <rect x="320" y="362" width="960" height="6" fill="#d8bd8a" />
+          <rect v-for="k in 13" :key="k" :x="320 + (k - 1) * 80" y="334" width="12" height="44" rx="3" fill="#e9d3a7" />
+          <g transform="translate(900 372)">
+            <path d="M-10 0h-6v-10M10 0h6v-10M-14-10h28" stroke="#ff9f1c" stroke-width="3" />
+            <ellipse cy="-20" rx="18" ry="13" fill="#fff" />
+            <circle cx="14" cy="-32" r="8" fill="#fff" />
+            <path d="M22-34l6 2-6 3Z" fill="#ff9f1c" />
+            <circle cx="12" cy="-42" r="3" fill="#e63946" />
+            <circle cx="17" cy="-41" r="3" fill="#e63946" />
+          </g>
+        </template>
+
+        <template v-else-if="theme === 'forest'">
+          <path d="M0 200Q300 120 640 180T1300 160T1600 180V400H0Z" fill="#a9d3a0" />
+          <g v-for="(p, i) in farPines" :key="i" :transform="`translate(${p.x} ${p.y}) scale(${p.s})`">
+            <rect x="-4" y="0" width="8" height="16" fill="#8a6a4e" />
+            <path d="M0-70L-26-20h12L-32 4h64L14-20h12Z" fill="#7fb88a" />
+          </g>
+          <path d="M0 270Q350 220 800 260T1600 250V400H0Z" fill="#7cbf7a" />
+          <g v-for="(p, i) in nearPines" :key="i" :transform="`translate(${p.x} ${p.y}) scale(${p.s})`">
+            <rect x="-5" y="0" width="10" height="20" fill="#7a4e33" />
+            <path d="M0-70L-26-20h12L-32 4h64L14-20h12Z" :fill="p.c" />
+            <path d="M0-70L-13-45" stroke="#fff" stroke-opacity="0.2" stroke-width="4" stroke-linecap="round" />
+          </g>
+          <path d="M0 320Q400 290 800 315T1600 305V400H0Z" fill="#5fae6a" />
+          <g v-for="(m, i) in mushrooms" :key="i" :transform="`translate(${m.x} ${m.y}) scale(${m.s})`">
+            <rect x="-5" y="-4" width="10" height="16" rx="3" fill="#fff4e0" />
+            <path d="M-18 -2a18 16 0 0 1 36 0Z" fill="#e05a47" />
+            <circle cx="-7" cy="-9" r="3" fill="#fff" />
+            <circle cx="6" cy="-11" r="2.5" fill="#fff" />
+          </g>
+          <circle
+            v-for="(f, i) in flowers.filter((_, k) => k % 3 === 0)"
+            :key="i"
+            :cx="f.x"
+            :cy="f.y + 10"
+            r="3.5"
+            :fill="f.color"
+          />
+        </template>
+
+        <template v-else-if="theme === 'sea'">
+          <path :d="crest(190, 16, 100)" fill="#8fd8ec" />
+          <rect y="200" width="1600" height="200" fill="#5cc0de" />
+          <!-- Sun glints on the water. -->
           <path
-            class="gull"
-            :style="{ animationDelay: `${g.delay}s` }"
-            d="M-18 2Q-10-10 0 0Q10-10 18 2"
-            fill="none"
-            stroke="#3d5a66"
-            stroke-width="3.5"
+            d="M260 222h28M300 232h14M520 244h30M900 226h22M1290 236h30M1330 226h14M1480 246h24"
+            stroke="#fff"
+            stroke-opacity="0.6"
+            stroke-width="3"
             stroke-linecap="round"
-            stroke-linejoin="round"
           />
-        </g>
-        <path :d="crest(270, 10, 160)" fill="#3ba7cc" />
-        <path d="M0 330Q200 300 400 325T800 320T1200 325T1600 318V400H0Z" fill="#f2d79e" />
-        <g v-for="(s, i) in shells" :key="i" :transform="`translate(${s.x} ${s.y})`">
-          <path d="M0-12l3.5 7.5 8 1-6 5.5 1.6 8L0 6l-7 4 1.5-8-6-5.5 8-1Z" :fill="s.c" />
-        </g>
-        <ellipse cx="1040" cy="366" rx="18" ry="9" fill="#d8b07a" />
-      </template>
+          <!-- Island on the near water, behind the front wave; everything stays below y = 70
+               (wide windows cut the strip's top 60 units). -->
+          <g transform="translate(1010 262)">
+            <path d="M-150 0Q-80-50 0-52Q86-52 150 0Z" fill="#e3bf7d" />
+            <path d="M-128 0Q-66-40 6-42Q76-40 128 0Z" fill="#f4dca4" />
+            <path d="M-60-30q16-6 30-4M24-36q18-2 30 4" stroke="#fff" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round" fill="none" />
+            <!-- Small palm leaning left. -->
+            <g transform="translate(-52 -30)">
+              <path d="M0 0Q4-34-26-62" fill="none" stroke="#9a6b43" stroke-width="8" stroke-linecap="round" />
+              <path d="M0 0Q4-34-26-62" fill="none" stroke="#7d5434" stroke-width="8" stroke-dasharray="2 7" />
+              <g transform="translate(-26 -62) scale(0.7)">
+                <path v-for="(l, i) in palmLeaves" :key="i" :d="PALM_LEAF" :fill="l.c" :transform="l.t" />
+              </g>
+            </g>
+            <!-- Tall palm. -->
+            <g transform="translate(12 -40)">
+              <path d="M0 0Q-8-52 20-104" fill="none" stroke="#9a6b43" stroke-width="11" stroke-linecap="round" />
+              <path d="M0 0Q-8-52 20-104" fill="none" stroke="#7d5434" stroke-width="11" stroke-dasharray="2.5 9" />
+              <g transform="translate(20 -104)">
+                <path v-for="(l, i) in palmLeaves" :key="i" :d="PALM_LEAF" :fill="l.c" :transform="l.t" />
+                <circle cx="-5" cy="6" r="6" fill="#7a4e33" />
+                <circle cx="6" cy="7" r="6" fill="#6b4329" />
+                <circle cx="0" cy="13" r="5.5" fill="#7a4e33" />
+              </g>
+            </g>
+            <path d="M-160 4q20-8 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="4" stroke-linecap="round" />
+          </g>
+          <g transform="translate(640 222)">
+            <path d="M-56 0h112l-20 26h-72Z" fill="#e05a47" />
+            <path d="M4-4V-96L52-10Z" fill="#fff" />
+            <path d="M-4-4V-76L-42-10Z" fill="#ffe08a" />
+            <rect x="-1" y="-100" width="4" height="98" fill="#7a4e33" />
+          </g>
+          <!-- Gulls: two arched wings; the outer group places them, the inner one flaps. -->
+          <g v-for="(g, i) in gulls" :key="i" :transform="`translate(${g.x} ${g.y}) scale(${g.s})`">
+            <path
+              class="gull"
+              :style="{ animationDelay: `${g.delay}s` }"
+              d="M-18 2Q-10-10 0 0Q10-10 18 2"
+              fill="none"
+              stroke="#3d5a66"
+              stroke-width="3.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </g>
+          <path :d="crest(270, 10, 160)" fill="#3ba7cc" />
+          <path d="M0 330Q200 300 400 325T800 320T1200 325T1600 318V400H0Z" fill="#f2d79e" />
+          <g v-for="(s, i) in shells" :key="i" :transform="`translate(${s.x} ${s.y})`">
+            <path d="M0-12l3.5 7.5 8 1-6 5.5 1.6 8L0 6l-7 4 1.5-8-6-5.5 8-1Z" :fill="s.c" />
+          </g>
+          <ellipse cx="1040" cy="366" rx="18" ry="9" fill="#d8b07a" />
+        </template>
 
-      <template v-else-if="theme === 'space'">
-        <g transform="translate(1180 120)">
-          <circle r="44" fill="#9b7bff" />
-          <circle cx="-14" cy="-10" r="10" fill="#fff" fill-opacity="0.2" />
-          <ellipse rx="78" ry="18" fill="none" stroke="#d9ccff" stroke-width="7" transform="rotate(-18)" />
-        </g>
-        <path d="M0 300Q400 250 800 290T1600 280V400H0Z" fill="#c3b8e6" />
-        <g v-for="(c, i) in craters" :key="i">
-          <circle :cx="c.x" :cy="c.y" :r="c.r" fill="#a99bd6" />
-          <circle :cx="c.x - c.r * 0.15" :cy="c.y - c.r * 0.15" :r="c.r * 0.7" fill="#b7aae0" />
-        </g>
-        <g transform="translate(380 290)">
-          <path d="M0-120q26 30 26 90v30H-26v-30q0-60 26-90Z" fill="#f4f1de" />
-          <path d="M-26-20l-22 28v24l22-10ZM26-20l22 28v24l-22-10Z" fill="#e05a47" />
-          <circle cy="-48" r="9" fill="#3ba7cc" stroke="#fff" stroke-width="3" />
-          <path d="M-12 0h24l-12 26Z" fill="#ff9e5e" />
-        </g>
-      </template>
+        <template v-else-if="theme === 'space'">
+          <g transform="translate(1180 120)">
+            <circle r="44" fill="#9b7bff" />
+            <circle cx="-14" cy="-10" r="10" fill="#fff" fill-opacity="0.2" />
+            <ellipse rx="78" ry="18" fill="none" stroke="#d9ccff" stroke-width="7" transform="rotate(-18)" />
+          </g>
+          <path d="M0 300Q400 250 800 290T1600 280V400H0Z" fill="#c3b8e6" />
+          <g v-for="(c, i) in craters" :key="i">
+            <circle :cx="c.x" :cy="c.y" :r="c.r" fill="#a99bd6" />
+            <circle :cx="c.x - c.r * 0.15" :cy="c.y - c.r * 0.15" :r="c.r * 0.7" fill="#b7aae0" />
+          </g>
+          <g transform="translate(380 290)">
+            <path d="M0-120q26 30 26 90v30H-26v-30q0-60 26-90Z" fill="#f4f1de" />
+            <path d="M-26-20l-22 28v24l22-10ZM26-20l22 28v24l-22-10Z" fill="#e05a47" />
+            <circle cy="-48" r="9" fill="#3ba7cc" stroke="#fff" stroke-width="3" />
+            <path d="M-12 0h24l-12 26Z" fill="#ff9e5e" />
+          </g>
+        </template>
 
-      <template v-else>
-        <rect
-          v-for="(t, i) in farTowers"
-          :key="i"
-          :x="t.x"
-          :y="300 - t.h - 40"
-          :width="t.w"
-          :height="t.h + 40"
-          fill="#d9c3dc"
-        />
-        <g v-for="(h, i) in houses" :key="i">
-          <rect :x="h.x" :y="300 - h.h" :width="h.w" :height="h.h" :fill="h.color" />
-          <rect :x="h.x - 4" :y="300 - h.h - 8" :width="h.w + 8" height="10" fill="#fff" fill-opacity="0.35" />
+        <template v-else>
           <rect
-            v-for="(w, k) in h.windows"
-            :key="k"
-            :x="w.x"
-            :y="w.y"
-            width="16"
-            height="20"
-            rx="2"
-            fill="#fff8e1"
-            fill-opacity="0.85"
+            v-for="(t, i) in farTowers"
+            :key="i"
+            :x="t.x"
+            :y="300 - t.h - 40"
+            :width="t.w"
+            :height="t.h + 40"
+            fill="#d9c3dc"
           />
-        </g>
-        <rect y="300" width="1600" height="24" fill="#cfd5da" />
-        <g v-for="(x, i) in streetTrees" :key="i" :transform="`translate(${x} 304)`">
-          <rect x="-4" y="-30" width="8" height="30" fill="#8a5a3b" />
-          <circle cy="-44" r="22" fill="#4caf6a" />
-          <circle cx="-7" cy="-52" r="7" fill="#fff" fill-opacity="0.2" />
-        </g>
-        <rect y="324" width="1600" height="76" fill="#4a5058" />
-        <path d="M0 362H1600" stroke="#fff" stroke-width="5" stroke-dasharray="34 24" />
-      </template>
-    </svg>
-    <!-- Night lights of the meadow's house, over the dimmed strip (same box, so they line up). -->
-    <svg v-if="night && theme === 'meadow'" class="strip lit" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
-      <MeadowScene :season="settings.season" lights />
-    </svg>
+          <g v-for="(h, i) in houses" :key="i">
+            <rect :x="h.x" :y="300 - h.h" :width="h.w" :height="h.h" :fill="h.color" />
+            <rect :x="h.x - 4" :y="300 - h.h - 8" :width="h.w + 8" height="10" fill="#fff" fill-opacity="0.35" />
+            <rect
+              v-for="(w, k) in h.windows"
+              :key="k"
+              :x="w.x"
+              :y="w.y"
+              width="16"
+              height="20"
+              rx="2"
+              fill="#fff8e1"
+              fill-opacity="0.85"
+            />
+          </g>
+          <rect y="300" width="1600" height="24" fill="#cfd5da" />
+          <g v-for="(x, i) in streetTrees" :key="i" :transform="`translate(${x} 304)`">
+            <rect x="-4" y="-30" width="8" height="30" fill="#8a5a3b" />
+            <circle cy="-44" r="22" fill="#4caf6a" />
+            <circle cx="-7" cy="-52" r="7" fill="#fff" fill-opacity="0.2" />
+          </g>
+          <rect y="324" width="1600" height="76" fill="#4a5058" />
+          <path d="M0 362H1600" stroke="#fff" stroke-width="5" stroke-dasharray="34 24" />
+        </template>
+      </svg>
+      <!-- Night lights of the meadow's house, over the dimmed strip (same box, so they line up). -->
+      <svg v-if="night && theme === 'meadow'" class="strip lit" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
+        <MeadowScene :season="settings.season" lights />
+      </svg>
 
-    <div v-if="falling.length" class="falling">
-      <span
-        v-for="(f, i) in falling"
-        :key="i"
-        :style="{
-          left: `${f.left}%`,
-          '--size': `${f.size}px`,
-          '--drift': `${f.drift}px`,
-          '--color': f.color,
-          animationDuration: `${f.duration}s`,
-          animationDelay: `${f.delay}s`,
-        }"
-      />
-    </div>
+      <div v-if="falling.length" class="falling">
+        <span
+          v-for="(f, i) in falling"
+          :key="i"
+          :style="{
+            left: `${f.left}%`,
+            '--size': `${f.size}px`,
+            '--drift': `${f.drift}px`,
+            '--color': f.color,
+            animationDuration: `${f.duration}s`,
+            animationDelay: `${f.delay}s`,
+          }"
+        />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -419,6 +432,14 @@ const craters = [
   overflow: hidden;
   pointer-events: none;
   background: linear-gradient(var(--sky) 0%, var(--sky-mid) 55%, var(--bg) 100%);
+}
+
+.picture {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .meadow {

@@ -3,6 +3,7 @@ import { onBeforeUnmount, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ModalDialog from '../components/ModalDialog.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
+import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SeasonSwitch from '../components/SeasonSwitch.vue'
@@ -11,9 +12,11 @@ import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
+const settings = useSettingsStore()
 
 /** The open info dialog, if any. */
 const dialog = ref<'privacy' | 'contact' | null>(null)
@@ -55,6 +58,8 @@ function play() {
     <div class="corner">
       <SeasonSwitch />
       <ThemeSwitch />
+      <!-- Developer mode only while few levels have redesigned pictures. -->
+      <PictureStyleSwitch v-if="settings.developer" />
     </div>
     <h1>Keen Eye</h1>
     <p class="stars">
@@ -267,7 +272,7 @@ button,
   width: min(100%, var(--menu-width));
 }
 
-/* Season and day/night switches: top left, away from the sun (top right) and the centered menu. */
+/* Season, day/night and picture style switches: top left, away from the sun (top right) and the centered menu. */
 .corner {
   position: absolute;
   top: 12px;

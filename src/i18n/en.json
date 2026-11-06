@@ -19,6 +19,11 @@
     "autumn": "Autumn",
     "winter": "Winter"
   },
+  "pictureStyle": {
+    "label": "Picture style",
+    "classic": "Classic",
+    "redesign": "New look"
+  },
   "theme": {
     "label": "Theme",
     "dark": "Dark theme"
@@ -227,7 +232,8 @@
     "memory": "Memory",
     "travel": "World travel",
     "detective": "Detective story",
-    "treasury": "Treasury"
+    "treasury": "Treasury",
+    "test": "Test levels"
   },
   "levelTitles": {
     "memoryFlowerShop": "Flower shop",
@@ -577,7 +583,8 @@
     "chickensYard": "Village yard",
     "chickensGarden": "Vegetable garden",
     "chickensBarn": "Barn",
-    "chickensMeadow": "Meadow by the stream"
+    "chickensMeadow": "Meadow by the stream",
+    "cozyStudy": "Cozy study"
   },
   "mode": {
     "label": "Mode",

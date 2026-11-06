@@ -39,7 +39,8 @@
     "space": "الفضاء",
     "time": "الزمن",
     "travel": "حول العالم",
-    "treasury": "غرفة الكنز"
+    "treasury": "غرفة الكنز",
+    "test": "مستويات تجريبية"
   },
   "common": {
     "back": "رجوع",
@@ -829,7 +830,8 @@
     "chickensYard": "فناء ريفي",
     "chickensGarden": "حديقة الخضار",
     "chickensBarn": "الحظيرة",
-    "chickensMeadow": "مرج بجانب الجدول"
+    "chickensMeadow": "مرج بجانب الجدول",
+    "cozyStudy": "مكتب دافئ"
   },
   "map": {
     "level": "المرحلة {n}",
@@ -899,6 +901,11 @@
     "spring": "الربيع",
     "summer": "الصيف",
     "winter": "الشتاء"
+  },
+  "pictureStyle": {
+    "label": "نمط الصور",
+    "classic": "كلاسيكي",
+    "redesign": "مظهر جديد"
   },
   "secret": {
     "findHere": "مفتاح ذهبي مخبأ في إحدى المراحل هنا. اعثر عليه!",

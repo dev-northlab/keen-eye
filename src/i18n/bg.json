@@ -19,6 +19,11 @@
     "autumn": "Есен",
     "winter": "Зима"
   },
+  "pictureStyle": {
+    "label": "Стил на картинките",
+    "classic": "Класически",
+    "redesign": "Нов облик"
+  },
   "theme": {
     "label": "Тема",
     "dark": "Тъмна тема"
@@ -227,7 +232,8 @@
     "memory": "Памет",
     "travel": "Пътешествие по света",
     "detective": "Детективска история",
-    "treasury": "Съкровищница"
+    "treasury": "Съкровищница",
+    "test": "Тестови нива"
   },
   "levelTitles": {
     "memoryFlowerShop": "Цветарски магазин",
@@ -577,7 +583,8 @@
     "chickensYard": "Селски двор",
     "chickensGarden": "Зеленчукова градина",
     "chickensBarn": "Плевня",
-    "chickensMeadow": "Поляна до потока"
+    "chickensMeadow": "Поляна до потока",
+    "cozyStudy": "Уютен кабинет"
   },
   "mode": {
     "label": "Режим",

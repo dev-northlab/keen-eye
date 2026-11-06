@@ -39,7 +39,8 @@
     "space": "Rummet",
     "time": "Tiden",
     "travel": "Jorden rundt",
-    "treasury": "Skatkammer"
+    "treasury": "Skatkammer",
+    "test": "Testbaner"
   },
   "common": {
     "back": "Tilbage",
@@ -829,7 +830,8 @@
     "chickensYard": "Landsbygård",
     "chickensGarden": "Køkkenhave",
     "chickensBarn": "Lade",
-    "chickensMeadow": "Eng ved bækken"
+    "chickensMeadow": "Eng ved bækken",
+    "cozyStudy": "Hyggeligt arbejdsværelse"
   },
   "map": {
     "level": "Bane {n}",
@@ -899,6 +901,11 @@
     "spring": "Forår",
     "summer": "Sommer",
     "winter": "Vinter"
+  },
+  "pictureStyle": {
+    "label": "Billedstil",
+    "classic": "Klassisk",
+    "redesign": "Nyt udseende"
   },
   "secret": {
     "findHere": "En gylden nøgle er gemt på en af banerne her. Find den!",

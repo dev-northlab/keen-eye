@@ -19,6 +19,11 @@
     "autumn": "가을",
     "winter": "겨울"
   },
+  "pictureStyle": {
+    "label": "그림 스타일",
+    "classic": "클래식",
+    "redesign": "새로운 모습"
+  },
   "theme": {
     "label": "테마",
     "dark": "다크 테마"
@@ -227,7 +232,8 @@
     "memory": "기억력",
     "travel": "세계 여행",
     "detective": "탐정 이야기",
-    "treasury": "보물 창고"
+    "treasury": "보물 창고",
+    "test": "테스트 레벨"
   },
   "levelTitles": {
     "memoryFlowerShop": "꽃집",
@@ -577,7 +583,8 @@
     "chickensYard": "시골 마당",
     "chickensGarden": "채소밭",
     "chickensBarn": "헛간",
-    "chickensMeadow": "시냇가 풀밭"
+    "chickensMeadow": "시냇가 풀밭",
+    "cozyStudy": "아늑한 서재"
   },
   "mode": {
     "label": "모드",

@@ -39,7 +39,8 @@
     "space": "Rymden",
     "time": "Tiden",
     "travel": "Jorden runt",
-    "treasury": "Skattkammare"
+    "treasury": "Skattkammare",
+    "test": "Testnivåer"
   },
   "common": {
     "back": "Tillbaka",
@@ -829,7 +830,8 @@
     "chickensYard": "Bygård",
     "chickensGarden": "Köksträdgård",
     "chickensBarn": "Lada",
-    "chickensMeadow": "Äng vid bäcken"
+    "chickensMeadow": "Äng vid bäcken",
+    "cozyStudy": "Mysigt arbetsrum"
   },
   "map": {
     "level": "Nivå {n}",
@@ -899,6 +901,11 @@
     "spring": "Vår",
     "summer": "Sommar",
     "winter": "Vinter"
+  },
+  "pictureStyle": {
+    "label": "Bildstil",
+    "classic": "Klassisk",
+    "redesign": "Nytt utseende"
   },
   "secret": {
     "findHere": "En gyllene nyckel är gömd i en av nivåerna här. Hitta den!",

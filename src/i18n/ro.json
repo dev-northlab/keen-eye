@@ -19,6 +19,11 @@
     "autumn": "Toamnă",
     "winter": "Iarnă"
   },
+  "pictureStyle": {
+    "label": "Stilul imaginilor",
+    "classic": "Clasic",
+    "redesign": "Aspect nou"
+  },
   "theme": {
     "label": "Temă",
     "dark": "Temă întunecată"
@@ -227,7 +232,8 @@
     "memory": "Memorie",
     "travel": "Călătorie în jurul lumii",
     "detective": "Poveste polițistă",
-    "treasury": "Camera comorii"
+    "treasury": "Camera comorii",
+    "test": "Niveluri de test"
   },
   "levelTitles": {
     "memoryFlowerShop": "Florărie",
@@ -577,7 +583,8 @@
     "chickensYard": "Curte de la țară",
     "chickensGarden": "Grădina de legume",
     "chickensBarn": "Hambar",
-    "chickensMeadow": "Pajiște lângă pârâu"
+    "chickensMeadow": "Pajiște lângă pârâu",
+    "cozyStudy": "Birou primitor"
   },
   "mode": {
     "label": "Mod",

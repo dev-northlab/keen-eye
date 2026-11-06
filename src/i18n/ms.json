@@ -39,7 +39,8 @@
     "space": "Angkasa lepas",
     "time": "Masa",
     "travel": "Keliling dunia",
-    "treasury": "Bilik harta"
+    "treasury": "Bilik harta",
+    "test": "Tahap ujian"
   },
   "common": {
     "back": "Kembali",
@@ -829,7 +830,8 @@
     "chickensYard": "Halaman kampung",
     "chickensGarden": "Kebun sayur",
     "chickensBarn": "Bangsal",
-    "chickensMeadow": "Padang rumput di tepi anak sungai"
+    "chickensMeadow": "Padang rumput di tepi anak sungai",
+    "cozyStudy": "Bilik kerja selesa"
   },
   "map": {
     "level": "Tahap {n}",
@@ -899,6 +901,11 @@
     "spring": "Musim bunga",
     "summer": "Musim panas",
     "winter": "Musim sejuk"
+  },
+  "pictureStyle": {
+    "label": "Gaya gambar",
+    "classic": "Klasik",
+    "redesign": "Rupa baharu"
   },
   "secret": {
     "findHere": "Sebatang kunci emas disembunyikan dalam salah satu tahap di sini. Cari ia!",

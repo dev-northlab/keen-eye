@@ -19,6 +19,11 @@
     "autumn": "Herbst",
     "winter": "Winter"
   },
+  "pictureStyle": {
+    "label": "Bildstil",
+    "classic": "Klassisch",
+    "redesign": "Neuer Look"
+  },
   "theme": {
     "label": "Design",
     "dark": "Dunkles Design"
@@ -227,7 +232,8 @@
     "memory": "Gedächtnis",
     "travel": "Weltreise",
     "detective": "Detektivgeschichte",
-    "treasury": "Schatzkammer"
+    "treasury": "Schatzkammer",
+    "test": "Testlevel"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blumenladen",
@@ -577,7 +583,8 @@
     "chickensYard": "Dorfhof",
     "chickensGarden": "Gemüsegarten",
     "chickensBarn": "Scheune",
-    "chickensMeadow": "Wiese am Bach"
+    "chickensMeadow": "Wiese am Bach",
+    "cozyStudy": "Gemütliches Arbeitszimmer"
   },
   "mode": {
     "label": "Modus",

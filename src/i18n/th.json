@@ -39,7 +39,8 @@
     "space": "อวกาศ",
     "time": "กาลเวลา",
     "travel": "เที่ยวรอบโลก",
-    "treasury": "ห้องสมบัติ"
+    "treasury": "ห้องสมบัติ",
+    "test": "ด่านทดสอบ"
   },
   "common": {
     "back": "กลับ",
@@ -829,7 +830,8 @@
     "chickensYard": "ลานบ้านชนบท",
     "chickensGarden": "แปลงผัก",
     "chickensBarn": "โรงนา",
-    "chickensMeadow": "ทุ่งหญ้าริมลำธาร"
+    "chickensMeadow": "ทุ่งหญ้าริมลำธาร",
+    "cozyStudy": "ห้องทำงานแสนอบอุ่น"
   },
   "map": {
     "level": "ด่าน {n}",
@@ -899,6 +901,11 @@
     "spring": "ฤดูใบไม้ผลิ",
     "summer": "ฤดูร้อน",
     "winter": "ฤดูหนาว"
+  },
+  "pictureStyle": {
+    "label": "สไตล์ภาพ",
+    "classic": "คลาสสิก",
+    "redesign": "โฉมใหม่"
   },
   "secret": {
     "findHere": "มีกุญแจทองซ่อนอยู่ในด่านใดด่านหนึ่งที่นี่ ตามหามันให้เจอ!",

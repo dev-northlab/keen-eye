@@ -19,6 +19,11 @@
     "autumn": "Ősz",
     "winter": "Tél"
   },
+  "pictureStyle": {
+    "label": "Képstílus",
+    "classic": "Klasszikus",
+    "redesign": "Új megjelenés"
+  },
   "theme": {
     "label": "Téma",
     "dark": "Sötét téma"
@@ -227,7 +232,8 @@
     "memory": "Memória",
     "travel": "Világkörüli utazás",
     "detective": "Detektívtörténet",
-    "treasury": "Kincskamra"
+    "treasury": "Kincskamra",
+    "test": "Tesztpályák"
   },
   "levelTitles": {
     "memoryFlowerShop": "Virágbolt",
@@ -577,7 +583,8 @@
     "chickensYard": "Falusi udvar",
     "chickensGarden": "Veteményes",
     "chickensBarn": "Pajta",
-    "chickensMeadow": "Rét a pataknál"
+    "chickensMeadow": "Rét a pataknál",
+    "cozyStudy": "Hangulatos dolgozószoba"
   },
   "mode": {
     "label": "Mód",

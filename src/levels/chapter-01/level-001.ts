@@ -1,6 +1,7 @@
 import { bird, mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level001Redesign } from './level-001-redesign.ts'
 import { apple, chick, cloud, flower, FLOWER_COLORS, grass, hen, milkCan, pick, pumpkin, sun, tree } from '../shapes.ts'
 
 const hay =
@@ -20,6 +21,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'barnyard',
   parTimeSec: 60,
+  redesign: level001Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let flowers = ''
     for (let i = 0; i < 12; i++) {

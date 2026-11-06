@@ -13,6 +13,9 @@ export interface Picture {
   animations: Map<string, Animation>
   /** Marks (found circles, hint) that stay on a difference zone; moved along with moving zones. */
   zoneMarks: ZoneMark[]
+  /** Animation time of the poses drawn now (NaN before the first) and when they were drawn (`performance.now()`). */
+  posedT: number
+  posedAt: number
 }
 
 interface ZoneMark {
@@ -50,7 +53,7 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     animations = built.animations
   } else {
     const href = variant === 0 ? level.imageA : level.imageB
-    if (href) scene.append(el('image', { href, width: w, height: h }))
+    if (href) scene.append(el('image', { href: import.meta.env.BASE_URL + href, width: w, height: h }))
   }
 
   const marks = el('g', { 'pointer-events': 'none' })
@@ -62,6 +65,8 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     animated: animatedGroups(scene, animations),
     animations: new Map(animations.map((a) => [a.id, a])),
     zoneMarks: [],
+    posedT: NaN,
+    posedAt: -Infinity,
   }
 }
 
@@ -83,6 +88,8 @@ export function createSvgPicture(source: string, w: number, h: number, animation
     animated: animatedGroups(scene, animations),
     animations: new Map(animations.map((a) => [a.id, a])),
     zoneMarks: [],
+    posedT: NaN,
+    posedAt: -Infinity,
   }
 }
 
@@ -100,8 +107,28 @@ export function zonesAt(p: Picture, differences: Difference[], t: number) {
   return differences.map((d) => ({ ...zoneCenter(d, p.animations, t), r: d.r }))
 }
 
-/** Applies animation poses and moves the marks of moving zones. */
+/**
+ * Phones with little memory (Android Go, ≤ 2 GB; `navigator.deviceMemory`, Chromium only) cannot redraw
+ * animated pictures 60 times a second: there the poses change on every other frame of a 60 Hz screen (~30 fps).
+ * The threshold sits between one and two frames, so frame jitter does not drop it to every third.
+ */
+const MIN_POSE_INTERVAL_MS = lowMemoryDevice() ? 25 : 0
+
+function lowMemoryDevice(): boolean {
+  if (typeof navigator === 'undefined') return false
+  const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory
+  return memory !== undefined && memory <= 2
+}
+
+/**
+ * Applies animation poses and moves the marks of moving zones. Does nothing when time stands still
+ * (paused, "stop motion") or, on a low-memory phone, when the last poses are too recent.
+ */
 export function animatePicture(p: Picture, differences: Difference[], t: number): void {
+  const now = performance.now()
+  if (t === p.posedT || now - p.posedAt < MIN_POSE_INTERVAL_MS) return
+  p.posedT = t
+  p.posedAt = now
   for (const { el, animation } of p.animated) {
     const { matrix, opacity, fill } = pose(animation, t)
     if (matrix) el.setAttribute('transform', `matrix(${matrix.join(' ')})`)

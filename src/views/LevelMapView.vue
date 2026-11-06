@@ -7,11 +7,13 @@ import LevelId from '../components/LevelId.vue'
 import {
   CHAPTERS,
   chapterLevels,
+  chapterLevelsWithHidden,
   chapterSize,
   DETECTIVE_CHAPTER,
   KEY_CHAPTERS,
   MEMORY_CHAPTER,
   TIME_CHAPTER,
+  TEST_CHAPTER,
   TRAVEL_CHAPTER,
   TREASURY_CHAPTER,
   type Chapter,
@@ -20,6 +22,7 @@ import { treasuryLevel } from '../levels/index.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 // Game modes: one banner each with its totals. "Spot the difference" opens the worlds (WorldsView),
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
@@ -27,11 +30,12 @@ import { usePurchaseStore } from '../stores/purchase.ts'
 // (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView),
 // "detective" (docs/detective-mode.md) its cases (DetectiveView). Category banners show whether their
 // hidden key is found; the last banner, the treasury (docs/hidden-item-feature.md), counts the keys
-// and opens its bonus level once all are found.
+// and opens its bonus level once all are found. Developer mode adds the "test" levels (TEST_CHAPTER) at the end.
 
 const router = useRouter()
 const purchase = usePurchaseStore()
 const progress = useProgressStore()
+const settings = useSettingsStore()
 
 const levels = CHAPTERS.flatMap(chapterLevels)
 const worlds = {
@@ -66,6 +70,13 @@ const treasuryOpen = () => progress.allKeysFound || progress.devOpenAll
 function openTreasury() {
   if (progress.needsPurchase(treasuryLevel.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(treasuryLevel.id)) router.push({ name: 'level', params: { id: treasuryLevel.id } })
+}
+
+/** "Test" levels: all hidden (levels/upcoming.ts), so counted with chapterLevelsWithHidden. */
+const testLevels = chapterLevelsWithHidden(TEST_CHAPTER)
+const test = {
+  ids: testLevels.map((l) => l.id),
+  done: () => testLevels.filter((l) => progress.isCompleted(l.id)).length,
 }
 
 const timeTravel = {
@@ -256,6 +267,17 @@ const timeTravel = {
             </span>
           </button>
         </li>
+        <li v-if="settings.developer">
+          <button class="mode test" @click="router.push({ name: 'chapter', params: { chapter: TEST_CHAPTER.id } })">
+            <LevelId :id="test.ids" />
+            <svg class="icon" viewBox="0 0 48 48" aria-hidden="true" v-html="TEST_CHAPTER.icon" />
+            <span class="text">
+              <span class="tag">{{ $t('settings.dev') }}</span>
+              <span class="name">{{ $t('chapters.test') }}</span>
+              <span class="sub">{{ $t('map.progress', { done: test.done(), total: test.ids.length }) }}</span>
+            </span>
+          </button>
+        </li>
       </ul>
     </main>
     <BackButton />
@@ -319,6 +341,14 @@ main {
   --mode-to: #17768a;
   --mode-shadow: rgb(20 100 120 / 0.6);
   --mode-icon-bg: #ddf4f8;
+}
+
+.test {
+  --mode-from: #9ca3af;
+  --mode-mid: #6b7280;
+  --mode-to: #4b5563;
+  --mode-shadow: rgb(55 65 81 / 0.6);
+  --mode-icon-bg: #eceef2;
 }
 
 .detective {

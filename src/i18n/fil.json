@@ -39,7 +39,8 @@
     "space": "Kalawakan",
     "time": "Panahon",
     "travel": "Paglalakbay sa mundo",
-    "treasury": "Silid ng kayamanan"
+    "treasury": "Silid ng kayamanan",
+    "test": "Mga test level"
   },
   "common": {
     "back": "Bumalik",
@@ -829,7 +830,8 @@
     "chickensYard": "Bakuran sa nayon",
     "chickensGarden": "Taniman ng gulay",
     "chickensBarn": "Kamalig",
-    "chickensMeadow": "Parang sa tabi ng sapa"
+    "chickensMeadow": "Parang sa tabi ng sapa",
+    "cozyStudy": "Maaliwalas na silid-aralan"
   },
   "map": {
     "level": "Level {n}",
@@ -899,6 +901,11 @@
     "spring": "Tagsibol",
     "summer": "Tag-araw",
     "winter": "Taglamig"
+  },
+  "pictureStyle": {
+    "label": "Istilo ng larawan",
+    "classic": "Klasiko",
+    "redesign": "Bagong itsura"
   },
   "secret": {
     "findHere": "May nakatagong gintong susi sa isa sa mga level dito. Hanapin ito!",

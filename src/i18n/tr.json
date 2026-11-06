@@ -19,6 +19,11 @@
     "autumn": "Sonbahar",
     "winter": "Kış"
   },
+  "pictureStyle": {
+    "label": "Resim stili",
+    "classic": "Klasik",
+    "redesign": "Yeni görünüm"
+  },
   "theme": {
     "label": "Tema",
     "dark": "Koyu tema"
@@ -227,7 +232,8 @@
     "memory": "Hafıza",
     "travel": "Dünya turu",
     "detective": "Dedektif hikâyesi",
-    "treasury": "Hazine odası"
+    "treasury": "Hazine odası",
+    "test": "Test bölümleri"
   },
   "levelTitles": {
     "memoryFlowerShop": "Çiçekçi",
@@ -577,7 +583,8 @@
     "chickensYard": "Köy avlusu",
     "chickensGarden": "Sebze bahçesi",
     "chickensBarn": "Ahır",
-    "chickensMeadow": "Dere kenarındaki çayır"
+    "chickensMeadow": "Dere kenarındaki çayır",
+    "cozyStudy": "Sıcak çalışma odası"
   },
   "mode": {
     "label": "Mod",

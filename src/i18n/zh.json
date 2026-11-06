@@ -19,6 +19,11 @@
     "autumn": "秋",
     "winter": "冬"
   },
+  "pictureStyle": {
+    "label": "图片风格",
+    "classic": "经典",
+    "redesign": "新外观"
+  },
   "theme": {
     "label": "主题",
     "dark": "深色主题"
@@ -227,7 +232,8 @@
     "memory": "记忆",
     "travel": "环游世界",
     "detective": "侦探故事",
-    "treasury": "藏宝室"
+    "treasury": "藏宝室",
+    "test": "测试关卡"
   },
   "levelTitles": {
     "memoryFlowerShop": "花店",
@@ -577,7 +583,8 @@
     "chickensYard": "乡村院子",
     "chickensGarden": "菜园",
     "chickensBarn": "谷仓",
-    "chickensMeadow": "小溪边的草地"
+    "chickensMeadow": "小溪边的草地",
+    "cozyStudy": "温馨书房"
   },
   "mode": {
     "label": "模式",

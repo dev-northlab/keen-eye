@@ -19,6 +19,11 @@
     "autumn": "Осінь",
     "winter": "Зима"
   },
+  "pictureStyle": {
+    "label": "Стиль картинок",
+    "classic": "Класичний",
+    "redesign": "Новий"
+  },
   "theme": {
     "label": "Тема",
     "dark": "Темна тема"
@@ -227,7 +232,8 @@
     "memory": "Пам’ять",
     "travel": "Подорож світом",
     "detective": "Детективна історія",
-    "treasury": "Скарбниця"
+    "treasury": "Скарбниця",
+    "test": "Тестові рівні"
   },
   "levelTitles": {
     "memoryFlowerShop": "Квіткова крамниця",
@@ -577,7 +583,8 @@
     "chickensYard": "Сільське подвір'я",
     "chickensGarden": "Город",
     "chickensBarn": "Сарай",
-    "chickensMeadow": "Лука біля струмка"
+    "chickensMeadow": "Лука біля струмка",
+    "cozyStudy": "Затишний кабінет"
   },
   "mode": {
     "label": "Режим",

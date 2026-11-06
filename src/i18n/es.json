@@ -19,6 +19,11 @@
     "autumn": "Otoño",
     "winter": "Invierno"
   },
+  "pictureStyle": {
+    "label": "Estilo de imagen",
+    "classic": "Clásico",
+    "redesign": "Nuevo aspecto"
+  },
   "theme": {
     "label": "Tema",
     "dark": "Tema oscuro"
@@ -227,7 +232,8 @@
     "memory": "Memoria",
     "travel": "Viaje por el mundo",
     "detective": "Historia de detectives",
-    "treasury": "Cámara del tesoro"
+    "treasury": "Cámara del tesoro",
+    "test": "Niveles de prueba"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floristería",
@@ -577,7 +583,8 @@
     "chickensYard": "Patio del pueblo",
     "chickensGarden": "Huerto",
     "chickensBarn": "Granero",
-    "chickensMeadow": "Prado junto al arroyo"
+    "chickensMeadow": "Prado junto al arroyo",
+    "cozyStudy": "Estudio acogedor"
   },
   "mode": {
     "label": "Modo",

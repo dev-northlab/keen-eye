@@ -176,7 +176,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   them (no tile, no count, no "next", the router sends a direct link home); developer mode shows them at their
   place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
   `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
-  store texts. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+  store texts. The "test" chapter (`TEST_CHAPTER`, ids 1001–1100, `levels/test/`) lives there for good:
+  picture pairs tried out in developer mode (a banner at the end of the game modes screen), `kind: 'image'` levels
+  with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels). Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,
@@ -198,6 +200,15 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `memory/shapes.ts`, plus the chapters' shapes), drawn the same in both pictures and kept 20+ units clear of every zone; in
   "time" levels decor that changes with the moment (snow on it in winter, summer-only grass and butterflies) goes through
   `time()`, never `diff`.
+- Redesigned pictures (`levels/picture-style.ts`): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
+  `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
+  `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen, above a
+  grid with such levels and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
+  attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
+  same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
+  ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`. `check-levels` checks the files,
+  the same number of differences as the scene, zones on the picture, big enough and apart, and no motion differences
+  or key (pictures cannot show them yet).
 - Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
   key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on
   it before hit/miss (never a miss, never hinted), `GameScene`/`MemoryScene` report `onSecret`, `progress.keys` stores the

@@ -19,6 +19,11 @@
     "autumn": "पतझड़",
     "winter": "सर्दी"
   },
+  "pictureStyle": {
+    "label": "चित्र शैली",
+    "classic": "क्लासिक",
+    "redesign": "नया रूप"
+  },
   "theme": {
     "label": "थीम",
     "dark": "डार्क थीम"
@@ -227,7 +232,8 @@
     "memory": "याददाश्त",
     "travel": "दुनिया की सैर",
     "detective": "जासूसी कहानी",
-    "treasury": "ख़ज़ाना"
+    "treasury": "ख़ज़ाना",
+    "test": "परीक्षण स्तर"
   },
   "levelTitles": {
     "memoryFlowerShop": "फूलों की दुकान",
@@ -577,7 +583,8 @@
     "chickensYard": "गाँव का आँगन",
     "chickensGarden": "सब्ज़ियों का बगीचा",
     "chickensBarn": "खलिहान",
-    "chickensMeadow": "नाले के पास घास का मैदान"
+    "chickensMeadow": "नाले के पास घास का मैदान",
+    "cozyStudy": "आरामदायक अध्ययन कक्ष"
   },
   "mode": {
     "label": "मोड",

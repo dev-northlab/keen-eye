@@ -39,7 +39,8 @@
     "space": "Luar angkasa",
     "time": "Waktu",
     "travel": "Keliling dunia",
-    "treasury": "Ruang harta"
+    "treasury": "Ruang harta",
+    "test": "Level uji"
   },
   "common": {
     "back": "Kembali",
@@ -829,7 +830,8 @@
     "chickensYard": "Halaman desa",
     "chickensGarden": "Kebun sayur",
     "chickensBarn": "Lumbung",
-    "chickensMeadow": "Padang rumput di tepi sungai kecil"
+    "chickensMeadow": "Padang rumput di tepi sungai kecil",
+    "cozyStudy": "Ruang kerja nyaman"
   },
   "map": {
     "level": "Level {n}",
@@ -899,6 +901,11 @@
     "spring": "Musim semi",
     "summer": "Musim panas",
     "winter": "Musim dingin"
+  },
+  "pictureStyle": {
+    "label": "Gaya gambar",
+    "classic": "Klasik",
+    "redesign": "Tampilan baru"
   },
   "secret": {
     "findHere": "Sebuah kunci emas tersembunyi di salah satu level di sini. Temukan!",

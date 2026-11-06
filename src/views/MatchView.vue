@@ -14,6 +14,7 @@ import ToolButton from '../components/ToolButton.vue'
 import { Match, winnerOf, type MatchState, type PlayerId } from '../engine/match.ts'
 import { MatchScene } from '../engine/match-scene.ts'
 import { levelById } from '../levels/index.ts'
+import { styledLevel } from '../levels/picture-style.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
@@ -28,7 +29,8 @@ const duo = useDuoStore()
 const settings = useSettingsStore()
 const { t } = useI18n()
 
-const level = levelById(props.id)!
+// The picture style is read as the screen opens (no switch inside a level), so retries keep it.
+const level = styledLevel(levelById(props.id)!, settings.pictureStyle)
 // The setup is read once: a rematch replays the same match.
 const setup = structuredClone(toRaw(duo.setup))
 const rules = duo.rules

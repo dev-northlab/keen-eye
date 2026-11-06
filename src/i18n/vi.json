@@ -39,7 +39,8 @@
     "space": "Vũ trụ",
     "time": "Thời gian",
     "travel": "Vòng quanh thế giới",
-    "treasury": "Kho báu"
+    "treasury": "Kho báu",
+    "test": "Màn thử nghiệm"
   },
   "common": {
     "back": "Quay lại",
@@ -829,7 +830,8 @@
     "chickensYard": "Sân quê",
     "chickensGarden": "Vườn rau",
     "chickensBarn": "Nhà kho",
-    "chickensMeadow": "Bãi cỏ bên suối"
+    "chickensMeadow": "Bãi cỏ bên suối",
+    "cozyStudy": "Phòng làm việc ấm cúng"
   },
   "map": {
     "level": "Màn {n}",
@@ -899,6 +901,11 @@
     "spring": "Mùa xuân",
     "summer": "Mùa hè",
     "winter": "Mùa đông"
+  },
+  "pictureStyle": {
+    "label": "Kiểu hình ảnh",
+    "classic": "Cổ điển",
+    "redesign": "Diện mạo mới"
   },
   "secret": {
     "findHere": "Một chiếc chìa khóa vàng được giấu ở một trong các màn chơi ở đây. Hãy tìm nó!",

@@ -39,7 +39,8 @@
     "space": "Verdensrommet",
     "time": "Tiden",
     "travel": "Jorda rundt",
-    "treasury": "Skattkammer"
+    "treasury": "Skattkammer",
+    "test": "Testnivåer"
   },
   "common": {
     "back": "Tilbake",
@@ -829,7 +830,8 @@
     "chickensYard": "Tun i bygda",
     "chickensGarden": "Kjøkkenhage",
     "chickensBarn": "Låve",
-    "chickensMeadow": "Eng ved bekken"
+    "chickensMeadow": "Eng ved bekken",
+    "cozyStudy": "Koselig arbeidsrom"
   },
   "map": {
     "level": "Brett {n}",
@@ -899,6 +901,11 @@
     "spring": "Vår",
     "summer": "Sommer",
     "winter": "Vinter"
+  },
+  "pictureStyle": {
+    "label": "Bildestil",
+    "classic": "Klassisk",
+    "redesign": "Nytt utseende"
   },
   "secret": {
     "findHere": "En gyllen nøkkel er gjemt på et av brettene her. Finn den!",

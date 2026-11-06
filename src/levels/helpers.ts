@@ -1,5 +1,5 @@
 import { transformBOf } from './difficulty.ts'
-import type { Animation, AnimationMotion, Difference, Level, MemoryRules, SecretKey, TimePair, TravelPlace, Trap } from '../engine/types.ts'
+import type { Animation, AnimationMotion, Difference, Level, LevelPictures, MemoryRules, SecretKey, TimePair, TravelPlace, Trap } from '../engine/types.ts'
 
 /**
  * Returns `a` for picture A and `b` for picture B and registers the zone
@@ -94,6 +94,8 @@ interface SvgLevelDef {
   memory?: MemoryRules
   /** Makes it a "travel" level (see `travelLevel`). */
   travel?: TravelPlace
+  /** The level's redesigned pictures (Level.redesign), played in the new picture style. */
+  redesign?: LevelPictures
   /** Draws the scene; called once per picture with a fresh context. */
   scene: (ctx: SceneContext) => string
 }
@@ -172,6 +174,7 @@ export function svgLevel(def: SvgLevelDef): Level {
     ...(secretKey !== undefined && { secret: secretKey }),
     ...(extras.length > 0 && { extras }),
     ...(transformB !== 'none' && { transformB }),
+    ...(def.redesign !== undefined && { redesign: def.redesign }),
   }
 }
 
