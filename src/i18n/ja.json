@@ -19,6 +19,11 @@
     "autumn": "秋",
     "winter": "冬"
   },
+  "pictureStyle": {
+    "label": "絵のスタイル",
+    "classic": "クラシック",
+    "redesign": "新しい見た目"
+  },
   "theme": {
     "label": "テーマ",
     "dark": "ダークテーマ"

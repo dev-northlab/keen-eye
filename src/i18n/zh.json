@@ -19,6 +19,11 @@
     "autumn": "秋",
     "winter": "冬"
   },
+  "pictureStyle": {
+    "label": "图片风格",
+    "classic": "经典",
+    "redesign": "新外观"
+  },
   "theme": {
     "label": "主题",
     "dark": "深色主题"

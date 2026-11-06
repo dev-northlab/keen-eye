@@ -902,6 +902,11 @@
     "summer": "Sommer",
     "winter": "Vinter"
   },
+  "pictureStyle": {
+    "label": "Bildestil",
+    "classic": "Klassisk",
+    "redesign": "Nytt utseende"
+  },
   "secret": {
     "findHere": "En gyllen nøkkel er gjemt på et av brettene her. Finn den!",
     "findWorlds": "Hver verden skjuler en gyllen nøkkel. Funnet: {n} / {total}",

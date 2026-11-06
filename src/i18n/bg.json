@@ -19,6 +19,11 @@
     "autumn": "Есен",
     "winter": "Зима"
   },
+  "pictureStyle": {
+    "label": "Стил на картинките",
+    "classic": "Класически",
+    "redesign": "Нов облик"
+  },
   "theme": {
     "label": "Тема",
     "dark": "Тъмна тема"

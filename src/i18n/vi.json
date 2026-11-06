@@ -902,6 +902,11 @@
     "summer": "Mùa hè",
     "winter": "Mùa đông"
   },
+  "pictureStyle": {
+    "label": "Kiểu hình ảnh",
+    "classic": "Cổ điển",
+    "redesign": "Diện mạo mới"
+  },
   "secret": {
     "findHere": "Một chiếc chìa khóa vàng được giấu ở một trong các màn chơi ở đây. Hãy tìm nó!",
     "findWorlds": "Mỗi thế giới cất giấu một chiếc chìa khóa vàng. Đã tìm: {n} / {total}",

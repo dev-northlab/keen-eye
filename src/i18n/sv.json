@@ -902,6 +902,11 @@
     "summer": "Sommar",
     "winter": "Vinter"
   },
+  "pictureStyle": {
+    "label": "Bildstil",
+    "classic": "Klassisk",
+    "redesign": "Nytt utseende"
+  },
   "secret": {
     "findHere": "En gyllene nyckel är gömd i en av nivåerna här. Hitta den!",
     "findWorlds": "Varje värld gömmer en gyllene nyckel. Hittade: {n} / {total}",

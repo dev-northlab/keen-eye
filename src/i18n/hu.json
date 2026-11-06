@@ -19,6 +19,11 @@
     "autumn": "Ősz",
     "winter": "Tél"
   },
+  "pictureStyle": {
+    "label": "Képstílus",
+    "classic": "Klasszikus",
+    "redesign": "Új megjelenés"
+  },
   "theme": {
     "label": "Téma",
     "dark": "Sötét téma"

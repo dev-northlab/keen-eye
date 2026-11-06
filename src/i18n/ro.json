@@ -19,6 +19,11 @@
     "autumn": "Toamnă",
     "winter": "Iarnă"
   },
+  "pictureStyle": {
+    "label": "Stilul imaginilor",
+    "classic": "Clasic",
+    "redesign": "Aspect nou"
+  },
   "theme": {
     "label": "Temă",
     "dark": "Temă întunecată"

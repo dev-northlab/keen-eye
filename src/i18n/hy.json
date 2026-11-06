@@ -19,6 +19,11 @@
     "autumn": "Աշուն",
     "winter": "Ձմեռ"
   },
+  "pictureStyle": {
+    "label": "Նկարների ոճ",
+    "classic": "Դասական",
+    "redesign": "Նոր տեսք"
+  },
   "theme": {
     "label": "Թեմա",
     "dark": "Մուգ թեմա"

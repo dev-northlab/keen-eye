@@ -902,6 +902,11 @@
     "summer": "夏",
     "winter": "冬"
   },
+  "pictureStyle": {
+    "label": "圖片風格",
+    "classic": "經典",
+    "redesign": "新外觀"
+  },
   "secret": {
     "findHere": "這裡的某一關藏著一把金鑰匙。找到它！",
     "findWorlds": "每個世界都藏著一把金鑰匙。已找到：{n} / {total}",

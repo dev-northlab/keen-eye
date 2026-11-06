@@ -19,6 +19,11 @@
     "autumn": "Autumn",
     "winter": "Winter"
   },
+  "pictureStyle": {
+    "label": "Picture style",
+    "classic": "Classic",
+    "redesign": "New look"
+  },
   "theme": {
     "label": "Theme",
     "dark": "Dark theme"

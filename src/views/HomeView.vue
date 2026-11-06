@@ -3,6 +3,7 @@ import { onBeforeUnmount, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ModalDialog from '../components/ModalDialog.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
+import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SeasonSwitch from '../components/SeasonSwitch.vue'
@@ -11,9 +12,11 @@ import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
+const settings = useSettingsStore()
 
 /** The open info dialog, if any. */
 const dialog = ref<'privacy' | 'contact' | null>(null)
@@ -79,6 +82,9 @@ function play() {
       </span>
     </button>
     <ModeSwitch class="mode" />
+    <!-- Under the modes: the corner has no room for a third switch on a phone. Developer mode only while few
+         levels have redesigned pictures. -->
+    <PictureStyleSwitch v-if="settings.developer" />
     <!-- Menu entries: a raised pill with an icon on the left and a chevron on the right. -->
     <button class="entry" @click="router.push({ name: 'duo' })">
       <span class="pair" aria-hidden="true">

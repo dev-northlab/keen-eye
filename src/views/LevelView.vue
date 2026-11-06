@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ClueList from '../components/ClueList.vue'
@@ -8,6 +8,7 @@ import HudCounters from '../components/HudCounters.vue'
 import LevelId from '../components/LevelId.vue'
 import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
+import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import SecretFound from '../components/SecretFound.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
@@ -21,6 +22,7 @@ import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { allLevels, levelById } from '../levels/index.ts'
+import { styledLevel } from '../levels/picture-style.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
@@ -138,7 +140,8 @@ function start() {
   playMusic(calm.value ? 'calm' : 'level')
   scene = new GameScene(
     board.value!,
-    level,
+    // The picture style of this attempt (levels/picture-style.ts): the same number of differences either way.
+    styledLevel(level, settings.pictureStyle),
     {
       onFound: (n, _total, i) => {
         found.value = n
@@ -204,6 +207,14 @@ function showHint() {
   playSfx('hint')
   hintsUsed.value++
 }
+
+/** A level with redesigned pictures shows the picture style switch (developer mode only for now). */
+const styleSwitch = computed(() => settings.developer && !!level.redesign)
+// Another picture style has other zones: the attempt starts over in it.
+watch(
+  () => settings.pictureStyle,
+  () => start(),
+)
 
 /** The same level again, in hard mode. */
 function playHard() {
@@ -285,6 +296,7 @@ onBeforeUnmount(() => {
     </div>
 
     <footer class="toolbar">
+      <PictureStyleSwitch v-if="styleSwitch" class="style-switch" />
       <ToolButton
         v-if="rules.hints !== 0"
         tone="hint"
@@ -443,6 +455,10 @@ onBeforeUnmount(() => {
   justify-content: center;
   gap: 8px;
   padding: 6px 10px 10px;
+}
+
+.style-switch {
+  align-self: center;
 }
 
 @media (max-width: 480px) {

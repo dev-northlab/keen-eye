@@ -7,8 +7,8 @@ const level: Level = {
   chapter: 'test',
   title: 'cozyStudy',
   kind: 'image',
-  imageA: 'levels/test/study-a.jpg',
-  imageB: 'levels/test/study-b.jpg',
+  imageA: 'levels/test/study-a.webp',
+  imageB: 'levels/test/study-b.webp',
   viewBox: { w: 1200, h: 896 },
   differences: [
     // The armchair: brown leather in A, green buttoned in B.

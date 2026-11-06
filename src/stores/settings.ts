@@ -5,6 +5,7 @@ import { isLocale, setLocale, systemLocale, type Locale } from '../i18n/index.ts
 import { setMusicVolume, setSfxVolume, setSoftSounds } from '../services/audio.ts'
 import { setHapticsEnabled } from '../services/haptics.ts'
 import { setTheme, systemTheme, type Theme } from '../services/theme.ts'
+import { isPictureStyle, type PictureStyle } from '../levels/picture-style.ts'
 import { loadJson, saveJson } from '../services/storage.ts'
 
 const KEY = 'settings'
@@ -46,6 +47,8 @@ export const useSettingsStore = defineStore('settings', () => {
   const season = ref<Season>('summer')
   /** Follows the system until the player picks one (then stored). */
   const theme = ref<Theme>(systemTheme())
+  /** Drawn scenes or the redesigned pictures of the levels that have them (levels/picture-style.ts). */
+  const pictureStyle = ref<PictureStyle>('classic')
   /** Turned on by the testing code: Settings show the Development tools. */
   const developer = ref(false)
   /** Developer tools checkbox: levels get the "Show places" button (only in developer mode). */
@@ -79,6 +82,7 @@ export const useSettingsStore = defineStore('settings', () => {
     vibration.value = bool(raw.vibration, true)
     season.value = isSeason(raw.season) ? raw.season : 'summer'
     theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
+    pictureStyle.value = isPictureStyle(raw.pictureStyle) ? raw.pictureStyle : 'classic'
     developer.value = raw.developer === true
     devShowPlaces.value = raw.devShowPlaces === true
   }
@@ -90,7 +94,7 @@ export const useSettingsStore = defineStore('settings', () => {
     return true
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer, devShowPlaces], () =>
+  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, pictureStyle, developer, devShowPlaces], () =>
     saveJson(KEY, {
       locale: locale.value,
       reduceMotion: reduceMotion.value,
@@ -100,10 +104,11 @@ export const useSettingsStore = defineStore('settings', () => {
       vibration: vibration.value,
       season: season.value,
       theme: theme.value,
+      pictureStyle: pictureStyle.value,
       developer: developer.value,
       devShowPlaces: devShowPlaces.value,
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
+  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, pictureStyle, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
 })

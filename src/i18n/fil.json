@@ -902,6 +902,11 @@
     "summer": "Tag-araw",
     "winter": "Taglamig"
   },
+  "pictureStyle": {
+    "label": "Istilo ng larawan",
+    "classic": "Klasiko",
+    "redesign": "Bagong itsura"
+  },
   "secret": {
     "findHere": "May nakatagong gintong susi sa isa sa mga level dito. Hanapin ito!",
     "findWorlds": "May nakatagong gintong susi sa bawat mundo. Nahanap: {n} / {total}",

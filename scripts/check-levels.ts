@@ -1,4 +1,5 @@
 // Level validator: npm run check-levels
+import { existsSync } from 'node:fs'
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
 import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
@@ -187,6 +188,32 @@ function checkExtras(level: Level, a: SceneSvg, aHard: SceneSvg, report: Report,
   shown.forEach((n, i) => n < MIN_VISIBLE_PX * times.length && errors.push(`extra #${i} hardly shows (${n} px over ${times.length} samples)`))
 }
 
+/**
+ * The redesigned pictures of a level (`Level.redesign`, levels/picture-style.ts): the files exist, as many zones
+ * as the drawn scene, each centered on the picture, big enough (scaled to the 800-wide scenes) and apart.
+ * Pictures do not move and carry no key, so the drawn level must have neither motion differences nor a key.
+ */
+function checkRedesign(level: Level, minRadius: number): string[] {
+  const p = level.redesign
+  if (!p) return []
+  const errors: string[] = []
+  for (const file of [p.imageA, p.imageB]) if (!existsSync(`public/${file}`)) errors.push(`redesign: no file public/${file}`)
+  if (p.differences.length !== level.differences.length)
+    errors.push(`redesign: ${p.differences.length} differences, the drawn scene has ${level.differences.length}`)
+  if (level.differences.some((d) => d.motion)) errors.push('redesign: pictures cannot show motion differences')
+  if (level.secret) errors.push('redesign: the hidden key is not drawn on the pictures yet')
+  const scale = 800 / p.viewBox.w
+  p.differences.forEach((d, i) => {
+    if (d.x < 0 || d.y < 0 || d.x > p.viewBox.w || d.y > p.viewBox.h) errors.push(`redesign: zone #${i} is off the picture`)
+    if (d.r * scale < minRadius) errors.push(`redesign: zone #${i} r${d.r} is too small (min ${Math.ceil(minRadius / scale)})`)
+    for (let j = i + 1; j < p.differences.length; j++) {
+      const o = p.differences[j]
+      if (Math.hypot(d.x - o.x, d.y - o.y) < d.r + o.r) errors.push(`redesign: zones #${i} and #${j} overlap`)
+    }
+  })
+  return errors
+}
+
 type Report = (problem: string, detail: string) => void
 
 function check(level: Level, expectedId: number): { errors: string[]; motion: number } {
@@ -216,6 +243,8 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
   else if (level.detective && level.detective.clues.length !== level.differences.length) errors.push('every difference needs a clue: draw them with clue()')
   if (ds.length < min || ds.length > max) errors.push(`${ds.length} differences, expected ${min}–${max}`)
   ds.forEach((d, i) => d.r < minRadius && errors.push(`zone #${i} r${d.r} is too small for level ${level.id} (min ${minRadius})`))
+
+  errors.push(...checkRedesign(level, minRadius))
 
   if (level.kind !== 'svg') {
     if (!level.imageA || !level.imageB) errors.push('image level without imageA/imageB')

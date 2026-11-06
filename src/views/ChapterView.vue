@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
+import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
 import { CHAPTERS, chapterById, chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TEST_CHAPTER } from '../levels/chapters.ts'
@@ -27,6 +28,8 @@ const { t } = useI18n()
 const chapter = chapterById(props.chapter)!
 const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(chapter) : chapterLevels(chapter)))
 /** Levels still to come ("coming soon"); the "test" chapter's range is only room for test levels. */
+/** The picture style switch, for a chapter with redesigned levels (developer mode only while there are few). */
+const styled = computed(() => settings.developer && levels.value.some((l) => l.redesign))
 const missing = chapter === TEST_CHAPTER ? 0 : chapterSize(chapter) - chapterLevels(chapter).length
 
 /** A world's grid goes back to the worlds, a category to the game modes. */
@@ -54,6 +57,7 @@ function tileLabel(level: Level) {
   <div class="screen">
     <ScreenBackdrop :theme="chapter.backdrop" />
     <main>
+      <PictureStyleSwitch v-if="styled" class="style-switch" />
       <p v-if="chapter.rules" class="rules">{{ $t(chapter.rules) }}</p>
       <ul class="grid">
         <li v-for="level in levels" :key="level.id">
@@ -97,6 +101,11 @@ main {
   overflow-y: auto;
   /* A centered column on wide screens; the padding (not a margin) keeps the scrollbar at the window edge. */
   padding: 16px max(16px, (100% - var(--menu-width)) / 2) 24px;
+}
+
+.style-switch {
+  width: fit-content;
+  margin: 0 0 14px auto;
 }
 
 .rules {

@@ -902,6 +902,11 @@
     "summer": "Kesä",
     "winter": "Talvi"
   },
+  "pictureStyle": {
+    "label": "Kuvien tyyli",
+    "classic": "Klassinen",
+    "redesign": "Uusi ilme"
+  },
   "secret": {
     "findHere": "Johonkin tämän osion tasoista on piilotettu kultainen avain. Löydä se!",
     "findWorlds": "Jokainen maailma kätkee kultaisen avaimen. Löydetty: {n} / {total}",

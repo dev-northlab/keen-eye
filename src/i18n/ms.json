@@ -902,6 +902,11 @@
     "summer": "Musim panas",
     "winter": "Musim sejuk"
   },
+  "pictureStyle": {
+    "label": "Gaya gambar",
+    "classic": "Klasik",
+    "redesign": "Rupa baharu"
+  },
   "secret": {
     "findHere": "Sebatang kunci emas disembunyikan dalam salah satu tahap di sini. Cari ia!",
     "findWorlds": "Setiap dunia menyembunyikan kunci emas. Ditemui: {n} / {total}",

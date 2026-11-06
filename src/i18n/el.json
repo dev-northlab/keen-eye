@@ -19,6 +19,11 @@
     "autumn": "Φθινόπωρο",
     "winter": "Χειμώνας"
   },
+  "pictureStyle": {
+    "label": "Στυλ εικόνων",
+    "classic": "Κλασικό",
+    "redesign": "Νέα εμφάνιση"
+  },
   "theme": {
     "label": "Θέμα",
     "dark": "Σκοτεινό θέμα"

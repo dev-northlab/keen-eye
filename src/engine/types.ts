@@ -104,6 +104,20 @@ export interface SecretKey {
   on: 'both' | 'b'
 }
 
+/**
+ * The redesigned look of a level (`Level.redesign`): two ready pictures with their own zones, played instead of
+ * the drawn scene when the player picks the new picture style. Same level otherwise: id, progress, stars.
+ */
+export interface LevelPictures {
+  /** Paths relative to the app base (public/). */
+  imageA: string
+  imageB: string
+  /** The pictures' size in pixels. */
+  viewBox: { w: number; h: number }
+  /** As many as the drawn scene has, in the pictures' pixels; static (pictures do not move). */
+  differences: Difference[]
+}
+
 export interface Level {
   id: number
   /** Chapter theme key (i18n: chapters.<chapter>). */
@@ -147,6 +161,8 @@ export interface Level {
    * in calm mode, `ModeRules.transformB`, nor in two-player matches); everything above stays in the scene's own coordinates. Default 'none'.
    */
   transformB?: PictureTransform
+  /** The level's redesigned pictures, played in the new picture style (`levels/picture-style.ts`). */
+  redesign?: LevelPictures
 }
 
 export type Stars = 1 | 2 | 3

@@ -19,6 +19,11 @@
     "autumn": "Herfst",
     "winter": "Winter"
   },
+  "pictureStyle": {
+    "label": "Afbeeldingsstijl",
+    "classic": "Klassiek",
+    "redesign": "Nieuwe look"
+  },
   "theme": {
     "label": "Thema",
     "dark": "Donker thema"

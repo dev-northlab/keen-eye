@@ -19,6 +19,11 @@
     "autumn": "Podzim",
     "winter": "Zima"
   },
+  "pictureStyle": {
+    "label": "Styl obrázků",
+    "classic": "Klasický",
+    "redesign": "Nový vzhled"
+  },
   "theme": {
     "label": "Motiv",
     "dark": "Tmavý motiv"
