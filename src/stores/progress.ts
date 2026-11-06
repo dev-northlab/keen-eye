@@ -3,6 +3,7 @@ import { computed, ref, watch } from 'vue'
 import type { LevelResult, Stars } from '../engine/types.ts'
 import { categoryOf, chapterById, chapterLevels, KEY_CHAPTERS, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { allLevels, levelById, levels } from '../levels/index.ts'
+import { isUpcoming } from '../levels/upcoming.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 import {
   parseCases,
@@ -59,9 +60,11 @@ export const useProgressStore = defineStore('progress', () => {
    * is completed. A world's first level follows level id − 1 (the previous world's first 20), so
    * the harder levels added at a world's end never hold back the next world. A category ("time",
    * "memory") starts open, and so does a free "detective" case. The treasury opens with the last key.
+   * A hidden level (levels/upcoming.ts) is reached only in developer mode.
    */
   function isReached(id: number): boolean {
     const level = levelById(id)
+    if (level && isUpcoming(id)) return useSettingsStore().developer
     if (!level || openAll.value) return !!level
     if (level.chapter === TREASURY_CHAPTER.id) return allKeysFound.value
     const own = chapterLevels(chapterById(level.chapter)!)
@@ -71,8 +74,8 @@ export const useProgressStore = defineStore('progress', () => {
     return id === 1 || categoryOf(level) !== undefined || isCompleted(id - 1)
   }
 
-  /** A paid level while the full game is not bought. */
-  const needsPurchase = (id: number) => !openAll.value && !isFreeLevel(id) && !usePurchaseStore().fullGame
+  /** A paid level while the full game is not bought. Hidden levels (developer mode only) are free to test. */
+  const needsPurchase = (id: number) => !openAll.value && !isUpcoming(id) && !isFreeLevel(id) && !usePurchaseStore().fullGame
 
   /** Playable: reached in order and, for paid levels, bought. */
   const isUnlocked = (id: number) => isReached(id) && !needsPurchase(id)

@@ -1,0 +1,62 @@
+// Levels drawn ahead of a release and hidden from players: no tile, not counted, outside the level order and
+// the duels, a direct link lands home. Developer mode shows them at their place in the chapter's grid, marked
+// as hidden (ChapterView), and plays them.
+// Their ids are already in their chapter's `ranges` (chapters.ts; `chapterSize` leaves them out) and in
+// `difficulty.ts`, and `check-levels` / `preview-levels` take them like the others.
+// To release a level, move it from this list into its chapter's list (`levels` in index.ts or the category's
+// index.ts) and update the store texts (assets/store/listing, `npm test` checks the level count).
+import type { Level } from '../engine/types.ts'
+import level151 from './chapter-01/level-151.ts'
+import level152 from './chapter-01/level-152.ts'
+import level153 from './chapter-01/level-153.ts'
+import level154 from './chapter-01/level-154.ts'
+import level155 from './chapter-01/level-155.ts'
+import level156 from './chapter-01/level-156.ts'
+import level157 from './chapter-01/level-157.ts'
+import level158 from './chapter-01/level-158.ts'
+import level159 from './chapter-01/level-159.ts'
+import level160 from './chapter-01/level-160.ts'
+import level161 from './chapter-02/level-161.ts'
+import level162 from './chapter-02/level-162.ts'
+import level163 from './chapter-02/level-163.ts'
+import level164 from './chapter-02/level-164.ts'
+import level165 from './chapter-02/level-165.ts'
+import level166 from './chapter-02/level-166.ts'
+import level167 from './chapter-02/level-167.ts'
+import level168 from './chapter-02/level-168.ts'
+import level169 from './chapter-02/level-169.ts'
+import level170 from './chapter-02/level-170.ts'
+import level171 from './chapter-03/level-171.ts'
+import level172 from './chapter-03/level-172.ts'
+import level173 from './chapter-03/level-173.ts'
+import level174 from './chapter-03/level-174.ts'
+import level175 from './chapter-03/level-175.ts'
+import level176 from './chapter-03/level-176.ts'
+import level177 from './chapter-03/level-177.ts'
+import level178 from './chapter-03/level-178.ts'
+import level179 from './chapter-03/level-179.ts'
+import level180 from './chapter-03/level-180.ts'
+import level181 from './chapter-04/level-181.ts'
+import level182 from './chapter-04/level-182.ts'
+import level183 from './chapter-04/level-183.ts'
+import level184 from './chapter-04/level-184.ts'
+import level185 from './chapter-04/level-185.ts'
+import level186 from './chapter-04/level-186.ts'
+import level187 from './chapter-04/level-187.ts'
+import level188 from './chapter-04/level-188.ts'
+import level189 from './chapter-04/level-189.ts'
+import level190 from './chapter-04/level-190.ts'
+import level191 from './chapter-05/level-191.ts'
+import level192 from './chapter-05/level-192.ts'
+import level193 from './chapter-05/level-193.ts'
+import level194 from './chapter-05/level-194.ts'
+import level195 from './chapter-05/level-195.ts'
+import level196 from './chapter-05/level-196.ts'
+import level197 from './chapter-05/level-197.ts'
+import level198 from './chapter-05/level-198.ts'
+import level199 from './chapter-05/level-199.ts'
+import level200 from './chapter-05/level-200.ts'
+
+export const upcomingLevels: Level[] = [level151, level152, level153, level154, level155, level156, level157, level158, level159, level160, level161, level162, level163, level164, level165, level166, level167, level168, level169, level170, level171, level172, level173, level174, level175, level176, level177, level178, level179, level180, level181, level182, level183, level184, level185, level186, level187, level188, level189, level190, level191, level192, level193, level194, level195, level196, level197, level198, level199, level200]
+
+export const isUpcoming = (id: number) => upcomingLevels.some((l) => l.id === id)

@@ -8,6 +8,7 @@ import { levels, treasuryLevel } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
 import { travelLevels } from '../src/levels/travel/index.ts'
 import { timeLevels } from '../src/levels/time/index.ts'
+import { upcomingLevels } from '../src/levels/upcoming.ts'
 import { posedSvg, rasterize } from './render.ts'
 
 /** Moving zones are checked geometrically at these times (seconds of animation). */
@@ -291,6 +292,8 @@ const expected = new Map([
   ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
   ...detectiveLevels.map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
+  // Hidden levels (upcoming.ts) take their place in the order only when released.
+  ...upcomingLevels.map((l) => [l, l.id] as const),
 ])
 const selected = [...expected.keys()].filter((l) => ids.length === 0 || ids.includes(l.id))
 

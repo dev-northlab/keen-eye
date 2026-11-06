@@ -166,7 +166,15 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   111–120, 3 "forest" 41–60 + 121–130, 4 "sea" 61–80 + 131–140, 5 "space" 81–100 + 141–150; the harder ten of a
   chapter (ids after 100, files in its own `chapter-NN/`) open after its 20th level, one after another, and never
   hold back the next chapter (`progress.isReached`: a level follows the previous level of its chapter, a chapter's
-  first level follows id − 1); "next" in the result dialog goes through the chapter (`nextLevel`). Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+  first level follows id − 1); "next" in the result dialog goes through the chapter (`nextLevel`). After the harder
+  ten come the ten hardest (151–160 farm, 161–170 city, 171–180 forest, 181–190 sea, 191–200 space; `hardest()` in
+  `difficulty.ts`: 11 then 12 differences, 3 moving, picture B always turned), new animals, tools, houses and vehicles.
+- Hidden levels (`levels/upcoming.ts`): levels drawn ahead of a release live in `upcomingLevels`, not in their
+  chapter's list; their ids are already in the chapter's `ranges` (`chapterSize` leaves them out). Players never see
+  them (no tile, no count, no "next", the router sends a direct link home); developer mode shows them at their
+  place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
+  `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
+  store texts. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,
@@ -224,7 +232,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project, `codemagic.yaml`, store links in `src/config/links.ts` and README).
   The stores never let it change after the first upload: updates, saved progress and purchases are tied to it.
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
-  passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. Use SVG icons,
+  passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. The bundle needs
+  Android System WebView 111+ (Vite's default target chrome111 / ios16.4, `color-mix()`): `android.minWebViewVersion` in `capacitor.config.ts` shows
+  `public/webview-update.html` (plain HTML + ES5, own texts per locale; on Android 7–9 Chrome is the WebView, so it asks
+  to update Chrome there) on older ones — raise it when the build uses newer
+  features; its `server.errorPath` is left out of `cap sync ios`, since iOS loads it after any failed navigation. On iOS
+  the WebView is the system's, so `IPHONEOS_DEPLOYMENT_TARGET` is 16.4 (the CLI copies its major into `CapApp-SPM/Package.swift`). Use SVG icons,
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.

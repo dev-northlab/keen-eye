@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Keen Eye</title>
+    <!--
+      Capacitor's `server.errorPath` (capacitor.config.ts): shown instead of the game when the device's
+      Android System WebView is older than `android.minWebViewVersion`. That WebView cannot run the app's
+      bundle, so this page is plain HTML, CSS and ES5 with its own texts in every interface language.
+    -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #fbf8f1;
+        color: #2b2a33;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        html,
+        body {
+          background: #1c1d24;
+          color: #ecebf2;
+        }
+        p {
+          color: #a4a2b2;
+        }
+      }
+      main {
+        box-sizing: border-box;
+        min-height: 100%;
+        padding: 32px 24px;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        text-align: center;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 22px;
+      }
+      p {
+        margin: 0 auto 28px;
+        max-width: 420px;
+        font-size: 16px;
+        line-height: 1.45;
+        color: #6a6878;
+      }
+      a {
+        display: inline-block;
+        padding: 14px 28px;
+        border-radius: 999px;
+        background: #2f7d5b;
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 id="title">Update Android System WebView</h1>
+      <p id="text">
+        Keen Eye needs a newer version of Android System WebView. Update it in Google Play, then open the game again.
+      </p>
+      <div>
+        <a id="open" href="https://play.google.com/store/apps/details?id=com.google.android.webview">Open Google Play</a>
+      </div>
+    </main>
+    <script>
+      // [title, text, button] per interface language (src/i18n); the page picks it like src/i18n/resolve.ts.
+      var TEXTS = {
+        ru: ['Обновите Android System WebView', 'Для Keen Eye нужна более новая версия Android System WebView. Обновите её в Google Play и снова откройте игру.', 'Открыть Google Play'],
+        en: ['Update Android System WebView', 'Keen Eye needs a newer version of Android System WebView. Update it in Google Play, then open the game again.', 'Open Google Play'],
+        hy: ['Թարմացրեք Android System WebView-ը', 'Keen Eye-ին անհրաժեշտ է Android System WebView-ի ավելի նոր տարբերակ։ Թարմացրեք այն Google Play-ում և նորից բացեք խաղը։', 'Բացել Google Play-ը'],
+        de: ['Aktualisiere Android System WebView', 'Keen Eye benötigt eine neuere Version von Android System WebView. Aktualisiere sie in Google Play und öffne das Spiel dann erneut.', 'Google Play öffnen'],
+        fr: ['Mets à jour Android System WebView', 'Keen Eye a besoin d’une version plus récente d’Android System WebView. Mets-la à jour sur Google Play, puis rouvre le jeu.', 'Ouvrir Google Play'],
+        es: ['Actualiza Android System WebView', 'Keen Eye necesita una versión más reciente de Android System WebView. Actualízala en Google Play y vuelve a abrir el juego.', 'Abrir Google Play'],
+        it: ['Aggiorna Android System WebView', 'Keen Eye richiede una versione più recente di Android System WebView. Aggiornala su Google Play e riapri il gioco.', 'Apri Google Play'],
+        pt: ['Atualize o Android System WebView', 'O Keen Eye precisa de uma versão mais recente do Android System WebView. Atualize-o no Google Play e abra o jogo novamente.', 'Abrir o Google Play'],
+        nl: ['Werk Android System WebView bij', 'Keen Eye heeft een nieuwere versie van Android System WebView nodig. Werk deze bij in Google Play en open de game opnieuw.', 'Google Play openen'],
+        pl: ['Zaktualizuj Android System WebView', 'Keen Eye wymaga nowszej wersji Android System WebView. Zaktualizuj ją w Google Play i ponownie otwórz grę.', 'Otwórz Google Play'],
+        cs: ['Aktualizujte Android System WebView', 'Keen Eye potřebuje novější verzi Android System WebView. Aktualizujte ji v Google Play a znovu otevřete hru.', 'Otevřít Google Play'],
+        ro: ['Actualizează Android System WebView', 'Keen Eye are nevoie de o versiune mai nouă a Android System WebView. Actualizeaz-o din Google Play, apoi redeschide jocul.', 'Deschide Google Play'],
+        bg: ['Актуализирайте Android System WebView', 'Keen Eye се нуждае от по-нова версия на Android System WebView. Актуализирайте я в Google Play и отворете играта отново.', 'Отвори Google Play'],
+        uk: ['Оновіть Android System WebView', 'Для Keen Eye потрібна новіша версія Android System WebView. Оновіть її в Google Play і знову відкрийте гру.', 'Відкрити Google Play'],
+        el: ['Ενημερώστε το Android System WebView', 'Το Keen Eye χρειάζεται νεότερη έκδοση του Android System WebView. Ενημερώστε το στο Google Play και ανοίξτε ξανά το παιχνίδι.', 'Άνοιγμα Google Play'],
+        hu: ['Frissítsd az Android System WebView-t', 'A Keen Eye-hoz az Android System WebView újabb verziója kell. Frissítsd a Google Playen, majd nyisd meg újra a játékot.', 'Google Play megnyitása'],
+        sv: ['Uppdatera Android System WebView', 'Keen Eye behöver en nyare version av Android System WebView. Uppdatera den i Google Play och öppna sedan spelet igen.', 'Öppna Google Play'],
+        da: ['Opdater Android System WebView', 'Keen Eye kræver en nyere version af Android System WebView. Opdater den i Google Play, og åbn derefter spillet igen.', 'Åbn Google Play'],
+        nb: ['Oppdater Android System WebView', 'Keen Eye trenger en nyere versjon av Android System WebView. Oppdater den i Google Play, og åpne spillet på nytt.', 'Åpne Google Play'],
+        fi: ['Päivitä Android System WebView', 'Keen Eye tarvitsee uudemman version Android System WebView’stä. Päivitä se Google Playssa ja avaa peli uudelleen.', 'Avaa Google Play'],
+        tr: ['Android System WebView’ı güncelleyin', 'Keen Eye, Android System WebView’ın daha yeni bir sürümüne ihtiyaç duyuyor. Google Play’den güncelleyin ve oyunu yeniden açın.', 'Google Play’i aç'],
+        ar: ['حدِّث Android System WebView', 'تحتاج Keen Eye إلى إصدار أحدث من Android System WebView. حدِّثه من Google Play ثم افتح اللعبة مرة أخرى.', 'فتح Google Play'],
+        hi: ['Android System WebView अपडेट करें', 'Keen Eye को Android System WebView के नए वर्ज़न की ज़रूरत है। इसे Google Play में अपडेट करें और फिर से गेम खोलें।', 'Google Play खोलें'],
+        id: ['Perbarui Android System WebView', 'Keen Eye memerlukan versi Android System WebView yang lebih baru. Perbarui di Google Play, lalu buka game lagi.', 'Buka Google Play'],
+        ms: ['Kemas kini Android System WebView', 'Keen Eye memerlukan versi Android System WebView yang lebih baharu. Kemas kininya di Google Play, kemudian buka permainan semula.', 'Buka Google Play'],
+        fil: ['I-update ang Android System WebView', 'Kailangan ng Keen Eye ang mas bagong bersyon ng Android System WebView. I-update ito sa Google Play, saka buksan ulit ang laro.', 'Buksan ang Google Play'],
+        vi: ['Cập nhật Android System WebView', 'Keen Eye cần phiên bản Android System WebView mới hơn. Hãy cập nhật trên Google Play rồi mở lại trò chơi.', 'Mở Google Play'],
+        th: ['อัปเดต Android System WebView', 'Keen Eye ต้องใช้ Android System WebView เวอร์ชันที่ใหม่กว่า อัปเดตใน Google Play แล้วเปิดเกมอีกครั้ง', 'เปิด Google Play'],
+        zh: ['请更新 Android System WebView', 'Keen Eye 需要更新版本的 Android System WebView。请在 Google Play 中更新，然后重新打开游戏。', '打开 Google Play'],
+        'zh-Hant': ['請更新 Android System WebView', 'Keen Eye 需要較新版本的 Android System WebView。請在 Google Play 中更新，然後重新開啟遊戲。', '開啟 Google Play'],
+        ja: ['Android System WebView を更新してください', 'Keen Eye には新しいバージョンの Android System WebView が必要です。Google Play で更新してから、もう一度ゲームを開いてください。', 'Google Play を開く'],
+        ko: ['Android System WebView를 업데이트하세요', 'Keen Eye를 실행하려면 최신 버전의 Android System WebView가 필요합니다. Google Play에서 업데이트한 후 게임을 다시 여세요.', 'Google Play 열기']
+      }
+      // Android 7–9: Google Chrome is the WebView (Android System WebView is disabled there), so it is the app to update.
+      var CHROME = {
+        ru: ['Обновите Google Chrome', 'Для Keen Eye нужна более новая версия Google Chrome. Обновите его в Google Play и снова откройте игру.'],
+        en: ['Update Google Chrome', 'Keen Eye needs a newer version of Google Chrome. Update it in Google Play, then open the game again.'],
+        hy: ['Թարմացրեք Google Chrome-ը', 'Keen Eye-ին անհրաժեշտ է Google Chrome-ի ավելի նոր տարբերակ։ Թարմացրեք այն Google Play-ում և նորից բացեք խաղը։'],
+        de: ['Aktualisiere Google Chrome', 'Keen Eye benötigt eine neuere Version von Google Chrome. Aktualisiere ihn in Google Play und öffne das Spiel dann erneut.'],
+        fr: ['Mets à jour Google Chrome', 'Keen Eye a besoin d’une version plus récente de Google Chrome. Mets-le à jour sur Google Play, puis rouvre le jeu.'],
+        es: ['Actualiza Google Chrome', 'Keen Eye necesita una versión más reciente de Google Chrome. Actualízalo en Google Play y vuelve a abrir el juego.'],
+        it: ['Aggiorna Google Chrome', 'Keen Eye richiede una versione più recente di Google Chrome. Aggiornalo su Google Play e riapri il gioco.'],
+        pt: ['Atualize o Google Chrome', 'O Keen Eye precisa de uma versão mais recente do Google Chrome. Atualize-o no Google Play e abra o jogo novamente.'],
+        nl: ['Werk Google Chrome bij', 'Keen Eye heeft een nieuwere versie van Google Chrome nodig. Werk deze bij in Google Play en open de game opnieuw.'],
+        pl: ['Zaktualizuj Google Chrome', 'Keen Eye wymaga nowszej wersji Google Chrome. Zaktualizuj ją w Google Play i ponownie otwórz grę.'],
+        cs: ['Aktualizujte Google Chrome', 'Keen Eye potřebuje novější verzi Google Chrome. Aktualizujte ho v Google Play a znovu otevřete hru.'],
+        ro: ['Actualizează Google Chrome', 'Keen Eye are nevoie de o versiune mai nouă de Google Chrome. Actualizează-l din Google Play, apoi redeschide jocul.'],
+        bg: ['Актуализирайте Google Chrome', 'Keen Eye се нуждае от по-нова версия на Google Chrome. Актуализирайте го в Google Play и отворете играта отново.'],
+        uk: ['Оновіть Google Chrome', 'Для Keen Eye потрібна новіша версія Google Chrome. Оновіть його в Google Play і знову відкрийте гру.'],
+        el: ['Ενημερώστε το Google Chrome', 'Το Keen Eye χρειάζεται νεότερη έκδοση του Google Chrome. Ενημερώστε το στο Google Play και ανοίξτε ξανά το παιχνίδι.'],
+        hu: ['Frissítsd a Google Chrome-ot', 'A Keen Eye-hoz a Google Chrome újabb verziója kell. Frissítsd a Google Playen, majd nyisd meg újra a játékot.'],
+        sv: ['Uppdatera Google Chrome', 'Keen Eye behöver en nyare version av Google Chrome. Uppdatera den i Google Play och öppna sedan spelet igen.'],
+        da: ['Opdater Google Chrome', 'Keen Eye kræver en nyere version af Google Chrome. Opdater den i Google Play, og åbn derefter spillet igen.'],
+        nb: ['Oppdater Google Chrome', 'Keen Eye trenger en nyere versjon av Google Chrome. Oppdater den i Google Play, og åpne spillet på nytt.'],
+        fi: ['Päivitä Google Chrome', 'Keen Eye tarvitsee uudemman version Google Chromesta. Päivitä se Google Playssa ja avaa peli uudelleen.'],
+        tr: ['Google Chrome’u güncelleyin', 'Keen Eye, Google Chrome’un daha yeni bir sürümüne ihtiyaç duyuyor. Google Play’den güncelleyin ve oyunu yeniden açın.'],
+        ar: ['حدِّث Google Chrome', 'تحتاج Keen Eye إلى إصدار أحدث من Google Chrome. حدِّثه من Google Play ثم افتح اللعبة مرة أخرى.'],
+        hi: ['Google Chrome अपडेट करें', 'Keen Eye को Google Chrome के नए वर्ज़न की ज़रूरत है। इसे Google Play में अपडेट करें और फिर से गेम खोलें।'],
+        id: ['Perbarui Google Chrome', 'Keen Eye memerlukan versi Google Chrome yang lebih baru. Perbarui di Google Play, lalu buka game lagi.'],
+        ms: ['Kemas kini Google Chrome', 'Keen Eye memerlukan versi Google Chrome yang lebih baharu. Kemas kininya di Google Play, kemudian buka permainan semula.'],
+        fil: ['I-update ang Google Chrome', 'Kailangan ng Keen Eye ang mas bagong bersyon ng Google Chrome. I-update ito sa Google Play, saka buksan ulit ang laro.'],
+        vi: ['Cập nhật Google Chrome', 'Keen Eye cần phiên bản Google Chrome mới hơn. Hãy cập nhật trên Google Play rồi mở lại trò chơi.'],
+        th: ['อัปเดต Google Chrome', 'Keen Eye ต้องใช้ Google Chrome เวอร์ชันที่ใหม่กว่า อัปเดตใน Google Play แล้วเปิดเกมอีกครั้ง'],
+        zh: ['请更新 Google Chrome', 'Keen Eye 需要更新版本的 Google Chrome。请在 Google Play 中更新，然后重新打开游戏。'],
+        'zh-Hant': ['請更新 Google Chrome', 'Keen Eye 需要較新版本的 Google Chrome。請在 Google Play 中更新，然後重新開啟遊戲。'],
+        ja: ['Google Chrome を更新してください', 'Keen Eye には新しいバージョンの Google Chrome が必要です。Google Play で更新してから、もう一度ゲームを開いてください。'],
+        ko: ['Google Chrome을 업데이트하세요', 'Keen Eye를 실행하려면 최신 버전의 Google Chrome이 필요합니다. Google Play에서 업데이트한 후 게임을 다시 여세요.']
+      }
+      var ALIASES = { no: 'nb', nn: 'nb', tl: 'fil', in: 'id' }
+
+      function pick(tags) {
+        for (var i = 0; i < tags.length; i++) {
+          var tag = String(tags[i] || '')
+          var lang = tag.split(/[-_]/)[0].toLowerCase()
+          var locale = lang === 'zh' && /^zh[-_](hant|tw|hk|mo)\b/i.test(tag) ? 'zh-Hant' : ALIASES[lang] || lang
+          if (TEXTS.hasOwnProperty(locale)) return locale
+        }
+        return 'en'
+      }
+
+      var locale = pick(navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language])
+      var t = TEXTS[locale]
+      var chrome = /Android [789][.;)]/.test(navigator.userAgent)
+      var open = document.getElementById('open')
+      document.documentElement.lang = locale
+      if (locale === 'ar') document.documentElement.dir = 'rtl'
+      document.getElementById('title').textContent = chrome ? CHROME[locale][0] : t[0]
+      document.getElementById('text').textContent = chrome ? CHROME[locale][1] : t[1]
+      open.textContent = t[2]
+      if (chrome) open.href = 'https://play.google.com/store/apps/details?id=com.android.chrome'
+    </script>
+  </body>
+</html>
