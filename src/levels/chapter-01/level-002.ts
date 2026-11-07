@@ -1,6 +1,7 @@
 import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level002Redesign } from './level-002-redesign.ts'
 import { cat, cloud, flower, FLOWER_COLORS, grass, pick, pumpkin, snail, sun, wheelbarrow } from '../shapes.ts'
 
 /** (x, y) is the top of the root. Bounds: x ±10, y from −26 to +12. */
@@ -36,6 +37,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'garden',
   parTimeSec: 70,
+  redesign: level002Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 315 + rand() * 55)

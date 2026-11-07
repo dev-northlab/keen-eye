@@ -5,7 +5,8 @@ import { isPictureStyle, styledLevel } from '../src/levels/picture-style.ts'
 
 describe('picture style (levels/picture-style.ts)', () => {
   const drawn = levelById(1)!
-  const plain = levelById(2)!
+  // A level without redesigned pictures: the sea's first (the farm's get them one by one).
+  const plain = levelById(61)!
 
   test('the classic style plays the drawn scene', () => {
     assert.equal(styledLevel(drawn, 'classic'), drawn)
@@ -22,9 +23,17 @@ describe('picture style (levels/picture-style.ts)', () => {
     assert.equal(level.build, undefined)
     assert.equal(level.extras, undefined)
     assert.equal(level.redesign, undefined)
+    assert.equal(level.secret, drawn.redesign.secret)
     assert.equal(level.id, drawn.id)
     assert.equal(level.title, drawn.title)
     assert.equal(level.parTimeSec, drawn.parTimeSec)
+  })
+
+  test("the drawn scene's key never lands on pictures that do not draw it", () => {
+    const keyed = { ...drawn, secret: { x: 10, y: 10, r: 20, on: 'both' as const } }
+    assert.equal(styledLevel(keyed, 'redesign').secret, undefined)
+    const key = { x: 600, y: 400, r: 40, on: 'both' as const }
+    assert.deepEqual(styledLevel({ ...keyed, redesign: { ...drawn.redesign!, secret: key } }, 'redesign').secret, key)
   })
 
   test('a level without pictures stays drawn in the redesign style', () => {

@@ -190,8 +190,9 @@ function checkExtras(level: Level, a: SceneSvg, aHard: SceneSvg, report: Report,
 
 /**
  * The redesigned pictures of a level (`Level.redesign`, levels/picture-style.ts): the files exist, as many zones
- * as the drawn scene, each centered on the picture, big enough (scaled to the 800-wide scenes) and apart.
- * Pictures do not move and carry no key, so the drawn level must have neither motion differences nor a key.
+ * as the drawn scene, each centered on the picture, big enough (scaled to the 800-wide scenes) and apart; the
+ * drawn level's key is on the pictures too, on both, clear of the zones. Pictures do not move, so the drawn
+ * level must have no motion differences. (How well the key hides is seen by eye: there is no pixel check.)
  */
 function checkRedesign(level: Level, minRadius: number): string[] {
   const p = level.redesign
@@ -201,7 +202,15 @@ function checkRedesign(level: Level, minRadius: number): string[] {
   if (p.differences.length !== level.differences.length)
     errors.push(`redesign: ${p.differences.length} differences, the drawn scene has ${level.differences.length}`)
   if (level.differences.some((d) => d.motion)) errors.push('redesign: pictures cannot show motion differences')
-  if (level.secret) errors.push('redesign: the hidden key is not drawn on the pictures yet')
+  if (!!level.secret !== !!p.secret) errors.push('redesign: the pictures need the key exactly when the drawn scene hides one')
+  const key = p.secret
+  if (key) {
+    if (key.on !== 'both') errors.push('redesign: the key must be on both pictures')
+    if (key.x < 0 || key.y < 0 || key.x > p.viewBox.w || key.y > p.viewBox.h) errors.push('redesign: the key is off the picture')
+    p.differences.forEach((d, i) => {
+      if (Math.hypot(d.x - key.x, d.y - key.y) < d.r + key.r) errors.push(`redesign: the key overlaps zone #${i}`)
+    })
+  }
   const scale = 800 / p.viewBox.w
   p.differences.forEach((d, i) => {
     if (d.x < 0 || d.y < 0 || d.x > p.viewBox.w || d.y > p.viewBox.h) errors.push(`redesign: zone #${i} is off the picture`)

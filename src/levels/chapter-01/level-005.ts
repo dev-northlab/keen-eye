@@ -1,6 +1,7 @@
 import { bird, mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level005Redesign } from './level-005-redesign.ts'
 import { bucket, cat, chick, cloud, fence, grass, pig, pumpkin, sun, sunflower } from '../shapes.ts'
 
 /** Zone around sunflower(x, y, h): a circle containing its bounds. */
@@ -18,6 +19,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'pigsty',
   parTimeSec: 70,
+  redesign: level005Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 360 + rand() * 135)

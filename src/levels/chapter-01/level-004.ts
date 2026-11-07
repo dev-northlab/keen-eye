@@ -1,6 +1,7 @@
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level004Redesign } from './level-004-redesign.ts'
 import { apple, basket, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
 
 /** (x, y) = ground under the middle. Bounds: x ±50, y from −38 to 0 (either direction). */
@@ -38,6 +39,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'orchard',
   parTimeSec: 70,
+  redesign: level004Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 345 + rand() * 150)
