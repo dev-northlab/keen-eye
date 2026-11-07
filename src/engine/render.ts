@@ -1,5 +1,5 @@
 import { pose, zoneCenter } from './animation.ts'
-import { svgTransform, type PictureTransform } from './transform.ts'
+import { svgTransform, type PictureTransform, type Size } from './transform.ts'
 import type { Animation, Difference, Level } from './types.ts'
 
 const SVG_NS = 'http://www.w3.org/2000/svg'
@@ -42,8 +42,8 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   const { w, h } = level.viewBox
   const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, class: 'ke-picture' })
   svg.style.userSelect = 'none'
-  const turn = svgTransform(transform, level.viewBox)
-  const content = turn ? el('g', { transform: turn }) : svg
+  // Scene and marks in one group that carries the turn, so it can change while the level is played.
+  const content = el('g', {})
 
   const scene = el('g', {})
   let animations: Animation[] = []
@@ -65,8 +65,8 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
 
   const marks = el('g', { 'pointer-events': 'none' })
   content.append(scene, marks)
-  if (turn) svg.append(content)
-  return {
+  svg.append(content)
+  const picture: Picture = {
     svg,
     marks,
     animated: animatedGroups(scene, animations),
@@ -75,6 +75,16 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     posedT: NaN,
     posedAt: -Infinity,
   }
+  turnPicture(picture, transform, level.viewBox)
+  return picture
+}
+
+/** Shows a picture of `createPicture` another way: its scene and marks turn together (the viewBox is the zoom's). */
+export function turnPicture(p: Picture, transform: PictureTransform, size: Size): void {
+  const content = p.marks.parentElement!
+  const turn = svgTransform(transform, size)
+  if (turn) content.setAttribute('transform', turn)
+  else content.removeAttribute('transform')
 }
 
 /**

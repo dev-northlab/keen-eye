@@ -55,6 +55,12 @@ export class Viewport {
     return this.view.scale
   }
 
+  /** svg i now shows the scene another way: the same part of the scene stays in view. */
+  setTransform(i: number, transform: PictureTransform): void {
+    this.transforms[i] = transform
+    this.apply(this.view)
+  }
+
   frame(svg: ViewSvg): Frame | null {
     const ctm = svg.getScreenCTM()
     if (!ctm) return null

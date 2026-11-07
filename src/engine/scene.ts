@@ -113,6 +113,11 @@ export class GameScene {
     this.board.reveal(this.found)
   }
 
+  /** Shows picture B another way: 'none' as drawn, or back to `SceneOptions.transformB`. */
+  setTransformB(transform: PictureTransform): void {
+    this.board.setTransformB(transform)
+  }
+
   /** Stops or restarts the scene animation (calm mode button). */
   setAnimationFrozen(frozen: boolean): void {
     this.animationFrozen = frozen
