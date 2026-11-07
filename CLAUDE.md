@@ -200,7 +200,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `memory/shapes.ts`, plus the chapters' shapes), drawn the same in both pictures and kept 20+ units clear of every zone; in
   "time" levels decor that changes with the moment (snow on it in winter, summer-only grass and butterflies) goes through
   `time()`, never `diff`.
-- Redesigned pictures (`levels/picture-style.ts`): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
+- Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen, above a
   grid with such levels and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an

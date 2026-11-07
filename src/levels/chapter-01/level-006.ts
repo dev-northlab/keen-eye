@@ -1,6 +1,7 @@
 import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level006Redesign } from './level-006-redesign.ts'
 import { cloud, eggNest, fence, flower, FLOWER_COLORS, grass, hen, milkCan, pick, sun, wateringCan } from '../shapes.ts'
 
 /** Faces right; (x, y) = body center. Bounds: x from −40 to +33, y from −35 to +26 (either direction: ±40). */
@@ -34,6 +35,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'henhouse',
   parTimeSec: 70,
+  redesign: level006Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 360 + rand() * 135)

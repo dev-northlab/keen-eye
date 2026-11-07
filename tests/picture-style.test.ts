@@ -5,7 +5,8 @@ import { isPictureStyle, styledLevel } from '../src/levels/picture-style.ts'
 
 describe('picture style (levels/picture-style.ts)', () => {
   const drawn = levelById(1)!
-  const plain = levelById(2)!
+  // A level without redesigned pictures: the sea's first (the farm's get them one by one).
+  const plain = levelById(61)!
 
   test('the classic style plays the drawn scene', () => {
     assert.equal(styledLevel(drawn, 'classic'), drawn)

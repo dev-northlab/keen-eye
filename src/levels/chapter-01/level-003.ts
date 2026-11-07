@@ -1,6 +1,7 @@
 import { butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level003Redesign } from './level-003-redesign.ts'
 import { cloud, duck, flower, FLOWER_COLORS, grass, ladybug, pick, snail, sun, tree } from '../shapes.ts'
 
 const bird = (x: number, y: number) =>
@@ -33,6 +34,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'pond',
   parTimeSec: 80,
+  redesign: level003Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stones = ''
     for (let i = 0; i < 10; i++) {
