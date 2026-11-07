@@ -91,7 +91,8 @@
     "soon": "Coming soon",
     "soonLevels": "Coming soon: {n} more",
     "progress": "{done} of {total}",
-    "task": "Spot the difference"
+    "task": "Spot the difference",
+    "random": "Random level"
   },
   "timeTravel": {
     "title": "Time travel",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Next",
     "levelTitle": "Level",
-    "random": "Random level",
     "differences": "{n} differences",
     "score": "{name}: {n}",
     "turnOf": "{name}'s turn",

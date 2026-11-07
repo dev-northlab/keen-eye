@@ -406,7 +406,6 @@
     "noLimit": "Không giới hạn",
     "otherLevel": "Màn khác",
     "player": "Người chơi {n}",
-    "random": "Màn ngẫu nhiên",
     "ready": "Sẵn sàng!",
     "rematch": "Đấu lại",
     "rotate": "Xoay ngang thiết bị",
@@ -841,7 +840,8 @@
     "soon": "Sắp ra mắt",
     "soonLevels": "Sắp ra mắt: thêm {n} màn",
     "task": "Tìm điểm khác biệt",
-    "title": "Các thế giới"
+    "title": "Các thế giới",
+    "random": "Màn ngẫu nhiên"
   },
   "memoryMode": {
     "failed": "Lần này chưa được",

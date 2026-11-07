@@ -91,7 +91,8 @@
     "soon": "Незабаром",
     "soonLevels": "Незабаром: ще {n}",
     "progress": "{done} з {total}",
-    "task": "Знайди відмінності"
+    "task": "Знайди відмінності",
+    "random": "Випадковий рівень"
   },
   "timeTravel": {
     "title": "Подорож у часі",
@@ -173,7 +174,6 @@
     "seconds": "{n} с",
     "next": "Далі",
     "levelTitle": "Рівень",
-    "random": "Випадковий рівень",
     "differences": "Відмінностей: {n}",
     "score": "{name}: {n}",
     "turnOf": "Хід: {name}",

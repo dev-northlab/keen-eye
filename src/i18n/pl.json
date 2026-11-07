@@ -91,7 +91,8 @@
     "soon": "Wkrótce",
     "soonLevels": "Wkrótce: jeszcze {n}",
     "progress": "{done} z {total}",
-    "task": "Znajdź różnice"
+    "task": "Znajdź różnice",
+    "random": "Losowy poziom"
   },
   "timeTravel": {
     "title": "Podróż w czasie",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Dalej",
     "levelTitle": "Poziom",
-    "random": "Losowy poziom",
     "differences": "Różnice: {n}",
     "score": "{name}: {n}",
     "turnOf": "Tura: {name}",

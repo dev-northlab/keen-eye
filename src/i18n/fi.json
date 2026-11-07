@@ -406,7 +406,6 @@
     "noLimit": "Ei rajaa",
     "otherLevel": "Toinen taso",
     "player": "Pelaaja {n}",
-    "random": "Satunnainen taso",
     "ready": "Valmis!",
     "rematch": "Uusintaottelu",
     "rotate": "Käännä laite vaakasuuntaan",
@@ -841,7 +840,8 @@
     "soon": "Tulossa pian",
     "soonLevels": "Tulossa pian: {n} lisää",
     "task": "Etsi erot",
-    "title": "Maailmat"
+    "title": "Maailmat",
+    "random": "Satunnainen taso"
   },
   "memoryMode": {
     "failed": "Ei tällä kertaa",

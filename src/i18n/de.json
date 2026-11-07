@@ -91,7 +91,8 @@
     "soon": "Bald",
     "soonLevels": "Bald: {n} weitere",
     "progress": "{done} von {total}",
-    "task": "Finde die Unterschiede"
+    "task": "Finde die Unterschiede",
+    "random": "Zufälliges Level"
   },
   "timeTravel": {
     "title": "Zeitreise",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Weiter",
     "levelTitle": "Level",
-    "random": "Zufälliges Level",
     "differences": "{n} Unterschiede",
     "score": "{name}: {n}",
     "turnOf": "{name} ist dran",

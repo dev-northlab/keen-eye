@@ -91,7 +91,8 @@
     "soon": "Скоро",
     "soonLevels": "Скоро: ещё {n}",
     "progress": "{done} из {total}",
-    "task": "Найди отличия"
+    "task": "Найди отличия",
+    "random": "Случайный уровень"
   },
   "timeTravel": {
     "title": "Путешествие во времени",
@@ -173,7 +174,6 @@
     "seconds": "{n} с",
     "next": "Дальше",
     "levelTitle": "Уровень",
-    "random": "Случайный уровень",
     "differences": "отличий: {n}",
     "score": "{name}: {n}",
     "turnOf": "Ходит {name}",

@@ -406,7 +406,6 @@
     "noLimit": "Tanpa batas",
     "otherLevel": "Level lain",
     "player": "Pemain {n}",
-    "random": "Level acak",
     "ready": "Siap!",
     "rematch": "Tanding ulang",
     "rotate": "Putar perangkat ke posisi mendatar",
@@ -841,7 +840,8 @@
     "soon": "Segera hadir",
     "soonLevels": "Segera hadir: {n} lagi",
     "task": "Cari perbedaannya",
-    "title": "Dunia"
+    "title": "Dunia",
+    "random": "Level acak"
   },
   "memoryMode": {
     "failed": "Belum kali ini",

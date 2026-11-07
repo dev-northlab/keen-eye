@@ -406,7 +406,6 @@
     "noLimit": "Ingen gräns",
     "otherLevel": "En annan nivå",
     "player": "Spelare {n}",
-    "random": "Slumpvis nivå",
     "ready": "Redo!",
     "rematch": "Returmatch",
     "rotate": "Vänd enheten på sidan",
@@ -841,7 +840,8 @@
     "soon": "Kommer snart",
     "soonLevels": "Kommer snart: {n} till",
     "task": "Hitta felen",
-    "title": "Världar"
+    "title": "Världar",
+    "random": "Slumpvis nivå"
   },
   "memoryMode": {
     "failed": "Inte den här gången",

@@ -91,7 +91,8 @@
     "soon": "Очаквайте скоро",
     "soonLevels": "Скоро: още {n}",
     "progress": "{done} от {total}",
-    "task": "Открий разликите"
+    "task": "Открий разликите",
+    "random": "Случайно ниво"
   },
   "timeTravel": {
     "title": "Пътешествие във времето",
@@ -173,7 +174,6 @@
     "seconds": "{n} с",
     "next": "Напред",
     "levelTitle": "Ниво",
-    "random": "Случайно ниво",
     "differences": "Разлики: {n}",
     "score": "{name}: {n}",
     "turnOf": "Ред е на {name}",

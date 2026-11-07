@@ -91,7 +91,8 @@
     "soon": "Próximamente",
     "soonLevels": "Próximamente: {n} más",
     "progress": "{done} de {total}",
-    "task": "Encuentra las diferencias"
+    "task": "Encuentra las diferencias",
+    "random": "Nivel al azar"
   },
   "timeTravel": {
     "title": "Viaje en el tiempo",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Siguiente",
     "levelTitle": "Nivel",
-    "random": "Nivel al azar",
     "differences": "{n} diferencias",
     "score": "{name}: {n}",
     "turnOf": "Turno de {name}",

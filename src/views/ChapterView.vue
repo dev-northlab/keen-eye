@@ -5,7 +5,6 @@ import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
-import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
 import { CHAPTERS, chapterById, chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TEST_CHAPTER } from '../levels/chapters.ts'
@@ -28,8 +27,8 @@ const { t } = useI18n()
 const chapter = chapterById(props.chapter)!
 const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(chapter) : chapterLevels(chapter)))
 /** Levels still to come ("coming soon"); the "test" chapter's range is only room for test levels. */
-/** The picture style switch, for a chapter with redesigned levels (developer mode only while there are few). */
-const styled = computed(() => settings.developer && levels.value.some((l) => l.redesign))
+/** Levels the "random level" button picks from: the playable ones (reached and, if paid, bought). */
+const playable = computed(() => levels.value.filter((l) => progress.isUnlocked(l.id)))
 const missing = chapter === TEST_CHAPTER ? 0 : chapterSize(chapter) - chapterLevels(chapter).length
 
 /** A world's grid goes back to the worlds, a category to the game modes. */
@@ -39,6 +38,11 @@ useBackButton(toParent)
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: level.memory ? 'memory' : 'level', params: { id: level.id } })
+}
+
+function openRandom() {
+  const pool = playable.value
+  open(pool[Math.floor(Math.random() * pool.length)])
 }
 
 /** Paid levels stay tappable (they open the full-game dialog); levels not reached yet are disabled. */
@@ -57,7 +61,25 @@ function tileLabel(level: Level) {
   <div class="screen">
     <ScreenBackdrop :theme="chapter.backdrop" />
     <main>
-      <PictureStyleSwitch v-if="styled" class="style-switch" />
+      <button
+        v-if="playable.length > 1"
+        class="random"
+        :aria-label="$t('map.random')"
+        :title="$t('map.random')"
+        @click="openRandom"
+      >
+        <!-- A die showing five. -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2.2" />
+          <g fill="currentColor">
+            <circle cx="8" cy="8" r="1.7" />
+            <circle cx="16" cy="8" r="1.7" />
+            <circle cx="12" cy="12" r="1.7" />
+            <circle cx="8" cy="16" r="1.7" />
+            <circle cx="16" cy="16" r="1.7" />
+          </g>
+        </svg>
+      </button>
       <p v-if="chapter.rules" class="rules">{{ $t(chapter.rules) }}</p>
       <ul class="grid">
         <li v-for="level in levels" :key="level.id">
@@ -103,9 +125,27 @@ main {
   padding: 16px max(16px, (100% - var(--menu-width)) / 2) 24px;
 }
 
-.style-switch {
-  width: fit-content;
+.random {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
   margin: 0 0 14px auto;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--glass);
+  color: #3a86ff;
+  box-shadow: 0 2px 8px rgb(35 48 43 / 0.1);
+  transition: transform 0.15s ease;
+}
+
+.random:active {
+  transform: scale(0.94);
+}
+
+.random svg {
+  width: 26px;
+  height: 26px;
 }
 
 .rules {

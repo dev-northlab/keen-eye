@@ -100,7 +100,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   without the case before it, `progress.isReached`), the rest need the purchase;
   `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
-- `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`),
+- `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),
   Detective (cases), Case (one case),
   Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — dialogs (pause, result, the full-game offer `PurchaseDialog`: mounted once in `App.vue`, opened from any screen by `purchase.dialogOpen`; `ModalDialog` has an `icon` slot and the `points` icon list), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`), the small level id in a corner of level tiles and the board, id ranges on world, mode and case cards (`LevelId`)
@@ -202,8 +202,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `time()`, never `diff`.
 - Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
-  `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen, above a
-  grid with such levels and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
+  `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
+  and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`. `check-levels` checks the files,
