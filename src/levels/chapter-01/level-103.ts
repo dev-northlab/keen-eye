@@ -3,6 +3,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, chick, eggNest, hayBale, hen, pumpkin, wateringCan } from '../shapes.ts'
+import { level103Redesign } from './level-103-redesign.ts'
 
 /** Hanging lantern; (x, y) = hook on the beam. Bounds: x ±10, y from 0 to +44. */
 const lantern = (x: number, y: number) =>
@@ -63,6 +64,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'barnInside',
   parTimeSec: 100,
+  redesign: level103Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let planks = ''
     for (let x = 12; x < 800; x += 26) planks += `<path d="M${x} 88V420" stroke="#9a6841" stroke-width="2"/>`

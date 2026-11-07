@@ -3,6 +3,7 @@ import { mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { fence, grass, hayBale, milkCan, pumpkin, stones } from '../shapes.ts'
+import { level019Redesign } from './level-019-redesign.ts'
 
 /** Bat, faces right; (x, y) = body center. Bounds: x ±20, y from −10 to +8. */
 const bat = (x: number, y: number) =>
@@ -45,6 +46,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'nightBarn',
   parTimeSec: 100,
+  redesign: level019Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 14; i++) {

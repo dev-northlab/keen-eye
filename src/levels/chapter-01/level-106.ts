@@ -3,6 +3,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, cat, flowerPot, hayBale, milkCan, wheelbarrow } from '../shapes.ts'
+import { level106Redesign } from './level-106-redesign.ts'
 
 /** Horse looking over a stall door; (x, y) = door top under its neck. Ears separate (`ear`). Bounds: x from −30 to +34, y from −84 to +8. */
 const horseHead = (x: number, y: number, coat: string, mane: string, blaze = false) =>
@@ -55,6 +56,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'horseStables',
   parTimeSec: 90,
+  redesign: level106Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const bays = [115, 305, 495, 685]
     let stalls = ''

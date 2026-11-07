@@ -4,6 +4,7 @@ import { bird, butterfly, hedgehog, mushroom, stump } from '../chapter-03/shapes
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cloud, grass, snail } from '../shapes.ts'
+import { level108Redesign } from './level-108-redesign.ts'
 
 /** Tree crown of overlapping circles [cx, cy, r] with leaf flecks from `rand`. */
 const crown = (circles: [number, number, number][], rand: () => number, dark: string, light: string) => {
@@ -48,6 +49,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'fruitGarden',
   parTimeSec: 75,
+  redesign: level108Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let farTrees = ''
     for (let x = 20; x < 800; x += 46) farTrees += `<rect x="${x - 2}" y="226" width="4" height="14" fill="#8a6a4a"/><circle cx="${x}" cy="218" r="14" fill="#86c26a"/>`

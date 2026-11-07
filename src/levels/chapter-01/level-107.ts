@@ -3,6 +3,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { chick, eggNest, hayBale, hen, milkCan, pumpkin } from '../shapes.ts'
+import { level107Redesign } from './level-107-redesign.ts'
 
 /** Square hay bale, 80 × 40; (x, y) = top-left corner; `bands` twine bands of `twine` color. */
 const bale = (x: number, y: number, bands = 2, twine = '#c0392b') => {
@@ -55,6 +56,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'hayloft',
   parTimeSec: 75,
+  redesign: level107Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let planks = ''
     for (let x = 16; x < 800; x += 32) planks += `<path d="M${x} 0V360" stroke="#8f5c37" stroke-width="2"/>`

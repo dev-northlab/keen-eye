@@ -10,6 +10,7 @@ import {
   removeHintMarks,
   takeSecret,
   toViewBox,
+  turnPicture,
   zonesAt,
   type Picture,
 } from './render.ts'
@@ -63,6 +64,8 @@ export class Board {
   private readonly zoom: boolean
   /** How each picture shows the scene: B of late levels mirrored or turned, a duel's far copy turned. */
   private readonly transforms: [PictureTransform, PictureTransform]
+  /** A duel's far copy turned ('rotate-180'), else 'none'; on top of `transformB`. */
+  private readonly turn: PictureTransform
   private readonly pictures: Picture[]
   private readonly viewport: Viewport
   private readonly gestures: Gestures
@@ -81,6 +84,7 @@ export class Board {
     this.onTap = onTap
     this.zoom = options.zoom ?? true
     const turn: PictureTransform = options.flipped ? 'rotate-180' : 'none'
+    this.turn = turn
     this.transforms = [turn, combineTransforms(options.transformB ?? 'none', turn)]
     this.onSecret = options.onSecret
     this.pictures = this.transforms.map((t, i) => createPicture(level, i as 0 | 1, t, options.extras))
@@ -102,6 +106,13 @@ export class Board {
     // A stays left of (or above) B in right-to-left languages too.
     container.dir = 'ltr'
     for (const svg of svgs) container.append(svg)
+  }
+
+  /** Shows picture B another way (the player turns it back to normal and again); marks turn along. */
+  setTransformB(transform: PictureTransform): void {
+    this.transforms[1] = combineTransforms(transform, this.turn)
+    turnPicture(this.pictures[1], this.transforms[1], this.level.viewBox)
+    this.viewport.setTransform(1, this.transforms[1])
   }
 
   /** A hint is shown and its difference not found yet. */

@@ -81,6 +81,8 @@ const animationFrozen = ref(false)
  */
 const note = ref<string | null>(null)
 let noteTimer = 0
+/** The player tapped the transform badge: picture B is shown as drawn until tapped again. */
+const straightB = ref(false)
 /** The warning that picture B is mirrored or turned is open: the scene waits, its clock stopped. */
 const transformNotice = ref(false)
 /** The warning was shown on this visit: a retry starts at once. */
@@ -132,6 +134,7 @@ function start() {
   hintActive.value = false
   hintsUsed.value = 0
   animationFrozen.value = false
+  straightB.value = false
   clearTimeout(noteTimer)
   note.value = null
   clearTimeout(secretTimer)
@@ -233,6 +236,13 @@ function playHard() {
   start()
 }
 
+/** The transform badge: picture B as drawn, or mirrored/turned again. */
+function toggleStraightB() {
+  if (!transformB.value) return
+  straightB.value = !straightB.value
+  scene?.setTransformB(straightB.value ? 'none' : transformB.value)
+}
+
 function toggleAnimation() {
   animationFrozen.value = !animationFrozen.value
   scene?.setAnimationFrozen(animationFrozen.value)
@@ -282,7 +292,7 @@ onBeforeUnmount(() => {
       <span class="title">
         {{ treasury ? $t('chapters.treasury') : $t('level.level', { n: number }) }}
         <ModeChip :mode="mode" />
-        <TransformChip v-if="transformB" :transform="transformB" />
+        <TransformChip v-if="transformB" :transform="transformB" :off="straightB" @click="toggleStraightB" />
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
         <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>

@@ -4,6 +4,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, chick, cloud, flowerPot, grass, hayBale, milkCan, stones } from '../shapes.ts'
+import { level105Redesign } from './level-105-redesign.ts'
 
 /** Bunting flag hanging from (x, y). Bounds: x ±9, y from 0 to +20. */
 const pennant = (x: number, y: number, color: string) => `<path d="M${x - 9} ${y}h18l-9 20Z" fill="${color}"/>`
@@ -53,6 +54,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'harvestFair',
   parTimeSec: 90,
+  redesign: level105Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const colors = ['#e63946', '#ffb703', '#3a86ff', '#8ac926', '#ff6b8b']
     // Bunting along a sagging string; the flag at x = 400 is the motion difference.

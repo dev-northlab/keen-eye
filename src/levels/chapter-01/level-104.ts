@@ -3,6 +3,7 @@ import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bee, beehive, cloud, fence, flower, FLOWER_COLORS, grass, pick, sun, wateringCan } from '../shapes.ts'
+import { level104Redesign } from './level-104-redesign.ts'
 
 /** Honey jar; (x, y) = bottom center; `lid` = lid color. Bounds: x ±12, y from −30 to 0. */
 const jar = (x: number, y: number, lid = '#e63946') =>
@@ -46,6 +47,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'beeYard',
   parTimeSec: 90,
+  redesign: level104Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let lavender = ''
     for (const y of [222, 238, 254]) for (let x = 430 + (y % 2) * 6; x < 800; x += 15) lavender += `<ellipse cx="${x}" cy="${y}" rx="5" ry="8" fill="${y === 238 ? '#9b7fd1' : '#a98de0'}"/>`

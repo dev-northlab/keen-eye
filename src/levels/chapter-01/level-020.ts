@@ -3,6 +3,7 @@ import { stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, cat, chick, cloud, fence, grass, hen, pumpkin, sun, tree, wateringCan } from '../shapes.ts'
+import { level020Redesign } from './level-020-redesign.ts'
 
 /** Horse head looking out of a stable window; (x, y) = window center. Bounds: x ±30, y ±30. */
 const horseHead = (x: number, y: number, coat: string) =>
@@ -49,6 +50,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'stable',
   parTimeSec: 110,
+  redesign: level020Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 400 + rand() * 95)
