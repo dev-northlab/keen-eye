@@ -116,6 +116,8 @@ export interface LevelPictures {
   viewBox: { w: number; h: number }
   /** As many as the drawn scene has, in the pictures' pixels; static (pictures do not move). */
   differences: Difference[]
+  /** The chapter's hidden key, drawn on the pictures of the level that hides it (`Level.secret`), in their pixels. */
+  secret?: SecretKey
 }
 
 export interface Level {
