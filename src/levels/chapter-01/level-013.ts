@@ -3,6 +3,7 @@ import { extras } from '../extras.ts'
 import type { AnimSpec } from '../helpers.ts'
 import { bird, frog, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
+import { level013Redesign } from './level-013-redesign.ts'
 import { cloud, duck, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, tree } from '../shapes.ts'
 
 const swim = (period: number): AnimSpec => ({
@@ -41,6 +42,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'river',
   parTimeSec: 85,
+  redesign: level013Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 10; i++) tufts += grass(10 + rand() * 780, 440 + rand() * 55)

@@ -2,6 +2,7 @@
 import { frog, mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level011Redesign } from './level-011-redesign.ts'
 import { birdhouse, cat, cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
 
 const blades = () => {
@@ -22,6 +23,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'windmill',
   parTimeSec: 85,
+  redesign: level011Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 340 + rand() * 150)

@@ -207,8 +207,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`. `check-levels` checks the files,
-  the same number of differences as the scene, zones on the picture, big enough and apart, no motion differences
-  (pictures cannot show them yet), and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
+  the same number of differences as the scene (a motion difference becomes a still one: pictures do not move),
+  zones on the picture, big enough and apart, and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).
 - Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
   key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on

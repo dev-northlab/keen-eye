@@ -3,6 +3,7 @@ import { extras } from '../extras.ts'
 import type { AnimSpec } from '../helpers.ts'
 import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
+import { level014Redesign } from './level-014-redesign.ts'
 import { cloud, flower, FLOWER_COLORS, flowerPot, grass, pick, stones, sun, wateringCan } from '../shapes.ts'
 
 const PIVOT: [number, number] = [300, 228]
@@ -42,6 +43,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'swing',
   parTimeSec: 90,
+  redesign: level014Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 380 + rand() * 115)

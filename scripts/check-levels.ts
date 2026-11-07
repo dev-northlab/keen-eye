@@ -192,7 +192,7 @@ function checkExtras(level: Level, a: SceneSvg, aHard: SceneSvg, report: Report,
  * The redesigned pictures of a level (`Level.redesign`, levels/picture-style.ts): the files exist, as many zones
  * as the drawn scene, each centered on the picture, big enough (scaled to the 800-wide scenes) and apart; the
  * drawn level's key is on the pictures too, as its own image over them (so it can be taken), on both, clear of the
- * zones. Pictures do not move, so the drawn level must have no motion differences. (How well the key hides is seen by eye: there is no pixel check.)
+ * zones. Pictures do not move: a motion difference of the drawn scene becomes a still one there. (How well the key hides is seen by eye: there is no pixel check.)
  */
 function checkRedesign(level: Level, minRadius: number): string[] {
   const p = level.redesign
@@ -201,7 +201,7 @@ function checkRedesign(level: Level, minRadius: number): string[] {
   for (const file of [p.imageA, p.imageB]) if (!existsSync(`public/${file}`)) errors.push(`redesign: no file public/${file}`)
   if (p.differences.length !== level.differences.length)
     errors.push(`redesign: ${p.differences.length} differences, the drawn scene has ${level.differences.length}`)
-  if (level.differences.some((d) => d.motion)) errors.push('redesign: pictures cannot show motion differences')
+  if (p.differences.some((d) => d.motion || d.animatedId)) errors.push('redesign: picture zones never move')
   if (!!level.secret !== !!p.secret) errors.push('redesign: the pictures need the key exactly when the drawn scene hides one')
   const key = p.secret
   if (key) {
