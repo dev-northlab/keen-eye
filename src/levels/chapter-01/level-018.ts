@@ -3,6 +3,7 @@ import { mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birdhouse, duck, grass, hen, milkCan, snail, stones } from '../shapes.ts'
+import { level018Redesign } from './level-018-redesign.ts'
 
 /** Figure in a raincoat holding an umbrella handle; (x, y) = ground center. The canopy is separate. */
 const walker = (x: number, y: number) =>
@@ -44,6 +45,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'rainyDay',
   parTimeSec: 100,
+  redesign: level018Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let rain = ''
     for (let i = 0; i < 70; i++) {
