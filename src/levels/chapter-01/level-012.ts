@@ -2,6 +2,7 @@
 import { mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level012Redesign } from './level-012-redesign.ts'
 import { fence, grass, milkCan, stones, wheelbarrow } from '../shapes.ts'
 
 const lit = (x: number, y: number) =>
@@ -33,6 +34,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'evening',
   parTimeSec: 85,
+  redesign: level012Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 380 + rand() * 115).replace('#5fae4b', '#4c8a3c')

@@ -102,6 +102,11 @@ export interface SecretKey {
   r: number
   /** Pictures the key is drawn on: both in the same place, or only B ("memory" levels search B alone). */
   on: 'both' | 'b'
+  /**
+   * Picture levels (`LevelPictures`): the key cut out of the pictures as its own image (path relative to the app
+   * base) and its box in viewBox coordinates, laid over pictures drawn without it, so it can be taken off.
+   */
+  image?: { href: string; x: number; y: number; w: number; h: number }
 }
 
 /**

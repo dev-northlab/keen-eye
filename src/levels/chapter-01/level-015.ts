@@ -2,6 +2,7 @@
 import { butterfly, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level015Redesign } from './level-015-redesign.ts'
 import { basket, chick, cloud, flowerPot, grass, milkCan, sun } from '../shapes.ts'
 
 const flag = `<path d="M190 120L232 131L190 142Z" fill="#e63946"/>`
@@ -44,6 +45,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'fair',
   parTimeSec: 90,
+  redesign: level015Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 400 + rand() * 95)

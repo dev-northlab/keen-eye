@@ -54,6 +54,13 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   } else {
     const href = variant === 0 ? level.imageA : level.imageB
     if (href) scene.append(el('image', { href: import.meta.env.BASE_URL + href, width: w, height: h }))
+    // The key as its own layer (the pictures are drawn without it), taken off like a drawn scene's key.
+    const key = level.secret?.image
+    if (key && (level.secret?.on === 'both' || variant === 1)) {
+      const group = el('g', { 'data-secret': '' })
+      group.append(el('image', { href: import.meta.env.BASE_URL + key.href, x: key.x, y: key.y, width: key.w, height: key.h }))
+      scene.append(group)
+    }
   }
 
   const marks = el('g', { 'pointer-events': 'none' })
