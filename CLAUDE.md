@@ -219,7 +219,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Settings → "Reset progress" (`ResetProgressDialog`, asks first): `progress.reset()` and the duel history (`duo.clearHistory()`); the purchase and the settings stay.
 - Stored data is untrusted: validate its shape when loading (the parsers of `stores/progress-data.ts`, unit-tested).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, 3 free hints per attempt (`MODE_RULES.calm.hints`), slower animation, soft sounds,
-  "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts.
+  "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts; another mode chosen in the pause menu's settings starts the level over in it (also ending a "Play on hard" challenge).
 - Hard mode (`docs/difficulty-modes.md`): the same levels under stricter rules — no hints, the 3rd mistake loses the level
   (`onFail`; so no miss lock), no trap notes; "memory" shows A a second less, no peeks, 2 misses. Every mode's
   numbers live in `MODE_RULES` (`engine/rules.ts`); scenes take them through their options, screens read them there

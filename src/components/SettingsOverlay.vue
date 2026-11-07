@@ -1,29 +1,43 @@
 <script setup lang="ts">
-import BackButton from './BackButton.vue'
-import ScreenBackdrop from './ScreenBackdrop.vue'
+import ModalDialog from './ModalDialog.vue'
 import SettingsPanel from './SettingsPanel.vue'
 
-// Settings opened from a pause menu, over the paused game, so the attempt survives.
+// Settings opened from a pause menu: a dialog over the paused game, so the attempt survives.
 const emit = defineEmits<{ close: [] }>()
 </script>
 
 <template>
-  <div class="settings-screen">
-    <ScreenBackdrop theme="meadow" />
-    <SettingsPanel />
-    <BackButton :on-back="() => emit('close')" />
-  </div>
+  <ModalDialog class="settings-dialog" :title="$t('settings.title')">
+    <SettingsPanel class="panel" />
+    <button class="close" @click="emit('close')">{{ $t('common.close') }}</button>
+  </ModalDialog>
 </template>
 
 <style scoped>
-.settings-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
+/* Wider than other dialogs (the volume sliders and the mode switch need room); the list scrolls, the title and Close stay. */
+.settings-dialog :deep(.card) {
+  width: min(100%, 440px);
   display: flex;
   flex-direction: column;
-  /* Fixed, so the #app safe-area padding does not apply. */
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-  background: var(--bg);
+  overflow: hidden;
+  padding-bottom: 16px;
+}
+
+.panel {
+  min-height: 0;
+  /* The list's own column padding is the dialog's here; a little room keeps focus rings unclipped. */
+  margin: 0 -8px;
+  padding: 0 8px;
+  text-align: start;
+}
+
+/* Rows of the list stand out from the dialog's own panel colour. */
+.panel :deep(.row) {
+  background: var(--soft-2);
+}
+
+.close {
+  flex: none;
+  margin-top: 14px;
 }
 </style>

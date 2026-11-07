@@ -1,23 +1,17 @@
 import type { Level } from '../../engine/types.ts'
 
-// A cozy study with a fireplace and a spiral staircase: two ready pictures (public/levels/test/), the zones
-// measured on their pixel difference, in image pixels (viewBox = image size).
+// Picture quality test: the same winter picture on both sides (public/levels/test/), 1K (1312×821) as A and
+// 2K (2560×1601) as B, both WebP q88, to compare on a phone (zoom in: snowflakes, boards, icicles). The 1K file is
+// stretched over the 2K viewBox. Nothing differs, so the one zone is the snowman: tap it to finish.
 const level: Level = {
   id: 1001,
   chapter: 'test',
-  title: 'cozyStudy',
+  title: 'winter',
   kind: 'image',
-  imageA: 'levels/test/study-a.webp',
-  imageB: 'levels/test/study-b.webp',
-  viewBox: { w: 1200, h: 896 },
-  differences: [
-    // The armchair: brown leather in A, green buttoned in B.
-    { x: 488, y: 555, r: 135 },
-    // A spider on the window frame, only in B.
-    { x: 443, y: 262, r: 40 },
-    // A candle on the staircase step, only in B.
-    { x: 1020, y: 597, r: 60 },
-  ],
+  imageA: 'levels/test/winter-1k.webp',
+  imageB: 'levels/test/winter-2k.webp',
+  viewBox: { w: 2560, h: 1601 },
+  differences: [{ x: 480, y: 1380, r: 150 }],
   parTimeSec: 60,
   multiplayerReady: false,
 }

@@ -55,6 +55,8 @@ const calm = computed(() => mode.value === 'calm')
  * screen is left, whatever the settings say.
  */
 const hardChallenge = ref(false)
+/** The mode setting as this attempt started: changed in the pause menu's settings, the attempt starts over. */
+let modeSetting: GameMode = 'normal'
 /** Misses that end the round; the hearts of the HUD. */
 const maxMisses = computed(() => rules.value.memoryMaxMisses)
 /** The mode allows looks at A (hard mode does not). */
@@ -97,6 +99,7 @@ function start() {
   result.value = null
   clearTimeout(secretTimer)
   secretShown.value = false
+  modeSetting = settings.mode
   mode.value = hardChallenge.value ? 'hard' : settings.mode
   peeksLeft.value = rules.value.memoryPeeks(level.memory!.peeks)
   playMusic(calm.value ? 'calm' : 'level')
@@ -147,6 +150,14 @@ function start() {
   )
 }
 
+/** The settings are closed: another mode chosen in them starts the level over in that mode. */
+function closeSettings() {
+  settingsOpen.value = false
+  if (settings.mode === modeSetting) return
+  hardChallenge.value = false
+  start()
+}
+
 /** The same level again, in hard mode. */
 function playHard() {
   hardChallenge.value = true
@@ -174,7 +185,7 @@ function resume() {
 // to the dialog); after the round, to the level grid.
 useBackButton(() => {
   if (result.value) router.push(grid)
-  else if (settingsOpen.value) settingsOpen.value = false
+  else if (settingsOpen.value) closeSettings()
   else if (paused.value) router.push({ name: 'home' })
   else pause()
 })
@@ -266,7 +277,7 @@ onBeforeUnmount(() => {
       </ToolButton>
     </footer>
 
-    <SettingsOverlay v-if="settingsOpen" @close="settingsOpen = false" />
+    <SettingsOverlay v-if="settingsOpen" @close="closeSettings" />
     <PauseDialog
       v-else-if="paused"
       @resume="resume"

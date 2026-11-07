@@ -3,7 +3,7 @@
 // inside a level starts it over (LevelView), a duel keeps the style it opened with (MatchView).
 import type { Level } from '../engine/types.ts'
 
-export const PICTURE_STYLES = ['classic', 'redesign'] as const
+const PICTURE_STYLES = ['classic', 'redesign'] as const
 export type PictureStyle = (typeof PICTURE_STYLES)[number]
 export const isPictureStyle = (v: unknown): v is PictureStyle => PICTURE_STYLES.includes(v as PictureStyle)
 

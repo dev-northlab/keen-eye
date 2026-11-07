@@ -3,7 +3,6 @@
 export { cloud, grass, pick, sun } from '../shapes.ts'
 
 export const FACADES = ['#f2cc8f', '#e07a5f', '#81b29a', '#f4d6a0', '#7aa6d6', '#c98bb9', '#ffd6a5', '#bdb2ff']
-export const BRIGHT = ['#e63946', '#3a86ff', '#ffb703', '#8ac926', '#ff006e', '#8338ec', '#fb8500']
 
 /** Window with a sill; (x, y) = center. Bounds: x ±14, y from −16 to +19. */
 export const window = (x: number, y: number, glass = '#bde3f2') =>

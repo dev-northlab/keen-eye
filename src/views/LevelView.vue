@@ -69,6 +69,8 @@ const failed = ref(false)
  * screen is left, whatever the settings say.
  */
 const hardChallenge = ref(false)
+/** The mode setting as this attempt started: changed in the pause menu's settings, the attempt starts over. */
+let modeSetting: GameMode = 'normal'
 const hintActive = ref(false)
 /** Hints taken in this attempt (the mode gives a few, `ModeRules.hints`). */
 const hintsUsed = ref(0)
@@ -136,6 +138,7 @@ function start() {
   secretShown.value = false
   result.value = null
   failed.value = false
+  modeSetting = settings.mode
   mode.value = hardChallenge.value ? 'hard' : settings.mode
   playMusic(calm.value ? 'calm' : 'level')
   scene = new GameScene(
@@ -216,6 +219,14 @@ watch(
   () => start(),
 )
 
+/** The settings are closed: another mode chosen in them starts the level over in that mode. */
+function closeSettings() {
+  settingsOpen.value = false
+  if (settings.mode === modeSetting) return
+  hardChallenge.value = false
+  start()
+}
+
 /** The same level again, in hard mode. */
 function playHard() {
   hardChallenge.value = true
@@ -243,7 +254,7 @@ function resume() {
 // to the dialog); after the level, to the map.
 useBackButton(() => {
   if (result.value) router.push(grid)
-  else if (settingsOpen.value) settingsOpen.value = false
+  else if (settingsOpen.value) closeSettings()
   else if (paused.value) router.push({ name: 'home' })
   else pause()
 })
@@ -329,7 +340,7 @@ onBeforeUnmount(() => {
       </ToolButton>
     </footer>
 
-    <SettingsOverlay v-if="settingsOpen" @close="settingsOpen = false" />
+    <SettingsOverlay v-if="settingsOpen" @close="closeSettings" />
     <PauseDialog
       v-else-if="paused"
       @resume="resume"
