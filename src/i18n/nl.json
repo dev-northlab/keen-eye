@@ -232,7 +232,8 @@
     "memory": "Geheugen",
     "travel": "Wereldreis",
     "detective": "Detectiveverhaal",
-    "treasury": "Schatkamer"
+    "treasury": "Schatkamer",
+    "test": "Testlevels"
   },
   "levelTitles": {
     "memoryFlowerShop": "Bloemenwinkel",

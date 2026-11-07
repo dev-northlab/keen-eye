@@ -232,7 +232,8 @@
     "memory": "Памет",
     "travel": "Пътешествие по света",
     "detective": "Детективска история",
-    "treasury": "Съкровищница"
+    "treasury": "Съкровищница",
+    "test": "Тестови нива"
   },
   "levelTitles": {
     "memoryFlowerShop": "Цветарски магазин",

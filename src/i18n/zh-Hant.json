@@ -39,7 +39,8 @@
     "space": "太空",
     "time": "時間",
     "travel": "環遊世界",
-    "treasury": "藏寶室"
+    "treasury": "藏寶室",
+    "test": "測試關卡"
   },
   "common": {
     "back": "返回",

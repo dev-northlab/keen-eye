@@ -232,7 +232,8 @@
     "memory": "Memory",
     "travel": "World travel",
     "detective": "Detective story",
-    "treasury": "Treasury"
+    "treasury": "Treasury",
+    "test": "Test levels"
   },
   "levelTitles": {
     "memoryFlowerShop": "Flower shop",

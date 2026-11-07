@@ -232,7 +232,8 @@
     "memory": "Memoria",
     "travel": "Giro del mondo",
     "detective": "Storia investigativa",
-    "treasury": "Stanza del tesoro"
+    "treasury": "Stanza del tesoro",
+    "test": "Livelli di prova"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fioraio",

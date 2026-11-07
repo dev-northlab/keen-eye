@@ -232,7 +232,8 @@
     "memory": "Gedächtnis",
     "travel": "Weltreise",
     "detective": "Detektivgeschichte",
-    "treasury": "Schatzkammer"
+    "treasury": "Schatzkammer",
+    "test": "Testlevel"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blumenladen",

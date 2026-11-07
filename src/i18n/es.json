@@ -232,7 +232,8 @@
     "memory": "Memoria",
     "travel": "Viaje por el mundo",
     "detective": "Historia de detectives",
-    "treasury": "Cámara del tesoro"
+    "treasury": "Cámara del tesoro",
+    "test": "Niveles de prueba"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floristería",

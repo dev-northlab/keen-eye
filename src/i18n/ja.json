@@ -232,7 +232,8 @@
     "memory": "きおく",
     "travel": "世界の旅",
     "detective": "探偵ストーリー",
-    "treasury": "宝物庫"
+    "treasury": "宝物庫",
+    "test": "テストレベル"
   },
   "levelTitles": {
     "memoryFlowerShop": "お花屋さん",

@@ -232,7 +232,8 @@
     "memory": "Mémoire",
     "travel": "Tour du monde",
     "detective": "Histoire de détective",
-    "treasury": "Salle au trésor"
+    "treasury": "Salle au trésor",
+    "test": "Niveaux de test"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fleuriste",

@@ -232,7 +232,8 @@
     "memory": "Memória",
     "travel": "Világkörüli utazás",
     "detective": "Detektívtörténet",
-    "treasury": "Kincskamra"
+    "treasury": "Kincskamra",
+    "test": "Tesztpályák"
   },
   "levelTitles": {
     "memoryFlowerShop": "Virágbolt",

@@ -232,7 +232,8 @@
     "memory": "记忆",
     "travel": "环游世界",
     "detective": "侦探故事",
-    "treasury": "藏宝室"
+    "treasury": "藏宝室",
+    "test": "测试关卡"
   },
   "levelTitles": {
     "memoryFlowerShop": "花店",

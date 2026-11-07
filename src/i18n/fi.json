@@ -39,7 +39,8 @@
     "space": "Avaruus",
     "time": "Aika",
     "travel": "Maailmanmatka",
-    "treasury": "Aarrekammio"
+    "treasury": "Aarrekammio",
+    "test": "Testitasot"
   },
   "common": {
     "back": "Takaisin",

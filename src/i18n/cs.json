@@ -232,7 +232,8 @@
     "memory": "Paměť",
     "travel": "Cesta kolem světa",
     "detective": "Detektivní příběh",
-    "treasury": "Klenotnice"
+    "treasury": "Klenotnice",
+    "test": "Testovací úrovně"
   },
   "levelTitles": {
     "memoryFlowerShop": "Květinářství",

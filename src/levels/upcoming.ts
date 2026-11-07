@@ -5,7 +5,9 @@
 // `difficulty.ts`, and `check-levels` / `preview-levels` take them like the others.
 // To release a level, move it from this list into its chapter's list (`levels` in index.ts or the category's
 // index.ts) and update the store texts (assets/store/listing, `npm test` checks the level count).
+// The "test" chapter's levels (test/index.ts) stay here for good: picture pairs tried out in developer mode.
 import type { Level } from '../engine/types.ts'
+import { testLevels } from './test/index.ts'
 import level151 from './chapter-01/level-151.ts'
 import level152 from './chapter-01/level-152.ts'
 import level153 from './chapter-01/level-153.ts'
@@ -77,6 +79,6 @@ import level338 from './memory/level-338.ts'
 import level339 from './memory/level-339.ts'
 import level340 from './memory/level-340.ts'
 
-export const upcomingLevels: Level[] = [level151, level152, level153, level154, level155, level156, level157, level158, level159, level160, level161, level162, level163, level164, level165, level166, level167, level168, level169, level170, level171, level172, level173, level174, level175, level176, level177, level178, level179, level180, level181, level182, level183, level184, level185, level186, level187, level188, level189, level190, level191, level192, level193, level194, level195, level196, level197, level198, level199, level200, level231, level232, level233, level234, level235, level236, level237, level238, level239, level240, level331, level332, level333, level334, level335, level336, level337, level338, level339, level340]
+export const upcomingLevels: Level[] = [level151, level152, level153, level154, level155, level156, level157, level158, level159, level160, level161, level162, level163, level164, level165, level166, level167, level168, level169, level170, level171, level172, level173, level174, level175, level176, level177, level178, level179, level180, level181, level182, level183, level184, level185, level186, level187, level188, level189, level190, level191, level192, level193, level194, level195, level196, level197, level198, level199, level200, level231, level232, level233, level234, level235, level236, level237, level238, level239, level240, level331, level332, level333, level334, level335, level336, level337, level338, level339, level340, ...testLevels]
 
 export const isUpcoming = (id: number) => upcomingLevels.some((l) => l.id === id)

@@ -232,7 +232,8 @@
     "memory": "Memorie",
     "travel": "Călătorie în jurul lumii",
     "detective": "Poveste polițistă",
-    "treasury": "Camera comorii"
+    "treasury": "Camera comorii",
+    "test": "Niveluri de test"
   },
   "levelTitles": {
     "memoryFlowerShop": "Florărie",

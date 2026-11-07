@@ -176,7 +176,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   them (no tile, no count, no "next", the router sends a direct link home); developer mode shows them at their
   place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
   `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
-  store texts. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+  store texts. The "test" chapter (`TEST_CHAPTER`, ids 1001–1100, `levels/test/`) lives there for good:
+  picture pairs tried out in developer mode (a banner at the end of the game modes screen), `kind: 'image'` levels
+  with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels). Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,

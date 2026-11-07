@@ -232,7 +232,8 @@
     "memory": "Memória",
     "travel": "Volta ao mundo",
     "detective": "História de detetive",
-    "treasury": "Sala do tesouro"
+    "treasury": "Sala do tesouro",
+    "test": "Níveis de teste"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floricultura",

@@ -232,7 +232,8 @@
     "memory": "Hafıza",
     "travel": "Dünya turu",
     "detective": "Dedektif hikâyesi",
-    "treasury": "Hazine odası"
+    "treasury": "Hazine odası",
+    "test": "Test bölümleri"
   },
   "levelTitles": {
     "memoryFlowerShop": "Çiçekçi",

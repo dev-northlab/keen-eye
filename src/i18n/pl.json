@@ -232,7 +232,8 @@
     "memory": "Pamięć",
     "travel": "Podróż dookoła świata",
     "detective": "Historia detektywistyczna",
-    "treasury": "Skarbiec"
+    "treasury": "Skarbiec",
+    "test": "Poziomy testowe"
   },
   "levelTitles": {
     "memoryFlowerShop": "Kwiaciarnia",

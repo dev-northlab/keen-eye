@@ -232,7 +232,8 @@
     "memory": "기억력",
     "travel": "세계 여행",
     "detective": "탐정 이야기",
-    "treasury": "보물 창고"
+    "treasury": "보물 창고",
+    "test": "테스트 레벨"
   },
   "levelTitles": {
     "memoryFlowerShop": "꽃집",
