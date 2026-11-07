@@ -1,6 +1,7 @@
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level009Redesign } from './level-009-redesign.ts'
 import { cloud, grass, sheep, stones, sun, tree } from '../shapes.ts'
 
 const stone = (x: number, y: number, shade: string) =>
@@ -28,6 +29,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'meadow',
   parTimeSec: 75,
+  redesign: level009Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 360 + rand() * 135)

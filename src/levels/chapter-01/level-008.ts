@@ -1,6 +1,7 @@
 import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level008Redesign } from './level-008-redesign.ts'
 import { birdhouse, cat, cloud, fence, hayBale, pumpkin, sun, tractor, wheelbarrow } from '../shapes.ts'
 
 /** Faces right; (x, y) = feet. Bounds: x ±16, y from −20 to +2. */
@@ -26,6 +27,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'wheat',
   parTimeSec: 75,
+  redesign: level008Redesign,
   scene: ({ diff, anim, extra }) =>
     `<rect width="800" height="500" fill="#a9daf2"/>` +
     sun(560, 70) +

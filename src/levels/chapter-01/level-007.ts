@@ -1,6 +1,7 @@
 import { butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level007Redesign } from './level-007-redesign.ts'
 import { bee, beehive, cloud, flower, FLOWER_COLORS, flowerPot, grass, pick, snail, sun, tree } from '../shapes.ts'
 
 /** (x, y) = bottom center. Bounds: x ±12, y from −34 to 0. */
@@ -19,6 +20,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'apiary',
   parTimeSec: 75,
+  redesign: level007Redesign,
   scene: ({ diff, anim, rand, secret, extra }) => {
     let tufts = ''
     for (let i = 0; i < 12; i++) tufts += grass(10 + rand() * 780, 350 + rand() * 145)
