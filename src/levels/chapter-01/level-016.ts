@@ -3,6 +3,7 @@ import { mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cat, cloud, eggNest, grass, hayBale, milkCan, stones, sun, tractor, tree } from '../shapes.ts'
+import { level016Redesign } from './level-016-redesign.ts'
 
 /** Crow, faces right; (x, y) = body center. Bounds: x from −18 to +19, y from −12 to +10. */
 const crow = (x: number, y: number) =>
@@ -41,6 +42,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'harvest',
   parTimeSec: 100,
+  redesign: level016Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stalks = ''
     for (let i = 0; i < 90; i++) {
