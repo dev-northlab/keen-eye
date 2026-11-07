@@ -5,6 +5,7 @@ import { fish } from '../chapter-04/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
+import { level109Redesign } from './level-109-redesign.ts'
 
 /** Mill wheel with 8 paddles around (x, y), radius r. */
 const millWheel = (x: number, y: number, r: number) => {
@@ -50,6 +51,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'creekMill',
   parTimeSec: 75,
+  redesign: level109Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stones = ''
     for (let y = 252; y < 380; y += 16)

@@ -3,6 +3,7 @@ import { bird, stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { milkCan, sheep, stones, wheelbarrow } from '../shapes.ts'
+import { level110Redesign } from './level-110-redesign.ts'
 
 /** Star; (x, y) = center. Bounds: radius 7. */
 const star = (x: number, y: number) =>
@@ -68,6 +69,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'lanternNight',
   parTimeSec: 70,
+  redesign: level110Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 46; i++) {
