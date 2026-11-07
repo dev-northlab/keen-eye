@@ -3,6 +3,7 @@ import { stump } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cat, fence, milkCan, stones, wheelbarrow } from '../shapes.ts'
+import { level017Redesign } from './level-017-redesign.ts'
 
 /** Snow-capped pine; (x, y) = bottom of the trunk. Bounds: x ±40, y from −124 to 0. */
 const pine = (x: number, y: number) =>
@@ -49,6 +50,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'winter',
   parTimeSec: 100,
+  redesign: level017Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 40; i++) {
