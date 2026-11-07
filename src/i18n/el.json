@@ -91,7 +91,8 @@
     "soon": "Σύντομα",
     "soonLevels": "Σύντομα: άλλα {n}",
     "progress": "{done} από {total}",
-    "task": "Βρες τις διαφορές"
+    "task": "Βρες τις διαφορές",
+    "random": "Τυχαίο επίπεδο"
   },
   "timeTravel": {
     "title": "Ταξίδι στον χρόνο",
@@ -173,7 +174,6 @@
     "seconds": "{n} δ.",
     "next": "Επόμενο",
     "levelTitle": "Επίπεδο",
-    "random": "Τυχαίο επίπεδο",
     "differences": "Διαφορές: {n}",
     "score": "{name}: {n}",
     "turnOf": "Σειρά: {name}",

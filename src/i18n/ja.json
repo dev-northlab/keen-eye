@@ -91,7 +91,8 @@
     "soon": "近日公開",
     "soonLevels": "近日公開：あと {n} レベル",
     "progress": "{done} / {total}",
-    "task": "まちがいさがし"
+    "task": "まちがいさがし",
+    "random": "ランダム"
   },
   "timeTravel": {
     "title": "タイムトラベル",
@@ -173,7 +174,6 @@
     "seconds": "{n} 秒",
     "next": "つぎへ",
     "levelTitle": "レベル",
-    "random": "ランダム",
     "differences": "まちがい {n} か所",
     "score": "{name}：{n}",
     "turnOf": "{name} の番",

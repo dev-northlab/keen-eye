@@ -406,7 +406,6 @@
     "noLimit": "Tiada had",
     "otherLevel": "Tahap lain",
     "player": "Pemain {n}",
-    "random": "Tahap rawak",
     "ready": "Sedia!",
     "rematch": "Main semula",
     "rotate": "Pusingkan peranti ke sisi",
@@ -841,7 +840,8 @@
     "soon": "Akan datang",
     "soonLevels": "Akan datang: {n} lagi",
     "task": "Cari perbezaan",
-    "title": "Dunia"
+    "title": "Dunia",
+    "random": "Tahap rawak"
   },
   "memoryMode": {
     "failed": "Bukan kali ini",

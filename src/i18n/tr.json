@@ -91,7 +91,8 @@
     "soon": "Yakında",
     "soonLevels": "Yakında: {n} tane daha",
     "progress": "{done} / {total}",
-    "task": "Farklılıkları bul"
+    "task": "Farklılıkları bul",
+    "random": "Rastgele bölüm"
   },
   "timeTravel": {
     "title": "Zaman yolculuğu",
@@ -173,7 +174,6 @@
     "seconds": "{n} sn",
     "next": "Sonraki",
     "levelTitle": "Bölüm",
-    "random": "Rastgele bölüm",
     "differences": "{n} fark",
     "score": "{name}: {n}",
     "turnOf": "Sıra: {name}",

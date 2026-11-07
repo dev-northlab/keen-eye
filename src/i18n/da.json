@@ -406,7 +406,6 @@
     "noLimit": "Ingen grænse",
     "otherLevel": "En anden bane",
     "player": "Spiller {n}",
-    "random": "Tilfældig bane",
     "ready": "Klar!",
     "rematch": "Revanche",
     "rotate": "Vend enheden på siden",
@@ -841,7 +840,8 @@
     "soon": "Kommer snart",
     "soonLevels": "Kommer snart: {n} mere",
     "task": "Find forskellene",
-    "title": "Verdener"
+    "title": "Verdener",
+    "random": "Tilfældig bane"
   },
   "memoryMode": {
     "failed": "Ikke denne gang",

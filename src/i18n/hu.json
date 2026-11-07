@@ -91,7 +91,8 @@
     "soon": "Hamarosan",
     "soonLevels": "Hamarosan: még {n}",
     "progress": "{done} / {total}",
-    "task": "Keresd a különbségeket"
+    "task": "Keresd a különbségeket",
+    "random": "Véletlen pálya"
   },
   "timeTravel": {
     "title": "Időutazás",
@@ -173,7 +174,6 @@
     "seconds": "{n} mp",
     "next": "Tovább",
     "levelTitle": "Pálya",
-    "random": "Véletlen pálya",
     "differences": "{n} különbség",
     "score": "{name}: {n}",
     "turnOf": "Soron: {name}",

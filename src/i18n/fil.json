@@ -406,7 +406,6 @@
     "noLimit": "Walang limitasyon",
     "otherLevel": "Ibang level",
     "player": "Manlalaro {n}",
-    "random": "Random na level",
     "ready": "Handa na!",
     "rematch": "Rematch",
     "rotate": "Ipihit nang pahiga ang device",
@@ -841,7 +840,8 @@
     "soon": "Malapit na",
     "soonLevels": "Malapit na: {n} pa",
     "task": "Hanapin ang pagkakaiba",
-    "title": "Mga mundo"
+    "title": "Mga mundo",
+    "random": "Random na level"
   },
   "memoryMode": {
     "failed": "Hindi sa pagkakataong ito",

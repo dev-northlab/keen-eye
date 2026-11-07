@@ -91,7 +91,8 @@
     "soon": "곧 공개",
     "soonLevels": "곧 공개: {n}개 더",
     "progress": "{done} / {total}",
-    "task": "다른 그림 찾기"
+    "task": "다른 그림 찾기",
+    "random": "무작위 레벨"
   },
   "timeTravel": {
     "title": "시간 여행",
@@ -173,7 +174,6 @@
     "seconds": "{n}초",
     "next": "다음",
     "levelTitle": "레벨",
-    "random": "무작위 레벨",
     "differences": "다른 곳 {n}개",
     "score": "{name}: {n}",
     "turnOf": "{name} 차례",

@@ -406,7 +406,6 @@
     "noLimit": "Ingen grense",
     "otherLevel": "Et annet brett",
     "player": "Spiller {n}",
-    "random": "Tilfeldig brett",
     "ready": "Klar!",
     "rematch": "Omkamp",
     "rotate": "Snu enheten på siden",
@@ -841,7 +840,8 @@
     "soon": "Kommer snart",
     "soonLevels": "Kommer snart: {n} til",
     "task": "Finn forskjellene",
-    "title": "Verdener"
+    "title": "Verdener",
+    "random": "Tilfeldig brett"
   },
   "memoryMode": {
     "failed": "Ikke denne gangen",

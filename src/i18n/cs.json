@@ -91,7 +91,8 @@
     "soon": "Již brzy",
     "soonLevels": "Již brzy: další {n}",
     "progress": "{done} z {total}",
-    "task": "Najdi rozdíly"
+    "task": "Najdi rozdíly",
+    "random": "Náhodná úroveň"
   },
   "timeTravel": {
     "title": "Cestování časem",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Další",
     "levelTitle": "Úroveň",
-    "random": "Náhodná úroveň",
     "differences": "Rozdíly: {n}",
     "score": "{name}: {n}",
     "turnOf": "Na tahu: {name}",

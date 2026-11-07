@@ -91,7 +91,8 @@
     "soon": "În curând",
     "soonLevels": "În curând: încă {n}",
     "progress": "{done} din {total}",
-    "task": "Găsește diferențele"
+    "task": "Găsește diferențele",
+    "random": "Nivel la întâmplare"
   },
   "timeTravel": {
     "title": "Călătorie în timp",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Înainte",
     "levelTitle": "Nivel",
-    "random": "Nivel la întâmplare",
     "differences": "Diferențe: {n}",
     "score": "{name}: {n}",
     "turnOf": "Rândul tău, {name}",

@@ -91,7 +91,8 @@
     "soon": "即将推出",
     "soonLevels": "即将推出：还有 {n} 关",
     "progress": "{done} / {total}",
-    "task": "找不同"
+    "task": "找不同",
+    "random": "随机关卡"
   },
   "timeTravel": {
     "title": "时光旅行",
@@ -173,7 +174,6 @@
     "seconds": "{n} 秒",
     "next": "下一步",
     "levelTitle": "关卡",
-    "random": "随机关卡",
     "differences": "{n} 处不同",
     "score": "{name}：{n}",
     "turnOf": "轮到 {name}",

@@ -91,7 +91,8 @@
     "soon": "In arrivo",
     "soonLevels": "In arrivo: altri {n}",
     "progress": "{done} su {total}",
-    "task": "Trova le differenze"
+    "task": "Trova le differenze",
+    "random": "Livello a caso"
   },
   "timeTravel": {
     "title": "Viaggio nel tempo",
@@ -173,7 +174,6 @@
     "seconds": "{n} s",
     "next": "Avanti",
     "levelTitle": "Livello",
-    "random": "Livello a caso",
     "differences": "{n} differenze",
     "score": "{name}: {n}",
     "turnOf": "Tocca a {name}",

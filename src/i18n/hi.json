@@ -91,7 +91,8 @@
     "soon": "जल्द आ रहा है",
     "soonLevels": "जल्द आ रहे हैं: {n} और",
     "progress": "{total} में से {done}",
-    "task": "अंतर खोजो"
+    "task": "अंतर खोजो",
+    "random": "कोई भी लेवल"
   },
   "timeTravel": {
     "title": "समय यात्रा",
@@ -173,7 +174,6 @@
     "seconds": "{n} सेकंड",
     "next": "आगे",
     "levelTitle": "लेवल",
-    "random": "कोई भी लेवल",
     "differences": "{n} अंतर",
     "score": "{name}: {n}",
     "turnOf": "{name} की बारी",

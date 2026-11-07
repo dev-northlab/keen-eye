@@ -195,7 +195,7 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
 
       <template v-else>
         <h1>{{ $t('duo.levelTitle') }}</h1>
-        <button class="next" @click="play(duo.randomLevel())">{{ $t('duo.random') }}</button>
+        <button class="next" @click="play(duo.randomLevel())">{{ $t('map.random') }}</button>
         <section v-for="s in sections" :key="s.chapter.id" class="chapter" :style="{ '--chapter': s.chapter.color }">
           <h2>{{ $t(`chapters.${s.chapter.id}`) }}</h2>
           <ul class="grid">
