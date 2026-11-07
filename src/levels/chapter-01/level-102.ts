@@ -3,6 +3,7 @@ import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bee, cloud, fence, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, sunflower } from '../shapes.ts'
+import { level102Redesign } from './level-102-redesign.ts'
 
 /** Raised bed, wooden frame around soil; (x, y) = top-left corner, w × h. */
 const bed = (x: number, y: number, w: number, h: number) =>
@@ -72,6 +73,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'vegetableBeds',
   parTimeSec: 100,
+  redesign: level102Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 10; i++) tufts += grass(10 + rand() * 780, 478 + rand() * 18)

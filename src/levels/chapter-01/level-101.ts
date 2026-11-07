@@ -3,6 +3,7 @@ import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, bucket, cat, cloud, fence, flower, FLOWER_COLORS, flowerPot, grass, hen, pick, stones, sun, tree } from '../shapes.ts'
+import { level101Redesign } from './level-101-redesign.ts'
 
 /** Chick; (x, y) = feet. Bounds: x ±9, y from −14 to 0. */
 const chick = (x: number, y: number) =>
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'farm',
   title: 'coopMorning',
   parTimeSec: 100,
+  redesign: level101Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 18; i++) tufts += grass(10 + rand() * 780, 380 + rand() * 115)
