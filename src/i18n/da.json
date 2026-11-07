@@ -39,8 +39,7 @@
     "space": "Rummet",
     "time": "Tiden",
     "travel": "Jorden rundt",
-    "treasury": "Skatkammer",
-    "test": "Testbaner"
+    "treasury": "Skatkammer"
   },
   "common": {
     "back": "Tilbage",
@@ -830,8 +829,7 @@
     "chickensYard": "Landsbygård",
     "chickensGarden": "Køkkenhave",
     "chickensBarn": "Lade",
-    "chickensMeadow": "Eng ved bækken",
-    "cozyStudy": "Hyggeligt arbejdsværelse"
+    "chickensMeadow": "Eng ved bækken"
   },
   "map": {
     "level": "Bane {n}",

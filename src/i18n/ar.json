@@ -39,8 +39,7 @@
     "space": "الفضاء",
     "time": "الزمن",
     "travel": "حول العالم",
-    "treasury": "غرفة الكنز",
-    "test": "مستويات تجريبية"
+    "treasury": "غرفة الكنز"
   },
   "common": {
     "back": "رجوع",
@@ -830,8 +829,7 @@
     "chickensYard": "فناء ريفي",
     "chickensGarden": "حديقة الخضار",
     "chickensBarn": "الحظيرة",
-    "chickensMeadow": "مرج بجانب الجدول",
-    "cozyStudy": "مكتب دافئ"
+    "chickensMeadow": "مرج بجانب الجدول"
   },
   "map": {
     "level": "المرحلة {n}",

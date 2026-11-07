@@ -232,8 +232,7 @@
     "memory": "Gedächtnis",
     "travel": "Weltreise",
     "detective": "Detektivgeschichte",
-    "treasury": "Schatzkammer",
-    "test": "Testlevel"
+    "treasury": "Schatzkammer"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blumenladen",
@@ -583,8 +582,7 @@
     "chickensYard": "Dorfhof",
     "chickensGarden": "Gemüsegarten",
     "chickensBarn": "Scheune",
-    "chickensMeadow": "Wiese am Bach",
-    "cozyStudy": "Gemütliches Arbeitszimmer"
+    "chickensMeadow": "Wiese am Bach"
   },
   "mode": {
     "label": "Modus",

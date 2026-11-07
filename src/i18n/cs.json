@@ -232,8 +232,7 @@
     "memory": "Paměť",
     "travel": "Cesta kolem světa",
     "detective": "Detektivní příběh",
-    "treasury": "Klenotnice",
-    "test": "Testovací úrovně"
+    "treasury": "Klenotnice"
   },
   "levelTitles": {
     "memoryFlowerShop": "Květinářství",
@@ -583,8 +582,7 @@
     "chickensYard": "Vesnický dvůr",
     "chickensGarden": "Zeleninová zahrádka",
     "chickensBarn": "Stodola",
-    "chickensMeadow": "Louka u potoka",
-    "cozyStudy": "Útulná pracovna"
+    "chickensMeadow": "Louka u potoka"
   },
   "mode": {
     "label": "Režim",

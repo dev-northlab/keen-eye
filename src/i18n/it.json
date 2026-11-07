@@ -232,8 +232,7 @@
     "memory": "Memoria",
     "travel": "Giro del mondo",
     "detective": "Storia investigativa",
-    "treasury": "Stanza del tesoro",
-    "test": "Livelli di prova"
+    "treasury": "Stanza del tesoro"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fioraio",
@@ -583,8 +582,7 @@
     "chickensYard": "Cortile del villaggio",
     "chickensGarden": "Orto",
     "chickensBarn": "Fienile",
-    "chickensMeadow": "Prato vicino al ruscello",
-    "cozyStudy": "Studio accogliente"
+    "chickensMeadow": "Prato vicino al ruscello"
   },
   "mode": {
     "label": "Modalità",

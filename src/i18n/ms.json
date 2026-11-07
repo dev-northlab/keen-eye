@@ -39,8 +39,7 @@
     "space": "Angkasa lepas",
     "time": "Masa",
     "travel": "Keliling dunia",
-    "treasury": "Bilik harta",
-    "test": "Tahap ujian"
+    "treasury": "Bilik harta"
   },
   "common": {
     "back": "Kembali",
@@ -830,8 +829,7 @@
     "chickensYard": "Halaman kampung",
     "chickensGarden": "Kebun sayur",
     "chickensBarn": "Bangsal",
-    "chickensMeadow": "Padang rumput di tepi anak sungai",
-    "cozyStudy": "Bilik kerja selesa"
+    "chickensMeadow": "Padang rumput di tepi anak sungai"
   },
   "map": {
     "level": "Tahap {n}",

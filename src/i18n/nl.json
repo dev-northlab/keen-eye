@@ -232,8 +232,7 @@
     "memory": "Geheugen",
     "travel": "Wereldreis",
     "detective": "Detectiveverhaal",
-    "treasury": "Schatkamer",
-    "test": "Testlevels"
+    "treasury": "Schatkamer"
   },
   "levelTitles": {
     "memoryFlowerShop": "Bloemenwinkel",
@@ -583,8 +582,7 @@
     "chickensYard": "Dorpserf",
     "chickensGarden": "Moestuin",
     "chickensBarn": "Schuur",
-    "chickensMeadow": "Wei bij de beek",
-    "cozyStudy": "Gezellige studeerkamer"
+    "chickensMeadow": "Wei bij de beek"
   },
   "mode": {
     "label": "Modus",

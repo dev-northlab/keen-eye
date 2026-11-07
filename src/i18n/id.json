@@ -39,8 +39,7 @@
     "space": "Luar angkasa",
     "time": "Waktu",
     "travel": "Keliling dunia",
-    "treasury": "Ruang harta",
-    "test": "Level uji"
+    "treasury": "Ruang harta"
   },
   "common": {
     "back": "Kembali",
@@ -830,8 +829,7 @@
     "chickensYard": "Halaman desa",
     "chickensGarden": "Kebun sayur",
     "chickensBarn": "Lumbung",
-    "chickensMeadow": "Padang rumput di tepi sungai kecil",
-    "cozyStudy": "Ruang kerja nyaman"
+    "chickensMeadow": "Padang rumput di tepi sungai kecil"
   },
   "map": {
     "level": "Level {n}",

@@ -232,8 +232,7 @@
     "memory": "Memoria",
     "travel": "Viaje por el mundo",
     "detective": "Historia de detectives",
-    "treasury": "Cámara del tesoro",
-    "test": "Niveles de prueba"
+    "treasury": "Cámara del tesoro"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floristería",
@@ -583,8 +582,7 @@
     "chickensYard": "Patio del pueblo",
     "chickensGarden": "Huerto",
     "chickensBarn": "Granero",
-    "chickensMeadow": "Prado junto al arroyo",
-    "cozyStudy": "Estudio acogedor"
+    "chickensMeadow": "Prado junto al arroyo"
   },
   "mode": {
     "label": "Modo",

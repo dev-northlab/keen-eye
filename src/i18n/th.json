@@ -39,8 +39,7 @@
     "space": "อวกาศ",
     "time": "กาลเวลา",
     "travel": "เที่ยวรอบโลก",
-    "treasury": "ห้องสมบัติ",
-    "test": "ด่านทดสอบ"
+    "treasury": "ห้องสมบัติ"
   },
   "common": {
     "back": "กลับ",
@@ -830,8 +829,7 @@
     "chickensYard": "ลานบ้านชนบท",
     "chickensGarden": "แปลงผัก",
     "chickensBarn": "โรงนา",
-    "chickensMeadow": "ทุ่งหญ้าริมลำธาร",
-    "cozyStudy": "ห้องทำงานแสนอบอุ่น"
+    "chickensMeadow": "ทุ่งหญ้าริมลำธาร"
   },
   "map": {
     "level": "ด่าน {n}",

@@ -217,22 +217,7 @@ export const TREASURY_CHAPTER: Chapter = {
     `<rect x="20" y="24" width="8" height="9" rx="2" fill="#f7c948" stroke="#5e3b1a" stroke-width="1.5"/>`,
 }
 
-/**
- * "Test" (`test/`, ids from 1001): picture pairs tried out before they become real levels. Its levels sit with
- * the hidden ones (upcoming.ts), so only developer mode shows its banner on the game modes screen and plays them.
- */
-export const TEST_CHAPTER: Chapter = {
-  id: 'test',
-  ranges: [[1001, 1100]],
-  color: '#6b7280',
-  soft: '#eceef2',
-  backdrop: 'meadow',
-  icon:
-    `<path d="M18 4h12M20 4v14L8 40a3 3 0 0 0 3 4h26a3 3 0 0 0 3-4L28 18V4" fill="#eceef2" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>` +
-    `<path d="M13 32h22l4 8a2 2 0 0 1-2 3H11a2 2 0 0 1-2-3Z" fill="#5cc3e0"/>`,
-}
-
-const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES, TREASURY_CHAPTER, TEST_CHAPTER]
+const ALL_CHAPTERS = [...CHAPTERS, ...CATEGORIES, TREASURY_CHAPTER]
 
 export const chapterById = (id: string): Chapter | undefined => ALL_CHAPTERS.find((c) => c.id === id)
 

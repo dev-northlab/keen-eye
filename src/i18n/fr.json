@@ -232,8 +232,7 @@
     "memory": "Mémoire",
     "travel": "Tour du monde",
     "detective": "Histoire de détective",
-    "treasury": "Salle au trésor",
-    "test": "Niveaux de test"
+    "treasury": "Salle au trésor"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fleuriste",
@@ -583,8 +582,7 @@
     "chickensYard": "Cour du village",
     "chickensGarden": "Potager",
     "chickensBarn": "Grange",
-    "chickensMeadow": "Pré au bord du ruisseau",
-    "cozyStudy": "Bureau douillet"
+    "chickensMeadow": "Pré au bord du ruisseau"
   },
   "mode": {
     "label": "Mode",

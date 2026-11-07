@@ -39,8 +39,7 @@
     "space": "Verdensrommet",
     "time": "Tiden",
     "travel": "Jorda rundt",
-    "treasury": "Skattkammer",
-    "test": "Testnivåer"
+    "treasury": "Skattkammer"
   },
   "common": {
     "back": "Tilbake",
@@ -830,8 +829,7 @@
     "chickensYard": "Tun i bygda",
     "chickensGarden": "Kjøkkenhage",
     "chickensBarn": "Låve",
-    "chickensMeadow": "Eng ved bekken",
-    "cozyStudy": "Koselig arbeidsrom"
+    "chickensMeadow": "Eng ved bekken"
   },
   "map": {
     "level": "Brett {n}",

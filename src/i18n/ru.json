@@ -232,8 +232,7 @@
     "memory": "Память",
     "travel": "Путешествие по миру",
     "detective": "Детективная история",
-    "treasury": "Сокровищница",
-    "test": "Тестовые уровни"
+    "treasury": "Сокровищница"
   },
   "levelTitles": {
     "memoryFlowerShop": "Цветочный магазин",
@@ -583,8 +582,7 @@
     "chickensYard": "Деревенский двор",
     "chickensGarden": "Огород",
     "chickensBarn": "Сарай",
-    "chickensMeadow": "Луг у ручья",
-    "cozyStudy": "Уютный кабинет"
+    "chickensMeadow": "Луг у ручья"
   },
   "mode": {
     "label": "Режим",

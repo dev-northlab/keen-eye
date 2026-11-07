@@ -39,8 +39,7 @@
     "space": "太空",
     "time": "時間",
     "travel": "環遊世界",
-    "treasury": "藏寶室",
-    "test": "測試關卡"
+    "treasury": "藏寶室"
   },
   "common": {
     "back": "返回",
@@ -830,8 +829,7 @@
     "chickensYard": "鄉村院子",
     "chickensGarden": "菜園",
     "chickensBarn": "穀倉",
-    "chickensMeadow": "小溪邊的草地",
-    "cozyStudy": "溫馨書房"
+    "chickensMeadow": "小溪邊的草地"
   },
   "map": {
     "level": "第 {n} 關",

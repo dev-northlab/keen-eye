@@ -232,8 +232,7 @@
     "memory": "Пам’ять",
     "travel": "Подорож світом",
     "detective": "Детективна історія",
-    "treasury": "Скарбниця",
-    "test": "Тестові рівні"
+    "treasury": "Скарбниця"
   },
   "levelTitles": {
     "memoryFlowerShop": "Квіткова крамниця",
@@ -583,8 +582,7 @@
     "chickensYard": "Сільське подвір'я",
     "chickensGarden": "Город",
     "chickensBarn": "Сарай",
-    "chickensMeadow": "Лука біля струмка",
-    "cozyStudy": "Затишний кабінет"
+    "chickensMeadow": "Лука біля струмка"
   },
   "mode": {
     "label": "Режим",

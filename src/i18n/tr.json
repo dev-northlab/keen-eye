@@ -232,8 +232,7 @@
     "memory": "Hafıza",
     "travel": "Dünya turu",
     "detective": "Dedektif hikâyesi",
-    "treasury": "Hazine odası",
-    "test": "Test bölümleri"
+    "treasury": "Hazine odası"
   },
   "levelTitles": {
     "memoryFlowerShop": "Çiçekçi",
@@ -583,8 +582,7 @@
     "chickensYard": "Köy avlusu",
     "chickensGarden": "Sebze bahçesi",
     "chickensBarn": "Ahır",
-    "chickensMeadow": "Dere kenarındaki çayır",
-    "cozyStudy": "Sıcak çalışma odası"
+    "chickensMeadow": "Dere kenarındaki çayır"
   },
   "mode": {
     "label": "Mod",
