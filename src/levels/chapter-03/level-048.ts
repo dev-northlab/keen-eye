@@ -1,6 +1,7 @@
 // Motion differences: the fish jumps faster on picture B; the bird flies the other way round on B; the mist bobs only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level048Redesign } from './level-048-redesign.ts'
 import { acorn, anthill, bear, bluebells, fern, floor, pine, pineCone, rock, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
@@ -32,6 +33,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'waterfall',
   parTimeSec: 120,
+  redesign: level048Redesign,
   scene: ({ diff, anim, rand, secret, extra }) => {
     let streaks = ''
     for (let i = 0; i < 14; i++) streaks += `<path d="M${340 + rand() * 120} ${120 + rand() * 200}v${16 + rand() * 20}" stroke="#fff" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>`

@@ -1,6 +1,7 @@
 // Motion differences: the owl blinks only on picture B; the glowing mushroom pulses faster on B; the bat flies faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level049Redesign } from './level-049-redesign.ts'
 import { acorn, anthill, backpack, floor, fox, hedgehog, lantern, mushroom, pine, pineCone, tent } from './shapes.ts'
 
 /** Owl on a branch; (x, y) = feet. The eyes are separate. Bounds: x ±16, y from −36 to 0. */
@@ -31,6 +32,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'nightOwls',
   parTimeSec: 120,
+  redesign: level049Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 16; i++) {

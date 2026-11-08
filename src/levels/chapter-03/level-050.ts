@@ -1,6 +1,7 @@
 // Motion differences: the wasp buzzes faster on picture B; the bird hops only on B; the berry branch sways only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level050Redesign } from './level-050-redesign.ts'
 import { acorn, backpack, bear, bird, bush, cloud, floor, oak, pine, pineCone, sun, trailSign, wildStrawberry } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
@@ -31,6 +32,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'berries',
   parTimeSec: 120,
+  redesign: level050Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const buzzing = (period: number) => anim({ id: 'wasp', type: 'path', points: [[0, 0], [30, -16], [60, 0], [30, 14]], period }, wasp(420, 350))
     const perched = bird(640, 236, '#ffb703')

@@ -1,6 +1,7 @@
 // Motion differences: the geese fly faster on picture B; the swing swings faster on B; the falling leaf spins the other way on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level045Redesign } from './level-045-redesign.ts'
 import { anthill, backpack, bear, bush, cloud, feather, floor, mushroom, oak, pine, pineCone, squirrel, stump, trailSign } from './shapes.ts'
 
 /** Flying goose V; (x, y) = lead goose. Bounds: x ±46, y from −6 to +26. */
@@ -34,6 +35,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'autumn',
   parTimeSec: 120,
+  redesign: level045Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let leaves = ''
     for (let i = 0; i < 24; i++) leaves += leaf(rand() * 800, rand() * 500, ['#e9a23b', '#c0392b', '#ffb703'][i % 3])

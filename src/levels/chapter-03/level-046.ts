@@ -1,6 +1,7 @@
 // Motion differences: the chimney smoke rises faster on picture B; the well bucket swings only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level046Redesign } from './level-046-redesign.ts'
 import { acorn, anthill, backpack, bush, cabin, cloud, floor, fox, lantern, pine, pineCone, stump, sun } from './shapes.ts'
 import { dog, person } from '../chapter-02/shapes.ts'
 
@@ -43,6 +44,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'rangerCabin',
   parTimeSec: 120,
+  redesign: level046Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -22]], period }, smoke(460, 190))
     const pail = bucket(680, 440)

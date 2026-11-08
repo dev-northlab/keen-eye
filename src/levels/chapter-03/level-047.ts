@@ -1,6 +1,7 @@
 // Motion differences: the rowboat rocks faster on picture B; the fish leaps only on B; the reeds sway faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level047Redesign } from './level-047-redesign.ts'
 import { backpack, bluebells, cloud, floor, lantern, pine, pineCone, rock, sun, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
@@ -36,6 +37,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestLake',
   parTimeSec: 120,
+  redesign: level047Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${330 + rand() * 150}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`
