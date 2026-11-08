@@ -1,6 +1,7 @@
 // Motion differences: the right hanging lamp swings only on picture B; the platform signal blinks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level119Redesign } from './level-119-redesign.ts'
 import { bench, coffeeCup, mailbox, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
 
 /** Station clock with hands at `h` and `m` degrees; (x, y) = center. Bounds: radius 20. */
@@ -31,6 +32,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'railwayStation',
   parTimeSec: 85,
+  redesign: level119Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ribs = ''
     for (let i = 0; i <= 12; i++) {

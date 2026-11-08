@@ -2,6 +2,7 @@
 import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level118Redesign } from './level-118-redesign.ts'
 import { stones, wheelbarrow } from '../shapes.ts'
 import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline } from './shapes.ts'
 
@@ -46,6 +47,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'buildingSite',
   parTimeSec: 85,
+  redesign: level118Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let frame = ''
     for (let y = 140; y <= 400; y += 65) frame += `<rect x="60" y="${y}" width="300" height="8" fill="#5b7fa8"/>`
