@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, building, cityTree, cloud, dog, door, mailbox, newspaperBox, person, sandwichBoard, shoppingBag, skyline, street, sun } from './shapes.ts'
+import { level037Redesign } from './level-037-redesign.ts'
 
 /** Tram, faces right; (x, y) = rail level under the middle. The board and the door are separate. Bounds: x ±76, y from −90 to 0. */
 const tram = (x: number, y: number, color: string) => {
@@ -40,6 +41,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'tramLine',
   parTimeSec: 110,
+  redesign: level037Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const running = (period: number) =>
       anim({ id: 'dog', type: 'path', points: [[0, 0], [150, 0]], flipX: 560, period }, dog(560, 340, '#c48a5a'))

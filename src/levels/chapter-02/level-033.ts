@@ -4,6 +4,7 @@ import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { flowerPot, wateringCan } from '../shapes.ts'
 import { ball, cloud, coffeeCup, pigeon, skyline, sun } from './shapes.ts'
+import { level033Redesign } from './level-033-redesign.ts'
 
 /** Chimney; (x, y) = bottom center on the roof. Bounds: x ±10, y from −34 to 0. */
 const chimney = (x: number, y: number, color = '#c0392b') =>
@@ -45,6 +46,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'rooftops',
   parTimeSec: 110,
+  redesign: level033Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const wash = laundry(500, 230)
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -20]], period }, smoke(160, 226))

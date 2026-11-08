@@ -3,6 +3,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, bike, cityTree, flowerBox, lampHead, lampPost, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
+import { level112Redesign } from './level-112-redesign.ts'
 
 /** Café table with a parasol; (x, y) = ground under the table. Bounds: x ±56, y from −118 to 0. */
 const table = (x: number, y: number, canopy: string) =>
@@ -54,6 +55,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'cornerCafe',
   parTimeSec: 110,
+  redesign: level112Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bricks = ''
     for (let y = 46; y < 200; y += 14)

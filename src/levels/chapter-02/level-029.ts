@@ -4,6 +4,7 @@ import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones } from '../shapes.ts'
 import { bench, cityTree, cloud, coffeeCup, grass, person, pigeon, scooter, skateboard, sun } from './shapes.ts'
+import { level029Redesign } from './level-029-redesign.ts'
 
 /** Swing seat on ropes from the pivot (x, y). Bounds: radius 48 around the pivot. */
 const swing = (x: number, y: number) =>
@@ -41,6 +42,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'playground',
   parTimeSec: 110,
+  redesign: level029Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 14; i++) tufts += grass(10 + rand() * 780, 330 + rand() * 160)

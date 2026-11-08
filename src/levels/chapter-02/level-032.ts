@@ -4,6 +4,7 @@ import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, car, cityTree, cloud, coffeeCup, lampHead, lampPost, person, skateboard, skyline, sun } from './shapes.ts'
 import { duck } from '../shapes.ts'
+import { level032Redesign } from './level-032-redesign.ts'
 
 /** Small boat, faces right; (x, y) = waterline center. Bounds: x ±30, y from −44 to +8. */
 const boat = (x: number, y: number, color: string) =>
@@ -32,6 +33,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'bridge',
   parTimeSec: 110,
+  redesign: level032Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${420 + rand() * 70}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

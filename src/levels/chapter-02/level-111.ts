@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, bike, bin, bollard, building, bus, car, cityTree, cloud, cone, hydrant, lampHead, lampPost, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, trafficLight } from './shapes.ts'
+import { level111Redesign } from './level-111-redesign.ts'
 
 /** Wall clock; (x, y) = center, radius r. */
 const clock = (x: number, y: number, r: number) =>
@@ -28,6 +29,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'rushHour',
   parTimeSec: 110,
+  redesign: level111Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let zebra = ''
     for (let x = 344; x < 456; x += 16) zebra += `<rect x="${x}" y="336" width="9" height="120" fill="#f4f4f4"/>`

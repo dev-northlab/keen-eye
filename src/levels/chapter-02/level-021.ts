@@ -2,12 +2,14 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, balloon, bike, bin, building, car, cityTree, cloud, dog, door, flowerBox, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person, pigeon, sandwichBoard, signBoard, skyline, street, sun } from './shapes.ts'
+import { level021Redesign } from './level-021-redesign.ts'
 
 export default svgLevel({
   id: 21,
   chapter: 'city',
   title: 'shopStreet',
   parTimeSec: 110,
+  redesign: level021Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const ride = (reverse: boolean) =>
       anim({ id: 'bike', type: 'path', points: [[0, 0], [180, 0]], flipX: 560, period: 11, reverse }, bike(560, 470, '#e63946'))
