@@ -20,10 +20,10 @@ const season = computed(() => (props.theme === 'meadow' ? settings.season : null
 
 /**
  * The redesigned picture style (levels/picture-style.ts): a ready picture (public/backdrops/) instead of the drawn
- * sky and landscape, cut to the window like the strip — the meadow one per season, day and night, the farm and the
- * city one per day and night; the other worlds keep their drawing.
+ * sky and landscape, cut to the window like the strip — the meadow one per season, day and night, the farm, the city
+ * and the forest one per day and night; the other worlds keep their drawing.
  */
-const PICTURE_THEMES: BackdropTheme[] = ['meadow', 'farm', 'city']
+const PICTURE_THEMES: BackdropTheme[] = ['meadow', 'farm', 'city', 'forest']
 const picture = computed(() => {
   if (settings.pictureStyle !== 'redesign' || !PICTURE_THEMES.includes(props.theme)) return null
   const name = season.value ? `meadow-${season.value}` : props.theme
