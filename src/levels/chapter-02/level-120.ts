@@ -3,6 +3,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { gullStanding, lifeRing } from '../chapter-04/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level120Redesign } from './level-120-redesign.ts'
 import { bike, bollard } from './shapes.ts'
 
 /** Firework burst of `n` rays of length r around (x, y). */
@@ -44,6 +45,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'citySalute',
   parTimeSec: 80,
+  redesign: level120Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 40; i++) {

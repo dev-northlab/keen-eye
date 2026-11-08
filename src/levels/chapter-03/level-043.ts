@@ -1,6 +1,7 @@
 // Motion differences: the dragonfly darts faster on picture B; the floating log drifts faster on B; the reeds sway only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level043Redesign } from './level-043-redesign.ts'
 import { acorn, anthill, bluebells, bush, cloud, floor, log, oak, pine, pineCone, rock, sun } from './shapes.ts'
 import { duck, snail } from '../shapes.ts'
 
@@ -41,6 +42,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'beavers',
   parTimeSec: 120,
+  redesign: level043Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${350 + rand() * 120}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

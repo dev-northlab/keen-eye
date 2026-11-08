@@ -1,6 +1,7 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bird flies the other way round on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level042Redesign } from './level-042-redesign.ts'
 import { acorn, anthill, bush, feather, fireLogs, flame, floor, log, pine, pineCone, rock, tent, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'camp',
   parTimeSec: 120,
+  redesign: level042Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const flicker = (period: number) => anim({ type: 'sway', angle: 6, pivot: [400, 470], period }, flame(400, 470))
     const hanging = lantern(560, 250)

@@ -1,10 +1,7 @@
 <script setup lang="ts">
-// "What's inside" on the About screen: totals, a tile per game mode (colors and icons of the game modes
+// "What's inside" on the About screen: a tile per game mode (colors and icons of the game modes
 // screen, LevelMapView) and the game's perks.
-import { LOCALES } from '../i18n/index.ts'
 import { DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER } from '../levels/chapters.ts'
-import { allLevels } from '../levels/index.ts'
-import { timeTravelLevels } from '../levels/time-travel/index.ts'
 
 // Two pictures, the second with a red sun, and a magnifier over it; a pyramid and a clock (as on the banners).
 const SPOT_ICON =
@@ -66,24 +63,11 @@ const perks = [
     icon: '<path d="M10.5 5v14H3Z"/><path d="M13.5 5v14H21Z" fill-opacity="0.55"/><path d="M11.2 2h1.6v3h-1.6ZM11.2 7h1.6v3h-1.6ZM11.2 12h1.6v3h-1.6ZM11.2 17h1.6v3h-1.6Z"/>',
   },
 ]
-
-const stats = [
-  { value: allLevels.length + timeTravelLevels.length, label: 'about.stats.levels' },
-  { value: modes.length, label: 'about.stats.modes' },
-  { value: LOCALES.length, label: 'about.stats.languages' },
-]
 </script>
 
 <template>
   <section class="features">
     <h2>{{ $t('about.features') }}</h2>
-
-    <dl class="stats">
-      <div v-for="s in stats" :key="s.label" class="stat">
-        <dt>{{ $t(s.label) }}</dt>
-        <dd>{{ s.value }}</dd>
-      </div>
-    </dl>
 
     <ul class="modes">
       <li v-for="m in modes" :key="m.key" class="mode" :class="m.key">
@@ -118,42 +102,10 @@ h2 {
   text-align: center;
 }
 
-ul,
-dl {
+ul {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-/* Totals: big numbers in a row. */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  padding: 10px 4px;
-  border-radius: 14px;
-  background: var(--soft-2);
-}
-
-.stat dd {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.1;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat dt {
-  font-size: 12px;
-  color: var(--muted);
-  text-align: center;
 }
 
 /* A tile per game mode, colored like its banner. */

@@ -1,6 +1,7 @@
 // Motion differences: the butterfly flutters faster on picture B; the bird hops only on B; the big flower sways faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level041Redesign } from './level-041-redesign.ts'
 import { acorn, anthill, bird, bluebells, butterfly, cloud, deer, floor, flower, FLOWER_COLORS, fox, log, mushroom, oak, pick, pine, pineCone, rabbit, rock, stump, sun, trailSign } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'clearing',
   parTimeSec: 120,
+  redesign: level041Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let flowers = ''
     for (let i = 0; i < 14; i++) flowers += flower(20 + rand() * 760, 400 + rand() * 90, pick(rand, FLOWER_COLORS))

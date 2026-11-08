@@ -2,6 +2,7 @@
 import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level113Redesign } from './level-113-redesign.ts'
 import { flowerPot, wateringCan } from '../shapes.ts'
 import { ball, coffeeCup, flowerBox, pigeon, skyline } from './shapes.ts'
 
@@ -50,6 +51,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'antennaRoofs',
   parTimeSec: 110,
+  redesign: level113Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let midRoofs = ''
     for (let i = 0; i < 6; i++) {

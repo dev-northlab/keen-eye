@@ -206,7 +206,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
-  ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`. `check-levels` checks the files,
+  ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`, and every world's
+  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.webp`, space into one `space.webp` (dark in both themes). `check-levels` checks the files,
   the same number of differences as the scene (a motion difference becomes a still one: pictures do not move),
   zones on the picture, big enough and apart, and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).

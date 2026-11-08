@@ -1,6 +1,7 @@
 // Motion differences: a hand strap in the train swings only on picture B; a dot on the departure board blinks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level115Redesign } from './level-115-redesign.ts'
 import { bench, bin, coffeeCup, newspaperBox, person, scooter, shoppingBag, skateboard } from './shapes.ts'
 
 /** Ceiling light tube; (x, y) = center. Bounds: x ±18, y ±4. */
@@ -44,6 +45,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'metroStation',
   parTimeSec: 95,
+  redesign: level115Redesign,
   scene: ({ diff, anim, extra }) => {
     let tiles = ''
     for (let y = 70; y < 360; y += 16) tiles += `<path d="M0 ${y}H800" stroke="#d6dde2" stroke-width="1.5"/>`

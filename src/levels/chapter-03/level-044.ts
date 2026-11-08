@@ -1,6 +1,7 @@
 // Motion differences: the snail crawls faster on picture B; the frog hops only on B; the chimney smoke rises faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level044Redesign } from './level-044-redesign.ts'
 import { acorn, bluebells, fern, floor, frog, hedgehog, lantern, leafPile, mushroom, oak, pine, pineCone, rock } from './shapes.ts'
 
 /** Fly agaric with `spots`; (x, y) = bottom of the stem. Bounds: x ±20, y from −44 to 0. */
@@ -38,6 +39,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'mushrooms',
   parTimeSec: 120,
+  redesign: level044Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const crawling = (period: number) => anim({ id: 'snail', type: 'path', points: [[0, 0], [60, 0]], period }, snail(560, 480))
     const sitting = frog(180, 440)

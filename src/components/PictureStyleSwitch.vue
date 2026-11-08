@@ -2,8 +2,8 @@
 import { computed } from 'vue'
 import { useSettingsStore } from '../stores/settings.ts'
 
-// Picture style of the levels (levels/picture-style.ts): one round icon button showing the current style — flat
-// shapes for the drawn scenes, a shaded ball for the redesigned pictures; a tap switches to the other one.
+// Picture style of the levels (levels/picture-style.ts): one round icon button showing the current style — a vector
+// curve with its anchor points for the drawn scenes, a photo for the redesigned pictures; a tap switches to the other.
 
 const settings = useSettingsStore()
 const redesign = computed(() => settings.pictureStyle === 'redesign')
@@ -21,17 +21,20 @@ const toggle = () => (settings.pictureStyle = redesign.value ? 'classic' : 'rede
     @click="toggle"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <!-- Redesign: a shaded ball with a highlight and a sparkle. -->
+      <!-- Redesign: a photo — a frame with a sun and mountains. -->
       <g v-if="redesign">
-        <circle cx="11" cy="13" r="8" fill="currentColor" />
-        <circle cx="8.5" cy="10.5" r="2.6" fill="#fff" fill-opacity="0.55" />
-        <path d="M19.5 2.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9Z" fill="currentColor" />
+        <rect x="2" y="4" width="20" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
+        <circle cx="16" cy="9" r="2" fill="currentColor" />
+        <path d="M3 19l6-7 4 4.5 2.5-2.5L21 19Z" fill="currentColor" />
       </g>
-      <!-- Classic: flat drawn shapes. -->
-      <g v-else fill="currentColor">
-        <path d="M3 20l5.5-9 5.5 9Z" />
-        <circle cx="17" cy="7" r="4" />
-        <rect x="14" y="14" width="7" height="6" rx="1" />
+      <!-- Classic: a vector curve with its two anchor points and handles. -->
+      <g v-else>
+        <path d="M5 18C6 9 18 15 19 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <path d="M5 18L10 13M19 6L14 11" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.6" />
+        <rect x="2.5" y="15.5" width="5" height="5" rx="1" fill="currentColor" />
+        <rect x="16.5" y="3.5" width="5" height="5" rx="1" fill="currentColor" />
+        <circle cx="10" cy="13" r="1.5" fill="currentColor" />
+        <circle cx="14" cy="11" r="1.5" fill="currentColor" />
       </g>
     </svg>
   </button>

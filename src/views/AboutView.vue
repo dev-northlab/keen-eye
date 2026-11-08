@@ -29,21 +29,6 @@ const icon = `${import.meta.env.BASE_URL}favicon.svg`
         <p class="muted">{{ $t('info.version', { v: version }) }}</p>
       </section>
 
-      <section class="card updates">
-        <span class="updates-icon">
-          <!-- Two arrows going round: updates keep coming. -->
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M19.5 9A8 8 0 0 0 5 7.5M4.5 15A8 8 0 0 0 19 16.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-            <path d="M5 3.5v4h4M19 20.5v-4h-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M12 9v6M9 12h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-          </svg>
-        </span>
-        <div>
-          <h2>{{ $t('about.updates.title') }}</h2>
-          <p>{{ $t('about.updates.text') }}</p>
-        </div>
-      </section>
-
       <FeaturesCard />
 
       <SupportCard />
@@ -165,39 +150,6 @@ main {
 .title .muted {
   color: var(--muted);
   font-size: 14px;
-}
-
-.updates {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-align: start;
-}
-
-.updates-icon {
-  flex: none;
-  width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--ok-bg);
-  color: var(--accent);
-}
-
-.updates-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.updates h2 {
-  margin: 0 0 4px;
-}
-
-.updates p {
-  margin: 0;
-  line-height: 1.4;
-  color: var(--muted);
 }
 
 .share {

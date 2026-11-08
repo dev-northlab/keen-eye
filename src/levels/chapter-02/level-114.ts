@@ -1,6 +1,7 @@
 // Motion differences: one string-light bulb blinks only on picture B; the hanging scale pan swings only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level114Redesign } from './level-114-redesign.ts'
 import { awning, ball, building, coffeeCup, dog, newspaperBox, person, scooter, shoppingBag } from './shapes.ts'
 
 /** Crate of round produce: `rows` rows of `cols` fruits of radius r in `colors`; (x, y) = crate bottom-left. */
@@ -54,6 +55,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'streetMarket',
   parTimeSec: 95,
+  redesign: level114Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bulbs = ''
     const lineY = (x: number) => 60 + 26 * Math.sin((x / 800) * Math.PI)

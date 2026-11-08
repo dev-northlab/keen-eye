@@ -19,14 +19,18 @@ const night = computed(() => settings.theme === 'dark')
 const season = computed(() => (props.theme === 'meadow' ? settings.season : null))
 
 /**
- * The meadow in the redesigned picture style (levels/picture-style.ts): one ready picture per season, day and night
- * (public/backdrops/), cut to the window like the strip, instead of the drawn sky and landscape.
+ * The redesigned picture style (levels/picture-style.ts): a ready picture (public/backdrops/) instead of the drawn
+ * sky and landscape, cut to the window like the strip — the meadow one per season, day and night, every world one per
+ * day and night, and space a single one (it is dark in both themes).
  */
-const picture = computed(() =>
-  season.value && settings.pictureStyle === 'redesign'
-    ? `${import.meta.env.BASE_URL}backdrops/meadow-${season.value}-${night.value ? 'night' : 'day'}.webp`
-    : null,
-)
+const picture = computed(() => {
+  if (settings.pictureStyle !== 'redesign') return null
+  const name =
+    props.theme === 'space'
+      ? 'space'
+      : `${season.value ? `meadow-${season.value}` : props.theme}-${night.value ? 'night' : 'day'}`
+  return `${import.meta.env.BASE_URL}backdrops/${name}.webp`
+})
 
 const FALLING = {
   spring: { count: 14, size: 9, colors: ['#ffd1e0', '#ffffff', '#ffb3cb'] },
