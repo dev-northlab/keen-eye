@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bin, bollard, building, car, cityTree, door, lampHead, lampPost, mailbox, manhole, newspaperBox, person, shoppingBag, signBoard, skyline, street } from './shapes.ts'
+import { level027Redesign } from './level-027-redesign.ts'
 
 const LIT = '#ffd166'
 const DARK = '#2d3a55'
@@ -18,6 +19,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'nightCity',
   parTimeSec: 110,
+  redesign: level027Redesign,
   scene: ({ diff, anim, rand, secret, extra }) => {
     let stars = ''
     for (let i = 0; i < 16; i++) {

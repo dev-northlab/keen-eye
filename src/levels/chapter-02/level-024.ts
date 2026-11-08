@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bench, bollard, cloud, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, window } from './shapes.ts'
+import { level024Redesign } from './level-024-redesign.ts'
 
 /** Clock face; (x, y) = center. The hands are separate. Bounds: radius 24. */
 const clockFace = (x: number, y: number) =>
@@ -51,6 +52,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'station',
   parTimeSec: 110,
+  redesign: level024Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const ticking = (reverse: boolean) => anim({ type: 'rotate', pivot: [400, 150], period: 12, reverse }, hands(400, 150))
     const puffing = (period: number) => anim({ id: 'smoke', type: 'path', points: [[0, 0], [0, -22]], period }, smoke(557, 390))

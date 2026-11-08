@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bike, bollard, building, bus, car, cloud, mailbox, newspaperBox, parkingMeter, person, sandwichBoard, skyline, street, trafficLight } from './shapes.ts'
+import { level028Redesign } from './level-028-redesign.ts'
 
 /** Destination board on the bus at (x, y) = ground center. Bounds: x ±16, y from −54 to −48. */
 const board = (x: number, y: number, color: string) => `<rect x="${x - 16}" y="${y - 54}" width="32" height="6" rx="2" fill="${color}"/>`
@@ -14,6 +15,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'trafficJam',
   parTimeSec: 110,
+  redesign: level028Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const weaving = (period: number) =>
       anim({ id: 'bike', type: 'path', points: [[0, 0], [120, 0]], period }, bike(560, 456, '#8ac926'))

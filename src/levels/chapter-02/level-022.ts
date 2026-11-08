@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, bike, cloud, door, flowerBox, manhole, newspaperBox, person, pigeon, shoppingBag, skateboard, street, window } from './shapes.ts'
+import { level022Redesign } from './level-022-redesign.ts'
 
 /** Round table with two chairs; (x, y) = ground center. Bounds: x ±36, y from −40 to 0. */
 const table = (x: number, y: number) =>
@@ -50,6 +51,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'cafe',
   parTimeSec: 110,
+  redesign: level022Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bulbs = ''
     for (let i = 0; i < 12; i++) bulbs += `<circle cx="${160 + i * 44}" cy="${230 + Math.sin((i / 11) * Math.PI) * 14}" r="4" fill="#ffe08a"/>`

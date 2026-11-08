@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, bollard, building, car, coffeeCup, mailbox, manhole, person, pigeon, sandwichBoard, skyline, street } from './shapes.ts'
+import { level038Redesign } from './level-038-redesign.ts'
 
 /** Film poster; (x, y) = center. Bounds: x ±20, y ±28. */
 const poster = (x: number, y: number, color: string) =>
@@ -21,6 +22,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'cinema',
   parTimeSec: 110,
+  redesign: level038Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const row = bulbs(400, 182)
     const bobbing = (period: number) => anim({ id: 'balloon', type: 'bob', dx: 0, dy: 4, period }, balloon(596, 268, '#ffb703'))

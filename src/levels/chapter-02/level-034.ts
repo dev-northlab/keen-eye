@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, cloud, dog, door, hydrant, mailbox, manhole, newspaperBox, person, sandwichBoard, skyline, street, sun, window } from './shapes.ts'
+import { level034Redesign } from './level-034-redesign.ts'
 
 /** Fire engine, faces left; (x, y) = ground center. The beacon is separate. Bounds: x ±70, y from −60 to 0. */
 const engine = (x: number, y: number) =>
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fireStation',
   parTimeSec: 110,
+  redesign: level034Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const hanging = bell(400, 150)
     const light = beacon(480, 470)

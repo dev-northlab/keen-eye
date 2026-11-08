@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, balloon, bollard, coffeeCup, person, sandwichBoard, shoppingBag, skyline } from './shapes.ts'
+import { level040Redesign } from './level-040-redesign.ts'
 
 /** Firework burst; (x, y) = center. Bounds: radius 26. */
 const burst = (x: number, y: number, color: string) => {
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fireworks',
   parTimeSec: 120,
+  redesign: level040Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 18; i++) {

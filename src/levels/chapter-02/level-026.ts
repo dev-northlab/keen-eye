@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, balloon, building, cloud, manhole, newspaperBox, parkingMeter, person, pigeon, scooter, shoppingBag, street, sun } from './shapes.ts'
+import { level026Redesign } from './level-026-redesign.ts'
 
 /** Market stall counter; (x, y) = ground center. The canopy is drawn with `awning`. Bounds: x ±60, y from −120 to 0. */
 const stall = (x: number, y: number, cloth: string) =>
@@ -36,6 +37,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'market',
   parTimeSec: 110,
+  redesign: level026Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const hanging = lamp(400, 180)
     const bunch = (period: number) =>

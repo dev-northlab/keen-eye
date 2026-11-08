@@ -4,6 +4,7 @@ import { duck, flower, FLOWER_COLORS } from '../shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, bin, cityTree, cloud, coffeeCup, dog, grass, lampHead, lampPost, person, pick, scooter, sun } from './shapes.ts'
+import { level023Redesign } from './level-023-redesign.ts'
 
 /** Kite with a tail; (x, y) = kite center. Bounds: x ±20, y from −24 to +44. */
 const kite = (x: number, y: number, color: string) =>
@@ -35,6 +36,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'park',
   parTimeSec: 110,
+  redesign: level023Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tufts = ''
     for (let i = 0; i < 16; i++) tufts += grass(10 + rand() * 780, 300 + rand() * 190)

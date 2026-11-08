@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, bench, bollard, building, cloud, coffeeCup, newspaperBox, person, pigeon, sandwichBoard, shoppingBag, sun } from './shapes.ts'
+import { level030Redesign } from './level-030-redesign.ts'
 
 /** Flower bed; (x, y) = center. Bounds: x ±30, y ±12. */
 const bed = (x: number, y: number, color: string) =>
@@ -31,6 +32,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'fountainSquare',
   parTimeSec: 110,
+  redesign: level030Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let tiles = ''
     for (let i = 0; i < 30; i++) tiles += `<rect x="${rand() * 800}" y="${340 + rand() * 160}" width="24" height="10" fill="#d9d2c5"/>`

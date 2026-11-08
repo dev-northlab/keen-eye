@@ -4,6 +4,7 @@ import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones, wheelbarrow } from '../shapes.ts'
 import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline, sun } from './shapes.ts'
+import { level025Redesign } from './level-025-redesign.ts'
 
 /** Worker with a hard hat; (x, y) = feet. The hat is separate. Bounds: x ±13, y from −62 to 0. */
 const worker = (x: number, y: number, vest = '#fb8500', flip = false) => person(x, y, vest, flip)
@@ -49,6 +50,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'construction',
   parTimeSec: 110,
+  redesign: level025Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const hanging = hook(620, 130)
     const turning = (period: number) => anim({ type: 'rotate', pivot: [470, 414], period }, drum(470, 414))

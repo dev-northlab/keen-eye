@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bin, building, bus, cityTree, cloud, dog, lampHead, lampPost, mailbox, manhole, newspaperBox, person, pigeon, scooter, shoppingBag, skyline, street, sun } from './shapes.ts'
+import { level031Redesign } from './level-031-redesign.ts'
 
 /** Bus shelter; (x, y) = ground center. The timetable is separate. Bounds: x ±76, y from −110 to 0. */
 const shelter = (x: number, y: number) =>
@@ -25,6 +26,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'busStop',
   parTimeSec: 110,
+  redesign: level031Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const arriving = (period: number) =>
       anim({ id: 'bus', type: 'path', points: [[0, 0], [220, 0]], period }, bus(150, 458, '#ffb703'))

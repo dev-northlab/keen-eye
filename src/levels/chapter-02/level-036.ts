@@ -3,6 +3,7 @@ import { bird } from '../chapter-03/shapes.ts'
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, building, cloud, mailbox, newspaperBox, parkingMeter, person, shoppingBag } from './shapes.ts'
+import { level036Redesign } from './level-036-redesign.ts'
 
 /** Skater, faces right; (x, y) = blade level. Bounds: x ±14, y from −62 to 0. */
 const skater = (x: number, y: number, coat: string) =>
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'iceRink',
   parTimeSec: 110,
+  redesign: level036Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 40; i++) flakes += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 2}" fill="#fff" fill-opacity="0.9"/>`

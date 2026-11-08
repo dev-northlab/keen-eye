@@ -2,6 +2,7 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, cityTree, cloud, cone, dog, mailbox, newspaperBox, person, scooter, skateboard, skyline, sun } from './shapes.ts'
+import { level039Redesign } from './level-039-redesign.ts'
 
 /** Skateboarder, faces right; (x, y) = board level. The helmet is separate. Bounds: x ±16, y from −66 to 0. */
 const skater = (x: number, y: number, shirt: string) =>
@@ -28,6 +29,7 @@ export default svgLevel({
   chapter: 'city',
   title: 'skatepark',
   parTimeSec: 110,
+  redesign: level039Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const riding = (period: number) =>
       anim({ id: 'skater', type: 'path', points: [[0, 0], [60, -30], [120, 0]], flipX: 300, period }, skater(300, 440, '#e63946'))
