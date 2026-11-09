@@ -1,6 +1,7 @@
 // Motion differences: the gull flies faster on picture B; the crab scuttles faster on B; the ball bounces only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level061Redesign } from './level-061-redesign.ts'
 import { bottleMessage, bucket, castleFlag, cloud, coconut, crab, flipFlops, gull, palm, parasol, person, sailboat, sandBits, sandcastle, shell, starfish, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
 /** Beach ball; (x, y) = center. Bounds: radius 11. */
@@ -12,6 +13,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'beach',
   parTimeSec: 130,
+  redesign: level061Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const soaring = (period: number) => anim({ id: 'gull', type: 'path', points: [[0, 0], [160, -20], [300, 0]], period }, gull(200, 90))
     const scuttling = (period: number) => anim({ id: 'crab', type: 'path', points: [[0, 0], [80, 0]], period }, crab(560, 470))

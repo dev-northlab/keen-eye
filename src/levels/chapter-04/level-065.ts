@@ -1,6 +1,7 @@
 // Motion differences: the flag waves faster on picture B; the lantern swings only on B; the shark fin cruises the other way round on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level065Redesign } from './level-065-redesign.ts'
 import { anchor, bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, person, sun, waves } from './shapes.ts'
 
 /** Pirate flag to the right of the pole top at (x, y). Bounds: x from 0 to +34, y from −2 to +24. */
@@ -45,6 +46,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pirateShip',
   parTimeSec: 130,
+  redesign: level065Redesign,
   scene: ({ diff, anim, extra }) => {
     const waving = (period: number) => anim({ type: 'sway', angle: 8, pivot: [402, 40], period }, flag(402, 42))
     const hanging = lantern(560, 250)

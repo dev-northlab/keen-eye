@@ -1,6 +1,7 @@
 // Motion differences: the surfer rides faster on picture B; the kite bobs only on B; the gull flies faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level067Redesign } from './level-067-redesign.ts'
 import { beachBall, cloud, coconut, flipFlops, gull, palm, parasol, person, rock, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
 /** Surfer on a board, faces right; (x, y) = board center. Bounds: x ±30, y from −62 to +6. */
@@ -27,6 +28,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'surfers',
   parTimeSec: 130,
+  redesign: level067Redesign,
   scene: ({ diff, anim, extra }) => {
     const riding = (period: number) => anim({ id: 'surfer', type: 'path', points: [[0, 0], [60, -16], [120, 0]], period }, surfer(200, 300, '#ffb703'))
     const sail = kite(620, 200)

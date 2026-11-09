@@ -1,6 +1,7 @@
 // Motion differences: the fish school swims faster on picture B; the jellyfish bobs faster on B; the seaweed sways only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level063Redesign } from './level-063-redesign.ts'
 import { bottleMessage, coral, fish, jellyfish, octopus, rock, seahorse, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
 
 /** Treasure chest, open or closed; (x, y) = bottom center. Bounds: x ±20, y from −34 to 0. */
@@ -21,6 +22,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'reef',
   parTimeSec: 130,
+  redesign: level063Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bubbles = ''
     for (let i = 0; i < 12; i++) bubbles += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 3}" fill="#fff" fill-opacity="0.5"/>`
