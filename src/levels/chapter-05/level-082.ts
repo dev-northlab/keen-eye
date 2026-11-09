@@ -1,6 +1,7 @@
 // Motion differences: the rover drives faster on picture B; the dish scans only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level082Redesign } from './level-082-redesign.ts'
 import { astronaut, beacon, crater, crystal, dome, flag, planet, rover, satellite, solarPanel, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
 /** Plant in a pot; (x, y) = bottom center. Bounds: x ±12, y from −40 to 0. */
@@ -15,6 +16,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'moonBase',
   parTimeSec: 140,
+  redesign: level082Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const driving = (period: number) => anim({ id: 'rover', type: 'path', points: [[0, 0], [140, 0]], flipX: 560, period }, rover(560, 380))
 

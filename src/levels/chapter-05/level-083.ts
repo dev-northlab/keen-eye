@@ -1,6 +1,7 @@
 // Motion differences: the astronaut floats faster on picture B; the satellite flies faster on B; the antenna light blinks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level083Redesign } from './level-083-redesign.ts'
 import { astronaut, comet, fuelCanister, helmet, probe, satellite, starField, toolbox, wrench } from './shapes.ts'
 
 /** Solar panel wing; (x, y) = top left. Bounds: 50 × 70. */
@@ -12,6 +13,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spacewalk',
   parTimeSec: 140,
+  redesign: level083Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const floating = (period: number) => anim({ id: 'walker', type: 'bob', dx: 0, dy: 12, period }, astronaut(360, 320, '#f1f1f1', '#ffb703'))
     const orbiting = (period: number) => anim({ id: 'sat', type: 'path', points: [[0, 0], [160, -40]], period }, satellite(120, 430, '#ffb703'))

@@ -1,6 +1,7 @@
 // Motion differences: the warning light on the tower blinks faster on picture B; the astronaut walks faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level081Redesign } from './level-081-redesign.ts'
 import { astronaut, dish, flag, fuelCanister, helmet, moonPebbles, rock, rocket, solarPanel, starField, toolbox } from './shapes.ts'
 
 /** Fuel tank; (x, y) = bottom center. Bounds: x ±14, y from −44 to 0. */
@@ -16,6 +17,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'launchPad',
   parTimeSec: 140,
+  redesign: level081Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const beacon = `<circle cx="487" cy="124" r="10" fill="#ff6b6b" fill-opacity="0.35"/><circle cx="487" cy="124" r="5" fill="#ff3b3b"/>`
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.5, period }, beacon)

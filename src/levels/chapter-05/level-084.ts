@@ -1,6 +1,7 @@
 // Motion differences: the little moon orbits faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level084Redesign } from './level-084-redesign.ts'
 import { asteroid, comet, flame, fuelCanister, helmet, planet, probe, rocket, sparkle, starField, toolbox, ufo, wrench } from './shapes.ts'
 
 /** Spiral galaxy; (x, y) = center. Bounds: radius 30. */
@@ -16,6 +17,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'ringedPlanet',
   parTimeSec: 140,
+  redesign: level084Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const orbiting = (period: number) => anim({ id: 'moonlet', type: 'rotate', pivot: [680, 110], period }, `<circle cx="724" cy="110" r="7" fill="#d0d4de"/>`)
     const flying = (period: number) => anim({ id: 'ship', type: 'path', points: [[0, 0], [120, -30]], period }, `<g transform="translate(130 420)">${ship}</g>`)

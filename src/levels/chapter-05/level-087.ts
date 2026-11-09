@@ -1,6 +1,7 @@
 // Motion differences: the big asteroid spins faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level087Redesign } from './level-087-redesign.ts'
 import { asteroid, astronaut, beacon, flag, flame, fuelCanister, planet, probe, rocket, sparkle, star, starField, toolbox, wrench } from './shapes.ts'
 
 /** Crystals; (x, y) = bottom center. Bounds: x from −8 to +14, y from −24 to 0. */
@@ -14,6 +15,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'asteroidBelt',
   parTimeSec: 140,
+  redesign: level087Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const spinning = (period: number) => anim({ type: 'rotate', pivot: [220, 170], period }, asteroid(220, 170, 2))
     const flying = (period: number) => anim({ id: 'ship', type: 'path', points: [[0, 0], [220, 0]], flipX: 140, period }, `<g transform="translate(140 440)">${ship}</g>`)
