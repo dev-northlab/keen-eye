@@ -1,6 +1,7 @@
 // Motion differences: a maple leaf swings on its twig only on picture B; the squirrel flicks its tail faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level121Redesign } from './level-121-redesign.ts'
 import { stones } from '../shapes.ts'
 import { anthill, deer, feather, fox, hedgehog, mushroom, oak, pineCone, stump, trailSign } from './shapes.ts'
 
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'autumnGlade',
   parTimeSec: 115,
+  redesign: level121Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const autumn = ['#e07a2c', '#d9482b', '#f2b134', '#c9622c', '#e8a33c']
     let backTrees = ''

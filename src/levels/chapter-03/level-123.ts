@@ -1,6 +1,7 @@
 // Motion differences: the campfire flame flickers faster on picture B; the heron dips its head only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level123Redesign } from './level-123-redesign.ts'
 import { backpack, bluebells, feather, fireLogs, flame, lantern, pine, pineCone, rock } from './shapes.ts'
 
 /** Duck, faces left; (x, y) = waterline. Bounds: x ±14·s, y from −18·s to +2. */
@@ -38,6 +39,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'woodlandLake',
   parTimeSec: 115,
+  redesign: level123Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let farPines = ''
     for (let x = -10; x < 820; x += 22) farPines += pine(x + rand() * 8, 252, 0.45 + rand() * 0.25, rand() < 0.5 ? '#3a4f4a' : '#2f4540')

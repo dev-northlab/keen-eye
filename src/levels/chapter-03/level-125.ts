@@ -1,6 +1,7 @@
 // Motion differences: chimney smoke drifts only on picture B; the dog wags its tail faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level125Redesign } from './level-125-redesign.ts'
 import { acorn, anthill, backpack, bird, bluebells, flower, oak, pine, pineCone, rabbit, stump } from './shapes.ts'
 
 /** Window, 34 × 34, with `cols` columns of panes; (x, y) = center. */
@@ -35,6 +36,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'foresterHouse',
   parTimeSec: 105,
+  redesign: level125Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let back = ''
     for (let x = -10; x < 820; x += 30) back += pine(x + rand() * 10, 236, 0.8 + rand() * 0.4, rand() < 0.5 ? '#3f7a5a' : '#356b4e')

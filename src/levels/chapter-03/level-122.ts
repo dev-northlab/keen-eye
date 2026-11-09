@@ -1,6 +1,7 @@
 // Motion differences: the frog hops only on picture B; the spider on its thread bobs faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level122Redesign } from './level-122-redesign.ts'
 import { acorn, anthill, feather, fern, frog, lantern, mushroom, pineCone } from './shapes.ts'
 
 /** Fly agaric; (x, y) = stem foot; `dots` white dots on the cap. Bounds: x ±16, y from −34 to 0. */
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'mushroomHollow',
   parTimeSec: 115,
+  redesign: level122Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let trunks = ''
     for (const [x, w, c] of [[90, 60, '#4a3426'], [300, 34, '#5a4030'], [470, 40, '#4f3829'], [620, 30, '#5a4030'], [760, 54, '#4a3426']] as const)

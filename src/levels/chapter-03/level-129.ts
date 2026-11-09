@@ -1,6 +1,7 @@
 // Motion differences: the splash at the foot of the falls bubbles faster on picture B; the salmon leaps only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level129Redesign } from './level-129-redesign.ts'
 import { acorn, backpack, bluebells, butterfly, feather, fern, pine, pineCone } from './shapes.ts'
 
 /** Kingfisher, faces left; (x, y) = feet. Bounds: x ±14, y from −16 to 0. */
@@ -42,6 +43,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestFalls',
   parTimeSec: 90,
+  redesign: level129Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let topTrees = ''
     for (let x = -10; x < 820; x += 34) if (x < 300 || x > 500) topTrees += pine(x + rand() * 10, 112, 0.7 + rand() * 0.4, rand() < 0.5 ? '#2f7d55' : '#3a8a5e')
