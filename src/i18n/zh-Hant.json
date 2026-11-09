@@ -23,6 +23,7 @@
   "chapters": {
     "city": "城市",
     "detective": "偵探故事",
+    "tinyBoy": "小男孩",
     "farm": "農場",
     "forest": "森林",
     "memory": "記憶",
@@ -820,7 +821,9 @@
     "chickensYard": "鄉村院子",
     "chickensGarden": "菜園",
     "chickensBarn": "穀倉",
-    "chickensMeadow": "小溪邊的草地"
+    "chickensMeadow": "小溪邊的草地",
+    "roseYard": "玫瑰小院",
+    "sandHill": "沙堆"
   },
   "map": {
     "level": "第 {n} 關",
@@ -831,6 +834,7 @@
     "soon": "即將推出",
     "soonLevels": "即將推出：還有 {n} 關",
     "task": "找不同",
+    "tinyBoyText": "小男孩世界裡的不同",
     "title": "世界",
     "random": "隨機關卡"
   },

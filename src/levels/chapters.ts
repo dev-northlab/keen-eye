@@ -191,14 +191,32 @@ export const DETECTIVE_CHAPTER: Chapter = {
     `<path d="M38 40l6 6" stroke="#3b2a1a" stroke-width="4" stroke-linecap="round"/>`,
 }
 
+/**
+ * "Tiny boy" (`tiny-boy/`): spot the difference in Gemini pictures of one little boy at home (`kind: 'image'`),
+ * listed as picture banners (TinyBoyView), not a grid. Open and paid like the "time" category; no key yet.
+ */
+export const TINY_BOY_CHAPTER: Chapter = {
+  id: 'tinyBoy',
+  ranges: [[701, 702]],
+  color: '#3a86ff',
+  soft: '#e3edff',
+  backdrop: 'meadow',
+  icon:
+    `<circle cx="24" cy="27" r="15" fill="#f6c7a1"/>` +
+    `<path d="M9 25q0-16 16-16t14 14q-6-6-14-5t-16 7Z" fill="#2b2b33"/>` +
+    `<circle cx="18.5" cy="28" r="2.4" fill="#2b2b33"/><circle cx="29.5" cy="28" r="2.4" fill="#2b2b33"/>` +
+    `<path d="M20 35q4 3 8 0" fill="none" stroke="#c0624a" stroke-width="2" stroke-linecap="round"/>` +
+    `<path d="M14 44q10-6 20 0" fill="#ffd23f"/>`,
+}
+
 /** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
-export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER]
+export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER, TINY_BOY_CHAPTER]
 
 /**
- * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category, one level each
- * (`Level.secret`; the key's id is the chapter id). The first is in the free part of the farm.
+ * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category but "tiny boy" (none drawn
+ * yet), one level each (`Level.secret`; the key's id is the chapter id). The first is in the free part of the farm.
  */
-export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES]
+export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES.filter((c) => c !== TINY_BOY_CHAPTER)]
 
 /**
  * "Treasury" (docs/hidden-item-feature.md, `treasury/`): the bonus level, opened once the key of every
@@ -273,16 +291,18 @@ export const categoryOf = (level: Level) => CATEGORIES.find((c) => c.id === leve
 
 /**
  * Route of the screen listing a level: the world map open at its region for "travel", the case for
- * "detective", the game modes for the treasury, its chapter's grid otherwise.
+ * "detective", the banners of "tiny boy", the game modes for the treasury, its chapter's grid otherwise.
  */
 export const levelsScreen = (level: Level) =>
   level.travel
     ? { name: 'travel', query: { region: level.travel.region } }
     : level.detective
       ? { name: 'case', params: { case: level.detective.case } }
-      : level.chapter === TREASURY_CHAPTER.id
-        ? { name: 'levels' }
-        : { name: 'chapter', params: { chapter: level.chapter } }
+      : level.chapter === TINY_BOY_CHAPTER.id
+        ? { name: 'tiny-boy' }
+        : level.chapter === TREASURY_CHAPTER.id
+          ? { name: 'levels' }
+          : { name: 'chapter', params: { chapter: level.chapter } }
 
 /** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
 export function levelNumber(level: Level): number {

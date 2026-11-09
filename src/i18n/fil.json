@@ -23,6 +23,7 @@
   "chapters": {
     "city": "Lungsod",
     "detective": "Kuwentong detektib",
+    "tinyBoy": "Munting Bata",
     "farm": "Bukid",
     "forest": "Kagubatan",
     "memory": "Memorya",
@@ -820,7 +821,9 @@
     "chickensYard": "Bakuran sa nayon",
     "chickensGarden": "Taniman ng gulay",
     "chickensBarn": "Kamalig",
-    "chickensMeadow": "Parang sa tabi ng sapa"
+    "chickensMeadow": "Parang sa tabi ng sapa",
+    "roseYard": "Bakuran ng rosas",
+    "sandHill": "Burol ng buhangin"
   },
   "map": {
     "level": "Level {n}",
@@ -831,6 +834,7 @@
     "soon": "Malapit na",
     "soonLevels": "Malapit na: {n} pa",
     "task": "Hanapin ang pagkakaiba",
+    "tinyBoyText": "Mga pagkakaiba sa mundo ng munting bata",
     "title": "Mga mundo",
     "random": "Random na level"
   },

@@ -83,6 +83,7 @@
     "soonLevels": "Hamarosan: még {n}",
     "progress": "{done} / {total}",
     "task": "Keresd a különbségeket",
+    "tinyBoyText": "Különbségek egy kisfiú világában",
     "random": "Véletlen pálya"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Memória",
     "travel": "Világkörüli utazás",
     "detective": "Detektívtörténet",
+    "tinyBoy": "Kisfiú",
     "treasury": "Kincskamra",
     "test": "Tesztpályák"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Falusi udvar",
     "chickensGarden": "Veteményes",
     "chickensBarn": "Pajta",
-    "chickensMeadow": "Rét a pataknál"
+    "chickensMeadow": "Rét a pataknál",
+    "roseYard": "Rózsás udvar",
+    "sandHill": "Homokdomb"
   },
   "mode": {
     "label": "Mód",

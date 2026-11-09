@@ -83,6 +83,7 @@
     "soonLevels": "Bald: {n} weitere",
     "progress": "{done} von {total}",
     "task": "Finde die Unterschiede",
+    "tinyBoyText": "Unterschiede in der Welt eines kleinen Jungen",
     "random": "Zufälliges Level"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Gedächtnis",
     "travel": "Weltreise",
     "detective": "Detektivgeschichte",
+    "tinyBoy": "Der Kleine",
     "treasury": "Schatzkammer",
     "test": "Testlevel"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Dorfhof",
     "chickensGarden": "Gemüsegarten",
     "chickensBarn": "Scheune",
-    "chickensMeadow": "Wiese am Bach"
+    "chickensMeadow": "Wiese am Bach",
+    "roseYard": "Rosenhof",
+    "sandHill": "Sandhügel"
   },
   "mode": {
     "label": "Modus",

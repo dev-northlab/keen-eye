@@ -1,6 +1,7 @@
 // Motion differences: the shrimp darts faster on picture B; the anemone sways only on B; the gull hops faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level074Redesign } from './level-074-redesign.ts'
 import { bucket, clam, crab, flipFlops, gullStanding, person, rock, seaweed, shell, snorkelMask, starfish, sun, sunHat, waves } from './shapes.ts'
 
 /** Tide pool; (x, y) = center. Bounds: x ±(rx + 4), y ±(ry + 4). */
@@ -26,6 +27,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'tidePools',
   parTimeSec: 130,
+  redesign: level074Redesign,
   scene: ({ diff, anim, extra }) => {
     const darting = (period: number) => anim({ id: 'shrimp', type: 'path', points: [[0, 0], [40, 10], [0, 20], [-30, 8]], period }, shrimp(560, 400))
     const tentacles = anemone(230, 440)

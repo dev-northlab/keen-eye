@@ -1,6 +1,7 @@
 // Motion differences: the rover drives faster on picture B; the drone hovers faster on B; the dust devil sways only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level085Redesign } from './level-085-redesign.ts'
 import { astronaut, beacon, crater, crystal, fuelCanister, rock, rover, solarPanel, starField, toolbox } from './shapes.ts'
 
 /** Drone; (x, y) = body center. Bounds: x ±22, y from −12 to +14. */
@@ -17,6 +18,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'marsRover',
   parTimeSec: 140,
+  redesign: level085Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const driving = (period: number) => anim({ id: 'rover', type: 'path', points: [[0, 0], [150, 0]], flipX: 400, period }, rover(400, 420, '#e6e6f0'))
     const hovering = (period: number) => anim({ id: 'drone', type: 'bob', dx: 0, dy: 10, period }, drone(250, 180))

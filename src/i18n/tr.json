@@ -83,6 +83,7 @@
     "soonLevels": "Yakında: {n} tane daha",
     "progress": "{done} / {total}",
     "task": "Farklılıkları bul",
+    "tinyBoyText": "Küçük bir çocuğun dünyasında farklar",
     "random": "Rastgele bölüm"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Hafıza",
     "travel": "Dünya turu",
     "detective": "Dedektif hikâyesi",
+    "tinyBoy": "Minik",
     "treasury": "Hazine odası",
     "test": "Test bölümleri"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Köy avlusu",
     "chickensGarden": "Sebze bahçesi",
     "chickensBarn": "Ahır",
-    "chickensMeadow": "Dere kenarındaki çayır"
+    "chickensMeadow": "Dere kenarındaki çayır",
+    "roseYard": "Güllü avlu",
+    "sandHill": "Kum tepesi"
   },
   "mode": {
     "label": "Mod",

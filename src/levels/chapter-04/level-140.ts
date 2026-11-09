@@ -1,6 +1,7 @@
 // Motion differences: the middle pier lamp flickers only on picture B; the fishing float bobs faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level140Redesign } from './level-140-redesign.ts'
 import { bottleMessage, fish, gullStanding, lifeRing, person, sunglasses, sunHat } from './shapes.ts'
 
 /** Pier lamp; (x, y) = post foot on the deck. Head separate. Bounds: x ±4, y from −72 to 0. */
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pierSunset',
   parTimeSec: 90,
+  redesign: level140Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let streaks = ''
     for (let i = 0; i < 30; i++) {

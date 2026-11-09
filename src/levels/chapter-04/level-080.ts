@@ -1,6 +1,7 @@
 // Motion differences: the bats fly faster on picture B; the drip falls only on B; the glowing crystals pulse faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level080Redesign } from './level-080-redesign.ts'
 import { bottleMessage, clam, crab, fish, jellyfish, rock, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
 /** Bat, faces right; (x, y) = body center. Bounds: x ±20, y from −10 to +8. */
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'seaCave',
   parTimeSec: 140,
+  redesign: level080Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let glints = ''
     for (let i = 0; i < 10; i++) glints += `<path d="M${rand() * 700 + 50} ${380 + rand() * 60}h${10 + rand() * 20}" stroke="#9fd8f0" stroke-width="3" stroke-linecap="round"/>`

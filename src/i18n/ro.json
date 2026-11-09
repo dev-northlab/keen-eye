@@ -83,6 +83,7 @@
     "soonLevels": "În curând: încă {n}",
     "progress": "{done} din {total}",
     "task": "Găsește diferențele",
+    "tinyBoyText": "Diferențe în lumea unui băiețel",
     "random": "Nivel la întâmplare"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Memorie",
     "travel": "Călătorie în jurul lumii",
     "detective": "Poveste polițistă",
+    "tinyBoy": "Băiețelul",
     "treasury": "Camera comorii",
     "test": "Niveluri de test"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Curte de la țară",
     "chickensGarden": "Grădina de legume",
     "chickensBarn": "Hambar",
-    "chickensMeadow": "Pajiște lângă pârâu"
+    "chickensMeadow": "Pajiște lângă pârâu",
+    "roseYard": "Curtea cu trandafiri",
+    "sandHill": "Movila de nisip"
   },
   "mode": {
     "label": "Mod",

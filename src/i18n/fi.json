@@ -23,6 +23,7 @@
   "chapters": {
     "city": "Kaupunki",
     "detective": "Salapoliisitarina",
+    "tinyBoy": "Pikkupoika",
     "farm": "Maatila",
     "forest": "Metsä",
     "memory": "Muisti",
@@ -820,7 +821,9 @@
     "chickensYard": "Kyläpiha",
     "chickensGarden": "Kasvimaa",
     "chickensBarn": "Lato",
-    "chickensMeadow": "Niitty puron varrella"
+    "chickensMeadow": "Niitty puron varrella",
+    "roseYard": "Ruusupiha",
+    "sandHill": "Hiekkakumpu"
   },
   "map": {
     "level": "Taso {n}",
@@ -831,6 +834,7 @@
     "soon": "Tulossa pian",
     "soonLevels": "Tulossa pian: {n} lisää",
     "task": "Etsi erot",
+    "tinyBoyText": "Eroja pikkupojan maailmassa",
     "title": "Maailmat",
     "random": "Satunnainen taso"
   },

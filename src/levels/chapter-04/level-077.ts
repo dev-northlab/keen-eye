@@ -1,6 +1,7 @@
 // Motion differences: the penguin slides faster on picture B; the seal claps only on B; the floe drifts faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level077Redesign } from './level-077-redesign.ts'
 import { bottleMessage, dolphin, fish, gullStanding, lifeRing, waves } from './shapes.ts'
 
 /** Penguin standing, faces right; (x, y) = feet. Bounds: x ±12, y from −36 to 0. */
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'iceFloes',
   parTimeSec: 130,
+  redesign: level077Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let flakes = ''
     for (let i = 0; i < 30; i++) flakes += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 2}" fill="#fff" fill-opacity="0.9"/>`

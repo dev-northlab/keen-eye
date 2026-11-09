@@ -83,6 +83,7 @@
     "soonLevels": "Již brzy: další {n}",
     "progress": "{done} z {total}",
     "task": "Najdi rozdíly",
+    "tinyBoyText": "Rozdíly ve světě malého kluka",
     "random": "Náhodná úroveň"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Paměť",
     "travel": "Cesta kolem světa",
     "detective": "Detektivní příběh",
+    "tinyBoy": "Malý kluk",
     "treasury": "Klenotnice",
     "test": "Testovací úrovně"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Vesnický dvůr",
     "chickensGarden": "Zeleninová zahrádka",
     "chickensBarn": "Stodola",
-    "chickensMeadow": "Louka u potoka"
+    "chickensMeadow": "Louka u potoka",
+    "roseYard": "Dvůr s růžemi",
+    "sandHill": "Písečný kopec"
   },
   "mode": {
     "label": "Režim",

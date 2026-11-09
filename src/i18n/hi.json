@@ -83,6 +83,7 @@
     "soonLevels": "जल्द आ रहे हैं: {n} और",
     "progress": "{total} में से {done}",
     "task": "अंतर खोजो",
+    "tinyBoyText": "एक नन्हे बच्चे की दुनिया में अंतर",
     "random": "कोई भी लेवल"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "याददाश्त",
     "travel": "दुनिया की सैर",
     "detective": "जासूसी कहानी",
+    "tinyBoy": "नन्हा",
     "treasury": "ख़ज़ाना",
     "test": "परीक्षण स्तर"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "गाँव का आँगन",
     "chickensGarden": "सब्ज़ियों का बगीचा",
     "chickensBarn": "खलिहान",
-    "chickensMeadow": "नाले के पास घास का मैदान"
+    "chickensMeadow": "नाले के पास घास का मैदान",
+    "roseYard": "गुलाबों वाला आँगन",
+    "sandHill": "रेत का टीला"
   },
   "mode": {
     "label": "मोड",

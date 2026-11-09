@@ -23,6 +23,7 @@
   "chapters": {
     "city": "المدينة",
     "detective": "قصة بوليسية",
+    "tinyBoy": "الصغير",
     "farm": "المزرعة",
     "forest": "الغابة",
     "memory": "الذاكرة",
@@ -820,7 +821,9 @@
     "chickensYard": "فناء ريفي",
     "chickensGarden": "حديقة الخضار",
     "chickensBarn": "الحظيرة",
-    "chickensMeadow": "مرج بجانب الجدول"
+    "chickensMeadow": "مرج بجانب الجدول",
+    "roseYard": "فناء الورود",
+    "sandHill": "تلة الرمل"
   },
   "map": {
     "level": "المرحلة {n}",
@@ -831,6 +834,7 @@
     "soon": "قريبًا",
     "soonLevels": "قريبًا: {n} أخرى",
     "task": "أوجد الاختلافات",
+    "tinyBoyText": "اختلافات في عالم طفل صغير",
     "title": "العوالم",
     "random": "مرحلة عشوائية"
   },

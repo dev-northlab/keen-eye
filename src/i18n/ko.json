@@ -83,6 +83,7 @@
     "soonLevels": "곧 공개: {n}개 더",
     "progress": "{done} / {total}",
     "task": "다른 그림 찾기",
+    "tinyBoyText": "꼬마의 세상에서 다른 그림 찾기",
     "random": "무작위 레벨"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "기억력",
     "travel": "세계 여행",
     "detective": "탐정 이야기",
+    "tinyBoy": "꼬마",
     "treasury": "보물 창고",
     "test": "테스트 레벨"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "시골 마당",
     "chickensGarden": "채소밭",
     "chickensBarn": "헛간",
-    "chickensMeadow": "시냇가 풀밭"
+    "chickensMeadow": "시냇가 풀밭",
+    "roseYard": "장미 마당",
+    "sandHill": "모래 언덕"
   },
   "mode": {
     "label": "모드",

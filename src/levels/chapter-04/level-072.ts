@@ -1,6 +1,7 @@
 // Motion differences: the whale's spout rises faster on picture B; the tail fluke sways only on B; the pilot fish circles faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level072Redesign } from './level-072-redesign.ts'
 import { beachBall, bottleMessage, cloud, fish, gull, gullStanding, lifeRing, sailboat, sun, waves } from './shapes.ts'
 
 /** Whale body, faces left; (x, y) = waterline center. The fluke and spout are separate. Bounds: x ±120, y from −60 to +30. */
@@ -18,6 +19,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'whale',
   parTimeSec: 130,
+  redesign: level072Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${260 + rand() * 220}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

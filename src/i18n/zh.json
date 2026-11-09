@@ -83,6 +83,7 @@
     "soonLevels": "即将推出：还有 {n} 关",
     "progress": "{done} / {total}",
     "task": "找不同",
+    "tinyBoyText": "小男孩世界里的不同",
     "random": "随机关卡"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "记忆",
     "travel": "环游世界",
     "detective": "侦探故事",
+    "tinyBoy": "小男孩",
     "treasury": "藏宝室",
     "test": "测试关卡"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "乡村院子",
     "chickensGarden": "菜园",
     "chickensBarn": "谷仓",
-    "chickensMeadow": "小溪边的草地"
+    "chickensMeadow": "小溪边的草地",
+    "roseYard": "玫瑰小院",
+    "sandHill": "沙堆"
   },
   "mode": {
     "label": "模式",

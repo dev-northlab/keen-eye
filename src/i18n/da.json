@@ -23,6 +23,7 @@
   "chapters": {
     "city": "By",
     "detective": "Detektivhistorie",
+    "tinyBoy": "Lille dreng",
     "farm": "Bondegård",
     "forest": "Skov",
     "memory": "Hukommelse",
@@ -820,7 +821,9 @@
     "chickensYard": "Landsbygård",
     "chickensGarden": "Køkkenhave",
     "chickensBarn": "Lade",
-    "chickensMeadow": "Eng ved bækken"
+    "chickensMeadow": "Eng ved bækken",
+    "roseYard": "Rosengården",
+    "sandHill": "Sandbakken"
   },
   "map": {
     "level": "Bane {n}",
@@ -831,6 +834,7 @@
     "soon": "Kommer snart",
     "soonLevels": "Kommer snart: {n} mere",
     "task": "Find forskellene",
+    "tinyBoyText": "Forskelle i en lille drengs verden",
     "title": "Verdener",
     "random": "Tilfældig bane"
   },

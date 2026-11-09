@@ -1,6 +1,7 @@
 // Motion differences: the parrot bobs only on picture B; the coconut swings faster on B; the raft drifts faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level073Redesign } from './level-073-redesign.ts'
 import { clam, cloud, crab, fish, gull, palm, rock, sandBits, shell, starfish, sun, sunglasses, sunHat, waves } from './shapes.ts'
 
 /** Parrot sitting, faces left; (x, y) = feet. Bounds: x ±10, y from −22 to 0. */
@@ -28,6 +29,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'island',
   parTimeSec: 130,
+  redesign: level073Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const bird = parrot(416, 232, '#8ac926')
     const swinging = (period: number) => anim({ type: 'sway', angle: 12, pivot: [370, 250], period }, coconut(370, 250))

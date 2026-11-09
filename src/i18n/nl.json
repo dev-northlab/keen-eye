@@ -83,6 +83,7 @@
     "soonLevels": "Binnenkort: nog {n}",
     "progress": "{done} van {total}",
     "task": "Zoek de verschillen",
+    "tinyBoyText": "Verschillen in de wereld van een kleine jongen",
     "random": "Willekeurig level"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Geheugen",
     "travel": "Wereldreis",
     "detective": "Detectiveverhaal",
+    "tinyBoy": "Kleine jongen",
     "treasury": "Schatkamer",
     "test": "Testlevels"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Dorpserf",
     "chickensGarden": "Moestuin",
     "chickensBarn": "Schuur",
-    "chickensMeadow": "Wei bij de beek"
+    "chickensMeadow": "Wei bij de beek",
+    "roseYard": "Rozentuin",
+    "sandHill": "Zandheuvel"
   },
   "mode": {
     "label": "Modus",

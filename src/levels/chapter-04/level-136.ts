@@ -1,6 +1,7 @@
 // Motion differences: the rowboat bobs faster on picture B; the sailboat's masthead pennant flaps only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level136Redesign } from './level-136-redesign.ts'
 import { bottleMessage, bucket, buoy, cloud, fish, gull, gullStanding, lifeRing, person } from './shapes.ts'
 
 /** Harbor house; (x, y) = bottom-left, w × h. */
@@ -31,6 +32,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'boatPort',
   parTimeSec: 110,
+  redesign: level136Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let reflections = ''
     for (let i = 0; i < 24; i++) reflections += `<rect x="${(rand() * 780).toFixed(1)}" y="${(270 + rand() * 220).toFixed(1)}" width="${(14 + rand() * 20).toFixed(1)}" height="2" fill="#bde3f2" fill-opacity="0.5"/>`

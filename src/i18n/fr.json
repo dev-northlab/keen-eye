@@ -83,6 +83,7 @@
     "soonLevels": "Bientôt : {n} de plus",
     "progress": "{done} sur {total}",
     "task": "Trouve les différences",
+    "tinyBoyText": "Les différences dans le monde d'un petit garçon",
     "random": "Niveau au hasard"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Mémoire",
     "travel": "Tour du monde",
     "detective": "Histoire de détective",
+    "tinyBoy": "Petit garçon",
     "treasury": "Salle au trésor",
     "test": "Niveaux de test"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Cour du village",
     "chickensGarden": "Potager",
     "chickensBarn": "Grange",
-    "chickensMeadow": "Pré au bord du ruisseau"
+    "chickensMeadow": "Pré au bord du ruisseau",
+    "roseYard": "La cour aux roses",
+    "sandHill": "La butte de sable"
   },
   "mode": {
     "label": "Mode",

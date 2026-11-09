@@ -23,6 +23,7 @@
   "chapters": {
     "city": "Thành phố",
     "detective": "Truyện trinh thám",
+    "tinyBoy": "Bé nhỏ",
     "farm": "Nông trại",
     "forest": "Khu rừng",
     "memory": "Trí nhớ",
@@ -820,7 +821,9 @@
     "chickensYard": "Sân quê",
     "chickensGarden": "Vườn rau",
     "chickensBarn": "Nhà kho",
-    "chickensMeadow": "Bãi cỏ bên suối"
+    "chickensMeadow": "Bãi cỏ bên suối",
+    "roseYard": "Sân hoa hồng",
+    "sandHill": "Đồi cát"
   },
   "map": {
     "level": "Màn {n}",
@@ -831,6 +834,7 @@
     "soon": "Sắp ra mắt",
     "soonLevels": "Sắp ra mắt: thêm {n} màn",
     "task": "Tìm điểm khác biệt",
+    "tinyBoyText": "Khác biệt trong thế giới của bé",
     "title": "Các thế giới",
     "random": "Màn ngẫu nhiên"
   },

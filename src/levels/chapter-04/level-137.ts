@@ -1,6 +1,7 @@
 // Motion differences: the right pink jellyfish drifts faster on picture B; the lanternfish's light blinks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level137Redesign } from './level-137-redesign.ts'
 import { anchor, bottleMessage, clam, rock, seahorse, seaUrchin, starfish } from './shapes.ts'
 
 /** Jellyfish with `tentacles` tentacles; (x, y) = bell center, bell radius r. */
@@ -45,6 +46,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'jellyDeep',
   parTimeSec: 100,
+  redesign: level137Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let plankton = ''
     for (let i = 0; i < 60; i++) plankton += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(rand() * 470).toFixed(1)}" r="${(0.8 + rand() * 1.4).toFixed(1)}" fill="${rand() < 0.5 ? '#4df0ff' : '#b38cff'}" fill-opacity="0.6"/>`

@@ -83,6 +83,7 @@
     "soonLevels": "Wkrótce: jeszcze {n}",
     "progress": "{done} z {total}",
     "task": "Znajdź różnice",
+    "tinyBoyText": "Różnice w świecie malucha",
     "random": "Losowy poziom"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Pamięć",
     "travel": "Podróż dookoła świata",
     "detective": "Historia detektywistyczna",
+    "tinyBoy": "Maluch",
     "treasury": "Skarbiec",
     "test": "Poziomy testowe"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Wiejskie podwórko",
     "chickensGarden": "Ogródek warzywny",
     "chickensBarn": "Stodoła",
-    "chickensMeadow": "Łąka nad strumykiem"
+    "chickensMeadow": "Łąka nad strumykiem",
+    "roseYard": "Podwórko z różami",
+    "sandHill": "Górka z piasku"
   },
   "mode": {
     "label": "Tryb",

@@ -83,6 +83,7 @@
     "soonLevels": "Скоро: още {n}",
     "progress": "{done} от {total}",
     "task": "Открий разликите",
+    "tinyBoyText": "Разлики в света на едно малко момче",
     "random": "Случайно ниво"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Памет",
     "travel": "Пътешествие по света",
     "detective": "Детективска история",
+    "tinyBoy": "Малчуган",
     "treasury": "Съкровищница",
     "test": "Тестови нива"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Селски двор",
     "chickensGarden": "Зеленчукова градина",
     "chickensBarn": "Плевня",
-    "chickensMeadow": "Поляна до потока"
+    "chickensMeadow": "Поляна до потока",
+    "roseYard": "Двор с рози",
+    "sandHill": "Пясъчна могила"
   },
   "mode": {
     "label": "Режим",

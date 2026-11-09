@@ -1,6 +1,7 @@
 // Motion differences: a second lightning bolt flashes only on picture B; smoke drifts from the keeper's chimney only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level135Redesign } from './level-135-redesign.ts'
 import { bottleMessage, bucket, buoy, crab, gullStanding, rock, starfish } from './shapes.ts'
 
 /** Lightning bolt from (x, y) down. Bounds: x from −10 to +14, y from 0 to +50. */
@@ -29,6 +30,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'stormLighthouse',
   parTimeSec: 110,
+  redesign: level135Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let rain = ''
     for (let i = 0; i < 60; i++) rain += `<path d="M${(rand() * 820).toFixed(1)} ${(rand() * 480).toFixed(1)}l-8 18" stroke="#c9d6e6" stroke-opacity="0.35" stroke-width="1.5"/>`

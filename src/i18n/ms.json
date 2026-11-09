@@ -23,6 +23,7 @@
   "chapters": {
     "city": "Bandar",
     "detective": "Kisah detektif",
+    "tinyBoy": "Si Kecil",
     "farm": "Ladang",
     "forest": "Hutan",
     "memory": "Ingatan",
@@ -820,7 +821,9 @@
     "chickensYard": "Halaman kampung",
     "chickensGarden": "Kebun sayur",
     "chickensBarn": "Bangsal",
-    "chickensMeadow": "Padang rumput di tepi anak sungai"
+    "chickensMeadow": "Padang rumput di tepi anak sungai",
+    "roseYard": "Halaman mawar",
+    "sandHill": "Bukit pasir"
   },
   "map": {
     "level": "Tahap {n}",
@@ -831,6 +834,7 @@
     "soon": "Akan datang",
     "soonLevels": "Akan datang: {n} lagi",
     "task": "Cari perbezaan",
+    "tinyBoyText": "Perbezaan dalam dunia si kecil",
     "title": "Dunia",
     "random": "Tahap rawak"
   },
