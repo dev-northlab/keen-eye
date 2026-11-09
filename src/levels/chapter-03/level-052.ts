@@ -1,6 +1,7 @@
 // Motion differences: the crow hops only on picture B; the hawk circles faster on B; the dandelion sways faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level052Redesign } from './level-052-redesign.ts'
 import { acorn, anthill, bluebells, bush, feather, floor, fox, log, mushroom, pine, pineCone, rock } from './shapes.ts'
 
 /** Fox cub, faces right; (x, y) = feet. Bounds: x ±16, y from −20 to 0. */
@@ -33,6 +34,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'foxDen',
   parTimeSec: 120,
+  redesign: level052Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const perched = crow(560, 468)
     const circling = (period: number) => anim({ id: 'hawk', type: 'path', points: [[0, 0], [60, -30], [120, 0], [60, 30]], period }, hawk(560, 110))

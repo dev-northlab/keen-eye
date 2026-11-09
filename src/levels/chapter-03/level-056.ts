@@ -1,6 +1,7 @@
 // Motion differences: the woodpecker pecks faster on picture B; the beetle crawls the other way round on B; the spider bobs only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level056Redesign } from './level-056-redesign.ts'
 import { acorn, anthill, bird, bluebells, floor, leafPile, mushroom, pine, pineCone, squirrel } from './shapes.ts'
 
 /** Woodpecker clinging to the trunk, faces left; (x, y) = feet. Bounds: x ±14, y from −30 to +2. */
@@ -34,6 +35,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'woodpecker',
   parTimeSec: 120,
+  redesign: level056Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let chips = ''
     for (let i = 0; i < 6; i++) chips += `<rect x="${410 + rand() * 30}" y="${200 + rand() * 60}" width="4" height="3" fill="#c9a06c"/>`

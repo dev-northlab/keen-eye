@@ -1,6 +1,7 @@
 // Motion differences: the bees fly faster on picture B; the honey drip bobs only on B; the leafy twig sways faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level058Redesign } from './level-058-redesign.ts'
 import { acorn, anthill, bear, bird, bluebells, bush, cloud, floor, flower, pine, pineCone, sun, wildStrawberry } from './shapes.ts'
 import { bee } from '../shapes.ts'
 
@@ -24,6 +25,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'beeTree',
   parTimeSec: 120,
+  redesign: level058Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const buzzing = (period: number) =>
       anim({ id: 'bees', type: 'path', points: [[0, 0], [30, -20], [60, 0], [30, 16]], period }, bee(500, 240) + bee(520, 256) + bee(488, 262))

@@ -1,6 +1,7 @@
 // Motion differences: the lantern swings only on picture B; the sun brightens faster on B; the fog puff drifts faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level059Redesign } from './level-059-redesign.ts'
 import { anthill, backpack, deer, feather, floor, mushroom, pine, pineCone, stump, trailSign } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 
@@ -34,6 +35,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'foggyMorning',
   parTimeSec: 120,
+  redesign: level059Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let haze = ''
     for (let i = 0; i < 5; i++) haze += `<rect y="${300 + i * 40}" width="800" height="18" fill="#fff" fill-opacity="${0.25 + i * 0.08}"/>`
