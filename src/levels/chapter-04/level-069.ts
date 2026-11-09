@@ -1,6 +1,7 @@
 // Motion differences: the eel sways faster on picture B; the diver's bubbles rise only on B; the fish circles faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level069Redesign } from './level-069-redesign.ts'
 import { anchor, bottleMessage, clam, coral, fish, jellyfish, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
 /** Diver, faces right; (x, y) = feet. Bounds: x ±16, y from −62 to 0. */
@@ -28,6 +29,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'shipwreck',
   parTimeSec: 130,
+  redesign: level069Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let drifting = ''
     for (let i = 0; i < 12; i++) drifting += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 3}" fill="#fff" fill-opacity="0.4"/>`

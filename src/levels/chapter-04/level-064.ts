@@ -1,6 +1,7 @@
 // Motion differences: the lighthouse beam turns faster on picture B; the flag waves only on B; the boat sails faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level064Redesign } from './level-064-redesign.ts'
 import { bottleMessage, bucket, cloud, gull, gullStanding, rock, sailboat, shell, starfish, sunHat, waves } from './shapes.ts'
 
 /** Light beam pivoting on (x, y) = lamp center. Bounds: radius 40. */
@@ -22,6 +23,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'lighthouse',
   parTimeSec: 130,
+  redesign: level064Redesign,
   scene: ({ diff, anim, extra }) => {
     const sweeping = (period: number) => anim({ type: 'rotate', pivot: [400, 110], period }, beam(400, 110))
     const cloth = flag(500, 170)

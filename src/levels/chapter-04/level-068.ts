@@ -1,6 +1,7 @@
 // Motion differences: the lead yacht rocks faster on picture B; the pennants wave only on B; the motorboat crosses the other way round on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level068Redesign } from './level-068-redesign.ts'
 import { beachBall, bottleMessage, buoy, cloud, dolphin, gull, gullStanding, lifeRing, person, sailboat, sun, waves } from './shapes.ts'
 
 /** Pennant string from (x, y) to the right. Bounds: x from −2 to +62, y from −2 to +14. */
@@ -19,6 +20,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'regatta',
   parTimeSec: 130,
+  redesign: level068Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${300 + rand() * 180}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

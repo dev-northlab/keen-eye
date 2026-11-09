@@ -1,6 +1,7 @@
 // Motion differences: the ant on the grass blade runs faster on picture B; the caterpillar wiggles only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level126Redesign } from './level-126-redesign.ts'
 import { snail } from '../shapes.ts'
 import { acorn, feather, leafPile, pineCone } from './shapes.ts'
 
@@ -48,6 +49,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'anthill',
   parTimeSec: 105,
+  redesign: level126Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let far = ''
     for (let i = 0; i < 30; i++) far += blade(rand() * 800, 340, -20 + rand() * 40, 120 + rand() * 120, '#a3c98c', 18)

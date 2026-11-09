@@ -1,6 +1,7 @@
 // Motion differences: the rope ladder sways only on picture B; the flag waves faster on B; the bucket goes up and down faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level053Redesign } from './level-053-redesign.ts'
 import { acorn, backpack, bush, cloud, floor, lantern, mushroom, pine, pineCone, squirrel, sun, trailSign } from './shapes.ts'
 
 /** Rope ladder from the pivot (x, y) down. Bounds: x ±12, y from 0 to +70. */
@@ -32,6 +33,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'treehouse',
   parTimeSec: 120,
+  redesign: level053Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const rope = ladder(330, 300)
     const waving = (period: number) => anim({ type: 'sway', angle: 10, pivot: [482, 120], period }, flag(482, 122, '#e63946'))

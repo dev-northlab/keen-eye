@@ -1,6 +1,7 @@
 // Motion differences: the dog runs faster on picture B; the kite flies faster on B; the frisbee spins the other way on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level055Redesign } from './level-055-redesign.ts'
 import { anthill, backpack, bluebells, bush, cloud, feather, floor, oak, pine, sun, wildStrawberry } from './shapes.ts'
 import { dog, person } from '../chapter-02/shapes.ts'
 import { apple } from '../shapes.ts'
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'picnic',
   parTimeSec: 120,
+  redesign: level055Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const running = (period: number) => anim({ id: 'dog', type: 'path', points: [[0, 0], [140, 0]], flipX: 540, period }, dog(540, 470, '#c48a5a'))
     const flying = (period: number) => anim({ id: 'kite', type: 'path', points: [[0, 0], [30, -16], [60, 0]], period }, kite(640, 110, '#3a86ff'))

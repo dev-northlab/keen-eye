@@ -1,6 +1,7 @@
 // Motion differences: the propeller spins faster on picture B; the periscope light blinks only on B; the squid jets faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level070Redesign } from './level-070-redesign.ts'
 import { anchor, bottleMessage, clam, fish, rock, seahorse, seaUrchin, seaweed, turtle } from './shapes.ts'
 
 /** Submarine, faces right; (x, y) = center. The propeller, lamp and a porthole are separate. Bounds: x ±90, y from −50 to +30. */
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'submarine',
   parTimeSec: 130,
+  redesign: level070Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bubbles = ''
     for (let i = 0; i < 14; i++) bubbles += `<circle cx="${rand() * 800}" cy="${rand() * 500}" r="${2 + rand() * 3}" fill="#fff" fill-opacity="0.4"/>`

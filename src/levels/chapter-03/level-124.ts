@@ -1,6 +1,7 @@
 // Motion differences: the owl in the hollow blinks only on picture B; the fern by the fox sways faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level124Redesign } from './level-124-redesign.ts'
 import { acorn, anthill, bird, bush, deer, feather, fern, fox, mushroom, pine, pineCone, rock, trailSign } from './shapes.ts'
 
 /** Spider web with `spokes` radial threads; (x, y) = center, radius r. */
@@ -32,6 +33,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'mistyThicket',
   parTimeSec: 105,
+  redesign: level124Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let far = ''
     for (let x = -10; x < 820; x += 34) far += pine(x + rand() * 10, 230 + rand() * 10, 0.9 + rand() * 0.5, '#a9bfae')

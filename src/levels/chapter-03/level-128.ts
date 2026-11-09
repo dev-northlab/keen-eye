@@ -1,6 +1,7 @@
 // Motion differences: one firefly over the clearing blinks only on picture B; the frog puffs its throat only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level128Redesign } from './level-128-redesign.ts'
 import { snail } from '../shapes.ts'
 import { acorn, bluebells, hedgehog, lantern, pineCone } from './shapes.ts'
 
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'fireflyNight',
   parTimeSec: 90,
+  redesign: level128Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stars = ''
     for (let i = 0; i < 36; i++) {

@@ -1,6 +1,7 @@
 // Motion differences: the mill wheel turns faster on picture B; the lantern swings only on B; the dragonfly flies the other way round on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level054Redesign } from './level-054-redesign.ts'
 import { acorn, anthill, backpack, bluebells, cloud, floor, frog, oak, pine, pineCone, sun } from './shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 import { duck } from '../shapes.ts'
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'creekBridge',
   parTimeSec: 120,
+  redesign: level054Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${400 + rand() * 80}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

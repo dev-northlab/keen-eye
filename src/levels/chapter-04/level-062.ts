@@ -1,6 +1,7 @@
 // Motion differences: the moored boat rocks faster on picture B; the gull on the post hops only on B; the crane hook swings only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level062Redesign } from './level-062-redesign.ts'
 import { anchor, bottleMessage, bucket, buoy, cloud, gullStanding, lifeRing, person, starfish, sun, sunHat, waves } from './shapes.ts'
 
 /** Fishing boat, faces right; (x, y) = waterline center. Bounds: x ±44, y from −50 to +8. */
@@ -27,6 +28,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'harbor',
   parTimeSec: 130,
+  redesign: level062Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${380 + rand() * 100}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

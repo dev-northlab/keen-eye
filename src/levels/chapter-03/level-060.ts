@@ -1,6 +1,7 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bear drums faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level060Redesign } from './level-060-redesign.ts'
 import { acorn, backpack, bear, feather, fireLogs, flame, floor, fox, hedgehog, pine, pineCone, rabbit, wildStrawberry } from './shapes.ts'
 import { balloon } from '../chapter-02/shapes.ts'
 
@@ -27,6 +28,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'forestFestival',
   parTimeSec: 130,
+  redesign: level060Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let lights = ''
     for (let i = 0; i < 14; i++) lights += anim({ type: 'blink', period: 1.4 + rand(), phase: rand(), duty: 0.7 }, `<circle cx="${60 + i * 52}" cy="${150 + Math.sin((i / 13) * Math.PI) * 30}" r="4" fill="#ffe08a"/>`)

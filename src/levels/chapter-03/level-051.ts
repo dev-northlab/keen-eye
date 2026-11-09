@@ -1,6 +1,7 @@
 // Motion differences: the flock flies faster on picture B; the butterfly flutters faster on B; the reeds sway only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level051Redesign } from './level-051-redesign.ts'
 import { anthill, bluebells, butterfly, cloud, deer, feather, floor, flower, oak, pine, pineCone, rock, trailSign } from './shapes.ts'
 
 /** Fawn (small deer), faces right; (x, y) = feet. Bounds: x ±18, y from −44 to 0. */
@@ -24,6 +25,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'deerMeadow',
   parTimeSec: 120,
+  redesign: level051Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let blooms = ''
     for (let i = 0; i < 10; i++) blooms += flower(20 + rand() * 300, 420 + rand() * 70, '#ffffff')

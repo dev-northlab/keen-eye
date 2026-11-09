@@ -1,6 +1,7 @@
 // Motion differences: the drying fish sway only on picture B; the net float bobs faster on B; the gull flies the other way round on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level066Redesign } from './level-066-redesign.ts'
 import { beachBall, bucket, buoy, cloud, fish, flipFlops, gull, gullStanding, lifeRing, person, rock, sun, sunglasses, sunHat, waves } from './shapes.ts'
 
 /** Village house; (x, y) = ground center. Bounds: x ±(w/2 + 6), y from −(h + 30) to 0. */
@@ -27,6 +28,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'fishingVillage',
   parTimeSec: 130,
+  redesign: level066Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 10; i++) ripples += `<path d="M${rand() * 760} ${400 + rand() * 90}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

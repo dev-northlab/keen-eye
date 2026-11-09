@@ -1,6 +1,7 @@
 // Motion differences: the left owlet blinks only on picture B; the spider on its thread bobs faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level130Redesign } from './level-130-redesign.ts'
 import { ladybug } from '../shapes.ts'
 import { acorn, bird, feather, pineCone, squirrel } from './shapes.ts'
 
@@ -46,6 +47,7 @@ export default svgLevel({
   chapter: 'forest',
   title: 'owlHollow',
   parTimeSec: 85,
+  redesign: level130Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bark = ''
     for (let x = 232; x < 570; x += 18) bark += `<path d="M${x} 0q${-6 + rand() * 12} 120 ${-4 + rand() * 8} 250t${-4 + rand() * 8} 250" stroke="#5a3f2c" stroke-width="3" fill="none"/>`
