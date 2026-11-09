@@ -83,6 +83,7 @@
     "soonLevels": "Coming soon: {n} more",
     "progress": "{done} of {total}",
     "task": "Spot the difference",
+    "tinyBoyText": "Differences in a little boy's world",
     "random": "Random level"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Memory",
     "travel": "World travel",
     "detective": "Detective story",
+    "tinyBoy": "Tiny boy",
     "treasury": "Treasury",
     "test": "Test levels"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Village yard",
     "chickensGarden": "Vegetable garden",
     "chickensBarn": "Barn",
-    "chickensMeadow": "Meadow by the stream"
+    "chickensMeadow": "Meadow by the stream",
+    "roseYard": "Rose yard",
+    "sandHill": "Sand hill"
   },
   "mode": {
     "label": "Mode",

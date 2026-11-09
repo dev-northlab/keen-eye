@@ -98,6 +98,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
   cases in `progress.solvedCases`); the first case and "The missing chickens" are free (`Chapter.free` ranges; a free case opens
   without the case before it, `progress.isReached`), the rest need the purchase;
+  `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
+  `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5 differences, r ≥ 60 px), B built
+  as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.webp`)
+  by `TinyBoyView` (`/tiny-boy`), the second banner of the game modes screen; hidden in `upcoming.ts` until released
+  ("coming soon" for players, developer mode opens it);
   `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (chapter cards, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level),

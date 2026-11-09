@@ -83,6 +83,7 @@
     "soonLevels": "Скоро: ещё {n}",
     "progress": "{done} из {total}",
     "task": "Найди отличия",
+    "tinyBoyText": "Отличия в мире малыша",
     "random": "Случайный уровень"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Память",
     "travel": "Путешествие по миру",
     "detective": "Детективная история",
+    "tinyBoy": "Малыш",
     "treasury": "Сокровищница",
     "test": "Тестовые уровни"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Деревенский двор",
     "chickensGarden": "Огород",
     "chickensBarn": "Сарай",
-    "chickensMeadow": "Луг у ручья"
+    "chickensMeadow": "Луг у ручья",
+    "roseYard": "Розы во дворе",
+    "sandHill": "Песчаная горка"
   },
   "mode": {
     "label": "Режим",

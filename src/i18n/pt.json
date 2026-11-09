@@ -83,6 +83,7 @@
     "soonLevels": "Em breve: mais {n}",
     "progress": "{done} de {total}",
     "task": "Encontre as diferenças",
+    "tinyBoyText": "Diferenças no mundo de um menino",
     "random": "Fase aleatória"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Memória",
     "travel": "Volta ao mundo",
     "detective": "História de detetive",
+    "tinyBoy": "Pequenino",
     "treasury": "Sala do tesouro",
     "test": "Níveis de teste"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Quintal da aldeia",
     "chickensGarden": "Horta",
     "chickensBarn": "Celeiro",
-    "chickensMeadow": "Prado junto ao riacho"
+    "chickensMeadow": "Prado junto ao riacho",
+    "roseYard": "Pátio das rosas",
+    "sandHill": "Monte de areia"
   },
   "mode": {
     "label": "Modo",

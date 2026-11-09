@@ -83,6 +83,7 @@
     "soonLevels": "Незабаром: ще {n}",
     "progress": "{done} з {total}",
     "task": "Знайди відмінності",
+    "tinyBoyText": "Відмінності у світі малюка",
     "random": "Випадковий рівень"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Пам’ять",
     "travel": "Подорож світом",
     "detective": "Детективна історія",
+    "tinyBoy": "Малюк",
     "treasury": "Скарбниця",
     "test": "Тестові рівні"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Сільське подвір'я",
     "chickensGarden": "Город",
     "chickensBarn": "Сарай",
-    "chickensMeadow": "Лука біля струмка"
+    "chickensMeadow": "Лука біля струмка",
+    "roseYard": "Троянди у дворі",
+    "sandHill": "Піщана гірка"
   },
   "mode": {
     "label": "Режим",

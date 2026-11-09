@@ -23,6 +23,7 @@
   "chapters": {
     "city": "By",
     "detective": "Detektivhistorie",
+    "tinyBoy": "Lillegutt",
     "farm": "Gård",
     "forest": "Skog",
     "memory": "Hukommelse",
@@ -820,7 +821,9 @@
     "chickensYard": "Tun i bygda",
     "chickensGarden": "Kjøkkenhage",
     "chickensBarn": "Låve",
-    "chickensMeadow": "Eng ved bekken"
+    "chickensMeadow": "Eng ved bekken",
+    "roseYard": "Rosegården",
+    "sandHill": "Sandhaugen"
   },
   "map": {
     "level": "Brett {n}",
@@ -831,6 +834,7 @@
     "soon": "Kommer snart",
     "soonLevels": "Kommer snart: {n} til",
     "task": "Finn forskjellene",
+    "tinyBoyText": "Forskjeller i en liten gutts verden",
     "title": "Verdener",
     "random": "Tilfeldig brett"
   },

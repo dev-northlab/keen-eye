@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
+import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
@@ -21,6 +21,7 @@ import MemoryLevelView from '../views/MemoryLevelView.vue'
 import PassportView from '../views/PassportView.vue'
 import SettingsView from '../views/SettingsView.vue'
 import TimeTravelView from '../views/TimeTravelView.vue'
+import TinyBoyView from '../views/TinyBoyView.vue'
 import TravelView from '../views/TravelView.vue'
 import WorldsView from '../views/WorldsView.vue'
 
@@ -55,6 +56,8 @@ export const router = createRouter({
     // "Detective" (docs/detective-mode.md): numbered levels of the 'detective' category, grouped into cases.
     { path: '/detective', name: 'detective', component: DetectiveView },
     { path: '/detective/:case', name: 'case', component: CaseView, props: true },
+    // "Tiny boy": numbered levels of the 'tinyBoy' category, listed as picture banners.
+    { path: '/tiny-boy', name: 'tiny-boy', component: TinyBoyView },
     { path: '/duo', name: 'duo', component: DuoView },
     {
       path: '/duo/:id(\\d+)',
@@ -69,7 +72,7 @@ export const router = createRouter({
 })
 
 // Global guard (not beforeEnter): beforeEnter is skipped when only params change, e.g. /level/1 → /level/99.
-// Unknown chapter → worlds, "travel" → its world map, "detective" → its cases (an unknown case too), the treasury → game modes. Unknown level → home; paid level not bought → purchase
+// Unknown chapter → worlds, "travel" → its world map, "detective" → its cases (an unknown case too), "tiny boy" → its banners, the treasury → game modes. Unknown level → home; paid level not bought → purchase
 // screen; not reached yet → its chapter's grid (or the world map). Two-player matches need no order, only the purchase for paid levels.
 // Unknown "find the odd one out" level → home, a paid one not bought → purchase screen. A "memory" level plays only on its own
 // screen (/level/<id> leads there), no other level does.
@@ -77,6 +80,7 @@ router.beforeEach((to, from) => {
   if (to.name === 'chapter') {
     if (to.params.chapter === TRAVEL_CHAPTER.id) return { name: 'travel' }
     if (to.params.chapter === DETECTIVE_CHAPTER.id) return { name: 'detective' }
+    if (to.params.chapter === TINY_BOY_CHAPTER.id) return { name: 'tiny-boy' }
     if (to.params.chapter === TREASURY_CHAPTER.id) return { name: 'levels' }
     return chapterById(String(to.params.chapter)) ? true : { name: 'worlds' }
   }

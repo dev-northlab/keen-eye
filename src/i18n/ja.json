@@ -83,6 +83,7 @@
     "soonLevels": "近日公開：あと {n} レベル",
     "progress": "{done} / {total}",
     "task": "まちがいさがし",
+    "tinyBoyText": "ちいさな男の子の世界でまちがい探し",
     "random": "ランダム"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "きおく",
     "travel": "世界の旅",
     "detective": "探偵ストーリー",
+    "tinyBoy": "ちいさな男の子",
     "treasury": "宝物庫",
     "test": "テストレベル"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "村の庭",
     "chickensGarden": "野菜畑",
     "chickensBarn": "納屋",
-    "chickensMeadow": "小川のそばの草原"
+    "chickensMeadow": "小川のそばの草原",
+    "roseYard": "バラの庭",
+    "sandHill": "すなやま"
   },
   "mode": {
     "label": "モード",

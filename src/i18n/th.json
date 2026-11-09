@@ -23,6 +23,7 @@
   "chapters": {
     "city": "เมือง",
     "detective": "เรื่องนักสืบ",
+    "tinyBoy": "เจ้าตัวเล็ก",
     "farm": "ฟาร์ม",
     "forest": "ป่า",
     "memory": "ความจำ",
@@ -820,7 +821,9 @@
     "chickensYard": "ลานบ้านชนบท",
     "chickensGarden": "แปลงผัก",
     "chickensBarn": "โรงนา",
-    "chickensMeadow": "ทุ่งหญ้าริมลำธาร"
+    "chickensMeadow": "ทุ่งหญ้าริมลำธาร",
+    "roseYard": "ลานกุหลาบ",
+    "sandHill": "เนินทราย"
   },
   "map": {
     "level": "ด่าน {n}",
@@ -831,6 +834,7 @@
     "soon": "เร็ว ๆ นี้",
     "soonLevels": "เร็ว ๆ นี้: อีก {n} ด่าน",
     "task": "จับผิดภาพ",
+    "tinyBoyText": "จุดต่างในโลกของเจ้าตัวเล็ก",
     "title": "โลก",
     "random": "สุ่มด่าน"
   },

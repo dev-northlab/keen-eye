@@ -83,6 +83,7 @@
     "soonLevels": "In arrivo: altri {n}",
     "progress": "{done} su {total}",
     "task": "Trova le differenze",
+    "tinyBoyText": "Differenze nel mondo di un bambino",
     "random": "Livello a caso"
   },
   "timeTravel": {
@@ -223,6 +224,7 @@
     "memory": "Memoria",
     "travel": "Giro del mondo",
     "detective": "Storia investigativa",
+    "tinyBoy": "Piccolino",
     "treasury": "Stanza del tesoro",
     "test": "Livelli di prova"
   },
@@ -574,7 +576,9 @@
     "chickensYard": "Cortile del villaggio",
     "chickensGarden": "Orto",
     "chickensBarn": "Fienile",
-    "chickensMeadow": "Prato vicino al ruscello"
+    "chickensMeadow": "Prato vicino al ruscello",
+    "roseYard": "Cortile delle rose",
+    "sandHill": "Collina di sabbia"
   },
   "mode": {
     "label": "Modalità",

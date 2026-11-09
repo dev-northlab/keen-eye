@@ -4,6 +4,7 @@ import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import KeyBadge from '../components/KeyBadge.vue'
 import LevelId from '../components/LevelId.vue'
+import PhotoBanner from '../components/PhotoBanner.vue'
 import {
   CHAPTERS,
   chapterLevels,
@@ -14,6 +15,7 @@ import {
   MEMORY_CHAPTER,
   TIME_CHAPTER,
   TEST_CHAPTER,
+  TINY_BOY_CHAPTER,
   TRAVEL_CHAPTER,
   TREASURY_CHAPTER,
   type Chapter,
@@ -28,11 +30,12 @@ import { useSettingsStore } from '../stores/settings.ts'
 // "find the odd one out" (docs/anachronism-mode.md) its eras (TimeTravelView), "spot the difference
 // in time" (docs/time-differences-mode.md) and "memory" (docs/memory-mode.md) their level grids
 // (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView),
-// "detective" (docs/detective-mode.md) its cases (DetectiveView). Category banners show whether their
+// "detective" (docs/detective-mode.md) its cases (DetectiveView), "tiny boy" its picture banners (TinyBoyView). Category banners show whether their
 // hidden key is found; the last banner, the treasury (docs/hidden-item-feature.md), counts the keys
 // and opens its bonus level once all are found. Developer mode adds the "test" levels (TEST_CHAPTER) at the end.
 
 const router = useRouter()
+const baseUrl = import.meta.env.BASE_URL
 const purchase = usePurchaseStore()
 const progress = useProgressStore()
 const settings = useSettingsStore()
@@ -60,6 +63,7 @@ const time = category(TIME_CHAPTER)
 const memory = category(MEMORY_CHAPTER)
 const travel = category(TRAVEL_CHAPTER)
 const detective = category(DETECTIVE_CHAPTER)
+const tinyBoy = category(TINY_BOY_CHAPTER)
 
 /** Worlds whose key is found (the "spot the difference" banner stands for all of them). */
 const worldKeys = () => CHAPTERS.filter((c) => progress.hasKey(c.id)).length
@@ -128,6 +132,24 @@ const timeTravel = {
             :found="worldKeys() === CHAPTERS.length"
             :text="worldKeys() === CHAPTERS.length ? $t('secret.foundWorlds') : $t('secret.findWorlds', { n: worldKeys(), total: CHAPTERS.length })"
           />
+        </li>
+        <li>
+          <!-- "Tiny boy": its levels as picture banners (TinyBoyView). Hidden until released, so players see
+               "coming soon" and only developer mode opens it. -->
+          <PhotoBanner
+            :photo="`${baseUrl}banners/tiny-boy-701.webp`"
+            :name="$t('chapters.tinyBoy')"
+            :tag="tinyBoy.total > 0 ? $t('map.task') : $t('map.soon')"
+            :disabled="tinyBoy.total === 0 && !settings.developer"
+            @click="router.push({ name: 'tiny-boy' })"
+          >
+            <template #icon><img :src="`${baseUrl}banners/tiny-boy-face.webp`" alt="" /></template>
+            <template v-if="tinyBoy.total > 0">
+              {{ $t('map.progress', { done: tinyBoy.done(), total: tinyBoy.total }) }} · ★ {{ tinyBoy.stars() }}
+              <template v-if="tinyBoy.hard() > 0"> · <span class="star-hard">★</span> {{ tinyBoy.hard() }}</template>
+            </template>
+            <template v-else>{{ $t('map.tinyBoyText') }}</template>
+          </PhotoBanner>
         </li>
         <li>
           <button class="mode time" @click="router.push({ name: 'chapter', params: { chapter: TIME_CHAPTER.id } })">

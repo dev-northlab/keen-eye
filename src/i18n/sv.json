@@ -23,6 +23,7 @@
   "chapters": {
     "city": "Stad",
     "detective": "Detektivhistoria",
+    "tinyBoy": "Lillkillen",
     "farm": "Bondgård",
     "forest": "Skog",
     "memory": "Minne",
@@ -820,7 +821,9 @@
     "chickensYard": "Bygård",
     "chickensGarden": "Köksträdgård",
     "chickensBarn": "Lada",
-    "chickensMeadow": "Äng vid bäcken"
+    "chickensMeadow": "Äng vid bäcken",
+    "roseYard": "Rosengården",
+    "sandHill": "Sandkullen"
   },
   "map": {
     "level": "Nivå {n}",
@@ -831,6 +834,7 @@
     "soon": "Kommer snart",
     "soonLevels": "Kommer snart: {n} till",
     "task": "Hitta felen",
+    "tinyBoyText": "Skillnader i en liten pojkes värld",
     "title": "Världar",
     "random": "Slumpvis nivå"
   },
