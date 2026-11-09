@@ -1,6 +1,7 @@
 // Motion differences: the lifeguard flag flaps faster on picture B; the swimmer bobs faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level134Redesign } from './level-134-redesign.ts'
 import { castleFlag, cloud, coconut, crab, flipFlops, gull, person, sailboat, sandcastle, shell, snorkelMask, sunglasses, sunHat, towel, waves } from './shapes.ts'
 
 /** Parasol with four colored panels; (x, y) = pole foot. Bounds: x ±44, y from −76 to 0. */
@@ -35,6 +36,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'umbrellaBeach',
   parTimeSec: 110,
+  redesign: level134Redesign,
   scene: ({ diff, anim, rand, secret, extra }) => {
     let sand = ''
     for (let i = 0; i < 24; i++) sand += `<ellipse cx="${(rand() * 800).toFixed(1)}" cy="${(280 + rand() * 214).toFixed(1)}" rx="5" ry="2" fill="#e0c47e"/>`

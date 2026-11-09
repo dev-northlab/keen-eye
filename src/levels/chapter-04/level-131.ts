@@ -1,6 +1,7 @@
 // Motion differences: the turtle paddles faster on picture B; the seahorse bobs only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level131Redesign } from './level-131-redesign.ts'
 import { anchor, bottleMessage, clam, coral, fish, jellyfish, sandBits, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
 
 /** Clownfish, faces right; (x, y) = center. Bounds: x ±13, y ±7. */
@@ -47,6 +48,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'coralReef',
   parTimeSec: 125,
+  redesign: level131Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let bubbles = ''
     for (let i = 0; i < 10; i++)

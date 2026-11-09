@@ -1,6 +1,7 @@
 // Motion differences: the middle crab waves its claw only on picture B; the little fish in the right pool darts faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level138Redesign } from './level-138-redesign.ts'
 import { bucket, crab, flipFlops, gull, seaUrchin, seaweed, shell, snorkelMask, starfish, sunglasses, sunHat, waves } from './shapes.ts'
 
 /** Crab body without its right claw; (x, y) = bottom center. Bounds: x ±20, y from −18 to 0. */
@@ -48,6 +49,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'crabPools',
   parTimeSec: 100,
+  redesign: level138Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let speckles = ''
     for (let i = 0; i < 50; i++) speckles += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(160 + rand() * 340).toFixed(1)}" r="${(1 + rand() * 2).toFixed(1)}" fill="#6f6a60"/>`

@@ -1,6 +1,7 @@
 // Motion differences: the moray peeks out of its hole only on picture B; the jellyfish pulses faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level133Redesign } from './level-133-redesign.ts'
 import { anchor, clam, crab, fish, jellyfish, octopus, sandBits, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
 
 const coin = (x: number, y: number) => `<ellipse cx="${x}" cy="${y}" rx="6" ry="4" fill="#ffd23f" stroke="#c9a227" stroke-width="1.5"/>`
@@ -28,6 +29,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'sunkenChest',
   parTimeSec: 125,
+  redesign: level133Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let coins = ''
     for (const [x, y] of [[280, 480], [318, 484], [340, 474], [372, 488], [440, 486], [500, 470]]) coins += coin(x, y)

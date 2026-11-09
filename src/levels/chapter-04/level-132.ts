@@ -1,6 +1,7 @@
 // Motion differences: the mizzen pennant flaps faster on picture B; a fish leaps by the bow only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level132Redesign } from './level-132-redesign.ts'
 import { bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, lifeRing, palm, person, waves } from './shapes.ts'
 
 /** Square sail between x0..x1 and y0..y1, bellied by the wind. */
@@ -38,6 +39,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'pirateGalleon',
   parTimeSec: 125,
+  redesign: level132Redesign,
   scene: ({ diff, anim, extra }) => {
     let ports = ''
     for (let x = 200; x <= 520; x += 40) if (x !== 360) ports += port(x, 334)

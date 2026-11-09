@@ -1,6 +1,7 @@
 // Motion differences: the diver's bubbles rise faster on picture B; the octopus waves an arm only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level139Redesign } from './level-139-redesign.ts'
 import { anchor, bottleMessage, crab, fish, seahorse, seaUrchin } from './shapes.ts'
 
 /** Diver swimming right; (x, y) = chest. Fins and flashlight separate. Bounds: x from −60 to +30, y ±20. */
@@ -48,6 +49,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'underwaterCave',
   parTimeSec: 100,
+  redesign: level139Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let stalactites = ''
     for (const [x, h] of [[90, 60], [150, 40], [220, 70], [300, 36], [380, 52], [460, 44], [540, 66], [680, 50], [740, 72]]) stalactites += stalactite(x, h)
