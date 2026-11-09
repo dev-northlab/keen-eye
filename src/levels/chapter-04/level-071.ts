@@ -1,6 +1,7 @@
 // Motion differences: the lead dolphin leaps faster on picture B; the gull flies the other way round on B; the boat rocks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level071Redesign } from './level-071-redesign.ts'
 import { beachBall, bottleMessage, buoy, cloud, dolphin, fish, gull, lifeRing, person, sun, sunHat, waves } from './shapes.ts'
 
 /** Tour boat, faces right; (x, y) = waterline center. Bounds: x ±50, y from −46 to +8. */
@@ -16,6 +17,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'dolphins',
   parTimeSec: 130,
+  redesign: level071Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let ripples = ''
     for (let i = 0; i < 12; i++) ripples += `<path d="M${rand() * 760} ${300 + rand() * 180}h${20 + rand() * 30}" stroke="#a5dcf3" stroke-width="3" stroke-linecap="round"/>`

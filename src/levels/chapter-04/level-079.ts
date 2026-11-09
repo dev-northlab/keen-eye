@@ -1,6 +1,7 @@
 // Motion differences: the hanging scale swings only on picture B; the gull hops faster on B; the shop sign sways faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level079Redesign } from './level-079-redesign.ts'
 import { bucket, clam, coconut, crab, fish, gullStanding, person, starfish, sun, sunHat, waves } from './shapes.ts'
 import { awning } from '../chapter-02/shapes.ts'
 
@@ -33,6 +34,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'seaMarket',
   parTimeSec: 130,
+  redesign: level079Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let cobbles = ''
     for (let i = 0; i < 30; i++) cobbles += `<ellipse cx="${rand() * 800}" cy="${410 + rand() * 90}" rx="10" ry="4" fill="#a3aebf"/>`

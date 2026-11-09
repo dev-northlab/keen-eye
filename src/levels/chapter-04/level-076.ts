@@ -1,6 +1,7 @@
 // Motion differences: the lightning flashes at another moment on picture B; the ship pitches faster on B; the buoy bell swings only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level076Redesign } from './level-076-redesign.ts'
 import { beachBall, bottleMessage, dolphin, fish, gull, lifeRing, rock, sunHat, waves } from './shapes.ts'
 
 /** Lightning bolt; (x, y) = top. Bounds: x ±10, y from 0 to +50. */
@@ -25,6 +26,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'storm',
   parTimeSec: 130,
+  redesign: level076Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let rain = ''
     for (let i = 0; i < 60; i++) rain += `<path d="M${rand() * 800} ${rand() * 500}l-4 14" stroke="#9fc5e8" stroke-width="2" stroke-linecap="round"/>`

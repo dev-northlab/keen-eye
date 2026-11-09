@@ -1,6 +1,7 @@
 // Motion differences: the sun pulses faster on picture B; the lantern on the pier swings only on B; the rowboat rocks faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level075Redesign } from './level-075-redesign.ts'
 import { bottleMessage, fish, gull, gullStanding, lifeRing, palm, person, rock, sailboat, sunglasses, waves } from './shapes.ts'
 
 /** Sun disc without its own fill (recolored by the animation); (x, y) = center. Bounds: radius 44. */
@@ -24,6 +25,7 @@ export default svgLevel({
   chapter: 'sea',
   title: 'sunsetBay',
   parTimeSec: 130,
+  redesign: level075Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let glints = ''
     for (let i = 0; i < 14; i++) glints += `<path d="M${300 + rand() * 300} ${300 + rand() * 60}h${10 + rand() * 20}" stroke="#ffe08a" stroke-width="3" stroke-linecap="round"/>`
