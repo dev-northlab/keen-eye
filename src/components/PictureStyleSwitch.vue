@@ -2,8 +2,8 @@
 import { computed } from 'vue'
 import { useSettingsStore } from '../stores/settings.ts'
 
-// Picture style of the levels (levels/picture-style.ts): one round icon button showing the current style — a vector
-// curve with its anchor points for the drawn scenes, a photo for the redesigned pictures; a tap switches to the other.
+// Picture style of the levels (levels/picture-style.ts): one round button showing the current style — "2D" for the
+// drawn scenes, "3D" for the redesigned pictures; a tap switches to the other.
 
 const settings = useSettingsStore()
 const redesign = computed(() => settings.pictureStyle === 'redesign')
@@ -20,23 +20,8 @@ const toggle = () => (settings.pictureStyle = redesign.value ? 'classic' : 'rede
     :title="`${$t('pictureStyle.label')}: ${$t(`pictureStyle.${settings.pictureStyle}`)}`"
     @click="toggle"
   >
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <!-- Redesign: a photo — a frame with a sun and mountains. -->
-      <g v-if="redesign">
-        <rect x="2" y="4" width="20" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
-        <circle cx="16" cy="9" r="2" fill="currentColor" />
-        <path d="M3 19l6-7 4 4.5 2.5-2.5L21 19Z" fill="currentColor" />
-      </g>
-      <!-- Classic: a vector curve with its two anchor points and handles. -->
-      <g v-else>
-        <path d="M5 18C6 9 18 15 19 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        <path d="M5 18L10 13M19 6L14 11" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.6" />
-        <rect x="2.5" y="15.5" width="5" height="5" rx="1" fill="currentColor" />
-        <rect x="16.5" y="3.5" width="5" height="5" rx="1" fill="currentColor" />
-        <circle cx="10" cy="13" r="1.5" fill="currentColor" />
-        <circle cx="14" cy="11" r="1.5" fill="currentColor" />
-      </g>
-    </svg>
+    <!-- "2D" for the drawn scenes, "3D" for the redesigned pictures: read the same in every language. -->
+    <span class="mark" aria-hidden="true">{{ redesign ? '3D' : '2D' }}</span>
   </button>
 </template>
 
@@ -65,8 +50,10 @@ const toggle = () => (settings.pictureStyle = redesign.value ? 'classic' : 'rede
   transform: scale(0.94);
 }
 
-svg {
-  width: 26px;
-  height: 26px;
+.mark {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 </style>
