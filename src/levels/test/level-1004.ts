@@ -15,6 +15,7 @@ const level: Level = {
   differences: [{ x: 1534, y: 536, r: 215 }],
   parTimeSec: 60,
   multiplayerReady: false,
+  testLabels: ['WebP 2624 q88 · 500 KB', 'WebP 1800 q80 · 161 KB'],
 }
 
 export default level

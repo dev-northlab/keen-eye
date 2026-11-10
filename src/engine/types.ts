@@ -152,6 +152,11 @@ export interface Level {
   parTimeSec: number
   /** Suits a two-player match (enough differences for a long race); preferred by "random level". */
   multiplayerReady: boolean
+  /**
+   * Test levels only (chapter `test`, developer mode): what pictures A and B are — format, size in pixels, file size —
+   * shown over them. Technical names, the same in every language.
+   */
+  testLabels?: [string, string]
   /** "Time" levels only: the moments of A and B and the natural changes between them. */
   pair?: TimePair
   traps?: Trap[]
