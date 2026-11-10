@@ -10,6 +10,8 @@ onMounted(() => card.value?.querySelector<HTMLElement>('button')?.focus())
 
 <template>
   <div class="overlay">
+    <!-- Drawn over the shade, under the card (e.g. the result dialog's fireworks). -->
+    <slot name="backdrop" />
     <section ref="card" class="card" role="dialog" aria-modal="true" :aria-label="title">
       <div v-if="$slots.icon" class="icon"><slot name="icon" /></div>
       <h2>{{ title }}</h2>
