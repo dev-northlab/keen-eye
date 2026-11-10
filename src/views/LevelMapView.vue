@@ -17,7 +17,6 @@ import {
   TEST_CHAPTER,
   TINY_BOY_CHAPTER,
   TRAVEL_CHAPTER,
-  TREASURY_CHAPTER,
   type Chapter,
 } from '../levels/chapters.ts'
 import { treasuryLevel } from '../levels/index.ts'
@@ -108,19 +107,7 @@ const timeTravel = {
             :name="$t('map.title')"
             @click="router.push({ name: 'worlds' })"
           >
-            <!-- Two pictures, the second with a red sun, and a magnifier over it. -->
-            <template #icon>
-              <svg viewBox="0 0 48 48" aria-hidden="true">
-                <rect x="2" y="9" width="20" height="24" rx="3" fill="#bfe6cf" />
-                <path d="M2 26l6-5 5 4 9-6v11a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3Z" fill="#3fa46f" />
-                <circle cx="15" cy="15" r="3" fill="#f2b04a" />
-                <rect x="26" y="9" width="20" height="24" rx="3" fill="#bfe6cf" />
-                <path d="M26 26l6-5 5 4 9-6v11a3 3 0 0 1-3 3h-14a3 3 0 0 1-3-3Z" fill="#3fa46f" />
-                <circle cx="39" cy="15" r="3" fill="#e5484d" />
-                <circle cx="38" cy="16" r="7" fill="#fff" fill-opacity="0.35" stroke="#1f7a55" stroke-width="2.6" />
-                <path d="M33 21l-6 6" fill="none" stroke="#1f7a55" stroke-width="3.4" stroke-linecap="round" />
-              </svg>
-            </template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/worlds.webp`" alt="" /></template>
             {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
             <template v-if="worlds.hard() > 0"> · <span class="star-hard">★</span> {{ worlds.hard() }}</template>
             <template #end><LevelId :id="worlds.ids" /><span class="key-space" aria-hidden="true" /></template>
@@ -158,7 +145,7 @@ const timeTravel = {
             :name="$t(`chapters.${c.chapter.id}`)"
             @click="router.push(c.to)"
           >
-            <template #icon><svg viewBox="0 0 48 48" aria-hidden="true" v-html="c.chapter.icon" /></template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
             {{ $t('map.progress', { done: c.totals.done(), total: c.totals.total }) }} · ★ {{ c.totals.stars() }}
             <template v-if="c.totals.hard() > 0"> · <span class="star-hard">★</span> {{ c.totals.hard() }}</template>
             <template #end><LevelId :id="c.totals.ids" /><span class="key-space" aria-hidden="true" /></template>
@@ -173,15 +160,7 @@ const timeTravel = {
             :name="$t('timeTravel.title')"
             @click="router.push({ name: 'eras' })"
           >
-            <!-- A pyramid and a clock. -->
-            <template #icon>
-              <svg viewBox="0 0 48 48" aria-hidden="true">
-                <path d="M4 42L22 12l18 30Z" fill="#e8b85a" />
-                <path d="M22 12l18 30H24Z" fill="#c9953f" />
-                <circle cx="35" cy="14" r="10" fill="#fff" stroke="#d98a1c" stroke-width="3" />
-                <path d="M35 8.5V14l4 2.5" fill="none" stroke="#d98a1c" stroke-width="2.6" stroke-linecap="round" />
-              </svg>
-            </template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/eras.webp`" alt="" /></template>
             {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
             <template v-if="timeTravel.hard() > 0"> · <span class="star-hard">★</span> {{ timeTravel.hard() }}</template>
             <template #end><LevelId :id="timeTravel.ids" /></template>
@@ -197,7 +176,7 @@ const timeTravel = {
             :disabled="!treasuryOpen()"
             @click="openTreasury"
           >
-            <template #icon><svg viewBox="0 0 48 48" aria-hidden="true" v-html="TREASURY_CHAPTER.icon" /></template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/treasury.webp`" alt="" /></template>
             {{ $t('secret.keys', { n: keysFound(), total: KEY_CHAPTERS.length }) }}
             <span v-if="!treasuryOpen()" class="line">{{ $t('treasury.locked') }}</span>
             <template #end>

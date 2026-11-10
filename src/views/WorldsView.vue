@@ -58,7 +58,7 @@ useBackButton(toModes)
             :disabled="!c.first"
             @click="open(c.chapter)"
           >
-            <template #icon><svg viewBox="0 0 48 48" aria-hidden="true" v-html="c.chapter.icon" /></template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
             <template v-if="!c.first">{{ $t('map.soon') }}</template>
             <template v-else-if="progress.needsPurchase(c.first)">{{ $t('map.paid') }}</template>
             <template v-else-if="!progress.isUnlocked(c.first)">{{ $t('map.locked') }}</template>

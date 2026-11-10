@@ -81,7 +81,7 @@ function tileLabel(level: Level) {
         </svg>
       </button>
       <p v-if="chapter.rules" class="rules">{{ $t(chapter.rules) }}</p>
-      <ul class="grid">
+      <ul class="grid" :style="{ '--c': chapter.color }">
         <li v-for="level in levels" :key="level.id">
           <button
             class="tile"
@@ -97,7 +97,10 @@ function tileLabel(level: Level) {
               <path d="M4 20 20 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
             </svg>
             <span class="num">{{ levelNumber(level) }}</span>
-            <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
+            <svg v-if="!progress.isUnlocked(level.id)" class="lock" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.5 10.5V8a4.5 4.5 0 0 1 9 0v2.5" fill="none" stroke="currentColor" stroke-width="2.4" />
+              <rect x="5" y="10" width="14" height="11" rx="3" fill="currentColor" />
+            </svg>
             <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="14" />
           </button>
         </li>
@@ -166,39 +169,121 @@ main {
   gap: 10px;
 }
 
+/* Candy tiles in the chapter's colour (`--c`, its card colour), a little see-through: a light tile with the number in
+   that colour, a done level filled with it; each with a darker depth under it that it sinks into when pressed. A paid level is gold,
+   one not reached yet grey with a lock. */
 .tile {
+  --face: var(--panel);
+  --depth: color-mix(in srgb, var(--c) 55%, #000);
+  position: relative;
   width: 100%;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
   align-content: center;
-  gap: 4px;
+  gap: 2px;
   padding: 6px;
-  background: var(--panel);
-  color: var(--fg);
-  border: 2px solid var(--soft);
-  position: relative;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, color-mix(in srgb, var(--c) 10%, var(--face)) 80%, transparent),
+    color-mix(in srgb, var(--face) 68%, transparent) 70%
+  );
+  /* A little glass: the world's backdrop shows through, softly blurred. */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--c);
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--c) 35%, transparent),
+    0 5px 0 color-mix(in srgb, var(--c) 45%, var(--face)),
+    0 9px 12px -6px rgb(0 0 0 / 0.3);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.tile:not(:disabled):active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--c) 35%, transparent),
+    0 1px 0 color-mix(in srgb, var(--c) 45%, var(--face)),
+    0 3px 6px -3px rgb(0 0 0 / 0.3);
 }
 
 .tile.done {
-  border-color: var(--accent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, color-mix(in srgb, var(--c) 72%, #fff) 82%, transparent),
+    color-mix(in srgb, var(--c) 80%, transparent) 65%
+  );
+  color: #fff;
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.45),
+    0 5px 0 var(--depth),
+    0 9px 12px -6px rgb(0 0 0 / 0.35);
+}
+
+.tile.done:active {
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.45),
+    0 1px 0 var(--depth),
+    0 3px 6px -3px rgb(0 0 0 / 0.35);
+}
+
+.tile.done .num {
+  text-shadow: 0 2px 0 var(--depth);
+}
+
+/* Stars on a filled tile: empty ones a faint white, earned ones gold with a dark edge. */
+.tile.done :deep(.stars) {
+  color: rgb(255 255 255 / 0.4);
+}
+
+.tile.done :deep(.on) {
+  color: #ffd23f;
+  text-shadow: 0 1px 0 var(--depth);
+}
+
+.tile.done :deep(.red .on) {
+  color: #ff3d5a;
+  text-shadow:
+    1px 0 0 #fff,
+    -1px 0 0 #fff,
+    0 1px 0 #fff,
+    0 -1px 0 #fff;
 }
 
 .tile.paid {
-  background: var(--gold-bg);
-  border-color: #f5b301;
-  color: var(--gold-fg);
+  background: linear-gradient(180deg, rgb(255 228 138 / 0.85), rgb(245 179 1 / 0.82) 70%);
+  color: #6b4a00;
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.5),
+    0 5px 0 #b07a00,
+    0 9px 12px -6px rgb(0 0 0 / 0.35);
+}
+
+.tile.paid .num {
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.5);
 }
 
 .tile:disabled {
-  background: var(--disabled-bg);
+  background: color-mix(in srgb, var(--disabled-bg) 72%, transparent);
   color: var(--faint);
+  box-shadow:
+    inset 0 0 0 2px var(--soft),
+    0 4px 0 var(--soft);
   cursor: default;
+}
+
+.tile :deep(.level-id) {
+  opacity: 0.45;
 }
 
 /* A hidden level (developer mode only): dashed border and a crossed-out eye in the top corner. */
 .tile.hidden {
-  border-style: dashed;
+  outline: 2px dashed var(--muted);
+  outline-offset: -5px;
 }
 
 .hidden-mark {
@@ -211,12 +296,14 @@ main {
 }
 
 .num {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
 }
 
 .lock {
-  font-size: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .soon {
