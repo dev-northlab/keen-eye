@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 80 ("sea cave") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones measured
 // on their pixel difference. Each change is a part of an object, all still (pictures do not move): the leftmost
@@ -10,28 +11,33 @@ import type { LevelPictures } from '../../engine/types.ts'
 // rock under the crystals; its chest lid floated above the gold, so the lid is lowered onto the chest and the cave
 // wall behind it cloned from above. The list's pink crab is replaced, at the user's wish, by a missing leg of A's crab
 // (the rock behind it cloned from up right).
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // The leftmost stalactite: long in A, half as long in B.
+  { x: 530, y: 282, r: 168 },
+  // The second stalactite from the left, only in A.
+  { x: 805, y: 342, r: 90 },
+  // The bat under the ceiling: black in A, light brown in B.
+  { x: 1017, y: 355, r: 60 },
+  // The water drop on the tip of the stalactite on the right, only in A.
+  { x: 1836, y: 502, r: 60 },
+  // The glowing crystals on the rock at the left: green in A, purple in B.
+  { x: 389, y: 1214, r: 170 },
+  // The treasure chest at the right: open with gold coins in A, closed in B.
+  { x: 2253, y: 1344, r: 146 },
+  // The outer right leg of the crab at the bottom left, only in A.
+  { x: 253, y: 1559, r: 60 },
+  // The light of the lantern on the small boat: yellow in A, green in B.
+  { x: 1316, y: 1378, r: 60 },
+  // The fish at the bottom, right of the seaweed: light blue in A, orange in B.
+  { x: 974, y: 1534, r: 66 },
+]
+
 export const level080Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-080-a.avif',
-  imageB: 'levels/redesign/level-080-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // The leftmost stalactite: long in A, half as long in B.
-    { x: 530, y: 282, r: 168 },
-    // The second stalactite from the left, only in A.
-    { x: 805, y: 342, r: 90 },
-    // The bat under the ceiling: black in A, light brown in B.
-    { x: 1017, y: 355, r: 60 },
-    // The water drop on the tip of the stalactite on the right, only in A.
-    { x: 1836, y: 502, r: 60 },
-    // The glowing crystals on the rock at the left: green in A, purple in B.
-    { x: 389, y: 1214, r: 170 },
-    // The treasure chest at the right: open with gold coins in A, closed in B.
-    { x: 2253, y: 1344, r: 146 },
-    // The outer right leg of the crab at the bottom left, only in A.
-    { x: 253, y: 1559, r: 60 },
-    // The light of the lantern on the small boat: yellow in A, green in B.
-    { x: 1316, y: 1378, r: 60 },
-    // The fish at the bottom, right of the seaweed: light blue in A, orange in B.
-    { x: 974, y: 1534, r: 66 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-080-b-<n>.webp).
+  imageB: 'levels/redesign/level-080-a.avif',
+  patchesB: zonePatches('levels/redesign/level-080-b', differences, viewBox),
+  viewBox,
+  differences,
 }

@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 107 ("hayloft") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones
 // measured on their pixel difference. The drawn scene's differences, smaller where they can be: the owl's eyes turn
@@ -11,28 +12,33 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the brown swallow a smudge, coloured the bale's strings blue only in part and kept both strings of the middle row's
 // right bale: the swallow and the strings are recoloured from A with their shading kept, and one string is painted
 // over with the hay beside it.
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // The sun in the view through the barn door: yellow in A, orange in B.
+  { x: 1452, y: 558, r: 160 },
+  // The swallow left of the hanging rope: dark blue in A, brown in B.
+  { x: 1183, y: 686, r: 73 },
+  // The owl's eyes on the left beam: white in A, yellow in B.
+  { x: 393, y: 287, r: 73 },
+  // The left bale of the bottom row: red strings in A, blue in B.
+  { x: 195, y: 1090, r: 73 },
+  // The right bale of the middle row: two strings in A, one in B.
+  { x: 644, y: 982, r: 88 },
+  // The mouse on the top bale: grey in A, white in B.
+  { x: 448, y: 766, r: 73 },
+  // The wagon wheel on the right wall: one spoke fewer in B.
+  { x: 1856, y: 775, r: 75 },
+  // The tail of the cat on the haystack: orange in A, white in B.
+  { x: 305, y: 1235, r: 100 },
+  // The yarn ball on the floor: pink in A, blue in B.
+  { x: 1028, y: 1566, r: 78 },
+]
+
 export const level107Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-107-a.avif',
-  imageB: 'levels/redesign/level-107-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // The sun in the view through the barn door: yellow in A, orange in B.
-    { x: 1452, y: 558, r: 160 },
-    // The swallow left of the hanging rope: dark blue in A, brown in B.
-    { x: 1183, y: 686, r: 73 },
-    // The owl's eyes on the left beam: white in A, yellow in B.
-    { x: 393, y: 287, r: 73 },
-    // The left bale of the bottom row: red strings in A, blue in B.
-    { x: 195, y: 1090, r: 73 },
-    // The right bale of the middle row: two strings in A, one in B.
-    { x: 644, y: 982, r: 88 },
-    // The mouse on the top bale: grey in A, white in B.
-    { x: 448, y: 766, r: 73 },
-    // The wagon wheel on the right wall: one spoke fewer in B.
-    { x: 1856, y: 775, r: 75 },
-    // The tail of the cat on the haystack: orange in A, white in B.
-    { x: 305, y: 1235, r: 100 },
-    // The yarn ball on the floor: pink in A, blue in B.
-    { x: 1028, y: 1566, r: 78 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-107-b-<n>.webp).
+  imageB: 'levels/redesign/level-107-a.avif',
+  patchesB: zonePatches('levels/redesign/level-107-b', differences, viewBox),
+  viewBox,
+  differences,
 }

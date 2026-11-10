@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 57 ("winterForest") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones
 // measured on their pixel difference. Each change is a part of an object, all still (pictures do not move): the top
@@ -9,26 +10,31 @@ import type { LevelPictures } from '../../engine/types.ts'
 // it left the other three undone (its fir top was only redrawn), so they are done by hand on A's picture: the snow
 // clumps of the fir's upper half filled with the needles around them, the icicle painted out with the log wall
 // beside it, the berries recoloured with their shading kept.
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // Snow on the upper half of the fir with the bird, only in A.
+  { x: 466, y: 662, r: 110 },
+  // The bird on the branch of that fir: red in A, blue in B.
+  { x: 588, y: 837, r: 75 },
+  // The white smoke above the cabin's chimney, only in A.
+  { x: 1859, y: 468, r: 204 },
+  // The rightmost icicle of the left part of the roof, only in A.
+  { x: 1488, y: 1024, r: 60 },
+  // The lantern by the cabin: lit in A, dark in B.
+  { x: 1897, y: 1024, r: 60 },
+  // The white spots on the deer's back, only in A.
+  { x: 845, y: 1327, r: 122 },
+  // The ears of the rabbit at the bottom left: light in A, dark grey in B.
+  { x: 292, y: 1476, r: 60 },
+  // The berries of the bush at the bottom right: red in A, blue in B.
+  { x: 2454, y: 1396, r: 216 },
+]
+
 export const level057Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-057-a.avif',
-  imageB: 'levels/redesign/level-057-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // Snow on the upper half of the fir with the bird, only in A.
-    { x: 466, y: 662, r: 110 },
-    // The bird on the branch of that fir: red in A, blue in B.
-    { x: 588, y: 837, r: 75 },
-    // The white smoke above the cabin's chimney, only in A.
-    { x: 1859, y: 468, r: 204 },
-    // The rightmost icicle of the left part of the roof, only in A.
-    { x: 1488, y: 1024, r: 60 },
-    // The lantern by the cabin: lit in A, dark in B.
-    { x: 1897, y: 1024, r: 60 },
-    // The white spots on the deer's back, only in A.
-    { x: 845, y: 1327, r: 122 },
-    // The ears of the rabbit at the bottom left: light in A, dark grey in B.
-    { x: 292, y: 1476, r: 60 },
-    // The berries of the bush at the bottom right: red in A, blue in B.
-    { x: 2454, y: 1396, r: 216 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-057-b-<n>.webp).
+  imageB: 'levels/redesign/level-057-a.avif',
+  patchesB: zonePatches('levels/redesign/level-057-b', differences, viewBox),
+  viewBox,
+  differences,
 }

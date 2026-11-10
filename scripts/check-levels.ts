@@ -200,6 +200,14 @@ function checkRedesign(level: Level, minRadius: number): string[] {
   if (!p) return []
   const errors: string[] = []
   for (const file of [p.imageA, p.imageB]) if (!existsSync(`public/${file}`)) errors.push(`redesign: no file public/${file}`)
+  if (p.patchesB) {
+    if (p.imageB !== p.imageA) errors.push('redesign: picture B made of cut-outs must be drawn on picture A')
+    if (p.patchesB.length !== p.differences.length) errors.push(`redesign: ${p.patchesB.length} cut-outs of B for ${p.differences.length} zones`)
+    p.patchesB.forEach((c, i) => {
+      if (!existsSync(`public/${c.href}`)) errors.push(`redesign: no file public/${c.href} (npm run encode-pictures)`)
+      if (c.x < 0 || c.y < 0 || c.x + c.w > p.viewBox.w || c.y + c.h > p.viewBox.h) errors.push(`redesign: cut-out #${i} is off the picture`)
+    })
+  }
   if (p.differences.length !== level.differences.length)
     errors.push(`redesign: ${p.differences.length} differences, the drawn scene has ${level.differences.length}`)
   if (p.differences.some((d) => d.motion || d.animatedId)) errors.push('redesign: picture zones never move')

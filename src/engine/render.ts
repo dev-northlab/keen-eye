@@ -56,12 +56,18 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   } else {
     const href = variant === 0 ? level.imageA : level.imageB
     if (href) {
-      const image = el('image', { href: import.meta.env.BASE_URL + href, width: w, height: h })
-      scene.append(image)
+      // Picture B may be A with cut-outs of B over it: the spinner stays until all are in, or B would show as A.
+      const images = [{ href, x: 0, y: 0, w, h }, ...(variant === 1 ? (level.patchesB ?? []) : [])].map((p) =>
+        el('image', { href: import.meta.env.BASE_URL + p.href, x: p.x, y: p.y, width: p.w, height: p.h }),
+      )
+      scene.append(...images)
       loader = loadingSpinner(w, h)
-      const done = () => loader?.remove()
-      image.addEventListener('load', done, { once: true })
-      image.addEventListener('error', done, { once: true })
+      let pending = images.length
+      const done = () => --pending === 0 && loader?.remove()
+      for (const image of images) {
+        image.addEventListener('load', done, { once: true })
+        image.addEventListener('error', done, { once: true })
+      }
     }
     // The key as its own layer (the pictures are drawn without it), taken off like a drawn scene's key.
     const key = level.secret?.image

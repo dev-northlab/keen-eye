@@ -106,7 +106,16 @@ export interface SecretKey {
    * Picture levels (`LevelPictures`): the key cut out of the pictures as its own image (path relative to the app
    * base) and its box in viewBox coordinates, laid over pictures drawn without it, so it can be taken off.
    */
-  image?: { href: string; x: number; y: number; w: number; h: number }
+  image?: ImagePatch
+}
+
+/** An image laid over a picture: path relative to the app base and its box in viewBox coordinates. */
+export interface ImagePatch {
+  href: string
+  x: number
+  y: number
+  w: number
+  h: number
 }
 
 /**
@@ -116,7 +125,13 @@ export interface SecretKey {
 export interface LevelPictures {
   /** Paths relative to the app base (public/). */
   imageA: string
+  /** With `patchesB`, the same file as `imageA`. */
   imageB: string
+  /**
+   * Picture B as picture A with these cut-outs of B over it, one per zone (`zonePatches`, levels/picture-style.ts),
+   * transparent where B does not differ: the level ships one whole picture instead of two.
+   */
+  patchesB?: ImagePatch[]
   /** The pictures' size in pixels. */
   viewBox: { w: number; h: number }
   /** As many as the drawn scene has, in the pictures' pixels; static (pictures do not move). */
@@ -141,6 +156,8 @@ export interface Level {
   /** kind = 'image': the pictures' paths relative to the app base (public/); viewBox = their size in pixels. */
   imageA?: string
   imageB?: string
+  /** kind = 'image': laid over picture B (`LevelPictures.patchesB`). */
+  patchesB?: ImagePatch[]
   viewBox: { w: number; h: number }
   differences: Difference[]
   /**
