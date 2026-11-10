@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
 import PhotoBanner from '../components/PhotoBanner.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
+import { usePicturePreload } from '../composables/usePicturePreload.ts'
 import type { Level } from '../engine/types.ts'
 import { chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TINY_BOY_CHAPTER } from '../levels/chapters.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
@@ -24,6 +25,8 @@ const baseUrl = import.meta.env.BASE_URL
 
 const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(TINY_BOY_CHAPTER) : chapterLevels(TINY_BOY_CHAPTER)))
 const missing = chapterSize(TINY_BOY_CHAPTER) - chapterLevels(TINY_BOY_CHAPTER).length
+/** Pictures of a level get ready before it opens: the likely one now, a touched one as the finger lands. */
+const readyPictures = usePicturePreload(() => levels.value)
 
 const toParent = () => router.push({ name: 'levels' })
 useBackButton(toParent)
@@ -46,6 +49,7 @@ function open(level: Level) {
             :name="$t(`levelTitles.${level.title}`)"
             :tag="progress.needsPurchase(level.id) ? $t('map.paid') : $t('map.level', { n: levelNumber(level) })"
             :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
+            @pointerdown="readyPictures(level)"
             @click="open(level)"
           >
             <template #icon>

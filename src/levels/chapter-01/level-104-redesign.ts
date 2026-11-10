@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 104 ("beeYard") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones
 // measured on their pixel difference. The drawn scene's differences, smaller where they can be: the windsock, which
@@ -10,26 +11,31 @@ import type { LevelPictures } from '../../engine/types.ts'
 // it. Gemini left the bee yellow, the dipper and the bee on the daisy in place and redrew the grass: the bee is
 // recoloured red with its shading kept, the dipper painted over with the hive, bench and lid beside it, and the bee
 // on the daisy with the grass beside it and the right daisy's top petals.
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // The windsock's stripes: orange in A, blue in B.
+  { x: 2489, y: 487, r: 80 },
+  // The bee above the blue hive: yellow in A, red in B.
+  { x: 1109, y: 937, r: 73 },
+  // The beekeeper's mesh veil: dark grey in A, light blue in B.
+  { x: 2245, y: 778, r: 92 },
+  // The leftmost honey jar's lid: red in A, blue in B.
+  { x: 367, y: 1280, r: 73 },
+  // The wooden dipper in the rightmost honey jar, only in A.
+  { x: 690, y: 1236, r: 73 },
+  // The bee on the left daisy, only in A.
+  { x: 998, y: 1465, r: 73 },
+  // The right daisy's petals: white in A, pink in B.
+  { x: 1379, y: 1514, r: 73 },
+  // The bee smoker's bellows: grey in A, red in B.
+  { x: 2393, y: 1383, r: 92 },
+]
+
 export const level104Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-104-a.avif',
-  imageB: 'levels/redesign/level-104-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // The windsock's stripes: orange in A, blue in B.
-    { x: 2489, y: 487, r: 80 },
-    // The bee above the blue hive: yellow in A, red in B.
-    { x: 1109, y: 937, r: 73 },
-    // The beekeeper's mesh veil: dark grey in A, light blue in B.
-    { x: 2245, y: 778, r: 92 },
-    // The leftmost honey jar's lid: red in A, blue in B.
-    { x: 367, y: 1280, r: 73 },
-    // The wooden dipper in the rightmost honey jar, only in A.
-    { x: 690, y: 1236, r: 73 },
-    // The bee on the left daisy, only in A.
-    { x: 998, y: 1465, r: 73 },
-    // The right daisy's petals: white in A, pink in B.
-    { x: 1379, y: 1514, r: 73 },
-    // The bee smoker's bellows: grey in A, red in B.
-    { x: 2393, y: 1383, r: 92 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-104-b-<n>.webp).
+  imageB: 'levels/redesign/level-104-a.avif',
+  patchesB: zonePatches('levels/redesign/level-104-b', differences, viewBox),
+  viewBox,
+  differences,
 }

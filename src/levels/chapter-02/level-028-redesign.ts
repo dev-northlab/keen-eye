@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 28 ("trafficJam") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones
 // measured on their pixel difference. Each change is a part of an object, all still (pictures do not move): the
@@ -9,24 +10,29 @@ import type { LevelPictures } from '../../engine/types.ts'
 // dark windows instead of changing the man and the car: they are kept as decor, laid on both pictures. It put a pink
 // box on the bus's roof (it stays as in A) and kept the shirt, the car's windows, the board and the exhaust cloud:
 // the shirt, the windows and the board are recolored by hand, keeping their shading, and the cloud painted out.
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // The traffic light: red on in A, green on in B.
+  { x: 2298, y: 786, r: 95 },
+  // The shirt of the man on the sidewalk: red in A, green in B.
+  { x: 656, y: 864, r: 70 },
+  // The route board on the teal bus: yellow in A, pink in B.
+  { x: 1180, y: 1108, r: 62 },
+  // The windows of the red car at the far left of the upper lane: light in A, dark in B.
+  { x: 286, y: 1198, r: 60 },
+  // The bicycle's frame: green in A, red in B.
+  { x: 1834, y: 1434, r: 80 },
+  // The pink car's roof: pink in A, white in B.
+  { x: 1008, y: 1440, r: 100 },
+  // The exhaust cloud behind the grey-green car, only in A.
+  { x: 416, y: 1512, r: 60 },
+]
+
 export const level028Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-028-a.avif',
-  imageB: 'levels/redesign/level-028-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // The traffic light: red on in A, green on in B.
-    { x: 2298, y: 786, r: 95 },
-    // The shirt of the man on the sidewalk: red in A, green in B.
-    { x: 656, y: 864, r: 70 },
-    // The route board on the teal bus: yellow in A, pink in B.
-    { x: 1180, y: 1108, r: 62 },
-    // The windows of the red car at the far left of the upper lane: light in A, dark in B.
-    { x: 286, y: 1198, r: 60 },
-    // The bicycle's frame: green in A, red in B.
-    { x: 1834, y: 1434, r: 80 },
-    // The pink car's roof: pink in A, white in B.
-    { x: 1008, y: 1440, r: 100 },
-    // The exhaust cloud behind the grey-green car, only in A.
-    { x: 416, y: 1512, r: 60 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-028-b-<n>.webp).
+  imageB: 'levels/redesign/level-028-a.avif',
+  patchesB: zonePatches('levels/redesign/level-028-b', differences, viewBox),
+  viewBox,
+  differences,
 }

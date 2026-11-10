@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 54 ("creekBridge") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones
 // measured on their pixel difference. Each change is a part of an object, all still (pictures do not move): the big
@@ -10,26 +11,31 @@ import type { LevelPictures } from '../../engine/types.ts'
 // front of him (all left out), so five are done by hand on A's picture: the spoke painted out with the planks
 // behind it, the moss of Gemini's stone laid on the stone, the rope painted out with the water, the shirt and the
 // frog recoloured with their shading kept.
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // The up-right spoke of the big water wheel, only in A.
+  { x: 2524, y: 1022, r: 77 },
+  // The dragonfly by the mill: blue in A, red in B.
+  { x: 2175, y: 910, r: 73 },
+  // Moss on the top of the lowest stone in the water at the left, only in B.
+  { x: 464, y: 1516, r: 60 },
+  // The middle of the top rope of the bridge's right span, only in A.
+  { x: 1501, y: 1017, r: 60 },
+  // The cap of the right end post of the bridge: red in A, blue in B.
+  { x: 1680, y: 954, r: 60 },
+  // The lantern on the pole at the left of the bridge: lit in A, dark in B.
+  { x: 981, y: 908, r: 60 },
+  // The shirt of the man on the bridge: yellow in A, purple in B.
+  { x: 1246, y: 1058, r: 72 },
+  // The frog in the water at the bottom: green in A, brown in B.
+  { x: 2033, y: 1574, r: 60 },
+]
+
 export const level054Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-054-a.avif',
-  imageB: 'levels/redesign/level-054-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // The up-right spoke of the big water wheel, only in A.
-    { x: 2524, y: 1022, r: 77 },
-    // The dragonfly by the mill: blue in A, red in B.
-    { x: 2175, y: 910, r: 73 },
-    // Moss on the top of the lowest stone in the water at the left, only in B.
-    { x: 464, y: 1516, r: 60 },
-    // The middle of the top rope of the bridge's right span, only in A.
-    { x: 1501, y: 1017, r: 60 },
-    // The cap of the right end post of the bridge: red in A, blue in B.
-    { x: 1680, y: 954, r: 60 },
-    // The lantern on the pole at the left of the bridge: lit in A, dark in B.
-    { x: 981, y: 908, r: 60 },
-    // The shirt of the man on the bridge: yellow in A, purple in B.
-    { x: 1246, y: 1058, r: 72 },
-    // The frog in the water at the bottom: green in A, brown in B.
-    { x: 2033, y: 1574, r: 60 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-054-b-<n>.webp).
+  imageB: 'levels/redesign/level-054-a.avif',
+  patchesB: zonePatches('levels/redesign/level-054-b', differences, viewBox),
+  viewBox,
+  differences,
 }

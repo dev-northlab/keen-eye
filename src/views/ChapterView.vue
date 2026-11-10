@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
+import { usePicturePreload } from '../composables/usePicturePreload.ts'
 import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
 import StarRating from '../components/StarRating.vue'
@@ -30,6 +31,8 @@ const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(chap
 /** Levels the "random level" button picks from: the playable ones (reached and, if paid, bought). */
 const playable = computed(() => levels.value.filter((l) => progress.isUnlocked(l.id)))
 const missing = chapter === TEST_CHAPTER ? 0 : chapterSize(chapter) - chapterLevels(chapter).length
+/** Pictures of a level get ready before it opens: the likely one now, a touched one as the finger lands. */
+const readyPictures = usePicturePreload(() => levels.value)
 
 /** A world's grid goes back to the worlds, a category to the game modes. */
 const toParent = () => router.push({ name: CHAPTERS.includes(chapter) ? 'worlds' : 'levels' })
@@ -88,6 +91,7 @@ function tileLabel(level: Level) {
             :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id), hidden: isUpcoming(level.id) }"
             :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
             :aria-label="tileLabel(level)"
+            @pointerdown="readyPictures(level)"
             @click="open(level)"
           >
             <LevelId :id="level.id" />

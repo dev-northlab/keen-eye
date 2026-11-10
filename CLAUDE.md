@@ -27,7 +27,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   pictures' sources are WebP outside the project, in `~/Pictures/keen-eye` (same paths as in `public/`; edit and add
   pictures there); each is encoded into `public/` as AVIF crf 26 (ffmpeg libaom-av1, cpu-used 4), skipped when the
   output is newer; transparent ones (`icons/`, the keys `levels/redesign/level-NNN-key.webp`) are copied as WebP;
-  `levels/test/` is left out
+  `levels/test/` is left out; picture B of a redesigned level with `patchesB` is cut into one WebP with alpha per zone
+  (B where it differs from A, fading out, within the zone's circle + `PATCH_MARGIN`) instead of a whole AVIF
 - `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
   installed Chrome (`playwright-core`, `/usr/bin/google-chrome`) with a seeded mid-game progress, taps some
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
@@ -44,7 +45,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 
 - `src/engine/` — game scene, plain TS: `types.ts` (Level format), `rules.ts` (hit test, stars, anti-spam),
   `animation.ts` (poses of animated objects at time t; DOM-free, also used by the validator),
-  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
+  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded; `preloadPictures` fetches and decodes a picture level's images ahead — the router's `beforeResolve` waits for them, up to 1.5 s, before a level or duel opens, `LevelView` readies the next level's while the result dialog is open, and `usePicturePreload` on the grids of worlds and "tiny boy" readies the first level not won yet and a tile's level on `pointerdown` — one level at a time, a whole chapter's decoded pictures would not fit a phone's memory), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
   `transform.ts` (`PictureTransform`, `docs/mirror-rotate-feature.md`: picture B of `Level.transformB` shown mirrored or
@@ -218,7 +219,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `time()`, never `diff`.
 - Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two AVIF pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
-  `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
+  `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
+  every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
+  140, 145, 146 (B's change reaches far past its zone: a beam, smoke, a tail, a fern), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
   and in the toolbar of a level that has them) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a

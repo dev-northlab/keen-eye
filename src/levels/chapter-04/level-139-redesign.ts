@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 139 ("underwaterCave") redrawn as two pictures (public/levels/redesign/, Gemini's full 2624×1632), the zones
 // measured on their pixel difference. Each change is a part of an object, all still (pictures do not move): the fourth
@@ -12,30 +13,35 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the top bubble, so it is painted out with the water; it kept the pearl as it was, so A's pearl is shrunk to two
 // thirds on the same spot (the clam's shell, opening and inside carried across behind it); its starfish lost all its
 // dots, so only the left one of the two dots in the middle of A's star is covered with the star's skin.
+const viewBox = { w: 2624, h: 1632 }
+const differences: Difference[] = [
+  // The fourth stalactite from the right: long in A, half as long in B.
+  { x: 1770, y: 150, r: 150 },
+  // The upper glowing spot on the right cave wall: green in A, pink in B.
+  { x: 2364, y: 300, r: 73 },
+  // The diver's fins: blue in A, yellow in B.
+  { x: 1252, y: 784, r: 73 },
+  // The diver's flashlight: grey in A, red in B.
+  { x: 1524, y: 744, r: 73 },
+  // The top one of the three bubbles above the diver, only in A.
+  { x: 1368, y: 548, r: 73 },
+  // The octopus's arm on the right: curled up in A, stretched out in B.
+  { x: 444, y: 1040, r: 104 },
+  // The left one of the two white dots in the middle of the right starfish, only in A.
+  { x: 846, y: 1530, r: 73 },
+  // The pearl in the open clam: big in A, smaller in B.
+  { x: 1124, y: 1536, r: 73 },
+  // The red crab between the scallop shell and the sea urchin, only in B.
+  { x: 1604, y: 1540, r: 80 },
+  // The lobster's tail: red in A, dark blue in B.
+  { x: 2156, y: 1452, r: 128 },
+]
+
 export const level139Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-139-a.avif',
-  imageB: 'levels/redesign/level-139-b.avif',
-  viewBox: { w: 2624, h: 1632 },
-  differences: [
-    // The fourth stalactite from the right: long in A, half as long in B.
-    { x: 1770, y: 150, r: 150 },
-    // The upper glowing spot on the right cave wall: green in A, pink in B.
-    { x: 2364, y: 300, r: 73 },
-    // The diver's fins: blue in A, yellow in B.
-    { x: 1252, y: 784, r: 73 },
-    // The diver's flashlight: grey in A, red in B.
-    { x: 1524, y: 744, r: 73 },
-    // The top one of the three bubbles above the diver, only in A.
-    { x: 1368, y: 548, r: 73 },
-    // The octopus's arm on the right: curled up in A, stretched out in B.
-    { x: 444, y: 1040, r: 104 },
-    // The left one of the two white dots in the middle of the right starfish, only in A.
-    { x: 846, y: 1530, r: 73 },
-    // The pearl in the open clam: big in A, smaller in B.
-    { x: 1124, y: 1536, r: 73 },
-    // The red crab between the scallop shell and the sea urchin, only in B.
-    { x: 1604, y: 1540, r: 80 },
-    // The lobster's tail: red in A, dark blue in B.
-    { x: 2156, y: 1452, r: 128 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-139-b-<n>.webp).
+  imageB: 'levels/redesign/level-139-a.avif',
+  patchesB: zonePatches('levels/redesign/level-139-b', differences, viewBox),
+  viewBox,
+  differences,
 }

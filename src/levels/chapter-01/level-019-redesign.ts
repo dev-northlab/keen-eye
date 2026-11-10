@@ -1,4 +1,5 @@
-import type { LevelPictures } from '../../engine/types.ts'
+import type { Difference, LevelPictures } from '../../engine/types.ts'
+import { zonePatches } from '../picture-style.ts'
 
 // Level 19 ("nightBarn") redrawn as two pictures (public/levels/redesign/, Gemini's full 2612×1632), the zones
 // measured on their pixel difference. The drawn scene's differences, smaller where they can be: the bat, which flies
@@ -7,22 +8,27 @@ import type { LevelPictures } from '../../engine/types.ts'
 // one, Gemini drew a new white owl in its place). Touched up by hand: B is A with only Gemini's star, moon, bat,
 // lantern with its glow and owl laid over it. Gemini also redrew the whole cat curled up the other way and left a
 // ghost of the tail on the hay bale, so B keeps A's cat with the tail painted over with the bale's own hay.
+const viewBox = { w: 2612, h: 1632 }
+const differences: Difference[] = [
+  // The star above the left half of the barn roof, only in B.
+  { x: 996, y: 418, r: 60 },
+  // The moon: full in A, a crescent in B.
+  { x: 2268, y: 292, r: 120 },
+  // The bat above the barn: black in A, light brown in B.
+  { x: 1470, y: 391, r: 76 },
+  // The street lantern's glass and glow: yellow in A, green in B.
+  { x: 523, y: 731, r: 145 },
+  // The owl on the fence post: brown in A, white with grey spots in B.
+  { x: 2260, y: 1000, r: 125 },
+  // The cat's tail hanging down the hay bale, only in A.
+  { x: 2051, y: 1314, r: 66 },
+]
+
 export const level019Redesign: LevelPictures = {
   imageA: 'levels/redesign/level-019-a.avif',
-  imageB: 'levels/redesign/level-019-b.avif',
-  viewBox: { w: 2612, h: 1632 },
-  differences: [
-    // The star above the left half of the barn roof, only in B.
-    { x: 996, y: 418, r: 60 },
-    // The moon: full in A, a crescent in B.
-    { x: 2268, y: 292, r: 120 },
-    // The bat above the barn: black in A, light brown in B.
-    { x: 1470, y: 391, r: 76 },
-    // The street lantern's glass and glow: yellow in A, green in B.
-    { x: 523, y: 731, r: 145 },
-    // The owl on the fence post: brown in A, white with grey spots in B.
-    { x: 2260, y: 1000, r: 125 },
-    // The cat's tail hanging down the hay bale, only in A.
-    { x: 2051, y: 1314, r: 66 },
-  ],
+  // B is A with cut-outs of B over it, one per zone (public/levels/redesign/level-019-b-<n>.webp).
+  imageB: 'levels/redesign/level-019-a.avif',
+  patchesB: zonePatches('levels/redesign/level-019-b', differences, viewBox),
+  viewBox,
+  differences,
 }

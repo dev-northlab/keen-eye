@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { preloadPictures } from '../engine/render.ts'
 import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
+import { styledLevel } from '../levels/picture-style.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -106,4 +108,17 @@ router.beforeEach((to, from) => {
   if (progress.needsPurchase(id)) return offerPurchase()
   if (to.name === 'match') return true
   return progress.isUnlocked(id) ? true : levelsScreen(level)
+})
+
+/** How long opening a level waits for its pictures before showing it anyway (a slow download, e.g. the web build). */
+const PRELOAD_WAIT_MS = 1500
+
+// A picture level (redesigned style, "tiny boy") opens once its pictures are downloaded and decoded, as a game engine
+// loads a scene: they show at once instead of a spinner over the pictures while the timer runs.
+router.beforeResolve(async (to) => {
+  if (to.name !== 'level' && to.name !== 'match') return
+  const level = levelById(Number(to.params.id))
+  if (!level) return
+  const ready = preloadPictures(styledLevel(level, useSettingsStore().pictureStyle))
+  await Promise.race([ready, new Promise((done) => setTimeout(done, PRELOAD_WAIT_MS))])
 })

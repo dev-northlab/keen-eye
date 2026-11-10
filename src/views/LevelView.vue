@@ -19,6 +19,7 @@ import TransformNotice from '../components/TransformNotice.vue'
 import TravelFact from '../components/TravelFact.vue'
 import TreasureChest from '../components/TreasureChest.vue'
 import { MODE_RULES, type GameMode } from '../engine/rules.ts'
+import { preloadPictures } from '../engine/render.ts'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TINY_BOY_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
@@ -169,6 +170,8 @@ function start() {
       onComplete: (r) => {
         newStamp.value = !!level.travel && !progress.isCompleted(level.id)
         result.value = r
+        // While the result dialog is read, the next level's pictures get ready.
+        if (nextLevel) preloadPictures(styledLevel(nextLevel, settings.pictureStyle))
         playMusic('complete')
         if (calm.value) progress.recordCalmCompletion(level.id)
         else progress.recordResult(level.id, r)

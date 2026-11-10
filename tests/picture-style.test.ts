@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 import { levelById } from '../src/levels/index.ts'
-import { isPictureStyle, styledLevel } from '../src/levels/picture-style.ts'
+import { isPictureStyle, PATCH_MARGIN, styledLevel, zonePatches } from '../src/levels/picture-style.ts'
 
 describe('picture style (levels/picture-style.ts)', () => {
   const drawn = levelById(1)!
@@ -44,5 +44,20 @@ describe('picture style (levels/picture-style.ts)', () => {
   test('only known styles are accepted from storage', () => {
     assert.ok(isPictureStyle('classic') && isPictureStyle('redesign'))
     for (const v of ['new', '', null, undefined, 1, {}]) assert.ok(!isPictureStyle(v))
+  })
+
+  test("picture B's cut-outs cover each zone's grown circle, clipped to the picture, in numbered files", () => {
+    const m = PATCH_MARGIN
+    const patches = zonePatches('levels/redesign/level-999-b', [{ x: 500, y: 300, r: 60 }, { x: 20, y: 590, r: 50 }], { w: 1000, h: 600 })
+    assert.deepEqual(patches, [
+      { href: 'levels/redesign/level-999-b-1.webp', x: 440 - m, y: 240 - m, w: 120 + 2 * m, h: 120 + 2 * m },
+      { href: 'levels/redesign/level-999-b-2.webp', x: 0, y: 540 - m, w: 70 + m, h: 60 + m },
+    ])
+  })
+
+  test('a level whose B is made of cut-outs plays them over picture A', () => {
+    const level = styledLevel(levelById(61)!, 'redesign')
+    assert.equal(level.imageB, level.imageA)
+    assert.equal(level.patchesB?.length, level.differences.length)
   })
 })
