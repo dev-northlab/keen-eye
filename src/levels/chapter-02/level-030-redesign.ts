@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // hand. It kept the right jet and the hat: the jet is painted out column by column with the tiles, the rim and the
 // water beside it, and the hat with the wall above it, the statue's head given a rounded stone top.
 export const level030Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-030-a.webp',
-  imageB: 'levels/redesign/level-030-b.webp',
+  imageA: 'levels/redesign/level-030-a.avif',
+  imageB: 'levels/redesign/level-030-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The flag on the left pole: red in A, green in B.

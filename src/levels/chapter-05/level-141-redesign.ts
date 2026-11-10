@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // over it. Fixed by hand: Gemini left the visor almost gold, so A's visor is recoloured orange; its other changes (the
 // astronaut's suit and chest badge redrawn) are left out.
 export const level141Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-141-a.webp',
-  imageB: 'levels/redesign/level-141-b.webp',
+  imageA: 'levels/redesign/level-141-a.avif',
+  imageB: 'levels/redesign/level-141-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The nose cone of the docked capsule at the left end of the truss: red in A, orange in B.

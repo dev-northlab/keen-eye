@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // picture's textures anew, so only those places are taken). Gemini took the steam off both cups of the right table:
 // they make one difference.
 export const level112Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-112-a.webp',
-  imageB: 'levels/redesign/level-112-b.webp',
+  imageA: 'levels/redesign/level-112-a.avif',
+  imageB: 'levels/redesign/level-112-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The flowers of the hanging basket under the second window: pink in A, white in B.

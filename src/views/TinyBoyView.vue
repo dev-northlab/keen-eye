@@ -12,7 +12,7 @@ import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 
-// "Tiny boy": its levels as picture banners, each with the photo of its scene (public/banners/tiny-boy-<id>.webp,
+// "Tiny boy": its levels as picture banners, each with the photo of its scene (public/banners/tiny-boy-<id>.avif,
 // levels/tiny-boy/index.ts). Opens like a level grid (ChapterView): paid levels offer the full game, levels not
 // reached yet are disabled; developer mode also lists the hidden ones (levels/upcoming.ts), marked with a crossed-out eye.
 
@@ -42,7 +42,7 @@ function open(level: Level) {
         <li v-for="level in levels" :key="level.id">
           <PhotoBanner
             :class="{ locked: !progress.isUnlocked(level.id) }"
-            :photo="`${baseUrl}banners/tiny-boy-${level.id}.webp`"
+            :photo="`${baseUrl}banners/tiny-boy-${level.id}.avif`"
             :name="$t(`levelTitles.${level.title}`)"
             :tag="progress.needsPurchase(level.id) ? $t('map.paid') : $t('map.level', { n: levelNumber(level) })"
             :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"

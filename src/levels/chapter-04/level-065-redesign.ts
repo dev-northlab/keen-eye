@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // turns black and the tip of the shark fin white. B is A with only these changes of Gemini's laid over it (it did all but
 // redrew the clouds, so the sky stays A's); the anchor is recoloured by hand on A's picture, keeping A's sky around it.
 export const level065Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-065-a.webp',
-  imageB: 'levels/redesign/level-065-b.webp',
+  imageA: 'levels/redesign/level-065-a.avif',
+  imageB: 'levels/redesign/level-065-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The skull and crossbones on the black flag: white in A, yellow in B.

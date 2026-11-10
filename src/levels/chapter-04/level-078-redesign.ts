@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // The list's "small yellow box" is the yellow flag in these pictures (the box beside it is cream); Gemini turned both
 // green, only the flag is taken. Its redrawn sea is left out.
 export const level078Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-078-a.webp',
-  imageB: 'levels/redesign/level-078-b.webp',
+  imageA: 'levels/redesign/level-078-a.avif',
+  imageB: 'levels/redesign/level-078-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The wing tips of the gull at the top left: white in A, black in B.

@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // fish above the school instead of recolouring one, so its navy fish is moved onto A's second fish (the new one left
 // out); a second yellow clownfish it put on the left anemone is left out too.
 export const level131Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-131-a.webp',
-  imageB: 'levels/redesign/level-131-b.webp',
+  imageA: 'levels/redesign/level-131-a.avif',
+  imageB: 'levels/redesign/level-131-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The second fish from the left of the school at the top right: light blue in A, navy in B.

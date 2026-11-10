@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // left one mushroom standing and laid two caps in it, so the basket is A's with its right mushroom painted out by hand
 // (the grass and the basket's weave filled in from beside it).
 export const level044Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-044-a.webp',
-  imageB: 'levels/redesign/level-044-b.webp',
+  imageA: 'levels/redesign/level-044-a.avif',
+  imageB: 'levels/redesign/level-044-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The white smoke over the gnome house's chimney, only in A.

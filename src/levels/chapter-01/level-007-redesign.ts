@@ -4,8 +4,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // The same differences as the drawn scene, except the jar: its lid is gone, not the whole jar. Gemini also took away
 // other clouds and left the hat white; B got those clouds back from A and its hat painted yellow by hand.
 export const level007Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-007-a.webp',
-  imageB: 'levels/redesign/level-007-b.webp',
+  imageA: 'levels/redesign/level-007-a.avif',
+  imageB: 'levels/redesign/level-007-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The small cloud on the left, only in A.

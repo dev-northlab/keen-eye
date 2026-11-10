@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // recolored blue by hand), and took away the lone snowball and the blue bird by the snowman instead of the pile's top
 // snowball (they stay as in A): the top snowball is painted out with the snow and the rink's edge beside it.
 export const level036Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-036-a.webp',
-  imageB: 'levels/redesign/level-036-b.webp',
+  imageA: 'levels/redesign/level-036-a.avif',
+  imageB: 'levels/redesign/level-036-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The star on top of the Christmas tree: gold in A, silver in B.

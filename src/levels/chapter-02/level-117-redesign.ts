@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the whole right duck brown and both pigeons white (all left out: the duck keeps A's white body, the lower pigeon
 // stays A's), and its duck's head was olive, made a little browner.
 export const level117Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-117-a.webp',
-  imageB: 'levels/redesign/level-117-b.webp',
+  imageA: 'levels/redesign/level-117-a.avif',
+  imageB: 'levels/redesign/level-117-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The kite: pink in A, blue in B.

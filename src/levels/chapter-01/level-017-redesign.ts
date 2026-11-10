@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // left a faded ghost of the nose, so B is A with only GPT's smoke, window, pine top, bird and sled seat laid over
 // it, and the nose painted over with the face around it.
 export const level017Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-017-a.webp',
-  imageB: 'levels/redesign/level-017-b.webp',
+  imageA: 'levels/redesign/level-017-a.avif',
+  imageB: 'levels/redesign/level-017-b.avif',
   viewBox: { w: 1586, h: 992 },
   differences: [
     // The chimney smoke: three puffs in A, the topmost gone in B.

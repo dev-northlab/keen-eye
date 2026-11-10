@@ -10,7 +10,7 @@ import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // "Spot the difference" worlds: one picture banner per world (PhotoBanner in the world's colour, its picture
-// public/banners/world-<id>.webp); a banner opens the chapter's level grid (ChapterView).
+// public/banners/world-<id>.avif); a banner opens the chapter's level grid (ChapterView).
 // Each card shows whether the world's hidden key is found (docs/hidden-item-feature.md); a tap on the key says so.
 
 const router = useRouter()
@@ -52,7 +52,7 @@ useBackButton(toModes)
           <PhotoBanner
             :class="{ soon: !c.first, locked: c.first !== undefined && !progress.isUnlocked(c.first) && !progress.needsPurchase(c.first) }"
             :style="bannerColors(c.chapter)"
-            :photo="`${baseUrl}banners/world-${c.chapter.id}.webp`"
+            :photo="`${baseUrl}banners/world-${c.chapter.id}.avif`"
             :name="$t(`chapters.${c.chapter.id}`)"
             :disabled="!c.first"
             @click="open(c.chapter)"

@@ -9,8 +9,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'roseYard',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-704-a.webp',
-  imageB: 'levels/tiny-boy/level-704-b.webp',
+  imageA: 'levels/tiny-boy/level-704-a.avif',
+  imageB: 'levels/tiny-boy/level-704-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The big orange rose low on the left bush, only in A.

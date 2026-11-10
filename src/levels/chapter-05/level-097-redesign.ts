@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // steam above the cup goes and the robot waiter's eyes turn red. B is A with only these changes of Gemini's laid over
 // it. Fixed by hand: Gemini also made the sign's yellow neon lines blue and the waiter's chest panel red, left out.
 export const level097Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-097-a.webp',
-  imageB: 'levels/redesign/level-097-b.webp',
+  imageA: 'levels/redesign/level-097-a.avif',
+  imageB: 'levels/redesign/level-097-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The yellow star at the top left, below the small ringed planet, only in A.

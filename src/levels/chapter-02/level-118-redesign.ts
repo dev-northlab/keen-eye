@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // only these changes of Gemini's laid over it. Gemini also put warning lamps on top of both barriers: kept as decor on
 // both pictures; its exclamation mark was crimson, made redder.
 export const level118Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-118-a.webp',
-  imageB: 'levels/redesign/level-118-b.webp',
+  imageA: 'levels/redesign/level-118-a.avif',
+  imageB: 'levels/redesign/level-118-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A small dark grey pigeon on the crane's jib above the counterweight, only in B.

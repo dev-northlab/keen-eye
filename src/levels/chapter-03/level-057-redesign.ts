@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // clumps of the fir's upper half filled with the needles around them, the icicle painted out with the log wall
 // beside it, the berries recoloured with their shading kept.
 export const level057Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-057-a.webp',
-  imageB: 'levels/redesign/level-057-b.webp',
+  imageA: 'levels/redesign/level-057-a.avif',
+  imageB: 'levels/redesign/level-057-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // Snow on the upper half of the fir with the bird, only in A.

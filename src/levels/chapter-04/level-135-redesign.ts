@@ -12,8 +12,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // redrawn) and the arrow too (the sky above and below carried across, the pole kept); it added no seagull, so A's
 // lower seagull is copied there; it reshaped the buoy, so A's stripe is recoloured instead.
 export const level135Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-135-a.webp',
-  imageB: 'levels/redesign/level-135-b.webp',
+  imageA: 'levels/redesign/level-135-a.avif',
+  imageB: 'levels/redesign/level-135-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right one of the two lightning bolts, only in A.

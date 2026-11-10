@@ -5,8 +5,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // turns blue (pictures do not move); the blue tent's doorway closes; one basket's apples, one pumpkin of the pile
 // and the yellow balloon change as drawn. Gemini changed nothing else.
 export const level015Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-015-a.webp',
-  imageB: 'levels/redesign/level-015-b.webp',
+  imageA: 'levels/redesign/level-015-a.avif',
+  imageB: 'levels/redesign/level-015-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The flag on the red-and-white tent: red in A, blue in B.

@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // behind it, the moss of Gemini's stone laid on the stone, the rope painted out with the water, the shirt and the
 // frog recoloured with their shading kept.
 export const level054Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-054-a.webp',
-  imageB: 'levels/redesign/level-054-b.webp',
+  imageA: 'levels/redesign/level-054-a.avif',
+  imageB: 'levels/redesign/level-054-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The up-right spoke of the big water wheel, only in A.

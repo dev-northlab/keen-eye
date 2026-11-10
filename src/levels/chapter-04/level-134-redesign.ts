@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // pale flag on the castle, so the umbrella panel, the ball's quarter and the blade are recoloured on A's own, and the
 // castle's flag and pole are covered with the sand beside them.
 export const level134Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-134-a.webp',
-  imageB: 'levels/redesign/level-134-b.webp',
+  imageA: 'levels/redesign/level-134-a.avif',
+  imageB: 'levels/redesign/level-134-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The left swimmer's cap: red in A, yellow in B.

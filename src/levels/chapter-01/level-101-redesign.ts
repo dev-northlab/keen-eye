@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // B, turns blue (pictures do not move); the wheelbarrow's tray turns green. Touched up by hand: Gemini redrew the
 // grass, the tree and the fence, so B is A with only Gemini's seven changes laid over it.
 export const level101Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-101-a.webp',
-  imageB: 'levels/redesign/level-101-b.webp',
+  imageA: 'levels/redesign/level-101-a.avif',
+  imageB: 'levels/redesign/level-101-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The weathervane's rooster: black in A, golden in B.

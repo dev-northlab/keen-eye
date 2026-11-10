@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // only these changes of Gemini's laid over it. Gemini also took both pots off the middle chimney with the smoke (put
 // back from A), turned the frames of the two skylights white and hung the solar panel on brackets (both left out).
 export const level113Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-113-a.webp',
-  imageB: 'levels/redesign/level-113-b.webp',
+  imageA: 'levels/redesign/level-113-a.avif',
+  imageB: 'levels/redesign/level-113-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The right chimney pot of the two on the left chimney, only in A.

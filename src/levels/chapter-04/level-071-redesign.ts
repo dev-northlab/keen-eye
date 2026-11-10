@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // A's own dolphin and gull; the right dolphin's navy tail fades into its grey body instead of Gemini's hard edge;
 // Gemini's redrawn boat wake and splash on the left are left out.
 export const level071Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-071-a.webp',
-  imageB: 'levels/redesign/level-071-b.webp',
+  imageA: 'levels/redesign/level-071-a.avif',
+  imageB: 'levels/redesign/level-071-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The wing tips of the gull in the middle of the sky: white in A, black in B.

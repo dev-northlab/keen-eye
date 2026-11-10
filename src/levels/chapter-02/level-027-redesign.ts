@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // sign, lamp and roof sign laid over it. Gemini added a second star further left: that decor is kept, laid on both
 // pictures. It kept the taxi's sign: the sign is painted out with the road beside it.
 export const level027Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-027-a.webp',
-  imageB: 'levels/redesign/level-027-b.webp',
+  imageA: 'levels/redesign/level-027-a.avif',
+  imageB: 'levels/redesign/level-027-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The moon: full in A, a thin crescent in B.

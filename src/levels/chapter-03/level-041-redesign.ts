@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // over it. Gemini also turned the orange mushroom brown and the pink flower above the rock blue (both left out), and
 // took away the purple flower in front of the rabbit (put back from A).
 export const level041Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-041-a.webp',
-  imageB: 'levels/redesign/level-041-b.webp',
+  imageA: 'levels/redesign/level-041-a.avif',
+  imageB: 'levels/redesign/level-041-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The top of the small round tree's crown: green in A, orange in B.

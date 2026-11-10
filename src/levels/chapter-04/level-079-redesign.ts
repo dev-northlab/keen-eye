@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // from the right stall (the upper right one would put its zone on the lobster's); it redrew the cobbles a little
 // shifted, so the crabs are A's own, recoloured.
 export const level079Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-079-a.webp',
-  imageB: 'levels/redesign/level-079-b.webp',
+  imageA: 'levels/redesign/level-079-a.avif',
+  imageB: 'levels/redesign/level-079-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The fish painted on the hanging shop sign: yellow in A, red in B.

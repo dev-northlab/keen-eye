@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // top of a big faint one, and its B a ghost of the big one: B's sky got the ghost smoothed away, and A keeps only the
 // big rainbow, its top under the small one drawn again from the profile of its visible parts.
 export const level018Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-018-a.webp',
-  imageB: 'levels/redesign/level-018-b.webp',
+  imageA: 'levels/redesign/level-018-a.avif',
+  imageB: 'levels/redesign/level-018-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The big rainbow over the farmhouse, only in A (the zone on its upper arc; the feet by the birds and the

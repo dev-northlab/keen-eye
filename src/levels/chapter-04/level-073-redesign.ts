@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // these changes of Gemini's laid over it (it did all nine; its black wing tips on the other two gulls, redrawn palm
 // leaves and surf are left out).
 export const level073Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-073-a.webp',
-  imageB: 'levels/redesign/level-073-b.webp',
+  imageA: 'levels/redesign/level-073-a.avif',
+  imageB: 'levels/redesign/level-073-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The wing tips of the highest of the three gulls on the right: white in A, black in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // recoloured red; it added a fourth, purple jar instead, so A's third jar's liquid is recoloured purple; its darkened
 // fruits, the redrawn robot and the other shoppers are left out.
 export const level148Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-148-a.webp',
-  imageB: 'levels/redesign/level-148-b.webp',
+  imageA: 'levels/redesign/level-148-a.avif',
+  imageB: 'levels/redesign/level-148-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The three lights of the parked purple saucer on the hill: green in A, red in B.

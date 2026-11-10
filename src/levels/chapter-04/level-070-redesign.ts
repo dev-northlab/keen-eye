@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // squid purple, the turtle's shell light brown and the seaweed right of the bottle light green. B is A with only these
 // changes of Gemini's laid over it (it did all nine; its redrawn urchin and driftwood are left out).
 export const level070Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-070-a.webp',
-  imageB: 'levels/redesign/level-070-b.webp',
+  imageA: 'levels/redesign/level-070-a.avif',
+  imageB: 'levels/redesign/level-070-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The tail of the big yellow fish at the top left: yellow in A, red in B.

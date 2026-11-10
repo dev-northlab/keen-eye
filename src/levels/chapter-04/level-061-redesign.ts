@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // towel blue (left out) and left the rest undone, so three are recoloured by hand on A's picture: the woman's top, the
 // starfish and the shell.
 export const level061Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-061-a.webp',
-  imageB: 'levels/redesign/level-061-b.webp',
+  imageA: 'levels/redesign/level-061-a.avif',
+  imageB: 'levels/redesign/level-061-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The wing tips of the gull flying under the cloud: small grey tips in A, big black tips in B.

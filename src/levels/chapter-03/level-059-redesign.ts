@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // long fog band in front of the fir was too big to repaint, so the puff beside it goes instead), the crow recoloured
 // with its shading kept, the new mushroom made of the brown one, smaller and red.
 export const level059Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-059-a.webp',
-  imageB: 'levels/redesign/level-059-b.webp',
+  imageA: 'levels/redesign/level-059-a.avif',
+  imageB: 'levels/redesign/level-059-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The sun: deep orange in A, pale yellow in B.

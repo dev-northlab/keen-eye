@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // bigger with a white and added a mouth line, so A's eye stays and the spot is covered with A's own skin; it also drew
 // a new, bigger fluke, so A's own fluke is painted navy instead; its spout is about three quarters, not half, of A's.
 export const level072Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-072-a.webp',
-  imageB: 'levels/redesign/level-072-b.webp',
+  imageA: 'levels/redesign/level-072-a.avif',
+  imageB: 'levels/redesign/level-072-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The lower of the two gulls next to the sun, only in A.

@@ -13,8 +13,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // thirds on the same spot (the clam's shell, opening and inside carried across behind it); its starfish lost all its
 // dots, so only the left one of the two dots in the middle of A's star is covered with the star's skin.
 export const level139Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-139-a.webp',
-  imageB: 'levels/redesign/level-139-b.webp',
+  imageA: 'levels/redesign/level-139-a.avif',
+  imageB: 'levels/redesign/level-139-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The fourth stalactite from the right: long in A, half as long in B.

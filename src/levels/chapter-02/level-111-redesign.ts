@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // stays as in A and its walking man is recolored red by hand. Instead of whitening the leftmost pigeon it added a
 // white one left of the others, which stands as the difference.
 export const level111Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-111-a.webp',
-  imageB: 'levels/redesign/level-111-b.webp',
+  imageA: 'levels/redesign/level-111-a.avif',
+  imageB: 'levels/redesign/level-111-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The hands of the clock on top of the blue house: black in A, red in B.

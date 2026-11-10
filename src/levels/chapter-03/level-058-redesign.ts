@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // ears (all left out), so four are done by hand on A's picture: the drop painted out with the bark beside it, the bee
 // with the sky around it, the ears and the flower recoloured with their shading kept.
 export const level058Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-058-a.webp',
-  imageB: 'levels/redesign/level-058-b.webp',
+  imageA: 'levels/redesign/level-058-a.avif',
+  imageB: 'levels/redesign/level-058-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The two leaves on the twig at the end of the left branch: green in A, yellow in B.

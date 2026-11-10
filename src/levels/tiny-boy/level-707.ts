@@ -12,8 +12,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'chalkDrawings',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-707-a.webp',
-  imageB: 'levels/tiny-boy/level-707-b.webp',
+  imageA: 'levels/tiny-boy/level-707-a.avif',
+  imageB: 'levels/tiny-boy/level-707-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // One stripe on his trousers, at the knee: pink in A, light blue in B.

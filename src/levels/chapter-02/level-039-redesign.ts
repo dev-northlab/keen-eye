@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // blue, the right cone of the two from orange to blue. Touched up by hand: B is A with only these changes of Gemini's
 // laid over it; Gemini also painted the long rail behind the ramp red (it stays grey, as in A).
 export const level039Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-039-a.webp',
-  imageB: 'levels/redesign/level-039-b.webp',
+  imageA: 'levels/redesign/level-039-a.avif',
+  imageB: 'levels/redesign/level-039-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bird sitting on the wire: black in A, red in B.

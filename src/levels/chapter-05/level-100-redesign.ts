@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the left string is recoloured pink on A, like its pink neighbours; it shuffled many squares of the disco ball, so
 // only A's middle pink square is turned purple; its other changes (the star at the top right, the robots' eyes) are left out.
 export const level100Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-100-a.webp',
-  imageB: 'levels/redesign/level-100-b.webp',
+  imageA: 'levels/redesign/level-100-a.avif',
+  imageB: 'levels/redesign/level-100-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The pale yellow star near the right edge, above right of the yellow balloon, only in A.

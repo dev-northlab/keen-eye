@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // skin and only Gemini's left and right eyes are laid on; it also dimmed the lamp's light on the ground and the purple
 // house, which is left out (only the lamp's head is taken).
 export const level086Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-086-a.webp',
-  imageB: 'levels/redesign/level-086-b.webp',
+  imageA: 'levels/redesign/level-086-a.avif',
+  imageB: 'levels/redesign/level-086-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The big ringed planet at the top left: pink in A, light blue in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // with a fifth right of them; it took the fifth toggle's lever, so A's fourth one is covered with the panel beside it;
 // its other changes (the two satellites outside) are left out.
 export const level143Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-143-a.webp',
-  imageB: 'levels/redesign/level-143-b.webp',
+  imageA: 'levels/redesign/level-143-a.avif',
+  imageB: 'levels/redesign/level-143-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The warning light at the top of the windshield frame: red in A, yellow in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the screen, wood, wall and floor beside them (seamless clones), the crates' lids under the top one mirrored from
 // their ends.
 export const level099Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-099-a.webp',
-  imageB: 'levels/redesign/level-099-b.webp',
+  imageA: 'levels/redesign/level-099-a.avif',
+  imageB: 'levels/redesign/level-099-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The fourth bar on the wall screen: tall in A, as short as the first in B.

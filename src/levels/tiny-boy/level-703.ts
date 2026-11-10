@@ -9,8 +9,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'parkPushchair',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-703-a.webp',
-  imageB: 'levels/tiny-boy/level-703-b.webp',
+  imageA: 'levels/tiny-boy/level-703-a.avif',
+  imageB: 'levels/tiny-boy/level-703-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The squirrel on the tree trunk, only in A.

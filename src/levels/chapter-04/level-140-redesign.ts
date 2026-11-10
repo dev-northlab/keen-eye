@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // seagull; it took a whole stretch of railing away, so one bar of A's is painted out (the water carried across); its
 // second green float lower in the water is left out.
 export const level140Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-140-a.webp',
-  imageB: 'levels/redesign/level-140-b.webp',
+  imageA: 'levels/redesign/level-140-a.avif',
+  imageB: 'levels/redesign/level-140-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The sail of the small far sailboat: dark in A, white in B.

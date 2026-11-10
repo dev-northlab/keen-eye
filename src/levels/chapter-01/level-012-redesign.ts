@@ -6,8 +6,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // drawn scene is still here (pictures do not move): dark in B. Gemini took the smoke's ring off with its top and
 // left a speck there, painted away in B.
 export const level012Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-012-a.webp',
-  imageB: 'levels/redesign/level-012-b.webp',
+  imageA: 'levels/redesign/level-012-a.avif',
+  imageB: 'levels/redesign/level-012-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The moon: full in A, a crescent in B.

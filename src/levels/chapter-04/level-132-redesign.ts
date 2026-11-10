@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the grey fish as it was and turned the small yellow fish into a grey one with a yellow tail, so that is left out and
 // A's grey fish gets the yellow tail.
 export const level132Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-132-a.webp',
-  imageB: 'levels/redesign/level-132-b.webp',
+  imageA: 'levels/redesign/level-132-a.avif',
+  imageB: 'levels/redesign/level-132-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right one of the two patches on the lower middle sail, only in A.

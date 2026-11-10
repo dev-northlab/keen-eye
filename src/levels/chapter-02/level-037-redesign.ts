@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // white, the tram's route board from yellow to green, and the tram's door is open. B is A with only these changes of
 // Gemini's laid over it.
 export const level037Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-037-a.webp',
-  imageB: 'levels/redesign/level-037-b.webp',
+  imageA: 'levels/redesign/level-037-a.avif',
+  imageB: 'levels/redesign/level-037-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A small black cat on a window sill of the lilac house, only in B.

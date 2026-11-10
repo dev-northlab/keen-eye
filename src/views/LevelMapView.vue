@@ -99,7 +99,7 @@ const timeTravel = {
         <li>
           <PhotoBanner
             class="spot"
-            :photo="`${baseUrl}banners/worlds.webp`"
+            :photo="`${baseUrl}banners/worlds.avif`"
             :tag="$t('map.task')"
             :name="$t('map.title')"
             @click="router.push({ name: 'worlds' })"
@@ -118,13 +118,13 @@ const timeTravel = {
         <li>
           <!-- "Tiny boy": its levels as picture banners (TinyBoyView). -->
           <PhotoBanner
-            :photo="`${baseUrl}banners/tiny-boy.webp`"
+            :photo="`${baseUrl}banners/tiny-boy.avif`"
             :name="$t('chapters.tinyBoy')"
             :tag="tinyBoy.total > 0 ? $t('map.task') : $t('map.soon')"
             :disabled="tinyBoy.total === 0 && !settings.developer"
             @click="router.push({ name: 'tiny-boy' })"
           >
-            <template #icon><img :src="`${baseUrl}banners/tiny-boy-face.webp`" alt="" /></template>
+            <template #icon><img :src="`${baseUrl}banners/tiny-boy-face.avif`" alt="" /></template>
             <template v-if="tinyBoy.total > 0">
               <!-- No stars in "tiny boy": only how many levels are won. -->
               {{ $t('map.progress', { done: tinyBoy.done(), total: tinyBoy.total }) }}
@@ -135,7 +135,7 @@ const timeTravel = {
         <li v-for="c in categories" :key="c.chapter.id">
           <PhotoBanner
             :class="c.chapter.id"
-            :photo="`${baseUrl}banners/${c.chapter.id}.webp`"
+            :photo="`${baseUrl}banners/${c.chapter.id}.avif`"
             :tag="$t(c.task)"
             :name="$t(`chapters.${c.chapter.id}`)"
             @click="router.push(c.to)"
@@ -149,7 +149,7 @@ const timeTravel = {
         <li>
           <PhotoBanner
             class="eras"
-            :photo="`${baseUrl}banners/eras.webp`"
+            :photo="`${baseUrl}banners/eras.avif`"
             :tag="$t('timeTravel.task')"
             :name="$t('timeTravel.title')"
             @click="router.push({ name: 'eras' })"
@@ -163,7 +163,7 @@ const timeTravel = {
           <PhotoBanner
             class="treasury"
             :class="{ closed: !treasuryOpen() }"
-            :photo="`${baseUrl}banners/treasury.webp`"
+            :photo="`${baseUrl}banners/treasury.avif`"
             :tag="$t('treasury.tag')"
             :name="$t('chapters.treasury')"
             :disabled="!treasuryOpen()"

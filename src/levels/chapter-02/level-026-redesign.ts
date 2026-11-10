@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // crate into tomatoes (those stay as in A), and left the tomatoes, the pan and the shirt as they were: the tomato and
 // the shirt are recolored by hand, keeping their shading, and the pan painted out with the wall below it.
 export const level026Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-026-a.webp',
-  imageB: 'levels/redesign/level-026-b.webp',
+  imageA: 'levels/redesign/level-026-a.avif',
+  imageB: 'levels/redesign/level-026-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The shade of the lamp hanging above the street: dark grey in A, green in B.

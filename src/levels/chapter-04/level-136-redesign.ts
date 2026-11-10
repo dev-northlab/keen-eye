@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // bottom crate, so only the wall behind the top crate is taken; it turned the middle boat's hull stripe blue too, so
 // only the roof is taken; it redrew the rowboat longer, so A's own stripe is painted over with the red hull.
 export const level136Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-136-a.webp',
-  imageB: 'levels/redesign/level-136-b.webp',
+  imageA: 'levels/redesign/level-136-a.avif',
+  imageB: 'levels/redesign/level-136-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The door of the blue house, second from the left: green in A, red in B.

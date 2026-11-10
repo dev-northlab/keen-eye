@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Gemini's laid over it. Fixed by hand: Gemini drew the screwdriver over the yellow star at the bottom right, so it is
 // moved a little right and up and the star stays; its re-drawn gold foil and astronauts are left out.
 export const level147Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-147-a.webp',
-  imageB: 'levels/redesign/level-147-b.webp',
+  imageA: 'levels/redesign/level-147-a.avif',
+  imageB: 'levels/redesign/level-147-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The light at the left end of the left wing: red in A, green in B.

@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Fixed by hand: Gemini took away another yellow star (near the rocket) instead, so the right one is taken off A (its
 // glow subtracted, its body covered with the sky beside it); it also took the upper saucer's dome, left out.
 export const level096Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-096-a.webp',
-  imageB: 'levels/redesign/level-096-b.webp',
+  imageA: 'levels/redesign/level-096-a.avif',
+  imageB: 'levels/redesign/level-096-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The smaller white sparkle at the top, right of the big one, only in A.

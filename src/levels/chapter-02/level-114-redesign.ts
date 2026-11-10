@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // these parts recoloured by hand (keeping A's shading), Gemini's dark bulb laid on the third one and its red bulb on
 // its place, and the chalk line painted over with the board above it.
 export const level114Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-114-a.webp',
-  imageB: 'levels/redesign/level-114-b.webp',
+  imageA: 'levels/redesign/level-114-a.avif',
+  imageB: 'levels/redesign/level-114-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The third bulb from the left, over the red-and-white stall: lit in A, off in B.

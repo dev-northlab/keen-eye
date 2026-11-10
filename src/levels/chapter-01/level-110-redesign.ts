@@ -12,8 +12,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // flame is darkened, the arrow painted out with the sky and trees around it (rooster and pole kept), and the firefly
 // with the ground beside it.
 export const level110Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-110-a.webp',
-  imageB: 'levels/redesign/level-110-b.webp',
+  imageA: 'levels/redesign/level-110-a.avif',
+  imageB: 'levels/redesign/level-110-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small bright star just left of the moon, only in A.

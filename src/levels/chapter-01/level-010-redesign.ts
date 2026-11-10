@@ -6,8 +6,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // on and laid a second one on the grass, added a can and a basket handle; B got the can opened by hand (the lid on
 // the grass stays, as the one taken off) and the rest back from A.
 export const level010Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-010-a.webp',
-  imageB: 'levels/redesign/level-010-b.webp',
+  imageA: 'levels/redesign/level-010-a.avif',
+  imageB: 'levels/redesign/level-010-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The weathervane's arrow, only in A.

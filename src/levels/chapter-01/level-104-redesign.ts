@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // recoloured red with its shading kept, the dipper painted over with the hive, bench and lid beside it, and the bee
 // on the daisy with the grass beside it and the right daisy's top petals.
 export const level104Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-104-a.webp',
-  imageB: 'levels/redesign/level-104-b.webp',
+  imageA: 'levels/redesign/level-104-a.avif',
+  imageB: 'levels/redesign/level-104-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The windsock's stripes: orange in A, blue in B.

@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // span beside it (the rails run on through); it also made the cow's hooves and tail tip brown, left out, as are its
 // other small changes (the fern, the grass).
 export const level090Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-090-a.webp',
-  imageB: 'levels/redesign/level-090-b.webp',
+  imageA: 'levels/redesign/level-090-a.avif',
+  imageB: 'levels/redesign/level-090-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The moon at the top left: pale in A, yellow in B.

@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // changes of Gemini's laid over it; A's right fish is spotted, not striped, and Gemini turned it dark brown and striped,
 // which stays as the fish change; it redrew the whole log, so only its cut end is recoloured by hand on A's log.
 export const level129Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-129-a.webp',
-  imageB: 'levels/redesign/level-129-b.webp',
+  imageA: 'levels/redesign/level-129-a.avif',
+  imageB: 'levels/redesign/level-129-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The two leaves on the bare twig of the left cliff, only in B.

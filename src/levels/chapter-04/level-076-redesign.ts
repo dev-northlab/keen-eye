@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Gemini's cloud, A's white streaks kept), and A's highest gull gets a grey right wing in its place as a difference.
 // Gemini's redrawn surf is left out.
 export const level076Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-076-a.webp',
-  imageB: 'levels/redesign/level-076-b.webp',
+  imageA: 'levels/redesign/level-076-a.avif',
+  imageB: 'levels/redesign/level-076-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right wing of the highest gull: white in A, grey in B.

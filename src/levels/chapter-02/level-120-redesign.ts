@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // orange by hand) and it cut the railing's handrail instead of taking a bar away (the bar right of the bicycle's
 // wheel painted out by hand with the gap beside it).
 export const level120Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-120-a.webp',
-  imageB: 'levels/redesign/level-120-b.webp',
+  imageA: 'levels/redesign/level-120-a.avif',
+  imageB: 'levels/redesign/level-120-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The bright star in the top left corner, only in A.

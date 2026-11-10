@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // shirt of the man at the bottom left turns red and a grey rock lies on the sand left of the purple towel. B is A with
 // only these changes of Gemini's laid over it; it left the gull white, so the gull is greyed by hand on A's picture.
 export const level067Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-067-a.webp',
-  imageB: 'levels/redesign/level-067-b.webp',
+  imageA: 'levels/redesign/level-067-a.avif',
+  imageB: 'levels/redesign/level-067-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The gull flying on the left of the sky: white in A, grey in B.

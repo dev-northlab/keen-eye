@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // it also took away the lower pink star, tinted the dish under the mast and gave the left astronaut a green badge,
 // all left out.
 export const level150Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-150-a.webp',
-  imageB: 'levels/redesign/level-150-b.webp',
+  imageA: 'levels/redesign/level-150-a.avif',
+  imageB: 'levels/redesign/level-150-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A small white comet with a pale blue tail above the left side of the black hole, only in B.

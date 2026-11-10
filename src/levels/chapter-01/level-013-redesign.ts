@@ -5,8 +5,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // which swims differently in the drawn scene, gets a red beak (pictures do not move). Gemini also turned the jumping
 // fish's faint reflection blue; B got it back from A.
 export const level013Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-013-a.webp',
-  imageB: 'levels/redesign/level-013-b.webp',
+  imageA: 'levels/redesign/level-013-a.avif',
+  imageB: 'levels/redesign/level-013-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The lamp on the bridge post, only in A.

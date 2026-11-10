@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // left yellow and the green buoy at the bottom red. B is A with only these changes of Gemini's laid over it (it did all
 // nine); the red flag sat a little above the mast, so the mast is drawn on a little higher to hold it.
 export const level068Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-068-a.webp',
-  imageB: 'levels/redesign/level-068-b.webp',
+  imageA: 'levels/redesign/level-068-a.avif',
+  imageB: 'levels/redesign/level-068-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right gull of the lower two flying at the top left: white in A, grey in B.

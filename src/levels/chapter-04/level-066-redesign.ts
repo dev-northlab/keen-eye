@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // shirt, the ring, the beak, the float and the buoy recoloured; the fish painted out with the bushes under it, the
 // tail with the grass above it).
 export const level066Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-066-a.webp',
-  imageB: 'levels/redesign/level-066-b.webp',
+  imageA: 'levels/redesign/level-066-a.avif',
+  imageB: 'levels/redesign/level-066-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The wing tips of the big gull flying at the top: small grey tips in A, black in B.

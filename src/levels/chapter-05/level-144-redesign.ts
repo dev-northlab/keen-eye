@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // nose and fins orange, so only the band is laid over A; its other changes (the far right asteroid at the edge, the
 // wrench turned into a rock) are left out.
 export const level144Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-144-a.webp',
-  imageB: 'levels/redesign/level-144-b.webp',
+  imageA: 'levels/redesign/level-144-a.avif',
+  imageB: 'levels/redesign/level-144-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The big asteroid with dark pits at the top middle, below the comet: grey in A, reddish brown in B.

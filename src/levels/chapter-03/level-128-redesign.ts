@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // and it turned the third mushroom blue instead of the second (left out), so the second one's teal cap and glow are
 // recoloured blue by hand.
 export const level128Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-128-a.webp',
-  imageB: 'levels/redesign/level-128-b.webp',
+  imageA: 'levels/redesign/level-128-a.avif',
+  imageB: 'levels/redesign/level-128-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small star below the moon, only in A.

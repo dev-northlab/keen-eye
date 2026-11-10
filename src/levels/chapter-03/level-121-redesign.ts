@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // middle birch, painted a second blue stripe there and swapped the two small yellow mushrooms for a brown one (all
 // left out), and hung a new yellow leaf at the branch's end beside the red one, so the red leaf is recoloured by hand.
 export const level121Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-121-a.webp',
-  imageB: 'levels/redesign/level-121-b.webp',
+  imageA: 'levels/redesign/level-121-a.avif',
+  imageB: 'levels/redesign/level-121-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The leaf hanging from the maple's long branch: red in A, yellow in B.

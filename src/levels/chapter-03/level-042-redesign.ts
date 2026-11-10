@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // is gone and the backpack's top flap turns red. B is A with only these changes of Gemini's laid over it. Gemini drew
 // the whole owl anew (unlit, other spots): the owl is A's with only its irises recoloured yellow by hand.
 export const level042Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-042-a.webp',
-  imageB: 'levels/redesign/level-042-b.webp',
+  imageA: 'levels/redesign/level-042-a.avif',
+  imageB: 'levels/redesign/level-042-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bird flying in the sky: dark in A, white in B.

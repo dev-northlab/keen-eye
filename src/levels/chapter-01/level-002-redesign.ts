@@ -4,8 +4,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Like the drawn scene: the smoke, the window, the scarecrow's hat and a gap in the carrot bed (two carrots here);
 // the scarecrow's coat stands in for the watering can, which the pictures leave as it is.
 export const level002Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-002-a.webp',
-  imageB: 'levels/redesign/level-002-b.webp',
+  imageA: 'levels/redesign/level-002-a.avif',
+  imageB: 'levels/redesign/level-002-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The smoke above the chimney, only in A.

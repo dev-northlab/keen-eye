@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // with the water beside it, the jellyfish, the coral branch and the shell recoloured, and the pearl painted out with
 // the clam around it.
 export const level063Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-063-a.webp',
-  imageB: 'levels/redesign/level-063-b.webp',
+  imageA: 'levels/redesign/level-063-a.avif',
+  imageB: 'levels/redesign/level-063-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The lowest of the three small yellow fish at the top left, only in A.

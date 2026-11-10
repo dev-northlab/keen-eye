@@ -12,8 +12,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // right bale: the swallow and the strings are recoloured from A with their shading kept, and one string is painted
 // over with the hay beside it.
 export const level107Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-107-a.webp',
-  imageB: 'levels/redesign/level-107-b.webp',
+  imageA: 'levels/redesign/level-107-a.avif',
+  imageB: 'levels/redesign/level-107-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The sun in the view through the barn door: yellow in A, orange in B.

@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // tail, and redrew the owl's chest without a clear new row (all left out), so the fourth row is copied from the second
 // and the tail recoloured by hand on A's picture.
 export const level130Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-130-a.webp',
-  imageB: 'levels/redesign/level-130-b.webp',
+  imageA: 'levels/redesign/level-130-a.avif',
+  imageB: 'levels/redesign/level-130-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A leaf on the left branch: green in A, yellow in B.

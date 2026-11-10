@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // with the post (those stay as in A), and left the duckling yellow: it is painted white with its shading kept. The
 // cattail that lost its head is the tall one in the middle of the group, not the leftmost one the prompt named.
 export const level109Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-109-a.webp',
-  imageB: 'levels/redesign/level-109-b.webp',
+  imageA: 'levels/redesign/level-109-a.avif',
+  imageB: 'levels/redesign/level-109-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The left shutter of the mill's left window: blue in A, red in B.

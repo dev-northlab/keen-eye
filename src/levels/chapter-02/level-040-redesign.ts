@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // changes of Gemini's laid over it. Gemini also turned the small burst right of the middle into a big green one: that
 // decor is kept, laid on both pictures.
 export const level040Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-040-a.webp',
-  imageB: 'levels/redesign/level-040-b.webp',
+  imageA: 'levels/redesign/level-040-a.avif',
+  imageB: 'levels/redesign/level-040-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // A small yellow star in the sky at the top left, only in B.

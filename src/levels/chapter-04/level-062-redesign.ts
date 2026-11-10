@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // top crate painted out with the sky and sea beside it, the tail and the coat recoloured, and the flag laid on the mast
 // (the blue sandcastle flag of level 61's picture, scaled).
 export const level062Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-062-a.webp',
-  imageB: 'levels/redesign/level-062-b.webp',
+  imageA: 'levels/redesign/level-062-a.avif',
+  imageB: 'levels/redesign/level-062-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The crane's hook: dark in A, red in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // is painted over with the gap beside it, the bell made silver and the mouse white with their shading kept, the
 // horseshoe painted over with the same boards above it, and the band recoloured red.
 export const level103Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-103-a.webp',
-  imageB: 'levels/redesign/level-103-b.webp',
+  imageA: 'levels/redesign/level-103-a.avif',
+  imageB: 'levels/redesign/level-103-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The middle post of the small fence through the barn door, only in A.
