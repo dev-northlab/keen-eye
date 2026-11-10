@@ -1,6 +1,7 @@
 // Motion differences: the astronaut floats faster on picture B; the apple spins faster on B; the panel light blinks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level089Redesign } from './level-089-redesign.ts'
 import { astronaut, fuelCanister, helmet, probe, rocket, toolbox, wrench } from './shapes.ts'
 
 /** Floating apple; (x, y) = center. Bounds: radius 15. */
@@ -16,6 +17,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceStation',
   parTimeSec: 140,
+  redesign: level089Redesign,
   scene: ({ diff, anim, extra }) => {
     const floating = (period: number) => anim({ id: 'walker', type: 'bob', dx: 0, dy: 10, period }, astronaut(180, 300, '#f1f1f1', '#ffb703'))
     const spinning = (period: number) => anim({ type: 'rotate', pivot: [300, 150], period }, apple(300, 150))

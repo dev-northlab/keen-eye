@@ -1,6 +1,7 @@
 // Motion differences: the big geyser puffs faster on picture B; the small geyser erupts only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level091Redesign } from './level-091-redesign.ts'
 import { alien, astronaut, beacon, dome, flag, fuelCanister, helmet, planet, probe, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Geyser plume; (x, y) = vent. Bounds: x ±w, y from −h to 0. */
@@ -17,6 +18,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'iceMoon',
   parTimeSec: 140,
+  redesign: level091Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const puffing = (period: number) => anim({ id: 'geyser', type: 'bob', dx: 0, dy: 10, period }, plume(180, 330, 34, 100))
     const small = plume(520, 340, 26, 58)

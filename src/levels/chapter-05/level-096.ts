@@ -1,6 +1,7 @@
 // Motion differences: the space whale swims faster on picture B; the star jelly pulses faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level096Redesign } from './level-096-redesign.ts'
 import { jellyfish } from '../chapter-04/shapes.ts'
 import { asteroid, comet, fuelCanister, planet, probe, rocket, satellite, sparkle, star, starField, ufo, wrench } from './shapes.ts'
 
@@ -16,6 +17,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'nebula',
   parTimeSec: 140,
+  redesign: level096Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const swimming = (period: number) => anim({ id: 'whale', type: 'path', points: [[0, 0], [260, 0]], flipX: 260, period }, whale(260, 300))
     const pulsing = (period: number) => anim({ id: 'jelly', type: 'bob', dx: 0, dy: 14, period }, jellyfish(640, 160, '#ff9ff3'))

@@ -1,6 +1,7 @@
 // Motion differences: the lantern over the fruit stall swings faster on picture B; the lantern on the right swings only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level092Redesign } from './level-092-redesign.ts'
 import { alien, alienPlant, crystal, fuelCanister, moonPebbles, probe, robot, star, starField } from './shapes.ts'
 
 /** Market stall; (x, y) = bottom center. Bounds: x ±66, y from −124 to 0. */
@@ -33,6 +34,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienMarket',
   parTimeSec: 140,
+  redesign: level092Redesign,
   scene: ({ diff, anim, rand, secret, extra }) => {
     const left = lantern(200, 92.5, '#ff6b8b')
     const right = lantern(600, 92.5, '#3ae0ff')

@@ -1,6 +1,7 @@
 // Motion differences: the neon planet blinks faster on picture B; the robot waiter rolls faster on B; the arriving saucer hovers faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level097Redesign } from './level-097-redesign.ts'
 import { parasol } from '../chapter-04/shapes.ts'
 import { alien, alienPlant, crystal, fuelCanister, helmet, robot, rocket, star, starField, toolbox, ufo } from './shapes.ts'
 
@@ -23,6 +24,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceCafe',
   parTimeSec: 140,
+  redesign: level097Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.6, period }, neon(400, 172))
     const rolling = (period: number) => anim({ id: 'waiter', type: 'path', points: [[0, 0], [240, 0]], period }, robot(200, 440, '#bfc7d5', '#8ac926'))

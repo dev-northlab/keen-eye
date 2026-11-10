@@ -1,6 +1,7 @@
 // Motion differences: the telescope scans only on picture B; the meteor flashes only on B; the fireflies blink faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level088Redesign } from './level-088-redesign.ts'
 import { beacon, comet, moonPebbles, person, solarPanel, starField, toolbox, wrench } from './shapes.ts'
 
 /** Pine silhouette; (x, y) = base. Bounds: x ±22·s, y from −90·s to 0. */
@@ -23,6 +24,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'observatory',
   parTimeSec: 140,
+  redesign: level088Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.6, period }, fireflies(120, 440))
 

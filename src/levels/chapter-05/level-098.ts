@@ -1,6 +1,7 @@
 // Motion differences: the rocket lands and lifts off faster on picture B; the pad beacon blinks faster on B; the tower radar turns only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level098Redesign } from './level-098-redesign.ts'
 import { astronaut, flame, fuelCanister, helmet, moonPebbles, rocket, solarPanel, starField, toolbox, ufo } from './shapes.ts'
 
 /** Landing pad; (x, y) = center. Bounds: x ±70, y ±14. */
@@ -18,6 +19,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'spaceport',
   parTimeSec: 140,
+  redesign: level098Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const landing = (period: number) =>
       anim({ id: 'lander', type: 'path', points: [[0, 0], [0, -120]], period }, rocket(330, 380, '#f1f1f1', '#e63946', 0.8) + flame(330, 380, 0.8))

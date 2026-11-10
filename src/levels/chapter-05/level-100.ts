@@ -1,6 +1,7 @@
 // Motion differences: the big firework bursts faster on picture B; the dancer on stage hops faster on B; the disco ball spins only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level100Redesign } from './level-100-redesign.ts'
 import { alien, alienPlant, astronaut, crystal, helmet, moonPebbles, probe, robot, star, starField } from './shapes.ts'
 
 /** Firework burst; (x, y) = center. Bounds: radius r + 3. */
@@ -34,6 +35,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'starFestival',
   parTimeSec: 150,
+  redesign: level100Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const bursting = (period: number) => anim({ type: 'blink', duty: 0.55, period }, burst(140, 160, 44, '#ffd166'))
     const hopping = (period: number) => anim({ id: 'dancer', type: 'bob', dx: 0, dy: 10, period }, alien(400, 340, '#8ac926', 2))
