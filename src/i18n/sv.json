@@ -472,7 +472,8 @@
       "mirror-x": "Obs! Den andra bilden är spegelvänd",
       "rotate-180": "Obs! Den andra bilden är upp och ner"
     },
-    "uncounted": "Det finns skillnader här, men ingen vet hur många. Hitta alla!"
+    "uncounted": "Det finns skillnader här, men ingen vet hur många. Hitta alla!",
+    "tinyWon": "Hurra! Du hittade alla!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blomsteraffär",

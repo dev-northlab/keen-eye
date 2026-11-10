@@ -472,7 +472,8 @@
       "mirror-x": "Obs! Det andre bildet er speilvendt",
       "rotate-180": "Obs! Det andre bildet er opp ned"
     },
-    "uncounted": "Det er forskjeller her, men ingen vet hvor mange. Finn alle sammen!"
+    "uncounted": "Det er forskjeller her, men ingen vet hvor mange. Finn alle sammen!",
+    "tinyWon": "Hurra! Du fant alle sammen!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blomsterbutikk",

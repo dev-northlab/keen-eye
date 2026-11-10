@@ -122,7 +122,8 @@
       "mirror-x": "Uwaga! Drugi obrazek jest odbity lustrzanie",
       "rotate-180": "Uwaga! Drugi obrazek jest odwrócony do góry nogami"
     },
-    "uncounted": "Są tu różnice, ale nikt nie wie, ile. Znajdź je wszystkie!"
+    "uncounted": "Są tu różnice, ale nikt nie wie, ile. Znajdź je wszystkie!",
+    "tinyWon": "Hura! Wszystkie znalezione!"
   },
   "duo": {
     "modeTitle": "Jak gracie?",

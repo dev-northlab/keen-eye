@@ -13,6 +13,7 @@ import SecretFound from '../components/SecretFound.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
+import ToyText from '../components/ToyText.vue'
 import TransformChip from '../components/TransformChip.vue'
 import TransformNotice from '../components/TransformNotice.vue'
 import TravelFact from '../components/TravelFact.vue'
@@ -50,24 +51,7 @@ const treasury = level.chapter === TREASURY_CHAPTER.id
  * is just won.
  */
 const uncounted = level.chapter === TINY_BOY_CHAPTER.id
-/**
- * Its words as bright toy letters, each word its own colour (`--c`) over a darker depth (`--d`). Coloured by word,
- * not by letter, so joined scripts (Arabic) and combining marks (Thai, Hindi) stay whole.
- */
-const TOY_COLORS = [
-  ['#ff5a5f', '#b8323a'],
-  ['#ff9f1c', '#b86a00'],
-  ['#ffd23f', '#b88a00'],
-  ['#3ec46d', '#1f7f43'],
-  ['#2fa8ff', '#1665a8'],
-  ['#9b6bff', '#5b37b8'],
-  ['#ff6bb5', '#b8336f'],
-]
-const uncountedWords = computed(() =>
-  t('level.uncounted')
-    .split(/\s+/)
-    .map((word, i) => ({ word, style: { '--c': TOY_COLORS[i % TOY_COLORS.length][0], '--d': TOY_COLORS[i % TOY_COLORS.length][1], '--i': i } })),
-)
+const baseUrl = import.meta.env.BASE_URL
 /** "Travel" levels: the first visit earns a passport stamp (shown with the place's fact). */
 const newStamp = ref(false)
 
@@ -315,9 +299,7 @@ onBeforeUnmount(() => {
   <div class="level">
     <header v-if="uncounted" class="hud uncounted" :class="{ still: settings.effectiveReduceMotion }">
       <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" /></svg>
-      <span class="toy-text">
-        <span v-for="(w, i) in uncountedWords" :key="i" class="toy-word" :style="w.style">{{ w.word }}</span>
-      </span>
+      <ToyText class="call" :text="$t('level.uncounted')" :still="settings.effectiveReduceMotion" />
       <svg class="sparkle late" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" /></svg>
     </header>
     <header v-else class="hud" :class="{ still: settings.effectiveReduceMotion }">
@@ -396,7 +378,7 @@ onBeforeUnmount(() => {
       v-if="result"
       :result="result"
       :mode="mode"
-      :plain="uncounted"
+      :portrait="uncounted ? `${baseUrl}banners/tiny-boy-smile.webp` : undefined"
       :failed="failed"
       :offer-hard="mode === 'normal' && progress.hardStars(level.id) < 3"
       :time="time"
@@ -447,54 +429,8 @@ onBeforeUnmount(() => {
   white-space: normal;
 }
 
-.toy-text {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  column-gap: 0.3em;
-  row-gap: 2px;
+.call {
   font-size: clamp(17px, 4.2vw, 26px);
-  font-weight: 900;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-  text-align: center;
-}
-
-.toy-word {
-  display: inline-block;
-  color: var(--c);
-  /* Earlier shadows lie on top: the darker depth right under the letter, then a white rim round letter and depth
-     together, then a soft drop shadow. */
-  text-shadow:
-    0 1px 0 var(--d),
-    0 2px 0 var(--d),
-    0 3px 0 var(--d),
-    -2px -2px 0 #fff,
-    0 -2px 0 #fff,
-    2px -2px 0 #fff,
-    -2px 0 0 #fff,
-    2px 0 0 #fff,
-    -2px 3px 0 #fff,
-    2px 3px 0 #fff,
-    -2px 5px 0 #fff,
-    0 5px 0 #fff,
-    2px 5px 0 #fff,
-    0 8px 6px rgb(0 0 0 / 0.25);
-  animation: toy-bob 2.4s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.15s);
-}
-
-@keyframes toy-bob {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-3px) rotate(-2deg);
-  }
-  75% {
-    transform: translateY(1px) rotate(2deg);
-  }
 }
 
 .sparkle {

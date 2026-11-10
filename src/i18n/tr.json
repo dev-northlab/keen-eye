@@ -122,7 +122,8 @@
       "mirror-x": "Dikkat! İkinci resim aynalanmış",
       "rotate-180": "Dikkat! İkinci resim baş aşağı"
     },
-    "uncounted": "Burada farklar var ama kaç tane olduğunu kimse bilmiyor. Hepsini bul!"
+    "uncounted": "Burada farklar var ama kaç tane olduğunu kimse bilmiyor. Hepsini bul!",
+    "tinyWon": "Yaşasın! Hepsini buldun!"
   },
   "duo": {
     "modeTitle": "Nasıl oynuyorsunuz?",

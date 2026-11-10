@@ -122,7 +122,8 @@
       "mirror-x": "Atenție! A doua imagine este în oglindă",
       "rotate-180": "Atenție! A doua imagine este cu susul în jos"
     },
-    "uncounted": "Există diferențe, dar nimeni nu știe câte. Găsește-le pe toate!"
+    "uncounted": "Există diferențe, dar nimeni nu știe câte. Găsește-le pe toate!",
+    "tinyWon": "Ura! Le-ai găsit pe toate!"
   },
   "duo": {
     "modeTitle": "Cum jucați?",

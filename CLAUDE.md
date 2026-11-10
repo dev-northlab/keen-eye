@@ -104,7 +104,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.webp` or `-tall.webp` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.mp3` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
-  shows a tick (`plain`), its banners "won" / "not won yet" (`map.won`, `map.notWon`); hidden in `upcoming.ts` until released
+  shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
+  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); hidden in `upcoming.ts` until released
   ("coming soon" for players, developer mode opens it);
   `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)

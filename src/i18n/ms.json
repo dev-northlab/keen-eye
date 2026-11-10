@@ -472,7 +472,8 @@
       "mirror-x": "Perhatian! Gambar kedua dicerminkan",
       "rotate-180": "Perhatian! Gambar kedua terbalik"
     },
-    "uncounted": "Ada perbezaan di sini, tetapi tiada siapa tahu berapa. Cari semuanya!"
+    "uncounted": "Ada perbezaan di sini, tetapi tiada siapa tahu berapa. Cari semuanya!",
+    "tinyWon": "Hore! Kamu jumpa semuanya!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Kedai bunga",
