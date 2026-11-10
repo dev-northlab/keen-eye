@@ -39,8 +39,6 @@ export interface AnachronismOptions {
   animationSpeed?: number
   /** Anti-spam lock after quick misses (off in calm mode). Default true. */
   missLock?: boolean
-  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
-  reduceMotion?: boolean
 }
 
 /**
@@ -53,7 +51,6 @@ export class AnachronismScene {
   private readonly handlers: AnachronismHandlers
   private readonly animationSpeed: number
   private readonly missLock: boolean
-  private readonly reduceMotion: boolean
   private readonly round: AnachronismRound
   private readonly picture: Picture
   /** Item circles in image pixels: found, hint and reveal marks. */
@@ -89,7 +86,6 @@ export class AnachronismScene {
     this.handlers = handlers
     this.animationSpeed = options.animationSpeed ?? 1
     this.missLock = options.missLock ?? true
-    this.reduceMotion = options.reduceMotion ?? false
     this.round = new AnachronismRound(level)
     const size = { w: level.width, h: level.height }
     this.zones = level.items.map((s) => shapeCircle(s, size))
@@ -190,7 +186,7 @@ export class AnachronismScene {
     if (outcome.kind === 'repeat') return
     const { index } = outcome
     this.guard.hit()
-    addFoundMark(this.picture, index, this.zones[index], undefined, this.reduceMotion)
+    addFoundMark(this.picture, index, this.zones[index])
     if (index === this.hinted) {
       removeHintMarks(this.picture)
       this.hinted = -1
@@ -217,7 +213,7 @@ export class AnachronismScene {
     this.pendingMiss = null
     if (this.done || this.loop.paused) return
     this.mistakes++
-    addMissMark(this.picture, (miss.x * this.level.width) / 100, (miss.y * this.level.height) / 100, this.viewport.scale, this.reduceMotion)
+    addMissMark(this.picture, (miss.x * this.level.width) / 100, (miss.y * this.level.height) / 100, this.viewport.scale)
     this.handlers.onMiss?.(this.mistakes)
     if (this.missLock && this.guard.miss(performance.now())) {
       this.handlers.onLock?.(true)

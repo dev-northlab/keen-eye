@@ -115,7 +115,6 @@ function start() {
     {
       // Calm mode and "reduce motion" both slow the background down.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
-      reduceMotion: settings.effectiveReduceMotion,
       missLock: rules.value.missLock,
     },
   )
@@ -186,19 +185,18 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="level">
-    <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
+    <header class="hud">
       <span class="title">
         {{ text(level.era) }}
         <ModeChip :mode="mode" />
         <small>{{ $t('timeTravel.task') }}</small>
       </span>
-      <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
+      <FoundSlots class="found" :total="total" :found="found" />
       <HudCounters
         v-if="!calm"
         :time="time"
         :mistakes="mistakes"
         :locked="locked"
-        :still="settings.effectiveReduceMotion"
       />
     </header>
 
@@ -212,7 +210,6 @@ onBeforeUnmount(() => {
         :key="fact.n"
         :label="text(level.items[fact.index].label)"
         :fact="text(level.items[fact.index].fact)"
-        :still="settings.effectiveReduceMotion"
         @close="fact = null"
       />
     </div>
@@ -323,11 +320,6 @@ onBeforeUnmount(() => {
     width: 100%;
     justify-content: center;
   }
-}
-
-.hud.still * {
-  animation: none !important;
-  transition: none !important;
 }
 
 .board {

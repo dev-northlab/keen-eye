@@ -32,8 +32,6 @@ export interface SceneOptions {
   extras?: boolean
   /** Show picture B mirrored or turned (`Level.transformB` where the mode allows it, `ModeRules.transformB`). */
   transformB?: PictureTransform
-  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
-  reduceMotion?: boolean
 }
 
 /**
@@ -76,7 +74,6 @@ export class GameScene {
       secretTaken: options.secretTaken,
       extras: options.extras,
       transformB: options.transformB,
-      reduceMotion: options.reduceMotion,
     })
     this.loop = new FrameLoop(this.frame)
   }

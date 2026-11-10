@@ -37,7 +37,6 @@ const rules = duo.rules
 const faceToFace = rules.mode === 'duel' && setup.faceToFace
 /** Duels have no zoom (see MatchScene). */
 const zoomable = rules.mode !== 'duel'
-const still = computed(() => settings.effectiveReduceMotion)
 const otherLevel = { name: 'duo', query: { step: 'level' } }
 
 /** The shared board, or player 1's face to face. */
@@ -117,7 +116,7 @@ function start() {
         })
       },
     },
-    { animationSpeed, reduceMotion: settings.effectiveReduceMotion },
+    { animationSpeed },
   )
   // Hot-seat starts with the first player taking the phone.
   if (rules.mode === 'hotseat') {
@@ -183,16 +182,16 @@ onBeforeUnmount(() => {
       <!-- Player 2 sits at the far side: their bar and pictures are turned to them. -->
       <section class="half far" :class="{ locked: isLocked(2) }">
         <div v-if="state" class="bar turned">
-          <PlayerChip :player="player(2)" :avatar="setup.players[1].avatar" :locked="isLocked(2)" :still="still" :hint="rules.hints > 0" :hint-disabled="!canHint(2)" @hint="hint(2)" />
+          <PlayerChip :player="player(2)" :avatar="setup.players[1].avatar" :locked="isLocked(2)" :hint="rules.hints > 0" :hint-disabled="!canHint(2)" @hint="hint(2)" />
         </div>
         <div class="area">
           <!-- Filled by the engine; Vue must not render children here. -->
           <div ref="far" class="pictures flipped" />
-          <LockBadge v-if="isLocked(2)" :still="still" />
+          <LockBadge v-if="isLocked(2)" />
         </div>
       </section>
       <div class="middle">
-        <FoundSlots :total="level.differences.length" :found="state?.found.length ?? 0" :colors="foundColors" :still="settings.effectiveReduceMotion" />
+        <FoundSlots :total="level.differences.length" :found="state?.found.length ?? 0" :colors="foundColors" />
         <span v-if="showTime" class="chip time">{{ time }}</span>
         <button class="secondary pause" :disabled="!!result" :aria-label="$t('level.pause')" @click="pause">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1" fill="currentColor"/><rect x="14" y="5" width="4" height="14" rx="1" fill="currentColor"/></svg>
@@ -201,10 +200,10 @@ onBeforeUnmount(() => {
       <section class="half near" :class="{ locked: isLocked(1) }">
         <div class="area">
           <div ref="near" class="pictures" />
-          <LockBadge v-if="isLocked(1)" :still="still" />
+          <LockBadge v-if="isLocked(1)" />
         </div>
         <div v-if="state" class="bar">
-          <PlayerChip :player="player(1)" :avatar="setup.players[0].avatar" :locked="isLocked(1)" :still="still" :hint="rules.hints > 0" :hint-disabled="!canHint(1)" @hint="hint(1)" />
+          <PlayerChip :player="player(1)" :avatar="setup.players[0].avatar" :locked="isLocked(1)" :hint="rules.hints > 0" :hint-disabled="!canHint(1)" @hint="hint(1)" />
         </div>
       </section>
     </template>
@@ -215,21 +214,19 @@ onBeforeUnmount(() => {
           :player="player(1)"
           :avatar="setup.players[0].avatar"
           :locked="isLocked(1)"
-          :still="still"
           :active="rules.mode === 'hotseat' && state.currentTurn === 1"
           :hint="rules.mode === 'duel' && rules.hints > 0"
           :hint-disabled="!canHint(1)"
           @hint="hint(1)"
         />
         <span class="center">
-          <FoundSlots :total="level.differences.length" :found="state.found.length" :colors="foundColors" :still="settings.effectiveReduceMotion" />
+          <FoundSlots :total="level.differences.length" :found="state.found.length" :colors="foundColors" />
           <span v-if="showTime" class="chip time">{{ time }}</span>
         </span>
         <PlayerChip
           :player="player(2)"
           :avatar="setup.players[1].avatar"
           :locked="isLocked(2)"
-          :still="still"
           :active="rules.mode === 'hotseat' && state.currentTurn === 2"
           :hint="rules.mode === 'duel' && rules.hints > 0"
           :hint-disabled="!canHint(2)"
@@ -241,17 +238,17 @@ onBeforeUnmount(() => {
         <!-- Filled by the engine; Vue must not render children here. -->
         <div ref="near" class="pictures" />
         <template v-if="rules.mode === 'duel'">
-          <LockBadge v-if="isLocked(1)" class="side-1" :still="still" />
-          <LockBadge v-if="isLocked(2)" class="side-2" :still="still" />
+          <LockBadge v-if="isLocked(1)" class="side-1" />
+          <LockBadge v-if="isLocked(2)" class="side-2" />
           <p class="rotate-note">{{ $t('duo.rotate') }}</p>
         </template>
-        <LockBadge v-else-if="isLocked(1)" :label="$t('level.locked')" :still="still" />
+        <LockBadge v-else-if="isLocked(1)" :label="$t('level.locked')" />
         <!-- Hot-seat: the character of the player on turn, under their chip; keyed so it jumps in every turn. -->
         <PlayerAvatar
           v-if="rules.mode === 'hotseat' && state"
           :key="state.currentTurn"
           class="turn-badge"
-          :class="[`at-${state.currentTurn}`, { still }]"
+          :class="`at-${state.currentTurn}`"
           :style="{ '--player': player(state.currentTurn).color }"
           :avatar="setup.players[state.currentTurn - 1].avatar"
           :color="player(state.currentTurn).color"
@@ -281,7 +278,6 @@ onBeforeUnmount(() => {
       <!-- The dialog mounts anew every turn, so the character jumps in each time. -->
       <PlayerAvatar
         class="turn-avatar"
-        :class="{ still }"
         :style="{ '--player': player(handOver.playerId).color }"
         :avatar="setup.players[handOver.playerId - 1].avatar"
         :color="player(handOver.playerId).color"
@@ -547,11 +543,6 @@ onBeforeUnmount(() => {
 
 .turn-badge.at-2 {
   right: 16px;
-}
-
-.turn-avatar.still,
-.turn-badge.still {
-  animation: none;
 }
 
 @keyframes jump-in {

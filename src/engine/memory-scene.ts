@@ -44,8 +44,6 @@ export interface MemoryHandlers {
 }
 
 export interface MemoryOptions {
-  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
-  reduceMotion?: boolean
   /** Animation time multiplier (reduced motion, calm mode). */
   animationSpeed?: number
   /** Misses that end the round (default MAX_MISSES; ModeRules.memoryMaxMisses). */
@@ -94,7 +92,6 @@ export class MemoryScene {
       zoom: false,
       onSecret: (tap) => this.secret(tap),
       secretTaken: options.secretTaken,
-      reduceMotion: options.reduceMotion,
     })
     this.run([['show', level.memory.showSeconds * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)

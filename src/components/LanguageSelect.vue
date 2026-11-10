@@ -242,11 +242,4 @@ li[aria-selected='true'] {
   transform: scale(0.96) translateY(-4px);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .pop-enter-active,
-  .pop-leave-active,
-  .chevron {
-    transition: none;
-  }
-}
 </style>

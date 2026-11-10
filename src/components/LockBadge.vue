@@ -1,10 +1,10 @@
 <script setup lang="ts">
 // Pulsing padlock over a locked player's pictures (after a miss); decorative, taps pass through.
-defineProps<{ label?: string; still?: boolean }>()
+defineProps<{ label?: string }>()
 </script>
 
 <template>
-  <div class="lock-badge" :class="{ still }">
+  <div class="lock-badge">
     <span class="disc">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M7.5 10V7.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="currentColor" stroke-width="2.4" />
@@ -53,10 +53,6 @@ defineProps<{ label?: string; still?: boolean }>()
   background: var(--panel);
   font-size: 20px;
   font-weight: 600;
-}
-
-.still .disc {
-  animation: none;
 }
 
 @keyframes pop-in {

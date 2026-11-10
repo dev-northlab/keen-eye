@@ -1,11 +1,10 @@
 <script setup lang="ts">
 // The treasury's reward (docs/hidden-item-feature.md): the chest opens, gold shines out and the
-// player is congratulated. `still` (reduce motion) shows it open at once.
-defineProps<{ still?: boolean }>()
+// player is congratulated.
 </script>
 
 <template>
-  <div class="treasure" :class="{ still }">
+  <div class="treasure">
     <svg viewBox="0 0 160 120" aria-hidden="true">
       <ellipse class="glow" cx="80" cy="58" rx="62" ry="40" fill="#ffd166" fill-opacity="0.45" />
       <g class="rays" stroke="#ffd23f" stroke-width="4" stroke-linecap="round">
@@ -84,14 +83,4 @@ svg {
   }
 }
 
-.still .lid {
-  animation: none;
-  transform: translateY(-26px) rotate(-16deg) scaleY(0.7);
-}
-
-.still .glow,
-.still .rays,
-.still .congrats {
-  animation: none;
-}
 </style>

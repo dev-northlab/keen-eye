@@ -5,10 +5,8 @@ import { allLevels } from '../levels/index.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { isFreeLevel, usePurchaseStore } from '../stores/purchase.ts'
-import { useSettingsStore } from '../stores/settings.ts'
 
 const purchase = usePurchaseStore()
-const still = useSettingsStore().effectiveReduceMotion
 
 const paidLevels =
   allLevels.filter((l) => !isFreeLevel(l.id)).length + timeTravelLevels.filter((l) => !isFreeLevel(l.number)).length
@@ -39,7 +37,7 @@ async function restore() {
   <ModalDialog :title="$t('purchase.title')">
     <!-- A golden crown badge over turning rays, with twinkling stars round it. -->
     <template #icon>
-      <span class="badge" :class="{ still }">
+      <span class="badge">
         <svg class="rays" viewBox="0 0 100 100" aria-hidden="true">
           <path
             v-for="i in 12"
@@ -215,12 +213,6 @@ async function restore() {
   width: 13px;
   height: 13px;
   animation-delay: 1s;
-}
-
-.badge.still .rays,
-.badge.still .coin,
-.badge.still .spark {
-  animation: none;
 }
 
 @keyframes turn {

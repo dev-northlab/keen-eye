@@ -13,11 +13,9 @@ import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
-import { useSettingsStore } from '../stores/settings.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
-const settings = useSettingsStore()
 
 /** The open info dialog, if any. */
 const dialog = ref<'privacy' | 'contact' | null>(null)
@@ -54,7 +52,7 @@ function play() {
 </script>
 
 <template>
-  <main class="home" :class="{ still: settings.effectiveReduceMotion }">
+  <main class="home">
     <ScreenBackdrop theme="meadow" />
     <div class="corner">
       <SeasonSwitch />
@@ -303,7 +301,6 @@ button,
   transform: scale(0.94);
 }
 
-
 .info-body {
   display: grid;
   gap: 12px;
@@ -495,13 +492,6 @@ button {
     transform: scale(1.35);
     opacity: 0;
   }
-}
-
-/* "Reduce motion" (the setting, which follows the system's by default): no gleam or pulsing ring. */
-.still .play::after,
-.still .play-icon::before {
-  animation: none;
-  opacity: 0;
 }
 
 .play-icon svg {

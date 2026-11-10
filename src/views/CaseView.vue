@@ -385,10 +385,8 @@ h2 {
   line-height: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .star {
-    animation: pop 0.45s 0.2s backwards cubic-bezier(0.3, 1.6, 0.6, 1);
-  }
+.star {
+  animation: pop 0.45s 0.2s backwards cubic-bezier(0.3, 1.6, 0.6, 1);
 }
 
 @keyframes pop {
