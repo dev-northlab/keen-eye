@@ -3,6 +3,7 @@ import type { GameMode } from '../engine/rules.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { onBeforeUnmount, onMounted } from 'vue'
 import { playSfx } from '../services/audio.ts'
+import FireworksShow from './FireworksShow.vue'
 import ModalDialog from './ModalDialog.vue'
 import ShareButton from './ShareButton.vue'
 import StarRating from './StarRating.vue'
@@ -38,45 +39,7 @@ const confetti = Array.from({ length: 18 }, (_, i) => ({
   '--t': `${((i * 3) % 5) * 0.04}s`,
 }))
 
-/**
- * Fireworks round the card: each rocket rises to its place (percent of the screen) at `t` seconds, bursts there in
- * two colours, and the sparks drift down a little as they fade — the same every time.
- */
-const FIREWORK_COLORS = ['#ffd23f', '#ff5a5f', '#2fa8ff', '#3ec46d', '#ff6bb5', '#9b6bff', '#ff9f1c']
-// Round the card's edges and corners in both orientations, two waves over about four seconds.
-const BURSTS = [
-  { x: 20, y: 10, t: 0.1 },
-  { x: 80, y: 14, t: 0.4 },
-  { x: 50, y: 6, t: 0.75 },
-  { x: 12, y: 40, t: 1.05 },
-  { x: 88, y: 36, t: 1.3 },
-  { x: 22, y: 86, t: 1.6 },
-  { x: 78, y: 90, t: 1.9 },
-  { x: 35, y: 18, t: 2.2 },
-  { x: 66, y: 10, t: 2.5 },
-  { x: 10, y: 66, t: 2.8 },
-  { x: 90, y: 70, t: 3.1 },
-  { x: 50, y: 94, t: 3.4 },
-]
-/** A rocket's climb before it bursts (s). */
-const LAUNCH = 0.6
-const fireworks = BURSTS.map((b, i) => ({
-  style: {
-    '--x': `${b.x}%`,
-    '--y': `${b.y}%`,
-    '--t': `${b.t}s`,
-    '--c': FIREWORK_COLORS[i % FIREWORK_COLORS.length],
-    '--c2': FIREWORK_COLORS[(i + 3) % FIREWORK_COLORS.length],
-  },
-  sparks: Array.from({ length: 26 }, (_, j) => ({
-    '--a': `${(j * 360) / 26 + ((i * 7) % 15)}deg`,
-    '--r': `${100 + ((j * 17 + i * 5) % 70)}px`,
-    '--k': j % 2 ? 'var(--c)' : 'var(--c2)',
-  })),
-}))
-
 onMounted(() => {
-  if (!still) BURSTS.forEach((b, i) => timers.push(window.setTimeout(() => playSfx('firework', i), (b.t + LAUNCH) * 1000)))
   // The hero's win: three rising chimes with the confetti.
   if (props.portrait) {
     for (let i = 0; i < 3; i++) timers.push(window.setTimeout(() => playSfx('star', i), 250 + i * 200))
@@ -93,13 +56,7 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
     <!-- A glossy badge over the title: a golden cup (normal mode) or a green tick (calm), light rays turning behind
          it and confetti bursting out. "Tiny boy" has its hero's portrait instead, below. -->
     <template v-if="!still" #backdrop>
-      <div class="fireworks" aria-hidden="true">
-        <span v-for="(f, i) in fireworks" :key="i" class="firework" :style="f.style">
-          <span class="rocket" />
-          <span class="flash" />
-          <i v-for="(k, j) in f.sparks" :key="j" :style="k" />
-        </span>
-      </div>
+      <FireworksShow />
     </template>
     <template v-if="!portrait" #icon>
       <span class="rays" aria-hidden="true" />
@@ -218,112 +175,6 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
   from {
     opacity: 0;
     transform: translateY(14px);
-  }
-}
-
-/* Fireworks over the whole screen, the card too (on a phone held upright it fills most of it): a rocket rises,
-   flashes, and bursts into sparks that drift down. Each part waits for its rocket (`--t`) and starts hidden, so
-   nothing shows before it; taps go through. */
-.fireworks {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.firework {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: 0;
-  height: 0;
-  animation: drift 1.6s calc(var(--t) + 0.6s) ease-in forwards;
-}
-
-@keyframes drift {
-  to {
-    transform: translateY(28px);
-  }
-}
-
-.rocket {
-  position: absolute;
-  width: 5px;
-  height: 22px;
-  margin: -11px 0 0 -2.5px;
-  border-radius: 2px;
-  background: linear-gradient(#fff, var(--c) 40%, transparent);
-  opacity: 0;
-  animation: launch 0.6s var(--t) cubic-bezier(0.2, 0.7, 0.4, 1) forwards;
-}
-
-@keyframes launch {
-  0% {
-    opacity: 1;
-    transform: translateY(60vh);
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(0);
-  }
-}
-
-.flash {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  margin: -45px 0 0 -45px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff, var(--c) 35%, transparent 70%);
-  opacity: 0;
-  animation: flash 0.5s calc(var(--t) + 0.6s) ease-out forwards;
-}
-
-@keyframes flash {
-  0% {
-    opacity: 1;
-    transform: scale(0.2);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.8);
-  }
-}
-
-.firework i {
-  position: absolute;
-  width: 28px;
-  height: 5px;
-  margin-top: -2.5px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, transparent, var(--k) 60%, #fff);
-  box-shadow: 0 0 10px 2px var(--k);
-  transform-origin: 0 50%;
-  opacity: 0;
-  animation: spark 1.6s calc(var(--t) + 0.6s) cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
-}
-
-@keyframes spark {
-  0% {
-    opacity: 1;
-    transform: rotate(var(--a)) translateX(0) scaleX(0.3);
-  }
-  65% {
-    opacity: 1;
-  }
-  80% {
-    opacity: 0.4;
-  }
-  88% {
-    opacity: 0.9;
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(var(--a)) translateX(var(--r)) scaleX(1);
   }
 }
 
