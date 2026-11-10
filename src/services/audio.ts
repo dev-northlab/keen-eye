@@ -8,7 +8,7 @@ import tinyBoyUrl from '../../assets/music/tiny_boy.m4a'
 // Browsers allow audio only after a user gesture, so playback is (re)started on the first touch/key.
 
 export type Track = 'menu' | 'level' | 'calm' | 'complete' | 'tinyBoy'
-export type Sfx = 'found' | 'miss' | 'hint' | 'star' | 'click' | 'secret'
+export type Sfx = 'found' | 'miss' | 'hint' | 'star' | 'click' | 'secret' | 'firework'
 
 const TRACKS: Record<Track, { url: string; loop: boolean }> = {
   menu: { url: menuUrl, loop: true },
@@ -106,7 +106,26 @@ function tone(c: AudioContext, freq: number, start: number, dur: number, type: O
   osc.stop(t + dur + 0.02)
 }
 
-/** `index` raises the pitch of consecutive stars. */
+/** A burst of noise through a band-pass filter: the pop of a firework. */
+function pop(c: AudioContext, start: number, dur: number, freq: number, volume: number): void {
+  const buffer = c.createBuffer(1, Math.ceil(c.sampleRate * dur), c.sampleRate)
+  const data = buffer.getChannelData(0)
+  for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1
+  const noise = c.createBufferSource()
+  noise.buffer = buffer
+  const filter = c.createBiquadFilter()
+  filter.type = 'bandpass'
+  filter.frequency.value = freq
+  filter.Q.value = 0.8
+  const gain = c.createGain()
+  const t = c.currentTime + start
+  gain.gain.setValueAtTime(volume, t)
+  gain.gain.exponentialRampToValueAtTime(0.0001, t + dur)
+  noise.connect(filter).connect(gain).connect(c.destination)
+  noise.start(t)
+}
+
+/** `index` raises the pitch of consecutive stars and varies the fireworks. */
 export function playSfx(name: Sfx, index = 0): void {
   if (sfxVolume === 0) return
   const c = audioContext()
@@ -133,6 +152,11 @@ export function playSfx(name: Sfx, index = 0): void {
     // The hidden key: a rising sparkling arpeggio.
     case 'secret':
       ;[784, 988, 1175, 1568, 1976].forEach((f, i) => tone(c, f, i * 0.06, 0.4, 'triangle', v * 0.7))
+      break
+    // A firework of the result dialog: a soft pop, then a few high sparkles.
+    case 'firework':
+      pop(c, 0, soft ? 0.25 : 0.35, 500 + (index % 3) * 180, v * (soft ? 0.6 : 1.1))
+      ;[2093, 2637, 3136].forEach((f, i) => tone(c, f * (1 + (index % 4) * 0.06), 0.08 + i * 0.05, 0.12, 'sine', v * 0.18))
       break
   }
 }
