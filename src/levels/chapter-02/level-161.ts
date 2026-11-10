@@ -189,7 +189,7 @@ export default svgLevel({
       person(606, 496, '#8338ec', true, '#f2d29b', '#c0392b') +
       diff(708, 474, 22, dogTail(690, 494), anim({ type: 'sway', angle: 25, pivot: [706, 478], period: 0.7 }, dogTail(690, 494))) +
       dogBody(690, 494) + bin(772, 494) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bollard', 446, 448],
         ['cone', 262, 440],

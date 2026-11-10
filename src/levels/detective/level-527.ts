@@ -82,7 +82,7 @@ export default detectiveLevel({
     `<rect x="580" y="352" width="210" height="12" rx="3" fill="#a8743f"/><path d="M596 364V400M774 364V400" stroke="#6b4a2b" stroke-width="8"/>` +
     clue('snowOnBench', 620, 344, 26, '', `<path d="M602 352Q600 336 614 338Q620 328 630 336Q642 336 640 352Z" fill="#f4f8fc" stroke="#c7d8e8" stroke-width="1.4"/><ellipse cx="636" cy="358" rx="8" ry="2.4" fill="#bfe6ff"/>`) +
     clue('sledTipped', 700, 432, 58, sled(true), sled(false)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bucket', 38, 486],
       ['antlers', 202, 127],

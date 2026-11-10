@@ -68,7 +68,7 @@ export default svgLevel({
       `<path d="M706 412L764 446" stroke="#3d4a55" stroke-width="3"/><path d="M760 440l8 10M768 440l-8 10" stroke="#3d4a55" stroke-width="3"/>` +
       diff(706, 404, 22, `<rect x="696" y="396" width="20" height="16" rx="3" fill="#e63946"/>`, `<rect x="696" y="396" width="20" height="16" rx="3" fill="#2b2b2b"/>`) +
       diff(560, 402, 22, `<path d="M544 412L548 396H572L576 412Z" fill="#c9a26b"/><path d="M548 404H574" stroke="#8a6a44" stroke-width="2"/><circle cx="554" cy="395" r="4" fill="#8d99ae"/><circle cx="564" cy="394" r="4" fill="#8d99ae"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 520, 120],
         ['fish', 360, 460],

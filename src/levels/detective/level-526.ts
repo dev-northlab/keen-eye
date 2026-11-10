@@ -81,7 +81,7 @@ export default detectiveLevel({
     `<rect x="636" y="326" width="84" height="30" rx="8" fill="#4a7aa8"/><path d="M632 370v18M724 370v18" stroke="#5e3b1a" stroke-width="6"/>` +
     `<rect x="740" y="300" width="56" height="8" rx="2" fill="#6b4a2b"/><path d="M768 308V390" stroke="#6b4a2b" stroke-width="6"/>` +
     clue('cocoaSpilled', 766, 292, 28, mug(true), mug(false)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['scarfHook', 41, 84, '#7b5ea7'],
       ['cuckooClock', 202, 283],

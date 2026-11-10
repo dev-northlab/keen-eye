@@ -64,7 +64,7 @@ export default detectiveLevel({
     clue('lunchBox', 705, 290, 30, '', lunchBox(705, 306)) +
     clue('pigeonsGone', 591, 437, 38, pigeon(574, 452) + pigeon(608, 446), '') +
     anim({ type: 'path', points: [[0, 0], [50, -24], [100, 0], [50, 16]], period: 8 }, `<path d="M300 200l-9 -7v14Zm0 0l9 -7v14Z" fill="#ba68c8"/>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['mailbox', 43, 358],
       ['bucket', 68, 486],

@@ -69,7 +69,7 @@ export default svgLevel({
       diff(620, 111, 34, kite, anim({ type: 'sway', angle: 8, pivot: [620, 124], period: 2.2 }, kite)) +
       dog(740, 482, '#c48a5a') +
       diff(770, 420, 22, `<ellipse cx="770" cy="420" rx="12" ry="4" fill="#ff006e"/>`, `<ellipse cx="770" cy="420" rx="12" ry="4" fill="#3a86ff"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 400, 110],
         ['buoy', 460, 236],

@@ -91,7 +91,7 @@ export default svgLevel({
       bottleMessage(300, 452) +
       coconut(745, 262) +
       lifeRing(600, 312) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bottle', 489, 409],
         ['buoy', 714, 343],

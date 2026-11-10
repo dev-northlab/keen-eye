@@ -74,7 +74,7 @@ export default svgLevel({
       fuelCanister(500, 474) +
       probe(420, 270) +
       beacon(780, 472) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['toolbox', 192, 323],
         ['helmet', 741, 313],

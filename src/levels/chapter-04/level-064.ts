@@ -67,7 +67,7 @@ export default svgLevel({
       starfish(675, 340) +
       bucket(720, 338) +
       shell(420, 358) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 274, 446],
         ['fish', 458, 388, '#9ef01a'],

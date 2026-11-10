@@ -66,7 +66,7 @@ export default detectiveLevel({
     clue('snowmanNose', 516, 356, 20, `<path d="M506 353L528 357L506 360Z" fill="#f2994a"/>`, '') +
     clue('skiTracks', 408, 425, 58, '', `<path d="M356 446Q400 430 460 418M356 432Q400 416 460 404" stroke="#a9bfd4" stroke-width="3" fill="none"/>`) +
     clue('yetiPrints', 680, 425, 52, '', yetiPrint(646, 438) + yetiPrint(684, 420) + yetiPrint(716, 438)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bench', 89, 467],
       ['windmill', 215, 454],

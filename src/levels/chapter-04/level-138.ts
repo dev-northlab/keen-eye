@@ -88,7 +88,7 @@ export default svgLevel({
       snorkelMask(580, 362) +
       seaUrchin(680, 464) +
       sunglasses(150, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crab', 742, 239],
         ['starfish', 394, 324],

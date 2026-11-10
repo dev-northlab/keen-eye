@@ -120,7 +120,7 @@ export default svgLevel({
       popcornCart(716, 494) + person(660, 496, '#ff006e', false, '#c68b5e', '#2b2b2b') +
       `<path d="M744 424Q750 410 750 400" stroke="#777" stroke-width="1.5" fill="none"/>` +
       diff(750, 388, 22, `<ellipse cx="750" cy="386" rx="11" ry="14" fill="#8ac926"/><path d="M747 399h6l-3 4Z" fill="#8ac926"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 300, 484, '#ff6b8b'],
         ['stones', 470, 486],

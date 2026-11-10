@@ -64,7 +64,7 @@ export default svgLevel({
       shoppingBag(442, 352) +
       scooter(783, 352) +
       manhole(620, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pigeon', 675, 474],
         ['pigeon', 546, 469],

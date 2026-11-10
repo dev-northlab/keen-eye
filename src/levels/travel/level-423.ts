@@ -108,7 +108,7 @@ export default travelLevel({
       diff(88, 444, 22, flowers(80, 496, '#b04fbf'), flowers(80, 496, '#ffffff')) +
       merlion(724, 470) +
       diff(654, 390, 62, ripple(0.8), ripple(2), 'spout') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['buoy', 536, 364, '#ffd23f'],
         ['bottle', 168, 412],

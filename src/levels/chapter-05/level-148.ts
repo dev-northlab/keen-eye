@@ -84,7 +84,7 @@ export default svgLevel({
       fuelCanister(650, 470) +
       probe(560, 80) +
       toolbox(775, 474) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 162, 376],
         ['alienPlant', 526, 458],

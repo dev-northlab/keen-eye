@@ -90,7 +90,7 @@ export default svgLevel({
       flowerPot(40, 400) +
       stump(650, 450) +
       butterfly(240, 410) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 707, 466, '#ff6b8b'],
         ['bee', 152, 456],

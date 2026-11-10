@@ -86,7 +86,7 @@ export default svgLevel({
       bird(530, 410) +
       butterfly(330, 290) +
       coffeeCup(505, 424) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['balloon', 369, 164, '#3a86ff'],
         ['birds', 262, 62],

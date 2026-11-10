@@ -76,7 +76,7 @@ export default svgLevel({
       pot(80, 480, '#3a86ff') +
       pot(330, 492) +
       bin(780, 490) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 727, 62],
       ]) +

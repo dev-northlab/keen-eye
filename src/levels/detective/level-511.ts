@@ -60,7 +60,7 @@ export default detectiveLevel({
     clue('mapDropped', 150, 348, 26, '', museumMap(150, 348)) +
     clue('shards', 470, 436, 34, '', shards(470, 436)) +
     clue('sneakerPrints', 640, 438, 36, '', sneaker(630, 446) + sneaker(650, 432)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['newspapers', 43, 478],
       ['roundMirror', 295, 240],

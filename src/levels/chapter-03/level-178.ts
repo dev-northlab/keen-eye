@@ -85,7 +85,7 @@ export default svgLevel({
       // Hand car on the siding
       `<path d="M0 470H240" stroke="#3d4a55" stroke-width="3"/>` + handCar(130, 470) +
       diff(130, 426, 30, anim({ type: 'sway', angle: 16, pivot: [130, 426], period: 1.4 }, lever(130, 470)), lever(130, 470)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 220, 340],
         ['pineCone', 600, 330],

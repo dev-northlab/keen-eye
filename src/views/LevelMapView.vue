@@ -45,7 +45,6 @@ const worlds = {
   total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
   done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
-  hard: () => levels.reduce((s, l) => s + progress.hardStars(l.id), 0),
 }
 
 function category(chapter: Chapter) {
@@ -55,7 +54,6 @@ function category(chapter: Chapter) {
     total: chapterSize(chapter),
     done: () => own.filter((l) => progress.isCompleted(l.id)).length,
     stars: () => own.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
-    hard: () => own.reduce((s, l) => s + progress.hardStars(l.id), 0),
   }
 }
 /** Category banners in order: the chapter (its id names the banner's class and picture), task text and screen. */
@@ -90,7 +88,6 @@ const timeTravel = {
   total: timeTravelLevels.length,
   done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
   stars: () => timeTravelLevels.reduce((s, l) => s + (progress.timeTravel[l.id]?.stars ?? 0), 0),
-  hard: () => timeTravelLevels.reduce((s, l) => s + progress.hardStars(l.id), 0),
 }
 </script>
 
@@ -109,7 +106,6 @@ const timeTravel = {
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/worlds.webp`" alt="" /></template>
             {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
-            <template v-if="worlds.hard() > 0"> · <span class="star-hard">★</span> {{ worlds.hard() }}</template>
             <template #end><LevelId :id="worlds.ids" /><span class="key-space" aria-hidden="true" /></template>
           </PhotoBanner>
           <!-- Golden once the key of every world is found. -->
@@ -146,7 +142,6 @@ const timeTravel = {
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
             {{ $t('map.progress', { done: c.totals.done(), total: c.totals.total }) }} · ★ {{ c.totals.stars() }}
-            <template v-if="c.totals.hard() > 0"> · <span class="star-hard">★</span> {{ c.totals.hard() }}</template>
             <template #end><LevelId :id="c.totals.ids" /><span class="key-space" aria-hidden="true" /></template>
           </PhotoBanner>
           <KeyBadge class="key" :found="progress.hasKey(c.chapter.id)" :text="progress.hasKey(c.chapter.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
@@ -161,7 +156,6 @@ const timeTravel = {
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/eras.webp`" alt="" /></template>
             {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
-            <template v-if="timeTravel.hard() > 0"> · <span class="star-hard">★</span> {{ timeTravel.hard() }}</template>
             <template #end><LevelId :id="timeTravel.ids" /></template>
           </PhotoBanner>
         </li>

@@ -74,7 +74,7 @@ export default detectiveLevel({
     `<ellipse cx="690" cy="448" rx="86" ry="22" fill="none" stroke="#8a8f99" stroke-width="4" stroke-dasharray="3 5"/>` +
     `<rect x="700" y="456" width="30" height="16" rx="2" fill="#3a6ea5"/><g fill="#2b2b38"><circle cx="706" cy="474" r="4"/><circle cx="724" cy="474" r="4"/></g>` +
     clue('toyTrainOff', 642, 444, 38, engine(), `<g transform="rotate(-70 642 444)">${engine()}</g>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['roundMirror', 40, 55],
       ['pouf', 63, 464, '#e5484d'],

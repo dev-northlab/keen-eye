@@ -313,7 +313,7 @@ input[type='checkbox']:focus-visible {
 }
 
 .danger {
-  color: var(--mode-hard);
+  color: var(--danger);
 }
 
 input.code {

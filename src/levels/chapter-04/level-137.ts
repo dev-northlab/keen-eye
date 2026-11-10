@@ -79,7 +79,7 @@ export default svgLevel({
       seahorse(170, 360) +
       bottleMessage(660, 480) +
       anchor(370, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['jellyfish', 161, 242],
         ['fish', 121, 52, '#ff6b8b'],

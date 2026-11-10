@@ -1,6 +1,5 @@
 // Art studio: a painter's corner among the ten hardest of "memory" (hidden until released, levels/upcoming.ts). An easel
 // with a landscape, a palette, a jar of brushes, paint tubes, a plaster bust in a beret and a paint bucket on the floor.
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { bucket } from '../shapes.ts'
 import { around, big, books, cube, painting, pottedPlant, room, rug, slipperPair, sticker, table, wallClock, windowPane } from './shapes.ts'
@@ -13,7 +12,7 @@ export default memoryLevel({
   id: 333,
   title: 'memoryArtStudio',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(530, '#fdf0d5', '#b08968') +
     windowPane(30, 60, 150, 170) +
     // The easel: the sun's color, the tree on the canvas
@@ -47,12 +46,5 @@ export default memoryLevel({
     big(450, 724, 1, books(0, 0, ['#3a86ff', '#ffd23f'])) +
     cube(40, 724, 24, '#e63946') +
     slipperPair(120, 700, '#3a86ff') +
-    sticker(460, 360, '#ff6b8b') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 210, 740, '#ffd23f'],
-      ['books', 470, 600, '#8338ec'],
-      ['sticker', 270, 110, '#3a86ff'],
-      ['frame', 110, 300, '#c9953f'],
-    ]),
+    sticker(460, 360, '#ff6b8b'),
 })

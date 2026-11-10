@@ -89,7 +89,7 @@ export default travelLevel({
       diff(700, 410, 46, rock(1.4), rock(3), 'yacht') +
       post(46, 440) +
       diff(46, 425, 24, kookaburra(46, 440), '') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bottle', 120, 452],
         ['buoy', 452, 368, '#e63946'],

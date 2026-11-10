@@ -78,7 +78,7 @@ export default svgLevel({
       butterfly(720, 340) +
       skateboard(705, 300) +
       coffeeCup(125, 390) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 560, 423, '#ff6b8b'],
         ['fish', 483, 469, '#4dabf7'],

@@ -52,7 +52,7 @@ export default svgLevel({
       satellite(690, 230) +
       asteroid(470, 470, 0.5) +
       wrench(110, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['asteroid', 336, 112],
         ['ufo', 695, 164],

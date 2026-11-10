@@ -87,7 +87,7 @@ export default svgLevel({
       person(232, 488, '#2a9d8f', false, '#c68b5e', '#2b2b2b') + `<rect x="244" y="446" width="14" height="10" rx="3" fill="#ffd23f"/>` +
       diff(234, 426, 22, cap(232, 488, '#e63946'), cap(232, 488, '#ffffff')) +
       `<ellipse cx="520" cy="470" rx="40" ry="8" fill="#6b9ac4" fill-opacity="0.6"/>` +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cone', 520, 410],
         ['bin', 30, 330],

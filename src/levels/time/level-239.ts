@@ -68,7 +68,7 @@ export default svgLevel({
       ropeCoil(420, 482) +
       bird(60, 96) +
       bird(760, 118, '#e63946') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 230, 190],
       ]) +

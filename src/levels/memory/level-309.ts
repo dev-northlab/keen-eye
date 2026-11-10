@@ -1,5 +1,4 @@
 import { clam, coral, fish, jellyfish, octopus, seaUrchin, seaweed, shell, starfish, turtle } from '../chapter-04/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big, bubble } from './shapes.ts'
 
@@ -19,7 +18,7 @@ export default memoryLevel({
   id: 309,
   title: 'memoryReef',
   showSeconds: 4,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     `<rect width="500" height="750" fill="#1f8fbf"/><rect width="500" height="140" fill="#3ba7cc"/>` +
     `<path d="M0 640Q125 610 250 630T500 620V750H0Z" fill="#f4dca4"/>` +
     big(80, 200, 2, jellyfish(0, 0)) +
@@ -50,11 +49,5 @@ export default memoryLevel({
     seaUrchin(300, 745) +
     clam(470, 745) +
     shell(20, 745) +
-    big(150, 600, 2, seaweed(0, 0)) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['jellyfish', 250, 520],
-      ['seahorse', 140, 110],
-      ['starfish', 350, 560],
-    ]),
+    big(150, 600, 2, seaweed(0, 0)),
 })

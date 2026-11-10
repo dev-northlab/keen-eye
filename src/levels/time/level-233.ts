@@ -66,7 +66,7 @@ export default svgLevel({
       pigeon(240, 486) +
       cone(320, 488) +
       flowerBox(130, 400, '#ff6b8b') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 510, 62],
       ]) +

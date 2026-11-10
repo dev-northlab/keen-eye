@@ -49,7 +49,7 @@ export default svgLevel({
       birdHouse(770, 470) +
       grass(40, 490) +
       grass(400, 490) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 662, 199],
       ]) +

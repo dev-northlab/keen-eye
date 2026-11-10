@@ -107,7 +107,7 @@ export default travelLevel({
       diff(334, 455, 42, dress(330, 488, '#c9302c'), dress(330, 488, '#8338ec')) +
       player(680, 490) +
       diff(672, 437, 20, bellows(676, 490, '#c9302c'), bellows(676, 490, '#3fa46f')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['suitcase', 184, 468, '#3a86ff'],
         ['bin', 588, 468, '#2a9d8f'],

@@ -63,7 +63,7 @@ export default detectiveLevel({
     clue('stoolTipped', 575, 370, 46, stool(580, 400), stoolDown(578, 400)) +
     clue('pawPrints', 209, 444, 40, '', pawTrail([[186, 452], [208, 432], [232, 450]])) +
     clue('creamDrops', 690, 386, 30, '', creamDrops(690, 386)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['butterflyFrame', 40, 63],
       ['teddy', 125, 485, '#c98a6a'],

@@ -62,7 +62,7 @@ export default svgLevel({
       mushroom(30, 402) +
       pumpkin(640, 484) +
       cat(776, 482) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 453, 399],
         ['chick', 88, 365],

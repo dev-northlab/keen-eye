@@ -51,7 +51,7 @@ export default svgLevel({
       helmet(765, 250) +
       toolbox(60, 225) +
       fuelCanister(225, 335) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 66, 348],
         ['sparkle', 487, 175],

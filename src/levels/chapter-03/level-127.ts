@@ -95,7 +95,7 @@ export default svgLevel({
       trailSign(310, 345) +
       stones(620, 482) +
       flakes +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bird', 378, 298],
         ['pineCone', 617, 429],

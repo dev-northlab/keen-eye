@@ -7,7 +7,6 @@ import { isUpcoming } from '../levels/upcoming.ts'
 import { loadJson, remove, saveJson } from '../services/storage.ts'
 import {
   parseCases,
-  parseHard,
   parseKeys,
   parseLevels,
   parseTimeTravel,
@@ -27,22 +26,19 @@ export const useProgressStore = defineStore('progress', () => {
   const solvedCases = ref<string[]>([])
   /** Chapters whose hidden golden key the player has found (docs/hidden-item-feature.md). */
   const keys = ref<string[]>([])
-  /** Best red stars of hard mode by level id, shown next to the normal mode's (yellow) stars. */
-  const hard = ref<Record<string, Stars>>({})
   /** Developer tools checkbox: every level is playable, ignoring order and the purchase (only in developer mode). */
   const devOpenAll = ref(false)
   const openAll = computed(() => devOpenAll.value && useSettingsStore().developer)
 
   const save = () =>
-    saveJson(KEY, { levels: records.value, timeTravel: timeTravel.value, cases: solvedCases.value, keys: keys.value, hard: hard.value })
+    saveJson(KEY, { levels: records.value, timeTravel: timeTravel.value, cases: solvedCases.value, keys: keys.value })
 
   async function load() {
-    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; timeTravel?: unknown; cases?: unknown; keys?: unknown; hard?: unknown }
+    const raw = ((await loadJson(KEY)) ?? {}) as { levels?: unknown; timeTravel?: unknown; cases?: unknown; keys?: unknown }
     records.value = parseLevels(raw.levels)
     timeTravel.value = parseTimeTravel(raw.timeTravel)
     solvedCases.value = parseCases(raw.cases)
     keys.value = parseKeys(raw.keys)
-    hard.value = parseHard(raw.hard)
     devOpenAll.value = (await loadJson(DEV_OPEN_ALL_KEY)) === true
   }
 
@@ -103,27 +99,12 @@ export const useProgressStore = defineStore('progress', () => {
     await save()
   }
 
-  /**
-   * Hard mode: the level is passed — completed in `map` (without yellow stars, like calm mode, if it was not)
-   * and its best red stars kept.
-   */
-  async function recordHard(map: Record<string | number, LevelRecord>, id: string | number, stars: Stars) {
-    map[id] ??= { stars: 0, bestTimeSec: null }
-    hard.value[id] = Math.max(hard.value[id] ?? 0, stars) as Stars
-    await save()
-  }
-
-  /** Best red stars of level `id`; 0 = not passed in hard mode. */
-  const hardStars = (id: number | string): Stars | 0 => hard.value[id] ?? 0
-
   const recordResult = (id: number, result: LevelResult) => record(records.value, id, result)
   const recordCalmCompletion = (id: number) => recordCalm(records.value, id)
-  const recordHardPass = (id: number, stars: Stars) => recordHard(records.value, id, stars)
 
   /** A finished "find the odd one out" level; `null` = calm mode (no stars or time). */
   const recordTimeTravel = (id: string, result: LevelResult | null) =>
     result ? record(timeTravel.value, id, result) : recordCalm(timeTravel.value, id)
-  const recordTimeTravelHard = (id: string, stars: Stars) => recordHard(timeTravel.value, id, stars)
 
   const isCaseSolved = (id: string) => solvedCases.value.includes(id)
 
@@ -158,7 +139,6 @@ export const useProgressStore = defineStore('progress', () => {
     timeTravel.value = {}
     solvedCases.value = []
     keys.value = []
-    hard.value = {}
     await remove(KEY)
   }
 
@@ -167,7 +147,6 @@ export const useProgressStore = defineStore('progress', () => {
     timeTravel,
     solvedCases,
     keys,
-    hard,
     devOpenAll,
     load,
     isCompleted,
@@ -178,9 +157,6 @@ export const useProgressStore = defineStore('progress', () => {
     recordResult,
     recordCalmCompletion,
     recordTimeTravel,
-    recordHardPass,
-    recordTimeTravelHard,
-    hardStars,
     isCaseSolved,
     solveCase,
     hasKey,

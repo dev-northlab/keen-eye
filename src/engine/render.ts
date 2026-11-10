@@ -36,7 +36,7 @@ function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, 
  * `transform` mirrors or turns the content inside the svg (picture B of late levels, the far player's copy
  * in a face-to-face duel); marks are drawn in scene coordinates inside it, so they turn along. The viewBox
  * (zoom) is in shown coordinates, so the board turns tap points back itself. `extras`: with the extra
- * objects of hard mode (`Level.extras`).
+ * objects of normal mode (`Level.extras`).
  */
 export function createPicture(level: Level, variant: 0 | 1, transform: PictureTransform = 'none', extras = false): Picture {
   const { w, h } = level.viewBox

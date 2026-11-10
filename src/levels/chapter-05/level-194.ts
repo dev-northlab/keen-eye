@@ -58,7 +58,7 @@ export default svgLevel({
       // Tide pool and its glowing fish
       `<ellipse cx="740" cy="446" rx="40" ry="14" fill="#7bdff2"/><ellipse cx="740" cy="446" rx="40" ry="14" fill="none" stroke="#e9b872" stroke-width="4"/>` +
       diff(740, 446, 22, anim({ type: 'bob', dx: 8, dy: 0, period: 1.6 }, glowFish), glowFish) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['planet', 560, 110, '#7bdff2'],
         ['sparkle', 360, 60],

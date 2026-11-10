@@ -75,7 +75,7 @@ export default detectiveLevel({
     door(660, 170, 100, 210, '#8e6bbf') +
     anim({ type: 'sway', angle: 14, pivot: [710, 142], period: 1.8 }, `<path d="M710 142V152" stroke="#8a6a3a" stroke-width="2"/><path d="M700 166q0 -14 10 -14t10 14Z" fill="#f2c14e"/>`) +
     clue('backpack', 620, 376, 34, '', backpack(620, 400)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['wateringCan', 43, 472, '#4c9a52'],
       ['photoOval', 353, 56],

@@ -105,7 +105,7 @@ export default svgLevel({
       bike(130, 304, '#ffb703') +
       bollard(345, 303) +
       lifeRing(120, 335) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 546, 32],
         ['sparkle', 579, 345],

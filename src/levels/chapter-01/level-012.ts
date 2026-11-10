@@ -79,7 +79,7 @@ export default svgLevel({
       mushroom(360, 470) +
       wheelbarrow(770, 470) +
       stones(505, 475) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 496, 447, '#ff9f43'],
         ['bee', 169, 412],

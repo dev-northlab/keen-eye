@@ -53,7 +53,7 @@ export default svgLevel({
       wrench(320, 422) +
       toolbox(540, 432) +
       beacon(770, 320) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['helmet', 215, 480],
         ['toolbox', 58, 371],

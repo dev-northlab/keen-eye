@@ -110,10 +110,6 @@
     "animPause": "Arrêter le mouvement",
     "animPlay": "Mouvement",
     "calmDone": "Mode calme — sans étoiles",
-    "failed": "Trop d’erreurs",
-    "failedHint": "En mode difficile, le niveau s’arrête à l’erreur n° {n}",
-    "hardDone": "Réussi en difficile !",
-    "playHard": "Jouer en difficile",
     "transformB": {
       "mirror-x": "Miroir",
       "rotate-180": "À l’envers"
@@ -597,10 +593,7 @@
     "normal": "Normal",
     "calm": "Calme",
     "calmHint": "Sans chrono, erreurs ni étoiles",
-    "normalHint": "Chrono, 1 indice, étoiles pour la vitesse et la précision",
-    "hard": "Difficile",
-    "hardHint": "Pas d'indices, une seule erreur permise, étoiles rouges",
-    "hardStars": "Difficile : {n}/3"
+    "normalHint": "Chrono, 1 indice, étoiles pour la vitesse et la précision"
   },
   "purchase": {
     "title": "Jeu complet",

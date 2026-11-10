@@ -91,7 +91,7 @@ export default svgLevel({
       person(430, 492, '#8338ec', false, '#c68b5e', '#2b2b2b') + person(530, 492, '#ffb703', true) +
       diff(590, 400, 22, cat(590, 412, '#6c757d'), '') +
       telescope(690, 470, '#ffd23f') + diff(690, 428, 22, `<rect x="680" y="424" width="24" height="16" rx="5" fill="#3a86ff" transform="rotate(-14 690 432)"/>`, `<rect x="680" y="424" width="24" height="16" rx="5" fill="#e63946" transform="rotate(-14 690 432)"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pigeon', 760, 470],
         ['flowerBox', 380, 404, '#ff006e'],

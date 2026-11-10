@@ -1,4 +1,3 @@
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, backpack, big, blackboard, books, cube, fruit, glassJar, globe, painting, pottedPlant, room, schoolDesk, shelf, sticker, wallClock } from './shapes.ts'
 import { bin } from '../chapter-02/shapes.ts'
@@ -12,7 +11,7 @@ export default memoryLevel({
   id: 312,
   title: 'memoryClassroom',
   showSeconds: 3,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(440, '#f6efd9', '#c98f5a') +
     blackboard(70, 30, 360, 170) +
     chalk('M274 130a26 26 0 1 0 52 0a26 26 0 1 0 -52 0M300 90v-12M300 182v-12M260 130h-12M352 130h-12M272 102l-8 -8M328 158l8 8M328 102l8 -8M272 158l-8 8') +
@@ -44,12 +43,5 @@ export default memoryLevel({
     big(110, 720, 1.4, bin(0, 0, '#3a86ff')) +
     backpack(80, 600, '#e63946') +
     big(200, 720, 0.6, books(0, 0, ['#8338ec', '#ffd23f'])) +
-    pottedPlant(440, 745) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['ball', 300, 720, '#ffb703'],
-      ['cube', 340, 650, '#e63946'],
-      ['slippers', 60, 470, '#ff6b8b'],
-      ['frame', 28, 120, '#3fa46f'],
-    ]),
+    pottedPlant(440, 745),
 })

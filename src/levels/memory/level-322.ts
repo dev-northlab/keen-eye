@@ -1,5 +1,4 @@
 import { star } from '../chapter-05/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud } from '../shapes.ts'
 import { around, big, cube, daySky, ground } from './shapes.ts'
@@ -33,7 +32,7 @@ export default memoryLevel({
   id: 322,
   title: 'memoryCircus',
   showSeconds: 4,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(420) +
     big(90, 60, 0.9, cloud(0, 0)) +
     big(420, 60, 1, cloud(0, 0)) +
@@ -103,13 +102,5 @@ export default memoryLevel({
       ...around(194, 669, 306, 701),
       '',
       at(-170, 250, `<rect x="380" y="431" width="80" height="8" rx="3" fill="#5c677d"/><circle cx="380" cy="435" r="16" fill="#3d3d3d"/><circle cx="460" cy="435" r="16" fill="#3d3d3d"/>`),
-    ) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['bee', 20, 440],
-      ['flower', 190, 432, '#ff6b8b'],
-      ['stones', 255, 425],
-      ['ladybug', 20, 625],
-      ['cloud', 60, 165],
-    ]),
+    ),
 })

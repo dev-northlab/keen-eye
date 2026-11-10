@@ -80,7 +80,7 @@ export default svgLevel({
       trailSign(400, 296) +
       pineCone(600, 302) +
       bluebells(165, 300) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['duck', 281, 415],
         ['frog', 695, 384],

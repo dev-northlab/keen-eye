@@ -80,7 +80,7 @@ export default svgLevel({
     time('', snowCap(188, 478, 24)) +
     time(butterfly(390, 340, '#ff6b8b'), '') +
     time(grass(150, 490) + stones(500, 495), '') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 433, 166],
       ['birds', 73, 217],

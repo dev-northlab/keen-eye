@@ -90,7 +90,7 @@ export default svgLevel({
       towTruck(20, 494) +
       diff(40, 432, 22, `<path d="M42 418V438" stroke="#3d4a55" stroke-width="2"/><path d="M42 438a6 6 0 1 1 -6 6" stroke="#3d4a55" stroke-width="3" fill="none"/>`, '') +
       diff(211, 418, 22, beacon, anim({ type: 'blink', duty: 0.5, period: 0.7 }, beacon)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cone', 340, 490],
         ['coffeeCup', 296, 490],

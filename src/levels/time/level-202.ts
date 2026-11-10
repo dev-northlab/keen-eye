@@ -64,7 +64,7 @@ export default svgLevel({
       bollard(520, 492) +
       bollard(600, 492) +
       bin(700, 492, '#e07a5f') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 202, 58],
         ['birds', 699, 191],

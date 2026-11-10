@@ -69,7 +69,7 @@ export default svgLevel({
       rocket(150, 345, '#f1f1f1', '#8ac926', 0.35) +
       satellite(700, 330) +
       helmet(320, 460) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['planet', 51, 321, '#ff6b8b'],
         ['asteroid', 287, 99],

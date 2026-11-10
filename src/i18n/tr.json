@@ -110,10 +110,6 @@
     "animPause": "Hareketi durdur",
     "animPlay": "Hareket",
     "calmDone": "Sakin mod — yıldız yok",
-    "failed": "Çok fazla hata",
-    "failedHint": "Zor modda bölüm {n}. hatada biter",
-    "hardDone": "Zor modda geçildi!",
-    "playHard": "Zor modda oyna",
     "transformB": {
       "mirror-x": "Ayna",
       "rotate-180": "Ters"
@@ -597,10 +593,7 @@
     "normal": "Normal",
     "calm": "Sakin",
     "calmHint": "Süre, hata ve yıldız yok",
-    "normalHint": "Süre, 1 ipucu, hız ve doğruluk için yıldızlar",
-    "hard": "Zor",
-    "hardHint": "İpucu yok, yalnızca bir hata hakkı, kırmızı yıldızlar",
-    "hardStars": "Zor mod: {n}/3"
+    "normalHint": "Süre, 1 ipucu, hız ve doğruluk için yıldızlar"
   },
   "purchase": {
     "title": "Tam sürüm",

@@ -50,16 +50,11 @@ const settingsOpen = ref(false)
 const mode = ref<GameMode>('normal')
 const rules = computed(() => MODE_RULES[mode.value])
 const calm = computed(() => mode.value === 'calm')
-/**
- * "Play on hard" from the result: this level's attempts (retries included) are in hard mode until the
- * screen is left, whatever the settings say.
- */
-const hardChallenge = ref(false)
 /** The mode setting as this attempt started: changed in the pause menu's settings, the attempt starts over. */
 let modeSetting: GameMode = 'normal'
 /** Misses that end the round; the hearts of the HUD. */
 const maxMisses = computed(() => rules.value.memoryMaxMisses)
-/** The mode allows looks at A (hard mode does not). */
+/** The mode allows looks at A. */
 const hasPeeks = computed(() => rules.value.memoryPeeks(level.memory!.peeks) > 0)
 const result = ref<MemoryResult | null>(null)
 let scene: MemoryScene | undefined
@@ -86,8 +81,8 @@ const timed = computed(() => phase.value === 'show' || phase.value === 'peek')
 const canPeek = computed(() => phase.value === 'search' && !result.value && peeksLeft.value > 0)
 /** "Next" once this level counts as completed (a failed round does not open the next one). */
 const hasNext = computed(() => !!nextLevel && progress.isCompleted(level.id))
-/** The round counts: stars in normal mode, every change found in calm and hard mode. */
-const passed = computed(() => !!result.value && (mode.value === 'normal' ? result.value.stars > 0 : result.value.found === total))
+/** The round counts: stars in normal mode, every change found in calm mode. */
+const passed = computed(() => !!result.value && (calm.value ? result.value.found === total : result.value.stars > 0))
 
 function start() {
   scene?.destroy()
@@ -100,7 +95,7 @@ function start() {
   clearTimeout(secretTimer)
   secretShown.value = false
   modeSetting = settings.mode
-  mode.value = hardChallenge.value ? 'hard' : settings.mode
+  mode.value = settings.mode
   peeksLeft.value = rules.value.memoryPeeks(level.memory!.peeks)
   playMusic(calm.value ? 'calm' : 'level')
   scene = new MemoryScene(
@@ -133,19 +128,15 @@ function start() {
         }
         for (let i = 0; i < r.stars; i++) starTimers.push(window.setTimeout(() => playSfx('star', i), 300 + i * 250))
         if (r.stars === 0) return
-        if (mode.value === 'hard') progress.recordHardPass(level.id, r.stars)
-        else progress.recordResult(level.id, { timeSec: r.timeSec, mistakes: r.mistakes, hintsUsed: r.peeks, stars: r.stars })
+        progress.recordResult(level.id, { timeSec: r.timeSec, mistakes: r.mistakes, hintsUsed: r.peeks, stars: r.stars })
       },
     },
     {
-      // Calm mode and "reduce motion" both slow the scene down; the mode sets the miss and peek limits and A's time.
+      // Calm mode and "reduce motion" both slow the scene down; the mode sets the miss and peek limits.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
       reduceMotion: settings.effectiveReduceMotion,
       maxMisses: maxMisses.value,
       peeks: peeksLeft.value,
-      showSeconds: rules.value.memoryShowSeconds(level.memory!.showSeconds),
-      stars: rules.value.memoryStars,
-      extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
     },
   )
@@ -155,13 +146,6 @@ function start() {
 function closeSettings() {
   settingsOpen.value = false
   if (settings.mode === modeSetting) return
-  hardChallenge.value = false
-  start()
-}
-
-/** The same level again, in hard mode. */
-function playHard() {
-  hardChallenge.value = true
   start()
 }
 
@@ -243,8 +227,7 @@ onBeforeUnmount(() => {
 
     <section v-if="result" class="result" :aria-label="$t('level.complete')">
       <h2>{{ passed ? $t('level.complete') : $t('memoryMode.failed') }}</h2>
-      <StarRating v-if="!calm" :stars="result.stars" :size="36" :red="mode === 'hard'" animated />
-      <p v-if="mode === 'hard' && passed" class="hard-done">{{ $t('level.hardDone') }}</p>
+      <StarRating v-if="!calm" :stars="result.stars" :size="36" animated />
       <p>
         {{ $t('memoryMode.foundOf', { found: result.found, total }) }}
         <template v-if="!calm"> · {{ $t('level.mistakes', { n: result.mistakes }) }}</template>
@@ -255,9 +238,6 @@ onBeforeUnmount(() => {
         <button :class="{ secondary: hasNext }" @click="start">{{ $t('level.retry') }}</button>
         <button class="secondary" @click="router.push(grid)">{{ $t('level.menu') }}</button>
       </div>
-      <button v-if="mode === 'normal' && passed && progress.hardStars(level.id) < 3" class="hard" @click="playHard">
-        <span aria-hidden="true">★</span> {{ $t('level.playHard') }}
-      </button>
     </section>
 
     <footer v-else class="toolbar">
@@ -447,16 +427,6 @@ onBeforeUnmount(() => {
 
 .result p {
   margin: 0;
-}
-
-.hard-done {
-  font-weight: 700;
-  color: var(--star-hard);
-}
-
-.hard {
-  background: var(--mode-hard);
-  color: #fff;
 }
 
 .legend {

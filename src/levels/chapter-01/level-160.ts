@@ -118,7 +118,7 @@ export default svgLevel({
       peacock(118, 446) + diff(98, 394, 22, crest(118, 446), '') +
       diff(450, 420, 22, butterfly(450, 420, '#ffd23f'), anim({ type: 'bob', dx: 4, dy: 5, period: 0.9 }, butterfly(450, 420, '#ffd23f'))) +
       anim({ type: 'bob', dx: 3, dy: 3, period: 1.2 }, bee(560, 400)) + anim({ type: 'bob', dx: -3, dy: 3, period: 1.4 }, bee(380, 470)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bee', 620, 450],
         ['butterfly', 350, 400, '#ff6b8b'],

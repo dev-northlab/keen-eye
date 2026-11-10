@@ -1,5 +1,4 @@
 import { balloon, bench, bin, lampHead, lampPost, person, pigeon } from '../chapter-02/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud } from '../shapes.ts'
 import { around, big, daySky, hills, suitcase } from './shapes.ts'
@@ -28,7 +27,7 @@ export default memoryLevel({
   id: 318,
   title: 'memoryStation',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(460) +
     big(380, 90, 1, cloud(0, 0)) +
     big(120, 60, 0.8, cloud(0, 0)) +
@@ -80,12 +79,5 @@ export default memoryLevel({
       `<rect x="426" y="580" width="8" height="60" fill="#3d4a55"/><circle cx="430" cy="560" r="28" fill="#3d4a55"/><circle cx="430" cy="560" r="22" fill="#ffffff"/>` +
         `<path d="M430 560V544M430 560h12" stroke="#23302b" stroke-width="4" stroke-linecap="round"/>`,
       '',
-    ) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['ball', 262, 522, '#3a86ff'],
-      ['shoppingBag', 300, 640],
-      ['coffeeCup', 40, 625],
-      ['balloon', 300, 140, '#8ac926'],
-    ]),
+    ),
 })

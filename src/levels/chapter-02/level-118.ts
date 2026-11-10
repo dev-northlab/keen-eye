@@ -104,7 +104,7 @@ export default svgLevel({
       stones(392, 486) +
       sandwichBoard(700, 490) +
       bird(470, 48) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['balloon', 702, 175, '#ff006e'],
         ['birds', 94, 92],

@@ -72,7 +72,7 @@ export default svgLevel({
       diff(380, 449, 22, '', `<circle cx="380" cy="449" r="5" fill="#ffb703"/><circle cx="376" cy="449" r="3" fill="#fff"/><circle cx="384" cy="449" r="3" fill="#fff"/><circle cx="376" cy="449" r="1.4" fill="#222"/><circle cx="384" cy="449" r="1.4" fill="#222"/>`) +
       robot(560, 480) +
       diff(578, 452, 22, `<path d="M570 444H586L584 462H572Z" fill="#3a86ff"/><path d="M570 444q8 -10 16 0" stroke="#5c677d" stroke-width="1.5" fill="none"/>`, `<path d="M570 444H586L584 462H572Z" fill="#ff9f43"/><path d="M570 444q8 -10 16 0" stroke="#5c677d" stroke-width="1.5" fill="none"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 400, 60],
         ['sparkle', 520, 150],

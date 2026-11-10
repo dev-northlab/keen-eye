@@ -90,7 +90,7 @@ export default travelLevel({
       kiwi(360, 486) +
       fern(50, 500) +
       diff(78, 373, 40, frond(50, 390, 50, -30), '') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['mushroom', 644, 428, '#e63946'],
         ['bird', 160, 364, '#8a5a33'],

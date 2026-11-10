@@ -110,7 +110,7 @@ export default travelLevel({
       diff(484, 466, 22, cobs(484, 494, '#ffd23f'), cobs(484, 494, '#6b2d6b')) +
       llama(650, 486) +
       diff(630, 374, 18, tassels(650, 486, '#ff6b8b'), tassels(650, 486, '#4dabf7')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['pigeon', 532, 412],
         ['suitcase', 304, 376, '#3a86ff'],

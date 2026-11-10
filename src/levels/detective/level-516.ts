@@ -65,7 +65,7 @@ export default detectiveLevel({
     `<circle cx="700" cy="444" r="26" fill="#f2b632"/><path d="M676 436q24 14 48 0M680 456q20 10 40 0" stroke="#e5484d" stroke-width="5" fill="none"/>` +
     clue('unicycleTracks', 300, 424, 62, '', `<ellipse cx="300" cy="424" rx="58" ry="14" fill="none" stroke="#a8743f" stroke-width="3" stroke-dasharray="8 6"/>`) +
     clue('bananaPeel', 540, 452, 22, '', bananaPeel(540, 452)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['boots', 41, 487, '#4fa3c7'],
       ['teddy', 195, 470, '#c98a6a'],

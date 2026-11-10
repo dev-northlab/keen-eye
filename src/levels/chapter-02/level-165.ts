@@ -97,7 +97,7 @@ export default svgLevel({
       diff(488, 444, 28, horseTail(530, 476), anim({ type: 'sway', angle: 16, pivot: [492, 426], period: 1.4 }, horseTail(530, 476))) +
       policeHorse(530, 476) +
       policeBike(130, 440) + diff(104, 404, 22, `<rect x="92" y="400" width="18" height="16" rx="3" fill="#2b2b2b"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cone', 200, 470],
         ['bin', 560, 346],

@@ -51,7 +51,7 @@ export default svgLevel({
       probe(410, 360) +
       fuelCanister(250, 245) +
       wrench(470, 335) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ringPlanet', 579, 224],
         ['asteroid', 74, 198],

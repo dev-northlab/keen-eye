@@ -11,9 +11,8 @@ Kaksi kuvaa näyttää samalta – mutta ne eivät ole samat. Etsi kaikki erot k
 • Kaksi pelaajaa samalla laitteella – kaksintaistelu, vuorotellen tai yhdessä
 
 KOKO PERHEELLE
-• Lapset ja aikuiset pelaavat yhdessä: rauhallinen tila pienimmille, vaikea tarkimmille silmille
+• Lapset ja aikuiset pelaavat yhdessä: rauhallinen tila pienimmille
 • Rauhallinen tila: ei ajastinta, ei virheitä, 3 ilmaista vihjettä joka tasolla
-• Vaikea tila: ei vihjeitä, vain yksi virhe sallittu, punaiset tähdet parhaille
 • Kahden sormen zoomaus molempiin kuviin yhtä aikaa
 • 3D-kuvat tai perinteiset piirrokset – vaihto yhdellä napautuksella
 • Piilotetut kultaiset avaimet avaavat bonusaarrekammion

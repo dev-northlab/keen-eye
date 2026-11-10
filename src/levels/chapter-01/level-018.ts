@@ -95,7 +95,7 @@ export default svgLevel({
       milkCan(50, 380) +
       birdhouse(690, 345) +
       anim({ type: 'path', points: [[0, 0], [-12, 48]], period: 0.8 }, rain) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['snail', 715, 471],
         ['stones', 507, 400],

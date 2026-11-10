@@ -65,7 +65,7 @@ export default svgLevel({
       // A track cone, the pit crew's fuel
       cone(250, 476) + diff(290, 462, 22, cone(290, 474), '') +
       astronaut(730, 478, '#ffd23f', '#3ae0ff') + diff(764, 466, 22, fuelCanister(764, 477), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 300, 60],
         ['sparkle', 560, 200],

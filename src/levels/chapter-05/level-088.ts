@@ -60,7 +60,7 @@ export default svgLevel({
       moonPebbles(560, 442) +
       beacon(690, 332) +
       wrench(170, 440) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 668, 460],
         ['hedgehog', 463, 462],

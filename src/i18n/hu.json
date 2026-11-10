@@ -110,10 +110,6 @@
     "animPause": "Mozgás leállítása",
     "animPlay": "Mozgás",
     "calmDone": "Nyugodt mód — csillagok nélkül",
-    "failed": "Túl sok hiba",
-    "failedHint": "Nehéz módban a pálya a(z) {n}. hibánál véget ér",
-    "hardDone": "Teljesítve nehéz módban!",
-    "playHard": "Játék nehéz módban",
     "transformB": {
       "mirror-x": "Tükör",
       "rotate-180": "Fejjel lefelé"
@@ -597,10 +593,7 @@
     "normal": "Normál",
     "calm": "Nyugodt",
     "calmHint": "Idő, hibák és csillagok nélkül",
-    "normalHint": "Időmérő, 1 segítség, csillagok a gyorsaságért és a pontosságért",
-    "hard": "Nehéz",
-    "hardHint": "Nincs segítség, csak egy hiba megengedett, piros csillagok",
-    "hardStars": "Nehéz mód: {n}/3"
+    "normalHint": "Időmérő, 1 segítség, csillagok a gyorsaságért és a pontosságért"
   },
   "purchase": {
     "title": "Teljes verzió",

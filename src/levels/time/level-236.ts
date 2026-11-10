@@ -92,7 +92,7 @@ export default svgLevel({
       trap(679, 292, 35, '', smoke(665, 320), 'smoke') +
       trap(420, 284, 21, '', icicles(404, 436, 276), 'icicles') +
       trap(480, 452, 37, person(480, 488, '#e76f51'), winterPerson(480, 488, '#3a86ff', false, '#ffd23f'), 'clothes') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 420, 120],
         ['birds', 230, 60],

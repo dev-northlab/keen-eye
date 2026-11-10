@@ -78,7 +78,7 @@ export default detectiveLevel({
     kernels([[716, 320], [728, 316], [740, 320], [752, 314], [764, 320], [774, 316], [722, 306], [746, 304], [768, 306]]) +
     `<path d="M696 262L745 236L794 262Z" fill="#f2b632"/><g fill="#5e3b1a"><circle cx="716" cy="396" r="12"/><circle cx="774" cy="396" r="12"/></g>` +
     clue('popcornSpilled', 740, 446, 30, '', kernels([[720, 446], [732, 438], [744, 450], [756, 440], [764, 452], [738, 458], [750, 432]])) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['newspapers', 43, 483],
       ['rake', 74, 412],

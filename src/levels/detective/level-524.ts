@@ -77,7 +77,7 @@ export default detectiveLevel({
       `<g transform="rotate(-12 708 164)"><rect x="700" y="164" width="16" height="24" rx="2" fill="#f5ecd8" stroke="#c9953f" stroke-width="1.4"/><path d="M704 174h8M704 180h6" stroke="#8a8f99" stroke-width="1.6"/></g>`,
       `<path d="M703 163l6 6l-3 2l6 3" stroke="#f5ecd8" stroke-width="2" fill="none"/>`,
     ) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['keyRack', 42, 144],
       ['hatBox', 352, 486, '#f2c14e'],

@@ -71,7 +71,7 @@ export default svgLevel({
       newspaperBox(520, 352) +
       shoppingBag(752, 352) +
       manhole(700, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 252, 65],
         ['sparkle', 650, 71],

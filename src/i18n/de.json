@@ -110,10 +110,6 @@
     "animPause": "Bewegung stoppen",
     "animPlay": "Bewegung",
     "calmDone": "Ruhiger Modus — ohne Sterne",
-    "failed": "Zu viele Fehler",
-    "failedHint": "Auf Schwer endet das Level beim {n}. Fehler",
-    "hardDone": "Auf Schwer geschafft!",
-    "playHard": "Auf Schwer spielen",
     "transformB": {
       "mirror-x": "Gespiegelt",
       "rotate-180": "Kopfüber"
@@ -597,10 +593,7 @@
     "normal": "Normal",
     "calm": "Ruhig",
     "calmHint": "Ohne Zeit, Fehler und Sterne",
-    "normalHint": "Timer, 1 Tipp, Sterne für Tempo und Genauigkeit",
-    "hard": "Schwer",
-    "hardHint": "Keine Tipps, nur ein Fehler erlaubt, rote Sterne",
-    "hardStars": "Schwer: {n}/3"
+    "normalHint": "Timer, 1 Tipp, Sterne für Tempo und Genauigkeit"
   },
   "purchase": {
     "title": "Vollversion",

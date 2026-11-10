@@ -110,10 +110,6 @@
     "animPause": "움직임 멈추기",
     "animPlay": "움직임",
     "calmDone": "느긋한 모드 — 별 없음",
-    "failed": "실수가 너무 많아요",
-    "failedHint": "어려움 모드에서는 {n}번째 실수에서 레벨이 끝나요",
-    "hardDone": "어려움으로 통과!",
-    "playHard": "어려움으로 플레이",
     "transformB": {
       "mirror-x": "거울",
       "rotate-180": "거꾸로"
@@ -597,10 +593,7 @@
     "normal": "보통",
     "calm": "느긋하게",
     "calmHint": "타이머, 실수, 별 없음",
-    "normalHint": "타이머, 힌트 1개, 속도와 정확도로 별",
-    "hard": "어려움",
-    "hardHint": "힌트 없음, 실수는 한 번만, 빨간 별",
-    "hardStars": "어려움: {n}/3"
+    "normalHint": "타이머, 힌트 1개, 속도와 정확도로 별"
   },
   "purchase": {
     "title": "정식판",

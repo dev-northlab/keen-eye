@@ -97,7 +97,7 @@ export default travelLevel({
       tukTuk(200, 488) +
       diff(193, 442, 38, tukRoof(200, 488, '#ffd23f'), tukRoof(200, 488, '#3fa46f')) +
       person(500, 494, '#f28c28', true, '#c68b59', '#1d1d1d') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['cone', 308, 444],
         ['cone', 636, 488],

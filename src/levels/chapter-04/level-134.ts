@@ -84,7 +84,7 @@ export default svgLevel({
       sunglasses(680, 422) +
       coconut(530, 302) +
       snorkelMask(145, 442) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['clam', 734, 428],
         ['flipFlops', 209, 394],

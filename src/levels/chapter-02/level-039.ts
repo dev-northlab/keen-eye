@@ -68,7 +68,7 @@ export default svgLevel({
       mailbox(230, 345) +
       scooter(485, 355) +
       newspaperBox(150, 345) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 563, 304, '#ffb703'],
         ['flowerBox', 361, 299, '#e63946'],

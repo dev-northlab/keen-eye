@@ -86,7 +86,7 @@ export default travelLevel({
     boater(330, 436) +
     gull(240, 110) +
     gull(470, 80, '#5c677d') +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['lifeRing', 632, 468],
       ['duck', 88, 440],

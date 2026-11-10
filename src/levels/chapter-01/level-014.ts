@@ -79,7 +79,7 @@ export default svgLevel({
       stones(650, 470) +
       flowerPot(240, 420) +
       wateringCan(80, 385) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ladybug', 90, 427],
         ['mushroom', 706, 406],

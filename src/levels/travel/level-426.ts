@@ -97,7 +97,7 @@ export default travelLevel({
       penguin(236, 452) +
       proteaStem(40, 496) +
       diff(40, 453, 24, proteaHead(40, 496, '#e85d8a'), proteaHead(40, 496, '#fbfbf7')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bottle', 416, 392],
         ['lifeRing', 668, 468],

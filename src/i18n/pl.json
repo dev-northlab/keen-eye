@@ -110,10 +110,6 @@
     "animPause": "Zatrzymaj ruch",
     "animPlay": "Ruch",
     "calmDone": "Tryb spokojny — bez gwiazdek",
-    "failed": "Za dużo błędów",
-    "failedHint": "Na trudnym poziom kończy się na błędzie nr {n}",
-    "hardDone": "Ukończono na trudnym!",
-    "playHard": "Zagraj na trudnym",
     "transformB": {
       "mirror-x": "Lustro",
       "rotate-180": "Odwrócony"
@@ -597,10 +593,7 @@
     "normal": "Zwykły",
     "calm": "Spokojny",
     "calmHint": "Bez czasu, błędów i gwiazdek",
-    "normalHint": "Czas, 1 podpowiedź, gwiazdki za szybkość i celność",
-    "hard": "Trudny",
-    "hardHint": "Bez podpowiedzi, tylko jeden błąd, czerwone gwiazdki",
-    "hardStars": "Tryb trudny: {n}/3"
+    "normalHint": "Czas, 1 podpowiedź, gwiazdki za szybkość i celność"
   },
   "purchase": {
     "title": "Pełna wersja",

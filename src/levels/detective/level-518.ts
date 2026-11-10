@@ -84,7 +84,7 @@ export default detectiveLevel({
     `<path d="M672 388Q666 346 700 330Q716 322 728 334Q720 346 716 362Q714 378 730 390Z" fill="#5b6b7a"/><circle cx="724" cy="338" r="14" fill="#5b6b7a"/>` +
     `<ellipse cx="740" cy="342" rx="6" ry="4" fill="#2b2b38"/><circle cx="726" cy="334" r="2.4" fill="#fff"/>` +
     clue('sealBall', 746, 352, 46, ball(742, 324), ball(752, 382)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['shovel', 58, 425],
       ['pouf', 198, 484, '#4fb3a9'],

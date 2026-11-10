@@ -110,10 +110,6 @@
     "animPause": "停止动画",
     "animPlay": "动画",
     "calmDone": "休闲模式 — 不计星星",
-    "failed": "错误太多",
-    "failedHint": "困难模式下，第 {n} 次错误时关卡结束",
-    "hardDone": "困难模式通关！",
-    "playHard": "挑战困难模式",
     "transformB": {
       "mirror-x": "镜像",
       "rotate-180": "倒转"
@@ -597,10 +593,7 @@
     "normal": "普通",
     "calm": "休闲",
     "calmHint": "不计时、不计错、没有星星",
-    "normalHint": "计时，1 次提示，按速度和准确度评星",
-    "hard": "困难",
-    "hardHint": "没有提示，只能错一次，红色星星",
-    "hardStars": "困难模式：{n}/3"
+    "normalHint": "计时，1 次提示，按速度和准确度评星"
   },
   "purchase": {
     "title": "完整版",

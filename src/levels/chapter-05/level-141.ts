@@ -79,7 +79,7 @@ export default svgLevel({
       helmet(80, 310) +
       asteroid(260, 90, 0.5) +
       toolbox(410, 335) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['planet', 699, 418, '#4dabf7'],
         ['asteroid', 87, 370],

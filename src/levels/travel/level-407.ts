@@ -95,7 +95,7 @@ export default travelLevel({
       person(760, 482, '#e63946', true) +
       pigeon(220, 480) +
       pigeon(250, 470, true) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['pigeon', 184, 468],
         ['suitcase', 728, 488, '#3a86ff'],

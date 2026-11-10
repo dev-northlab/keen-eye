@@ -522,7 +522,7 @@ button {
 }
 
 .badge.exit {
-  background: var(--mode-hard);
+  background: var(--danger);
 }
 
 /* Two players: the two characters, overlapping. */

@@ -460,10 +460,6 @@
     "retry": "Prøv igen",
     "revealAll": "Vis stederne",
     "time": "Tid: {t}",
-    "failed": "For mange fejl",
-    "failedHint": "På svær slutter banen ved fejl nummer {n}",
-    "hardDone": "Klaret på svær!",
-    "playHard": "Spil på svær",
     "transformB": {
       "mirror-x": "Spejl",
       "rotate-180": "På hovedet"
@@ -871,10 +867,7 @@
     "calmHint": "Ingen tid, fejl eller stjerner",
     "normalHint": "Timer, 1 hint, stjerner for hurtighed og præcision",
     "label": "Tilstand",
-    "normal": "Normal",
-    "hard": "Svær",
-    "hardHint": "Ingen hints, kun én fejl tilladt, røde stjerner",
-    "hardStars": "Svær: {n}/3"
+    "normal": "Normal"
   },
   "pause": {
     "exit": "Til menuen",

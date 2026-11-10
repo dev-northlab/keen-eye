@@ -68,7 +68,7 @@ export default svgLevel({
       fish(560, 432, '#ffb703') +
       gullStanding(520, 276) +
       dolphin(420, 445) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 286, 417, '#ff9f43'],
         ['bottle', 625, 406],

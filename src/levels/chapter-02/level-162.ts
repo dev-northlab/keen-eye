@@ -94,7 +94,7 @@ export default svgLevel({
       tug(70, 478) + diff(76, 432, 22, `<rect x="72" y="428" width="10" height="8" rx="3" fill="#fb8500"/>`, '') +
       bagCart(150, 480, '#8338ec', '#e63946') + bagCart(250, 480, '#ffb703', '#3a86ff') + bagCart(350, 480, '#2a9d8f', '#ff006e') +
       diff(250, 452, 22, `<rect x="240" y="440" width="20" height="24" rx="2" fill="#8ac926"/><path d="M246 440v-4h8v4" stroke="#3d4a55" stroke-width="2" fill="none"/>`, `<rect x="240" y="440" width="20" height="24" rx="2" fill="#e63946"/><path d="M246 440v-4h8v4" stroke="#3d4a55" stroke-width="2" fill="none"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cone', 470, 440],
         ['cone', 520, 420],

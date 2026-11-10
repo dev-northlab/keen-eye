@@ -75,7 +75,7 @@ export default svgLevel({
       seahorse(450, 322) +
       snorkelMask(140, 472) +
       fish(130, 150, '#ffb703') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 167, 139, '#4dabf7'],
         ['fish', 469, 122, '#ffb703'],

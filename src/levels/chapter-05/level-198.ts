@@ -52,7 +52,7 @@ export default svgLevel({
       diff(544, 448, 22, `<path d="M532 462Q530 438 544 434Q558 438 556 462Z" fill="#c9a26b"/><path d="M538 438l12 0" stroke="#8a6a44" stroke-width="2"/>`, `<path d="M532 462Q530 438 544 434Q558 438 556 462Z" fill="#3a86ff"/><path d="M538 438l12 0" stroke="#1d5e8c" stroke-width="2"/>`) +
       `<rect x="704" y="440" width="32" height="40" rx="3" fill="#6c757d"/><path d="M704 452h32M704 468h32" stroke="#495057" stroke-width="2"/>` +
       diff(720, 428, 22, `<path d="M708 440Q706 424 716 414Q716 426 722 424Q722 416 730 412Q734 428 732 440Z" fill="#ff7b00"/>`, `<path d="M708 440Q706 424 716 414Q716 426 722 424Q722 416 730 412Q734 428 732 440Z" fill="#3ae0ff"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['wrench', 200, 470],
         ['fuelCanister', 604, 486],

@@ -104,7 +104,7 @@ export default travelLevel({
       hallTower(30, 130) +
       diff(80, 54, 18, ball(80), '') +
       diff(80, 300, 22, sunHand(80, 60), sunHand(80, 150)) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['suitcase', 636, 464, '#3a86ff'],
         ['bin', 288, 452, '#2a9d8f'],

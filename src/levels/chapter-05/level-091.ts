@@ -52,7 +52,7 @@ export default svgLevel({
       toolbox(330, 470) +
       probe(380, 220) +
       helmet(740, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 493, 401],
         ['crystal', 322, 332, '#ff6bd6'],

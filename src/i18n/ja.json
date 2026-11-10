@@ -110,10 +110,6 @@
     "animPause": "動きを止める",
     "animPlay": "動き",
     "calmDone": "のんびりモード — 星なし",
-    "failed": "ミスが多すぎます",
-    "failedHint": "むずかしいモードでは {n} 回目のミスで終了します",
-    "hardDone": "むずかしいでクリア！",
-    "playHard": "むずかしいで遊ぶ",
     "transformB": {
       "mirror-x": "左右反転",
       "rotate-180": "さかさま"
@@ -597,10 +593,7 @@
     "normal": "ふつう",
     "calm": "のんびり",
     "calmHint": "タイマー、ミス、星なし",
-    "normalHint": "タイマー、ヒント1回、速さと正確さで星",
-    "hard": "むずかしい",
-    "hardHint": "ヒントなし、ミスは1回まで、赤い星",
-    "hardStars": "むずかしい：{n}/3"
+    "normalHint": "タイマー、ヒント1回、速さと正確さで星"
   },
   "purchase": {
     "title": "完全版",

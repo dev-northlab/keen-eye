@@ -95,7 +95,7 @@ export default svgLevel({
       diff(480, 444, 22, anim({ type: 'sway', angle: 18, pivot: [485, 450], period: 0.6 }, huskyTail(500, 470)), huskyTail(500, 470)) +
       snowmobile(650, 470) +
       diff(720, 452, 26, `<path d="M697 452L740 438V466Z" fill="#fff3b0" fill-opacity="0.45"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pine', 560, 330],
         ['pineCone', 40, 480],

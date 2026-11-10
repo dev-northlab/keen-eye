@@ -69,7 +69,7 @@ export default svgLevel({
     barrel(640, 392, '#2f6e8c') +
     bollard(770, 396) +
     buoy(330, 470, '#ffb703') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 87, 66],
       ['birds', 263, 56],

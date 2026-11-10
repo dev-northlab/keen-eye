@@ -88,7 +88,7 @@ export default svgLevel({
       probe(620, 200) +
       toolbox(650, 472) +
       crystal(510, 340) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['helmet', 491, 294],
         ['fuelCanister', 300, 321],

@@ -122,7 +122,7 @@ export default svgLevel({
       stump(590, 330) +
       mushroom(500, 325) +
       butterfly(785, 345) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ladybug', 457, 275],
         ['mushroom', 75, 312],

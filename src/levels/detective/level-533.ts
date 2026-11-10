@@ -62,7 +62,7 @@ export default detectiveLevel({
     hopping(anim, 720, -36, 7, rabbit(720, 470), 0.4) +
     flutter(anim, 180, 300, '#ffd23f') +
     flutter(anim, 700, 380, '#ff8fab', true, 10) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['birdhouse', 109, 476],
       ['shovel', 378, 465],

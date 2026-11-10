@@ -66,7 +66,7 @@ export default svgLevel({
       diff(300, 424, 22, `<circle cx="300" cy="420" r="4" fill="#ff9f43"/>`, `<circle cx="300" cy="420" r="4" fill="#3ae0ff"/>`) +
       // The bubble pod
       diff(520, 450, 32, anim({ type: 'bob', dx: 4, dy: 4, period: 3 }, pod), pod) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 300, 40],
         ['sparkle', 740, 300],

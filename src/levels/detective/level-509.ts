@@ -70,7 +70,7 @@ export default detectiveLevel({
     // The mouse hole
     `<path d="M684 390V378A16 16 0 0 1 716 378V390Z" fill="#1f1d24"/>` +
     clue('corkedHole', 700, 378, 24, '', `<path d="M687 390V379A13 13 0 0 1 713 379V390Z" fill="#c69563"/><circle cx="694" cy="380" r="2" fill="#a8743f"/><circle cx="705" cy="384" r="2" fill="#a8743f"/>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['keyRack', 42, 49],
       ['hatBox', 207, 481, '#f2c14e'],

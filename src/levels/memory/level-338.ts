@@ -2,7 +2,6 @@
 // pterosaur hanging from the ceiling, a volcano poster, a big skeleton, a stegosaurus model, an info sign, a display case
 // with an ammonite, a nest of eggs and a velvet rope.
 import { person } from '../chapter-02/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big, pottedPlant, room, wallClock } from './shapes.ts'
 
@@ -19,7 +18,7 @@ export default memoryLevel({
   id: 338,
   title: 'memoryDinoMuseum',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) => {
+  scene: ({ diff }) => {
     let ribs = ''
     for (let x = 150; x <= 250; x += 20) ribs += `<path d="M${x} 300q-6 30 4 56" stroke="#f4f1e8" stroke-width="5" fill="none"/>`
     return (
@@ -57,14 +56,7 @@ export default memoryLevel({
       big(470, 560, 0.5, pottedPlant(0, 0, '#e07a5f')) +
       person(460, 730, '#ffd23f', true) +
       `<path d="M60 700l10 -6l10 6M100 716l10 -6l10 6M140 700l10 -6l10 6" stroke="#8a7a66" stroke-width="3" fill="none"/>` +
-      `<rect x="180" y="150" width="40" height="60" rx="4" fill="#e9c46a"/><path d="M188 166h24M188 178h24M188 190h16" stroke="#8a6a44" stroke-width="3"/>` +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-      extras({ extra, anim }, [
-        ['cube', 40, 730, '#3a86ff'],
-        ['sticker', 200, 50, '#ffd23f'],
-        ['frame', 470, 140, '#6b4226'],
-        ['slippers', 250, 560, '#3fa46f'],
-      ])
+      `<rect x="180" y="150" width="40" height="60" rx="4" fill="#e9c46a"/><path d="M188 166h24M188 178h24M188 190h16" stroke="#8a6a44" stroke-width="3"/>`
     )
   },
 })

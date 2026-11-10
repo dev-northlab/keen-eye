@@ -68,7 +68,7 @@ export default detectiveLevel({
     clue('skiPassDropped', 262, 450, 22, '', `<path d="M248 440q14 -12 28 0" stroke="#3a6ea5" stroke-width="2.4" fill="none"/><rect x="252" y="444" width="22" height="16" rx="3" fill="#f2b632"/><rect x="256" y="448" width="8" height="8" fill="#fff"/>`) +
     clue('snowballs', 404, 440, 34, '', snowball(386, 450) + snowball(404, 452) + snowball(422, 448) + snowball(394, 436) + snowball(412, 436) + snowball(403, 422)) +
     clue('polePrints', 560, 431, 46, '', hole(530, 420) + hole(550, 440) + hole(572, 422) + hole(592, 442)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['birdhouse', 179, 481],
       ['snowballs', 336, 485],

@@ -43,7 +43,7 @@ export interface BoardOptions {
   onSecret?: (tap: Tap) => void
   /** The key was collected on an earlier visit: it is not shown and its place taps like any other. */
   secretTaken?: boolean
-  /** Draw the extra objects of hard mode (`Level.extras`). */
+  /** Draw the extra objects of normal mode (`Level.extras`). */
   extras?: boolean
   /** "Reduce motion": a found circle only fades in, without its burst. */
   reduceMotion?: boolean

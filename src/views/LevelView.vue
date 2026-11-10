@@ -70,13 +70,6 @@ const rules = computed(() => MODE_RULES[mode.value])
 const calm = computed(() => mode.value === 'calm')
 /** How picture B is shown in this attempt: the level's transform, unless the mode shows B as drawn (calm). */
 const transformB = computed(() => (rules.value.transformB ? level.transformB : undefined))
-/** Hard mode: lost on too many mistakes; `result` then holds the attempt's numbers. */
-const failed = ref(false)
-/**
- * "Play on hard" from the result: this level's attempts (retries included) are in hard mode until the
- * screen is left, whatever the settings say.
- */
-const hardChallenge = ref(false)
 /** The mode setting as this attempt started: changed in the pause menu's settings, the attempt starts over. */
 let modeSetting: GameMode = 'normal'
 const hintActive = ref(false)
@@ -148,9 +141,8 @@ function start() {
   clearTimeout(secretTimer)
   secretShown.value = false
   result.value = null
-  failed.value = false
   modeSetting = settings.mode
-  mode.value = uncounted ? 'calm' : hardChallenge.value ? 'hard' : settings.mode
+  mode.value = uncounted ? 'calm' : settings.mode
   playMusic(uncounted ? 'tinyBoy' : calm.value ? 'calm' : 'level')
   scene = new GameScene(
     board.value!,
@@ -168,7 +160,7 @@ function start() {
         playSfx('miss')
         vibrateMiss()
       },
-      onTrap: (i) => rules.value.trapNotes && showNote(t(`timeMode.traps.${level.traps![i].hint}`)),
+      onTrap: (i) => showNote(t(`timeMode.traps.${level.traps![i].hint}`)),
       onLock: (l) => (locked.value = l),
       onTick: (s) => (seconds.value = s),
       onZoom: (s) => (zoom.value = s),
@@ -178,14 +170,9 @@ function start() {
         newStamp.value = !!level.travel && !progress.isCompleted(level.id)
         result.value = r
         playMusic('complete')
-        if (mode.value === 'calm') progress.recordCalmCompletion(level.id)
-        else if (mode.value === 'hard') progress.recordHardPass(level.id, r.stars)
+        if (calm.value) progress.recordCalmCompletion(level.id)
         else progress.recordResult(level.id, r)
-        if (mode.value !== 'normal' || r.stars === 3) askForReview(Object.keys(progress.records).length)
-      },
-      onFail: (r) => {
-        failed.value = true
-        result.value = r
+        if (calm.value || r.stars === 3) askForReview(Object.keys(progress.records).length)
       },
     },
     {
@@ -193,8 +180,6 @@ function start() {
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
       reduceMotion: settings.effectiveReduceMotion,
       missLock: rules.value.missLock,
-      maxMistakes: rules.value.maxMistakes,
-      stars: rules.value.stars,
       extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
       transformB: transformB.value,
@@ -213,8 +198,7 @@ function closeTransformNotice() {
   if (!paused.value) scene?.resume()
 }
 
-/** Hints this attempt can still take (calm mode 3, normal 1, hard none). */
-/** "Tiny boy" gives one hint per attempt; other levels get their mode's few. */
+/** Hints this attempt can still take: "tiny boy" gives one, other levels their mode's few (calm 3, normal 1). */
 const hintsLeft = computed(() => (uncounted ? 1 : rules.value.hints) - hintsUsed.value)
 const canHint = computed(() => !result.value && !hintActive.value && hintsLeft.value > 0)
 
@@ -236,13 +220,6 @@ watch(
 function closeSettings() {
   settingsOpen.value = false
   if (uncounted || settings.mode === modeSetting) return
-  hardChallenge.value = false
-  start()
-}
-
-/** The same level again, in hard mode. */
-function playHard() {
-  hardChallenge.value = true
   start()
 }
 
@@ -316,7 +293,6 @@ onBeforeUnmount(() => {
         v-if="!calm"
         :time="time"
         :mistakes="mistakes"
-        :max-mistakes="rules.maxMistakes"
         :locked="locked"
         :still="settings.effectiveReduceMotion"
       />
@@ -380,14 +356,11 @@ onBeforeUnmount(() => {
       :result="result"
       :mode="mode"
       :portrait="uncounted ? `${baseUrl}banners/tiny-boy-smile.webp` : undefined"
-      :failed="failed"
-      :offer-hard="mode === 'normal' && progress.hardStars(level.id) < 3"
       :time="time"
-      :has-next="!!nextLevel && (!failed || progress.isCompleted(level.id))"
+      :has-next="!!nextLevel"
       :share-text="treasury ? undefined : $t('share.level', { n: number })"
       @next="router.push({ name: 'level', params: { id: nextLevel!.id } })"
       @retry="start"
-      @hard="playHard"
       @menu="router.push(grid)"
     >
       <TravelFact v-if="level.travel" :level="level" :new-stamp="newStamp" />

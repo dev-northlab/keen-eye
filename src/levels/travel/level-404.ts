@@ -86,7 +86,7 @@ export default travelLevel({
     `<path d="M0 30Q400 90 800 30" fill="none" stroke="#3d4a55" stroke-width="2"/>` +
     [100, 220, 340, 460, 700].map((lx) => lantern(lx, 30 + 120 * (lx / 800) * (1 - lx / 800))).join('') +
     diff(580, 71, 24, lantern(580, 30 + 120 * 0.725 * 0.275), lantern(580, 30 + 120 * 0.725 * 0.275, '#ffd23f')) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['mushroom', 192, 488, '#e63946'],
       ['bird', 436, 480, '#8a5a33'],

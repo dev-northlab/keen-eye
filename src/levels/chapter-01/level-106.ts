@@ -125,7 +125,7 @@ export default svgLevel({
       milkCan(480, 415) +
       wheelbarrow(130, 490) +
       flowerPot(240, 72) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['horseshoe', 682, 44],
         ['horseshoe', 438, 290],

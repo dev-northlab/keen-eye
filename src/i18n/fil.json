@@ -460,10 +460,6 @@
     "retry": "Subukan muli",
     "revealAll": "Ipakita ang mga lugar",
     "time": "Oras: {t}",
-    "failed": "Sobrang daming mali",
-    "failedHint": "Sa mahirap, natatapos ang level sa ika-{n} na mali",
-    "hardDone": "Natapos sa mahirap!",
-    "playHard": "Laruin sa mahirap",
     "transformB": {
       "mirror-x": "Salamin",
       "rotate-180": "Baligtad"
@@ -871,10 +867,7 @@
     "calmHint": "Walang timer, mali o bituin",
     "normalHint": "Timer, 1 pahiwatig, mga bituin sa bilis at katumpakan",
     "label": "Mode",
-    "normal": "Normal",
-    "hard": "Mahirap",
-    "hardHint": "Walang hint, isang mali lang ang puwede, pulang bituin",
-    "hardStars": "Mahirap: {n}/3"
+    "normal": "Normal"
   },
   "pause": {
     "exit": "Bumalik sa menu",

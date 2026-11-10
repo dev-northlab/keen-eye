@@ -88,7 +88,7 @@ export default svgLevel({
       cat(775, 480) +
       eggNest(268, 490) +
       stones(420, 488) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 339, 264],
         ['snail', 483, 436],

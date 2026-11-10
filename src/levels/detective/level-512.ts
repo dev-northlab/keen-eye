@@ -66,7 +66,7 @@ export default detectiveLevel({
     clue('plantTipped', 638, 355, 50, smallPlant(660, 380), plantDown(660, 380)) +
     clue('lensCap', 260, 432, 24, '', lensCap(260, 432)) +
     clue('gumWrapper', 430, 444, 22, '', gumWrapper(430, 444)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['sconce', 42, 59],
       ['photoOval', 228, 166],

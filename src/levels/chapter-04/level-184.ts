@@ -73,7 +73,7 @@ export default svgLevel({
       heron(720, 426) + diff(750, 349, 22, fish(752, 350, '#c0c7d0', 0.6), '') +
       diff(420, 459, 28, turtle(420, 470, '#7fbf6a'), '') +
       diff(560, 454, 36, anim({ type: 'bob', dx: 5, dy: 3, period: 3 }, ray), ray) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 520, 110],
         ['jellyfish', 660, 450],

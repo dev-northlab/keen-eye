@@ -91,7 +91,7 @@ export default travelLevel({
     lotus(380, 476, '#f28fb1') +
     diff(662, 433, 54, fan(640, 470), folded(640, 470)) +
     peacock(640, 470) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bird', 84, 396, '#8a5a33'],
       ['flower', 560, 384, '#ffd23f'],

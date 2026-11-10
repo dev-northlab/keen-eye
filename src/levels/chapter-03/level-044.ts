@@ -80,7 +80,7 @@ export default svgLevel({
       pineCone(380, 488) +
       leafPile(510, 432) +
       bluebells(700, 352) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bluebells', 286, 331],
         ['hedgehog', 106, 361],

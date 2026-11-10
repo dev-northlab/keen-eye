@@ -97,7 +97,7 @@ export default svgLevel({
       flowers + hedgehog(744, 470) +
       `<g transform="translate(704 340)"><ellipse cy="-6" rx="14" ry="6" fill="#6c757d"/><circle cx="-12" cy="-9" r="5" fill="#6c757d"/><path d="M-15 -14l1 -4l3 3ZM-9 -14l1 -4l2 4Z" fill="#6c757d"/><path d="M12 -6q8 2 4 -6" stroke="#6c757d" stroke-width="3" fill="none"/></g>` +
       diff(650, 462, 28, tortoise(650, 476), walking, 'tortoise') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['snail', 300, 474],
         ['ladybug', 560, 474],

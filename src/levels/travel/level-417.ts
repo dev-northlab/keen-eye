@@ -97,7 +97,7 @@ export default travelLevel({
       `<path d="M568 460L575 412" stroke="#3d4a55" stroke-width="1.2"/>` +
       diff(575, 406, 22, balloon(575, 488, '#e63946'), balloon(575, 488, '#8338ec')) +
       person(620, 486, '#f28c28', true, '#e0b48a', '#1d1d1d') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['newspaperBox', 660, 480, '#e63946'],
         ['pigeon', 692, 420],

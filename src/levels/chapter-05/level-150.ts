@@ -74,7 +74,7 @@ export default svgLevel({
       crystal(520, 472) +
       moonPebbles(680, 456) +
       solarPanel(470, 352) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 86, 199],
         ['spaceStar', 746, 220],

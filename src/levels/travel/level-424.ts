@@ -95,7 +95,7 @@ export default travelLevel({
       // Pine with the magpie
       `<rect x="752" y="330" width="12" height="150" fill="#6b4a3a"/><ellipse cx="740" cy="330" rx="46" ry="16" fill="#2f6b45"/><ellipse cx="770" cy="296" rx="36" ry="14" fill="#2f6b45"/><ellipse cx="748" cy="266" rx="28" ry="12" fill="#3f7d4f"/>` +
       diff(722, 306, 22, magpie(716, 314), '') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['ball', 704, 472, '#ffd23f'],
         ['bollard', 408, 400],

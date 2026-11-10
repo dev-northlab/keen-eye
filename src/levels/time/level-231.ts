@@ -76,7 +76,7 @@ export default svgLevel({
       signpost(760, 490, -1) +
       flowers(40, 486, '#ffd23f') +
       rock(110, 490, 0.6) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 560, 160],
       ]) +

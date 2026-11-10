@@ -65,7 +65,7 @@ export default svgLevel({
       shell(440, 428) +
       snorkelMask(705, 488) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['jellyfish', 673, 100],
         ['fish', 141, 221, '#ff9f43'],

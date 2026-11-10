@@ -94,7 +94,7 @@ export default svgLevel({
       diff(386, 434, 22, `<circle cx="386" cy="434" r="6" fill="#ffffff" stroke="#c9d6e3" stroke-width="1.5"/>`, '') +
       dog(462, 490) + diff(462, 476, 22, jumper(462, 490, '#e63946'), jumper(462, 490, '#8ac926')) +
       flakes +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bin', 180, 344],
         ['hydrant', 600, 346],

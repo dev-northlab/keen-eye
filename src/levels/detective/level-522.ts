@@ -63,7 +63,7 @@ export default detectiveLevel({
     clue('newspaperDropped', 300, 450, 30, '', newspaper(300, 450)) +
     clue('pearlOnCarpet', 470, 432, 20, '', `<circle cx="470" cy="434" r="5.5" fill="#fffaf0" stroke="#c9c2b6" stroke-width="1"/><circle cx="468" cy="432" r="1.6" fill="#fff"/>`) +
     clue('smallShoePrints', 601, 458, 24, '', `<g transform="translate(601 458) scale(0.6) translate(-601 -458)">${sneaker(590, 470, '#2b2b38') + sneaker(612, 446, '#2b2b38')}</g>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['fireExtinguisher', 132, 490],
       ['photoOval', 178, 96],

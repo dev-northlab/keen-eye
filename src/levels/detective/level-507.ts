@@ -75,7 +75,7 @@ export default detectiveLevel({
     clue('barrelTipped', 724, 348, 50, barrel(720, 380), barrelDown(720, 380)) +
     clue('sackSpilled', 350, 346, 56, sack(352, 380), sackDown(350, 380)) +
     clue('trapUntouched', 470, 444, 30, '', mousetrap(470, 446)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['boots', 41, 417],
       ['pouf', 323, 469, '#4fb3a9'],

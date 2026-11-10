@@ -80,7 +80,7 @@ export default svgLevel({
       `<path d="M486 462h36l-5 26h-26Z" fill="#8d99ae"/><path d="M486 462h36" stroke="#5c677d" stroke-width="3"/>` +
       diff(504, 452, 22, `<path d="M500 462l2 -10l-8 -6h18l-8 6l2 10Z" fill="#9aa5b1"/>`, '') +
       pots + diff(725, 436, 28, lobsterPot(725, 436), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 300, 130],
         ['buoy', 690, 330, '#ff9f43'],

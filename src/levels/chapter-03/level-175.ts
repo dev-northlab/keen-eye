@@ -76,7 +76,7 @@ export default svgLevel({
       // Hikers with their map
       person(660, 486, '#3a86ff', false, '#e0b48a', '#5a3d2b') + person(708, 486, '#e63946', true, '#c68b5e', '#2b2b2b') +
       diff(684, 446, 22, `<rect x="670" y="438" width="28" height="18" fill="#f4d35e"/><path d="M684 438v18M676 444l6 6l8 -8" stroke="#8a5a33" stroke-width="1.5" fill="none"/>`, `<rect x="670" y="438" width="28" height="18" fill="#9ad3f0"/><path d="M684 438v18M676 444l6 6l8 -8" stroke="#8a5a33" stroke-width="1.5" fill="none"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['snail', 420, 470],
         ['pineCone', 160, 480],

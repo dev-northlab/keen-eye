@@ -84,7 +84,7 @@ export default svgLevel({
       mushroom(520, 305) +
       snail(207, 302) +
       stump(690, 488) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 606, 271, '#b38cff'],
         ['bee', 211, 479],

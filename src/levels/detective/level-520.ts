@@ -69,7 +69,7 @@ export default detectiveLevel({
       `<ellipse cx="650" cy="357" rx="24" ry="13" fill="#2b2b38"/><circle cx="650" cy="354" r="6" fill="#c9953f"/>`,
     ) +
     clue('chairFolded', 720, 392, 40, chair(true), chair(false)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['shovel', 98, 455],
       ['wheelbarrow', 269, 481],

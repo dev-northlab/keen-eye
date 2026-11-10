@@ -132,7 +132,7 @@ export default svgLevel({
       `<rect x="560" y="442" width="70" height="26" rx="3" fill="#8d99ae"/><path d="M630 456H652" stroke="#3d4a55" stroke-width="3"/><circle cx="594" cy="472" r="9" fill="#2b2b2b"/>` +
       collie(590, 442) +
       quad(700, 486) + diff(734, 406, 22, anim({ type: 'sway', angle: 22, pivot: [728, 406], period: 0.9 }, flag(728, 406)), flag(728, 406)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 420, 470],
         ['stones', 500, 478],

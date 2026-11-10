@@ -100,7 +100,7 @@ export default svgLevel({
       stones(410, 480) +
       wheelbarrow(290, 370) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pine', 513, 471],
         ['bird', 210, 306],

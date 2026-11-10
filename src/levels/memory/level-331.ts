@@ -1,6 +1,5 @@
 // Library: a reading room among the ten hardest of "memory" (hidden until released, levels/upcoming.ts). A tall
 // bookshelf, a window with curtains, a wall clock, a desk with a globe and a lamp, a cat on the rug and a stack of books.
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cat } from '../time/shapes.ts'
 import { around, big, books, candle, cube, curtains, globe, mug, painting, pillow, pottedPlant, room, rug, slipperPair, sticker, table, tableLamp, wallClock, windowPane } from './shapes.ts'
@@ -27,7 +26,7 @@ export default memoryLevel({
   id: 331,
   title: 'memoryLibrary',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(540, '#efe2c8', '#a0703f') +
     // The bookshelf: a book's color, a missing book
     `<rect x="20" y="60" width="190" height="460" fill="#7a4e2d"/><rect x="28" y="68" width="174" height="444" fill="#5c3a22"/>` +
@@ -57,12 +56,5 @@ export default memoryLevel({
     slipperPair(80, 600, '#e63946') +
     pillow(60, 700, '#3a86ff') +
     big(140, 724, 1, books(0, 0, ['#e07a5f', '#8338ec'])) +
-    cube(30, 724, 24, '#ffd23f') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 470, 610, '#e63946'],
-      ['slippers', 160, 560, '#3fa46f'],
-      ['sticker', 470, 60, '#ffffff'],
-      ['frame', 240, 200, '#e63946'],
-    ]),
+    cube(30, 724, 24, '#ffd23f'),
 })

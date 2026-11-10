@@ -103,7 +103,7 @@ function sceneLabel(level: Level, n: number) {
             <span class="num">{{ i + 1 }}</span>
             <span class="title">{{ $t(`levelTitles.${level.title}`) }}</span>
             <span v-if="!progress.isUnlocked(level.id)" class="lock" aria-hidden="true">🔒</span>
-            <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="14" />
+            <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :size="14" />
           </button>
         </li>
       </ol>

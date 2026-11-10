@@ -62,7 +62,7 @@ export default svgLevel({
       probe(480, 300) +
       fuelCanister(230, 335) +
       wrench(650, 420) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ufo', 106, 122],
         ['spaceStar', 225, 297],

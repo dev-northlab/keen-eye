@@ -105,7 +105,7 @@ export default travelLevel({
       person(600, 484, '#2a9d8f', false, '#e0b48a', '#1d1d1d') +
       `<path d="M610 444L626 420" stroke="#7a5233" stroke-width="5" stroke-linecap="round"/>` +
       diff(628, 403, 24, eagle(628, 420), '') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['grass', 276, 388],
         ['ladybug', 488, 472],

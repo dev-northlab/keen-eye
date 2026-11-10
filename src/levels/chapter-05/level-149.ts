@@ -91,7 +91,7 @@ export default svgLevel({
       asteroid(770, 470, 0.6) +
       rocket(40, 300, '#f1f1f1', '#3a86ff', 0.35) +
       wrench(760, 60) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 101, 195],
         ['ringPlanet', 430, 45],

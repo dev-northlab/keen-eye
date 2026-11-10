@@ -56,7 +56,7 @@ export default svgLevel({
       newspaperBox(300, 312) +
       sandwichBoard(450, 312) +
       bollard(570, 312) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 344, 279, '#ff006e'],
         ['balloon', 727, 43, '#8ac926'],

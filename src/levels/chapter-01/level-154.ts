@@ -137,7 +137,7 @@ export default svgLevel({
       pheasant(100, 412) + diff(70, 394, 26, pheasantTail(100, 412, true), pheasantTail(100, 412, false)) +
       vineRow(0, 800, 452, [40, 130, 290, 380, 520, 610, 700, 780], -1) +
       person(240, 498, '#ff006e', true, '#c68b5e', '#5a3d2b') + basket(196, 496, '#5b2a6e') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['snail', 300, 480],
         ['ladybug', 560, 486],

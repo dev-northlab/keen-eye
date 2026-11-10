@@ -112,7 +112,7 @@ export default svgLevel({
       butterfly(505, 430) +
       wateringCan(460, 420) +
       mushroom(360, 430) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 127, 306],
         ['chick', 186, 233],

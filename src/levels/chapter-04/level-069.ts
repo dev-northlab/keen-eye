@@ -71,7 +71,7 @@ export default svgLevel({
       bottleMessage(600, 474) +
       snorkelMask(172, 490) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, drifting) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 51, 77, '#ffb703'],
         ['fish', 317, 86, '#9ef01a'],

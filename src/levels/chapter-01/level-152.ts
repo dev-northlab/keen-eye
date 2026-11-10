@@ -128,7 +128,7 @@ export default svgLevel({
       `<rect x="400" y="440" width="84" height="6" rx="2" fill="#a0703f"/><path d="M406 446v24M478 446v24" stroke="#7a5230" stroke-width="4"/>` +
       cheese(418, 432) + cheese(442, 432) + diff(466, 432, 22, cheese(466, 432), '') +
       shepherd(588, 480) + hen(660, 470, true, '#c0532b') + flowers +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 230, 486],
         ['snail', 120, 478],

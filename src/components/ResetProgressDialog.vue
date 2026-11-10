@@ -43,6 +43,6 @@ p {
 }
 
 .danger {
-  background: var(--mode-hard);
+  background: var(--danger);
 }
 </style>

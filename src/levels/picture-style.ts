@@ -9,7 +9,7 @@ export const isPictureStyle = (v: unknown): v is PictureStyle => PICTURE_STYLES.
 
 /**
  * The level to play in `style`: the redesigned one is a picture level with its own zones and key. The drawn
- * scene's animations, hard-mode extra objects and key position belong to the SVG and are left out (pictures
+ * scene's animations, normal-mode extra objects and key position belong to the SVG and are left out (pictures
  * carry their decor; a key they do not draw is not there).
  */
 export function styledLevel(level: Level, style: PictureStyle): Level {
