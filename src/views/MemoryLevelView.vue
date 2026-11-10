@@ -134,7 +134,6 @@ function start() {
     {
       // Calm mode and "reduce motion" both slow the scene down; the mode sets the miss and peek limits.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
-      reduceMotion: settings.effectiveReduceMotion,
       maxMisses: maxMisses.value,
       peeks: peeksLeft.value,
       secretTaken: progress.hasKey(level.chapter),
@@ -194,9 +193,9 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="level">
-    <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
+    <header class="hud">
       <span class="title">{{ $t('level.level', { n: number }) }} <ModeChip :mode="mode" /></span>
-      <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
+      <FoundSlots class="found" :total="total" :found="found" />
       <span v-if="!calm" class="lives" role="img" :aria-label="$t('memoryMode.misses', { n: mistakes, max: maxMisses })">
         <svg v-for="i in maxMisses" :key="i" class="heart" :class="{ lost: i > maxMisses - mistakes }" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3.1A4.6 4.6 0 0 1 20 10c0 5.8-8 11-8 11Z" />
@@ -221,8 +220,8 @@ onBeforeUnmount(() => {
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
       <LevelId :id="level.id" boxed />
-      <div v-if="phase === 'curtain'" :key="phaseKey" class="curtain" :class="{ still: settings.effectiveReduceMotion }" />
-      <SecretFound v-if="secretShown" :still="settings.effectiveReduceMotion" />
+      <div v-if="phase === 'curtain'" :key="phaseKey" class="curtain" />
+      <SecretFound v-if="secretShown" />
     </div>
 
     <section v-if="result" class="result" :aria-label="$t('level.complete')">
@@ -292,11 +291,6 @@ onBeforeUnmount(() => {
 .hud .title {
   font-weight: 700;
   margin-inline-end: auto;
-}
-
-.hud.still * {
-  animation: none !important;
-  transition: none !important;
 }
 
 .lives {
@@ -385,10 +379,6 @@ onBeforeUnmount(() => {
   border-radius: 14px;
   background: #2a2140;
   animation: curtain 0.5s ease-out both;
-}
-
-.curtain.still {
-  animation: none;
 }
 
 @keyframes curtain {

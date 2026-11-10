@@ -181,7 +181,6 @@ function start() {
     {
       // Calm mode and "reduce motion" both slow the scene down.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
-      reduceMotion: settings.effectiveReduceMotion,
       missLock: rules.value.missLock,
       extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
@@ -278,12 +277,12 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="level">
-    <header v-if="uncounted" class="hud uncounted" :class="{ still: settings.effectiveReduceMotion }">
+    <header v-if="uncounted" class="hud uncounted">
       <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" /></svg>
-      <ToyText class="call" :text="$t('level.uncounted')" :still="settings.effectiveReduceMotion" />
+      <ToyText class="call" :text="$t('level.uncounted')" />
       <svg class="sparkle late" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" /></svg>
     </header>
-    <header v-else class="hud" :class="{ still: settings.effectiveReduceMotion }">
+    <header v-else class="hud">
       <span class="title">
         {{ treasury ? $t('chapters.treasury') : $t('level.level', { n: number }) }}
         <ModeChip :mode="mode" />
@@ -291,13 +290,12 @@ onBeforeUnmount(() => {
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
         <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>
-      <FoundSlots class="found" :total="total" :found="found" :still="settings.effectiveReduceMotion" />
+      <FoundSlots class="found" :total="total" :found="found" />
       <HudCounters
         v-if="!calm"
         :time="time"
         :mistakes="mistakes"
         :locked="locked"
-        :still="settings.effectiveReduceMotion"
       />
     </header>
 
@@ -313,7 +311,7 @@ onBeforeUnmount(() => {
       <LevelId :id="level.id" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <div class="note" role="status">{{ note }}</div>
-      <SecretFound v-if="secretShown" :still="settings.effectiveReduceMotion" />
+      <SecretFound v-if="secretShown" />
     </div>
 
     <footer class="toolbar">
@@ -373,7 +371,7 @@ onBeforeUnmount(() => {
       @menu="router.push(grid)"
     >
       <TravelFact v-if="level.travel" :level="level" :new-stamp="newStamp" />
-      <TreasureChest v-if="treasury" :still="settings.effectiveReduceMotion" />
+      <TreasureChest v-if="treasury" />
       <template v-if="level.detective">
         <ClueList class="clues" :title="$t('detective.notebook')" :clues="level.detective.clues" />
         <!-- The case's last scene: on to naming the culprit. -->
@@ -469,11 +467,6 @@ onBeforeUnmount(() => {
     width: 100%;
     justify-content: center;
   }
-}
-
-.hud.still * {
-  animation: none !important;
-  transition: none !important;
 }
 
 .board {

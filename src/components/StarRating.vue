@@ -45,9 +45,4 @@ withDefaults(defineProps<{ stars: number; size?: number; animated?: boolean }>()
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animated .on {
-    animation: none;
-  }
-}
 </style>

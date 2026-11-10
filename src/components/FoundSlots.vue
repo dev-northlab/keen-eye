@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // One empty circle per difference; a found one fills and gets a check drawn in.
 // `colors`: fill of each found circle in order (a match: the finder's color); default green.
-withDefaults(defineProps<{ total: number; found: number; colors?: string[]; still?: boolean }>(), { colors: () => [] })
+withDefaults(defineProps<{ total: number; found: number; colors?: string[] }>(), { colors: () => [] })
 </script>
 
 <template>
-  <span class="found" :class="{ done: found === total, still }" role="img" :aria-label="$t('level.found', { found, total })">
+  <span class="found" :class="{ done: found === total }" role="img" :aria-label="$t('level.found', { found, total })">
     <svg
       v-for="i in total"
       :key="i"
@@ -72,12 +72,6 @@ withDefaults(defineProps<{ total: number; found: number; colors?: string[]; stil
 
 .found.done {
   animation: pop 0.5s cubic-bezier(0.3, 1.6, 0.6, 1);
-}
-
-.found.still,
-.found.still * {
-  animation: none !important;
-  transition: none !important;
 }
 
 @keyframes pop {

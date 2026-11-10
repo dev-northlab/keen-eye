@@ -22,8 +22,6 @@ export interface MatchHandlers {
 export interface MatchSceneOptions {
   /** Animation time multiplier (reduce motion). */
   animationSpeed?: number
-  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
-  reduceMotion?: boolean
 }
 
 /**
@@ -54,7 +52,6 @@ export class MatchScene {
           zoom,
           flipped: i === 1,
           onZoom: (s) => handlers.onZoom?.(s),
-          reduceMotion: options.reduceMotion,
         }),
     )
     this.loop = new FrameLoop(this.frame)

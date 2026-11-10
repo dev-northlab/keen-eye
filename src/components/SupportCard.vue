@@ -4,12 +4,10 @@
 import { computed, ref } from 'vue'
 import { TIPS, type Tip } from '../services/purchases.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
-import { useSettingsStore } from '../stores/settings.ts'
 
 const HEART = 'M12 20.5s-8-4.9-8-11A4.6 4.6 0 0 1 12 6.8a4.6 4.6 0 0 1 8 2.7c0 6.1-8 11-8 11Z'
 
 const purchase = usePurchaseStore()
-const settings = useSettingsStore()
 
 /** The tips with a price from the store. */
 const tips = computed(() =>
@@ -49,7 +47,7 @@ async function tip(id: Tip) {
         v-for="t in tips"
         :key="t.id"
         class="tip"
-        :class="{ pending: pending === t.id, still: settings.effectiveReduceMotion }"
+        :class="{ pending: pending === t.id }"
         :disabled="purchase.busy"
         :aria-label="$t('about.support.tip', { price: t.price })"
         @click="tip(t.id)"
@@ -163,11 +161,6 @@ p {
 /* While its purchase sheet is open, the tip's icon hops and wiggles. */
 .pending .tip-icon {
   animation: hop 1s ease-in-out infinite;
-}
-
-/* "Reduce motion": a slow fade instead. */
-.pending.still .tip-icon {
-  animation: fade 1.6s ease-in-out infinite;
 }
 
 @keyframes hop {

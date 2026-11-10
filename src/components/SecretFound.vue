@@ -3,11 +3,10 @@ import KeyIcon from './KeyIcon.vue'
 
 // "Secret key found!" over the pictures (docs/hidden-item-feature.md): the key pops up with a shine
 // and flies off to the top while the line stays. Shown by the level for a moment (v-if).
-defineProps<{ still?: boolean }>()
 </script>
 
 <template>
-  <div class="secret" :class="{ still }" role="status">
+  <div class="secret" role="status">
     <span class="flyer" aria-hidden="true"><KeyIcon found /></span>
     <span class="text">{{ $t('secret.found') }}</span>
   </div>
@@ -67,8 +66,4 @@ defineProps<{ still?: boolean }>()
   }
 }
 
-.still,
-.still :deep(.key) {
-  animation: none;
-}
 </style>

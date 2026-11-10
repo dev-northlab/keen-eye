@@ -86,9 +86,4 @@ button:focus-visible {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  button.active {
-    animation: none;
-  }
-}
 </style>

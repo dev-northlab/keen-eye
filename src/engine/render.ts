@@ -285,14 +285,9 @@ const SPARK_GOLD = '#facc15'
 /**
  * Green by default; in a match, the color of the player who found it. The circle springs open from the
  * center with a thick stroke that thins down, a glow and a wave spread out of it and sparks fly off.
- * `still` ("reduce motion"): the circle only fades in.
  */
-export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e', still = false): void {
+export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e'): void {
   const mark = centered(addZoneMark(p, index, zone, { r: zone.r, stroke: color, 'stroke-width': 4 }))
-  if (still) {
-    mark.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250 })
-    return
-  }
   mark.animate(
     [
       { transform: 'scale(0.2)', strokeWidth: 12, opacity: 0 },
@@ -376,9 +371,8 @@ const MISS_COLOR = '#ef4444'
 /**
  * `scale` is the current zoom: the cross keeps the same size on screen. The pair of the found circle: the cross
  * pops up and shakes "no" while a red flash and a wave spread from it, then it shrinks away.
- * `still` ("reduce motion"): it only shows and fades.
  */
-export function addMissMark(p: Picture, x: number, y: number, scale: number, still = false): void {
+export function addMissMark(p: Picture, x: number, y: number, scale: number): void {
   const s = 14 / scale
   const cross = centered(
     el('path', {
@@ -391,10 +385,6 @@ export function addMissMark(p: Picture, x: number, y: number, scale: number, sti
   )
   p.marks.append(cross)
   const remove = () => cross.remove()
-  if (still) {
-    cross.animate([{ opacity: 1 }, { opacity: 1, offset: 0.5 }, { opacity: 0 }], { duration: 700 }).finished.then(remove, remove)
-    return
-  }
   // The shake runs across the screen, whatever the zoom.
   const d = s * 0.35
   const at = (dx: number, k: number) => `translateX(${dx}px) scale(${k})`

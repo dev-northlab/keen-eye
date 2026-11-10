@@ -86,7 +86,7 @@ let h = 0
 /** Scale of distances: 1 on a 400 px wide phone. */
 let s = 1
 let raf = 0
-let start = 0
+let time = 0
 let last = 0
 let next = 0
 const rockets: Rocket[] = []
@@ -260,7 +260,8 @@ function frame(now: number): void {
   // A long pause (the app in the background) does not jump the show.
   const dt = Math.min(0.05, (now - last) / 1000)
   last = now
-  step(dt, (now - start) / 1000)
+  time += dt
+  step(dt, time)
   draw()
   if (next < SHOW.length || rockets.length || particles.length || flashes.length) raf = requestAnimationFrame(frame)
   else ctx?.clearRect(0, 0, w, h)
@@ -269,7 +270,7 @@ function frame(now: number): void {
 onMounted(() => {
   measure()
   window.addEventListener('resize', measure)
-  start = last = performance.now()
+  last = performance.now()
   raf = requestAnimationFrame(frame)
 })
 

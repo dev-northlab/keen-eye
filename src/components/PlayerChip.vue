@@ -15,13 +15,12 @@ defineProps<{
   hint?: boolean
   hintDisabled?: boolean
   /** Reduce motion: no shake and pulse. */
-  still?: boolean
 }>()
 defineEmits<{ hint: [] }>()
 </script>
 
 <template>
-  <div class="player" :class="{ locked, active, still }" :style="{ '--player': player.color }">
+  <div class="player" :class="{ locked, active }" :style="{ '--player': player.color }">
     <svg v-if="locked" class="lock" viewBox="0 0 24 24" aria-hidden="true">
       <path d="M7.5 10V7.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="currentColor" stroke-width="2.6" />
       <rect x="5" y="10" width="14" height="11" rx="2.5" fill="currentColor" />
@@ -66,11 +65,6 @@ defineEmits<{ hint: [] }>()
   width: 30px;
   height: 18px;
   animation: pulse 0.6s ease-in-out infinite alternate;
-}
-
-.player.still,
-.player.still .lock {
-  animation: none;
 }
 
 @keyframes shake {

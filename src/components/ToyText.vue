@@ -4,10 +4,10 @@ import { computed } from 'vue'
 /**
  * A line in bright toy letters ("tiny boy": the level's call to find the differences, the cheer of a win): each word
  * its own colour (`--c`) over a darker depth (`--d`), a white rim round both and a soft shadow, the words bobbing one
- * after another (`still`: they don't). Coloured by word, not by letter, so joined scripts (Arabic) and combining marks
+ * after another. Coloured by word, not by letter, so joined scripts (Arabic) and combining marks
  * (Thai, Hindi) stay whole. The parent sets the size with `font-size`.
  */
-const props = defineProps<{ text: string; still?: boolean }>()
+const props = defineProps<{ text: string }>()
 
 const COLORS = [
   ['#ff5a5f', '#b8323a'],
@@ -24,7 +24,7 @@ const words = computed(() =>
 </script>
 
 <template>
-  <span class="toy-text" :class="{ still }">
+  <span class="toy-text">
     <span v-for="(w, i) in words" :key="i" class="toy-word" :style="w.style">{{ w.word }}</span>
   </span>
 </template>
@@ -64,10 +64,6 @@ const words = computed(() =>
     0 8px 6px rgb(0 0 0 / 0.25);
   animation: toy-bob 2.4s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.15s);
-}
-
-.still .toy-word {
-  animation: none;
 }
 
 @keyframes toy-bob {

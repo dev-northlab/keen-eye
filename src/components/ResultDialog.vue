@@ -8,7 +8,6 @@ import ModalDialog from './ModalDialog.vue'
 import ShareButton from './ShareButton.vue'
 import StarRating from './StarRating.vue'
 import ToyText from './ToyText.vue'
-import { useSettingsStore } from '../stores/settings.ts'
 
 /**
  * `mode` of the attempt: stars in normal mode, none in calm mode.
@@ -27,7 +26,6 @@ defineEmits<{ next: []; retry: []; menu: [] }>()
 
 // A chime per star, in step with StarRating's pop-in (0.25 s apart).
 const timers: number[] = []
-const still = useSettingsStore().effectiveReduceMotion
 
 /** Confetti round the portrait: angle (deg), distance (px), size, colour, delay (s) — the same every time. */
 const CONFETTI_COLORS = ['#ff5a5f', '#ff9f1c', '#ffd23f', '#3ec46d', '#2fa8ff', '#9b6bff', '#ff6bb5']
@@ -52,10 +50,10 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
 </script>
 
 <template>
-  <ModalDialog class="result" :class="{ still, calm: mode === 'calm' && !portrait, toy: portrait }" :title="$t('level.complete')">
+  <ModalDialog class="result" :class="{ calm: mode === 'calm' && !portrait, toy: portrait }" :title="$t('level.complete')">
     <!-- A glossy badge over the title: a golden cup (normal mode) or a green tick (calm), light rays turning behind
          it and confetti bursting out. "Tiny boy" has its hero's portrait instead, below. -->
-    <template v-if="!still" #backdrop>
+    <template #backdrop>
       <FireworksShow />
     </template>
     <template v-if="!portrait" #icon>
@@ -90,7 +88,7 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
             <path d="M14 25l7 7 13-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </span>
-        <ToyText class="cheer-text" :text="$t('level.tinyWon')" :still="still" />
+        <ToyText class="cheer-text" :text="$t('level.tinyWon')" />
       </div>
       <p v-else-if="mode === 'calm'" class="chip calm-chip rise" style="--d: 0.3s">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4C11 4 5 9 5 17l-1.5 3M5 17c6 0 11-3 13-9M9 13h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
@@ -488,25 +486,6 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
   }
 }
 
-/* "Reduce motion" (the setting, which follows the system's by default): everything simply there. */
-.still.overlay,
-.still :deep(.card),
-.still :deep(h2),
-.still :deep(.card > .icon),
-.still .rise,
-.still .rays,
-.still .next::after,
-.still .portrait,
-.still .tick,
-.still .sparkle {
-  animation: none;
-}
-
-.still .next::after,
-.still .burst {
-  display: none;
-}
-
 /* "Tiny boy": the hero's portrait pops up with a tick, confetti bursts out of it, stars twinkle round it, and the
    cheer below in toy letters. */
 .cheer {
@@ -635,16 +614,6 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
 
 .cheer-text {
   font-size: 24px;
-}
-
-.still .portrait,
-.still .tick,
-.still .sparkle {
-  animation: none;
-}
-
-.still .burst {
-  display: none;
 }
 
 /* The badge's confetti flies out from behind it once it has popped in. */

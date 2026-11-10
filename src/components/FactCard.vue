@@ -6,7 +6,7 @@ import { onBeforeUnmount, onMounted } from 'vue'
 
 const AUTO_CLOSE_MS = 7000
 
-defineProps<{ label: string; fact: string; still?: boolean }>()
+defineProps<{ label: string; fact: string }>()
 const emit = defineEmits<{ close: [] }>()
 
 let timer = 0
@@ -15,7 +15,7 @@ onBeforeUnmount(() => clearTimeout(timer))
 </script>
 
 <template>
-  <button class="fact" :class="{ still }" role="status" :aria-label="`${label}. ${fact} ${$t('common.close')}`" @click="emit('close')">
+  <button class="fact" role="status" :aria-label="`${label}. ${fact} ${$t('common.close')}`" @click="emit('close')">
     <svg class="check" viewBox="0 0 24 24" aria-hidden="true">
       <circle cx="12" cy="12" r="10" fill="#3cc47f" stroke="#239a5f" stroke-width="1.4" />
       <path d="M7 12.5l3.2 3.2 6.8-7" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
@@ -63,10 +63,6 @@ onBeforeUnmount(() => clearTimeout(timer))
 
 strong {
   font-size: 17px;
-}
-
-.fact.still {
-  animation: none;
 }
 
 @keyframes rise {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // Time and mistakes chips of a level's HUD (normal mode). Two root elements, so that they are
-// laid out as items of the HUD row. `still` turns off their animations (reduce motion).
-defineProps<{ time: string; mistakes: number; locked: boolean; still?: boolean }>()
+// laid out as items of the HUD row.
+defineProps<{ time: string; mistakes: number; locked: boolean }>()
 </script>
 
 <template>
-  <span class="chip time" :class="{ still }" role="img" :aria-label="$t('level.time', { t: time })">
+  <span class="chip time" role="img" :aria-label="$t('level.time', { t: time })">
     <!-- Yellow stopwatch. -->
     <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
       <rect x="10" y="1" width="4" height="3.4" rx="1.2" fill="#e8a400" />
@@ -21,7 +21,7 @@ defineProps<{ time: string; mistakes: number; locked: boolean; still?: boolean }
   <span
     :key="mistakes"
     class="chip miss"
-    :class="{ shake: mistakes > 0, locked, still }"
+    :class="{ shake: mistakes > 0, locked }"
     role="img"
     :aria-label="$t('level.mistakes', { n: mistakes })"
   >
@@ -76,12 +76,6 @@ defineProps<{ time: string; mistakes: number; locked: boolean; still?: boolean }
 
 .miss.locked .icon {
   animation: pulse 0.7s ease-in-out infinite alternate;
-}
-
-.chip.still,
-.chip.still * {
-  animation: none !important;
-  transition: none !important;
 }
 
 @keyframes shake {
