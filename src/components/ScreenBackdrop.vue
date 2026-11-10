@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { BackdropTheme } from '../levels/chapters.ts'
+import { backdropPicture, TALL_WINDOW } from '../services/backdrops.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 import MeadowScene from './MeadowScene.vue'
 
@@ -11,7 +12,6 @@ import MeadowScene from './MeadowScene.vue'
 
 const props = defineProps<{ theme: BackdropTheme }>()
 const settings = useSettingsStore()
-const baseUrl = import.meta.env.BASE_URL
 
 /** Dark theme: every world at night (dark sky, moon, stars, dimmed landscape); space already is. */
 const night = computed(() => settings.theme === 'dark')
@@ -19,19 +19,8 @@ const night = computed(() => settings.theme === 'dark')
 /** The meadow follows the season chosen on the home screen (sky colours, falling petals/leaves/snow). */
 const season = computed(() => (props.theme === 'meadow' ? settings.season : null))
 
-/**
- * The redesigned picture style (levels/picture-style.ts): a ready picture (public/backdrops/) instead of the drawn
- * sky and landscape, cut to the window like the strip — the meadow one per season, day and night, every world one per
- * day and night, and space a single one (it is dark in both themes).
- */
-const picture = computed(() => {
-  if (props.theme === 'tinyBoy' || settings.pictureStyle !== 'redesign') return null
-  const name =
-    props.theme === 'space'
-      ? 'space'
-      : `${season.value ? `meadow-${season.value}` : props.theme}-${night.value ? 'night' : 'day'}`
-  return `${import.meta.env.BASE_URL}backdrops/${name}.avif`
-})
+/** A ready picture instead of the drawn sky and landscape (services/backdrops.ts), cut to the window like the strip. */
+const picture = computed(() => backdropPicture(props.theme))
 
 const FALLING = {
   spring: { count: 14, size: 9, colors: ['#ffd1e0', '#ffffff', '#ffb3cb'] },
@@ -177,8 +166,8 @@ const craters = [
     <!-- "Tiny boy": its own autumn picture in both picture styles, upright on a portrait window; no night version,
          so the dark theme dims it. -->
     <picture v-if="theme === 'tinyBoy'">
-      <source media="(max-aspect-ratio: 1/1)" :srcset="`${baseUrl}backdrops/tiny-boy-tall.avif`" />
-      <img class="picture" :class="{ dimmed: night }" :src="`${baseUrl}backdrops/tiny-boy-wide.avif`" alt="" />
+      <source :media="TALL_WINDOW" :srcset="backdropPicture(theme, true)!" />
+      <img class="picture" :class="{ dimmed: night }" :src="picture!" alt="" />
     </picture>
     <img v-else-if="picture" class="picture" :src="picture" alt="" />
     <template v-else>

@@ -104,33 +104,13 @@ function pictureLayers(level: Level, variant: 0 | 1): ImagePatch[] {
 }
 
 /**
- * Images fetched and decoded ahead by `preloadPictures`, the latest last. Kept referenced, so the browser keeps them
- * ready: a picture of `createPicture` with the same URL then shows at once instead of decoding as the level opens
- * (AVIF decodes slowly on a weak phone). A few levels' worth; older ones are let go.
+ * The URLs of every image a picture level shows (`createPicture`): both pictures, B's cut-outs and the key image;
+ * none for a drawn scene. What services/images.ts `preloadPictures` gets ready before the level opens.
  */
-const preloaded = new Map<string, HTMLImageElement>()
-const KEEP_PRELOADED = 32
-
-/**
- * Fetches and decodes the pixel pictures of `level` (the level as it will be played: `styledLevel`), its key too;
- * resolves when all are ready or failed (a failed one shows as without preloading). Nothing to do for a drawn scene.
- */
-export function preloadPictures(level: Level): Promise<void> {
+export function pictureFiles(level: Level): string[] {
   const hrefs = [...pictureLayers(level, 0), ...pictureLayers(level, 1)].map((p) => p.href)
   if (level.secret?.image) hrefs.push(level.secret.image.href)
-  return Promise.all([...new Set(hrefs)].map((href) => decodeImage(imageUrl(href)))).then(() => {})
-}
-
-function decodeImage(url: string): Promise<void> {
-  let image = preloaded.get(url)
-  if (image) preloaded.delete(url)
-  else {
-    image = new Image()
-    image.src = url
-  }
-  preloaded.set(url, image)
-  if (preloaded.size > KEEP_PRELOADED) preloaded.delete(preloaded.keys().next().value!)
-  return image.decode().catch(() => {})
+  return [...new Set(hrefs)].map(imageUrl)
 }
 
 /**

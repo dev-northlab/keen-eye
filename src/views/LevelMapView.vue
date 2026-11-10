@@ -21,6 +21,7 @@ import {
 } from '../levels/chapters.ts'
 import { treasuryLevel } from '../levels/index.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
+import { preloadBackdrop } from '../services/backdrops.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
@@ -122,6 +123,7 @@ const timeTravel = {
             :name="$t('chapters.tinyBoy')"
             :tag="tinyBoy.total > 0 ? $t('map.task') : $t('map.soon')"
             :disabled="tinyBoy.total === 0 && !settings.developer"
+            @pointerdown="preloadBackdrop(TINY_BOY_CHAPTER.backdrop)"
             @click="router.push({ name: 'tiny-boy' })"
           >
             <template #icon><img :src="`${baseUrl}banners/tiny-boy-face.avif`" alt="" /></template>

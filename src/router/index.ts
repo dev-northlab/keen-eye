@@ -1,11 +1,12 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { preloadPictures } from '../engine/render.ts'
-import { chapterById, DETECTIVE_CHAPTER, levelsScreen, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
+import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vue-router'
+import { type BackdropTheme, chapterById, DETECTIVE_CHAPTER, levelsScreen, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
 import { styledLevel } from '../levels/picture-style.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
+import { preloadBackdrop } from '../services/backdrops.ts'
+import { preloadPictures, waitAtMost } from '../services/images.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
@@ -110,15 +111,33 @@ router.beforeEach((to, from) => {
   return progress.isUnlocked(id) ? true : levelsScreen(level)
 })
 
-/** How long opening a level waits for its pictures before showing it anyway (a slow download, e.g. the web build). */
-const PRELOAD_WAIT_MS = 1500
+/** The backdrop a screen shows (`ScreenBackdrop` in its view), or none: levels and duels show only their pictures. */
+function backdropOf(to: RouteLocationNormalized): BackdropTheme | undefined {
+  switch (to.name) {
+    case 'level':
+    case 'memory':
+    case 'match':
+    case 'time-travel':
+      return undefined
+    case 'chapter':
+      return chapterById(String(to.params.chapter))?.backdrop
+    case 'tiny-boy':
+      return TINY_BOY_CHAPTER.backdrop
+    case 'detective':
+    case 'case':
+      return DETECTIVE_CHAPTER.backdrop
+    default:
+      return 'meadow'
+  }
+}
 
-// A picture level (redesigned style, "tiny boy") opens once its pictures are downloaded and decoded, as a game engine
-// loads a scene: they show at once instead of a spinner over the pictures while the timer runs.
+// A screen opens once its big pictures are downloaded and decoded (services/images.ts), as a game engine loads a
+// scene: a picture level's (redesigned style, "tiny boy") show at once instead of a spinner over the board while the
+// timer runs, a backdrop picture is there as the screen appears instead of popping in over its sky.
 router.beforeResolve(async (to) => {
+  const backdrop = backdropOf(to)
+  if (backdrop) return waitAtMost(preloadBackdrop(backdrop))
   if (to.name !== 'level' && to.name !== 'match') return
   const level = levelById(Number(to.params.id))
-  if (!level) return
-  const ready = preloadPictures(styledLevel(level, useSettingsStore().pictureStyle))
-  await Promise.race([ready, new Promise((done) => setTimeout(done, PRELOAD_WAIT_MS))])
+  if (level) await waitAtMost(preloadPictures(styledLevel(level, useSettingsStore().pictureStyle)))
 })

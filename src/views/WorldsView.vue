@@ -7,6 +7,7 @@ import LevelId from '../components/LevelId.vue'
 import PhotoBanner from '../components/PhotoBanner.vue'
 import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
+import { preloadBackdrop } from '../services/backdrops.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
 // "Spot the difference" worlds: one picture banner per world (PhotoBanner in the world's colour, its picture
@@ -55,6 +56,7 @@ useBackButton(toModes)
             :photo="`${baseUrl}banners/world-${c.chapter.id}.avif`"
             :name="$t(`chapters.${c.chapter.id}`)"
             :disabled="!c.first"
+            @pointerdown="preloadBackdrop(c.chapter.backdrop)"
             @click="open(c.chapter)"
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
