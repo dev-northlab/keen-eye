@@ -2,8 +2,9 @@
 import { existsSync } from 'node:fs'
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
+import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
 import { detectiveLevels } from '../src/levels/detective/index.ts'
+import { tinyBoyLevels } from '../src/levels/tiny-boy/index.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels, treasuryLevel } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
@@ -337,6 +338,7 @@ const expected = new Map([
   ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
   ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
   ...detectiveLevels.map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
+  ...tinyBoyLevels.map((l, i) => [l, TINY_BOY_CHAPTER.ranges[0][0] + i] as const),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
   // Hidden levels (upcoming.ts) take their place in the order only when released.
   ...upcomingLevels.map((l) => [l, l.id] as const),

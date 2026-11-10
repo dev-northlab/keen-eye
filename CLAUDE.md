@@ -105,9 +105,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
-  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); hidden in `upcoming.ts` until released
-  ("coming soon" for players, developer mode opens it);
-  `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
+  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); open and paid like "time" (first 3 free);
+  `allLevels` = worlds + time + memory + travel + detective + tiny boy (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (world banners, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),
@@ -213,7 +212,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
-  and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
+  and in the toolbar of a level that has them) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`, and every world's

@@ -1,12 +1,13 @@
 Kaksi kuvaa näyttää samalta – mutta ne eivät ole samat. Etsi kaikki erot käsin piirretyistä kohtauksista, jotka heräävät eloon: pilvet lipuvat, veneet keinuvat aalloilla, linnut lentävät, ja osa eroista piileskelee itse liikkeessä.
 
-288 TASOA, 7 TAPAA PELATA
+298 TASOA, 8 TAPAA PELATA
 • Maailmat – 150 tasoa maatilalla, kaupungissa, metsässä, merellä ja avaruudessa, 5–10 eroa
 • Aika – sama paikka aamulla ja illalla, kesällä ja talvella: löydä, mikä todella muuttui
 • Muisti – katso kuvaa muutama sekunti ja löydä muutokset muistinvaraisesti
 • Maailmanmatka – kuuluisia paikkoja 32 maasta, hauska tieto jokaisesta ja leima passiin jokaisesta voitosta
 • Salapoliisi – jokainen ero on johtolanka: kerää ne ja nimeä syyllinen seitsemässä tapauksessa
 • Mikä ei kuulu joukkoon – mikä ei sovi muinaiseen Egyptiin, Roomaan, viikinkiaikaan ja muihin aikakausiin
+• Pikkupoika – 3D-kuvia pikkupojan maailmasta, eikä kukaan kerro, montako eroa on
 • Kaksi pelaajaa samalla laitteella – kaksintaistelu, vuorotellen tai yhdessä
 
 KOKO PERHEELLE
@@ -14,6 +15,7 @@ KOKO PERHEELLE
 • Rauhallinen tila: ei ajastinta, ei virheitä, 3 ilmaista vihjettä joka tasolla
 • Vaikea tila: ei vihjeitä, vain yksi virhe sallittu, punaiset tähdet parhaille
 • Kahden sormen zoomaus molempiin kuviin yhtä aikaa
+• 3D-kuvat tai perinteiset piirrokset – vaihto yhdellä napautuksella
 • Piilotetut kultaiset avaimet avaavat bonusaarrekammion
 • Vaalea ja tumma teema, musiikki ja äänet
 • 32 kieltä

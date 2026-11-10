@@ -120,8 +120,7 @@ const timeTravel = {
           />
         </li>
         <li>
-          <!-- "Tiny boy": its levels as picture banners (TinyBoyView). Hidden until released, so players see
-               "coming soon" and only developer mode opens it. -->
+          <!-- "Tiny boy": its levels as picture banners (TinyBoyView). -->
           <PhotoBanner
             :photo="`${baseUrl}banners/tiny-boy.webp`"
             :name="$t('chapters.tinyBoy')"

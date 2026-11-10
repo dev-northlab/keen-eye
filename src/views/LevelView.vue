@@ -223,8 +223,8 @@ function showHint() {
   hintsUsed.value++
 }
 
-/** A level with redesigned pictures shows the picture style switch (developer mode only for now). */
-const styleSwitch = computed(() => settings.developer && !!level.redesign)
+/** A level with redesigned pictures shows the picture style switch. */
+const styleSwitch = computed(() => !!level.redesign)
 // Another picture style has other zones: the attempt starts over in it.
 watch(
   () => settings.pictureStyle,

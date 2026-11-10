@@ -1,12 +1,13 @@
 Dos imágenes parecen iguales, pero no lo son. Encuentra todas las diferencias en escenas dibujadas a mano que cobran vida: las nubes se mueven, los barcos se mecen sobre las olas, los pájaros vuelan y algunas diferencias se esconden en el propio movimiento.
 
-288 NIVELES, 7 FORMAS DE JUGAR
+298 NIVELES, 8 FORMAS DE JUGAR
 • Mundos: 150 niveles en la granja, la ciudad, el bosque, el mar y el espacio, con 5 a 10 diferencias
 • El tiempo: el mismo lugar por la mañana y por la tarde, en verano y en invierno; encuentra lo que de verdad cambió
 • Memoria: observa la imagen unos segundos y encuentra los cambios de memoria
 • Viaje por el mundo: lugares famosos de 32 países, un dato curioso de cada uno y un sello en el pasaporte por cada victoria
 • Detective: cada diferencia es una pista; reúnelas y señala al culpable en siete casos
 • Encuentra lo que sobra: lo que no encaja en el antiguo Egipto, Roma, la era vikinga y otras épocas
+• Pequeñín – imágenes 3D del mundo de un niño pequeño, sin saber cuántas diferencias hay
 • Dos jugadores en un dispositivo: duelo, por turnos o en equipo
 
 PARA TODA LA FAMILIA
@@ -14,6 +15,7 @@ PARA TODA LA FAMILIA
 • Modo tranquilo: sin cronómetro ni errores, 3 pistas gratis en cada nivel
 • Modo difícil: sin pistas, solo se permite un error, estrellas rojas para los mejores
 • Zoom con dos dedos en ambas imágenes a la vez
+• Imágenes 3D o dibujos clásicos: cámbialo con un toque
 • Llaves doradas escondidas abren una cámara del tesoro extra
 • Tema claro y oscuro, música y sonidos
 • 32 idiomas

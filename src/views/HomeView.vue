@@ -12,11 +12,9 @@ import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
-import { useSettingsStore } from '../stores/settings.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
-const settings = useSettingsStore()
 
 /** The open info dialog, if any. */
 const dialog = ref<'privacy' | 'contact' | null>(null)
@@ -59,7 +57,7 @@ function play() {
       <SeasonSwitch />
       <ThemeSwitch />
       <!-- Developer mode only while few levels have redesigned pictures. -->
-      <PictureStyleSwitch v-if="settings.developer" />
+      <PictureStyleSwitch />
     </div>
     <h1>Keen Eye</h1>
     <p class="stars">

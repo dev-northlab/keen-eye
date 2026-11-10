@@ -27,7 +27,8 @@ Fully offline · no ads · no analytics · 32 languages
 ## ✨ What's inside
 
 Every picture is a **unique, hand-drawn SVG scene** — no generators, no stock photos. Many scenes are alive: clouds
-drift, boats bob, birds fly, and some differences hide *in the motion itself*.
+drift, boats bob, birds fly, and some differences hide *in the motion itself*. Most world levels also come as **3D
+pictures**: one tap on the 2D / 3D switch (home screen or level toolbar) turns the whole game — levels and backdrops — 3D.
 
 | Mode | Levels | The idea |
 |---|---:|---|
@@ -37,6 +38,7 @@ drift, boats bob, birds fly, and some differences hide *in the motion itself*.
 | ✈️ **Travel** | 32 | One recognizable city per country on a world map, a fun fact for each, and a passport stamp for every win. |
 | 🔍 **Detective** | 35 | Seven cases of five scenes. Every difference is a clue — collect them and name the culprit. |
 | 🏺 **Find the odd one out** | 10 eras | Egypt, Rome, Vikings, a castle, pirates, the Wild West, the Stone Age, samurai Japan, the Aztecs, ancient China — spot what doesn't belong in the era. |
+| 👦 **Tiny boy** | 10 | 3D pictures of a little boy's world — a birthday, a snowman, a fair. Nobody says how many differences there are: find them all. No timer, no stars, just won or not yet. |
 | 🗝️ **Treasury** | 1 bonus | A golden key hides in one level of every world and mode. Find them all to open the treasure. |
 | 👫 **Two players** | — | On one device: **duel** (first to tap scores), **hot-seat** (take turns) or **co-op** (one shared score). Face to face on a tablet, too. |
 
