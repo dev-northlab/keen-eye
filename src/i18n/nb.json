@@ -844,6 +844,8 @@
     "soonLevels": "Kommer snart: {n} til",
     "task": "Finn forskjellene",
     "tinyBoyText": "Forskjeller i en liten gutts verden",
+    "won": "Klart",
+    "notWon": "Ikke klart ennå",
     "title": "Verdener",
     "random": "Tilfeldig brett"
   },

@@ -84,6 +84,8 @@
     "progress": "{total} में से {done}",
     "task": "अंतर खोजो",
     "tinyBoyText": "एक नन्हे बच्चे की दुनिया में अंतर",
+    "won": "पूरा हुआ",
+    "notWon": "अभी पूरा नहीं हुआ",
     "random": "कोई भी लेवल"
   },
   "timeTravel": {

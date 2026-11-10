@@ -844,6 +844,8 @@
     "soonLevels": "Kommer snart: {n} till",
     "task": "Hitta felen",
     "tinyBoyText": "Skillnader i en liten pojkes värld",
+    "won": "Klarad",
+    "notWon": "Inte klarad än",
     "title": "Världar",
     "random": "Slumpvis nivå"
   },

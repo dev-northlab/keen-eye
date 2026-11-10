@@ -84,6 +84,8 @@
     "progress": "{done} van {total}",
     "task": "Zoek de verschillen",
     "tinyBoyText": "Verschillen in de wereld van een kleine jongen",
+    "won": "Gehaald",
+    "notWon": "Nog niet gehaald",
     "random": "Willekeurig level"
   },
   "timeTravel": {

@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
 import PhotoBanner from '../components/PhotoBanner.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
 import { chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TINY_BOY_CHAPTER } from '../levels/chapters.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
@@ -56,7 +55,14 @@ function open(level: Level) {
               </svg>
               <template v-else>{{ levelNumber(level) }}</template>
             </template>
-            <StarRating :stars="progress.records[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="16" />
+            <!-- No stars here: a level is won or not yet. -->
+            <span class="state" :class="{ won: progress.isCompleted(level.id) }">
+              <svg v-if="progress.isCompleted(level.id)" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="11" fill="#3ec46d" stroke="#fff" stroke-width="1.5" />
+                <path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {{ progress.isCompleted(level.id) ? $t('map.won') : $t('map.notWon') }}
+            </span>
           </PhotoBanner>
           <svg v-if="isUpcoming(level.id)" class="hidden-mark" viewBox="0 0 24 24" :aria-label="$t('map.hidden')">
             <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
@@ -98,6 +104,24 @@ main {
 
 .list li {
   position: relative;
+}
+
+/* Won or not yet: a green tick with "won", else a faint "not yet". */
+.state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.state.won {
+  opacity: 1;
+}
+
+.state svg {
+  width: 20px;
+  height: 20px;
 }
 
 /* Not reached yet: greyed like the closed treasury. */

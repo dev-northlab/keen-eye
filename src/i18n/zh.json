@@ -84,6 +84,8 @@
     "progress": "{done} / {total}",
     "task": "找不同",
     "tinyBoyText": "小男孩世界里的不同",
+    "won": "已通过",
+    "notWon": "尚未通过",
     "random": "随机关卡"
   },
   "timeTravel": {

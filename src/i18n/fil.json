@@ -844,6 +844,8 @@
     "soonLevels": "Malapit na: {n} pa",
     "task": "Hanapin ang pagkakaiba",
     "tinyBoyText": "Mga pagkakaiba sa mundo ng munting bata",
+    "won": "Natapos",
+    "notWon": "Hindi pa natatapos",
     "title": "Mga mundo",
     "random": "Random na level"
   },

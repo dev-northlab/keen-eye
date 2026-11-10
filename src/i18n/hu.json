@@ -84,6 +84,8 @@
     "progress": "{done} / {total}",
     "task": "Keresd a különbségeket",
     "tinyBoyText": "Különbségek egy kisfiú világában",
+    "won": "Teljesítve",
+    "notWon": "Még nincs teljesítve",
     "random": "Véletlen pálya"
   },
   "timeTravel": {

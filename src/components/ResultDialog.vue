@@ -10,7 +10,8 @@ import StarRating from './StarRating.vue'
 /**
  * `mode` of the attempt: yellow stars in normal mode, red ones in hard mode, none in calm mode. `failed`: lost
  * on too many mistakes (hard mode). `offerHard`: a "Play on hard" button (the level has fewer than 3 red stars).
- * `shareText`: shows a "Share" button under the actions with this message.
+ * `shareText`: shows a "Share" button under the actions with this message. `plain`: a level without modes or stars
+ * ("tiny boy"): just a tick for the win.
  */
 const props = defineProps<{
   result: LevelResult
@@ -20,6 +21,7 @@ const props = defineProps<{
   hasNext: boolean
   offerHard?: boolean
   shareText?: string
+  plain?: boolean
 }>()
 defineEmits<{ next: []; retry: []; menu: []; hard: [] }>()
 
@@ -34,7 +36,11 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
 
 <template>
   <ModalDialog :title="failed ? $t('level.failed') : $t('level.complete')">
-    <p v-if="mode === 'calm'">{{ $t('level.calmDone') }}</p>
+    <svg v-if="plain" class="won" viewBox="0 0 48 48" role="img" :aria-label="$t('map.won')">
+      <circle cx="24" cy="24" r="22" fill="#3ec46d" />
+      <path d="M14 25l7 7 13-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <p v-else-if="mode === 'calm'">{{ $t('level.calmDone') }}</p>
     <!-- Lost: the crosses of the mistakes in place of the stars, then on to another try. -->
     <template v-else-if="failed">
       <span class="misses" role="img" :aria-label="$t('level.mistakes', { n: result.mistakes })">
@@ -67,6 +73,13 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
 </template>
 
 <style scoped>
+.won {
+  width: 64px;
+  height: 64px;
+  margin: 4px auto 0;
+  display: block;
+}
+
 .hard-done {
   margin: 0;
   font-weight: 700;

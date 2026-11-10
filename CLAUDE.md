@@ -39,7 +39,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 
 - `src/engine/` — game scene, plain TS: `types.ts` (Level format), `rules.ts` (hit test, stars, anti-spam),
   `animation.ts` (poses of animated objects at time t; DOM-free, also used by the validator),
-  `render.ts` (SVG pictures and marks), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
+  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
   `transform.ts` (`PictureTransform`, `docs/mirror-rotate-feature.md`: picture B of `Level.transformB` shown mirrored or
@@ -102,7 +102,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
   as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.webp`)
   by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.webp` or `-tall.webp` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.mp3` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
-  differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); hidden in `upcoming.ts` until released
+  differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
+  either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
+  shows a tick (`plain`), its banners "won" / "not won yet" (`map.won`, `map.notWon`); hidden in `upcoming.ts` until released
   ("coming soon" for players, developer mode opens it);
   `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)

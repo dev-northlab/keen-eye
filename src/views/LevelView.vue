@@ -44,7 +44,11 @@ const number = levelNumber(level)
 const grid = levelsScreen(level)
 /** The bonus level for all the hidden keys: named instead of numbered, a chest opens after it. */
 const treasury = level.chapter === TREASURY_CHAPTER.id
-/** "Tiny boy": the player is not told how many differences there are, so the HUD shows only that there are some. */
+/**
+ * "Tiny boy": the player is not told how many differences there are, so the HUD shows only that there are some; no
+ * modes either — every attempt plays by calm mode's rules (no timer, mistakes, lock or stars) with one hint, a level
+ * is just won.
+ */
 const uncounted = level.chapter === TINY_BOY_CHAPTER.id
 /**
  * Its words as bright toy letters, each word its own colour (`--c`) over a darker depth (`--d`). Coloured by word,
@@ -162,7 +166,7 @@ function start() {
   result.value = null
   failed.value = false
   modeSetting = settings.mode
-  mode.value = hardChallenge.value ? 'hard' : settings.mode
+  mode.value = uncounted ? 'calm' : hardChallenge.value ? 'hard' : settings.mode
   playMusic(uncounted ? 'tinyBoy' : calm.value ? 'calm' : 'level')
   scene = new GameScene(
     board.value!,
@@ -225,7 +229,8 @@ function closeTransformNotice() {
 }
 
 /** Hints this attempt can still take (calm mode 3, normal 1, hard none). */
-const hintsLeft = computed(() => rules.value.hints - hintsUsed.value)
+/** "Tiny boy" gives one hint per attempt; other levels get their mode's few. */
+const hintsLeft = computed(() => (uncounted ? 1 : rules.value.hints) - hintsUsed.value)
 const canHint = computed(() => !result.value && !hintActive.value && hintsLeft.value > 0)
 
 function showHint() {
@@ -245,7 +250,7 @@ watch(
 /** The settings are closed: another mode chosen in them starts the level over in that mode. */
 function closeSettings() {
   settingsOpen.value = false
-  if (settings.mode === modeSetting) return
+  if (uncounted || settings.mode === modeSetting) return
   hardChallenge.value = false
   start()
 }
@@ -362,7 +367,7 @@ onBeforeUnmount(() => {
         <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </ToolButton>
       <ToolButton
-        v-if="calm"
+        v-if="calm && !uncounted"
         :label="animationFrozen ? $t('level.animPlay') : $t('level.animPause')"
         :aria-pressed="animationFrozen"
         @click="toggleAnimation"
@@ -391,6 +396,7 @@ onBeforeUnmount(() => {
       v-if="result"
       :result="result"
       :mode="mode"
+      :plain="uncounted"
       :failed="failed"
       :offer-hard="mode === 'normal' && progress.hardStars(level.id) < 3"
       :time="time"

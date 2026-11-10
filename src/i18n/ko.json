@@ -84,6 +84,8 @@
     "progress": "{done} / {total}",
     "task": "다른 그림 찾기",
     "tinyBoyText": "꼬마의 세상에서 다른 그림 찾기",
+    "won": "통과",
+    "notWon": "아직 통과하지 않음",
     "random": "무작위 레벨"
   },
   "timeTravel": {
