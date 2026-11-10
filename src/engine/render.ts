@@ -1,6 +1,6 @@
 import { pose, zoneCenter } from './animation.ts'
 import { svgTransform, type PictureTransform, type Size } from './transform.ts'
-import type { Animation, Difference, Level } from './types.ts'
+import type { Animation, Difference, ImagePatch, Level } from './types.ts'
 
 const SVG_NS = 'http://www.w3.org/2000/svg'
 
@@ -54,12 +54,10 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     scene.innerHTML = built.svg
     animations = built.animations
   } else {
-    const href = variant === 0 ? level.imageA : level.imageB
-    if (href) {
+    const layers = pictureLayers(level, variant)
+    if (layers.length) {
       // Picture B may be A with cut-outs of B over it: the spinner stays until all are in, or B would show as A.
-      const images = [{ href, x: 0, y: 0, w, h }, ...(variant === 1 ? (level.patchesB ?? []) : [])].map((p) =>
-        el('image', { href: import.meta.env.BASE_URL + p.href, x: p.x, y: p.y, width: p.w, height: p.h }),
-      )
+      const images = layers.map((p) => el('image', { href: imageUrl(p.href), x: p.x, y: p.y, width: p.w, height: p.h }))
       scene.append(...images)
       loader = loadingSpinner(w, h)
       let pending = images.length
@@ -73,7 +71,7 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     const key = level.secret?.image
     if (key && (level.secret?.on === 'both' || variant === 1)) {
       const group = el('g', { 'data-secret': '' })
-      group.append(el('image', { href: import.meta.env.BASE_URL + key.href, x: key.x, y: key.y, width: key.w, height: key.h }))
+      group.append(el('image', { href: imageUrl(key.href), x: key.x, y: key.y, width: key.w, height: key.h }))
       scene.append(group)
     }
   }
@@ -95,9 +93,50 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   return picture
 }
 
+const imageUrl = (href: string) => import.meta.env.BASE_URL + href
+
+/** The pixel layers of picture `variant` of an image level: the whole picture, for B with its cut-outs over it. */
+function pictureLayers(level: Level, variant: 0 | 1): ImagePatch[] {
+  const href = variant === 0 ? level.imageA : level.imageB
+  if (!href) return []
+  const { w, h } = level.viewBox
+  return [{ href, x: 0, y: 0, w, h }, ...(variant === 1 ? (level.patchesB ?? []) : [])]
+}
+
+/**
+ * Images fetched and decoded ahead by `preloadPictures`, the latest last. Kept referenced, so the browser keeps them
+ * ready: a picture of `createPicture` with the same URL then shows at once instead of decoding as the level opens
+ * (AVIF decodes slowly on a weak phone). A few levels' worth; older ones are let go.
+ */
+const preloaded = new Map<string, HTMLImageElement>()
+const KEEP_PRELOADED = 32
+
+/**
+ * Fetches and decodes the pixel pictures of `level` (the level as it will be played: `styledLevel`), its key too;
+ * resolves when all are ready or failed (a failed one shows as without preloading). Nothing to do for a drawn scene.
+ */
+export function preloadPictures(level: Level): Promise<void> {
+  const hrefs = [...pictureLayers(level, 0), ...pictureLayers(level, 1)].map((p) => p.href)
+  if (level.secret?.image) hrefs.push(level.secret.image.href)
+  return Promise.all([...new Set(hrefs)].map((href) => decodeImage(imageUrl(href)))).then(() => {})
+}
+
+function decodeImage(url: string): Promise<void> {
+  let image = preloaded.get(url)
+  if (image) preloaded.delete(url)
+  else {
+    image = new Image()
+    image.src = url
+  }
+  preloaded.set(url, image)
+  if (preloaded.size > KEEP_PRELOADED) preloaded.delete(preloaded.keys().next().value!)
+  return image.decode().catch(() => {})
+}
+
 /**
  * The place of a pixel picture while it downloads (the 3D pictures are large): a soft panel with a turning ring in
  * the middle, in the UI's colour tokens, drawn in the picture's own w × h units. SMIL turns it, no script needed.
+ * The ring shows only after a moment, so a picture that is in at once (preloaded) does not flash it.
  */
 function loadingSpinner(w: number, h: number): SVGGElement {
   const r = Math.min(w, h) * 0.06
@@ -117,7 +156,9 @@ function loadingSpinner(w: number, h: number): SVGGElement {
   })
   arc.style.stroke = 'var(--accent)'
   arc.append(el('animateTransform', { attributeName: 'transform', type: 'rotate', from: `0 ${w / 2} ${h / 2}`, to: `360 ${w / 2} ${h / 2}`, dur: '0.9s', repeatCount: 'indefinite' }))
-  g.append(panel, track, arc)
+  const ring = el('g', { opacity: 0 })
+  ring.append(track, arc, el('set', { attributeName: 'opacity', to: 1, begin: '0.3s' }))
+  g.append(panel, ring)
   return g
 }
 

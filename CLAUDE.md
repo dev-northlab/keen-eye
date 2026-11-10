@@ -45,7 +45,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 
 - `src/engine/` — game scene, plain TS: `types.ts` (Level format), `rules.ts` (hit test, stars, anti-spam),
   `animation.ts` (poses of animated objects at time t; DOM-free, also used by the validator),
-  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
+  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded; `preloadPictures` fetches and decodes a picture level's images ahead — the router's `beforeResolve` waits for them, up to 1.5 s, before a level or duel opens, `LevelView` readies the next level's while the result dialog is open, and `usePicturePreload` on the grids of worlds and "tiny boy" readies the first level not won yet and a tile's level on `pointerdown` — one level at a time, a whole chapter's decoded pictures would not fit a phone's memory), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
   `transform.ts` (`PictureTransform`, `docs/mirror-rotate-feature.md`: picture B of `Level.transformB` shown mirrored or
