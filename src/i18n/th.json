@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "ระวัง! ภาพที่สองกลับด้านแบบกระจก",
       "rotate-180": "ระวัง! ภาพที่สองกลับหัว"
-    }
+    },
+    "uncounted": "มีจุดต่างอยู่ แต่ไม่มีใครรู้ว่ากี่จุด หาให้ครบเลย!"
   },
   "levelTitles": {
     "memoryFlowerShop": "ร้านดอกไม้",
@@ -823,7 +824,15 @@
     "chickensBarn": "โรงนา",
     "chickensMeadow": "ทุ่งหญ้าริมลำธาร",
     "roseYard": "ลานกุหลาบ",
-    "sandHill": "เนินทราย"
+    "sandHill": "เนินทราย",
+    "snowmanNight": "ตุ๊กตาหิมะยามค่ำ",
+    "backyardPlayground": "สนามเด็กเล่นหลังบ้าน",
+    "firstBirthday": "วันเกิดปีแรก",
+    "toyYard": "ของเล่นในลานบ้าน",
+    "parkPushchair": "รถเข็นเด็กในสวน",
+    "chalkDrawings": "ภาพวาดชอล์ก",
+    "fairHelicopter": "เฮลิคอปเตอร์ในงานวัด",
+    "livingRoomToys": "ของเล่นในห้องนั่งเล่น"
   },
   "map": {
     "level": "ด่าน {n}",

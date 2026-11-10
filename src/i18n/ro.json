@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Atenție! A doua imagine este în oglindă",
       "rotate-180": "Atenție! A doua imagine este cu susul în jos"
-    }
+    },
+    "uncounted": "Există diferențe, dar nimeni nu știe câte. Găsește-le pe toate!"
   },
   "duo": {
     "modeTitle": "Cum jucați?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Hambar",
     "chickensMeadow": "Pajiște lângă pârâu",
     "roseYard": "Curtea cu trandafiri",
-    "sandHill": "Movila de nisip"
+    "sandHill": "Movila de nisip",
+    "snowmanNight": "Om de zăpadă noaptea",
+    "backyardPlayground": "Locul de joacă din curte",
+    "firstBirthday": "Prima zi de naștere",
+    "toyYard": "Jucării în curte",
+    "parkPushchair": "Căruciorul în parc",
+    "chalkDrawings": "Desene cu cretă",
+    "fairHelicopter": "Elicopterul de la bâlci",
+    "livingRoomToys": "Jucării în sufragerie"
   },
   "mode": {
     "label": "Mod",

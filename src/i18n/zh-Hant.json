@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "注意！第二張圖片是鏡像的",
       "rotate-180": "注意！第二張圖片是倒過來的"
-    }
+    },
+    "uncounted": "這裡有不同之處，但沒人知道有幾處。把它們都找出來！"
   },
   "levelTitles": {
     "memoryFlowerShop": "花店",
@@ -823,7 +824,15 @@
     "chickensBarn": "穀倉",
     "chickensMeadow": "小溪邊的草地",
     "roseYard": "玫瑰小院",
-    "sandHill": "沙堆"
+    "sandHill": "沙堆",
+    "snowmanNight": "夜晚的雪人",
+    "backyardPlayground": "後院遊樂場",
+    "firstBirthday": "一歲生日",
+    "toyYard": "院子裡的玩具",
+    "parkPushchair": "公園裡的嬰兒車",
+    "chalkDrawings": "粉筆畫",
+    "fairHelicopter": "遊樂場的直升機",
+    "livingRoomToys": "客廳裡的玩具"
   },
   "map": {
     "level": "第 {n} 關",

@@ -20,7 +20,7 @@ import TreasureChest from '../components/TreasureChest.vue'
 import { MODE_RULES, type GameMode } from '../engine/rules.ts'
 import { GameScene } from '../engine/scene.ts'
 import type { LevelResult } from '../engine/types.ts'
-import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TREASURY_CHAPTER } from '../levels/chapters.ts'
+import { levelNumber, levelsScreen, nextLevel as nextLevelOf, TINY_BOY_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { allLevels, levelById } from '../levels/index.ts'
 import { styledLevel } from '../levels/picture-style.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
@@ -44,6 +44,26 @@ const number = levelNumber(level)
 const grid = levelsScreen(level)
 /** The bonus level for all the hidden keys: named instead of numbered, a chest opens after it. */
 const treasury = level.chapter === TREASURY_CHAPTER.id
+/** "Tiny boy": the player is not told how many differences there are, so the HUD shows only that there are some. */
+const uncounted = level.chapter === TINY_BOY_CHAPTER.id
+/**
+ * Its words as bright toy letters, each word its own colour (`--c`) over a darker depth (`--d`). Coloured by word,
+ * not by letter, so joined scripts (Arabic) and combining marks (Thai, Hindi) stay whole.
+ */
+const TOY_COLORS = [
+  ['#ff5a5f', '#b8323a'],
+  ['#ff9f1c', '#b86a00'],
+  ['#ffd23f', '#b88a00'],
+  ['#3ec46d', '#1f7f43'],
+  ['#2fa8ff', '#1665a8'],
+  ['#9b6bff', '#5b37b8'],
+  ['#ff6bb5', '#b8336f'],
+]
+const uncountedWords = computed(() =>
+  t('level.uncounted')
+    .split(/\s+/)
+    .map((word, i) => ({ word, style: { '--c': TOY_COLORS[i % TOY_COLORS.length][0], '--d': TOY_COLORS[i % TOY_COLORS.length][1], '--i': i } })),
+)
 /** "Travel" levels: the first visit earns a passport stamp (shown with the place's fact). */
 const newStamp = ref(false)
 
@@ -143,7 +163,7 @@ function start() {
   failed.value = false
   modeSetting = settings.mode
   mode.value = hardChallenge.value ? 'hard' : settings.mode
-  playMusic(calm.value ? 'calm' : 'level')
+  playMusic(uncounted ? 'tinyBoy' : calm.value ? 'calm' : 'level')
   scene = new GameScene(
     board.value!,
     // The picture style of this attempt (levels/picture-style.ts): the same number of differences either way.
@@ -288,7 +308,14 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="level">
-    <header class="hud" :class="{ still: settings.effectiveReduceMotion }">
+    <header v-if="uncounted" class="hud uncounted" :class="{ still: settings.effectiveReduceMotion }">
+      <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" /></svg>
+      <span class="toy-text">
+        <span v-for="(w, i) in uncountedWords" :key="i" class="toy-word" :style="w.style">{{ w.word }}</span>
+      </span>
+      <svg class="sparkle late" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" /></svg>
+    </header>
+    <header v-else class="hud" :class="{ still: settings.effectiveReduceMotion }">
       <span class="title">
         {{ treasury ? $t('chapters.treasury') : $t('level.level', { n: number }) }}
         <ModeChip :mode="mode" />
@@ -402,6 +429,93 @@ onBeforeUnmount(() => {
   font-size: 15px;
   white-space: nowrap;
   overflow-x: auto;
+}
+
+/* "Tiny boy": the call to find the differences in bright toy letters — each word its colour, a white rim and a
+   darker depth under it, bobbing one after another between two twinkling stars. */
+.hud.uncounted {
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 12px 12px;
+  white-space: normal;
+}
+
+.toy-text {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0.3em;
+  row-gap: 2px;
+  font-size: clamp(17px, 4.2vw, 26px);
+  font-weight: 900;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.toy-word {
+  display: inline-block;
+  color: var(--c);
+  /* Earlier shadows lie on top: the darker depth right under the letter, then a white rim round letter and depth
+     together, then a soft drop shadow. */
+  text-shadow:
+    0 1px 0 var(--d),
+    0 2px 0 var(--d),
+    0 3px 0 var(--d),
+    -2px -2px 0 #fff,
+    0 -2px 0 #fff,
+    2px -2px 0 #fff,
+    -2px 0 0 #fff,
+    2px 0 0 #fff,
+    -2px 3px 0 #fff,
+    2px 3px 0 #fff,
+    -2px 5px 0 #fff,
+    0 5px 0 #fff,
+    2px 5px 0 #fff,
+    0 8px 6px rgb(0 0 0 / 0.25);
+  animation: toy-bob 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.15s);
+}
+
+@keyframes toy-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(1px) rotate(2deg);
+  }
+}
+
+.sparkle {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  fill: #ffc531;
+  stroke: #fff;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 2px 2px rgb(184 138 0 / 0.5));
+  animation: twinkle 1.6s ease-in-out infinite;
+}
+
+.sparkle.late {
+  animation-delay: 0.8s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.15) rotate(20deg);
+    opacity: 1;
+  }
 }
 
 .hud .title {

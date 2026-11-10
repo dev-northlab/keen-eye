@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "Pansinin! Naka-salamin ang ikalawang larawan",
       "rotate-180": "Pansinin! Baligtad ang ikalawang larawan"
-    }
+    },
+    "uncounted": "May mga pagkakaiba rito, pero walang nakakaalam kung ilan. Hanapin lahat!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Tindahan ng bulaklak",
@@ -823,7 +824,15 @@
     "chickensBarn": "Kamalig",
     "chickensMeadow": "Parang sa tabi ng sapa",
     "roseYard": "Bakuran ng rosas",
-    "sandHill": "Burol ng buhangin"
+    "sandHill": "Burol ng buhangin",
+    "snowmanNight": "Snowman sa gabi",
+    "backyardPlayground": "Palaruan sa bakuran",
+    "firstBirthday": "Unang kaarawan",
+    "toyYard": "Mga laruan sa bakuran",
+    "parkPushchair": "Andador sa parke",
+    "chalkDrawings": "Mga guhit na tisa",
+    "fairHelicopter": "Helikopter sa perya",
+    "livingRoomToys": "Mga laruan sa sala"
   },
   "map": {
     "level": "Level {n}",

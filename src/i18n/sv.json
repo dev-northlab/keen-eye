@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "Obs! Den andra bilden är spegelvänd",
       "rotate-180": "Obs! Den andra bilden är upp och ner"
-    }
+    },
+    "uncounted": "Det finns skillnader här, men ingen vet hur många. Hitta alla!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blomsteraffär",
@@ -823,7 +824,15 @@
     "chickensBarn": "Lada",
     "chickensMeadow": "Äng vid bäcken",
     "roseYard": "Rosengården",
-    "sandHill": "Sandkullen"
+    "sandHill": "Sandkullen",
+    "snowmanNight": "Snögubbe i natten",
+    "backyardPlayground": "Lekplats på gården",
+    "firstBirthday": "Första födelsedagen",
+    "toyYard": "Leksaker på gården",
+    "parkPushchair": "Sittvagn i parken",
+    "chalkDrawings": "Kritteckningar",
+    "fairHelicopter": "Helikopter på tivolit",
+    "livingRoomToys": "Leksaker i vardagsrummet"
   },
   "map": {
     "level": "Nivå {n}",

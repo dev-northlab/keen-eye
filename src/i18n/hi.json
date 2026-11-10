@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "ध्यान दें! दूसरी तस्वीर दर्पण छवि है",
       "rotate-180": "ध्यान दें! दूसरी तस्वीर उल्टी है"
-    }
+    },
+    "uncounted": "यहाँ अंतर हैं, पर कितने हैं कोई नहीं जानता। सब ढूँढो!"
   },
   "duo": {
     "modeTitle": "कैसे खेलेंगे?",
@@ -578,7 +579,15 @@
     "chickensBarn": "खलिहान",
     "chickensMeadow": "नाले के पास घास का मैदान",
     "roseYard": "गुलाबों वाला आँगन",
-    "sandHill": "रेत का टीला"
+    "sandHill": "रेत का टीला",
+    "snowmanNight": "रात में स्नोमैन",
+    "backyardPlayground": "आँगन का खेल का मैदान",
+    "firstBirthday": "पहला जन्मदिन",
+    "toyYard": "आँगन में खिलौने",
+    "parkPushchair": "पार्क में बच्चा गाड़ी",
+    "chalkDrawings": "चॉक से चित्र",
+    "fairHelicopter": "मेले का हेलिकॉप्टर",
+    "livingRoomToys": "बैठक में खिलौने"
   },
   "mode": {
     "label": "मोड",

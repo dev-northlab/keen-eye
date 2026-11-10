@@ -6,8 +6,8 @@ import type { Level } from '../engine/types.ts'
 import { allLevels } from './index.ts'
 import { upcomingLevels } from './upcoming.ts'
 
-/** Screen backdrop worlds (drawn by components/ScreenBackdrop.vue). */
-export type BackdropTheme = 'meadow' | 'farm' | 'forest' | 'sea' | 'city' | 'space'
+/** Screen backdrop worlds (drawn by components/ScreenBackdrop.vue; "tiny boy" is a ready picture only). */
+export type BackdropTheme = 'meadow' | 'farm' | 'forest' | 'sea' | 'city' | 'space' | 'tinyBoy'
 
 export interface Chapter {
   /** Level.chapter value and i18n key `chapters.<id>`. */
@@ -197,10 +197,10 @@ export const DETECTIVE_CHAPTER: Chapter = {
  */
 export const TINY_BOY_CHAPTER: Chapter = {
   id: 'tinyBoy',
-  ranges: [[701, 702]],
+  ranges: [[701, 710]],
   color: '#3a86ff',
   soft: '#e3edff',
-  backdrop: 'meadow',
+  backdrop: 'tinyBoy',
   icon:
     `<circle cx="24" cy="27" r="15" fill="#f6c7a1"/>` +
     `<path d="M9 25q0-16 16-16t14 14q-6-6-14-5t-16 7Z" fill="#2b2b33"/>` +

@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "注意！2枚目の絵は左右反転しています",
       "rotate-180": "注意！2枚目の絵はさかさまです"
-    }
+    },
+    "uncounted": "まちがいがあるけど、いくつあるかはだれも知らない。ぜんぶ見つけよう！"
   },
   "duo": {
     "modeTitle": "どうやって遊ぶ？",
@@ -578,7 +579,15 @@
     "chickensBarn": "納屋",
     "chickensMeadow": "小川のそばの草原",
     "roseYard": "バラの庭",
-    "sandHill": "すなやま"
+    "sandHill": "すなやま",
+    "snowmanNight": "よるのゆきだるま",
+    "backyardPlayground": "おにわのあそびば",
+    "firstBirthday": "はじめてのおたんじょうび",
+    "toyYard": "おにわのおもちゃ",
+    "parkPushchair": "こうえんのベビーカー",
+    "chalkDrawings": "チョークのおえかき",
+    "fairHelicopter": "ゆうえんちのヘリコプター",
+    "livingRoomToys": "リビングのおもちゃ"
   },
   "mode": {
     "label": "モード",

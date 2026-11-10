@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "注意！第二张图片是镜像的",
       "rotate-180": "注意！第二张图片是倒过来的"
-    }
+    },
+    "uncounted": "这里有不同之处，但没人知道有几处。把它们都找出来！"
   },
   "duo": {
     "modeTitle": "怎么玩？",
@@ -578,7 +579,15 @@
     "chickensBarn": "谷仓",
     "chickensMeadow": "小溪边的草地",
     "roseYard": "玫瑰小院",
-    "sandHill": "沙堆"
+    "sandHill": "沙堆",
+    "snowmanNight": "夜晚的雪人",
+    "backyardPlayground": "后院游乐场",
+    "firstBirthday": "一岁生日",
+    "toyYard": "院子里的玩具",
+    "parkPushchair": "公园里的婴儿车",
+    "chalkDrawings": "粉笔画",
+    "fairHelicopter": "游乐场的直升机",
+    "livingRoomToys": "客厅里的玩具"
   },
   "mode": {
     "label": "模式",

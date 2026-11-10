@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Uwaga! Drugi obrazek jest odbity lustrzanie",
       "rotate-180": "Uwaga! Drugi obrazek jest odwrócony do góry nogami"
-    }
+    },
+    "uncounted": "Są tu różnice, ale nikt nie wie, ile. Znajdź je wszystkie!"
   },
   "duo": {
     "modeTitle": "Jak gracie?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Stodoła",
     "chickensMeadow": "Łąka nad strumykiem",
     "roseYard": "Podwórko z różami",
-    "sandHill": "Górka z piasku"
+    "sandHill": "Górka z piasku",
+    "snowmanNight": "Bałwan nocą",
+    "backyardPlayground": "Plac zabaw na podwórku",
+    "firstBirthday": "Pierwsze urodziny",
+    "toyYard": "Zabawki na podwórku",
+    "parkPushchair": "Wózek w parku",
+    "chalkDrawings": "Rysunki kredą",
+    "fairHelicopter": "Helikopter w wesołym miasteczku",
+    "livingRoomToys": "Zabawki w salonie"
   },
   "mode": {
     "label": "Tryb",

@@ -1,6 +1,7 @@
 // Motion differences: the Moon circles the Earth faster on picture B; Jupiter's moon orbits only on B; the solar flare flashes faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level093Redesign } from './level-093-redesign.ts'
 import { asteroid, comet, planet, probe, rocket, satellite, starField, wrench } from './shapes.ts'
 
 const flare = `<path d="M70 168q20 -26 30 4" stroke="#ff7b54" stroke-width="6" fill="none" stroke-linecap="round"/>`
@@ -10,6 +11,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'solarSystem',
   parTimeSec: 140,
+  redesign: level093Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const moon = (period: number) => anim({ id: 'moon', type: 'rotate', pivot: [307, 201], period }, `<circle cx="333" cy="201" r="5" fill="#d0d4de"/>`)
     const io = `<circle cx="553" cy="194" r="5" fill="#ffd166"/>`

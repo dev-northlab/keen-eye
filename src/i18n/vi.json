@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "Chú ý! Hình thứ hai bị lật như gương",
       "rotate-180": "Chú ý! Hình thứ hai bị lộn ngược"
-    }
+    },
+    "uncounted": "Ở đây có những điểm khác nhau, nhưng không ai biết bao nhiêu. Hãy tìm hết!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Cửa hàng hoa",
@@ -823,7 +824,15 @@
     "chickensBarn": "Nhà kho",
     "chickensMeadow": "Bãi cỏ bên suối",
     "roseYard": "Sân hoa hồng",
-    "sandHill": "Đồi cát"
+    "sandHill": "Đồi cát",
+    "snowmanNight": "Người tuyết về đêm",
+    "backyardPlayground": "Sân chơi sau nhà",
+    "firstBirthday": "Sinh nhật đầu tiên",
+    "toyYard": "Đồ chơi ngoài sân",
+    "parkPushchair": "Xe đẩy trong công viên",
+    "chalkDrawings": "Tranh vẽ phấn",
+    "fairHelicopter": "Trực thăng ở hội chợ",
+    "livingRoomToys": "Đồ chơi trong phòng khách"
   },
   "map": {
     "level": "Màn {n}",

@@ -11,6 +11,7 @@ import MeadowScene from './MeadowScene.vue'
 
 const props = defineProps<{ theme: BackdropTheme }>()
 const settings = useSettingsStore()
+const baseUrl = import.meta.env.BASE_URL
 
 /** Dark theme: every world at night (dark sky, moon, stars, dimmed landscape); space already is. */
 const night = computed(() => settings.theme === 'dark')
@@ -24,7 +25,7 @@ const season = computed(() => (props.theme === 'meadow' ? settings.season : null
  * day and night, and space a single one (it is dark in both themes).
  */
 const picture = computed(() => {
-  if (settings.pictureStyle !== 'redesign') return null
+  if (props.theme === 'tinyBoy' || settings.pictureStyle !== 'redesign') return null
   const name =
     props.theme === 'space'
       ? 'space'
@@ -173,7 +174,13 @@ const craters = [
     :class="[theme, season, { night }]"
     aria-hidden="true"
   >
-    <img v-if="picture" class="picture" :src="picture" alt="" />
+    <!-- "Tiny boy": its own autumn picture in both picture styles, upright on a portrait window; no night version,
+         so the dark theme dims it. -->
+    <picture v-if="theme === 'tinyBoy'">
+      <source media="(max-aspect-ratio: 1/1)" :srcset="`${baseUrl}backdrops/tiny-boy-tall.webp`" />
+      <img class="picture" :class="{ dimmed: night }" :src="`${baseUrl}backdrops/tiny-boy-wide.webp`" alt="" />
+    </picture>
+    <img v-else-if="picture" class="picture" :src="picture" alt="" />
     <template v-else>
       <svg v-if="theme === 'space' || night" class="stars" preserveAspectRatio="none">
         <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
@@ -444,6 +451,10 @@ const craters = [
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.picture.dimmed {
+  filter: brightness(0.55) saturate(0.85);
 }
 
 .meadow {

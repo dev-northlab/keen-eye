@@ -7,11 +7,11 @@ import { usePurchaseStore } from './stores/purchase.ts'
 
 const route = useRoute()
 const purchase = usePurchaseStore()
-// Menu screens share the menu track; the level and match screens pick their own music.
+// Menu screens share the menu track ("tiny boy" has its own); the level and match screens pick their own music.
 watch(
   () => route.name,
   (name) => {
-    if (name !== 'level' && name !== 'match') playMusic('menu')
+    if (name !== 'level' && name !== 'match') playMusic(name === 'tiny-boy' ? 'tinyBoy' : 'menu')
   },
   { immediate: true },
 )

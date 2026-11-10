@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Внимание! Вторая картинка отражена",
       "rotate-180": "Внимание! Вторая картинка перевёрнута"
-    }
+    },
+    "uncounted": "Здесь есть отличия, но сколько — никто не знает. Найди их все!"
   },
   "duo": {
     "modeTitle": "Как играем?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Сарай",
     "chickensMeadow": "Луг у ручья",
     "roseYard": "Розы во дворе",
-    "sandHill": "Песчаная горка"
+    "sandHill": "Песчаная горка",
+    "snowmanNight": "Снеговик ночью",
+    "backyardPlayground": "Площадка во дворе",
+    "firstBirthday": "Первый день рождения",
+    "toyYard": "Игрушки во дворе",
+    "parkPushchair": "Коляска в парке",
+    "chalkDrawings": "Рисунки мелом",
+    "fairHelicopter": "Вертолёт на ярмарке",
+    "livingRoomToys": "Игрушки в гостиной"
   },
   "mode": {
     "label": "Режим",

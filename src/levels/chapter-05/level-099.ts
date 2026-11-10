@@ -1,6 +1,7 @@
 // Motion differences: the robot head rides the belt faster on picture B; the ceiling arm swings faster on B; the warning light flashes faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level099Redesign } from './level-099-redesign.ts'
 import { beacon, fuelCanister, probe, robot, toolbox, wrench } from './shapes.ts'
 
 /** Gear; (x, y) = center. Bounds: radius r + 6. */
@@ -29,6 +30,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'robotFactory',
   parTimeSec: 140,
+  redesign: level099Redesign,
   scene: ({ diff, anim, extra }) => {
     const riding = (period: number) => anim({ id: 'head', type: 'path', points: [[0, 0], [200, 0]], period }, head(300, 360))
     const swinging = (period: number) => anim({ type: 'sway', angle: 10, pivot: [620, 56], period }, arm)

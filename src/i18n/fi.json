@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "Huomio! Toinen kuva on peilattu",
       "rotate-180": "Huomio! Toinen kuva on ylösalaisin"
-    }
+    },
+    "uncounted": "Täällä on eroja, mutta kukaan ei tiedä kuinka monta. Löydä ne kaikki!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Kukkakauppa",
@@ -823,7 +824,15 @@
     "chickensBarn": "Lato",
     "chickensMeadow": "Niitty puron varrella",
     "roseYard": "Ruusupiha",
-    "sandHill": "Hiekkakumpu"
+    "sandHill": "Hiekkakumpu",
+    "snowmanNight": "Lumiukko yöllä",
+    "backyardPlayground": "Pihan leikkipaikka",
+    "firstBirthday": "Ensimmäinen syntymäpäivä",
+    "toyYard": "Lelut pihalla",
+    "parkPushchair": "Rattaat puistossa",
+    "chalkDrawings": "Liitupiirustukset",
+    "fairHelicopter": "Helikopteri tivolissa",
+    "livingRoomToys": "Lelut olohuoneessa"
   },
   "map": {
     "level": "Taso {n}",

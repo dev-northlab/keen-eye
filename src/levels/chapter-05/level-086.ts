@@ -1,6 +1,7 @@
 // Motion differences: the saucer hovers faster on picture B; the bulb plant sways faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level086Redesign } from './level-086-redesign.ts'
 import { alien, alienPlant, crystal, moonPebbles, planet, probe, solarPanel, star, starField, ufo } from './shapes.ts'
 
 /** Mushroom house; (x, y) = bottom center. Bounds: x ±50, y from −100 to 0. */
@@ -23,6 +24,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienVillage',
   parTimeSec: 140,
+  redesign: level086Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const hovering = (period: number) => anim({ id: 'ufo', type: 'bob', dx: 0, dy: 8, period }, ufo(680, 150, '#ffb703', '#ffffff'))
     const swaying = (period: number) => anim({ type: 'sway', angle: 10, pivot: [60, 440], period }, bulb(60, 440))

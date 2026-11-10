@@ -1,6 +1,7 @@
 // Motion differences: the cow floats faster on picture B; the saucer lights blink faster on B; the weathervane spins only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level090Redesign } from './level-090-redesign.ts'
 import { cow, hayBale, sheep } from '../shapes.ts'
 import { alienPlant, crystal, fuelCanister, person, probe, starField, toolbox, ufo } from './shapes.ts'
 
@@ -12,6 +13,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'ufoFarm',
   parTimeSec: 140,
+  redesign: level090Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const floating = (period: number) => anim({ id: 'cow', type: 'bob', dx: 0, dy: 12, period }, `<g transform="translate(402 290) scale(0.6)">${cow(0, 0)}</g>`)
     const blinking = (period: number) => anim({ type: 'blink', duty: 0.5, period }, lights)

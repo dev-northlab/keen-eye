@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Figyelem! A második kép tükrözött",
       "rotate-180": "Figyelem! A második kép fejjel lefelé áll"
-    }
+    },
+    "uncounted": "Vannak itt különbségek, de senki sem tudja, hány. Találd meg mindet!"
   },
   "duo": {
     "modeTitle": "Hogyan játszotok?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Pajta",
     "chickensMeadow": "Rét a pataknál",
     "roseYard": "Rózsás udvar",
-    "sandHill": "Homokdomb"
+    "sandHill": "Homokdomb",
+    "snowmanNight": "Hóember éjjel",
+    "backyardPlayground": "Játszótér a kertben",
+    "firstBirthday": "Első születésnap",
+    "toyYard": "Játékok az udvaron",
+    "parkPushchair": "Babakocsi a parkban",
+    "chalkDrawings": "Krétarajzok",
+    "fairHelicopter": "Helikopter a vurstliban",
+    "livingRoomToys": "Játékok a nappaliban"
   },
   "mode": {
     "label": "Mód",

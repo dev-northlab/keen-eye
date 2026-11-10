@@ -1,6 +1,7 @@
 // Motion differences: the crystals glow faster on picture B; the cart rolls faster on B; the bat flutters faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level094Redesign } from './level-094-redesign.ts'
 import { alien, alienPlant, beacon, helmet, moonPebbles, star, toolbox } from './shapes.ts'
 
 /** Crystal cluster without its own fill (colored by the parent); (x, y) = bottom center. Bounds: x ±30·s, y from −60·s to 0. */
@@ -29,6 +30,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'crystalCave',
   parTimeSec: 140,
+  redesign: level094Redesign,
   scene: ({ diff, anim, extra }) => {
     const glowing = (period: number) => anim({ type: 'color', colors: ['#3ae0ff', '#b38cff', '#ff9ff3', '#3ae0ff'], period }, cluster(160, 380))
     const rolling = (period: number) => anim({ id: 'cart', type: 'path', points: [[0, 0], [280, 0]], period }, cart(420, 470))
