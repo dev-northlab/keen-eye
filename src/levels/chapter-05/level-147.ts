@@ -1,6 +1,7 @@
 // Motion differences: the left astronaut drifts faster on picture B; the status light on the satellite blinks only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level147Redesign } from './level-147-redesign.ts'
 import { asteroid, astronaut, fuelCanister, helmet, probe, rocket, sparkle, starField } from './shapes.ts'
 
 /** Solar wing panel, 46 × 50, with `cols` columns; (x, y) = center. */
@@ -30,6 +31,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'satelliteRepair',
   parTimeSec: 105,
+  redesign: level147Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let foil = ''
     for (let i = 0; i < 14; i++) foil += `<path d="M${(364 + rand() * 110).toFixed(1)} ${(190 + rand() * 80).toFixed(1)}l${(6 + rand() * 10).toFixed(1)} ${(-4 + rand() * 8).toFixed(1)}" stroke="#b8862b" stroke-width="1.5"/>`

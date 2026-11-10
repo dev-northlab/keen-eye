@@ -1,6 +1,7 @@
 // Motion differences: the warning light blinks only on picture B; the hanging mascot swings faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level143Redesign } from './level-143-redesign.ts'
 import { comet, crystal, helmet, planet, probe, sparkle, starField, toolbox, wrench } from './shapes.ts'
 
 /** Bar graph screen, 52 × 40, with `bars` bars; (x, y) = center. */
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'cockpit',
   parTimeSec: 135,
+  redesign: level143Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const btnColors = ['#e63946', '#ffb703', '#3a86ff', '#8ac926', '#ff6b8b', '#b38cff']
     let buttons = ''

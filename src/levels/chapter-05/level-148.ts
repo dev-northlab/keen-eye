@@ -1,6 +1,7 @@
 // Motion differences: the right paper lantern bobs faster on picture B; the parked saucer's lights blink only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level148Redesign } from './level-148-redesign.ts'
 import { alien, alienPlant, fuelCanister, moonPebbles, probe, robot, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Wavy awning; (x, y) = top-left, width w. */
@@ -37,6 +38,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'alienBazaar',
   parTimeSec: 105,
+  redesign: level148Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const stall = (x: number, w: number, a: string, b: string) =>
       `<rect x="${x + 4}" y="176" width="6" height="140" fill="#2b1d3a"/><rect x="${x + w - 10}" y="176" width="6" height="140" fill="#2b1d3a"/>` +

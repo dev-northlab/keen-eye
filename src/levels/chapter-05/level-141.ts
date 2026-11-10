@@ -1,6 +1,7 @@
 // Motion differences: the beacon on the main module blinks only on picture B; the floating wrench spins faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level141Redesign } from './level-141-redesign.ts'
 import { asteroid, astronaut, fuelCanister, helmet, probe, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Solar panel, 40 × 30, with `cols` columns of cells; (x, y) = center. */
@@ -36,6 +37,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'orbitalStation',
   parTimeSec: 135,
+  redesign: level141Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let clouds = ''
     for (let i = 0; i < 9; i++) clouds += `<ellipse cx="${(160 + rand() * 480).toFixed(1)}" cy="${(436 + rand() * 54).toFixed(1)}" rx="${(30 + rand() * 40).toFixed(1)}" ry="8" fill="#ffffff" fill-opacity="0.75"/>`
