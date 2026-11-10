@@ -3,5 +3,9 @@
 import type { Level } from '../../engine/types.ts'
 import level1001 from './level-1001.ts'
 import level1002 from './level-1002.ts'
+import level1003 from './level-1003.ts'
+import level1004 from './level-1004.ts'
+import level1005 from './level-1005.ts'
+import level1006 from './level-1006.ts'
 
-export const testLevels: Level[] = [level1001, level1002]
+export const testLevels: Level[] = [level1001, level1002, level1003, level1004, level1005, level1006]
