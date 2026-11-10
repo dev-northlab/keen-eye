@@ -1,6 +1,6 @@
 <script setup lang="ts" generic="T">
 // Segmented radio switch: one button per option, the chosen one raised over the track (filled with the
-// option's `tone` colour, white text, when it has one).
+// option's `tone` colour, white text, when it has one). The `icon` slot draws an option's icon before its label.
 defineProps<{ options: { value: T; label: string; tone?: string }[]; label: string }>()
 const model = defineModel<T>({ required: true })
 </script>
@@ -16,6 +16,7 @@ const model = defineModel<T>({ required: true })
       :style="o.tone ? { '--tone': o.tone } : undefined"
       @click="model = o.value"
     >
+      <slot name="icon" :value="o.value" :active="model === o.value" />
       {{ o.label }}
     </button>
   </div>
@@ -36,6 +37,10 @@ const model = defineModel<T>({ required: true })
 
 button {
   --tone: var(--raised);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 10px 12px;
   border-radius: 13px;
   background: transparent;
