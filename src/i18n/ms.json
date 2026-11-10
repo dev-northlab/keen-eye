@@ -873,7 +873,7 @@
     "label": "Mod",
     "normal": "Biasa",
     "hard": "Sukar",
-    "hardHint": "Tiada petunjuk, 3 kesilapan menamatkan tahap, bintang merah",
+    "hardHint": "Tiada bantuan, hanya satu kesilapan dibenarkan, bintang merah",
     "hardStars": "Mod sukar: {n}/3"
   },
   "pause": {

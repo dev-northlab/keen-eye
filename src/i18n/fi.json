@@ -873,7 +873,7 @@
     "label": "Tila",
     "normal": "Tavallinen",
     "hard": "Vaikea",
-    "hardHint": "Ei vihjeitä, 3 virhettä päättää tason, punaiset tähdet",
+    "hardHint": "Ei vihjeitä, vain yksi virhe sallittu, punaiset tähdet",
     "hardStars": "Vaikea: {n}/3"
   },
   "pause": {

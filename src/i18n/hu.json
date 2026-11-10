@@ -599,7 +599,7 @@
     "calmHint": "Idő, hibák és csillagok nélkül",
     "normalHint": "Időmérő, 1 segítség, csillagok a gyorsaságért és a pontosságért",
     "hard": "Nehéz",
-    "hardHint": "Tippek nélkül, 3 hiba véget vet a pályának, piros csillagok",
+    "hardHint": "Nincs segítség, csak egy hiba megengedett, piros csillagok",
     "hardStars": "Nehéz mód: {n}/3"
   },
   "purchase": {

@@ -12,7 +12,7 @@ Dos imágenes parecen iguales, pero no lo son. Encuentra todas las diferencias e
 PARA TODA LA FAMILIA
 • Niños y mayores juegan juntos: modo tranquilo para los más pequeños, difícil para los ojos más agudos
 • Modo tranquilo: sin cronómetro ni errores, 3 pistas gratis en cada nivel
-• Modo difícil: sin pistas, 3 errores terminan el nivel, estrellas rojas para los mejores
+• Modo difícil: sin pistas, solo se permite un error, estrellas rojas para los mejores
 • Zoom con dos dedos en ambas imágenes a la vez
 • Llaves doradas escondidas abren una cámara del tesoro extra
 • Tema claro y oscuro, música y sonidos

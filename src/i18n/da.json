@@ -873,7 +873,7 @@
     "label": "Tilstand",
     "normal": "Normal",
     "hard": "Svær",
-    "hardHint": "Ingen hints, 3 fejl afslutter banen, røde stjerner",
+    "hardHint": "Ingen hints, kun én fejl tilladt, røde stjerner",
     "hardStars": "Svær: {n}/3"
   },
   "pause": {

@@ -873,7 +873,7 @@
     "label": "Modus",
     "normal": "Normal",
     "hard": "Vanskelig",
-    "hardHint": "Ingen hint, 3 feil avslutter nivået, røde stjerner",
+    "hardHint": "Ingen hint, bare én feil tillatt, røde stjerner",
     "hardStars": "Vanskelig: {n}/3"
   },
   "pause": {

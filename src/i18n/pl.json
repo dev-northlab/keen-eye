@@ -599,7 +599,7 @@
     "calmHint": "Bez czasu, błędów i gwiazdek",
     "normalHint": "Czas, 1 podpowiedź, gwiazdki za szybkość i celność",
     "hard": "Trudny",
-    "hardHint": "Bez podpowiedzi, 3 błędy kończą poziom, czerwone gwiazdki",
+    "hardHint": "Bez podpowiedzi, tylko jeden błąd, czerwone gwiazdki",
     "hardStars": "Tryb trudny: {n}/3"
   },
   "purchase": {

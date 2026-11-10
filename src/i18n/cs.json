@@ -599,7 +599,7 @@
     "calmHint": "Bez času, chyb a hvězd",
     "normalHint": "Časomíra, 1 nápověda, hvězdy za rychlost a přesnost",
     "hard": "Těžký",
-    "hardHint": "Bez nápověd, 3 chyby ukončí úroveň, červené hvězdy",
+    "hardHint": "Bez nápověd, povolena jen jedna chyba, červené hvězdy",
     "hardStars": "Těžký režim: {n}/3"
   },
   "purchase": {

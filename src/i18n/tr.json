@@ -599,7 +599,7 @@
     "calmHint": "Süre, hata ve yıldız yok",
     "normalHint": "Süre, 1 ipucu, hız ve doğruluk için yıldızlar",
     "hard": "Zor",
-    "hardHint": "İpucu yok, 3 hata bölümü bitirir, kırmızı yıldızlar",
+    "hardHint": "İpucu yok, yalnızca bir hata hakkı, kırmızı yıldızlar",
     "hardStars": "Zor mod: {n}/3"
   },
   "purchase": {

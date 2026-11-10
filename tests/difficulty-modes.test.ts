@@ -15,20 +15,20 @@ describe('difficulty modes (docs/difficulty-modes.md)', () => {
     assert.deepEqual([MODE_RULES.calm.transformB, MODE_RULES.normal.transformB, MODE_RULES.hard.transformB], [false, true, true])
   })
 
-  test('hard: no hints, lost at the 3rd mistake (before a lock could start), traps unexplained', () => {
+  test('hard: no hints, one mistake allowed and lost at the 2nd (before a lock could start), traps unexplained', () => {
     const hard = MODE_RULES.hard
-    assert.deepEqual([hard.hints, hard.maxMistakes, hard.trapNotes], [0, 3, false])
+    assert.deepEqual([hard.hints, hard.maxMistakes, hard.trapNotes], [0, 2, false])
     assert.ok(hard.maxMistakes <= MISS_LIMIT)
     assert.equal(hard.missLock, false)
   })
 
-  test('red stars of hard mode: 3 without a mistake in the par time, 2 with at most one mistake, 1 for a pass', () => {
+  test('red stars of hard mode: 3 without a mistake in the par time, 2 without a mistake or within it, 1 for a pass', () => {
     assert.deepEqual([MODE_RULES.calm.stars, MODE_RULES.normal.stars, MODE_RULES.hard.stars], [computeStars, computeStars, hardStars])
     const p = { timeSec: 60, parTimeSec: 60, mistakes: 0, hintsUsed: 0 }
     assert.equal(hardStars(p), 3)
     assert.equal(hardStars({ ...p, timeSec: 61 }), 2)
     assert.equal(hardStars({ ...p, mistakes: 1 }), 2)
-    assert.equal(hardStars({ ...p, mistakes: 2 }), 1)
+    assert.equal(hardStars({ ...p, mistakes: 1, timeSec: 61 }), 1)
   })
 
   test('"memory" red stars: all found, 3 without a miss, 2 with one; 0 = failed', () => {

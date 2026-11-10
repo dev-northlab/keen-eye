@@ -19,12 +19,13 @@ export function computeStars(p: StarInput): Stars {
 }
 
 /**
- * Red stars of hard mode (docs/difficulty-modes.md), which has no hints and loses at the 3rd mistake:
- * 3 — no mistake within the par time, 2 — at most one mistake, 1 — passed.
+ * Red stars of hard mode (docs/difficulty-modes.md), which has no hints and allows a single mistake (the 2nd loses):
+ * 3 — no mistake within the par time, 2 — no mistake, or one within the par time, 1 — passed.
  */
 export function hardStars(p: StarInput): Stars {
-  if (p.mistakes === 0 && p.timeSec <= p.parTimeSec) return 3
-  return p.mistakes <= 1 ? 2 : 1
+  const inPar = p.timeSec <= p.parTimeSec
+  if (p.mistakes === 0 && inPar) return 3
+  return p.mistakes === 0 || inPar ? 2 : 1
 }
 
 export interface MemoryStarInput {
@@ -115,8 +116,8 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
   },
   hard: {
     hints: 0,
-    maxMistakes: 3,
-    // MISS_LIMIT quick misses would lock the pictures, but that many mistakes already lose the level.
+    // One mistake is allowed, the 2nd loses the level (before MISS_LIMIT quick misses could lock the pictures).
+    maxMistakes: 2,
     missLock: false,
     trapNotes: false,
     animationSpeed: 1,

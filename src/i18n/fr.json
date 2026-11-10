@@ -599,7 +599,7 @@
     "calmHint": "Sans chrono, erreurs ni étoiles",
     "normalHint": "Chrono, 1 indice, étoiles pour la vitesse et la précision",
     "hard": "Difficile",
-    "hardHint": "Sans indices, 3 erreurs terminent le niveau, étoiles rouges",
+    "hardHint": "Pas d'indices, une seule erreur permise, étoiles rouges",
     "hardStars": "Difficile : {n}/3"
   },
   "purchase": {

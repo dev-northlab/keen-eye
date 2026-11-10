@@ -873,7 +873,7 @@
     "label": "Chế độ",
     "normal": "Thường",
     "hard": "Khó",
-    "hardHint": "Không gợi ý, 3 lỗi là hết màn, sao đỏ",
+    "hardHint": "Không gợi ý, chỉ được sai một lần, sao đỏ",
     "hardStars": "Chế độ khó: {n}/3"
   },
   "pause": {

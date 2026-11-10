@@ -599,7 +599,7 @@
     "calmHint": "Ohne Zeit, Fehler und Sterne",
     "normalHint": "Timer, 1 Tipp, Sterne für Tempo und Genauigkeit",
     "hard": "Schwer",
-    "hardHint": "Ohne Tipps, 3 Fehler beenden das Level, rote Sterne",
+    "hardHint": "Keine Tipps, nur ein Fehler erlaubt, rote Sterne",
     "hardStars": "Schwer: {n}/3"
   },
   "purchase": {

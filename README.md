@@ -35,16 +35,18 @@ drift, boats bob, birds fly, and some differences hide *in the motion itself*.
 | 🕰️ **Time** | 30 | The same scene at two moments — morning and evening, summer and winter. Light, snow and fallen leaves are natural changes, not differences. |
 | 🧠 **Memory** | 30 | Look at picture A for a few seconds, the curtain falls, then find what changed in B — from memory. |
 | ✈️ **Travel** | 32 | One recognizable city per country on a world map, a fun fact for each, and a passport stamp for every win. |
-| 🔍 **Detective** | 30 | Six cases of five scenes. Every difference is a clue — collect them and name the culprit. |
-| 🏺 **Find the odd one out** | 7 eras | Egypt, Rome, Vikings, a castle, pirates, the Wild West, the Stone Age — spot what doesn't belong in the era. |
+| 🔍 **Detective** | 35 | Seven cases of five scenes. Every difference is a clue — collect them and name the culprit. |
+| 🏺 **Find the odd one out** | 10 eras | Egypt, Rome, Vikings, a castle, pirates, the Wild West, the Stone Age, samurai Japan, the Aztecs, ancient China — spot what doesn't belong in the era. |
 | 🗝️ **Treasury** | 1 bonus | A golden key hides in one level of every world and mode. Find them all to open the treasure. |
 | 👫 **Two players** | — | On one device: **duel** (first to tap scores), **hot-seat** (take turns) or **co-op** (one shared score). Face to face on a tablet, too. |
 
 ### Made for everyone
 
-- **Calm mode** — no timer, no mistakes, no stars, unlimited hints, slower animation and a "stop motion" button.
+- **Calm mode** — no timer, no mistakes, no stars, three hints per level, slower animation and a "stop motion" button.
+- **Hard mode** — no hints, only one mistake allowed (the second ends the level), extra objects in the pictures and red
+  stars for the best.
 - **Pinch to zoom** and pan, shared by both pictures; double tap to zoom in.
-- **Hints** from a shared pool, earned back with three-star finishes.
+- **Hints** given afresh on every attempt: three in calm mode, one in normal mode, none in hard mode.
 - **Light and dark themes**, four seasons for the home meadow, music, sound effects and vibration.
 - **Reduce motion** support and SVG-only interface icons.
 - **32 languages**: English, Русский, Հայերեն, Deutsch, Français, Español, Italiano, Português, Nederlands, Polski,

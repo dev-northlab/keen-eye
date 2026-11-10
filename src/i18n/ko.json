@@ -599,7 +599,7 @@
     "calmHint": "타이머, 실수, 별 없음",
     "normalHint": "타이머, 힌트 1개, 속도와 정확도로 별",
     "hard": "어려움",
-    "hardHint": "힌트 없음, 실수 3번이면 끝, 빨간 별",
+    "hardHint": "힌트 없음, 실수는 한 번만, 빨간 별",
     "hardStars": "어려움: {n}/3"
   },
   "purchase": {

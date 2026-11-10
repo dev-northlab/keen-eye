@@ -873,7 +873,7 @@
     "label": "Läge",
     "normal": "Normalt",
     "hard": "Svår",
-    "hardHint": "Inga tips, 3 misstag avslutar nivån, röda stjärnor",
+    "hardHint": "Inga tips, bara ett misstag tillåtet, röda stjärnor",
     "hardStars": "Svår: {n}/3"
   },
   "pause": {

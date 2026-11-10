@@ -873,7 +873,7 @@
     "label": "Mode",
     "normal": "Normal",
     "hard": "Mahirap",
-    "hardHint": "Walang hint, 3 mali ang tatapos sa level, pulang bituin",
+    "hardHint": "Walang hint, isang mali lang ang puwede, pulang bituin",
     "hardStars": "Mahirap: {n}/3"
   },
   "pause": {

@@ -599,7 +599,7 @@
     "calmHint": "Sin tiempo, errores ni estrellas",
     "normalHint": "Cronómetro, 1 pista, estrellas por rapidez y precisión",
     "hard": "Difícil",
-    "hardHint": "Sin pistas, 3 errores terminan el nivel, estrellas rojas",
+    "hardHint": "Sin pistas, solo se permite un error, estrellas rojas",
     "hardStars": "Difícil: {n}/3"
   },
   "purchase": {

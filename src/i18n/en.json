@@ -599,7 +599,7 @@
     "calmHint": "No timer, mistakes or stars",
     "normalHint": "Timer, 1 hint, stars for speed and accuracy",
     "hard": "Hard",
-    "hardHint": "No hints, 3 mistakes end the level, red stars",
+    "hardHint": "No hints, only one mistake allowed, red stars",
     "hardStars": "Hard mode: {n}/3"
   },
   "purchase": {

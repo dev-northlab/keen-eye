@@ -599,7 +599,7 @@
     "calmHint": "Fără cronometru, greșeli sau stele",
     "normalHint": "Cronometru, 1 indiciu, stele pentru viteză și precizie",
     "hard": "Greu",
-    "hardHint": "Fără indicii, 3 greșeli încheie nivelul, stele roșii",
+    "hardHint": "Fără indicii, o singură greșeală permisă, stele roșii",
     "hardStars": "Greu: {n}/3"
   },
   "purchase": {

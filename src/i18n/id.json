@@ -873,7 +873,7 @@
     "label": "Mode",
     "normal": "Normal",
     "hard": "Sulit",
-    "hardHint": "Tanpa petunjuk, 3 kesalahan mengakhiri level, bintang merah",
+    "hardHint": "Tanpa bantuan, hanya boleh salah sekali, bintang merah",
     "hardStars": "Mode sulit: {n}/3"
   },
   "pause": {

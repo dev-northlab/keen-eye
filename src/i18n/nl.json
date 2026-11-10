@@ -599,7 +599,7 @@
     "calmHint": "Geen tijd, fouten of sterren",
     "normalHint": "Timer, 1 hint, sterren voor snelheid en nauwkeurigheid",
     "hard": "Moeilijk",
-    "hardHint": "Geen hints, 3 fouten beëindigen het level, rode sterren",
+    "hardHint": "Geen hints, maar één fout toegestaan, rode sterren",
     "hardStars": "Moeilijk: {n}/3"
   },
   "purchase": {
