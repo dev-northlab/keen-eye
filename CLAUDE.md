@@ -101,7 +101,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
   as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.webp`)
-  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.webp` or `-tall.webp` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.mp3` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
+  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.webp` or `-tall.webp` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.m4a` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
