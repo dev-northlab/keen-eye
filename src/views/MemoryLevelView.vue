@@ -140,6 +140,7 @@ function start() {
     {
       // Calm mode and "reduce motion" both slow the scene down; the mode sets the miss and peek limits and A's time.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      reduceMotion: settings.effectiveReduceMotion,
       maxMisses: maxMisses.value,
       peeks: peeksLeft.value,
       showSeconds: rules.value.memoryShowSeconds(level.memory!.showSeconds),

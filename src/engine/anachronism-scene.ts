@@ -45,6 +45,8 @@ export interface AnachronismOptions {
   maxMistakes?: number
   /** Star rule of the mode (ModeRules.stars). Default computeStars. */
   stars?: (p: StarInput) => Stars
+  /** "Reduce motion": a found circle only fades in, without its burst. */
+  reduceMotion?: boolean
 }
 
 /**
@@ -57,6 +59,7 @@ export class AnachronismScene {
   private readonly handlers: AnachronismHandlers
   private readonly animationSpeed: number
   private readonly missLock: boolean
+  private readonly reduceMotion: boolean
   private readonly maxMistakes: number
   private readonly stars: (p: StarInput) => Stars
   private readonly round: AnachronismRound
@@ -94,6 +97,7 @@ export class AnachronismScene {
     this.handlers = handlers
     this.animationSpeed = options.animationSpeed ?? 1
     this.missLock = options.missLock ?? true
+    this.reduceMotion = options.reduceMotion ?? false
     this.maxMistakes = options.maxMistakes ?? Infinity
     this.stars = options.stars ?? computeStars
     this.round = new AnachronismRound(level)
@@ -196,7 +200,7 @@ export class AnachronismScene {
     if (outcome.kind === 'repeat') return
     const { index } = outcome
     this.guard.hit()
-    addFoundMark(this.picture, index, this.zones[index])
+    addFoundMark(this.picture, index, this.zones[index], undefined, this.reduceMotion)
     if (index === this.hinted) {
       removeHintMarks(this.picture)
       this.hinted = -1

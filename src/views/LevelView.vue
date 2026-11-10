@@ -191,6 +191,7 @@ function start() {
     {
       // Calm mode and "reduce motion" both slow the scene down.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      reduceMotion: settings.effectiveReduceMotion,
       missLock: rules.value.missLock,
       maxMistakes: rules.value.maxMistakes,
       stars: rules.value.stars,

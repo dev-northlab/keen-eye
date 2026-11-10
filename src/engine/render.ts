@@ -218,9 +218,82 @@ function addZoneMark(p: Picture, index: number, zone: Zone, attrs: Record<string
   return mark
 }
 
-/** Green by default; in a match, the color of the player who found it. */
-export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e'): void {
-  addZoneMark(p, index, zone, { r: zone.r, stroke: color, 'stroke-width': 4 })
+/** Scales and turns around its own center when animated (CSS px of a transform are user units here). */
+function centered<T extends SVGElement>(node: T): T {
+  node.style.transformBox = 'fill-box'
+  node.style.transformOrigin = 'center'
+  return node
+}
+
+/** Plays a short-lived decoration of a mark and removes it when done. */
+function flash(p: Picture, node: SVGElement, keyframes: Keyframe[], options: KeyframeAnimationOptions): void {
+  p.marks.append(centered(node))
+  const remove = () => node.remove()
+  node.animate(keyframes, { fill: 'backwards', ...options }).finished.then(remove, remove)
+}
+
+const SPARKS = 10
+const SPARK_GOLD = '#facc15'
+
+/**
+ * Green by default; in a match, the color of the player who found it. The circle springs open from the
+ * center with a thick stroke that thins down, a glow and a wave spread out of it and sparks fly off.
+ * `still` ("reduce motion"): the circle only fades in.
+ */
+export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e', still = false): void {
+  const mark = centered(addZoneMark(p, index, zone, { r: zone.r, stroke: color, 'stroke-width': 4 }))
+  if (still) {
+    mark.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250 })
+    return
+  }
+  mark.animate(
+    [
+      { transform: 'scale(0.2)', strokeWidth: 12, opacity: 0 },
+      { transform: 'scale(1.18)', strokeWidth: 8, opacity: 1, offset: 0.45 },
+      { transform: 'scale(0.94)', strokeWidth: 5, offset: 0.7 },
+      { transform: 'scale(1)', strokeWidth: 4 },
+    ],
+    { duration: 600, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+  )
+  const { x, y, r } = zone
+  // Soft glow filling the circle.
+  flash(
+    p,
+    el('circle', { cx: x, cy: y, r, fill: color, 'fill-opacity': 0.35 }),
+    [
+      { transform: 'scale(0.3)', opacity: 1 },
+      { transform: 'scale(1.05)', opacity: 0 },
+    ],
+    { duration: 550, easing: 'ease-out' },
+  )
+  // A wave running out of the circle.
+  flash(
+    p,
+    el('circle', { cx: x, cy: y, r, fill: 'none', stroke: color, 'vector-effect': 'non-scaling-stroke' }),
+    [
+      { transform: 'scale(1)', strokeWidth: 6, opacity: 0.9 },
+      { transform: 'scale(1.75)', strokeWidth: 1, opacity: 0 },
+    ],
+    { duration: 700, delay: 120, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+  )
+  // Sparks flying off the rim, every other one golden.
+  const turn = Math.random() * 2 * Math.PI
+  const size = Math.max(4, r * 0.13)
+  for (let i = 0; i < SPARKS; i++) {
+    const a = turn + (i / SPARKS) * 2 * Math.PI
+    const far = r * (i % 2 ? 1.55 : 1.85)
+    const [cos, sin] = [Math.cos(a), Math.sin(a)]
+    flash(
+      p,
+      el('circle', { cx: x, cy: y, r: size, fill: i % 2 ? SPARK_GOLD : color }),
+      [
+        { transform: `translate(${cos * r * 0.7}px, ${sin * r * 0.7}px) scale(0.4)`, opacity: 0 },
+        { transform: `translate(${cos * r * 1.05}px, ${sin * r * 1.05}px) scale(1.3)`, opacity: 1, offset: 0.3 },
+        { transform: `translate(${cos * far}px, ${sin * far}px) scale(0)`, opacity: 0.6 },
+      ],
+      { duration: 650, delay: 60 + (i % 3) * 25, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' },
+    )
+  }
 }
 
 /** Development tool: red circle exactly on the zone (drawn under a later found mark). */

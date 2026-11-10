@@ -22,6 +22,8 @@ export interface MatchHandlers {
 export interface MatchSceneOptions {
   /** Animation time multiplier (reduce motion). */
   animationSpeed?: number
+  /** "Reduce motion": a found circle only fades in, without its burst. */
+  reduceMotion?: boolean
 }
 
 /**
@@ -52,6 +54,7 @@ export class MatchScene {
           zoom,
           flipped: i === 1,
           onZoom: (s) => handlers.onZoom?.(s),
+          reduceMotion: options.reduceMotion,
         }),
     )
     this.loop = new FrameLoop(this.frame)

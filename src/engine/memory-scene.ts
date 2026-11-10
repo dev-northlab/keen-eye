@@ -44,6 +44,8 @@ export interface MemoryHandlers {
 }
 
 export interface MemoryOptions {
+  /** "Reduce motion": a found circle only fades in, without its burst. */
+  reduceMotion?: boolean
   /** Animation time multiplier (reduced motion, calm mode). */
   animationSpeed?: number
   /** Misses that end the round (default MAX_MISSES; ModeRules.memoryMaxMisses). */
@@ -101,6 +103,7 @@ export class MemoryScene {
       onSecret: (tap) => this.secret(tap),
       secretTaken: options.secretTaken,
       extras: options.extras,
+      reduceMotion: options.reduceMotion,
     })
     this.run([['show', (options.showSeconds ?? level.memory.showSeconds) * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)

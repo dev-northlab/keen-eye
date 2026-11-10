@@ -45,6 +45,8 @@ export interface BoardOptions {
   secretTaken?: boolean
   /** Draw the extra objects of hard mode (`Level.extras`). */
   extras?: boolean
+  /** "Reduce motion": a found circle only fades in, without its burst. */
+  reduceMotion?: boolean
 }
 
 /** Index of a random unfound difference, or -1 when all are found. */
@@ -62,6 +64,7 @@ export class Board {
   private readonly level: Level
   private readonly onTap: (hit: number, tap: Tap) => void
   private readonly zoom: boolean
+  private readonly reduceMotion: boolean
   /** How each picture shows the scene: B of late levels mirrored or turned, a duel's far copy turned. */
   private readonly transforms: [PictureTransform, PictureTransform]
   /** A duel's far copy turned ('rotate-180'), else 'none'; on top of `transformB`. */
@@ -83,6 +86,7 @@ export class Board {
     this.level = level
     this.onTap = onTap
     this.zoom = options.zoom ?? true
+    this.reduceMotion = options.reduceMotion ?? false
     const turn: PictureTransform = options.flipped ? 'rotate-180' : 'none'
     this.turn = turn
     this.transforms = [turn, combineTransforms(options.transformB ?? 'none', turn)]
@@ -129,7 +133,7 @@ export class Board {
 
   /** Circles a found difference on both pictures; also ends its hint. Returns true if it did. */
   markFound(index: number, color?: string): boolean {
-    for (const p of this.pictures) addFoundMark(p, index, this.zone(p, index), color)
+    for (const p of this.pictures) addFoundMark(p, index, this.zone(p, index), color, this.reduceMotion)
     if (index !== this.hinted) return false
     this.clearHint()
     return true
