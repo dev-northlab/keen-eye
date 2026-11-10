@@ -84,6 +84,8 @@
     "progress": "{done} из {total}",
     "task": "Найди отличия",
     "tinyBoyText": "Отличия в мире малыша",
+    "won": "Пройден",
+    "notWon": "Ещё не пройден",
     "random": "Случайный уровень"
   },
   "timeTravel": {

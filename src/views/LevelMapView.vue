@@ -144,8 +144,8 @@ const timeTravel = {
           >
             <template #icon><img :src="`${baseUrl}banners/tiny-boy-face.webp`" alt="" /></template>
             <template v-if="tinyBoy.total > 0">
-              {{ $t('map.progress', { done: tinyBoy.done(), total: tinyBoy.total }) }} · ★ {{ tinyBoy.stars() }}
-              <template v-if="tinyBoy.hard() > 0"> · <span class="star-hard">★</span> {{ tinyBoy.hard() }}</template>
+              <!-- No stars in "tiny boy": only how many levels are won. -->
+              {{ $t('map.progress', { done: tinyBoy.done(), total: tinyBoy.total }) }}
             </template>
             <template v-else>{{ $t('map.tinyBoyText') }}</template>
           </PhotoBanner>

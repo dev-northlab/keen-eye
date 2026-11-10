@@ -84,6 +84,8 @@
     "progress": "{done} de {total}",
     "task": "Encontre as diferenças",
     "tinyBoyText": "Diferenças no mundo de um menino",
+    "won": "Concluído",
+    "notWon": "Ainda não concluído",
     "random": "Fase aleatória"
   },
   "timeTravel": {

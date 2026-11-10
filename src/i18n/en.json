@@ -84,6 +84,8 @@
     "progress": "{done} of {total}",
     "task": "Spot the difference",
     "tinyBoyText": "Differences in a little boy's world",
+    "won": "Won",
+    "notWon": "Not won yet",
     "random": "Random level"
   },
   "timeTravel": {

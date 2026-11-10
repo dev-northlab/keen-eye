@@ -84,6 +84,8 @@
     "progress": "{done} z {total}",
     "task": "Najdi rozdíly",
     "tinyBoyText": "Rozdíly ve světě malého kluka",
+    "won": "Splněno",
+    "notWon": "Ještě nesplněno",
     "random": "Náhodná úroveň"
   },
   "timeTravel": {

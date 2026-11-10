@@ -84,6 +84,8 @@
     "progress": "{done} / {total}",
     "task": "Farklılıkları bul",
     "tinyBoyText": "Küçük bir çocuğun dünyasında farklar",
+    "won": "Geçildi",
+    "notWon": "Henüz geçilmedi",
     "random": "Rastgele bölüm"
   },
   "timeTravel": {

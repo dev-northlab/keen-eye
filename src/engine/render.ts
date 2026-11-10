@@ -47,13 +47,22 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
 
   const scene = el('g', {})
   let animations: Animation[] = []
+  /** A pixel picture still downloading: a spinner in its place, over everything, until it has loaded. */
+  let loader: SVGGElement | undefined
   if (level.kind === 'svg' && level.build) {
     const built = level.build(variant, variant, extras)
     scene.innerHTML = built.svg
     animations = built.animations
   } else {
     const href = variant === 0 ? level.imageA : level.imageB
-    if (href) scene.append(el('image', { href: import.meta.env.BASE_URL + href, width: w, height: h }))
+    if (href) {
+      const image = el('image', { href: import.meta.env.BASE_URL + href, width: w, height: h })
+      scene.append(image)
+      loader = loadingSpinner(w, h)
+      const done = () => loader?.remove()
+      image.addEventListener('load', done, { once: true })
+      image.addEventListener('error', done, { once: true })
+    }
     // The key as its own layer (the pictures are drawn without it), taken off like a drawn scene's key.
     const key = level.secret?.image
     if (key && (level.secret?.on === 'both' || variant === 1)) {
@@ -66,6 +75,7 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   const marks = el('g', { 'pointer-events': 'none' })
   content.append(scene, marks)
   svg.append(content)
+  if (loader) svg.append(loader)
   const picture: Picture = {
     svg,
     marks,
@@ -77,6 +87,32 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   }
   turnPicture(picture, transform, level.viewBox)
   return picture
+}
+
+/**
+ * The place of a pixel picture while it downloads (the 3D pictures are large): a soft panel with a turning ring in
+ * the middle, in the UI's colour tokens, drawn in the picture's own w × h units. SMIL turns it, no script needed.
+ */
+function loadingSpinner(w: number, h: number): SVGGElement {
+  const r = Math.min(w, h) * 0.06
+  const g = el('g', { 'pointer-events': 'none' })
+  const panel = el('rect', { width: w, height: h })
+  panel.style.fill = 'var(--soft)'
+  const track = el('circle', { cx: w / 2, cy: h / 2, r, fill: 'none', 'stroke-width': r * 0.24, 'stroke-opacity': 0.25 })
+  track.style.stroke = 'var(--muted)'
+  const arc = el('circle', {
+    cx: w / 2,
+    cy: h / 2,
+    r,
+    fill: 'none',
+    'stroke-width': r * 0.24,
+    'stroke-linecap': 'round',
+    'stroke-dasharray': `${r * 1.6} ${r * 5}`,
+  })
+  arc.style.stroke = 'var(--accent)'
+  arc.append(el('animateTransform', { attributeName: 'transform', type: 'rotate', from: `0 ${w / 2} ${h / 2}`, to: `360 ${w / 2} ${h / 2}`, dur: '0.9s', repeatCount: 'indefinite' }))
+  g.append(panel, track, arc)
+  return g
 }
 
 /** Shows a picture of `createPicture` another way: its scene and marks turn together (the viewBox is the zoom's). */

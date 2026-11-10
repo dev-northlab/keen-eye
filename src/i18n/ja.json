@@ -84,6 +84,8 @@
     "progress": "{done} / {total}",
     "task": "まちがいさがし",
     "tinyBoyText": "ちいさな男の子の世界でまちがい探し",
+    "won": "クリア",
+    "notWon": "まだクリアしていない",
     "random": "ランダム"
   },
   "timeTravel": {

@@ -844,6 +844,8 @@
     "soonLevels": "Segera hadir: {n} lagi",
     "task": "Cari perbedaannya",
     "tinyBoyText": "Perbedaan di dunia si kecil",
+    "won": "Selesai",
+    "notWon": "Belum selesai",
     "title": "Dunia",
     "random": "Level acak"
   },

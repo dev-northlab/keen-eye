@@ -844,6 +844,8 @@
     "soonLevels": "Tulossa pian: {n} lisää",
     "task": "Etsi erot",
     "tinyBoyText": "Eroja pikkupojan maailmassa",
+    "won": "Läpäisty",
+    "notWon": "Ei vielä läpäisty",
     "title": "Maailmat",
     "random": "Satunnainen taso"
   },
