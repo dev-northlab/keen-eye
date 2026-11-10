@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Увага! Друга картинка віддзеркалена",
       "rotate-180": "Увага! Друга картинка перевернута"
-    }
+    },
+    "uncounted": "Тут є відмінності, але ніхто не знає скільки. Знайди їх усі!"
   },
   "duo": {
     "modeTitle": "Як граємо?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Сарай",
     "chickensMeadow": "Лука біля струмка",
     "roseYard": "Троянди у дворі",
-    "sandHill": "Піщана гірка"
+    "sandHill": "Піщана гірка",
+    "snowmanNight": "Сніговик уночі",
+    "backyardPlayground": "Майданчик у дворі",
+    "firstBirthday": "Перший день народження",
+    "toyYard": "Іграшки у дворі",
+    "parkPushchair": "Візочок у парку",
+    "chalkDrawings": "Малюнки крейдою",
+    "fairHelicopter": "Гелікоптер на ярмарку",
+    "livingRoomToys": "Іграшки у вітальні"
   },
   "mode": {
     "label": "Режим",

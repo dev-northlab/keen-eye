@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Attenzione! La seconda immagine è specchiata",
       "rotate-180": "Attenzione! La seconda immagine è capovolta"
-    }
+    },
+    "uncounted": "Ci sono delle differenze, ma nessuno sa quante. Trovale tutte!"
   },
   "duo": {
     "modeTitle": "Come giocate?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Fienile",
     "chickensMeadow": "Prato vicino al ruscello",
     "roseYard": "Cortile delle rose",
-    "sandHill": "Collina di sabbia"
+    "sandHill": "Collina di sabbia",
+    "snowmanNight": "Pupazzo di neve di notte",
+    "backyardPlayground": "Parco giochi in giardino",
+    "firstBirthday": "Primo compleanno",
+    "toyYard": "Giocattoli in cortile",
+    "parkPushchair": "Passeggino al parco",
+    "chalkDrawings": "Disegni col gesso",
+    "fairHelicopter": "Elicottero al luna park",
+    "livingRoomToys": "Giocattoli in salotto"
   },
   "mode": {
     "label": "Modalità",

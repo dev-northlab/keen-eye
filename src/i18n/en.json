@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Heads up! The second picture is mirrored",
       "rotate-180": "Heads up! The second picture is upside down"
-    }
+    },
+    "uncounted": "There are differences here, but nobody knows how many. Find them all!"
   },
   "duo": {
     "modeTitle": "How do you play?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Barn",
     "chickensMeadow": "Meadow by the stream",
     "roseYard": "Rose yard",
-    "sandHill": "Sand hill"
+    "sandHill": "Sand hill",
+    "snowmanNight": "Snowman at night",
+    "backyardPlayground": "Backyard playground",
+    "firstBirthday": "First birthday",
+    "toyYard": "Toys in the yard",
+    "parkPushchair": "Pushchair in the park",
+    "chalkDrawings": "Chalk drawings",
+    "fairHelicopter": "Fair helicopter",
+    "livingRoomToys": "Toys in the living room"
   },
   "mode": {
     "label": "Mode",

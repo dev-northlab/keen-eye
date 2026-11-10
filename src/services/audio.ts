@@ -2,11 +2,12 @@ import calmUrl from '../../assets/music/calm_level.mp3'
 import levelUrl from '../../assets/music/level_background.mp3'
 import completeUrl from '../../assets/music/level_compleated.mp3'
 import menuUrl from '../../assets/music/main_menu.mp3'
+import tinyBoyUrl from '../../assets/music/tiny_boy.mp3'
 
 // Music: looping mp3 tracks per screen. Sound effects: synthesized with Web Audio (no files).
 // Browsers allow audio only after a user gesture, so playback is (re)started on the first touch/key.
 
-export type Track = 'menu' | 'level' | 'calm' | 'complete'
+export type Track = 'menu' | 'level' | 'calm' | 'complete' | 'tinyBoy'
 export type Sfx = 'found' | 'miss' | 'hint' | 'star' | 'click' | 'secret'
 
 const TRACKS: Record<Track, { url: string; loop: boolean }> = {
@@ -14,6 +15,8 @@ const TRACKS: Record<Track, { url: string; loop: boolean }> = {
   level: { url: levelUrl, loop: true },
   calm: { url: calmUrl, loop: true },
   complete: { url: completeUrl, loop: false },
+  /** "Tiny boy": its screen and its levels, in every mode. */
+  tinyBoy: { url: tinyBoyUrl, loop: true },
 }
 /** Effect loudness at 100 % volume. */
 const SFX_GAIN = 0.5

@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "Bemærk! Det andet billede er spejlvendt",
       "rotate-180": "Bemærk! Det andet billede står på hovedet"
-    }
+    },
+    "uncounted": "Der er forskelle her, men ingen ved hvor mange. Find dem alle!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blomsterbutik",
@@ -823,7 +824,15 @@
     "chickensBarn": "Lade",
     "chickensMeadow": "Eng ved bækken",
     "roseYard": "Rosengården",
-    "sandHill": "Sandbakken"
+    "sandHill": "Sandbakken",
+    "snowmanNight": "Snemand om natten",
+    "backyardPlayground": "Legeplads i haven",
+    "firstBirthday": "Første fødselsdag",
+    "toyYard": "Legetøj i gården",
+    "parkPushchair": "Klapvogn i parken",
+    "chalkDrawings": "Kridttegninger",
+    "fairHelicopter": "Helikopter i tivoli",
+    "livingRoomToys": "Legetøj i stuen"
   },
   "map": {
     "level": "Bane {n}",

@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "¡Atención! La segunda imagen está reflejada",
       "rotate-180": "¡Atención! La segunda imagen está al revés"
-    }
+    },
+    "uncounted": "Hay diferencias, pero nadie sabe cuántas. ¡Encuéntralas todas!"
   },
   "duo": {
     "modeTitle": "¿Cómo jugáis?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Granero",
     "chickensMeadow": "Prado junto al arroyo",
     "roseYard": "Patio de rosas",
-    "sandHill": "Montaña de arena"
+    "sandHill": "Montaña de arena",
+    "snowmanNight": "Muñeco de nieve de noche",
+    "backyardPlayground": "Parque infantil del patio",
+    "firstBirthday": "Primer cumpleaños",
+    "toyYard": "Juguetes en el patio",
+    "parkPushchair": "Cochecito en el parque",
+    "chalkDrawings": "Dibujos con tiza",
+    "fairHelicopter": "Helicóptero de feria",
+    "livingRoomToys": "Juguetes en el salón"
   },
   "mode": {
     "label": "Modo",

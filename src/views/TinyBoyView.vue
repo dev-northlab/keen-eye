@@ -37,7 +37,7 @@ function open(level: Level) {
 
 <template>
   <div class="screen">
-    <ScreenBackdrop theme="meadow" />
+    <ScreenBackdrop :theme="TINY_BOY_CHAPTER.backdrop" />
     <main>
       <ul class="list">
         <li v-for="level in levels" :key="level.id">
@@ -50,7 +50,7 @@ function open(level: Level) {
             @click="open(level)"
           >
             <template #icon>
-              <svg v-if="!progress.isUnlocked(level.id)" viewBox="0 0 24 24" aria-hidden="true">
+              <svg v-if="!progress.isUnlocked(level.id)" viewBox="-6 -6 36 36" aria-hidden="true">
                 <rect x="5" y="11" width="14" height="10" rx="2" fill="currentColor" />
                 <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="2.4" />
               </svg>

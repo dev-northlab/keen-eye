@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Внимание! Втората картинка е огледална",
       "rotate-180": "Внимание! Втората картинка е обърната с главата надолу"
-    }
+    },
+    "uncounted": "Тук има разлики, но никой не знае колко. Намери ги всички!"
   },
   "duo": {
     "modeTitle": "Как ще играете?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Плевня",
     "chickensMeadow": "Поляна до потока",
     "roseYard": "Двор с рози",
-    "sandHill": "Пясъчна могила"
+    "sandHill": "Пясъчна могила",
+    "snowmanNight": "Снежен човек нощем",
+    "backyardPlayground": "Площадка в двора",
+    "firstBirthday": "Първи рожден ден",
+    "toyYard": "Играчки в двора",
+    "parkPushchair": "Количка в парка",
+    "chalkDrawings": "Рисунки с тебешир",
+    "fairHelicopter": "Хеликоптер на панаира",
+    "livingRoomToys": "Играчки в хола"
   },
   "mode": {
     "label": "Режим",

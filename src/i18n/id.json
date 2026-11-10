@@ -471,7 +471,8 @@
     "transformNotice": {
       "mirror-x": "Perhatian! Gambar kedua dicerminkan",
       "rotate-180": "Perhatian! Gambar kedua terbalik"
-    }
+    },
+    "uncounted": "Ada perbedaan di sini, tapi tak ada yang tahu berapa. Temukan semuanya!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Toko bunga",
@@ -823,7 +824,15 @@
     "chickensBarn": "Lumbung",
     "chickensMeadow": "Padang rumput di tepi sungai kecil",
     "roseYard": "Halaman mawar",
-    "sandHill": "Bukit pasir"
+    "sandHill": "Bukit pasir",
+    "snowmanNight": "Manusia salju di malam hari",
+    "backyardPlayground": "Taman bermain di halaman",
+    "firstBirthday": "Ulang tahun pertama",
+    "toyYard": "Mainan di halaman",
+    "parkPushchair": "Kereta dorong di taman",
+    "chalkDrawings": "Gambar kapur",
+    "fairHelicopter": "Helikopter di pasar malam",
+    "livingRoomToys": "Mainan di ruang keluarga"
   },
   "map": {
     "level": "Level {n}",

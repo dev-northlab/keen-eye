@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Attention ! La deuxième image est en miroir",
       "rotate-180": "Attention ! La deuxième image est à l’envers"
-    }
+    },
+    "uncounted": "Il y a des différences, mais personne ne sait combien. Trouve-les toutes !"
   },
   "duo": {
     "modeTitle": "Comment jouez-vous ?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Grange",
     "chickensMeadow": "Pré au bord du ruisseau",
     "roseYard": "La cour aux roses",
-    "sandHill": "La butte de sable"
+    "sandHill": "La butte de sable",
+    "snowmanNight": "Bonhomme de neige la nuit",
+    "backyardPlayground": "L'aire de jeux du jardin",
+    "firstBirthday": "Premier anniversaire",
+    "toyYard": "Les jouets dans la cour",
+    "parkPushchair": "La poussette au parc",
+    "chalkDrawings": "Dessins à la craie",
+    "fairHelicopter": "L'hélicoptère de la fête foraine",
+    "livingRoomToys": "Les jouets du salon"
   },
   "mode": {
     "label": "Mode",

@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Let op! De tweede afbeelding is gespiegeld",
       "rotate-180": "Let op! De tweede afbeelding staat ondersteboven"
-    }
+    },
+    "uncounted": "Er zijn verschillen, maar niemand weet hoeveel. Vind ze allemaal!"
   },
   "duo": {
     "modeTitle": "Hoe spelen jullie?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Schuur",
     "chickensMeadow": "Wei bij de beek",
     "roseYard": "Rozentuin",
-    "sandHill": "Zandheuvel"
+    "sandHill": "Zandheuvel",
+    "snowmanNight": "Sneeuwpop bij nacht",
+    "backyardPlayground": "Speeltuin in de tuin",
+    "firstBirthday": "Eerste verjaardag",
+    "toyYard": "Speelgoed op het erf",
+    "parkPushchair": "Wandelwagen in het park",
+    "chalkDrawings": "Krijttekeningen",
+    "fairHelicopter": "Helikopter op de kermis",
+    "livingRoomToys": "Speelgoed in de woonkamer"
   },
   "mode": {
     "label": "Modus",

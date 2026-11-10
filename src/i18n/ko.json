@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "주의! 두 번째 그림은 좌우가 반전되어 있어요",
       "rotate-180": "주의! 두 번째 그림은 거꾸로 되어 있어요"
-    }
+    },
+    "uncounted": "다른 곳이 있지만 몇 개인지는 아무도 몰라요. 모두 찾아보세요!"
   },
   "duo": {
     "modeTitle": "어떻게 플레이할까요?",
@@ -578,7 +579,15 @@
     "chickensBarn": "헛간",
     "chickensMeadow": "시냇가 풀밭",
     "roseYard": "장미 마당",
-    "sandHill": "모래 언덕"
+    "sandHill": "모래 언덕",
+    "snowmanNight": "밤의 눈사람",
+    "backyardPlayground": "마당 놀이터",
+    "firstBirthday": "첫 번째 생일",
+    "toyYard": "마당의 장난감",
+    "parkPushchair": "공원의 유모차",
+    "chalkDrawings": "분필 그림",
+    "fairHelicopter": "놀이공원 헬리콥터",
+    "livingRoomToys": "거실의 장난감"
   },
   "mode": {
     "label": "모드",

@@ -119,7 +119,8 @@
     "transformNotice": {
       "mirror-x": "Pozor! Druhý obrázek je zrcadlově obrácený",
       "rotate-180": "Pozor! Druhý obrázek je vzhůru nohama"
-    }
+    },
+    "uncounted": "Jsou tu rozdíly, ale nikdo neví kolik. Najdi je všechny!"
   },
   "duo": {
     "modeTitle": "Jak budete hrát?",
@@ -578,7 +579,15 @@
     "chickensBarn": "Stodola",
     "chickensMeadow": "Louka u potoka",
     "roseYard": "Dvůr s růžemi",
-    "sandHill": "Písečný kopec"
+    "sandHill": "Písečný kopec",
+    "snowmanNight": "Sněhulák v noci",
+    "backyardPlayground": "Hřiště na zahradě",
+    "firstBirthday": "První narozeniny",
+    "toyYard": "Hračky na dvoře",
+    "parkPushchair": "Kočárek v parku",
+    "chalkDrawings": "Kresby křídou",
+    "fairHelicopter": "Vrtulník na pouti",
+    "livingRoomToys": "Hračky v obýváku"
   },
   "mode": {
     "label": "Režim",
