@@ -32,7 +32,7 @@ export interface SceneOptions {
   extras?: boolean
   /** Show picture B mirrored or turned (`Level.transformB` where the mode allows it, `ModeRules.transformB`). */
   transformB?: PictureTransform
-  /** "Reduce motion": a found circle only fades in, without its burst. */
+  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
   reduceMotion?: boolean
 }
 

@@ -45,7 +45,7 @@ export interface BoardOptions {
   secretTaken?: boolean
   /** Draw the extra objects of normal mode (`Level.extras`). */
   extras?: boolean
-  /** "Reduce motion": a found circle only fades in, without its burst. */
+  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
   reduceMotion?: boolean
 }
 
@@ -140,7 +140,7 @@ export class Board {
   }
 
   markMiss({ picture, x, y }: Omit<Tap, 'time'>): void {
-    addMissMark(this.pictures[picture], x, y, this.viewport.scale)
+    addMissMark(this.pictures[picture], x, y, this.viewport.scale, this.reduceMotion)
   }
 
   /** Dashed circle larger than the zone, shifted so that the zone is somewhere inside it; shown until found. */

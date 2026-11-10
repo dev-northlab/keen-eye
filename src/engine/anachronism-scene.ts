@@ -39,7 +39,7 @@ export interface AnachronismOptions {
   animationSpeed?: number
   /** Anti-spam lock after quick misses (off in calm mode). Default true. */
   missLock?: boolean
-  /** "Reduce motion": a found circle only fades in, without its burst. */
+  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
   reduceMotion?: boolean
 }
 
@@ -217,7 +217,7 @@ export class AnachronismScene {
     this.pendingMiss = null
     if (this.done || this.loop.paused) return
     this.mistakes++
-    addMissMark(this.picture, (miss.x * this.level.width) / 100, (miss.y * this.level.height) / 100, this.viewport.scale)
+    addMissMark(this.picture, (miss.x * this.level.width) / 100, (miss.y * this.level.height) / 100, this.viewport.scale, this.reduceMotion)
     this.handlers.onMiss?.(this.mistakes)
     if (this.missLock && this.guard.miss(performance.now())) {
       this.handlers.onLock?.(true)

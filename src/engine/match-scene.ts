@@ -22,7 +22,7 @@ export interface MatchHandlers {
 export interface MatchSceneOptions {
   /** Animation time multiplier (reduce motion). */
   animationSpeed?: number
-  /** "Reduce motion": a found circle only fades in, without its burst. */
+  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
   reduceMotion?: boolean
 }
 
