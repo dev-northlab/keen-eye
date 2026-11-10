@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // box on the bus's roof (it stays as in A) and kept the shirt, the car's windows, the board and the exhaust cloud:
 // the shirt, the windows and the board are recolored by hand, keeping their shading, and the cloud painted out.
 export const level028Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-028-a.webp',
-  imageB: 'levels/redesign/level-028-b.webp',
+  imageA: 'levels/redesign/level-028-a.avif',
+  imageB: 'levels/redesign/level-028-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The traffic light: red on in A, green on in B.

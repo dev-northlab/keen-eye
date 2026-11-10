@@ -9,8 +9,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'snowmanNight',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-702-a.webp',
-  imageB: 'levels/tiny-boy/level-702-b.webp',
+  imageA: 'levels/tiny-boy/level-702-a.avif',
+  imageB: 'levels/tiny-boy/level-702-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The snowman's carrot nose, only in A.

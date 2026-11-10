@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // menu board (another shape, with chalk writing, over the skateboard) and kept the steam (those stay as in A): the
 // board's own frame is recolored blue by hand, and the steam painted out with the wall beside it.
 export const level022Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-022-a.webp',
-  imageB: 'levels/redesign/level-022-b.webp',
+  imageA: 'levels/redesign/level-022-a.avif',
+  imageB: 'levels/redesign/level-022-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The cup on the brown hanging sign over the windows: white in A, red in B.

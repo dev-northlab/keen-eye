@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // balloon's top half and left the apple, the jar, the pumpkin and the goose as they were: the balloon, the apple,
 // the pumpkin and the goose are recoloured with their shading kept, the jar painted over with the trees above it.
 export const level105Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-105-a.webp',
-  imageB: 'levels/redesign/level-105-b.webp',
+  imageA: 'levels/redesign/level-105-a.avif',
+  imageB: 'levels/redesign/level-105-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The middle pennant of the string: green in A, purple in B.

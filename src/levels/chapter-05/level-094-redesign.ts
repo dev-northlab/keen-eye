@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // A's nuggets are turned grey instead; it redrew the cart's ore, so A's cart body is tinted red (gold and wheels
 // kept); A's eye of the miner is filled with its face and only Gemini's two eyes laid on (its flat mouth left out).
 export const level094Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-094-a.webp',
-  imageB: 'levels/redesign/level-094-b.webp',
+  imageA: 'levels/redesign/level-094-a.avif',
+  imageB: 'levels/redesign/level-094-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small yellow star in the night sky of the ceiling opening, only in A.

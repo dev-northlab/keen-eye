@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the kiosk white. B is A with only these changes of Gemini's laid over it. Gemini also hung a blue curtain in the
 // window left of that one and filled both panes of the door (left out: only the lower pane is filled).
 export const level119Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-119-a.webp',
-  imageB: 'levels/redesign/level-119-b.webp',
+  imageA: 'levels/redesign/level-119-a.avif',
+  imageB: 'levels/redesign/level-119-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A grey pigeon on a frame of the glass roof at the upper left, only in B.

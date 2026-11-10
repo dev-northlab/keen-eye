@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // blue and purple alone were too faint to see), the post is painted out with the water and the log beside it row by
 // row, and the frog is recoloured in place of the foam at the foot of the waterfall (too wide to paint out cleanly).
 export const level048Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-048-a.webp',
-  imageB: 'levels/redesign/level-048-b.webp',
+  imageA: 'levels/redesign/level-048-a.avif',
+  imageB: 'levels/redesign/level-048-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bird flying above the left forest: dark in A, white in B.

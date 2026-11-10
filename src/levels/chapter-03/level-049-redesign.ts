@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // mushroom glows blue. B is A with only these changes of Gemini's laid over it (the moon's with its whole glow, so
 // no seam shows); Gemini left the crescent's unlit part as a pale disc, painted over with the sky beside it.
 export const level049Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-049-a.webp',
-  imageB: 'levels/redesign/level-049-b.webp',
+  imageA: 'levels/redesign/level-049-a.avif',
+  imageB: 'levels/redesign/level-049-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A small yellow star in the sky at the top left, only in B.

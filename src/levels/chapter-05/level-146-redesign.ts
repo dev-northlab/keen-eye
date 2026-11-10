@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // changes of Gemini's laid over it. Fixed by hand: nothing to repaint; the removed star's glow is taken away with it,
 // and Gemini's re-drawn constellation lines and nebula noise are left out.
 export const level146Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-146-a.webp',
-  imageB: 'levels/redesign/level-146-b.webp',
+  imageA: 'levels/redesign/level-146-a.avif',
+  imageB: 'levels/redesign/level-146-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The top right star of the constellation at the top left, only in A.

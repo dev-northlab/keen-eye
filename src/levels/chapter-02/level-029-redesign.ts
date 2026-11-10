@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // grass by the seesaw (those stay as in A), and left the handle, the shirt and the blade as they were: they are
 // recolored by hand, keeping their shading.
 export const level029Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-029-a.webp',
-  imageB: 'levels/redesign/level-029-b.webp',
+  imageA: 'levels/redesign/level-029-a.avif',
+  imageB: 'levels/redesign/level-029-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A small blue bird on top of the round tree on the left, only in B.

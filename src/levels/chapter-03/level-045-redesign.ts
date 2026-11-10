@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Gemini's laid over it. Gemini also took away a bird at the top right (put back from A) and drew the rake anew, a
 // longer handle without teeth: the rake is A's with its teeth and their bar painted out by hand.
 export const level045Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-045-a.webp',
-  imageB: 'levels/redesign/level-045-b.webp',
+  imageA: 'levels/redesign/level-045-a.avif',
+  imageB: 'levels/redesign/level-045-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The last goose at the right end of the flock, only in A.

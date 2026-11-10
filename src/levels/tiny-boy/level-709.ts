@@ -13,8 +13,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'livingRoomToys',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-709-a.webp',
-  imageB: 'levels/tiny-boy/level-709-b.webp',
+  imageA: 'levels/tiny-boy/level-709-a.avif',
+  imageB: 'levels/tiny-boy/level-709-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // One blue stripe on his right sock, only in A.

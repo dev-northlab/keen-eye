@@ -1,10 +1,10 @@
-import calmUrl from '../../assets/music/calm_level.mp3'
-import levelUrl from '../../assets/music/level_background.mp3'
-import completeUrl from '../../assets/music/level_compleated.mp3'
-import menuUrl from '../../assets/music/main_menu.mp3'
-import tinyBoyUrl from '../../assets/music/tiny_boy.mp3'
+import calmUrl from '../../assets/music/calm_level.m4a'
+import levelUrl from '../../assets/music/level_background.m4a'
+import completeUrl from '../../assets/music/level_compleated.m4a'
+import menuUrl from '../../assets/music/main_menu.m4a'
+import tinyBoyUrl from '../../assets/music/tiny_boy.m4a'
 
-// Music: looping mp3 tracks per screen. Sound effects: synthesized with Web Audio (no files).
+// Music: looping AAC tracks (.m4a, 96 kbps) per screen. Sound effects: synthesized with Web Audio (no files).
 // Browsers allow audio only after a user gesture, so playback is (re)started on the first touch/key.
 
 export type Track = 'menu' | 'level' | 'calm' | 'complete' | 'tinyBoy'

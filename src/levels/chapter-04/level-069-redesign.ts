@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // round), the top coin painted out with the sand beside it and the tops it hid of the two in front filled in (Gemini
 // took two), and the coral branch recoloured (Gemini added a green coral instead).
 export const level069Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-069-a.webp',
-  imageB: 'levels/redesign/level-069-b.webp',
+  imageA: 'levels/redesign/level-069-a.avif',
+  imageB: 'levels/redesign/level-069-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The tail of the orange fish on top of the mast: orange in A, blue in B.

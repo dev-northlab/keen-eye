@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // right candle painted out with the dark background beside it, and the back stone at the left end of the ring with the
 // grass beside it (the whole ring, asked of Gemini, is too tangled with the logs to repaint; one stone goes instead).
 export const level060Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-060-a.webp',
-  imageB: 'levels/redesign/level-060-b.webp',
+  imageA: 'levels/redesign/level-060-a.avif',
+  imageB: 'levels/redesign/level-060-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The fifth pennant from the left: red in A, yellow in B.

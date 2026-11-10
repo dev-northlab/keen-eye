@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // third ant from the left on the soil and the clover's top leaf are painted out by hand with the soil and the blurred
 // grass beside them.
 export const level126Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-126-a.webp',
-  imageB: 'levels/redesign/level-126-b.webp',
+  imageA: 'levels/redesign/level-126-a.avif',
+  imageB: 'levels/redesign/level-126-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The third ant from the left on the soil, only in A.

@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // B is A with only these changes laid over it. Fixed by hand: Gemini drew a big black blob in place of the seal's
 // flipper, so A's own flipper is painted black; the scarf's red reflection in the water is left out.
 export const level077Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-077-a.webp',
-  imageB: 'levels/redesign/level-077-b.webp',
+  imageA: 'levels/redesign/level-077-a.avif',
+  imageB: 'levels/redesign/level-077-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A small orange fish in the beak of the penguin lying on its belly, only in B.

@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // and the patch recoloured, the mushroom painted out with the trunk and grass below it, the dots filled with the
 // beetle's red, the nut made of the acorn beside it with a pale scar on top.
 export const level056Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-056-a.webp',
-  imageB: 'levels/redesign/level-056-b.webp',
+  imageA: 'levels/redesign/level-056-a.avif',
+  imageB: 'levels/redesign/level-056-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // Two leaves at the tip of the left branch: green in A, orange in B.

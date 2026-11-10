@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // yellow with its shading kept, and the upper slat of the crate's right end is painted out with the dark inside of
 // the crate.
 export const level108Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-108-a.webp',
-  imageB: 'levels/redesign/level-108-b.webp',
+  imageA: 'levels/redesign/level-108-a.avif',
+  imageB: 'levels/redesign/level-108-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // An apple in the middle of the left tree's crown: red in A, yellow in B.

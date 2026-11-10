@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // lantern with its glow and owl laid over it. Gemini also redrew the whole cat curled up the other way and left a
 // ghost of the tail on the hay bale, so B keeps A's cat with the tail painted over with the bale's own hay.
 export const level019Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-019-a.webp',
-  imageB: 'levels/redesign/level-019-b.webp',
+  imageA: 'levels/redesign/level-019-a.avif',
+  imageB: 'levels/redesign/level-019-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The star above the left half of the barn roof, only in B.

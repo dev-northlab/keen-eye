@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Gemini's laid over it; it cut the branch back far past the fork, so only the forked tip is taken from B, and made all
 // the bush's berries purple, so only the right cluster is.
 export const level124Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-124-a.webp',
-  imageB: 'levels/redesign/level-124-b.webp',
+  imageA: 'levels/redesign/level-124-a.avif',
+  imageB: 'levels/redesign/level-124-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The owl's eyes: yellow in A, orange in B.

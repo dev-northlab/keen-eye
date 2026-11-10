@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // painted out with the nest's straw, the rung with the grass above it (the ropes kept), the tail and the cap
 // recoloured with their shading and the cap's dots kept.
 export const level053Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-053-a.webp',
-  imageB: 'levels/redesign/level-053-b.webp',
+  imageA: 'levels/redesign/level-053-a.avif',
+  imageB: 'levels/redesign/level-053-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The right half of the kite: pink in A, yellow in B.

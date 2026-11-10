@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // plant into a mossy rock and painted the oar's handle tip blue (all left out), and left the flame as it was, so the
 // flame is shrunk by hand: squashed to half its height over its own background.
 export const level123Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-123-a.webp',
-  imageB: 'levels/redesign/level-123-b.webp',
+  imageA: 'levels/redesign/level-123-a.avif',
+  imageB: 'levels/redesign/level-123-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right duckling: yellow-green in A, brown in B.

@@ -4,8 +4,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Like the drawn scene: an apple, the birdhouse, the ladder and the crate's apples; a second wheelbarrow comes in B
 // instead of the first one turning. The ladder's zone sits on its middle, clear of that wheelbarrow at its foot.
 export const level004Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-004-a.webp',
-  imageB: 'levels/redesign/level-004-b.webp',
+  imageA: 'levels/redesign/level-004-a.avif',
+  imageB: 'levels/redesign/level-004-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The top-left apple of the left tree, only in A.

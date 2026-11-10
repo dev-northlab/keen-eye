@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // red. B is A with only these changes of Gemini's laid over it. Fixed by hand: Gemini also redrew the rocket's
 // porthole (dark blue with stars), so A's porthole is kept; its redrawn satellites are left out.
 export const level084Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-084-a.webp',
-  imageB: 'levels/redesign/level-084-b.webp',
+  imageA: 'levels/redesign/level-084-a.avif',
+  imageB: 'levels/redesign/level-084-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The spiral galaxy at the top: pale blue in A, pink in B.

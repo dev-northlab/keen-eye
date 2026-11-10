@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // reshaped the crater instead of removing it, so A's crater is covered with the ground beside it. Its re-noised ground,
 // pebbles and solar panel are left out.
 export const level082Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-082-a.webp',
-  imageB: 'levels/redesign/level-082-b.webp',
+  imageA: 'levels/redesign/level-082-a.avif',
+  imageB: 'levels/redesign/level-082-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The third of the four white sparkles in the sky, only in A.

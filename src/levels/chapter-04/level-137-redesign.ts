@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // anchor goes and a red-brown starfish lies right of the rock at the bottom left. B is A with only these changes of
 // Gemini's laid over it; it also turned the hatchetfish's back fin blue, which is left out.
 export const level137Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-137-a.webp',
-  imageB: 'levels/redesign/level-137-b.webp',
+  imageA: 'levels/redesign/level-137-a.avif',
+  imageB: 'levels/redesign/level-137-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bell of the cyan jellyfish at the top left (and its glow): cyan in A, lime green in B.

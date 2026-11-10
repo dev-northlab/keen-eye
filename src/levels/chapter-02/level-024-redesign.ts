@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // over it. Gemini kept the smoke, which hides the lower half of the woman in purple, the tiles and a flower pot:
 // instead of removing it (that would mean drawing all of it anew), its puffs and haze are recolored dark grey by hand.
 export const level024Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-024-a.webp',
-  imageB: 'levels/redesign/level-024-b.webp',
+  imageA: 'levels/redesign/level-024-a.avif',
+  imageB: 'levels/redesign/level-024-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The clock's hands on the station roof: black in A, red in B.

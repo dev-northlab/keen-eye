@@ -23,6 +23,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm test` — unit tests (`tests/*.test.ts`, Node's built-in `node:test`, no extra dependencies)
 - `npm run icons` — renders the app icon, splash and store icon (Android, iOS, Play, favicon) from the SVG in
   `scripts/make-icons.ts`; the iOS 1024 px icon is written without an alpha channel (App Store requirement)
+- `npm run encode-pictures -- <source folder> [--force] [<path> ...]` — `scripts/encode-pictures.ts`: the raster
+  pictures' sources are WebP outside the project, in `~/Pictures/keen-eye` (same paths as in `public/`; edit and add
+  pictures there); each is encoded into `public/` as AVIF crf 26 (ffmpeg libaom-av1, cpu-used 4), skipped when the
+  output is newer; transparent ones (`icons/`, the keys `levels/redesign/level-NNN-key.webp`) are copied as WebP;
+  `levels/test/` is left out
 - `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
   installed Chrome (`playwright-core`, `/usr/bin/google-chrome`) with a seeded mid-game progress, taps some
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
@@ -100,8 +105,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   without the case before it, `progress.isReached`), the rest need the purchase;
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
-  as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.webp`)
-  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.webp` or `-tall.webp` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.mp3` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
+  as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.avif`)
+  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.avif` or `-tall.avif` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.m4a` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
@@ -188,7 +193,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
   store texts. The "test" chapter (`TEST_CHAPTER`, ids 1001–1100, `levels/test/`) lives there for good:
   picture pairs tried out in developer mode (a banner at the end of the game modes screen), `kind: 'image'` levels
-  with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels). Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
+  with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels), and
+  `testLabels` (format, size, file size of A and B) that `LevelView` shows over the pictures. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
   level is a unique hand-drawn scene — no generator; scenes within a chapter must look different from each other.
 - Difficulty by level range, `levels/difficulty.ts`: 1–15 → 5 differences (r ≥ 24), 16–20 → 6, 21–40 → 7,
@@ -210,14 +216,14 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `memory/shapes.ts`, plus the chapters' shapes), drawn the same in both pictures and kept 20+ units clear of every zone; in
   "time" levels decor that changes with the moment (snow on it in winter, summer-only grass and butterflies) goes through
   `time()`, never `diff`.
-- Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
+- Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two AVIF pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
   and in the toolbar of a level that has them) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
-  ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`, and every world's
-  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.webp`, space into one `space.webp` (dark in both themes). `check-levels` checks the files,
+  ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.avif`, and every world's
+  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.avif`, space into one `space.avif` (dark in both themes). `check-levels` checks the files,
   the same number of differences as the scene (a motion difference becomes a still one: pictures do not move),
   zones on the picture, big enough and apart, and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).

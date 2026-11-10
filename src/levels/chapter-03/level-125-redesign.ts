@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // out), and left the window bars and the lantern's glow and redrew the axe, so these three are done by hand on A's
 // picture: the bars painted over with the lit pane, the lantern's glass darkened, the axe's head recoloured.
 export const level125Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-125-a.webp',
-  imageB: 'levels/redesign/level-125-b.webp',
+  imageA: 'levels/redesign/level-125-a.avif',
+  imageB: 'levels/redesign/level-125-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The smoke above the chimney: white in A, dark grey in B.

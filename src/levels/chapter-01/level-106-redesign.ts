@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // by hand: B is A with only Gemini's eight changes laid over it. Gemini also turned the grey horse's left ear dark
 // brown and touched the flower in the window, the ivy on the left and the straw under the trunk: those stay as in A.
 export const level106Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-106-a.webp',
-  imageB: 'levels/redesign/level-106-b.webp',
+  imageA: 'levels/redesign/level-106-a.avif',
+  imageB: 'levels/redesign/level-106-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The hay net in the third stall: yellow cords in A, red in B.

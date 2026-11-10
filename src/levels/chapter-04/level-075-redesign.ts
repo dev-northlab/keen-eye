@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // gull is tinted grey; its sun is taken above the horizon only (its red path on the water would be a change outside the
 // zone), the lantern's glow on the water stays too; its redrawn left palm is left out.
 export const level075Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-075-a.webp',
-  imageB: 'levels/redesign/level-075-b.webp',
+  imageA: 'levels/redesign/level-075-a.avif',
+  imageB: 'levels/redesign/level-075-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The setting sun: orange in A, deep red in B.

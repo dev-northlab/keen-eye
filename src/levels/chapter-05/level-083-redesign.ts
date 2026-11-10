@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // is painted out with the star field and the window with the wall on both sides; it turned both of the satellite's
 // panels blue, so the right one stays yellow. Its redrawn asteroids and truss are left out.
 export const level083Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-083-a.webp',
-  imageB: 'levels/redesign/level-083-b.webp',
+  imageA: 'levels/redesign/level-083-a.avif',
+  imageB: 'levels/redesign/level-083-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The long tail of the comet at the top right, only in A.

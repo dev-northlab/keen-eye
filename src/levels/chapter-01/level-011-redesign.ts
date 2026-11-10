@@ -5,8 +5,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // not move): the swing gets a red seat instead of not being there, and the windmill a red top sail instead of
 // turning the other way. Gemini also took the lit window's glints off the pond; B got them back from A.
 export const level011Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-011-a.webp',
-  imageB: 'levels/redesign/level-011-b.webp',
+  imageA: 'levels/redesign/level-011-a.avif',
+  imageB: 'levels/redesign/level-011-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The flag on the house roof: red in A, blue in B.

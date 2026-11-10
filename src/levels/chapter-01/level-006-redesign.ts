@@ -3,8 +3,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Level 6 ("henhouse") redrawn as two pictures (public/levels/redesign/), the zones measured on their pixel difference.
 // The same differences as the drawn scene.
 export const level006Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-006-a.webp',
-  imageB: 'levels/redesign/level-006-b.webp',
+  imageA: 'levels/redesign/level-006-a.avif',
+  imageB: 'levels/redesign/level-006-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The henhouse doorway: dark and open in A, a cream door in B.

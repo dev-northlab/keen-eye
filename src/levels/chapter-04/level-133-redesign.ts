@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // it kept the top cannonball, so the ball is covered by hand with the sand on its right; it also turned the
 // octopus's tentacles pink, so only its head is taken.
 export const level133Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-133-a.webp',
-  imageB: 'levels/redesign/level-133-b.webp',
+  imageA: 'levels/redesign/level-133-a.avif',
+  imageB: 'levels/redesign/level-133-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bell of the jellyfish in the middle: pink in A, blue in B.

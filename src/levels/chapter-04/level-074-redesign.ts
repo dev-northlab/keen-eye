@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // its mossy rock is laid inside A's rock outline, and the gull (standing on that moss in B) is A's own, tinted grey;
 // Gemini's extra shrimp in the right pool and its redrawn surf are left out.
 export const level074Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-074-a.webp',
-  imageB: 'levels/redesign/level-074-b.webp',
+  imageA: 'levels/redesign/level-074-a.avif',
+  imageB: 'levels/redesign/level-074-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The dark rock at the far right of the shore: bare in A, mossy in B.

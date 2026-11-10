@@ -301,6 +301,12 @@ onBeforeUnmount(() => {
     <div class="board" :class="{ locked }">
       <!-- Filled by the engine; Vue must not render children here. -->
       <div ref="board" class="pictures" />
+      <!-- Test levels: what each picture is, over its top corner (laid out like the pictures). -->
+      <div v-if="level.testLabels" class="test-labels" aria-hidden="true">
+        <div v-for="(label, i) in level.testLabels" :key="i" class="test-cell">
+          <span class="test-label"><b>{{ i ? 'B' : 'A' }}</b> {{ label }}</span>
+        </div>
+      </div>
       <LevelId :id="level.id" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <div class="note" role="status">{{ note }}</div>
@@ -355,7 +361,7 @@ onBeforeUnmount(() => {
       v-if="result"
       :result="result"
       :mode="mode"
-      :portrait="uncounted ? `${baseUrl}banners/tiny-boy-smile.webp` : undefined"
+      :portrait="uncounted ? `${baseUrl}banners/tiny-boy-smile.avif` : undefined"
       :time="time"
       :has-next="!!nextLevel"
       :share-text="treasury ? undefined : $t('share.level', { n: number })"
@@ -485,6 +491,45 @@ onBeforeUnmount(() => {
   .pictures {
     flex-direction: row;
   }
+}
+
+/* Over the pictures (same padding and gap), each label at the top of its half; taps go through. */
+.test-labels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  pointer-events: none;
+}
+
+@media (orientation: landscape) {
+  .test-labels {
+    flex-direction: row;
+  }
+}
+
+.test-cell {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.test-label {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.62);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.test-label b {
+  color: #ffd23f;
 }
 
 /* Pictures are created by the engine, hence :deep. */

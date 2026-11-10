@@ -30,7 +30,7 @@ const picture = computed(() => {
     props.theme === 'space'
       ? 'space'
       : `${season.value ? `meadow-${season.value}` : props.theme}-${night.value ? 'night' : 'day'}`
-  return `${import.meta.env.BASE_URL}backdrops/${name}.webp`
+  return `${import.meta.env.BASE_URL}backdrops/${name}.avif`
 })
 
 const FALLING = {
@@ -177,8 +177,8 @@ const craters = [
     <!-- "Tiny boy": its own autumn picture in both picture styles, upright on a portrait window; no night version,
          so the dark theme dims it. -->
     <picture v-if="theme === 'tinyBoy'">
-      <source media="(max-aspect-ratio: 1/1)" :srcset="`${baseUrl}backdrops/tiny-boy-tall.webp`" />
-      <img class="picture" :class="{ dimmed: night }" :src="`${baseUrl}backdrops/tiny-boy-wide.webp`" alt="" />
+      <source media="(max-aspect-ratio: 1/1)" :srcset="`${baseUrl}backdrops/tiny-boy-tall.avif`" />
+      <img class="picture" :class="{ dimmed: night }" :src="`${baseUrl}backdrops/tiny-boy-wide.avif`" alt="" />
     </picture>
     <img v-else-if="picture" class="picture" :src="picture" alt="" />
     <template v-else>

@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // its brown is brought up to a clear sandy beige; its other small changes (a pebble in the belt, asteroid craters,
 // the saucer) are left out.
 export const level087Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-087-a.webp',
-  imageB: 'levels/redesign/level-087-b.webp',
+  imageA: 'levels/redesign/level-087-a.avif',
+  imageB: 'levels/redesign/level-087-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The big planet at the top left: red in A, teal green in B.

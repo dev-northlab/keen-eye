@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the dog's head (A's dog shows none). The apple's and the ball's zones sit a little apart from the middles of the
 // two, which lie too close for two zones.
 export const level055Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-055-a.webp',
-  imageB: 'levels/redesign/level-055-b.webp',
+  imageA: 'levels/redesign/level-055-a.avif',
+  imageB: 'levels/redesign/level-055-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The kite's long ribbon tail down to the boy: blue in A, red in B.

@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // rock, lander roof, dust devil, suit and stripe laid over it. Fixed by hand: Gemini kept the smaller moon, so it is
 // painted out with the hazy sky beside it. Its other small changes (an asteroid, the wrench, pebbles) are left out.
 export const level085Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-085-a.webp',
-  imageB: 'levels/redesign/level-085-b.webp',
+  imageA: 'levels/redesign/level-085-a.avif',
+  imageB: 'levels/redesign/level-085-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The smaller pale moon at the top left, right of the bigger one, only in A.

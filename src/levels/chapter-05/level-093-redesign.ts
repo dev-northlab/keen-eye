@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // tail. B is A with only these changes of Gemini's laid over it. Fixed by hand: Gemini only tinted Uranus a little, so
 // A's Uranus is turned to a clear mint; its other small changes (the saucer's stars, the satellite) are left out.
 export const level093Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-093-a.webp',
-  imageB: 'levels/redesign/level-093-b.webp',
+  imageA: 'levels/redesign/level-093-a.avif',
+  imageB: 'levels/redesign/level-093-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The orange-red solar flare arching from the Sun's edge, only in A.

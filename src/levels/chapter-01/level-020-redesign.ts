@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the grass, the tree and the wood textures and kept the arrowhead, so B is A with only Gemini's horse, door, cart,
 // tail and hen laid over it, and the arrowhead painted over with the sky above it.
 export const level020Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-020-a.webp',
-  imageB: 'levels/redesign/level-020-b.webp',
+  imageA: 'levels/redesign/level-020-a.avif',
+  imageB: 'levels/redesign/level-020-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right arrowhead of the weathervane's arrow, only in A.

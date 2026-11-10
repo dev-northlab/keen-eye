@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // red blade recoloured purple instead), greened tomatoes on the second and fifth plants instead of the fourth (A's
 // tomato recoloured green) and removed the ninth carrot instead of the sixth (its bare soil laid over the sixth).
 export const level102Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-102-a.webp',
-  imageB: 'levels/redesign/level-102-b.webp',
+  imageA: 'levels/redesign/level-102-a.avif',
+  imageB: 'levels/redesign/level-102-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bird on the fence left of the scarecrow: red in A, yellow in B.

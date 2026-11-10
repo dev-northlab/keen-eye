@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // It took the pink balloon out of the sky (it stays, as in A) and left the dog's ear, the car's roof and the saddle as
 // they were: the flower, the ear, the roof and the saddle are recolored by hand, keeping their shading.
 export const level021Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-021-a.webp',
-  imageB: 'levels/redesign/level-021-b.webp',
+  imageA: 'levels/redesign/level-021-a.avif',
+  imageB: 'levels/redesign/level-021-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The middle stripe of the awning over the teal door: red in A, blue in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // and heart are A's recoloured by hand (Gemini also turned the cup's saucer orange), and the rung, which Gemini left,
 // is painted out by hand: the one under the lower balcony rail.
 export const level116Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-116-a.webp',
-  imageB: 'levels/redesign/level-116-b.webp',
+  imageA: 'levels/redesign/level-116-a.avif',
+  imageB: 'levels/redesign/level-116-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The plant in the small pot on the window sill of the dark blue house, only in A.

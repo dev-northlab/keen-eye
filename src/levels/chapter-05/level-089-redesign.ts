@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the green one blue, so its green button and blue light are moved onto the red ones' places and the others stay as in
 // A; its other changes (the wall domes, the probes' centres, the window's bolts) are left out.
 export const level089Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-089-a.webp',
-  imageB: 'levels/redesign/level-089-b.webp',
+  imageA: 'levels/redesign/level-089-a.avif',
+  imageB: 'levels/redesign/level-089-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small grey moon in the round window, only in A.

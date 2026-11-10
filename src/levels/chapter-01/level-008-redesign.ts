@@ -5,8 +5,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // colour, and a pitchfork comes by the right hay bale instead of a bale going. Gemini also turned the silo's walls
 // to brick; B got them back from A.
 export const level008Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-008-a.webp',
-  imageB: 'levels/redesign/level-008-b.webp',
+  imageA: 'levels/redesign/level-008-a.avif',
+  imageB: 'levels/redesign/level-008-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The farmhouse chimney, only in A.

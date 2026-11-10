@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // radar's place, so on A the bar is filled with the sky round it and the pedestal kept; its other changes (the solar
 // panel, a helmet, the saucer pad's ring) are left out.
 export const level098Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-098-a.webp',
-  imageB: 'levels/redesign/level-098-b.webp',
+  imageA: 'levels/redesign/level-098-a.avif',
+  imageB: 'levels/redesign/level-098-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small moon right of the big one: peach in A, light blue in B.

@@ -13,8 +13,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'fairHelicopter',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-708-a.webp',
-  imageB: 'levels/tiny-boy/level-708-b.webp',
+  imageA: 'levels/tiny-boy/level-708-a.avif',
+  imageB: 'levels/tiny-boy/level-708-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The light under the helicopter's body: green in A, blue in B.

@@ -11,8 +11,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'toyYard',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-706-a.webp',
-  imageB: 'levels/tiny-boy/level-706-b.webp',
+  imageA: 'levels/tiny-boy/level-706-a.avif',
+  imageB: 'levels/tiny-boy/level-706-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The spinning top's tip: red in A, blue in B.

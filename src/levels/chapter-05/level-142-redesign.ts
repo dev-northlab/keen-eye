@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // smaller, so A's tip is cloned out with the hill beside it; it left the rover half yellow, so A's body is recoloured
 // orange; it also removed the big crater above the right one, which is left out.
 export const level142Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-142-a.webp',
-  imageB: 'levels/redesign/level-142-b.webp',
+  imageA: 'levels/redesign/level-142-a.avif',
+  imageB: 'levels/redesign/level-142-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A tiny yellow satellite with blue panels in the sky above the big glass dome, only in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // spots filled with the fawn's own coat beside them, the cattail head painted out with the rock behind it and the
 // stem drawn on a little higher.
 export const level051Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-051-a.webp',
-  imageB: 'levels/redesign/level-051-b.webp',
+  imageA: 'levels/redesign/level-051-a.avif',
+  imageB: 'levels/redesign/level-051-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The middle bird of the flock at the top left, only in A.

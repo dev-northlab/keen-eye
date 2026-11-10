@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // drew a new taller bench and another ice cream (those stay as in A), and left the parasol pink: the backrest and the
 // parasol are recolored by hand, keeping their shading. The dog in A has no ears, so its black ear is drawn by hand.
 export const level023Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-023-a.webp',
-  imageB: 'levels/redesign/level-023-b.webp',
+  imageA: 'levels/redesign/level-023-a.avif',
+  imageB: 'levels/redesign/level-023-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The kite: all red in A, its left half yellow in B.

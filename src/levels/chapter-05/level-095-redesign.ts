@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // recoloured instead; it also took the small sprout carrot away and made the blurred lettuce and flower behind the
 // glass purple and orange, all left out.
 export const level095Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-095-a.webp',
-  imageB: 'levels/redesign/level-095-b.webp',
+  imageA: 'levels/redesign/level-095-a.avif',
+  imageB: 'levels/redesign/level-095-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The planet at the top left: red in A, purple in B.

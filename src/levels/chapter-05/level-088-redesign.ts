@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // line further down (the line runs on into empty sky); it left the tent's edges orange, recoloured green; its other
 // changes (the yellow star and the falling star near the moon taken away) are left out.
 export const level088Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-088-a.webp',
-  imageB: 'levels/redesign/level-088-b.webp',
+  imageA: 'levels/redesign/level-088-a.avif',
+  imageB: 'levels/redesign/level-088-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The star at the upper right end of the constellation, only in A.

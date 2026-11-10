@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // recolouring the bullfinch and left the paw prints, so the bullfinch's back is recoloured and the rightmost print
 // painted out with the snow beside it by hand.
 export const level127Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-127-a.webp',
-  imageB: 'levels/redesign/level-127-b.webp',
+  imageA: 'levels/redesign/level-127-a.avif',
+  imageB: 'levels/redesign/level-127-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The top puff of smoke above the far cabin, only in A.

@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // swan's beak orange (painted black by hand) and kept the post (painted out by hand: the deck moved along from its
 // left, the water blended row by row); it covered both rocks with moss, only the big one keeps it.
 export const level047Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-047-a.webp',
-  imageB: 'levels/redesign/level-047-b.webp',
+  imageA: 'levels/redesign/level-047-a.avif',
+  imageB: 'levels/redesign/level-047-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A red dragonfly over the far shore, left of the signpost, only in B.

@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Gemini kept the starfish's five arms and the crab's claw, so the top arm and the claw are covered with the pool
 // floor and the rock above them; it turned the middle crab blue all over, so only A's crab shell is recoloured.
 export const level138Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-138-a.webp',
-  imageB: 'levels/redesign/level-138-b.webp',
+  imageA: 'levels/redesign/level-138-a.avif',
+  imageB: 'levels/redesign/level-138-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The top arm of the orange starfish in the left pool, only in A.

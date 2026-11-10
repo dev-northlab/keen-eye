@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // top left shoulder is cut away along a bumpy round edge and the small one's top puffs are covered with the sky beside
 // them (its low column fading out); its other changes (the big geyser's plume, the dome's frame) are left out.
 export const level091Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-091-a.webp',
-  imageB: 'levels/redesign/level-091-b.webp',
+  imageA: 'levels/redesign/level-091-a.avif',
+  imageB: 'levels/redesign/level-091-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small moon at the left end of the purple planet's ring: grey in A, reddish brown in B.

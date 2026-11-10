@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // hawk, the ears, the cub and the bone recoloured with their shading kept, the half seed head painted out with the
 // grass beside it.
 export const level052Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-052-a.webp',
-  imageB: 'levels/redesign/level-052-b.webp',
+  imageA: 'levels/redesign/level-052-a.avif',
+  imageB: 'levels/redesign/level-052-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The hawk circling in the sky: brown in A, dark grey in B.

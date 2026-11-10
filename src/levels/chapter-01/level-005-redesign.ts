@@ -3,8 +3,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Level 5 ("pigsty") redrawn as two pictures (public/levels/redesign/), the zones measured on their pixel difference.
 // The same differences as the drawn scene.
 export const level005Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-005-a.webp',
-  imageB: 'levels/redesign/level-005-b.webp',
+  imageA: 'levels/redesign/level-005-a.avif',
+  imageB: 'levels/redesign/level-005-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The fourth sunflower, only in A.

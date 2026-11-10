@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // yellow hat and the truck stay as in A), and left the brick, the drum and the cone as they were: the hat, the cab,
 // the drum and the cone are recolored by hand, keeping their shading, and the brick painted out with the sand above.
 export const level025Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-025-a.webp',
-  imageB: 'levels/redesign/level-025-b.webp',
+  imageA: 'levels/redesign/level-025-a.avif',
+  imageB: 'levels/redesign/level-025-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The crane's hook: grey in A, red in B.

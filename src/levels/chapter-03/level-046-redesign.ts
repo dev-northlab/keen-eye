@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // these changes of Gemini's laid over it. Gemini took both top logs of the woodpile: only the left one is taken (the
 // right one put back from A); it left a faint trace of the smoke, painted over with the sky.
 export const level046Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-046-a.webp',
-  imageB: 'levels/redesign/level-046-b.webp',
+  imageA: 'levels/redesign/level-046-a.avif',
+  imageB: 'levels/redesign/level-046-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The white smoke over the chimney, only in A.

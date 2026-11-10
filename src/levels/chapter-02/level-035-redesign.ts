@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // stop sign at the back of the school bus loses its white letters. B is A with only these changes of Gemini's laid
 // over it.
 export const level035Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-035-a.webp',
-  imageB: 'levels/redesign/level-035-b.webp',
+  imageA: 'levels/redesign/level-035-a.avif',
+  imageB: 'levels/redesign/level-035-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The school clock's hands: black in A, red in B.

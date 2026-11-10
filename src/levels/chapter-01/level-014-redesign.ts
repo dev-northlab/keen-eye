@@ -5,8 +5,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // which swings differently in the drawn scene, gets a blue seat (pictures do not move); the shirt, the dog house's
 // roof and the ball change colour as drawn. Gemini changed nothing else.
 export const level014Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-014-a.webp',
-  imageB: 'levels/redesign/level-014-b.webp',
+  imageA: 'levels/redesign/level-014-a.avif',
+  imageB: 'levels/redesign/level-014-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // The kite's string tail, only in A.

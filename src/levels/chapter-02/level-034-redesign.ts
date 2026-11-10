@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // bell, badge, cap, hose, light and helmet laid over it. Gemini drew a new white dog (another head, no collar): the
 // dog stays as in A and its spots are painted over with the white fur beside them (a few small ones on the legs stay).
 export const level034Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-034-a.webp',
-  imageB: 'levels/redesign/level-034-b.webp',
+  imageA: 'levels/redesign/level-034-a.avif',
+  imageB: 'levels/redesign/level-034-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The bell under the tower: gold in A, silver in B.

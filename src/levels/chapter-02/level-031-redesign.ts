@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // with only Gemini's board, shirt, bin, flag, pigeon and stripe laid over it. The dog already wears an orange collar in
 // A, and Gemini only made it a little redder: the collar is recolored blue by hand instead.
 export const level031Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-031-a.webp',
-  imageB: 'levels/redesign/level-031-b.webp',
+  imageA: 'levels/redesign/level-031-a.avif',
+  imageB: 'levels/redesign/level-031-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The flag on the kiosk roof: yellow in A, red in B.

@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // got A's three puffs back with the upper two painted over with sky, and the scarecrow's shoulder next to the
 // removed crow, lightened by Gemini, was restored from A.
 export const level016Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-016-a.webp',
-  imageB: 'levels/redesign/level-016-b.webp',
+  imageA: 'levels/redesign/level-016-a.avif',
+  imageB: 'levels/redesign/level-016-b.avif',
   viewBox: { w: 1312, h: 816 },
   differences: [
     // The crow flying over the tree: black in A, brown in B.

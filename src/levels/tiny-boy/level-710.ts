@@ -11,8 +11,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'backyardPlayground',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-710-a.webp',
-  imageB: 'levels/tiny-boy/level-710-b.webp',
+  imageA: 'levels/tiny-boy/level-710-a.avif',
+  imageB: 'levels/tiny-boy/level-710-b.avif',
   viewBox: { w: 2400, h: 1792 },
   differences: [
     // The roof of the playground tower: blue in A, red in B.

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // lowest stripe (left out) and left the rest undone, so three are recoloured by hand on A's picture: the gull, the
 // stripe and the beak.
 export const level064Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-064-a.webp',
-  imageB: 'levels/redesign/level-064-b.webp',
+  imageA: 'levels/redesign/level-064-a.avif',
+  imageB: 'levels/redesign/level-064-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The right gull of the three flying left of the lighthouse: white in A, grey in B.

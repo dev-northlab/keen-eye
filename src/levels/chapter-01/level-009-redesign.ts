@@ -5,8 +5,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // and a bell comes on another sheep instead of it turning round. Gemini also made the white-faced sheep's legs white
 // and lost its eye; B got the legs back from A and the eye painted by hand.
 export const level009Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-009-a.webp',
-  imageB: 'levels/redesign/level-009-b.webp',
+  imageA: 'levels/redesign/level-009-a.avif',
+  imageB: 'levels/redesign/level-009-b.avif',
   viewBox: { w: 1306, h: 816 },
   differences: [
     // A stone in the top row of the wall, on the right, only in A.

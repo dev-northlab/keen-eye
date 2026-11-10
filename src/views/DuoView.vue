@@ -95,11 +95,11 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
         <h1>{{ $t('duo.modeTitle') }}</h1>
         <ul class="modes">
           <li v-for="m in MATCH_MODES" :key="m">
-            <!-- Like the level banners: the mode's colour with a 3D picture at the end side (public/banners/duo-<mode>.webp). -->
+            <!-- Like the level banners: the mode's colour with a 3D picture at the end side (public/banners/duo-<mode>.avif). -->
             <PhotoBanner
               class="mode"
               :class="[m, { current: setup.mode === m }]"
-              :photo="`${baseUrl}banners/duo-${m}.webp`"
+              :photo="`${baseUrl}banners/duo-${m}.avif`"
               :name="$t(`duo.modes.${m}`)"
               @click="chooseMode(m)"
             >

@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // tip smaller, so the rod is painted out with the sky and the dish on both sides; it drew a new, bigger red rock, so
 // A's own rock is tinted its colour instead. Its redrawn chest panel on the astronaut and its redrawn crystal are left out.
 export const level081Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-081-a.webp',
-  imageB: 'levels/redesign/level-081-b.webp',
+  imageA: 'levels/redesign/level-081-a.avif',
+  imageB: 'levels/redesign/level-081-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The upper right crater of the moon, only in A.

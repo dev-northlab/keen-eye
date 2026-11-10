@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // and made the suitcase's wheels red (both left out), and painted the clock's hands red and dropped the second hand:
 // the clock is A's with only the second hand painted out by hand (three hands in A, two in B).
 export const level115Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-115-a.webp',
-  imageB: 'levels/redesign/level-115-b.webp',
+  imageA: 'levels/redesign/level-115-a.avif',
+  imageB: 'levels/redesign/level-115-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The ceiling light just right of the pillar: lit in A, dark grey in B.

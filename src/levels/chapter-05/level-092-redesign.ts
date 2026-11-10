@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // so the second is recoloured on A; it gave the seller three eyes, so A's eye is filled with the skin round it and
 // only Gemini's outer two eyes are laid on.
 export const level092Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-092-a.webp',
-  imageB: 'levels/redesign/level-092-b.webp',
+  imageA: 'levels/redesign/level-092-a.avif',
+  imageB: 'levels/redesign/level-092-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The small moon at the right of the sky, above the sun: orange in A, light blue in B.

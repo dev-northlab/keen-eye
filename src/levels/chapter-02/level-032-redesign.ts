@@ -7,8 +7,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // duck. B is A with only these changes of Gemini's laid over it: Gemini also lit the right street lamp, redrew the
 // blue bird on the railing and drew the flag's reflection in the water (those stay as in A).
 export const level032Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-032-a.webp',
-  imageB: 'levels/redesign/level-032-b.webp',
+  imageA: 'levels/redesign/level-032-a.avif',
+  imageB: 'levels/redesign/level-032-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The white gull's wing tips: grey in A, black in B.

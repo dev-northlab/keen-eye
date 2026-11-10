@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // pigeon laid over it. Gemini kept the smoke of both left chimneys: the smoke of the near one is painted out with the
 // wall beside it, the far one's stays on both pictures.
 export const level033Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-033-a.webp',
-  imageB: 'levels/redesign/level-033-b.webp',
+  imageA: 'levels/redesign/level-033-a.avif',
+  imageB: 'levels/redesign/level-033-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The metal bands around the water tank: grey in A, red in B.

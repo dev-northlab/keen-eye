@@ -8,8 +8,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // A with only these changes of Gemini's laid over it; it also turned the third fly agaric orange (left out) and drew a
 // bigger plain mushroom over the spotted one, so its spots are painted out by hand on A's cap instead.
 export const level122Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-122-a.webp',
-  imageB: 'levels/redesign/level-122-b.webp',
+  imageA: 'levels/redesign/level-122-a.avif',
+  imageB: 'levels/redesign/level-122-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The spider hanging from the bare branch: black in A, yellow in B.

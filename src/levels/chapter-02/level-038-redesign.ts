@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // pavement under the booth (those stay as in A): the five bulbs are turned off, the box's red stripes and the pigeon
 // recolored by hand, keeping their shading.
 export const level038Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-038-a.webp',
-  imageB: 'levels/redesign/level-038-b.webp',
+  imageA: 'levels/redesign/level-038-a.avif',
+  imageB: 'levels/redesign/level-038-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The five bulbs in the middle of the marquee's red bar: lit in A, off in B.

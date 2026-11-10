@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // stripe is cloned over with the light band below it; it made the ship's fins red and gave it a row of red windows, so
 // A's window is recoloured red; its other removed rock below the planet is left out.
 export const level149Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-149-a.webp',
-  imageB: 'levels/redesign/level-149-b.webp',
+  imageA: 'levels/redesign/level-149-a.avif',
+  imageB: 'levels/redesign/level-149-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // A tiny yellow satellite with blue panels at the top left, left of the big satellite, only in B.

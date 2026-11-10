@@ -11,8 +11,8 @@ const level: Level = {
   chapter: 'tinyBoy',
   title: 'firstBirthday',
   kind: 'image',
-  imageA: 'levels/tiny-boy/level-701-a.webp',
-  imageB: 'levels/tiny-boy/level-701-b.webp',
+  imageA: 'levels/tiny-boy/level-701-a.avif',
+  imageB: 'levels/tiny-boy/level-701-b.avif',
   viewBox: { w: 2752, h: 1536 },
   differences: [
     // The boy's bow tie: beige in A, red in B.

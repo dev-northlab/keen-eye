@@ -10,8 +10,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // them, the basket's right berry painted out with the ground above it and the rim, the lid and the nose recoloured
 // with their shading kept.
 export const level050Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-050-a.webp',
-  imageB: 'levels/redesign/level-050-b.webp',
+  imageA: 'levels/redesign/level-050-a.avif',
+  imageB: 'levels/redesign/level-050-b.avif',
   viewBox: { w: 2612, h: 1632 },
   differences: [
     // The bird on the branch by the tree trunk: yellow in A, red in B.

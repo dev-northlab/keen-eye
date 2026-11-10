@@ -3,8 +3,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // Level 1 ("barnyard") redrawn as two pictures (public/levels/redesign/), the zones measured on their pixel
 // difference. The same differences as the drawn scene, except the last: there the hen turns, here a second one comes.
 export const level001Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-001-a.webp',
-  imageB: 'levels/redesign/level-001-b.webp',
+  imageA: 'levels/redesign/level-001-a.avif',
+  imageB: 'levels/redesign/level-001-b.avif',
   viewBox: { w: 1200, h: 896 },
   differences: [
     // The sun: yellow in A, orange in B.

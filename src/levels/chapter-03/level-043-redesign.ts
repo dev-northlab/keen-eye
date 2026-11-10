@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // the beaver and the log: the beaver's fur is lightened by hand, and the log is painted out with the grass above it,
 // the stick that went in under its end now ending in a rounded tip.
 export const level043Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-043-a.webp',
-  imageB: 'levels/redesign/level-043-b.webp',
+  imageA: 'levels/redesign/level-043-a.avif',
+  imageB: 'levels/redesign/level-043-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The lower dragonfly, above the lodge: blue in A, red in B.

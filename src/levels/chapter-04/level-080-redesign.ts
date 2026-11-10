@@ -11,8 +11,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // wall behind it cloned from above. The list's pink crab is replaced, at the user's wish, by a missing leg of A's crab
 // (the rock behind it cloned from up right).
 export const level080Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-080-a.webp',
-  imageB: 'levels/redesign/level-080-b.webp',
+  imageA: 'levels/redesign/level-080-a.avif',
+  imageB: 'levels/redesign/level-080-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The leftmost stalactite: long in A, half as long in B.

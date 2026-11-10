@@ -9,8 +9,8 @@ import type { LevelPictures } from '../../engine/types.ts'
 // bottom left, so the boulder is on both pictures, recoloured Mars red on A; it kept the dust devil's top ring, so on
 // A it is cloned away with the ground beside it, the swirl below fading into the ground.
 export const level145Redesign: LevelPictures = {
-  imageA: 'levels/redesign/level-145-a.webp',
-  imageB: 'levels/redesign/level-145-b.webp',
+  imageA: 'levels/redesign/level-145-a.avif',
+  imageB: 'levels/redesign/level-145-b.avif',
   viewBox: { w: 2624, h: 1632 },
   differences: [
     // The tiny moon right of the bigger moon: pale in A, light blue in B.
