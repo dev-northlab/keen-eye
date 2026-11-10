@@ -472,7 +472,8 @@
       "mirror-x": "Chú ý! Hình thứ hai bị lật như gương",
       "rotate-180": "Chú ý! Hình thứ hai bị lộn ngược"
     },
-    "uncounted": "Ở đây có những điểm khác nhau, nhưng không ai biết bao nhiêu. Hãy tìm hết!"
+    "uncounted": "Ở đây có những điểm khác nhau, nhưng không ai biết bao nhiêu. Hãy tìm hết!",
+    "tinyWon": "Hoan hô! Bạn đã tìm ra tất cả!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Cửa hàng hoa",

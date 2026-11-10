@@ -472,7 +472,8 @@
       "mirror-x": "Huomio! Toinen kuva on peilattu",
       "rotate-180": "Huomio! Toinen kuva on ylösalaisin"
     },
-    "uncounted": "Täällä on eroja, mutta kukaan ei tiedä kuinka monta. Löydä ne kaikki!"
+    "uncounted": "Täällä on eroja, mutta kukaan ei tiedä kuinka monta. Löydä ne kaikki!",
+    "tinyWon": "Hurraa! Löysit ne kaikki!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Kukkakauppa",

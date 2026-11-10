@@ -122,7 +122,8 @@
       "mirror-x": "Attenzione! La seconda immagine è specchiata",
       "rotate-180": "Attenzione! La seconda immagine è capovolta"
     },
-    "uncounted": "Ci sono delle differenze, ma nessuno sa quante. Trovale tutte!"
+    "uncounted": "Ci sono delle differenze, ma nessuno sa quante. Trovale tutte!",
+    "tinyWon": "Evviva! Le hai trovate tutte!"
   },
   "duo": {
     "modeTitle": "Come giocate?",

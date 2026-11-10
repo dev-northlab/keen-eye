@@ -122,7 +122,8 @@
       "mirror-x": "Heads up! The second picture is mirrored",
       "rotate-180": "Heads up! The second picture is upside down"
     },
-    "uncounted": "There are differences here, but nobody knows how many. Find them all!"
+    "uncounted": "There are differences here, but nobody knows how many. Find them all!",
+    "tinyWon": "Hooray! You found them all!"
   },
   "duo": {
     "modeTitle": "How do you play?",

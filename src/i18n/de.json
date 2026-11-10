@@ -122,7 +122,8 @@
       "mirror-x": "Achtung! Das zweite Bild ist gespiegelt",
       "rotate-180": "Achtung! Das zweite Bild steht auf dem Kopf"
     },
-    "uncounted": "Hier gibt es Unterschiede, aber niemand weiß, wie viele. Finde sie alle!"
+    "uncounted": "Hier gibt es Unterschiede, aber niemand weiß, wie viele. Finde sie alle!",
+    "tinyWon": "Hurra! Du hast alle gefunden!"
   },
   "duo": {
     "modeTitle": "Wie spielt ihr?",

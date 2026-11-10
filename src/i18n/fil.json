@@ -472,7 +472,8 @@
       "mirror-x": "Pansinin! Naka-salamin ang ikalawang larawan",
       "rotate-180": "Pansinin! Baligtad ang ikalawang larawan"
     },
-    "uncounted": "May mga pagkakaiba rito, pero walang nakakaalam kung ilan. Hanapin lahat!"
+    "uncounted": "May mga pagkakaiba rito, pero walang nakakaalam kung ilan. Hanapin lahat!",
+    "tinyWon": "Yehey! Nahanap mo lahat!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Tindahan ng bulaklak",

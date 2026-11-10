@@ -122,7 +122,8 @@
       "mirror-x": "Let op! De tweede afbeelding is gespiegeld",
       "rotate-180": "Let op! De tweede afbeelding staat ondersteboven"
     },
-    "uncounted": "Er zijn verschillen, maar niemand weet hoeveel. Vind ze allemaal!"
+    "uncounted": "Er zijn verschillen, maar niemand weet hoeveel. Vind ze allemaal!",
+    "tinyWon": "Hoera! Je hebt ze allemaal gevonden!"
   },
   "duo": {
     "modeTitle": "Hoe spelen jullie?",

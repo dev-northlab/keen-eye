@@ -122,7 +122,8 @@
       "mirror-x": "Pozor! Druhý obrázek je zrcadlově obrácený",
       "rotate-180": "Pozor! Druhý obrázek je vzhůru nohama"
     },
-    "uncounted": "Jsou tu rozdíly, ale nikdo neví kolik. Najdi je všechny!"
+    "uncounted": "Jsou tu rozdíly, ale nikdo neví kolik. Najdi je všechny!",
+    "tinyWon": "Hurá! Všechny nalezeny!"
   },
   "duo": {
     "modeTitle": "Jak budete hrát?",

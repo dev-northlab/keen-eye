@@ -472,7 +472,8 @@
       "mirror-x": "Bemærk! Det andet billede er spejlvendt",
       "rotate-180": "Bemærk! Det andet billede står på hovedet"
     },
-    "uncounted": "Der er forskelle her, men ingen ved hvor mange. Find dem alle!"
+    "uncounted": "Der er forskelle her, men ingen ved hvor mange. Find dem alle!",
+    "tinyWon": "Hurra! Du fandt dem alle!"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blomsterbutik",

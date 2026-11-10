@@ -122,7 +122,8 @@
       "mirror-x": "Figyelem! A második kép tükrözött",
       "rotate-180": "Figyelem! A második kép fejjel lefelé áll"
     },
-    "uncounted": "Vannak itt különbségek, de senki sem tudja, hány. Találd meg mindet!"
+    "uncounted": "Vannak itt különbségek, de senki sem tudja, hány. Találd meg mindet!",
+    "tinyWon": "Hurrá! Mindet megtaláltad!"
   },
   "duo": {
     "modeTitle": "Hogyan játszotok?",
