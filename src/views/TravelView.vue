@@ -92,7 +92,7 @@ function placeLabel(level: Level) {
               <path d="M7.5 10V7.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="currentColor" stroke-width="2.4" />
               <rect x="5" y="10" width="14" height="11" rx="2.5" fill="currentColor" />
             </svg>
-            <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :hard="progress.hardStars(level.id)" :size="16" />
+            <StarRating v-else :stars="progress.records[level.id]?.stars ?? 0" :size="16" />
           </button>
         </li>
       </ul>

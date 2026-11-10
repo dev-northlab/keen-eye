@@ -2,6 +2,7 @@
 import { onBeforeUnmount, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ModalDialog from '../components/ModalDialog.vue'
+import MenuIcon from '../components/MenuIcon.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
 import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import PlayerAvatar from '../components/PlayerAvatar.vue'
@@ -53,13 +54,13 @@ function play() {
 </script>
 
 <template>
-  <main class="home">
+  <main class="home" :class="{ still: settings.effectiveReduceMotion }">
     <ScreenBackdrop theme="meadow" />
     <div class="corner">
       <SeasonSwitch />
       <ThemeSwitch />
       <!-- Developer mode only while few levels have redesigned pictures. -->
-      <PictureStyleSwitch v-if="settings.developer" />
+      <PictureStyleSwitch />
     </div>
     <h1>Keen Eye</h1>
     <p class="stars">
@@ -100,13 +101,6 @@ function play() {
       <span class="label">{{ $t('home.levels') }}</span>
       <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
-    <button class="entry" @click="router.push({ name: 'settings' })">
-      <span class="badge settings" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M10.3 2.5h3.4l.5 2.6 1.9.8 2.2-1.5 2.4 2.4-1.5 2.2.8 1.9 2.6.5v3.4l-2.6.5-.8 1.9 1.5 2.2-2.4 2.4-2.2-1.5-1.9.8-.5 2.6h-3.4l-.5-2.6-1.9-.8-2.2 1.5-2.4-2.4 1.5-2.2-.8-1.9-2.6-.5v-3.4l2.6-.5.8-1.9-1.5-2.2 2.4-2.4 2.2 1.5 1.9-.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" /><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2" /></svg>
-      </span>
-      <span class="label">{{ $t('home.settings') }}</span>
-      <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
-    </button>
     <button v-if="canExitApp" class="entry" @click="exitApp">
       <span class="badge exit" aria-hidden="true">
         <svg class="flip-rtl" viewBox="0 0 24 24"><path d="M14 4.5H6.5v15H14M10.5 12H20M16.5 8.5 20 12l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" /></svg>
@@ -114,28 +108,19 @@ function play() {
       <span class="label">{{ $t('home.exit') }}</span>
     </button>
 
+    <!-- Settings and the info pages as round icon buttons; their names are read out and shown on hover. -->
     <nav class="info-links">
-      <button class="info-link" @click="router.push({ name: 'about' })">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
-          <path d="M12 11v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
-          <circle cx="12" cy="7.6" r="1.3" fill="currentColor" />
-        </svg>
-        {{ $t('info.about') }}
+      <button class="info-link" :aria-label="$t('home.settings')" :title="$t('home.settings')" @click="router.push({ name: 'settings' })">
+        <MenuIcon name="settings" />
       </button>
-      <button class="info-link" @click="dialog = 'privacy'">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6l7-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
-          <path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        {{ $t('info.privacy') }}
+      <button class="info-link" :aria-label="$t('info.about')" :title="$t('info.about')" @click="router.push({ name: 'about' })">
+        <MenuIcon name="about" />
       </button>
-      <button class="info-link" @click="dialog = 'contact'">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2" />
-          <path d="M4 7.5l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-        {{ $t('info.contact') }}
+      <button class="info-link" :aria-label="$t('info.privacy')" :title="$t('info.privacy')" @click="dialog = 'privacy'">
+        <MenuIcon name="privacy" />
+      </button>
+      <button class="info-link" :aria-label="$t('info.contact')" :title="$t('info.contact')" @click="dialog = 'contact'">
+        <MenuIcon name="contact" />
       </button>
     </nav>
 
@@ -249,22 +234,28 @@ h1 {
   text-shadow: 0 2px 0 var(--glass), 0 0 18px var(--glass);
 }
 
+/* A golden coin pill: a light top, a gold rim and the star glowing on it. */
 .stars {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin: 0 0 12px;
-  padding: 5px 14px 5px 8px;
+  margin: 0 0 14px;
+  padding: 5px 16px 5px 7px;
   border-radius: 999px;
-  background: var(--gold-bg);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--gold-bg) 78%, #ffd36b), var(--gold-bg));
   color: var(--gold-fg);
-  font-weight: 700;
-  box-shadow: 0 3px 10px rgb(35 48 43 / 0.12);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  border: 1.5px solid color-mix(in srgb, #f5b301 55%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.35),
+    0 4px 12px rgb(184 138 0 / 0.22);
 }
 
 .stars svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 4px rgb(255 201 51 / 0.7));
 }
 
 button,
@@ -284,36 +275,34 @@ button,
 
 .info-links {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 14px;
   margin-top: 8px;
 }
 
+/* Round like the picture style switch, a finger wide. */
 .info-link {
-  width: auto;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background: var(--glass);
-  color: var(--muted);
-  font-size: 15px;
-  box-shadow: 0 2px 6px rgb(35 48 43 / 0.08);
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  /* Over the busy meadow: more solid than the glass of the top buttons. */
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  box-shadow: 0 2px 8px rgb(35 48 43 / 0.1);
+  transition: transform 0.15s ease;
 }
 
 .info-link:hover {
   background: var(--panel);
-  color: var(--fg);
 }
 
-.info-link svg {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  color: var(--accent);
+.info-link:active {
+  transform: scale(0.94);
 }
+
 
 .info-body {
   display: grid;
@@ -420,37 +409,104 @@ button {
   font-size: 18px;
 }
 
+/* A candy button: a light top fading into the accent, a shine line at the top, a darker depth under it, and a
+   gleam sweeping across now and then. */
 .play {
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 14px 20px 14px 14px;
+  gap: 12px;
+  padding: 10px 18px 10px 10px;
   border-radius: 20px;
-  font-size: 22px;
-  font-weight: 700;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 70%, #fff), var(--accent) 55%);
+  font-size: 21px;
+  font-weight: 800;
   text-align: start;
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 55%, #000);
   box-shadow:
-    0 8px 18px rgb(35 48 43 / 0.2),
-    inset 0 -4px 0 rgb(0 0 0 / 0.12);
+    inset 0 2px 0 rgb(255 255 255 / 0.4),
+    0 6px 0 color-mix(in srgb, var(--accent) 62%, #000),
+    0 14px 22px -8px rgb(0 0 0 / 0.45);
   transition:
     transform 0.12s ease,
     box-shadow 0.12s ease;
 }
 
+.play::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.35) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: gleam 4.5s ease-in-out 1.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes gleam {
+  0% {
+    transform: translateX(-120%);
+  }
+  30%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.play:active {
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.4),
+    0 2px 0 color-mix(in srgb, var(--accent) 62%, #000),
+    0 6px 12px -6px rgb(0 0 0 / 0.4);
+}
+
+/* A raised white ball with a soft ring pulsing round it. */
 .play-icon {
+  position: relative;
   flex: none;
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: #fff;
+  background: radial-gradient(circle at 35% 30%, #fff 55%, #e3f3ea);
   color: var(--accent);
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--accent) 55%, #000),
+    0 6px 10px -4px rgb(0 0 0 / 0.35);
+}
+
+.play-icon::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 3px solid rgb(255 255 255 / 0.6);
+  animation: ring 2.4s ease-out infinite;
+}
+
+@keyframes ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  70%,
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* "Reduce motion" (the setting, which follows the system's by default): no gleam or pulsing ring. */
+.still .play::after,
+.still .play-icon::before {
+  animation: none;
+  opacity: 0;
 }
 
 .play-icon svg {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   margin-inline-start: 3px;
 }
 
@@ -460,9 +516,10 @@ button {
 }
 
 .play small {
-  font-size: 14px;
-  font-weight: 400;
-  opacity: 0.9;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.92;
+  text-shadow: none;
 }
 
 .play:active,
@@ -519,12 +576,8 @@ button {
   background: var(--hint);
 }
 
-.badge.settings {
-  background: var(--muted);
-}
-
 .badge.exit {
-  background: var(--mode-hard);
+  background: var(--danger);
 }
 
 /* Two players: the two characters, overlapping. */

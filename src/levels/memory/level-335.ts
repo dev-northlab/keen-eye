@@ -1,7 +1,6 @@
 // Treehouse: a house in a big tree among the ten hardest of "memory" (hidden until released, levels/upcoming.ts). Its
 // door, window and flag, a bird's nest with eggs, a tire swing, a bucket on a pulley rope, a ladder and a kite in the sky.
 import { bird, bush, mushroom, rock } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { bucket, cloud, sun } from '../shapes.ts'
 import { flowers } from '../time/shapes.ts'
@@ -11,7 +10,7 @@ export default memoryLevel({
   id: 335,
   title: 'memoryTreehouse',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(620) + sun(70, 70) + cloud(380, 40, 0.5) + ground(620, '#7fb24a') +
     // The kite in the sky
     `<path d="M450 170Q440 220 470 260" stroke="#5c677d" stroke-width="1" fill="none"/>` +
@@ -46,12 +45,5 @@ export default memoryLevel({
     flowers(200, 700, '#ff6b8b') +
     flowers(320, 720, '#ffd23f') +
     big(420, 720, 1.2, rock(0, 0)) +
-    big(130, 720, 1.2, mushroom(0, 0, '#e63946')) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['mushroom', 40, 730],
-      ['snail', 470, 730],
-      ['ladybug', 270, 660],
-      ['flower', 230, 735, '#8338ec'],
-    ]),
+    big(130, 720, 1.2, mushroom(0, 0, '#e63946')),
 })

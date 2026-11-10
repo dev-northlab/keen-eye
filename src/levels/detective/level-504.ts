@@ -50,7 +50,7 @@ export default detectiveLevel({
     clue('crumbs', 486, 436, 30, '', crumbs(486, 436, '#d9a35a') + `<circle cx="478" cy="442" r="3" fill="#f7c6d9"/><circle cx="496" cy="430" r="3" fill="#f7c6d9"/>`) +
     clue('chewedSlipper', 180, 432, 36, '', slipper(180, 432)) +
     clue('pawPrints', 650, 444, 40, '', pawTrail([[628, 452], [650, 432], [674, 450]], '#3b2a1a')) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['sconce', 162, 254],
       ['hatBox', 277, 486, '#f7a1c4'],

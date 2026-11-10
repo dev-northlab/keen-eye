@@ -92,7 +92,7 @@ export default svgLevel({
       anchor(212, 468) +
       clam(518, 490) +
       weeds + bubbles +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 192, 236, '#ffb703'],
         ['jellyfish', 352, 267],

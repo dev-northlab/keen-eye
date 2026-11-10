@@ -1,6 +1,7 @@
 // Motion differences: the beacon on the antenna mast blinks only on picture B; the right astronaut hops only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level150Redesign } from './level-150-redesign.ts'
 import { astronaut, crater, crystal, fuelCanister, moonPebbles, rock, solarPanel, sparkle, star, starField, toolbox } from './shapes.ts'
 
 /** Annex window grid, 36 × 26, with `cols` columns; (x, y) = center. */
@@ -27,6 +28,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'blackHole',
   parTimeSec: 100,
+  redesign: level150Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let streaks = ''
     for (let i = 0; i < 16; i++) {
@@ -72,7 +74,7 @@ export default svgLevel({
       crystal(520, 472) +
       moonPebbles(680, 456) +
       solarPanel(470, 352) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 86, 199],
         ['spaceStar', 746, 220],

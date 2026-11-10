@@ -101,7 +101,7 @@ export default travelLevel({
       person(386, 404, '#e63946', true, '#f2d29b', '#1d1d1d') +
       water(416, '#5f9a96', rand, 12) +
       diff(560, 453, 40, boat(560, 456, '#ffd23f'), boat(560, 456, '#e63946')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bin', 420, 408, '#2a9d8f'],
         ['bottle', 172, 476],

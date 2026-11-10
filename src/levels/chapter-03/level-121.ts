@@ -91,7 +91,7 @@ export default svgLevel({
       feather(330, 300) +
       trailSign(585, 348) +
       falling +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['squirrel', 147, 370],
         ['feather', 338, 331],

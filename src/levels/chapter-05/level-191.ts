@@ -66,7 +66,7 @@ export default svgLevel({
       // The miner's visor
       astronaut(700, 450, '#f1f1f1', '#ffb703') +
       diff(703, 408, 22, `<ellipse cx="703" cy="408" rx="6" ry="5" fill="#ffb703"/>`, `<ellipse cx="703" cy="408" rx="6" ry="5" fill="#3ae0ff"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 560, 150],
         ['sparkle', 250, 60],

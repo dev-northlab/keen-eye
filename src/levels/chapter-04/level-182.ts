@@ -71,7 +71,7 @@ export default svgLevel({
       diff(460, 454, 24, `<path d="M440 452L477 455" stroke="#6b5b4a" stroke-width="3" stroke-linecap="round"/>`, `<path d="M440 452L456 454" stroke="#6b5b4a" stroke-width="3" stroke-linecap="round"/>`) +
       fish(640, 420, '#ffb703') + fish(668, 404, '#ffb703') +
       diff(690, 440, 22, anim({ type: 'bob', dx: 6, dy: 2, period: 1.8 }, fish(690, 440, '#ffb703', 0.8)), fish(690, 440, '#ffb703', 0.8)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 500, 110],
         ['jellyfish', 56, 440],

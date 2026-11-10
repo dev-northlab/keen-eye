@@ -1,5 +1,5 @@
-// Extra objects of hard mode (docs/hard-mode-extra-objects.md): small shapes of the chapters drawn the same in
-// A and B, only in the hard pictures, to make the search harder. A level lists them once:
+// Extra objects of normal mode (docs/extra-objects.md): small shapes of the chapters drawn the same in
+// A and B, only in the pictures of normal mode (never calm, never "memory"), to make the search harder. A level lists them once:
 //   extras({ extra, anim }, [['flower', 312, 434, '#b38cff'], ['stones', 520, 470], …])
 // at the shapes' own anchor points (their x, y arguments); the circle each one needs is worked out here from
 // the shape's box and its motion. Animals and things on the water move on the spot (the same in A and B, so
@@ -78,7 +78,6 @@ import {
 import type { SceneContext } from './helpers.ts'
 import * as detective from './detective/props.ts'
 import { suitcase } from './travel/shapes.ts'
-import { big, books, cube, painting, slipperPair, sticker } from './memory/shapes.ts'
 import { bee, chick, cloud, duck, eggNest, flower, grass, horseshoe, ladybug, snail, stones } from './shapes.ts'
 import { birds, pineSnow, star } from './time/shapes.ts'
 
@@ -179,12 +178,6 @@ const KINDS = {
   seahorse: { draw: (x, y, c) => seahorse(x, y, c), box: [-6, 7, -14, 16], move: { motion: bob(0, 4), period: 3, reach: 4 } },
   seaUrchin: { draw: (x, y, c) => seaUrchin(x, y, c), box: [-12, 11, -17, -1] },
   seaweed: { draw: (x, y, c) => seaweed(x, y, 0.6, c), box: [-5, 8, -26, 1], move: { motion: swing(8), period: 3, reach: 4 } },
-  // "Memory" rooms: the floor (with the city's ball) and the walls.
-  slippers: { draw: (x, y, c) => slipperPair(x, y, c ?? '#ff6b8b'), box: [-18, 17, -6, 5] },
-  cube: { draw: (x, y, c) => cube(x, y, 14, c ?? '#3a86ff'), box: [-7, 6, -14, -1] },
-  books: { draw: (x, y, c) => big(x, y, 0.5, books(0, 0, [c ?? '#e63946', '#3a86ff'])), box: [-16, 15, -18, -1] },
-  sticker: { draw: (x, y, c) => sticker(x, y, c ?? '#ffd23f'), box: [-14, 13, -14, 10] },
-  frame: { draw: (x, y, c) => painting(x - 10, y - 22, 20, 14, c ?? '#c9953f'), box: [-18, 17, -30, -1] },
   // "Travel": a tourist's suitcase on the pavement (with the city's shapes).
   suitcase: { draw: (x, y, c) => suitcase(x, y, c), box: [-10, 10, -32, 0] },
   // "Detective": animals, tools, little houses and odd things of the scenes (`detective/props.ts`):

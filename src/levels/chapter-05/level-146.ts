@@ -1,6 +1,7 @@
 // Motion differences: the sparkle above the nebula twinkles only on picture B; the pulsar on the right spins faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level146Redesign } from './level-146-redesign.ts'
 import { asteroid, comet, helmet, planet, probe, rocket, satellite, sparkle, star, starField } from './shapes.ts'
 
 /** Spiral galaxy; (x, y) = core. Bounds: radius 30. */
@@ -31,6 +32,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'starNebula',
   parTimeSec: 120,
+  redesign: level146Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const constellation: [number, number][] = [[60, 80], [100, 60], [140, 74], [180, 62], [204, 110], [160, 130], [120, 118]]
     let lines = `<path d="M${constellation.map(([x, y]) => `${x} ${y}`).join('L')}Z" stroke="#bde3f2" stroke-opacity="0.45" stroke-width="1.2" fill="none"/>`
@@ -67,7 +69,7 @@ export default svgLevel({
       rocket(150, 345, '#f1f1f1', '#8ac926', 0.35) +
       satellite(700, 330) +
       helmet(320, 460) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['planet', 51, 321, '#ff6b8b'],
         ['asteroid', 287, 99],

@@ -105,23 +105,24 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
-  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); hidden in `upcoming.ts` until released
-  ("coming soon" for players, developer mode opens it);
-  `allLevels` = worlds + time + memory + travel + detective (`levels` stays the worlds),
+  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); open and paid like "time" (first 3 free);
+  `allLevels` = worlds + time + memory + travel + detective + tiny boy (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (world banners, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),
   Detective (cases), Case (one case),
-  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — `PhotoBanner` (the picture banners of game modes, worlds and "tiny boy" levels: a gradient in the `--banner-*` colours with a 3D picture of `public/banners/` at the end side, cut from the redesigned level pictures), dialogs (pause, result, the full-game offer `PurchaseDialog`: mounted once in `App.vue`, opened from any screen by `purchase.dialogOpen`; `ModalDialog` has an `icon` slot and the `points` icon list), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`), the small level id in a corner of level tiles and the board, id ranges on world, mode and case cards (`LevelId`)
+  Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — `PhotoBanner` (the picture banners of game modes, worlds and "tiny boy" levels: a gradient in the `--banner-*` colours with a 3D picture of `public/banners/` at the end side, cut from the redesigned level pictures; their icons are 3D objects of `public/icons/<mode or world id>.webp`, cut with a
+  transparent background from one Gemini sheet), dialogs (pause, result, the full-game offer `PurchaseDialog`: mounted once in `App.vue`, opened from any screen by `purchase.dialogOpen`; `ModalDialog` has an `icon` slot and the `points` icon list), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`), the small level id in a corner of level tiles and the board, id ranges on world, mode and case cards (`LevelId`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
-- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, red stars of hard mode, sequential unlocking, hidden keys found), `settings`
-  (mode calm/normal/hard, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
+- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hidden keys found), `settings`
+  (mode calm/normal, music and sound volume 0–1, vibration, language, reduce motion, home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
 - `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit; `canExitApp` — only Android shows the home screen's "Exit", iOS forbids quitting),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
-  starts on the first user gesture, silent in the background), `haptics.ts` (@capacitor/haptics), `review.ts`
+  starts on the first user gesture, silent in the background), `haptics.ts` (soft ticks for a find and a miss: on Android the app's own `SoftHapticsPlugin` — a tick at a strength the game sets (the
+  haptic engine's tick primitive at 60 %, else a short low-amplitude pulse), one for a find and two for a miss, registered in `MainActivity`; on iOS @capacitor/haptics impacts), `review.ts`
   (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
   three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
   (the only code that talks to the app store: price, purchase, restore, ownership of the product `full_game`, and the
@@ -212,7 +213,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Redesigned pictures (`levels/picture-style.ts`, `docs/redesign-pictures.md`: requirements and prompts per level): a level may carry `redesign` (`LevelPictures`: two WebP pictures in
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
-  and in the level toolbar; developer mode only for now) picks them: `LevelView` reads it as an
+  and in the toolbar of a level that has them) picks them: `LevelView` reads it as an
   attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.webp`, and every world's
@@ -229,25 +230,21 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Settings → "Reset progress" (`ResetProgressDialog`, asks first): `progress.reset()` and the duel history (`duo.clearHistory()`); the purchase and the settings stay.
 - Stored data is untrusted: validate its shape when loading (the parsers of `stores/progress-data.ts`, unit-tested).
 - Calm mode (spec, section 6): no timer/mistakes/lock/stars, 3 free hints per attempt (`MODE_RULES.calm.hints`), slower animation, soft sounds,
-  "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts; another mode chosen in the pause menu's settings starts the level over in it (also ending a "Play on hard" challenge).
-- Hard mode (`docs/difficulty-modes.md`): the same levels under stricter rules — no hints, the 3rd mistake loses the level
-  (`onFail`; so no miss lock), no trap notes; "memory" shows A a second less, no peeks, 2 misses. Every mode's
-  numbers live in `MODE_RULES` (`engine/rules.ts`); scenes take them through their options, screens read them there
-  instead of checking the mode. Red stars (`hardStars`, `memoryHardStars`: 3 = no mistake within par time, 2 = one
-  mistake, 1 = passed) are kept in `progress.hard`, apart from the yellow ones of normal mode, shown under them on tiles;
-  a pass also completes the level like calm mode. A normal finish with fewer than 3 red stars offers "Play on hard":
-  that level in hard mode until the screen is left (`hardChallenge`), the setting unchanged; the level HUD shows the
-  attempt's mode (`ModeChip`). Not in duels.
-- Extra objects of hard mode (`docs/hard-mode-extra-objects.md`, all five worlds, "memory" (3–5), "time" (1–3 flocks of birds in the sky, before `DUSK`/snowfall) and "travel" (5, plus 7 decor objects of
+  "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts; another mode chosen in the pause menu's settings starts the level over in it.
+- Two modes only, calm and normal (`docs/difficulty-modes.md`; hard mode was removed — a stored `hard` setting loads as
+  normal, stored red stars are dropped). Every mode's numbers live in `MODE_RULES` (`engine/rules.ts`); scenes take them
+  through their options, screens read them there instead of checking the mode; the level HUD shows the attempt's mode
+  (`ModeChip`). Not in duels.
+- Extra objects of normal mode (`docs/extra-objects.md`; not in "memory" or calm mode; in all five worlds, "time" (1–3 flocks of birds in the sky, before `DUSK`/snowfall) and "travel" (5, plus 7 decor objects of
   every mode drawn with `decor` from the same module), "detective" (10, plus 5 decor objects of every mode; their own
   animals, tools, little houses and things of `detective/props.ts`, 15 different kinds per scene)): the scene's
-  `extra(x, y, r, markup)` draws decor only in the hard pictures, the same in A and B (`Level.extras`,
+  `extra(x, y, r, markup)` draws decor only in the pictures of normal mode (never calm), the same in A and B (`Level.extras`,
   `build(variant, moment, true)`); levels list them with `extras({ extra, anim }, [[kind, x, y, color?], …])` from
   `levels/extras.ts` (chapter shapes with their boxes; animals and things on water bob or sway on the spot, the circle
   grown by the motion's reach). `check-levels` keeps them 20+ units clear of zones, key and
-  traps and inside their circles; `npm run preview-levels -- --hard <id>` shows them.
+  traps and inside their circles; `npm run preview-levels -- --extras <id>` shows them.
 - Hints: no pool to collect — every attempt of a level gets the mode's hints again (`MODE_RULES.<mode>.hints`: calm 3,
-  normal 1, hard none); `GameScene.hint()` returns false when nothing can be hinted, so a hint is only spent when it is
+  normal 1); `GameScene.hint()` returns false when nothing can be hinted, so a hint is only spent when it is
   shown. Duels have their own hints (`duo`).
 - Monetization (spec, section 10): levels 1–`FREE_LEVELS` (15, `stores/purchase.ts`) are free, the rest need the one
   "full game" purchase. Lock checks go through `progress.isUnlocked` / `progress.needsPurchase` only.

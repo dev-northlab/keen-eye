@@ -59,7 +59,7 @@ export default svgLevel({
       fish(420, 470, '#ffb703') +
       dolphin(160, 330) +
       anim({ type: 'path', points: [[0, 0], [-14, 50]], period: 0.7 }, rain) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 260, 319, '#ffb703'],
         ['lifeRing', 676, 456],

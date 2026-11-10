@@ -50,13 +50,6 @@ const settingsOpen = ref(false)
 const mode = ref<GameMode>('normal')
 const rules = computed(() => MODE_RULES[mode.value])
 const calm = computed(() => mode.value === 'calm')
-/** Hard mode: lost on too many mistakes; `result` then holds the attempt's numbers. */
-const failed = ref(false)
-/**
- * "Play on hard" from the result: this level's attempts (retries included) are in hard mode until the
- * screen is left, whatever the settings say.
- */
-const hardChallenge = ref(false)
 /** The mode setting as this attempt started: changed in the pause menu's settings, the attempt starts over. */
 let modeSetting: GameMode = 'normal'
 const hintActive = ref(false)
@@ -88,9 +81,8 @@ function start() {
   animationFrozen.value = false
   fact.value = null
   result.value = null
-  failed.value = false
   modeSetting = settings.mode
-  mode.value = hardChallenge.value ? 'hard' : settings.mode
+  mode.value = settings.mode
   playMusic(calm.value ? 'calm' : 'level')
   scene = new AnachronismScene(
     board.value!,
@@ -117,26 +109,19 @@ function start() {
         fact.value = null
         result.value = r
         playMusic('complete')
-        if (mode.value === 'hard') progress.recordTimeTravelHard(level.id, r.stars)
-        else progress.recordTimeTravel(level.id, calm.value ? null : r)
-      },
-      onFail: (r) => {
-        fact.value = null
-        failed.value = true
-        result.value = r
+        progress.recordTimeTravel(level.id, calm.value ? null : r)
       },
     },
     {
       // Calm mode and "reduce motion" both slow the background down.
       animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      reduceMotion: settings.effectiveReduceMotion,
       missLock: rules.value.missLock,
-      maxMistakes: rules.value.maxMistakes,
-      stars: rules.value.stars,
     },
   )
 }
 
-/** Hints this attempt can still take (calm mode 3, normal 1, hard none). */
+/** Hints this attempt can still take (calm mode 3, normal 1). */
 const hintsLeft = computed(() => rules.value.hints - hintsUsed.value)
 const canHint = computed(() => !result.value && !hintActive.value && hintsLeft.value > 0)
 
@@ -150,13 +135,6 @@ function showHint() {
 function closeSettings() {
   settingsOpen.value = false
   if (settings.mode === modeSetting) return
-  hardChallenge.value = false
-  start()
-}
-
-/** The same level again, in hard mode. */
-function playHard() {
-  hardChallenge.value = true
   start()
 }
 
@@ -219,7 +197,6 @@ onBeforeUnmount(() => {
         v-if="!calm"
         :time="time"
         :mistakes="mistakes"
-        :max-mistakes="rules.maxMistakes"
         :locked="locked"
         :still="settings.effectiveReduceMotion"
       />
@@ -286,13 +263,10 @@ onBeforeUnmount(() => {
       v-if="result"
       :result="result"
       :mode="mode"
-      :failed="failed"
-      :offer-hard="mode === 'normal' && progress.hardStars(level.id) < 3"
       :time="time"
       :has-next="!!nextLevel"
       @next="router.push({ name: 'time-travel', params: { id: nextLevel!.id } })"
       @retry="start"
-      @hard="playHard"
       @menu="toEras"
     >
       <h3 class="facts-title">{{ $t('timeTravel.facts') }}</h3>

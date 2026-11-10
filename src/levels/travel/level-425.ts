@@ -104,7 +104,7 @@ export default travelLevel({
       [[70, 380], [110, 370], [60, 410], [124, 404]].map(([x, y]) => orange(x, y)).join('') +
       diff(92, 398, 18, orange(92, 398), '') +
       person(170, 494, '#c9a227', true, '#c68b59', '#1d1d1d') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bollard', 320, 448],
         ['skateboard', 628, 472, '#e63946'],

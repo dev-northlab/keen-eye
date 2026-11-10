@@ -1,5 +1,5 @@
 // Small props of the "detective" scenes, drawn the same in A and B: the scenery of every mode (`decor`) and
-// the extra objects of hard mode (`extras`), both listed per level through `levels/extras.ts`, which keeps
+// the extra objects of normal mode (`extras`), both listed per level through `levels/extras.ts`, which keeps
 // their boxes. Floor and ground things stand on their anchor (bottom middle); wall and sky things are
 // centred on it. Every shape is drawn around (0, 0) and moved to its anchor.
 

@@ -1,4 +1,3 @@
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, hen, sun, sunflower } from '../shapes.ts'
 import { around, birdhouse, cabbage, carrotPlant, daySky, ground, hills, scarecrow, strawHat, wateringCan, wheelbarrow } from './shapes.ts'
@@ -8,7 +7,7 @@ export default memoryLevel({
   id: 306,
   title: 'memoryGarden',
   showSeconds: 4,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(340) +
     sun(400, 90) +
     hills(340, '#a5d67a') +
@@ -43,11 +42,5 @@ export default memoryLevel({
     grass(30, 520) +
     stones(380, 728) +
     rabbit(40, 690) +
-    diff(...around(284, 556, 452, 620), wateringCan(330, 620, '#ffb703'), wateringCan(390, 620, '#ffb703')) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['flower', 270, 500, '#ffffff'],
-      ['stones', 50, 730],
-      ['birds', 330, 200],
-    ]),
+    diff(...around(284, 556, 452, 620), wateringCan(330, 620, '#ffb703'), wateringCan(390, 620, '#ffb703')),
 })

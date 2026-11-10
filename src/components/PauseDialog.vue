@@ -100,6 +100,6 @@ defineEmits<{ resume: []; restart: []; levels: []; settings: []; exit: [] }>()
 }
 
 .badge.exit {
-  background: var(--mode-hard);
+  background: var(--danger);
 }
 </style>

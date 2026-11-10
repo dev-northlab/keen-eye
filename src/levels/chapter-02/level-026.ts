@@ -87,7 +87,7 @@ export default svgLevel({
       parkingMeter(700, 398) +
       scooter(770, 398) +
       manhole(600, 478) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 50, 327, '#8338ec'],
         ['balloon', 557, 51, '#e63946'],

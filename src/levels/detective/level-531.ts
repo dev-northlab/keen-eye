@@ -51,7 +51,7 @@ export default detectiveLevel({
     swimmingDuck(anim, 744, 470, 20, 12) +
     flutter(anim, 300, 300, '#ffd23f') +
     flutter(anim, 560, 420, '#b38cff', true, 11) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bucket', 38, 356],
       ['tent', 247, 453],

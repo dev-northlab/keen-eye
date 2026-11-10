@@ -55,7 +55,7 @@ export default svgLevel({
       fuelCanister(175, 335) +
       beacon(590, 336) +
       solarPanel(760, 402) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['wrench', 733, 405],
         ['fuelCanister', 150, 184],

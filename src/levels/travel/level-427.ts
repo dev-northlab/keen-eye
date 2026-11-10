@@ -117,7 +117,7 @@ export default travelLevel({
       diff(486, 400, 22, wave(1), wave(2.4), 'flag') +
       streetcar(680, 496) +
       diff(597, 440, 20, sign(680, 496, '#ffd23f'), sign(680, 496, '#ffffff')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bird', 180, 464, '#8a5a33'],
         ['flower', 420, 484, '#ffd23f'],

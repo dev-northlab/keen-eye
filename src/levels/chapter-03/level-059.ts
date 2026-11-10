@@ -76,7 +76,7 @@ export default svgLevel({
       trailSign(620, 425) +
       feather(740, 480) +
       anthill(70, 480) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 84, 138],
         ['birds', 584, 211],

@@ -47,7 +47,7 @@ export default svgLevel({
     hen(560, 455) +
     hayBale(735, 455) +
     stump(770, 340) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 390, 198],
       ['birds', 624, 190],

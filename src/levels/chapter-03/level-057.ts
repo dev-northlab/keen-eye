@@ -79,7 +79,7 @@ export default svgLevel({
       backpack(615, 402) +
       trailSign(340, 350) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 362, 386],
         ['pine', 151, 444],

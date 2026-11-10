@@ -98,7 +98,7 @@ export default svgLevel({
       [[456, '#3a86ff'], [542, '#8ac926']].map(([x, c]) => `<rect x="${x}" y="462" width="80" height="24" rx="4" fill="${c}"/><rect x="${Number(x) - 2}" y="446" width="84" height="6" fill="#f4f1e8"/><path d="M${Number(x) + 4} 452v10M${Number(x) + 76} 452v10" stroke="#f4f1e8" stroke-width="3"/><circle cx="${Number(x) + 18}" cy="488" r="7" fill="#2b2b2b"/><circle cx="${Number(x) + 62}" cy="488" r="7" fill="#2b2b2b"/>`).join('') +
       `<path d="M496 446V430" stroke="#3d4a55" stroke-width="2"/>` +
       diff(504, 434, 22, `<path d="M496 430h16l-5 5l5 5h-16Z" fill="#ffd23f"/>`, `<path d="M496 430h16l-5 5l5 5h-16Z" fill="#8338ec"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pigeon', 200, 470],
         ['bin', 640, 494],

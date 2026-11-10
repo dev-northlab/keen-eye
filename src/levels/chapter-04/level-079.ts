@@ -77,7 +77,7 @@ export default svgLevel({
       clam(320, 462) +
       coconut(250, 456) +
       starfish(645, 452) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['shell', 181, 477],
         ['starfish', 91, 345],

@@ -55,7 +55,7 @@ export default svgLevel({
     wheelbarrow(110, 400) +
     pumpkin(470, 488) +
     cat(770, 492) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // The extra objects of normal mode (docs/extra-objects.md).
     extras({ extra, anim }, [
       ['bee', 196, 412],
       ['stones', 720, 329],

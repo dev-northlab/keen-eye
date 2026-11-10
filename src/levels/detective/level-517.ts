@@ -66,7 +66,7 @@ export default detectiveLevel({
     `<rect x="600" y="340" width="40" height="40" rx="4" fill="#5b8db8"/><rect x="650" y="350" width="34" height="30" rx="4" fill="#e8457a"/>` +
     clue('playingCard', 250, 440, 22, '', playingCard(250, 440)) +
     clue('glitter', 470, 440, 26, '', `<g fill="#dfe3ea" stroke="#8a8f99" stroke-width="0.8">${star(456, 432)}${star(474, 426, 4)}${star(486, 444)}${star(462, 452, 4)}${star(478, 456, 3.5)}</g>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bucket', 38, 476],
       ['calendar', 53, 72],

@@ -110,10 +110,6 @@
     "animPause": "Beweging stoppen",
     "animPlay": "Beweging",
     "calmDone": "Rustige modus — zonder sterren",
-    "failed": "Te veel fouten",
-    "failedHint": "Op moeilijk eindigt het level bij fout nummer {n}",
-    "hardDone": "Gehaald op moeilijk!",
-    "playHard": "Speel op moeilijk",
     "transformB": {
       "mirror-x": "Gespiegeld",
       "rotate-180": "Ondersteboven"
@@ -597,10 +593,7 @@
     "normal": "Normaal",
     "calm": "Rustig",
     "calmHint": "Geen tijd, fouten of sterren",
-    "normalHint": "Timer, 1 hint, sterren voor snelheid en nauwkeurigheid",
-    "hard": "Moeilijk",
-    "hardHint": "Geen hints, 3 fouten beëindigen het level, rode sterren",
-    "hardStars": "Moeilijk: {n}/3"
+    "normalHint": "Timer, 1 hint, sterren voor snelheid en nauwkeurigheid"
   },
   "purchase": {
     "title": "Volledige game",

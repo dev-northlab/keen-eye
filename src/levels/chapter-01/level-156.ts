@@ -110,7 +110,7 @@ export default svgLevel({
       diff(296, 434, 22, `<circle cx="296" cy="434" r="15" fill="#2b2b2b"/><circle cx="296" cy="434" r="6" fill="#8d99ae"/>`, '') +
       diff(452, 414, 22, `<rect x="446" y="404" width="12" height="18" rx="2" fill="#3f8f3a"/><path d="M448 404v-4h6" stroke="#3f8f3a" stroke-width="2" fill="none"/>`, `<rect x="446" y="404" width="12" height="18" rx="2" fill="#e63946"/><path d="M448 404v-4h6" stroke="#e63946" stroke-width="2" fill="none"/>`) +
       person(560, 476, '#c2a878', true, '#c68b5e', '#2b2b2b') + diff(560, 410, 22, bushHat(560, 476), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 160, 480],
         ['stones', 640, 484],

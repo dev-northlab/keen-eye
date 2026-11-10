@@ -71,7 +71,7 @@ export default travelLevel({
       camel(730, 490) +
       saddle(730, 490, '#2a9d8f') +
       diff(772, 439, 22, swish(1), swish(2.4), 'tail') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['stones', 380, 448],
         ['rock', 108, 480, '#b9853f'],

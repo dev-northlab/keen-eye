@@ -33,7 +33,6 @@ const cards = CHAPTERS.map((chapter) => {
 
 const done = (c: (typeof cards)[number]) => c.levels.filter((l) => progress.isCompleted(l.id)).length
 const stars = (c: (typeof cards)[number]) => c.levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0)
-const hard = (c: (typeof cards)[number]) => c.levels.reduce((s, l) => s + progress.hardStars(l.id), 0)
 
 function open(chapter: Chapter) {
   router.push({ name: 'chapter', params: { chapter: chapter.id } })
@@ -58,13 +57,12 @@ useBackButton(toModes)
             :disabled="!c.first"
             @click="open(c.chapter)"
           >
-            <template #icon><svg viewBox="0 0 48 48" aria-hidden="true" v-html="c.chapter.icon" /></template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
             <template v-if="!c.first">{{ $t('map.soon') }}</template>
             <template v-else-if="progress.needsPurchase(c.first)">{{ $t('map.paid') }}</template>
             <template v-else-if="!progress.isUnlocked(c.first)">{{ $t('map.locked') }}</template>
             <template v-else>
               {{ $t('map.progress', { done: done(c), total: c.total }) }} · ★ {{ stars(c) }}
-              <template v-if="hard(c) > 0"> · <span class="star-hard">★</span> {{ hard(c) }}</template>
             </template>
             <template #end>
               <LevelId :id="c.levels.map((l) => l.id)" />

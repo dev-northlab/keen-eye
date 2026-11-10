@@ -57,7 +57,7 @@ export default detectiveLevel({
     clue('bowlFull', 432, 330, 26, '', kibble(432, 346)) +
     clue('candleByDoghouse', 360, 396, 26, '', candle(360, 396)) +
     anim({ type: 'bob', dx: 0, dy: -8, period: 1.6 }, `<circle cx="120" cy="430" r="18" fill="#e5484d"/><path d="M104 424q16 10 32 0" stroke="#fff" stroke-width="4" fill="none"/>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['gnome', 46, 488],
       ['haybale', 268, 475],

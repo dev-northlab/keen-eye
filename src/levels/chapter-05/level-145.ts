@@ -1,6 +1,7 @@
 // Motion differences: the beacon on the rocket tip blinks only on picture B; the dust devil spins faster on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level145Redesign } from './level-145-redesign.ts'
 import { astronaut, crystal, dome, flag, fuelCanister, helmet, moonPebbles, rocket, rover, starField, toolbox } from './shapes.ts'
 
 /** Robot with `eye` color; (x, y) = feet. Bounds: x ±16, y from −54 to 0. */
@@ -34,6 +35,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'marsColony',
   parTimeSec: 120,
+  redesign: level145Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let pebbles = ''
     for (let i = 0; i < 40; i++) pebbles += `<circle cx="${(rand() * 800).toFixed(1)}" cy="${(300 + rand() * 196).toFixed(1)}" r="${(1.5 + rand() * 2).toFixed(1)}" fill="#b8603a"/>`
@@ -72,7 +74,7 @@ export default svgLevel({
       crystal(630, 442) +
       moonPebbles(772, 474) +
       helmet(380, 476) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['moonPebbles', 724, 413],
         ['crater', 540, 406],

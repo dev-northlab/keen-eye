@@ -99,7 +99,7 @@ export default svgLevel({
       diff(626, 380, 22, `<rect x="620" y="372" width="12" height="16" rx="2" fill="#ffd166" stroke="#3d4a55" stroke-width="2"/><path d="M622 372l4 -4l4 4" stroke="#3d4a55" stroke-width="2" fill="none"/>`, '') +
       `<path d="M626 420L668 430" stroke="#5e3b1a" stroke-width="3"/>` +
       horse(704, 476) + diff(704, 424, 31, blanket(704, 476, '#3a86ff'), blanket(704, 476, '#8338ec')) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pine', 440, 486],
         ['pineCone', 650, 490],

@@ -460,10 +460,6 @@
     "retry": "Yritä uudelleen",
     "revealAll": "Näytä paikat",
     "time": "Aika: {t}",
-    "failed": "Liikaa virheitä",
-    "failedHint": "Vaikealla taso päättyy virheeseen numero {n}",
-    "hardDone": "Läpäisty vaikealla!",
-    "playHard": "Pelaa vaikealla",
     "transformB": {
       "mirror-x": "Peili",
       "rotate-180": "Ylösalaisin"
@@ -871,10 +867,7 @@
     "calmHint": "Ei ajastinta, virheitä eikä tähtiä",
     "normalHint": "Ajastin, 1 vihje, tähtiä nopeudesta ja tarkkuudesta",
     "label": "Tila",
-    "normal": "Tavallinen",
-    "hard": "Vaikea",
-    "hardHint": "Ei vihjeitä, 3 virhettä päättää tason, punaiset tähdet",
-    "hardStars": "Vaikea: {n}/3"
+    "normal": "Tavallinen"
   },
   "pause": {
     "exit": "Valikkoon",

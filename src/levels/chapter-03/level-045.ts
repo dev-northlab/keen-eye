@@ -75,7 +75,7 @@ export default svgLevel({
       feather(480, 330) +
       trailSign(240, 330) +
       anim({ type: 'path', points: [[0, 0], [-20, 60]], period: 5 }, leaves) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 564, 401],
         ['hedgehog', 132, 366],

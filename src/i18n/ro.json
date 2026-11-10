@@ -110,10 +110,6 @@
     "animPause": "Oprește mișcarea",
     "animPlay": "Mișcare",
     "calmDone": "Mod liniștit — fără stele",
-    "failed": "Prea multe greșeli",
-    "failedHint": "Pe greu, nivelul se termină la greșeala nr. {n}",
-    "hardDone": "Trecut pe greu!",
-    "playHard": "Joacă pe greu",
     "transformB": {
       "mirror-x": "Oglindă",
       "rotate-180": "Răsturnată"
@@ -597,10 +593,7 @@
     "normal": "Normal",
     "calm": "Liniștit",
     "calmHint": "Fără cronometru, greșeli sau stele",
-    "normalHint": "Cronometru, 1 indiciu, stele pentru viteză și precizie",
-    "hard": "Greu",
-    "hardHint": "Fără indicii, 3 greșeli încheie nivelul, stele roșii",
-    "hardStars": "Greu: {n}/3"
+    "normalHint": "Cronometru, 1 indiciu, stele pentru viteză și precizie"
   },
   "purchase": {
     "title": "Jocul complet",

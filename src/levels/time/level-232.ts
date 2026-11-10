@@ -94,7 +94,7 @@ export default svgLevel({
       trap(740, 448, 50, '', snowman(740, 490), 'snowman') +
       trap(560, 389, 27, flowers(560, 400, '#ff6b8b'), '', 'flowers') +
       trap(400, 444, 37, person(400, 480, '#2a9d8f'), winterPerson(400, 480, '#ffb703', false, '#3a86ff'), 'clothes') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 440, 120],
         ['birds', 120, 90],

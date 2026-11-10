@@ -80,7 +80,7 @@ export default detectiveLevel({
     anim({ type: 'sway', angle: 7, pivot: [30, 470], period: 2.8 }, flower(30, 470, '#ff6b8b')) +
     anim({ type: 'sway', angle: 7, pivot: [500, 476], period: 3.2 }, flower(500, 476, '#b38cff')) +
     anim({ type: 'sway', angle: 7, pivot: [540, 488], period: 3 }, flower(540, 488, '#ffffff')) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['molehill', 73, 484],
       ['gnome', 271, 373],

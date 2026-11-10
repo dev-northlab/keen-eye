@@ -87,7 +87,7 @@ export default svgLevel({
       diff(560, 410, 22, `<path d="M551 414a9 8 0 0 1 18 0Z" fill="#2a9d8f"/><rect x="544" y="412" width="10" height="3" rx="1.5" fill="#2a9d8f"/>`, `<path d="M551 414a9 8 0 0 1 18 0Z" fill="#ffd23f"/><rect x="544" y="412" width="10" height="3" rx="1.5" fill="#ffd23f"/>`) +
       person(620, 474, '#3a86ff', false, '#f2d29b', '#c0392b') + bird(706, 176, '#e63946') +
       fern(40, 496) + fern(760, 494) + fern(220, 492) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['squirrel', 400, 214],
         ['pineCone', 370, 480],

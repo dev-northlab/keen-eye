@@ -49,7 +49,7 @@ export default svgLevel({
       `<rect x="540" y="462" width="260" height="6" fill="#8d99ae"/><path d="M580 458V430Q580 420 592 420H760Q782 424 784 448V458Z" fill="#f1f1f1"/><path d="M580 446H782" stroke="#3a86ff" stroke-width="4"/>` +
       `<rect x="600" y="428" width="22" height="12" rx="2" fill="#8ecae6"/><rect x="632" y="428" width="22" height="12" rx="2" fill="#8ecae6"/><rect x="664" y="428" width="22" height="12" rx="2" fill="#8ecae6"/><rect x="696" y="428" width="22" height="12" rx="2" fill="#8ecae6"/>` +
       diff(764, 436, 22, `<path d="M752 428H766Q776 432 778 440H752Z" fill="#8ecae6"/>`, `<path d="M752 428H766Q776 432 778 440H752Z" fill="#2b2d42"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 560, 40],
         ['sparkle', 260, 200],

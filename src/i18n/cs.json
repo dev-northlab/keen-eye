@@ -110,10 +110,6 @@
     "animPause": "Zastavit pohyb",
     "animPlay": "Pohyb",
     "calmDone": "Klidný režim — bez hvězd",
-    "failed": "Příliš mnoho chyb",
-    "failedHint": "V těžkém režimu končí úroveň u chyby č. {n}",
-    "hardDone": "Splněno na těžký!",
-    "playHard": "Hrát na těžký",
     "transformB": {
       "mirror-x": "Zrcadlo",
       "rotate-180": "Vzhůru nohama"
@@ -597,10 +593,7 @@
     "normal": "Běžný",
     "calm": "Klidný",
     "calmHint": "Bez času, chyb a hvězd",
-    "normalHint": "Časomíra, 1 nápověda, hvězdy za rychlost a přesnost",
-    "hard": "Těžký",
-    "hardHint": "Bez nápověd, 3 chyby ukončí úroveň, červené hvězdy",
-    "hardStars": "Těžký režim: {n}/3"
+    "normalHint": "Časomíra, 1 nápověda, hvězdy za rychlost a přesnost"
   },
   "purchase": {
     "title": "Plná verze",

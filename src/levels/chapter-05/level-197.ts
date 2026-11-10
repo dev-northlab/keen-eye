@@ -55,7 +55,7 @@ export default svgLevel({
       // The tourist's selfie phone
       astronaut(90, 380, '#f1f1f1', '#ffb703') + `<path d="M104 352L138 330" stroke="#8d99ae" stroke-width="2"/>` +
       diff(140, 324, 22, `<rect x="134" y="316" width="12" height="16" rx="2" fill="#ff006e"/>`, `<rect x="134" y="316" width="12" height="16" rx="2" fill="#3a86ff"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 600, 60],
         ['sparkle', 240, 120],

@@ -37,8 +37,8 @@ export type TrapAt = (x: number, y: number, r: number, a: string, b: string, hin
 export type SecretAt = (x: number, y: number, angle?: number) => string
 
 /**
- * An extra object of hard mode (docs/hard-mode-extra-objects.md): `markup` is drawn only in the hard
- * pictures, the same in A and B, and must fit inside the circle (x, y, r), which keeps clear of the zones.
+ * An extra object of normal mode (docs/extra-objects.md): `markup` is drawn only in the pictures
+ * with extras (`build(…, true)`; never in calm mode), the same in A and B, and must fit inside the circle (x, y, r), which keeps clear of the zones.
  */
 export type ExtraAt = (x: number, y: number, r: number, markup: string) => string
 

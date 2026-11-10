@@ -67,7 +67,7 @@ export default detectiveLevel({
     `<rect x="400" y="248" width="40" height="14" rx="3" fill="#8a6a3a"/><rect x="417" y="200" width="6" height="50" fill="#8a6a3a"/>` +
     clue('scalesTipped', 420, 218, 52, scales(false), scales(true)) +
     clue('coinsGone', 520, 254, 24, coins(520, 260, 4), '') +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['calendar', 118, 282],
       ['hatBox', 392, 446, '#f2c14e'],

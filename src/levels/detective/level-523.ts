@@ -83,7 +83,7 @@ export default detectiveLevel({
     ) +
     stool(600, true) +
     clue('stoolTipped', 704, 370, 54, stool(700, true), stool(700, false)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['newspapers', 43, 423],
       ['dartboard', 300, 85],

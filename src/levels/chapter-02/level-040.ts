@@ -78,7 +78,7 @@ export default svgLevel({
       coffeeCup(520, 438) +
       sandwichBoard(670, 438) +
       bollard(150, 438) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 226, 327],
         ['sparkle', 474, 122],

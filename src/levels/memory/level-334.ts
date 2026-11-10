@@ -1,6 +1,5 @@
 // Attic: old things under a sloping roof among the ten hardest of "memory" (hidden until released, levels/upcoming.ts).
 // A hanging bulb, a round window, an old trunk, an armchair with a teddy, an umbrella, a rocking horse, boxes and a suitcase.
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big, books, cube, glassJar, painting, sled, suitcase, teddy } from './shapes.ts'
 
@@ -20,7 +19,7 @@ export default memoryLevel({
   id: 334,
   title: 'memoryAttic',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     `<rect width="500" height="750" fill="#a07c55"/><path d="M0 60L250 0M0 140L250 20M500 60L250 0M500 140L250 20" stroke="#8a6a44" stroke-width="6"/>` +
     `<path d="M0 250L250 40L500 250V560H0Z" fill="#e9d8c4"/><rect y="560" width="500" height="190" fill="#8a6a44"/><path d="M0 600H500M0 650H500M0 700H500" stroke="#7a5a3a" stroke-width="2"/>` +
     `<path d="M0 250L250 40L500 250" stroke="#6b4f3a" stroke-width="10" fill="none"/>` +
@@ -49,12 +48,5 @@ export default memoryLevel({
     big(180, 724, 1, books(0, 0, ['#3a86ff', '#e07a5f'])) +
     cube(40, 724, 24, '#ffd23f') +
     glassJar(480, 700, '#e63946', '#ff9f43') +
-    `<ellipse cx="250" cy="560" rx="70" ry="6" fill="#000000" fill-opacity="0.08"/>` +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 380, 740, '#3a86ff'],
-      ['sticker', 60, 250, '#ffd23f'],
-      ['frame', 190, 400, '#e63946'],
-      ['slippers', 60, 700, '#ff6b8b'],
-    ]),
+    `<ellipse cx="250" cy="560" rx="70" ry="6" fill="#000000" fill-opacity="0.08"/>`,
 })

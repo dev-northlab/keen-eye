@@ -110,7 +110,7 @@ export default svgLevel({
       diff(50, 424, 22, anim({ type: 'sway', angle: 18, pivot: [52, 430], period: 1.6 }, catTail(60, 432)), catTail(60, 432)) +
       person(450, 470, '#1d5fbf', true, '#e0b48a', '#5a3d2b') +
       hen(330, 452, false, '#ffffff') + chick(368, 470) + chick(386, 476, true) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 290, 486],
         ['horseshoe', 210, 470],

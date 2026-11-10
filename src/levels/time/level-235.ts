@@ -79,7 +79,7 @@ export default svgLevel({
       bin(780, 490) +
       small(84, 492, person(84, 492, '#ff9f43')) +
       `<rect x="372" y="306" width="30" height="14" rx="4" fill="#3a86ff"/><rect x="410" y="304" width="6" height="16" rx="2" fill="#8ecae6"/><rect x="420" y="304" width="6" height="16" rx="2" fill="#8ecae6"/>` +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 680, 150],
       ]) +

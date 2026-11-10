@@ -78,7 +78,7 @@ export default svgLevel({
       wateringCan(745, 478) +
       bird(571, 317) +
       butterfly(300, 330) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 143, 446],
         ['snail', 593, 419],

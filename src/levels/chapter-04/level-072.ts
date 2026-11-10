@@ -55,7 +55,7 @@ export default svgLevel({
       lifeRing(420, 460) +
       gullStanding(705, 243) +
       fish(140, 470, '#4dabf7') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 477, 467, '#ff9f43'],
         ['bottle', 728, 467],

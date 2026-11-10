@@ -1,4 +1,3 @@
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, hayBale, hen } from '../shapes.ts'
 import { barrel, bird, birds, bucket, crate, pot, sack } from '../time/shapes.ts'
@@ -37,7 +36,7 @@ export default memoryLevel({
   id: 323,
   title: 'memoryCastle',
   showSeconds: 4,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(340) +
     big(250, 55, 0.9, cloud(0, 0)) +
     big(330, 128, 0.5, cloud(0, 0)) +
@@ -83,13 +82,5 @@ export default memoryLevel({
     hayBale(450, 470) +
     big(390, 720, 1.6, barrel(0, 0)) +
     big(435, 720, 1.6, barrel(0, 0)) +
-    diff(...around(367, 612, 458, 720), big(412, 666, 1.6, barrel(0, 0)), '') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['chick', 40, 685],
-      ['eggNest', 460, 560],
-      ['horseshoe', 330, 380],
-      ['cloud', 335, 60],
-      ['birds', 165, 95],
-    ]),
+    diff(...around(367, 612, 458, 720), big(412, 666, 1.6, barrel(0, 0)), ''),
 })

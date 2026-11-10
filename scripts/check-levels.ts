@@ -2,8 +2,9 @@
 import { existsSync } from 'node:fs'
 import { zoneCenter } from '../src/engine/animation.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
+import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
 import { detectiveLevels } from '../src/levels/detective/index.ts'
+import { tinyBoyLevels } from '../src/levels/tiny-boy/index.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels, treasuryLevel } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
@@ -26,7 +27,7 @@ const MIN_VISIBLE_PX = 40
 /** The hidden key shows at least this many pixels, and at most this share of itself: part of it is covered. */
 const SECRET_MIN_VISIBLE_PX = 25
 const SECRET_MAX_SHOWN = 0.75
-/** Extra objects of hard mode keep at least this far from the zones, the key and the traps. */
+/** Extra objects of normal mode keep at least this far from the zones, the key and the traps. */
 const EXTRA_GAP = 20
 
 type Zone = { x: number; y: number; r: number }
@@ -152,11 +153,11 @@ function checkSecret(level: Level, scene: SceneSvg, errors: string[]) {
 }
 
 /**
- * Extra objects of hard mode (docs/hard-mode-extra-objects.md): each stays inside the picture, clear of the key,
- * the traps and the other extras, shows, and draws nothing outside its circle (the hard picture against the
- * normal one at the sampled times). Their gap to the zones over time is checked with the zones.
+ * Extra objects of normal mode (docs/extra-objects.md): each stays inside the picture, clear of the key,
+ * the traps and the other extras, shows, and draws nothing outside its circle (the picture with extras against the
+ * one without at the sampled times). Their gap to the zones over time is checked with the zones.
  */
-function checkExtras(level: Level, a: SceneSvg, aHard: SceneSvg, report: Report, errors: string[]) {
+function checkExtras(level: Level, a: SceneSvg, aExtras: SceneSvg, report: Report, errors: string[]) {
   const extras = level.extras!
   const { w, h } = level.viewBox
   const clear = (e: Zone, o: Zone) => Math.hypot(e.x - o.x, e.y - o.y) >= e.r + o.r + EXTRA_GAP
@@ -168,11 +169,11 @@ function checkExtras(level: Level, a: SceneSvg, aHard: SceneSvg, report: Report,
       if (Math.hypot(e.x - extras[j].x, e.y - extras[j].y) < e.r + extras[j].r) errors.push(`extras #${i} and #${j} overlap`)
   })
   // The extras may move on a level that is otherwise still.
-  const times = aHard.animations.length > 0 ? PIXEL_TIMES_S : [0]
+  const times = aExtras.animations.length > 0 ? PIXEL_TIMES_S : [0]
   const shown = extras.map(() => 0)
   for (const t of times) {
     const pa = rasterize(posedSvg(a, t), w, h).pixels
-    const px = rasterize(posedSvg(aHard, t), w, h).pixels
+    const px = rasterize(posedSvg(aExtras, t), w, h).pixels
     let outside = 0
     for (let y = 0; y < h; y++) {
       for (let x = 0; x < w; x++) {
@@ -307,9 +308,9 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
   if (level.extras) {
     // A "time" level's extras are checked at both moments.
     for (const moment of timed ? ([0, 1] as const) : ([0] as const)) {
-      const aHard = level.build(0, moment, true)
-      if (JSON.stringify(aHard) !== JSON.stringify(level.build(0, moment, true))) errors.push(`build(0, ${moment}, true) is not deterministic`)
-      checkExtras(level, level.build(0, moment), aHard, report, errors)
+      const aExtras = level.build(0, moment, true)
+      if (JSON.stringify(aExtras) !== JSON.stringify(level.build(0, moment, true))) errors.push(`build(0, ${moment}, true) is not deterministic`)
+      checkExtras(level, level.build(0, moment), aExtras, report, errors)
     }
     // The extras are the same in both pictures: A (at B's moment) and B still differ only in the zones.
     comparePixels(level, level.build(0, timed ? 1 : 0, true), level.build(1, 1, true), pictures, report)
@@ -337,6 +338,7 @@ const expected = new Map([
   ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
   ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
   ...detectiveLevels.map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
+  ...tinyBoyLevels.map((l, i) => [l, TINY_BOY_CHAPTER.ranges[0][0] + i] as const),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
   // Hidden levels (upcoming.ts) take their place in the order only when released.
   ...upcomingLevels.map((l) => [l, l.id] as const),

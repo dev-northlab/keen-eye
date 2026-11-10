@@ -63,7 +63,7 @@ export default svgLevel({
       diff(300, 372, 28, anim({ type: 'bob', dx: 3, dy: 4, period: 2 }, car), car) +
       `<circle cx="60" cy="346" r="11" fill="#ffafcc"/><path d="M60 357V364" stroke="#5c677d" stroke-width="1.5"/>` +
       diff(60, 368, 22, `<rect x="55" y="364" width="10" height="10" rx="2" fill="#ffd166"/>`, `<rect x="55" y="364" width="10" height="10" rx="2" fill="#3ae0ff"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ufo', 300, 110],
         ['sparkle', 220, 60],

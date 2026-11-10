@@ -84,7 +84,7 @@ export default svgLevel({
       fuelCanister(505, 378) +
       moonPebbles(640, 466) +
       probe(450, 210) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 688, 478],
         ['crystal', 436, 467, '#9ef01a'],

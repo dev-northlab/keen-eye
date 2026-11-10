@@ -1,6 +1,5 @@
 // Candy shop: shelves of sweets among the ten hardest of "memory" (hidden until released, levels/upcoming.ts). Bunting,
 // jars of candy, cupcakes, a cup of lollipops, a gumball machine and a cash register on the counter, a candy cane.
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big, cube, gift, glassJar, room, rug, sticker, wallClock } from './shapes.ts'
 
@@ -24,7 +23,7 @@ export default memoryLevel({
   id: 337,
   title: 'memoryCandyShop',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(560, '#ffe3ec', '#b5838d') +
     // Bunting: one flag's color
     `<path d="M0 22Q250 46 500 22" stroke="#8a5a33" stroke-width="2" fill="none"/>` +
@@ -59,12 +58,5 @@ export default memoryLevel({
     rug(260, 680, 140, '#ffffff') +
     gift(80, 720, 44, '#3a86ff', '#ffd23f') + gift(400, 720, 40, '#ffd23f', '#e63946') +
     `<circle cx="300" cy="640" r="6" fill="#8338ec"/><circle cx="330" cy="700" r="6" fill="#ffd23f"/><circle cx="240" cy="716" r="6" fill="#3a86ff"/>` +
-    cube(300, 744, 22, '#e63946') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 450, 620, '#3a86ff'],
-      ['sticker', 460, 170, '#8ac926'],
-      ['slippers', 350, 610, '#ff6b8b'],
-      ['frame', 470, 400, '#ff6b8b'],
-    ]),
+    cube(300, 744, 22, '#e63946'),
 })

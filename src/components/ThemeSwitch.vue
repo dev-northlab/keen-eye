@@ -2,21 +2,30 @@
 import { computed } from 'vue'
 import { useSettingsStore } from '../stores/settings.ts'
 
-// Day/night switch for the light and dark theme: a sky pill with clouds and the sun on the right
+// Day/night switch for the light and dark theme: a sky pill with a cloud and the sun on the right
 // (light), or stars and the moon on the left (dark). The knob slides, the skies cross-fade.
 
 const settings = useSettingsStore()
 const dark = computed(() => settings.theme === 'dark')
 const toggle = () => (settings.theme = dark.value ? 'light' : 'dark')
 
-const STARS = [
-  [40, 10, 1.1],
-  [52, 7, 0.8],
-  [62, 13, 1.2],
-  [48, 22, 0.8],
-  [66, 27, 1],
-  [57, 31, 0.7],
+/** Night sky right of the moon (x 38–72): two twinkling four-point stars and small dots around them. */
+const SPARKLES = [
+  [48, 13, 4],
+  [62, 25, 3.2],
 ]
+const DOTS = [
+  [59, 9, 1],
+  [68, 15, 0.8],
+  [43, 24, 0.9],
+  [52, 31, 0.7],
+  [54, 20, 0.6],
+]
+/** A four-point star of radius r at (x, y). */
+const sparkle = (x: number, y: number, r: number) => {
+  const w = r * 0.28
+  return `M${x} ${y - r}L${x + w} ${y - w}L${x + r} ${y}L${x + w} ${y + w}L${x} ${y + r}L${x - w} ${y + w}L${x - r} ${y}L${x - w} ${y - w}Z`
+}
 </script>
 
 <template>
@@ -31,17 +40,16 @@ const STARS = [
   >
     <span class="sky night" aria-hidden="true" />
     <svg class="stars" viewBox="0 0 76 38" aria-hidden="true">
-      <circle v-for="(s, i) in STARS" :key="i" :cx="s[0]" :cy="s[1]" :r="s[2]" fill="#fff" />
+      <path v-for="(s, i) in SPARKLES" :key="`s${i}`" :d="sparkle(s[0], s[1], s[2])" fill="#fff6c8" />
+      <circle v-for="(s, i) in DOTS" :key="`d${i}`" :cx="s[0]" :cy="s[1]" :r="s[2]" fill="#fff" />
     </svg>
     <svg class="clouds" viewBox="0 0 76 38" aria-hidden="true">
+      <!-- One cloud in the middle of the sky left of the sun (x 4–38). -->
       <g fill="#fff">
-        <circle cx="13" cy="15" r="5" />
-        <circle cx="19" cy="12" r="6.5" />
-        <circle cx="26" cy="15" r="4.5" />
-        <rect x="8" y="14" width="22" height="6" rx="3" />
-        <circle cx="25" cy="27" r="3.2" />
-        <circle cx="29" cy="25" r="4" />
-        <rect x="21" y="26.5" width="13" height="4" rx="2" />
+        <circle cx="15" cy="21" r="5" />
+        <circle cx="21" cy="17.5" r="6.5" />
+        <circle cx="28" cy="21" r="4.5" />
+        <rect x="10" y="20" width="23" height="6" rx="3" />
       </g>
     </svg>
     <span class="knob" aria-hidden="true">

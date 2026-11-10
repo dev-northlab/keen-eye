@@ -45,7 +45,7 @@ export default svgLevel({
       rocket(760, 310, '#f1f1f1', '#ff6b8b', 0.35) +
       wrench(620, 380) +
       fuelCanister(150, 340) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 189, 185],
         ['spaceStar', 674, 287],

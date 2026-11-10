@@ -460,10 +460,6 @@
     "retry": "Chơi lại",
     "revealAll": "Hiện các vị trí",
     "time": "Thời gian: {t}",
-    "failed": "Quá nhiều lỗi",
-    "failedHint": "Ở chế độ khó, màn chơi kết thúc ở lỗi thứ {n}",
-    "hardDone": "Đã qua ở chế độ khó!",
-    "playHard": "Chơi ở chế độ khó",
     "transformB": {
       "mirror-x": "Gương",
       "rotate-180": "Lộn ngược"
@@ -871,10 +867,7 @@
     "calmHint": "Không đồng hồ, không lỗi, không sao",
     "normalHint": "Bấm giờ, 1 gợi ý, sao cho tốc độ và độ chính xác",
     "label": "Chế độ",
-    "normal": "Thường",
-    "hard": "Khó",
-    "hardHint": "Không gợi ý, 3 lỗi là hết màn, sao đỏ",
-    "hardStars": "Chế độ khó: {n}/3"
+    "normal": "Thường"
   },
   "pause": {
     "exit": "Về menu",

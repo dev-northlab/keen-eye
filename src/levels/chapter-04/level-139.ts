@@ -87,7 +87,7 @@ export default svgLevel({
       seahorse(700, 400) +
       anchor(112, 462) +
       fish(260, 320, '#ff6b8b') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 598, 222, '#4dabf7'],
         ['jellyfish', 404, 88],

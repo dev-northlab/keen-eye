@@ -74,7 +74,7 @@ export default svgLevel({
       diff(250, 373, 22, `<path d="M234 380L250 364L266 380Z" fill="#e9c46a"/>`, `<path d="M234 380L250 364L266 380Z" fill="#e63946"/>`) +
       diff(197, 431, 22, `<path d="M182 440Q196 420 212 440Z" fill="#c9b48e"/><path d="M188 438l8 -12l8 12M184 434h26" stroke="#8a6a44" stroke-width="1"/>`, '') +
       diff(560, 439, 28, turtle(560, 450), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 420, 90],
         ['fish', 360, 460],

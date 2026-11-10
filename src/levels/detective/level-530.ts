@@ -49,7 +49,7 @@ export default detectiveLevel({
     clue('tripodMarks', 500, 471, 20, '', tripodHole(490, 476) + tripodHole(510, 476) + tripodHole(500, 462)) +
     clue('bootPrintsUp', 620, 447, 32, '', bootPrint(612, 466) + bootPrint(628, 446) + bootPrint(614, 428)) +
     clue('skiPoleLeft', 722, 376, 42, '', `<path d="M716 346L724 414" stroke="#2b2b38" stroke-width="4"/><rect x="711" y="336" width="9" height="14" rx="3" fill="#e5484d"/><ellipse cx="723" cy="404" rx="9" ry="3" fill="none" stroke="#2b2b38" stroke-width="2"/>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['mittens', 40, 482],
       ['snowShovel', 313, 483],

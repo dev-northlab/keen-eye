@@ -72,7 +72,7 @@ export default svgLevel({
       bench(650, 480) +
       time('', snowCap(620, 450, 60)) +
       time(lilyPad(540, 320) + lilyPad(600, 350, '#ff6b8b') + butterfly(330, 410) + grass(125, 495), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 534, 91],
         ['birds', 106, 100],

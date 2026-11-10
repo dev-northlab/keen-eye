@@ -118,7 +118,7 @@ export default travelLevel({
       diff(700, 414, 30, umbrella(700, 490, '#1d1d1d'), umbrella(700, 490, '#e63946')) +
       pigeon(380, 496) +
       pigeon(640, 494, true) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['pigeon', 384, 468],
         ['cone', 176, 476],

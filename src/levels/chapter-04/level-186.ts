@@ -73,7 +73,7 @@ export default svgLevel({
       diff(480, 458, 32, octopus(480, 476, '#8338ec'), octopus(480, 476, '#e76f51')) +
       diff(100, 470, 22, starfish(100, 470, '#ff9f43'), starfish(100, 470, '#ff6b8b')) +
       seaUrchin(300, 478) + diff(330, 470, 22, seaUrchin(330, 478), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 120, 200, '#8ecae6'],
         ['fish', 360, 330, '#ffd23f'],

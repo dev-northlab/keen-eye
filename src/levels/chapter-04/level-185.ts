@@ -67,7 +67,7 @@ export default svgLevel({
       `<path d="M430 470Q440 404 520 410Q640 396 760 414Q800 420 800 430V474Q620 484 430 470Z" fill="#eef5fa"/><path d="M440 466Q620 476 800 464" stroke="#cfe2ee" stroke-width="6" fill="none"/>` +
       walrus(560, 446) + diff(523, 438, 22, walrusHead(560, 446, true), walrusHead(560, 446, false)) +
       walrus(680, 446) + diff(648, 428, 28, anim({ type: 'bob', dx: 0, dy: -4, period: 1.6 }, walrusHead(680, 446)), walrusHead(680, 446)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 300, 110],
         ['birds', 680, 110],

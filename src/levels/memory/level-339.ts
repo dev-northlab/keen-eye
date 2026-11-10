@@ -2,7 +2,6 @@
 // flag, a lookout's telescope in the crow's nest, a patched sail, the ship's wheel, a cannon with its balls, barrels, a
 // treasure chest of gems and a parrot on the rail.
 import { anchor, gull } from '../chapter-04/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { barrel, crate, ropeCoil } from '../time/shapes.ts'
 import { around, big } from './shapes.ts'
@@ -23,7 +22,7 @@ export default memoryLevel({
   id: 339,
   title: 'memoryPirateDeck',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     `<rect width="500" height="440" fill="#bfe6f7"/><rect y="380" width="500" height="60" fill="#3a86ff"/><path d="M30 390q30 -26 70 0Z" fill="#4caf6a"/>` +
     gull(380, 160) + gull(120, 200) +
     // Mast, crow's nest with its lookout's telescope, the flag, the sail's patch
@@ -54,12 +53,5 @@ export default memoryLevel({
     // Decor: the same in both pictures
     big(200, 722, 1.6, ropeCoil(0, 0)) +
     big(450, 690, 1.4, anchor(0, 0)) +
-    crate(450, 620, 28) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['gull', 420, 70],
-      ['starfish', 60, 720],
-      ['lifeRing', 40, 470],
-      ['bottle', 380, 728],
-    ]),
+    crate(450, 620, 28),
 })

@@ -460,10 +460,6 @@
     "retry": "Prøv igjen",
     "revealAll": "Vis stedene",
     "time": "Tid: {t}",
-    "failed": "For mange feil",
-    "failedHint": "På vanskelig slutter nivået ved feil nummer {n}",
-    "hardDone": "Klart på vanskelig!",
-    "playHard": "Spill på vanskelig",
     "transformB": {
       "mirror-x": "Speil",
       "rotate-180": "Opp ned"
@@ -871,10 +867,7 @@
     "calmHint": "Ingen tid, feil eller stjerner",
     "normalHint": "Tidtaker, 1 hint, stjerner for fart og presisjon",
     "label": "Modus",
-    "normal": "Normal",
-    "hard": "Vanskelig",
-    "hardHint": "Ingen hint, 3 feil avslutter nivået, røde stjerner",
-    "hardStars": "Vanskelig: {n}/3"
+    "normal": "Normal"
   },
   "pause": {
     "exit": "Til menyen",

@@ -88,7 +88,7 @@ export default detectiveLevel({
     clue('candyWrapper', 300, 440, 22, '', candy(300, 440)) +
     // Wall lamp
     `<path d="M510 140h14v-30" stroke="#c9953f" stroke-width="4" fill="none"/><path d="M510 110L538 110L532 90H516Z" fill="#fff3b0"/>` +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['newspapers', 43, 468],
       ['wallPhone', 194, 55],

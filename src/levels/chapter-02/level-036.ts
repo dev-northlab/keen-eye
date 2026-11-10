@@ -78,7 +78,7 @@ export default svgLevel({
       newspaperBox(300, 345) +
       parkingMeter(150, 345) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 739, 278, '#ff006e'],
         ['flowerBox', 497, 282, '#e63946'],

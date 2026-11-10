@@ -75,7 +75,7 @@ export default svgLevel({
       mailbox(700, 378) +
       manhole(180, 472) +
       sandwichBoard(490, 378) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 712, 175, '#ffb703'],
         ['flowerBox', 296, 156, '#ffb703'],

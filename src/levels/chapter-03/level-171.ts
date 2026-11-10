@@ -92,7 +92,7 @@ export default svgLevel({
       loggingTruck(410, 492) +
       diff(526, 421, 22, `<path d="M524 400V442" stroke="#ffd23f" stroke-width="3" stroke-dasharray="3 2"/>`, `<path d="M524 400V442" stroke="#e63946" stroke-width="3" stroke-dasharray="3 2"/>`) +
       diff(670, 384, 22, `<rect x="664" y="382" width="12" height="6" fill="#2b2b2b"/><path d="M664 382l12 -6" stroke="#2b2b2b" stroke-width="2"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 30, 480],
         ['mushroom', 262, 488],

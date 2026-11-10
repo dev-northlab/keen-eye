@@ -70,7 +70,7 @@ export default svgLevel({
       seahorse(700, 300) +
       anchor(680, 470) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 243, 368, '#ffb703'],
         ['fish', 640, 73, '#ffb703'],

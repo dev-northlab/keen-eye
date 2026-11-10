@@ -73,7 +73,7 @@ export default svgLevel({
       beachBall(420, 372) +
       flipFlops(590, 372) +
       sunglasses(720, 372) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 457, 436],
         ['fish', 711, 413, '#ff9f43'],

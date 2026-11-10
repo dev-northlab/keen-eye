@@ -92,7 +92,7 @@ export default svgLevel({
       diff(234, 300, 22, `<circle cx="222" cy="298" r="3.5" fill="#e63946"/>`, '') +
       // Mascot
       mascot(740, 476) + diff(766, 418, 26, mascotArm(740, 476), anim({ type: 'sway', angle: 22, pivot: [760, 432], period: 0.9 }, mascotArm(740, 476))) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cone', 200, 470],
         ['cone', 640, 410],

@@ -98,7 +98,7 @@ export default travelLevel({
       diff(683, 418, 22, swish(1.1), swish(2.6), 'tail') +
       wheels(150, 470) +
       diff(150, 432, 68, jeepBody(150, 470, '#5f8f45'), jeepBody(150, 470, '#e8762e')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bee', 544, 336],
         ['stones', 72, 340],

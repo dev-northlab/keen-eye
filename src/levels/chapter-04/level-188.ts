@@ -66,7 +66,7 @@ export default svgLevel({
       fish(690, 282, '#ffd23f') + fish(752, 290, '#ffd23f') +
       diff(720, 262, 22, dart, anim({ type: 'bob', dx: 5, dy: 2, period: 1.2 }, dart)) +
       diff(300, 472, 22, `<ellipse cx="300" cy="472" rx="16" ry="6" fill="#e76f51"/><path d="M290 467l-1 -3M298 466v-3M306 467l1 -3" stroke="#e76f51" stroke-width="2" stroke-linecap="round"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 640, 60],
         ['fish', 300, 260],

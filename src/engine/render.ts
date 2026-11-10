@@ -36,7 +36,7 @@ function el<K extends keyof SVGElementTagNameMap>(tag: K, attrs: Record<string, 
  * `transform` mirrors or turns the content inside the svg (picture B of late levels, the far player's copy
  * in a face-to-face duel); marks are drawn in scene coordinates inside it, so they turn along. The viewBox
  * (zoom) is in shown coordinates, so the board turns tap points back itself. `extras`: with the extra
- * objects of hard mode (`Level.extras`).
+ * objects of normal mode (`Level.extras`).
  */
 export function createPicture(level: Level, variant: 0 | 1, transform: PictureTransform = 'none', extras = false): Picture {
   const { w, h } = level.viewBox
@@ -218,9 +218,82 @@ function addZoneMark(p: Picture, index: number, zone: Zone, attrs: Record<string
   return mark
 }
 
-/** Green by default; in a match, the color of the player who found it. */
-export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e'): void {
-  addZoneMark(p, index, zone, { r: zone.r, stroke: color, 'stroke-width': 4 })
+/** Scales and turns around its own center when animated (CSS px of a transform are user units here). */
+function centered<T extends SVGElement>(node: T): T {
+  node.style.transformBox = 'fill-box'
+  node.style.transformOrigin = 'center'
+  return node
+}
+
+/** Plays a short-lived decoration of a mark and removes it when done. */
+function flash(p: Picture, node: SVGElement, keyframes: Keyframe[], options: KeyframeAnimationOptions): void {
+  p.marks.append(centered(node))
+  const remove = () => node.remove()
+  node.animate(keyframes, { fill: 'backwards', ...options }).finished.then(remove, remove)
+}
+
+const SPARKS = 10
+const SPARK_GOLD = '#facc15'
+
+/**
+ * Green by default; in a match, the color of the player who found it. The circle springs open from the
+ * center with a thick stroke that thins down, a glow and a wave spread out of it and sparks fly off.
+ * `still` ("reduce motion"): the circle only fades in.
+ */
+export function addFoundMark(p: Picture, index: number, zone: Zone, color = '#22c55e', still = false): void {
+  const mark = centered(addZoneMark(p, index, zone, { r: zone.r, stroke: color, 'stroke-width': 4 }))
+  if (still) {
+    mark.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250 })
+    return
+  }
+  mark.animate(
+    [
+      { transform: 'scale(0.2)', strokeWidth: 12, opacity: 0 },
+      { transform: 'scale(1.18)', strokeWidth: 8, opacity: 1, offset: 0.45 },
+      { transform: 'scale(0.94)', strokeWidth: 5, offset: 0.7 },
+      { transform: 'scale(1)', strokeWidth: 4 },
+    ],
+    { duration: 600, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' },
+  )
+  const { x, y, r } = zone
+  // Soft glow filling the circle.
+  flash(
+    p,
+    el('circle', { cx: x, cy: y, r, fill: color, 'fill-opacity': 0.35 }),
+    [
+      { transform: 'scale(0.3)', opacity: 1 },
+      { transform: 'scale(1.05)', opacity: 0 },
+    ],
+    { duration: 550, easing: 'ease-out' },
+  )
+  // A wave running out of the circle.
+  flash(
+    p,
+    el('circle', { cx: x, cy: y, r, fill: 'none', stroke: color, 'vector-effect': 'non-scaling-stroke' }),
+    [
+      { transform: 'scale(1)', strokeWidth: 6, opacity: 0.9 },
+      { transform: 'scale(1.75)', strokeWidth: 1, opacity: 0 },
+    ],
+    { duration: 700, delay: 120, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+  )
+  // Sparks flying off the rim, every other one golden.
+  const turn = Math.random() * 2 * Math.PI
+  const size = Math.max(4, r * 0.13)
+  for (let i = 0; i < SPARKS; i++) {
+    const a = turn + (i / SPARKS) * 2 * Math.PI
+    const far = r * (i % 2 ? 1.55 : 1.85)
+    const [cos, sin] = [Math.cos(a), Math.sin(a)]
+    flash(
+      p,
+      el('circle', { cx: x, cy: y, r: size, fill: i % 2 ? SPARK_GOLD : color }),
+      [
+        { transform: `translate(${cos * r * 0.7}px, ${sin * r * 0.7}px) scale(0.4)`, opacity: 0 },
+        { transform: `translate(${cos * r * 1.05}px, ${sin * r * 1.05}px) scale(1.3)`, opacity: 1, offset: 0.3 },
+        { transform: `translate(${cos * far}px, ${sin * far}px) scale(0)`, opacity: 0.6 },
+      ],
+      { duration: 650, delay: 60 + (i % 3) * 25, easing: 'cubic-bezier(0.2, 0.7, 0.3, 1)' },
+    )
+  }
 }
 
 /** Development tool: red circle exactly on the zone (drawn under a later found mark). */
@@ -251,20 +324,68 @@ export function removeHintMarks(p: Picture): void {
   })
 }
 
-/** `scale` is the current zoom: the cross keeps the same size on screen. */
-export function addMissMark(p: Picture, x: number, y: number, scale: number): void {
+const MISS_COLOR = '#ef4444'
+
+/**
+ * `scale` is the current zoom: the cross keeps the same size on screen. The pair of the found circle: the cross
+ * pops up and shakes "no" while a red flash and a wave spread from it, then it shrinks away.
+ * `still` ("reduce motion"): it only shows and fades.
+ */
+export function addMissMark(p: Picture, x: number, y: number, scale: number, still = false): void {
   const s = 14 / scale
-  const cross = el('path', {
-    d: `M${x - s} ${y - s}L${x + s} ${y + s}M${x + s} ${y - s}L${x - s} ${y + s}`,
-    stroke: '#ef4444',
-    'stroke-width': 4,
-    'stroke-linecap': 'round',
-    'vector-effect': 'non-scaling-stroke',
-  })
+  const cross = centered(
+    el('path', {
+      d: `M${x - s} ${y - s}L${x + s} ${y + s}M${x + s} ${y - s}L${x - s} ${y + s}`,
+      stroke: MISS_COLOR,
+      'stroke-width': 4,
+      'stroke-linecap': 'round',
+      'vector-effect': 'non-scaling-stroke',
+    }),
+  )
   p.marks.append(cross)
+  const remove = () => cross.remove()
+  if (still) {
+    cross.animate([{ opacity: 1 }, { opacity: 1, offset: 0.5 }, { opacity: 0 }], { duration: 700 }).finished.then(remove, remove)
+    return
+  }
+  // The shake runs across the screen, whatever the zoom.
+  const d = s * 0.35
+  const at = (dx: number, k: number) => `translateX(${dx}px) scale(${k})`
   cross
-    .animate([{ opacity: 1 }, { opacity: 1, offset: 0.5 }, { opacity: 0 }], { duration: 700 })
-    .finished.then(() => cross.remove(), () => cross.remove())
+    .animate(
+      [
+        { transform: at(0, 0.2), strokeWidth: 7, opacity: 0 },
+        { transform: at(0, 1.25), strokeWidth: 5, opacity: 1, offset: 0.14 },
+        { transform: at(-d, 1), strokeWidth: 4, offset: 0.24 },
+        { transform: at(d, 1), offset: 0.34 },
+        { transform: at(-d * 0.6, 1), offset: 0.44 },
+        { transform: at(d * 0.3, 1), offset: 0.54 },
+        { transform: at(0, 1), opacity: 1, offset: 0.7 },
+        { transform: at(0, 0.6), opacity: 0 },
+      ],
+      { duration: 900, easing: 'ease-out' },
+    )
+    .finished.then(remove, remove)
+  // Red flash behind the cross.
+  flash(
+    p,
+    el('circle', { cx: x, cy: y, r: s * 1.3, fill: MISS_COLOR, 'fill-opacity': 0.3 }),
+    [
+      { transform: 'scale(0.3)', opacity: 1 },
+      { transform: 'scale(1.1)', opacity: 0 },
+    ],
+    { duration: 450, easing: 'ease-out' },
+  )
+  // A wave running out of it.
+  flash(
+    p,
+    el('circle', { cx: x, cy: y, r: s * 1.3, fill: 'none', stroke: MISS_COLOR, 'vector-effect': 'non-scaling-stroke' }),
+    [
+      { transform: 'scale(0.5)', strokeWidth: 5, opacity: 0.85 },
+      { transform: 'scale(1.7)', strokeWidth: 1, opacity: 0 },
+    ],
+    { duration: 550, delay: 60, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+  )
 }
 
 /**

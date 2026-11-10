@@ -117,7 +117,7 @@ function start() {
         })
       },
     },
-    { animationSpeed },
+    { animationSpeed, reduceMotion: settings.effectiveReduceMotion },
   )
   // Hot-seat starts with the first player taking the phone.
   if (rules.mode === 'hotseat') {

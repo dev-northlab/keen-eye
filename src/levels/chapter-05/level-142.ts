@@ -1,6 +1,7 @@
 // Motion differences: a landing pad light blinks only on picture B; the left astronaut hops only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level142Redesign } from './level-142-redesign.ts'
 import { astronaut, beacon, crater, crystal, dome, flag, fuelCanister, moonPebbles, rover, sparkle, starField, toolbox } from './shapes.ts'
 
 /** Lunar lander; (x, y) = pad center. Bounds: x ±40, y from −70 to 0. */
@@ -32,6 +33,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'lunarBase',
   parTimeSec: 135,
+  redesign: level142Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     let prints = ''
     for (let i = 0; i < 8; i++) prints += `<ellipse cx="${236 + i * 16}" cy="${474 - (i % 2) * 6}" rx="4" ry="2" fill="#8f8ca2"/>`
@@ -67,7 +69,7 @@ export default svgLevel({
       fuelCanister(440, 474) +
       crystal(770, 470) +
       moonPebbles(40, 420) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 321, 240],
         ['spaceStar', 592, 171],

@@ -1,7 +1,6 @@
 // Music room: instruments everywhere, among the ten hardest of "memory" (hidden until released, levels/upcoming.ts). An
 // upright piano with a vase, a metronome and sheet music, a violin on the wall, a guitar on its stand, a drum kit with a
 // cymbal and a record player.
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { around, big, books, cube, flowerVase, painting, pottedPlant, room, rug, wallClock } from './shapes.ts'
 
@@ -25,7 +24,7 @@ export default memoryLevel({
   id: 336,
   title: 'memoryMusicRoom',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(540, '#e0e7ff', '#8a5a33') +
     // Wall: the violin, a poster, the clock
     diff(...around(284, 104, 316, 196, 30), violin(300, 150), '') +
@@ -56,12 +55,5 @@ export default memoryLevel({
     `<path d="M110 700h40l10 -10v20l-10 -10M150 700q-20 -14 -30 0" stroke="#e9c46a" stroke-width="4" fill="none"/>` +
     big(60, 744, 0.5, pottedPlant(0, 0, '#e07a5f')) +
     big(400, 744, 1, books(0, 0, ['#3fa46f', '#ffd23f'])) +
-    cube(470, 740, 22, '#e63946') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 160, 740, '#3a86ff'],
-      ['sticker', 240, 80, '#ffd23f'],
-      ['frame', 470, 300, '#3fa46f'],
-      ['slippers', 60, 600, '#8338ec'],
-    ]),
+    cube(470, 740, 22, '#e63946'),
 })

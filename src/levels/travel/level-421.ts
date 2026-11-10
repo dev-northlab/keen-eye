@@ -107,7 +107,7 @@ export default travelLevel({
       diff(96, 384, 20, dates(96, 384), '') +
       camel(600, 486) +
       diff(600, 408, 24, saddle(600, 486, '#e63946'), saddle(600, 486, '#2a9d8f')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['starfish', 256, 440, '#f28c28'],
         ['flipFlops', 476, 448, '#3a86ff'],

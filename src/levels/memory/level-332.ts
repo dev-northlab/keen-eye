@@ -2,7 +2,6 @@
 // levels/upcoming.ts). Fish in the tank, a parrot in its cage, bags of food, a puppy in its basket, a ball and bowls.
 import { dog } from '../chapter-02/shapes.ts'
 import { fish } from '../chapter-04/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { ball } from '../time/shapes.ts'
 import { around, big, cube, painting, pillow, pottedPlant, room, rug, sticker, wallClock } from './shapes.ts'
@@ -25,7 +24,7 @@ export default memoryLevel({
   id: 332,
   title: 'memoryPetShop',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(520, '#d8f3dc', '#c9a26b') +
     // The aquarium: a fish's color, one more fish
     `<rect x="30" y="250" width="200" height="110" fill="#6b4f3a"/><rect x="44" y="270" width="78" height="76" fill="#5c3a22"/><rect x="138" y="270" width="78" height="76" fill="#5c3a22"/>` +
@@ -63,12 +62,5 @@ export default memoryLevel({
     big(470, 520, 0.5, pottedPlant(0, 0, '#3a86ff')) +
     cube(40, 724, 24, '#ffd23f') +
     pillow(200, 720, '#8338ec') +
-    `<path d="M210 600h24M206 596a4 4 0 1 0 0 8M238 596a4 4 0 1 1 0 8" stroke="#f4f1e8" stroke-width="5" stroke-linecap="round" fill="none"/>` +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 230, 560, '#3fa46f'],
-      ['books', 470, 470, '#3a86ff'],
-      ['sticker', 120, 60, '#ffffff'],
-      ['frame', 470, 140, '#e63946'],
-    ]),
+    `<path d="M210 600h24M206 596a4 4 0 1 0 0 8M238 596a4 4 0 1 1 0 8" stroke="#f4f1e8" stroke-width="5" stroke-linecap="round" fill="none"/>`,
 })

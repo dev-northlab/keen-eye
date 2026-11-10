@@ -74,7 +74,7 @@ export default svgLevel({
       cat(225, 332) +
       birdhouse(520, 345) +
       wateringCan(745, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bee', 556, 434],
         ['flower', 726, 415, '#b38cff'],

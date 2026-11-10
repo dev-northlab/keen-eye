@@ -1,23 +1,15 @@
 <script setup lang="ts">
-/**
- * Stars of a level: yellow for normal mode, red (`red`) for hard mode (docs/difficulty-modes.md). A level
- * tile passes its red stars as `hard`: a red row under the yellow one once the level is passed in hard mode.
- */
-withDefaults(defineProps<{ stars: number; size?: number; animated?: boolean; red?: boolean; hard?: number }>(), {
+/** Stars of a level (normal mode, docs/difficulty-modes.md). */
+withDefaults(defineProps<{ stars: number; size?: number; animated?: boolean }>(), {
   size: 16,
   animated: false,
-  red: false,
-  hard: 0,
 })
 </script>
 
 <template>
   <span class="rating" :style="{ fontSize: `${size}px` }">
-    <span class="stars" :class="{ animated, red }" :aria-label="`${stars}/3`" role="img">
+    <span class="stars" :class="{ animated }" :aria-label="`${stars}/3`" role="img">
       <span v-for="i in 3" :key="i" :class="{ on: i <= stars }" :style="{ animationDelay: `${i * 0.25}s` }">★</span>
-    </span>
-    <span v-if="hard > 0" class="stars red" :aria-label="$t('mode.hardStars', { n: hard })" role="img">
-      <span v-for="i in 3" :key="i" :class="{ on: i <= hard }">★</span>
     </span>
   </span>
 </template>
@@ -37,10 +29,6 @@ withDefaults(defineProps<{ stars: number; size?: number; animated?: boolean; red
 
 .on {
   color: var(--star);
-}
-
-.red .on {
-  color: var(--star-hard);
 }
 
 .animated .on {

@@ -69,7 +69,7 @@ export default svgLevel({
       helmet(760, 412) +
       alienPlant(300, 416) +
       moonPebbles(40, 482) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crystal', 711, 247, '#7bdff2'],
         ['crystal', 424, 276, '#7bdff2'],

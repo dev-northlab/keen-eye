@@ -91,7 +91,7 @@ export default svgLevel({
       acorn(566, 480) +
       feather(470, 418) +
       pineCone(720, 408) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['frog', 655, 399],
         ['mushroom', 433, 450],

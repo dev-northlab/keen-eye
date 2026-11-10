@@ -88,7 +88,7 @@ export default travelLevel({
       diff(380, 428, 26, cat(380, 440), '') +
       amphora(680, 492) +
       diff(680, 463, 20, band(680, 492, '#1d1d1d'), band(680, 492, '#f4ead2')) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['pigeon', 524, 476],
         ['suitcase', 144, 480, '#3a86ff'],

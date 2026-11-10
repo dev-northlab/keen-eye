@@ -84,7 +84,7 @@ export default svgLevel({
       stump(320, 478) +
       butterfly(560, 330) +
       wateringCan(705, 346) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 58, 414],
         ['snail', 677, 449],

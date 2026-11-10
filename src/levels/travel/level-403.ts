@@ -94,7 +94,7 @@ export default travelLevel({
     cityTree(770, 364, 1.3) +
     houseboat(620, 440) +
     diff(560, 402, 24, lifebuoy(560, 402), '') +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['duck', 376, 456],
       ['bottle', 624, 480],

@@ -88,7 +88,7 @@ export default svgLevel({
       backpack(645, 484) +
       bluebells(398, 484) +
       feather(88, 281) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bird', 90, 358],
         ['bird', 503, 125],

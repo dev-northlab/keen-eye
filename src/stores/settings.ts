@@ -15,7 +15,7 @@ const DEVELOPER_CODE = '6561'
 
 export type { GameMode }
 /** In the order of the settings switch. */
-export const GAME_MODES: GameMode[] = ['calm', 'normal', 'hard']
+export const GAME_MODES: GameMode[] = ['calm', 'normal']
 
 /** Season of the home screen's meadow. */
 export const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const

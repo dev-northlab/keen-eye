@@ -1,4 +1,3 @@
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { beehive, cloud, cow, fence, hayBale, hen, pig, sheep, sun, sunflower } from '../shapes.ts'
 import { around, barn, barnDoor, big, daySky, ground, hills, roundTree } from './shapes.ts'
@@ -8,7 +7,7 @@ export default memoryLevel({
   id: 302,
   title: 'memoryFarmyard',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(380) +
     sun(410, 80) +
     diff(...around(245, 102, 355, 174), '', big(300, 150, 1.1, cloud(0, 0))) +
@@ -36,11 +35,5 @@ export default memoryLevel({
     grass(268, 735) +
     hen(40, 712) +
     pig(115, 725) +
-    diff(...around(354, 637, 445, 716), big(400, 680, 1.4, hen(0, 0, true)), '') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['butterfly', 335, 505],
-      ['flower', 215, 545, '#4dabf7'],
-      ['cloud', 60, 190],
-    ]),
+    diff(...around(354, 637, 445, 716), big(400, 680, 1.4, hen(0, 0, true)), ''),
 })

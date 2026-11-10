@@ -67,7 +67,7 @@ export default svgLevel({
       sunHat(760, 450) +
       coconut(85, 410) +
       sunglasses(205, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['coconut', 138, 392],
         ['bottle', 455, 440],

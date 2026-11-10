@@ -1,6 +1,7 @@
 // Motion differences: the marker buoy's beacon blinks only on picture B; the sparkle in the lower left twinkles only on B.
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level149Redesign } from './level-149-redesign.ts'
 import { asteroid, helmet, planet, rocket, satellite, sparkle, starField, wrench } from './shapes.ts'
 
 /** Moon with `stripes` dark stripes; (x, y) = center. Bounds: radius 22. */
@@ -32,6 +33,7 @@ export default svgLevel({
   chapter: 'space',
   title: 'gasGiantRings',
   parTimeSec: 105,
+  redesign: level149Redesign,
   scene: ({ diff, anim, rand, extra }) => {
     const cx = 300
     const cy = 320
@@ -89,7 +91,7 @@ export default svgLevel({
       asteroid(770, 470, 0.6) +
       rocket(40, 300, '#f1f1f1', '#3a86ff', 0.35) +
       wrench(760, 60) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 101, 195],
         ['ringPlanet', 430, 45],

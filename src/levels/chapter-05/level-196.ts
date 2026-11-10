@@ -65,7 +65,7 @@ export default svgLevel({
       // The crashed probe and its light
       `<g transform="rotate(-18 740 470)"><rect x="716" y="448" width="48" height="26" rx="4" fill="#bfc7d5"/><rect x="764" y="454" width="22" height="12" fill="#3a86ff"/><path d="M740 448V436" stroke="#8d99ae" stroke-width="2"/></g>` +
       diff(729, 434, 22, `<circle cx="729" cy="434" r="5" fill="#ff3b3b"/>`, `<circle cx="729" cy="434" r="5" fill="#8ac926"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['alienPlant', 40, 470],
         ['crystal', 470, 486],

@@ -3,7 +3,8 @@
  * A game mode's banner (LevelMapView) or a "tiny boy" level's (TinyBoyView): a coloured gradient with a picture at
  * its end side (public/banners/), faded into the colour under the text. The parent sets the colours with
  * `--banner-from`, `--banner-mid`, `--banner-to`, `--banner-shadow` and `--banner-icon-bg` (sky blue by default).
- * Slots: `icon` fills the square at the start (an inline SVG, an <img> or a number), the default one the line
+ * Slots: `icon` fills the square at the start (an inline SVG, an <img>: a photo, or with class `obj` a 3D object icon of
+ * public/icons/, or a number), the default one the line
  * under the name, `end` sits at the end inside the button (the level ids, room for a key badge laid over it).
  * The picture is mirrored right to left, so what it shows on its right stays at the outer edge.
  */
@@ -81,6 +82,12 @@ defineProps<{ name: string; photo?: string; tag?: string; disabled?: boolean }>(
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* A 3D object icon (public/icons/, transparent): whole, a little inside the square. */
+.icon :slotted(img.obj) {
+  object-fit: contain;
+  padding: 2px;
 }
 
 .icon :slotted(svg) {

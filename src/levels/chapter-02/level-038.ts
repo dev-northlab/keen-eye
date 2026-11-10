@@ -65,7 +65,7 @@ export default svgLevel({
       coffeeCup(525, 358) +
       mailbox(620, 358) +
       manhole(400, 472) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['sparkle', 660, 37],
         ['spaceStar', 128, 36],

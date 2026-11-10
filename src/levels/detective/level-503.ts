@@ -65,7 +65,7 @@ export default detectiveLevel({
     cushion(400, 282, '#f28fb1') +
     cushion(484, 280, '#7cc25a') +
     clue('creamOnCushion', 484, 280, 28, '', cream(484, 280)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['antlers', 72, 242],
       ['cactus', 218, 478],

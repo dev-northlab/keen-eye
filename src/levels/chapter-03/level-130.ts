@@ -94,7 +94,7 @@ export default svgLevel({
       feather(740, 372) +
       ladybug(520, 232) +
       bird(205, 140) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cloud', 86, 65],
         ['birds', 701, 106],

@@ -64,7 +64,7 @@ export default detectiveLevel({
     anim({ type: 'sway', angle: 7, pivot: [40, 480], period: 2.8 }, flower(40, 480, '#ff6b8b')) +
     anim({ type: 'sway', angle: 7, pivot: [560, 480], period: 3.2 }, flower(560, 480, '#b38cff')) +
     anim({ type: 'sway', angle: 7, pivot: [470, 486], period: 3 }, flower(470, 486, '#ff9f43')) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['wateringCan', 98, 482],
       ['haybale', 233, 350],

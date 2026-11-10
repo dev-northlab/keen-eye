@@ -84,7 +84,7 @@ export default svgLevel({
       bluebells(45, 338) +
       anthill(735, 340) +
       snail(590, 340) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 724, 275],
         ['rabbit', 527, 296],

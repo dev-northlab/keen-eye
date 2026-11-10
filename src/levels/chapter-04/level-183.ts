@@ -66,7 +66,7 @@ export default svgLevel({
       diff(632, 414, 28, paddle, anim({ type: 'sway', angle: 14, pivot: [632, 440], period: 1.2 }, paddle)) +
       `<rect x="732" y="392" width="16" height="14" rx="3" fill="#3d4a55"/>` +
       diff(740, 384, 22, gullStanding(740, 392, true), '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['gull', 300, 100],
         ['buoy', 690, 320, '#ffd23f'],

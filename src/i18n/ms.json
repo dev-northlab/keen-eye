@@ -460,10 +460,6 @@
     "retry": "Cuba lagi",
     "revealAll": "Tunjukkan tempat",
     "time": "Masa: {t}",
-    "failed": "Terlalu banyak kesilapan",
-    "failedHint": "Dalam mod sukar, tahap tamat pada kesilapan ke-{n}",
-    "hardDone": "Lulus dalam mod sukar!",
-    "playHard": "Main dalam mod sukar",
     "transformB": {
       "mirror-x": "Cermin",
       "rotate-180": "Terbalik"
@@ -871,10 +867,7 @@
     "calmHint": "Tiada pemasa, kesilapan atau bintang",
     "normalHint": "Pemasa, 1 petunjuk, bintang untuk kepantasan dan ketepatan",
     "label": "Mod",
-    "normal": "Biasa",
-    "hard": "Sukar",
-    "hardHint": "Tiada petunjuk, 3 kesilapan menamatkan tahap, bintang merah",
-    "hardStars": "Mod sukar: {n}/3"
+    "normal": "Biasa"
   },
   "pause": {
     "exit": "Keluar ke menu",

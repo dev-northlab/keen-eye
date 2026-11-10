@@ -89,7 +89,7 @@ export default svgLevel({
       diff(180, 388, 24, `<path d="M156 390Q180 380 204 390" stroke="#ffd23f" stroke-width="4" fill="none"/>`, `<path d="M156 390Q180 380 204 390" stroke="#ffffff" stroke-width="4" fill="none"/>`) +
       diff(110, 470, 26, porcupine(110, 484), '') +
       skunk(740, 486) + diff(716, 462, 26, skunkTail(740, 486, true), skunkTail(740, 486, false)) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['firefly', 260, 380],
         ['owl', 60, 180],

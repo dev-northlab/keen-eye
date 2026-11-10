@@ -105,7 +105,7 @@ export default travelLevel({
     `<rect x="704" y="446" width="20" height="12" rx="2" fill="#c8935a"/>` +
     pigeon(380, 476) +
     pigeon(428, 488, true) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['pigeon', 648, 468],
       ['ball', 272, 476, '#ffd23f'],

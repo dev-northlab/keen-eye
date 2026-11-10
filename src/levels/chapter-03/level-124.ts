@@ -71,7 +71,7 @@ export default svgLevel({
       feather(200, 385) +
       trailSign(785, 415) +
       fog(430, 0.25) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 666, 389],
         ['mushroom', 486, 395],

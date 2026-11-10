@@ -1,5 +1,4 @@
 import { bench } from '../chapter-02/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
 import { ball, bird, birds, bush, butterfly, dog, flowers, grass, slide, stones, swingFrame, swingSeat } from '../time/shapes.ts'
@@ -10,7 +9,7 @@ export default memoryLevel({
   id: 305,
   title: 'memoryPlayground',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(370) +
     sun(420, 80) +
     big(200, 100, 1.1, cloud(0, 0)) +
@@ -36,11 +35,5 @@ export default memoryLevel({
     dog(45, 735) +
     stones(470, 740) +
     grass(150, 740) +
-    diff(...around(228, 677, 272, 720, 32), '', big(250, 720, 1.8, ball(0, 0, '#e63946'))) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['snail', 470, 600],
-      ['ladybug', 215, 480],
-      ['cloud', 430, 280],
-    ]),
+    diff(...around(228, 677, 272, 720, 32), '', big(250, 720, 1.8, ball(0, 0, '#e63946'))),
 })

@@ -109,7 +109,7 @@ export default travelLevel({
       stems(600, 490) +
       diff(600, 461, 22, heads(600, 490, '#e63946'), heads(600, 490, '#ffd23f')) +
       person(720, 492, '#8338ec') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bin', 448, 488, '#2a9d8f'],
         ['coffeeCup', 692, 428],

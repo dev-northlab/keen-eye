@@ -62,7 +62,7 @@ export default detectiveLevel({
     clue('bellInHay', 704, 334, 22, '', bell(704, 334)) +
     clue('hayScattered', 602, 425, 46, '', tufts()) +
     clue('milkSpilled', 388, 444, 48, milkBucket(false), milkBucket(true)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bucket', 68, 456],
       ['garlic', 320, 189],

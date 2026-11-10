@@ -1,8 +1,7 @@
 <script setup lang="ts">
 // Time and mistakes chips of a level's HUD (normal mode). Two root elements, so that they are
-// laid out as items of the HUD row. `still` turns off their animations (reduce motion); a finite
-// `maxMistakes` (hard mode: the level is lost at it) is shown after the mistakes.
-defineProps<{ time: string; mistakes: number; locked: boolean; still?: boolean; maxMistakes?: number }>()
+// laid out as items of the HUD row. `still` turns off their animations (reduce motion).
+defineProps<{ time: string; mistakes: number; locked: boolean; still?: boolean }>()
 </script>
 
 <template>
@@ -31,7 +30,7 @@ defineProps<{ time: string; mistakes: number; locked: boolean; still?: boolean; 
       <ellipse cx="8.4" cy="7.4" rx="3.2" ry="1.7" fill="#fff" fill-opacity="0.4" transform="rotate(-35 8.4 7.4)" />
       <path d="M8.6 8.6l6.8 6.8M15.4 8.6l-6.8 6.8" stroke="#fff" stroke-width="2.8" stroke-linecap="round" />
     </svg>
-    <span class="value">{{ mistakes }}<template v-if="maxMistakes !== undefined && Number.isFinite(maxMistakes)">/{{ maxMistakes }}</template></span>
+    <span class="value">{{ mistakes }}</span>
   </span>
 </template>
 

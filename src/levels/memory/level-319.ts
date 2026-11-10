@@ -1,7 +1,6 @@
 import { balloon, lampHead, lampPost, person } from '../chapter-02/shapes.ts'
 import { bush, fox, hedgehog, mushroom, rock, squirrel, stump } from '../chapter-03/shapes.ts'
 import { bench } from '../chapter-02/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, duck, sun } from '../shapes.ts'
 import { around, big, daySky, ground, kite, pumpkin, roundTree } from './shapes.ts'
@@ -21,7 +20,7 @@ export default memoryLevel({
   id: 319,
   title: 'memoryAutumnPark',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     daySky(330, '#ffe9c7') +
     sun(70, 60) +
     ground(300, '#c9cf6a') +
@@ -63,12 +62,5 @@ export default memoryLevel({
     rock(15, 745, 0.6) +
     stump(250, 690) +
     grass(300, 740) +
-    leaf(470, 460, '#f2c14e', 30) +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['acorn', 135, 375],
-      ['hedgehog', 440, 525],
-      ['squirrel', 30, 320],
-      ['birds', 150, 250],
-    ]),
+    leaf(470, 460, '#f2c14e', 30),
 })

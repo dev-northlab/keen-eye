@@ -2,7 +2,6 @@
 // window sign, hanging baskets, a shelf of cacti, a tiered stand of tulips and sunflowers, a bouquet on the counter with
 // the florist, and a watering can.
 import { person } from '../chapter-02/shapes.ts'
-import { extras } from '../extras.ts'
 import { memoryLevel } from '../helpers.ts'
 import { bucket } from '../shapes.ts'
 import { around, big, curtains, pottedPlant, room, rug, wallClock, wateringCan, windowPane } from './shapes.ts'
@@ -30,7 +29,7 @@ export default memoryLevel({
   id: 340,
   title: 'memoryFlowerShop',
   showSeconds: 5,
-  scene: ({ diff, extra, anim }) =>
+  scene: ({ diff }) =>
     room(560, '#fff1e6', '#9c6644') +
     // The window and its sign
     windowPane(160, 60, 180, 140) + curtains(160, 340, 54, 150, '#ff6b8b') +
@@ -64,12 +63,5 @@ export default memoryLevel({
     // Decor: the same in both pictures
     rug(330, 680, 110, '#3fa46f') +
     big(450, 744, 0.6, pottedPlant(0, 0, '#e07a5f')) +
-    `<circle cx="250" cy="600" r="5" fill="#ff6b8b"/><circle cx="270" cy="720" r="5" fill="#ffd23f"/><path d="M220 650q8 -6 16 0" stroke="#3fa46f" stroke-width="3" fill="none"/>` +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
-    extras({ extra, anim }, [
-      ['cube', 300, 740, '#ff6b8b'],
-      ['sticker', 470, 390, '#ffd23f'],
-      ['frame', 40, 270, '#3fa46f'],
-      ['books', 230, 620, '#8338ec'],
-    ]),
+    `<circle cx="250" cy="600" r="5" fill="#ff6b8b"/><circle cx="270" cy="720" r="5" fill="#ffd23f"/><path d="M220 650q8 -6 16 0" stroke="#3fa46f" stroke-width="3" fill="none"/>`,
 })

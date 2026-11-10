@@ -66,7 +66,7 @@ export default detectiveLevel({
     clue('holeDug', 445, 420, 44, '', hole(445, 420)) +
     clue('bigTracks', 640, 446, 50, '', bigPaw(612, 454) + bigPaw(640, 434) + bigPaw(668, 454)) +
     anim({ type: 'path', points: [[0, 0], [60, -30], [120, 0], [60, 20]], period: 9 }, `<path d="M150 200l-10 -8v16Zm0 0l10 -8v16Z" fill="#ff8a65"/>`) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['rake', 49, 472],
       ['haybale', 193, 355],

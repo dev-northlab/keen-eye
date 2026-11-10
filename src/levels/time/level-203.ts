@@ -45,7 +45,7 @@ export default svgLevel({
       fern(30, 470) +
       mushroom(60, 480, '#e63946', 0.7) +
       stump(590, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 601, 129],
         ['birds', 727, 58],

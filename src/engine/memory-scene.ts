@@ -1,6 +1,6 @@
 import { Board, type Tap } from './board.ts'
 import { FrameLoop } from './loop.ts'
-import { memoryStars, type MemoryStarInput } from './rules.ts'
+import { memoryStars } from './rules.ts'
 import type { Level, Stars } from './types.ts'
 
 /**
@@ -44,20 +44,16 @@ export interface MemoryHandlers {
 }
 
 export interface MemoryOptions {
+  /** "Reduce motion": found circles and miss crosses only fade in and out, without their bursts. */
+  reduceMotion?: boolean
   /** Animation time multiplier (reduced motion, calm mode). */
   animationSpeed?: number
   /** Misses that end the round (default MAX_MISSES; ModeRules.memoryMaxMisses). */
   maxMisses?: number
-  /** Seconds picture A is shown (default: the level's; hard mode: less). */
-  showSeconds?: number
-  /** Star rule of the mode (ModeRules.memoryStars). Default memoryStars. */
-  stars?: (p: MemoryStarInput) => Stars | 0
   /** Looks at A while searching (default: the level's; ModeRules.memoryPeeks). */
   peeks?: number
   /** The hidden key was collected before: not shown. */
   secretTaken?: boolean
-  /** Draw the extra objects of hard mode (`Level.extras`). */
-  extras?: boolean
 }
 
 type Step = [phase: MemoryPhase, ms: number]
@@ -74,7 +70,6 @@ export class MemoryScene {
   private readonly loop: FrameLoop
   private readonly found: boolean[]
   private readonly peeks: number
-  private readonly stars: (p: MemoryStarInput) => Stars | 0
   private phase: MemoryPhase | null = null
   /** Phases still to come; the current one ends after `left` ms. */
   private steps: Step[] = []
@@ -93,16 +88,15 @@ export class MemoryScene {
     this.animationSpeed = options.animationSpeed ?? 1
     this.maxMisses = options.maxMisses ?? MAX_MISSES
     this.peeks = options.peeks ?? level.memory.peeks
-    this.stars = options.stars ?? memoryStars
     this.found = level.differences.map(() => false)
     // No zoom: a picture is seen whole, and every tap counts at once.
     this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), {
       zoom: false,
       onSecret: (tap) => this.secret(tap),
       secretTaken: options.secretTaken,
-      extras: options.extras,
+      reduceMotion: options.reduceMotion,
     })
-    this.run([['show', (options.showSeconds ?? level.memory.showSeconds) * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
+    this.run([['show', level.memory.showSeconds * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)
   }
 
@@ -195,6 +189,6 @@ export class MemoryScene {
 
   private complete(): void {
     const result = { found: this.foundCount, total: this.found.length, mistakes: this.mistakes, peeks: this.peeksUsed }
-    this.handlers.onComplete?.({ ...result, timeSec: Math.floor(this.searchMs / 1000), stars: this.stars(result) })
+    this.handlers.onComplete?.({ ...result, timeSec: Math.floor(this.searchMs / 1000), stars: memoryStars(result) })
   }
 }

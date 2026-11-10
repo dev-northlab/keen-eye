@@ -61,7 +61,7 @@ export default svgLevel({
     time(starfish(740, 470), '') +
     buoy(320, 470, '#ffffff') +
     buoy(460, 460, '#3a86ff') +
-    // The extra objects of hard mode (docs/hard-mode-extra-objects.md): flocks in the sky, the same at both moments.
+    // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 309, 86],
       ['birds', 725, 68],

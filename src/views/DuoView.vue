@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
+import PhotoBanner from '../components/PhotoBanner.vue'
 import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import SegmentedSwitch from '../components/SegmentedSwitch.vue'
@@ -26,6 +27,7 @@ const purchase = usePurchaseStore()
 const duo = useDuoStore()
 const progress = useProgressStore()
 const { t } = useI18n()
+const baseUrl = import.meta.env.BASE_URL
 
 const step = ref<Step>(route.query.step === 'level' ? 'level' : 'mode')
 const setup = computed(() => duo.setup)
@@ -93,18 +95,26 @@ const takenBy = (i: number, color: string) => setup.value.players[1 - i].color =
         <h1>{{ $t('duo.modeTitle') }}</h1>
         <ul class="modes">
           <li v-for="m in MATCH_MODES" :key="m">
-            <button class="mode" :class="[m, { current: setup.mode === m }]" @click="chooseMode(m)">
-              <span class="mode-icon" aria-hidden="true">
-                <PlayerAvatar class="kid boy" avatar="boy" :color="MODE_PAIRS[m].colors[0]" />
-                <PlayerAvatar class="kid girl" avatar="girl" :color="MODE_PAIRS[m].colors[1]" />
-                <svg class="badge" viewBox="0 0 30 20" v-html="MODE_PAIRS[m].badge" />
-              </span>
-              <span class="text">
-                <span class="name">{{ $t(`duo.modes.${m}`) }}</span>
-                <small>{{ $t(`duo.modeHints.${m}`) }}</small>
-              </span>
-              <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-            </button>
+            <!-- Like the level banners: the mode's colour with a 3D picture at the end side (public/banners/duo-<mode>.webp). -->
+            <PhotoBanner
+              class="mode"
+              :class="[m, { current: setup.mode === m }]"
+              :photo="`${baseUrl}banners/duo-${m}.webp`"
+              :name="$t(`duo.modes.${m}`)"
+              @click="chooseMode(m)"
+            >
+              <template #icon>
+                <span class="mode-icon" aria-hidden="true">
+                  <PlayerAvatar class="kid boy" avatar="boy" :color="MODE_PAIRS[m].colors[0]" />
+                  <PlayerAvatar class="kid girl" avatar="girl" :color="MODE_PAIRS[m].colors[1]" />
+                  <svg class="badge" viewBox="0 0 30 20" v-html="MODE_PAIRS[m].badge" />
+                </span>
+              </template>
+              {{ $t(`duo.modeHints.${m}`) }}
+              <template #end>
+                <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              </template>
+            </PhotoBanner>
           </li>
         </ul>
         <section v-if="duo.wins.length" class="panel wins">
@@ -271,118 +281,105 @@ h2 {
   gap: 10px;
 }
 
-/* A card per mode: a picture on a tinted tile, the name and hint, a chevron; the last chosen mode is outlined. */
+/* A banner per mode, like the level banners (PhotoBanner): the mode's colour (`--mode`) under a 3D picture, the two
+   kids on its icon tile, a candy chevron; the last chosen mode wears a white ring. */
 .duel {
   --mode: #e5484d;
   --mode-soft: #ffe6e6;
+  --banner-from: #ff7a7e;
+  --banner-mid: #e5484d;
+  --banner-to: #b8323a;
+  --banner-shadow: rgb(184 50 58 / 0.6);
+  --banner-icon-bg: #ffe6e6;
 }
 
 .hotseat {
   --mode: #3b82f6;
   --mode-soft: #e3eeff;
+  --banner-from: #6aa6ff;
+  --banner-mid: #3b82f6;
+  --banner-to: #2459c4;
+  --banner-shadow: rgb(36 89 196 / 0.6);
+  --banner-icon-bg: #e3eeff;
 }
 
 .coop {
   --mode: #22a35a;
   --mode-soft: #dcf5e5;
+  --banner-from: #4cc98a;
+  --banner-mid: #22a35a;
+  --banner-to: #187a42;
+  --banner-shadow: rgb(24 122 66 / 0.6);
+  --banner-icon-bg: #dcf5e5;
 }
 
-.mode {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 14px 14px 16px;
-  background: var(--panel);
-  color: var(--fg);
-  text-align: start;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  box-shadow: 0 6px 16px rgb(35 48 43 / 0.12);
-  transition: transform 0.12s ease;
-}
-
-/* A colored stripe along the left edge. */
-.mode::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 6px;
-  background: var(--mode);
+.mode.current {
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 6px color-mix(in srgb, var(--mode) 55%, transparent),
+    0 8px 18px -8px var(--banner-shadow);
 }
 
 .mode:active {
   transform: scale(0.98);
 }
 
-.mode.current {
-  border-color: var(--mode);
-}
-
 .mode-icon {
   position: relative;
-  flex: none;
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
-  background: var(--mode-soft);
+  width: 100%;
+  height: 100%;
 }
 
 .mode-icon .kid {
   position: absolute;
-  bottom: 5px;
-  width: 35px;
-  height: 35px;
+  bottom: 0;
+  width: 31px;
+  height: 31px;
   border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--panel);
+  box-shadow: 0 0 0 2px #fff;
 }
 
 .mode-icon .boy {
-  left: 1px;
+  left: -3px;
 }
 
 .mode-icon .girl {
-  right: 1px;
+  right: -3px;
 }
 
 .mode-icon .badge {
   position: absolute;
-  top: 3px;
+  top: 0;
   left: 50%;
-  width: 30px;
-  height: 20px;
+  width: 33px;
+  height: 22px;
   transform: translateX(-50%);
 }
 
-.mode .text {
-  flex: 1;
-  min-width: 0;
-  display: grid;
-  gap: 3px;
-}
-
-.mode .name {
-  font-size: 20px;
-  font-weight: 700;
-}
-
+/* A white candy button with the mode's arrow, over the picture; it sinks in when the banner is pressed. */
 .chevron {
+  position: relative;
   flex: none;
-  width: 34px;
-  height: 34px;
-  padding: 7px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
   border-radius: 50%;
-  background: var(--mode-soft);
+  background: #fff;
   fill: none;
   stroke: var(--mode);
-  stroke-width: 2.8;
+  stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--banner-to) 80%, #000),
+    0 6px 10px -4px rgb(0 0 0 / 0.35);
 }
 
-.mode small,
+.mode:active .chevron {
+  translate: 0 2px;
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--banner-to) 80%, #000);
+}
+
 .row small,
 .label small {
   display: block;

@@ -111,7 +111,7 @@ export default svgLevel({
       flowerPot(380, 482) +
       coffeeCup(650, 482) +
       wateringCan(720, 482) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 324, 57],
         ['cloud', 712, 59],

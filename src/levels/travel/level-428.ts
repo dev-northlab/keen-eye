@@ -109,7 +109,7 @@ export default travelLevel({
       diff(150, stringY(150) + 16, 22, picado(150, PICADO[1]), picado(150, PICADO[6])) +
       diff(390, stringY(390) + 16, 22, picado(390, PICADO[2]), '') +
       diff(630, stringY(630) + 16, 24, flutter(1), flutter(2.4), 'picado') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['newspaperBox', 500, 488, '#e63946'],
         ['pigeon', 280, 476],

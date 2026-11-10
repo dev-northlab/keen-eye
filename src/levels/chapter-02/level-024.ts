@@ -98,7 +98,7 @@ export default svgLevel({
       bollard(330, 368) +
       mailbox(770, 368) +
       skateboard(685, 368) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 415, 250, '#ff006e'],
         ['flowerBox', 577, 242, '#e63946'],

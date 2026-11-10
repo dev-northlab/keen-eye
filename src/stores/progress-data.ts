@@ -3,11 +3,10 @@
 import type { Stars } from '../engine/types.ts'
 import { KEY_CHAPTERS } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
-import { levelById } from '../levels/index.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 
 export interface LevelRecord {
-  /** 0 = completed only in calm or hard mode (no stars). */
+  /** 0 = completed only in calm mode (no stars). */
   stars: Stars | 0
   /** null until completed in normal mode (calm mode has no timer). */
   bestTimeSec: number | null
@@ -40,16 +39,3 @@ export const parseKeys = (raw: unknown): string[] =>
     ? [...new Set(raw.filter((id): id is string => typeof id === 'string' && KEY_CHAPTERS.some((c) => c.id === id)))]
     : []
 
-/**
- * Red stars of hard mode (docs/difficulty-modes.md) by level id: level ids and "find the odd one out" ids, known
- * ones, 1–3 stars.
- */
-export function parseHard(raw: unknown): Record<string, Stars> {
-  const out: Record<string, Stars> = {}
-  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return out
-  for (const [id, stars] of Object.entries(raw)) {
-    const known = (String(Number(id)) === id && levelById(Number(id)) !== undefined) || timeTravelLevelById(id) !== undefined
-    if (known && [1, 2, 3].includes(stars as number)) out[id] = stars as Stars
-  }
-  return out
-}

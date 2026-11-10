@@ -93,7 +93,7 @@ export default svgLevel({
       wateringCan(50, 430) +
       stump(250, 410) +
       pumpkin(640, 385) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['butterfly', 447, 385],
         ['flower', 149, 466, '#b38cff'],

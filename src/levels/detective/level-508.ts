@@ -75,7 +75,7 @@ export default detectiveLevel({
     `<rect x="198" y="330" width="14" height="62" rx="4" fill="#5b6b7a"/>` +
     bike() +
     clue('bikeChained', 194, 366, 26, '', chain()) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['newspapers', 43, 398],
       ['bucket', 198, 461],

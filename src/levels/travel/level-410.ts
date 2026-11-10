@@ -91,7 +91,7 @@ export default travelLevel({
     diff(130, 152, 26, crown(130, 364, [-160, -135, -110, -90, -70, -45, -20]), crown(130, 364, [-160, -110, -90, -70, -20])) +
     ferryTop(430, 428) +
     diff(430, 417, 74, hull(430, 428, '#f28c28'), hull(430, 428, '#3a86ff')) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['buoy', 684, 432, '#e63946'],
       ['bottle', 164, 476],

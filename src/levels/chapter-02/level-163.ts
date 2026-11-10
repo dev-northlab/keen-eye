@@ -85,7 +85,7 @@ export default svgLevel({
       `<rect x="604" y="434" width="130" height="34" fill="#2a9d8f"/>` + Array.from({ length: 15 }, (_, i) => `<path d="M${612 + i * 8} 437v28" stroke="#000" stroke-opacity="0.15" stroke-width="2"/>`).join('') +
       `<rect x="600" y="468" width="190" height="6" fill="#3d4a55"/><path d="M740 468V430H772L790 450V468Z" fill="#3a86ff"/><path d="M746 434H770L782 450H746Z" fill="#bde3f2"/>` +
       `<circle cx="630" cy="478" r="9" fill="#2b2b2b"/><circle cx="700" cy="478" r="9" fill="#2b2b2b"/><circle cx="768" cy="478" r="9" fill="#2b2b2b"/>` +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 496, 476],
         ['buoy', 30, 306],

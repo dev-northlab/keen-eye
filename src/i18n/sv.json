@@ -460,10 +460,6 @@
     "retry": "Försök igen",
     "revealAll": "Visa platserna",
     "time": "Tid: {t}",
-    "failed": "För många misstag",
-    "failedHint": "På svår slutar nivån vid misstag nummer {n}",
-    "hardDone": "Klarad på svår!",
-    "playHard": "Spela på svår",
     "transformB": {
       "mirror-x": "Spegel",
       "rotate-180": "Upp och ner"
@@ -871,10 +867,7 @@
     "calmHint": "Ingen tid, inga misstag eller stjärnor",
     "normalHint": "Timer, 1 ledtråd, stjärnor för snabbhet och precision",
     "label": "Läge",
-    "normal": "Normalt",
-    "hard": "Svår",
-    "hardHint": "Inga tips, 3 misstag avslutar nivån, röda stjärnor",
-    "hardStars": "Svår: {n}/3"
+    "normal": "Normalt"
   },
   "pause": {
     "exit": "Till menyn",

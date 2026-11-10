@@ -80,7 +80,7 @@ export default svgLevel({
       diff(232, 318, 22, `<rect x="226" y="312" width="14" height="7" rx="2" fill="#2b2b2b"/><path d="M234 320l-6 10" stroke="#3f6f4a" stroke-width="4"/>`, '') +
       `<path d="M300 ${deckY(300)}L310 332L320 ${deckY(320)}M310 332V${deckY(310)}" stroke="#3d4a55" stroke-width="2.5" fill="none"/>` +
       diff(310, 322, 22, `<rect x="300" y="316" width="22" height="14" rx="2" fill="#2b2b2b"/><circle cx="324" cy="323" r="4" fill="#5c677d"/>`, '') +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['dragonfly', 380, 250],
         ['duck', 110, 450],

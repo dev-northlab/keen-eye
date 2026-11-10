@@ -65,7 +65,7 @@ export default svgLevel({
       moonPebbles(165, 364) +
       helmet(730, 472) +
       solarPanel(645, 356) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 413, 477],
         ['wrench', 211, 411],

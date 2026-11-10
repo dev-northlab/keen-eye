@@ -106,7 +106,7 @@ export default svgLevel({
       parkingMeter(560, 370) +
       manhole(460, 470) +
       rain +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 635, 54],
         ['sparkle', 356, 314],

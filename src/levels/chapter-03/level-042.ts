@@ -81,7 +81,7 @@ export default svgLevel({
       pineCone(80, 482) +
       trailSign(330, 380) +
       feather(640, 470) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 53, 471],
         ['butterfly', 408, 371],

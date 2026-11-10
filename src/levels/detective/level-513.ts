@@ -58,7 +58,7 @@ export default detectiveLevel({
     `<path d="M730 380L746 130M776 380L792 130" stroke="#c69563" stroke-width="8"/>` +
     [170, 220, 270, 320, 360].map((y) => `<path d="M${730 + ((380 - y) * 16) / 250} ${y}h46" stroke="#c69563" stroke-width="6"/>`).join('') +
     clue('sneakerPrints', 450, 438, 38, '', sneaker(438, 448) + sneaker(462, 430)) +
-    // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+    // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [
       ['bucket', 38, 486],
       ['wallPhone', 39, 55],

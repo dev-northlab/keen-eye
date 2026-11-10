@@ -85,7 +85,7 @@ export default svgLevel({
       cat(292, 336) +
       wheelbarrow(770, 362) +
       snail(560, 494) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 351, 344],
         ['chick', 670, 326],

@@ -245,7 +245,7 @@ export default svgLevel({
       // Turkey, hen and chicks
       sheepdog(262, 478) +
       turkey(650, 460) + hen(720, 452) + chick(752, 470) + chick(772, 476, true) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 30, 482],
         ['chick', 100, 478],

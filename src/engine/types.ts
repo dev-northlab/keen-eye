@@ -135,7 +135,7 @@ export interface Level {
   /**
    * kind = 'svg': builds the scene; variant 0 = A, 1 = B. A "time" level draws the moment of its
    * `pair` from `moment` (default: the variant's own); the validator mixes them to tell the
-   * differences from the natural changes. `extras`: with the extra objects of hard mode (`Level.extras`).
+   * differences from the natural changes. `extras`: with the extra objects of normal mode (`Level.extras`).
    */
   build?: (variant: 0 | 1, moment?: 0 | 1, extras?: boolean) => SceneSvg
   /** kind = 'image': the pictures' paths relative to the app base (public/); viewBox = their size in pixels. */
@@ -144,7 +144,7 @@ export interface Level {
   viewBox: { w: number; h: number }
   differences: Difference[]
   /**
-   * Extra objects of hard mode (docs/hard-mode-extra-objects.md): circles that contain them, drawn the same in A
+   * Extra objects of normal mode (docs/extra-objects.md): circles that contain them, drawn the same in A
    * and B by `build(…, true)`; not differences, they only make the picture busier.
    */
   extras?: { x: number; y: number; r: number }[]

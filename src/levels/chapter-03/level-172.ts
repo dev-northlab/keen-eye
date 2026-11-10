@@ -96,7 +96,7 @@ export default svgLevel({
       diff(288, 446, 22, `<rect x="279" y="430" width="14" height="30" rx="4" fill="#3a86ff"/>`, `<rect x="279" y="430" width="14" height="30" rx="4" fill="#fb8500"/>`) +
       rangerTruck(560, 486) +
       diff(694, 456, 22, `<circle cx="694" cy="456" r="10" fill="#ffd23f"/><path d="M694 448l-6 10h12Z" fill="#3f6f4a"/>`, `<circle cx="694" cy="456" r="10" fill="#f4f1e8"/><path d="M694 448l-6 10h12Z" fill="#3f6f4a"/>`) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 40, 480],
         ['mushroom', 160, 484],

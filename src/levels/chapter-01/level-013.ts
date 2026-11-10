@@ -83,7 +83,7 @@ export default svgLevel({
       bird(690, 118) +
       snail(160, 472) +
       stones(240, 480) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 689, 476],
         ['snail', 203, 475],

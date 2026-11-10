@@ -136,7 +136,7 @@ export default svgLevel({
       pumpkin(520, 488) +
       wateringCan(650, 490) +
       chick(270, 425) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['eggNest', 322, 446],
         ['horseshoe', 509, 444],

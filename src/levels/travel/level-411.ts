@@ -91,7 +91,7 @@ export default travelLevel({
       toucan(660, 410) +
       diff(645, 395, 20, beak(660, 410, '#f79a2e'), beak(660, 410, '#7ac74f')) +
       palm(740, 452, 1, -12) +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['coconut', 112, 428],
         ['shell', 312, 412, '#ff6b8b'],

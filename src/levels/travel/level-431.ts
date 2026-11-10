@@ -120,7 +120,7 @@ export default travelLevel({
       diff(612, 481, 18, pigeon(612, 488, true), '') +
       person(706, 490, '#ffb703') +
       diff(720, 382, 66, sway(1.2), sway(2.6), 'balloons') +
-      // Decor of every mode and the extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
       decor({ anim }, [
         ['bin', 240, 380, '#2a9d8f'],
         ['coffeeCup', 608, 420],

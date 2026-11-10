@@ -79,7 +79,7 @@ export default svgLevel({
       coffeeCup(215, 442) +
       shoppingBag(570, 488) +
       bollard(775, 480) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 83, 307, '#e63946'],
         ['balloon', 445, 35, '#ffb703'],

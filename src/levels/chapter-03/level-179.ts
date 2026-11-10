@@ -76,7 +76,7 @@ export default svgLevel({
       `<path d="M120 490V448" stroke="#6b4a2b" stroke-width="4"/>` +
       diff(120, 448, 24, `<path d="M100 440h34l8 8l-8 8h-34Z" fill="#ffd23f"/>`, `<path d="M100 440h34l8 8l-8 8h-34Z" fill="#8ac926"/>`) +
       diff(606, 444, 22, glowShrooms(606, 456, '#8ff0c4'), glowShrooms(606, 456, '#ff8fab')) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bat', 240, 140],
         ['mushroom', 520, 450],

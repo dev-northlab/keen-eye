@@ -73,7 +73,7 @@ export default svgLevel({
       bird(400, 293) +
       butterfly(430, 445) +
       stones(610, 480) +
-      // The extra objects of hard mode (docs/hard-mode-extra-objects.md).
+      // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 627, 439, '#4dabf7'],
         ['stones', 457, 381],
