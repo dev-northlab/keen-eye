@@ -45,7 +45,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 
 - `src/engine/` — game scene, plain TS: `types.ts` (Level format), `rules.ts` (hit test, stars, anti-spam),
   `animation.ts` (poses of animated objects at time t; DOM-free, also used by the validator),
-  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded; `preloadPictures` fetches and decodes a picture level's images ahead — the router's `beforeResolve` waits for them, up to 1.5 s, before a level or duel opens, `LevelView` readies the next level's while the result dialog is open, and `usePicturePreload` on the grids of worlds and "tiny boy" readies the first level not won yet and a tile's level on `pointerdown` — one level at a time, a whole chapter's decoded pictures would not fit a phone's memory), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
+  `render.ts` (SVG pictures and marks; a pixel picture shows a spinner in its place until it has downloaded; `pictureFiles` lists a picture level's images), `zoom.ts` (`Viewport`: shared zoom/pan of both pictures via `viewBox`),
   `gestures.ts` (tap, double tap, pan, pinch, wheel; without zoom every finger taps), `board.ts` (`Board`: one pair A|B —
   rendering, poses, zoom, taps → hit/miss, marks; no rules; `flipped` = face-to-face copy turned 180° inside the svg),
   `transform.ts` (`PictureTransform`, `docs/mirror-rotate-feature.md`: picture B of `Level.transformB` shown mirrored or
@@ -124,7 +124,13 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   (mode calm/normal, music and sound volume 0–1, vibration, language, reduce motion (only the level pictures' own animations, at half speed: `animationSpeed` 0.5; the interface always moves), home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
-- `src/services/` — `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit; `canExitApp` — only Android shows the home screen's "Exit", iOS forbids quitting),
+- `src/services/` — `images.ts` (big pixel pictures fetched and decoded ahead and kept ready, the last 32: `preloadPictures`
+  for a level as it will be played, `waitAtMost` 1.5 s; the router's `beforeResolve` waits for the pictures of a level
+  or duel and for the backdrop picture of any other screen before it opens, `LevelView` readies the next level's while
+  the result dialog is open, `usePicturePreload` on the grids of worlds and "tiny boy" the first level not won yet and a
+  tile's level on `pointerdown`, the world and "tiny boy" banners their backdrop on `pointerdown` — one level at a
+  time, a whole chapter's decoded pictures (~17 MB each) would not fit a phone's memory), `backdrops.ts`
+  (`backdropPicture`: the ready picture `ScreenBackdrop` shows for a theme with the current settings), `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit; `canExitApp` — only Android shows the home screen's "Exit", iOS forbids quitting),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
   starts on the first user gesture, silent in the background), `haptics.ts` (soft ticks for a find and a miss: on Android the app's own `SoftHapticsPlugin` — a tick at a strength the game sets (the
