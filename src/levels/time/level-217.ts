@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level217Redesign } from './level-217-redesign.ts'
 import { around, bench, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, dog, door, flowerBox, flowers, grass, house, icicles, logPile, mailbox, mountains, pane, person, pine, pineSnow, rock, roofSnow, signpost, sky, small, smoke, snowCap, snowfall, snowman, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
 /** Window with shutters; (x, y) = top-left of the 40 × 40 glass. Bounds: x from −11 to +51, y from −3 to +43. */
@@ -12,6 +13,7 @@ export default svgLevel({
   title: 'mountainVillage',
   pair: 'summer-winter',
   parTimeSec: 120,
+  redesign: level217Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 260), winterSky(260)) +
     mountains(260, time(false, true)) +

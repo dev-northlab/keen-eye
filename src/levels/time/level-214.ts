@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level214Redesign } from './level-214-redesign.ts'
 import { bareTree, bench, bird, birdHouse, bush, cabin, chimney, cloud, fern, grass, hedgehog, lilyPad, logPile, mushroom, oak, pane, pine, pineSnow, rabbit, reeds, rock, roofSnow, signpost, sky, smoke, snowCap, snowfall, stones, stump, winterSky } from './shapes.ts'
 
 /** Height of the bridge deck (a curve from x 330 to 470) at x. */
@@ -17,6 +18,7 @@ export default svgLevel({
   title: 'forestYear',
   pair: 'summer-winter',
   parTimeSec: 110,
+  redesign: level214Redesign,
   scene: ({ diff, time, trap, rand, extra, anim }) => {
     let back = ''
     let backSnow = ''

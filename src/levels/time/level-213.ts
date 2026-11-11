@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level213Redesign } from './level-213-redesign.ts'
 import { anchor, barrel, buoy, cloud, crate, DUSK, glow, gull, lampHead, lampPost, lifeRing, moon, pane, poster, ropeCoil, sack, sky, stars, sun, waves } from './shapes.ts'
 
 /** Mooring bollard; (x, y) = bottom center. Bounds: x ±10, y from −18 to 0. */
@@ -15,6 +16,7 @@ export default svgLevel({
   title: 'harborEvening',
   pair: 'day-night',
   parTimeSec: 100,
+  redesign: level213Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 270) +
     `<path d="M0 270V236h40v-20h30v30h50v-14h40v18h60v-24h30v34Z" fill="#9aa9bd"/>` +

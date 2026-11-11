@@ -7,6 +7,7 @@ import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import StarRating from '../components/StarRating.vue'
 import WorldMap from '../components/WorldMap.vue'
+import RulesCard from '../components/RulesCard.vue'
 import type { Level, TravelRegion } from '../engine/types.ts'
 import { levelNumber, TRAVEL_CHAPTER } from '../levels/chapters.ts'
 import { FLAGS } from '../levels/travel/flags.ts'
@@ -56,7 +57,7 @@ function placeLabel(level: Level) {
   <div class="screen">
     <ScreenBackdrop theme="meadow" />
     <main>
-      <p class="rules">{{ $t(TRAVEL_CHAPTER.rules!) }}</p>
+      <RulesCard :chapter="TRAVEL_CHAPTER" />
       <WorldMap :levels="travelLevels" :region="region" :visited="progress.isCompleted" @select="region = $event" />
       <div class="tabs" role="tablist">
         <button
@@ -127,14 +128,6 @@ main {
   padding: 12px max(16px, (100% - var(--menu-width)) / 2) 24px;
 }
 
-.rules {
-  margin: 0 0 12px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: var(--panel);
-  font-size: 15px;
-  line-height: 1.4;
-}
 
 .tabs {
   display: flex;

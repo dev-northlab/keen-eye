@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level211Redesign } from './level-211-redesign.ts'
 import { awning, bench, bin, bird, cloud, cone, dog, door, DUSK, flowerBox, glow, lampHead, lampPost, moon, pane, pigeon, poster, pot, roadSign, sky, stars, street, sun, window } from './shapes.ts'
 
 /** Tram, faces right; body from x0 to x0 + 250 standing on rails at y. Its windows are `tramWindows`. Bounds: x0…x0 + 250, y from −86 to 0. */
@@ -18,6 +19,7 @@ export default svgLevel({
   title: 'nightAvenue',
   pair: 'day-night',
   parTimeSec: 95,
+  redesign: level211Redesign,
   scene: ({ diff, time, trap, extra, anim }) => {
     let corner = ''
     for (const y of [176, 218, 260]) for (const x of [40, 110]) if (x !== 40 || y !== 218) corner += window(x, y, '#cfe3ee')

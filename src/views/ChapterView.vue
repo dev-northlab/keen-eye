@@ -7,6 +7,7 @@ import { usePicturePreload } from '../composables/usePicturePreload.ts'
 import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
 import StarRating from '../components/StarRating.vue'
+import RulesCard from '../components/RulesCard.vue'
 import type { Level } from '../engine/types.ts'
 import { CHAPTERS, chapterById, chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TEST_CHAPTER } from '../levels/chapters.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
@@ -83,7 +84,7 @@ function tileLabel(level: Level) {
           </g>
         </svg>
       </button>
-      <p v-if="chapter.rules" class="rules">{{ $t(chapter.rules) }}</p>
+      <RulesCard v-if="chapter.rules" :chapter="chapter" />
       <ul class="grid" :style="{ '--c': chapter.color }">
         <li v-for="level in levels" :key="level.id">
           <button
@@ -155,14 +156,6 @@ main {
   height: 26px;
 }
 
-.rules {
-  margin: 0 0 14px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: var(--panel);
-  font-size: 15px;
-  line-height: 1.4;
-}
 
 .grid {
   list-style: none;
