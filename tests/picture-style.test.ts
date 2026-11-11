@@ -5,8 +5,10 @@ import { isPictureStyle, PATCH_MARGIN, styledLevel, zonePatches } from '../src/l
 
 describe('picture style (levels/picture-style.ts)', () => {
   const drawn = levelById(1)!
-  // A level without redesigned pictures: the "time" mode's first (the worlds get theirs one by one).
-  const plain = levelById(201)!
+  // A level without redesigned pictures.
+  const plain = { ...drawn, redesign: undefined }
+  // A "time" level: its pictures carry their own traps.
+  const timed = levelById(201)!
 
   test('the classic style plays the drawn scene', () => {
     assert.equal(styledLevel(drawn, 'classic'), drawn)
@@ -34,6 +36,12 @@ describe('picture style (levels/picture-style.ts)', () => {
     assert.equal(styledLevel(keyed, 'redesign').secret, undefined)
     const key = { x: 600, y: 400, r: 40, on: 'both' as const }
     assert.deepEqual(styledLevel({ ...keyed, redesign: { ...drawn.redesign!, secret: key } }, 'redesign').secret, key)
+  })
+
+  test("the pictures of a \"time\" level bring their own traps, the drawn scene's never land on them", () => {
+    assert.ok(timed.traps?.length && timed.redesign?.traps)
+    assert.equal(styledLevel(timed, 'redesign').traps, timed.redesign.traps)
+    assert.equal(styledLevel({ ...drawn, traps: timed.traps }, 'redesign').traps, undefined)
   })
 
   test('a level without pictures stays drawn in the redesign style', () => {

@@ -2,6 +2,7 @@
 // A vault under a beamed ceiling: torches, an open chest of gold, a coin heap with a crown.
 // Motion differences: the lantern swings wider on picture B; the sparkle over the chest blinks faster on B.
 import { svgLevel } from '../helpers.ts'
+import { level900Redesign } from './level-900-redesign.ts'
 
 const GOLD = '#f7c948'
 const GOLD_DARK = '#c9952c'
@@ -76,6 +77,7 @@ export default svgLevel({
   title: 'treasury',
   parTimeSec: 150,
   multiplayerReady: false,
+  redesign: level900Redesign,
   scene: ({ diff, anim, rand }) => {
     // Wall stones in staggered rows, each a little lighter or darker.
     let stones = ''

@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level204Redesign } from './level-204-redesign.ts'
 import { anchor, beam, bollard, buoy, chimney, cloud, crate, DUSK, flowerBox, glow, gull, lampHead, lampPost, lifeRing, lighthouse, moon, pier, pine, rock, ropeCoil, rowboat, sailboat, sky, sun, waves } from './shapes.ts'
 
 /** Flag cloth on a pole at foot (x, y). Bounds: x from +2 to +30, y from −68 to −50. */
@@ -11,6 +12,7 @@ export default svgLevel({
   title: 'duskPier',
   pair: 'day-night',
   parTimeSec: 75,
+  redesign: level204Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 270) +
     `<path d="M560 300q60 -50 140 -40q70 6 100 40Z" fill="#8d99ae"/>` +

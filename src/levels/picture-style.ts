@@ -8,13 +8,13 @@ export type PictureStyle = (typeof PICTURE_STYLES)[number]
 export const isPictureStyle = (v: unknown): v is PictureStyle => PICTURE_STYLES.includes(v as PictureStyle)
 
 /**
- * The level to play in `style`: the redesigned one is a picture level with its own zones and key. The drawn
+ * The level to play in `style`: the redesigned one is a picture level with its own zones, key and traps. The drawn
  * scene's animations, normal-mode extra objects and key position belong to the SVG and are left out (pictures
  * carry their decor; a key they do not draw is not there).
  */
 export function styledLevel(level: Level, style: PictureStyle): Level {
   if (style === 'classic' || !level.redesign) return level
-  const { redesign, build: _build, extras: _extras, secret: _secret, ...rest } = level
+  const { redesign, build: _build, extras: _extras, secret: _secret, traps: _traps, ...rest } = level
   return { ...rest, kind: 'image', ...redesign }
 }
 

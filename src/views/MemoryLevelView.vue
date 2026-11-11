@@ -3,6 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import FoundSlots from '../components/FoundSlots.vue'
 import LevelId from '../components/LevelId.vue'
+import ModalDialog from '../components/ModalDialog.vue'
 import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
 import SecretFound from '../components/SecretFound.vue'
@@ -21,7 +22,8 @@ import { useSettingsStore } from '../stores/settings.ts'
 
 // "Memory" level (docs/memory-mode.md): picture A for a few seconds, a curtain, then B alone — tap
 // what changed. At the end A and B are shown together with every change outlined, and the result
-// sits under them instead of a dialog, so the player sees what they missed.
+// sits under them instead of a dialog, so the player sees what they missed. A round lost on misses
+// keeps the answer hidden: B stays, under a dialog to try again.
 
 const props = defineProps<{ id: number }>()
 const router = useRouter()
@@ -224,22 +226,56 @@ onBeforeUnmount(() => {
       <SecretFound v-if="secretShown" />
     </div>
 
-    <section v-if="result" class="result" :aria-label="$t('level.complete')">
-      <h2>{{ passed ? $t('level.complete') : $t('memoryMode.failed') }}</h2>
-      <StarRating v-if="!calm" :stars="result.stars" :size="36" animated />
-      <p>
-        {{ $t('memoryMode.foundOf', { found: result.found, total }) }}
-        <template v-if="!calm"> · {{ $t('level.mistakes', { n: result.mistakes }) }}</template>
-      </p>
-      <p v-if="result.found < total" class="legend">{{ $t('memoryMode.legend') }}</p>
+    <!-- The result under the revealed pictures, in the look of the level result dialog: a glossy coin by the title
+         (a cup for a win, a tick in calm mode, an eye for "look what you missed"), stars, pills, candy buttons. -->
+    <section v-if="result?.revealed" class="result" :class="passed ? (calm ? 'calm' : 'won') : 'lost'" :aria-label="$t('level.complete')">
+      <div class="head">
+        <span class="coin" aria-hidden="true">
+          <svg v-if="!passed" viewBox="0 0 48 48">
+            <path d="M5 24s7-12 19-12 19 12 19 12-7 12-19 12S5 24 5 24Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" />
+            <circle cx="24" cy="24" r="6" fill="currentColor" />
+          </svg>
+          <svg v-else-if="calm" viewBox="0 0 48 48">
+            <path d="M13 25l8 8 15-17" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg v-else viewBox="0 0 48 48">
+            <path d="M15 8h18v11a9 9 0 0 1-18 0Z" fill="currentColor" />
+            <path d="M15 11H9.5a5.5 5.5 0 0 0 6 7.5M33 11h5.5a5.5 5.5 0 0 1-6 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+            <path d="M21 27h6v6h-6Z" fill="currentColor" />
+            <rect x="15" y="33" width="18" height="6" rx="2" fill="currentColor" />
+          </svg>
+        </span>
+        <h2>{{ passed ? $t('level.complete') : $t('memoryMode.failed') }}</h2>
+      </div>
+      <StarRating v-if="!calm" class="result-stars" :stars="result.stars" :size="40" animated />
+      <div class="stats">
+        <span class="chip rise" style="--delay: 0.35s">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2" /><path d="M8 12.5l2.8 2.8L16.5 9.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          {{ $t('memoryMode.foundOf', { found: result.found, total }) }}
+        </span>
+        <span v-if="!calm" class="chip rise" style="--delay: 0.45s">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2" /><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+          {{ $t('level.mistakes', { n: result.mistakes }) }}
+        </span>
+        <span v-if="result.found < total" class="legend rise" style="--delay: 0.55s">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="4 3" /></svg>
+          {{ $t('memoryMode.legend') }}
+        </span>
+      </div>
       <div class="actions">
-        <button v-if="hasNext" @click="router.push({ name: 'memory', params: { id: nextLevel!.id } })">{{ $t('level.next') }}</button>
-        <button :class="{ secondary: hasNext }" @click="start">{{ $t('level.retry') }}</button>
-        <button class="secondary" @click="router.push(grid)">{{ $t('level.menu') }}</button>
+        <button v-if="hasNext" class="candy next rise" style="--delay: 0.6s" @click="router.push({ name: 'memory', params: { id: nextLevel!.id } })">
+          {{ $t('level.next') }}<svg class="btn-icon flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <button class="candy retry rise" style="--delay: 0.68s" @click="start">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 3.5v4h4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>{{ $t('level.retry') }}
+        </button>
+        <button class="candy menu rise" style="--delay: 0.75s" @click="router.push(grid)">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" /><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2.2" /></svg>{{ $t('level.menu') }}
+        </button>
       </div>
     </section>
 
-    <footer v-else class="toolbar">
+    <footer v-else-if="!result" class="toolbar">
       <ToolButton
         v-if="hasPeeks"
         tone="hint"
@@ -266,6 +302,39 @@ onBeforeUnmount(() => {
       @settings="settingsOpen = true"
       @exit="router.push({ name: 'home' })"
     />
+    <!-- Lost on misses: no answer, only what came of it and a way to try again. -->
+    <ModalDialog v-if="result && !result.revealed" class="fail" :title="$t('memoryMode.failed')">
+      <template #icon>
+        <span class="coin" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M24 41S6 30 6 17.5A9.5 9.5 0 0 1 24 12a9.5 9.5 0 0 1 18 5.5C42 30 24 41 24 41Z" fill="currentColor" />
+            <path d="M24 12l-4 8.5 6 4.5-4 9" fill="none" stroke="var(--coin-lo)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+      </template>
+      <div class="stats">
+        <span class="chip rise" style="--delay: 0.3s">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2" /><path d="M8 12.5l2.8 2.8L16.5 9.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          {{ $t('memoryMode.foundOf', { found: result.found, total }) }}
+        </span>
+        <span class="chip rise" style="--delay: 0.4s">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.2" /><path d="M9 9l6 6M15 9l-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+          {{ $t('level.mistakes', { n: result.mistakes }) }}
+        </span>
+      </div>
+      <div class="actions">
+        <!-- The first button is the main one (and takes the focus). -->
+        <button class="candy retry wide rise" style="--delay: 0.5s" @click="start">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3M4.5 3.5v4h4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>{{ $t('level.retry') }}
+        </button>
+        <button v-if="hasNext" class="candy rise" style="--delay: 0.58s" @click="router.push({ name: 'memory', params: { id: nextLevel!.id } })">
+          {{ $t('level.next') }}<svg class="btn-icon flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <button class="candy menu rise" style="--delay: 0.65s" @click="router.push(grid)">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" /><path d="M9 4v14M15 6v14" stroke="currentColor" stroke-width="2.2" /></svg>{{ $t('level.menu') }}
+        </button>
+      </div>
+    </ModalDialog>
   </div>
 </template>
 
@@ -398,37 +467,338 @@ onBeforeUnmount(() => {
   padding: 6px 10px 10px;
 }
 
+/* The result card slides up under the pictures with a little bounce, a glow at its top in the result's colour
+   (`--glow`: gold for a win, green in calm mode, the mode's pink when it did not work out), then its parts rise one by
+   one (`.rise` with its delay `--delay`). */
+.result,
+.fail {
+  --glow: #e8457a;
+  --coin-hi: #ffd0df;
+  --coin-lo: #b8285a;
+}
+
 .result {
   display: grid;
   justify-items: center;
-  gap: 6px;
-  margin: 0 10px 10px;
-  padding: 12px 16px 14px;
-  border-radius: 20px;
-  background: var(--panel);
-  box-shadow: 0 4px 14px rgb(0 0 0 / 0.12);
+  gap: 8px;
+  margin: 0 10px max(10px, env(safe-area-inset-bottom));
+  padding: 14px 16px 18px;
+  border-radius: 24px;
+  background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--glow) 22%, var(--panel)), var(--panel) 70%);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--glow) 30%, transparent),
+    0 14px 30px -12px rgb(0 0 0 / 0.4);
   text-align: center;
+  animation: card-in 0.5s cubic-bezier(0.3, 1.45, 0.5, 1) both;
+}
+
+.result.won {
+  --glow: #ffd23f;
+  --coin-hi: #fff3b0;
+  --coin-lo: #e09a00;
+}
+
+.result.calm {
+  --glow: #3ec46d;
+  --coin-hi: #c8f7d8;
+  --coin-lo: #22914c;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .result h2 {
   margin: 0;
-  font-size: 20px;
+  font-size: 22px;
+  animation: rise 0.4s 0.15s ease-out both;
 }
 
-.result p {
-  margin: 0;
+/* A glossy coin with a white rim, popping in with a turn. */
+.coin {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  background: radial-gradient(circle at 35% 28%, var(--coin-hi), var(--glow) 45%, var(--coin-lo));
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 5px var(--glow),
+    0 8px 14px -6px color-mix(in srgb, var(--coin-lo) 70%, transparent);
+  animation: badge-in 0.7s 0.1s cubic-bezier(0.3, 1.6, 0.5, 1) both;
 }
 
+.coin svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 0 rgb(0 0 0 / 0.18));
+}
+
+/* Stars bigger and glossier than on the level tiles. */
+.result-stars {
+  display: grid;
+  margin: -4px 0 0;
+}
+
+.result-stars :deep(.on) {
+  text-shadow:
+    0 3px 0 #c98a00,
+    0 6px 10px rgb(200 140 0 / 0.35);
+}
+
+/* Found and mistakes: soft pills with an icon. */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.chip,
 .legend {
-  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 6px 14px 6px 10px;
+  border-radius: 999px;
+  background: var(--soft-2);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.chip svg,
+.legend svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: var(--accent);
+}
+
+/* What the red rings on the pictures mean. */
+.legend {
+  background: var(--danger-bg);
+  color: var(--danger-fg);
   font-size: 14px;
+}
+
+.legend svg {
+  color: var(--danger);
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
+  width: min(100%, 520px);
+  margin-top: 6px;
+}
+
+/* Candy buttons as in the result dialog: a light top fading into the colour (`--b`), a shine line, a darker depth
+   (`--d`) they sink into when pressed. "Next" leads, with a gleam sweeping across now and then. */
+.candy {
+  --b: var(--accent);
+  --d: color-mix(in srgb, var(--accent) 60%, #000);
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  margin-top: 4px;
+  min-width: max-content;
+  min-height: 48px;
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--b) 70%, #fff), var(--b) 55%);
+  color: #fff;
+  font-weight: 800;
+  text-shadow: 0 1px 0 var(--d);
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.45),
+    0 5px 0 var(--d),
+    0 10px 14px -6px rgb(0 0 0 / 0.35);
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease;
+}
+
+.candy:active {
+  transform: translateY(4px);
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.45),
+    0 1px 0 var(--d),
+    0 3px 6px -3px rgb(0 0 0 / 0.35);
+}
+
+.candy:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--b) 45%, #fff);
+  outline-offset: 3px;
+}
+
+.candy:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.next {
+  flex-basis: 100%;
+  font-size: 19px;
+}
+
+.next::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.4) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: gleam 3.5s ease-in-out 1.4s infinite;
+  pointer-events: none;
+}
+
+.retry {
+  --b: #ff9f1c;
+  --d: #b86a00;
+}
+
+.menu {
+  --b: #2fa8ff;
+  --d: #1665a8;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  filter: drop-shadow(0 1px 0 var(--d));
+}
+
+.rise {
+  animation: rise 0.45s var(--delay, 0s) cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+/* The dialog of a round lost on misses: the result card's pink look, bigger coin, Retry leading. */
+.fail :deep(.card) {
+  background: radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--glow) 22%, var(--panel)), var(--panel) 70%);
+  box-shadow: 0 24px 48px -16px rgb(0 0 0 / 0.5);
+  animation: card-in 0.5s cubic-bezier(0.3, 1.45, 0.5, 1) both;
+}
+
+.fail :deep(.card > .icon) {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 14px;
+  background: none;
+}
+
+.fail :deep(h2) {
+  animation: rise 0.4s 0.15s ease-out both;
+}
+
+.fail .coin {
+  width: 68px;
+  height: 68px;
+}
+
+.fail .coin svg {
+  width: 40px;
+  height: 40px;
+}
+
+.fail .actions {
+  margin-top: 18px;
+}
+
+.wide {
+  flex-basis: 100%;
+  min-height: 56px;
+  font-size: 19px;
+}
+
+/* A short landscape screen (a phone on its side): the result on the start side, the buttons on the end side, so the
+   pictures keep their height. */
+@media (max-height: 600px) and (min-width: 600px) {
+  .result {
+    grid-template-columns: auto auto minmax(0, 300px);
+    grid-template-areas:
+      'head stars actions'
+      'stats stats actions';
+    justify-content: center;
+    column-gap: 20px;
+    row-gap: 6px;
+    padding: 10px 18px 14px;
+  }
+
+  .head {
+    grid-area: head;
+  }
+
+  .result-stars {
+    grid-area: stars;
+  }
+
+  .result-stars {
+    justify-self: start;
+    margin: 0;
+  }
+
+  .stats {
+    grid-area: stats;
+  }
+
+  .actions {
+    grid-area: actions;
+    align-self: center;
+    margin-top: 0;
+  }
+
+  .coin {
+    width: 36px;
+    height: 36px;
+  }
+
+  .coin svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .result h2 {
+    font-size: 20px;
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes badge-in {
+  from {
+    transform: scale(0) rotate(-40deg);
+  }
+}
+
+@keyframes gleam {
+  0% {
+    transform: translateX(-120%);
+  }
+  35%,
+  100% {
+    transform: translateX(120%);
+  }
 }
 </style>

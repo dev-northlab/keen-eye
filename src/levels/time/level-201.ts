@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level201Redesign } from './level-201-redesign.ts'
 import { birdHouse, bucket, bush, cat, cloud, door, duck, DUSK, fence, flowerBox, flowers, glow, grass, hayBale, hen, house, mailbox, moon, oak, pane, picket, shadow, sky, stars, stones, stump, sun, sunflower, vane } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'duskFarm',
   pair: 'day-night',
   parTimeSec: 75,
+  redesign: level201Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 300) +
     cloud(430, 90, 0.7) +

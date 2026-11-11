@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level205Redesign } from './level-205-redesign.ts'
 import { ball, bench, bin, bird, birdHouse, bucket, bush, butterfly, cat, cloud, dog, DUSK, flowers, glow, grass, lampHead, lampPost, laundry, moon, oak, pane, pigeon, pot, shirt, sky, slide, stars, stones, sun, swingFrame, swingSeat } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'duskYard',
   pair: 'day-night',
   parTimeSec: 75,
+  redesign: level205Redesign,
   scene: ({ diff, time, trap, extra, anim }) => {
     // Apartment block: 6 columns × 4 floors of windows; one is a difference.
     let windows = ''

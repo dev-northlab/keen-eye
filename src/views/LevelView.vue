@@ -81,8 +81,11 @@ const animationFrozen = ref(false)
  * Shown for a moment over the pictures: on "time" levels the hint of the natural change just tapped,
  * on "detective" ones the clue just found.
  */
-const note = ref<string | null>(null)
+const note = ref<{ title?: string; text: string; n: number } | null>(null)
 let noteTimer = 0
+let noteCount = 0
+/** The note's 3D icon: the mode's own (public/icons/time.webp, detective.webp). */
+const noteIcon = `${import.meta.env.BASE_URL}icons/${level.chapter}.webp`
 /** The player tapped the transform badge: picture B is shown as drawn until tapped again. */
 const straightB = ref(false)
 /** The warning that picture B is mirrored or turned is open: the scene waits, its clock stopped. */
@@ -115,9 +118,9 @@ function collectSecret() {
   secretTimer = window.setTimeout(() => (secretShown.value = false), NOTE_MS)
 }
 
-function showNote(text: string) {
+function showNote(text: string, title?: string) {
   clearTimeout(noteTimer)
-  note.value = text
+  note.value = { title, text, n: ++noteCount }
   noteTimer = window.setTimeout(() => (note.value = null), NOTE_MS)
 }
 
@@ -154,7 +157,7 @@ function start() {
         found.value = n
         playSfx('found')
         vibrateFound()
-        if (level.detective) showNote(`${t('detective.newClue')}: ${t(`detective.clueTexts.${level.detective.clues[i]}`)}`)
+        if (level.detective) showNote(t(`detective.clueTexts.${level.detective.clues[i]}`), t('detective.newClue'))
       },
       onMiss: (n) => {
         mistakes.value = n
@@ -310,7 +313,17 @@ onBeforeUnmount(() => {
       </div>
       <LevelId :id="level.id" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
-      <div class="note" role="status">{{ note }}</div>
+      <div class="note-slot" role="status">
+        <Transition name="note">
+          <div v-if="note" :key="note.n" class="note" :class="{ clue: !!level.detective }">
+            <img class="note-icon" :src="noteIcon" alt="" />
+            <span class="note-body">
+              <span v-if="note.title" class="note-title">{{ note.title }}</span>
+              <span class="note-text">{{ note.text }}</span>
+            </span>
+          </div>
+        </Transition>
+      </div>
       <SecretFound v-if="secretShown" />
     </div>
 
@@ -560,26 +573,119 @@ onBeforeUnmount(() => {
   }
 }
 
-.note {
+.note-slot {
   position: absolute;
   top: 12px;
   left: 50%;
   translate: -50% 0;
-  max-width: min(90%, 420px);
-  padding: 8px 16px;
-  border-radius: 14px;
-  background: var(--panel);
-  color: var(--fg);
-  box-shadow: 0 4px 14px rgb(0 0 0 / 0.18);
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
+  width: max-content;
+  max-width: min(92%, 440px);
   pointer-events: none;
   z-index: 2;
 }
 
-.note:empty {
-  display: none;
+/* A natural change tapped on a "time" level, or a clue found on a "detective" one: the mode's 3D icon
+   in a soft tinted bubble that drops in with a bounce. */
+.note {
+  --tone: var(--hint);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px 6px 6px;
+  border-radius: 999px;
+  border: 1.5px solid color-mix(in srgb, var(--tone) 45%, transparent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--tone) 6%, var(--panel)),
+    color-mix(in srgb, var(--tone) 16%, var(--panel))
+  );
+  color: var(--fg);
+  box-shadow:
+    0 8px 22px rgb(0 0 0 / 0.16),
+    0 2px 4px rgb(0 0 0 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.3);
+  animation: note-in 0.5s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.note.clue {
+  --tone: var(--twist);
+}
+
+.note-icon {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  padding: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--tone) 30%, var(--panel)) 0 55%, transparent 72%);
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.18));
+  animation: note-wobble 0.9s ease-out 0.15s;
+}
+
+.note-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: start;
+}
+
+.note-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--tone) 75%, var(--fg));
+}
+
+.note-text {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.note-leave-active {
+  /* Out of the flow, so the next note pops in at the same place while this one fades. */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: max-content;
+  max-width: min(92vw, 440px);
+  transition:
+    opacity 0.3s ease,
+    translate 0.3s ease;
+}
+
+.note-leave-to {
+  opacity: 0;
+  translate: -50% -10px;
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    scale: 0.7;
+    translate: 0 -14px;
+  }
+}
+
+@keyframes note-wobble {
+  0% {
+    rotate: -18deg;
+    scale: 0.6;
+  }
+  45% {
+    rotate: 10deg;
+    scale: 1.12;
+  }
+  75% {
+    rotate: -4deg;
+  }
+  100% {
+    rotate: 0deg;
+    scale: 1;
+  }
 }
 
 .clues {

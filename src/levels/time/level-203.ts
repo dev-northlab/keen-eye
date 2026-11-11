@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level203Redesign } from './level-203-redesign.ts'
 import { birds, bucket, bush, butterfly, cloud, DUSK, fern, fireLogs, flame, grass, hedgehog, logPile, moon, mushroom, pine, rabbit, rock, signpost, sky, squirrel, stars, stones, stump, sun, tent } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'duskCamp',
   pair: 'day-night',
   parTimeSec: 75,
+  redesign: level203Redesign,
   scene: ({ diff, time, trap, rand, extra, anim }) => {
     let backPines = ''
     for (let x = 20; x < 800; x += 46 + rand() * 20) backPines += pine(x, 300, 0.9 + rand() * 0.5, '#2f6e4c')

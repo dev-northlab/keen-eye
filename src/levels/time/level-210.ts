@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level210Redesign } from './level-210-redesign.ts'
 import { ball, bareTree, bench, bin, bird, birdHouse, bush, butterfly, cat, cloud, dog, flowerBox, flowers, grass, house, mailbox, oak, pane, person, pot, roofSnow, sky, slide, snowCap, snowfall, snowman, stones, swingFrame, swingSeat, winterPerson, winterSky } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'snowYard',
   pair: 'summer-winter',
   parTimeSec: 85,
+  redesign: level210Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 290), winterSky(290)) +
     cloud(400, 70, 0.6) +

@@ -228,6 +228,18 @@ function checkRedesign(level: Level, minRadius: number): string[] {
       if (Math.hypot(d.x - key.x, d.y - key.y) < d.r + key.r) errors.push(`redesign: the key overlaps zone #${i}`)
     })
   }
+  const traps = p.traps ?? []
+  if (traps.map((t) => t.hint).join() !== (level.traps ?? []).map((t) => t.hint).join())
+    errors.push('redesign: the pictures need the drawn scene\'s traps, with the same hints in the same order')
+  if (traps.length && p.patchesB) errors.push('redesign: picture B of a "time" level is the other moment, a whole picture')
+  traps.forEach((t, i) => {
+    if (t.x - t.r < 0 || t.y - t.r < 0 || t.x + t.r > p.viewBox.w || t.y + t.r > p.viewBox.h) errors.push(`redesign: trap #${i} goes outside the picture`)
+    p.differences.forEach((d, j) => {
+      if (Math.hypot(t.x - d.x, t.y - d.y) < t.r + d.r) errors.push(`redesign: trap #${i} overlaps zone #${j}`)
+    })
+    for (let j = i + 1; j < traps.length; j++)
+      if (Math.hypot(t.x - traps[j].x, t.y - traps[j].y) < t.r + traps[j].r) errors.push(`redesign: traps #${i} and #${j} overlap`)
+  })
   const scale = 800 / p.viewBox.w
   p.differences.forEach((d, i) => {
     if (d.x < 0 || d.y < 0 || d.x > p.viewBox.w || d.y > p.viewBox.h) errors.push(`redesign: zone #${i} is off the picture`)

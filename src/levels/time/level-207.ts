@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level207Redesign } from './level-207-redesign.ts'
 import { bareTree, bench, bike, bird, bollard, building, car, cityTree, cloud, cone, curtainWindow, door, hangingSign, hydrant, icicles, person, pigeon, sky, snowCap, snowfall, street, winterPerson, winterSky } from './shapes.ts'
 
 /** Snow lying on the roof of a `car` (city shapes) at (x, y). Bounds: x from −14 to +30, y from −42 to −32. */
@@ -15,6 +16,7 @@ export default svgLevel({
   title: 'snowStreet',
   pair: 'summer-winter',
   parTimeSec: 85,
+  redesign: level207Redesign,
   scene: ({ diff, time, trap, secret, extra, anim }) =>
     time(sky(false, 330), winterSky(330)) +
     building(30, 330, 220, 250, '#81b29a') +

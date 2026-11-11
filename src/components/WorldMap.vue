@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { useId } from 'vue'
 import type { Level, TravelRegion } from '../engine/types.ts'
 import { TRAVEL_REGIONS } from '../levels/travel/index.ts'
 
-// Cartoon world map of the "travel" mode (docs/world-travel-mode.md): rough continents, a dot per place
-// (red once visited) and a badge per region with its visited / total places; tapping a badge
+// Cartoon world map of the "travel" mode (docs/world-travel-mode.md): rough continents on a deep sea
+// with a grid, shallows and a compass, a pin per place (a red map pin once visited; the places of the
+// selected region stand out) and a badge per region with its visited / total places; tapping a badge
 // selects the region. Equirectangular projection, 1000×500 for the whole globe.
 
 const props = defineProps<{ levels: Level[]; region: TravelRegion; visited: (id: number) => boolean }>()
@@ -66,15 +68,90 @@ const badges = TRAVEL_REGIONS.map((region) => {
   const [x, y] = project(LABELS[region][1], LABELS[region][0])
   return { region, x, y, ids: places.filter((p) => p.region === region).map((p) => p.id) }
 }).filter((b) => b.ids.length > 0)
+
+/** Ids of the gradients, unique per map. */
+const uid = useId()
+const ids = { sea: `${uid}-sea`, land: `${uid}-land`, pill: `${uid}-pill`, active: `${uid}-active` }
+
+/** Grid: meridians every 30°, parallels every 30° (the equator stronger). */
+const meridians = Array.from({ length: 11 }, (_, i) => project(0, -150 + i * 30)[0])
+const parallels = [60, 30, 0, -30].map((lat) => ({ y: project(lat, 0)[1], equator: lat === 0 }))
+
+/** Little waves in open sea and two clouds drifting over it ([lon, lat]). */
+const waves = ([[-150, 28], [-128, -22], [-165, -8], [-42, 32], [-28, 6], [72, -12], [90, -38], [-112, 2]] as const).map(
+  ([lon, lat], i) => ({ x: project(lat, lon)[0], y: project(lat, lon)[1], delay: `${-i * 0.9}s` }),
+)
+const clouds = ([[-150, 45], [72, -30]] as const).map(([lon, lat]) => project(lat, lon))
+const compass = project(-38, -25)
 </script>
 
 <template>
   <svg class="world" viewBox="0 30 1000 360" role="img" :aria-label="$t('chapters.travel')">
-    <rect y="30" width="1000" height="360" fill="#8fd0ec" />
-    <path v-for="(d, i) in lands" :key="i" :d="d" fill="#9ed37a" stroke="#6fae58" stroke-width="2" />
-    <g v-for="p in places" :key="p.id">
-      <circle :cx="p.x" :cy="p.y" r="9" :fill="visited(p.id) ? '#e5484d' : '#ffffff'" stroke="#3d4a55" stroke-width="3" />
+    <defs>
+      <linearGradient :id="ids.sea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#a8e2f5" />
+        <stop offset="1" stop-color="#58b3dc" />
+      </linearGradient>
+      <linearGradient :id="ids.land" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#bfe596" />
+        <stop offset="1" stop-color="#84c266" />
+      </linearGradient>
+      <linearGradient :id="ids.pill" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff" />
+        <stop offset="1" stop-color="#e3f6fb" />
+      </linearGradient>
+      <linearGradient :id="ids.active" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3cc6e0" />
+        <stop offset="1" stop-color="#1588a3" />
+      </linearGradient>
+    </defs>
+
+    <!-- The sea: a gradient, the grid and little waves. -->
+    <rect y="30" width="1000" height="360" :fill="`url(#${ids.sea})`" />
+    <g class="grid">
+      <line v-for="x in meridians" :key="`m${x}`" :x1="x" :x2="x" y1="30" y2="390" />
+      <line v-for="p in parallels" :key="`p${p.y}`" :class="{ equator: p.equator }" x1="0" x2="1000" :y1="p.y" :y2="p.y" />
     </g>
+    <path
+      v-for="(w, i) in waves"
+      :key="`w${i}`"
+      class="wave"
+      :style="{ animationDelay: w.delay }"
+      :d="`M${w.x - 16} ${w.y}q8-7 16 0t16 0`"
+    />
+
+    <!-- Lands: a shadow on the sea, light shallows along the coasts, then the land. -->
+    <g class="shadow"><path v-for="(d, i) in lands" :key="i" :d="d" /></g>
+    <g class="shallows"><path v-for="(d, i) in lands" :key="i" :d="d" /></g>
+    <g class="land" :fill="`url(#${ids.land})`"><path v-for="(d, i) in lands" :key="i" :d="d" /></g>
+
+    <!-- Compass rose in the South Atlantic. -->
+    <g class="compass" :transform="`translate(${compass[0]} ${compass[1]})`">
+      <circle r="24" />
+      <path d="M0-20 5-5 20 0 5 5 0 20-5 5-20 0-5-5Z" class="rose" />
+      <path d="M0-20 5-5h-10Z" class="north" />
+    </g>
+
+    <g v-for="(c, i) in clouds" :key="`c${i}`" class="cloud" :style="{ animationDelay: `${-i * 5}s` }">
+      <g :transform="`translate(${c[0]} ${c[1]})`">
+        <ellipse cx="0" cy="4" rx="30" ry="11" />
+        <circle cx="-10" cy="-2" r="12" />
+        <circle cx="8" cy="-6" r="15" />
+      </g>
+    </g>
+
+    <!-- Places: a red map pin once visited, a white dot before; the selected region's a little bigger. -->
+    <g v-for="p in places" :key="p.id" :transform="`translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`">
+      <g class="place" :class="{ near: p.region === region }">
+        <template v-if="visited(p.id)">
+          <ellipse cy="1" rx="6" ry="2.5" class="pin-shadow" />
+          <path d="M0 0C-2-6-11-11-11-20A11 11 0 1 1 11-20C11-11 2-6 0 0Z" class="pin" />
+          <circle cy="-20" r="4.5" fill="#fff" />
+        </template>
+        <circle v-else r="7.5" class="dot" />
+      </g>
+    </g>
+
     <g
       v-for="b in badges"
       :key="b.region"
@@ -84,14 +161,20 @@ const badges = TRAVEL_REGIONS.map((region) => {
       tabindex="0"
       :aria-label="$t(`worldTravel.regions.${b.region}`)"
       :aria-pressed="b.region === region"
+      :transform="`translate(${b.x.toFixed(1)} ${b.y.toFixed(1)})`"
       @click="$emit('select', b.region)"
       @keydown.enter.prevent="$emit('select', b.region)"
     >
-      <rect :x="b.x - 50" :y="b.y - 24" width="100" height="48" rx="24" class="pill" />
-      <text :x="b.x" :y="b.y + 11" text-anchor="middle">
-        {{ b.ids.filter(visited).length }}/{{ b.ids.length }}
-      </text>
+      <rect v-if="b.region === region" x="-60" y="-24" width="120" height="48" rx="24" class="halo" />
+      <rect x="-60" y="-19" width="120" height="48" rx="24" class="pill-depth" />
+      <rect x="-60" y="-24" width="120" height="48" rx="24" class="pill" :fill="`url(#${b.region === region ? ids.active : ids.pill})`" />
+      <path d="M-38 8C-39 4-46 0-46-6A8 8 0 1 1-30-6C-30 0-37 4-38 8Z" class="badge-pin" />
+      <circle cx="-38" cy="-6" r="3" class="badge-pin-hole" />
+      <text x="12" y="11" text-anchor="middle">{{ b.ids.filter(visited).length }}/{{ b.ids.length }}</text>
     </g>
+
+    <!-- A light inner frame, like a printed map. -->
+    <rect x="3" y="33" width="994" height="354" rx="16" class="frame" />
   </svg>
 </template>
 
@@ -101,7 +184,116 @@ const badges = TRAVEL_REGIONS.map((region) => {
   width: 100%;
   height: auto;
   border-radius: 18px;
-  box-shadow: 0 4px 14px rgb(0 0 0 / 0.12);
+  overflow: hidden;
+  box-shadow:
+    0 2px 0 rgb(255 255 255 / 0.6) inset,
+    0 10px 24px -10px rgb(10 70 100 / 0.45);
+}
+
+.grid line {
+  stroke: #fff;
+  stroke-opacity: 0.28;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 8;
+}
+
+.grid .equator {
+  stroke-opacity: 0.45;
+  stroke-width: 2;
+}
+
+.wave {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: 0.55;
+  stroke-width: 3;
+  stroke-linecap: round;
+  animation: wave 4s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  to {
+    transform: translateX(8px);
+    opacity: 0.4;
+  }
+}
+
+.shadow {
+  fill: #23739a;
+  fill-opacity: 0.3;
+  transform: translate(4px, 6px);
+}
+
+.shallows {
+  fill: #d2f1fa;
+  stroke: #d2f1fa;
+  stroke-width: 12;
+  stroke-linejoin: round;
+  stroke-opacity: 0.8;
+}
+
+.land path {
+  stroke: #5c9e4b;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.compass circle {
+  fill: #fff;
+  fill-opacity: 0.75;
+  stroke: #1f6f80;
+  stroke-opacity: 0.5;
+  stroke-width: 2;
+}
+
+.compass .rose {
+  fill: #1f6f80;
+  fill-opacity: 0.7;
+}
+
+.compass .north {
+  fill: #e5484d;
+}
+
+.cloud {
+  fill: #fff;
+  fill-opacity: 0.8;
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(26px);
+  }
+}
+
+.place {
+  transition: transform 0.3s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.place.near {
+  transform: scale(1.25);
+}
+
+.place.near .dot {
+  stroke: #1588a3;
+}
+
+.pin {
+  fill: #e5484d;
+  stroke: #9e1f2a;
+  stroke-width: 2;
+}
+
+.pin-shadow {
+  fill: #000;
+  fill-opacity: 0.25;
+}
+
+.dot {
+  fill: #fff;
+  stroke: #2a7f95;
+  stroke-width: 3;
 }
 
 .badge {
@@ -109,28 +301,71 @@ const badges = TRAVEL_REGIONS.map((region) => {
   outline: none;
 }
 
+.pill-depth {
+  fill: #0e6178;
+  fill-opacity: 0.35;
+}
+
 .pill {
-  fill: #ffffff;
   stroke: #1f9bb5;
-  stroke-width: 4;
+  stroke-width: 3;
 }
 
 .badge.active .pill {
-  fill: #1f9bb5;
+  stroke: #fff;
+}
+
+.badge-pin {
+  fill: #e5484d;
+}
+
+.badge-pin-hole {
+  fill: #fff;
 }
 
 .badge text {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
   fill: #1f6f80;
   pointer-events: none;
 }
 
 .badge.active text {
-  fill: #ffffff;
+  fill: #fff;
+  paint-order: stroke;
+  stroke: #0e6178;
+  stroke-width: 3;
+}
+
+/* The selected region's badge: a soft ring pulsing out of it. */
+.halo {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: halo 1.8s ease-out infinite;
+}
+
+@keyframes halo {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.25, 1.5);
+    opacity: 0;
+  }
 }
 
 .badge:focus-visible .pill {
   stroke: #23302b;
+}
+
+.frame {
+  fill: none;
+  stroke: #fff;
+  stroke-opacity: 0.45;
+  stroke-width: 3;
 }
 </style>

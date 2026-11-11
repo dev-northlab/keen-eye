@@ -138,6 +138,11 @@ export interface LevelPictures {
   differences: Difference[]
   /** The chapter's hidden key, drawn on the pictures of the level that hides it (`Level.secret`), in their pixels. */
   secret?: SecretKey
+  /**
+   * "Time" levels: the natural changes between the two moments in the pictures' pixels, as many as the drawn scene
+   * has and with the same hints in the same order. B is then the other moment, a whole picture (no `patchesB`).
+   */
+  traps?: Trap[]
 }
 
 export interface Level {

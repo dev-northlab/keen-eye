@@ -6,7 +6,8 @@ import type { Level, Stars } from './types.ts'
 /**
  * Stages of a "memory" round (docs/memory-mode.md): A is shown, a curtain hides the switch, B is
  * searched from memory (a peek brings A back for a moment), and at the end A and B are revealed
- * side by side with every change outlined.
+ * side by side with every change outlined — unless the round is lost on misses: then the answer stays
+ * hidden, so the level can be tried again from memory.
  */
 export type MemoryPhase = 'show' | 'curtain' | 'search' | 'peek' | 'reveal'
 
@@ -30,6 +31,8 @@ export interface MemoryResult {
   timeSec: number
   /** 0 = failed: the level is not completed. */
   stars: Stars | 0
+  /** A and B are shown with every change outlined; false when the round was lost on misses. */
+  revealed: boolean
 }
 
 export interface MemoryHandlers {
@@ -37,7 +40,7 @@ export interface MemoryHandlers {
   onPhase?: (phase: MemoryPhase, ms: number) => void
   onFound?: (found: number, total: number) => void
   onMiss?: (mistakes: number) => void
-  /** The answer is revealed. */
+  /** The round is over: the answer is revealed, or the round was lost (`result.revealed`). */
   onComplete?: (result: MemoryResult) => void
   /** The hidden key on B was tapped and taken (docs/hidden-item-feature.md): neither a find nor a miss. */
   onSecret?: () => void
@@ -79,6 +82,8 @@ export class MemoryScene {
   private animTime = 0
   /** The round is over: no more input. */
   private done = false
+  /** Lost on misses: the round completes when the last step ends, without the answer. */
+  private lost = false
 
   constructor(container: HTMLElement, level: Level, handlers: MemoryHandlers = {}, options: MemoryOptions = {}) {
     if (!level.memory) throw new Error(`level ${level.id} is not a "memory" level`)
@@ -143,13 +148,17 @@ export class MemoryScene {
     this.board.show(VISIBLE[phase])
     if (phase === 'reveal') this.board.reveal(this.found)
     this.handlers.onPhase?.(phase, ms)
-    if (phase === 'reveal') this.complete()
+    if (phase === 'reveal') this.complete(true)
   }
 
   private frame = (dt: number, now: number) => {
     if (this.phase === 'search' && !this.done) this.searchMs += dt
     this.left -= dt
     if (this.left <= 0 && this.steps.length > 0) this.next()
+    else if (this.left <= 0 && this.lost) {
+      this.lost = false
+      this.complete(false)
+    }
     this.animTime += (dt / 1000) * this.animationSpeed
     this.board.pose(this.animTime, now)
   }
@@ -178,14 +187,21 @@ export class MemoryScene {
     this.handlers.onSecret?.()
   }
 
-  /** All found or out of misses: the last mark stays a moment, then the answer. */
+  /** All found or out of misses: the last mark stays a moment, then the answer — or, for a lost round, the end. */
   private end(): void {
     this.done = true
-    this.run([['search', END_DELAY_MS], ['curtain', CURTAIN_MS], ['reveal', Infinity]])
+    if (memoryStars(this.counts()) === 0) {
+      this.lost = true
+      this.run([['search', END_DELAY_MS]])
+    } else this.run([['search', END_DELAY_MS], ['curtain', CURTAIN_MS], ['reveal', Infinity]])
   }
 
-  private complete(): void {
-    const result = { found: this.foundCount, total: this.found.length, mistakes: this.mistakes, peeks: this.peeksUsed }
-    this.handlers.onComplete?.({ ...result, timeSec: Math.floor(this.searchMs / 1000), stars: memoryStars(result) })
+  private counts() {
+    return { found: this.foundCount, total: this.found.length, mistakes: this.mistakes, peeks: this.peeksUsed }
+  }
+
+  private complete(revealed: boolean): void {
+    const result = this.counts()
+    this.handlers.onComplete?.({ ...result, timeSec: Math.floor(this.searchMs / 1000), stars: memoryStars(result), revealed })
   }
 }
