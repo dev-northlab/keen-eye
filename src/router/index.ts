@@ -6,6 +6,7 @@ import { styledLevel } from '../levels/picture-style.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
 import { preloadBackdrop } from '../services/backdrops.ts'
+import { preloadTinyBoyBanners } from '../services/banners.ts'
 import { preloadPictures, waitAtMost } from '../services/images.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
@@ -133,10 +134,14 @@ function backdropOf(to: RouteLocationNormalized): BackdropTheme | undefined {
 
 // A screen opens once its big pictures are downloaded and decoded (services/images.ts), as a game engine loads a
 // scene: a picture level's (redesigned style, "tiny boy") show at once instead of a spinner over the board while the
-// timer runs, a backdrop picture is there as the screen appears instead of popping in over its sky.
+// timer runs, a backdrop picture is there as the screen appears instead of popping in over its sky, and so are the
+// photos of the "tiny boy" banners.
 router.beforeResolve(async (to) => {
   const backdrop = backdropOf(to)
-  if (backdrop) return waitAtMost(preloadBackdrop(backdrop))
+  if (backdrop) {
+    const banners = to.name === 'tiny-boy' ? preloadTinyBoyBanners() : undefined
+    return waitAtMost(Promise.all([preloadBackdrop(backdrop), banners]))
+  }
   if (to.name !== 'level' && to.name !== 'match') return
   const level = levelById(Number(to.params.id))
   if (level) await waitAtMost(preloadPictures(styledLevel(level, useSettingsStore().pictureStyle)))

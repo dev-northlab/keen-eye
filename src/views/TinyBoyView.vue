@@ -6,24 +6,22 @@ import PhotoBanner from '../components/PhotoBanner.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import { usePicturePreload } from '../composables/usePicturePreload.ts'
 import type { Level } from '../engine/types.ts'
-import { chapterLevels, chapterLevelsWithHidden, chapterSize, levelNumber, TINY_BOY_CHAPTER } from '../levels/chapters.ts'
+import { chapterLevels, chapterSize, levelNumber, TINY_BOY_CHAPTER } from '../levels/chapters.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
 import { useBackButton } from '../services/backButton.ts'
+import { tinyBoyBanner, tinyBoyLevels } from '../services/banners.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
-import { useSettingsStore } from '../stores/settings.ts'
 
-// "Tiny boy": its levels as picture banners, each with the photo of its scene (public/banners/tiny-boy-<id>.avif,
+// "Tiny boy": its levels as picture banners, each with the photo of its scene (public/banners/tiny-boy-<id>.avif, services/banners.ts,
 // levels/tiny-boy/index.ts). Opens like a level grid (ChapterView): paid levels offer the full game, levels not
 // reached yet are disabled; developer mode also lists the hidden ones (levels/upcoming.ts), marked with a crossed-out eye.
 
 const router = useRouter()
 const purchase = usePurchaseStore()
 const progress = useProgressStore()
-const settings = useSettingsStore()
-const baseUrl = import.meta.env.BASE_URL
 
-const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(TINY_BOY_CHAPTER) : chapterLevels(TINY_BOY_CHAPTER)))
+const levels = computed(tinyBoyLevels)
 const missing = chapterSize(TINY_BOY_CHAPTER) - chapterLevels(TINY_BOY_CHAPTER).length
 /** Pictures of a level get ready before it opens: the likely one now, a touched one as the finger lands. */
 const readyPictures = usePicturePreload(() => levels.value)
@@ -45,7 +43,7 @@ function open(level: Level) {
         <li v-for="level in levels" :key="level.id">
           <PhotoBanner
             :class="{ locked: !progress.isUnlocked(level.id) }"
-            :photo="`${baseUrl}banners/tiny-boy-${level.id}.avif`"
+            :photo="tinyBoyBanner(level.id)"
             :name="$t(`levelTitles.${level.title}`)"
             :tag="progress.needsPurchase(level.id) ? $t('map.paid') : $t('map.level', { n: levelNumber(level) })"
             :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
