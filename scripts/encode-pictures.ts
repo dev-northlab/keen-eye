@@ -17,7 +17,7 @@ import { availableParallelism } from 'node:os'
 import { basename, dirname, join, relative } from 'node:path'
 import { promisify } from 'node:util'
 import type { Difference, ImagePatch, LevelPictures } from '../src/engine/types.ts'
-import { levels } from '../src/levels/index.ts'
+import { allLevels } from '../src/levels/index.ts'
 import { PATCH_MARGIN } from '../src/levels/picture-style.ts'
 import { upcomingLevels } from '../src/levels/upcoming.ts'
 
@@ -37,7 +37,7 @@ const BANNER_WIDTH = 750
 
 /** Patched pictures B by their source path: the level's pictures. */
 const patched = new Map<string, LevelPictures>()
-for (const level of [...levels, ...upcomingLevels]) {
+for (const level of [...allLevels, ...upcomingLevels]) {
   const p = level.redesign
   if (p?.patchesB) patched.set(join(SOURCE, p.patchesB[0].href.replace(/-1\.webp$/, '.webp')), p)
 }
