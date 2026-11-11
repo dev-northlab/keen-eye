@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router'
 import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
+import RulesCard from '../components/RulesCard.vue'
 import type { Level } from '../engine/types.ts'
 import { DETECTIVE_CHAPTER } from '../levels/chapters.ts'
 import { CASES, type DetectiveCase } from '../levels/detective/cases.ts'
@@ -35,7 +36,7 @@ function status(c: DetectiveCase, scenes: Level[]) {
   <div class="screen">
     <ScreenBackdrop :theme="DETECTIVE_CHAPTER.backdrop" />
     <main>
-      <p class="rules">{{ $t(DETECTIVE_CHAPTER.rules!) }}</p>
+      <RulesCard :chapter="DETECTIVE_CHAPTER" />
       <ul class="cases">
         <li v-for="{ c, scenes, cover } in cases" :key="c.id">
           <button class="case" :class="status(c, scenes)" @click="router.push({ name: 'case', params: { case: c.id } })">
@@ -73,14 +74,6 @@ main {
   padding: 16px max(16px, (100% - var(--menu-width)) / 2) 24px;
 }
 
-.rules {
-  margin: 0 0 14px;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: var(--panel);
-  font-size: 15px;
-  line-height: 1.4;
-}
 
 .cases {
   list-style: none;
