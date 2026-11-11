@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level215Redesign } from './level-215-redesign.ts'
 import { bike, bird, birdHouse, bucket, bush, butterfly, cat, chimney, cloud, dog, DUSK, fence, flowerBox, flowers, glow, grass, house, lampHead, lampPost, mailbox, moon, oak, pane, rock, sky, stars, stones, sun, vane } from './shapes.ts'
 
 /** Garden gnome; (x, y) = bottom center. Bounds: x ±10, y from −34 to 0. */
@@ -24,6 +25,7 @@ export default svgLevel({
   title: 'yardNight',
   pair: 'day-night',
   parTimeSec: 110,
+  redesign: level215Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 300) +
     // House with a porch

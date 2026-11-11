@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level212Redesign } from './level-212-redesign.ts'
 import { bareTree, barrel, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, crate, door, fence, flowers, grass, house, icicles, logPile, oak, pane, picket, pine, pineSnow, pond, rock, roofSnow, sack, sky, smoke, snowCap, snowfall, snowman, stones, winterSky } from './shapes.ts'
 
 /** Apples on an `oak` (forest shapes) at (x, y), scale 1.2. Bounds: inside its crown. */
@@ -27,6 +28,7 @@ export default svgLevel({
   title: 'farmYear',
   pair: 'summer-winter',
   parTimeSec: 100,
+  redesign: level212Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 300), winterSky(300)) +
     cloud(130, 70, 0.6) +

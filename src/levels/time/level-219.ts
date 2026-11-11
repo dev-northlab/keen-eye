@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level219Redesign } from './level-219-redesign.ts'
 import { around, bareTree, bird, bucket, buoy, canoe, chimney, cloud, door, duck, grass, house, kennel, lifeRing, lilyPad, logPile, mountains, oak, pane, person, pier, pine, pineSnow, pond, reeds, rock, roofSnow, sky, small, smoke, snowCap, snowfall, snowman, squirrel, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
 /** Picnic table; (x, y) = ground center. Bounds: x ±30, y from −30 to 0. */
@@ -13,6 +14,7 @@ export default svgLevel({
   title: 'lakeCottage',
   pair: 'summer-winter',
   parTimeSec: 125,
+  redesign: level219Redesign,
   scene: ({ diff, time, trap, rand, extra, anim }) => {
     let pines = ''
     let pinesSnow = ''

@@ -1,85 +1,126 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
-import { anchor, around, barrel, bollard, bucket, buoy, cat, cloud, crate, curtainWindow, door, DUSK, flowerBox, glow, gull, hangingSign, lampHead, lampPost, moon, pane, poster, pot, ropeCoil, rowboat, sack, sky, stars, sun, wallLamp, waves } from './shapes.ts'
-
-/** Narrow harbour house from x0, w wide, wall from top down to 330 under a gable 40 high. */
-const narrowHouse = (x0: number, w: number, top: number, wall: string, roof: string) =>
-  `<rect x="${x0}" y="${top}" width="${w}" height="${330 - top}" fill="${wall}"/><path d="M${x0 - 6} ${top + 2}L${x0 + w / 2} ${top - 40}L${x0 + w + 6} ${top + 2}Z" fill="${roof}"/>`
+import { level220Redesign } from './level-220-redesign.ts'
+import { around, barrel, birds, cloud, cone, crate, door, DUSK, glow, lampHead, lampPost, moon, pane, sky, stars, sun } from './shapes.ts'
+import {
+  extinguisher,
+  finStar,
+  flag,
+  fuelTruck,
+  hammer,
+  helicopter,
+  jerrycan,
+  jet,
+  ladder,
+  pegboard,
+  pliers,
+  radarDish,
+  sandbags,
+  scaledAt,
+  screwdriver,
+  tailRotor,
+  tank,
+  tankBarrel,
+  tireStack,
+  toolbox,
+  windsock,
+  workbench,
+  wrench,
+} from './vehicles.ts'
 
 export default svgLevel({
   id: 220,
   chapter: 'time',
-  title: 'fishingHarbor',
+  title: 'militaryBase',
   pair: 'day-night',
   parTimeSec: 125,
+  redesign: level220Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
-    sky(time(false, true), 330) +
-    narrowHouse(0, 150, 150, '#e76f51', '#7a3b22') +
-    pane(20, 180, 30, 34) +
-    pane(100, 180, 30, 34) +
-    pane(20, 250, 30, 34) +
-    diff(...around(97, 247, 133, 287), pane(100, 250, 30, 34), '') +
-    door(75, 330, '#3d4a55') +
-    narrowHouse(150, 140, 120, '#f4a261', '#7a3b22') +
-    pane(170, 150, 30, 34) +
-    pane(240, 150, 30, 34) +
-    door(220, 330, '#2a9d8f') +
-    `<path d="M196 230h12" stroke="#3d4a55" stroke-width="2"/>` +
-    diff(...around(196, 230, 244, 272), hangingSign(220, 230, '#2f6e8c', 'fish'), hangingSign(220, 230, '#2f6e8c', 'cup')) +
-    narrowHouse(290, 140, 160, '#2a9d8f', '#1d5e5a') +
-    pane(310, 190, 30, 34) +
-    pane(380, 190, 30, 34) +
-    diff(...around(344, 284, 376, 330), door(360, 330, '#ffb703'), door(360, 330, '#e63946')) +
-    narrowHouse(430, 150, 130, '#e9c46a', '#9c4a3a') +
-    pane(450, 160, 30, 34) +
-    pane(530, 160, 30, 34) +
-    pane(530, 240, 30, 34) +
-    door(480, 330, '#6b4f3a') +
-    diff(...around(447, 194, 483, 230), cat(465, 230), cat(465, 230, '#3d3d3d')) +
-    narrowHouse(580, 220, 150, '#8ecae6', '#2f6e8c') +
-    pane(610, 180, 30, 34) +
-    pane(700, 180, 30, 34) +
-    pane(700, 250, 30, 34) +
-    door(640, 330, '#e63946') +
-    diff(...around(607, 200, 643, 218), flowerBox(625, 218, '#ff6b8b'), flowerBox(625, 218, '#ffd23f')) +
-    // Quay and harbour
-    `<rect y="330" width="800" height="70" fill="#cbb89a"/><rect y="396" width="800" height="6" fill="#8d99ae"/>` +
-    crate(300, 390, 26) +
-    crate(272, 390, 26, '#b07a42') +
-    diff(...around(287, 338, 313, 364), crate(300, 364, 26), '') +
-    lampPost(720, 395) +
-    `<rect y="402" width="800" height="98" fill="#3ba7cc"/>` +
-    waves(420, 8, 100, '#2f93ba') +
-    diff(...around(160, 434, 240, 456), rowboat(200, 450, '#e63946'), rowboat(200, 450, '#ffffff')) +
-    rowboat(420, 470, '#3a86ff') +
-    diff(...around(510, 438, 530, 468), buoy(520, 460), buoy(520, 460, '#2a9d8f')) +
+    sky(time(false, true), 300) +
+    `<path d="M0 262Q120 222 250 252T520 246T800 254V300H0Z" fill="#7d9a5b"/>` +
+    // Hangar with tools on its wall
+    `<rect x="10" y="200" width="230" height="100" fill="#8a9a6e"/>` +
+    `<path d="M4 202Q125 104 246 202Z" fill="#6b7d4f"/>` +
+    `<path d="M50 176Q125 126 200 176" stroke="#5a6b42" stroke-width="3" fill="none"/>` +
+    [42, 70, 98, 126, 154, 182].map((x) => pane(x, 206, 18, 10, '#5a6b42', '#a9c7d6')).join('') +
+    `<rect x="26" y="226" width="120" height="74" fill="#3a3f36"/>` +
+    `<path d="M40 286Q70 270 128 274L140 286Z" fill="#5d6873"/>` +
+    `<rect x="20" y="224" width="20" height="76" fill="#76865c"/><path d="M30 226v74" stroke="#5a6b42" stroke-width="2"/>` +
+    pegboard(158, 218, 78, 52) +
+    hammer(172, 244) +
+    diff(...around(189, 222, 207, 266), wrench(198, 244), '') +
+    screwdriver(226, 244) +
+    pliers(212, 246) +
+    workbench(196, 300, 72) +
+    extinguisher(152, 300) +
+    // Control tower, radar and flag
+    `<rect x="292" y="122" width="36" height="178" fill="#d9d4c3"/>` +
+    pane(302, 168, 16, 22, '#b8b2a0', '#5f7f99') +
+    pane(302, 232, 16, 22, '#b8b2a0', '#5f7f99') +
+    door(310, 300, '#55606b') +
+    `<rect x="270" y="86" width="80" height="36" fill="#c4bfae"/><rect x="266" y="80" width="88" height="8" fill="#55606b"/>` +
+    pane(276, 92, 20, 22, '#55606b', '#5f7f99') +
+    pane(300, 92, 20, 22, '#55606b', '#5f7f99') +
+    pane(324, 92, 20, 22, '#55606b', '#5f7f99') +
+    `<path d="M266 128h88M270 122v6M290 122v6M310 122v6M330 122v6M350 122v6" stroke="#55606b" stroke-width="3"/>` +
+    diff(...around(322, 36, 338, 80),
+      `<path d="M330 80V42M324 56h12M326 66h8" stroke="#55606b" stroke-width="3"/><circle cx="330" cy="40" r="3.5" fill="#e63946"/>`, '') +
+    `<rect x="390" y="268" width="40" height="32" fill="#a3a66a"/><rect x="386" y="262" width="48" height="8" fill="#6b7f3a"/>` +
+    `<path d="M410 262V208M400 262L410 232L420 262" stroke="#8d99a6" stroke-width="4" fill="none"/>` +
+    diff(...around(388, 187, 432, 223), radarDish(410, 205), radarDish(410, 205, -1)) +
+    flag(470, 300, 150) +
+    lampPost(545, 300) +
+    // Barracks
+    `<rect x="560" y="210" width="230" height="90" fill="#c9bf94"/><path d="M552 212L590 192H760L798 212Z" fill="#6b7f3a"/>` +
+    pane(580, 230, 30, 34) +
+    pane(630, 230, 30, 34) +
+    pane(730, 230, 30, 34) +
+    door(695, 300, '#4f5f2a') +
+    // Apron
+    `<rect y="300" width="800" height="200" fill="#bdb8a6"/>` +
+    `<path d="M0 396H800M200 300V396M600 300V396M100 396V500M400 396V500M700 396V500" stroke="#a9a493" stroke-width="2"/>` +
+    `<path d="M0 302H800" stroke="#9c9786" stroke-width="4"/>` +
+    // Middle row: tires and cans, the jet with its ladder, the fuel truck
+    tireStack(260, 390, 3) +
+    jerrycan(300, 390) +
+    jerrycan(324, 390, '#6b7f3a') +
+    diff(...around(337, 356, 359, 390), jerrycan(348, 390), '') +
+    jet(490, 392) +
+    diff(...around(561, 320, 579, 338), finStar(490, 392), '') +
+    ladder(400, 392, 22, 50) +
+    fuelTruck(690, 392) +
+    windsock(40, 392) +
+    cone(90, 392) +
+    // Front row: two tanks, a helicopter on its pad, a toolbox, sandbags
+    tank(120, 482) +
+    diff(...around(154, 410, 236, 426), tankBarrel(120, 482, 70), tankBarrel(120, 482, 44)) +
+    diff(...around(246, 448, 294, 484), toolbox(270, 484), toolbox(270, 484, '#3a86ff')) +
+    `<ellipse cx="420" cy="474" rx="96" ry="20" fill="#9c9786"/><ellipse cx="420" cy="474" rx="84" ry="15" fill="none" stroke="#ffd23f" stroke-width="3"/>` +
+    helicopter(420, 478) +
+    diff(...around(520, 414, 544, 438), tailRotor(420, 478), '') +
+    tank(636, 486, '#7d8f4a', '#5c6b33') +
+    tankBarrel(636, 486, 60, '#5c6b33') +
+    sandbags(768, 490) +
     // Decor: the same at both moments, darkened by the evening with the rest
-    cloud(200, 50, 0.5) +
-    cloud(470, 40, 0.4) +
-    poster(762, 190, 26, 34, '#ffd23f') +
-    curtainWindow(770, 270) +
-    pot(520, 330) +
-    pot(560, 330, '#3a86ff') +
-    barrel(40, 392) +
-    ropeCoil(90, 388) +
-    anchor(130, 376) +
-    sack(400, 392) +
-    bucket(460, 392) +
-    crate(600, 392, 26, '#b07a42') +
-    barrel(640, 392, '#2f6e8c') +
-    bollard(770, 396) +
-    buoy(330, 470, '#ffb703') +
+    scaledAt(172, 122, 0.5, jet(172, 122, '#8d99a6', '#6c7884', false) + finStar(172, 122)) +
+    scaledAt(440, 132, 0.55, helicopter(440, 132) + tailRotor(440, 132)) +
+    cloud(690, 165, 0.45) +
+    crate(372, 300, 22, '#8a7a4e') +
+    barrel(255, 300, '#4f6b2f') +
+    cone(140, 392) +
+    crate(786, 392, 22, '#8a7a4e') +
+    crate(786, 370, 22, '#8a7a4e') +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
-      ['birds', 87, 66],
-      ['birds', 263, 56],
+      ['birds', 190, 60],
+      ['birds', 470, 60],
     ]) +
     time('', DUSK) +
-    time('', glow(20, 180, 30, 34) + glow(530, 240, 30, 34) + glow(700, 250, 30, 34)) +
-    trap(325, 207, 24, '', glow(310, 190, 30, 34), 'lights') +
-    trap(444, 270, 24, wallLamp(430, 260, false), wallLamp(430, 260, true), 'lights') +
-    trap(720, 295, 34, lampHead(720, 395, false), lampHead(720, 395, true), 'lights') +
-    trap(550, 80, 36, gull(530, 72) + gull(570, 90), '', 'birds') +
-    trap(380, 70, 40, '', stars(380, 70), 'stars') +
+    time('', glow(276, 92, 20, 22) + glow(300, 92, 20, 22) + glow(324, 92, 20, 22) + glow(630, 230, 30, 34) + glow(730, 230, 30, 34)) +
+    trap(310, 179, 20, '', glow(302, 168, 16, 22), 'lights') +
+    trap(595, 247, 30, '', glow(580, 230, 30, 34), 'lights') +
+    trap(545, 200, 34, lampHead(545, 300, false), lampHead(545, 300, true), 'lights') +
+    trap(80, 70, 34, birds(80, 70), '', 'birds') +
+    trap(600, 55, 40, '', stars(600, 55), 'stars') +
     trap(720, 70, 54, sun(720, 70), moon(720, 70), 'moon'),
 })

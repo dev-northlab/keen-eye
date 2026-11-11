@@ -1,84 +1,119 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
-import { around, bareTree, bench, bin, birdHouse, bush, butterfly, cloud, dog, duck, flowers, grass, hangingSign, lilyPad, oak, person, pigeon, pine, pineSnow, pond, reeds, rock, signpost, sky, small, snowCap, snowfall, snowman, squirrel, winterPerson, winterSky } from './shapes.ts'
-
-/** Gazebo; (x, y) = ground center. Its spire ball is apart. Bounds: x ±70, y from −130 to 0. */
-const gazebo = (x: number, y: number) =>
-  `<rect x="${x - 60}" y="${y - 30}" width="120" height="30" fill="#e9d3a7"/>` +
-  `<path d="M${x - 50} ${y - 80}V${y - 30}M${x - 17} ${y - 80}V${y - 30}M${x + 17} ${y - 80}V${y - 30}M${x + 50} ${y - 80}V${y - 30}" stroke="#ffffff" stroke-width="6"/>` +
-  `<path d="M${x - 70} ${y - 80}L${x} ${y - 130}L${x + 70} ${y - 80}Z" fill="#2f6e8c"/><path d="M${x} ${y - 130}v-6" stroke="#3d4a55" stroke-width="3"/>`
-
-/** Pram, faces right; (x, y) = ground center. Bounds: x from −24 to +26, y from −36 to 0. */
-const pram = (x: number, y: number, color: string) =>
-  `<path d="M${x - 20} ${y - 30}a20 16 0 0 0 40 0Z" fill="${color}"/><path d="M${x - 20} ${y - 30}a20 20 0 0 1 20 -6v6Z" fill="${color}" fill-opacity="0.7"/>` +
-  `<path d="M${x + 20} ${y - 30}l6 -6" stroke="#3d4a55" stroke-width="3"/><circle cx="${x - 12}" cy="${y - 5}" r="5" fill="#3d4a55"/><circle cx="${x + 12}" cy="${y - 5}" r="5" fill="#3d4a55"/>`
+import { around, bareTree, barrel, butterfly, cloud, crate, door, grass, icicles, mountains, oak, pane, person, pond, roofSnow, sky, smoke, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
+import {
+  apc,
+  apcHatch,
+  armyTent,
+  cargoTruck,
+  extinguisher,
+  hammer,
+  helicopter,
+  jeep,
+  jerrycan,
+  jet,
+  ladder,
+  pegboard,
+  pliers,
+  redCross,
+  sandbags,
+  scaledAt,
+  screwdriver,
+  spareWheel,
+  tailRotor,
+  tank,
+  tankBarrel,
+  toolbox,
+  windsock,
+  workbench,
+  wrench,
+} from './vehicles.ts'
 
 export default svgLevel({
   id: 225,
   chapter: 'time',
-  title: 'parkPond',
+  title: 'armyCamp',
   pair: 'summer-winter',
   parTimeSec: 140,
-  scene: ({ diff, time, trap, rand, extra, anim }) => {
-    let skyline = ''
-    for (let x = -10; x < 800; x += 50 + rand() * 30) {
-      const h = 40 + rand() * 70
-      skyline += `<rect x="${x.toFixed(0)}" y="${(230 - h).toFixed(0)}" width="${(40 + rand() * 30).toFixed(0)}" height="${h.toFixed(0)}" fill="#b8c4d6"/>`
-    }
-    return (
-      time(sky(false, 230), winterSky(230)) +
-      skyline +
-      `<rect y="230" width="800" height="270" fill="${time('#8fc25a', '#f4f8fb')}"/>` +
-      pond(420, 330, 200, 55, time(false, true)) +
-      time('', small(380, 330, winterPerson(380, 330, '#e63946', true)) + small(470, 350, winterPerson(470, 350, '#3a86ff'))) +
-      gazebo(130, 330) +
-      time('', snowCap(56, 244, 148)) +
-      diff(...around(124, 186, 136, 198), `<circle cx="130" cy="192" r="6" fill="#ffd23f"/>`, `<circle cx="130" cy="192" r="6" fill="#e63946"/>`) +
-      // Kiosk
-      `<rect x="640" y="260" width="80" height="70" fill="#f4a261"/><path d="M630 262h100l-10 -20h-80Z" fill="#9c4a3a"/>` +
-      `<rect x="672" y="276" width="40" height="22" fill="#bde3f2"/>` +
-      time('', snowCap(632, 238, 96)) +
-      diff(...around(645, 295, 665, 330), `<rect x="645" y="295" width="20" height="35" fill="#6b4f3a"/>`, `<rect x="645" y="295" width="20" height="35" fill="#2a9d8f"/>`) +
-      `<path d="M720 270h10" stroke="#3d4a55" stroke-width="2"/>` +
-      diff(...around(706, 270, 754, 312), hangingSign(730, 270, '#2f6e8c', 'cup'), hangingSign(730, 270, '#2f6e8c', 'bread')) +
-      trap(560, 232, 56, oak(560, 290, 1.1), bareTree(560, 290, 1.0), 'leaves') +
-      trap(420, 330, 40, `<path d="M390 334q10 -5 20 0t20 0" stroke="#ffffff" stroke-opacity="0.6" stroke-width="3" fill="none"/>`, '', 'ice') +
-      trap(300, 320, 28, small(290, 326, duck(290, 326)) + small(322, 316, duck(322, 316)), '', 'birds') +
-      trap(130, 360, 26, flowers(118, 372, '#ff6b8b') + flowers(150, 374, '#ffd23f'), '', 'flowers') +
-      diff(...around(20, 408, 72, 470), signpost(46, 470, 1), signpost(46, 470, -1)) +
-      diff(...around(170, 440, 230, 470), bench(200, 470), bench(200, 470, '#3a86ff')) +
-      time('', snowCap(167, 436, 66)) +
-      diff(...around(280, 452, 300, 480), bin(290, 480, '#5c8d5a'), bin(290, 480, '#ffb703')) +
-      trap(260, 384, 39, person(260, 420, '#ff9f43'), winterPerson(260, 420, '#8338ec'), 'clothes') +
-      diff(...around(396, 440, 446, 476), pram(421, 476, '#ff6b8b'), pram(421, 476, '#4dabf7')) +
-      trap(500, 420, 44, '', snowman(500, 464), 'snowman') +
-      diff(...around(538, 454, 582, 480), dog(560, 480), dog(560, 480, '#3d3d3d')) +
-      diff(...around(739, 392, 771, 470), birdHouse(755, 470, '#e07a5f'), birdHouse(755, 470, '#8ac926')) +
-      // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
-      cloud(300, 60, 0.6) +
-      cloud(600, 50, 0.5) +
-      cloud(450, 100, 0.4) +
-      pine(25, 330, 0.6) +
-      time('', pineSnow(25, 330, 0.6)) +
-      squirrel(40, 370) +
-      bush(250, 270, 0.7) +
-      time('', snowCap(236, 254, 28)) +
-      bench(400, 275) +
-      time('', snowCap(370, 245, 60)) +
-      reeds(232, 310) +
-      rock(350, 490, 0.8) +
-      time('', snowCap(338, 478, 24)) +
-      pigeon(640, 420) +
-      bench(650, 480) +
-      time('', snowCap(620, 450, 60)) +
-      time(lilyPad(540, 320) + lilyPad(600, 350, '#ff6b8b') + butterfly(330, 410) + grass(125, 495), '') +
-      // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
-      extras({ extra, anim }, [
-        ['birds', 534, 91],
-        ['birds', 106, 100],
-        ['birds', 315, 120],
-      ]) +
-      time('', snowfall(225, 240, 44))
-    )
-  },
+  scene: ({ diff, time, trap, extra, anim }) =>
+    time(sky(false, 230), winterSky(230)) +
+    mountains(230, time(false, true)) +
+    `<rect y="230" width="800" height="270" fill="${time('#8fc25a', '#f4f8fb')}"/>` +
+    // Tent and its flag
+    armyTent(110, 300) +
+    time('', snowCap(44, 238, 132)) +
+    `<path d="M214 300V178" stroke="#55606b" stroke-width="4"/>` +
+    diff(...around(214, 180, 258, 212), `<path d="M216 182h40v28h-40Z" fill="#3a86ff"/>`, `<path d="M216 182L256 196L216 210Z" fill="#3a86ff"/>`) +
+    // Workshop under a canvas roof
+    `<path d="M246 300V222M394 300V222" stroke="#6b4f3a" stroke-width="5"/>` +
+    `<path d="M232 226L320 200L408 226L400 234H240Z" fill="#6b7f3a"/>` +
+    time('', roofSnow(320, 200, 88, 26)) +
+    pegboard(262, 236, 110, 38) +
+    wrench(278, 255) +
+    diff(...around(286, 235, 306, 275), hammer(296, 255), '') +
+    screwdriver(318, 255, '#ffb703') +
+    pliers(336, 256) +
+    wrench(356, 255, '#adb5bd') +
+    workbench(316, 300, 100) +
+    toolbox(386, 300, '#e63946') +
+    // Field kitchen
+    `<rect x="426" y="262" width="70" height="30" rx="3" fill="#5c6b33"/><rect x="430" y="270" width="24" height="14" fill="#3a3f36"/>` +
+    `<rect x="482" y="236" width="8" height="26" fill="#55606b"/><path d="M418 292H500" stroke="#2f3329" stroke-width="4"/>` +
+    `<circle cx="440" cy="292" r="9" fill="#3b3f36"/><circle cx="480" cy="292" r="9" fill="#3b3f36"/>` +
+    diff(...around(432, 240, 460, 262), `<rect x="434" y="246" width="24" height="16" rx="2" fill="#adb5bd"/><rect x="432" y="242" width="28" height="5" rx="2" fill="#8d99a6"/><circle cx="446" cy="240" r="3" fill="#55606b"/>`, '') +
+    time('', snowCap(462, 262, 18)) +
+    // Command cabin
+    `<rect x="590" y="240" width="130" height="60" fill="#a3a66a"/><path d="M582 242L655 212L728 242Z" fill="#4f5f2a"/>` +
+    `<rect x="700" y="206" width="10" height="30" fill="#7a3b22"/>` +
+    pane(640, 255, 28, 24, '#6b7046') +
+    pane(684, 255, 28, 24, '#6b7046') +
+    diff(...around(594, 254, 626, 300), door(610, 300, '#5c4a32'), door(610, 300, '#2a9d8f')) +
+    time('', roofSnow(655, 212, 73, 30)) +
+    // Watchtower
+    `<path d="M746 300L754 200M794 300L786 200M748 270L790 240M750 240L788 270" stroke="#6b4f3a" stroke-width="4"/>` +
+    `<rect x="740" y="170" width="56" height="30" fill="#8a7a4e"/><rect x="748" y="176" width="40" height="12" fill="#3a3f36"/>` +
+    `<path d="M734 172L768 150L802 172Z" fill="#4f5f2a"/>` +
+    time('', snowCap(736, 166, 64)) +
+    windsock(742, 150) +
+    // Middle row: truck, jeep, carrier, pond
+    cargoTruck(118, 385) +
+    diff(...around(208, 327, 224, 363), spareWheel(118, 385), '') +
+    time('', snowCap(82, 313, 128)) +
+    jeep(330, 385) +
+    diff(...around(264, 346, 288, 382), jerrycan(276, 381), '') +
+    jerrycan(394, 385, '#4f6b2f') +
+    apc(500, 388) +
+    diff(...around(520, 306, 554, 338), apcHatch(500, 388, false), apcHatch(500, 388, true)) +
+    pond(700, 380, 80, 22, time(false, true)) +
+    // Front row: tank, soldier, medical helicopter, sandbags and crates
+    tank(100, 482) +
+    diff(...around(134, 393, 202, 426), tankBarrel(100, 482, 56),
+      `<g transform="rotate(-15 136 418)">${tankBarrel(100, 482, 56)}</g>`) +
+    time('', snowCap(70, 410, 50)) +
+    `<ellipse cx="430" cy="474" rx="96" ry="20" fill="${time('#7da84e', '#dfe9f0')}"/><ellipse cx="430" cy="474" rx="84" ry="15" fill="none" stroke="#ffd23f" stroke-width="3"/>` +
+    helicopter(430, 478, '#e9ecef') +
+    tailRotor(430, 478) +
+    diff(...around(436, 428, 476, 468), redCross(456, 448), '') +
+    sandbags(735, 490) +
+    crate(784, 488, 26, '#8a7a4e') +
+    // Decor: the same in both seasons, snowed on in winter (grass and butterflies only in summer)
+    scaledAt(150, 100, 0.5, jet(150, 100, '#8d99a6', '#6c7884', false)) +
+    scaledAt(430, 132, 0.55, helicopter(430, 132) + tailRotor(430, 132)) +
+    cloud(620, 60, 0.45) +
+    extinguisher(232, 300) +
+    barrel(14, 300, '#4f6b2f') +
+    ladder(758, 300, 12, 100) +
+    time(grass(40, 495) + grass(330, 496) + butterfly(60, 392) + grass(690, 470), '') +
+    // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
+    extras({ extra, anim }, [
+      ['birds', 300, 70],
+      ['birds', 560, 80],
+    ]) +
+    trap(535, 245, 40, oak(535, 300, 0.9), bareTree(535, 300, 0.9), 'leaves') +
+    trap(718, 172, 36, '', smoke(704, 200), 'smoke') +
+    trap(683, 250, 35, '', icicles(650, 716, 242), 'icicles') +
+    trap(700, 380, 40, '', '', 'ice') +
+    trap(250, 445, 38, person(250, 480, '#6b7f3a'), winterPerson(250, 480, '#6b7f3a', false, '#4f5f2a'), 'clothes') +
+    trap(610, 438, 44, '', snowman(610, 480), 'snowman') +
+    time('', snowfall(225, 240, 44)),
 })

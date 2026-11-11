@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level218Redesign } from './level-218-redesign.ts'
 import { around, bench, bin, carriage, carriageWindows, chimney, clockFace, cloud, DUSK, glow, moon, pane, person, pigeon, poster, pot, sky, stars, sun } from './shapes.ts'
 
 /** Lamp hanging from the canopy at x. Bounds: x ±14 (lit: ±24), y from 252 to 296. */
@@ -18,6 +19,7 @@ export default svgLevel({
   title: 'railwayEvening',
   pair: 'day-night',
   parTimeSec: 125,
+  redesign: level218Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 330) +
     // Station house

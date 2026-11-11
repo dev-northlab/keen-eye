@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level216Redesign } from './level-216-redesign.ts'
 import { around, balloon, barrel, bench, bin, bird, bulbs, clockFace, cloud, crate, dog, door, DUSK, flowerBox, fruit, glow, lampHead, lampPost, moon, pane, person, pigeon, poster, pot, sack, sky, small, stall, stars, sun } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'marketSquare',
   pair: 'day-night',
   parTimeSec: 120,
+  redesign: level216Redesign,
   scene: ({ diff, time, trap, rand, extra, anim }) => {
     let cobbles = ''
     for (let i = 0; i < 40; i++) cobbles += `<ellipse cx="${(rand() * 800).toFixed(0)}" cy="${(310 + rand() * 185).toFixed(0)}" rx="9" ry="4" fill="#b8a585"/>`
