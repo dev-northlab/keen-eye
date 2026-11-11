@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level209Redesign } from './level-209-redesign.ts'
 import { barrel, bollard, bucket, buoy, cloud, crate, gull, icicles, lifeRing, pier, pine, pineSnow, rock, ropeCoil, rowboat, sack, sailboat, shell, sky, snowCap, snowfall, starfish, waves, winterSky } from './shapes.ts'
 
 /** Flag cloth on a pole at foot (x, y). Bounds: x from +2 to +30, y from −68 to −50. */
@@ -11,6 +12,7 @@ export default svgLevel({
   title: 'snowPier',
   pair: 'summer-winter',
   parTimeSec: 85,
+  redesign: level209Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 250), winterSky(250)) +
     `<path d="M0 250q120 -60 260 -40q90 14 160 40Z" fill="${time('#6aa86f', '#e9f0f5')}"/>` +

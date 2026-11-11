@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level202Redesign } from './level-202-redesign.ts'
 import { awning, bench, bin, bird, bollard, car, cityTree, cloud, cone, door, DUSK, flowerBox, glow, hangingSign, hydrant, lampHead, lampPost, moon, person, pigeon, poster, pot, roadSign, sky, street, sun, window, windowLight } from './shapes.ts'
 
 /** Headlight beam to the left of a car (city shapes) standing at (x, y). Bounds: x from −110 to −40, y from −28 to +12. */
@@ -12,6 +13,7 @@ export default svgLevel({
   title: 'duskStreet',
   pair: 'day-night',
   parTimeSec: 75,
+  redesign: level202Redesign,
   scene: ({ diff, time, trap, extra, anim }) => {
     let corner = ''
     for (const y of [146, 188, 230]) for (const x of [55, 100, 145]) if (x !== 100 || y !== 188) corner += window(x, y)

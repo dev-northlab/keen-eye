@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level206Redesign } from './level-206-redesign.ts'
 import { bareTree, barrel, bird, bucket, butterfly, cloud, crate, fence, flowers, grass, hayBale, hen, kennel, oak, pane, picket, pine, pineSnow, pond, rock, roofSnow, sack, sky, snowCap, snowfall, snowman, stump, vane, winterSky } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'snowFarm',
   pair: 'summer-winter',
   parTimeSec: 85,
+  redesign: level206Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 290), winterSky(290)) +
     cloud(250, 80, 0.7) +

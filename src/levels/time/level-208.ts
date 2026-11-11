@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level208Redesign } from './level-208-redesign.ts'
 import { bareTree, bird, birdHouse, bush, cabin, chimney, cloud, fern, fox, grass, logPile, mushroom, oak, pine, pineSnow, pond, rabbit, rock, signpost, sky, smoke, snowCap, snowfall, squirrel, stones, stump, winterSky } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'snowForest',
   pair: 'summer-winter',
   parTimeSec: 85,
+  redesign: level208Redesign,
   scene: ({ diff, time, trap, rand, extra, anim }) => {
     let back = ''
     let backSnow = ''
