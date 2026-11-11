@@ -3,7 +3,8 @@
 // (libaom-av1, cpu-used 4 — the setting checked on a phone with test level 1007). Transparent pictures (the icons, the
 // keys of redesigned levels) are small and stay WebP: they are copied as they are. A picture whose output is newer than
 // its source is skipped; `--force` encodes everything again. `levels/test/` is left out: the test levels keep their own
-// files to compare formats.
+// files to compare formats. The banner pictures (`banners/`) are scaled down to BANNER_WIDTH: `PhotoBanner` shows them
+// 280×112 CSS px, so 750×300 is about a phone's pixels, and fewer pixels decode faster.
 //
 // Picture B of a redesigned level with `patchesB` (levels/picture-style.ts `zonePatches`) is not encoded whole: its
 // cut-outs are, one per zone — B's pixels where they differ from A (grown a little and fading out, so no seam shows on
@@ -31,6 +32,8 @@ if (!SOURCE || !existsSync(SOURCE)) {
 const TARGET = 'public'
 const SKIP = join(SOURCE, 'levels', 'test')
 const only = paths.map((a) => join(SOURCE, a))
+const BANNERS = join(SOURCE, 'banners')
+const BANNER_WIDTH = 750
 
 /** Patched pictures B by their source path: the level's pictures. */
 const patched = new Map<string, LevelPictures>()
@@ -75,7 +78,8 @@ async function encode(source: string): Promise<string[]> {
   mkdirSync(dirname(output), { recursive: true })
   if (keepWebp) copyFileSync(source, output)
   else {
-    await run('ffmpeg', ['-v', 'error', '-y', '-i', source, '-c:v', 'libaom-av1', '-crf', '26', '-b:v', '0',
+    const scale = source.startsWith(`${BANNERS}/`) ? ['-vf', `scale='min(iw,${BANNER_WIDTH})':-2:flags=lanczos`] : []
+    await run('ffmpeg', ['-v', 'error', '-y', '-i', source, ...scale, '-c:v', 'libaom-av1', '-crf', '26', '-b:v', '0',
       '-still-picture', '1', '-cpu-used', '4', '-pix_fmt', 'yuv420p', output])
   }
   return [output]

@@ -26,7 +26,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm run encode-pictures -- <source folder> [--force] [<path> ...]` — `scripts/encode-pictures.ts`: the raster
   pictures' sources are WebP outside the project, in `~/Pictures/keen-eye` (same paths as in `public/`; edit and add
   pictures there); each is encoded into `public/` as AVIF crf 26 (ffmpeg libaom-av1, cpu-used 4), skipped when the
-  output is newer; transparent ones (`icons/`, the keys `levels/redesign/level-NNN-key.webp`) are copied as WebP;
+  output is newer; the banners (`banners/`) are scaled down to 750 px wide (shown 280×112 CSS px); transparent ones (`icons/`, the keys `levels/redesign/level-NNN-key.webp`) are copied as WebP;
   `levels/test/` is left out; picture B of a redesigned level with `patchesB` is cut into one WebP with alpha per zone
   (B where it differs from A, fading out, within the zone's circle + `PATCH_MARGIN`) instead of a whole AVIF
 - `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
