@@ -236,6 +236,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   the same number of differences as the scene (a motion difference becomes a still one: pictures do not move),
   zones on the picture, big enough and apart, and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).
+  A "time" level's pictures (e.g. `time/level-201-redesign.ts`) are A by day and B a whole picture of the other moment
+  (no `patchesB`) with its own `traps`: the drawn scene's hints in the same order, in the pictures' pixels.
 - Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
   key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on
   it before hit/miss (never a miss, never hinted), `GameScene`/`MemoryScene` report `onSecret`, `progress.keys` stores the
