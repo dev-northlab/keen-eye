@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Find it from memory",
-    "rules": "Remember the picture — you only get a few seconds. Then it changes: find what is different from memory. Up to 3 misses.",
+    "rules": "Remember the picture — you only get a few seconds. Then it changes: find what is different from memory. The hearts show how many misses you have.",
     "phases": {
       "show": "Remember the picture!",
       "search": "What has changed?",

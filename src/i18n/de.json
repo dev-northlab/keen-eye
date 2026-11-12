@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Aus dem Gedächtnis finden",
-    "rules": "Merk dir das Bild — du hast nur ein paar Sekunden. Dann verändert es sich: Finde die Unterschiede aus dem Gedächtnis. Höchstens 3 Fehler.",
+    "rules": "Merk dir das Bild — du hast nur ein paar Sekunden. Dann verändert es sich: Finde die Unterschiede aus dem Gedächtnis. Die Herzen zeigen, wie viele Fehler du machen darfst.",
     "phases": {
       "show": "Merk dir das Bild!",
       "search": "Was hat sich verändert?",

@@ -864,7 +864,7 @@
       "search": "Hvad er ændret?",
       "show": "Husk billedet!"
     },
-    "rules": "Husk billedet – du har kun få sekunder. Så ændrer det sig: find det, der er anderledes, ud fra hukommelsen. Højst 3 forkerte tryk.",
+    "rules": "Husk billedet – du har kun få sekunder. Så ændrer det sig: find det, der er anderledes, ud fra hukommelsen. Hjerterne viser, hvor mange forkerte tryk du har.",
     "task": "Find det ud fra hukommelsen"
   },
   "mode": {

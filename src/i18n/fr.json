@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Retrouve de mémoire",
-    "rules": "Mémorise l’image — tu n’as que quelques secondes. Puis elle change : trouve les différences de mémoire. 3 erreurs au maximum.",
+    "rules": "Mémorise l’image — tu n’as que quelques secondes. Puis elle change : trouve les différences de mémoire. Les cœurs montrent combien d’erreurs tu peux faire.",
     "phases": {
       "show": "Mémorise l’image !",
       "search": "Qu’est-ce qui a changé ?",

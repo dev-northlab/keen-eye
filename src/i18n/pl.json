@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Znajdź z pamięci",
-    "rules": "Zapamiętaj obrazek — masz tylko kilka sekund. Potem się zmieni: znajdź różnice z pamięci. Najwyżej 3 pomyłki.",
+    "rules": "Zapamiętaj obrazek — masz tylko kilka sekund. Potem się zmieni: znajdź różnice z pamięci. Serduszka pokazują, ile pomyłek możesz popełnić.",
     "phases": {
       "show": "Zapamiętaj obrazek!",
       "search": "Co się zmieniło?",

@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Zoek het uit je geheugen",
-    "rules": "Onthoud de afbeelding — je hebt maar een paar seconden. Daarna verandert ze: zoek de verschillen uit je geheugen. Hoogstens 3 missers.",
+    "rules": "Onthoud de afbeelding — je hebt maar een paar seconden. Daarna verandert ze: zoek de verschillen uit je geheugen. De hartjes laten zien hoeveel missers je hebt.",
     "phases": {
       "show": "Onthoud de afbeelding!",
       "search": "Wat is er veranderd?",

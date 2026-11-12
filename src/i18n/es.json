@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Encuéntralo de memoria",
-    "rules": "Memoriza la imagen: solo tienes unos segundos. Luego cambia: encuentra las diferencias de memoria. Máximo 3 fallos.",
+    "rules": "Memoriza la imagen: solo tienes unos segundos. Luego cambia: encuentra las diferencias de memoria. Los corazones muestran cuántos fallos te quedan.",
     "phases": {
       "show": "¡Memoriza la imagen!",
       "search": "¿Qué ha cambiado?",

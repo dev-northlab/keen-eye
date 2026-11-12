@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Găsește din memorie",
-    "rules": "Memorează imaginea — ai doar câteva secunde. Apoi se schimbă: găsește diferențele din memorie. Cel mult 3 greșeli.",
+    "rules": "Memorează imaginea — ai doar câteva secunde. Apoi se schimbă: găsește diferențele din memorie. Inimile arată câte greșeli poți face.",
     "phases": {
       "show": "Memorează imaginea!",
       "search": "Ce s-a schimbat?",

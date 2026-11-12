@@ -29,6 +29,7 @@ describe('difficulty modes (docs/difficulty-modes.md)', () => {
       assert.equal(MODE_RULES.normal.memoryPeeks(peeks), peeks)
       assert.equal(MODE_RULES.calm.memoryPeeks(peeks), 3)
     }
-    assert.deepEqual([MODE_RULES.calm.memoryMaxMisses, MODE_RULES.normal.memoryMaxMisses], [Infinity, 3])
+    assert.equal(MODE_RULES.calm.memoryMaxMisses(5), Infinity)
+    assert.deepEqual([3, 4, 5, 8].map((n) => MODE_RULES.normal.memoryMaxMisses(n)), [1, 2, 3, 6])
   })
 })

@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Najdi zpaměti",
-    "rules": "Zapamatuj si obrázek — máš jen pár sekund. Pak se změní: najdi rozdíly zpaměti. Nejvýš 3 chyby.",
+    "rules": "Zapamatuj si obrázek — máš jen pár sekund. Pak se změní: najdi rozdíly zpaměti. Srdíčka ukazují, kolik chyb si můžeš dovolit.",
     "phases": {
       "show": "Zapamatuj si obrázek!",
       "search": "Co se změnilo?",

@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Hafızadan bul",
-    "rules": "Resmi aklında tut — sadece birkaç saniyen var. Sonra değişir: farkları hafızadan bul. En fazla 3 hata.",
+    "rules": "Resmi aklında tut — sadece birkaç saniyen var. Sonra değişir: farkları hafızadan bul. Kalpler kaç hata yapabileceğini gösterir.",
     "phases": {
       "show": "Resmi aklında tut!",
       "search": "Ne değişti?",

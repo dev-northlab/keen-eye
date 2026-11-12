@@ -645,7 +645,7 @@
   },
   "memoryMode": {
     "task": "Emlékezetből",
-    "rules": "Jegyezd meg a képet — csak néhány másodperced van. Aztán megváltozik: keresd meg a különbségeket emlékezetből. Legfeljebb 3 tévedés.",
+    "rules": "Jegyezd meg a képet — csak néhány másodperced van. Aztán megváltozik: keresd meg a különbségeket emlékezetből. A szívek mutatják, hányszor tévedhetsz.",
     "phases": {
       "show": "Jegyezd meg a képet!",
       "search": "Mi változott?",
