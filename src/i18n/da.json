@@ -833,7 +833,8 @@
     "bumperCars": "Radiobiler",
     "autumnLeaves": "Efterårsblade",
     "christmasMorning": "Juledagsmorgen",
-    "sunnyStreet": "Solrig gade"
+    "sunnyStreet": "Solrig gade",
+    "gardenGate": "Ved havelågen"
   },
   "map": {
     "level": "Bane {n}",

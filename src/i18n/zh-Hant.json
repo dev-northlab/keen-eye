@@ -833,7 +833,8 @@
     "bumperCars": "碰碰車",
     "autumnLeaves": "秋天的落葉",
     "christmasMorning": "聖誕節的早晨",
-    "sunnyStreet": "陽光街道"
+    "sunnyStreet": "陽光街道",
+    "gardenGate": "花園門口"
   },
   "map": {
     "level": "第 {n} 關",

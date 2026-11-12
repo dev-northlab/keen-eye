@@ -833,7 +833,8 @@
     "bumperCars": "Radiobilar",
     "autumnLeaves": "Höstlöv",
     "christmasMorning": "Julmorgon",
-    "sunnyStreet": "Solig gata"
+    "sunnyStreet": "Solig gata",
+    "gardenGate": "Vid trädgårdsgrinden"
   },
   "map": {
     "level": "Nivå {n}",

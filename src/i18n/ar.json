@@ -833,7 +833,8 @@
     "bumperCars": "سيارات التصادم",
     "autumnLeaves": "أوراق الخريف",
     "christmasMorning": "صباح عيد الميلاد",
-    "sunnyStreet": "شارع مشمس"
+    "sunnyStreet": "شارع مشمس",
+    "gardenGate": "عند بوابة الحديقة"
   },
   "map": {
     "level": "المرحلة {n}",

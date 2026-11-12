@@ -16,5 +16,6 @@ import level711 from './level-711.ts'
 import level712 from './level-712.ts'
 import level713 from './level-713.ts'
 import level714 from './level-714.ts'
+import level715 from './level-715.ts'
 
-export const tinyBoyLevels: Level[] = [level701, level702, level703, level704, level705, level706, level707, level708, level709, level710, level711, level712, level713, level714]
+export const tinyBoyLevels: Level[] = [level701, level702, level703, level704, level705, level706, level707, level708, level709, level710, level711, level712, level713, level714, level715]

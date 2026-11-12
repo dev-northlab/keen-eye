@@ -833,7 +833,8 @@
     "bumperCars": "รถบั๊มพ์",
     "autumnLeaves": "ใบไม้ร่วง",
     "christmasMorning": "เช้าวันคริสต์มาส",
-    "sunnyStreet": "ถนนแดดจ้า"
+    "sunnyStreet": "ถนนแดดจ้า",
+    "gardenGate": "ที่ประตูรั้วสวน"
   },
   "map": {
     "level": "ด่าน {n}",

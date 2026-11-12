@@ -197,7 +197,7 @@ export const DETECTIVE_CHAPTER: Chapter = {
  */
 export const TINY_BOY_CHAPTER: Chapter = {
   id: 'tinyBoy',
-  ranges: [[701, 714]],
+  ranges: [[701, 715]],
   color: '#3a86ff',
   soft: '#e3edff',
   backdrop: 'tinyBoy',

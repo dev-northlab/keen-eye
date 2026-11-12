@@ -833,7 +833,8 @@
     "bumperCars": "Radiobiler",
     "autumnLeaves": "Høstløv",
     "christmasMorning": "Julemorgen",
-    "sunnyStreet": "Solfylt gate"
+    "sunnyStreet": "Solfylt gate",
+    "gardenGate": "Ved hageporten"
   },
   "map": {
     "level": "Brett {n}",

@@ -833,7 +833,8 @@
     "bumperCars": "Törmäilyautot",
     "autumnLeaves": "Syksyn lehdet",
     "christmasMorning": "Jouluaamu",
-    "sunnyStreet": "Aurinkoinen katu"
+    "sunnyStreet": "Aurinkoinen katu",
+    "gardenGate": "Puutarhaportilla"
   },
   "map": {
     "level": "Taso {n}",
