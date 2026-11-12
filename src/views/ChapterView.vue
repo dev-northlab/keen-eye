@@ -18,6 +18,8 @@ import { useSettingsStore } from '../stores/settings.ts'
 
 // Level grid of one chapter, or of a category ("time", "memory"). The router guard guarantees the chapter exists.
 // Developer mode also shows the hidden levels (levels/upcoming.ts) at their place, marked with a crossed-out eye.
+// The levels ahead lie in a fog: those reached and the one after them show, the next two fade out, the rest stay
+// hidden under a cloud — the player is not told how many there are (developer mode shows them all).
 
 const props = defineProps<{ chapter: string }>()
 const router = useRouter()
@@ -31,6 +33,21 @@ const levels = computed(() => (settings.developer ? chapterLevelsWithHidden(chap
 /** Levels still to come ("coming soon"); the "test" chapter's range is only room for test levels. */
 /** Levels the "random level" button picks from: the playable ones (reached and, if paid, bought). */
 const playable = computed(() => levels.value.filter((l) => progress.isUnlocked(l.id)))
+/** How many levels of the grid show: up to the last one reached, one more in full and two fading into the fog. */
+const shown = computed(() => {
+  const list = levels.value
+  if (settings.developer) return list.length
+  let last = -1
+  list.forEach((l, i) => {
+    if (progress.isCompleted(l.id) || progress.isReached(l.id)) last = i
+  })
+  return Math.min(list.length, last + 4)
+})
+const fogged = computed(() => shown.value < levels.value.length)
+/** The fog offers the full game once the player has come to the paid levels (a gold tile shows before it). */
+const paidAhead = computed(() => levels.value.slice(0, shown.value).some((l) => progress.needsPurchase(l.id)))
+/** The last two tiles before the fog fade into it. */
+const fade = (i: number) => (!fogged.value ? '' : i === shown.value - 2 ? 'fade-1' : i === shown.value - 1 ? 'fade-2' : '')
 const missing = chapter === TEST_CHAPTER ? 0 : chapterSize(chapter) - chapterLevels(chapter).length
 /** Pictures of a level get ready before it opens: the likely one now, a touched one as the finger lands. */
 const readyPictures = usePicturePreload(() => levels.value)
@@ -87,7 +104,7 @@ function tileLabel(level: Level) {
       </button>
       <RulesCard v-if="chapter.rules" :chapter="chapter" />
       <ul class="grid" :style="{ '--c': chapter.color }">
-        <li v-for="level in levels" :key="level.id">
+        <li v-for="(level, i) in levels.slice(0, shown)" :key="level.id" :class="fade(i)">
           <button
             class="tile"
             :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id), hidden: isUpcoming(level.id) }"
@@ -111,7 +128,29 @@ function tileLabel(level: Level) {
           </button>
         </li>
       </ul>
-      <p v-if="missing > 0" class="soon">{{ $t('map.soonLevels', { n: missing }) }}</p>
+      <!-- The levels still ahead, under a drifting cloud: no tiles, no numbers. -->
+      <div v-if="fogged" class="fog">
+        <svg class="clouds" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true">
+          <g class="drift">
+            <ellipse cx="60" cy="58" rx="80" ry="30" />
+            <ellipse cx="150" cy="42" rx="70" ry="34" />
+            <ellipse cx="250" cy="55" rx="90" ry="30" />
+            <ellipse cx="350" cy="40" rx="75" ry="34" />
+          </g>
+          <g class="drift late">
+            <ellipse cx="110" cy="70" rx="90" ry="24" />
+            <ellipse cx="300" cy="72" rx="110" ry="24" />
+          </g>
+        </svg>
+        <p>{{ $t('map.moreAhead') }}</p>
+        <button v-if="paidAhead" class="gold" @click="purchase.dialogOpen = true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3.5 8.5l4.3 3.6L12 5.5l4.2 6.6L20.5 8.5l-1.8 9.5H5.3Z" fill="currentColor" />
+          </svg>
+          {{ $t('map.paid') }}
+        </button>
+      </div>
+      <p v-if="missing > 0 && !fogged" class="soon">{{ $t('map.soonLevels', { n: missing }) }}</p>
     </main>
     <BackButton :on-back="toParent" />
   </div>
@@ -302,6 +341,85 @@ main {
 .lock {
   width: 16px;
   height: 16px;
+}
+
+/* The last tiles before the fog: half see-through, then almost gone. */
+.fade-1 {
+  opacity: 0.5;
+  filter: blur(0.6px);
+}
+
+.fade-2 {
+  opacity: 0.18;
+  filter: blur(1.5px);
+}
+
+.fog {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 56px 16px 18px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, transparent, var(--glass) 45%);
+  text-align: center;
+  overflow: hidden;
+}
+
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  fill: var(--glass);
+  filter: blur(6px);
+}
+
+.drift {
+  animation: drift 9s ease-in-out infinite alternate;
+}
+
+.drift.late {
+  animation-duration: 12s;
+  animation-direction: alternate-reverse;
+}
+
+.fog p {
+  position: relative;
+  margin: 0;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.gold {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffe48a, #f5b301);
+  color: #6b4a00;
+  font-weight: 800;
+  box-shadow:
+    inset 0 2px 0 rgb(255 255 255 / 0.5),
+    0 4px 0 #b07a00;
+}
+
+.gold svg {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-14px);
+  }
+  to {
+    transform: translateX(14px);
+  }
 }
 
 .soon {

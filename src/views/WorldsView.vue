@@ -5,7 +5,7 @@ import BackButton from '../components/BackButton.vue'
 import KeyBadge from '../components/KeyBadge.vue'
 import LevelId from '../components/LevelId.vue'
 import PhotoBanner from '../components/PhotoBanner.vue'
-import { CHAPTERS, chapterLevels, chapterSize, type Chapter } from '../levels/chapters.ts'
+import { CHAPTERS, chapterLevels, type Chapter } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { preloadBackdrop } from '../services/backdrops.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -29,7 +29,7 @@ const bannerColors = (chapter: Chapter) => ({
 
 const cards = CHAPTERS.map((chapter) => {
   const levels = chapterLevels(chapter)
-  return { chapter, levels, total: chapterSize(chapter), first: levels[0]?.id }
+  return { chapter, levels, first: levels[0]?.id }
 })
 
 const done = (c: (typeof cards)[number]) => c.levels.filter((l) => progress.isCompleted(l.id)).length
@@ -64,7 +64,7 @@ useBackButton(toModes)
             <template v-else-if="progress.needsPurchase(c.first)">{{ $t('map.paid') }}</template>
             <template v-else-if="!progress.isUnlocked(c.first)">{{ $t('map.locked') }}</template>
             <template v-else>
-              {{ $t('map.progress', { done: done(c), total: c.total }) }} · ★ {{ stars(c) }}
+              {{ $t('map.doneCount', { n: done(c) }) }} · ★ {{ stars(c) }}
             </template>
             <template #end>
               <LevelId :id="c.levels.map((l) => l.id)" />

@@ -43,7 +43,6 @@ const settings = useSettingsStore()
 const levels = CHAPTERS.flatMap(chapterLevels)
 const worlds = {
   ids: levels.map((l) => l.id),
-  total: CHAPTERS.reduce((s, c) => s + chapterSize(c), 0),
   done: () => levels.filter((l) => progress.isCompleted(l.id)).length,
   stars: () => levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0),
 }
@@ -86,7 +85,6 @@ const test = {
 
 const timeTravel = {
   ids: timeTravelLevels.map((l) => l.number),
-  total: timeTravelLevels.length,
   done: () => timeTravelLevels.filter((l) => l.id in progress.timeTravel).length,
   stars: () => timeTravelLevels.reduce((s, l) => s + (progress.timeTravel[l.id]?.stars ?? 0), 0),
 }
@@ -106,7 +104,7 @@ const timeTravel = {
             @click="router.push({ name: 'worlds' })"
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/worlds.webp`" alt="" /></template>
-            {{ $t('map.progress', { done: worlds.done(), total: worlds.total }) }} · ★ {{ worlds.stars() }}
+            {{ $t('map.doneCount', { n: worlds.done() }) }} · ★ {{ worlds.stars() }}
             <template #end><LevelId :id="worlds.ids" /><span class="key-space" aria-hidden="true" /></template>
           </PhotoBanner>
           <!-- Golden once the key of every world is found. -->
@@ -129,7 +127,7 @@ const timeTravel = {
             <template #icon><img :src="`${baseUrl}banners/tiny-boy-face.avif`" alt="" /></template>
             <template v-if="tinyBoy.total > 0">
               <!-- No stars in "tiny boy": only how many levels are won. -->
-              {{ $t('map.progress', { done: tinyBoy.done(), total: tinyBoy.total }) }}
+              {{ $t('map.doneCount', { n: tinyBoy.done() }) }}
             </template>
             <template v-else>{{ $t('map.tinyBoyText') }}</template>
           </PhotoBanner>
@@ -143,7 +141,7 @@ const timeTravel = {
             @click="router.push(c.to)"
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
-            {{ $t('map.progress', { done: c.totals.done(), total: c.totals.total }) }} · ★ {{ c.totals.stars() }}
+            {{ $t('map.doneCount', { n: c.totals.done() }) }} · ★ {{ c.totals.stars() }}
             <template #end><LevelId :id="c.totals.ids" /><span class="key-space" aria-hidden="true" /></template>
           </PhotoBanner>
           <KeyBadge class="key" :found="progress.hasKey(c.chapter.id)" :text="progress.hasKey(c.chapter.id) ? $t('secret.foundHere') : $t('secret.findHere')" />
@@ -157,7 +155,7 @@ const timeTravel = {
             @click="router.push({ name: 'eras' })"
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/eras.webp`" alt="" /></template>
-            {{ $t('map.progress', { done: timeTravel.done(), total: timeTravel.total }) }} · ★ {{ timeTravel.stars() }}
+            {{ $t('map.doneCount', { n: timeTravel.done() }) }} · ★ {{ timeTravel.stars() }}
             <template #end><LevelId :id="timeTravel.ids" /></template>
           </PhotoBanner>
         </li>
