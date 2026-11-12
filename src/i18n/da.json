@@ -831,7 +831,9 @@
     "fairHelicopter": "Helikopter i tivoli",
     "livingRoomToys": "Legetøj i stuen",
     "bumperCars": "Radiobiler",
-    "autumnLeaves": "Efterårsblade"
+    "autumnLeaves": "Efterårsblade",
+    "christmasMorning": "Juledagsmorgen",
+    "sunnyStreet": "Solrig gade"
   },
   "map": {
     "level": "Bane {n}",

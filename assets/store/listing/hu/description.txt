@@ -2,7 +2,7 @@ A két kép ugyanolyannak tűnik – pedig nem az. Keresd meg az összes külön
 
 Sok pálya részletes 3D képekkel is játszható: egy érintéssel válthatsz az élő rajzok és a 3D között.
 
-300 PÁLYA, 8 JÁTÉKMÓD
+302 PÁLYA, 8 JÁTÉKMÓD
 • Világok – 150 pálya a tanyán, a városban, az erdőben, a tengeren és a világűrben, 5–10 különbséggel
 • Idő – ugyanaz a hely reggel és este, nyáron és télen: találd meg, mi változott valójában
 • Memória – nézd meg a képet néhány másodpercig, aztán emlékezetből keresd meg a változásokat

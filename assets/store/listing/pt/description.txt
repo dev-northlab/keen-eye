@@ -2,7 +2,7 @@ Duas imagens parecem iguais, mas não são. Encontre todas as diferenças em cen
 
 Muitos níveis também têm imagens 3D detalhadas: troque entre desenhos animados e 3D com um toque.
 
-300 FASES, 8 JEITOS DE JOGAR
+302 FASES, 8 JEITOS DE JOGAR
 • Mundos – 150 fases na fazenda, na cidade, na floresta, no mar e no espaço, com 5 a 10 diferenças
 • Tempo – o mesmo lugar de manhã e à noite, no verão e no inverno: descubra o que mudou de verdade
 • Memória – observe a imagem por alguns segundos e encontre as mudanças de memória

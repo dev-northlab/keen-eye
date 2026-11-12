@@ -2,7 +2,7 @@ Dva obrázky vypadají stejně – ale nejsou. Najdi všechny rozdíly v ručně
 
 Mnoho úrovní má i podrobné 3D obrázky: mezi živými kresbami a 3D přepnete jedním dotykem.
 
-300 ÚROVNÍ, 8 ZPŮSOBŮ HRY
+302 ÚROVNÍ, 8 ZPŮSOBŮ HRY
 • Světy – 150 úrovní na farmě, ve městě, v lese, na moři a ve vesmíru, od 5 do 10 rozdílů
 • Čas – stejné místo ráno a večer, v létě a v zimě: najdi, co se opravdu změnilo
 • Paměť – zapamatuj si obrázek během pár sekund a najdi změny zpaměti

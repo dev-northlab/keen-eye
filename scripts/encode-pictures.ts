@@ -1,6 +1,8 @@
 // Encodes the game's pictures: a folder outside the project holds them as WebP (the sources, edited by hand, laid out as
-// in `public/`; on the developer's machine ~/Pictures/keen-eye), `public/` gets them at the same path as AVIF, crf 26
-// (libaom-av1, cpu-used 4 — the setting checked on a phone with the test levels). Transparent pictures (the icons, the
+// in `public/`; on the developer's machine ~/Pictures/keen-eye), `public/` gets them at the same path as AVIF, crf 30
+// (libaom-av1, cpu-used 4) after a light non-local means denoise (DENOISE: smooths the generated pictures' noise, keeps
+// fur and fabric texture). Pictures encoded before 2026-11-12 were crf 26 without denoising and stay so: they are
+// skipped while their sources are older — don't run `--force` over them. Transparent pictures (the icons, the
 // keys of redesigned levels) are small and stay WebP: they are copied as they are. A picture whose output is newer than
 // its source is skipped; `--force` encodes everything again. `levels/test/` is left out: the test levels keep their own
 // files to compare formats. The banner pictures (`banners/`) are scaled down to BANNER_WIDTH: `PhotoBanner` shows them
@@ -34,6 +36,8 @@ const SKIP = join(SOURCE, 'levels', 'test')
 const only = paths.map((a) => join(SOURCE, a))
 const BANNERS = join(SOURCE, 'banners')
 const BANNER_WIDTH = 750
+const CRF = '30'
+const DENOISE = 'nlmeans=s=1.5'
 
 /** Patched pictures B by their source path: the level's pictures. */
 const patched = new Map<string, LevelPictures>()
@@ -78,8 +82,8 @@ async function encode(source: string): Promise<string[]> {
   mkdirSync(dirname(output), { recursive: true })
   if (keepWebp) copyFileSync(source, output)
   else {
-    const scale = source.startsWith(`${BANNERS}/`) ? ['-vf', `scale='min(iw,${BANNER_WIDTH})':-2:flags=lanczos`] : []
-    await run('ffmpeg', ['-v', 'error', '-y', '-i', source, ...scale, '-c:v', 'libaom-av1', '-crf', '26', '-b:v', '0',
+    const scale = source.startsWith(`${BANNERS}/`) ? `,scale='min(iw,${BANNER_WIDTH})':-2:flags=lanczos` : ''
+    await run('ffmpeg', ['-v', 'error', '-y', '-i', source, '-vf', DENOISE + scale, '-c:v', 'libaom-av1', '-crf', CRF, '-b:v', '0',
       '-still-picture', '1', '-cpu-used', '4', '-pix_fmt', 'yuv420p', output])
   }
   return [output]
@@ -92,7 +96,8 @@ interface Pixels {
 }
 
 async function decode(file: string, w: number, h: number): Promise<Pixels> {
-  const { stdout } = await run('ffmpeg', ['-v', 'error', '-i', file, '-f', 'rawvideo', '-pix_fmt', 'rgba', '-'], {
+  // Denoised like the AVIF pictures, so a cut-out of B matches picture A around it.
+  const { stdout } = await run('ffmpeg', ['-v', 'error', '-i', file, '-vf', DENOISE, '-f', 'rawvideo', '-pix_fmt', 'rgba', '-'], {
     encoding: 'buffer',
     maxBuffer: w * h * 4 + 1024,
   })

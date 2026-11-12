@@ -831,7 +831,9 @@
     "fairHelicopter": "Helikopter di pasar malam",
     "livingRoomToys": "Mainan di ruang keluarga",
     "bumperCars": "Bom-bom car",
-    "autumnLeaves": "Daun musim gugur"
+    "autumnLeaves": "Daun musim gugur",
+    "christmasMorning": "Pagi Natal",
+    "sunnyStreet": "Jalan yang cerah"
   },
   "map": {
     "level": "Level {n}",

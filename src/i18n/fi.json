@@ -831,7 +831,9 @@
     "fairHelicopter": "Helikopteri tivolissa",
     "livingRoomToys": "Lelut olohuoneessa",
     "bumperCars": "Törmäilyautot",
-    "autumnLeaves": "Syksyn lehdet"
+    "autumnLeaves": "Syksyn lehdet",
+    "christmasMorning": "Jouluaamu",
+    "sunnyStreet": "Aurinkoinen katu"
   },
   "map": {
     "level": "Taso {n}",

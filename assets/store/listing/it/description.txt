@@ -2,7 +2,7 @@ Due immagini sembrano uguali, ma non lo sono. Trova tutte le differenze in scene
 
 Molti livelli hanno anche immagini 3D dettagliate: passa dai disegni animati al 3D con un tocco.
 
-300 LIVELLI, 8 MODI DI GIOCARE
+302 LIVELLI, 8 MODI DI GIOCARE
 • Mondi – 150 livelli in fattoria, in città, nel bosco, al mare e nello spazio, da 5 a 10 differenze
 • Il tempo – lo stesso luogo al mattino e alla sera, d'estate e d'inverno: trova cosa è cambiato davvero
 • Memoria – guarda l'immagine per pochi secondi, poi trova i cambiamenti a memoria

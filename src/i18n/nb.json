@@ -831,7 +831,9 @@
     "fairHelicopter": "Helikopter på tivoli",
     "livingRoomToys": "Leker i stua",
     "bumperCars": "Radiobiler",
-    "autumnLeaves": "Høstløv"
+    "autumnLeaves": "Høstløv",
+    "christmasMorning": "Julemorgen",
+    "sunnyStreet": "Solfylt gate"
   },
   "map": {
     "level": "Brett {n}",

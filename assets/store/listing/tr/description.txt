@@ -2,7 +2,7 @@
 
 Birçok bölüm ayrıntılı 3D resimlerle de oynanabilir: canlı çizimlerle 3D arasında tek dokunuşla geçiş yap.
 
-300 BÖLÜM, 8 OYUN TARZI
+302 BÖLÜM, 8 OYUN TARZI
 • Dünyalar – çiftlikte, şehirde, ormanda, denizde ve uzayda 150 bölüm, 5 ila 10 fark
 • Zaman – aynı yer sabah ve akşam, yaz ve kış: gerçekten neyin değiştiğini bul
 • Hafıza – resme birkaç saniye bak, sonra değişiklikleri hafızandan bul
