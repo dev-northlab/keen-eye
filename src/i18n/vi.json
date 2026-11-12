@@ -418,6 +418,7 @@
     "together": "Cùng tìm được: {found}/{total}",
     "turn": "Độ dài lượt",
     "turnHint": "Một lần sai cũng kết thúc lượt",
+    "bottleSpin": "Quay chai nào: ai đi trước?",
     "turnOf": "Lượt của {name}",
     "untilMiss": "Đến khi sai",
     "winner": "{name} thắng!",

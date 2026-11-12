@@ -173,6 +173,7 @@
     "levelTitle": "关卡",
     "differences": "{n} 处不同",
     "score": "{name}：{n}",
+    "bottleSpin": "转瓶子：谁先开始？",
     "turnOf": "轮到 {name}",
     "handOver": "请传递手机",
     "ready": "准备好了！",

@@ -9,13 +9,16 @@ import { CHAPTERS, chapterLevels, type Chapter } from '../levels/chapters.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { preloadBackdrop } from '../services/backdrops.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { usePurchaseStore } from '../stores/purchase.ts'
 
 // "Spot the difference" worlds: one picture banner per world (PhotoBanner in the world's colour, its picture
-// public/banners/world-<id>.avif); a banner opens the chapter's level grid (ChapterView).
+// public/banners/world-<id>.avif); a banner opens the chapter's level grid (ChapterView), or the full-game offer for a
+// world whose levels all need the purchase.
 // Each card shows whether the world's hidden key is found (docs/hidden-item-feature.md); a tap on the key says so.
 
 const router = useRouter()
 const progress = useProgressStore()
+const purchase = usePurchaseStore()
 const baseUrl = import.meta.env.BASE_URL
 
 /** The banner's gradient from the world's colour: lighter at the start, darker at the end. */
@@ -35,8 +38,11 @@ const cards = CHAPTERS.map((chapter) => {
 const done = (c: (typeof cards)[number]) => c.levels.filter((l) => progress.isCompleted(l.id)).length
 const stars = (c: (typeof cards)[number]) => c.levels.reduce((s, l) => s + (progress.records[l.id]?.stars ?? 0), 0)
 
-function open(chapter: Chapter) {
-  router.push({ name: 'chapter', params: { chapter: chapter.id } })
+/** A world whose levels all need the purchase (every world but the farm, until bought) offers the full game
+ * straight away: its grid would only hold gold tiles under the fog. */
+function open(c: (typeof cards)[number]) {
+  if (c.first !== undefined && progress.needsPurchase(c.first)) purchase.dialogOpen = true
+  else router.push({ name: 'chapter', params: { chapter: c.chapter.id } })
 }
 
 const toModes = () => router.push({ name: 'levels' })
@@ -57,7 +63,7 @@ useBackButton(toModes)
             :name="$t(`chapters.${c.chapter.id}`)"
             :disabled="!c.first"
             @pointerdown="preloadBackdrop(c.chapter.backdrop)"
-            @click="open(c.chapter)"
+            @click="open(c)"
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/${c.chapter.id}.webp`" alt="" /></template>
             <template v-if="!c.first">{{ $t('map.soon') }}</template>

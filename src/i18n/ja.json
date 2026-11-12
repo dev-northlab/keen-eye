@@ -173,6 +173,7 @@
     "levelTitle": "レベル",
     "differences": "まちがい {n} か所",
     "score": "{name}：{n}",
+    "bottleSpin": "ボトルを回そう：先攻はだれ？",
     "turnOf": "{name} の番",
     "handOver": "スマホを渡してね",
     "ready": "準備OK！",

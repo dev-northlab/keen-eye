@@ -418,6 +418,7 @@
     "together": "Hittat tillsammans: {found} av {total}",
     "turn": "Turens längd",
     "turnHint": "Ett misstag avslutar också turen",
+    "bottleSpin": "Vi snurrar flaskan: vem börjar?",
     "turnOf": "{name}s tur",
     "untilMiss": "Tills ett misstag",
     "winner": "{name} vinner!",

@@ -418,6 +418,7 @@
     "together": "وجدتم معًا: {found} من {total}",
     "turn": "مدة الدور",
     "turnHint": "الخطأ أيضًا ينهي الدور",
+    "bottleSpin": "ندير الزجاجة: من يبدأ أولًا؟",
     "turnOf": "دور {name}",
     "untilMiss": "حتى أول خطأ",
     "winner": "{name} فاز!",

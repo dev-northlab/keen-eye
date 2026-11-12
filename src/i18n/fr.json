@@ -173,6 +173,7 @@
     "levelTitle": "Niveau",
     "differences": "{n} différences",
     "score": "{name} : {n}",
+    "bottleSpin": "On fait tourner la bouteille : qui commence ?",
     "turnOf": "Au tour de {name}",
     "handOver": "Passe le téléphone",
     "ready": "Prêt !",

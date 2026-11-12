@@ -173,6 +173,7 @@
     "levelTitle": "Ниво",
     "differences": "Разлики: {n}",
     "score": "{name}: {n}",
+    "bottleSpin": "Въртим бутилката: кой започва пръв?",
     "turnOf": "Ред е на {name}",
     "handOver": "Подай телефона",
     "ready": "Готово!",

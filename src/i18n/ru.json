@@ -173,6 +173,7 @@
     "levelTitle": "Уровень",
     "differences": "отличий: {n}",
     "score": "{name}: {n}",
+    "bottleSpin": "Крутим бутылочку: кто ходит первым?",
     "turnOf": "Ходит {name}",
     "handOver": "Передай телефон",
     "ready": "Готов!",

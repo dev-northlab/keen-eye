@@ -173,6 +173,7 @@
     "levelTitle": "Livello",
     "differences": "{n} differenze",
     "score": "{name}: {n}",
+    "bottleSpin": "Giriamo la bottiglia: chi comincia?",
     "turnOf": "Tocca a {name}",
     "handOver": "Passa il telefono",
     "ready": "Pronto!",

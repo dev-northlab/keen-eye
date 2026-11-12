@@ -173,6 +173,7 @@
     "levelTitle": "레벨",
     "differences": "다른 곳 {n}개",
     "score": "{name}: {n}",
+    "bottleSpin": "병을 돌려요: 누가 먼저 할까요?",
     "turnOf": "{name} 차례",
     "handOver": "휴대폰을 넘겨 주세요",
     "ready": "준비 완료!",

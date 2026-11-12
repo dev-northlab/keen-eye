@@ -170,8 +170,8 @@ export const TRAVEL_CHAPTER: Chapter = {
 
 /**
  * "Detective" (docs/detective-mode.md, levels in `detective/`): cases of 5 scenes, each difference a
- * clue, then the player names the culprit (CaseView). The first case and "The missing chickens" (531–535,
- * listed first) are free.
+ * clue, then the player names the culprit (CaseView). Only "The missing chickens" (531–535, listed first) is free:
+ * one whole case to try every part of the mode, the rest need the full game.
  */
 export const DETECTIVE_CHAPTER: Chapter = {
   id: 'detective',
@@ -180,10 +180,7 @@ export const DETECTIVE_CHAPTER: Chapter = {
   soft: '#f6eadc',
   backdrop: 'city',
   rules: 'detective.rules',
-  free: [
-    [501, 505],
-    [531, 535],
-  ],
+  free: [[531, 535]],
   icon:
     `<path d="M8 40l4-14h24l4 14Z" fill="#8a5a2b"/><path d="M6 26h36" stroke="#5e3b1a" stroke-width="3" stroke-linecap="round"/>` +
     `<path d="M14 26q2-14 10-14t10 14" fill="#a8743f"/><path d="M14 22h20" stroke="#3b2a1a" stroke-width="3"/>` +
@@ -193,11 +190,13 @@ export const DETECTIVE_CHAPTER: Chapter = {
 
 /**
  * "Tiny boy" (`tiny-boy/`): spot the difference in Gemini pictures of one little boy at home (`kind: 'image'`),
- * listed as picture banners (TinyBoyView), not a grid. Open and paid like the "time" category; no key yet.
+ * listed as picture banners (TinyBoyView), not a grid. Open like the "time" category, but only its first level is
+ * free (the others need the full game); no key yet.
  */
 export const TINY_BOY_CHAPTER: Chapter = {
   id: 'tinyBoy',
   ranges: [[701, 715]],
+  free: [[701, 701]],
   color: '#3a86ff',
   soft: '#e3edff',
   backdrop: 'tinyBoy',

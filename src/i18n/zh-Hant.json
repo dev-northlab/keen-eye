@@ -418,6 +418,7 @@
     "together": "一起找到：{found} / {total}",
     "turn": "每輪時間",
     "turnHint": "出錯也會結束這一輪",
+    "bottleSpin": "轉瓶子：誰先開始？",
     "turnOf": "輪到 {name}",
     "untilMiss": "直到出錯",
     "winner": "{name} 獲勝！",

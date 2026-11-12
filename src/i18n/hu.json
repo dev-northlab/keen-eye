@@ -173,6 +173,7 @@
     "levelTitle": "Pálya",
     "differences": "{n} különbség",
     "score": "{name}: {n}",
+    "bottleSpin": "Pörgetjük az üveget: ki kezd?",
     "turnOf": "Soron: {name}",
     "handOver": "Add át a telefont",
     "ready": "Kész!",

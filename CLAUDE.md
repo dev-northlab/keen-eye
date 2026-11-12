@@ -56,7 +56,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
   `hit-test.ts`, `anachronism.ts`, `anachronism-scene.ts` ("find the odd one out", `docs/anachronism-mode.md`: screen →
   percent of the image and hitboxes; level JSON checks and the DOM-free round; `AnachronismScene`, one picture with the
-  same zoom, gestures, marks and miss lock), `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; tap events
+  same zoom, gestures, marks and miss lock), `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; hot-seat starts with
+  `MatchOptions.firstTurn`, chosen by a bottle `MatchView` spins between both characters; tap events
   `{ playerId, picture, x, y, t }` are hit-tested by the engine itself), `match-scene.ts` (`MatchScene`: clock,
   1 shared or 2 face-to-face boards, `Match`; duels have no zoom and count a tap when the finger touches),
   `memory-scene.ts` (`MemoryScene`: a "memory" round, `docs/memory-mode.md` — phases show A → curtain → search B alone
@@ -104,7 +105,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
   cases in `progress.solvedCases`, wrong accusations in `progress.caseGuesses`: 3 stars on the first try, one less per miss, `caseStars`;
   suspects crossed out as a note in `progress.struckSuspects`; `DetectiveCase.hard` (516–530): a miss names no clue and
-  no clue fits the culprit alone, `docs/detective-difficulty.md`); the first case and "The missing chickens" are free (`Chapter.free` ranges; a free case opens
+  no clue fits the culprit alone, `docs/detective-difficulty.md`); only "The missing chickens" is free (`Chapter.free` ranges; a free case opens
   without the case before it, `progress.isReached`), the rest need the purchase;
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
@@ -113,10 +114,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
-  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); open and paid like "time" (first 3 free);
+  the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); open like "time", but only its first level is free
+  (`Chapter.free`);
   `allLevels` = worlds + time + memory + travel + detective + tiny boy (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
-- `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (world banners, `/worlds`), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level;
+- `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (world banners, `/worlds`; a world whose levels all need the purchase opens the full-game offer, not its grid), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level;
   the levels ahead lie in a fog — those reached, one more and two fading tiles show, the rest stay under a cloud with no
   count, offering the full game once a gold tile shows; developer mode shows all),
   TimeTravel (eras of "find the odd one out"), AnachronismLevel (one of its levels), Travel (world map of "travel"), Passport (its stamps),

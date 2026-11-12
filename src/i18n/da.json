@@ -418,6 +418,7 @@
     "together": "Fundet sammen: {found} af {total}",
     "turn": "Turens længde",
     "turnHint": "En fejl afslutter også turen",
+    "bottleSpin": "Vi snurrer flasken: hvem starter?",
     "turnOf": "{name}s tur",
     "untilMiss": "Indtil en fejl",
     "winner": "{name} vinder!",

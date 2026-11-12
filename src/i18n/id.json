@@ -418,6 +418,7 @@
     "together": "Ditemukan bersama: {found} dari {total}",
     "turn": "Lama giliran",
     "turnHint": "Satu kesalahan juga mengakhiri giliran",
+    "bottleSpin": "Putar botolnya: siapa yang mulai duluan?",
     "turnOf": "Giliran {name}",
     "untilMiss": "Sampai ada kesalahan",
     "winner": "{name} menang!",

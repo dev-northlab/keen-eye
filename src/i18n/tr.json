@@ -173,6 +173,7 @@
     "levelTitle": "Bölüm",
     "differences": "{n} fark",
     "score": "{name}: {n}",
+    "bottleSpin": "Şişeyi çeviriyoruz: kim başlıyor?",
     "turnOf": "Sıra: {name}",
     "handOver": "Telefonu ver",
     "ready": "Hazır!",
