@@ -26,6 +26,12 @@
   --hint: #f2a900;
   --danger: #e5484d;
   --star-empty: #d6d6d6;
+  /* The suspects' "wanted" posters of a detective case: paper, ink and the paper's edge. */
+  --paper: #fbf1d6;
+  --paper-ink: #4a3216;
+  --paper-edge: #e3cd9c;
+  /* The round "alibi" stamp on a suspect cleared by a wrong guess. */
+  --alibi: #2f6fb0;
   /* Stars of normal mode (docs/difficulty-modes.md). */
   --star: #f5b301;
   /* Game modes (docs/difficulty-modes.md): the chosen switch button and the level's mode chip; white text on them. */
@@ -102,6 +108,10 @@ button.secondary {
   --hint: #d99a0b;
   --danger: #d6454a;
   --star-empty: #46546e;
+  --paper: #3b3427;
+  --paper-ink: #f3e6c8;
+  --paper-edge: #5a4b30;
+  --alibi: #8dbdf0;
   --star: #f5b301;
   --mode-calm: #2a7fa6;
   --mode-normal: #2a8f63;

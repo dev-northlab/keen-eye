@@ -2,7 +2,7 @@
 // browser and Vue APIs, so that the unit tests can run them.
 import type { Stars } from '../engine/types.ts'
 import { KEY_CHAPTERS } from '../levels/chapters.ts'
-import { caseById } from '../levels/detective/cases.ts'
+import { caseById, type DetectiveCase } from '../levels/detective/cases.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 
 export interface LevelRecord {
@@ -32,6 +32,25 @@ export const parseTimeTravel = (raw: unknown) => parseRecords(raw, (id) => timeT
 /** "Detective" cases solved, by id: only known cases, each once. */
 export const parseCases = (raw: unknown): string[] =>
   Array.isArray(raw) ? [...new Set(raw.filter((id): id is string => typeof id === 'string' && caseById(id) !== undefined))] : []
+
+/** Suspects per "detective" case: only known cases, and for each only its suspects passing `keep`, each once. */
+function parseSuspects(raw: unknown, keep: (c: DetectiveCase, suspect: string) => boolean): Record<string, string[]> {
+  const out: Record<string, string[]> = {}
+  if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) return out
+  for (const [id, list] of Object.entries(raw)) {
+    const c = caseById(id)
+    if (!c || !Array.isArray(list)) continue
+    const kept = [...new Set(list.filter((s): s is string => typeof s === 'string' && c.suspects.includes(s) && keep(c, s)))]
+    if (kept.length) out[id] = kept
+  }
+  return out
+}
+
+/** Wrong accusations per case (docs/detective-difficulty.md): innocent suspects only. */
+export const parseGuesses = (raw: unknown) => parseSuspects(raw, (c, s) => s !== c.culprit)
+
+/** Suspects the player crossed out in the notebook (docs/detective-difficulty.md): any suspect of the case. */
+export const parseStruck = (raw: unknown) => parseSuspects(raw, () => true)
 
 /** Hidden keys found (docs/hidden-item-feature.md), by chapter id: only chapters that hide one, each once. */
 export const parseKeys = (raw: unknown): string[] =>

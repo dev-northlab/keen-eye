@@ -4,6 +4,7 @@ import BackButton from '../components/BackButton.vue'
 import LevelId from '../components/LevelId.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import RulesCard from '../components/RulesCard.vue'
+import StarRating from '../components/StarRating.vue'
 import type { Level } from '../engine/types.ts'
 import { DETECTIVE_CHAPTER } from '../levels/chapters.ts'
 import { CASES, type DetectiveCase } from '../levels/detective/cases.ts'
@@ -47,6 +48,7 @@ function status(c: DetectiveCase, scenes: Level[]) {
               <span class="sub">
                 <span class="chip">{{ $t(`detective.status.${status(c, scenes)}`) }}</span>
                 {{ $t('map.progress', { done: scenes.filter((l) => progress.isCompleted(l.id)).length, total: scenes.length }) }}
+                <StarRating v-if="progress.isCaseSolved(c.id)" :stars="progress.caseStarsOf(c.id)" :size="14" />
               </span>
             </span>
           </button>
