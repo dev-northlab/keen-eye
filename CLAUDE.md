@@ -80,8 +80,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks) in portrait
   pictures 500×750 (`MEMORY_VIEWBOX`; the reveal puts A and B side by side), 6–10 big
-  objects among 15 small decor ones (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
-  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`), and 331–340 the ten hardest, 7 then 8 changes
+  objects among 15 small decor ones (`memory/shapes.ts`), 3 changes shown 5 then 4 s (301–310), 4 shown 3 s (311–315), then 316–330 busier scenes (12–18 objects) with
+  4 changes for 5 s and 5 for 4 s (`difficulty.ts` `showSeconds`), and 331–340 the ten hardest, 7 then 8 changes
   for 5 s, never turned, hidden until released in `upcoming.ts`; a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
@@ -227,7 +227,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
   every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
-  140, 145, 146, 304 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
+  140, 145, 146, 304, 305 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet, a slide), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
   and in the toolbar of a level that has them) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a

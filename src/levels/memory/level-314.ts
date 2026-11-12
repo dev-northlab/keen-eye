@@ -11,13 +11,13 @@ export default memoryLevel({
     garland(20, 480, 24, ['#e63946', '#ffb703', '#3fa46f', '#3a86ff', '#8338ec', '#ff6b8b', '#ffd23f', '#4dabf7']) +
     diff(...around(60, 142, 120, 290), partyBalloon(90, 180, '#e63946'), partyBalloon(90, 180, '#3a86ff')) +
     partyBalloon(215, 150, '#ffd23f') +
-    diff(...around(312, 112, 468, 198), painting(320, 120, 100, 70, '#3a86ff'), painting(360, 120, 100, 70, '#3a86ff')) +
+    painting(320, 120, 100, 70, '#3a86ff') +
     table(30, 470, 560, 690, '#f4efe6') +
     cake(250, 554, '#ff8fb1') +
     candle(230, 458, '#3a86ff') +
     candle(250, 458, '#3a86ff') +
     diff(...around(222, 416, 278, 458), candle(270, 458, '#3a86ff'), '') +
-    diff(...around(66, 510, 134, 554), cup(100, 554, '#3fa46f'), cup(100, 554, '#ff6b8b')) +
+    cup(100, 554, '#3fa46f') +
     diff(...around(370, 478, 430, 554), gift(400, 554, 60, '#3a86ff', '#ffd23f'), '') +
     gift(430, 738, 70, '#ff6b8b', '#ffffff') +
     // Decor: small things that fill the room, the same in both pictures

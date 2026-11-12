@@ -23,7 +23,7 @@ export default memoryLevel({
     windowPane(46, 266, 60, 50) +
     windowPane(174, 266, 60, 50) +
     `<rect x="120" y="406" width="40" height="64" rx="4" fill="#7a4e33"/><rect x="62" y="410" width="44" height="40" fill="#bde3f2"/><rect x="174" y="410" width="44" height="40" fill="#bde3f2"/>` +
-    diff(...around(50, 350, 230, 396), stallAwning(140, 350, 160, '#e63946'), stallAwning(140, 350, 160, '#3fa46f')) +
+    stallAwning(140, 350, 160, '#e63946') +
     // Tall building on the right
     `<rect x="290" y="60" width="190" height="410" fill="#7aa6d6"/>` +
     windows() +

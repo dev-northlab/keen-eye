@@ -42,5 +42,5 @@ export default memoryLevel({
     grass(30, 520) +
     stones(380, 728) +
     rabbit(40, 690) +
-    diff(...around(284, 556, 452, 620), wateringCan(330, 620, '#ffb703'), wateringCan(390, 620, '#ffb703')),
+    wateringCan(330, 620, '#ffb703'),
 })

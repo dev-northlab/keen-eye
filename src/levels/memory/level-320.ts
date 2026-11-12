@@ -53,7 +53,7 @@ export default memoryLevel({
     drum(220, 440) +
     dollhouse(380, 440) +
     // Third shelf
-    diff(...around(75, 531, 185, 580), big(130, 580, 1.3, car(0, 0, '#3fa46f')), big(130, 580, 1.3, car(0, 0, '#8338ec'))) +
+    big(130, 580, 1.3, car(0, 0, '#3fa46f')) +
     diff(...around(278, 536, 322, 580, 30), '', big(300, 580, 1.8, ball(0, 0, '#ff6b8b'))) +
     books(395, 580, ['#ff6b8b', '#4dabf7', '#ffd23f']) +
     // Bottom shelf

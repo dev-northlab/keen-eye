@@ -10,7 +10,7 @@ export default memoryLevel({
     `<rect width="500" height="750" fill="#1b1f4b"/>` +
     starField(rand, 0, 460, 50, 500) +
     diff(...around(68, 70, 212, 150), planet(140, 110, 40, '#ff9f43'), planet(140, 110, 40, '#ff9f43', '#ffd23f')) +
-    diff(...around(176, 228, 354, 274), big(230, 260, 1.6, ufo(0, 0)), big(300, 260, 1.6, ufo(0, 0))) +
+    big(230, 260, 1.6, ufo(0, 0)) +
     `<path d="M0 470Q125 440 250 460T500 450V750H0Z" fill="#8f89a8"/>` +
     crater(130, 680, 50) +
     crater(385, 612, 34) +

@@ -28,7 +28,7 @@ export default memoryLevel({
     roundTree(90, 330, '#f28c28') +
     big(215, 330, 0.7, roundTree(0, 0, '#f2c14e')) +
     roundTree(390, 340, diff(...around(310, 120, 470, 256), '#d64545', '#f2c14e')) +
-    diff(...around(206, 36, 254, 154), kite(230, 70, '#3a86ff'), kite(230, 70, '#e63946')) +
+    kite(230, 70, '#3a86ff') +
     `<path d="M230 104Q300 330 392 552" stroke="#6b766f" stroke-width="1.5" fill="none"/>` +
     leaf(330, 60, '#f28c28', 20) +
     leaf(130, 70, '#d64545', -30) +

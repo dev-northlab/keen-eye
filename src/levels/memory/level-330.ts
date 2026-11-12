@@ -71,7 +71,7 @@ export default memoryLevel({
         `<path d="M580 400L670 280L760 400ZM600 300L670 190L740 300ZM620 200L670 110L720 200Z" fill="#2f7d55"/>` +
         `<path d="M600 380Q670 350 740 370M615 285Q670 260 725 275M635 190Q670 175 705 185" stroke="#ffd23f" stroke-width="3" fill="none"/>` +
         diff(...around(378, 154, 422, 198), star(670, 96, 22, '#ffd23f'), star(670, 96, 22, '#e63946')) +
-        diff(...around(350, 396, 370, 420, 30), ornament(630, 330, '#e63946'), ornament(630, 330, '#3a86ff')) +
+        ornament(630, 330, '#e63946') +
         ornament(705, 352, '#ffd23f') +
         ornament(670, 250, '#3a86ff') +
         ornament(720, 265, '#e63946') +

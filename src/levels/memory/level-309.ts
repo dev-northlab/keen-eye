@@ -30,7 +30,7 @@ export default memoryLevel({
     big(25, 650, 2, seaweed(0, 0)) +
     big(250, 640, 2, coral(0, 0, '#ff6b8b')) +
     big(250, 715, 2.2, starfish(0, -14, '#ff9f43')) +
-    diff(...around(80, 644, 180, 720), chest(130, 720), '') +
+    chest(130, 720) +
     big(475, 650, 2, seaweed(0, 0, 1, '#3fa46f')) +
     diff(...around(332, 628, 428, 700), big(380, 700, 2, octopus(0, 0, '#8338ec')), big(380, 700, 2, octopus(0, 0, '#e63946'))) +
     // Decor: small things that fill the scene, the same in both pictures

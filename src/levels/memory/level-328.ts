@@ -29,7 +29,7 @@ export default memoryLevel({
   scene: ({ diff }) =>
     `<rect width="500" height="560" fill="#d9b48a"/><path d="${Array.from({ length: 19 }, (_, i) => `M0 ${i * 30 + 15}H500`).join('')}" stroke="#c49a6c" stroke-width="2"/>` +
     `<rect y="560" width="500" height="190" fill="#7d6a5a"/>` +
-    diff(250, 50, 50, hangingLamp(250, 50, '#e63946'), hangingLamp(250, 50, '#3a86ff')) +
+    hangingLamp(250, 50, '#e63946') +
     // Ladder
     `<path d="M30 730L70 370M80 730L120 370" stroke="#a0703f" stroke-width="8"/><path d="M38 670h50M45 610h50M52 550h50M58 490h50M65 430h50" stroke="#a0703f" stroke-width="6"/>` +
     // Pegboard with tools

@@ -56,7 +56,7 @@ export default memoryLevel({
     // Jar shelf
     `<rect x="200" y="330" width="270" height="10" fill="#8a5a33"/><path d="M220 340l12 16M450 340l-12 16" stroke="#8a5a33" stroke-width="5"/>` +
     jar(240, 330, '#e63946') +
-    diff(...around(296, 266, 344, 330), jar(320, 330, '#ffb703'), jar(320, 330, '#8338ec')) +
+    jar(320, 330, '#ffb703') +
     jar(400, 330, '#e63946') +
     // Counter with a glass display case
     `<rect x="30" y="430" width="440" height="150" rx="6" fill="#c98b5a"/><path d="M50 460h400M50 550h400" stroke="#a0703f" stroke-width="5"/>` +
