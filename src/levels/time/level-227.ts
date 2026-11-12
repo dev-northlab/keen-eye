@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level227Redesign } from './level-227-redesign.ts'
 import { around, bareTree, barrel, bird, bucket, bush, butterfly, chimney, cloud, crate, fence, grass, hayBale, hen, house, icicles, kennel, logPile, oak, pane, picket, pine, pineSnow, pond, roofSnow, sack, sheep, sky, small, smoke, snowCap, snowfall, stones, sunflower, tractor, vane, winterSky } from './shapes.ts'
 
 export default svgLevel({
@@ -8,6 +9,7 @@ export default svgLevel({
   title: 'farmyardSeasons',
   pair: 'summer-winter',
   parTimeSec: 150,
+  redesign: level227Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 270), winterSky(270)) +
     `<rect y="270" width="800" height="230" fill="${time('#9ccc65', '#f4f8fb')}"/>` +

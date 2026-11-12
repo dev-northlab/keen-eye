@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level225Redesign } from './level-225-redesign.ts'
 import { around, bareTree, barrel, butterfly, cloud, crate, door, grass, icicles, mountains, oak, pane, person, pond, roofSnow, sky, smoke, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
 import {
   apc,
@@ -35,6 +36,7 @@ export default svgLevel({
   title: 'armyCamp',
   pair: 'summer-winter',
   parTimeSec: 140,
+  redesign: level225Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 230), winterSky(230)) +
     mountains(230, time(false, true)) +

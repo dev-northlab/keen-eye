@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level226Redesign } from './level-226-redesign.ts'
 import { around, bench, bin, bird, clockFace, cloud, door, DUSK, flowerBox, fountain, glow, hangingSign, lampHead, lampPost, moon, pane, parasol, person, pigeon, pot, sky, small, stars, sun } from './shapes.ts'
 
 /** Café table; (x, y) = ground center. Bounds: x ±22, y from −36 to 0. */
@@ -12,6 +13,7 @@ export default svgLevel({
   title: 'oldTownSquare',
   pair: 'day-night',
   parTimeSec: 150,
+  redesign: level226Redesign,
   scene: ({ diff, time, trap, rand, extra, anim }) => {
     let cobbles = ''
     for (let i = 0; i < 46; i++) cobbles += `<ellipse cx="${(rand() * 800).toFixed(0)}" cy="${(310 + rand() * 185).toFixed(0)}" rx="9" ry="4" fill="#b8a585"/>`
