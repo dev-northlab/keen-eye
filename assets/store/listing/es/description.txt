@@ -1,6 +1,8 @@
 Dos imágenes parecen iguales, pero no lo son. Encuentra todas las diferencias en escenas dibujadas a mano que cobran vida: las nubes se mueven, los barcos se mecen sobre las olas, los pájaros vuelan y algunas diferencias se esconden en el propio movimiento.
 
-298 NIVELES, 8 FORMAS DE JUGAR
+Muchos niveles también tienen imágenes 3D detalladas: cambia entre los dibujos animados y el 3D con un toque.
+
+302 NIVELES, 8 FORMAS DE JUGAR
 • Mundos: 150 niveles en la granja, la ciudad, el bosque, el mar y el espacio, con 5 a 10 diferencias
 • El tiempo: el mismo lugar por la mañana y por la tarde, en verano y en invierno; encuentra lo que de verdad cambió
 • Memoria: observa la imagen unos segundos y encuentra los cambios de memoria
@@ -14,7 +16,6 @@ PARA TODA LA FAMILIA
 • Niños y mayores juegan juntos: modo tranquilo para los más pequeños
 • Modo tranquilo: sin cronómetro ni errores, 3 pistas gratis en cada nivel
 • Zoom con dos dedos en ambas imágenes a la vez
-• Imágenes 3D o dibujos clásicos: cámbialo con un toque
 • Llaves doradas escondidas abren una cámara del tesoro extra
 • Tema claro y oscuro, música y sonidos
 • 32 idiomas

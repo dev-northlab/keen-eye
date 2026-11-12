@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import FoundSlots from '../components/FoundSlots.vue'
 import LevelId from '../components/LevelId.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
+import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import SecretFound from '../components/SecretFound.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import StarRating from '../components/StarRating.vue'
@@ -14,6 +15,7 @@ import { MemoryScene, type MemoryPhase, type MemoryResult } from '../engine/memo
 import { MODE_RULES, type GameMode } from '../engine/rules.ts'
 import { levelNumber, levelsScreen, nextLevel as nextLevelOf } from '../levels/chapters.ts'
 import { levelById } from '../levels/index.ts'
+import { styledLevel } from '../levels/picture-style.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
@@ -102,7 +104,8 @@ function start() {
   playMusic(calm.value ? 'calm' : 'level')
   scene = new MemoryScene(
     board.value!,
-    level,
+    // The picture style of this attempt (levels/picture-style.ts): the same number of changes either way.
+    styledLevel(level, settings.pictureStyle),
     {
       onPhase: (p, ms) => {
         phase.value = p
@@ -142,6 +145,14 @@ function start() {
     },
   )
 }
+
+/** A level with redesigned pictures shows the picture style switch. */
+const styleSwitch = !!level.redesign
+// Another picture style has other zones: the attempt starts over in it.
+watch(
+  () => settings.pictureStyle,
+  () => start(),
+)
 
 /** The settings are closed: another mode chosen in them starts the level over in that mode. */
 function closeSettings() {
@@ -276,6 +287,7 @@ onBeforeUnmount(() => {
     </section>
 
     <footer v-else-if="!result" class="toolbar">
+      <PictureStyleSwitch v-if="styleSwitch" class="style-switch" />
       <ToolButton
         v-if="hasPeeks"
         tone="hint"
@@ -465,6 +477,10 @@ onBeforeUnmount(() => {
   justify-content: center;
   gap: 8px;
   padding: 6px 10px 10px;
+}
+
+.style-switch {
+  align-self: center;
 }
 
 /* The result card slides up under the pictures with a little bounce, a glow at its top in the result's colour

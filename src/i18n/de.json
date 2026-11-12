@@ -586,7 +586,11 @@
     "parkPushchair": "Im Kinderwagen im Park",
     "chalkDrawings": "Kreidebilder",
     "fairHelicopter": "Hubschrauber auf dem Rummel",
-    "livingRoomToys": "Spielzeug im Wohnzimmer"
+    "livingRoomToys": "Spielzeug im Wohnzimmer",
+    "bumperCars": "Autoscooter",
+    "autumnLeaves": "Herbstlaub",
+    "christmasMorning": "Weihnachtsmorgen",
+    "sunnyStreet": "Sonnige Straße"
   },
   "mode": {
     "label": "Modus",

@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level301Redesign } from './level-301-redesign.ts'
 import { ball, cat, pot, sack } from '../time/shapes.ts'
 import { around, big, books, bowl, cup, curtains, flowerVase, fruit, glassJar, hangingLamp, mug, painting, pottedPlant, room, shelf, slipperPair, table, teapot, wallClock, windowPane } from './shapes.ts'
 
@@ -6,6 +7,7 @@ export default memoryLevel({
   id: 301,
   title: 'memoryKitchen',
   showSeconds: 5,
+  redesign: level301Redesign,
   scene: ({ diff }) =>
     room(500, '#ffe8c2', '#c98f5a') +
     windowPane(50, 70, 180, 150) +

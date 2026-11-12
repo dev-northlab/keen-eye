@@ -586,7 +586,11 @@
     "parkPushchair": "पार्क में बच्चा गाड़ी",
     "chalkDrawings": "चॉक से चित्र",
     "fairHelicopter": "मेले का हेलिकॉप्टर",
-    "livingRoomToys": "बैठक में खिलौने"
+    "livingRoomToys": "बैठक में खिलौने",
+    "bumperCars": "टक्कर वाली गाड़ियाँ",
+    "autumnLeaves": "पतझड़ के पत्ते",
+    "christmasMorning": "क्रिसमस की सुबह",
+    "sunnyStreet": "धूप भरी गली"
   },
   "mode": {
     "label": "मोड",

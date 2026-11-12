@@ -25,8 +25,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `scripts/make-icons.ts`; the iOS 1024 px icon is written without an alpha channel (App Store requirement)
 - `npm run encode-pictures -- <source folder> [--force] [<path> ...]` — `scripts/encode-pictures.ts`: the raster
   pictures' sources are WebP outside the project, in `~/Pictures/keen-eye` (same paths as in `public/`; edit and add
-  pictures there); each is encoded into `public/` as AVIF crf 26 (ffmpeg libaom-av1, cpu-used 4), skipped when the
-  output is newer; the banners (`banners/`) are scaled down to 750 px wide (shown 280×112 CSS px); transparent ones (`icons/`, the keys `levels/redesign/level-NNN-key.webp`) are copied as WebP;
+  pictures there); each is encoded into `public/` as AVIF crf 30 after a light denoise (`nlmeans=s=1.5`; ffmpeg libaom-av1, cpu-used 4),
+  skipped when the output is newer — pictures encoded before 2026-11-12 stay crf 26 without denoising, never `--force` them; the banners (`banners/`) are scaled down to 750 px wide (shown 280×112 CSS px); transparent ones (`icons/`, the keys `levels/redesign/level-NNN-key.webp`) are copied as WebP;
   `levels/test/` is left out; picture B of a redesigned level with `patchesB` is cut into one WebP with alpha per zone
   (B where it differs from A, fading out, within the zone's circle + `PATCH_MARGIN`) instead of a whole AVIF
 - `npm run store-screenshots [-- <locale> ...]` — build + `scripts/store-screenshots.ts`: plays the build in the
@@ -199,7 +199,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
   `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
   store texts. The "test" chapter (`TEST_CHAPTER`, ids 1001–1100, `levels/test/`) lives there for good:
-  picture pairs tried out in developer mode (a banner at the end of the game modes screen), `kind: 'image'` levels
+  picture pairs tried out in developer mode (a banner at the end of the game modes screen while it has any; empty now), `kind: 'image'` levels
   with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels), and
   `testLabels` (format, size, file size of A and B) that `LevelView` shows over the pictures. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
@@ -227,9 +227,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
   every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
-  140, 145, 146 (B's change reaches far past its zone: a beam, smoke, a tail, a fern), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
-  and in the toolbar of a level that has them) picks them: `LevelView` reads it as an
-  attempt starts and starts over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
+  140, 145, 146, 304 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
+  and in the toolbar of a level that has them) picks them: `LevelView` and `MemoryLevelView` read it as an
+  attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per season and day/night, `public/backdrops/meadow-<season>-<day|night>.avif`, and every world's
   backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.avif`, space into one `space.avif` (dark in both themes). `check-levels` checks the files,
@@ -238,6 +238,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).
   A "time" level's pictures (e.g. `time/level-201-redesign.ts`) are A by day and B a whole picture of the other moment
   (no `patchesB`) with its own `traps`: the drawn scene's hints in the same order, in the pictures' pixels.
+  "Memory" pictures (e.g. `memory/level-301-redesign.ts`, passed to `memoryLevel`) are portrait 2:3 like the scene, with
+  its big changes (prompts `PROMPTS-301-305.md` of the kit); a move's zone covers both places there too.
 - Hidden keys (`docs/hidden-item-feature.md`): one level of every world and category (`KEY_CHAPTERS`) draws a golden
   key with the scene's `secret(x, y, angle?)` → `Level.secret` (both pictures; "memory": B only). `Board` takes a tap on
   it before hit/miss (never a miss, never hinted), `GameScene`/`MemoryScene` report `onSecret`, `progress.keys` stores the

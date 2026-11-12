@@ -185,7 +185,14 @@ export const MEMORY_VIEWBOX = { w: 500, h: 750 }
  * "Memory" level (docs/memory-mode.md), chapter 'memory': A is shown for `showSeconds`, then B alone;
  * `peeks` extra looks at A (default 1). The stars count finds, misses and looks, not time.
  */
-export const memoryLevel = (def: { id: number; title: string; showSeconds: number; peeks?: number; scene: SvgLevelDef['scene'] }) =>
+export const memoryLevel = (def: {
+  id: number
+  title: string
+  showSeconds: number
+  peeks?: number
+  redesign?: LevelPictures
+  scene: SvgLevelDef['scene']
+}) =>
   svgLevel({
     id: def.id,
     viewBox: MEMORY_VIEWBOX,
@@ -194,6 +201,7 @@ export const memoryLevel = (def: { id: number; title: string; showSeconds: numbe
     parTimeSec: 0,
     multiplayerReady: false,
     memory: { showSeconds: def.showSeconds, peeks: def.peeks ?? 1 },
+    redesign: def.redesign,
     scene: def.scene,
   })
 

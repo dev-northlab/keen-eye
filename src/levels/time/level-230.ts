@@ -1,5 +1,6 @@
 import { svgLevel } from '../helpers.ts'
 import { around, bench, bin, bird, bus, car, cloud, cone, dog, door, DUSK, flowerBox, hydrant, lampHead, lampPost, moon, person, pigeon, pot, roadSign, sky, stars, sun } from './shapes.ts'
+import { level230Redesign } from './level-230-redesign.ts'
 
 /** Grid of office windows from (x0, y0): cols × rows, 14 × 18 each, 28 and 34 apart; `skip` = "col,row" keys. */
 const officeWindows = (x0: number, y0: number, cols: number, rows: number, glass: string, skip: string[] = []) => {
@@ -15,6 +16,7 @@ export default svgLevel({
   title: 'downtown',
   pair: 'day-night',
   parTimeSec: 155,
+  redesign: level230Redesign,
   scene: ({ diff, time, trap }) =>
     sky(time(false, true), 300) +
     // Towers

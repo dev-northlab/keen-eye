@@ -586,7 +586,11 @@
     "parkPushchair": "こうえんのベビーカー",
     "chalkDrawings": "チョークのおえかき",
     "fairHelicopter": "ゆうえんちのヘリコプター",
-    "livingRoomToys": "リビングのおもちゃ"
+    "livingRoomToys": "リビングのおもちゃ",
+    "bumperCars": "バンパーカー",
+    "autumnLeaves": "秋の落ち葉",
+    "christmasMorning": "クリスマスの朝",
+    "sunnyStreet": "晴れた通り"
   },
   "mode": {
     "label": "モード",

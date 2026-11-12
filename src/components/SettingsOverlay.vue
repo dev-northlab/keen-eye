@@ -20,7 +20,8 @@ const emit = defineEmits<{ close: [] }>()
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding-bottom: 16px;
+  /* Less room around the list than other dialogs: the rows have their own padding. */
+  padding: 20px 14px 14px;
 }
 
 .panel {
@@ -31,9 +32,10 @@ const emit = defineEmits<{ close: [] }>()
   text-align: start;
 }
 
-/* Rows of the list stand out from the dialog's own panel colour. */
+/* Rows of the list stand out from the dialog's own panel colour, a little tighter than on the Settings screen. */
 .panel :deep(.row) {
   background: var(--soft-2);
+  padding: 10px 12px;
 }
 
 .close {

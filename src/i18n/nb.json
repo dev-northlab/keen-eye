@@ -829,7 +829,11 @@
     "parkPushchair": "Vogn i parken",
     "chalkDrawings": "Krittegninger",
     "fairHelicopter": "Helikopter på tivoli",
-    "livingRoomToys": "Leker i stua"
+    "livingRoomToys": "Leker i stua",
+    "bumperCars": "Radiobiler",
+    "autumnLeaves": "Høstløv",
+    "christmasMorning": "Julemorgen",
+    "sunnyStreet": "Solfylt gate"
   },
   "map": {
     "level": "Brett {n}",

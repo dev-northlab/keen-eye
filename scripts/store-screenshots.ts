@@ -4,10 +4,11 @@
 // assets/store/listing/<locale>/screenshots.txt. Writes store-screenshots/<device>/<locale>/NN-<shot>.png for
 // Google Play phones, the 6.9" iPhone and the 13" iPad (also fine for Play tablets), plus the Play feature graphic
 // store-screenshots/feature-graphic/<locale>.png (gitignored).
-import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { chromium, type Browser, type Locator, type Page } from 'playwright-core'
 import { preview } from 'vite'
 import { levelById } from '../src/levels/index.ts'
+import { styledLevel, type PictureStyle } from '../src/levels/picture-style.ts'
 import { timeTravelLevelById } from '../src/levels/time-travel/index.ts'
 
 const CHROME = '/usr/bin/google-chrome'
@@ -58,9 +59,9 @@ async function pictureBox(svg: Locator) {
   }
 }
 
-/** Taps the centers of the first `count` still differences of a level on picture B. */
-const findDifferences = (id: number, count: number) => async (page: Page) => {
-  const level = levelById(id)!
+/** Taps the centers of the first `count` still differences of a level on picture B, as drawn or as 3D pictures. */
+const findDifferences = (id: number, count: number, style: PictureStyle = 'classic') => async (page: Page) => {
+  const level = styledLevel(levelById(id)!, style)
   for (const d of level.differences.filter((d) => !d.animatedId).slice(0, count)) {
     const [x, y] = (await pictureBox(page.locator('.pictures svg').nth(1))).at(d.x, d.y)
     await page.touchscreen.tap(x, y)
@@ -82,6 +83,8 @@ const findOddItems = (id: string, count: number) => async (page: Page) => {
 // Order = order in the stores; captions are the lines of screenshots.txt in the same order.
 const SHOTS: Shot[] = [
   { name: 'level', route: '/level/75', act: findDifferences(75, 4) },
+  // The same level as 3D pictures: every level is drawn, many also come in 3D.
+  { name: 'level-3d', route: '/level/75', settings: { pictureStyle: 'redesign' }, act: findDifferences(75, 4, 'redesign') },
   { name: 'modes', route: '/levels' },
   { name: 'time', route: '/level/203', act: findDifferences(203, 3) },
   { name: 'detective', route: '/detective/cake' },
@@ -210,6 +213,8 @@ try {
     if (captions.length !== SHOTS.length) throw new Error(`${locale}: ${captions.length} captions for ${SHOTS.length} shots`)
     for (const device of DEVICES) {
       const dir = `${OUT}/${device.name}/${locale}`
+      // Start clean: shots renamed or renumbered would leave old files behind.
+      rmSync(dir, { recursive: true, force: true })
       mkdirSync(dir, { recursive: true })
       for (const [i, shot] of SHOTS.entries()) {
         const screen = await capture(browser, device, locale, shot)

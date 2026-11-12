@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level228Redesign } from './level-228-redesign.ts'
 import { around, ball, bike, bin, bucket, bulbs, buoy, cloud, dog, DUSK, lampHead, lampPost, moon, palm, parasol, person, pigeon, sailboat, shell, sky, starfish, stars, sun, towel, waves } from './shapes.ts'
 
 /** Café table; (x, y) = ground center. Bounds: x ±22, y from −36 to 0. */
@@ -20,6 +21,7 @@ export default svgLevel({
   title: 'seaPromenade',
   pair: 'day-night',
   parTimeSec: 150,
+  redesign: level228Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 230) +
     `<rect y="230" width="800" height="100" fill="#3ba7cc"/>` +

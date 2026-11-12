@@ -829,7 +829,11 @@
     "parkPushchair": "عربة الطفل في الحديقة",
     "chalkDrawings": "رسومات بالطباشير",
     "fairHelicopter": "هليكوبتر في مدينة الملاهي",
-    "livingRoomToys": "ألعاب في غرفة المعيشة"
+    "livingRoomToys": "ألعاب في غرفة المعيشة",
+    "bumperCars": "سيارات التصادم",
+    "autumnLeaves": "أوراق الخريف",
+    "christmasMorning": "صباح عيد الميلاد",
+    "sunnyStreet": "شارع مشمس"
   },
   "map": {
     "level": "المرحلة {n}",

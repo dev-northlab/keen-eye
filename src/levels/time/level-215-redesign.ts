@@ -1,11 +1,11 @@
 import type { Difference, LevelPictures, Trap } from '../../engine/types.ts'
 
-// Level 215 ("yardNight") as two pictures (public/levels/redesign/, Gemini's full 2624×1632): A the front yard with the house
-// and the garage on a sunny afternoon, B the same yard at night with its eight tiny differences; only one is a colour
-// change. Gemini made the night, the attic window without its cross, the garage door without its lower groove, the
-// weather vane without its rooster, the yellow mailbox flag and the pot with fewer flowers. Made by hand: the gnome's
-// shovel, the bicycle's saddle and the cat's bell taken away, and the butterfly on the fence given back its pink
-// (Gemini made it purple). B is a whole picture: the moments differ everywhere.
+// Level 215 ("yardNight") as two pictures (public/levels/redesign/, Gemini's full 2624×1632): A the front yard with
+// the house and the garage on a sunny afternoon, B the same yard at night with its eight tiny differences; only one is
+// a colour change. Gemini made the night, the attic window without its cross, the garage door without its lower
+// groove, the weather vane without its rooster, the yellow mailbox flag and the pot with fewer flowers. Made by hand:
+// the gnome's shovel, the bicycle's saddle and the cat's bell taken away, and the butterfly on the fence given back
+// its pink (Gemini made it purple). B is a whole picture: the moments differ everywhere.
 const viewBox = { w: 2624, h: 1632 }
 const differences: Difference[] = [
   // The small round attic window: a white cross in A, one plain pane in B.

@@ -32,7 +32,7 @@ import { useSettingsStore } from '../stores/settings.ts'
 // (ChapterView of TIME_CHAPTER, MEMORY_CHAPTER), "travel" (docs/world-travel-mode.md) its world map (TravelView),
 // "detective" (docs/detective-mode.md) its cases (DetectiveView), "tiny boy" its picture banners (TinyBoyView). Category banners show whether their
 // hidden key is found; the last banner, the treasury (docs/hidden-item-feature.md), counts the keys
-// and opens its bonus level once all are found. Developer mode adds the "test" levels (TEST_CHAPTER) at the end.
+// and opens its bonus level once all are found. Developer mode adds the "test" levels (TEST_CHAPTER) at the end, while there are any.
 
 const router = useRouter()
 const baseUrl = import.meta.env.BASE_URL
@@ -182,7 +182,7 @@ const timeTravel = {
             </template>
           </PhotoBanner>
         </li>
-        <li v-if="settings.developer">
+        <li v-if="settings.developer && test.ids.length">
           <PhotoBanner
             class="test"
             :tag="$t('settings.dev')"

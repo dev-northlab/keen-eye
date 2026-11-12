@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level229Redesign } from './level-229-redesign.ts'
 import { around, bareTree, bench, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, dog, flowers, fox, grass, house, icicles, logPile, mountains, oak, pane, person, pine, pineSnow, pond, rock, roofSnow, signBoard, signpost, sky, smoke, snowCap, snowfall, stump, vane, winterPerson, winterSky } from './shapes.ts'
 
 /** Height of the cable at x. */
@@ -21,6 +22,7 @@ export default svgLevel({
   title: 'cableCar',
   pair: 'summer-winter',
   parTimeSec: 150,
+  redesign: level229Redesign,
   scene: ({ diff, time, trap, extra, anim }) => {
     let logs = ''
     for (let row = 0; row < 3; row++)

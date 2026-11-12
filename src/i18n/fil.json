@@ -829,7 +829,11 @@
     "parkPushchair": "Andador sa parke",
     "chalkDrawings": "Mga guhit na tisa",
     "fairHelicopter": "Helikopter sa perya",
-    "livingRoomToys": "Mga laruan sa sala"
+    "livingRoomToys": "Mga laruan sa sala",
+    "bumperCars": "Bump car",
+    "autumnLeaves": "Mga dahon ng taglagas",
+    "christmasMorning": "Umaga ng Pasko",
+    "sunnyStreet": "Maaraw na kalye"
   },
   "map": {
     "level": "Level {n}",

@@ -829,7 +829,11 @@
     "parkPushchair": "Klapvogn i parken",
     "chalkDrawings": "Kridttegninger",
     "fairHelicopter": "Helikopter i tivoli",
-    "livingRoomToys": "Legetøj i stuen"
+    "livingRoomToys": "Legetøj i stuen",
+    "bumperCars": "Radiobiler",
+    "autumnLeaves": "Efterårsblade",
+    "christmasMorning": "Juledagsmorgen",
+    "sunnyStreet": "Solrig gade"
   },
   "map": {
     "level": "Bane {n}",

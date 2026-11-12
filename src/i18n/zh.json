@@ -586,7 +586,11 @@
     "parkPushchair": "公园里的婴儿车",
     "chalkDrawings": "粉笔画",
     "fairHelicopter": "游乐场的直升机",
-    "livingRoomToys": "客厅里的玩具"
+    "livingRoomToys": "客厅里的玩具",
+    "bumperCars": "碰碰车",
+    "autumnLeaves": "秋天的落叶",
+    "christmasMorning": "圣诞节的早晨",
+    "sunnyStreet": "阳光街道"
   },
   "mode": {
     "label": "模式",

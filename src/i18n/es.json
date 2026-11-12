@@ -586,7 +586,11 @@
     "parkPushchair": "Cochecito en el parque",
     "chalkDrawings": "Dibujos con tiza",
     "fairHelicopter": "Helicóptero de feria",
-    "livingRoomToys": "Juguetes en el salón"
+    "livingRoomToys": "Juguetes en el salón",
+    "bumperCars": "Autos de choque",
+    "autumnLeaves": "Hojas de otoño",
+    "christmasMorning": "Mañana de Navidad",
+    "sunnyStreet": "Calle soleada"
   },
   "mode": {
     "label": "Modo",

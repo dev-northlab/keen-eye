@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level221Redesign } from './level-221-redesign.ts'
 import { around, bareTree, bucket, butterfly, cloud, cone, grass, icicles, oak, pane, person, sky, smoke, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
 import {
   barrier,
@@ -38,6 +39,7 @@ export default svgLevel({
   title: 'constructionSite',
   pair: 'summer-winter',
   parTimeSec: 135,
+  redesign: level221Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     time(sky(false, 270), winterSky(270)) +
     `<rect y="270" width="800" height="230" fill="${time('#c9a878', '#f4f8fb')}"/>` +

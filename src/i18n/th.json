@@ -829,7 +829,11 @@
     "parkPushchair": "รถเข็นเด็กในสวน",
     "chalkDrawings": "ภาพวาดชอล์ก",
     "fairHelicopter": "เฮลิคอปเตอร์ในงานวัด",
-    "livingRoomToys": "ของเล่นในห้องนั่งเล่น"
+    "livingRoomToys": "ของเล่นในห้องนั่งเล่น",
+    "bumperCars": "รถบั๊มพ์",
+    "autumnLeaves": "ใบไม้ร่วง",
+    "christmasMorning": "เช้าวันคริสต์มาส",
+    "sunnyStreet": "ถนนแดดจ้า"
   },
   "map": {
     "level": "ด่าน {n}",

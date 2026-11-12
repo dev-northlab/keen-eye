@@ -586,7 +586,11 @@
     "parkPushchair": "Візочок у парку",
     "chalkDrawings": "Малюнки крейдою",
     "fairHelicopter": "Гелікоптер на ярмарку",
-    "livingRoomToys": "Іграшки у вітальні"
+    "livingRoomToys": "Іграшки у вітальні",
+    "bumperCars": "Автодром",
+    "autumnLeaves": "Осіннє листя",
+    "christmasMorning": "Різдвяний ранок",
+    "sunnyStreet": "Сонячна вулиця"
   },
   "mode": {
     "label": "Режим",

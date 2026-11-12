@@ -1,6 +1,7 @@
 import { ball } from '../time/shapes.ts'
 import { bottleMessage, bucket, buoy, castleFlag, crab, dolphin, flipFlops, gull, palm, parasol, sailboat, sandcastle, shell, starfish, sunHat, towel, waves } from '../chapter-04/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level303Redesign } from './level-303-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky, ground } from './shapes.ts'
 
@@ -8,6 +9,7 @@ export default memoryLevel({
   id: 303,
   title: 'memoryBeach',
   showSeconds: 5,
+  redesign: level303Redesign,
   scene: ({ diff }) =>
     daySky(330) +
     sun(100, 90) +

@@ -1,11 +1,11 @@
 import type { Difference, LevelPictures, Trap } from '../../engine/types.ts'
 
-// Level 216 ("marketSquare") as two pictures (public/levels/redesign/, Gemini's full 2624×1632): A the old-town market square
-// on a sunny afternoon, B the same square in the evening with its eight tiny differences; only one is a colour change.
-// Gemini made the evening, the town hall door without its window, two red apples, the plain board and the green
-// lemons. Made by hand: the window's horizontal bar, the girl's hair bow and the dog's collar taken away; Gemini
-// redrew the whole flower box under the top left window, so A's box is laid back (colours matched to the evening)
-// with one flower taken away. B is a whole picture: the moments differ everywhere.
+// Level 216 ("marketSquare") as two pictures (public/levels/redesign/, Gemini's full 2624×1632): A the old-town market
+// square on a sunny afternoon, B the same square in the evening with its eight tiny differences; only one is a colour
+// change. Gemini made the evening, the town hall door without its window, two red apples, the plain board and the green
+// lemons. Made by hand: the window's horizontal bar, the girl's hair bow and the dog's collar taken away; Gemini redrew
+// the whole flower box under the top left window, so A's box is laid back (colours matched to the evening) with one
+// flower taken away. B is a whole picture: the moments differ everywhere.
 const viewBox = { w: 2624, h: 1632 }
 const differences: Difference[] = [
   // The yellow house's top middle window: a horizontal bar in A, only the vertical one in B.

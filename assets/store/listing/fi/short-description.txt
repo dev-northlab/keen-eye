@@ -1,1 +1,1 @@
-Etsi erot 298 elävästä kohtauksesta. Koko perheelle, toimii offline.
+Etsi erot 302 elävästä kohtauksesta, 2D:nä ja 3D:nä. Koko perheelle, offline.

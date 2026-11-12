@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level224Redesign } from './level-224-redesign.ts'
 import { around, bench, bin, buoy, cloud, dog, duck, DUSK, flowerBox, glow, lampHead, lampPost, moon, oak, pane, person, pigeon, pot, rowboat, sky, stars, sun } from './shapes.ts'
 
 const HOUSES = ['#e07a5f', '#f2cc8f', '#81b29a', '#e9c46a', '#bdb2ff', '#8ecae6']
@@ -18,6 +19,7 @@ export default svgLevel({
   title: 'riverTown',
   pair: 'day-night',
   parTimeSec: 140,
+  redesign: level224Redesign,
   scene: ({ diff, time, trap, extra, anim }) => {
     let houses = ''
     for (let i = 0; i < 6; i++) {
