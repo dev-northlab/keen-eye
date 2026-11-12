@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level302Redesign } from './level-302-redesign.ts'
 import { beehive, cloud, cow, fence, hayBale, hen, pig, sheep, sun, sunflower } from '../shapes.ts'
 import { around, barn, barnDoor, big, daySky, ground, hills, roundTree } from './shapes.ts'
 import { bird, birds, bucket, butterfly, cat, flowers, grass } from '../time/shapes.ts'
@@ -7,6 +8,7 @@ export default memoryLevel({
   id: 302,
   title: 'memoryFarmyard',
   showSeconds: 5,
+  redesign: level302Redesign,
   scene: ({ diff }) =>
     daySky(380) +
     sun(410, 80) +

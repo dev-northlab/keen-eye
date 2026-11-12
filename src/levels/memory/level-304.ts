@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level304Redesign } from './level-304-redesign.ts'
 import { around, backpack, bed, big, books, cube, curtains, drawers, flowerVase, painting, room, rug, shelf, slipperPair, sticker, tableLamp, teddy, wallClock, windowPane } from './shapes.ts'
 import { ball } from '../time/shapes.ts'
 
@@ -6,6 +7,7 @@ export default memoryLevel({
   id: 304,
   title: 'memoryBedroom',
   showSeconds: 5,
+  redesign: level304Redesign,
   scene: ({ diff }) =>
     room(360, '#d9ecff', '#e9b872') +
     windowPane(320, 70, 150, 140) +

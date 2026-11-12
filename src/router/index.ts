@@ -142,7 +142,7 @@ router.beforeResolve(async (to) => {
     const banners = to.name === 'tiny-boy' ? preloadTinyBoyBanners() : undefined
     return waitAtMost(Promise.all([preloadBackdrop(backdrop), banners]))
   }
-  if (to.name !== 'level' && to.name !== 'match') return
+  if (to.name !== 'level' && to.name !== 'match' && to.name !== 'memory') return
   const level = levelById(Number(to.params.id))
   if (level) await waitAtMost(preloadPictures(styledLevel(level, useSettingsStore().pictureStyle)))
 })

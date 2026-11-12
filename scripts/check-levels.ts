@@ -191,7 +191,7 @@ function checkExtras(level: Level, a: SceneSvg, aExtras: SceneSvg, report: Repor
 
 /**
  * The redesigned pictures of a level (`Level.redesign`, levels/picture-style.ts): the files exist, as many zones
- * as the drawn scene, each centered on the picture, big enough (scaled to the 800-wide scenes) and apart; the
+ * as the drawn scene, each centered on the picture, big enough (scaled to the drawn scene's width) and apart; the
  * drawn level's key is on the pictures too, as its own image over them (so it can be taken), on both, clear of the
  * zones. Pictures do not move: a motion difference of the drawn scene becomes a still one there. (How well the key hides is seen by eye: there is no pixel check.)
  */
@@ -240,7 +240,7 @@ function checkRedesign(level: Level, minRadius: number): string[] {
     for (let j = i + 1; j < traps.length; j++)
       if (Math.hypot(t.x - traps[j].x, t.y - traps[j].y) < t.r + traps[j].r) errors.push(`redesign: traps #${i} and #${j} overlap`)
   })
-  const scale = 800 / p.viewBox.w
+  const scale = level.viewBox.w / p.viewBox.w
   p.differences.forEach((d, i) => {
     if (d.x < 0 || d.y < 0 || d.x > p.viewBox.w || d.y > p.viewBox.h) errors.push(`redesign: zone #${i} is off the picture`)
     if (d.r * scale < minRadius) errors.push(`redesign: zone #${i} r${d.r} is too small (min ${Math.ceil(minRadius / scale)})`)
