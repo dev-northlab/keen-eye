@@ -56,7 +56,7 @@ export default memoryLevel({
     fruit(320, 560, 12, '#e63946') +
     fruit(344, 566, 12, '#e63946') +
     melonSlice(415, 572) +
-    diff(...around(136, 548, 204, 592), cup(170, 592, '#3a86ff'), cup(170, 592, '#3fa46f')) +
+    cup(170, 592, '#3a86ff') +
     // Decor: small things that fill the scene, the same in both pictures
     cloud(460, 40, 0.5) +
     birds(100, 170) +

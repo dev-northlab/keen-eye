@@ -42,5 +42,5 @@ export default memoryLevel({
     squirrel(240, 470, true) +
     logPile(205, 740) +
     stump(330, 740) +
-    diff(...around(350, 634, 480, 710), backpack(380, 710, '#8338ec'), backpack(450, 710, '#8338ec')),
+    backpack(380, 710, '#8338ec'),
 })

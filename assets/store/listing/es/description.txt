@@ -2,7 +2,7 @@ Dos imágenes parecen iguales, pero no lo son. Encuentra todas las diferencias e
 
 Muchos niveles también tienen imágenes 3D detalladas: cambia entre los dibujos animados y el 3D con un toque.
 
-302 NIVELES, 8 FORMAS DE JUGAR
+303 NIVELES, 8 FORMAS DE JUGAR
 • Mundos: 150 niveles en la granja, la ciudad, el bosque, el mar y el espacio, con 5 a 10 diferencias
 • El tiempo: el mismo lugar por la mañana y por la tarde, en verano y en invierno; encuentra lo que de verdad cambió
 • Memoria: observa la imagen unos segundos y encuentra los cambios de memoria

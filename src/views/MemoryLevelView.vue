@@ -57,7 +57,7 @@ const calm = computed(() => mode.value === 'calm')
 /** The mode setting as this attempt started: changed in the pause menu's settings, the attempt starts over. */
 let modeSetting: GameMode = 'normal'
 /** Misses that end the round; the hearts of the HUD. */
-const maxMisses = computed(() => rules.value.memoryMaxMisses)
+const maxMisses = computed(() => rules.value.memoryMaxMisses(total))
 /** The mode allows looks at A. */
 const hasPeeks = computed(() => rules.value.memoryPeeks(level.memory!.peeks) > 0)
 const result = ref<MemoryResult | null>(null)

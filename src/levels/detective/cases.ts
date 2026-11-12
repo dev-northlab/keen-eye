@@ -1,5 +1,6 @@
 // "Detective" cases (docs/detective-mode.md): suspects, the culprit and which suspects each clue fits.
 // Texts: detective.cases.<id>.{title,intro,ending}, detective.suspects.<suspect>, detective.clueTexts.<clue>.
+import type { Stars } from '../../engine/types.ts'
 
 export interface DetectiveCase {
   id: string
@@ -8,10 +9,19 @@ export interface DetectiveCase {
   culprit: string
   /** Every clue of the case's scenes → the suspects it fits. Only the culprit fits all of them. */
   fits: Record<string, string[]>
+  /** One of the harder cases (516–530): a wrong accusation is not told which clue rules the suspect out (docs/detective-difficulty.md). */
+  hard: boolean
 }
 
-function detectiveCase(id: string, suspects: string[], culprit: string, fits: Record<string, string[] | 'all'>): DetectiveCase {
-  return { id, suspects, culprit, fits: Object.fromEntries(Object.entries(fits).map(([clue, who]) => [clue, who === 'all' ? suspects : who])) }
+function detectiveCase(
+  id: string,
+  suspects: string[],
+  culprit: string,
+  fits: Record<string, string[] | 'all'>,
+  { hard = false } = {},
+): DetectiveCase {
+  const all = Object.entries(fits).map(([clue, who]) => [clue, who === 'all' ? suspects : who])
+  return { id, suspects, culprit, fits: Object.fromEntries(all), hard }
 }
 
 export const CASES: DetectiveCase[] = [
@@ -149,8 +159,9 @@ export const CASES: DetectiveCase[] = [
     umbrellaGone: 'all',
     cashOpen: ['keeper', 'tourist', 'cleaner'],
   }),
-  // Glove prints, cards and glitter point at the clown or the magician; the clown rehearsed all
-  // morning, the monkey slept in its locked cage and the ladder would snap under the strongman.
+  // Glove prints, cards, glitter, rabbit fur and a squashed hat point at the clown or the magician;
+  // pointed shoes are not the clown's (who rehearsed all morning anyway), the monkey slept in its
+  // locked cage and the ladder would snap under the strongman. No clue fits the culprit alone.
   detectiveCase('circus', ['clown', 'monkey', 'strongman', 'magician'], 'magician', {
     hatGone: 'all',
     ropeLadder: ['clown', 'monkey', 'magician'],
@@ -161,7 +172,7 @@ export const CASES: DetectiveCase[] = [
     pennantGone: 'all',
     bananaPeel: 'all',
     bulbOff: 'all',
-    squashedHat: ['magician'],
+    squashedHat: ['clown', 'magician'],
     playingCard: ['clown', 'magician'],
     glitter: ['clown', 'magician'],
     wigGone: 'all',
@@ -182,7 +193,7 @@ export const CASES: DetectiveCase[] = [
     posterTorn: 'all',
     starGone: 'all',
     ropeDown: 'all',
-    pointedPrints: ['magician'],
+    pointedPrints: ['strongman', 'magician'],
     popcornSpilled: 'all',
     windowLit: 'all',
     doorAjar: 'all',
@@ -192,12 +203,14 @@ export const CASES: DetectiveCase[] = [
     cardTrail: ['clown', 'magician'],
     flatTyre: 'all',
     chairFolded: 'all',
-  }),
-  // Small hands and shoes point at the boy or the poodle; the poodle was tied up, the cook made
-  // pancakes all night and the conductor punched every ticket on his rounds.
+  }, { hard: true }),
+  // Something small (the low drawer, pearls taken for toys) points at the boy or the poodle; hands,
+  // shoes and a sweet wrapper at a person. The dinosaur sticker is a false lead to the cook, who made
+  // pancakes all night; the poodle was tied up and the conductor punched every ticket on his rounds.
+  // No clue fits the culprit alone.
   detectiveCase('train', ['conductor', 'cook', 'poodle', 'boy'], 'boy', {
     windowOpen: 'all',
-    smallHandprints: ['boy'],
+    smallHandprints: ['conductor', 'cook', 'boy'],
     lowDrawer: ['poodle', 'boy'],
     teaSpilled: 'all',
     suitcaseOpen: 'all',
@@ -213,7 +226,7 @@ export const CASES: DetectiveCase[] = [
     plantTipped: 'all',
     newspaperDropped: 'all',
     pearlOnCarpet: 'all',
-    smallShoePrints: ['boy'],
+    smallShoePrints: ['conductor', 'cook', 'boy'],
     blindDown: 'all',
     candleOut: 'all',
     roseGone: 'all',
@@ -227,7 +240,7 @@ export const CASES: DetectiveCase[] = [
     lanternOut: 'all',
     leashTied: ['conductor', 'cook', 'boy'],
     trunkOpen: 'all',
-    stickerOnTrunk: ['boy'],
+    stickerOnTrunk: ['cook', 'boy'],
     parcelTipped: 'all',
     mailSpilled: 'all',
     boxOpen: 'all',
@@ -239,23 +252,25 @@ export const CASES: DetectiveCase[] = [
     clockStopped: 'all',
     comicFallen: 'all',
     slipperGone: 'all',
-    marblesPearls: ['boy'],
+    marblesPearls: ['poodle', 'boy'],
     toyTrainOff: 'all',
-  }),
-  // Skis, poles and ski boots point at the skier; the yeti's prints only walked past, the snowboarder
-  // waxed the board all night and the innkeeper's light went out early.
+  }, { hard: true }),
+  // Skis, poles and ski boots point at the skier or the innkeeper, whose rack they hang on; goggles,
+  // a mitten and a ski pass at the skier or the snowboarder. The yeti's prints only walked past, the
+  // snowboarder waxed the board all night and the innkeeper's light went out early. No clue fits the
+  // culprit alone.
   detectiveCase('lodge', ['yeti', 'skier', 'snowboarder', 'innkeeper'], 'skier', {
     fireOut: 'all',
     trophyGone: 'all',
     logsTipped: 'all',
     paintingCrooked: 'all',
     clockStopped: 'all',
-    skiBootsGone: ['skier'],
+    skiBootsGone: ['skier', 'innkeeper'],
     meltedSnow: 'all',
     rugFolded: 'all',
     windowOpen: 'all',
     cocoaSpilled: 'all',
-    skisGone: ['skier'],
+    skisGone: ['skier', 'innkeeper'],
     boardWaxed: ['yeti', 'skier', 'innkeeper'],
     trailMapMarked: 'all',
     bulbOff: 'all',
@@ -273,7 +288,7 @@ export const CASES: DetectiveCase[] = [
     redMitten: ['skier', 'snowboarder'],
     birdFeeder: 'all',
     snowmanNose: 'all',
-    skiTracks: ['skier'],
+    skiTracks: ['skier', 'innkeeper'],
     yetiPrints: ['skier', 'snowboarder', 'innkeeper'],
     hutLightOn: 'all',
     snowOffSeat: 'all',
@@ -284,7 +299,7 @@ export const CASES: DetectiveCase[] = [
     cupLeft: 'all',
     skiPassDropped: ['skier', 'snowboarder'],
     snowballs: 'all',
-    polePrints: ['skier'],
+    polePrints: ['skier', 'innkeeper'],
     flagPlanted: 'all',
     pineSnowFallen: 'all',
     thermosLeft: 'all',
@@ -294,11 +309,14 @@ export const CASES: DetectiveCase[] = [
     snowmanScarf: 'all',
     tripodMarks: 'all',
     bootPrintsUp: 'all',
-    skiPoleLeft: ['skier'],
-  }),
+    skiPoleLeft: ['skier', 'innkeeper'],
+  }, { hard: true }),
 ]
 
 export const caseById = (id: string) => CASES.find((c) => c.id === id)
 
 /** The first of `clues` that does not fit `suspect` (the gentle hint after a wrong accusation). */
 export const misfit = (c: DetectiveCase, suspect: string, clues: string[]) => clues.find((clue) => !c.fits[clue]?.includes(suspect))
+
+/** Stars for naming the culprit (docs/detective-difficulty.md): 3 on the first try, one less for every wrong guess, at least 1. */
+export const caseStars = (wrongGuesses: number): Stars => Math.max(1, 3 - wrongGuesses) as Stars

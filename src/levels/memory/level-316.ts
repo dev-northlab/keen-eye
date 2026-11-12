@@ -69,7 +69,7 @@ export default memoryLevel({
     floorLamp(60, 620) +
     sofa(250, 620, 220, '#e07a5f') +
     cushion(180, 530, '#ffd23f') +
-    diff(...around(220, 505, 280, 555), cushion(250, 530, '#3fa46f'), cushion(250, 530, '#8338ec')) +
+    cushion(250, 530, '#3fa46f') +
     cushion(320, 530, '#ffd23f') +
     rug(230, 700, 170, '#c98bb9') +
     // Coffee table with a cup and books

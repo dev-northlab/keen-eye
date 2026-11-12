@@ -2,7 +2,7 @@ Zwei Bilder sehen gleich aus – sind es aber nicht. Finde alle Unterschiede in 
 
 Viele Level gibt es auch als detailreiche 3D-Bilder: Wechsle mit einem Tipp zwischen lebendigen Zeichnungen und 3D.
 
-302 LEVEL, 8 SPIELARTEN
+303 LEVEL, 8 SPIELARTEN
 • Welten – 150 Level auf dem Bauernhof, in der Stadt, im Wald, am Meer und im Weltall, mit 5 bis 10 Unterschieden
 • Zeit – derselbe Ort morgens und abends, im Sommer und im Winter: finde, was sich wirklich verändert hat
 • Gedächtnis – präge dir das Bild in wenigen Sekunden ein und finde die Änderungen aus dem Gedächtnis

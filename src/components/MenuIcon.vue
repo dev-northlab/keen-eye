@@ -1,7 +1,7 @@
 <script setup lang="ts">
-// Coloured, glossy icons of the home screen's round buttons (settings and the info pages), in the style of the
+// Coloured, glossy icons of the home screen's round buttons (settings, the info pages and exit), in the style of the
 // HUD's game icons: a gradient body with a darker rim, a white shine at the top left and a soft shadow.
-defineProps<{ name: 'settings' | 'about' | 'privacy' | 'contact' }>()
+defineProps<{ name: 'settings' | 'about' | 'privacy' | 'contact' | 'exit' }>()
 </script>
 
 <template>
@@ -15,6 +15,10 @@ defineProps<{ name: 'settings' | 'about' | 'privacy' | 'contact' }>()
         <template v-else-if="name === 'about'">
           <stop offset="0" stop-color="#6cc8ff" />
           <stop offset="1" stop-color="#1f74d6" />
+        </template>
+        <template v-else-if="name === 'exit'">
+          <stop offset="0" stop-color="#ff8f8a" />
+          <stop offset="1" stop-color="#d9342b" />
         </template>
         <template v-else-if="name === 'privacy'">
           <stop offset="0" stop-color="#6fe39b" />
@@ -60,6 +64,14 @@ defineProps<{ name: 'settings' | 'about' | 'privacy' | 'contact' }>()
       />
       <path d="M16.5 23.5l5.2 5.2 10-10.2" fill="none" stroke="#fff" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
       <ellipse cx="15.5" cy="13.5" rx="4" ry="2" fill="#fff" fill-opacity="0.5" transform="rotate(-30 15.5 13.5)" />
+    </g>
+
+    <!-- Exit: a red ball with a white power sign (no direction, so the same right to left). -->
+    <g v-else-if="name === 'exit'">
+      <circle cx="24" cy="24" r="19" :fill="`url(#ke-menu-${name})`" stroke="#b3241d" stroke-width="1.6" />
+      <path d="M17.5 16.5a10 10 0 1 0 13 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+      <path d="M24 12v11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+      <ellipse cx="14.5" cy="13" rx="5" ry="2.4" fill="#fff" fill-opacity="0.5" transform="rotate(-40 14.5 13)" />
     </g>
 
     <!-- Contact: a yellow envelope. -->

@@ -80,8 +80,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   first `FREE_CATEGORY_LEVELS` (3) free; `memory/` — "memory" (`docs/memory-mode.md`): levels 301–330 of chapter `memory`
   written with `memoryLevel({ id, title, showSeconds, scene })` (`Level.memory`: seconds A is shown, peeks) in portrait
   pictures 500×750 (`MEMORY_VIEWBOX`; the reveal puts A and B side by side), 6–10 big
-  objects among 15 small decor ones (`memory/shapes.ts`), 3 → 4 → 5–6 changes shown 5 → 4 → 3 s, then 316–330 busier scenes (12–18 objects) with
-  5 changes for 5 s and 6 for 4 s (`difficulty.ts` `showSeconds`), and 331–340 the ten hardest, 7 then 8 changes
+  objects among 15 small decor ones (`memory/shapes.ts`), 3 changes shown 5 then 4 s (301–310), 4 shown 3 s (311–315), then 316–330 busier scenes (12–18 objects) with
+  4 changes for 5 s and 5 for 4 s (`difficulty.ts` `showSeconds`), and 331–340 the ten hardest, 7 then 8 changes
   for 5 s, never turned, hidden until released in `upcoming.ts`; a move's zone
   covers both places, a count's the whole group; played by `MemoryLevelView` (`/memory/:id`; the guard sends `/level/:id`
   there and keeps other levels out), grid by `ChapterView`, open and paid like "time" (first 3 free);
@@ -99,10 +99,12 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   is `diff` plus the clue text key (`Level.detective`: case, clue per difference, i18n `detective.clueTexts.<key>`); A = before,
   B = after; 5 → 6 → 7 clues, then the three harder cases (516–530) 8 → 9 → 10; 531–535 "The missing chickens" (case `chickens`,
   6 clues, listed first in `CASES`): a village girl's chickens are gone — she is in every scene, each time in another outfit
-  (`Outfit`), drawn with her animals and her village yard by `detective/village.ts` (`villageGirl`, alive through `anim` like the home meadow: she sways, tilts her head, blinks, swings her arms; ducks swim across and turn, rabbits hop, birds peck, the goat grazes, butterflies and flocks fly, ripples, clouds, sun rays, trees and flowers move — `swimmingDuck`, `hopping`, `pecking`, `flutter`, `flyingBirds`, `ripples`, `sunRays`); played by `LevelView` (a found clue
-  pops up, the result dialog lists the scene's clues), listed
+  (`Outfit`), drawn with her animals and her village yard by `detective/village.ts` (`villageGirl`, alive through `anim` like the home meadow: she sways, tilts her head, blinks, swings her arms; ducks swim across and turn, rabbits hop, birds peck, the goat grazes, butterflies and flocks fly, ripples, clouds, sun rays, trees and flowers move — `swimmingDuck`, `hopping`, `pecking`, `flutter`, `flyingBirds`, `ripples`, `sunRays`); played by `LevelView` (its HUD never tells how many clues a scene
+  hides: `ClueCounter`, the clues found so far, instead of `FoundSlots`; a found clue pops up, the result dialog lists the scene's clues), listed
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
-  cases in `progress.solvedCases`); the first case and "The missing chickens" are free (`Chapter.free` ranges; a free case opens
+  cases in `progress.solvedCases`, wrong accusations in `progress.caseGuesses`: 3 stars on the first try, one less per miss, `caseStars`;
+  suspects crossed out as a note in `progress.struckSuspects`; `DetectiveCase.hard` (516–530): a miss names no clue and
+  no clue fits the culprit alone, `docs/detective-difficulty.md`); the first case and "The missing chickens" are free (`Chapter.free` ranges; a free case opens
   without the case before it, `progress.isReached`), the rest need the purchase;
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
@@ -120,7 +122,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   Level, MemoryLevel (a "memory" level; its result sits under the revealed pictures, not in a dialog), Settings, Duo (two players: mode → players/rules → level, `/duo`), Match (`/duo/:id`); `src/components/` — `PhotoBanner` (the picture banners of game modes, worlds and "tiny boy" levels: a gradient in the `--banner-*` colours with a 3D picture of `public/banners/` at the end side, cut from the redesigned level pictures; their icons are 3D objects of `public/icons/<mode or world id>.webp`, cut with a
   transparent background from one Gemini sheet), dialogs (pause, result, the full-game offer `PurchaseDialog`: mounted once in `App.vue`, opened from any screen by `purchase.dialogOpen`; `ModalDialog` has an `icon` slot and the `points` icon list), level HUD time and mistakes chips (`HudCounters`), fact card of "find the odd one out" (`FactCard`), clues of a detective scene (`ClueList`), "travel" world map (`WorldMap`) and place fact (`TravelFact`), settings panel (Settings screen and pause menu), screen backdrops (`ScreenBackdrop`, one world per screen; the home meadow is `MeadowScene`, drawn per season chosen with `SeasonSwitch`), day/night theme switch (`ThemeSwitch`), stars, bottom back button (`BackButton`), the small level id in a corner of level tiles and the board, id ranges on world, mode and case cards (`LevelId`)
 - `src/config/links.ts` — store links (`getStoreLink()`: iOS once it has one, else Google Play) and share targets (Facebook, X, LinkedIn, … share pages that post the store link from the player's own account; logos from `simple-icons` as inline SVG, LinkedIn drawn by hand), shown by `ShareLinks`; `src/composables/useShare.ts` — `shareApp` (@capacitor/share; a browser without a share sheet copies the link), `openLink` (@capacitor/browser); About screen `/about` (`AboutView`), `ShareButton` also in the level result dialog
-- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hidden keys found), `settings`
+- `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hidden keys found; a tap on a level not reached
+  yet in any level list opens `LockedLevelDialog` (mounted in `App.vue`, `showLocked`/`firstToComplete`): the next level to
+  complete, with a button straight to it — such tiles carry `aria-disabled`, not `disabled`), `settings`
   (mode calm/normal, music and sound volume 0–1, vibration, language, reduce motion (only the level pictures' own animations, at half speed: `animationSpeed` 0.5; the interface always moves), home meadow season, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
@@ -227,7 +231,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
   every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
-  140, 145, 146, 304 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
+  140, 145, 146, 304, 305, 306, 308 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet, a slide, a pole, a ring), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
   and in the toolbar of a level that has them) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a

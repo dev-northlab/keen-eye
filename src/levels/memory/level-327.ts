@@ -34,7 +34,7 @@ export default memoryLevel({
     `<path d="M20 680H480" stroke="#ffffff" stroke-width="4" stroke-dasharray="30 20"/>` +
     // Hangar
     `<path d="M30 600V500Q140 430 250 500V600Z" fill="#8d99ae"/><path d="M60 482V600M100 465V600M180 465V600M220 482V600" stroke="#6b7685" stroke-width="3"/>` +
-    diff(...around(80, 520, 200, 600), `<rect x="80" y="520" width="120" height="80" fill="#3d4a55"/>`, `<rect x="80" y="520" width="120" height="80" fill="#e07a5f"/>`) +
+    `<rect x="80" y="520" width="120" height="80" fill="#3d4a55"/>` +
     // Control tower
     `<rect x="422" y="410" width="36" height="190" fill="#e9e4dc"/><rect x="394" y="370" width="92" height="12" rx="3" fill="#3d4a55"/><rect x="400" y="380" width="80" height="34" fill="#bde3f2"/>` +
     `<path d="M420 380v34M440 380v34M460 380v34" stroke="#3d4a55" stroke-width="2"/>` +

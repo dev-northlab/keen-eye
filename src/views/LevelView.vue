@@ -3,6 +3,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import ClueList from '../components/ClueList.vue'
+import ClueCounter from '../components/ClueCounter.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
 import LevelId from '../components/LevelId.vue'
@@ -293,7 +294,9 @@ onBeforeUnmount(() => {
         <span v-if="level.pair" class="pair">{{ $t(`timeMode.pairs.${level.pair}`) }}</span>
         <span v-if="level.travel" class="pair">{{ $t(`levelTitles.${level.title}`) }}</span>
       </span>
-      <FoundSlots class="found" :total="total" :found="found" />
+      <!-- A detective scene keeps the number of its clues to itself: only the ones found so far. -->
+      <ClueCounter v-if="level.detective" class="found" :found="found" />
+      <FoundSlots v-else class="found" :total="total" :found="found" />
       <HudCounters
         v-if="!calm"
         :time="time"

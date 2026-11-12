@@ -15,7 +15,7 @@ import { usePurchaseStore } from '../stores/purchase.ts'
 
 // "Tiny boy": its levels as picture banners, each with the photo of its scene (public/banners/tiny-boy-<id>.avif, services/banners.ts,
 // levels/tiny-boy/index.ts). Opens like a level grid (ChapterView): paid levels offer the full game, levels not
-// reached yet are disabled; developer mode also lists the hidden ones (levels/upcoming.ts), marked with a crossed-out eye.
+// reached yet look disabled and say which level opens them; developer mode also lists the hidden ones (levels/upcoming.ts), marked with a crossed-out eye.
 
 const router = useRouter()
 const purchase = usePurchaseStore()
@@ -32,6 +32,7 @@ useBackButton(toParent)
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
+  else progress.showLocked(level.id)
 }
 </script>
 
@@ -46,7 +47,7 @@ function open(level: Level) {
             :photo="tinyBoyBanner(level.id)"
             :name="$t(`levelTitles.${level.title}`)"
             :tag="progress.needsPurchase(level.id) ? $t('map.paid') : $t('map.level', { n: levelNumber(level) })"
-            :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
+            :aria-disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
             @pointerdown="readyPictures(level)"
             @click="open(level)"
           >

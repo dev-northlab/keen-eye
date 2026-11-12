@@ -26,7 +26,7 @@ export default memoryLevel({
     schoolDesk(250, 600) +
     books(220, 538, ['#3fa46f']) +
     diff(280, 520, 32, '', fruit(280, 524, 14, '#e63946')) +
-    diff(...around(390, 524, 450, 600), backpack(420, 600, '#3a86ff'), backpack(420, 600, '#ffb703')) +
+    backpack(420, 600, '#3a86ff') +
     // Decor: small things that fill the room, the same in both pictures
     painting(225, 242, 50, 40, '#3fa46f') +
     poster(300, 236, 34, 46, '#ffb703') +

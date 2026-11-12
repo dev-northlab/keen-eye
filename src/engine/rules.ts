@@ -51,8 +51,8 @@ export interface ModeRules {
   animationSpeed: number
   /** "Memory": looks at A while searching, from the level's. */
   memoryPeeks: (levelPeeks: number) => number
-  /** "Memory": misses that end the round. */
-  memoryMaxMisses: number
+  /** "Memory": misses that end the round (the hearts of the HUD), by the level's number of changes. */
+  memoryMaxMisses: (changes: number) => number
   /** Extra objects in the pictures (docs/extra-objects.md; levels that have them). */
   extras: boolean
   /** Picture B mirrored or turned on the levels that have it (`Level.transformB`); calm mode shows it as drawn. */
@@ -65,7 +65,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     missLock: false,
     animationSpeed: 0.6,
     memoryPeeks: () => 3,
-    memoryMaxMisses: Infinity,
+    memoryMaxMisses: () => Infinity,
     extras: false,
     transformB: false,
   },
@@ -74,7 +74,8 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
     missLock: true,
     animationSpeed: 1,
     memoryPeeks: (p) => p,
-    memoryMaxMisses: 3,
+    // Two fewer than the changes: 1 for 3 changes, 2 for 4, 3 for 5.
+    memoryMaxMisses: (changes) => Math.max(1, changes - 2),
     extras: true,
     transformB: true,
   },

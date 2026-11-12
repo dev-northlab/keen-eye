@@ -41,6 +41,10 @@
   },
   "detective": {
     "accuse": "Tuduh: {suspect}",
+    "accuseSure": "Anda pasti? Setiap tekaan salah mengurangkan satu bintang.",
+    "accuseYes": "Tuduh",
+    "crossOut": "Potong: {suspect}",
+    "crossOutHint": "Ketik tanda pangkah pada kad untuk memotong nama suspek. Ini hanya catatan – ia tidak dikira sebagai tekaan.",
     "cases": {
       "cake": {
         "ending": "Rupa-rupanya si anjing! Kesan tapak kaki besar berlumpur, selipar yang digigit dan krim di atas bumbung rumah anjing membongkar rahsianya – ia sudah terlalu kenyang dengan kek sehingga tidak menjamah makan malamnya sendiri. Dimaafkan, tetapi tiada makanan ringan selama seminggu.",
@@ -176,7 +180,7 @@
       "lunchBox": "Bekas makanan pengawal di dalam pondok – dia sedang berehat",
       "mailSpilled": "Surat-surat tertumpah dari guni pos",
       "mapDropped": "Peta muzium tertinggal di atas bangku",
-      "marblesPearls": "Mutiara bercampur dengan guli budak lelaki itu",
+      "marblesPearls": "Mutiara di antara guli di lantai – seseorang menyangka ia mainan",
       "meltedSnow": "Lopak salji cair di atas lantai",
       "menuFallen": "Papan menu terjatuh",
       "miniVaseGone": "Sebuah pasu mini hilang dari rak",
@@ -198,7 +202,7 @@
       "pineSnowFallen": "Salji telah jatuh dari pokok cemara",
       "plantTipped": "Pokok pasu terbalik",
       "playingCard": "Sekeping daun terup di atas lantai",
-      "pointedPrints": "Kesan kasut runcing – seperti kasut ahli silap mata",
+      "pointedPrints": "Kesan kasut runcing – bukan kasut besar bulat si badut",
       "polePrints": "Lubang bulat kesan kayu ski di dalam salji",
       "popcornSpilled": "Bertih jagung tertumpah dekat kereta sorong",
       "postcardsSold": "Poskad bergambar pasu sudah habis dijual",
@@ -229,8 +233,8 @@
       "skylightOpen": "Tingkap bumbung terbuka – seseorang datang dari atas",
       "sledTipped": "Kereta luncur terbalik",
       "slipperGone": "Sebelah selipar hilang",
-      "smallHandprints": "Kesan tangan kecil di tingkap – tangan kanak-kanak",
-      "smallShoePrints": "Kesan kasut kecil – saiz kanak-kanak",
+      "smallHandprints": "Kesan tangan kecil di tingkap – tangan, bukan kaki haiwan",
+      "smallShoePrints": "Kesan kasut sukan di koridor – kasut, bukan kaki haiwan",
       "sneakerPrints": "Kesan kasut sukan",
       "snowAngel": "Malaikat salji di dalam salji",
       "snowCannonOff": "Meriam salji dimatikan",
@@ -241,9 +245,9 @@
       "snowmanScarf": "Orang salji memakai selendang merah",
       "spoonGone": "Sudu perak hilang dari penyangkutnya",
       "spotlightOff": "Lampu sorot dimatikan",
-      "squashedHat": "Topi tinggi ahli silap mata sendiri sudah kemek",
+      "squashedHat": "Topi tinggi yang kemek di belakang pentas – seseorang perlukan yang baharu",
       "starGone": "Sebutir bintang jatuh dari gerbang",
-      "stickerOnTrunk": "Pelekat dinosaur pada peti puan countess",
+      "stickerOnTrunk": "Pelekat dinosaur pada peti – tukang masak menampal pelekat yang sama pada balang jemnya",
       "stoolTipped": "Sebuah bangku kecil terbalik",
       "strapOnNail": "Tali beg galas yang putus pada paku",
       "sugarSpilled": "Mangkuk gula terbalik",
@@ -304,11 +308,15 @@
     "clues": "Petunjuk: {n} daripada {total}",
     "findAll": "Cari petunjuk dalam setiap adegan, kemudian namakan pesalahnya.",
     "newClue": "Petunjuk baharu",
+    "cluesFound": "Petunjuk ditemui: {n}",
     "nextCase": "Kes seterusnya",
     "noClues": "Belum ada petunjuk – teliti adegan.",
+    "startWith": "Mula: “{title}”",
+    "cluesWaiting": "Petunjuk masih menunggu di sini",
+    "crossOutHelp": "Cara memotong nama suspek",
     "notebook": "Buku nota detektif",
     "paid": "Ketahui siapa yang melakukannya – buka permainan penuh",
-    "reward": "Anda mendapat bintang “Kes selesai”",
+    "reward": "Bintang penyiasatan: berkurang satu bagi setiap tekaan salah",
     "rules": "Kiri – keadaan tempat itu dahulu, kanan – keadaannya sekarang. Setiap perubahan ialah petunjuk: cari semuanya dalam kelima-lima adegan, kemudian namakan pesalahnya.",
     "scenes": "Adegan",
     "solveCase": "Selesaikan kes",
@@ -352,8 +360,9 @@
     "suspectsTitle": "Suspek",
     "task": "Selesaikan kes",
     "unlock": "Permainan penuh",
-    "whoDidIt": "Siapa yang melakukannya? Hanya seorang suspek yang sepadan dengan setiap petunjuk.",
-    "wrong": "Belum tepat: {suspect} tidak sepadan dengan petunjuk “{clue}”. Lihat semula buku nota anda!"
+    "whoDidIt": "Siapa yang melakukannya? Hanya seorang suspek yang sepadan dengan setiap petunjuk. Teka dengan betul pada cubaan pertama untuk tiga bintang: setiap tekaan salah mengurangkan satu.",
+    "wrong": "Belum tepat: {suspect} tidak sepadan dengan petunjuk “{clue}”. Lihat semula buku nota anda!",
+    "wrongHard": "Belum tepat: {suspect} tidak sepadan dengan semua petunjuk. Baca semula buku nota anda!"
   },
   "duo": {
     "avatar": "Watak pemain {n}",
@@ -833,11 +842,15 @@
     "bumperCars": "Kereta laga",
     "autumnLeaves": "Daun musim luruh",
     "christmasMorning": "Pagi Krismas",
-    "sunnyStreet": "Jalan yang cerah"
+    "sunnyStreet": "Jalan yang cerah",
+    "gardenGate": "Di pintu pagar taman"
   },
   "map": {
     "level": "Tahap {n}",
     "locked": "Berkunci",
+    "lockedTitle": "Belum dibuka",
+    "lockedText": "Tahap dibuka satu demi satu. Seterusnya: tahap {n}, “{title}”.",
+    "lockedPlay": "Pergi ke sana",
     "hidden": "Tahap tersembunyi (belum dikeluarkan)",
     "paid": "Permainan penuh",
     "progress": "{done} daripada {total}",
@@ -863,7 +876,7 @@
       "search": "Apa yang telah berubah?",
       "show": "Ingat gambar ini!"
     },
-    "rules": "Ingat gambar ini – anda hanya ada beberapa saat. Kemudian ia berubah: cari apa yang berbeza berdasarkan ingatan. Paling banyak 3 kali tersasar.",
+    "rules": "Ingat gambar ini – anda hanya ada beberapa saat. Kemudian ia berubah: cari apa yang berbeza berdasarkan ingatan. Hati menunjukkan berapa kali anda boleh tersasar.",
     "task": "Cari berdasarkan ingatan"
   },
   "mode": {

@@ -35,7 +35,7 @@ export default memoryLevel({
     big(150, 600, 1.6, winterPerson(0, 0, diff(...around(126, 523, 174, 574), '#e63946', '#3a86ff'))) +
     diff(...around(236, 455, 284, 570), big(260, 570, 1.6, winterPerson(0, 0, '#3fa46f', false, '#ffd23f')), '') +
     big(370, 600, 1.6, winterPerson(0, 0, '#ffb703', true, '#3a86ff')) +
-    diff(...around(36, 616, 104, 725), big(70, 725, 1.3, snowman(0, 0, '#e63946')), big(70, 725, 1.3, snowman(0, 0, '#8338ec'))) +
+    big(70, 725, 1.3, snowman(0, 0, '#e63946')) +
     big(110, 440, 1.3, lampPost(0, 0) + lampHead(0, 0)) +
     diff(...around(92, 272, 128, 294, 30), '', big(110, 294, 1.6, bird(0, 0, '#e63946'))) +
     big(485, 480, 1.3, lampPost(0, 0) + lampHead(0, 0)) +

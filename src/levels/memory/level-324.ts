@@ -53,7 +53,7 @@ export default memoryLevel({
     // Shelf with jars
     `<rect x="200" y="300" width="280" height="10" fill="#8a5a33"/>` +
     labJar(240, 300, '#8ac926') +
-    diff(...around(280, 242, 320, 300), labJar(300, 300, '#ff6b8b'), labJar(300, 300, '#4dabf7')) +
+    labJar(300, 300, '#ff6b8b') +
     // The category's hidden key (on B only), behind the yellow jar
     secret(347, 294) +
     labJar(360, 300, '#ffd23f') +

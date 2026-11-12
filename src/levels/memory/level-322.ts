@@ -46,7 +46,7 @@ export default memoryLevel({
         `<path d="M210 222L400 100L590 222Z" fill="#e63946"/><path d="M210 222q24 16 48 0t48 0t48 0t48 0t48 0t48 0t48 0t48 0" fill="#ffd23f"/>` +
         `<path d="M360 360V300Q400 260 440 300V360Z" fill="#3d2a20"/><path d="M360 300Q380 330 380 360M440 300Q420 330 420 360" stroke="#ffd23f" stroke-width="4" fill="none"/>` +
         `<rect x="398" y="48" width="4" height="54" fill="#5c677d"/>` +
-        diff(...around(248, 88, 290, 118, 30), `<path d="M402 52h36l-8 12l8 12h-36Z" fill="#3a86ff"/>`, `<path d="M402 52h36l-8 12l8 12h-36Z" fill="#8ac926"/>`) +
+        `<path d="M402 52h36l-8 12l8 12h-36Z" fill="#3a86ff"/>` +
         diff(...around(228, 188, 272, 232, 30), star(400, 170, 22, '#ffd23f'), '') +
         star(300, 170, 12, '#ffd23f') +
         star(500, 170, 12, '#ffd23f'),

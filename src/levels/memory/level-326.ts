@@ -60,7 +60,7 @@ export default memoryLevel({
     `<path d="M380 382v-14h14" stroke="#8d99ae" stroke-width="6" fill="none"/>` +
     diff(...around(324, 328, 436, 380), brushCup(338, 380), brushCup(422, 380)) +
     // Floor
-    diff(...around(380, 660, 480, 696), mat(380, 660, '#4dabf7'), mat(380, 660, '#ff6b8b')) +
+    mat(380, 660, '#4dabf7') +
     diff(...around(394, 549, 466, 571), slippers(430, 560), '') +
     `<path d="M20 480h80l-6 60h-68Z" fill="#d9b48a"/><path d="M28 500h64M30 520h60" stroke="#a0703f" stroke-width="3"/>` +
     // Decor: small things that fill the room, the same in both pictures

@@ -20,7 +20,7 @@ export default memoryLevel({
     `<path d="M330 380Q350 340 410 342Q480 342 500 380Z" fill="#8d99ae"/>` +
     big(410, 370, 1.4, lighthouse(0, 0, diff(...around(382, 219, 438, 328), '#e63946', '#3a86ff'))) +
     diff(...around(306, 434, 414, 572), big(360, 560, 1.5, sailboat(0, 0, '#e63946')), '') +
-    diff(...around(130, 596, 230, 676), big(150, 640, 2, buoy(0, 0)), big(210, 660, 2, buoy(0, 0))) +
+    big(150, 640, 2, buoy(0, 0)) +
     // Pier with crates and a sailor
     `<path d="M40 448V530M120 448V530M200 448V530M280 448V530" stroke="#6b4f3a" stroke-width="12"/>` +
     `<rect x="0" y="430" width="300" height="18" fill="#a0703f"/>` +

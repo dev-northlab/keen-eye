@@ -20,7 +20,7 @@ export default memoryLevel({
     `<path d="M164 234L310 154L456 234" stroke="#ffffff" stroke-width="10" fill="none" stroke-linejoin="round"/>` +
     windowPane(210, 260, 50, 50) +
     windowPane(360, 260, 50, 50) +
-    diff(...around(285, 290, 335, 370), `<rect x="285" y="290" width="50" height="80" rx="4" fill="#7a4e33"/>`, `<rect x="285" y="290" width="50" height="80" rx="4" fill="#3a86ff"/>`) +
+    `<rect x="285" y="290" width="50" height="80" rx="4" fill="#7a4e33"/>` +
     bigSnowman(150, 620) +
     diff(...around(110, 510, 190, 564), scarf(150, 620, '#e63946'), scarf(150, 620, '#3fa46f')) +
     diff(...around(308, 664, 432, 700), sled(370, 700, '#e63946'), '') +

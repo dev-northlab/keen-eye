@@ -56,7 +56,6 @@ export default memoryLevel({
     `<rect y="480" width="500" height="270" fill="#d3cbb9"/><rect y="480" width="500" height="8" fill="#ffd23f"/>` +
     `<path d="M0 640H500M170 488V750M340 488V750" stroke="#bdb39f" stroke-width="3"/>` +
     big(30, 735, 1.5, lampPost(0, 0) + lampHead(0, 0)) +
-    diff(...around(106, 692, 154, 720, 30), '', big(130, 720, 2, pigeon(0, 0))) +
     big(265, 705, 1.6, person(0, 0, '#e63946')) +
     big(380, 725, 1.8, bench(0, 0)) +
     // Decor: small things that fill the scene, the same in both pictures

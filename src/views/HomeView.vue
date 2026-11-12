@@ -99,14 +99,8 @@ function play() {
       <span class="label">{{ $t('home.levels') }}</span>
       <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
-    <button v-if="canExitApp" class="entry" @click="exitApp">
-      <span class="badge exit" aria-hidden="true">
-        <svg class="flip-rtl" viewBox="0 0 24 24"><path d="M14 4.5H6.5v15H14M10.5 12H20M16.5 8.5 20 12l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" /></svg>
-      </span>
-      <span class="label">{{ $t('home.exit') }}</span>
-    </button>
 
-    <!-- Settings and the info pages as round icon buttons; their names are read out and shown on hover. -->
+    <!-- Settings, the info pages and (Android only) exit as round icon buttons; their names are read out and shown on hover. -->
     <nav class="info-links">
       <button class="info-link" :aria-label="$t('home.settings')" :title="$t('home.settings')" @click="router.push({ name: 'settings' })">
         <MenuIcon name="settings" />
@@ -119,6 +113,9 @@ function play() {
       </button>
       <button class="info-link" :aria-label="$t('info.contact')" :title="$t('info.contact')" @click="dialog = 'contact'">
         <MenuIcon name="contact" />
+      </button>
+      <button v-if="canExitApp" class="info-link" :aria-label="$t('home.exit')" :title="$t('home.exit')" @click="exitApp">
+        <MenuIcon name="exit" />
       </button>
     </nav>
 
@@ -564,10 +561,6 @@ button {
 
 .badge.levels {
   background: var(--hint);
-}
-
-.badge.exit {
-  background: var(--danger);
 }
 
 /* Two players: the two characters, overlapping. */

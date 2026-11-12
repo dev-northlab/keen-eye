@@ -1,5 +1,6 @@
 import { bench } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level305Redesign } from './level-305-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { ball, bird, birds, bush, butterfly, dog, flowers, grass, slide, stones, swingFrame, swingSeat } from '../time/shapes.ts'
 import { around, big, daySky, ground, kite, roundTree } from './shapes.ts'
@@ -9,6 +10,7 @@ export default memoryLevel({
   id: 305,
   title: 'memoryPlayground',
   showSeconds: 5,
+  redesign: level305Redesign,
   scene: ({ diff }) =>
     daySky(370) +
     sun(420, 80) +

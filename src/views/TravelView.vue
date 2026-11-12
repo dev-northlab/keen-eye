@@ -43,9 +43,10 @@ const stamps = computed(() => visited(travelLevels))
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: 'level', params: { id: level.id } })
+  else progress.showLocked(level.id)
 }
 
-/** Paid places stay tappable (they open the full-game dialog); places not reached yet are disabled. */
+/** Paid places open the full-game dialog; places not reached yet look disabled and say which place opens them. */
 function placeLabel(level: Level) {
   const name = `${t(`levelTitles.${level.title}`)}, ${t(`worldTravel.countries.${level.travel!.country}`)}`
   const state = progress.needsPurchase(level.id) ? t('map.paid') : progress.isUnlocked(level.id) ? '' : t('map.locked')
@@ -78,7 +79,7 @@ function placeLabel(level: Level) {
           <button
             class="place"
             :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id) }"
-            :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
+            :aria-disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
             :aria-label="placeLabel(level)"
             @click="open(level)"
           >
@@ -188,13 +189,13 @@ main {
   color: var(--gold-fg);
 }
 
-.place:disabled {
+.place[aria-disabled='true'] {
   background: var(--disabled-bg);
   color: var(--faint);
   cursor: default;
 }
 
-.place:disabled .flag {
+.place[aria-disabled='true'] .flag {
   opacity: 0.5;
 }
 

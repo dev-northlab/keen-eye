@@ -63,11 +63,11 @@ export const DIFFICULTY: Difficulty[] = [
   // gone or new, recolored, moved, fewer of them); the zone of a move covers both places, that of a
   // count the whole group. Less time to look as the changes grow.
   { from: 301, to: 305, differences: [3, 3], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
-  { from: 306, to: 310, differences: [4, 4], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
-  { from: 311, to: 315, differences: [5, 6], motion: [0, 0], minRadius: 30, showSeconds: 3, kinds: MEMORY },
+  { from: 306, to: 310, differences: [3, 3], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
+  { from: 311, to: 315, differences: [4, 4], motion: [0, 0], minRadius: 30, showSeconds: 3, kinds: MEMORY },
   // 316–330: busier, more detailed scenes (12–18 objects plus the decor), so a little more time to look.
-  { from: 316, to: 320, differences: [5, 5], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
-  { from: 321, to: 330, differences: [6, 6], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
+  { from: 316, to: 320, differences: [4, 4], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },
+  { from: 321, to: 330, differences: [5, 5], motion: [0, 0], minRadius: 30, showSeconds: 4, kinds: MEMORY },
   // 331–340: the ten hardest (hidden until released, levels/upcoming.ts), the busiest scenes with 7 then 8 changes, shown
   // a little longer for so many to keep in mind.
   { from: 331, to: 335, differences: [7, 7], motion: [0, 0], minRadius: 30, showSeconds: 5, kinds: MEMORY },

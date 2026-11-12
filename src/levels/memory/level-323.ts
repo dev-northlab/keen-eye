@@ -45,7 +45,7 @@ export default memoryLevel({
     Array.from({ length: 13 }, (_, i) => `<rect x="${i * 40 + 8}" y="150" width="24" height="22" fill="#b9b3a6"/>`).join('') +
     `<path d="M0 210H500M0 250H500M0 290H500" stroke="#9c968a" stroke-width="2"/>` +
     tower(10, 130, 110, '#5b4bd6') +
-    diff(...around(68, 18, 108, 48, 30), pennant(70, 20, '#e63946'), pennant(70, 20, '#ffd23f')) +
+    pennant(70, 20, '#e63946') +
     tower(370, 490, 110, '#5b4bd6') +
     pennant(430, 20, '#e63946') +
     // Gate with a shield over it

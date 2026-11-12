@@ -42,6 +42,7 @@ useBackButton(toParent)
 function open(level: Level) {
   if (progress.needsPurchase(level.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(level.id)) router.push({ name: level.memory ? 'memory' : 'level', params: { id: level.id } })
+  else progress.showLocked(level.id)
 }
 
 function openRandom() {
@@ -49,7 +50,7 @@ function openRandom() {
   open(pool[Math.floor(Math.random() * pool.length)])
 }
 
-/** Paid levels stay tappable (they open the full-game dialog); levels not reached yet are disabled. */
+/** Paid levels open the full-game dialog; levels not reached yet look disabled and say which level opens them. */
 function tileLabel(level: Level) {
   const name = progress.needsPurchase(level.id)
     ? t('map.paid')
@@ -90,7 +91,7 @@ function tileLabel(level: Level) {
           <button
             class="tile"
             :class="{ done: progress.isCompleted(level.id), paid: progress.needsPurchase(level.id), hidden: isUpcoming(level.id) }"
-            :disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
+            :aria-disabled="!progress.isUnlocked(level.id) && !progress.needsPurchase(level.id)"
             :aria-label="tileLabel(level)"
             @pointerdown="readyPictures(level)"
             @click="open(level)"
@@ -200,7 +201,7 @@ main {
     box-shadow 0.1s ease;
 }
 
-.tile:not(:disabled):active {
+.tile:not([aria-disabled='true']):active {
   transform: translateY(4px);
   box-shadow:
     inset 0 0 0 2px color-mix(in srgb, var(--c) 35%, transparent),
@@ -264,7 +265,7 @@ main {
   text-shadow: 0 1px 0 rgb(255 255 255 / 0.5);
 }
 
-.tile:disabled {
+.tile[aria-disabled='true'] {
   background: color-mix(in srgb, var(--disabled-bg) 72%, transparent);
   color: var(--faint);
   box-shadow:

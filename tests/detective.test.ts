@@ -70,12 +70,29 @@ describe('"detective" mode (docs/detective-mode.md)', () => {
     assert.deepEqual(levelsScreen(scenes[2]), { name: 'case', params: { case: 'cake' } })
   })
 
+  test('a harder case names its culprit only where clues meet: none fits one suspect alone, two rule out each innocent', () => {
+    for (const c of CASES.filter((c) => c.hard)) {
+      for (const [clue, who] of Object.entries(c.fits)) assert.ok(who.length > 1, `${c.id} ${clue} fits only ${who}`)
+      for (const s of c.suspects.filter((s) => s !== c.culprit)) {
+        const out = Object.values(c.fits).filter((who) => !who.includes(s)).length
+        assert.ok(out >= 2, `${c.id}: ${s} is ruled out by ${out} clue(s)`)
+      }
+    }
+  })
+
+  test('only the three harder cases (516–530) keep the misfit clue to themselves', () => {
+    assert.deepEqual(
+      CASES.filter((c) => c.hard).map((c) => caseLevels(c.id)[0].id),
+      [516, 521, 526],
+    )
+  })
+
   test('every text exists in every interface language', () => {
     const dir = new URL('../src/i18n/', import.meta.url)
     for (const file of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       const t = JSON.parse(readFileSync(new URL(file, dir), 'utf8'))
       assert.ok(t.chapters.detective, file)
-      for (const key of ['task', 'rules', 'notebook', 'noClues', 'clues', 'scenes', 'suspectsTitle', 'whoDidIt', 'findAll', 'accuse', 'wrong', 'solved', 'solvedTitle', 'reward', 'newClue', 'solveCase', 'paid', 'unlock', 'nextCase'])
+      for (const key of ['task', 'rules', 'notebook', 'noClues', 'startWith', 'cluesWaiting', 'crossOutHelp', 'clues', 'scenes', 'suspectsTitle', 'whoDidIt', 'findAll', 'accuse', 'accuseSure', 'accuseYes', 'crossOut', 'crossOutHint', 'wrong', 'wrongHard', 'solved', 'solvedTitle', 'reward', 'newClue', 'cluesFound', 'solveCase', 'paid', 'unlock', 'nextCase'])
         assert.ok(typeof t.detective[key] === 'string', `${file} detective.${key}`)
       for (const key of ['new', 'progress', 'solved', 'locked']) assert.ok(t.detective.status[key], `${file} status.${key}`)
       for (const c of CASES) {

@@ -50,7 +50,7 @@ export default memoryLevel({
     `<path d="M0 560Q190 520 330 570T500 560V750H0Z" fill="#e8b85a"/>` +
     diff(...around(15, 482, 145, 560), big(80, 560, 1.3, tent(0, 0, '#e63946')), big(80, 560, 1.3, tent(0, 0, '#3a86ff'))) +
     camel(230, 700) +
-    diff(...around(198, 590, 252, 620, 30), saddle(230, 700, '#8338ec'), saddle(230, 700, '#3fa46f')) +
+    saddle(230, 700, '#8338ec') +
     // Decor: small things that fill the scene, the same in both pictures
     cloud(60, 60, 0.5) +
     cloud(220, 50, 0.4) +

@@ -41,6 +41,10 @@
   },
   "detective": {
     "accuse": "Anklag: {suspect}",
+    "accuseSure": "Er du sikker? Hvert forkert gæt koster en stjerne.",
+    "accuseYes": "Anklag",
+    "crossOut": "Streg ud: {suspect}",
+    "crossOutHint": "Tryk på krydset på et kort for at strege en mistænkt ud. Det er kun en note – det tæller ikke som et gæt.",
     "cases": {
       "cake": {
         "ending": "Det var hunden! Store mudrede poter, en tygget hjemmesko og flødeskum på hundehuset afslørede den – den var så mæt af kage, at den ikke rørte sin egen aftensmad. Tilgivet, men ingen godbidder i en uge.",
@@ -176,7 +180,7 @@
       "lunchBox": "Vagtens madkasse i båsen – han holdt pause",
       "mailSpilled": "Breve er væltet ud af postsækken",
       "mapDropped": "Et museumskort efterladt på bænken",
-      "marblesPearls": "Perler blandet sammen med drengens glaskugler",
+      "marblesPearls": "Perler mellem glaskuglerne på gulvet – nogen troede, de var legetøj",
       "meltedSnow": "Pytter af smeltet sne på gulvet",
       "menuFallen": "Menukortet er væltet",
       "miniVaseGone": "En minivase er væk fra hylden",
@@ -198,7 +202,7 @@
       "pineSnowFallen": "Sneen er faldet af granen",
       "plantTipped": "En potteplante er væltet",
       "playingCard": "Et spillekort på gulvet",
-      "pointedPrints": "Aftryk af spidse sko – som tryllekunstnerens",
+      "pointedPrints": "Aftryk af spidse sko – ikke klovnens store, runde sko",
       "polePrints": "Runde huller efter skistave i sneen",
       "popcornSpilled": "Popcorn spildt ved vognen",
       "postcardsSold": "Postkortene med vasen er udsolgt",
@@ -229,8 +233,8 @@
       "skylightOpen": "Ovenlysvinduet er åbent – nogen kom oppefra",
       "sledTipped": "Kælken ligger på hovedet",
       "slipperGone": "En hjemmesko mangler",
-      "smallHandprints": "Små håndaftryk på vinduet – et barns hænder",
-      "smallShoePrints": "Små skoaftryk – i børnestørrelse",
+      "smallHandprints": "Små håndaftryk på vinduet – hænder, ikke poter",
+      "smallShoePrints": "Aftryk af sneakers i gangen – sko, ikke poter",
       "sneakerPrints": "Sneakersaftryk",
       "snowAngel": "En sneengel i sneen",
       "snowCannonOff": "Snekanonen er slukket",
@@ -241,9 +245,9 @@
       "snowmanScarf": "Snemanden har et rødt halstørklæde på",
       "spoonGone": "Sølvskeen mangler på sin krog",
       "spotlightOff": "Projektøren er slukket",
-      "squashedHat": "Tryllekunstnerens egen høje hat er mast flad",
+      "squashedHat": "En mast høj hat bag scenen – nogen havde brug for en ny",
       "starGone": "En stjerne er faldet ned fra buen",
-      "stickerOnTrunk": "Et dinosaurklistermærke på grevindens kuffert",
+      "stickerOnTrunk": "Et dinosaurklistermærke på kufferten – kokken sætter de samme på sine syltetøjsglas",
       "stoolTipped": "En skammel er væltet",
       "strapOnNail": "En afrevet rygsækrem på et søm",
       "sugarSpilled": "Sukkerskålen er væltet",
@@ -304,11 +308,15 @@
     "clues": "Spor: {n} af {total}",
     "findAll": "Find sporene i alle scener, og udpeg så den skyldige.",
     "newClue": "Nyt spor",
+    "cluesFound": "Fundne spor: {n}",
     "nextCase": "Næste sag",
     "noClues": "Ingen spor endnu – søg i scenerne.",
+    "startWith": "Start: »{title}«",
+    "cluesWaiting": "Her venter der stadig spor",
+    "crossOutHelp": "Sådan streger du mistænkte ud",
     "notebook": "Detektivens notesbog",
     "paid": "Find ud af, hvem der gjorde det – lås hele spillet op",
-    "reward": "Du har fået stjernen »Sagen opklaret«",
+    "reward": "Stjerner for opklaringen: én mindre for hvert forkert gæt",
     "rules": "Til venstre – hvordan stedet så ud, til højre – hvordan det ser ud nu. Hver ændring er et spor: find dem i alle fem scener, og udpeg så den skyldige.",
     "scenes": "Scener",
     "solveCase": "Opklar sagen",
@@ -352,8 +360,9 @@
     "suspectsTitle": "Mistænkte",
     "task": "Opklar sagen",
     "unlock": "Hele spillet",
-    "whoDidIt": "Hvem gjorde det? Kun én mistænkt passer til alle spor.",
-    "wrong": "Ikke helt: {suspect} passer ikke til sporet »{clue}«. Kig i notesbogen igen!"
+    "whoDidIt": "Hvem gjorde det? Kun én mistænkt passer til alle spor. Udpeg den skyldige i første forsøg, og få tre stjerner: hvert forkert gæt koster én.",
+    "wrong": "Ikke helt: {suspect} passer ikke til sporet »{clue}«. Kig i notesbogen igen!",
+    "wrongHard": "Ikke helt: {suspect} passer ikke til alle spor. Læs notesbogen igen!"
   },
   "duo": {
     "avatar": "Spiller {n}s figur",
@@ -833,11 +842,15 @@
     "bumperCars": "Radiobiler",
     "autumnLeaves": "Efterårsblade",
     "christmasMorning": "Juledagsmorgen",
-    "sunnyStreet": "Solrig gade"
+    "sunnyStreet": "Solrig gade",
+    "gardenGate": "Ved havelågen"
   },
   "map": {
     "level": "Bane {n}",
     "locked": "Låst",
+    "lockedTitle": "Ikke åben endnu",
+    "lockedText": "Banerne åbner én ad gangen. Næste: bane {n}, »{title}«.",
+    "lockedPlay": "Gå til den",
     "hidden": "Skjult bane (ikke udgivet endnu)",
     "paid": "Hele spillet",
     "progress": "{done} af {total}",
@@ -863,7 +876,7 @@
       "search": "Hvad er ændret?",
       "show": "Husk billedet!"
     },
-    "rules": "Husk billedet – du har kun få sekunder. Så ændrer det sig: find det, der er anderledes, ud fra hukommelsen. Højst 3 forkerte tryk.",
+    "rules": "Husk billedet – du har kun få sekunder. Så ændrer det sig: find det, der er anderledes, ud fra hukommelsen. Hjerterne viser, hvor mange forkerte tryk du har.",
     "task": "Find det ud fra hukommelsen"
   },
   "mode": {

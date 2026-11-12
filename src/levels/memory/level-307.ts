@@ -1,5 +1,6 @@
 import { balloon, bike, bin, car, cone, dog, flowerBox, hydrant, pigeon, trafficLight } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level307Redesign } from './level-307-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky, stallAwning, windowPane } from './shapes.ts'
 import { bird, birds, pot, roadSign } from '../time/shapes.ts'
@@ -14,6 +15,7 @@ export default memoryLevel({
   id: 307,
   title: 'memoryStreet',
   showSeconds: 4,
+  redesign: level307Redesign,
   scene: ({ diff }) =>
     daySky(470) +
     sun(70, 100) +
@@ -23,7 +25,7 @@ export default memoryLevel({
     windowPane(46, 266, 60, 50) +
     windowPane(174, 266, 60, 50) +
     `<rect x="120" y="406" width="40" height="64" rx="4" fill="#7a4e33"/><rect x="62" y="410" width="44" height="40" fill="#bde3f2"/><rect x="174" y="410" width="44" height="40" fill="#bde3f2"/>` +
-    diff(...around(50, 350, 230, 396), stallAwning(140, 350, 160, '#e63946'), stallAwning(140, 350, 160, '#3fa46f')) +
+    stallAwning(140, 350, 160, '#e63946') +
     // Tall building on the right
     `<rect x="290" y="60" width="190" height="410" fill="#7aa6d6"/>` +
     windows() +

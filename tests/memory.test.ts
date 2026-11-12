@@ -17,7 +17,7 @@ describe('"memory" mode (docs/memory-mode.md)', () => {
     assert.equal(memoryStars({ found: 1, total: 3, mistakes: 3, peeks: 0 }), 0)
   })
 
-  test('30 levels from 301: 3 changes for 5 s, 4 for 4 s, 5–6 for 3 s, then busier scenes: 5 for 5 s, 6 for 4 s', () => {
+  test('30 levels from 301: 3 changes for 5 s, 3 for 4 s, 4 for 3 s, then busier scenes: 4 for 5 s, 5 for 4 s', () => {
     assert.deepEqual(memoryLevels.map((l) => l.id), Array.from({ length: 30 }, (_, i) => 301 + i))
     memoryLevels.forEach((level, i) => {
       assert.equal(level.chapter, MEMORY_CHAPTER.id)
@@ -28,10 +28,10 @@ describe('"memory" mode (docs/memory-mode.md)', () => {
       assert.equal(level.memory!.showSeconds, difficultyOf(level.id).showSeconds)
       const n = level.differences.length
       if (i < 5) assert.deepEqual([n, level.memory!.showSeconds], [3, 5])
-      else if (i < 10) assert.deepEqual([n, level.memory!.showSeconds], [4, 4])
-      else if (i < 15) assert.ok(n >= 5 && n <= 6 && level.memory!.showSeconds === 3, `level ${level.id}`)
-      else if (i < 20) assert.deepEqual([n, level.memory!.showSeconds], [5, 5])
-      else assert.deepEqual([n, level.memory!.showSeconds], [6, 4])
+      else if (i < 10) assert.deepEqual([n, level.memory!.showSeconds], [3, 4])
+      else if (i < 15) assert.deepEqual([n, level.memory!.showSeconds], [4, 3])
+      else if (i < 20) assert.deepEqual([n, level.memory!.showSeconds], [4, 5])
+      else assert.deepEqual([n, level.memory!.showSeconds], [5, 4])
       assert.ok(!level.multiplayerReady && !level.differences.some((d) => d.motion), `level ${level.id}`)
     })
   })

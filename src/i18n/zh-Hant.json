@@ -41,6 +41,10 @@
   },
   "detective": {
     "accuse": "指控：{suspect}",
+    "accuseSure": "確定嗎？每猜錯一次少一顆星。",
+    "accuseYes": "指控",
+    "crossOut": "劃掉：{suspect}",
+    "crossOutHint": "點卡片上的叉號可以劃掉嫌疑人。這只是筆記，不算一次猜測。",
     "cases": {
       "cake": {
         "ending": "是狗做的！又大又髒的泥爪印、被咬壞的拖鞋和狗屋上的奶油出賣了牠——牠吃了太多蛋糕，連自己的晚餐都沒碰。原諒牠了，不過一個星期沒有零食。",
@@ -176,7 +180,7 @@
       "lunchBox": "管理員的便當在崗亭裡——他在休息",
       "mailSpilled": "郵袋裡的信撒了出來",
       "mapDropped": "長椅上留下的博物館地圖",
-      "marblesPearls": "男孩的彈珠裡混著珍珠",
+      "marblesPearls": "地上的彈珠裡混著珍珠——有人把它們當成了玩具",
       "meltedSnow": "地上有融雪的小水窪",
       "menuFallen": "菜單倒了",
       "miniVaseGone": "架子上少了一個小花瓶",
@@ -198,7 +202,7 @@
       "pineSnowFallen": "冷杉上的雪掉下來了",
       "plantTipped": "一盆植物倒了",
       "playingCard": "地上有一張撲克牌",
-      "pointedPrints": "尖頭鞋的腳印——和魔術師的一樣",
+      "pointedPrints": "尖頭鞋的腳印——不是小丑那雙又大又圓的鞋",
       "polePrints": "雪地上有雪杖留下的圓洞",
       "popcornSpilled": "推車旁撒了爆米花",
       "postcardsSold": "花瓶明信片賣光了",
@@ -229,8 +233,8 @@
       "skylightOpen": "天窗開著——有人從上面進來",
       "sledTipped": "雪橇翻過來了",
       "slipperGone": "少了一隻拖鞋",
-      "smallHandprints": "窗戶上有小手印——是孩子的手",
-      "smallShoePrints": "小小的鞋印——是孩子的尺寸",
+      "smallHandprints": "窗戶上有小手印——是手，不是爪子",
+      "smallShoePrints": "走廊裡有運動鞋印——是鞋，不是爪子",
       "sneakerPrints": "運動鞋印",
       "snowAngel": "雪地裡有個雪天使",
       "snowCannonOff": "造雪機關掉了",
@@ -241,9 +245,9 @@
       "snowmanScarf": "雪人圍著一條紅圍巾",
       "spoonGone": "掛鉤上的銀湯匙不見了",
       "spotlightOff": "聚光燈關了",
-      "squashedHat": "魔術師自己的高禮帽被壓扁了",
+      "squashedHat": "後台有一頂壓扁的高禮帽——有人需要一頂新的",
       "starGone": "拱門上掉了一顆星星",
-      "stickerOnTrunk": "伯爵夫人的大箱子上有一張恐龍貼紙",
+      "stickerOnTrunk": "箱子上有一張恐龍貼紙——廚師在他的果醬瓶上也貼著一樣的",
       "stoolTipped": "凳子被撞倒了",
       "strapOnNail": "釘子上掛著一截扯斷的背包帶",
       "sugarSpilled": "糖罐翻倒了",
@@ -304,11 +308,15 @@
     "clues": "線索：{n}/{total}",
     "findAll": "找出所有場景中的線索，才能指出真兇。",
     "newClue": "新線索",
+    "cluesFound": "已找到線索：{n}",
     "nextCase": "下一個案件",
     "noClues": "還沒有線索——去搜查現場吧。",
+    "startWith": "開始：「{title}」",
+    "cluesWaiting": "這裡還有線索等著你",
+    "crossOutHelp": "如何劃掉嫌疑人",
     "notebook": "偵探筆記",
     "paid": "想知道是誰做的？解鎖完整版遊戲",
-    "reward": "你獲得了「破案」之星",
+    "reward": "破案星級：每猜錯一次少一顆",
     "rules": "左邊是原來的樣子，右邊是現在的樣子。每一處不同都是一條線索：在全部五個場景中找到它們，然後指出真兇。",
     "scenes": "現場",
     "solveCase": "破案",
@@ -352,8 +360,9 @@
     "suspectsTitle": "嫌疑人",
     "task": "破案",
     "unlock": "完整版",
-    "whoDidIt": "是誰做的？只有一名嫌疑人符合所有線索。",
-    "wrong": "對不上：{suspect}不符合線索「{clue}」。再看看你的筆記吧！"
+    "whoDidIt": "是誰做的？只有一名嫌疑人符合所有線索。第一次就猜對能得三顆星，每猜錯一次少一顆。",
+    "wrong": "對不上：{suspect}不符合線索「{clue}」。再看看你的筆記吧！",
+    "wrongHard": "對不上：{suspect}並不符合所有線索。再讀讀你的筆記吧！"
   },
   "duo": {
     "avatar": "玩家 {n} 的角色",
@@ -833,11 +842,15 @@
     "bumperCars": "碰碰車",
     "autumnLeaves": "秋天的落葉",
     "christmasMorning": "聖誕節的早晨",
-    "sunnyStreet": "陽光街道"
+    "sunnyStreet": "陽光街道",
+    "gardenGate": "花園門口"
   },
   "map": {
     "level": "第 {n} 關",
     "locked": "未解鎖",
+    "lockedTitle": "尚未解鎖",
+    "lockedText": "關卡按順序解鎖。下一個：第 {n} 關「{title}」。",
+    "lockedPlay": "前往該關",
     "hidden": "隱藏關卡（尚未發布）",
     "paid": "完整版",
     "progress": "{done} / {total}",
@@ -863,7 +876,7 @@
       "search": "哪裡變了？",
       "show": "記住這張圖！"
     },
-    "rules": "記住這張圖——你只有幾秒鐘。之後它會變化：憑記憶找出不同之處。最多失誤 3 次。",
+    "rules": "記住這張圖——你只有幾秒鐘。之後它會變化：憑記憶找出不同之處。愛心代表你還能失誤幾次。",
     "task": "憑記憶找不同"
   },
   "mode": {

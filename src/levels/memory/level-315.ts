@@ -1,7 +1,7 @@
 import { balloon, bin, pigeon } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
 import { cloud, sun } from '../shapes.ts'
-import { around, banana, big, daySky, ground, produce, pumpkin, signPost, stall, stallAwning, watermelon } from './shapes.ts'
+import { around, banana, big, daySky, ground, produce, signPost, stall, stallAwning, watermelon } from './shapes.ts'
 import { bird, birds, crate, poster, sack } from '../time/shapes.ts'
 
 export default memoryLevel({
@@ -26,7 +26,6 @@ export default memoryLevel({
       banana(258, 376, bananas) +
       produce(390, 460, '#e63946', 5) +
       diff(...around(44, 598, 136, 660), watermelon(90, 660), '') +
-      diff(...around(206, 616, 294, 690), '', pumpkin(250, 690)) +
       // Decor: small things that fill the scene, the same in both pictures
       cloud(230, 90, 0.6) +
       birds(300, 190) +
@@ -42,7 +41,7 @@ export default memoryLevel({
       crate(175, 745, 30, '#b07a42') +
       crate(208, 745, 30) +
       sack(300, 745) +
-      diff(...around(336, 598, 476, 708), signPost(386, 708), signPost(426, 708))
+      signPost(386, 708)
     )
   },
 })
