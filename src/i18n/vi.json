@@ -829,7 +829,9 @@
     "parkPushchair": "Xe đẩy trong công viên",
     "chalkDrawings": "Tranh vẽ phấn",
     "fairHelicopter": "Trực thăng ở hội chợ",
-    "livingRoomToys": "Đồ chơi trong phòng khách"
+    "livingRoomToys": "Đồ chơi trong phòng khách",
+    "bumperCars": "Xe điện đụng",
+    "autumnLeaves": "Lá mùa thu"
   },
   "map": {
     "level": "Màn {n}",

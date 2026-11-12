@@ -829,7 +829,9 @@
     "parkPushchair": "公園裡的嬰兒車",
     "chalkDrawings": "粉筆畫",
     "fairHelicopter": "遊樂場的直升機",
-    "livingRoomToys": "客廳裡的玩具"
+    "livingRoomToys": "客廳裡的玩具",
+    "bumperCars": "碰碰車",
+    "autumnLeaves": "秋天的落葉"
   },
   "map": {
     "level": "第 {n} 關",

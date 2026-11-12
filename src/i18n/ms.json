@@ -829,7 +829,9 @@
     "parkPushchair": "Kereta sorong bayi di taman",
     "chalkDrawings": "Lukisan kapur",
     "fairHelicopter": "Helikopter di pesta ria",
-    "livingRoomToys": "Mainan di ruang tamu"
+    "livingRoomToys": "Mainan di ruang tamu",
+    "bumperCars": "Kereta laga",
+    "autumnLeaves": "Daun musim luruh"
   },
   "map": {
     "level": "Tahap {n}",

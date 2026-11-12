@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level223Redesign } from './level-223-redesign.ts'
 import { around, bareTree, barrel, beehive, bird, birdHouse, birds, bucket, butterfly, chimney, cloud, crate, fence, grass, hen, house, icicles, logPile, oak, pane, person, picket, rabbit, roofSnow, sack, sky, small, smoke, snowCap, snowfall, snowman, squirrel, stones, winterPerson, winterSky } from './shapes.ts'
 
 /** Apples in the crown of `oak(x, y, s)`. */
@@ -25,6 +26,7 @@ export default svgLevel({
   title: 'orchardHives',
   pair: 'summer-winter',
   parTimeSec: 135,
+  redesign: level223Redesign,
   scene: ({ diff, time, trap, extra, anim }) => {
     const winter = time(false, true)
     // Two apple trees that change on their own; the middle one is the trap.

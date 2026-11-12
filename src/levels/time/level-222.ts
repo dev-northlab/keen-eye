@@ -1,5 +1,6 @@
 import { extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
+import { level222Redesign } from './level-222-redesign.ts'
 import { around, cloud, cone, DUSK, glow, lampHead, lampPost, moon, pane, sky, stars, sun } from './shapes.ts'
 import {
   airliner,
@@ -28,6 +29,7 @@ export default svgLevel({
   title: 'atTheAirport',
   pair: 'day-night',
   parTimeSec: 135,
+  redesign: level222Redesign,
   scene: ({ diff, time, trap, extra, anim }) =>
     sky(time(false, true), 300) +
     // Terminal with its glass front

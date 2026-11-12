@@ -586,7 +586,9 @@
     "parkPushchair": "Коляска в парке",
     "chalkDrawings": "Рисунки мелом",
     "fairHelicopter": "Вертолёт на ярмарке",
-    "livingRoomToys": "Игрушки в гостиной"
+    "livingRoomToys": "Игрушки в гостиной",
+    "bumperCars": "Машинки-автодром",
+    "autumnLeaves": "Осенние листья"
   },
   "mode": {
     "label": "Режим",

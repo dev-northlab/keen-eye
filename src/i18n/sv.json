@@ -829,7 +829,9 @@
     "parkPushchair": "Sittvagn i parken",
     "chalkDrawings": "Kritteckningar",
     "fairHelicopter": "Helikopter på tivolit",
-    "livingRoomToys": "Leksaker i vardagsrummet"
+    "livingRoomToys": "Leksaker i vardagsrummet",
+    "bumperCars": "Radiobilar",
+    "autumnLeaves": "Höstlöv"
   },
   "map": {
     "level": "Nivå {n}",

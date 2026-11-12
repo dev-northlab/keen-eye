@@ -829,7 +829,9 @@
     "parkPushchair": "Klapvogn i parken",
     "chalkDrawings": "Kridttegninger",
     "fairHelicopter": "Helikopter i tivoli",
-    "livingRoomToys": "Legetøj i stuen"
+    "livingRoomToys": "Legetøj i stuen",
+    "bumperCars": "Radiobiler",
+    "autumnLeaves": "Efterårsblade"
   },
   "map": {
     "level": "Bane {n}",

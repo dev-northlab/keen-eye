@@ -829,7 +829,9 @@
     "parkPushchair": "Rattaat puistossa",
     "chalkDrawings": "Liitupiirustukset",
     "fairHelicopter": "Helikopteri tivolissa",
-    "livingRoomToys": "Lelut olohuoneessa"
+    "livingRoomToys": "Lelut olohuoneessa",
+    "bumperCars": "Törmäilyautot",
+    "autumnLeaves": "Syksyn lehdet"
   },
   "map": {
     "level": "Taso {n}",

@@ -586,7 +586,9 @@
     "parkPushchair": "Καροτσάκι στο πάρκο",
     "chalkDrawings": "Ζωγραφιές με κιμωλία",
     "fairHelicopter": "Ελικόπτερο στο λούνα παρκ",
-    "livingRoomToys": "Παιχνίδια στο σαλόνι"
+    "livingRoomToys": "Παιχνίδια στο σαλόνι",
+    "bumperCars": "Συγκρουόμενα αυτοκινητάκια",
+    "autumnLeaves": "Φθινοπωρινά φύλλα"
   },
   "mode": {
     "label": "Λειτουργία",

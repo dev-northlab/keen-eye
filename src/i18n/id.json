@@ -829,7 +829,9 @@
     "parkPushchair": "Kereta dorong di taman",
     "chalkDrawings": "Gambar kapur",
     "fairHelicopter": "Helikopter di pasar malam",
-    "livingRoomToys": "Mainan di ruang keluarga"
+    "livingRoomToys": "Mainan di ruang keluarga",
+    "bumperCars": "Bom-bom car",
+    "autumnLeaves": "Daun musim gugur"
   },
   "map": {
     "level": "Level {n}",

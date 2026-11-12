@@ -27,7 +27,9 @@ onMounted(() => card.value?.querySelector<HTMLElement>('button')?.focus())
   z-index: 10;
   display: grid;
   place-items: center;
-  padding: 16px;
+  /* Fixed over the whole window, so it keeps clear of the system bars and the camera cutout itself. */
+  padding: calc(24px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right))
+    calc(24px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
   background: rgb(0 0 0 / 0.35);
 }
 
