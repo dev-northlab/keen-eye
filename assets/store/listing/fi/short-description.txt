@@ -1,1 +1,1 @@
-Etsi erot 300 elävästä kohtauksesta. Koko perheelle, toimii offline.
+Etsi erot 300 elävästä kohtauksesta, 2D:nä ja 3D:nä. Koko perheelle, offline.
