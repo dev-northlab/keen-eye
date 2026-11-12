@@ -1,5 +1,6 @@
 import { balloon, bike, bin, car, cone, dog, flowerBox, hydrant, pigeon, trafficLight } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level307Redesign } from './level-307-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, big, daySky, stallAwning, windowPane } from './shapes.ts'
 import { bird, birds, pot, roadSign } from '../time/shapes.ts'
@@ -14,6 +15,7 @@ export default memoryLevel({
   id: 307,
   title: 'memoryStreet',
   showSeconds: 4,
+  redesign: level307Redesign,
   scene: ({ diff }) =>
     daySky(470) +
     sun(70, 100) +

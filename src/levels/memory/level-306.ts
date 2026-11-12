@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level306Redesign } from './level-306-redesign.ts'
 import { cloud, hen, sun, sunflower } from '../shapes.ts'
 import { around, birdhouse, cabbage, carrotPlant, daySky, ground, hills, scarecrow, strawHat, wateringCan, wheelbarrow } from './shapes.ts'
 import { bird, birds, bucket, butterfly, flowers, grass, rabbit, stones } from '../time/shapes.ts'
@@ -7,6 +8,7 @@ export default memoryLevel({
   id: 306,
   title: 'memoryGarden',
   showSeconds: 4,
+  redesign: level306Redesign,
   scene: ({ diff }) =>
     daySky(340) +
     sun(400, 90) +

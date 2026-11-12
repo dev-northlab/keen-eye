@@ -1,11 +1,13 @@
 import { alien, alienPlant, asteroid, astronaut, beacon, comet, crater, crystal, dome, flag, fuelCanister, moonPebbles, planet, probe, rocket, rover, satellite, solarPanel, star, starField, toolbox, ufo } from '../chapter-05/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level308Redesign } from './level-308-redesign.ts'
 import { around, big } from './shapes.ts'
 
 export default memoryLevel({
   id: 308,
   title: 'memorySpace',
   showSeconds: 4,
+  redesign: level308Redesign,
   scene: ({ diff, rand }) =>
     `<rect width="500" height="750" fill="#1b1f4b"/>` +
     starField(rand, 0, 460, 50, 500) +

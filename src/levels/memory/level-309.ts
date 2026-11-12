@@ -1,5 +1,6 @@
 import { clam, coral, fish, jellyfish, octopus, seaUrchin, seaweed, shell, starfish, turtle } from '../chapter-04/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level309Redesign } from './level-309-redesign.ts'
 import { around, big, bubble } from './shapes.ts'
 
 /** Treasure chest; (x, y) = bottom center. Bounds: x ±50, y from −76 to 0. */
@@ -18,6 +19,7 @@ export default memoryLevel({
   id: 309,
   title: 'memoryReef',
   showSeconds: 4,
+  redesign: level309Redesign,
   scene: ({ diff }) =>
     `<rect width="500" height="750" fill="#1f8fbf"/><rect width="500" height="140" fill="#3ba7cc"/>` +
     `<path d="M0 640Q125 610 250 630T500 620V750H0Z" fill="#f4dca4"/>` +
