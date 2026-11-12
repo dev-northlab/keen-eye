@@ -54,13 +54,13 @@ describe('"detective" mode (docs/detective-mode.md)', () => {
     }
   })
 
-  test('the first case and "The missing chickens" are free, the others need the full game', () => {
+  test('only "The missing chickens" is free, the others need the full game', () => {
     // isFreeLevel (stores/purchase.ts) frees the category's `free` ranges; a free case opens from the start (progress.isReached).
     const range = (id: string) => {
       const scenes = caseLevels(id)
       return [scenes[0].id, scenes[scenes.length - 1].id]
     }
-    assert.deepEqual(DETECTIVE_CHAPTER.free, [range('cake'), range('chickens')])
+    assert.deepEqual(DETECTIVE_CHAPTER.free, [range('chickens')])
   })
 
   test('"next" stays in the case; the menu leads to the case', () => {

@@ -78,6 +78,8 @@ export type MatchEffect =
 export interface MatchOptions {
   /** Animation time per second of match time (the scene's animation speed); places the moving zones. */
   animationSpeed?: number
+  /** Hot-seat: who plays first (the view spins a bottle); default player 1. */
+  firstTurn?: PlayerId
 }
 
 export class Match {
@@ -107,7 +109,7 @@ export class Match {
       total: level.differences.length,
       players: [player(1), player(2)],
       found: [],
-      currentTurn: 1,
+      currentTurn: rules.mode === 'hotseat' ? (options.firstTurn ?? 1) : 1,
       turnStartedAt: 0,
       status: 'playing',
     }

@@ -52,6 +52,10 @@ const settingsOpen = ref(false)
 const hintShown = ref([false, false])
 /** Hot-seat: waiting for this player to take the phone. */
 const handOver = ref<{ playerId: PlayerId; first: boolean } | null>(null)
+/** Hot-seat: the bottle spun for who plays first has stopped (the hand-over dialog then names them). */
+const tossed = ref(false)
+/** Hot-seat: the bottle's whole spin, ending with its neck to the first player (a little off, to look natural). */
+const spinTurn = ref('0deg')
 const result = ref<MatchState | null>(null)
 let scene: MatchScene | undefined
 
@@ -79,11 +83,15 @@ function start() {
   settingsOpen.value = false
   hintShown.value = [false, false]
   handOver.value = null
+  tossed.value = false
   result.value = null
   // Reduce motion slows the scene down; the match places moving zones on the same clock.
   const animationSpeed = settings.effectiveReduceMotion ? 0.5 : 1
   const players = setup.players.map((p, i) => ({ name: playerName(i), color: p.color }))
-  const match = new Match(level, players, rules, { animationSpeed })
+  // Hot-seat: a spun bottle decides who plays first, anew for every match. Its neck points right at rest (player 2).
+  const firstTurn: PlayerId = Math.random() < 0.5 ? 1 : 2
+  spinTurn.value = `${5 * 360 + (firstTurn === 1 ? 180 : 0) + Math.round(Math.random() * 24 - 12)}deg`
+  const match = new Match(level, players, rules, { animationSpeed, firstTurn })
   state.value = structuredClone(match.state)
   playMusic('level')
   scene = new MatchScene(
@@ -118,11 +126,16 @@ function start() {
     },
     { animationSpeed },
   )
-  // Hot-seat starts with the first player taking the phone.
+  // Hot-seat starts with the bottle spin, then the first player takes the phone.
   if (rules.mode === 'hotseat') {
     scene.pause()
-    handOver.value = { playerId: 1, first: true }
+    handOver.value = { playerId: firstTurn, first: true }
   }
+}
+
+function landed() {
+  tossed.value = true
+  playSfx('star')
 }
 
 function canHint(id: PlayerId) {
@@ -274,16 +287,39 @@ onBeforeUnmount(() => {
       </footer>
     </template>
 
-    <ModalDialog v-if="handOver && !result" :title="$t('duo.turnOf', { name: player(handOver.playerId).name })">
+    <ModalDialog
+      v-if="handOver && !result"
+      :title="handOver.first && !tossed ? $t('duo.bottleSpin') : $t('duo.turnOf', { name: player(handOver.playerId).name })"
+    >
+      <!-- The first turn: a bottle spins between the two players and stops with its neck to the one who starts
+           (player 1 on the left, player 2 on the right, as on the score bar). -->
+      <div v-if="handOver.first && !tossed" class="spin" :style="{ '--turn': spinTurn }" aria-hidden="true">
+        <PlayerAvatar class="seat" :style="{ '--player': player(1).color }" :avatar="setup.players[0].avatar" :color="player(1).color" />
+        <!-- The shadow on the wrapper stays below while the bottle turns. -->
+        <span class="bottle-shade">
+          <svg class="bottle" viewBox="0 0 150 56" @animationend.self="landed">
+            <path d="M14 8h66q14 0 24 10h18v20h-18q-10 10-24 10H14q-10 0-10-10V18q0-10 10-10Z" fill="#2f9e6e" />
+            <path d="M14 8h66q14 0 24 10h18v6H4v-6q0-10 10-10Z" fill="#fff" fill-opacity="0.18" />
+            <rect x="122" y="16" width="16" height="24" rx="3" fill="#2f9e6e" />
+            <rect x="136" y="14" width="10" height="28" rx="2.5" fill="#e5484d" />
+            <rect x="26" y="13" width="44" height="30" rx="5" fill="#fff4d6" />
+            <path d="M48 19l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8Z" fill="#f5b301" />
+            <rect x="12" y="13" width="64" height="4" rx="2" fill="#fff" fill-opacity="0.5" />
+            <rect x="124" y="19" width="10" height="3" rx="1.5" fill="#fff" fill-opacity="0.45" />
+          </svg>
+        </span>
+        <PlayerAvatar class="seat" :style="{ '--player': player(2).color }" :avatar="setup.players[1].avatar" :color="player(2).color" />
+      </div>
       <!-- The dialog mounts anew every turn, so the character jumps in each time. -->
       <PlayerAvatar
+        v-else
         class="turn-avatar"
         :style="{ '--player': player(handOver.playerId).color }"
         :avatar="setup.players[handOver.playerId - 1].avatar"
         :color="player(handOver.playerId).color"
       />
       <p v-if="!handOver.first" class="hand-over">{{ $t('duo.handOver') }}</p>
-      <button class="ready" :style="{ background: player(handOver.playerId).color }" @click="ready">{{ $t('duo.ready') }}</button>
+      <button v-if="!handOver.first || tossed" class="ready" :style="{ background: player(handOver.playerId).color }" @click="ready">{{ $t('duo.ready') }}</button>
     </ModalDialog>
     <SettingsOverlay v-if="settingsOpen" @close="settingsOpen = false" />
     <PauseDialog
@@ -523,6 +559,48 @@ onBeforeUnmount(() => {
   width: 140px;
   height: 140px;
   margin: 4px auto 18px;
+}
+
+/* Who plays first: the two players' characters on either side of a bottle that spins fast, slows down and stops
+   with its neck to the starter. Left to right in every language, like the score bar. */
+.spin {
+  direction: ltr;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 170px;
+  margin: 4px 0 14px;
+}
+
+.seat {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 3px var(--panel),
+    0 0 0 6px var(--player);
+}
+
+.bottle-shade {
+  flex: none;
+  display: grid;
+  filter: drop-shadow(0 6px 4px rgb(0 0 0 / 0.25));
+}
+
+.bottle {
+  width: 140px;
+  height: 52px;
+  animation: spin-bottle 2.6s cubic-bezier(0.12, 0.7, 0.18, 1) both;
+}
+
+@keyframes spin-bottle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(var(--turn));
+  }
 }
 
 /* In play: over the board's top corner under the chip; taps pass through to the pictures. */

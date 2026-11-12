@@ -212,6 +212,7 @@ export const useProgressStore = defineStore('progress', () => {
     lockedLevelId,
     load,
     isCompleted,
+    isReached,
     isUnlocked,
     firstToComplete,
     showLocked,
