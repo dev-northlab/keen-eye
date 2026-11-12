@@ -199,7 +199,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
   `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
   store texts. The "test" chapter (`TEST_CHAPTER`, ids 1001–1100, `levels/test/`) lives there for good:
-  picture pairs tried out in developer mode (a banner at the end of the game modes screen), `kind: 'image'` levels
+  picture pairs tried out in developer mode (a banner at the end of the game modes screen while it has any; empty now), `kind: 'image'` levels
   with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels), and
   `testLabels` (format, size, file size of A and B) that `LevelView` shows over the pictures. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every

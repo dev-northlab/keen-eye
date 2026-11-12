@@ -1,6 +1,6 @@
 // Encodes the game's pictures: a folder outside the project holds them as WebP (the sources, edited by hand, laid out as
 // in `public/`; on the developer's machine ~/Pictures/keen-eye), `public/` gets them at the same path as AVIF, crf 26
-// (libaom-av1, cpu-used 4 — the setting checked on a phone with test level 1007). Transparent pictures (the icons, the
+// (libaom-av1, cpu-used 4 — the setting checked on a phone with the test levels). Transparent pictures (the icons, the
 // keys of redesigned levels) are small and stay WebP: they are copied as they are. A picture whose output is newer than
 // its source is skipped; `--force` encodes everything again. `levels/test/` is left out: the test levels keep their own
 // files to compare formats. The banner pictures (`banners/`) are scaled down to BANNER_WIDTH: `PhotoBanner` shows them
