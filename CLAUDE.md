@@ -284,6 +284,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `namespace`/`applicationId` in `android/app/build.gradle`, the Java package of `MainActivity`, `strings.xml`,
   `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project, `codemagic.yaml`, store links in `src/config/links.ts` and README).
   The stores never let it change after the first upload: updates, saved progress and purchases are tied to it.
+- Portrait only, on every device: `android:screenOrientation="portrait"` on `MainActivity` (plus the
+  `PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY` opt-out, without which Android 16 rotates large screens anyway at
+  targetSdk 36; it ends at targetSdk 37), only portrait in `UISupportedInterfaceOrientations` of `Info.plist` (iPad also
+  upside down) with `UIRequiresFullScreen` (App Store refuses an iPad app that limits orientations and allows split view).
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
   passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. The bundle needs
   Android System WebView 111+ (Vite's default target chrome111 / ios16.4, `color-mix()`): `android.minWebViewVersion` in `capacitor.config.ts` shows

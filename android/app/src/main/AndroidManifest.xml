@@ -15,7 +15,15 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:exported="true">
+
+            <!-- The game is played upright only. Since targetSdk 36, Android 16 ignores screenOrientation on large
+                 screens (sw600dp+, tablets and foldables) unless the app opts out like this; the opt-out ends with
+                 targetSdk 37. -->
+            <property
+                android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY"
+                android:value="true" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
