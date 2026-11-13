@@ -5,6 +5,7 @@ import { i18n } from './i18n/index.ts'
 import { router } from './router/index.ts'
 import { playSfx } from './services/audio.ts'
 import { initBackButton } from './services/backButton.ts'
+import { vibrateTap } from './services/haptics.ts'
 import { useDuoStore } from './stores/duo.ts'
 import { useProgressStore } from './stores/progress.ts'
 import { usePurchaseStore } from './stores/purchase.ts'
@@ -22,7 +23,9 @@ app.use(router).mount('#app')
 // before closing the app).
 initBackButton(() => router.push({ name: 'home' }))
 
-// Button press sound for the whole UI.
+// Button press sound and a calm tick for the whole UI.
 document.addEventListener('click', (e) => {
-  if ((e.target as Element).closest?.('button:not(:disabled)')) playSfx('click')
+  if (!(e.target as Element).closest?.('button:not(:disabled)')) return
+  playSfx('click')
+  vibrateTap()
 })
