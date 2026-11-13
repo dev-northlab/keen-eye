@@ -914,13 +914,6 @@
     "wait": "Vänta…",
     "what": "Det här får du"
   },
-  "season": {
-    "autumn": "Höst",
-    "label": "Årstid",
-    "spring": "Vår",
-    "summer": "Sommar",
-    "winter": "Vinter"
-  },
   "pictureStyle": {
     "label": "Bildstil",
     "classic": "Klassisk",

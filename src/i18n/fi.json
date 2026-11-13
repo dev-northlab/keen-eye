@@ -914,13 +914,6 @@
     "wait": "Odota hetki…",
     "what": "Mitä saat"
   },
-  "season": {
-    "autumn": "Syksy",
-    "label": "Vuodenaika",
-    "spring": "Kevät",
-    "summer": "Kesä",
-    "winter": "Talvi"
-  },
   "pictureStyle": {
     "label": "Kuvien tyyli",
     "classic": "Klassinen",

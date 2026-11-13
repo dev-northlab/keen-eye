@@ -3,6 +3,7 @@
 // Motion difference: the flag on Parliament waves quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level416Redesign } from './level-416-redesign.ts'
 import { car, cloud, gull, lampHead, lampPost, person, pigeon, sky, water } from './shapes.ts'
 
 const STONE = '#c9a86a'
@@ -81,6 +82,7 @@ const umbrella = (x: number, y: number, color: string) => `<path d="M${x - 26} $
 
 export default travelLevel({
   id: 416,
+  redesign: level416Redesign,
   title: 'london',
   parTimeSec: 100,
   place: { region: 'europe', country: 'gb', lat: 51.5, lon: -0.12 },

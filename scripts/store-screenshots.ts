@@ -114,7 +114,7 @@ function seededProgress() {
 /** The app screen as a PNG for `locale` on `device`. */
 async function capture(browser: Browser, device: Device, locale: string, shot: Shot): Promise<Buffer> {
   const ctx = await browser.newContext({ viewport: device.viewport, deviceScaleFactor: 3, isMobile: true, hasTouch: true })
-  const settings = { locale, theme: 'light', season: 'summer', musicVolume: 0, soundVolume: 0, ...shot.settings }
+  const settings = { locale, theme: 'light', musicVolume: 0, soundVolume: 0, ...shot.settings }
   const stored = { settings, progress: seededProgress(), purchase: { fullGame: true }, ...shot.storage }
   await ctx.addInitScript((stored) => {
     for (const [key, value] of Object.entries(stored)) localStorage.setItem(`CapacitorStorage.${key}`, JSON.stringify(value))

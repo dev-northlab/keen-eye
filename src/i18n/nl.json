@@ -12,13 +12,6 @@
     "devOpenAll": "Alle levels openen (test)",
     "devShowPlaces": "Plekken tonen in levels (test)"
   },
-  "season": {
-    "label": "Seizoen",
-    "spring": "Lente",
-    "summer": "Zomer",
-    "autumn": "Herfst",
-    "winter": "Winter"
-  },
   "pictureStyle": {
     "label": "Afbeeldingsstijl",
     "classic": "Klassiek",

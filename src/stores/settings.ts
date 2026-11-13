@@ -17,11 +17,6 @@ export type { GameMode }
 /** In the order of the settings switch. */
 export const GAME_MODES: GameMode[] = ['calm', 'normal']
 
-/** Season of the home screen's meadow. */
-export const SEASONS = ['spring', 'summer', 'autumn', 'winter'] as const
-export type Season = (typeof SEASONS)[number]
-const isSeason = (v: unknown): v is Season => SEASONS.includes(v as Season)
-
 const DEFAULT_MUSIC_VOLUME = 0.45
 const DEFAULT_SOUND_VOLUME = 0.7
 
@@ -44,7 +39,6 @@ export const useSettingsStore = defineStore('settings', () => {
   const musicVolume = ref(DEFAULT_MUSIC_VOLUME)
   const soundVolume = ref(DEFAULT_SOUND_VOLUME)
   const vibration = ref(true)
-  const season = ref<Season>('summer')
   /** Follows the system until the player picks one (then stored). */
   const theme = ref<Theme>(systemTheme())
   /** Drawn scenes or the redesigned pictures of the levels that have them (levels/picture-style.ts). */
@@ -80,7 +74,6 @@ export const useSettingsStore = defineStore('settings', () => {
     musicVolume.value = parseVolume(raw.musicVolume, raw.music, DEFAULT_MUSIC_VOLUME)
     soundVolume.value = parseVolume(raw.soundVolume, raw.sound, DEFAULT_SOUND_VOLUME)
     vibration.value = bool(raw.vibration, true)
-    season.value = isSeason(raw.season) ? raw.season : 'summer'
     theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
     pictureStyle.value = isPictureStyle(raw.pictureStyle) ? raw.pictureStyle : 'classic'
     developer.value = raw.developer === true
@@ -94,7 +87,7 @@ export const useSettingsStore = defineStore('settings', () => {
     return true
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, pictureStyle, developer, devShowPlaces], () =>
+  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, developer, devShowPlaces], () =>
     saveJson(KEY, {
       locale: locale.value,
       reduceMotion: reduceMotion.value,
@@ -102,7 +95,6 @@ export const useSettingsStore = defineStore('settings', () => {
       musicVolume: musicVolume.value,
       soundVolume: soundVolume.value,
       vibration: vibration.value,
-      season: season.value,
       theme: theme.value,
       pictureStyle: pictureStyle.value,
       developer: developer.value,
@@ -110,5 +102,5 @@ export const useSettingsStore = defineStore('settings', () => {
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, season, theme, pictureStyle, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
+  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
 })

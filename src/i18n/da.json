@@ -914,13 +914,6 @@
     "wait": "Vent venligst…",
     "what": "Det får du"
   },
-  "season": {
-    "autumn": "Efterår",
-    "label": "Årstid",
-    "spring": "Forår",
-    "summer": "Sommer",
-    "winter": "Vinter"
-  },
   "pictureStyle": {
     "label": "Billedstil",
     "classic": "Klassisk",

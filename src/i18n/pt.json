@@ -12,13 +12,6 @@
     "devOpenAll": "Abrir todas as fases (teste)",
     "devShowPlaces": "Mostrar lugares nas fases (teste)"
   },
-  "season": {
-    "label": "Estação",
-    "spring": "Primavera",
-    "summer": "Verão",
-    "autumn": "Outono",
-    "winter": "Inverno"
-  },
   "pictureStyle": {
     "label": "Estilo das imagens",
     "classic": "Clássico",

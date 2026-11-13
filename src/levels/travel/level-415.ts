@@ -2,6 +2,7 @@
 // Motion difference: a sailing boat on the lake bobs quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level415Redesign } from './level-415-redesign.ts'
 import { sheep } from '../shapes.ts'
 import { cloud, sky, water } from './shapes.ts'
 
@@ -63,6 +64,7 @@ const pohutukawaFlowers = (x: number, y: number) =>
 
 export default travelLevel({
   id: 415,
+  redesign: level415Redesign,
   title: 'southernAlps',
   parTimeSec: 98,
   place: { region: 'oceania', country: 'nz', lat: -44, lon: 170.5 },

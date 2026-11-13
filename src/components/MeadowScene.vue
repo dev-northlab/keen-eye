@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { computed, useId } from 'vue'
-import type { Season } from '../stores/settings.ts'
+import MeadowFamily from './MeadowFamily.vue'
 
-// Home screen meadow for ScreenBackdrop's landscape strip (viewBox 0 0 1600 400). Wide windows cut the
-// strip's top 60 units and phones show only about x 450–1150, so nothing reaches above y ≈ 70 and every
-// kind of tree also stands in the middle. Three hills, a house, trees of five kinds and the ground of
-// the season: flowers (spring, summer), fallen leaves and pumpkins (autumn), snow and a snowman (winter).
-// Living scene: trees sway (harder in the autumn wind), flowers nod, butterflies fly in spring and
-// summer, the house's chimney smokes and the snow sparkles in winter. Animals: rabbits hop (white in
-// winter), a goat grazes, a sheep nods, a hen and her chick peck by the house. A river runs from the far
-// hills (narrow) past the house into a lake on the front hill: it flows, the lake ripples, a duck and
-// her ducklings swim among lily pads and reeds; in winter both are frozen. On the front hill a family
-// has a picnic and looks for differences in a picture book (spring to autumn; a kite in spring, scarves
-// and apples in autumn) or plays in the snow (winter); at night two lanterns light them up.
+// Home screen meadow in spring for ScreenBackdrop's landscape strip (viewBox 0 0 1600 400). Wide windows
+// cut the strip's top 60 units and phones show only about x 450–1150, so nothing reaches above y ≈ 70 and
+// every kind of tree also stands in the middle. Three hills, a house, trees of five kinds (apple trees in
+// blossom) and flowers. Living scene: trees sway, flowers nod, butterflies fly. Animals: rabbits hop, a
+// goat grazes, a sheep nods, a hen and her chick peck by the house. A river runs from the far hills
+// (narrow) past the house into a lake on the front hill: it flows, the lake ripples, a duck and her
+// ducklings swim among lily pads and reeds. On the front hill a family has a picnic, flies a kite and
+// looks for differences in a picture book; at night two lanterns light them up.
 
-/**
- * `lights`: draw only the night lights — lit house windows, street lamps and the picnic lanterns (an
- * unfiltered layer over the night-dimmed scene).
- */
-const props = defineProps<{ season: Season; lights?: boolean }>()
+defineProps<{
+  /**
+   * Draw only the night lights — lit house windows, street lamps and the picnic lanterns (an unfiltered layer
+   * over the night-dimmed scene).
+   */
+  lights?: boolean
+  /** Leave the family out: a portrait window draws it apart, big in the foreground (ScreenBackdrop). */
+  familyApart?: boolean
+}>()
 
 type Kind = 'oak' | 'pine' | 'birch' | 'poplar' | 'apple' | 'house' | 'lamp'
 /** Kinds that are not trees: no leaves, no swaying. */
@@ -77,25 +77,14 @@ const MID_TREES = [
   item('pine', 1510, 173),
 ]
 
-const HILLS: Record<Season, { far: string; mid: string; front: string }> = {
-  spring: { far: '#c3e6b0', mid: '#9fd88a', front: '#7cc96e' },
-  summer: { far: '#b5dca5', mid: '#8cc97f', front: '#6db86a' },
-  autumn: { far: '#e8d49c', mid: '#d8b966', front: '#c49f48' },
-  winter: { far: '#f7fafc', mid: '#e9f1f6', front: '#dde8f0' },
-}
-const AUTUMN = ['#e98a2e', '#d9542b', '#f2c14e', '#c9662b']
-const CROWNS: Record<'spring' | 'summer', Record<Exclude<Kind, 'house' | 'lamp'>, string>> = {
-  spring: { oak: '#8fd47a', pine: '#3a8f62', birch: '#b5e08f', poplar: '#9bd67f', apple: '#a6dc8c' },
-  summer: { oak: '#4caf6a', pine: '#2f7d55', birch: '#7cc46a', poplar: '#3f9a5a', apple: '#5cb85c' },
-}
-
-/** Leaf colour of a tree, or null when it stands bare (leafy trees in winter). */
-function crown(kind: Exclude<Kind, 'house' | 'lamp'>, i: number): string | null {
-  const season = props.season
-  if (kind === 'pine') return season === 'spring' || season === 'summer' ? CROWNS[season].pine : '#2b6e4b'
-  if (season === 'winter') return null
-  if (season === 'autumn') return AUTUMN[i % AUTUMN.length]
-  return CROWNS[season][kind]
+const HILLS = { far: '#c3e6b0', mid: '#9fd88a', front: '#7cc96e' }
+/** Leaf colour of each kind of tree. */
+const CROWNS: Record<Exclude<Kind, 'house' | 'lamp'>, string> = {
+  oak: '#8fd47a',
+  pine: '#3a8f62',
+  birch: '#b5e08f',
+  poplar: '#9bd67f',
+  apple: '#a6dc8c',
 }
 
 /**
@@ -151,27 +140,10 @@ const inLake = (x: number, y: number) =>
  * show it below the menu. Flowers keep clear of the blanket and the family on it.
  */
 const FAMILY = { x: 650, y: 384 }
-const BLANKETS: Record<Exclude<Season, 'winter'>, string> = { spring: '#ff9ec4', summer: '#e5484d', autumn: '#5b8def' }
 const onBlanket = (x: number, y: number) => Math.abs(x - FAMILY.x) < 92 && y > FAMILY.y - 70 && y < FAMILY.y + 12
-/** Night: camping lanterns on the ground at both ends of the blanket (x from FAMILY). */
-const PICNIC_LANTERNS = [-88, 86]
-/** The lanterns' soft glow (a gradient: ids must be unique on the page). */
-const lanternGlow = useId()
-/** The blanket's checks: two stripes along it and five across (top edge −66…62, front edge −80…75). */
-const BLANKET_CHECKS = [
-  'M-71-11H66M-76-4H71',
-  ...[-44, -22, 0, 22, 44].map((t) => `M${t - 2}-16L${t * 1.2 - 2.5} 2`),
-].join('')
 
-/** Water, its glints and its darker banks per season (winter: ice). */
-const WATER: Record<Season, { water: string; light: string; edge: string }> = {
-  spring: { water: '#5bb8e0', light: '#c6ecf8', edge: '#3f9fcc' },
-  summer: { water: '#4fb0dc', light: '#c6ecf8', edge: '#3897c8' },
-  autumn: { water: '#4b9cc2', light: '#a9d6ea', edge: '#3a83a8' },
-  winter: { water: '#bcdcee', light: '#ffffff', edge: '#9cc3da' },
-}
-const water = computed(() => WATER[props.season])
-const frozen = computed(() => props.season === 'winter')
+/** Water, its glints and its darker banks. */
+const water = { water: '#5bb8e0', light: '#c6ecf8', edge: '#3f9fcc' }
 
 const RIPPLES = [
   { x: 1005, y: 356, delay: 0 },
@@ -197,29 +169,7 @@ const DUCKS = [
   { dx: -29, s: 0.55, body: '#ffd23f', head: '#ffd23f' },
 ]
 
-/** Far trees, then the middle hill hides their feet; the house stands among the middle trees. */
-const layers = computed(() =>
-  [
-    { hill: FAR_HILL, fill: HILLS[props.season].far, items: FAR_TREES, road: null },
-    { hill: MID_HILL, fill: HILLS[props.season].mid, items: MID_TREES, road: ROAD },
-  ].map((layer, l) => ({
-    ...layer,
-    items: layer.items.map((t, i) => ({
-      ...t,
-      crown: t.kind === 'house' || t.kind === 'lamp' ? null : crown(t.kind, i + l * 3),
-      paint: HOUSE_LOOKS[t.look ?? 0],
-    })),
-  })),
-)
-
-/** Bare branches of leafy trees in winter, drawn from the trunk base (0, 0). */
-const BARE: Record<'oak' | 'apple' | 'birch' | 'poplar', string> = {
-  oak: 'M0 4V-42M0-22L-20-44M-12-35L-24-38M0-30L18-52M10-41L24-44M0-42L-8-62M0-42L9-60',
-  apple: 'M0 4V-34M0-18L-16-36M0-24L15-42M0-34L-6-50M0-34L7-48',
-  birch: 'M0-40L-14-62M0-52L13-74M0-66L-7-84',
-  poplar: 'M0 4V-86M0-30L-9-62M0-44L9-76M0-60L-5-88',
-}
-/** Fruit (summer, autumn) or blossom (spring) spots on an apple tree's crown. */
+/** Blossom spots on an apple tree's crown. */
 const APPLE_SPOTS = [
   [-12, -44],
   [8, -50],
@@ -252,49 +202,19 @@ const ground = Array.from({ length: 140 }, (_, i) => {
   .filter((g) => !inLake(g.x, g.y) && !onBlanket(g.x, g.y))
   .sort((a, b) => a.y - b.y)
 
-const FLOWER_COLORS: Record<'spring' | 'summer', { tulip: string[]; petal: string[]; center: string; dot: string[] }> = {
-  spring: {
-    tulip: ['#ff6b8a', '#ffd23f', '#b07cff', '#ff9ec4'],
-    petal: ['#ffffff', '#ffd1e0'],
-    center: '#ffd23f',
-    dot: ['#ffffff', '#ffd1e0', '#ffe680', '#c9b5ff'],
-  },
-  summer: {
-    tulip: ['#e5484d', '#ffb02e', '#ff6b8a'],
-    petal: ['#ffffff'],
-    center: '#ffb02e',
-    dot: ['#ff6b8a', '#ffd23f', '#ffffff', '#b07cff', '#5b8def'],
-  },
+const flowerColors = {
+  tulip: ['#ff6b8a', '#ffd23f', '#b07cff', '#ff9ec4'],
+  petal: ['#ffffff', '#ffd1e0'],
+  center: '#ffd23f',
+  dot: ['#ffffff', '#ffd1e0', '#ffe680', '#c9b5ff'],
 }
-const flowerColors = computed(() =>
-  props.season === 'spring' || props.season === 'summer' ? FLOWER_COLORS[props.season] : null,
-)
 const pick = (list: string[], i: number) => list[i % list.length]
 
-/** Butterflies over the front hill: spring shows the first three; `alt` flies the other loop. */
-const BUTTERFLIES = [
-  { x: 520, y: 268, c: '#ffb02e', dur: 13, delay: 0, alt: false },
-  { x: 780, y: 276, c: '#b07cff', dur: 16, delay: -5, alt: true },
-  { x: 1080, y: 286, c: '#ff6b8a', dur: 14, delay: -9, alt: false },
-  { x: 300, y: 258, c: '#5b8def', dur: 15, delay: -3, alt: true },
-  { x: 1360, y: 280, c: '#ffd23f', dur: 12, delay: -7, alt: false },
-]
-const SPRING_WINGS = ['#ffd1e0', '#fff4a8', '#c9e8ff']
-const butterflies = computed(() =>
-  props.season === 'summer'
-    ? BUTTERFLIES
-    : props.season === 'spring'
-      ? BUTTERFLIES.slice(0, 3).map((b, i) => ({ ...b, c: SPRING_WINGS[i] }))
-      : [],
-)
-/** Twinkling spots on the winter snow. */
-const SPARKLES = ground.filter((g) => g.i % 9 === 0)
-const SPARKLE = 'M0-4.5L1.1-1.1L4.5 0L1.1 1.1L0 4.5L-1.1 1.1L-4.5 0L-1.1-1.1Z'
-
-const PUMPKINS = [
-  { x: 690, y: 302, s: 1 },
-  { x: 722, y: 306, s: 0.75 },
-  { x: 1300, y: 338, s: 1.1 },
+/** Butterflies over the front hill; `alt` flies the other loop. */
+const butterflies = [
+  { x: 520, y: 268, c: '#ffd1e0', dur: 13, delay: 0, alt: false },
+  { x: 780, y: 276, c: '#fff4a8', dur: 16, delay: -5, alt: true },
+  { x: 1080, y: 286, c: '#c9e8ff', dur: 14, delay: -9, alt: false },
 ]
 
 /** Animals stand on their feet at (x, y); `delay` shifts each one's animation. */
@@ -319,7 +239,7 @@ const HOUSES = MID_TREES.filter((t) => t.kind === 'house')
 const LAMPS = MID_TREES.filter((t) => t.kind === 'lamp')
 /** Dirt road between the two houses' doors; the lamps stand along it. */
 const ROAD = 'M725 239Q870 262 1010 251'
-const ROAD_COLORS: Record<Season, string> = { spring: '#e3cf9f', summer: '#e3cf9f', autumn: '#d4b47a', winter: '#cfd9e2' }
+const ROAD_COLOR = '#e3cf9f'
 
 /** A house's windows and round attic window, relative to its foot (the day and the night layer share them). */
 const HOUSE_WINDOWS = [
@@ -330,18 +250,27 @@ const ATTIC = { cx: 0, cy: -68, r: 5.5 }
 const windowBars = (w: { x: number; y: number; w: number; h: number }) =>
   `M${w.x + w.w / 2} ${w.y}V${w.y + w.h}M${w.x} ${w.y + w.h / 2}H${w.x + w.w}`
 const atticBars = `M${ATTIC.cx} ${ATTIC.cy - ATTIC.r}V${ATTIC.cy + ATTIC.r}M${ATTIC.cx - ATTIC.r} ${ATTIC.cy}H${ATTIC.cx + ATTIC.r}`
-const BOX_FLOWERS: Record<Exclude<Season, 'winter'>, string[]> = {
-  spring: ['#ff9ec4', '#ffffff', '#ffd23f', '#ff9ec4'],
-  summer: ['#e5484d', '#ffd23f', '#ff6b8a', '#e5484d'],
-  autumn: ['#e98a2e', '#d9542b', '#f2c14e', '#e98a2e'],
-}
+const BOX_FLOWERS = ['#ff9ec4', '#ffffff', '#ffd23f', '#ff9ec4']
 
 /** Hen and chick left of the house, on the middle hill. */
 const HENS = [
   { x: 922, y: 255, s: 1.15, color: '#ffffff', comb: true, delay: 0 },
   { x: 940, y: 256, s: 0.65, color: '#ffd23f', comb: false, delay: -0.6 },
 ]
-const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b08a6a'))
+const rabbitColor = '#b08a6a'
+
+/** Far trees, then the middle hill hides their feet; the house stands among the middle trees. */
+const layers = [
+  { hill: FAR_HILL, fill: HILLS.far, items: FAR_TREES, road: null },
+  { hill: MID_HILL, fill: HILLS.mid, items: MID_TREES, road: ROAD },
+].map((layer) => ({
+  ...layer,
+  items: layer.items.map((t) => ({
+    ...t,
+    crown: t.kind === 'house' || t.kind === 'lamp' ? undefined : CROWNS[t.kind],
+    paint: HOUSE_LOOKS[t.look ?? 0],
+  })),
+}))
 </script>
 
 <template>
@@ -381,63 +310,34 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
     </g>
     <path d="M-5-50H5L3.5-42H-3.5Z" fill="#ffe08a" />
   </g>
-  <!-- Two camping lanterns light up the family, at the ends of the blanket (or in the snow). -->
-  <g :transform="`translate(${FAMILY.x} ${FAMILY.y})`">
-    <radialGradient :id="lanternGlow">
-      <stop offset="0" stop-color="#ffcf5a" stop-opacity="0.5" />
-      <stop offset="0.35" stop-color="#ffcf5a" stop-opacity="0.22" />
-      <stop offset="1" stop-color="#ffcf5a" stop-opacity="0" />
-    </radialGradient>
-    <g v-for="(x, k) in PICNIC_LANTERNS" :key="x" :transform="`translate(${x} 0)`">
-      <g class="lamp-glow" :style="{ animationDelay: `${-k * 1.1}s` }">
-        <ellipse cy="-1" rx="40" ry="9" :fill="`url(#${lanternGlow})`" />
-        <circle cy="-10" r="40" :fill="`url(#${lanternGlow})`" />
-      </g>
-      <rect x="-5" y="-3" width="10" height="3" rx="1" fill="#3d3a36" />
-      <rect x="-4" y="-15" width="8" height="12" rx="1.5" fill="#ffe08a" />
-      <ellipse cy="-9" rx="1.6" ry="3" fill="#fff7d6" />
-      <path d="M-4-15V-3M4-15V-3" stroke="#3d3a36" stroke-width="1.2" />
-      <path d="M-6-15H6L3-19H-3Z" fill="#3d3a36" />
-      <path d="M-3-19Q0-25 3-19" fill="none" stroke="#3d3a36" stroke-width="1.2" />
-    </g>
-  </g>
+  <!-- Two camping lanterns light up the family. -->
+  <g v-if="!familyApart" :transform="`translate(${FAMILY.x} ${FAMILY.y})`"><MeadowFamily lights /></g>
   </g>
 
-  <g v-else :class="season">
+  <g v-else>
     <template v-for="(layer, l) in layers" :key="l">
       <path :d="layer.hill" :fill="layer.fill" />
-      <path v-if="layer.road" :d="layer.road" fill="none" :stroke="ROAD_COLORS[season]" stroke-width="7" stroke-linecap="round" />
+      <path v-if="layer.road" :d="layer.road" fill="none" :stroke="ROAD_COLOR" stroke-width="7" stroke-linecap="round" />
       <g v-for="(t, i) in layer.items" :key="t.x" :transform="`translate(${t.x} ${t.y}) scale(${t.s})`">
         <!-- Trees sway around their foot; the house stands still. Phase and speed vary per tree. -->
         <g
           :class="{ sway: !BUILT.includes(t.kind) }"
           :style="{
             animationDelay: `${-((i * 1.7) % 5)}s`,
-            animationDuration: `${season === 'autumn' ? 2.6 : 4 + ((i * 3) % 3)}s`,
+            animationDuration: `${4 + ((i * 3) % 3)}s`,
           }"
         >
-        <!-- The house: chimney (smoking in winter), tiled roof, round attic window, two windows with
+        <!-- The house: chimney, tiled roof, round attic window, two windows with
              shutters and flower boxes, an arched door. At night HOUSE_LIGHTS light its windows. -->
         <g v-if="t.kind === 'house'" :transform="t.paint.mirror ? 'scale(-1 1)' : undefined">
           <rect x="22" y="-100" width="12" height="30" :fill="t.paint.chimney" />
           <rect x="20" y="-104" width="16" height="5" rx="1" :fill="t.paint.chimneyCap" />
-          <circle
-            v-for="k in season === 'winter' ? 3 : 0"
-            :key="k"
-            class="smoke"
-            cx="28"
-            cy="-110"
-            r="5"
-            fill="#b9c6d1"
-            :style="{ animationDelay: `${-k * 1.3}s` }"
-          />
           <rect x="-44" y="-54" width="88" height="54" :fill="t.paint.wall" />
           <rect x="30" y="-54" width="14" height="54" fill="#000" fill-opacity="0.05" />
           <rect x="-44" y="-8" width="88" height="8" :fill="t.paint.base" />
           <path d="M-54-50L0-96L54-50Z" :fill="t.paint.roof" />
           <path d="M-42-60H42M-30-70H30M-18-80H18" :stroke="t.paint.tiles" stroke-width="2" stroke-linecap="round" />
           <path d="M-58-48L0-98L58-48" fill="none" :stroke="t.paint.edge" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-          <path v-if="season === 'winter'" d="M-60-47L0-100L60-47L53-44L0-90L-53-44Z" fill="#fff" />
           <circle :cx="ATTIC.cx" :cy="ATTIC.cy" :r="ATTIC.r + 2.5" fill="#fff" />
           <circle :cx="ATTIC.cx" :cy="ATTIC.cy" :r="ATTIC.r" fill="#9fd3ee" />
           <path :d="atticBars" stroke="#fff" stroke-width="1.5" />
@@ -449,17 +349,14 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
             <path :d="`M${w.x + 3} ${w.y + w.h - 4}L${w.x + w.w - 7} ${w.y + 3}`" stroke="#fff" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round" />
             <path :d="windowBars(w)" stroke="#fff" stroke-width="1.6" />
             <rect :x="w.x - 3" :y="w.y + w.h + 2" :width="w.w + 6" height="5" rx="1" fill="#8a5a3b" />
-            <rect v-if="season === 'winter'" :x="w.x - 3.5" :y="w.y + w.h" :width="w.w + 7" height="3.5" rx="1.75" fill="#fff" />
-            <template v-else>
-              <circle
-                v-for="(c, k) in BOX_FLOWERS[season]"
-                :key="k"
-                :cx="w.x + 1 + k * 5.3"
-                :cy="w.y + w.h + 1.5"
-                r="2.3"
-                :fill="c"
-              />
-            </template>
+            <circle
+              v-for="(c, k) in BOX_FLOWERS"
+              :key="k"
+              :cx="w.x + 1 + k * 5.3"
+              :cy="w.y + w.h + 1.5"
+              r="2.3"
+              :fill="c"
+            />
           </g>
           <rect x="-15" y="-2" width="30" height="3" rx="1" fill="#b7a07a" />
           <path d="M-10-1V-26A10 10 0 0 1 10-26V-1Z" fill="#8a5a3b" stroke="#6e4329" stroke-width="2" />
@@ -474,27 +371,11 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
           <rect x="-3.5" y="-42" width="7" height="2.5" rx="1" fill="#3d4752" />
           <path d="M-5-50H5L3.5-42H-3.5Z" fill="#fff4c2" stroke="#3d4752" stroke-width="1.2" />
           <path d="M-7-50H7L0-56Z" fill="#3d4752" />
-          <ellipse v-if="season === 'winter'" cy="-55" rx="5" ry="2" fill="#fff" />
         </g>
 
         <g v-else-if="t.kind === 'pine'">
           <rect x="-4" y="-12" width="8" height="14" fill="#7a4e33" />
-          <path d="M0-80L-20-46H20ZM0-62L-26-26H26ZM0-42L-30-8H30Z" :fill="t.crown!" />
-          <path
-            v-if="season === 'winter'"
-            d="M0-80L-8.8-65Q0-61 8.8-65ZM0-62L-10.1-48Q0-44 10.1-48ZM0-42L-11.5-29Q0-25 11.5-29Z"
-            fill="#fff"
-          />
-        </g>
-
-        <!-- Winter: bare branches with a line of snow on top. -->
-        <g v-else-if="!t.crown">
-          <template v-if="t.kind === 'birch'">
-            <rect x="-3.5" y="-84" width="7" height="88" fill="#f2efe6" />
-            <rect v-for="(m, k) in BIRCH_MARKS" :key="k" :x="m[0]" :y="m[1]" :width="m[2]" height="2" fill="#3b3b3b" />
-          </template>
-          <path :d="BARE[t.kind]" fill="none" :stroke="t.kind === 'birch' ? '#8a8378' : '#7a5236'" :stroke-width="t.kind === 'birch' ? 2.5 : 4" stroke-linecap="round" />
-          <path :d="BARE[t.kind]" transform="translate(0 -2)" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+          <path d="M0-80L-20-46H20ZM0-62L-26-26H26ZM0-42L-30-8H30Z" :fill="t.crown" />
         </g>
 
         <g v-else-if="t.kind === 'oak'">
@@ -515,8 +396,8 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
             :key="k"
             :cx="p[0]"
             :cy="p[1]"
-            :r="season === 'spring' ? 3.2 : 3.6"
-            :fill="season === 'spring' ? (k % 2 ? '#ffd1e0' : '#fff') : '#e5484d'"
+            r="3.2"
+            :fill="k % 2 ? '#ffd1e0' : '#fff'"
           />
         </g>
 
@@ -550,16 +431,16 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
       </g>
     </g>
 
-    <path :d="FRONT_HILL" :fill="HILLS[season].front" />
+    <path :d="FRONT_HILL" :fill="HILLS.front" />
 
     <!-- The lake's shore, the river (over the hills: nothing of theirs stands on its course) and the lake. -->
     <ellipse :cx="LAKE.cx" :cy="LAKE.cy + 2" :rx="LAKE.rx + 8" :ry="LAKE.ry + 6" fill="#000" fill-opacity="0.08" />
     <path :d="RIVER" :fill="water.water" :stroke="water.edge" stroke-width="1.5" stroke-linejoin="round" />
-    <!-- Glints: running downstream, or still on the winter ice. -->
+    <!-- Glints running downstream. -->
     <path
       v-for="(g, k) in RIVER_GLINTS"
       :key="`glint${k}`"
-      :class="{ flow: !frozen }"
+      class="flow"
       :d="g"
       fill="none"
       :stroke="water.light"
@@ -571,110 +452,53 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
     />
     <ellipse :cx="LAKE.cx" :cy="LAKE.cy" :rx="LAKE.rx" :ry="LAKE.ry" :fill="water.water" />
     <ellipse :cx="LAKE.cx + 20" :cy="LAKE.cy - 8" :rx="LAKE.rx * 0.5" :ry="4" :fill="water.light" fill-opacity="0.45" />
-    <template v-if="frozen">
-      <path d="M975 352l26-6M1025 368l34-8M1075 350l22-5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" />
-    </template>
-    <template v-else>
-      <ellipse
-        v-for="(r, k) in RIPPLES"
-        :key="`ripple${k}`"
-        class="ripple"
-        :cx="r.x"
-        :cy="r.y"
-        rx="14"
-        ry="3.5"
-        fill="none"
-        :stroke="water.light"
-        stroke-width="1.5"
-        :style="{ animationDelay: `${r.delay}s` }"
-      />
-      <g v-for="(l, k) in LILIES" :key="`lily${k}`" :transform="`translate(${l.x} ${l.y})`">
-        <path :d="`M0 0L${l.r} -1.5A${l.r} ${l.r * 0.5} 0 1 1 ${l.r} 1.5Z`" fill="#4caf6a" />
-        <circle v-if="season === 'summer' && k !== 1" cx="-1" cy="-1.5" r="2.2" fill="#ff9ec4" />
-      </g>
-      <!-- Duck family: swims across, turns and swims back, bobbing on the water. -->
-      <g :transform="`translate(995 ${LAKE.cy + 2})`">
-        <g class="swim">
-          <g v-for="(d, k) in DUCKS" :key="`duck${k}`" :transform="`translate(${d.dx} 0) scale(${d.s})`">
-            <g class="bob" :style="{ animationDelay: `${-k * 0.3}s` }">
-              <path d="M-11 0Q-12-9 1-8Q9-8 11-2L11 0Z" :fill="d.body" />
-              <path d="M-11-3L-15-8L-9-6Z" :fill="d.body" />
-              <circle cx="8" cy="-12" r="4.6" :fill="d.head" />
-              <path d="M12-12.5l5 1.5-5 1.5Z" fill="#f0a020" />
-              <circle cx="9.3" cy="-13" r="0.9" fill="#23302b" />
-            </g>
+    <ellipse
+      v-for="(r, k) in RIPPLES"
+      :key="`ripple${k}`"
+      class="ripple"
+      :cx="r.x"
+      :cy="r.y"
+      rx="14"
+      ry="3.5"
+      fill="none"
+      :stroke="water.light"
+      stroke-width="1.5"
+      :style="{ animationDelay: `${r.delay}s` }"
+    />
+    <g v-for="(l, k) in LILIES" :key="`lily${k}`" :transform="`translate(${l.x} ${l.y})`">
+      <path :d="`M0 0L${l.r} -1.5A${l.r} ${l.r * 0.5} 0 1 1 ${l.r} 1.5Z`" fill="#4caf6a" />
+    </g>
+    <!-- Duck family: swims across, turns and swims back, bobbing on the water. -->
+    <g :transform="`translate(995 ${LAKE.cy + 2})`">
+      <g class="swim">
+        <g v-for="(d, k) in DUCKS" :key="`duck${k}`" :transform="`translate(${d.dx} 0) scale(${d.s})`">
+          <g class="bob" :style="{ animationDelay: `${-k * 0.3}s` }">
+            <path d="M-11 0Q-12-9 1-8Q9-8 11-2L11 0Z" :fill="d.body" />
+            <path d="M-11-3L-15-8L-9-6Z" :fill="d.body" />
+            <circle cx="8" cy="-12" r="4.6" :fill="d.head" />
+            <path d="M12-12.5l5 1.5-5 1.5Z" fill="#f0a020" />
+            <circle cx="9.3" cy="-13" r="0.9" fill="#23302b" />
           </g>
         </g>
       </g>
-    </template>
+    </g>
     <g v-for="(r, k) in REEDS" :key="`reed${k}`" :transform="`translate(${r.x} ${r.y})`">
       <g class="nod" :style="{ animationDelay: `${-k * 0.5}s` }">
-        <path :d="`M0 0V${-r.h}`" :stroke="season === 'autumn' || frozen ? '#b39a5a' : '#4a8f45'" stroke-width="2" />
+        <path :d="`M0 0V${-r.h}`" stroke="#4a8f45" stroke-width="2" />
         <rect x="-2.2" :y="-r.h * 0.85" width="4.4" height="9" rx="2.2" fill="#7a4e33" />
       </g>
     </g>
 
-    <template v-if="flowerColors">
-      <g v-for="f in ground" :key="f.i" :transform="`translate(${f.x} ${f.y})`">
-        <circle v-if="f.kind === 'dot'" r="4" :fill="pick(flowerColors.dot, f.i)" />
-        <g v-else-if="f.kind === 'daisy'" class="nod" :style="{ animationDelay: `${-(f.i % 7) * 0.4}s` }">
-          <circle v-for="(p, k) in PETALS" :key="k" :cx="p.cx" :cy="p.cy" r="3" :fill="pick(flowerColors.petal, f.i)" />
-          <circle r="2.4" :fill="flowerColors.center" />
-        </g>
-        <g v-else class="nod" :style="{ animationDelay: `${-(f.i % 7) * 0.4}s` }">
-          <path d="M0 0V9" stroke="#3f8f4a" stroke-width="1.6" />
-          <path d="M-5-6Q-6 3 0 3Q6 3 5-6L2.5-3L0-7L-2.5-3Z" :fill="pick(flowerColors.tulip, f.i)" />
-        </g>
+    <g v-for="f in ground" :key="f.i" :transform="`translate(${f.x} ${f.y})`">
+      <circle v-if="f.kind === 'dot'" r="4" :fill="pick(flowerColors.dot, f.i)" />
+      <g v-else-if="f.kind === 'daisy'" class="nod" :style="{ animationDelay: `${-(f.i % 7) * 0.4}s` }">
+        <circle v-for="(p, k) in PETALS" :key="k" :cx="p.cx" :cy="p.cy" r="3" :fill="pick(flowerColors.petal, f.i)" />
+        <circle r="2.4" :fill="flowerColors.center" />
       </g>
-    </template>
-
-    <template v-else-if="season === 'autumn'">
-      <ellipse
-        v-for="f in ground.filter((g) => g.i % 2 === 0)"
-        :key="f.i"
-        :cx="f.x"
-        :cy="f.y"
-        rx="6"
-        ry="2.6"
-        :fill="AUTUMN[f.i % AUTUMN.length]"
-        :transform="`rotate(${((f.i * 47) % 70) - 35} ${f.x} ${f.y})`"
-      />
-      <g v-for="(p, k) in PUMPKINS" :key="k" :transform="`translate(${p.x} ${p.y}) scale(${p.s})`">
-        <rect x="-2" y="-24" width="4" height="7" rx="1.5" fill="#5f7d2f" />
-        <ellipse cy="-10" rx="15" ry="11" fill="#f08a24" />
-        <ellipse cy="-10" rx="6" ry="11" fill="#e07a1a" />
-        <ellipse cx="-6" cy="-14" rx="3" ry="4" fill="#fff" fill-opacity="0.25" />
+      <g v-else class="nod" :style="{ animationDelay: `${-(f.i % 7) * 0.4}s` }">
+        <path d="M0 0V9" stroke="#3f8f4a" stroke-width="1.6" />
+        <path d="M-5-6Q-6 3 0 3Q6 3 5-6L2.5-3L0-7L-2.5-3Z" :fill="pick(flowerColors.tulip, f.i)" />
       </g>
-    </template>
-
-    <template v-else>
-      <path
-        v-for="(g, k) in SPARKLES"
-        :key="g.i"
-        class="sparkle"
-        :d="SPARKLE"
-        :transform="`translate(${g.x} ${g.y})`"
-        fill="#fff"
-        :style="{ animationDelay: `${-((k * 0.7) % 3)}s` }"
-      />
-    </template>
-
-    <!-- Winter: a snowman on the front hill, in the middle so phones show it too. -->
-    <g v-if="season === 'winter'" transform="translate(640 300)">
-      <ellipse cy="2" rx="30" ry="6" fill="#c9d8e4" />
-      <circle cy="-20" r="22" fill="#fff" />
-      <circle cy="-52" r="16" fill="#fff" />
-      <circle cy="-77" r="11" fill="#fff" />
-      <path d="M-14-56L-36-70M14-56L36-72M-30-66L-34-76M30-68L36-78" stroke="#7a5236" stroke-width="3" stroke-linecap="round" />
-      <path d="M-13-66Q0-60 13-66" fill="none" stroke="#e5484d" stroke-width="6" stroke-linecap="round" />
-      <path d="M7-66l4 12" stroke="#e5484d" stroke-width="5" stroke-linecap="round" />
-      <path d="M0-76L14-73L0-72Z" fill="#f08a24" />
-      <circle cx="-4" cy="-80" r="1.8" fill="#23302b" />
-      <circle cx="4" cy="-80" r="1.8" fill="#23302b" />
-      <circle cy="-50" r="1.8" fill="#23302b" />
-      <circle cy="-42" r="1.8" fill="#23302b" />
-      <rect x="-10" y="-96" width="20" height="10" rx="2" fill="#3d5a66" />
-      <rect x="-14" y="-88" width="28" height="4" rx="2" fill="#3d5a66" />
     </g>
 
     <!-- Rabbits hop a few steps, sit, turn and hop back. -->
@@ -736,238 +560,8 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
       </g>
     </g>
 
-    <!-- The family, in front of everyone on the front hill; each keeps their colour all year (dad blue,
-         mom teal, the boy orange, the girl purple). Spring to autumn: a picnic — dad nods (and flies a
-         kite in spring), mom waves, the boy peers through a magnifier and the girl holds up a picture book
-         with two pictures that differ in one flower, like the game; autumn brings scarves and apples.
-         Winter: they stand in the snow in hats and scarves; the boy throws snowballs at mom, who waves,
-         and the girl rolls a big snowball. -->
-    <g :transform="`translate(${FAMILY.x} ${FAMILY.y})`">
-      <template v-if="season !== 'winter'">
-        <ellipse cy="3" rx="84" ry="6" fill="#000" fill-opacity="0.08" />
-        <path d="M-80 2L75 2L62-16L-66-16Z" :fill="BLANKETS[season]" />
-        <path :d="BLANKET_CHECKS" stroke="#fff" stroke-opacity="0.5" stroke-width="3.5" />
-
-        <!-- Spring: dad's kite, swaying around his hand. -->
-        <g v-if="season === 'spring'" class="kite">
-          <path d="M-26-57Q10-70 40-102" fill="none" stroke="#fff" stroke-opacity="0.8" stroke-width="0.8" />
-          <path d="M40-102q-5 6 0 11q5 6 0 11" fill="none" stroke="#3d3d3d" stroke-width="0.8" />
-          <path d="M37-92l6 2-6 2ZM37-82l6 2-6 2Z" fill="#ffd23f" />
-          <path d="M40-134L51-118L40-102L29-118Z" fill="#ff6b8a" />
-          <path d="M40-134L51-118L40-118ZM40-118L29-118L40-102Z" fill="#ffd23f" />
-        </g>
-
-        <!-- Dad, sitting cross-legged. -->
-        <g transform="translate(-48 -6)">
-          <ellipse rx="21" ry="7" fill="#3d4f6e" />
-          <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
-          <ellipse cx="15" cy="2" rx="5" ry="3" fill="#5a3a2a" />
-          <path d="M-13-2V-26Q-13-36 0-36Q13-36 13-26V-2Z" fill="#5b8def" />
-          <path
-            :d="season === 'spring' ? 'M-11-30Q-19-16-8-8M11-30Q21-36 22-48' : 'M-11-30Q-19-16-8-8M11-30Q19-16 8-8'"
-            fill="none"
-            stroke="#4a7bd8"
-            stroke-width="6"
-            stroke-linecap="round"
-          />
-          <circle cx="-8" cy="-8" r="3" fill="#e0a77c" />
-          <circle v-if="season === 'spring'" cx="22" cy="-50" r="3" fill="#e0a77c" />
-          <circle v-else cx="8" cy="-8" r="3" fill="#e0a77c" />
-          <rect x="-3" y="-40" width="6" height="6" fill="#c98f66" />
-          <path v-if="season === 'autumn'" d="M-9-38H9V-33H-9ZM4-34V-22" stroke="#e5484d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-          <g class="tilt">
-            <circle cx="-10" cy="-48" r="2.6" fill="#e0a77c" />
-            <circle cx="10" cy="-48" r="2.6" fill="#e0a77c" />
-            <circle cy="-48" r="10" fill="#e0a77c" />
-            <path d="M-10.5-48Q-11-60 0-60Q11-60 10.5-48Q7-54 0-54Q-6-54-10.5-48Z" fill="#3a2a20" />
-            <circle cx="-3.6" cy="-48" r="1.3" fill="#23302b" />
-            <circle cx="3.6" cy="-48" r="1.3" fill="#23302b" />
-            <path d="M-3.5-43.5Q0-40.5 3.5-43.5" fill="none" stroke="#7a3b2a" stroke-width="1.3" stroke-linecap="round" />
-          </g>
-        </g>
-
-        <!-- Mom, sitting, waving with her right hand. -->
-        <g transform="translate(48 -6)">
-          <ellipse rx="21" ry="7" fill="#1f8a80" />
-          <ellipse cx="-15" cy="2" rx="5" ry="3" fill="#c8553d" />
-          <ellipse cx="15" cy="2" rx="5" ry="3" fill="#c8553d" />
-          <path d="M-12-2V-26Q-12-36 0-36Q12-36 12-26V-2Z" fill="#2fa39a" />
-          <path d="M-10-30Q-18-16-7-8" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
-          <circle cx="-7" cy="-8" r="2.8" fill="#f2c39b" />
-          <g class="wave">
-            <path d="M10-30Q20-38 18-52" fill="none" stroke="#26948b" stroke-width="5.5" stroke-linecap="round" />
-            <circle cx="18" cy="-54" r="3" fill="#f2c39b" />
-          </g>
-          <rect x="-3" y="-40" width="6" height="6" fill="#e0a77c" />
-          <path d="M-11.5-46Q-13-62 0-62Q13-62 11.5-46L13-33Q8-34 6-39H-6Q-8-34-13-33Z" fill="#6b3420" />
-          <path v-if="season === 'autumn'" d="M-8-37H8V-32H-8ZM-4-33V-22" stroke="#ffc933" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-          <circle cy="-48" r="9.5" fill="#f2c39b" />
-          <path d="M-10-47Q-10-59 0-59Q10-59 10-47Q6-53-2-53Q-7-52-10-47Z" fill="#6b3420" />
-          <circle cx="-3.4" cy="-48" r="1.3" fill="#23302b" />
-          <circle cx="3.4" cy="-48" r="1.3" fill="#23302b" />
-          <ellipse cx="-6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
-          <ellipse cx="6" cy="-44.5" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
-          <path d="M-3.2-43.5Q0-40.5 3.2-43.5" fill="none" stroke="#a8433a" stroke-width="1.3" stroke-linecap="round" />
-        </g>
-
-        <!-- Boy, standing, with a magnifier at his eye (it moves a little as he searches); trousers in autumn. -->
-        <g transform="translate(-14 -10)">
-          <path d="M-5 0V-10M5 0V-10" :stroke="season === 'autumn' ? '#3d4f6e' : '#e0a77c'" stroke-width="3.6" stroke-linecap="round" />
-          <path d="M-8-9V-15H8V-9Z" fill="#3d4f6e" />
-          <path d="M-8-14V-27Q-8-33 0-33Q8-33 8-27V-14Z" fill="#ffb02e" />
-          <path d="M-7-28Q-12-20-6-15" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
-          <circle cx="-6" cy="-15" r="2.4" fill="#e0a77c" />
-          <path v-if="season === 'autumn'" d="M-6-33H6M-3-32V-24" stroke="#4caf6a" stroke-width="3.4" stroke-linecap="round" />
-          <circle cy="-41" r="8.5" fill="#e0a77c" />
-          <path d="M-8.8-41Q-9-51 0-51Q9-51 8.8-41Q6-46 1-46Q-5-46-8.8-41Z" fill="#3a2a20" />
-          <circle cx="-3.2" cy="-41" r="1.2" fill="#23302b" />
-          <path d="M-3-36.5Q0-34 3-36.5" fill="none" stroke="#7a3b2a" stroke-width="1.2" stroke-linecap="round" />
-          <g class="peer">
-            <path d="M7-28Q13-30 9-36" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
-            <path d="M8-37L5.6-41" stroke="#7a4e33" stroke-width="2.6" stroke-linecap="round" />
-            <circle cx="3.4" cy="-43.4" r="5.6" fill="#fff" fill-opacity="0.45" stroke="#7a4e33" stroke-width="1.8" />
-            <circle cx="3.4" cy="-43" r="2.4" fill="#23302b" />
-            <circle cx="4.2" cy="-43.8" r="0.8" fill="#fff" />
-            <circle cx="9" cy="-36" r="2.4" fill="#e0a77c" />
-          </g>
-        </g>
-
-        <!-- Girl, standing, holding up the open book. -->
-        <g transform="translate(16 -10)">
-          <path d="M-4 0V-10M4 0V-10" stroke="#f2c39b" stroke-width="3.4" stroke-linecap="round" />
-          <path d="M-9-8L-7-30Q0-34 7-30L9-8Z" fill="#b07cff" />
-          <path v-if="season === 'autumn'" d="M-5.5-31H5.5" stroke="#e98a2e" stroke-width="3.4" stroke-linecap="round" />
-          <g class="tilt">
-            <circle cx="-9" cy="-44" r="3.6" fill="#6b3420" />
-            <circle cx="9" cy="-44" r="3.6" fill="#6b3420" />
-            <circle cy="-41" r="8.2" fill="#f2c39b" />
-            <path d="M-8.6-41Q-9-50 0-50Q9-50 8.6-41Q5-46-1-45.5Q-6-45-8.6-41Z" fill="#6b3420" />
-            <circle cx="-3" cy="-41" r="1.2" fill="#23302b" />
-            <circle cx="3" cy="-41" r="1.2" fill="#23302b" />
-            <path d="M-2.8-37Q0-34.5 2.8-37" fill="none" stroke="#a8433a" stroke-width="1.2" stroke-linecap="round" />
-          </g>
-          <path d="M-15-30H-1V-18H-15ZM1-30H15V-18H1Z" fill="#fff" stroke="#8a5a3a" stroke-width="1.4" stroke-linejoin="round" />
-          <path d="M-14.3-22H-1.7V-18.7H-14.3ZM1.7-22H14.3V-18.7H1.7Z" fill="#7cc46a" />
-          <circle cx="-11" cy="-27" r="1.8" fill="#ffc933" />
-          <circle cx="5" cy="-27" r="1.8" fill="#ffc933" />
-          <circle cx="-5" cy="-23.4" r="1.6" fill="#e5484d" />
-          <circle cx="-15" cy="-22" r="2.4" fill="#f2c39b" />
-          <circle cx="15" cy="-22" r="2.4" fill="#f2c39b" />
-        </g>
-
-        <!-- On the blanket: a basket of apples in autumn, a slice of watermelon otherwise. -->
-        <g v-if="season === 'autumn'">
-          <path d="M-7-7Q0-17 7-7" fill="none" stroke="#8a5a2a" stroke-width="1.6" />
-          <circle cx="-3.5" cy="-7" r="3" fill="#e5484d" />
-          <circle cx="3" cy="-7.5" r="3" fill="#d9542b" />
-          <path d="M-9-7H9L7 1H-7Z" fill="#b07a3a" />
-          <path d="M-8-4H8" stroke="#8a5a2a" stroke-width="1" />
-        </g>
-        <g v-else>
-          <path d="M-8 0A8 8 0 0 1 8 0Z" fill="#e5484d" stroke="#4caf6a" stroke-width="2" />
-          <circle cx="-2.5" cy="-3" r="0.8" fill="#23302b" />
-          <circle cx="2.5" cy="-3" r="0.8" fill="#23302b" />
-        </g>
-      </template>
-
-      <template v-else>
-        <ellipse cy="2" rx="96" ry="6" fill="#c9d8e4" />
-
-        <!-- Dad, standing, in a red hat and a yellow scarf. -->
-        <g transform="translate(-62 0)">
-          <path d="M-5-2V-22M5-2V-22" stroke="#3d4f6e" stroke-width="6" stroke-linecap="round" />
-          <ellipse cx="-5" cy="-1" rx="4.6" ry="2.6" fill="#3d3a36" />
-          <ellipse cx="5" cy="-1" rx="4.6" ry="2.6" fill="#3d3a36" />
-          <path d="M-12-18V-46Q-12-56 0-56Q12-56 12-46V-18Z" fill="#5b8def" />
-          <path d="M-11-50Q-17-36-12-24M11-50Q17-36 12-24" fill="none" stroke="#4a7bd8" stroke-width="5.5" stroke-linecap="round" />
-          <circle cx="-12" cy="-23" r="3" fill="#ffc933" />
-          <circle cx="12" cy="-23" r="3" fill="#ffc933" />
-          <path d="M-8-56H8M4-55V-42" stroke="#ffc933" stroke-width="4.4" stroke-linecap="round" />
-          <g class="tilt">
-            <circle cx="-10" cy="-66" r="2.6" fill="#e0a77c" />
-            <circle cx="10" cy="-66" r="2.6" fill="#e0a77c" />
-            <circle cy="-66" r="10" fill="#e0a77c" />
-            <path d="M-10.5-68Q-11-80 0-80Q11-80 10.5-68Z" fill="#e5484d" />
-            <rect x="-11" y="-70" width="22" height="4.4" rx="2.2" fill="#c43a3f" />
-            <circle cy="-81" r="3" fill="#fff" />
-            <circle cx="-3.6" cy="-63" r="1.3" fill="#23302b" />
-            <circle cx="3.6" cy="-63" r="1.3" fill="#23302b" />
-            <path d="M-3.5-58.5Q0-55.5 3.5-58.5" fill="none" stroke="#7a3b2a" stroke-width="1.3" stroke-linecap="round" />
-          </g>
-        </g>
-
-        <!-- Boy, throwing snowballs at mom: one flies from his raised hand every few seconds. -->
-        <g transform="translate(-20 0)">
-          <path d="M-4-2V-12M4-2V-12" stroke="#3d4f6e" stroke-width="4" stroke-linecap="round" />
-          <ellipse cx="-4" cy="-1" rx="3.4" ry="2" fill="#3d3a36" />
-          <ellipse cx="4" cy="-1" rx="3.4" ry="2" fill="#3d3a36" />
-          <path d="M-8-10V-26Q-8-33 0-33Q8-33 8-26V-10Z" fill="#ffb02e" />
-          <path d="M-7-28Q-12-20-9-14M7-28Q14-34 12-44" fill="none" stroke="#f09a18" stroke-width="4.4" stroke-linecap="round" />
-          <circle cx="-9" cy="-13" r="2.4" fill="#e5484d" />
-          <circle cx="12" cy="-46" r="2.4" fill="#e5484d" />
-          <path d="M-6-33H6M3-32V-25" stroke="#e5484d" stroke-width="3.4" stroke-linecap="round" />
-          <circle cy="-41" r="8.5" fill="#e0a77c" />
-          <path d="M-8.8-43Q-9-51 0-51Q9-51 8.8-43Z" fill="#5b8def" />
-          <rect x="-9.2" y="-45" width="18.4" height="3.4" rx="1.7" fill="#4a7bd8" />
-          <circle cy="-52" r="2.4" fill="#fff" />
-          <circle cx="-3.2" cy="-39" r="1.2" fill="#23302b" />
-          <circle cx="3.2" cy="-39" r="1.2" fill="#23302b" />
-          <path d="M-3-35.5Q0-33 3-35.5" fill="none" stroke="#7a3b2a" stroke-width="1.2" stroke-linecap="round" />
-          <circle class="snowball" cx="12" cy="-50" r="3" fill="#fff" stroke="#c9d8e4" stroke-width="0.8" />
-        </g>
-
-        <!-- Girl, rolling a big snowball. -->
-        <g transform="translate(9 0)">
-          <path d="M-4-2V-12M4-2V-12" stroke="#3d4f6e" stroke-width="3.6" stroke-linecap="round" />
-          <ellipse cx="-4" cy="-1" rx="3.2" ry="2" fill="#3d3a36" />
-          <ellipse cx="4" cy="-1" rx="3.2" ry="2" fill="#3d3a36" />
-          <path d="M-9-9L-7-27Q-7-33 0-33Q7-33 7-27L9-9Z" fill="#b07cff" />
-          <path d="M-6-28Q2-22 10-19M6-28Q12-24 15-19" fill="none" stroke="#9a66ea" stroke-width="4" stroke-linecap="round" />
-          <circle cx="10" cy="-18" r="2.4" fill="#ffc933" />
-          <circle cx="15" cy="-18" r="2.4" fill="#ffc933" />
-          <path d="M-6-33H6M-3-32V-25" stroke="#ffc933" stroke-width="3.4" stroke-linecap="round" />
-          <g class="tilt">
-            <circle cx="-9" cy="-39" r="3.4" fill="#6b3420" />
-            <circle cx="9" cy="-39" r="3.4" fill="#6b3420" />
-            <circle cy="-41" r="8.2" fill="#f2c39b" />
-            <path d="M-8.6-43Q-9-51 0-51Q9-51 8.6-43Z" fill="#ff6b8a" />
-            <rect x="-9" y="-45" width="18" height="3.4" rx="1.7" fill="#e5577a" />
-            <circle cy="-52" r="2.4" fill="#fff" />
-            <circle cx="-3" cy="-39" r="1.2" fill="#23302b" />
-            <circle cx="3" cy="-39" r="1.2" fill="#23302b" />
-            <path d="M-2.8-35.5Q0-33 2.8-35.5" fill="none" stroke="#a8433a" stroke-width="1.2" stroke-linecap="round" />
-          </g>
-          <ellipse cx="28" cy="0" rx="14" ry="3" fill="#b9cbd9" />
-          <circle cx="28" cy="-12" r="12" fill="#fff" stroke="#c9d8e4" stroke-width="1" />
-          <path d="M20-18q4-4 10-3" fill="none" stroke="#dde8f0" stroke-width="2" stroke-linecap="round" />
-        </g>
-
-        <!-- Mom, standing in a long coat and a yellow hat, waving. -->
-        <g transform="translate(66 0)">
-          <path d="M-4-2V-14M4-2V-14" stroke="#3d4f6e" stroke-width="4" stroke-linecap="round" />
-          <ellipse cx="-4" cy="-1" rx="4" ry="2.4" fill="#c8553d" />
-          <ellipse cx="4" cy="-1" rx="4" ry="2.4" fill="#c8553d" />
-          <path d="M-13-12L-11-46Q-11-56 0-56Q11-56 11-46L13-12Z" fill="#2fa39a" />
-          <path d="M-10-50Q-16-36-12-26" fill="none" stroke="#26948b" stroke-width="5" stroke-linecap="round" />
-          <circle cx="-12" cy="-25" r="2.8" fill="#ff6b8a" />
-          <g class="wave">
-            <path d="M10-50Q19-58 18-70" fill="none" stroke="#26948b" stroke-width="5" stroke-linecap="round" />
-            <circle cx="18" cy="-72" r="2.8" fill="#ff6b8a" />
-          </g>
-          <path d="M-11.5-64Q-13-80 0-80Q13-80 11.5-64L13-51Q8-52 6-57H-6Q-8-52-13-51Z" fill="#6b3420" />
-          <path d="M-8-56H8M-4-55V-42" stroke="#ff6b8a" stroke-width="4.4" stroke-linecap="round" />
-          <circle cy="-66" r="9.5" fill="#f2c39b" />
-          <path d="M-10-68Q-10.5-79 0-79Q10.5-79 10-68Z" fill="#ffc933" />
-          <rect x="-10.5" y="-70" width="21" height="4" rx="2" fill="#e0a820" />
-          <circle cy="-80" r="2.8" fill="#fff" />
-          <circle cx="-3.4" cy="-63.5" r="1.3" fill="#23302b" />
-          <circle cx="3.4" cy="-63.5" r="1.3" fill="#23302b" />
-          <ellipse cx="-6" cy="-60" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
-          <ellipse cx="6" cy="-60" rx="2" ry="1.2" fill="#ff8fa8" fill-opacity="0.6" />
-          <path d="M-3.2-59Q0-56 3.2-59" fill="none" stroke="#a8433a" stroke-width="1.3" stroke-linecap="round" />
-        </g>
-      </template>
-    </g>
+    <!-- The family, in front of everyone on the front hill (drawn apart and big on a portrait window). -->
+    <g v-if="!familyApart" :transform="`translate(${FAMILY.x} ${FAMILY.y})`"><MeadowFamily /></g>
 
     <!-- Butterflies: placed by the outer group, wandering by the middle one, flapping by the inner one. -->
     <g v-for="(b, k) in butterflies" :key="k" :transform="`translate(${b.x} ${b.y})`">
@@ -992,8 +586,7 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
 /* Trees and flowers turn around their foot: fill-box makes the origin the element's own box. */
 .sway,
 .nod,
-.wings,
-.sparkle {
+.wings {
   transform-box: fill-box;
 }
 
@@ -1008,34 +601,6 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
   }
   to {
     transform: rotate(1.2deg);
-  }
-}
-
-/* Autumn wind: the trees bend further (and faster, see the template), mostly one way. */
-.autumn .sway {
-  animation-name: wind;
-}
-
-@keyframes wind {
-  from {
-    transform: rotate(-0.5deg);
-  }
-  to {
-    transform: rotate(3.2deg);
-  }
-}
-
-/* Bare winter trees barely move. */
-.winter .sway {
-  animation-name: sway-small;
-}
-
-@keyframes sway-small {
-  from {
-    transform: rotate(-0.5deg);
-  }
-  to {
-    transform: rotate(0.5deg);
   }
 }
 
@@ -1105,29 +670,6 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
   to {
     transform: scaleX(0.25);
   }
-}
-
-.smoke {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  opacity: 0;
-  animation: smoke 3.9s ease-out infinite;
-}
-
-@keyframes smoke {
-  0% {
-    opacity: 0.85;
-    transform: translate(0, 0) scale(0.6);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-14px, -44px) scale(1.8);
-  }
-}
-
-.sparkle {
-  transform-origin: 50% 50%;
-  animation: twinkle 3s ease-in-out infinite;
 }
 
 /* Water: glints run downstream (dash patterns are 40 long); rings spread and fade on the lake. */
@@ -1294,108 +836,6 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
   }
 }
 
-/* The family: heads tilt a little, mom's arm waves from the shoulder now and then, the boy's magnifier
-   wanders around his eye. */
-.tilt,
-.wave,
-.peer {
-  transform-box: fill-box;
-}
-
-.tilt {
-  transform-origin: 50% 100%;
-  animation: tilt 4.2s ease-in-out infinite alternate;
-}
-
-@keyframes tilt {
-  from {
-    transform: rotate(-5deg);
-  }
-  to {
-    transform: rotate(5deg);
-  }
-}
-
-.wave {
-  transform-origin: 0% 100%;
-  animation: wave 5s ease-in-out infinite;
-}
-
-@keyframes wave {
-  0%,
-  40%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50%,
-  70% {
-    transform: rotate(18deg);
-  }
-  60%,
-  80% {
-    transform: rotate(-6deg);
-  }
-}
-
-.peer {
-  transform-origin: 30% 100%;
-  animation: peer 3.6s ease-in-out infinite alternate;
-}
-
-@keyframes peer {
-  from {
-    transform: rotate(-7deg);
-  }
-  to {
-    transform: rotate(6deg);
-  }
-}
-
-/* Spring kite: swings around dad's hand (the lower left corner of its box). */
-.kite {
-  transform-box: fill-box;
-  transform-origin: 0% 100%;
-  animation: kite 3.8s ease-in-out infinite alternate;
-}
-
-@keyframes kite {
-  from {
-    transform: rotate(-4deg);
-  }
-  to {
-    transform: rotate(3deg);
-  }
-}
-
-/* Winter: a snowball leaves the boy's hand in an arc toward mom, then the next one is ready. */
-.snowball {
-  animation: snowball 3.2s ease-in infinite;
-}
-
-@keyframes snowball {
-  0%,
-  40% {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-  58% {
-    transform: translate(34px, -16px);
-  }
-  76% {
-    opacity: 1;
-    transform: translate(66px, -6px);
-  }
-  77%,
-  99% {
-    opacity: 0;
-    transform: translate(66px, -6px);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-}
-
 .lamp-glow {
   animation: lamp-glow 3.2s ease-in-out infinite alternate;
 }
@@ -1406,18 +846,6 @@ const rabbitColor = computed(() => (props.season === 'winter' ? '#f7f7f7' : '#b0
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 </style>

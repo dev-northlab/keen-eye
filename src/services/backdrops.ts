@@ -2,14 +2,14 @@ import type { BackdropTheme } from '../levels/chapters.ts'
 import { useSettingsStore } from '../stores/settings.ts'
 import { preloadImage } from './images.ts'
 
-/** A portrait window: "tiny boy" shows its upright picture there. */
+/** A portrait window (phones): the meadow and "tiny boy" show their upright pictures there. */
 export const TALL_WINDOW = '(max-aspect-ratio: 1/1)'
 
 /**
  * The ready picture (public/backdrops/) `ScreenBackdrop` shows for `theme` with the current settings, or null when
- * the backdrop is drawn: the redesigned picture style (levels/picture-style.ts) has the meadow one per season, day
- * and night, every world one per day and night, and space a single one (it is dark in both themes); "tiny boy" has
- * its own autumn picture in both styles, upright (`tall`) on a portrait window, with no night version.
+ * the backdrop is drawn: the redesigned picture style (levels/picture-style.ts) has the meadow and every world one
+ * per day and night (the meadow upright on a portrait window, `tall`), and space a single one (it is dark in both
+ * themes). "Tiny boy" has its own autumn picture in both styles, upright on a portrait window, with no night version.
  */
 export function backdropPicture(theme: BackdropTheme, tall = false): string | null {
   const settings = useSettingsStore()
@@ -18,7 +18,7 @@ export function backdropPicture(theme: BackdropTheme, tall = false): string | nu
   if (settings.pictureStyle !== 'redesign') return null
   if (theme === 'space') return `${base}space.avif`
   const time = settings.theme === 'dark' ? 'night' : 'day'
-  return `${base}${theme === 'meadow' ? `meadow-${settings.season}` : theme}-${time}.avif`
+  return `${base}${theme === 'meadow' && tall ? 'meadow-tall' : theme}-${time}.avif`
 }
 
 /** Gets the picture of `theme`'s backdrop ready, as the window is now; nothing to do for a drawn one. */

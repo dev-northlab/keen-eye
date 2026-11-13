@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import type { BackdropTheme } from '../levels/chapters.ts'
-import { backdropPicture, TALL_WINDOW } from '../services/backdrops.ts'
+import { backdropPicture } from '../services/backdrops.ts'
 import { useSettingsStore } from '../stores/settings.ts'
+import BlossomTree from './BlossomTree.vue'
+import MeadowFamily from './MeadowFamily.vue'
 import MeadowScene from './MeadowScene.vue'
 
 // Screen backdrops, one world per screen: sky, sun, drifting clouds and a landscape strip at the bottom
@@ -16,31 +18,41 @@ const settings = useSettingsStore()
 /** Dark theme: every world at night (dark sky, moon, stars, dimmed landscape); space already is. */
 const night = computed(() => settings.theme === 'dark')
 
-/** The meadow follows the season chosen on the home screen (sky colours, falling petals/leaves/snow). */
-const season = computed(() => (props.theme === 'meadow' ? settings.season : null))
+/** The window's size, followed as it turns or resizes. */
+const view = ref({ w: innerWidth, h: innerHeight })
+const onResize = () => (view.value = { w: innerWidth, h: innerHeight })
+addEventListener('resize', onResize)
+onBeforeUnmount(() => removeEventListener('resize', onResize))
+/** A portrait window (phones, `TALL_WINDOW`): some backdrops have an upright picture or layout for it. */
+const tall = computed(() => view.value.w <= view.value.h)
+
+/** The drawn meadow on a portrait window is laid out like its upright picture: blossoming trees at both edges, the
+ *  family big in the foreground and their kite high in the sky. */
+const tallMeadow = computed(() => props.theme === 'meadow' && tall.value)
+/** The big family's kite flies high in the sky, at 17 % of the window's height: its place relative to their blanket,
+ *  in the family's units (the `.family` box: min(64vw, 340px) wide for 200 units, the blanket 12 units above its
+ *  bottom at 98.5 %). */
+const highKite = computed(() => {
+  const { w, h } = view.value
+  const scale = Math.min(0.64 * w, 340) / 200
+  const blanket = h * 0.985 - 12 * scale
+  return { x: 30, y: -Math.round((blanket - 0.17 * h) / scale) }
+})
 
 /** A ready picture instead of the drawn sky and landscape (services/backdrops.ts), cut to the window like the strip. */
-const picture = computed(() => backdropPicture(props.theme))
+const picture = computed(() => backdropPicture(props.theme, tall.value))
 
-const FALLING = {
-  spring: { count: 14, size: 9, colors: ['#ffd1e0', '#ffffff', '#ffb3cb'] },
-  summer: { count: 0, size: 0, colors: [] },
-  autumn: { count: 18, size: 11, colors: ['#e98a2e', '#d9542b', '#f2c14e', '#c9662b'] },
-  winter: { count: 46, size: 4, colors: ['#ffffff'] },
-}
-/** Deterministic spread: left (%), size (px), fall time and start offset (s), sideways drift (px). */
-const falling = computed(() => {
-  if (!season.value) return []
-  const { count, size, colors } = FALLING[season.value]
-  return Array.from({ length: count }, (_, i) => ({
-    left: (i * 37 + 11) % 100,
-    size: size + ((i * 7) % 5),
-    duration: 9 + ((i * 13) % 8),
-    delay: -((i * 7.3) % 16),
-    drift: ((i * 29) % 90) - 45,
-    color: colors[i % colors.length],
-  }))
-})
+/** Spring petals falling over the drawn meadow. Deterministic spread: left (%), size (px), fall time and start
+ *  offset (s), sideways drift (px). */
+const PETAL_COLORS = ['#ffd1e0', '#ffffff', '#ffb3cb']
+const petals = Array.from({ length: 14 }, (_, i) => ({
+  left: (i * 37 + 11) % 100,
+  size: 9 + ((i * 7) % 5),
+  duration: 9 + ((i * 13) % 8),
+  delay: -((i * 7.3) % 16),
+  drift: ((i * 29) % 90) - 45,
+  color: PETAL_COLORS[i % PETAL_COLORS.length],
+}))
 
 /** Deterministic jitter: the pictures are the same on every start. */
 const jitter = (i: number, a: number, m: number) => ((i * a) % m) - m / 2
@@ -160,16 +172,11 @@ const craters = [
 <template>
   <div
     class="backdrop"
-    :class="[theme, season, { night }]"
+    :class="[theme, { night }]"
     aria-hidden="true"
   >
-    <!-- "Tiny boy": its own autumn picture in both picture styles, upright on a portrait window; no night version,
-         so the dark theme dims it. -->
-    <picture v-if="theme === 'tinyBoy'">
-      <source :media="TALL_WINDOW" :srcset="backdropPicture(theme, true)!" />
-      <img class="picture" :class="{ dimmed: night }" :src="picture!" alt="" />
-    </picture>
-    <img v-else-if="picture" class="picture" :src="picture" alt="" />
+    <!-- "Tiny boy" has no night version, so the dark theme dims its picture. -->
+    <img v-if="picture" class="picture" :class="{ dimmed: night && theme === 'tinyBoy' }" :src="picture" alt="" />
     <template v-else>
       <svg v-if="theme === 'space' || night" class="stars" preserveAspectRatio="none">
         <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
@@ -212,7 +219,7 @@ const craters = [
 
       <!-- Wide strip cut to the window: on a phone its middle part stays visible. -->
       <svg class="strip" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
-        <MeadowScene v-if="theme === 'meadow'" :season="settings.season" />
+        <MeadowScene v-if="theme === 'meadow'" :family-apart="tallMeadow" />
 
         <template v-else-if="theme === 'farm'">
           <path d="M0 180Q300 120 640 170T1600 150V400H0Z" fill="#c7dd8f" />
@@ -403,12 +410,22 @@ const craters = [
       </svg>
       <!-- Night lights of the meadow's house, over the dimmed strip (same box, so they line up). -->
       <svg v-if="night && theme === 'meadow'" class="strip lit" viewBox="0 0 1600 400" preserveAspectRatio="xMidYMax slice">
-        <MeadowScene :season="settings.season" lights />
+        <MeadowScene lights :family-apart="tallMeadow" />
       </svg>
+      <template v-if="tallMeadow">
+        <BlossomTree class="tree left" />
+        <BlossomTree class="tree right" pink />
+        <svg class="family" viewBox="-100 -72 200 84" overflow="visible">
+          <MeadowFamily :kite="highKite" />
+        </svg>
+        <svg v-if="night" class="family lit" viewBox="-100 -72 200 84" overflow="visible">
+          <MeadowFamily lights />
+        </svg>
+      </template>
 
-      <div v-if="falling.length" class="falling">
+      <div v-if="theme === 'meadow'" class="falling">
         <span
-          v-for="(f, i) in falling"
+          v-for="(f, i) in petals"
           :key="i"
           :style="{
             left: `${f.left}%`,
@@ -446,30 +463,12 @@ const craters = [
   filter: brightness(0.55) saturate(0.85);
 }
 
+/* The home meadow in spring. */
 .meadow {
-  --sky: #9fd8f0;
-  --sky-mid: #d6eef3;
-  --sun: #ffd45c;
-  --glow: rgb(255 248 214 / 0.8);
-}
-
-/* Meadow seasons (home screen). */
-.meadow.spring {
   --sky: #a7def2;
   --sky-mid: #e3f5ea;
-}
-
-.meadow.autumn {
-  --sky: #9ccbe6;
-  --sky-mid: #e2eef0;
-  --sun: #ffc85c;
-}
-
-.meadow.winter {
-  --sky: #a9c6dc;
-  --sky-mid: #d4e2ec;
-  --sun: #fff1c4;
-  --glow: rgb(255 255 255 / 0.6);
+  --sun: #ffd45c;
+  --glow: rgb(255 248 214 / 0.8);
 }
 
 .falling {
@@ -481,24 +480,10 @@ const craters = [
   position: absolute;
   top: -24px;
   width: var(--size);
-  height: var(--size);
-  background: var(--color);
-  animation: fall linear infinite;
-}
-
-/* Snowflakes, petals and leaves differ only in shape. */
-.winter .falling span {
-  border-radius: 50%;
-  opacity: 0.9;
-}
-
-.spring .falling span {
   height: calc(var(--size) * 0.7);
+  background: var(--color);
   border-radius: 80% 0 80% 0;
-}
-
-.autumn .falling span {
-  border-radius: 0 80% 0 80%;
+  animation: fall linear infinite;
 }
 
 @keyframes fall {
@@ -569,11 +554,14 @@ const craters = [
   filter: brightness(0.45) saturate(0.6);
 }
 
-.night:not(.space) .strip {
+.night:not(.space) .strip,
+.night .tree,
+.night .family {
   filter: brightness(0.55) saturate(0.85);
 }
 
-.night .strip.lit {
+.night .strip.lit,
+.night .family.lit {
   filter: none;
 }
 
@@ -662,6 +650,32 @@ const craters = [
   /* Phones: a fixed strip, cut at the sides. Wide windows: tall enough (21.25vw = 340 of 400 units)
      that the slice never cuts the far layer flat. */
   height: max(min(30%, 230px), min(21.25vw, 60%));
+}
+
+/* The drawn meadow on a portrait window: blossoming trees reach in from both edges above the menu, the family
+   sits big on the front of the meadow below it (the kite flies far above, overflowing the box). */
+.tree {
+  position: absolute;
+  top: 19%;
+  width: 28vw;
+  height: 39vw;
+}
+
+.tree.left {
+  left: 0;
+}
+
+.tree.right {
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.family {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5%;
+  width: min(64vw, 340px);
+  transform: translateX(-50%);
 }
 
 @keyframes drift {

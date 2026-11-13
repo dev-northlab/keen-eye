@@ -2,6 +2,7 @@
 // Motion difference: a yacht rocks quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level414Redesign } from './level-414-redesign.ts'
 import { cloud, gull, sky, sun, water } from './shapes.ts'
 
 /** Shell (sail) of the Opera House on the podium at y = 330, from x to x + w, h high. Bounds: w × h. */
@@ -66,6 +67,7 @@ const cockatoo = (x: number, y: number) =>
 
 export default travelLevel({
   id: 414,
+  redesign: level414Redesign,
   title: 'sydney',
   parTimeSec: 97,
   place: { region: 'oceania', country: 'au', lat: -33.86, lon: 151.21 },
