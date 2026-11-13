@@ -57,10 +57,17 @@ const kookaburra = (x: number, y: number) =>
 const buoy = (x: number, y: number, color: string) =>
   `<path d="M${x - 10} ${y}Q${x - 8} ${y - 18} ${x} ${y - 20}Q${x + 8} ${y - 18} ${x + 10} ${y}Z" fill="${color}"/><rect x="${x - 10}" y="${y - 2}" width="20" height="6" rx="2" fill="#3d4a55"/>`
 
+/** Sulphur-crested cockatoo sitting on a pylon top at (x, y) (its feet), faces left. Bounds: x from −12 to +16, y from −28 to 0. */
+const cockatoo = (x: number, y: number) =>
+  `<path d="M${x + 6} ${y - 6}l10 6l-12 -1Z" fill="#e8ecef"/><ellipse cx="${x + 2}" cy="${y - 9}" rx="8" ry="9" fill="#ffffff"/>` +
+  `<circle cx="${x - 4}" cy="${y - 18}" r="6" fill="#ffffff"/><path d="M${x - 2} ${y - 23}q2 -8 -4 -5q4 -6 -4 -2q0 -4 -4 2" fill="#ffd23f"/>` +
+  `<path d="M${x - 9} ${y - 19}q-4 2 -1 5l3 -2Z" fill="#3d4a55"/><circle cx="${x - 5}" cy="${y - 19}" r="1.1" fill="#222"/>` +
+  `<path d="M${x - 1} ${y}v-3M${x + 4} ${y}v-3" stroke="#6b7d8f" stroke-width="1.6"/>`
+
 export default travelLevel({
   id: 414,
   title: 'sydney',
-  parTimeSec: 90,
+  parTimeSec: 97,
   place: { region: 'oceania', country: 'au', lat: -33.86, lon: 151.21 },
   scene: ({ diff, anim, rand, extra }) => {
     const rock = (period: number) => anim({ id: 'yacht', type: 'sway', angle: 6, pivot: [700, 440], period }, yacht(700, 440, '#ffd23f'))
@@ -73,6 +80,7 @@ export default travelLevel({
       `<path d="M300 300V240h30v-30h26v50h30v-70h34v40h40v-24h30v34h36v-56h30v46h40v-30h34v40h40v-20h50v80Z" fill="#b7cde0"/>` +
       water(296, '#2f8fc4', rand, 16) +
       bridge() +
+      diff(438, 192, 22, cockatoo(436, 206), '') +
       diff(590, 160, 22, climbers(), '') +
       // Opera House on its podium
       `<path d="M20 350L40 330H380L400 350Z" fill="#d8c8a8"/><rect x="20" y="350" width="380" height="14" fill="#c4b393"/>` +

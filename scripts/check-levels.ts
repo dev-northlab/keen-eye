@@ -192,8 +192,8 @@ function checkExtras(level: Level, a: SceneSvg, aExtras: SceneSvg, report: Repor
 /**
  * The redesigned pictures of a level (`Level.redesign`, levels/picture-style.ts): the files exist, as many zones
  * as the drawn scene, each centered on the picture, big enough (scaled to the drawn scene's width) and apart; the
- * drawn level's key is on the pictures too, as its own image over them (so it can be taken), on both, clear of the
- * zones. Pictures do not move: a motion difference of the drawn scene becomes a still one there. (How well the key hides is seen by eye: there is no pixel check.)
+ * drawn level's key is on the pictures too, as its own image over them (so it can be taken), on both (B only in
+ * "memory", like the drawn key), clear of the zones. Pictures do not move: a motion difference of the drawn scene becomes a still one there. (How well the key hides is seen by eye: there is no pixel check.)
  */
 function checkRedesign(level: Level, minRadius: number): string[] {
   const p = level.redesign
@@ -214,7 +214,7 @@ function checkRedesign(level: Level, minRadius: number): string[] {
   if (!!level.secret !== !!p.secret) errors.push('redesign: the pictures need the key exactly when the drawn scene hides one')
   const key = p.secret
   if (key) {
-    if (key.on !== 'both') errors.push('redesign: the key must be on both pictures')
+    if (key.on !== (level.memory ? 'b' : 'both')) errors.push(`redesign: the key must be on ${level.memory ? 'B only' : 'both pictures'}`)
     if (key.x < 0 || key.y < 0 || key.x > p.viewBox.w || key.y > p.viewBox.h) errors.push('redesign: the key is off the picture')
     // The pictures cannot lose the key when it is taken: it must be its own image over them.
     const img = key.image

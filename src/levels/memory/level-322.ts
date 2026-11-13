@@ -1,5 +1,6 @@
 import { star } from '../chapter-05/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level322Redesign } from './level-322-redesign.ts'
 import { cloud } from '../shapes.ts'
 import { around, big, cube, daySky, ground } from './shapes.ts'
 import { bench, bin, cone, pigeon } from '../chapter-02/shapes.ts'
@@ -32,6 +33,7 @@ export default memoryLevel({
   id: 322,
   title: 'memoryCircus',
   showSeconds: 4,
+  redesign: level322Redesign,
   scene: ({ diff }) =>
     daySky(420) +
     big(90, 60, 0.9, cloud(0, 0)) +

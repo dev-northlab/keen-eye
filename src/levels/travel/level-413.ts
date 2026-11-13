@@ -63,10 +63,15 @@ const jeepBody = (x: number, y: number, color: string) =>
   `<path d="M${x - 62} ${y - 14}V${y - 46}H${x + 22}L${x + 30} ${y - 62}H${x + 36}L${x + 42} ${y - 46}H${x + 62}V${y - 14}Z" fill="${color}"/>` +
   `<rect x="${x - 54}" y="${y - 40}" width="24" height="14" rx="2" fill="#4b5d73"/><rect x="${x - 24}" y="${y - 40}" width="24" height="14" rx="2" fill="#4b5d73"/><rect x="${x + 54}" y="${y - 38}" width="8" height="6" fill="#ffd166"/>`
 
+/** Weaver bird's nest hanging under an acacia's crown at (x, y) (its top). Bounds: x ±8, y from 0 to +20. */
+const weaverNest = (x: number, y: number) =>
+  `<path d="M${x} ${y}v4" stroke="#6b4a3a" stroke-width="1.5"/><ellipse cx="${x}" cy="${y + 11}" rx="7" ry="8" fill="#b89a5a"/>` +
+  `<path d="M${x - 5} ${y + 8}q5 3 10 0M${x - 6} ${y + 13}q6 3 12 0" stroke="#8a7040" stroke-width="1" fill="none"/><circle cx="${x}" cy="${y + 17}" r="2.4" fill="#5c4a35"/>`
+
 export default travelLevel({
   id: 413,
   title: 'safari',
-  parTimeSec: 88,
+  parTimeSec: 96,
   place: { region: 'africa', country: 'ke', lat: -1.5, lon: 35.14 },
   scene: ({ diff, anim, rand, extra }) => {
     const swish = (period: number) => anim({ id: 'tail', type: 'sway', angle: 18, pivot: [687, 403], period }, tail(720, 455))
@@ -84,6 +89,7 @@ export default travelLevel({
       `<rect y="300" width="800" height="200" fill="#e3c06b"/>` +
       grass +
       acacia(700, 310, 0.6) +
+      diff(726, 270, 20, weaverNest(726, 258), '') +
       acacia(110, 330) +
       diff(150, 202, 20, starling(150, 210), '') +
       giraffe(270, 420) +
@@ -109,7 +115,7 @@ export default travelLevel({
         ['birds', 532, 96],
       ]) +
       extras({ extra, anim }, [
-        ['rock', 716, 324, '#b9853f'],
+        ['rock', 764, 332, '#b9853f'],
         ['bee', 612, 464],
         ['stones', 264, 456],
         ['cloud', 312, 180],

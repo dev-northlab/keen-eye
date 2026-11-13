@@ -1,6 +1,7 @@
 import { fireLogs, flame } from '../chapter-03/shapes.ts'
 import { star } from '../chapter-05/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level330Redesign } from './level-330-redesign.ts'
 import { ball, cat } from '../time/shapes.ts'
 import { around, big, candle, cube, gift, painting, room, rug, slipperPair, sticker, teddy, wallClock } from './shapes.ts'
 
@@ -43,6 +44,7 @@ export default memoryLevel({
   id: 330,
   title: 'memoryHoliday',
   showSeconds: 4,
+  redesign: level330Redesign,
   scene: ({ diff }) =>
     room(520, '#f3e3c3', '#a0703f') +
     Array.from({ length: 42 }, (_, i) => `<circle cx="${(i % 7) * 70 + 20 + (Math.floor(i / 7) % 2) * 35}" cy="${Math.floor(i / 7) * 90 + 70}" r="4" fill="#e07a5f" fill-opacity="0.35"/>`).join('') +

@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level327Redesign } from './level-327-redesign.ts'
 import { cloud, grass, sheep } from '../shapes.ts'
 import { around, big, ground, hills } from './shapes.ts'
 import { cone } from '../chapter-02/shapes.ts'
@@ -21,6 +22,7 @@ export default memoryLevel({
   id: 327,
   title: 'memoryAirfield',
   showSeconds: 4,
+  redesign: level327Redesign,
   scene: ({ diff }) =>
     `<rect width="500" height="520" fill="#bfe6f7"/>` +
     big(330, 450, 0.9, cloud(0, 0)) +

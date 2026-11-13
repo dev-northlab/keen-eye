@@ -2,6 +2,7 @@
 // seaside boulevard and a sailing boat on the Caspian Sea.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level408Redesign } from './level-408-redesign.ts'
 import { cloud, gull, lampPost, person, sky, sun, water } from './shapes.ts'
 
 const STONE = '#d8b98a'
@@ -56,10 +57,26 @@ const standingGull = (x: number, y: number) =>
   `<ellipse cx="${x}" cy="${y - 8}" rx="10" ry="6" fill="#ffffff"/><circle cx="${x - 8}" cy="${y - 12}" r="4" fill="#ffffff"/>` +
   `<path d="M${x - 12} ${y - 12}l-3 1l3 1Z" fill="#f2b33d"/><path d="M${x + 2} ${y - 10}l10 -2l-4 5Z" fill="#8d99ae"/><path d="M${x - 2} ${y - 2}v2M${x + 2} ${y - 2}v2" stroke="#f2b33d" stroke-width="1.6"/>`
 
+/** Pomegranate tree on the hill; (x, y) = foot. Its fruit is `pomegranates`. Bounds: x ±26, y from −64 to 0. */
+const pomegranateTree = (x: number, y: number) =>
+  `<path d="M${x} ${y}V${y - 26}l-10 -10M${x} ${y - 22}l10 -12" stroke="#6b4a3a" stroke-width="5" stroke-linecap="round"/>` +
+  `<circle cx="${x - 12}" cy="${y - 40}" r="14" fill="#3f8a3a"/><circle cx="${x + 12}" cy="${y - 40}" r="14" fill="#3f8a3a"/><circle cx="${x}" cy="${y - 50}" r="15" fill="#4c9a45"/>`
+/** Red pomegranates on a `pomegranateTree` at (x, y). Bounds: circle of radius 20 around (x, y − 42). */
+const pomegranates = (x: number, y: number) =>
+  [[-12, -38], [8, -52], [13, -34], [-3, -28]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="5" fill="#c4213a"/><path d="M${x + dx - 2} ${y + dy - 5}h4l-2 -3Z" fill="#c4213a"/>`).join('')
+
+/** Oleander bush at the foot of the wall; (x, y) = foot. Its flowers are `oleanderFlowers`. Bounds: x ±26, y from −34 to 0. */
+const oleander = (x: number, y: number) =>
+  `<ellipse cx="${x}" cy="${y - 14}" rx="26" ry="16" fill="#3f8a3a"/><ellipse cx="${x + 4}" cy="${y - 22}" rx="18" ry="12" fill="#4c9a45"/>`
+/** Pink flowers of an `oleander` at (x, y). Bounds: circle of radius 22 around (x, y − 16). */
+const oleanderFlowers = (x: number, y: number) =>
+  [[-16, -14], [-6, -26], [8, -30], [18, -16], [2, -14], [-8, -6]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="4" fill="#f27da5"/>`).join('')
+
 export default travelLevel({
   id: 408,
+  redesign: level408Redesign,
   title: 'baku',
-  parTimeSec: 76,
+  parTimeSec: 91,
   place: { region: 'caucasus', country: 'az', lat: 40.41, lon: 49.87 },
   scene: ({ diff, anim, rand, extra }) =>
     sky('#a9d6ef') +
@@ -75,6 +92,10 @@ export default travelLevel({
     // Old city walls and the Maiden Tower
     wall(0, 520, 300, 334) +
     diff(340, 293, 22, tooth(334, 300), '') +
+    oleander(300, 400) +
+    diff(300, 384, 24, oleanderFlowers(300, 400), '') +
+    pomegranateTree(770, 400) +
+    diff(770, 358, 24, pomegranates(770, 400), '') +
     maidenTower(190, 400) +
     diff(190, 304, 22, slit(190, 304), '') +
     // Seaside boulevard with the carpet stall

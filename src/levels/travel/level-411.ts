@@ -52,10 +52,17 @@ const beak = (x: number, y: number, color: string) =>
 
 const coconut = (x: number, y: number) => `<circle cx="${x}" cy="${y}" r="5" fill="#7a5233"/>`
 
+/** Hang glider over the bay; (x, y) = middle of the wing. Bounds: x ±24, y from −6 to +20. */
+const hangGlider = (x: number, y: number) =>
+  `<path d="M${x - 24} ${y + 4}L${x} ${y - 6}L${x + 24} ${y + 4}Q${x} ${y} ${x - 24} ${y + 4}Z" fill="#ff6b35"/>` +
+  `<path d="M${x} ${y - 6}L${x - 8} ${y + 3}L${x + 8} ${y + 3}Z" fill="#ffd23f"/>` +
+  `<path d="M${x} ${y}V${y + 12}M${x - 6} ${y + 12}H${x + 6}" stroke="#3d4a55" stroke-width="1.2"/>` +
+  `<path d="M${x - 6} ${y + 15}H${x + 8}" stroke="#2b59c3" stroke-width="4" stroke-linecap="round"/><circle cx="${x + 10}" cy="${y + 14}" r="2.6" fill="#c68a5a"/>`
+
 export default travelLevel({
   id: 411,
   title: 'rio',
-  parTimeSec: 84,
+  parTimeSec: 94,
   place: { region: 'americas', country: 'br', lat: -22.91, lon: -43.17 },
   scene: ({ diff, anim, rand, extra }) => {
     const ride = (period: number) => anim({ id: 'cabin', type: 'path', points: [[0, 0], [70, cableY(630) - cableY(560)]], period }, cabin(560))
@@ -75,6 +82,7 @@ export default travelLevel({
       `<path d="M560 340Q566 200 640 168Q700 160 722 210Q744 262 770 340Z" fill="#7b8c7a"/><path d="M560 340Q570 290 610 296Q680 290 770 340Z" fill="#5f8f5a"/>` +
       `<path d="M530 250L655 170" stroke="#3d4a55" stroke-width="2"/>` +
       diff(560, 246, 24, ride(7), ride(12), 'cabin') +
+      diff(470, 178, 26, hangGlider(470, 176), '') +
       hull(330, 372) +
       diff(345, 337, 28, sail(330, 372, '#ffffff'), sail(330, 372, '#ffd23f')) +
       // Beach and the wave pavement

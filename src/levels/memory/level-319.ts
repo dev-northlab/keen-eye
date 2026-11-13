@@ -2,6 +2,7 @@ import { balloon, lampHead, lampPost, person } from '../chapter-02/shapes.ts'
 import { bush, fox, hedgehog, mushroom, rock, squirrel, stump } from '../chapter-03/shapes.ts'
 import { bench } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level319Redesign } from './level-319-redesign.ts'
 import { cloud, duck, sun } from '../shapes.ts'
 import { around, big, daySky, ground, kite, pumpkin, roundTree } from './shapes.ts'
 import { bird, birds, grass } from '../time/shapes.ts'
@@ -20,6 +21,7 @@ export default memoryLevel({
   id: 319,
   title: 'memoryAutumnPark',
   showSeconds: 5,
+  redesign: level319Redesign,
   scene: ({ diff }) =>
     daySky(330, '#ffe9c7') +
     sun(70, 60) +

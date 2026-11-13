@@ -15,6 +15,7 @@
     "encode-pictures": "node scripts/encode-pictures.ts",
     "og": "node scripts/build-og.ts",
     "store-screenshots": "npm run build && node scripts/store-screenshots.ts",
+    "play-preview": "node scripts/play-preview.ts",
     "android:sync": "npm run build && cap sync android",
     "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug",
     "ios:sync": "npm run build && cap sync ios"

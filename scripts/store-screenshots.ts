@@ -9,7 +9,6 @@ import { chromium, type Browser, type Locator, type Page } from 'playwright-core
 import { preview } from 'vite'
 import { levelById } from '../src/levels/index.ts'
 import { styledLevel, type PictureStyle } from '../src/levels/picture-style.ts'
-import { timeTravelLevelById } from '../src/levels/time-travel/index.ts'
 
 const CHROME = '/usr/bin/google-chrome'
 const PORT = 4175
@@ -42,6 +41,8 @@ interface Shot {
   name: string
   route: string
   settings?: Record<string, unknown>
+  /** Other stored values (key without the storage prefix → value), e.g. the two-player setup. */
+  storage?: Record<string, unknown>
   act?: (page: Page) => Promise<void>
 }
 
@@ -63,21 +64,16 @@ async function pictureBox(svg: Locator) {
 const findDifferences = (id: number, count: number, style: PictureStyle = 'classic') => async (page: Page) => {
   const level = styledLevel(levelById(id)!, style)
   for (const d of level.differences.filter((d) => !d.animatedId).slice(0, count)) {
-    const [x, y] = (await pictureBox(page.locator('.pictures svg').nth(1))).at(d.x, d.y)
+    const [x, y] = (await pictureBox(page.locator('.pictures > svg').nth(1))).at(d.x, d.y)
     await page.touchscreen.tap(x, y)
     await page.waitForTimeout(250)
   }
 }
 
-/** Taps the first `count` odd items of a "find the odd one out" level (positions in percent of the picture). */
-const findOddItems = (id: string, count: number) => async (page: Page) => {
-  const level = timeTravelLevelById(id)!
-  for (const item of level.items.slice(0, count)) {
-    const [cx, cy] = item.shape === 'circle' ? [item.x, item.y] : [item.x + item.w / 2, item.y + item.h / 2]
-    const [x, y] = (await pictureBox(page.locator('.pictures svg').first())).at((cx / 100) * level.width, (cy / 100) * level.height)
-    await page.touchscreen.tap(x, y)
-    await page.waitForTimeout(300)
-  }
+/** Holds the hot-seat bottle spin (2.6 s) near its end, both players still shown around the bottle. */
+const holdBottle = async (page: Page) => {
+  await page.evaluate(`for (const a of document.getAnimations())
+    if (a.animationName === 'spin-bottle') { a.pause(); a.currentTime = 2400 }`)
 }
 
 // Order = order in the stores; captions are the lines of screenshots.txt in the same order.
@@ -89,7 +85,9 @@ const SHOTS: Shot[] = [
   { name: 'time', route: '/level/203', act: findDifferences(203, 3) },
   { name: 'detective', route: '/detective/cake' },
   { name: 'travel', route: '/travel' },
-  { name: 'time-travel', route: '/time-travel/rome-01', act: findOddItems('rome-01', 3) },
+  // Two players taking turns: the bottle spun for who goes first, held just before it stops (once it stops, the
+  // dialog shows only the first player).
+  { name: 'duel', route: '/duo/75', storage: { duoSetup: { mode: 'hotseat' } }, act: holdBottle },
   { name: 'calm', route: '/', settings: { mode: 'calm' } },
 ]
 
@@ -117,14 +115,10 @@ function seededProgress() {
 async function capture(browser: Browser, device: Device, locale: string, shot: Shot): Promise<Buffer> {
   const ctx = await browser.newContext({ viewport: device.viewport, deviceScaleFactor: 3, isMobile: true, hasTouch: true })
   const settings = { locale, theme: 'light', season: 'summer', musicVolume: 0, soundVolume: 0, ...shot.settings }
-  await ctx.addInitScript(
-    ([settings, progress]) => {
-      localStorage.setItem('CapacitorStorage.settings', JSON.stringify(settings))
-      localStorage.setItem('CapacitorStorage.progress', JSON.stringify(progress))
-      localStorage.setItem('CapacitorStorage.purchase', JSON.stringify({ fullGame: true }))
-    },
-    [settings, seededProgress()] as const,
-  )
+  const stored = { settings, progress: seededProgress(), purchase: { fullGame: true }, ...shot.storage }
+  await ctx.addInitScript((stored) => {
+    for (const [key, value] of Object.entries(stored)) localStorage.setItem(`CapacitorStorage.${key}`, JSON.stringify(value))
+  }, stored)
   const page = await ctx.newPage()
   await page.goto(BASE + shot.route)
   await page.waitForTimeout(1200)
@@ -196,7 +190,7 @@ async function levelPicture(browser: Browser): Promise<Buffer> {
   const page = await ctx.newPage()
   await page.goto(`${BASE}/level/75`)
   await page.waitForTimeout(1200)
-  const png = await page.screenshot({ clip: (await pictureBox(page.locator('.pictures svg').first())).clip })
+  const png = await page.screenshot({ clip: (await pictureBox(page.locator('.pictures > svg').first())).clip })
   await ctx.close()
   return png
 }

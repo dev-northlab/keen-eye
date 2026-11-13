@@ -1,5 +1,6 @@
 import { fern, fireLogs, flame, hedgehog, mushroom, pine, rabbit, squirrel, stump, tent } from '../chapter-03/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level310Redesign } from './level-310-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, backpack, big, daySky, ground } from './shapes.ts'
 import { birds, bucket, lilyPad, logPile, stones } from '../time/shapes.ts'
@@ -13,6 +14,7 @@ export default memoryLevel({
   id: 310,
   title: 'memoryCamp',
   showSeconds: 4,
+  redesign: level310Redesign,
   scene: ({ diff }) =>
     daySky(300) +
     sun(80, 70) +

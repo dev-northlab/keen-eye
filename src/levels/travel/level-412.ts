@@ -40,10 +40,16 @@ const falcon = (x: number, y: number) =>
 const dates = (x: number, y: number) =>
   [[-6, -4], [4, -6], [-2, 4], [8, 3], [-9, 6]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="4.5" fill="#d9771c"/>`).join('')
 
+/** Lizard basking on the Sphinx's back at (x, y) (under its belly), faces right. Bounds: x ±18, y from −8 to 0. */
+const lizard = (x: number, y: number) =>
+  `<path d="M${x - 6} ${y - 3}Q${x - 14} ${y - 2} ${x - 18} ${y - 6}" fill="none" stroke="#6f9a3a" stroke-width="2.4" stroke-linecap="round"/>` +
+  `<ellipse cx="${x}" cy="${y - 3}" rx="8" ry="3" fill="#7fae3f"/><ellipse cx="${x + 10}" cy="${y - 4}" rx="4.5" ry="3" fill="#7fae3f"/>` +
+  `<path d="M${x - 4} ${y - 1}l-3 2M${x + 4} ${y - 1}l3 2" stroke="#6f9a3a" stroke-width="1.6"/><circle cx="${x + 12}" cy="${y - 5}" r="0.9" fill="#222"/>`
+
 export default travelLevel({
   id: 412,
   title: 'giza',
-  parTimeSec: 86,
+  parTimeSec: 95,
   place: { region: 'africa', country: 'eg', lat: 29.98, lon: 31.13 },
   scene: ({ diff, anim, extra }) => {
     const swish = (period: number) => anim({ id: 'tail', type: 'sway', angle: 16, pivot: [768, 428], period }, tail(730, 490))
@@ -64,6 +70,7 @@ export default travelLevel({
       `<path d="M0 420Q200 390 420 418T800 410V500H0Z" fill="#dcb168"/>` +
       sphinx(150, 440) +
       diff(210, 374, 30, nemes(150, 440), '') +
+      diff(128, 386, 20, lizard(128, 390), '') +
       palm(300, 470, 1.1, 8) +
       diff(304, 372, 20, dates(304, 372), '') +
       camel(520, 476) +

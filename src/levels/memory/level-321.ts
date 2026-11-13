@@ -1,6 +1,7 @@
 import { dog } from '../chapter-02/shapes.ts'
 import { butterfly } from '../chapter-03/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level321Redesign } from './level-321-redesign.ts'
 import { basket, cloud, flower, sheep, sun } from '../shapes.ts'
 import { around, big, books, cup, daySky, fruit, ground, hills, kite, mug, roundTree } from './shapes.ts'
 import { beachBall, flipFlops, sunHat } from '../chapter-04/shapes.ts'
@@ -32,6 +33,7 @@ export default memoryLevel({
   id: 321,
   title: 'memoryPicnic',
   showSeconds: 4,
+  redesign: level321Redesign,
   scene: ({ diff }) =>
     daySky(400) +
     sun(70, 80) +

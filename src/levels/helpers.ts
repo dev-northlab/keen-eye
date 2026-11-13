@@ -209,8 +209,8 @@ export const memoryLevel = (def: {
  * "Travel" level (docs/world-travel-mode.md), chapter 'travel': a recognizable scene of `place`;
  * `title` names the place (levelTitles.<title>) and its fact (worldTravel.facts.<title>).
  */
-export const travelLevel = (def: { id: number; title: string; parTimeSec: number; place: TravelPlace; scene: SvgLevelDef['scene'] }) =>
-  svgLevel({ id: def.id, chapter: 'travel', title: def.title, parTimeSec: def.parTimeSec, travel: def.place, scene: def.scene })
+export const travelLevel = (def: { id: number; title: string; parTimeSec: number; place: TravelPlace; scene: SvgLevelDef['scene']; redesign?: LevelPictures }) =>
+  svgLevel({ id: def.id, chapter: 'travel', title: def.title, parTimeSec: def.parTimeSec, travel: def.place, scene: def.scene, redesign: def.redesign })
 
 /** "Detective" levels: like `diff`, plus the clue key the difference reveals (i18n detective.clueTexts.<key>). */
 export type ClueAt = (key: string, x: number, y: number, r: number, a: string, b: string, follow?: string) => string

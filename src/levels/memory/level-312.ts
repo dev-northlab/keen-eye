@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level312Redesign } from './level-312-redesign.ts'
 import { around, backpack, big, blackboard, books, cube, fruit, glassJar, globe, painting, pottedPlant, room, schoolDesk, shelf, sticker, wallClock } from './shapes.ts'
 import { bin } from '../chapter-02/shapes.ts'
 import { poster } from '../time/shapes.ts'
@@ -11,6 +12,7 @@ export default memoryLevel({
   id: 312,
   title: 'memoryClassroom',
   showSeconds: 3,
+  redesign: level312Redesign,
   scene: ({ diff }) =>
     room(440, '#f6efd9', '#c98f5a') +
     blackboard(70, 30, 360, 170) +

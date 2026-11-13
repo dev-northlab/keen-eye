@@ -2,6 +2,7 @@
 // Motion difference: the kite wobbles quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level406Redesign } from './level-406-redesign.ts'
 import { cloud, lantern, person, sky, sun } from './shapes.ts'
 
 /** Ridge under the wall, left to right. */
@@ -55,10 +56,29 @@ const kite = (x: number, y: number) =>
 const hat = (x: number, y: number, color: string) =>
   `<ellipse cx="${x}" cy="${y - 60}" rx="14" ry="3" fill="${color}"/><path d="M${x - 8} ${y - 60}q0 -10 8 -10t8 10Z" fill="${color}"/>`
 
+/** Magpie sitting on a battlement tooth at x, faces left. Bounds: x from −12 to +24, y from −16 to 0 of the tooth top. */
+const magpie = (x: number) => {
+  const y = ridgeY(x) - 32
+  return (
+    `<path d="M${x + 6} ${y - 6}l18 4l-2 4l-16 -2Z" fill="#1d2a3a"/><ellipse cx="${x}" cy="${y - 6}" rx="9" ry="6" fill="#1d2a3a"/>` +
+    `<ellipse cx="${x + 2}" cy="${y - 5}" rx="5" ry="3" fill="#ffffff"/><circle cx="${x - 7}" cy="${y - 11}" r="5" fill="#1d2a3a"/>` +
+    `<path d="M${x - 11} ${y - 11}l-4 1l4 2Z" fill="#3d4a55"/><circle cx="${x - 8}" cy="${y - 12}" r="1" fill="#ffffff"/>`
+  )
+}
+
+/** Peach tree in the meadow; (x, y) = foot. Its blossoms are `peachBlossoms`. Bounds: x ±32, y from −70 to 0. */
+const peachTree = (x: number, y: number) =>
+  `<path d="M${x} ${y}V${y - 30}M${x} ${y - 24}l-14 -14M${x} ${y - 30}l12 -12" stroke="#6b4a3a" stroke-width="6" stroke-linecap="round"/>` +
+  `<circle cx="${x - 16}" cy="${y - 40}" r="16" fill="#5aa84a"/><circle cx="${x + 16}" cy="${y - 42}" r="16" fill="#5aa84a"/><circle cx="${x}" cy="${y - 52}" r="18" fill="#66b956"/>`
+/** Pink blossoms on a `peachTree` at (x, y). Bounds: circle of radius 22 around (x, y − 46). */
+const peachBlossoms = (x: number, y: number) =>
+  [[-16, -46], [-4, -62], [10, -54], [18, -40], [0, -40], [-12, -32]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="4" fill="#ff9ec4"/><circle cx="${x + dx}" cy="${y + dy}" r="1.4" fill="#fff3b0"/>`).join('')
+
 export default travelLevel({
   id: 406,
+  redesign: level406Redesign,
   title: 'greatWall',
-  parTimeSec: 72,
+  parTimeSec: 89,
   place: { region: 'asia', country: 'cn', lat: 40.43, lon: 116.57 },
   scene: ({ diff, anim, extra }) => {
     const wobble = (period: number) => anim({ id: 'kite', type: 'sway', angle: 12, pivot: [730, 100], period }, kite(730, 100))
@@ -70,6 +90,7 @@ export default travelLevel({
       `<path d="M${RIDGE.map(([x, y]) => `${x} ${y + 4}`).join('L')}V500H0Z" fill="#7fb36a"/>` +
       wall(161) +
       diff(161, 256, 22, tooth(161), '') +
+      diff(335, 238, 22, magpie(329), '') +
       tower(250, [-16, 16]) +
       diff(250, 211, 22, '', towerWindow(250, ridgeY(250))) +
       tower(600, [-16, 16]) +
@@ -78,6 +99,8 @@ export default travelLevel({
       person(430, 285, '#2a9d8f') +
       diff(430, 222, 22, hat(430, 285, '#ffd23f'), hat(430, 285, '#e63946')) +
       person(470, 288, '#f28fb1', true, '#f2d29b', '#1d1d1d') +
+      peachTree(140, 470) +
+      diff(140, 424, 24, peachBlossoms(140, 470), '') +
       // Near hill with pines and the child flying the kite
       `<path d="M380 500Q600 360 800 390V500Z" fill="#4f8f4a"/>` +
       pine(480, 470) +

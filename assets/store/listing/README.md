@@ -18,6 +18,8 @@ App Store Connect has no Armenian, Bulgarian or Filipino, so `hy`, `bg` and `fil
 Screenshots are rendered, not stored: `npm run store-screenshots` writes `store-screenshots/` — `play-phone/` (Phone
 screenshots), `ios-iphone-6.9/` (iPhone 6.9" display), `ios-ipad-13/` (iPad 13" display; also fine as Play
 10-inch tablet screenshots) and `feature-graphic/` (Play feature graphic), one folder or file per language.
+`npm run play-preview` then writes `store-screenshots/play-preview.html`: how the texts and pictures of every language
+would look in the Play app (the game's page and the lists it shows up in).
 
 ## Language codes
 

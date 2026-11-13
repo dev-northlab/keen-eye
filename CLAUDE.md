@@ -34,6 +34,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
   shot of `SHOTS`) at the store sizes — Play phone 1080×1920, iPhone 6.9" 1290×2796, iPad 13" 2048×2732 — plus the
   Play feature graphic 1024×500, into `store-screenshots/` (gitignored); all languages take about half an hour
+- `npm run play-preview` — `scripts/play-preview.ts`: `store-screenshots/play-preview.html`, a rough imitation of the
+  Google Play app with the listing of every language (the game's page, search results, a "suggested" card with the
+  feature graphic, a row of icons; optionally a promo video first) from the listing texts and those screenshots; for
+  the developer's own look only, never published (it imitates the store)
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
@@ -89,8 +93,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–432 of chapter `travel` written with
   `travelLevel({ id, title, parTimeSec, place, scene })` (`Level.travel`: region, ISO country code, lat/lon on the world map),
   one recognizable place each (title = place name, `worldTravel.facts.<title>` its fact — only well-known, checked facts),
-  one city per country (`npm test` checks it), flags in `travel/flags.ts`, regions `TRAVEL_REGIONS`; 5 → 6 → 7 differences,
-  then 416–432 busier cities with 8 → 9 → 10, one in motion from 411;
+  one city per country (`npm test` checks it), flags in `travel/flags.ts`, regions `TRAVEL_REGIONS`; 8 differences
+  on 401–415, then 416–432 busier cities with 8 → 9 → 10, one in motion from 411;
   played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
   world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
   `/travel/passport`; open and paid like "time" (first 3 free);
@@ -236,7 +240,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `public/levels/redesign/`, their pixel size and their own zones, e.g. `chapter-01/level-001-redesign.ts`, passed to
   `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
   every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
-  140, 145, 146, 304, 305, 306, 308 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet, a slide, a pole, a ring), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
+  140, 145, 146, 304, 305, 306, 308, 310, 313, 316–329 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet, a slide, a pole, a ring, reflections in the water; on 310, 318, 319, 321–323, 325, 327 and 329 Gemini redrew the whole ground, on 316 and 317 its wall came out a shade lighter, so a cut-out shows the outline of what was removed, on 324 the microscope stands taller than its zone, on 326 a removed slipper leaves a shadow too faint to cut out, on 328 the lamp's bulb out darkens the wall, on 320 the new ball's shadow falls on the books), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
   and in the toolbar of a level that has them) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a

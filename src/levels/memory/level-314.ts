@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level314Redesign } from './level-314-redesign.ts'
 import { ball, cat } from '../time/shapes.ts'
 import { around, big, cake, candle, cube, cup, flowerVase, garland, gift, glassJar, painting, partyBalloon, plate, room, shelf, sticker, table, teddy } from './shapes.ts'
 
@@ -6,6 +7,7 @@ export default memoryLevel({
   id: 314,
   title: 'memoryParty',
   showSeconds: 3,
+  redesign: level314Redesign,
   scene: ({ diff }) =>
     room(470, '#ffe3ef', '#c98f5a') +
     garland(20, 480, 24, ['#e63946', '#ffb703', '#3fa46f', '#3a86ff', '#8338ec', '#ff6b8b', '#ffd23f', '#4dabf7']) +

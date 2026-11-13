@@ -1,6 +1,7 @@
 import { car } from '../chapter-02/shapes.ts'
 import { alien, robot, rocket } from '../chapter-05/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level320Redesign } from './level-320-redesign.ts'
 import { ball } from '../time/shapes.ts'
 import { around, big, books, cube, kite, painting, room, slipperPair, sticker, teddy, wallClock } from './shapes.ts'
 
@@ -36,6 +37,7 @@ export default memoryLevel({
   id: 320,
   title: 'memoryToyShelf',
   showSeconds: 5,
+  redesign: level320Redesign,
   scene: ({ diff }) =>
     room(720, '#e6dcff', '#c98f5a') +
     // Shelf unit

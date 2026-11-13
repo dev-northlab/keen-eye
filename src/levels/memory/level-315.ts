@@ -1,5 +1,6 @@
 import { balloon, bin, pigeon } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level315Redesign } from './level-315-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { around, banana, big, daySky, ground, produce, signPost, stall, stallAwning, watermelon } from './shapes.ts'
 import { bird, birds, crate, poster, sack } from '../time/shapes.ts'
@@ -8,6 +9,7 @@ export default memoryLevel({
   id: 315,
   title: 'memoryMarket',
   showSeconds: 3,
+  redesign: level315Redesign,
   scene: ({ diff }) => {
     const bananas = diff(...around(208, 362, 292, 424), '#ffd23f', '#8ac926')
     return (

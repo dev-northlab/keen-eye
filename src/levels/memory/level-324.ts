@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level324Redesign } from './level-324-redesign.ts'
 import { around, big, bottle, cube, glassJar, pottedPlant, room, shelf, sticker, wallClock } from './shapes.ts'
 import { bucket, crate, poster, pot } from '../time/shapes.ts'
 
@@ -45,6 +46,7 @@ export default memoryLevel({
   id: 324,
   title: 'memoryLab',
   showSeconds: 4,
+  redesign: level324Redesign,
   scene: ({ diff, secret }) =>
     room(500, '#e3eef5', '#9aa5b1') +
     tileLines(492) +

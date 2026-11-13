@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level328Redesign } from './level-328-redesign.ts'
 import { bucket } from '../shapes.ts'
 import { around, big, books, bottle, cube, glassJar, hangingLamp, mug, shelf, wallClock } from './shapes.ts'
 import { crate, logPile, poster, sack } from '../time/shapes.ts'
@@ -26,6 +27,7 @@ export default memoryLevel({
   id: 328,
   title: 'memoryWorkshop',
   showSeconds: 4,
+  redesign: level328Redesign,
   scene: ({ diff }) =>
     `<rect width="500" height="560" fill="#d9b48a"/><path d="${Array.from({ length: 19 }, (_, i) => `M0 ${i * 30 + 15}H500`).join('')}" stroke="#c49a6c" stroke-width="2"/>` +
     `<rect y="560" width="500" height="190" fill="#7d6a5a"/>` +

@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level316Redesign } from './level-316-redesign.ts'
 import { ball, cat, pot } from '../time/shapes.ts'
 import { around, big, books, cup, curtains, flowerVase, glassJar, mug, painting, pillow, pottedPlant, room, rug, shelf, slipperPair, tableLamp, wallClock, windowPane } from './shapes.ts'
 
@@ -55,6 +56,7 @@ export default memoryLevel({
   id: 316,
   title: 'memoryLivingRoom',
   showSeconds: 5,
+  redesign: level316Redesign,
   scene: ({ diff }) =>
     room(470, '#cfe3c8', '#b98b5e') +
     stripes(462) +

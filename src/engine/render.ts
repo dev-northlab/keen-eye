@@ -77,7 +77,11 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
   }
 
   const marks = el('g', { 'pointer-events': 'none' })
-  content.append(scene, marks)
+  // The scene clipped to its own box (a nested svg clips by default): a screen wider or taller than the scene shows
+  // the letterbox around it, not what a drawn scene reaches past its edges (a wider sky, a tree cut by the edge).
+  const frame = el('svg', { x: 0, y: 0, width: w, height: h })
+  frame.append(scene)
+  content.append(frame, marks)
   svg.append(content)
   if (loader) svg.append(loader)
   const picture: Picture = {
