@@ -2,6 +2,7 @@
 // Motion difference: the cable car cabin rides quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level411Redesign } from './level-411-redesign.ts'
 import { cloud, gull, palm, person, sky, sun, water } from './shapes.ts'
 
 /** Cable from the low hill to the top of the Sugarloaf. */
@@ -61,6 +62,7 @@ const hangGlider = (x: number, y: number) =>
 
 export default travelLevel({
   id: 411,
+  redesign: level411Redesign,
   title: 'rio',
   parTimeSec: 94,
   place: { region: 'americas', country: 'br', lat: -22.91, lon: -43.17 },
