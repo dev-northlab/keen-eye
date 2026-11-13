@@ -3,6 +3,7 @@
 // Motion difference: the lantern under the awning swings quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level425Redesign } from './level-425-redesign.ts'
 import { palm, person, sky, sun } from './shapes.ts'
 
 const RED_WALL = '#c4643c'
@@ -66,6 +67,7 @@ const orange = (x: number, y: number) => `<circle cx="${x}" cy="${y}" r="6" fill
 
 export default travelLevel({
   id: 425,
+  redesign: level425Redesign,
   title: 'marrakesh',
   parTimeSec: 120,
   place: { region: 'africa', country: 'ma', lat: 31.63, lon: -7.99 },

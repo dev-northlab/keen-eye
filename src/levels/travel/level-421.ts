@@ -3,6 +3,7 @@
 // Motion difference: the middle fountain jet bounces quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level421Redesign } from './level-421-redesign.ts'
 import { palm, sky, sun, water } from './shapes.ts'
 
 const GLASS = '#6f93b8'
@@ -70,6 +71,7 @@ const dates = (x: number, y: number) =>
 
 export default travelLevel({
   id: 421,
+  redesign: level421Redesign,
   title: 'dubai',
   parTimeSec: 112,
   place: { region: 'asia', country: 'ae', lat: 25.2, lon: 55.27 },

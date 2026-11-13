@@ -3,6 +3,7 @@
 // Motion difference: the banner by the gate waves quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level424Redesign } from './level-424-redesign.ts'
 import { cloud, lantern, person, sky, sun } from './shapes.ts'
 
 /** Curved tiled roof from x0 to x1 with its ridge at `top` and eaves at `eave`. */
@@ -62,6 +63,7 @@ const magpie = (x: number, y: number) =>
 
 export default travelLevel({
   id: 424,
+  redesign: level424Redesign,
   title: 'seoul',
   parTimeSec: 118,
   place: { region: 'asia', country: 'kr', lat: 37.57, lon: 126.98 },
