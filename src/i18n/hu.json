@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Képstílus",
     "classic": "Klasszikus",
-    "redesign": "Új megjelenés"
+    "redesign": "Új megjelenés",
+    "drawnOnly": "Ennek a pályának még nincsenek 3D képei, ezért rajzolva jelenik meg."
   },
   "theme": {
     "label": "Téma",

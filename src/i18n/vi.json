@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Kiểu hình ảnh",
     "classic": "Cổ điển",
-    "redesign": "Diện mạo mới"
+    "redesign": "Diện mạo mới",
+    "drawnOnly": "Màn này chưa có hình 3D nên được hiển thị dạng vẽ."
   },
   "secret": {
     "findHere": "Một chiếc chìa khóa vàng được giấu ở một trong các màn chơi ở đây. Hãy tìm nó!",

@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "圖片風格",
     "classic": "經典",
-    "redesign": "新外觀"
+    "redesign": "新外觀",
+    "drawnOnly": "這一關還沒有 3D 圖片，因此以手繪畫面顯示。"
   },
   "secret": {
     "findHere": "這裡的某一關藏著一把金鑰匙。找到它！",

@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Kuvien tyyli",
     "classic": "Klassinen",
-    "redesign": "Uusi ilme"
+    "redesign": "Uusi ilme",
+    "drawnOnly": "Tässä tasossa ei ole vielä 3D-kuvia, joten se näytetään piirrettynä."
   },
   "secret": {
     "findHere": "Johonkin tämän osion tasoista on piilotettu kultainen avain. Löydä se!",

@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Stilul imaginilor",
     "classic": "Clasic",
-    "redesign": "Aspect nou"
+    "redesign": "Aspect nou",
+    "drawnOnly": "Acest nivel nu are încă imagini 3D, așa că este afișat desenat."
   },
   "theme": {
     "label": "Temă",

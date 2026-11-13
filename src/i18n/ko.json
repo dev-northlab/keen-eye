@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "그림 스타일",
     "classic": "클래식",
-    "redesign": "새로운 모습"
+    "redesign": "새로운 모습",
+    "drawnOnly": "이 레벨은 아직 3D 그림이 없어서 그림으로 표시돼요."
   },
   "theme": {
     "label": "테마",

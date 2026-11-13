@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Istilo ng larawan",
     "classic": "Klasiko",
-    "redesign": "Bagong itsura"
+    "redesign": "Bagong itsura",
+    "drawnOnly": "Wala pang 3D na larawan ang level na ito, kaya iginuhit ang ipinapakita."
   },
   "secret": {
     "findHere": "May nakatagong gintong susi sa isa sa mga level dito. Hanapin ito!",

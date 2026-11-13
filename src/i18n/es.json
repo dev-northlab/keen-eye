@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Estilo de imagen",
     "classic": "Clásico",
-    "redesign": "Nuevo aspecto"
+    "redesign": "Nuevo aspecto",
+    "drawnOnly": "Este nivel aún no tiene imágenes 3D, así que se muestra dibujado."
   },
   "theme": {
     "label": "Tema",

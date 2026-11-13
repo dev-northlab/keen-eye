@@ -46,7 +46,7 @@ export async function seedStorage(
   storage: Record<string, unknown> = {},
 ) {
   const stored = {
-    settings: { locale, theme: 'light', musicVolume: 0, soundVolume: 0, ...settings },
+    settings: { locale, theme: 'light', musicVolume: 0, soundVolume: 0, pictureStyle: 'classic', ...settings },
     progress: seededProgress(),
     purchase: { fullGame: true },
     ...storage,

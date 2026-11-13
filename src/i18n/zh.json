@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "图片风格",
     "classic": "经典",
-    "redesign": "新外观"
+    "redesign": "新外观",
+    "drawnOnly": "这一关还没有 3D 图片，因此以手绘画面显示。"
   },
   "theme": {
     "label": "主题",

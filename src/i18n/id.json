@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Gaya gambar",
     "classic": "Klasik",
-    "redesign": "Tampilan baru"
+    "redesign": "Tampilan baru",
+    "drawnOnly": "Level ini belum punya gambar 3D, jadi ditampilkan dalam gambar biasa."
   },
   "secret": {
     "findHere": "Sebuah kunci emas tersembunyi di salah satu level di sini. Temukan!",

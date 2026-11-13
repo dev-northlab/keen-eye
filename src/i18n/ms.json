@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Gaya gambar",
     "classic": "Klasik",
-    "redesign": "Rupa baharu"
+    "redesign": "Rupa baharu",
+    "drawnOnly": "Tahap ini belum ada gambar 3D, jadi ia dipaparkan sebagai lukisan."
   },
   "secret": {
     "findHere": "Sebatang kunci emas disembunyikan dalam salah satu tahap di sini. Cari ia!",

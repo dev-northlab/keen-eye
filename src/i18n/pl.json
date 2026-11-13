@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Styl obrazków",
     "classic": "Klasyczny",
-    "redesign": "Nowy wygląd"
+    "redesign": "Nowy wygląd",
+    "drawnOnly": "Ten poziom nie ma jeszcze obrazków 3D, więc jest pokazany jako rysunek."
   },
   "theme": {
     "label": "Motyw",
