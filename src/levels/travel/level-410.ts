@@ -1,6 +1,7 @@
 // New York: the Statue of Liberty on its island, the Manhattan skyline with the Empire State Building, a ferry.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level410Redesign } from './level-410-redesign.ts'
 import { cloud, gull, sky, water } from './shapes.ts'
 
 const STATUE = '#7fc8a9'
@@ -73,6 +74,7 @@ const bushFlowers = (x: number, y: number) =>
 
 export default travelLevel({
   id: 410,
+  redesign: level410Redesign,
   title: 'newYork',
   parTimeSec: 93,
   place: { region: 'americas', country: 'us', lat: 40.71, lon: -74.01 },

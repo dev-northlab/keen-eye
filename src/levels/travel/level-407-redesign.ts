@@ -19,7 +19,7 @@ const differences: Difference[] = [
   // The shutters of the window on the right building: green in A, brown in B.
   { x: 1994, y: 1033, r: 84 },
   // The bunch of purple grapes on the vine: there in A, gone in B.
-  { x: 2504, y: 1090, r: 82 },
+  { x: 2530, y: 1192, r: 73 },
   // The middle, tallest jet of the fountain: there in A, gone in B.
   { x: 1890, y: 1364, r: 136 },
   // The coffee cups on the café table: there in A, gone in B.

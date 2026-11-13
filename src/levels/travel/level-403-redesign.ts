@@ -9,8 +9,8 @@ import { zonePatches } from '../picture-style.ts'
 // potted shrub: taken away by hand on A's picture (quay, curb and roof copied from just beside it, its shadow too).
 const viewBox = { w: 2624, h: 1632 }
 const differences: Difference[] = [
-  // The hoist beam with its hook under the cream house's gable: there in A, gone in B.
-  { x: 954, y: 529, r: 101 },
+  // The hoist beam with its hook (and its shadow) under the cream house's gable: there in A, gone in B.
+  { x: 978, y: 516, r: 100 },
   // The wall lantern beside the green door of the first house: there in A, gone in B.
   { x: 342, y: 966, r: 79 },
   // The window box of red geraniums on the dark green house: there in A, gone in B.

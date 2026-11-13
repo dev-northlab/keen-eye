@@ -3,6 +3,7 @@
 // Motion difference: the cable car cabin rides quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level409Redesign } from './level-409-redesign.ts'
 import { cloud, person, sky, water } from './shapes.ts'
 
 /** Cable from the upper station to the lower one. */
@@ -76,6 +77,7 @@ const vineGrapes = (x: number, y: number) =>
 
 export default travelLevel({
   id: 409,
+  redesign: level409Redesign,
   title: 'tbilisi',
   parTimeSec: 92,
   place: { region: 'caucasus', country: 'ge', lat: 41.72, lon: 44.79 },
