@@ -2,6 +2,7 @@
 // Motion difference: the kite wobbles quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level406Redesign } from './level-406-redesign.ts'
 import { cloud, lantern, person, sky, sun } from './shapes.ts'
 
 /** Ridge under the wall, left to right. */
@@ -75,6 +76,7 @@ const peachBlossoms = (x: number, y: number) =>
 
 export default travelLevel({
   id: 406,
+  redesign: level406Redesign,
   title: 'greatWall',
   parTimeSec: 89,
   place: { region: 'asia', country: 'cn', lat: 40.43, lon: 116.57 },

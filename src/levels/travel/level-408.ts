@@ -2,6 +2,7 @@
 // seaside boulevard and a sailing boat on the Caspian Sea.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level408Redesign } from './level-408-redesign.ts'
 import { cloud, gull, lampPost, person, sky, sun, water } from './shapes.ts'
 
 const STONE = '#d8b98a'
@@ -73,6 +74,7 @@ const oleanderFlowers = (x: number, y: number) =>
 
 export default travelLevel({
   id: 408,
+  redesign: level408Redesign,
   title: 'baku',
   parTimeSec: 91,
   place: { region: 'caucasus', country: 'az', lat: 40.41, lon: 49.87 },

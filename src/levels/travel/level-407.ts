@@ -2,6 +2,7 @@
 // Motion difference: the middle fountain jet bounces quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level407Redesign } from './level-407-redesign.ts'
 import { cloud, person, pigeon, sky } from './shapes.ts'
 
 /** Arched opening; (x, y) = bottom left. */
@@ -67,6 +68,7 @@ const grapes =
 
 export default travelLevel({
   id: 407,
+  redesign: level407Redesign,
   title: 'yerevan',
   parTimeSec: 90,
   place: { region: 'caucasus', country: 'am', lat: 40.18, lon: 44.51 },
