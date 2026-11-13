@@ -1,6 +1,7 @@
 // Paris: the Eiffel Tower between two Haussmann houses, a café and a painter at an easel.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level401Redesign } from './level-401-redesign.ts'
 import { bike, cityTree, cloud, lampHead, lampPost, person, pigeon, sky, sun } from './shapes.ts'
 
 /** Eiffel Tower; (x, y) = middle of the ground between the legs. Bounds: x ±82, y from −360 to 0. */
@@ -82,6 +83,7 @@ const baguette = (x: number, y: number) =>
 
 export default travelLevel({
   id: 401,
+  redesign: level401Redesign,
   title: 'paris',
   parTimeSec: 84,
   place: { region: 'europe', country: 'fr', lat: 48.86, lon: 2.35 },

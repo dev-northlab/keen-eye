@@ -1,6 +1,7 @@
 // Venice: palaces along a canal, a bell tower, a gondola with its gondolier and a mooring pole.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level402Redesign } from './level-402-redesign.ts'
 import { cloud, gull, person, sky, sun, water } from './shapes.ts'
 
 /** Arched window; (x, y) = top left, w wide, h high. */
@@ -70,6 +71,7 @@ const ivy =
 
 export default travelLevel({
   id: 402,
+  redesign: level402Redesign,
   title: 'venice',
   parTimeSec: 85,
   place: { region: 'europe', country: 'it', lat: 45.44, lon: 12.33 },

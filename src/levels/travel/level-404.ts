@@ -1,6 +1,7 @@
 // Tokyo: Mount Fuji behind the city, Tokyo Tower, a bullet train on a viaduct, cherry blossoms and lanterns.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level404Redesign } from './level-404-redesign.ts'
 import { cloud, lantern, person, sky } from './shapes.ts'
 
 /** Mount Fuji from x0 to x1 on the ground at y; the snow cap is separate. Peak at (x0 + x1) / 2, 210 above. */
@@ -75,6 +76,7 @@ const lanternRoof = (x: number, y: number) =>
 
 export default travelLevel({
   id: 404,
+  redesign: level404Redesign,
   title: 'tokyo',
   parTimeSec: 87,
   place: { region: 'asia', country: 'jp', lat: 35.68, lon: 139.69 },

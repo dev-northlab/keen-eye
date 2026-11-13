@@ -1,6 +1,7 @@
 // Amsterdam: narrow canal houses with stepped, bell and neck gables, bikes on the quay, a houseboat.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level403Redesign } from './level-403-redesign.ts'
 import { bike, cloud, cityTree, gull, pigeon, sky, water } from './shapes.ts'
 
 type Gable = 'step' | 'bell' | 'neck'
@@ -69,6 +70,7 @@ const potShrub = (x: number, y: number) =>
 
 export default travelLevel({
   id: 403,
+  redesign: level403Redesign,
   title: 'amsterdam',
   parTimeSec: 86,
   place: { region: 'europe', country: 'nl', lat: 52.37, lon: 4.9 },

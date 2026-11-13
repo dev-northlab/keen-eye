@@ -1,6 +1,7 @@
 // Agra: the Taj Mahal on its white platform, four minarets, the long pool with cypresses, a peacock.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level405Redesign } from './level-405-redesign.ts'
 import { cloud, gull, sky, sun } from './shapes.ts'
 
 const MARBLE = '#f7f3ec'
@@ -84,6 +85,7 @@ const kiteTail = (x: number, y: number) =>
 
 export default travelLevel({
   id: 405,
+  redesign: level405Redesign,
   title: 'agra',
   parTimeSec: 88,
   place: { region: 'asia', country: 'in', lat: 27.18, lon: 78.04 },
