@@ -3,6 +3,7 @@
 // Motion difference: a shirt on the laundry line flutters quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level430Redesign } from './level-430-redesign.ts'
 import { cloud, person, sky, sun } from './shapes.ts'
 
 /** Corrugated house panel from x, w wide, roof at `top`, ground at 380. */
@@ -62,6 +63,7 @@ const bellows = (x: number, y: number, color: string) =>
 
 export default travelLevel({
   id: 430,
+  redesign: level430Redesign,
   title: 'buenosAires',
   parTimeSec: 134,
   place: { region: 'americas', country: 'ar', lat: -34.6, lon: -58.38 },

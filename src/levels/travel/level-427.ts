@@ -3,6 +3,7 @@
 // Motion difference: the flag on the shore waves quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level427Redesign } from './level-427-redesign.ts'
 import { cloud, gull, sky, sun, water } from './shapes.ts'
 
 /** CN Tower; (x, y) = foot. The window band of the main pod and the antenna tip are separate. Bounds: x ±26, y from −300 to 0. */
@@ -78,6 +79,7 @@ const sign = (x: number, y: number, color: string) => `<rect x="${x - 96}" y="${
 
 export default travelLevel({
   id: 427,
+  redesign: level427Redesign,
   title: 'toronto',
   parTimeSec: 128,
   place: { region: 'americas', country: 'ca', lat: 43.65, lon: -79.38 },

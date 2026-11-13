@@ -3,6 +3,7 @@
 // Motion difference: one papel picado flag flutters quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level428Redesign } from './level-428-redesign.ts'
 import { sky, sun, water } from './shapes.ts'
 
 const PICADO = ['#e63946', '#ffd23f', '#3a86ff', '#8ac926', '#ff6b8b', '#8338ec', '#f28c28']
@@ -75,6 +76,7 @@ const guitar = (x: number, y: number, color: string) =>
 
 export default travelLevel({
   id: 428,
+  redesign: level428Redesign,
   title: 'mexicoCity',
   parTimeSec: 130,
   place: { region: 'americas', country: 'mx', lat: 19.43, lon: -99.13 },

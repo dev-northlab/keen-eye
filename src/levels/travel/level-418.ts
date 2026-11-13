@@ -3,6 +3,7 @@
 // Motion difference: the flag on the Acropolis waves quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level418Redesign } from './level-418-redesign.ts'
 import { cloud, gull, sky, sun } from './shapes.ts'
 
 const MARBLE = '#efe6d2'
@@ -53,6 +54,7 @@ const band = (x: number, y: number, color: string) => `<path d="M${x - 15} ${y -
 
 export default travelLevel({
   id: 418,
+  redesign: level418Redesign,
   title: 'athens',
   parTimeSec: 104,
   place: { region: 'europe', country: 'gr', lat: 37.97, lon: 23.73 },
