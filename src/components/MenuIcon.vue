@@ -1,6 +1,7 @@
 <script setup lang="ts">
-// Coloured, glossy icons of the home screen's round buttons (settings, the info pages and exit), in the style of the
-// HUD's game icons: a gradient body with a darker rim, a white shine at the top left and a soft shadow.
+// Coloured, glossy icons of the home screen's round buttons (settings, the info pages) and of the exit dialog's exit,
+// in the style of the HUD's game icons: a gradient body with a darker rim, a white shine at the top left and a soft
+// shadow.
 defineProps<{ name: 'settings' | 'about' | 'privacy' | 'contact' | 'exit' }>()
 </script>
 

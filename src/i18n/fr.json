@@ -12,6 +12,11 @@
     "devOpenAll": "Ouvrir tous les niveaux (test)",
     "devShowPlaces": "Montrer les endroits dans les niveaux (test)"
   },
+  "exitDialog": {
+    "title": "Tu pars déjà ?",
+    "text": "Tes étoiles et ta progression sont enregistrées. Reviens vite : de nouvelles différences t’attendent !",
+    "stay": "Continuer à jouer"
+  },
   "pictureStyle": {
     "label": "Style des images",
     "classic": "Classique",

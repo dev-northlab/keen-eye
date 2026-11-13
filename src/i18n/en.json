@@ -12,6 +12,11 @@
     "devOpenAll": "Open all levels (testing)",
     "devShowPlaces": "Show places in levels (testing)"
   },
+  "exitDialog": {
+    "title": "Leaving already?",
+    "text": "Your stars and progress are saved. Come back soon — new differences are waiting!",
+    "stay": "Keep playing"
+  },
   "pictureStyle": {
     "label": "Picture style",
     "classic": "Classic",

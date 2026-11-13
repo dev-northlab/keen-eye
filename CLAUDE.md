@@ -152,7 +152,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   the result dialog is open, `usePicturePreload` on the grids of worlds and "tiny boy" the first level not won yet and a
   tile's level on `pointerdown`, the world and "tiny boy" banners their backdrop on `pointerdown` — one level at a
   time, a whole chapter's decoded pictures (~17 MB each) would not fit a phone's memory), `backdrops.ts`
-  (`backdropPicture`: the ready picture `ScreenBackdrop` shows for a theme with the current settings), `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit; `canExitApp` — only Android shows the home screen's "Exit", iOS forbids quitting),
+  (`backdropPicture`: the ready picture `ScreenBackdrop` shows for a theme with the current settings), `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → `ExitDialog` "Leaving already?" (keep playing / exit; back again stays) — no exit button anywhere, iOS forbids quitting),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
   starts on the first user gesture, silent in the background), `haptics.ts` (soft ticks for a find and a miss: on Android the app's own `SoftHapticsPlugin` — a tick at a strength the game sets (the

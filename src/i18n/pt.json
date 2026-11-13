@@ -12,6 +12,11 @@
     "devOpenAll": "Abrir todas as fases (teste)",
     "devShowPlaces": "Mostrar lugares nas fases (teste)"
   },
+  "exitDialog": {
+    "title": "Já vai sair?",
+    "text": "Suas estrelas e seu progresso estão salvos. Volte logo — novas diferenças esperam por você!",
+    "stay": "Continuar jogando"
+  },
   "pictureStyle": {
     "label": "Estilo das imagens",
     "classic": "Clássico",

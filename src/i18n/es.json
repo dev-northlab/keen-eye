@@ -12,6 +12,11 @@
     "devOpenAll": "Abrir todos los niveles (prueba)",
     "devShowPlaces": "Mostrar lugares en los niveles (prueba)"
   },
+  "exitDialog": {
+    "title": "¿Ya te vas?",
+    "text": "Tus estrellas y tu progreso están guardados. ¡Vuelve pronto: te esperan nuevas diferencias!",
+    "stay": "Seguir jugando"
+  },
   "pictureStyle": {
     "label": "Estilo de imagen",
     "classic": "Clásico",

@@ -12,6 +12,11 @@
     "devOpenAll": "Minden pálya megnyitása (teszt)",
     "devShowPlaces": "Helyek mutatása a pályákon (teszt)"
   },
+  "exitDialog": {
+    "title": "Máris mész?",
+    "text": "A csillagaidat és az előrehaladásodat elmentettük. Gyere vissza hamar – új különbségek várnak!",
+    "stay": "Játék folytatása"
+  },
   "pictureStyle": {
     "label": "Képstílus",
     "classic": "Klasszikus",

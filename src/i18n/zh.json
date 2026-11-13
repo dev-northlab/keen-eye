@@ -12,6 +12,11 @@
     "devOpenAll": "开放所有关卡（测试）",
     "devShowPlaces": "在关卡中显示位置（测试）"
   },
+  "exitDialog": {
+    "title": "这就要走了吗？",
+    "text": "你的星星和进度都已保存。快回来吧，新的不同之处在等着你！",
+    "stay": "继续玩"
+  },
   "pictureStyle": {
     "label": "图片风格",
     "classic": "经典",

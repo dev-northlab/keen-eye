@@ -12,6 +12,11 @@
     "devOpenAll": "Tüm bölümleri aç (test)",
     "devShowPlaces": "Bölümlerde yerleri göster (test)"
   },
+  "exitDialog": {
+    "title": "Gidiyor musun?",
+    "text": "Yıldızların ve ilerlemen kaydedildi. Yakında geri gel, yeni farklar seni bekliyor!",
+    "stay": "Oynamaya devam et"
+  },
   "pictureStyle": {
     "label": "Resim stili",
     "classic": "Klasik",

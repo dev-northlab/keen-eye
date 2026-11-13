@@ -437,6 +437,11 @@
     "exit": "Lopeta",
     "stars": "Tähdet: {n}"
   },
+  "exitDialog": {
+    "title": "Lähdetkö jo?",
+    "text": "Tähtesi ja edistymisesi on tallennettu. Palaa pian – uudet erot odottavat!",
+    "stay": "Jatka pelaamista"
+  },
   "info": {
     "about": "Tietoa pelistä",
     "aboutText": "Keen Eye on eläviä maisemia sisältävä etsi erot -peli.",

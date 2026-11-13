@@ -437,6 +437,11 @@
     "exit": "Avslutt",
     "stars": "Stjerner: {n}"
   },
+  "exitDialog": {
+    "title": "Går du allerede?",
+    "text": "Stjernene og fremgangen din er lagret. Kom snart tilbake – nye forskjeller venter!",
+    "stay": "Spill videre"
+  },
   "info": {
     "about": "Om spillet",
     "aboutText": "Keen Eye er et finn feilene-spill med levende scener.",

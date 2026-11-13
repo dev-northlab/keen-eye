@@ -12,6 +12,11 @@
     "devOpenAll": "Otwórz wszystkie poziomy (test)",
     "devShowPlaces": "Pokaż miejsca w poziomach (test)"
   },
+  "exitDialog": {
+    "title": "Już wychodzisz?",
+    "text": "Twoje gwiazdki i postępy są zapisane. Wracaj szybko — czekają nowe różnice!",
+    "stay": "Graj dalej"
+  },
   "pictureStyle": {
     "label": "Styl obrazków",
     "classic": "Klasyczny",

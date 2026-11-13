@@ -437,6 +437,11 @@
     "exit": "Lumabas",
     "stars": "Bituin: {n}"
   },
+  "exitDialog": {
+    "title": "Aalis ka na ba?",
+    "text": "Naka-save ang iyong mga bituin at progreso. Bumalik ka agad — may mga bagong pagkakaiba na naghihintay!",
+    "stay": "Maglaro pa"
+  },
   "info": {
     "about": "Tungkol sa laro",
     "aboutText": "Ang Keen Eye ay isang larong paghahanap ng pagkakaiba na may buhay na mga eksena.",

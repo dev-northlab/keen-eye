@@ -437,6 +437,11 @@
     "exit": "Avsluta",
     "stars": "Stjärnor: {n}"
   },
+  "exitDialog": {
+    "title": "Går du redan?",
+    "text": "Dina stjärnor och dina framsteg är sparade. Kom tillbaka snart – nya skillnader väntar!",
+    "stay": "Fortsätt spela"
+  },
   "info": {
     "about": "Om spelet",
     "aboutText": "Keen Eye är ett hitta fel-spel med levande scener.",

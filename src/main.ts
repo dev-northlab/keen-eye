@@ -4,7 +4,7 @@ import App from './App.vue'
 import { i18n } from './i18n/index.ts'
 import { router } from './router/index.ts'
 import { playSfx } from './services/audio.ts'
-import { exitApp, initBackButton } from './services/backButton.ts'
+import { initBackButton } from './services/backButton.ts'
 import { useDuoStore } from './stores/duo.ts'
 import { useProgressStore } from './stores/progress.ts'
 import { usePurchaseStore } from './stores/purchase.ts'
@@ -18,9 +18,9 @@ await Promise.all([useProgressStore().load(), useSettingsStore().load(), usePurc
 usePurchaseStore().sync()
 app.use(router).mount('#app')
 
-// Android back: from the home screen it closes the app, from any other screen it goes home
-// (the level screen handles it itself: pause first).
-initBackButton(() => (router.currentRoute.value.name === 'home' ? exitApp() : router.push({ name: 'home' })))
+// Android back goes home from any screen without a handler of its own (the level pauses first, the home screen asks
+// before closing the app).
+initBackButton(() => router.push({ name: 'home' }))
 
 // Button press sound for the whole UI.
 document.addEventListener('click', (e) => {

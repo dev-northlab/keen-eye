@@ -12,6 +12,11 @@
     "devOpenAll": "Alle Level öffnen (Test)",
     "devShowPlaces": "Stellen in Leveln zeigen (Test)"
   },
+  "exitDialog": {
+    "title": "Schon gehen?",
+    "text": "Deine Sterne und dein Fortschritt sind gespeichert. Komm bald wieder – neue Unterschiede warten!",
+    "stay": "Weiterspielen"
+  },
   "pictureStyle": {
     "label": "Bildstil",
     "classic": "Klassisch",

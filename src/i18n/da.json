@@ -437,6 +437,11 @@
     "exit": "Afslut",
     "stars": "Stjerner: {n}"
   },
+  "exitDialog": {
+    "title": "Går du allerede?",
+    "text": "Dine stjerner og dine fremskridt er gemt. Kom snart igen – nye forskelle venter!",
+    "stay": "Spil videre"
+  },
   "info": {
     "about": "Om spillet",
     "aboutText": "Keen Eye er et find forskellen-spil med levende scener.",
