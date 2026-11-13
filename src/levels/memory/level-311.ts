@@ -1,5 +1,6 @@
 import { bird, bush, pine, rabbit } from '../chapter-03/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level311Redesign } from './level-311-redesign.ts'
 import { birds, chimney, icicles, lampHead, lampPost, logPile, pineSnow, small, snowCap, snowman, winterPerson, winterSky } from '../time/shapes.ts'
 import { around, big, bigSnowman, birdhouse, scarf, sled, snowballs, windowPane } from './shapes.ts'
 import { cloud } from '../shapes.ts'
@@ -8,6 +9,7 @@ export default memoryLevel({
   id: 311,
   title: 'memoryWinter',
   showSeconds: 3,
+  redesign: level311Redesign,
   scene: ({ diff }) =>
     winterSky(380) +
     `<path d="M0 370Q125 340 250 365T500 360V750H0Z" fill="#f4f8fb"/>` +

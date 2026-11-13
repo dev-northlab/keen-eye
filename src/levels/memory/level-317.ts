@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level317Redesign } from './level-317-redesign.ts'
 import { around, cake, flowerVase, glassJar, hangingLamp, mug, painting, room, shelf } from './shapes.ts'
 import { crate, poster, sack } from '../time/shapes.ts'
 
@@ -40,6 +41,7 @@ export default memoryLevel({
   id: 317,
   title: 'memoryBakery',
   showSeconds: 5,
+  redesign: level317Redesign,
   scene: ({ diff }) =>
     room(580, '#fbe3c8', '#e9dcc7') +
     tiles(580) +

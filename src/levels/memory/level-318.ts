@@ -1,5 +1,6 @@
 import { balloon, bench, bin, lampHead, lampPost, person, pigeon } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level318Redesign } from './level-318-redesign.ts'
 import { cloud } from '../shapes.ts'
 import { around, big, daySky, hills, suitcase } from './shapes.ts'
 import { bird, birds, pot } from '../time/shapes.ts'
@@ -27,6 +28,7 @@ export default memoryLevel({
   id: 318,
   title: 'memoryStation',
   showSeconds: 5,
+  redesign: level318Redesign,
   scene: ({ diff }) =>
     daySky(460) +
     big(380, 90, 1, cloud(0, 0)) +

@@ -1,6 +1,7 @@
 import { buoy, dolphin, gull, lifeRing, rock, sailboat, waves } from '../chapter-04/shapes.ts'
 import { person } from '../chapter-02/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level313Redesign } from './level-313-redesign.ts'
 import { cloud, sun } from '../shapes.ts'
 import { barrel, bollard, crate, lighthouse, ropeCoil, rowboat } from '../time/shapes.ts'
 import { around, big, daySky, ground } from './shapes.ts'
@@ -9,6 +10,7 @@ export default memoryLevel({
   id: 313,
   title: 'memoryHarbor',
   showSeconds: 3,
+  redesign: level313Redesign,
   scene: ({ diff }) =>
     daySky(360) +
     sun(80, 70) +

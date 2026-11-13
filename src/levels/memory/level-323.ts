@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level323Redesign } from './level-323-redesign.ts'
 import { cloud, hayBale, hen } from '../shapes.ts'
 import { barrel, bird, birds, bucket, crate, pot, sack } from '../time/shapes.ts'
 import { around, big, daySky } from './shapes.ts'
@@ -36,6 +37,7 @@ export default memoryLevel({
   id: 323,
   title: 'memoryCastle',
   showSeconds: 4,
+  redesign: level323Redesign,
   scene: ({ diff }) =>
     daySky(340) +
     big(250, 55, 0.9, cloud(0, 0)) +
