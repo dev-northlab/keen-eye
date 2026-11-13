@@ -51,10 +51,24 @@ const shutters = (x: number, y: number, color: string) =>
 
 const apricot = (x: number, y: number) => `<circle cx="${x}" cy="${y}" r="6" fill="#f79a2e"/><circle cx="${x - 2}" cy="${y - 2}" r="2" fill="#ffd08a"/>`
 
+/** Flower pot with red geraniums standing on a ledge at (x, y). Bounds: x ±7, y from −14 to 0. */
+const flowerPot = (x: number, y: number) =>
+  `<circle cx="${x - 3}" cy="${y - 10}" r="4" fill="#3f8f4f"/><circle cx="${x + 3}" cy="${y - 10}" r="4" fill="#3f8f4f"/><circle cx="${x}" cy="${y - 12}" r="3" fill="#e63946"/>` +
+  `<path d="M${x - 5} ${y - 7}h10l-2 7h-6Z" fill="#c96b4f"/>`
+
+/** Grapevine climbing the right building's corner from the ground to its ledge. */
+const vine =
+  `<path d="M790 400C780 380 796 368 784 352Q774 344 756 348" fill="none" stroke="#6b4a3a" stroke-width="3"/>` +
+  [[788, 388], [782, 370], [792, 360], [776, 348], [762, 346]].map(([lx, ly]) => `<path d="M${lx} ${ly}l-6 -4l2 -6l4 3l4 -3l2 6Z" fill="#4c9a3f"/>`).join('')
+/** Bunch of grapes hanging from the `vine`. Bounds: circle of radius 16 around (772, 366). */
+const grapes =
+  `<path d="M772 350v6" stroke="#6b4a3a" stroke-width="2"/>` +
+  [[768, 358], [776, 358], [772, 364], [764, 364], [780, 364], [768, 370], [776, 370], [772, 376]].map(([gx, gy]) => `<circle cx="${gx}" cy="${gy}" r="4" fill="#6a3d7a"/>`).join('')
+
 export default travelLevel({
   id: 407,
   title: 'yerevan',
-  parTimeSec: 74,
+  parTimeSec: 90,
   place: { region: 'caucasus', country: 'am', lat: 40.18, lon: 44.51 },
   scene: ({ diff, anim, extra }) => {
     const bounce = (period: number) => anim({ id: 'jet', type: 'bob', dx: 0, dy: 6, period }, jet(580, 446, 54))
@@ -74,9 +88,14 @@ export default travelLevel({
       `<path d="M360 330Q500 170 600 112Q624 100 648 112Q710 170 800 330Z" fill="#9bb0cf"/>` +
       `<path d="M550 150Q580 124 600 112Q624 100 648 112Q670 128 690 152L672 146L658 160L640 144L624 162L606 146L590 160L572 148Z" fill="#ffffff"/>` +
       building(40, 400, 250, '#e9a993') +
+      flowerPot(167, 314) +
+      diff(179, 306, 22, flowerPot(179, 314), '') +
+      flowerPot(191, 314) +
       clockTower(250, 250) +
       diff(250, 180, 22, hands(250, 250, 3, 0), hands(250, 250, 10, 10)) +
       building(470, 320, 280, '#e3a089') +
+      vine +
+      diff(772, 364, 22, grapes, '') +
       diff(609, 319, 26, shutters(598, 304, '#3f8f5a'), shutters(598, 304, '#8a5a33')) +
       // Square with the fountain
       `<rect y="400" width="800" height="100" fill="#e8d9c4"/><path d="M0 404H800" stroke="#d1bfa6" stroke-width="4"/>` +

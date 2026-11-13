@@ -8,14 +8,14 @@ import { FLAGS } from '../src/levels/travel/flags.ts'
 import { TRAVEL_REGIONS, travelLevels } from '../src/levels/travel/index.ts'
 
 describe('"travel" mode (docs/world-travel-mode.md)', () => {
-  test('32 levels from 401: 5, 6, 7, then the busier cities with 8, 9, 10 differences', () => {
+  test('32 levels from 401: 8 differences, then the busier cities with 8, 9, 10', () => {
     assert.deepEqual(travelLevels.map((l) => l.id), Array.from({ length: 32 }, (_, i) => 401 + i))
     travelLevels.forEach((level, i) => {
       assert.equal(level.chapter, TRAVEL_CHAPTER.id)
       assert.equal(chapterOf(level.id), TRAVEL_CHAPTER)
       assert.equal(levelById(level.id), level)
       assert.equal(levelNumber(level), i + 1)
-      assert.equal(level.differences.length, [5, 6, 7, 8, 9, 10][Math.min(Math.floor(i / 5), 5)], `level ${level.id}`)
+      assert.equal(level.differences.length, [8, 8, 8, 8, 9, 10][Math.min(Math.floor(i / 5), 5)], `level ${level.id}`)
       const [min, max] = difficultyOf(level.id).motion
       const motion = level.differences.filter((d) => d.motion).length
       assert.ok(motion >= min && motion <= max, `level ${level.id}`)

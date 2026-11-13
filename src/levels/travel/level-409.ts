@@ -56,10 +56,28 @@ const sweet = (x: number, y: number, color: string) =>
 const boat = (x: number, y: number, color: string) =>
   `<path d="M${x - 36} ${y - 12}H${x + 36}L${x + 26} ${y + 6}H${x - 28}Z" fill="${color}"/><path d="M${x - 34} ${y - 12}H${x + 34}" stroke="#ffffff" stroke-width="3"/>`
 
+/** Stork's nest on a `fortTower` top at (x, y) (the nest's bottom). Bounds: x ±16, y from −8 to 0. */
+const nest = (x: number, y: number) =>
+  `<ellipse cx="${x}" cy="${y - 4}" rx="16" ry="5" fill="#7a5a3a"/><path d="M${x - 14} ${y - 6}l8 -3M${x - 2} ${y - 8}l9 2M${x + 6} ${y - 3}l8 -3" stroke="#5c4228" stroke-width="1.5"/>`
+/** Stork standing in a `nest` at (x, y), faces right. Bounds: x from −14 to +20, y from −34 to −6. */
+const stork = (x: number, y: number) =>
+  `<path d="M${x - 3} ${y - 7}v-10M${x + 2} ${y - 7}v-10" stroke="#e05a3a" stroke-width="1.8"/>` +
+  `<ellipse cx="${x - 2}" cy="${y - 20}" rx="11" ry="6" fill="#ffffff"/><path d="M${x - 13} ${y - 20}q6 6 14 2l-2 4q-8 0 -12 -6Z" fill="#1d1d1d"/>` +
+  `<path d="M${x + 6} ${y - 22}q4 -4 3 -10" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>` +
+  `<circle cx="${x + 9}" cy="${y - 31}" r="3.5" fill="#ffffff"/><path d="M${x + 12} ${y - 32}l8 3l-8 0Z" fill="#e05a3a"/>`
+
+/** Vine on a stake in the vineyard; (x, y) = foot. Its grapes are `vineGrapes`. Bounds: x ±14, y from −36 to 0. */
+const vineStake = (x: number, y: number) =>
+  `<path d="M${x} ${y}V${y - 34}" stroke="#7a5a3a" stroke-width="3"/>` +
+  `<circle cx="${x - 7}" cy="${y - 26}" r="8" fill="#4f8a3a"/><circle cx="${x + 7}" cy="${y - 24}" r="8" fill="#4f8a3a"/><circle cx="${x}" cy="${y - 32}" r="7" fill="#5c9a45"/>`
+/** Bunch of grapes on a `vineStake` at (x, y). Bounds: circle of radius 12 around (x + 4, y − 16). */
+const vineGrapes = (x: number, y: number) =>
+  [[0, -22], [7, -22], [3, -17], [10, -17], [-4, -17], [3, -11], [8, -11]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="3.4" fill="#6a3d7a"/>`).join('')
+
 export default travelLevel({
   id: 409,
   title: 'tbilisi',
-  parTimeSec: 78,
+  parTimeSec: 92,
   place: { region: 'caucasus', country: 'ge', lat: 41.72, lon: 44.79 },
   scene: ({ diff, anim, rand, secret, extra }) => {
     const ride = (period: number) => anim({ id: 'cabin', type: 'path', points: [[0, 0], [240, cableY(660) - cableY(420)]], period }, cabin(420))
@@ -70,6 +88,14 @@ export default travelLevel({
       `<path d="M0 270Q120 140 260 150Q380 170 470 340H0Z" fill="#8aa86b"/>` +
       `<path d="M80 205L130 182H250L300 196V222H80Z" fill="#b3a48c"/>` +
       fortTower(108, 210) +
+      nest(108, 150) +
+      diff(110, 126, 24, stork(108, 146), '') +
+      vineStake(320, 312) +
+      vineGrapes(320, 312) +
+      vineStake(356, 306) +
+      diff(360, 290, 22, vineGrapes(356, 306), '') +
+      vineStake(392, 312) +
+      vineGrapes(392, 312) +
       fortTower(262, 200) +
       diff(262, 156, 22, slitAt(262, 156), '') +
       // Old town on the slope

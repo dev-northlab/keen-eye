@@ -59,10 +59,33 @@ const fan = (x: number, y: number) => {
 }
 const folded = (x: number, y: number) => `<path d="M${x + 12} ${y - 26}L${x + 58} ${y - 6}L${x + 54} ${y}L${x + 10} ${y - 16}Z" fill="#3f9b6b"/>`
 
+/** Round garden bush at (x, y) (its foot); the roses on it are `roses`. Bounds: x ±24, y from −36 to 0. */
+const bush = (x: number, y: number) =>
+  `<circle cx="${x - 10}" cy="${y - 14}" r="14" fill="#4c9a45"/><circle cx="${x + 10}" cy="${y - 14}" r="14" fill="#4c9a45"/><circle cx="${x}" cy="${y - 24}" r="14" fill="#5aad50"/>`
+/** Pink roses on a `bush` at (x, y). Bounds: circle of radius 20 around (x, y − 20). */
+const roses = (x: number, y: number) =>
+  [[-12, -16], [0, -30], [11, -20], [-2, -12]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="4.5" fill="#f25c8a"/><circle cx="${x + dx}" cy="${y + dy}" r="2" fill="#ffc1d6"/>`).join('')
+
+/** Monkey sitting on the platform at (x, y), faces left. Bounds: x from −14 to +20, y from −30 to 0. */
+const monkey = (x: number, y: number) =>
+  `<path d="M${x + 8} ${y - 4}q14 0 10 -16" fill="none" stroke="#8a6a4a" stroke-width="3" stroke-linecap="round"/>` +
+  `<ellipse cx="${x}" cy="${y - 10}" rx="9" ry="10" fill="#8a6a4a"/><circle cx="${x - 4}" cy="${y - 22}" r="7" fill="#8a6a4a"/>` +
+  `<circle cx="${x - 10}" cy="${y - 23}" r="2.5" fill="#8a6a4a"/><circle cx="${x + 2}" cy="${y - 23}" r="2.5" fill="#8a6a4a"/>` +
+  `<ellipse cx="${x - 5}" cy="${y - 20}" rx="4.5" ry="3.5" fill="#e3c4a0"/><circle cx="${x - 6}" cy="${y - 23}" r="1" fill="#222"/>`
+
+/** Kite in the sky at (x, y) (its center) on a string down to the left edge; its tail is `kiteTail`. Bounds: x ±14, y ±20. */
+const kite = (x: number, y: number) =>
+  `<path d="M${x} ${y + 20}Q${x - 30} ${y + 60} 0 ${y + 76}" fill="none" stroke="#6b5b4b" stroke-width="1"/>` +
+  `<path d="M${x} ${y - 20}L${x + 14} ${y}L${x} ${y + 20}L${x - 14} ${y}Z" fill="#f28c28"/><path d="M${x} ${y - 20}V${y + 20}M${x - 14} ${y}H${x + 14}" stroke="#c9601a" stroke-width="1.2"/>`
+/** Tail of a `kite` at (x, y). Bounds: x from −2 to +16, y from +20 to +60. */
+const kiteTail = (x: number, y: number) =>
+  `<path d="M${x} ${y + 20}q8 10 4 20q-4 10 8 20" fill="none" stroke="#6b5b4b" stroke-width="1"/>` +
+  [[2, 30], [6, 42], [12, 54]].map(([dx, dy]) => `<path d="M${x + dx - 4} ${y + dy - 3}l8 6M${x + dx - 4} ${y + dy + 3}l8 -6" stroke="#e63946" stroke-width="3"/>`).join('')
+
 export default travelLevel({
   id: 405,
   title: 'agra',
-  parTimeSec: 68,
+  parTimeSec: 88,
   place: { region: 'asia', country: 'in', lat: 27.18, lon: 78.04 },
   scene: ({ diff, anim, extra }) =>
     sky('#a9d6ef') +
@@ -80,6 +103,7 @@ export default travelLevel({
     ring(550, 200) +
     minaret(610, 300) +
     diff(610, 201, 24, ring(610, 200), '') +
+    diff(630, 286, 24, monkey(630, 300), '') +
     hall(400, 300) +
     kiosk(320, 200) +
     diff(480, 180, 26, kiosk(480, 200), '') +
@@ -89,6 +113,10 @@ export default travelLevel({
     [[0, 0.7], [1, 0.9], [2, 1.15]].flatMap(([i, s]) => [cypress(360 - i * 40, 360 + i * 50, s), cypress(440 + i * 40, 360 + i * 50, s)]).join('') +
     diff(408, 440, 24, lotus(408, 440, '#f28fb1'), lotus(408, 440, '#ffffff')) +
     lotus(380, 476, '#f28fb1') +
+    bush(170, 440) +
+    diff(170, 422, 24, roses(170, 440), '') +
+    kite(70, 270) +
+    diff(76, 310, 24, kiteTail(70, 270), '') +
     diff(662, 433, 54, fan(640, 470), folded(640, 470)) +
     peacock(640, 470) +
     // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).

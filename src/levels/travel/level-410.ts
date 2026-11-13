@@ -59,10 +59,22 @@ const ferryTop = (x: number, y: number) =>
 /** Hull of the ferry at (x, y). Bounds: x ±70, y from −22 to +4. */
 const hull = (x: number, y: number, color: string) => `<path d="M${x - 70} ${y - 22}H${x + 70}L${x + 56} ${y + 4}H${x - 60}Z" fill="${color}"/>`
 
+/** Rooftop garden of three little trees on a roof from x to x + 50 at y. Bounds: x from 0 to +50, y from −26 to 0. */
+const roofGarden = (x: number, y: number) =>
+  `<rect x="${x + 2}" y="${y - 4}" width="46" height="4" fill="#7a5a3a"/>` +
+  [[10, 9], [25, 12], [40, 9]].map(([dx, r]) => `<rect x="${x + dx - 1.5}" y="${y - 10}" width="3" height="8" fill="#6b4a3a"/><circle cx="${x + dx}" cy="${y - 10 - r * 0.8}" r="${r}" fill="${dx === 25 ? '#4caf6a' : '#3f8f4f'}"/>`).join('')
+
+/** Round bush on the island; (x, y) = foot. Its flowers are `bushFlowers`. Bounds: x ±20, y from −30 to 0. */
+const islandBush = (x: number, y: number) =>
+  `<circle cx="${x - 8}" cy="${y - 12}" r="12" fill="#3f8f4f"/><circle cx="${x + 8}" cy="${y - 12}" r="12" fill="#3f8f4f"/><circle cx="${x}" cy="${y - 20}" r="12" fill="#4caf6a"/>`
+/** Yellow flowers on an `islandBush` at (x, y). Bounds: circle of radius 18 around (x, y − 16). */
+const bushFlowers = (x: number, y: number) =>
+  [[-10, -12], [0, -24], [9, -16], [-3, -10], [12, -6]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="3.5" fill="#ffd23f"/>`).join('')
+
 export default travelLevel({
   id: 410,
   title: 'newYork',
-  parTimeSec: 80,
+  parTimeSec: 93,
   place: { region: 'americas', country: 'us', lat: 40.71, lon: -74.01 },
   scene: ({ diff, anim, rand, extra }) =>
     sky('#9fd3ee') +
@@ -77,6 +89,7 @@ export default travelLevel({
     skyscraper(404, 70, 180, '#5c7a99') +
     `<path d="M404 180L439 140L474 180Z" fill="#5c7a99"/>` +
     skyscraper(474, 50, 230, '#b8c4d2') +
+    diff(499, 216, 28, roofGarden(474, 230), '') +
     empireState(560, 360) +
     diff(560, 106, 22, needle(560, 360), '') +
     skyscraper(616, 56, 210, '#7f8fa6') +
@@ -87,6 +100,8 @@ export default travelLevel({
     water(360, '#4f8fbf', rand, 16) +
     `<ellipse cx="130" cy="372" rx="110" ry="18" fill="#7cbf5a"/>` +
     liberty(130, 364) +
+    islandBush(44, 368) +
+    diff(44, 352, 24, bushFlowers(44, 368), '') +
     diff(150, 92, 22, flame(130, 364), '') +
     diff(130, 152, 26, crown(130, 364, [-160, -135, -110, -90, -70, -45, -20]), crown(130, 364, [-160, -110, -90, -70, -20])) +
     ferryTop(430, 428) +
@@ -102,7 +117,7 @@ export default travelLevel({
       ['birds', 352, 52],
     ]) +
     extras({ extra, anim }, [
-      ['bottle', 64, 412],
+      ['bottle', 96, 446],
       ['buoy', 596, 400, '#e63946'],
       ['bottle', 252, 472],
       ['cloud', 204, 300],

@@ -55,10 +55,28 @@ const wagasa = (x: number, y: number, color: string) =>
   `<path d="M${x - 30} ${y - 68}Q${x} ${y - 102} ${x + 30} ${y - 68}Z" fill="${color}"/>` +
   `<path d="M${x} ${y - 90}L${x - 18} ${y - 68}M${x} ${y - 90}L${x + 18} ${y - 68}M${x} ${y - 90}V${y - 68}" stroke="#ffffff" stroke-opacity="0.6" stroke-width="1.6"/>`
 
+/** Name plaque between the beams of a `torii` at (x, y). Bounds: x ±6, y from −78 to −62. */
+const plaque = (x: number, y: number) =>
+  `<rect x="${x - 6}" y="${y - 78}" width="12" height="16" fill="#2b2b2b"/><rect x="${x - 3}" y="${y - 75}" width="6" height="10" fill="#e8c46a"/>`
+
+/** White-eye (a small green bird) sitting at (x, y) (its feet), faces left. Bounds: x ±14, y from −16 to 0. */
+const whiteEye = (x: number, y: number) =>
+  `<path d="M${x + 6} ${y - 6}l9 2l-8 3Z" fill="#6f8f3a"/><ellipse cx="${x}" cy="${y - 7}" rx="8" ry="6" fill="#9cbf4a"/>` +
+  `<circle cx="${x - 6}" cy="${y - 11}" r="5" fill="#9cbf4a"/><circle cx="${x - 7}" cy="${y - 11}" r="2.4" fill="#ffffff"/><circle cx="${x - 7}" cy="${y - 11}" r="1.1" fill="#222"/>` +
+  `<path d="M${x - 11} ${y - 11}l-3 1l3 1Z" fill="#3d4a55"/><path d="M${x - 2} ${y}v-2M${x + 2} ${y}v-2" stroke="#6b4a3a" stroke-width="1.4"/>`
+
+/** Stone lantern standing at (x, y); its roof is `lanternRoof`. Bounds: x ±11, y from −46 to 0. */
+const stoneLantern = (x: number, y: number) =>
+  `<rect x="${x - 11}" y="${y - 8}" width="22" height="8" fill="#9aa1a8"/><rect x="${x - 4}" y="${y - 30}" width="8" height="22" fill="#a9b0b7"/>` +
+  `<rect x="${x - 10}" y="${y - 46}" width="20" height="16" fill="#9aa1a8"/><rect x="${x - 4}" y="${y - 42}" width="8" height="8" fill="#ffd166"/>`
+/** Roof of a `stoneLantern` at (x, y). Bounds: x ±16, y from −62 to −46. */
+const lanternRoof = (x: number, y: number) =>
+  `<path d="M${x - 16} ${y - 46}Q${x} ${y - 58} ${x + 16} ${y - 46}Z" fill="#7d858d"/><circle cx="${x}" cy="${y - 58}" r="4" fill="#7d858d"/>`
+
 export default travelLevel({
   id: 404,
   title: 'tokyo',
-  parTimeSec: 66,
+  parTimeSec: 87,
   place: { region: 'asia', country: 'jp', lat: 35.68, lon: 139.69 },
   scene: ({ diff, anim, extra }) =>
     sky('#bfe3f2') +
@@ -77,7 +95,11 @@ export default travelLevel({
     diff(250, 332, 24, pantograph(250, 370), '') +
     `<path d="M0 430H800" stroke="#7bb35a" stroke-width="3"/>` +
     sakura(90, 480, 0.9) +
+    diff(90, 342, 24, whiteEye(90, 350), '') +
     torii(530, 480) +
+    diff(530, 410, 24, plaque(530, 480), '') +
+    stoneLantern(470, 480) +
+    diff(470, 426, 24, lanternRoof(470, 480), '') +
     person(380, 480, '#f28fb1', false, '#f2d29b', '#1d1d1d') +
     diff(380, 398, 34, wagasa(380, 480, '#e63946'), wagasa(380, 480, '#2b59c3')) +
     `<path d="M392 446L382 394" stroke="#7a5233" stroke-width="2"/>` +

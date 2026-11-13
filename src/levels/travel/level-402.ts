@@ -47,10 +47,31 @@ const pole = (x: number, y: number) =>
   `<rect x="${x - 6}" y="${y}" width="12" height="130" fill="#ffffff"/>` +
   [40, 64, 88].map((dy) => `<path d="M${x - 6} ${y + dy}l12 -8v8l-12 8Z" fill="#2b59c3"/>`).join('')
 
+/** Washing line across the pink palace with a towel and a sock; the shirt is separate. */
+const washingLine =
+  `<path d="M8 252Q75 264 142 252" fill="none" stroke="#6b5b4b" stroke-width="1.5"/>` +
+  `<rect x="96" y="257" width="18" height="24" fill="#ffd166"/><path d="M122 255v14h6v4h-10" fill="#2b59c3"/>`
+/** Shirt on the washing line. Bounds: circle of radius 20 around (40, 268). */
+const shirt = `<path d="M30 258l-8 6l4 6l4 -2v18h20v-18l4 2l4 -6l-8 -6Z" fill="#e63946"/>`
+
+/** Gull sitting on a roof at (x, y) (its feet). Bounds: x from −16 to +12, y from −20 to 0. */
+const sittingGull = (x: number, y: number) =>
+  `<path d="M${x - 4} ${y}v-5M${x + 2} ${y}v-5" stroke="#f4a261" stroke-width="1.6"/>` +
+  `<ellipse cx="${x - 2}" cy="${y - 9}" rx="10" ry="6" fill="#ffffff"/><path d="M${x - 12} ${y - 10}q6 -4 14 0q-6 4 -14 0Z" fill="#9aa5b1"/>` +
+  `<path d="M${x - 12} ${y - 10}l-4 -2l1 5Z" fill="#5c677d"/><circle cx="${x + 6}" cy="${y - 15}" r="5" fill="#ffffff"/>` +
+  `<circle cx="${x + 7}" cy="${y - 16}" r="1" fill="#222"/><path d="M${x + 10} ${y - 15}l5 1l-5 2Z" fill="#f4a261"/>`
+
+/** Ivy hanging from the roof of the right palace. Bounds: circle of radius 40 around (668, 187). */
+const ivy =
+  `<path d="M666 150q8 14 0 28q-8 14 2 28q6 8 2 16" fill="none" stroke="#3f7a3a" stroke-width="2"/>` +
+  [[662, 156], [672, 164], [668, 176], [660, 188], [664, 200], [674, 206], [668, 218]]
+    .map(([lx, ly], i) => `<ellipse cx="${lx}" cy="${ly}" rx="6" ry="4" transform="rotate(${i % 2 ? 30 : -30} ${lx} ${ly})" fill="${i % 3 ? '#4caf6a' : '#3f8f4f'}"/>`)
+    .join('')
+
 export default travelLevel({
   id: 402,
   title: 'venice',
-  parTimeSec: 62,
+  parTimeSec: 85,
   place: { region: 'europe', country: 'it', lat: 45.44, lon: 12.33 },
   scene: ({ diff, anim, rand, extra }) =>
     sky() +
@@ -58,6 +79,8 @@ export default travelLevel({
     anim({ type: 'path', points: [[0, 0], [60, 0]], period: 38 }, cloud(300, 70, 0.6)) +
     anim({ type: 'path', points: [[0, 0], [-50, 0]], period: 44 }, cloud(760, 90, 0.5)) +
     palace(0, 150, 170, '#f2a7a0') +
+    washingLine +
+    diff(40, 270, 24, shirt, '') +
     palace(150, 150, 130, '#f2c46d') +
     palace(300, 130, 150, '#d9764f') +
     diff(
@@ -69,9 +92,11 @@ export default travelLevel({
       '',
     ) +
     palace(430, 150, 180, '#f3e3c3') +
+    diff(480, 162, 24, sittingGull(480, 172), '') +
     campanile(625, 330) +
     diff(625, 38, 36, spire(625, 330, '#5f9e7a'), spire(625, 330, '#c0583f')) +
     palace(660, 140, 160, '#e9b7a0') +
+    diff(668, 187, 40, ivy, '') +
     water(330, '#3a9fb0', rand) +
     `<rect y="330" width="800" height="6" fill="#2d8494"/>` +
     pole(150, 340) +

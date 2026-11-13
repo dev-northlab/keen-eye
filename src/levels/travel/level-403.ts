@@ -1,7 +1,7 @@
 // Amsterdam: narrow canal houses with stepped, bell and neck gables, bikes on the quay, a houseboat.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
-import { bike, cloud, cityTree, gull, sky, water } from './shapes.ts'
+import { bike, cloud, cityTree, gull, pigeon, sky, water } from './shapes.ts'
 
 type Gable = 'step' | 'bell' | 'neck'
 
@@ -57,10 +57,20 @@ const lifebuoy = (x: number, y: number) =>
   `<circle cx="${x}" cy="${y}" r="10" fill="none" stroke="#e63946" stroke-width="6"/>` +
   `<path d="M${x - 13} ${y}h6M${x + 7} ${y}h6M${x} ${y - 13}v6M${x} ${y + 7}v6" stroke="#ffffff" stroke-width="6"/>`
 
+/** Window box of red geraniums under a window at (x, y) (its bottom left). Bounds: x from 0 to +26, y from −14 to +6. */
+const windowBox = (x: number, y: number) =>
+  [5, 13, 21].map((fx) => `<circle cx="${x + fx}" cy="${y - 4}" r="5" fill="#3f8f4f"/><circle cx="${x + fx}" cy="${y - 7}" r="3.5" fill="#e63946"/>`).join('') +
+  `<rect x="${x}" y="${y}" width="26" height="6" rx="1" fill="#7a5233"/>`
+
+/** Small potted shrub on the houseboat's roof at (x, y) (pot bottom). Bounds: x ±12, y from −24 to 0. */
+const potShrub = (x: number, y: number) =>
+  `<circle cx="${x - 5}" cy="${y - 14}" r="7" fill="#3f8f4f"/><circle cx="${x + 5}" cy="${y - 15}" r="7" fill="#4caf6a"/><circle cx="${x}" cy="${y - 20}" r="6" fill="#4caf6a"/>` +
+  `<path d="M${x - 7} ${y - 8}h14l-2 8h-10Z" fill="#c96b4f"/>`
+
 export default travelLevel({
   id: 403,
   title: 'amsterdam',
-  parTimeSec: 64,
+  parTimeSec: 86,
   place: { region: 'europe', country: 'nl', lat: 52.37, lon: 4.9 },
   scene: ({ diff, anim, rand, extra }) =>
     sky('#a8d8ee') +
@@ -70,6 +80,7 @@ export default travelLevel({
     house(20, 120, 130, '#8b4a2b', 'step') +
     diff(80, 318, 26, door(20, 120, '#2f5d50'), door(20, 120, '#e63946')) +
     house(140, 110, 110, '#2f5d50', 'bell') +
+    diff(163, 244, 24, windowBox(150, 245), '') +
     door(140, 110, '#1d1d1d') +
     house(250, 120, 140, '#f0e2c0', 'neck', false) +
     diff(310, 154, 24, hoist(250, 120, 140), '') +
@@ -92,7 +103,9 @@ export default travelLevel({
     pot(470, 364) +
     diff(470, 323, 24, tulips(470, 364, '#e63946'), tulips(470, 364, '#ffd23f')) +
     cityTree(770, 364, 1.3) +
+    diff(772, 272, 24, pigeon(772, 281, true, '#8a5a3b'), '') +
     houseboat(620, 440) +
+    diff(615, 366, 24, potShrub(615, 378), '') +
     diff(560, 402, 24, lifebuoy(560, 402), '') +
     // Decor of every mode and the extra objects of normal mode (docs/extra-objects.md).
     decor({ anim }, [

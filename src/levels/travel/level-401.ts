@@ -53,6 +53,23 @@ const easel = (x: number, y: number) =>
 const beret = (x: number, y: number, color: string) =>
   `<ellipse cx="${x - 1}" cy="${y - 61}" rx="11" ry="4" fill="${color}"/><circle cx="${x - 1}" cy="${y - 66}" r="2" fill="${color}"/>`
 
+/** Cat sitting on a window sill at (x, y). Bounds: x ±12, y from −30 to 0. */
+const cat = (x: number, y: number) =>
+  `<ellipse cx="${x}" cy="${y - 9}" rx="9" ry="10" fill="#4a4a52"/><circle cx="${x}" cy="${y - 22}" r="7" fill="#4a4a52"/>` +
+  `<path d="M${x - 6} ${y - 26}l1 -8l5 5ZM${x + 6} ${y - 26}l-1 -8l-5 5Z" fill="#4a4a52"/>` +
+  `<path d="M${x + 8} ${y - 2}q8 0 6 -12" fill="none" stroke="#4a4a52" stroke-width="3" stroke-linecap="round"/>` +
+  `<circle cx="${x - 3}" cy="${y - 23}" r="1.3" fill="#ffd166"/><circle cx="${x + 3}" cy="${y - 23}" r="1.3" fill="#ffd166"/>`
+
+/** Pink blossoms on the crown of a `cityTree` at (x, y), scale 1.2. Bounds: circle of radius 22 around (x, y − 53). */
+const blossoms = (x: number, y: number) =>
+  [[-12, -62], [10, -58], [-2, -44], [14, -44], [-14, -46]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="4" fill="#ff9ec4"/><circle cx="${x + dx}" cy="${y + dy}" r="1.5" fill="#fff3b0"/>`).join('')
+
+/** Flower basket hanging from a `lampPost` at (x, y). Bounds: x from +3 to +22, y from −84 to −62. */
+const hangingBasket = (x: number, y: number) =>
+  `<path d="M${x + 3} ${y - 82}h10v10" fill="none" stroke="#3d4a55" stroke-width="2"/>` +
+  `<circle cx="${x + 8}" cy="${y - 72}" r="4" fill="#e63946"/><circle cx="${x + 18}" cy="${y - 72}" r="4" fill="#ff9ec4"/><circle cx="${x + 13}" cy="${y - 75}" r="4" fill="#e63946"/>` +
+  `<path d="M${x + 4} ${y - 70}h18l-3 8h-12Z" fill="#8a5a33"/>`
+
 /** French flag on the tower's antenna top at (x, y). Bounds: x from 0 to +21, y from 0 to +12. */
 const flag = (x: number, y: number) =>
   `<rect x="${x}" y="${y}" width="7" height="12" fill="#2b59c3"/><rect x="${x + 7}" y="${y}" width="7" height="12" fill="#ffffff"/>` +
@@ -66,7 +83,7 @@ const baguette = (x: number, y: number) =>
 export default travelLevel({
   id: 401,
   title: 'paris',
-  parTimeSec: 60,
+  parTimeSec: 84,
   place: { region: 'europe', country: 'fr', lat: 48.86, lon: 2.35 },
   scene: ({ diff, anim, extra }) =>
     sky() +
@@ -78,6 +95,7 @@ export default travelLevel({
     tower(400, 400) +
     diff(412, 44, 24, flag(402, 38), '') +
     house(20, '#f3e3c3') +
+    diff(212, 274, 24, cat(212, 290), '') +
     awning(30, 200, 368) +
     `<rect x="40" y="384" width="180" height="36" fill="#bde3f2"/>` +
     house(550, '#efd9b4') +
@@ -94,7 +112,9 @@ export default travelLevel({
     `<rect y="420" width="800" height="80" fill="#d8cfc0"/><rect y="420" width="800" height="6" fill="#bfb3a0"/>` +
     lampPost(300, 470) +
     lampHead(300, 470) +
+    diff(313, 395, 24, hangingBasket(300, 470), '') +
     cityTree(600, 470, 1.2) +
+    diff(601, 417, 24, blossoms(601, 470), '') +
     table(150, 480) +
     diff(150, 372, 48, parasol(150, 480, '#e63946'), parasol(150, 480, '#2a9d8f')) +
     person(500, 480, '#5b7fd6') +

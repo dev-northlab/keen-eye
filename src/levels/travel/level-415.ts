@@ -53,10 +53,18 @@ const boat = (x: number, y: number) =>
   `<path d="M${x - 20} ${y - 6}H${x + 20}L${x + 14} ${y + 3}H${x - 14}Z" fill="#e63946"/><path d="M${x} ${y - 6}V${y - 42}" stroke="#3d4a55" stroke-width="2"/>` +
   `<path d="M${x + 2} ${y - 40}L${x + 18} ${y - 10}H${x + 2}Z" fill="#ffffff"/>`
 
+/** Pohutukawa tree on the bank; (x, y) = foot. Its red flowers are `pohutukawaFlowers`. Bounds: x ±30, y from −64 to 0. */
+const pohutukawa = (x: number, y: number) =>
+  `<path d="M${x} ${y}V${y - 28}l-12 -12M${x} ${y - 24}l12 -12" stroke="#6b4a3a" stroke-width="5" stroke-linecap="round"/>` +
+  `<circle cx="${x - 14}" cy="${y - 40}" r="15" fill="#3f7a3a"/><circle cx="${x + 14}" cy="${y - 40}" r="15" fill="#3f7a3a"/><circle cx="${x}" cy="${y - 50}" r="16" fill="#4c8a45"/>`
+/** Red flowers of a `pohutukawa` at (x, y). Bounds: circle of radius 22 around (x, y − 44). */
+const pohutukawaFlowers = (x: number, y: number) =>
+  [[-16, -42], [-6, -58], [8, -54], [18, -40], [2, -40], [-10, -32], [12, -30]].map(([dx, dy]) => `<circle cx="${x + dx}" cy="${y + dy}" r="4" fill="#d7263d"/>`).join('')
+
 export default travelLevel({
   id: 415,
   title: 'southernAlps',
-  parTimeSec: 92,
+  parTimeSec: 98,
   place: { region: 'oceania', country: 'nz', lat: -44, lon: 170.5 },
   scene: ({ diff, anim, rand, extra }) => {
     const bob = (period: number) => anim({ id: 'boat', type: 'bob', dx: 0, dy: 4, period }, boat(490, 312))
@@ -78,6 +86,8 @@ export default travelLevel({
       // Hills with the hut, a fence, sheep and the kiwi
       `<path d="M0 350Q200 310 420 350T800 340V500H0Z" fill="#6cbf5a"/>` +
       hut(640, 360) +
+      pohutukawa(760, 410) +
+      diff(760, 366, 24, pohutukawaFlowers(760, 410), '') +
       diff(640, 311, 36, roof(640, 360, '#e63946'), roof(640, 360, '#2b59c3')) +
       `<path d="M0 410Q300 370 560 410T800 400V500H0Z" fill="#5aa84c"/>` +
       `<path d="M300 424H540M300 438H540" stroke="#7a5233" stroke-width="2"/>` +

@@ -93,8 +93,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `travel/` — "travel" (`docs/world-travel-mode.md`): levels 401–432 of chapter `travel` written with
   `travelLevel({ id, title, parTimeSec, place, scene })` (`Level.travel`: region, ISO country code, lat/lon on the world map),
   one recognizable place each (title = place name, `worldTravel.facts.<title>` its fact — only well-known, checked facts),
-  one city per country (`npm test` checks it), flags in `travel/flags.ts`, regions `TRAVEL_REGIONS`; 5 → 6 → 7 differences,
-  then 416–432 busier cities with 8 → 9 → 10, one in motion from 411;
+  one city per country (`npm test` checks it), flags in `travel/flags.ts`, regions `TRAVEL_REGIONS`; 8 differences
+  on 401–415, then 416–432 busier cities with 8 → 9 → 10, one in motion from 411;
   played by `LevelView` (the fact card `TravelFact` in the result dialog, a passport stamp on the first win), listed on the
   world map `TravelView` (`/travel`, `?region=`; `levelsScreen(level)` is where a level's menu leads) with the passport
   `/travel/passport`; open and paid like "time" (first 3 free);
