@@ -3,6 +3,7 @@
 // Motion difference: a swan on the river bobs quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level419Redesign } from './level-419-redesign.ts'
 import { cloud, person, pigeon, sky, water } from './shapes.ts'
 
 /** Statue on the bridge parapet; (x, y) = foot. Bounds: x ±6, y from −26 to 0. */
@@ -65,6 +66,7 @@ const board = (x: number, y: number, color: string) => `<rect x="${x + 84}" y="$
 
 export default travelLevel({
   id: 419,
+  redesign: level419Redesign,
   title: 'prague',
   parTimeSec: 106,
   place: { region: 'europe', country: 'cz', lat: 50.09, lon: 14.42 },
