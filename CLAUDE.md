@@ -34,6 +34,15 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
   shot of `SHOTS`) at the store sizes — Play phone 1080×1920, iPhone 6.9" 1290×2796, iPad 13" 2048×2732 — plus the
   Play feature graphic 1024×500, into `store-screenshots/` (gitignored); all languages take about half an hour
+- `npm run store-video [-- <locale> ...]` — build + `scripts/store-video.ts` (default `en`): the promo video for the
+  Google Play listing (a YouTube link), `store-screenshots/video/keen-eye-<locale>.mp4`, 1920×1080, 30 fps, ~37 s,
+  opening on play. Each scene of `SCENES` plays the build in Chrome on a phone-sized screen (360×780) with the same
+  seeded player (`scripts/store-common.ts`, shared with `store-screenshots`) and is recorded through Chrome's screencast
+  while a drawn hand taps (real touches, as the finger presses) and swipes; a find pulses its circle (video only, not
+  the game; no zoom), and farm level 4 turns from drawn to 3D pictures that a shine sweeps across. It is shown in a
+  phone as tall as the frame beside its caption from `screenshots.txt`; the closing card adds "N levels free"
+  (`FREE_LEVELS`; English only); the scenes are crossfaded over `assets/music/main_menu.m4a` by ffmpeg. The hand rules
+  it out as an App Store preview (Apple forbids hands on the device)
 - `npm run play-preview` — `scripts/play-preview.ts`: `store-screenshots/play-preview.html`, a rough imitation of the
   Google Play app with the listing of every language (the game's page, search results, a "suggested" card with the
   feature graphic, a row of icons; optionally a promo video first) from the listing texts and those screenshots; for
@@ -143,11 +152,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   the result dialog is open, `usePicturePreload` on the grids of worlds and "tiny boy" the first level not won yet and a
   tile's level on `pointerdown`, the world and "tiny boy" banners their backdrop on `pointerdown` — one level at a
   time, a whole chapter's decoded pictures (~17 MB each) would not fit a phone's memory), `backdrops.ts`
-  (`backdropPicture`: the ready picture `ScreenBackdrop` shows for a theme with the current settings), `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → exit; `canExitApp` — only Android shows the home screen's "Exit", iOS forbids quitting),
+  (`backdropPicture`: the ready picture `ScreenBackdrop` shows for a theme with the current settings), `theme.ts` (applies the theme: `html[data-theme]` + system bar icons), `backButton.ts` (Android back: level → pause → menu, other screens → home, home → `ExitDialog` "Leaving already?" (keep playing / exit; back again stays) — no exit button anywhere, iOS forbids quitting),
   `storage.ts` (JSON over Capacitor Preferences; localStorage in the browser, key prefix
   `CapacitorStorage.`), `audio.ts` (music tracks from `assets/music/` per screen + Web Audio synthesized effects;
   starts on the first user gesture, silent in the background), `haptics.ts` (soft ticks for a find and a miss: on Android the app's own `SoftHapticsPlugin` — a tick at a strength the game sets (the
-  haptic engine's tick primitive at 60 %, else a short low-amplitude pulse), one for a find and two for a miss, registered in `MainActivity`; on iOS @capacitor/haptics impacts), `review.ts`
+  haptic engine's tick primitive at 60 %, else a short low-amplitude pulse), one for a find and two for a miss, and the calmest one (low tick primitive at 50 %) on every button press (`vibrateTap`, from the UI-wide click listener in `main.ts`), registered in `MainActivity`; on iOS @capacitor/haptics impacts, the selection tick for a button), `review.ts`
   (the store's in-app review sheet via @capacitor-community/in-app-review: asked once, on device only, after a
   three-star or calm finish in `LevelView` once 8 levels are completed; never gated by a question or rewarded), `purchases.ts`
   (the only code that talks to the app store: price, purchase, restore, ownership of the product `full_game`, and the
@@ -170,10 +179,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
   limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
   update every description when levels, modes or languages are added)
-- `public/privacy.html` — the privacy policy (English + Russian) the store listings link to,
-  https://dev-northlab.github.io/keen-eye/privacy.html; a static page, not a route, so GitHub Pages answers 200
-  (routes are served by `404.html`). The Pages web build is only for the developer's own testing, not a product, so the
-  policy covers the Android and iOS apps only. Keep it true when adding anything that touches data, network or permissions
+- The privacy policy (English + Russian) the store listings link to lives in its own public repository
+  `dev-northlab/keen-eye-privacy` (local clone `../keen-eye-privacy`, one `index.html`), published by GitHub Pages at
+  https://dev-northlab.github.io/keen-eye-privacy/. The game's own Pages build (`.github/workflows/pages.yml`) is only
+  for the developer's own testing, not a product, so the policy covers the Android and iOS apps only. Keep it true when adding anything that touches data, network or permissions
 
 ## Rules
 
@@ -284,6 +293,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `namespace`/`applicationId` in `android/app/build.gradle`, the Java package of `MainActivity`, `strings.xml`,
   `PRODUCT_BUNDLE_IDENTIFIER` in the Xcode project, `codemagic.yaml`, store links in `src/config/links.ts` and README).
   The stores never let it change after the first upload: updates, saved progress and purchases are tied to it.
+- Portrait only, on every device: `android:screenOrientation="portrait"` on `MainActivity` (plus the
+  `PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY` opt-out, without which Android 16 rotates large screens anyway at
+  targetSdk 36; it ends at targetSdk 37), only portrait in `UISupportedInterfaceOrientations` of `Info.plist` (iPad also
+  upside down) with `UIRequiresFullScreen` (App Store refuses an iPad app that limits orientations and allows split view).
 - Native: Preferences live in SharedPreferences on Android (not localStorage). Edge-to-edge: Capacitor `SystemBars`
   passes insets as `env(safe-area-inset-*)`, which the CSS already pads; keep `viewport-fit=cover`. The bundle needs
   Android System WebView 111+ (Vite's default target chrome111 / ios16.4, `color-mix()`): `android.minWebViewVersion` in `capacitor.config.ts` shows

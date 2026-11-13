@@ -437,6 +437,11 @@
     "exit": "Thoát",
     "stars": "Sao: {n}"
   },
+  "exitDialog": {
+    "title": "Bạn đi rồi sao?",
+    "text": "Sao và tiến độ của bạn đã được lưu. Hãy sớm quay lại — những điểm khác biệt mới đang chờ bạn!",
+    "stay": "Chơi tiếp"
+  },
   "info": {
     "about": "Giới thiệu",
     "aboutText": "Keen Eye là trò chơi tìm điểm khác biệt với những khung cảnh sống động.",

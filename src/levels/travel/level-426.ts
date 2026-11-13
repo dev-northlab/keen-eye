@@ -3,6 +3,7 @@
 // Motion difference: the cable car rides quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level426Redesign } from './level-426-redesign.ts'
 import { gull, sky, sun, water } from './shapes.ts'
 
 /** Cable from the lower station up the mountain face. */
@@ -58,6 +59,7 @@ const COLORS = ['#ff6b8b', '#8ac926', '#4dabf7', '#ffd23f', '#b38cff', '#ff9f43'
 
 export default travelLevel({
   id: 426,
+  redesign: level426Redesign,
   title: 'capeTown',
   parTimeSec: 126,
   place: { region: 'africa', country: 'za', lat: -33.92, lon: 18.42 },

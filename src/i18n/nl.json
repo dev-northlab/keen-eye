@@ -12,6 +12,11 @@
     "devOpenAll": "Alle levels openen (test)",
     "devShowPlaces": "Plekken tonen in levels (test)"
   },
+  "exitDialog": {
+    "title": "Ga je al?",
+    "text": "Je sterren en voortgang zijn opgeslagen. Kom snel terug – er wachten nieuwe verschillen!",
+    "stay": "Verder spelen"
+  },
   "pictureStyle": {
     "label": "Afbeeldingsstijl",
     "classic": "Klassiek",

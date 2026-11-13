@@ -12,6 +12,11 @@
     "devOpenAll": "Apri tutti i livelli (test)",
     "devShowPlaces": "Mostra i punti nei livelli (test)"
   },
+  "exitDialog": {
+    "title": "Te ne vai già?",
+    "text": "Le tue stelle e i tuoi progressi sono salvati. Torna presto: ti aspettano nuove differenze!",
+    "stay": "Continua a giocare"
+  },
   "pictureStyle": {
     "label": "Stile immagini",
     "classic": "Classico",

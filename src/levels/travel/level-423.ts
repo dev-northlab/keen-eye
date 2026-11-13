@@ -3,6 +3,7 @@
 // Motion difference: the Merlion's water stream ripples quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level423Redesign } from './level-423-redesign.ts'
 import { cloud, sky, sun, water } from './shapes.ts'
 
 /** Observation wheel centered at (cx, cy), radius r; capsules separate. */
@@ -71,6 +72,7 @@ const PETALS: [number, number][] = [[64, 268], [92, 252], [130, 246], [168, 252]
 
 export default travelLevel({
   id: 423,
+  redesign: level423Redesign,
   title: 'singapore',
   parTimeSec: 116,
   place: { region: 'asia', country: 'sg', lat: 1.29, lon: 103.85 },

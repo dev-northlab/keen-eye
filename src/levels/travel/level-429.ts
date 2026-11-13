@@ -4,6 +4,7 @@
 // Motion difference: the rainbow flag waves quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level429Redesign } from './level-429-redesign.ts'
 import { cloud, sky, sun } from './shapes.ts'
 
 const STONE = '#b8a48a'
@@ -70,6 +71,7 @@ const cobs = (x: number, y: number, color: string) =>
 
 export default travelLevel({
   id: 429,
+  redesign: level429Redesign,
   title: 'cusco',
   parTimeSec: 132,
   place: { region: 'americas', country: 'pe', lat: -13.53, lon: -71.97 },

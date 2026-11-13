@@ -3,6 +3,7 @@
 // Motion difference: the flag on the ferry waves quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level420Redesign } from './level-420-redesign.ts'
 import { cloud, gull, person, sky, sun, water } from './shapes.ts'
 
 const DOME = '#a9b4c2'
@@ -67,6 +68,7 @@ const heads = (x: number, y: number, color: string) =>
 
 export default travelLevel({
   id: 420,
+  redesign: level420Redesign,
   title: 'istanbul',
   parTimeSec: 108,
   place: { region: 'europe', country: 'tr', lat: 41.01, lon: 28.98 },

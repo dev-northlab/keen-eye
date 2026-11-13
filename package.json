@@ -18,7 +18,8 @@
     "play-preview": "node scripts/play-preview.ts",
     "android:sync": "npm run build && cap sync android",
     "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug",
-    "ios:sync": "npm run build && cap sync ios"
+    "ios:sync": "npm run build && cap sync ios",
+    "store-video": "npm run build && node scripts/store-video.ts"
   },
   "dependencies": {
     "@capacitor-community/in-app-review": "^8.0.0",

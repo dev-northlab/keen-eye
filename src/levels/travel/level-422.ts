@@ -3,6 +3,7 @@
 // Motion difference: a lantern under the temple eave swings quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level422Redesign } from './level-422-redesign.ts'
 import { cloud, lantern, person, sky, sun, water } from './shapes.ts'
 
 const PRANG = '#e6dccb'
@@ -63,6 +64,7 @@ const tukRoof = (x: number, y: number, color: string) => `<path d="M${x - 44} ${
 
 export default travelLevel({
   id: 422,
+  redesign: level422Redesign,
   title: 'bangkok',
   parTimeSec: 114,
   place: { region: 'asia', country: 'th', lat: 13.75, lon: 100.49 },

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import ExitDialog from '../components/ExitDialog.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import MenuIcon from '../components/MenuIcon.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
@@ -9,7 +10,7 @@ import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import ThemeSwitch from '../components/ThemeSwitch.vue'
 import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
-import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
+import { pushBackHandler, useBackButton } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
 
@@ -25,7 +26,11 @@ watch(dialog, (open) => {
   if (open) removeBack = pushBackHandler(() => (dialog.value = null))
 })
 
-const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(APP_NAME)}`
+/** Android back on the home screen asks before leaving the app (no exit button: the system's back is the way out). */
+const askExit = ref(false)
+useBackButton(() => (askExit.value = true))
+
+const mailto =`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(APP_NAME)}`
 /** True for a moment after the address was copied (for players without a mail app). */
 const emailCopied = ref(false)
 let copiedTimer = 0
@@ -98,7 +103,7 @@ function play() {
       <svg class="chevron flip-rtl" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </button>
 
-    <!-- Settings, the info pages and (Android only) exit as round icon buttons; their names are read out and shown on hover. -->
+    <!-- Settings and the info pages as round icon buttons; their names are read out and shown on hover. -->
     <nav class="info-links">
       <button class="info-link" :aria-label="$t('home.settings')" :title="$t('home.settings')" @click="router.push({ name: 'settings' })">
         <MenuIcon name="settings" />
@@ -112,10 +117,9 @@ function play() {
       <button class="info-link" :aria-label="$t('info.contact')" :title="$t('info.contact')" @click="dialog = 'contact'">
         <MenuIcon name="contact" />
       </button>
-      <button v-if="canExitApp" class="info-link" :aria-label="$t('home.exit')" :title="$t('home.exit')" @click="exitApp">
-        <MenuIcon name="exit" />
-      </button>
     </nav>
+
+    <ExitDialog v-if="askExit" @close="askExit = false" />
 
     <ModalDialog v-if="dialog === 'privacy'" :title="$t('info.privacy')">
       <template #icon>

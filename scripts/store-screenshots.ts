@@ -5,19 +5,15 @@
 // Google Play phones, the 6.9" iPhone and the 13" iPad (also fine for Play tablets), plus the Play feature graphic
 // store-screenshots/feature-graphic/<locale>.png (gitignored).
 import { mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
-import { chromium, type Browser, type Locator, type Page } from 'playwright-core'
+import { chromium, type Browser, type Page } from 'playwright-core'
 import { preview } from 'vite'
-import { levelById } from '../src/levels/index.ts'
-import { styledLevel, type PictureStyle } from '../src/levels/picture-style.ts'
+import {
+  captions as readCaptions, CHROME, escape, findDifferences, FONT, INK, LISTING, pictureBox, seedStorage, WORD_BREAK,
+} from './store-common.ts'
 
-const CHROME = '/usr/bin/google-chrome'
 const PORT = 4175
 const BASE = `http://localhost:${PORT}`
 const OUT = 'store-screenshots'
-const LISTING = 'assets/store/listing'
-
-const INK = '#23302b'
-const FONT = `system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif`
 
 /** Store sizes in pixels and the app viewport (CSS pixels) framed inside them. */
 interface Device {
@@ -46,30 +42,6 @@ interface Shot {
   act?: (page: Page) => Promise<void>
 }
 
-/** Where a picture's viewBox lands on the page: the svg fits it centered ("xMidYMid meet"), leaving empty bands. */
-async function pictureBox(svg: Locator) {
-  const box = (await svg.boundingBox())!
-  const [x, y, w, h] = (await svg.getAttribute('viewBox'))!.split(/[\s,]+/).map(Number)
-  const scale = Math.min(box.width / w, box.height / h)
-  const left = box.x + (box.width - w * scale) / 2
-  const top = box.y + (box.height - h * scale) / 2
-  return {
-    clip: { x: left, y: top, width: w * scale, height: h * scale },
-    /** Page point of a viewBox point. */
-    at: (px: number, py: number) => [left + (px - x) * scale, top + (py - y) * scale] as const,
-  }
-}
-
-/** Taps the centers of the first `count` still differences of a level on picture B, as drawn or as 3D pictures. */
-const findDifferences = (id: number, count: number, style: PictureStyle = 'classic') => async (page: Page) => {
-  const level = styledLevel(levelById(id)!, style)
-  for (const d of level.differences.filter((d) => !d.animatedId).slice(0, count)) {
-    const [x, y] = (await pictureBox(page.locator('.pictures > svg').nth(1))).at(d.x, d.y)
-    await page.touchscreen.tap(x, y)
-    await page.waitForTimeout(250)
-  }
-}
-
 /** Holds the hot-seat bottle spin (2.6 s) near its end, both players still shown around the bottle. */
 const holdBottle = async (page: Page) => {
   await page.evaluate(`for (const a of document.getAnimations())
@@ -91,34 +63,10 @@ const SHOTS: Shot[] = [
   { name: 'calm', route: '/', settings: { mode: 'calm' } },
 ]
 
-/** A player some way into the game: worlds up to the sea, a few levels of every mode, the full game bought. */
-function seededProgress() {
-  const levels: Record<number, { stars: number; bestTimeSec: number }> = {}
-  const done = (from: number, to: number) => {
-    for (let id = from; id <= to; id++) levels[id] = { stars: id % 5 === 0 ? 2 : 3, bestTimeSec: 45 + (id % 30) }
-  }
-  done(1, 74)
-  done(201, 205)
-  done(301, 304)
-  done(401, 409)
-  done(501, 503)
-  return {
-    levels,
-    hints: 6,
-    timeTravel: { 'egypt-01': { stars: 3, bestTimeSec: 50 } },
-    cases: [],
-    keys: ['farm', 'city'],
-  }
-}
-
 /** The app screen as a PNG for `locale` on `device`. */
 async function capture(browser: Browser, device: Device, locale: string, shot: Shot): Promise<Buffer> {
   const ctx = await browser.newContext({ viewport: device.viewport, deviceScaleFactor: 3, isMobile: true, hasTouch: true })
-  const settings = { locale, theme: 'light', musicVolume: 0, soundVolume: 0, ...shot.settings }
-  const stored = { settings, progress: seededProgress(), purchase: { fullGame: true }, ...shot.storage }
-  await ctx.addInitScript((stored) => {
-    for (const [key, value] of Object.entries(stored)) localStorage.setItem(`CapacitorStorage.${key}`, JSON.stringify(value))
-  }, stored)
+  await seedStorage(ctx, locale, shot.settings, shot.storage)
   const page = await ctx.newPage()
   await page.goto(BASE + shot.route)
   await page.waitForTimeout(1200)
@@ -128,11 +76,6 @@ async function capture(browser: Browser, device: Device, locale: string, shot: S
   await ctx.close()
   return png
 }
-
-/** Line breaks between words for scripts written without spaces (Japanese by phrase) or that keep words whole (Korean). */
-const WORD_BREAK: Record<string, string> = { ja: 'auto-phrase', ko: 'keep-all' }
-
-const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
 
 /** The app screen in a phone frame under its caption, at the store size. */
 async function frame(browser: Browser, device: Device, locale: string, caption: string, screen: Buffer): Promise<Buffer> {
@@ -182,11 +125,7 @@ async function featureGraphic(browser: Browser, locale: string, picture: Buffer)
 /** Picture A of the first shot's level, wide, for the feature graphic. */
 async function levelPicture(browser: Browser): Promise<Buffer> {
   const ctx = await browser.newContext({ viewport: { width: 1400, height: 760 }, deviceScaleFactor: 1 })
-  await ctx.addInitScript((progress) => {
-    localStorage.setItem('CapacitorStorage.settings', JSON.stringify({ locale: 'en', theme: 'light', musicVolume: 0, soundVolume: 0 }))
-    localStorage.setItem('CapacitorStorage.progress', JSON.stringify(progress))
-    localStorage.setItem('CapacitorStorage.purchase', JSON.stringify({ fullGame: true }))
-  }, seededProgress())
+  await seedStorage(ctx, 'en')
   const page = await ctx.newPage()
   await page.goto(`${BASE}/level/75`)
   await page.waitForTimeout(1200)
@@ -203,7 +142,7 @@ const browser = await chromium.launch({ executablePath: CHROME })
 try {
   const picture = await levelPicture(browser)
   for (const locale of locales) {
-    const captions = readFileSync(`${LISTING}/${locale}/screenshots.txt`, 'utf8').trim().split('\n')
+    const captions = readCaptions(locale)
     if (captions.length !== SHOTS.length) throw new Error(`${locale}: ${captions.length} captions for ${SHOTS.length} shots`)
     for (const device of DEVICES) {
       const dir = `${OUT}/${device.name}/${locale}`

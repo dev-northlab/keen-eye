@@ -437,6 +437,11 @@
     "exit": "Keluar",
     "stars": "Bintang: {n}"
   },
+  "exitDialog": {
+    "title": "Sudah mau pergi?",
+    "text": "Bintang dan kemajuanmu sudah tersimpan. Cepat kembali, perbedaan baru menantimu!",
+    "stay": "Lanjut bermain"
+  },
   "info": {
     "about": "Tentang",
     "aboutText": "Keen Eye adalah permainan cari perbedaan dengan adegan yang hidup.",

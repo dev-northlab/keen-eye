@@ -28,7 +28,7 @@ const info = {
   version: match('android/app/build.gradle', /versionName\s+"([^"]+)"/),
   android: `${ANDROID_OF_SDK[minSdk] ?? `API ${minSdk}`}`,
   prices: prices.length ? `$${prices[0].toFixed(2)} – $${prices[prices.length - 1].toFixed(2)}` : '?',
-  privacy: 'https://dev-northlab.github.io/keen-eye/privacy.html',
+  privacy: 'https://dev-northlab.github.io/keen-eye-privacy/',
 }
 
 const html = `<!doctype html>

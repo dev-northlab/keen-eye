@@ -12,6 +12,11 @@
     "devOpenAll": "Deschide toate nivelurile (test)",
     "devShowPlaces": "Arată locurile în niveluri (test)"
   },
+  "exitDialog": {
+    "title": "Pleci deja?",
+    "text": "Stelele și progresul tău sunt salvate. Revino curând — te așteaptă diferențe noi!",
+    "stay": "Joacă în continuare"
+  },
   "pictureStyle": {
     "label": "Stilul imaginilor",
     "classic": "Clasic",

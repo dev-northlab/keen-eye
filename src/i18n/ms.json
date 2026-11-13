@@ -437,6 +437,11 @@
     "exit": "Keluar",
     "stars": "Bintang: {n}"
   },
+  "exitDialog": {
+    "title": "Sudah mahu pergi?",
+    "text": "Bintang dan kemajuan anda telah disimpan. Kembali lagi nanti — perbezaan baharu sedang menanti!",
+    "stay": "Teruskan bermain"
+  },
   "info": {
     "about": "Perihal",
     "aboutText": "Keen Eye ialah permainan cari perbezaan dengan adegan yang hidup.",

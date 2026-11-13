@@ -12,6 +12,11 @@
     "devOpenAll": "Otevřít všechny úrovně (test)",
     "devShowPlaces": "Ukázat místa v úrovních (test)"
   },
+  "exitDialog": {
+    "title": "Už odcházíš?",
+    "text": "Tvoje hvězdy a postup jsou uložené. Brzy se vrať – čekají tě nové rozdíly!",
+    "stay": "Hrát dál"
+  },
   "pictureStyle": {
     "label": "Styl obrázků",
     "classic": "Klasický",
