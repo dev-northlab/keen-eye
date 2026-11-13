@@ -2,6 +2,7 @@
 // Motion difference: a zebra swishes its tail quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level413Redesign } from './level-413-redesign.ts'
 import { cloud, sky, sun } from './shapes.ts'
 
 /** Umbrella acacia; (x, y) = foot. Bounds: x ±90·s, y from −110·s to 0. */
@@ -70,6 +71,7 @@ const weaverNest = (x: number, y: number) =>
 
 export default travelLevel({
   id: 413,
+  redesign: level413Redesign,
   title: 'safari',
   parTimeSec: 96,
   place: { region: 'africa', country: 'ke', lat: -1.5, lon: 35.14 },

@@ -2,6 +2,7 @@
 // Motion difference: a camel swishes its tail quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level412Redesign } from './level-412-redesign.ts'
 import { cloud, palm, sky, sun } from './shapes.ts'
 
 /** Pyramid on the ground y, apex at (x, y − h), half base `half`: a sunlit and a shaded face. */
@@ -48,6 +49,7 @@ const lizard = (x: number, y: number) =>
 
 export default travelLevel({
   id: 412,
+  redesign: level412Redesign,
   title: 'giza',
   parTimeSec: 95,
   place: { region: 'africa', country: 'eg', lat: 29.98, lon: 31.13 },
