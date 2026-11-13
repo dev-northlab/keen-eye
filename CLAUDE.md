@@ -34,6 +34,15 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
   shot of `SHOTS`) at the store sizes — Play phone 1080×1920, iPhone 6.9" 1290×2796, iPad 13" 2048×2732 — plus the
   Play feature graphic 1024×500, into `store-screenshots/` (gitignored); all languages take about half an hour
+- `npm run store-video [-- <locale> ...]` — build + `scripts/store-video.ts` (default `en`): the promo video for the
+  Google Play listing (a YouTube link), `store-screenshots/video/keen-eye-<locale>.mp4`, 1920×1080, 30 fps, ~37 s,
+  opening on play. Each scene of `SCENES` plays the build in Chrome on a phone-sized screen (360×780) with the same
+  seeded player (`scripts/store-common.ts`, shared with `store-screenshots`) and is recorded through Chrome's screencast
+  while a drawn hand taps (real touches, as the finger presses) and swipes; a find pulses its circle (video only, not
+  the game; no zoom), and farm level 4 turns from drawn to 3D pictures that a shine sweeps across. It is shown in a
+  phone as tall as the frame beside its caption from `screenshots.txt`; the closing card adds "N levels free"
+  (`FREE_LEVELS`; English only); the scenes are crossfaded over `assets/music/main_menu.m4a` by ffmpeg. The hand rules
+  it out as an App Store preview (Apple forbids hands on the device)
 - `npm run play-preview` — `scripts/play-preview.ts`: `store-screenshots/play-preview.html`, a rough imitation of the
   Google Play app with the listing of every language (the game's page, search results, a "suggested" card with the
   feature graphic, a row of icons; optionally a promo video first) from the listing texts and those screenshots; for
