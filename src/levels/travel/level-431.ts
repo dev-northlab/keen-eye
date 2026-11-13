@@ -3,6 +3,7 @@
 // Motion difference: the balloons sway quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level431Redesign } from './level-431-redesign.ts'
 import { cloud, lampHead, lampPost, person, pigeon, sky } from './shapes.ts'
 
 const BRICK = '#b8442f'
@@ -81,6 +82,7 @@ const cap = (x: number, y: number, color: string) => `<path d="M${x - 9} ${y - 5
 
 export default travelLevel({
   id: 431,
+  redesign: level431Redesign,
   title: 'moscow',
   parTimeSec: 136,
   place: { region: 'europe', country: 'ru', lat: 55.75, lon: 37.62 },
