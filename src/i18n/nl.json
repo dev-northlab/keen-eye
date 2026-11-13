@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Afbeeldingsstijl",
     "classic": "Klassiek",
-    "redesign": "Nieuwe look"
+    "redesign": "Nieuwe look",
+    "drawnOnly": "Dit level heeft nog geen 3D-plaatjes, dus het wordt getekend getoond."
   },
   "theme": {
     "label": "Thema",

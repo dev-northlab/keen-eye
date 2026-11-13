@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Styl obrázků",
     "classic": "Klasický",
-    "redesign": "Nový vzhled"
+    "redesign": "Nový vzhled",
+    "drawnOnly": "Tato úroveň zatím nemá 3D obrázky, proto se zobrazuje kreslená."
   },
   "theme": {
     "label": "Motiv",

@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Billedstil",
     "classic": "Klassisk",
-    "redesign": "Nyt udseende"
+    "redesign": "Nyt udseende",
+    "drawnOnly": "Denne bane har endnu ingen 3D-billeder, så den vises tegnet."
   },
   "secret": {
     "findHere": "En gylden nøgle er gemt på en af banerne her. Find den!",

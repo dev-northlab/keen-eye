@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "絵のスタイル",
     "classic": "クラシック",
-    "redesign": "新しい見た目"
+    "redesign": "新しい見た目",
+    "drawnOnly": "このレベルにはまだ3Dの絵がないため、イラストで表示されます。"
   },
   "theme": {
     "label": "テーマ",

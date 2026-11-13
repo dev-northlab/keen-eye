@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Picture style",
     "classic": "Classic",
-    "redesign": "New look"
+    "redesign": "New look",
+    "drawnOnly": "This level has no 3D pictures yet, so it is shown drawn."
   },
   "theme": {
     "label": "Theme",

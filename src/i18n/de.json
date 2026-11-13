@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Bildstil",
     "classic": "Klassisch",
-    "redesign": "Neuer Look"
+    "redesign": "Neuer Look",
+    "drawnOnly": "Für dieses Level gibt es noch keine 3D-Bilder, daher wird es gezeichnet gezeigt."
   },
   "theme": {
     "label": "Design",

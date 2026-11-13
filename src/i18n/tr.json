@@ -20,7 +20,8 @@
   "pictureStyle": {
     "label": "Resim stili",
     "classic": "Klasik",
-    "redesign": "Yeni görünüm"
+    "redesign": "Yeni görünüm",
+    "drawnOnly": "Bu bölümün henüz 3D resimleri yok, bu yüzden çizim olarak gösteriliyor."
   },
   "theme": {
     "label": "Tema",

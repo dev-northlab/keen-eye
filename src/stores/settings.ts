@@ -41,8 +41,11 @@ export const useSettingsStore = defineStore('settings', () => {
   const vibration = ref(true)
   /** Follows the system until the player picks one (then stored). */
   const theme = ref<Theme>(systemTheme())
-  /** Drawn scenes or the redesigned pictures of the levels that have them (levels/picture-style.ts). */
-  const pictureStyle = ref<PictureStyle>('classic')
+  /**
+   * Drawn scenes or the redesigned pictures of the levels that have them (levels/picture-style.ts). New players start
+   * with the 3D pictures; a stored choice stays.
+   */
+  const pictureStyle = ref<PictureStyle>('redesign')
   /** Turned on by the testing code: Settings show the Development tools. */
   const developer = ref(false)
   /** Developer tools checkbox: levels get the "Show places" button (only in developer mode). */
@@ -75,7 +78,7 @@ export const useSettingsStore = defineStore('settings', () => {
     soundVolume.value = parseVolume(raw.soundVolume, raw.sound, DEFAULT_SOUND_VOLUME)
     vibration.value = bool(raw.vibration, true)
     theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
-    pictureStyle.value = isPictureStyle(raw.pictureStyle) ? raw.pictureStyle : 'classic'
+    pictureStyle.value = isPictureStyle(raw.pictureStyle) ? raw.pictureStyle : 'redesign'
     developer.value = raw.developer === true
     devShowPlaces.value = raw.devShowPlaces === true
   }

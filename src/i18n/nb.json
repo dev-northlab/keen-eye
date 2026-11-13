@@ -922,7 +922,8 @@
   "pictureStyle": {
     "label": "Bildestil",
     "classic": "Klassisk",
-    "redesign": "Nytt utseende"
+    "redesign": "Nytt utseende",
+    "drawnOnly": "Dette nivået har ingen 3D-bilder ennå, så det vises tegnet."
   },
   "secret": {
     "findHere": "En gyllen nøkkel er gjemt på et av brettene her. Finn den!",

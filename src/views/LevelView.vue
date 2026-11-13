@@ -1,3 +1,8 @@
+<script lang="ts">
+/** The note that a level has no 3D pictures yet has been shown in this session (it is told once). */
+let drawnOnlyNoted = false
+</script>
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -195,13 +200,24 @@ function start() {
   if (transformNotice.value) {
     transformWarned = true
     scene.pause()
-  }
+  } else noteDrawnOnly()
+}
+
+/**
+ * The 3D picture style is on, but this level has only its drawn scene (levels/picture-style.ts) and so no style
+ * switch: say why it looks drawn, once a session.
+ */
+function noteDrawnOnly() {
+  if (drawnOnlyNoted || settings.pictureStyle !== 'redesign' || level.kind !== 'svg' || level.redesign) return
+  drawnOnlyNoted = true
+  showNote(t('pictureStyle.drawnOnly'))
 }
 
 /** The warning is closed: the level starts (unless the pause menu opened over it). */
 function closeTransformNotice() {
   transformNotice.value = false
   if (!paused.value) scene?.resume()
+  noteDrawnOnly()
 }
 
 /** Hints this attempt can still take: "tiny boy" gives one, other levels their mode's few (calm 3, normal 1). */
