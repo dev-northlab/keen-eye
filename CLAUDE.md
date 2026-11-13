@@ -170,10 +170,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
   limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
   update every description when levels, modes or languages are added)
-- `public/privacy.html` — the privacy policy (English + Russian) the store listings link to,
-  https://dev-northlab.github.io/keen-eye/privacy.html; a static page, not a route, so GitHub Pages answers 200
-  (routes are served by `404.html`). The Pages web build is only for the developer's own testing, not a product, so the
-  policy covers the Android and iOS apps only. Keep it true when adding anything that touches data, network or permissions
+- The privacy policy (English + Russian) the store listings link to lives in its own public repository
+  `dev-northlab/keen-eye-privacy` (local clone `../keen-eye-privacy`, one `index.html`), published by GitHub Pages at
+  https://dev-northlab.github.io/keen-eye-privacy/. The game's own Pages build (`.github/workflows/pages.yml`) is only
+  for the developer's own testing, not a product, so the policy covers the Android and iOS apps only. Keep it true when adding anything that touches data, network or permissions
 
 ## Rules
 

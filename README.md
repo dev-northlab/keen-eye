@@ -105,6 +105,9 @@ uploads to TestFlight (setup steps are at the top of the file).
 **Web** — every push to `main` publishes a test build to
 [GitHub Pages](https://dev-northlab.github.io/keen-eye/) ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
 
+**Privacy policy** — a separate repository, `dev-northlab/keen-eye-privacy`, published by GitHub Pages at
+https://dev-northlab.github.io/keen-eye-privacy/.
+
 ---
 
 ## 🧩 How it's built
