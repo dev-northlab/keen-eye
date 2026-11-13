@@ -34,6 +34,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   differences and frames each screen under its caption (`assets/store/listing/<locale>/screenshots.txt`, one line per
   shot of `SHOTS`) at the store sizes — Play phone 1080×1920, iPhone 6.9" 1290×2796, iPad 13" 2048×2732 — plus the
   Play feature graphic 1024×500, into `store-screenshots/` (gitignored); all languages take about half an hour
+- `npm run play-preview` — `scripts/play-preview.ts`: `store-screenshots/play-preview.html`, a rough imitation of the
+  Google Play app with the listing of every language (the game's page, search results, a "suggested" card with the
+  feature graphic, a row of icons; optionally a promo video first) from the listing texts and those screenshots; for
+  the developer's own look only, never published (it imitates the store)
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
