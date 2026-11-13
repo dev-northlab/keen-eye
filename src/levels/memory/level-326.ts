@@ -1,4 +1,5 @@
 import { memoryLevel } from '../helpers.ts'
+import { level326Redesign } from './level-326-redesign.ts'
 import { bucket, duck } from '../shapes.ts'
 import { around, bottle, glassJar, painting, shelf, slipperPair } from './shapes.ts'
 import { pot } from '../time/shapes.ts'
@@ -36,6 +37,7 @@ export default memoryLevel({
   id: 326,
   title: 'memoryBathroom',
   showSeconds: 4,
+  redesign: level326Redesign,
   scene: ({ diff }) =>
     `<rect width="500" height="470" fill="#d6eef8"/><rect y="470" width="500" height="280" fill="#c9d6df"/>` +
     tiles(470) +

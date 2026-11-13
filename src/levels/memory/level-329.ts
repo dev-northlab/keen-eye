@@ -1,6 +1,7 @@
 import { tent } from '../chapter-03/shapes.ts'
 import { gull, palm, rock } from '../chapter-04/shapes.ts'
 import { memoryLevel } from '../helpers.ts'
+import { level329Redesign } from './level-329-redesign.ts'
 import { cloud, grass, stones, sun } from '../shapes.ts'
 import { around, big } from './shapes.ts'
 import { birds, lilyPad } from '../time/shapes.ts'
@@ -35,6 +36,7 @@ export default memoryLevel({
   id: 329,
   title: 'memoryOasis',
   showSeconds: 4,
+  redesign: level329Redesign,
   scene: ({ diff }) =>
     `<rect width="500" height="420" fill="#ffe0a3"/><rect y="350" width="500" height="70" fill="#ffd08a"/>` +
     sun(420, 80, '#ffb703') +
