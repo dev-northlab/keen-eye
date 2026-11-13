@@ -3,6 +3,7 @@
 // Motion difference: the load on the crane hook swings quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level417Redesign } from './level-417-redesign.ts'
 import { cloud, palm, person, sky, sun } from './shapes.ts'
 
 /** Spire of the basilica; (x, tip) = top, foot at y = 300. The pinnacle and windows are separate. */
@@ -63,6 +64,7 @@ const balloon = (x: number, y: number, color: string) =>
 
 export default travelLevel({
   id: 417,
+  redesign: level417Redesign,
   title: 'barcelona',
   parTimeSec: 102,
   place: { region: 'europe', country: 'es', lat: 41.4, lon: 2.17 },
