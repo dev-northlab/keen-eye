@@ -12,13 +12,6 @@
     "devOpenAll": "Отвори всички нива (тест)",
     "devShowPlaces": "Показвай местата в нивата (тест)"
   },
-  "season": {
-    "label": "Сезон",
-    "spring": "Пролет",
-    "summer": "Лято",
-    "autumn": "Есен",
-    "winter": "Зима"
-  },
   "pictureStyle": {
     "label": "Стил на картинките",
     "classic": "Класически",

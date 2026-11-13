@@ -1,5 +1,5 @@
 // Open Graph preview of the web version (link previews in messengers and social networks): npm run og
-// The home screen's own art: the summer meadow of MeadowScene.vue rendered by Vue on the server, under the sky,
+// The home screen's own art: the spring meadow of MeadowScene.vue rendered by Vue on the server, under the sky,
 // sun and clouds of ScreenBackdrop.vue, with the title, a tagline and the play button. Writes public/og-image.png
 // (1200×630), which the build copies next to index.html. The text uses Roboto (system-ui on Android); install it
 // first, otherwise resvg falls back to another sans-serif font.
@@ -13,12 +13,12 @@ const W = 1200
 const H = 630
 const OUT = 'public/og-image.png'
 
-// Colours of the home screen: style.css tokens and the summer meadow sky of ScreenBackdrop.vue.
+// Colours of the home screen: style.css tokens and the spring meadow sky of ScreenBackdrop.vue.
 const FG = '#23302b'
 const ACCENT = '#2f9e6e'
 const BG = '#f4f1ea'
-const SKY = '#9fd8f0'
-const SKY_MID = '#d6eef3'
+const SKY = '#a7def2'
+const SKY_MID = '#e3f5ea'
 const SUN = '#ffd45c'
 const FONT = `Roboto, 'Segoe UI', 'Noto Sans', sans-serif`
 
@@ -26,7 +26,7 @@ async function meadow(): Promise<string> {
   const vite = await createServer({ server: { middlewareMode: true, hmr: false }, appType: 'custom', logLevel: 'error' })
   try {
     const { default: MeadowScene } = await vite.ssrLoadModule('/src/components/MeadowScene.vue')
-    const html = await renderToString(createSSRApp({ render: () => h(MeadowScene, { season: 'summer' }) }))
+    const html = await renderToString(createSSRApp({ render: () => h(MeadowScene) }))
     // Scoped-style markers are valueless HTML attributes, which SVG (XML) does not allow.
     return html.replace(/ data-v-[0-9a-f]+/g, '')
   } finally {

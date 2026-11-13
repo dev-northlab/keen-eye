@@ -12,13 +12,6 @@
     "devOpenAll": "Apri tutti i livelli (test)",
     "devShowPlaces": "Mostra i punti nei livelli (test)"
   },
-  "season": {
-    "label": "Stagione",
-    "spring": "Primavera",
-    "summer": "Estate",
-    "autumn": "Autunno",
-    "winter": "Inverno"
-  },
   "pictureStyle": {
     "label": "Stile immagini",
     "classic": "Classico",

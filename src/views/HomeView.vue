@@ -7,7 +7,6 @@ import ModeSwitch from '../components/ModeSwitch.vue'
 import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
-import SeasonSwitch from '../components/SeasonSwitch.vue'
 import ThemeSwitch from '../components/ThemeSwitch.vue'
 import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { canExitApp, exitApp, pushBackHandler } from '../services/backButton.ts'
@@ -55,7 +54,6 @@ function play() {
   <main class="home">
     <ScreenBackdrop theme="meadow" />
     <div class="corner">
-      <SeasonSwitch />
       <ThemeSwitch />
       <!-- Developer mode only while few levels have redesigned pictures. -->
       <PictureStyleSwitch />
@@ -258,7 +256,7 @@ button,
   width: min(100%, var(--menu-width));
 }
 
-/* Season, day/night and picture style switches: top left, away from the sun (top right) and the centered menu. */
+/* Day/night and picture style switches: top left, away from the sun (top right) and the centered menu. */
 .corner {
   position: absolute;
   top: 12px;

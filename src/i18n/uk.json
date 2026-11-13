@@ -12,13 +12,6 @@
     "devOpenAll": "Відкрити всі рівні (тест)",
     "devShowPlaces": "Показати місця в рівнях (тест)"
   },
-  "season": {
-    "label": "Пора року",
-    "spring": "Весна",
-    "summer": "Літо",
-    "autumn": "Осінь",
-    "winter": "Зима"
-  },
   "pictureStyle": {
     "label": "Стиль картинок",
     "classic": "Класичний",

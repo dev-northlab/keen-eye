@@ -12,13 +12,6 @@
     "devOpenAll": "सभी लेवल खोलें (टेस्ट)",
     "devShowPlaces": "लेवल में जगहें दिखाएँ (टेस्ट)"
   },
-  "season": {
-    "label": "मौसम",
-    "spring": "वसंत",
-    "summer": "गर्मी",
-    "autumn": "पतझड़",
-    "winter": "सर्दी"
-  },
   "pictureStyle": {
     "label": "चित्र शैली",
     "classic": "क्लासिक",

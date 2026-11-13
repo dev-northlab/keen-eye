@@ -12,13 +12,6 @@
     "devOpenAll": "모든 레벨 열기 (테스트)",
     "devShowPlaces": "레벨에서 위치 보기 (테스트)"
   },
-  "season": {
-    "label": "계절",
-    "spring": "봄",
-    "summer": "여름",
-    "autumn": "가을",
-    "winter": "겨울"
-  },
   "pictureStyle": {
     "label": "그림 스타일",
     "classic": "클래식",

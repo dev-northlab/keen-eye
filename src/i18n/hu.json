@@ -12,13 +12,6 @@
     "devOpenAll": "Minden pálya megnyitása (teszt)",
     "devShowPlaces": "Helyek mutatása a pályákon (teszt)"
   },
-  "season": {
-    "label": "Évszak",
-    "spring": "Tavasz",
-    "summer": "Nyár",
-    "autumn": "Ősz",
-    "winter": "Tél"
-  },
   "pictureStyle": {
     "label": "Képstílus",
     "classic": "Klasszikus",

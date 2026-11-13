@@ -12,13 +12,6 @@
     "devOpenAll": "Deschide toate nivelurile (test)",
     "devShowPlaces": "Arată locurile în niveluri (test)"
   },
-  "season": {
-    "label": "Anotimp",
-    "spring": "Primăvară",
-    "summer": "Vară",
-    "autumn": "Toamnă",
-    "winter": "Iarnă"
-  },
   "pictureStyle": {
     "label": "Stilul imaginilor",
     "classic": "Clasic",

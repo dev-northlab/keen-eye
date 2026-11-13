@@ -12,13 +12,6 @@
     "devOpenAll": "Alle Level öffnen (Test)",
     "devShowPlaces": "Stellen in Leveln zeigen (Test)"
   },
-  "season": {
-    "label": "Jahreszeit",
-    "spring": "Frühling",
-    "summer": "Sommer",
-    "autumn": "Herbst",
-    "winter": "Winter"
-  },
   "pictureStyle": {
     "label": "Bildstil",
     "classic": "Klassisch",

@@ -12,13 +12,6 @@
     "devOpenAll": "Tüm bölümleri aç (test)",
     "devShowPlaces": "Bölümlerde yerleri göster (test)"
   },
-  "season": {
-    "label": "Mevsim",
-    "spring": "İlkbahar",
-    "summer": "Yaz",
-    "autumn": "Sonbahar",
-    "winter": "Kış"
-  },
   "pictureStyle": {
     "label": "Resim stili",
     "classic": "Klasik",

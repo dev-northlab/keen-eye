@@ -12,13 +12,6 @@
     "devOpenAll": "开放所有关卡（测试）",
     "devShowPlaces": "在关卡中显示位置（测试）"
   },
-  "season": {
-    "label": "季节",
-    "spring": "春",
-    "summer": "夏",
-    "autumn": "秋",
-    "winter": "冬"
-  },
   "pictureStyle": {
     "label": "图片风格",
     "classic": "经典",

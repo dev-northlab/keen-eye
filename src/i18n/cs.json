@@ -12,13 +12,6 @@
     "devOpenAll": "Otevřít všechny úrovně (test)",
     "devShowPlaces": "Ukázat místa v úrovních (test)"
   },
-  "season": {
-    "label": "Roční období",
-    "spring": "Jaro",
-    "summer": "Léto",
-    "autumn": "Podzim",
-    "winter": "Zima"
-  },
   "pictureStyle": {
     "label": "Styl obrázků",
     "classic": "Klasický",
