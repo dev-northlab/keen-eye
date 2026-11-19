@@ -131,13 +131,13 @@
   <circle cx="94" cy="625" r="1.2" fill="#222" />
   <path d="M102 640l10 6" stroke="#e8b98a" stroke-width="4" stroke-linecap="round" />
 
-  <!-- Bamboo; a tea table by the river. -->
+  <!-- Bamboo; a tea table by the river with a celadon jug. -->
   <path d="M480 740V600M492 740V620" stroke="#5aa84d" stroke-width="5" />
   <path d="M480 640h-10M480 680h12M492 660h-10" stroke="#5aa84d" stroke-width="3" stroke-linecap="round" />
   <rect x="206" y="672" width="80" height="7" rx="2" fill="#6b4226" />
   <path d="M212 679v14M280 679v14" stroke="#6b4226" stroke-width="4" />
-  <path d="M260 672q-2-10 6-10t6 10Z" fill="#f4ecd6" />
-  <path d="M272 664l5-3" stroke="#f4ecd6" stroke-width="2.5" stroke-linecap="round" />
+  <path d="M262 672q-5-7 1-12q-2-4 0-7h6q2 3 0 7q6 5 1 12Z" fill="#a9d4b4" stroke="#4f7d5c" stroke-width="1.6" stroke-linejoin="round" />
+  <path d="M261 652h10M270 656q6 1 4 7" fill="none" stroke="#4f7d5c" stroke-width="2" stroke-linecap="round" />
 
   <!-- The river with a duck and a little boat. -->
   <path d="M0 700q120-12 250 0t250-4V750H0Z" fill="#4fa9d8" />

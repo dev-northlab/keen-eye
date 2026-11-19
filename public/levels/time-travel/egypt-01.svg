@@ -36,7 +36,7 @@
   <!-- A dune on the right with the windmill on it. -->
   <path d="M360 300q40-46 80-42t60 14V320H360Z" fill="#efd08b" />
 
-  <!-- The Nile: a felucca, a crocodile, lotus leaves, waves. -->
+  <!-- The Nile: a boat with a square linen sail, a crocodile, lotus leaves, waves. -->
   <rect y="300" width="500" height="90" fill="url(#nile)" />
   <path d="M0 300q60 8 120 0t130 2 130-4 120 2V308H0Z" fill="#e9c97a" />
   <g data-anim="waves">
@@ -46,8 +46,10 @@
   <ellipse cx="88" cy="380" rx="10" ry="4" fill="#5aa84d" />
   <circle cx="74" cy="368" r="5" fill="#f4a7c6" />
   <g data-anim="boat">
-    <path d="M330 352V292" stroke="#7a4e33" stroke-width="3.5" />
-    <path d="M326 290L378 346H332Z" fill="#fffaf0" />
+    <path d="M330 350V288" stroke="#7a4e33" stroke-width="3.5" />
+    <path d="M309 296h42l3 30h-48Z" fill="#fffaf0" />
+    <path d="M305 295q25-5 50 0M304 327h52" fill="none" stroke="#7a4e33" stroke-width="2.6" stroke-linecap="round" />
+    <path d="M330 290L306 296M330 290L354 296" stroke="#7a4e33" stroke-width="1" />
     <path d="M286 350h104l-14 16h-78Z" fill="#8a5a33" />
     <path d="M290 354h96" stroke="#6b4226" stroke-width="2" />
     <circle cx="306" cy="340" r="6" fill="#b97a48" />

@@ -97,12 +97,16 @@
   <path d="M196 394q16-18 32-2l6-4q-20-20-42 2Z" fill="#4f8f3a" />
   <circle cx="216" cy="398" r="1.5" fill="#3b2a1a" />
 
-  <!-- The lantern post and the goose. -->
-  <rect x="318" y="356" width="6" height="86" fill="#3b3b4a" />
-  <rect x="312" y="438" width="18" height="6" rx="2" fill="#3b3b4a" />
-  <path d="M308 332L321 322 334 332Z" fill="#3b3b4a" />
-  <rect x="310" y="332" width="22" height="26" fill="#fff8d6" fill-opacity="0.85" stroke="#3b3b4a" stroke-width="3" />
-  <path d="M321 352q-4-6 0-12q4 6 0 12Z" fill="#f2a33a" />
+  <!-- The torch post (a torch in an iron cage on a wooden post) and the goose. -->
+  <rect x="318" y="350" width="6" height="92" fill="#7a4e33" />
+  <path d="M320 352v88" stroke="#5e3a22" stroke-width="1.5" />
+  <rect x="312" y="438" width="18" height="6" rx="2" fill="#9a958c" />
+  <g data-anim="torch">
+    <path d="M321 337q-11-6-6-19q3 6 6 4q-3-10 5-17q0 10 5 16q5 9-3 16Z" fill="#ff9f1c" />
+    <path d="M321 337q-5-5 0-12q5 6 0 12Z" fill="#ffd23f" />
+  </g>
+  <path d="M310 336h22l-4 15h-14Z" fill="#4a3a2e" />
+  <path d="M310 336h22M316 336l2 15M321 336v15M326 336l-2 15M313 344h16" fill="none" stroke="#3b3b4a" stroke-width="2.2" stroke-linecap="round" />
   <g data-anim="goose">
     <path d="M384 470v8M396 470v8" stroke="#ff9f1c" stroke-width="3" />
     <ellipse cx="390" cy="460" rx="18" ry="12" fill="#fafafa" />

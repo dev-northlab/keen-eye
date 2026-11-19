@@ -1198,6 +1198,12 @@
       "phase": 0.4
     },
     {
+      "key": "torch",
+      "type": "blink",
+      "period": 0.9,
+      "duty": 0.85
+    },
+    {
       "key": "goose",
       "type": "sway",
       "angle": 8,
