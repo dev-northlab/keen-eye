@@ -1,181 +1,219 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <!-- "Find the odd one out" level aztecs-01, the Aztecs. The odd items (groups with ids) must stay
-       inside their hitboxes in src/levels/time-travel/aztecs-01.json (percent of 800×500). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="750" viewBox="0 0 500 750">
+  <!-- "Find the odd one out" level aztecs-01, the Aztecs, upright 500×750. The odd items (groups with ids) must
+       stay inside their hitboxes in src/levels/time-travel/aztecs-01.json (percent of 500×750) and never move. -->
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#8fd0ee" />
-      <stop offset="1" stop-color="#fbeec8" />
+      <stop offset="0" stop-color="#7fcff5" />
+      <stop offset="1" stop-color="#fff3d6" />
     </linearGradient>
   </defs>
 
-  <!-- Sky. -->
-  <rect width="800" height="320" fill="url(#sky)" />
-  <circle cx="690" cy="70" r="48" fill="#fff3b0" opacity="0.6" />
+  <!-- Sky: sun, clouds. -->
+  <rect width="500" height="270" fill="url(#sky)" />
+  <circle cx="440" cy="50" r="38" fill="#fff3b0" opacity="0.6" />
   <g data-anim="sun" fill="#ffd23f">
-    <circle cx="690" cy="70" r="34" />
+    <circle cx="440" cy="50" r="27" />
   </g>
   <g data-anim="clouds" fill="#fff">
-    <ellipse cx="300" cy="70" rx="40" ry="14" /><circle cx="288" cy="62" r="14" /><circle cx="312" cy="58" r="17" />
-    <ellipse cx="540" cy="150" rx="30" ry="10" /><circle cx="550" cy="143" r="12" />
+    <ellipse cx="250" cy="60" rx="38" ry="13" /><circle cx="238" cy="52" r="13" /><circle cx="262" cy="48" r="16" />
+    <ellipse cx="160" cy="130" rx="26" ry="9" /><circle cx="168" cy="124" r="10" />
   </g>
 
-  <!-- The volcano. -->
-  <path d="M0 300L110 170q20-18 40 0L290 300Z" fill="#8c8aa6" />
-  <path d="M130 162q12 2 20 8L290 300H170Z" fill="#7a7894" />
-  <path d="M96 186l14-16q20-18 40 0l14 16-10 6-10-8-10 10-10-10-10 8Z" fill="#fff" />
+  <!-- The volcano with its smoke; a hill on the right. -->
+  <path d="M0 260L80 140q16-16 32 0L210 260Z" fill="#8c8aa6" />
+  <path d="M96 132q10 2 16 8L210 260H124Z" fill="#7a7894" />
+  <path d="M66 156l14-16q16-16 32 0l12 14-9 6-8-7-8 9-8-9-8 7Z" fill="#fff" />
   <g data-anim="smoke" fill="#e6e3ee">
-    <circle cx="130" cy="146" r="10" /><circle cx="140" cy="132" r="12" /><circle cx="126" cy="118" r="9" />
+    <circle cx="96" cy="118" r="9" /><circle cx="104" cy="104" r="11" /><circle cx="92" cy="90" r="8" />
   </g>
+  <path d="M330 262q60-40 170-30V270H330Z" fill="#8fbf6c" />
 
-  <!-- Lake. -->
-  <rect y="290" width="800" height="70" fill="#4fa3c7" />
+  <!-- The lake with floating fields and a canoe. -->
+  <rect y="258" width="500" height="80" fill="#4fa3c7" />
   <g data-anim="waves">
-    <path d="M30 300h24M220 312h28M560 304h26M700 318h22M640 340h20" stroke="#bfeaff" stroke-width="3" stroke-linecap="round" />
+    <path d="M140 272h24M260 284h28M420 276h26M180 316h20M330 322h24" stroke="#bfeaff" stroke-width="3" stroke-linecap="round" />
   </g>
-  <!-- Fields on the lake. -->
-  <rect x="600" y="296" width="70" height="12" rx="3" fill="#6fae4f" />
-  <rect x="690" y="300" width="90" height="12" rx="3" fill="#6fae4f" />
-  <path d="M610 298v-6M620 298v-6M630 298v-6M640 298v-6M650 298v-6M700 302v-6M712 302v-6M724 302v-6M736 302v-6M748 302v-6M760 302v-6" stroke="#3f7f2f" stroke-width="2" />
+  <rect x="380" y="290" width="60" height="11" rx="3" fill="#6fae4f" />
+  <rect x="420" y="306" width="74" height="11" rx="3" fill="#6fae4f" />
+  <path d="M388 292v-6M398 292v-6M408 292v-6M418 292v-6M428 292v-6M430 308v-6M442 308v-6M454 308v-6M466 308v-6M478 308v-6" stroke="#3f7f2f" stroke-width="2" />
   <g data-anim="canoe">
-    <path d="M600 334q50 10 100 0l-6 8h-88Z" fill="#8a5a33" />
-    <path d="M640 334v-14" stroke="#d29b6b" stroke-width="5" stroke-linecap="round" />
-    <circle cx="640" cy="314" r="6" fill="#b5784c" />
-    <path d="M634 312h12" stroke="#222" stroke-width="2" />
-    <path d="M630 340l24-22" stroke="#6b4226" stroke-width="2.5" />
+    <g transform="translate(110 18)">
+    <path d="M250 300q44 9 88 0l-5 7h-78Z" fill="#8a5a33" />
+    <path d="M286 300v-12" stroke="#d29b6b" stroke-width="5" stroke-linecap="round" />
+    <circle cx="286" cy="283" r="6" fill="#b5784c" />
+    <path d="M276 306l22-20" stroke="#6b4226" stroke-width="2.5" />
+  </g>
   </g>
 
-  <!-- Plaza. -->
-  <rect y="350" width="800" height="150" fill="#e0c48f" />
-  <path d="M0 350h800" stroke="#c9ab72" stroke-width="3" />
+  <!-- The plaza. -->
+  <rect y="330" width="500" height="420" fill="#e0c48f" />
+  <path d="M0 330h500" stroke="#c9ab72" stroke-width="3" />
 
   <!-- The great temple. -->
-  <rect x="290" y="306" width="220" height="44" fill="#c9b48a" />
-  <rect x="312" y="268" width="176" height="40" fill="#d6c39a" />
-  <rect x="334" y="232" width="132" height="38" fill="#c9b48a" />
-  <rect x="356" y="196" width="88" height="38" fill="#d6c39a" />
-  <path d="M290 306h220M312 268h176M334 232h132" stroke="#a8915f" stroke-width="3" />
-  <path d="M376 196h48v154h-48Z" fill="#b39d6d" />
-  <path d="M376 206h48M376 218h48M376 230h48M376 242h48M376 254h48M376 266h48M376 278h48M376 290h48M376 302h48M376 314h48M376 326h48M376 338h48" stroke="#9a8455" stroke-width="2" />
-  <path d="M400 196v154" stroke="#9a8455" stroke-width="3" />
-  <!-- Shrines on top. -->
-  <rect x="360" y="166" width="34" height="30" fill="#c0392b" />
-  <rect x="370" y="178" width="14" height="18" fill="#3b2a1a" />
-  <path d="M356 166h42l-6-12h-30Z" fill="#8e2a22" />
-  <rect x="406" y="166" width="34" height="30" fill="#f4f1e6" />
-  <rect x="416" y="178" width="14" height="18" fill="#3b2a1a" />
-  <path d="M402 166h42l-6-12h-30Z" fill="#2e86c1" />
+  <rect x="140" y="292" width="220" height="40" fill="#c9b48a" />
+  <rect x="162" y="256" width="176" height="38" fill="#d6c39a" />
+  <rect x="184" y="222" width="132" height="36" fill="#c9b48a" />
+  <rect x="206" y="188" width="88" height="36" fill="#d6c39a" />
+  <path d="M140 292h220M162 256h176M184 222h132" stroke="#a8915f" stroke-width="3" />
+  <path d="M226 188h48v144h-48Z" fill="#b39d6d" />
+  <path d="M226 198h48M226 210h48M226 222h48M226 234h48M226 246h48M226 258h48M226 270h48M226 282h48M226 294h48M226 306h48M226 318h48" stroke="#9a8455" stroke-width="2" />
+  <path d="M250 188v144" stroke="#9a8455" stroke-width="3" />
+  <rect x="210" y="158" width="34" height="30" fill="#c0392b" />
+  <rect x="220" y="170" width="14" height="18" fill="#3b2a1a" />
+  <path d="M206 158h42l-6-12h-30Z" fill="#8e2a22" />
+  <rect x="256" y="158" width="34" height="30" fill="#f4f1e6" />
+  <rect x="266" y="170" width="14" height="18" fill="#3b2a1a" />
+  <path d="M252 158h42l-6-12h-30Z" fill="#2e86c1" />
   <g data-anim="banner-left">
-    <path d="M362 154v-22" stroke="#6b4226" stroke-width="2" />
-    <path d="M362 132h14l-3 5 3 5h-14Z" fill="#2ecc71" />
+    <path d="M212 146v-22" stroke="#6b4226" stroke-width="2" />
+    <path d="M212 124h14l-3 5 3 5h-14Z" fill="#2ecc71" />
   </g>
   <g data-anim="banner-right">
-    <path d="M438 154v-22" stroke="#6b4226" stroke-width="2" />
-    <path d="M438 132h14l-3 5 3 5h-14Z" fill="#f39c12" />
+    <path d="M288 146v-22" stroke="#6b4226" stroke-width="2" />
+    <path d="M288 124h14l-3 5 3 5h-14Z" fill="#f39c12" />
   </g>
 
-  <!-- Eagle on a cactus. -->
-  <rect x="742" y="342" width="40" height="10" rx="4" fill="#9aa3ab" />
+  <!-- The eagle on a cactus. -->
+  <rect x="442" y="368" width="40" height="10" rx="4" fill="#9aa3ab" />
   <g fill="#4c9a3f">
-    <ellipse cx="762" cy="328" rx="8" ry="16" />
-    <ellipse cx="748" cy="318" rx="6" ry="11" transform="rotate(-30 748 318)" />
-    <ellipse cx="776" cy="320" rx="6" ry="11" transform="rotate(30 776 320)" />
+    <ellipse cx="462" cy="354" rx="8" ry="16" />
+    <ellipse cx="448" cy="344" rx="6" ry="11" transform="rotate(-30 448 344)" />
+    <ellipse cx="476" cy="346" rx="6" ry="11" transform="rotate(30 476 346)" />
   </g>
-  <g fill="#e74c3c"><circle cx="746" cy="308" r="2.5" /><circle cx="779" cy="309" r="2.5" /></g>
-  <path d="M754 312q8-12 18 0q-6 6-9 6t-9-6Z" fill="#6b4226" />
-  <circle cx="768" cy="304" r="5" fill="#6b4226" />
-  <path d="M772 304l6 2-6 2Z" fill="#f2b04a" />
+  <g fill="#e74c3c"><circle cx="446" cy="334" r="2.5" /><circle cx="479" cy="335" r="2.5" /></g>
+  <path d="M454 338q8-12 18 0q-6 6-9 6t-9-6Z" fill="#6b4226" />
+  <circle cx="468" cy="330" r="5" fill="#6b4226" />
+  <path d="M472 330l6 2-6 2Z" fill="#f2b04a" />
   <g data-anim="wings">
-    <path d="M756 310q-16-12-12-26q8 8 14 22ZM768 310q16-12 12-26q-8 8-14 22Z" fill="#8a5a33" />
+    <path d="M456 336q-16-12-12-26q8 8 14 22ZM468 336q16-12 12-26q-8 8-14 22Z" fill="#8a5a33" />
   </g>
 
-  <!-- Market stall. -->
-  <path d="M36 380h200" stroke="#6b4226" stroke-width="3" />
-  <path d="M40 380v76M232 380v76" stroke="#6b4226" stroke-width="4" />
+  <!-- The market stall and the trader. -->
+  <path d="M16 380h190" stroke="#6b4226" stroke-width="3" />
+  <path d="M20 380v84M202 380v84" stroke="#6b4226" stroke-width="4" />
   <g data-anim="awning">
-    <path d="M30 380l16-22h180l16 22Z" fill="#e67e22" />
-    <path d="M70 358l-8 22M110 358l-4 22M150 358v22M190 358l4 22" stroke="#d35400" stroke-width="2" />
+    <path d="M10 380l16-22h170l16 22Z" fill="#e67e22" />
+    <path d="M50 358l-8 22M90 358l-4 22M130 358v22M170 358l4 22" stroke="#d35400" stroke-width="2" />
   </g>
-  <rect x="44" y="446" width="186" height="12" rx="3" fill="#c8a35a" />
-  <path d="M44 452h186" stroke="#a8843f" stroke-width="1.5" />
-  <!-- The trader. -->
-  <path d="M120 446q0-30 16-30t16 30Z" fill="#f4f1e6" />
-  <path d="M124 426h24" stroke="#2e86c1" stroke-width="3" />
-  <circle cx="136" cy="404" r="11" fill="#b5784c" />
-  <path d="M124 404q0-14 12-14t12 14v6l-2-8h-20l-2 8Z" fill="#222" />
-  <circle cx="140" cy="405" r="1.3" fill="#222" />
-  <!-- Maize, avocados, cacao. -->
-  <g fill="#f4c430"><ellipse cx="58" cy="440" rx="9" ry="4" /><ellipse cx="66" cy="436" rx="9" ry="4" /><ellipse cx="56" cy="432" rx="9" ry="4" /></g>
-  <path d="M48 440l-6-2M57 432l-6-2M75 436l5-2" stroke="#7fb24a" stroke-width="2" stroke-linecap="round" />
-  <g fill="#b0532e"><ellipse cx="204" cy="432" rx="4" ry="6" /><ellipse cx="214" cy="430" rx="4" ry="6" /></g>
-  <g fill="#3f7f2f"><ellipse cx="198" cy="440" rx="5" ry="6.5" /><ellipse cx="208" cy="442" rx="5" ry="6.5" /><ellipse cx="218" cy="440" rx="5" ry="6.5" /></g>
+  <path d="M96 450q0-30 16-30t16 30Z" fill="#f4f1e6" />
+  <path d="M100 430h24" stroke="#2e86c1" stroke-width="3" />
+  <circle cx="112" cy="408" r="11" fill="#b5784c" />
+  <path d="M100 408q0-14 12-14t12 14v6l-2-8h-20l-2 8Z" fill="#222" />
+  <circle cx="116" cy="409" r="1.3" fill="#222" />
+  <rect x="24" y="450" width="176" height="12" rx="3" fill="#c8a35a" />
+  <g fill="#f4c430"><ellipse cx="96" cy="446" rx="9" ry="4" /><ellipse cx="104" cy="442" rx="9" ry="4" /></g>
+  <g fill="#3f7f2f"><ellipse cx="176" cy="444" rx="5" ry="6.5" /><ellipse cx="186" cy="446" rx="5" ry="6.5" /></g>
+  <g fill="#b0532e"><ellipse cx="132" cy="444" rx="4" ry="6" /><ellipse cx="142" cy="442" rx="4" ry="6" /></g>
 
-  <!-- The priest with a cup of chocolate. -->
-  <rect x="412" y="446" width="56" height="8" rx="2" fill="#8a5a33" />
-  <path d="M418 454v12M462 454v12" stroke="#8a5a33" stroke-width="4" />
-  <path d="M428 446q-2-14 8-14q10 0 8 14Z" fill="#b0532e" />
-  <path d="M428 434q8-6 16 0" fill="#f3e3c8" />
-  <path d="M480 462q-6-40 16-48q22 8 16 48Z" fill="#1f3f6b" />
-  <path d="M488 420h16" stroke="#f4c430" stroke-width="3" />
-  <circle cx="496" cy="400" r="11" fill="#b5784c" />
-  <path d="M484 398q0-14 12-14t12 14Z" fill="#222" />
-  <path d="M484 386l-6-16M492 384l-2-18M500 384l2-18M508 386l6-16" stroke="#2ecc71" stroke-width="3" stroke-linecap="round" />
-  <circle cx="492" cy="401" r="1.3" fill="#222" />
-  <path d="M486 432l-14 12" stroke="#b5784c" stroke-width="5" stroke-linecap="round" />
+  <!-- The priest with his cocoa table (still: he wears the glasses). -->
+  <rect x="300" y="446" width="66" height="8" rx="2" fill="#8a5a33" />
+  <path d="M306 454v14M360 454v14" stroke="#8a5a33" stroke-width="4" />
+  <path d="M344 446q-2-14 8-14q10 0 8 14Z" fill="#b0532e" />
+  <path d="M344 434q8-6 16 0" fill="#f3e3c8" />
+  <path d="M392 470q-6-44 18-52q24 8 18 52Z" fill="#1f3f6b" />
+  <path d="M400 424h20" stroke="#f4c430" stroke-width="3" />
+  <circle cx="410" cy="402" r="12" fill="#b5784c" />
+  <path d="M398 400q0-14 12-14t12 14Z" fill="#222" />
+  <path d="M398 388l-6-16M406 386l-2-18M414 386l2-18M422 388l6-16" stroke="#2ecc71" stroke-width="3" stroke-linecap="round" />
+  <path d="M398 436l-14 10" stroke="#b5784c" stroke-width="5" stroke-linecap="round" />
 
-  <!-- The child. -->
-  <path d="M548 462v-14M558 462v-14" stroke="#b5784c" stroke-width="5" stroke-linecap="round" />
-  <path d="M542 420h22l4 30h-30Z" fill="#f4f1e6" />
-  <circle cx="553" cy="408" r="10" fill="#b5784c" />
-  <path d="M543 406q0-12 10-12t10 12h-3l-2-5h-10l-2 5Z" fill="#222" />
-  <circle cx="556" cy="409" r="1.2" fill="#222" />
-  <path d="M564 426l8 4" stroke="#b5784c" stroke-width="4" stroke-linecap="round" />
+  <!-- Turkeys strutting (they belong here). -->
+  <g data-anim="turkey-1">
+    <ellipse cx="150" cy="520" rx="14" ry="10" fill="#4a3a32" />
+    <path d="M140 516q-14-12-6-24q6 8 10 18ZM146 512q-6-16 4-22q4 10 2 22Z" fill="#6b4a3a" />
+    <path d="M160 514q6-6 6-14" stroke="#4a3a32" stroke-width="4" stroke-linecap="round" fill="none" />
+    <circle cx="166" cy="498" r="4" fill="#8fb3d9" />
+    <path d="M168 502q2 4 0 8" stroke="#e63946" stroke-width="2.5" fill="none" stroke-linecap="round" />
+    <path d="M146 528v8M154 528v8" stroke="#e0a040" stroke-width="2" />
+  </g>
 
-  <!-- The eagle warrior. -->
-  <path d="M600 462v-26M614 462v-26" stroke="#b5784c" stroke-width="6" stroke-linecap="round" />
-  <path d="M594 400h26l4 38h-34Z" fill="#f4f1e6" />
-  <path d="M594 412h30" stroke="#c0392b" stroke-width="4" />
-  <path d="M624 404l14 34" stroke="#b5784c" stroke-width="5" stroke-linecap="round" />
-  <path d="M640 446l6-90" stroke="#6b4226" stroke-width="3" stroke-linecap="round" />
-  <path d="M640 356l-3 10h7Z" fill="#2c3e50" />
-  <circle cx="607" cy="386" r="11" fill="#b5784c" />
-  <path d="M594 388q0-20 13-20t13 18l8 4h-8Z" fill="#f4f1e6" />
-  <path d="M620 386l10 4-10 2Z" fill="#f2b04a" />
-  <path d="M598 372l-8-12M604 368l-4-14M612 368l2-14" stroke="#c0392b" stroke-width="3" stroke-linecap="round" />
-  <circle cx="610" cy="388" r="1.3" fill="#222" />
-  <g fill="#c0392b"><rect x="586" y="404" width="10" height="26" rx="4" /></g>
+  <!-- The child (still: she holds the ice cream). -->
+  <path d="M74 650v-14M86 650v-14" stroke="#b5784c" stroke-width="5" stroke-linecap="round" />
+  <path d="M68 606h24l4 32h-32Z" fill="#f4f1e6" />
+  <path d="M68 616h28" stroke="#e67e22" stroke-width="3" />
+  <circle cx="80" cy="594" r="10" fill="#b5784c" />
+  <path d="M70 592q0-12 10-12t10 12h-3l-2-5h-10l-2 5Z" fill="#222" />
+  <circle cx="83" cy="595" r="1.2" fill="#222" />
+  <path d="M90 612l10-6" stroke="#b5784c" stroke-width="4" stroke-linecap="round" />
 
-  <!-- Water jar. -->
-  <path d="M762 462q-12-6-10-22q2-14 16-14t16 14q2 16-10 22Z" fill="#c8643b" />
-  <rect x="762" y="420" width="12" height="8" rx="2" fill="#b0532e" />
+  <!-- The eagle warrior (still: he holds the telescope). -->
+  <path d="M226 740v-26M240 740v-26" stroke="#b5784c" stroke-width="6" stroke-linecap="round" />
+  <path d="M220 676h26l4 40h-34Z" fill="#f4f1e6" />
+  <path d="M220 688h30" stroke="#c0392b" stroke-width="4" />
+  <path d="M248 680l20-14" stroke="#b5784c" stroke-width="5" stroke-linecap="round" />
+  <path d="M212 724l-6-90" stroke="#6b4226" stroke-width="3" stroke-linecap="round" />
+  <path d="M206 634l-3 10h7Z" fill="#2c3e50" />
+  <circle cx="233" cy="662" r="11" fill="#b5784c" />
+  <path d="M220 664q0-20 13-20t13 18l8 4h-8Z" fill="#f4f1e6" />
+  <path d="M246 662l10 4-10 2Z" fill="#f2b04a" />
+  <path d="M224 648l-8-12M230 644l-4-14M238 644l2-14" stroke="#c0392b" stroke-width="3" stroke-linecap="round" />
+
+  <!-- The brazier with its fire; the water jar; a dog; marigolds. -->
+  <path d="M30 722h44l-6 18h-32Z" fill="#7a7894" />
+  <g data-anim="fire">
+    <path d="M38 722q-4-16 8-26q0 10 6 12q2-10 10-14q-2 14 4 18q2 8-6 10Z" fill="#ff8a1f" />
+  </g>
+  <path d="M352 740q-12-6-10-22q2-14 16-14t16 14q2 16-10 22Z" fill="#c8643b" />
+  <rect x="352" y="698" width="12" height="8" rx="2" fill="#b0532e" />
+  <g data-anim="dog-tail">
+    <path d="M314 636q8-4 8-14" fill="none" stroke="#5a5560" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+  <ellipse cx="298" cy="640" rx="18" ry="8" fill="#5a5560" />
+  <circle cx="281" cy="633" r="7" fill="#5a5560" />
+  <path d="M277 627l-1-7 5 4ZM285 627l1-7-5 4Z" fill="#5a5560" />
+  <g fill="#f39c12">
+    <circle cx="20" cy="560" r="4" /><circle cx="30" cy="566" r="4" /><circle cx="480" cy="640" r="4" /><circle cx="470" cy="646" r="4" />
+  </g>
+  <path d="M20 564v8M30 570v8M480 644v8M470 650v8" stroke="#4f8f3a" stroke-width="2" />
 
   <!-- Odd items. -->
-  <g id="helicopter">
+  <g id="helicopter" transform="translate(-140 -10)">
     <path d="M486 96h64" stroke="#2c3e50" stroke-width="2.5" stroke-linecap="round" />
     <path d="M518 96v6" stroke="#2c3e50" stroke-width="2.5" />
     <path d="M500 112q0-10 18-10q16 0 18 12l30-4v6l-30 4q-4 8-18 8q-18 0-18-16Z" fill="#e74c3c" />
     <path d="M504 112q0-6 10-6v10h-10Z" fill="#bfeaff" />
-    <path d="M562 104l6-8" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
     <path d="M504 128h30M510 124v4M528 124v4" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" />
   </g>
-  <g id="motor-boat">
+  <g id="windmill">
+    <path d="M442 254L446 214h12l4 40Z" fill="#d8cdb8" />
+    <path d="M440 216l12-12 12 12Z" fill="#9c5a3c" />
+    <rect x="448" y="238" width="8" height="16" rx="3" fill="#6b4226" />
+    <path d="M452 210l-18-17M452 210l18-17M452 210l-17 19M452 210l17 19" stroke="#6b4226" stroke-width="3" stroke-linecap="round" />
+    <path d="M438 197l-5 5 7 7 5-5ZM466 197l5 5-7 7-5-5ZM440 222l-5-5 7-7 5 5ZM464 222l5-5-7-7-5 5Z" fill="#fffaf0" />
+    <circle cx="452" cy="210" r="3" fill="#3b2a1a" />
+  </g>
+  <g id="motor-boat" transform="translate(4 -28)">
     <path d="M24 334q50 10 100 0l-6 8h-88Z" fill="#8a5a33" />
     <path d="M70 334v-14" stroke="#d29b6b" stroke-width="5" stroke-linecap="round" />
     <circle cx="70" cy="314" r="6" fill="#b5784c" />
-    <path d="M64 312h12" stroke="#222" stroke-width="2" />
     <rect x="12" y="318" width="12" height="10" rx="2" fill="#2c3e50" />
     <path d="M18 328v12" stroke="#7b8794" stroke-width="3" />
     <path d="M24 322l12 4" stroke="#7b8794" stroke-width="2" stroke-linecap="round" />
   </g>
   <g id="banana">
-    <path d="M160 442q4 6 14 4q8-2 10-10q-4 6-12 6t-12 0Z" fill="#f7dc3a" />
-    <path d="M162 438q4 6 14 4q8-2 10-10q-4 6-12 6t-12 0Z" fill="#f4d020" />
-    <path d="M160 442l-2-3M184 432l2-3" stroke="#6b4226" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M36 446q4 6 14 4q8-2 10-10q-4 6-12 6t-12 0Z" fill="#f7dc3a" />
+    <path d="M38 442q4 6 14 4q8-2 10-10q-4 6-12 6t-12 0Z" fill="#f4d020" />
+  </g>
+  <g id="stirrups">
+    <path d="M202 400v20" stroke="#5b3a22" stroke-width="3" />
+    <path d="M194 420h16v9q0 5-8 5t-8-5Z" fill="none" stroke="#8c8c96" stroke-width="3.2" stroke-linejoin="round" />
+    <path d="M193 431h18" stroke="#8c8c96" stroke-width="3.6" stroke-linecap="round" />
   </g>
   <g id="baguette">
-    <path d="M84 444l30-8q4 1 2 5l-30 8q-4-1-2-5Z" fill="#d9a05b" />
-    <path d="M92 443l4-2M100 441l4-2M108 439l4-2" stroke="#b07a3a" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M150 446l30-8q4 1 2 5l-30 8q-4-1-2-5Z" fill="#d9a05b" transform="translate(-40 14) scale(1)" />
+    <path d="M118 459l4-2M126 457l4-2M134 455l4-2" stroke="#b07a3a" stroke-width="1.5" stroke-linecap="round" />
   </g>
-  <g id="cart">
+  <g id="glasses" fill="none" stroke="#222" stroke-width="2">
+    <circle cx="404" cy="402" r="4.5" />
+    <circle cx="416" cy="402" r="4.5" />
+    <path d="M408.5 402h3" />
+  </g>
+  <g id="chocolate-bar">
+    <rect x="310" y="436" width="22" height="9" rx="1" fill="#6b3a1f" />
+    <rect x="319" y="436" width="13" height="9" fill="#c0392b" />
+    <path d="M314 436v9" stroke="#4a2814" stroke-width="1" />
+  </g>
+  <g id="cart" transform="translate(-50 86)">
     <path d="M250 430h66l-4 18h-58Z" fill="#a8743f" />
     <path d="M254 436h56M256 442h52" stroke="#8a5a33" stroke-width="1.5" />
     <g fill="#f4c430"><ellipse cx="270" cy="426" rx="10" ry="4" /><ellipse cx="290" cy="424" rx="10" ry="4" /><ellipse cx="282" cy="420" rx="9" ry="3.6" /></g>
@@ -184,7 +222,7 @@
     <circle cx="298" cy="452" r="11" fill="#6b4226" /><circle cx="298" cy="452" r="4" fill="#a8743f" />
     <path d="M268 441v22M257 452h22M298 441v22M287 452h22" stroke="#a8743f" stroke-width="2" />
   </g>
-  <g id="horse">
+  <g id="horse" transform="translate(-282 140)">
     <path d="M664 462v-30M674 462v-30M712 462v-30M722 462v-30" stroke="#8a5a33" stroke-width="6" stroke-linecap="round" />
     <ellipse cx="694" cy="424" rx="36" ry="16" fill="#a8743f" />
     <path d="M722 418l16-28q6-6 14 0l6 12q2 6-4 6l-10-2-8 18Z" fill="#a8743f" />
@@ -194,13 +232,26 @@
     <path d="M660 418q-12 8-10 26" fill="none" stroke="#5a3a22" stroke-width="5" stroke-linecap="round" />
   </g>
   <g id="ice-cream">
-    <path d="M570 432l5 12 5-12Z" fill="#d9a05b" />
-    <circle cx="575" cy="429" r="5.5" fill="#f9cad8" />
-    <circle cx="575" cy="425" r="1.6" fill="#e74c3c" />
+    <path d="M100 606l5 13 5-13Z" fill="#d9a05b" />
+    <circle cx="105" cy="602" r="6" fill="#f9cad8" />
+    <circle cx="105" cy="597" r="1.8" fill="#e74c3c" />
   </g>
-  <g id="chocolate-bar">
-    <rect x="442" y="438" width="20" height="8" rx="1" fill="#6b3a1f" />
-    <rect x="450" y="438" width="12" height="8" fill="#c0392b" />
-    <path d="M446 438v8" stroke="#4a2814" stroke-width="1" />
+  <g id="telescope">
+    <path d="M262 670l32-16" stroke="#b07a2a" stroke-width="6" stroke-linecap="round" />
+    <path d="M275 664l19-9" stroke="#d9a84a" stroke-width="8" stroke-linecap="round" />
+    <path d="M290 656l7-3" stroke="#6b4226" stroke-width="9" stroke-linecap="round" />
+  </g>
+  <g id="hourglass" transform="translate(8 8)">
+    <path d="M430 680h24M430 714h24" stroke="#8a5a33" stroke-width="4" stroke-linecap="round" />
+    <path d="M434 682q0 12 8 15q-8 3-8 15h16q0-12-8-15q8-3 8-15Z" fill="#dff2ff" fill-opacity="0.7" stroke="#8aa6b8" stroke-width="1.5" />
+    <path d="M437 686h10l-5 9ZM436 711q6-8 12 0Z" fill="#e8c26a" />
+    <path d="M432 682v32M452 682v32" stroke="#8a5a33" stroke-width="2.5" />
+  </g>
+  <g id="matches">
+    <rect x="86" y="726" width="22" height="10" rx="1.5" fill="#3a6fd8" />
+    <rect x="86" y="726" width="8" height="10" fill="#e8d3a8" />
+    <path d="M98 731h7" stroke="#ffd23f" stroke-width="3" />
+    <path d="M102 726l9-6" stroke="#e8d3a8" stroke-width="2" stroke-linecap="round" />
+    <circle cx="112" cy="719.5" r="2.2" fill="#d93a3a" />
   </g>
 </svg>
