@@ -1,210 +1,234 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <!-- "Find the odd one out" level pirates-01, the golden age of piracy. The odd items (groups with ids)
-       must stay inside their hitboxes in src/levels/time-travel/pirates-01.json (percent of 800×500). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="750" viewBox="0 0 500 750">
+  <!-- "Find the odd one out" level pirates-01, the golden age of piracy, upright 500×750. The odd items (groups
+       with ids) must stay inside their hitboxes in src/levels/time-travel/pirates-01.json (percent of 500×750) and
+       never move. -->
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7fd1f5" />
-      <stop offset="1" stop-color="#fdf3d6" />
+      <stop offset="0" stop-color="#6cc4f0" />
+      <stop offset="1" stop-color="#e6f7ff" />
     </linearGradient>
   </defs>
 
-  <!-- Sky. -->
-  <rect width="800" height="230" fill="url(#sky)" />
-  <circle cx="690" cy="70" r="52" fill="#fff3b0" opacity="0.6" />
+  <!-- Sky: sun, clouds, gulls. -->
+  <rect width="500" height="250" fill="url(#sky)" />
+  <circle cx="70" cy="60" r="40" fill="#fff3b0" opacity="0.6" />
   <g data-anim="sun" fill="#ffd23f">
-  <circle cx="690" cy="70" r="40" />
+    <circle cx="70" cy="60" r="28" />
   </g>
-  <g data-anim="cloud">
-  <g fill="#fff">
-    <ellipse cx="470" cy="70" rx="44" ry="16" /><circle cx="454" cy="62" r="16" /><circle cx="482" cy="56" r="20" />
-  </g>
+  <g data-anim="clouds" fill="#fff">
+    <ellipse cx="220" cy="50" rx="38" ry="14" /><circle cx="206" cy="42" r="14" /><circle cx="230" cy="37" r="17" />
+    <ellipse cx="460" cy="150" rx="28" ry="11" /><circle cx="450" cy="143" r="11" /><circle cx="468" cy="140" r="13" />
   </g>
   <g data-anim="gulls">
-  <path d="M420 140q8-9 16 0q8-9 16 0M560 120q7-8 14 0q7-8 14 0" fill="none" stroke="#34495e" stroke-width="3" stroke-linecap="round" />
+    <path d="M300 130q6-7 12 0q6-7 12 0M326 114q5-6 10 0q5-6 10 0" fill="none" stroke="#5a6b7a" stroke-width="2.4" stroke-linecap="round" />
   </g>
 
-  <!-- Sea. -->
-  <rect y="222" width="800" height="130" fill="#2fa7c9" />
-  <rect y="222" width="800" height="40" fill="#45b8d6" />
-  <g data-anim="sea">
-  <path d="M420 250h40M560 270h50M380 300h30M620 236h40" stroke="#a9e3f2" stroke-width="3" stroke-linecap="round" />
+  <!-- The sea and a far island. -->
+  <rect y="240" width="500" height="200" fill="#2f97bd" />
+  <path d="M0 240h500v14H0Z" fill="#5ab8dc" />
+  <path d="M330 246q20-16 44-12q16-10 30 2q-30 10-74 10Z" fill="#6aa86a" />
+  <g data-anim="waves">
+    <path d="M20 280q14-5 28 0M200 300q14-5 28 0M400 290q14-5 28 0M60 340q14-5 28 0M300 360q14-5 28 0M150 410q14-5 28 0M420 400q14-5 28 0" fill="none" stroke="#bfeaff" stroke-width="2.6" stroke-linecap="round" />
   </g>
 
-  <!-- Pirate ship. -->
+  <!-- The pirate ship, rocking. -->
   <g data-anim="ship">
-  <path d="M160 268V112M260 268V92" stroke="#5a3a22" stroke-width="6" />
-  <path d="M122 118h76q6 26 0 52h-76q-6-26 0-52ZM122 176h76q6 24 0 46h-76q-6-24 0-46Z" fill="#f3ead2" />
-  <path d="M218 98h84q6 30 0 60h-84q-6-30 0-60ZM218 164h84q6 28 0 54h-84q-6-28 0-54Z" fill="#f3ead2" />
-  <rect x="262" y="66" width="40" height="24" fill="#222" />
-  <circle cx="282" cy="76" r="6" fill="#fff" />
-  <path d="M274 86l16-6M274 80l16 6" stroke="#fff" stroke-width="2.5" stroke-linecap="round" />
-  <path d="M340 270l46-30" stroke="#5a3a22" stroke-width="5" stroke-linecap="round" />
-  <rect x="78" y="238" width="66" height="32" fill="#7a4e2d" />
-  <path d="M70 268h272l-32 46H112Z" fill="#6b4226" />
-  <path d="M74 276h264" stroke="#d9a35a" stroke-width="4" />
-  <g fill="#3b2a1a">
-    <rect x="130" y="284" width="12" height="10" /><rect x="170" y="284" width="12" height="10" />
-    <rect x="210" y="284" width="12" height="10" /><rect x="250" y="284" width="12" height="10" /><rect x="290" y="284" width="12" height="10" />
+    <path d="M120 300V120M210 300V100" stroke="#5a3a22" stroke-width="6" />
+    <path d="M84 126h72q6 26 0 52h-72q-6-26 0-52ZM84 184h72q6 24 0 46h-72q-6-24 0-46Z" fill="#f3ead2" />
+    <path d="M170 106h80q6 30 0 60h-80q-6-30 0-60ZM170 172h80q6 28 0 54h-80q-6-28 0-54Z" fill="#f3ead2" />
+    <rect x="212" y="74" width="38" height="22" fill="#222" />
+    <circle cx="231" cy="83" r="5.5" fill="#fff" />
+    <path d="M224 92l15-6M224 86l15 6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" />
+    <path d="M290 300l40-28" stroke="#5a3a22" stroke-width="5" stroke-linecap="round" />
+    <rect x="40" y="270" width="62" height="30" fill="#7a4e2d" />
+    <path d="M32 298h258l-30 44H72Z" fill="#6b4226" />
+    <path d="M36 306h250" stroke="#d9a35a" stroke-width="4" />
+    <g fill="#3b2a1a">
+      <rect x="90" y="314" width="12" height="10" /><rect x="128" y="314" width="12" height="10" />
+      <rect x="166" y="314" width="12" height="10" /><rect x="204" y="314" width="12" height="10" /><rect x="242" y="314" width="12" height="10" />
+    </g>
+    <rect x="52" y="278" width="12" height="12" fill="#ffd23f" />
+    <rect x="76" y="278" width="12" height="12" fill="#ffd23f" />
   </g>
-  <rect x="92" y="246" width="12" height="12" fill="#ffd23f" />
-  <rect x="116" y="246" width="12" height="12" fill="#ffd23f" />
+
+  <!-- The beach. -->
+  <path d="M0 436q120-14 250-4t250-6V750H0Z" fill="#f2d79a" />
+  <path d="M0 440q120-12 250-2t250-6" fill="none" stroke="#fff" stroke-width="5" stroke-opacity="0.7" />
+  <g fill="#e2c07e">
+    <ellipse cx="200" cy="500" rx="8" ry="3" /><ellipse cx="320" cy="680" rx="9" ry="3" /><ellipse cx="60" cy="660" rx="7" ry="3" />
   </g>
 
-  <!-- Beach. -->
-  <path d="M0 336q200-22 400-8t400-8V500H0Z" fill="#f2d58e" />
-  <path d="M0 336q200-22 400-8t400-8" fill="none" stroke="#fff" stroke-width="5" stroke-opacity="0.8" />
-  <ellipse cx="300" cy="476" rx="8" ry="5" fill="#f7b2a7" />
-  <path d="M330 470l3-8 3 8 8 1-6 5 2 8-7-4-7 4 2-8-6-5Z" fill="#ff8c5a" />
-  <ellipse cx="560" cy="482" rx="7" ry="4" fill="#fff" />
-
-  <!-- Rowboat on the shore. -->
-  <path d="M520 344h100q-6 22-26 24h-50q-20-2-24-24Z" fill="#8a5a33" />
-  <path d="M530 350h80" stroke="#6b4226" stroke-width="3" />
-  <path d="M560 340l-26 32" stroke="#c9a364" stroke-width="4" stroke-linecap="round" />
-
-  <!-- Palms. -->
-  <path d="M712 442q-2-100-14-190" fill="none" stroke="#9a6b3c" stroke-width="13" stroke-linecap="round" />
+  <!-- Palms on the right, swaying. -->
   <g data-anim="palm">
-  <path d="M698 252q-44-12-74 12q38-4 74-12q-28-38-66-40q28 20 66 40q14-44 52-58q-38 10-52 58q46-16 78 6q-40-4-78-6q40 16 58 52q-28-34-58-52Z" fill="#3f9a4a" />
-  <circle cx="694" cy="258" r="6" fill="#8a4a2a" /><circle cx="704" cy="261" r="6" fill="#8a4a2a" />
-  </g>
-  <path d="M772 446q4-90 14-170" fill="none" stroke="#8a5a33" stroke-width="10" stroke-linecap="round" />
-  <g data-anim="palm-back">
-  <path d="M786 276q-36-6-58 12q30-2 58-12q-18-30-48-30q22 14 48 30q14-34 44-42q-30 8-44 42Z" fill="#358a40" />
+    <path d="M488 620q-8-120-30-230" fill="none" stroke="#8b5a2b" stroke-width="10" stroke-linecap="round" />
+    <path d="M458 390q-30-14-48 4M458 390q-20-24-46-18M458 390q12-28 42-20M458 390q30-6 42 20M458 390q-2 24-14 34" fill="none" stroke="#3f9a4a" stroke-width="7" stroke-linecap="round" />
+    <circle cx="456" cy="398" r="5" fill="#7a4a1d" /><circle cx="464" cy="400" r="5" fill="#7a4a1d" />
   </g>
 
-  <!-- Treasure chest. -->
-  <path d="M362 396h56l4 18h-64Z" fill="#7a4e2d" />
-  <g fill="#ffd23f">
-    <circle cx="372" cy="412" r="6" /><circle cx="384" cy="408" r="6" /><circle cx="396" cy="410" r="6" /><circle cx="408" cy="412" r="6" />
-    <circle cx="378" cy="402" r="5" /><circle cx="392" cy="400" r="5" /><circle cx="404" cy="403" r="5" />
-  </g>
-  <circle cx="390" cy="404" r="3.5" fill="#e63946" />
-  <rect x="358" y="414" width="64" height="36" rx="3" fill="#8a5a33" />
-  <path d="M358 424h64M374 414v36M406 414v36" stroke="#e8a400" stroke-width="3" />
-  <rect x="385" y="426" width="10" height="10" rx="2" fill="#e8a400" />
-  <circle cx="430" cy="452" r="5" fill="#ffd23f" />
+  <!-- A rowboat pulled up on the sand. -->
+  <path d="M14 600h130l-16 26H30Z" fill="#8a5a33" />
+  <path d="M18 606h122" stroke="#6b4226" stroke-width="3" />
+  <path d="M60 600l40-30" stroke="#c9a364" stroke-width="4" stroke-linecap="round" />
 
-  <!-- Treasure map. -->
-  <path d="M120 444h80v28h-80Z" fill="#f3e2b3" />
-  <path d="M120 444q-6 14 0 28M200 444q6 14 0 28" fill="none" stroke="#d9c08a" stroke-width="5" />
-  <path d="M130 466q10-14 22-6t18-8" fill="none" stroke="#8a5a33" stroke-width="1.8" stroke-dasharray="3 3" />
-  <path d="M166 450l7 7M173 450l-7 7" stroke="#d93a3a" stroke-width="2.5" stroke-linecap="round" />
+  <!-- The pirate on a barrel (still: he wears the sunglasses). -->
+  <path d="M60 508q-4 20 0 40h40q4-20 0-40Z" fill="#9a6b3c" />
+  <path d="M58 518h44M58 538h44" stroke="#5a3a22" stroke-width="3" />
+  <path d="M68 506l30 4v30" fill="none" stroke="#6b4a2a" stroke-width="10" stroke-linejoin="round" />
+  <path d="M96 542h10" stroke="#222" stroke-width="6" stroke-linecap="round" />
+  <path d="M64 466h28l2 42h-32Z" fill="#4f8f3a" />
+  <path d="M88 474l12 12" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <circle cx="78" cy="452" r="12" fill="#d9a070" />
+  <path d="M66 448q12-16 24 0Z" fill="#3a6fd8" />
+  <path d="M66 448l-8 6" stroke="#3a6fd8" stroke-width="3" stroke-linecap="round" />
+  <path d="M74 460q4 3 8 0" stroke="#3b2a1a" stroke-width="1.5" fill="none" />
 
-  <!-- A pirate on a barrel. -->
-  <path d="M72 412q-4 20 0 40h40q4-20 0-40Z" fill="#9a6b3c" />
-  <path d="M70 422h44M70 442h44" stroke="#5a3a22" stroke-width="3" />
-  <path d="M80 410l30 4v30" fill="none" stroke="#6b4a2a" stroke-width="10" stroke-linejoin="round" />
-  <path d="M108 446h10" stroke="#222" stroke-width="6" stroke-linecap="round" />
-  <path d="M76 370h28l2 42h-32Z" fill="#4f8f3a" />
-  <path d="M100 378l12 12" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
-  <circle cx="90" cy="356" r="12" fill="#d9a070" />
-  <path d="M78 352q12-16 24 0Z" fill="#3a6fd8" />
-  <path d="M78 352l-8 6" stroke="#3a6fd8" stroke-width="3" stroke-linecap="round" />
-  <circle cx="86" cy="357" r="3.5" fill="#222" />
-  <path d="M80 352l14 8" stroke="#222" stroke-width="1.5" />
-  <circle cx="95" cy="357" r="1.5" fill="#3b2a1a" />
+  <!-- The pirate in a striped shirt (still: he holds the revolver, wears the boots). -->
+  <path d="M236 548v-12M262 548v-12" stroke="#2b2b2b" stroke-width="7" />
+  <path d="M230 458h34l2 52h-38Z" fill="#fafafa" />
+  <path d="M230 468h34M229 480h36M229 492h37M228 504h38" stroke="#d93a3a" stroke-width="5" />
+  <path d="M230 510h36l-2 28h-32Z" fill="#3b3b4a" />
+  <path d="M262 468l20-10" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <path d="M232 468l-8 26" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
+  <circle cx="247" cy="444" r="13" fill="#d9a070" />
+  <path d="M234 440q13-18 26 0Z" fill="#d93a3a" />
+  <path d="M258 436l8-4M258 440l9 1" stroke="#d93a3a" stroke-width="3" stroke-linecap="round" />
+  <circle cx="242" cy="445" r="1.6" fill="#3b2a1a" /><circle cx="252" cy="445" r="1.6" fill="#3b2a1a" />
+  <path d="M241 452q6 4 12 0" fill="none" stroke="#3b2a1a" stroke-width="1.5" />
 
-  <!-- A pirate in a striped shirt. -->
-  <path d="M248 446h12M264 446h12" stroke="#222" stroke-width="6" stroke-linecap="round" />
-  <path d="M244 362h34l2 50h-38Z" fill="#fafafa" />
-  <path d="M244 372h34M243 384h36M243 396h37M242 408h38" stroke="#d93a3a" stroke-width="5" />
-  <path d="M276 372l14-6" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
-  <path d="M246 372l-8 26" stroke="#d9a070" stroke-width="6" stroke-linecap="round" />
-  <circle cx="261" cy="348" r="13" fill="#d9a070" />
-  <path d="M248 344q13-18 26 0Z" fill="#d93a3a" />
-  <path d="M272 340l8-4M272 344l9 1" stroke="#d93a3a" stroke-width="3" stroke-linecap="round" />
-  <circle cx="256" cy="349" r="1.6" fill="#3b2a1a" /><circle cx="266" cy="349" r="1.6" fill="#3b2a1a" />
-  <path d="M255 356q6 4 12 0" fill="none" stroke="#3b2a1a" stroke-width="1.5" />
-
-  <!-- Captain with a parrot and a flintlock pistol. -->
-  <path d="M462 428v14" stroke="#222" stroke-width="9" />
-  <path d="M478 428l2 16" stroke="#c9a364" stroke-width="6" stroke-linecap="round" />
-  <path d="M454 398h32l-2 32h-28Z" fill="#6b4a2a" />
-  <path d="M450 352h40l2 54h-44Z" fill="#c0392b" />
-  <path d="M470 352v54" stroke="#ffd23f" stroke-width="2" stroke-dasharray="4 6" />
-  <path d="M449 396h42" stroke="#3b2a1a" stroke-width="5" />
-  <path d="M476 392l14 6-4 8-10-6Z" fill="#5a3a22" />
-  <path d="M484 395l14-2" stroke="#7b8794" stroke-width="3" stroke-linecap="round" />
-  <path d="M486 360l8-18M454 360l14-18" stroke="#c0392b" stroke-width="7" stroke-linecap="round" />
-  <circle cx="470" cy="338" r="14" fill="#d9a070" />
-  <path d="M458 342q12 18 24 0v6q-12 14-24 0Z" fill="#222" />
-  <path d="M450 326q20-22 40 0l6-4q-26-28-52 0Z" fill="#222" />
-  <path d="M452 324q18-10 36 0" stroke="#ffd23f" stroke-width="2" fill="none" />
+  <!-- The captain with his parrot (still: he looks through the binoculars). -->
+  <path d="M374 556v14" stroke="#222" stroke-width="9" />
+  <path d="M390 556l2 16" stroke="#c9a364" stroke-width="6" stroke-linecap="round" />
+  <path d="M366 526h32l-2 32h-28Z" fill="#6b4a2a" />
+  <path d="M362 480h40l2 54h-44Z" fill="#c0392b" />
+  <path d="M382 480v54" stroke="#ffd23f" stroke-width="2" stroke-dasharray="4 6" />
+  <path d="M361 524h42" stroke="#3b2a1a" stroke-width="5" />
+  <path d="M398 488l6-30M366 488l10-30" stroke="#c0392b" stroke-width="7" stroke-linecap="round" />
+  <circle cx="382" cy="466" r="14" fill="#d9a070" />
+  <path d="M370 470q12 18 24 0v6q-12 14-24 0Z" fill="#222" />
+  <path d="M362 454q20-22 40 0l6-4q-26-28-52 0Z" fill="#222" />
+  <path d="M364 452q18-10 36 0" stroke="#ffd23f" stroke-width="2" fill="none" />
   <g data-anim="parrot">
-  <g transform="translate(446 352)">
-    <path d="M-2 0q-2 16 -8 24l6-2 2 8 4-12Z" fill="#3a86ff" />
-    <ellipse cx="0" cy="-4" rx="7" ry="11" fill="#e63946" />
-    <circle cx="1" cy="-16" r="6" fill="#e63946" />
-    <path d="M6 -17l5 3-5 3Z" fill="#ffd23f" />
-    <circle cx="3" cy="-17" r="1.3" fill="#222" />
-    <path d="M-5 -6q-4 8 2 12" fill="#4f8f3a" />
+    <g transform="translate(358 482)">
+      <path d="M-2 0q-2 16 -8 24l6-2 2 8 4-12Z" fill="#3a86ff" />
+      <ellipse cx="0" cy="-4" rx="7" ry="11" fill="#e63946" />
+      <circle cx="1" cy="-16" r="6" fill="#e63946" />
+      <path d="M6 -17l5 3-5 3Z" fill="#ffd23f" />
+      <circle cx="3" cy="-17" r="1.3" fill="#222" />
+    </g>
   </g>
+
+  <!-- The treasure chest. -->
+  <path d="M290 596h56l4 18h-64Z" fill="#7a4e2d" />
+  <g fill="#ffd23f">
+    <circle cx="300" cy="612" r="6" /><circle cx="312" cy="608" r="6" /><circle cx="324" cy="610" r="6" /><circle cx="336" cy="612" r="6" />
+    <circle cx="306" cy="602" r="5" /><circle cx="320" cy="600" r="5" /><circle cx="332" cy="603" r="5" />
   </g>
+  <circle cx="318" cy="604" r="3.5" fill="#e63946" />
+  <rect x="286" y="614" width="64" height="36" rx="3" fill="#8a5a33" />
+  <path d="M286 624h64M302 614v36M334 614v36" stroke="#e8a400" stroke-width="3" />
+  <rect x="313" y="626" width="10" height="10" rx="2" fill="#e8a400" />
+
+  <!-- The campfire, its flames flickering; cannonballs; a crab; shells. -->
+  <path d="M278 716l40-10M282 706l36 10" stroke="#6b4226" stroke-width="6" stroke-linecap="round" />
+  <g data-anim="fire">
+    <path d="M286 706q-4-16 8-26q0 10 6 12q2-10 10-14q-2 14 4 18q2 8-6 10Z" fill="#ff8a1f" />
+    <path d="M294 706q-2-8 4-12q2 6 6 6q0 6-4 6Z" fill="#ffd23f" />
+  </g>
+  <g fill="#3b3b4a">
+    <circle cx="180" cy="566" r="7" /><circle cx="194" cy="566" r="7" /><circle cx="187" cy="555" r="7" />
+  </g>
+  <g data-anim="crab">
+    <ellipse cx="420" cy="602" rx="12" ry="7" fill="#e5533a" />
+    <path d="M408 600l-8-6M432 600l8-6M410 606l-6 6M430 606l6 6" stroke="#e5533a" stroke-width="3" stroke-linecap="round" />
+    <circle cx="416" cy="595" r="2" fill="#222" /><circle cx="424" cy="595" r="2" fill="#222" />
+  </g>
+  <path d="M20 730q8-10 16 0Z" fill="#f4b6a6" />
+  <path d="M470 740l4-8 4 8-8-5h8Z" fill="#f08a5a" />
+
+  <!-- The treasure map on the sand. -->
+  <path d="M60 680h80v28H60Z" fill="#f3e2b3" />
+  <path d="M60 680q-6 14 0 28M140 680q6 14 0 28" fill="none" stroke="#d9c08a" stroke-width="5" />
+  <path d="M70 702q10-14 22-6t18-8" fill="none" stroke="#8a5a33" stroke-width="1.8" stroke-dasharray="3 3" />
+  <path d="M106 686l7 7M113 686l-7 7" stroke="#d93a3a" stroke-width="2.5" stroke-linecap="round" />
 
   <!-- Odd items. -->
+  <g id="balloon">
+    <path d="M371 104l4 16M389 104l-4 16" stroke="#8a5a33" stroke-width="2" />
+    <ellipse cx="380" cy="76" rx="26" ry="30" fill="#ff7a00" />
+    <path d="M380 46q-12 30 0 60q12-30 0-60Z" fill="#ffd23f" />
+    <path d="M358 68h44" stroke="#3a86ff" stroke-width="5" />
+    <rect x="373" y="118" width="14" height="10" rx="2" fill="#8a5a33" />
+  </g>
+  <g id="steamship">
+    <path d="M394 254h70l-7 12h-56Z" fill="#333" />
+    <rect x="406" y="244" width="40" height="10" fill="#fafafa" />
+    <path d="M410 249h5M420 249h5M430 249h5" stroke="#3a86ff" stroke-width="3" />
+    <rect x="428" y="226" width="10" height="20" fill="#d93a3a" />
+    <rect x="428" y="226" width="10" height="4" fill="#222" />
+    <g fill="#c3ccd6"><circle cx="442" cy="220" r="4" /><circle cx="450" cy="216" r="5" /><circle cx="460" cy="214" r="5" /></g>
+  </g>
+  <g id="sunglasses">
+    <path d="M68 450h22" stroke="#222" stroke-width="2" />
+    <rect x="66" y="447" width="10" height="7" rx="3" fill="#222" />
+    <rect x="81" y="447" width="10" height="7" rx="3" fill="#222" />
+  </g>
   <g id="binoculars">
-    <rect x="470" y="326" width="14" height="18" rx="5" fill="#3b3b4a" />
-    <rect x="488" y="326" width="14" height="18" rx="5" fill="#3b3b4a" />
-    <rect x="483" y="331" width="6" height="8" fill="#2b2b2b" />
-    <circle cx="477" cy="337" r="6" fill="#222" />
-    <circle cx="495" cy="337" r="6" fill="#222" />
-    <circle cx="477" cy="337" r="4.2" fill="#6ec6ff" />
-    <circle cx="495" cy="337" r="4.2" fill="#6ec6ff" />
-    <circle cx="475.5" cy="335.5" r="1.3" fill="#fff" />
-    <circle cx="493.5" cy="335.5" r="1.3" fill="#fff" />
+    <rect x="368" y="452" width="13" height="16" rx="5" fill="#3b3b4a" />
+    <rect x="384" y="452" width="13" height="16" rx="5" fill="#3b3b4a" />
+    <rect x="379" y="456" width="6" height="8" fill="#2b2b2b" />
+    <circle cx="374" cy="468" r="5.5" fill="#222" />
+    <circle cx="390" cy="468" r="5.5" fill="#222" />
+    <circle cx="374" cy="468" r="3.8" fill="#6ec6ff" />
+    <circle cx="390" cy="468" r="3.8" fill="#6ec6ff" />
   </g>
   <g id="revolver">
-    <path d="M294 370q-4 8-3 14h8q0-6 3-12Z" fill="#8a5a33" />
-    <path d="M293 376h7M292 380h7" stroke="#6b4226" stroke-width="1" />
-    <path d="M297 364l-4-4 5 1 2 3Z" fill="#5a6470" />
-    <rect x="296" y="364" width="8" height="9" rx="1" fill="#7b8794" />
-    <rect x="302" y="362" width="10" height="12" rx="3" fill="#9aa3ab" />
-    <path d="M303 366h8M303 370h8" stroke="#6f7880" stroke-width="1.2" />
-    <rect x="311" y="364" width="10" height="4" rx="1" fill="#7b8794" />
-    <rect x="318" y="362.5" width="2" height="2" fill="#5a6470" />
-    <path d="M300 373q0 6 5 4" fill="none" stroke="#5a6470" stroke-width="1.5" />
+    <path d="M280 462q-4 8-3 14h8q0-6 3-12Z" fill="#8a5a33" />
+    <rect x="282" y="456" width="8" height="9" rx="1" fill="#7b8794" />
+    <rect x="288" y="454" width="10" height="12" rx="3" fill="#9aa3ab" />
+    <path d="M289 458h8M289 462h8" stroke="#6f7880" stroke-width="1.2" />
+    <rect x="297" y="456" width="12" height="4" rx="1" fill="#7b8794" />
   </g>
-  <g id="jeans">
-    <rect x="248" y="408" width="13" height="36" fill="#3a5f9e" />
-    <rect x="262" y="408" width="13" height="36" fill="#3a5f9e" />
-    <path d="M251 412v30M272 412v30M248 416h27" stroke="#9fb7e0" stroke-width="1.2" stroke-dasharray="2 2" />
-    <circle cx="251" cy="416" r="1.3" fill="#e8a400" /><circle cx="272" cy="416" r="1.3" fill="#e8a400" />
-  </g>
-  <g id="camera">
-    <path d="M580 402l-18 40M580 402v42M580 402l18 40" stroke="#8a5a33" stroke-width="3.5" stroke-linecap="round" />
-    <rect x="572" y="398" width="16" height="5" rx="1" fill="#6b4226" />
-    <rect x="560" y="396" width="37" height="4" rx="1" fill="#6b4226" />
-    <rect x="561" y="373" width="16" height="25" rx="1.5" fill="#a8743f" />
-    <rect x="564" y="376" width="10" height="19" fill="none" stroke="#7a4e2d" stroke-width="1.5" />
-    <path d="M577 377L592 380V394L577 397Z" fill="#2b2b2b" />
-    <path d="M580 378v18M583 378.5v17M586 379v16M589 379.5v15" stroke="#555" stroke-width="1.2" />
-    <rect x="591" y="377" width="4" height="20" rx="1" fill="#a8743f" />
-    <rect x="595" y="382" width="7" height="10" rx="1" fill="#c9a33f" />
-    <path d="M598 382v10" stroke="#a8842a" stroke-width="1.2" />
-    <ellipse cx="602" cy="387" rx="1.5" ry="4.5" fill="#6ec6ff" />
-    <path d="M559 372q-3 16 1 30h6q-3-14-1-28Z" fill="#222" />
-    <path d="M559 372h8l-2 3h-6Z" fill="#222" />
-  </g>
-  <g id="stamp">
-    <rect x="182" y="442" width="15" height="18" fill="#fff" />
-    <path d="M182 442h15v18h-15Z" fill="none" stroke="#e8e0d0" stroke-width="2" stroke-dasharray="1.5 1.5" />
-    <rect x="185" y="445" width="9" height="12" fill="#222" />
-    <circle cx="189.5" cy="450" r="2.5" fill="#9aa3ab" />
-  </g>
-  <g id="flashlight">
-    <path d="M676 452L700 444V472L676 462Z" fill="#fff3b0" fill-opacity="0.7" />
-    <rect x="640" y="452" width="28" height="10" rx="2" fill="#c0392b" />
-    <path d="M668 449h6l2 3v10l-2 3h-6Z" fill="#9aa3ab" />
-    <rect x="652" y="450" width="6" height="2" fill="#222" />
+  <g id="rubber-boots">
+    <path d="M228 538v18h14v-18Z" fill="#ffd23f" />
+    <path d="M256 538v18h14v-18Z" fill="#ffd23f" />
+    <path d="M226 556h18M254 556h18" stroke="#e8a400" stroke-width="3" stroke-linecap="round" />
   </g>
   <g id="soda">
-    <rect x="107" y="382" width="14" height="18" fill="#e8402f" />
-    <path d="M108 382l1.5-3h9l1.5 3Z" fill="#c3ccd6" />
-    <ellipse cx="114" cy="379" rx="4.5" ry="1.3" fill="#e1e6ec" />
-    <rect x="113" y="377.6" width="4" height="1.6" rx="0.8" fill="#9aa3ab" />
-    <path d="M107 391q3.5-3 7 0t7 0" fill="none" stroke="#fff" stroke-width="2" />
-    <rect x="109" y="383" width="2" height="16" fill="#fff" fill-opacity="0.35" />
-    <path d="M107 400h14l-1 2h-12Z" fill="#c3ccd6" />
+    <rect x="114" y="584" width="14" height="18" fill="#e8402f" />
+    <path d="M115 584l1.5-3h9l1.5 3Z" fill="#c3ccd6" />
+    <path d="M114 593q3.5-3 7 0t7 0" fill="none" stroke="#fff" stroke-width="2" />
+    <path d="M114 602h14l-1 2h-12Z" fill="#c3ccd6" />
+  </g>
+  <g id="flashlight">
+    <path d="M226 642L248 636V660L226 652Z" fill="#fff3b0" fill-opacity="0.7" />
+    <rect x="192" y="642" width="28" height="10" rx="2" fill="#c0392b" />
+    <path d="M220 639h6l2 3v10l-2 3h-6Z" fill="#9aa3ab" />
+  </g>
+  <g id="stamp">
+    <rect x="124" y="684" width="14" height="17" fill="#fff" />
+    <path d="M124 684h14v17h-14Z" fill="none" stroke="#e8e0d0" stroke-width="2" stroke-dasharray="1.5 1.5" />
+    <rect x="127" y="687" width="8" height="11" fill="#222" />
+    <circle cx="131" cy="691" r="2.3" fill="#9aa3ab" />
+  </g>
+  <g id="tin-can">
+    <rect x="196" y="708" width="16" height="18" fill="#b0b8c4" />
+    <rect x="196" y="713" width="16" height="8" fill="#3a86ff" />
+    <ellipse cx="204" cy="708" rx="8" ry="3" fill="#d5dbe3" />
+  </g>
+  <g id="matches" transform="translate(-14 4)">
+    <rect x="352" y="718" width="22" height="10" rx="1.5" fill="#3a6fd8" />
+    <rect x="352" y="718" width="8" height="10" fill="#e8d3a8" />
+    <path d="M364 723h7" stroke="#ffd23f" stroke-width="3" />
+    <path d="M368 718l9-6" stroke="#e8d3a8" stroke-width="2" stroke-linecap="round" />
+    <circle cx="378" cy="711.5" r="2.2" fill="#d93a3a" />
+  </g>
+  <g id="camera">
+    <path d="M440 668l-16 40M440 668v42M440 668l16 40" stroke="#8a5a33" stroke-width="3.5" stroke-linecap="round" />
+    <rect x="420" y="662" width="37" height="4" rx="1" fill="#6b4226" />
+    <rect x="421" y="639" width="16" height="25" rx="1.5" fill="#a8743f" />
+    <path d="M437 643L452 646V660L437 663Z" fill="#2b2b2b" />
+    <rect x="451" y="643" width="4" height="20" rx="1" fill="#a8743f" />
+    <rect x="455" y="648" width="7" height="10" rx="1" fill="#c9a33f" />
+    <path d="M419 638q-3 16 1 30h6q-3-14-1-28Z" fill="#222" />
   </g>
 </svg>

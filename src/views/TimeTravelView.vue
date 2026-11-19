@@ -130,10 +130,11 @@ main {
   font-size: 18px;
 }
 
+/* The era pictures are upright (2:3). */
 .thumb {
   flex: none;
-  width: 112px;
-  aspect-ratio: 8 / 5;
+  width: 72px;
+  aspect-ratio: 2 / 3;
   border-radius: 10px;
   object-fit: cover;
 }
