@@ -3,6 +3,7 @@
 // Motion difference: the kite wobbles quickly on picture A and slowly on picture B.
 import { decor, extras } from '../extras.ts'
 import { travelLevel } from '../helpers.ts'
+import { level432Redesign } from './level-432-redesign.ts'
 import { cloud, person, sky, sun } from './shapes.ts'
 
 /** Glass tower from x to x + w, roof at `top`, ground at 340. */
@@ -67,6 +68,7 @@ const kite = (x: number, y: number) =>
 
 export default travelLevel({
   id: 432,
+  redesign: level432Redesign,
   title: 'astana',
   parTimeSec: 138,
   place: { region: 'asia', country: 'kz', lat: 51.13, lon: 71.43 },
