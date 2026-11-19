@@ -2,7 +2,7 @@
 // loads a scene: shown with the same URL, they appear at once instead of decoding as the screen opens (AVIF decodes
 // slowly on a weak phone). A few at a time — decoded, one takes ~17 MB, so a whole chapter would not fit a phone.
 import { pictureFiles } from '../engine/render.ts'
-import type { Level } from '../engine/types.ts'
+import type { AnachronismLevel, Level } from '../engine/types.ts'
 
 /** Images got ready, the latest last. Kept referenced, so the browser keeps them ready; older ones are let go. */
 const preloaded = new Map<string, HTMLImageElement>()
@@ -26,6 +26,13 @@ export function preloadImage(url: string): Promise<void> {
 
 /** Gets the pictures of `level` ready (the level as it will be played: `styledLevel`). Nothing to do for a drawn scene. */
 export const preloadPictures = (level: Level) => Promise.all(pictureFiles(level).map(preloadImage)).then(() => {})
+
+/**
+ * Gets the 3D picture of a "find the odd one out" era ready (the era as it will be played: `styledEra`). Nothing to do
+ * for a drawn era: its picture is a small SVG, inlined.
+ */
+export const preloadEra = (era: AnachronismLevel) =>
+  era.image.endsWith('.svg') ? Promise.resolve() : preloadImage(import.meta.env.BASE_URL + era.image)
 
 /** `ready`, or `WAIT_MS` if it takes longer: a screen waits for its pictures, but not for long. */
 export const waitAtMost = (ready: Promise<unknown>) =>

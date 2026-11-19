@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict'
-import { readdirSync, readFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { describe, test } from 'node:test'
 import { AnachronismRound, localized, parseAnachronismLevel } from '../src/engine/anachronism.ts'
 import type { AnachronismItem } from '../src/engine/types.ts'
 import { allLevels } from '../src/levels/index.ts'
+import { styledEra } from '../src/levels/picture-style.ts'
 import { timeTravelLevelById, timeTravelLevels } from '../src/levels/time-travel/index.ts'
 
 /** Center of an item's hitbox in percent. */
@@ -31,7 +32,7 @@ describe('time travel levels', () => {
     const level = timeTravelLevelById('egypt-01')
     assert.ok(level)
     assert.equal(level.mode, 'anachronism')
-    assert.equal(level.items.length, 5)
+    assert.equal(level.items.length, 10)
     assert.ok(level.items.every((i) => i.label.ru && i.fact.ru))
   })
 
@@ -52,7 +53,8 @@ describe('time travel levels', () => {
   })
 
   test('every level completes once every item is found, and only then', () => {
-    for (const level of timeTravelLevels) {
+    // Both styles: the drawn era and its 3D picture with its own items.
+    for (const level of timeTravelLevels.flatMap((l) => [l, styledEra(l, 'redesign')])) {
       const round = new AnachronismRound(level)
       assert.deepEqual(round.tap(1, 1), { kind: 'miss' }, level.id)
       level.items.forEach((item, index) => {
@@ -71,7 +73,8 @@ describe('time travel levels', () => {
       .filter((f) => f.endsWith('.json'))
       .map((f) => f.slice(0, -5))
     for (const level of timeTravelLevels) {
-      for (const [name, t] of [['era', level.era], ...level.items.flatMap((i) => [[`${i.id}.label`, i.label], [`${i.id}.fact`, i.fact]] as const)] as const) {
+      const items = [...level.items, ...(level.redesign?.items ?? [])]
+      for (const [name, t] of [['era', level.era], ...items.flatMap((i) => [[`${i.id}.label`, i.label], [`${i.id}.fact`, i.fact]] as const)] as const) {
         assert.deepEqual(locales.filter((l) => !t[l]), [], `${level.id} ${name}`)
       }
     }
@@ -94,6 +97,12 @@ describe('time travel levels', () => {
         if (id && level.items.some((i) => i.id === id)) assert.ok(!moving, `${level.id}: item "${id}" moves`)
         open.push(tag.includes('data-anim='))
       }
+    }
+  })
+
+  test('every 3D picture is in public/', () => {
+    for (const level of timeTravelLevels) {
+      if (level.redesign) assert.ok(existsSync(new URL(`../public/${level.redesign.image}`, import.meta.url)), `${level.id}: ${level.redesign.image}`)
     }
   })
 
@@ -141,6 +150,56 @@ describe('parseAnachronismLevel', () => {
         }),
       /duplicate animation/,
     ))
+})
+
+describe('parseAnachronismLevel: the 3D picture (redesign)', () => {
+  /** base() with a 3D picture: "a" borrows the drawn item's texts, "c" is new. */
+  const withRedesign = () => ({
+    ...base(),
+    redesign: {
+      image: 'r.avif' as string | undefined,
+      width: 2624,
+      height: 1632,
+      parTimeSec: undefined as number | undefined,
+      items: [
+        { id: 'a', shape: 'circle', x: 30, y: 30, r: 3 },
+        { id: 'c', shape: 'circle', x: 70, y: 70, r: 3, label: { en: 'C' }, fact: { en: 'C fact.' } },
+      ] as Record<string, unknown>[],
+    },
+  })
+  const parsed = (change: (l: ReturnType<typeof withRedesign>) => void = () => {}) => {
+    const level = withRedesign()
+    change(level)
+    return parseAnachronismLevel(level)
+  }
+  const rejects = (change: (l: ReturnType<typeof withRedesign>) => void, message: RegExp) =>
+    assert.throws(() => parsed(change), message)
+
+  test("a redesign item without texts takes the drawn item's", () => {
+    const item = parsed().redesign!.items[0]
+    assert.deepEqual(item.label, { en: 'A' })
+    assert.deepEqual(item.fact, { en: 'A fact.' })
+    assert.deepEqual(parsed().redesign!.items[1].label, { en: 'C' })
+  })
+
+  test('redesign par time defaults to the drawn one scaled by the item count', () => {
+    assert.equal(parsed().redesign!.parTimeSec, 60)
+    const third = { id: 'd', shape: 'circle', x: 50, y: 50, r: 3, label: { en: 'D' }, fact: { en: 'D fact.' } }
+    assert.equal(parsed((l) => (l.redesign.items as unknown[]).push(third)).redesign!.parTimeSec, 90)
+  })
+
+  test('an explicit redesign par time wins', () => {
+    assert.equal(parsed((l) => (l.redesign.parTimeSec = 120)).redesign!.parTimeSec, 120)
+  })
+
+  test('rejects a new id without texts', () => rejects((l) => (l.redesign.items[1] = { id: 'c', shape: 'circle', x: 70, y: 70, r: 3 }), /redesign item "c".*texts/))
+  test('rejects only one of label and fact', () => rejects((l) => (l.redesign.items[0].label = { en: 'A2' }), /redesign item "a".*texts/))
+  test('rejects a duplicate id', () => rejects((l) => (l.redesign.items[1].id = 'a'), /duplicate redesign item/))
+  test('rejects a circle leaving the picture', () => rejects((l) => (l.redesign.items[0].y = 1), /redesign.*leaves/))
+  test('rejects overlapping hitboxes', () => rejects((l) => Object.assign(l.redesign.items[1], { x: 31, y: 31 }), /redesign.*overlap/))
+  test('rejects an empty item list', () => rejects((l) => (l.redesign.items = []), /redesign.*items/))
+  test('rejects a missing image', () => rejects((l) => delete l.redesign.image, /redesign.*image/))
+  test('rejects a missing size', () => rejects((l) => (l.redesign.width = 0), /redesign.*width/))
 })
 
 test('localized falls back to English', () => {

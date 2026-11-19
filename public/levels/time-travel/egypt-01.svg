@@ -1,168 +1,320 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
-  <!-- "Find the odd one out" level egypt-01, Ancient Egypt. The odd items (groups with ids) must stay
-       inside their hitboxes in src/levels/time-travel/egypt-01.json (percent of 800×500). -->
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="750" viewBox="0 0 500 750">
+  <!-- "Find the odd one out" level egypt-01, Ancient Egypt, upright 500×750. The odd items (groups with ids) must
+       stay inside their hitboxes in src/levels/time-travel/egypt-01.json (percent of 500×750) and never move. -->
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#7cc8f2" />
       <stop offset="1" stop-color="#ffe3a8" />
     </linearGradient>
+    <linearGradient id="nile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4fb6d8" />
+      <stop offset="1" stop-color="#2f8fb5" />
+    </linearGradient>
   </defs>
 
-  <!-- Sky. -->
-  <rect width="800" height="345" fill="url(#sky)" />
-  <circle cx="110" cy="80" r="52" fill="#fff3b0" opacity="0.6" />
+  <!-- Sky with the sun, a wisp of cloud and birds. -->
+  <rect width="500" height="320" fill="url(#sky)" />
+  <circle cx="70" cy="78" r="44" fill="#fff3b0" opacity="0.55" />
   <g data-anim="sun" fill="#ffd23f">
-  <circle cx="110" cy="80" r="40" />
+    <circle cx="70" cy="78" r="30" />
+  </g>
+  <g data-anim="cloud">
+    <path d="M300 118q4-16 22-14q10-14 28-4q18-4 20 12q12 2 10 12H296q-8-2 4-6Z" fill="#fff" fill-opacity="0.85" />
   </g>
   <g data-anim="birds">
-  <path d="M282 82q9-10 18 0q9-10 18 0M318 62q8-9 16 0q8-9 16 0" fill="none" stroke="#34495e" stroke-width="3" stroke-linecap="round" />
-  </g>
-  <path d="M0 300q120-40 260-10t300-20 240 10V345H0Z" fill="#f6dc9c" />
-
-  <!-- Obelisk. -->
-  <path d="M30 346L36 206h16l6 140Z" fill="#e3b86a" />
-  <path d="M44 206L52 206 58 346H46Z" fill="#c9953f" />
-  <path d="M36 206l8-16 8 16Z" fill="#ffd23f" />
-  <path d="M40 228h6M40 244h6M40 262h6M41 280h5M41 298h5M41 316h5" stroke="#a8742c" stroke-width="2.5" stroke-linecap="round" />
-
-  <!-- Pyramids. -->
-  <path d="M190 346L340 130 490 346Z" fill="#e8b85a" />
-  <path d="M340 130L490 346H360Z" fill="#c9953f" />
-  <path d="M230 288H452M262 242H420M294 196H388" stroke="#b07f32" stroke-width="2" stroke-opacity="0.5" />
-  <path d="M520 346L610 215 700 346Z" fill="#e8b85a" />
-  <path d="M610 215L700 346H622Z" fill="#c9953f" />
-  <path d="M550 302H668M576 264H641" stroke="#b07f32" stroke-width="2" stroke-opacity="0.5" />
-
-  <!-- Sand. -->
-  <rect y="330" width="800" height="115" fill="#f2cf7e" />
-  <path d="M24 372q40-8 80 0M330 424q50-8 100 0M600 392q30-6 60 0M150 430q30-6 60 0" fill="none" stroke="#d9b05e" stroke-width="3" stroke-linecap="round" />
-  <ellipse cx="180" cy="418" rx="9" ry="5" fill="#c9a364" />
-  <ellipse cx="452" cy="432" rx="7" ry="4" fill="#c9a364" />
-  <ellipse cx="610" cy="420" rx="8" ry="5" fill="#c9a364" />
-
-  <!-- Sphinx. -->
-  <path d="M386 348V328q0-12 14-14h42q16 0 16 16v18Z" fill="#d9a95a" />
-  <path d="M456 340q14 2 12-12" fill="none" stroke="#d9a95a" stroke-width="5" stroke-linecap="round" />
-  <rect x="356" y="338" width="40" height="10" rx="4" fill="#e3b86a" />
-  <path d="M372 334l5-28q11-10 22 0l5 28Z" fill="#c9953f" />
-  <path d="M376 318h4M396 318h4M375 326h5M396 326h5" stroke="#a8742c" stroke-width="2" />
-  <rect x="381" y="306" width="14" height="20" rx="5" fill="#e3b86a" />
-  <circle cx="385" cy="313" r="1.6" fill="#7a4e1d" />
-  <circle cx="391" cy="313" r="1.6" fill="#7a4e1d" />
-
-  <!-- Camel. -->
-  <path d="M600 346v22M611 346v22M640 346v22M651 346v22" stroke="#b5814a" stroke-width="5" stroke-linecap="round" />
-  <ellipse cx="626" cy="338" rx="32" ry="14" fill="#d29b5c" />
-  <ellipse cx="630" cy="325" rx="16" ry="12" fill="#d29b5c" />
-  <g data-anim="camel-head">
-  <path d="M600 334q-8-6-10-22" fill="none" stroke="#d29b5c" stroke-width="10" stroke-linecap="round" />
-  <ellipse cx="585" cy="310" rx="10" ry="6" fill="#d29b5c" />
-  <circle cx="583" cy="308" r="1.6" fill="#3b2a1a" />
-  </g>
-  <path d="M658 336q6 6 2 14" fill="none" stroke="#b5814a" stroke-width="3" stroke-linecap="round" />
-  <path d="M614 326h28l-2 10h-24Z" fill="#c8643b" />
-  <path d="M616 330h24" stroke="#ffd23f" stroke-width="2" />
-
-  <!-- Palms. -->
-  <path d="M774 444q-2-56-8-110" fill="none" stroke="#8a5a33" stroke-width="9" stroke-linecap="round" />
-  <g data-anim="palm-back">
-  <path d="M766 336q-30-8-50 8q26-2 50-8q-18-26-44-28q20 14 44 28q10-30 34-40q-26 6-34 40q30-10 52 4q-26-2-52-4Z" fill="#358a40" />
-  </g>
-  <path d="M736 442q-4-70-12-140" fill="none" stroke="#9a6b3c" stroke-width="12" stroke-linecap="round" />
-  <g data-anim="palm">
-  <path d="M724 302q-40-10-66 12q34-4 66-12q-26-34-60-36q26 18 60 36q12-40 46-52q-34 8-46 52q40-14 70 6q-36-4-70-6q36 14 52 46q-26-30-52-46Z" fill="#3f9a4a" />
-  <circle cx="720" cy="306" r="5" fill="#8a4a2a" />
-  <circle cx="729" cy="308" r="5" fill="#8a4a2a" />
+    <path d="M196 62q8-9 16 0q8-9 16 0M232 44q7-8 14 0q7-8 14 0M170 40q6-7 12 0q6-7 12 0" fill="none" stroke="#34495e" stroke-width="2.6" stroke-linecap="round" />
   </g>
 
-  <!-- Cat. -->
-  <ellipse cx="64" cy="402" rx="12" ry="16" fill="#3b3b4a" />
-  <circle cx="64" cy="382" r="9" fill="#3b3b4a" />
-  <path d="M56 378l2-12 6 7ZM72 378l-2-12-6 7Z" fill="#3b3b4a" />
-  <g data-anim="cat-tail">
-  <path d="M76 414q14 2 12-14" fill="none" stroke="#3b3b4a" stroke-width="4" stroke-linecap="round" />
-  </g>
-  <circle cx="61" cy="381" r="1.5" fill="#ffd23f" />
-  <circle cx="67" cy="381" r="1.5" fill="#ffd23f" />
+  <!-- Far dunes and the pyramids. -->
+  <path d="M0 268q70-26 150-10t170-8 180-6V320H0Z" fill="#f6dc9c" />
+  <path d="M20 300L92 200 164 300Z" fill="#e8b85a" />
+  <path d="M92 200L164 300H100Z" fill="#c9953f" />
+  <path d="M110 300L230 128 350 300Z" fill="#e8b85a" />
+  <path d="M230 128L350 300H244Z" fill="#c9953f" />
+  <path d="M146 262H316M176 220H284M204 180H256" stroke="#b07f32" stroke-width="2" stroke-opacity="0.5" />
+  <path d="M48 270H138M70 240H114" stroke="#b07f32" stroke-width="2" stroke-opacity="0.5" />
+  <!-- A dune on the right with the windmill on it. -->
+  <path d="M360 300q40-46 80-42t60 14V320H360Z" fill="#efd08b" />
 
-  <!-- The Nile with a felucca and papyrus. -->
-  <path d="M0 440q100-12 200 0t200 0 200 0 200 0V500H0Z" fill="#3ba7cc" />
-  <path d="M0 452q100-10 200 0t200 0 200 0 200 0V500H0Z" fill="#2f97bd" />
+  <!-- The Nile: a felucca, a crocodile, lotus leaves, waves. -->
+  <rect y="300" width="500" height="90" fill="url(#nile)" />
+  <path d="M0 300q60 8 120 0t130 2 130-4 120 2V308H0Z" fill="#e9c97a" />
   <g data-anim="waves">
-  <path d="M60 476q20-6 40 0M240 488q20-6 40 0M520 474q20-6 40 0M680 486q20-6 40 0" fill="none" stroke="#bfeaff" stroke-width="3" stroke-linecap="round" />
+    <path d="M24 336q14-5 28 0M180 366q16-5 32 0M300 378q14-5 28 0M420 344q14-5 28 0M110 382q12-4 24 0" fill="none" stroke="#bfeaff" stroke-width="2.6" stroke-linecap="round" />
   </g>
+  <ellipse cx="66" cy="372" rx="14" ry="5" fill="#4f9a45" />
+  <ellipse cx="88" cy="380" rx="10" ry="4" fill="#5aa84d" />
+  <circle cx="74" cy="368" r="5" fill="#f4a7c6" />
   <g data-anim="boat">
-  <path d="M356 458V388" stroke="#7a4e33" stroke-width="4" />
-  <path d="M350 384L414 452H358Z" fill="#fffaf0" />
-  <path d="M296 456h120l-16 18h-88Z" fill="#8a5a33" />
-  <path d="M300 460h112" stroke="#6b4226" stroke-width="2" />
+    <path d="M330 352V292" stroke="#7a4e33" stroke-width="3.5" />
+    <path d="M326 290L378 346H332Z" fill="#fffaf0" />
+    <path d="M286 350h104l-14 16h-78Z" fill="#8a5a33" />
+    <path d="M290 354h96" stroke="#6b4226" stroke-width="2" />
+    <circle cx="306" cy="340" r="6" fill="#b97a48" />
+    <path d="M300 350v-6h12v6" fill="#fffaf0" />
   </g>
+  <g data-anim="crocodile">
+    <path d="M150 342q20-8 56-4q14 2 22 6q-30 6-78-2Z" fill="#5b7f3a" />
+    <circle cx="168" cy="337" r="4" fill="#5b7f3a" />
+    <circle cx="180" cy="336" r="4" fill="#5b7f3a" />
+    <circle cx="168" cy="336" r="1.6" fill="#ffd23f" />
+    <circle cx="180" cy="335" r="1.6" fill="#ffd23f" />
+  </g>
+
+  <!-- Sand, a path of flat stones. -->
+  <path d="M0 386q60-8 130-2t140 0 130-4 100 2V750H0Z" fill="#f2cf7e" />
+  <path d="M36 430q24-6 48 0M250 470q30-6 60 0M150 700q24-6 48 0M300 720q30-6 60 0" fill="none" stroke="#d9b05e" stroke-width="2.6" stroke-linecap="round" />
+  <g fill="#e2bb6c">
+    <ellipse cx="240" cy="600" rx="16" ry="6" />
+    <ellipse cx="270" cy="622" rx="14" ry="5" />
+    <ellipse cx="230" cy="640" rx="15" ry="5" />
+  </g>
+
+  <!-- Papyrus on the bank, swaying. -->
   <g data-anim="papyrus">
-  <path d="M630 448l-6-40M640 448l2-46M650 448l8-38" stroke="#4f8f3a" stroke-width="4" stroke-linecap="round" />
-  <path d="M616 410l8-6 8 6ZM634 404l8-6 8 6ZM650 412l8-6 8 6Z" fill="#6fb34f" />
+    <path d="M200 404l-6-42M210 404l2-48M220 404l8-40" stroke="#4f8f3a" stroke-width="3.5" stroke-linecap="round" />
+    <path d="M186 364l8-6 8 6ZM204 358l8-6 8 6ZM220 366l8-6 8 6Z" fill="#6fb34f" />
+  </g>
+  <!-- An ibis by the water, pecking. -->
+  <g data-anim="ibis">
+    <path d="M262 402v16M270 402v16" stroke="#3b3b4a" stroke-width="2" />
+    <ellipse cx="266" cy="398" rx="12" ry="7" fill="#fff" />
+    <path d="M276 396q8-10 6-18" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" />
+    <circle cx="281" cy="377" r="4" fill="#2b2b33" />
+    <path d="M284 378q10 4 12 14" fill="none" stroke="#2b2b33" stroke-width="2" stroke-linecap="round" />
+    <path d="M254 398l-8 4 8 2Z" fill="#2b2b33" />
   </g>
 
-  <!-- An Egyptian with a jar on her head. -->
-  <g data-anim="woman">
-  <path d="M302 336h20l6 64h-32Z" fill="#fffaf0" />
-  <path d="M320 340l2-28" stroke="#b97a48" stroke-width="6" stroke-linecap="round" />
-  <path d="M304 342l-6 22" stroke="#b97a48" stroke-width="6" stroke-linecap="round" />
-  <circle cx="312" cy="324" r="11" fill="#b97a48" />
-  <path d="M300 326q0-16 12-16t12 16v6h-5v-8h-14v8h-5Z" fill="#1f1f2b" />
-  <path d="M303 312h18" stroke="#ffd23f" stroke-width="3" />
-  <ellipse cx="313" cy="300" rx="11" ry="9" fill="#c8643b" />
-  <rect x="308" y="287" width="10" height="6" rx="2" fill="#c8643b" />
-
+  <!-- Left palm, swaying. -->
+  <g data-anim="palm-left">
+    <path d="M22 500q4-60 14-104" fill="none" stroke="#8b5a2b" stroke-width="9" stroke-linecap="round" />
+    <path d="M36 396q-30-14-46 4M36 396q-20-24-44-20M36 396q10-28 40-24M36 396q30-8 44 14M36 396q4 22-8 34" fill="none" stroke="#3f9a4a" stroke-width="7" stroke-linecap="round" />
+    <circle cx="34" cy="402" r="4" fill="#7a4a1d" />
+    <circle cx="40" cy="404" r="4" fill="#7a4a1d" />
   </g>
-  <!-- An Egyptian holding up a smartphone. -->
-  <rect x="222" y="378" width="7" height="24" fill="#c98a55" />
-  <rect x="232" y="378" width="7" height="24" fill="#c98a55" />
-  <path d="M216 350H246L250 382H212Z" fill="#fffaf0" />
-  <path d="M216 360H248" stroke="#ffd23f" stroke-width="3" />
-  <rect x="220" y="322" width="22" height="30" rx="5" fill="#c98a55" />
-  <path d="M222 332h18" stroke="#3a6fd8" stroke-width="4" />
-  <path d="M240 328L257 307" stroke="#c98a55" stroke-width="7" stroke-linecap="round" />
-  <path d="M222 330L212 352" stroke="#c98a55" stroke-width="7" stroke-linecap="round" />
-  <circle cx="231" cy="310" r="13" fill="#c98a55" />
-  <path d="M216 306q15-20 30 0l4 18h-8l-4-12h-14l-4 12h-8Z" fill="#3a6fd8" />
-  <path d="M220 302h22M218 310h4M240 310h4" stroke="#ffd23f" stroke-width="3" />
-  <circle cx="236" cy="312" r="1.6" fill="#3b2a1a" />
+
+  <!-- Clay jars on the bank. -->
+  <path d="M206 452q-10-16 0-30h16q10 14 0 30Z" fill="#c8643b" />
+  <rect x="208" y="416" width="12" height="7" rx="2" fill="#c8643b" />
+  <path d="M232 456q-12-20 0-38h18q12 18 0 38Z" fill="#b5532f" />
+  <rect x="234" y="412" width="14" height="8" rx="2" fill="#b5532f" />
+  <path d="M236 432h10" stroke="#ffd23f" stroke-width="2.5" />
+  <path d="M262 454q-8-14 0-26h12q8 12 0 26Z" fill="#d98a4e" />
+
+  <!-- The vegetable garden: lettuce and onion rows. -->
+  <path d="M44 506h104" stroke="#a87b3f" stroke-width="3" />
+  <g fill="#6fb34f">
+    <circle cx="56" cy="500" r="7" />
+    <circle cx="76" cy="502" r="6" />
+    <circle cx="132" cy="500" r="7" />
+  </g>
+  <path d="M146 504v-14M150 504v-16M154 504v-12" stroke="#4f8f3a" stroke-width="2.5" stroke-linecap="round" />
+
+  <!-- An obelisk. -->
+  <path d="M22 618L28 528h14l6 90Z" fill="#e3b86a" />
+  <path d="M35 528h7l6 90H38Z" fill="#c9953f" />
+  <path d="M28 528l7-14 7 14Z" fill="#ffd23f" />
+  <path d="M32 544h5M32 558h5M32 572h5M32 586h5M32 600h5" stroke="#a8742c" stroke-width="2" stroke-linecap="round" />
+
+  <!-- The old scribe on a mat, a scroll on his lap. -->
+  <rect x="112" y="566" width="96" height="12" rx="4" fill="#d6a84f" />
+  <path d="M128 566q4-34 32-34q28 0 32 34Z" fill="#fffaf0" />
+  <path d="M136 540q24-10 48 0" stroke="#ffd23f" stroke-width="3" fill="none" />
+  <rect x="148" y="520" width="24" height="16" rx="6" fill="#b97a48" />
+  <circle cx="160" cy="506" r="15" fill="#b97a48" />
+  <path d="M146 500q14-18 28 0v-4q-14-16-28 0Z" fill="#e8e8e8" />
+  <path d="M152 520q8 6 16 0" stroke="#e8e8e8" stroke-width="5" stroke-linecap="round" fill="none" />
+  <path d="M138 556q22 8 44 0" stroke="#b97a48" stroke-width="6" stroke-linecap="round" fill="none" />
+  <rect x="140" y="550" width="40" height="9" rx="4" fill="#f3e2b3" />
+  <circle cx="140" cy="554" r="5" fill="#e3c98f" />
+  <circle cx="180" cy="554" r="5" fill="#e3c98f" />
+
+  <!-- A cat by the scribe, tail swaying. -->
+  <ellipse cx="226" cy="566" rx="14" ry="9" fill="#3b3b4a" />
+  <circle cx="214" cy="552" r="8" fill="#3b3b4a" />
+  <path d="M208 548l1-9 5 5ZM220 548l-1-9-5 5Z" fill="#3b3b4a" />
+  <circle cx="211" cy="551" r="1.3" fill="#ffd23f" />
+  <circle cx="217" cy="551" r="1.3" fill="#ffd23f" />
+  <g data-anim="cat-tail">
+    <path d="M238 568q14 2 12-14" fill="none" stroke="#3b3b4a" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Right palm (still: the macaw sits on it). -->
+  <path d="M480 640q-4-120-22-238" fill="none" stroke="#8b5a2b" stroke-width="10" stroke-linecap="round" />
+  <path d="M458 402q-30-14-48 4M458 402q-20-24-46-18M458 402q12-28 42-20M458 402q30-6 42 20M458 402q-2 24-14 34" fill="none" stroke="#3f9a4a" stroke-width="7" stroke-linecap="round" />
+  <path d="M466 450l-12 4" stroke="#8b5a2b" stroke-width="5" stroke-linecap="round" />
+
+  <!-- The market stall: striped awning, dates and grapes, the seller. -->
+  <path d="M302 600V492M434 600V492" stroke="#8a5a33" stroke-width="5" />
+  <g data-anim="seller">
+    <circle cx="410" cy="514" r="12" fill="#a86f3f" />
+    <path d="M398 510q12-16 24 0Z" fill="#fffaf0" />
+    <path d="M396 554q2-28 14-28t14 28Z" fill="#3a6fd8" />
+  </g>
+  <path d="M294 498l12-18h120l12 18Z" fill="#fffaf0" />
+  <path d="M318 480l-6 18M342 480l-2 18M366 480v18M390 480l2 18M414 480l6 18" stroke="#e05a47" stroke-width="7" />
+  <rect x="300" y="552" width="136" height="10" rx="3" fill="#a8743f" />
+  <rect x="306" y="562" width="124" height="38" fill="#8a5a33" />
+  <path d="M306 578h124" stroke="#6b4226" stroke-width="2" />
+  <ellipse cx="320" cy="550" rx="14" ry="5" fill="#c9953f" />
+  <g fill="#7a3b1d">
+    <circle cx="314" cy="545" r="4" />
+    <circle cx="322" cy="544" r="4" />
+    <circle cx="318" cy="540" r="4" />
+  </g>
+  <g fill="#7b3f8f">
+    <circle cx="416" cy="540" r="4" />
+    <circle cx="424" cy="540" r="4" />
+    <circle cx="420" cy="547" r="4" />
+    <circle cx="428" cy="547" r="4" />
+    <circle cx="424" cy="553" r="3.5" />
+  </g>
+  <path d="M420 532l4-6" stroke="#4f8f3a" stroke-width="2" />
+
+  <!-- A water carrier with a jar on her head (sways a little as she walks). -->
+  <g data-anim="carrier">
+    <path d="M268 556h22l6 70h-34Z" fill="#fffaf0" />
+    <path d="M288 560l2-30" stroke="#b97a48" stroke-width="6" stroke-linecap="round" />
+    <path d="M270 562l-6 24" stroke="#b97a48" stroke-width="6" stroke-linecap="round" />
+    <circle cx="279" cy="542" r="11" fill="#b97a48" />
+    <path d="M267 544q0-16 12-16t12 16v6h-5v-8h-14v8h-5Z" fill="#1f1f2b" />
+    <ellipse cx="280" cy="518" rx="11" ry="9" fill="#c8643b" />
+    <rect x="275" y="505" width="10" height="6" rx="2" fill="#c8643b" />
+    <path d="M270 626v14M288 626v14" stroke="#b97a48" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- The porter with a basket on his head (still: he holds the smartphone). -->
+  <path d="M206 742v-44M222 742v-44" stroke="#c98a55" stroke-width="7" stroke-linecap="round" />
+  <path d="M198 700h32l-4-34h-24Z" fill="#fffaf0" />
+  <path d="M200 690h28" stroke="#ffd23f" stroke-width="3" />
+  <rect x="202" y="634" width="24" height="34" rx="6" fill="#c98a55" />
+  <circle cx="214" cy="620" r="13" fill="#c98a55" />
+  <path d="M200 616q14-18 28 0l2 10h-6l-2-6h-16l-2 6h-6Z" fill="#3a6fd8" />
+  <ellipse cx="214" cy="600" rx="22" ry="7" fill="#c9953f" />
+  <path d="M196 598h36" stroke="#a8742c" stroke-width="2" />
+  <path d="M204 642l-12-24" stroke="#c98a55" stroke-width="6" stroke-linecap="round" />
+  <path d="M224 644l22-14" stroke="#c98a55" stroke-width="6" stroke-linecap="round" />
+  <circle cx="218" cy="622" r="1.5" fill="#3b2a1a" />
+
+  <!-- The horse with its saddle (head and tail move; the saddle and stirrup stay still). -->
+  <path d="M74 728v-46M92 730v-44M134 730v-44M150 728v-46" stroke="#9a6235" stroke-width="7" stroke-linecap="round" />
+  <ellipse cx="112" cy="672" rx="52" ry="22" fill="#b5784a" />
+  <g data-anim="horse-tail">
+    <path d="M162 664q16 10 10 40" fill="none" stroke="#5b3a22" stroke-width="7" stroke-linecap="round" />
+  </g>
+  <g data-anim="horse-head">
+    <path d="M82 664q-16-14-20-44" fill="none" stroke="#b5784a" stroke-width="18" stroke-linecap="round" />
+    <ellipse cx="50" cy="626" rx="22" ry="11" transform="rotate(-32 50 626)" fill="#b5784a" />
+    <path d="M62 608l1-13 7 10Z" fill="#9a6235" />
+    <path d="M68 606q4 26 18 46" fill="none" stroke="#5b3a22" stroke-width="5" stroke-linecap="round" />
+    <circle cx="58" cy="614" r="2" fill="#2b1a10" />
+    <circle cx="34" cy="636" r="1.8" fill="#5b3a22" />
+  </g>
+  <path d="M90 652h44q4 14-4 22H94q-8-8-4-22Z" fill="#c8643b" />
+  <path d="M92 658h40" stroke="#ffd23f" stroke-width="2.5" />
+
+  <!-- The reader on a stone block (still: he holds the bound book). -->
+  <rect x="366" y="694" width="78" height="40" rx="4" fill="#d9a95a" />
+  <path d="M366 708h78" stroke="#b07f32" stroke-width="2" stroke-opacity="0.6" />
+  <path d="M380 694q2-40 26-40q24 0 26 40Z" fill="#fffaf0" />
+  <circle cx="406" cy="634" r="14" fill="#a86f3f" />
+  <path d="M392 630q14-18 28 0l2 12h-6l-2-8h-16l-2 8h-6Z" fill="#1f1f2b" />
+  <path d="M388 680q14-8 26-6M424 680q-6-8-6-10" stroke="#a86f3f" stroke-width="6" stroke-linecap="round" fill="none" />
+  <path d="M396 700v32M418 700v32" stroke="#a86f3f" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Flowers in the sand. -->
+  <g fill="#e05a8a">
+    <circle cx="300" cy="664" r="3.5" />
+    <circle cx="310" cy="670" r="3.5" />
+    <circle cx="470" cy="700" r="3.5" />
+  </g>
+  <path d="M300 668v8M310 674v8M470 704v8" stroke="#4f8f3a" stroke-width="2" />
 
   <!-- Odd items. -->
-  <g id="phone">
-    <rect x="254" y="289" width="16" height="26" rx="3" fill="#222" />
-    <rect x="256" y="292" width="12" height="19" rx="1" fill="#6ec6ff" />
-    <circle cx="262" cy="313" r="1" fill="#888" />
-  </g>
-  <g id="traffic-light">
-    <rect x="101" y="330" width="6" height="50" fill="#555" />
-    <rect x="92" y="284" width="24" height="48" rx="5" fill="#333" />
-    <circle cx="104" cy="296" r="5" fill="#ff4d4d" />
-    <circle cx="104" cy="308" r="5" fill="#ffc933" />
-    <circle cx="104" cy="320" r="5" fill="#3cc47f" />
-  </g>
-  <g id="car">
-    <path d="M488 375l8-14h34l10 14Z" fill="#d93a3a" />
-    <path d="M494 373l5-9h11v9ZM514 373v-9h14l6 9Z" fill="#bfeaff" />
-    <rect x="470" y="372" width="85" height="26" rx="8" fill="#e84a4a" />
-    <path d="M512 376v18" stroke="#c43030" stroke-width="2" />
-    <circle cx="490" cy="400" r="8" fill="#333" />
-    <circle cx="490" cy="400" r="3" fill="#bbb" />
-    <circle cx="536" cy="400" r="8" fill="#333" />
-    <circle cx="536" cy="400" r="3" fill="#bbb" />
-    <circle cx="551" cy="382" r="3" fill="#ffe27a" />
-  </g>
-  <g id="plane">
-    <path d="M592 70l14 24h8l-6-24ZM592 70l14-22h8l-6 22Z" fill="#9aa7b8" />
-    <path d="M566 70l-4-18h8l10 18Z" fill="#9aa7b8" />
-    <ellipse cx="600" cy="70" rx="40" ry="9" fill="#fff" />
-    <path d="M636 66q4 2 4 4h-6Z" fill="#3a86ff" />
-    <path d="M618 67h4M626 67h4M610 67h4M602 67h4" stroke="#3a86ff" stroke-width="3" stroke-linecap="round" />
+  <g id="windmill">
+    <path d="M422 264L426 224h12l4 40Z" fill="#e8e1d4" />
+    <path d="M420 226l12-12 12 12Z" fill="#8a5a33" />
+    <rect x="428" y="248" width="8" height="16" rx="3" fill="#6b4226" />
+    <g stroke="#6b4226" stroke-width="3" stroke-linecap="round">
+      <path d="M432 220l-22-20M432 220l22-20M432 220l-20 22M432 220l20 22" />
+    </g>
+    <path d="M414 204l-6 6 8 8 6-6ZM450 204l6 6-8 8-6-6ZM416 236l-6-6 8-8 6 6ZM448 236l6-6-8-8-6 6Z" fill="#fffaf0" />
+    <circle cx="432" cy="220" r="3.5" fill="#3b2a1a" />
   </g>
   <g id="bottle">
-    <rect x="680" y="391" width="8" height="5" rx="1" fill="#2f6fd6" />
-    <rect x="681" y="395" width="6" height="8" fill="#bfeaff" fill-opacity="0.9" />
-    <rect x="677" y="401" width="14" height="32" rx="4" fill="#9be0f0" fill-opacity="0.9" />
-    <rect x="677" y="412" width="14" height="8" fill="#ff7a00" />
+    <rect x="292" y="414" width="16" height="36" rx="6" fill="#bfe6ff" fill-opacity="0.85" stroke="#7fb8de" stroke-width="1.5" />
+    <rect x="296" y="406" width="8" height="9" rx="2" fill="#2f6fe0" />
+    <rect x="292" y="428" width="16" height="9" fill="#ff5a5a" />
+  </g>
+  <g id="sunflower">
+    <path d="M96 504v-56" stroke="#4f8f3a" stroke-width="4" />
+    <path d="M96 486q-14-4-18 6q12 2 18-6ZM96 474q14-4 18 6q-12 2-18-6Z" fill="#5aa84d" />
+    <g fill="#ffcf1f">
+      <ellipse cx="96" cy="424" rx="5" ry="9" />
+      <ellipse cx="96" cy="452" rx="5" ry="9" />
+      <ellipse cx="82" cy="438" rx="9" ry="5" />
+      <ellipse cx="110" cy="438" rx="9" ry="5" />
+      <ellipse cx="86" cy="428" rx="5" ry="8" transform="rotate(-45 86 428)" />
+      <ellipse cx="106" cy="428" rx="5" ry="8" transform="rotate(45 106 428)" />
+      <ellipse cx="86" cy="448" rx="5" ry="8" transform="rotate(45 86 448)" />
+      <ellipse cx="106" cy="448" rx="5" ry="8" transform="rotate(-45 106 448)" />
+    </g>
+    <circle cx="96" cy="438" r="8" fill="#7a4a1d" />
+  </g>
+  <g id="macaw">
+    <path d="M452 452q-6 20 2 46l6-2q-4-22 2-42Z" fill="#2f6fe0" />
+    <path d="M455 470q-2 24 4 40" stroke="#ffcf1f" stroke-width="3" fill="none" />
+    <ellipse cx="452" cy="444" rx="9" ry="14" fill="#e5252a" />
+    <path d="M444 444q-6 14 2 22l8-8Z" fill="#ffcf1f" />
+    <path d="M444 450q-4 10 4 14" stroke="#2f6fe0" stroke-width="4" fill="none" />
+    <circle cx="452" cy="428" r="8" fill="#e5252a" />
+    <circle cx="449" cy="427" r="3" fill="#fff" />
+    <circle cx="449" cy="427" r="1.4" fill="#111" />
+    <path d="M444 430q-6 2-4 8q4-1 6-4Z" fill="#2b2b33" />
+  </g>
+  <g id="glasses">
+    <circle cx="154" cy="508" r="5.5" fill="#cfe9ff" fill-opacity="0.5" stroke="#2b2b33" stroke-width="2" />
+    <circle cx="167" cy="508" r="5.5" fill="#cfe9ff" fill-opacity="0.5" stroke="#2b2b33" stroke-width="2" />
+    <path d="M159.5 507h2" stroke="#2b2b33" stroke-width="2" />
+  </g>
+  <g id="pineapple">
+    <path d="M358 530l-6-18 9 10 3-16 3 16 9-10-6 18Z" fill="#3f9a4a" />
+    <ellipse cx="364" cy="542" rx="11" ry="15" fill="#e9a72a" />
+    <path d="M356 532l16 18M354 544l12 12M360 528l14 14M372 532l-16 18M374 544l-12 12M368 528l-14 14" stroke="#b07018" stroke-width="1.5" />
+  </g>
+  <g id="phone">
+    <rect x="242" y="610" width="14" height="24" rx="3" fill="#222" />
+    <rect x="244" y="613" width="10" height="17" rx="1" fill="#6ec6ff" />
+    <circle cx="249" cy="632" r="0.9" fill="#888" />
+  </g>
+  <g id="potatoes">
+    <path d="M300 636q30 14 60 0l-6 26q-24 10-48 0Z" fill="#b8874a" />
+    <path d="M304 646q26 10 52 0M308 656q22 8 44 0" stroke="#8a5a33" stroke-width="2" fill="none" />
+    <g fill="#c99a5b" stroke="#9a6e38" stroke-width="1.2">
+      <ellipse cx="314" cy="632" rx="9" ry="7" />
+      <ellipse cx="330" cy="628" rx="10" ry="7" />
+      <ellipse cx="346" cy="632" rx="9" ry="7" />
+      <ellipse cx="322" cy="622" rx="8" ry="6" />
+      <ellipse cx="338" cy="620" rx="8" ry="6" />
+    </g>
+    <g fill="#8a6234">
+      <circle cx="312" cy="630" r="1" />
+      <circle cx="332" cy="627" r="1" />
+      <circle cx="348" cy="633" r="1" />
+      <circle cx="338" cy="619" r="1" />
+    </g>
+  </g>
+  <g id="stirrups">
+    <path d="M112 676v22" stroke="#5b3a22" stroke-width="3" />
+    <path d="M103 698h18v10q0 6-9 6t-9-6Z" fill="none" stroke="#8c8c96" stroke-width="3.5" stroke-linejoin="round" />
+    <path d="M102 710h20" stroke="#8c8c96" stroke-width="4" stroke-linecap="round" />
+  </g>
+  <g id="book">
+    <path d="M386 666l20-6v26l-20 6Z" fill="#7a2e2e" />
+    <path d="M426 666l-20-6v26l20 6Z" fill="#7a2e2e" />
+    <path d="M389 667l17-5v22l-17 5Z" fill="#fffaf0" />
+    <path d="M423 667l-17-5v22l17 5Z" fill="#f3ead6" />
+    <path d="M392 672l11-3M392 677l11-3M392 682l11-3M409 669l11 3M409 674l11 3M409 679l11 3" stroke="#9a8f7a" stroke-width="1" />
+    <path d="M406 660v26" stroke="#5a1f1f" stroke-width="2.5" />
   </g>
 </svg>

@@ -1,7 +1,7 @@
 // Picture style: the levels as drawn (SVG scenes, "classic") or their redesigned pictures (`Level.redesign`,
 // "redesign"). A level without redesigned pictures is always played as drawn. Read as an attempt starts; switching
 // inside a level starts it over (LevelView), a duel keeps the style it opened with (MatchView).
-import type { Difference, ImagePatch, Level } from '../engine/types.ts'
+import type { AnachronismLevel, Difference, ImagePatch, Level } from '../engine/types.ts'
 
 const PICTURE_STYLES = ['classic', 'redesign'] as const
 export type PictureStyle = (typeof PICTURE_STYLES)[number]
@@ -16,6 +16,16 @@ export function styledLevel(level: Level, style: PictureStyle): Level {
   if (style === 'classic' || !level.redesign) return level
   const { redesign, build: _build, extras: _extras, secret: _secret, traps: _traps, ...rest } = level
   return { ...rest, kind: 'image', ...redesign }
+}
+
+/**
+ * The "find the odd one out" era to play in `style` (docs/redesign-time-travel.md): the 3D one is its picture with its
+ * own odd items and par time, standing still; an era without one (or the classic style) is the era itself.
+ */
+export function styledEra(level: AnachronismLevel, style: PictureStyle): AnachronismLevel {
+  if (style === 'classic' || !level.redesign) return level
+  const { redesign, ...rest } = level
+  return { ...rest, ...redesign, animations: [] }
 }
 
 /** How far a cut-out of B may reach past its zone's circle: a changed object drawn a little bigger than the zone. */

@@ -9,6 +9,7 @@ import {
   addMissMark,
   addRevealMark,
   animatePicture,
+  createImagePicture,
   createSvgPicture,
   HINT_SCALE,
   removeHintMarks,
@@ -78,7 +79,8 @@ export class AnachronismScene {
   constructor(
     container: HTMLElement,
     level: AnachronismLevel,
-    source: string,
+    /** The SVG text of a drawn era; left out for a pixel picture (`level.image`, the 3D one: `styledEra`). */
+    source: string | undefined,
     handlers: AnachronismHandlers = {},
     options: AnachronismOptions = {},
   ) {
@@ -89,7 +91,7 @@ export class AnachronismScene {
     this.round = new AnachronismRound(level)
     const size = { w: level.width, h: level.height }
     this.zones = level.items.map((s) => shapeCircle(s, size))
-    this.picture = createSvgPicture(source, size.w, size.h, level.animations)
+    this.picture = source !== undefined ? createSvgPicture(source, size.w, size.h, level.animations) : createImagePicture(level.image, size.w, size.h)
     const svg = this.picture.svg
     this.viewport = new Viewport([svg], size.w, size.h, (s) => handlers.onZoom?.(s))
     this.gestures = new Gestures(container, [svg], this.viewport, {

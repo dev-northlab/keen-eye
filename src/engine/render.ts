@@ -54,19 +54,7 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     scene.innerHTML = built.svg
     animations = built.animations
   } else {
-    const layers = pictureLayers(level, variant)
-    if (layers.length) {
-      // Picture B may be A with cut-outs of B over it: the spinner stays until all are in, or B would show as A.
-      const images = layers.map((p) => el('image', { href: imageUrl(p.href), x: p.x, y: p.y, width: p.w, height: p.h }))
-      scene.append(...images)
-      loader = loadingSpinner(w, h)
-      let pending = images.length
-      const done = () => --pending === 0 && loader?.remove()
-      for (const image of images) {
-        image.addEventListener('load', done, { once: true })
-        image.addEventListener('error', done, { once: true })
-      }
-    }
+    loader = imageLayers(scene, pictureLayers(level, variant), w, h)
     // The key as its own layer (the pictures are drawn without it), taken off like a drawn scene's key.
     const key = level.secret?.image
     if (key && (level.secret?.on === 'both' || variant === 1)) {
@@ -98,6 +86,25 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
 }
 
 const imageUrl = (href: string) => import.meta.env.BASE_URL + href
+
+/**
+ * Lays the pixel layers into `scene` and returns the spinner that covers the picture until every layer has loaded
+ * (or failed), or nothing without layers. Picture B may be A with cut-outs of B over it: the spinner stays until all
+ * are in, or B would show as A.
+ */
+function imageLayers(scene: SVGGElement, layers: ImagePatch[], w: number, h: number): SVGGElement | undefined {
+  if (!layers.length) return undefined
+  const images = layers.map((p) => el('image', { href: imageUrl(p.href), x: p.x, y: p.y, width: p.w, height: p.h }))
+  scene.append(...images)
+  const loader = loadingSpinner(w, h)
+  let pending = images.length
+  const done = () => --pending === 0 && loader.remove()
+  for (const image of images) {
+    image.addEventListener('load', done, { once: true })
+    image.addEventListener('error', done, { once: true })
+  }
+  return loader
+}
 
 /** The pixel layers of picture `variant` of an image level: the whole picture, for B with its cut-outs over it. */
 function pictureLayers(level: Level, variant: 0 | 1): ImagePatch[] {
@@ -175,6 +182,21 @@ export function createSvgPicture(source: string, w: number, h: number, animation
     posedT: NaN,
     posedAt: -Infinity,
   }
+}
+
+/**
+ * A still pixel picture of w × h (`href` relative to the app base), e.g. the 3D picture of a "find the odd one out"
+ * era: a spinner covers it until it has loaded; no animations.
+ */
+export function createImagePicture(href: string, w: number, h: number): Picture {
+  const svg = el('svg', { viewBox: `0 0 ${w} ${h}`, class: 'ke-picture' })
+  svg.style.userSelect = 'none'
+  const scene = el('g', {})
+  const loader = imageLayers(scene, [{ href, x: 0, y: 0, w, h }], w, h)
+  const marks = el('g', { 'pointer-events': 'none' })
+  svg.append(scene, marks)
+  if (loader) svg.append(loader)
+  return { svg, marks, animated: [], animations: new Map(), zoneMarks: [], posedT: NaN, posedAt: -Infinity }
 }
 
 /** The `data-anim` groups of a scene that have an animation (matched by key). */

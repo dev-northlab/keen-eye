@@ -1,5 +1,10 @@
+<script lang="ts">
+/** The note that an era has no 3D picture yet has been shown in this session (it is told once). */
+let drawnOnlyNoted = false
+</script>
+
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import FactCard from '../components/FactCard.vue'
@@ -8,6 +13,7 @@ import HudCounters from '../components/HudCounters.vue'
 import LevelId from '../components/LevelId.vue'
 import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
+import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import ResultDialog from '../components/ResultDialog.vue'
 import SettingsOverlay from '../components/SettingsOverlay.vue'
 import ToolButton from '../components/ToolButton.vue'
@@ -15,6 +21,7 @@ import { localized } from '../engine/anachronism.ts'
 import { AnachronismScene } from '../engine/anachronism-scene.ts'
 import { MODE_RULES, type GameMode } from '../engine/rules.ts'
 import type { LevelResult, LocalizedText } from '../engine/types.ts'
+import { styledEra } from '../levels/picture-style.ts'
 import { timeTravelLevelById, timeTravelLevels } from '../levels/time-travel/index.ts'
 import { playMusic, playSfx } from '../services/audio.ts'
 import { useBackButton } from '../services/backButton.ts'
@@ -27,7 +34,7 @@ import { useSettingsStore } from '../stores/settings.ts'
 
 const props = defineProps<{ id: string }>()
 const router = useRouter()
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const progress = useProgressStore()
 const settings = useSettingsStore()
 
@@ -35,6 +42,8 @@ const settings = useSettingsStore()
 const level = timeTravelLevelById(props.id)!
 const nextLevel = timeTravelLevels[timeTravelLevels.indexOf(level) + 1]
 const imageUrl = import.meta.env.BASE_URL + level.image
+/** The era as this attempt plays it: drawn, or its 3D picture with its own items (`styledEra`, read as it starts). */
+const era = shallowRef(level)
 const text = (t: LocalizedText) => localized(t, locale.value)
 
 const board = ref<HTMLDivElement>()
@@ -60,9 +69,12 @@ const animationFrozen = ref(false)
 const fact = ref<{ index: number; n: number } | null>(null)
 const result = ref<LevelResult | null>(null)
 let scene: AnachronismScene | undefined
-/** Source of the level's SVG picture, loaded once when the screen opens. */
+/** Source of the level's drawn SVG picture, loaded once when the screen opens. */
 let source = ''
-const total = level.items.length
+const total = computed(() => era.value.items.length)
+/** "No 3D picture for this era yet", shown for a while. */
+const styleNote = ref(false)
+let styleNoteTimer = 0
 
 const formatTime = (sec: number) => `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`
 const time = computed(() => formatTime(result.value?.timeSec ?? seconds.value))
@@ -83,11 +95,13 @@ function start() {
   result.value = null
   modeSetting = settings.mode
   mode.value = settings.mode
+  era.value = styledEra(level, settings.pictureStyle)
   playMusic(calm.value ? 'calm' : 'level')
   scene = new AnachronismScene(
     board.value!,
-    level,
-    source,
+    era.value,
+    // The drawn era is inlined from its SVG; a 3D picture is a pixel image the scene loads itself.
+    era.value === level ? source : undefined,
     {
       onFound: (index, n) => {
         found.value = n
@@ -118,7 +132,24 @@ function start() {
       missLock: rules.value.missLock,
     },
   )
+  noteDrawnOnly()
 }
+
+/** The 3D picture style is on, but this era has only its drawn picture (and so no style switch): say so, once a session. */
+function noteDrawnOnly() {
+  if (drawnOnlyNoted || settings.pictureStyle !== 'redesign' || level.redesign) return
+  drawnOnlyNoted = true
+  styleNote.value = true
+  styleNoteTimer = window.setTimeout(() => (styleNote.value = false), STYLE_NOTE_MS)
+}
+const STYLE_NOTE_MS = 4000
+
+// Another picture style has other items: the attempt starts over in it.
+// (Once the drawn picture's source is in: the first attempt starts after it.)
+watch(
+  () => settings.pictureStyle,
+  () => source && start(),
+)
 
 /** Hints this attempt can still take (calm mode 3, normal 1). */
 const hintsLeft = computed(() => rules.value.hints - hintsUsed.value)
@@ -180,6 +211,7 @@ onBeforeUnmount(() => {
   mounted = false
   document.removeEventListener('visibilitychange', onVisibility)
   scene?.destroy()
+  clearTimeout(styleNoteTimer)
 })
 </script>
 
@@ -205,16 +237,18 @@ onBeforeUnmount(() => {
       <div ref="board" class="pictures" />
       <LevelId :id="level.number" boxed />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
+      <div v-if="styleNote" class="style-note" role="status">{{ t('pictureStyle.drawnOnly') }}</div>
       <FactCard
         v-if="fact"
         :key="fact.n"
-        :label="text(level.items[fact.index].label)"
-        :fact="text(level.items[fact.index].fact)"
+        :label="text(era.items[fact.index].label)"
+        :fact="text(era.items[fact.index].fact)"
         @close="fact = null"
       />
     </div>
 
     <footer class="toolbar">
+      <PictureStyleSwitch v-if="level.redesign" class="style-switch" />
       <ToolButton
         v-if="rules.hints !== 0"
         tone="hint"
@@ -231,8 +265,9 @@ onBeforeUnmount(() => {
       <ToolButton :label="$t('level.resetZoom')" :disabled="zoom === 1" @click="scene?.resetZoom()">
         <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </ToolButton>
+      <!-- A 3D picture stands still: nothing to stop. -->
       <ToolButton
-        v-if="calm"
+        v-if="calm && era.animations.length"
         :label="animationFrozen ? $t('level.animPlay') : $t('level.animPause')"
         :aria-pressed="animationFrozen"
         @click="toggleAnimation"
@@ -268,7 +303,7 @@ onBeforeUnmount(() => {
     >
       <h3 class="facts-title">{{ $t('timeTravel.facts') }}</h3>
       <ul class="facts">
-        <li v-for="item in level.items" :key="item.id">
+        <li v-for="item in era.items" :key="item.id">
           <strong>{{ text(item.label) }}</strong>
           {{ text(item.fact) }}
         </li>
@@ -371,6 +406,28 @@ onBeforeUnmount(() => {
   font-weight: 600;
   pointer-events: none;
   z-index: 1;
+}
+
+.style-note {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  z-index: 2;
+  width: min(calc(100% - 24px), 420px);
+  transform: translateX(-50%);
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--fg);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.16);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+}
+
+.style-switch {
+  align-self: center;
 }
 
 .facts-title {

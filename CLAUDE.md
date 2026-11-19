@@ -81,7 +81,11 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   (no unlock order; only the first era, 601, is free — `FREE_TIME_TRAVEL_NUMBER`, the rest need the purchase; own `progress.timeTravel` records; a world map card opens the eras, `/time-travel`, a level is `/time-travel/:id`;
   one era per level: Egypt, Rome, Vikings, castle, pirates, Wild West, Stone Age, samurai Japan, Aztecs, ancient China so far, difficulty growing; the picture is inlined
   (`createSvgPicture`) and its background moves: `data-anim` groups in the SVG + `animations` in the JSON, same
-  motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one); `helpers.ts` (`svgLevel`, `diff`, `rng`),
+  motion types as `anim()`; odd items never move — `npm test` checks it — and neither do characters holding one;
+  an era may carry `redesign` — its 3D picture (`public/levels/time-travel/redesign/`, still) with its own, longer
+  list of odd items, an item without texts borrowing those of the drawn item with the same id — played in the
+  "redesign" picture style through `styledEra` (`levels/picture-style.ts`), with the style switch on its screen;
+  plan, item rules and status in `docs/redesign-time-travel.md`); `helpers.ts` (`svgLevel`, `diff`, `rng`),
   `shapes.ts` (farm drawing helpers), `chapter-02/shapes.ts` (city helpers: buildings, cars, people, street),
   `chapters.ts` (the chapters/"worlds": id, level id ranges, card colors, icon, backdrop — one entry per world; plus
   the categories `TIME_CHAPTER` and `MEMORY_CHAPTER`, `CATEGORIES`, with their `rules` text), `time/` — "spot the difference in time" (`docs/time-differences-mode.md`): levels 201–230 of chapter
