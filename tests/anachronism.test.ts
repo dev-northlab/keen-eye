@@ -32,7 +32,7 @@ describe('time travel levels', () => {
     const level = timeTravelLevelById('egypt-01')
     assert.ok(level)
     assert.equal(level.mode, 'anachronism')
-    assert.equal(level.items.length, 10)
+    assert.equal(level.items.length, 12)
     assert.ok(level.items.every((i) => i.label.ru && i.fact.ru))
   })
 

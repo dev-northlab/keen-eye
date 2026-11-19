@@ -136,14 +136,6 @@
   <rect x="272" y="584" width="216" height="44" fill="#a8743f" />
   <rect x="268" y="578" width="224" height="8" rx="2" fill="#c9915a" />
   <path d="M272 600H488M272 614H488" stroke="#8a5a33" stroke-width="2" />
-  <g fill="#7b3f98">
-    <circle cx="370" cy="572" r="5" /><circle cx="380" cy="572" r="5" /><circle cx="390" cy="572" r="5" />
-    <circle cx="375" cy="564" r="5" /><circle cx="385" cy="564" r="5" /><circle cx="380" cy="556" r="5" />
-  </g>
-  <path d="M380 551v-6" stroke="#3f9a4a" stroke-width="3" stroke-linecap="round" />
-  <ellipse cx="404" cy="572" rx="11" ry="6" fill="#d9a35a" />
-  <path d="M398 569l4-4M406 569l4-4" stroke="#b5814a" stroke-width="2" stroke-linecap="round" />
-
   <!-- Amphorae and an olive tree by the stall. -->
   <g fill="#c8643b">
     <path d="M248 706q-10-12-5-28 3-6 5-11h8q2 5 5 11 5 16-5 28Z" />
@@ -263,4 +255,13 @@
     <circle cx="182" cy="709" r="1.8" fill="#2b2b2b" />
     <path d="M165 698q0-6 6-6h22q6 0 6 6v2h-8v-2h-18v2h-8Z" fill="#2b2b2b" />
   </g>
+  <!-- More odd items and background things. -->
+  <g id="pizza" transform="translate(376 570) scale(0.8) translate(0 0)"><g><ellipse cx="0" cy="0" rx="18" ry="8" fill="#e8b860"/><ellipse cx="0" cy="-1" rx="15" ry="6" fill="#e84a2f"/><g fill="#fff4d6"><circle cx="-7" cy="-1" r="3"/><circle cx="5" cy="-3" r="3"/><circle cx="3" cy="2" r="2.5"/></g><g fill="#3f9a4a"><ellipse cx="-2" cy="-3" rx="2" ry="1.2"/><ellipse cx="9" cy="0" rx="2" ry="1.2"/></g></g></g>
+  <g id="pisa" transform="translate(152 236) scale(0.9) translate(0 0)"><g><g transform="rotate(6)"><rect x="-8" y="-26" width="16" height="50" fill="#f4efe6"/><path d="M-8 -16h16M-8 -6h16M-8 4h16M-8 14h16" stroke="#ddd3c2" stroke-width="2"/><rect x="-6" y="-32" width="12" height="7" fill="#f4efe6"/><g fill="#c9bfae"><rect x="-6" y="-13" width="2" height="5"/><rect x="-1" y="-13" width="2" height="5"/><rect x="4" y="-13" width="2" height="5"/><rect x="-6" y="-3" width="2" height="5"/><rect x="-1" y="-3" width="2" height="5"/><rect x="4" y="-3" width="2" height="5"/><rect x="-6" y="7" width="2" height="5"/><rect x="-1" y="7" width="2" height="5"/><rect x="4" y="7" width="2" height="5"/></g></g></g></g>
+  <g transform="translate(70 594) scale(0.8) translate(0 0)"><g><rect x="-12" y="4" width="24" height="10" rx="2" fill="#ddd3c2"/><rect x="-8" y="-14" width="16" height="18" fill="#f4efe6"/><path d="M-4 -14v18M2 -14v18" stroke="#ddd3c2" stroke-width="2"/></g></g>
+  <g transform="translate(36 540) scale(0.8) translate(0 0)"><g><path d="M-6 18q-10-14-4-30 2-6 4-10h12q2 4 4 10 6 16-4 30Z" fill="#c8643b"/><path d="M-10 -12q-6 2-4 10M10 -12q6 2 4 10" fill="none" stroke="#c8643b" stroke-width="2.5"/><path d="M-9 -2h18" stroke="#a84e2c" stroke-width="2"/></g></g>
+  <g transform="translate(482 474) scale(0.9) translate(0 0)"><g><path d="M-6 12v-12M2 12v-16M8 12v-10" stroke="#4f8f3a" stroke-width="2"/><circle cx="-6" cy="-2" r="4" fill="#e05a8a"/><circle cx="2" cy="-6" r="4" fill="#f2c14e"/><circle cx="8" cy="0" r="4" fill="#9b59b6"/></g></g>
+  <g transform="translate(352 730) scale(0.9) translate(0 0)"><g><ellipse cx="0" cy="4" rx="13" ry="8" fill="#9a8a7a"/><circle cx="-11" cy="-6" r="7" fill="#9a8a7a"/><path d="M-16 -10l1-7 4 4ZM-6 -10l-1-7-4 4Z" fill="#9a8a7a"/><path d="M12 6q10 0 8-12" fill="none" stroke="#9a8a7a" stroke-width="3" stroke-linecap="round"/></g></g>
+  <g transform="translate(112 736) scale(0.9) translate(0 0)"><g><ellipse cx="0" cy="2" rx="11" ry="8" fill="#c9773a"/><circle cx="-10" cy="-5" r="5" fill="#c9773a"/><path d="M-14 -4l-4 1 4 2Z" fill="#e0a040"/><path d="M-11 -10l2-3 2 3Z" fill="#d93a3a"/><path d="M10 0q6-6 4-12" fill="none" stroke="#a85e2a" stroke-width="3"/><path d="M-3 10v5M3 10v5" stroke="#e0a040" stroke-width="2"/></g></g>
+  <g transform="translate(252 606) scale(0.9) translate(0 0)"><g><ellipse cx="-6" cy="2" rx="12" ry="6" fill="#d9a35a"/><ellipse cx="8" cy="0" rx="10" ry="6" fill="#c98f45"/><path d="M-12 0l4-4M-4 0l4-4M4 -2l3-3M10 -2l3-3" stroke="#b5814a" stroke-width="1.6" stroke-linecap="round"/></g></g>
 </svg>

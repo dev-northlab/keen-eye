@@ -253,4 +253,19 @@
     <rect x="410" y="718" width="14" height="6" rx="1" fill="#c3ccd6" />
     <path d="M417 718q-4-8 0-12q4 4 0 12Z" fill="#ffb02e" />
   </g>
+  <!-- More odd items and background things. -->
+  <g id="ramen" transform="translate(120 516) scale(0.9) translate(0 0)"><g><path d="M-16 -2h32q-2 14-16 14t-16-14Z" fill="#c0392b"/><path d="M-16 -2h32" stroke="#f4ecd6" stroke-width="2"/><path d="M-12 -4q4-3 8 0t8 0t8 0" stroke="#f3d27a" stroke-width="2" fill="none"/><circle cx="6" cy="-5" r="3.5" fill="#fff"/><circle cx="6" cy="-5" r="1.6" fill="#f2b04a"/><path d="M-6 -18l10 14M-2 -19l8 15" stroke="#8a5a33" stroke-width="1.6" stroke-linecap="round"/></g></g>
+  <g id="rickshaw" transform="translate(310 470) scale(0.55) translate(-413 -603)"><g>
+    <path d="M368 598h44l-4 18h-36Z" fill="#8e2a22" />
+    <path d="M370 598q-2-30 20-34" fill="none" stroke="#2c3e50" stroke-width="4" />
+    <path d="M412 606l44-4" stroke="#6b4226" stroke-width="3" stroke-linecap="round" />
+    <circle cx="390" cy="624" r="18" fill="none" stroke="#3b2a1a" stroke-width="3" />
+    <path d="M390 606v36M372 624h36M377 611l26 26M403 611l-26 26" stroke="#3b2a1a" stroke-width="1.4" />
+  </g></g>
+  <g transform="translate(112 300) scale(0.8) translate(0 0)"><g><path d="M0 -20v6" stroke="#6b4226" stroke-width="1.5"/><ellipse cx="0" cy="-2" rx="10" ry="12" fill="#e74c3c"/><path d="M-10 -2h20M-8 -8h16M-8 4h16" stroke="#c0392b" stroke-width="1"/><path d="M0 10v6" stroke="#f3d27a" stroke-width="2"/></g></g>
+  <g transform="translate(300 706) scale(0.8) translate(0 0)"><g><path d="M-14 6q-2-12 10-12q12 0 10 12Z" fill="#f4ecd6"/><path d="M6 0q6 0 4 6" fill="none" stroke="#f4ecd6" stroke-width="2.5"/><path d="M-14 -2l-5-3" stroke="#f4ecd6" stroke-width="2.5" stroke-linecap="round"/><path d="M10 10h8v-6h-8Z" fill="#7a9e7e"/></g></g>
+  <g transform="translate(24 522) scale(0.8) translate(0 0)"><g><path d="M-10 6h20l-3 10h-14Z" fill="#7a5a8c"/><path d="M0 6v-10q-2-6 4-10" stroke="#6b4a3a" stroke-width="3" fill="none"/><ellipse cx="-4" cy="-12" rx="10" ry="6" fill="#4f9a3a"/><ellipse cx="8" cy="-16" rx="8" ry="5" fill="#5bb04a"/></g></g>
+  <g transform="translate(236 408) scale(0.8) translate(0 0)"><g><path d="M-16 14q-4-14 2-24h12q6 10 2 24Z" fill="#e8dcc0"/><path d="M2 14q-4-12 2-20h10q6 8 2 20Z" fill="#ddd0b0"/><path d="M-12 -10h12M5 -6h10" stroke="#a88a50" stroke-width="2"/></g></g>
+  <g transform="translate(380 612) scale(0.8) translate(0 0)"><g><path d="M-2 16l2-12M4 16l-1-12" stroke="#222" stroke-width="1.5"/><ellipse cx="0" cy="0" rx="12" ry="7" fill="#fff"/><path d="M8 -2q6-10 4-22" fill="none" stroke="#fff" stroke-width="3"/><circle cx="12" cy="-24" r="3" fill="#e74c3c"/><path d="M14 -24l8 2" stroke="#3b3b4a" stroke-width="1.5"/><path d="M-12 0l-6 4" stroke="#222" stroke-width="3"/></g></g>
+  <g transform="translate(150 612) scale(0.7) translate(0 0)"><g><ellipse cx="0" cy="2" rx="11" ry="7" fill="#5aa84d"/><circle cx="-5" cy="-5" r="3.5" fill="#5aa84d"/><circle cx="5" cy="-5" r="3.5" fill="#5aa84d"/><circle cx="-5" cy="-5" r="1.4" fill="#222"/><circle cx="5" cy="-5" r="1.4" fill="#222"/></g></g>
 </svg>

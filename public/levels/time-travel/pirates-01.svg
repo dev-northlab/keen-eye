@@ -231,4 +231,13 @@
     <rect x="455" y="648" width="7" height="10" rx="1" fill="#c9a33f" />
     <path d="M419 638q-3 16 1 30h6q-3-14-1-28Z" fill="#222" />
   </g>
+  <!-- More odd items and background things. -->
+  <g id="steel-drum" transform="translate(160 484) scale(0.9) translate(0 0)"><g><path d="M-14 -10h28v18h-28Z" fill="#c3ccd6"/><path d="M-14 -2h28" stroke="#e5252a" stroke-width="3"/><ellipse cx="0" cy="-10" rx="14" ry="5" fill="#dfe6ec" stroke="#9aa3ab" stroke-width="1.2"/><path d="M-6 -11q6 4 12 0M-9 -9q2-2 4 0" stroke="#9aa3ab" stroke-width="1" fill="none"/><path d="M-10 8l-4 12M10 8l4 12" stroke="#3b3b4a" stroke-width="2.5"/><path d="M14 -16l6 -8M18 -14l6-6" stroke="#8a5a33" stroke-width="2" stroke-linecap="round"/></g></g>
+  <g id="ship-bottle" transform="translate(440 560) scale(0.9) translate(0 0)"><g><rect x="-18" y="-8" width="30" height="16" rx="7" fill="#bfeaff" fill-opacity="0.6" stroke="#7fb8de" stroke-width="1.5"/><rect x="12" y="-4" width="8" height="8" rx="2" fill="#bfeaff" fill-opacity="0.6" stroke="#7fb8de" stroke-width="1.5"/><rect x="20" y="-3" width="4" height="6" fill="#8a5a33"/><path d="M-13 3h16l-3 3h-10Z" fill="#7a4e2d"/><path d="M-5 3v-9" stroke="#5a3a22" stroke-width="1.2"/><path d="M-5 -6l7 5h-7Z" fill="#fff"/></g></g>
+  <g transform="translate(32 662) scale(0.8) translate(0 0)"><g><path d="M0 -16v30M-8 -10h16M-14 6q2 10 14 10t14-10" fill="none" stroke="#5a6470" stroke-width="3.5" stroke-linecap="round"/><circle cx="0" cy="-18" r="4" fill="none" stroke="#5a6470" stroke-width="3"/></g></g>
+  <g transform="translate(384 604) scale(0.8) translate(0 0)"><g><g fill="none" stroke="#c9a364" stroke-width="3.5"><ellipse cx="0" cy="0" rx="16" ry="7"/><ellipse cx="0" cy="-3" rx="11" ry="5"/><ellipse cx="0" cy="-6" rx="6" ry="3"/></g></g></g>
+  <g transform="translate(262 740) scale(0.8) translate(0 0)"><g><path d="M-14 4q6-12 12 0Z" fill="#f4b6a6"/><path d="M2 6l4-8 4 8-8-5h8Z" fill="#f08a5a"/><circle cx="14" cy="4" r="4" fill="#fff4e0"/></g></g>
+  <g transform="translate(330 452) scale(0.6) translate(0 0)"><g><path d="M-14 -18q-4 18 0 36h28q4-18 0-36Z" fill="#9a6b3c"/><path d="M-15 -10h30M-15 10h30" stroke="#5a3a22" stroke-width="2.5"/></g></g>
+  <g transform="translate(34 738) scale(0.55) translate(0 0)"><g><rect x="-14" y="-12" width="28" height="24" fill="#b5814a"/><path d="M-14 -12l28 24M14 -12l-28 24" stroke="#8a5a33" stroke-width="2.5"/></g></g>
+  <g transform="translate(330 562) scale(0.8) translate(0 0)"><g><path d="M-12 0q10-8 20 0q-10 8-20 0ZM8 0l7-5v10Z" fill="#7b8794"/><circle cx="-6" cy="-1" r="1.4" fill="#222"/></g></g>
 </svg>

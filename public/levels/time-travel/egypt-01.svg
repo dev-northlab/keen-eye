@@ -246,7 +246,7 @@
     <rect x="296" y="406" width="8" height="9" rx="2" fill="#2f6fe0" />
     <rect x="292" y="428" width="16" height="9" fill="#ff5a5a" />
   </g>
-  <g id="sunflower">
+  <g id="sunflower" transform="translate(-24 -4)">
     <path d="M96 504v-56" stroke="#4f8f3a" stroke-width="4" />
     <path d="M96 486q-14-4-18 6q12 2 18-6ZM96 474q14-4 18 6q-12 2-18-6Z" fill="#5aa84d" />
     <g fill="#ffcf1f">
@@ -287,7 +287,7 @@
     <rect x="244" y="613" width="10" height="17" rx="1" fill="#6ec6ff" />
     <circle cx="249" cy="632" r="0.9" fill="#888" />
   </g>
-  <g id="potatoes">
+  <g id="potatoes" transform="translate(325 638) scale(0.78) translate(-330 -640)">
     <path d="M300 636q30 14 60 0l-6 26q-24 10-48 0Z" fill="#b8874a" />
     <path d="M304 646q26 10 52 0M308 656q22 8 44 0" stroke="#8a5a33" stroke-width="2" fill="none" />
     <g fill="#c99a5b" stroke="#9a6e38" stroke-width="1.2">
@@ -317,4 +317,13 @@
     <path d="M392 672l11-3M392 677l11-3M392 682l11-3M409 669l11 3M409 674l11 3M409 679l11 3" stroke="#9a8f7a" stroke-width="1" />
     <path d="M406 660v26" stroke="#5a1f1f" stroke-width="2.5" />
   </g>
+  <!-- More odd items and background things. -->
+  <g id="fez" transform="translate(298 528) scale(1.1) translate(0 0)"><g><path d="M-8 6l2-12h12l2 12Z" fill="#c0392b"/><path d="M-6 3h12" stroke="#a02a1e" stroke-width="1.5"/><path d="M1 -6q7 2 6 11" stroke="#222" stroke-width="1.6" fill="none"/><circle cx="7" cy="6" r="1.8" fill="#222"/></g></g>
+  <g id="hookah" transform="translate(128 598) scale(0.85) translate(0 0)"><g><path d="M-9 18q-7-10 0-18h18q7 8 0 18Z" fill="#3a86ff" fill-opacity="0.85"/><rect x="-2" y="-18" width="4" height="18" fill="#c9a227"/><path d="M-8 -20h16l-3-6h-10Z" fill="#c8643b"/><path d="M-6 -10h12" stroke="#c9a227" stroke-width="3"/><path d="M9 4q16 2 14 14" stroke="#222" stroke-width="2" fill="none"/><circle cx="23" cy="18" r="2" fill="#c9a227"/></g></g>
+  <g transform="translate(322 276) scale(0.8) translate(0 0)"><g><path d="M-4 18V-14M4 18V-14" stroke="#8a5a33" stroke-width="3"/><path d="M-24 -20l46 14" stroke="#6b4226" stroke-width="3" stroke-linecap="round"/><circle cx="-24" cy="-20" r="5" fill="#9aa3ab"/><path d="M22 -6v14" stroke="#5a3a22" stroke-width="1.5"/><path d="M17 8h10l-2 6h-6Z" fill="#c8643b"/></g></g>
+  <g transform="translate(232 482) scale(0.9) translate(0 0)"><g><path d="M-16 0h32l-4 12h-24Z" fill="#b8874a"/><path d="M-14 4h28" stroke="#8a5a33" stroke-width="1.5"/><g fill="#6b3a6b"><circle cx="-8" cy="-3" r="5"/><circle cx="2" cy="-4" r="5"/><circle cx="10" cy="-2" r="4"/><circle cx="-3" cy="-9" r="4"/></g></g></g>
+  <g transform="translate(198 580) scale(0.9) translate(0 0)"><g><rect x="-14" y="-4" width="28" height="8" rx="2" fill="#f3e2b3"/><circle cx="-14" cy="0" r="4" fill="#e3c98f"/><circle cx="14" cy="0" r="4" fill="#e3c98f"/><path d="M-8 -1h10M-8 2h14" stroke="#8a6a3a" stroke-width="1"/></g></g>
+  <g transform="translate(436 560) scale(0.8) translate(0 0)"><g><path d="M-8 14q-6-12 2-20v-6h12v6q8 8 2 20Z" fill="#c8643b"/><path d="M8 -6q10 2 6 12" fill="none" stroke="#c8643b" stroke-width="3"/><path d="M-6 2h12" stroke="#a84e2c" stroke-width="2"/></g></g>
+  <g transform="translate(290 726) scale(0.9) translate(0 0)"><g><path d="M-6 10v6M4 10v6" stroke="#ff9f1c" stroke-width="2.5"/><ellipse cx="0" cy="2" rx="15" ry="10" fill="#fafafa"/><path d="M10 -2q5-8 3-18" fill="none" stroke="#fafafa" stroke-width="6" stroke-linecap="round"/><circle cx="13" cy="-20" r="5" fill="#fafafa"/><path d="M17 -21l7 2-7 2Z" fill="#ff9f1c"/><circle cx="14" cy="-21" r="1.2" fill="#222"/></g></g>
+  <g transform="translate(466 730) scale(0.8) translate(0 0)"><g><path d="M-12 12q-8-14 2-24h20q10 10 2 24Z" fill="#b5532f"/><rect x="-8" y="-16" width="16" height="5" rx="2" fill="#a0462a"/><path d="M-12 0h24" stroke="#ffd23f" stroke-width="2"/></g></g>
 </svg>
