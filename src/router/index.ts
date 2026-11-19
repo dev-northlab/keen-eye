@@ -2,12 +2,12 @@ import { createRouter, createWebHistory, type RouteLocationNormalized } from 'vu
 import { type BackdropTheme, chapterById, DETECTIVE_CHAPTER, levelsScreen, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../levels/chapters.ts'
 import { caseById } from '../levels/detective/cases.ts'
 import { levelById } from '../levels/index.ts'
-import { styledLevel } from '../levels/picture-style.ts'
+import { styledEra, styledLevel } from '../levels/picture-style.ts'
 import { timeTravelLevelById } from '../levels/time-travel/index.ts'
 import { isUpcoming } from '../levels/upcoming.ts'
 import { preloadBackdrop } from '../services/backdrops.ts'
 import { preloadTinyBoyBanners } from '../services/banners.ts'
-import { preloadPictures, waitAtMost } from '../services/images.ts'
+import { preloadEra, preloadPictures, waitAtMost } from '../services/images.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
 import { useSettingsStore } from '../stores/settings.ts'
@@ -141,6 +141,11 @@ router.beforeResolve(async (to) => {
   if (backdrop) {
     const banners = to.name === 'tiny-boy' ? preloadTinyBoyBanners() : undefined
     return waitAtMost(Promise.all([preloadBackdrop(backdrop), banners]))
+  }
+  if (to.name === 'time-travel') {
+    const era = timeTravelLevelById(String(to.params.id))
+    if (era) await waitAtMost(preloadEra(styledEra(era, useSettingsStore().pictureStyle)))
+    return
   }
   if (to.name !== 'level' && to.name !== 'match' && to.name !== 'memory') return
   const level = levelById(Number(to.params.id))

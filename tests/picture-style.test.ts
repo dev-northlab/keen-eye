@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 import { levelById } from '../src/levels/index.ts'
-import { isPictureStyle, PATCH_MARGIN, styledLevel, zonePatches } from '../src/levels/picture-style.ts'
+import { parseAnachronismLevel } from '../src/engine/anachronism.ts'
+import { isPictureStyle, PATCH_MARGIN, styledEra, styledLevel, zonePatches } from '../src/levels/picture-style.ts'
 
 describe('picture style (levels/picture-style.ts)', () => {
   const drawn = levelById(1)!
@@ -67,5 +68,47 @@ describe('picture style (levels/picture-style.ts)', () => {
     const level = styledLevel(levelById(61)!, 'redesign')
     assert.equal(level.imageB, level.imageA)
     assert.equal(level.patchesB?.length, level.differences.length)
+  })
+})
+
+describe('picture style of "find the odd one out" eras (styledEra)', () => {
+  const item = (id: string, x: number) => ({ id, shape: 'circle', x, y: 40, r: 4, label: { en: id }, fact: { en: `${id}.` } })
+  const raw = {
+    id: 'era',
+    number: 999,
+    mode: 'anachronism',
+    world: 'time-travel',
+    era: { en: 'Era' },
+    image: 'levels/time-travel/era.svg',
+    width: 800,
+    height: 500,
+    difficulty: 1,
+    parTimeSec: 60,
+    items: [item('a', 20), item('b', 60)],
+    animations: [{ key: 'sun', type: 'bob', dx: 0, dy: 2, period: 3 }],
+  }
+  const eraWithout = parseAnachronismLevel(raw)
+  const era = parseAnachronismLevel({
+    ...raw,
+    redesign: { image: 'levels/time-travel/redesign/era.avif', width: 2624, height: 1632, parTimeSec: 90, items: [item('c', 20), item('d', 50), item('e', 80)] },
+  })
+
+  test('an era without 3D or in the classic style plays as drawn', () => {
+    assert.equal(styledEra(era, 'classic'), era)
+    assert.equal(styledEra(eraWithout, 'redesign'), eraWithout)
+  })
+
+  test('an era in 3D plays its picture and items, without animations', () => {
+    const played = styledEra(era, 'redesign')
+    assert.equal(played.image, 'levels/time-travel/redesign/era.avif')
+    assert.equal(played.width, 2624)
+    assert.equal(played.height, 1632)
+    assert.equal(played.parTimeSec, 90)
+    assert.deepEqual(played.items.map((i) => i.id), ['c', 'd', 'e'])
+    assert.deepEqual(played.animations, [])
+    assert.equal(played.redesign, undefined)
+    assert.equal(played.id, 'era')
+    assert.equal(played.number, 999)
+    assert.deepEqual(played.era, { en: 'Era' })
   })
 })

@@ -248,4 +248,21 @@ export interface AnachronismLevel {
   items: AnachronismItem[]
   /** Living background: animations of the image's `data-anim` groups (id = key). Odd items never move. */
   animations: Animation[]
+  /**
+   * The era's 3D picture (docs/redesign-time-travel.md), played in the new picture style: its own image and odd items.
+   * After parsing every item has its texts and the par time is set.
+   */
+  redesign?: AnachronismPictures
+}
+
+/** A 3D picture of an era with its own odd items (hitboxes in percent of this picture). */
+export interface AnachronismPictures {
+  /** Image path relative to the app base (public/). */
+  image: string
+  width: number
+  height: number
+  /** Time limit for three stars; in the JSON it may be left out (the drawn era's, scaled by the item count). */
+  parTimeSec: number
+  /** In the JSON an item may leave out label and fact: then it takes those of the drawn item with the same id. */
+  items: AnachronismItem[]
 }

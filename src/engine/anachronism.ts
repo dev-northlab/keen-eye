@@ -1,5 +1,5 @@
 import { HIT_MARGIN, hitItem, shapeCircle } from './hit-test.ts'
-import type { AnachronismLevel, Animation, HitShape, LocalizedText } from './types.ts'
+import type { AnachronismItem, AnachronismLevel, AnachronismPictures, Animation, HitShape, LocalizedText } from './types.ts'
 
 // "Find the odd one out" (docs/anachronism-mode.md), DOM-free: level data checks and the rules of one play.
 
@@ -76,18 +76,8 @@ export function parseAnachronismLevel(raw: unknown): AnachronismLevel {
   if (!isPositive(raw.parTimeSec)) fail('parTimeSec must be positive')
   if (!Array.isArray(raw.items) || raw.items.length === 0) fail('items must be a non-empty array')
 
-  const size = { w: raw.width as number, h: raw.height as number }
-  const items = raw.items as unknown[]
-  const ids = new Set<string>()
-  for (const item of items) {
-    if (!isObject(item) || !isText(item.id)) return fail('every item needs an id')
-    const id = item.id as string
-    if (ids.has(id)) fail(`duplicate item id "${id}"`)
-    ids.add(id)
-    if (!isLocalized(item.label) || !isLocalized(item.fact)) fail(`item "${id}": label and fact must have texts with "en"`)
-    const problem = shapeProblem(item, size.w / size.h)
-    if (problem) fail(`item "${id}": ${problem}`)
-  }
+  const items = raw.items as Record<string, unknown>[]
+  checkItems(items, { w: raw.width as number, h: raw.height as number }, fail, '')
 
   if (raw.animations !== undefined && !Array.isArray(raw.animations)) fail('animations must be an array')
   const keys = new Set<string>()
@@ -102,14 +92,53 @@ export function parseAnachronismLevel(raw: unknown): AnachronismLevel {
 
   const animations = ((raw.animations ?? []) as Omit<Animation, 'id'>[]).map((a) => ({ ...a, id: a.key }) as Animation)
   const level = { ...raw, animations } as unknown as AnachronismLevel
-  const circles = level.items.map((s: HitShape) => shapeCircle(s, size, HIT_MARGIN))
+  if (raw.redesign !== undefined) level.redesign = parseRedesign(raw.redesign, level, fail)
+  return level
+}
+
+/**
+ * Checks an era's 3D picture (docs/redesign-time-travel.md) and resolves it: an item without texts takes those of
+ * the drawn item with the same id; the par time defaults to the drawn one scaled by the item count (to 10 s).
+ */
+function parseRedesign(raw: unknown, drawn: AnachronismLevel, fail: (problem: string) => never): AnachronismPictures {
+  if (!isObject(raw)) return fail('redesign must be an object')
+  if (!isText(raw.image)) fail('redesign image must be a string')
+  if (!isPositive(raw.width) || !isPositive(raw.height)) fail('redesign width and height must be positive')
+  if (raw.parTimeSec !== undefined && !isPositive(raw.parTimeSec)) fail('redesign parTimeSec must be positive')
+  if (!Array.isArray(raw.items) || raw.items.length === 0) fail('redesign items must be a non-empty array')
+  const items = (raw.items as unknown[]).map((item) => {
+    if (!isObject(item) || item.label !== undefined || item.fact !== undefined) return item
+    const twin = drawn.items.find((i) => i.id === item.id)
+    return twin ? { ...item, label: twin.label, fact: twin.fact } : item
+  }) as Record<string, unknown>[]
+  checkItems(items, { w: raw.width as number, h: raw.height as number }, fail, 'redesign ')
+  const parTimeSec = (raw.parTimeSec as number | undefined) ?? Math.round((drawn.parTimeSec * items.length) / drawn.items.length / 10) * 10
+  return { image: raw.image as string, width: raw.width as number, height: raw.height as number, parTimeSec, items: items as unknown as AnachronismItem[] }
+}
+
+/**
+ * Checks the items of one picture (`where`: "" for the drawn one, "redesign " for the 3D one): ids, texts and
+ * hitboxes inside the picture; grown by HIT_MARGIN they must not overlap (checked on their enclosing circles,
+ * which is stricter than needed).
+ */
+function checkItems(items: Record<string, unknown>[], size: { w: number; h: number }, fail: (problem: string) => never, where: string) {
+  const ids = new Set<string>()
+  for (const item of items) {
+    if (!isObject(item) || !isText(item.id)) return fail(`every ${where}item needs an id`)
+    const id = item.id as string
+    if (ids.has(id)) fail(`duplicate ${where}item id "${id}"`)
+    ids.add(id)
+    if (!isLocalized(item.label) || !isLocalized(item.fact)) fail(`${where}item "${id}": label and fact must have texts with "en"`)
+    const problem = shapeProblem(item, size.w / size.h)
+    if (problem) fail(`${where}item "${id}": ${problem}`)
+  }
+  const circles = (items as unknown as HitShape[]).map((s) => shapeCircle(s, size, HIT_MARGIN))
   for (let i = 0; i < circles.length; i++) {
     for (let j = i + 1; j < circles.length; j++) {
       const [a, b] = [circles[i], circles[j]]
-      if (Math.hypot(a.x - b.x, a.y - b.y) < a.r + b.r) fail(`items "${level.items[i].id}" and "${level.items[j].id}" overlap`)
+      if (Math.hypot(a.x - b.x, a.y - b.y) < a.r + b.r) fail(`${where}items "${items[i].id}" and "${items[j].id}" overlap`)
     }
   }
-  return level
 }
 
 export type TapOutcome =

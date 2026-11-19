@@ -33,12 +33,16 @@ withDefaults(defineProps<{ total: number; found: number; colors?: string[] }>(),
   display: inline-flex;
   align-items: center;
   gap: 3px;
+  max-width: 100%;
 }
 
+/* 28 px each, down to 18 px when many do not fit the row (12–14 on a narrow phone). */
 .slot {
+  flex: 0 1 auto;
   width: 28px;
-  height: 28px;
-  flex: none;
+  min-width: 18px;
+  height: auto;
+  aspect-ratio: 1;
   overflow: visible;
 }
 

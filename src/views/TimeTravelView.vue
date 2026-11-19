@@ -7,10 +7,13 @@ import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import StarRating from '../components/StarRating.vue'
 import { localized } from '../engine/anachronism.ts'
 import type { AnachronismLevel } from '../engine/types.ts'
+import { styledEra } from '../levels/picture-style.ts'
 import { timeTravelLevels } from '../levels/time-travel/index.ts'
 import { useBackButton } from '../services/backButton.ts'
+import { preloadEra } from '../services/images.ts'
 import { useProgressStore } from '../stores/progress.ts'
 import { usePurchaseStore } from '../stores/purchase.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 // "Find the odd one out" (docs/anachronism-mode.md): one card per era with a thumbnail of its picture.
 // Every era is open in any order, the paid ones (all but the first) once the full game is bought; a
@@ -20,6 +23,12 @@ const router = useRouter()
 const { locale, t } = useI18n()
 const progress = useProgressStore()
 const purchase = usePurchaseStore()
+const settings = useSettingsStore()
+
+/** The finger is down on an era's card: its 3D picture starts loading before the tap opens it. */
+function ready(level: AnachronismLevel) {
+  if (!progress.needsPurchase(level.number)) preloadEra(styledEra(level, settings.pictureStyle))
+}
 
 function open(level: AnachronismLevel) {
   if (progress.needsPurchase(level.number)) purchase.dialogOpen = true
@@ -42,6 +51,7 @@ useBackButton(toMap)
             class="card"
             :class="{ done: level.id in progress.timeTravel, paid: progress.needsPurchase(level.number) }"
             :aria-label="progress.needsPurchase(level.number) ? `${localized(level.era, locale)}: ${t('map.paid')}` : undefined"
+            @pointerdown="ready(level)"
             @click="open(level)"
           >
             <LevelId :id="level.number" />
