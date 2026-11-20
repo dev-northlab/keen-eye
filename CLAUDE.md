@@ -185,7 +185,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `assets/` — music (`assets/music/`), store icon and the store page texts (`assets/store/listing/<locale>/`: Google
   Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
   limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
-  update every description when levels, modes or languages are added)
+  update every description when levels, modes or languages are added). While the Play target audience is 13+ (no
+  parental gate yet), the listings never address children or parents ("for the whole family", "kids", "safe to hand to
+  a child", "for all ages", nor such App Store keywords), or Google may require the Families program; bring family
+  wording back only after a parental gate is added and the audience includes under-13
 - The privacy policy (English + Russian) the store listings link to lives in its own public repository
   `dev-northlab/keen-eye-privacy` (local clone `../keen-eye-privacy`, one `index.html`), published by GitHub Pages at
   https://dev-northlab.github.io/keen-eye-privacy/. The game's own Pages build (`.github/workflows/pages.yml`) is only

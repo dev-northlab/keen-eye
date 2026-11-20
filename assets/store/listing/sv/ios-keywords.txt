@@ -1,1 +1,1 @@
-skillnader,skillnad,gömda,föremål,minne,detektiv,uppmärksamhet,pussel,bilder,offline,familj
+skillnader,skillnad,gömda,föremål,minne,detektiv,uppmärksamhet,pussel,bilder,offline,avkoppling
