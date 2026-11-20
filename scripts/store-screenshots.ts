@@ -122,10 +122,10 @@ async function featureGraphic(browser: Browser, locale: string, picture: Buffer)
   return png
 }
 
-/** Picture A of the first shot's level, wide, for the feature graphic. */
+/** Picture A of the first shot's level as its 3D picture, wide, for the feature graphic. */
 async function levelPicture(browser: Browser): Promise<Buffer> {
   const ctx = await browser.newContext({ viewport: { width: 1400, height: 760 }, deviceScaleFactor: 1 })
-  await seedStorage(ctx, 'en')
+  await seedStorage(ctx, 'en', { pictureStyle: 'redesign' })
   const page = await ctx.newPage()
   await page.goto(`${BASE}/level/75`)
   await page.waitForTimeout(1200)
