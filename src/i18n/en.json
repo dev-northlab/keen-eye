@@ -211,7 +211,6 @@
     "fullGameOpen": "Unlock all levels",
     "resetPurchaseCache": "Forget purchase (cache)",
     "resetPurchaseStore": "Forget purchase (also in the \"store\")",
-    "developer": "Developer",
     "devOff": "Turn off developer mode"
   },
   "common": {

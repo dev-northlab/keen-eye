@@ -211,7 +211,6 @@
     "fullGameOpen": "Desbloquear todas as fases",
     "resetPurchaseCache": "Esquecer compra (cache)",
     "resetPurchaseStore": "Esquecer compra (também na \"loja\")",
-    "developer": "Desenvolvedor",
     "devOff": "Desativar o modo de desenvolvedor"
   },
   "common": {

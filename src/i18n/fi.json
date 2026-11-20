@@ -938,7 +938,6 @@
   "settings": {
     "dev": "Kehitys",
     "devOff": "Poista kehittäjätila käytöstä",
-    "developer": "Kehittäjä",
     "fullGame": "Koko peli",
     "fullGameOpen": "Avaa kaikki tasot",
     "fullGameOwned": "Avattu",

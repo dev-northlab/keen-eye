@@ -938,7 +938,6 @@
   "settings": {
     "dev": "การพัฒนา",
     "devOff": "ปิดโหมดนักพัฒนา",
-    "developer": "นักพัฒนา",
     "fullGame": "เกมเต็ม",
     "fullGameOpen": "ปลดล็อกทุกด่าน",
     "fullGameOwned": "ปลดล็อกแล้ว",

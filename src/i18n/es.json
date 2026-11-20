@@ -211,7 +211,6 @@
     "fullGameOpen": "Desbloquear todos los niveles",
     "resetPurchaseCache": "Olvidar compra (caché)",
     "resetPurchaseStore": "Olvidar compra (también en la «tienda»)",
-    "developer": "Desarrollador",
     "devOff": "Desactivar el modo desarrollador"
   },
   "common": {

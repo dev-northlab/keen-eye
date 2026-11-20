@@ -938,7 +938,6 @@
   "settings": {
     "dev": "Development",
     "devOff": "I-off ang developer mode",
-    "developer": "Developer",
     "fullGame": "Buong laro",
     "fullGameOpen": "I-unlock ang lahat ng level",
     "fullGameOwned": "Naka-unlock",

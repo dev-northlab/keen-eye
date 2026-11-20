@@ -211,7 +211,6 @@
     "fullGameOpen": "모든 레벨 잠금 해제",
     "resetPurchaseCache": "구매 잊기 (캐시)",
     "resetPurchaseStore": "구매 잊기 (\"스토어\"에서도)",
-    "developer": "개발자",
     "devOff": "개발자 모드 끄기"
   },
   "common": {
