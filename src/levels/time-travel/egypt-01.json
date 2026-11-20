@@ -1088,5 +1088,107 @@
       "period": 3.4,
       "phase": 0.4
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/egypt-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "windmill",
+        "shape": "rect",
+        "x": 6.01,
+        "y": 27.06,
+        "w": 8.49,
+        "h": 7.04
+      },
+      {
+        "id": "sunflower",
+        "shape": "rect",
+        "x": 10.02,
+        "y": 55.06,
+        "w": 8.84,
+        "h": 11.47
+      },
+      {
+        "id": "stirrups",
+        "shape": "rect",
+        "x": 20.28,
+        "y": 92.64,
+        "w": 4.13,
+        "h": 3.09
+      },
+      {
+        "id": "hookah",
+        "shape": "rect",
+        "x": 21.93,
+        "y": 76.58,
+        "w": 8.02,
+        "h": 6.41
+      },
+      {
+        "id": "glasses",
+        "shape": "rect",
+        "x": 29.48,
+        "y": 67.33,
+        "w": 5.42,
+        "h": 1.66
+      },
+      {
+        "id": "phone",
+        "shape": "rect",
+        "x": 48.35,
+        "y": 81.25,
+        "w": 2.95,
+        "h": 3.64
+      },
+      {
+        "id": "fez",
+        "shape": "circle",
+        "x": 59.91,
+        "y": 64.4,
+        "r": 2.95
+      },
+      {
+        "id": "bottle",
+        "shape": "rect",
+        "x": 58.37,
+        "y": 54.19,
+        "w": 3.42,
+        "h": 6.72
+      },
+      {
+        "id": "potatoes",
+        "shape": "rect",
+        "x": 60.14,
+        "y": 82.28,
+        "w": 9.79,
+        "h": 6.09
+      },
+      {
+        "id": "pineapple",
+        "shape": "rect",
+        "x": 70.4,
+        "y": 68.2,
+        "w": 4.6,
+        "h": 6.41
+      },
+      {
+        "id": "book",
+        "shape": "rect",
+        "x": 76.42,
+        "y": 88.13,
+        "w": 9.91,
+        "h": 4.59
+      },
+      {
+        "id": "macaw",
+        "shape": "rect",
+        "x": 87.5,
+        "y": 55.7,
+        "w": 6.84,
+        "h": 13.29
+      }
+    ]
+  }
 }

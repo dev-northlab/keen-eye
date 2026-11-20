@@ -1050,5 +1050,108 @@
       "dy": 1.5,
       "period": 2.6
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/vikings-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "dala-horse",
+        "shape": "rect",
+        "x": 4.01,
+        "y": 70.25,
+        "w": 6.96,
+        "h": 4.67
+      },
+      {
+        "id": "boots",
+        "shape": "rect",
+        "x": 6.72,
+        "y": 93.04,
+        "w": 9.32,
+        "h": 4.75
+      },
+      {
+        "id": "telescope",
+        "shape": "rect",
+        "x": 17.69,
+        "y": 40.98,
+        "w": 8.37,
+        "h": 1.5
+      },
+      {
+        "id": "glasses",
+        "shape": "rect",
+        "x": 18.63,
+        "y": 71.84,
+        "w": 5.9,
+        "h": 1.74
+      },
+      {
+        "id": "potatoes",
+        "shape": "rect",
+        "x": 28.89,
+        "y": 90.98,
+        "w": 10.97,
+        "h": 6.88
+      },
+      {
+        "id": "toy-bricks",
+        "shape": "rect",
+        "x": 33.02,
+        "y": 55.3,
+        "w": 7.78,
+        "h": 4.67
+      },
+      {
+        "id": "helmet",
+        "shape": "rect",
+        "x": 45.4,
+        "y": 58.47,
+        "w": 12.26,
+        "h": 4.59
+      },
+      {
+        "id": "toothbrush",
+        "shape": "rect",
+        "x": 48.47,
+        "y": 80.22,
+        "w": 4.36,
+        "h": 1.5
+      },
+      {
+        "id": "pumpkin",
+        "shape": "rect",
+        "x": 59.32,
+        "y": 90.03,
+        "w": 9.32,
+        "h": 5.85
+      },
+      {
+        "id": "turkey",
+        "shape": "rect",
+        "x": 67.81,
+        "y": 73.26,
+        "w": 13.33,
+        "h": 9.73
+      },
+      {
+        "id": "teddy",
+        "shape": "rect",
+        "x": 87.15,
+        "y": 89.79,
+        "w": 5.31,
+        "h": 5.54
+      },
+      {
+        "id": "sunflower",
+        "shape": "rect",
+        "x": 88.8,
+        "y": 57.99,
+        "w": 7.55,
+        "h": 10.6
+      }
+    ]
+  }
 }
