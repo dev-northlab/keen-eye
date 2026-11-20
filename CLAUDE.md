@@ -50,7 +50,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
-  (`android/app/build/outputs/apk/debug/app-debug.apk`). Gradle needs **JDK 21** in `JAVA_HOME` (here:
+  (`android/app/build/outputs/apk/debug/app-debug.apk`). `npm run android:aab` — the signed release bundle for Google Play
+  (`android/app/build/outputs/bundle/release/app-release.aab`), signed by the upload key named in `android/keystore.properties`
+  (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`; kept out of git, like the keystore itself, which lives outside the
+  project in `~/.keystores/`); raise `versionCode` in `android/app/build.gradle` before every upload. Gradle needs **JDK 21** in `JAVA_HOME` (here:
   `~/.local/share/jdks/jdk-21.0.13+9`; Studio's JDK 25 is too new for Gradle 8.14) and the SDK in `ANDROID_HOME`
   (`~/Android/Sdk`); install with `adb install -r <apk>`. Debug builds allow WebView DevTools (chrome://inspect).
 

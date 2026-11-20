@@ -18,6 +18,7 @@
     "play-preview": "node scripts/play-preview.ts",
     "android:sync": "npm run build && cap sync android",
     "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "android:aab": "npm run android:sync && cd android && ./gradlew bundleRelease",
     "ios:sync": "npm run build && cap sync ios",
     "store-video": "npm run build && node scripts/store-video.ts"
   },
