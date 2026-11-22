@@ -104,6 +104,7 @@ export class AnachronismScene {
 
   resetZoom(): void {
     this.viewport.reset()
+    this.loop.wake()
   }
 
   /**
@@ -135,6 +136,7 @@ export class AnachronismScene {
   /** Stops or restarts the background animation (calm mode button). */
   setAnimationFrozen(frozen: boolean): void {
     this.animationFrozen = frozen
+    if (!frozen) this.loop.wake()
   }
 
   /** Freezes timer, animation and input. */
@@ -154,7 +156,8 @@ export class AnachronismScene {
     this.picture.svg.remove()
   }
 
-  private frame = (dt: number, now: number) => {
+  /** Returns how long the loop may sleep: a 3D picture (or "stop motion") moves nothing but the timer, once a second. */
+  private frame = (dt: number, now: number): number => {
     if (!this.done) {
       const prevSec = Math.floor(this.elapsedMs / 1000)
       this.elapsedMs += dt
@@ -165,6 +168,8 @@ export class AnachronismScene {
     // Item circles stand in for differences: none of them moves, so their marks stay put.
     animatePicture(this.picture, this.zones, this.animTime)
     this.viewport.step(now)
+    if ((this.picture.animated.length > 0 && !this.animationFrozen) || this.viewport.animating) return 0
+    return this.done ? Infinity : 1000 - (this.elapsedMs % 1000)
   }
 
   /** Image point in percent under a client point, or null outside the picture. */
@@ -206,6 +211,7 @@ export class AnachronismScene {
     const pt = this.toPercent(clientX, clientY)
     if (this.viewport.scale > 1) this.viewport.reset()
     else if (pt) this.viewport.zoomTo(DOUBLE_TAP_SCALE, (pt.x * this.level.width) / 100, (pt.y * this.level.height) / 100)
+    this.loop.wake()
   }
 
   private commitMiss(): void {

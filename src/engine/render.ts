@@ -214,21 +214,16 @@ export function zonesAt(p: Picture, differences: Difference[], t: number) {
 }
 
 /**
- * Phones with little memory (Android Go, ≤ 2 GB; `navigator.deviceMemory`, Chromium only) cannot redraw
- * animated pictures 60 times a second: there the poses change on every other frame of a 60 Hz screen (~30 fps).
- * The threshold sits between one and two frames, so frame jitter does not drop it to every third.
+ * The pictures' animations are posed about 30 times a second on every screen: their motion is slow (sway, bob, a
+ * walk), and each pose redraws the whole picture, so 60 (or a 120 Hz screen's 120) would only spend the battery.
+ * The threshold sits between one and two frames of a 60 Hz screen (three and four of 120 Hz), so frame jitter does
+ * not drop it to every third.
  */
-const MIN_POSE_INTERVAL_MS = lowMemoryDevice() ? 25 : 0
-
-function lowMemoryDevice(): boolean {
-  if (typeof navigator === 'undefined') return false
-  const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory
-  return memory !== undefined && memory <= 2
-}
+const MIN_POSE_INTERVAL_MS = 28
 
 /**
  * Applies animation poses and moves the marks of moving zones. Does nothing when time stands still
- * (paused, "stop motion") or, on a low-memory phone, when the last poses are too recent.
+ * (paused, "stop motion") or when the last poses are too recent (`MIN_POSE_INTERVAL_MS`).
  */
 export function animatePicture(p: Picture, differences: Difference[], t: number): void {
   const now = performance.now()

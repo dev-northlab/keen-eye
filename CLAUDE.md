@@ -69,7 +69,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   shows the same scene part on both; single player only (`GameScene`), not in calm mode (`MODE_RULES.<mode>.transformB`), set by `transformBOf` in `difficulty.ts` for the last
   five levels of every world and "travel" and the hardest "detective" case (526–530), alternating mirror-x / rotate-180; the HUD shows `TransformChip`
   and, until such a level is completed, a warning note),
-  `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
+  `loop.ts` (pausable rAF loop; a frame with nothing moving — still 3D pictures, "stop motion" — returns how long it may sleep, so a still level wakes only for the timer's second, a zoom (`FrameLoop.wake`) or a phase; drawn scenes are posed ~30 times a second, `MIN_POSE_INTERVAL_MS` in `render.ts`), `scene.ts` (`GameScene`: single player — board, timer, score, events),
   `hit-test.ts`, `anachronism.ts`, `anachronism-scene.ts` ("find the odd one out", `docs/anachronism-mode.md`: screen →
   percent of the image and hitboxes; level JSON checks and the DOM-free round; `AnachronismScene`, one picture with the
   same zoom, gestures, marks and miss lock), `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; hot-seat starts with

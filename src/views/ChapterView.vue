@@ -130,17 +130,16 @@ function tileLabel(level: Level) {
       </ul>
       <!-- The levels still ahead, under a drifting cloud: no tiles, no numbers. -->
       <div v-if="fogged" class="fog">
+        <!-- Each cloud layer is its own svg that drifts whole: the compositor moves it, nothing is redrawn. -->
         <svg class="clouds" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true">
-          <g class="drift">
-            <ellipse cx="60" cy="58" rx="80" ry="30" />
-            <ellipse cx="150" cy="42" rx="70" ry="34" />
-            <ellipse cx="250" cy="55" rx="90" ry="30" />
-            <ellipse cx="350" cy="40" rx="75" ry="34" />
-          </g>
-          <g class="drift late">
-            <ellipse cx="110" cy="70" rx="90" ry="24" />
-            <ellipse cx="300" cy="72" rx="110" ry="24" />
-          </g>
+          <ellipse cx="60" cy="58" rx="80" ry="30" />
+          <ellipse cx="150" cy="42" rx="70" ry="34" />
+          <ellipse cx="250" cy="55" rx="90" ry="30" />
+          <ellipse cx="350" cy="40" rx="75" ry="34" />
+        </svg>
+        <svg class="clouds late" viewBox="0 0 400 90" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="110" cy="70" rx="90" ry="24" />
+          <ellipse cx="300" cy="72" rx="110" ry="24" />
         </svg>
         <p>{{ $t('map.moreAhead') }}</p>
         <button v-if="paidAhead" class="gold" @click="purchase.dialogOpen = true">
@@ -375,13 +374,10 @@ main {
   height: 90px;
   fill: var(--glass);
   filter: blur(6px);
-}
-
-.drift {
   animation: drift 9s ease-in-out infinite alternate;
 }
 
-.drift.late {
+.clouds.late {
   animation-duration: 12s;
   animation-direction: alternate-reverse;
 }
@@ -413,12 +409,13 @@ main {
   height: 20px;
 }
 
+/* 14 of the clouds' 400 units, as the drawn groups drifted. */
 @keyframes drift {
   from {
-    transform: translateX(-14px);
+    transform: translateX(-3.5%);
   }
   to {
-    transform: translateX(14px);
+    transform: translateX(3.5%);
   }
 }
 

@@ -1,29 +1,35 @@
 <script setup lang="ts">
-// One numbered circle per difference. The next one to find breathes softly; a found one fills from its
-// center with a flash ring and its number pops up in white; when all are found a wave runs along the row.
+// One numbered circle per difference. The next one to find breathes softly a few times, then rests (an accent ring
+// fading in and out over it: only its opacity changes, which the compositor animates without redrawing the HUD, and
+// it stops, so a still screen lets the phone idle); a found one fills from its center with a flash ring and its
+// number pops up in white; when all are found a wave runs along the row.
 // `colors`: fill of each found circle in order (a match: the finder's color); default green.
 withDefaults(defineProps<{ total: number; found: number; colors?: string[] }>(), { colors: () => [] })
 </script>
 
 <template>
   <span class="found" :class="{ done: found === total }" role="img" :aria-label="$t('level.found', { found, total })">
-    <svg
+    <span
       v-for="i in total"
       :key="i"
       class="slot"
       :class="{ hit: i <= found, next: i === found + 1 }"
       :style="{ '--i': i - 1, ...(colors[i - 1] ? { '--hit': colors[i - 1] } : {}) }"
-      viewBox="0 0 24 24"
       aria-hidden="true"
     >
-      <circle class="disc" cx="12" cy="12" r="10" />
-      <template v-if="i <= found">
-        <circle class="burst" cx="12" cy="12" r="10" />
-        <circle class="fill" cx="12" cy="12" r="10" />
-        <ellipse class="shine" cx="8.4" cy="7.2" rx="3.6" ry="1.8" transform="rotate(-35 8.4 7.2)" />
-      </template>
-      <text class="num" :class="{ two: i > 9 }" x="12" y="12.5">{{ i }}</text>
-    </svg>
+      <svg viewBox="0 0 24 24">
+        <circle class="disc" cx="12" cy="12" r="10" />
+        <template v-if="i <= found">
+          <circle class="burst" cx="12" cy="12" r="10" />
+          <circle class="fill" cx="12" cy="12" r="10" />
+          <ellipse class="shine" cx="8.4" cy="7.2" rx="3.6" ry="1.8" transform="rotate(-35 8.4 7.2)" />
+        </template>
+        <text class="num" :class="{ two: i > 9 }" x="12" y="12.5">{{ i }}</text>
+      </svg>
+      <svg v-if="i === found + 1" class="ring" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+    </span>
   </span>
 </template>
 
@@ -38,11 +44,17 @@ withDefaults(defineProps<{ total: number; found: number; colors?: string[] }>(),
 
 /* 28 px each, down to 18 px when many do not fit the row (12–14 on a narrow phone). */
 .slot {
+  position: relative;
   flex: 0 1 auto;
   width: 28px;
   min-width: 18px;
-  height: auto;
   aspect-ratio: 1;
+}
+
+.slot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
   overflow: visible;
 }
 
@@ -67,9 +79,15 @@ withDefaults(defineProps<{ total: number; found: number; colors?: string[] }>(),
   letter-spacing: -0.4px;
 }
 
-/* The next circle to find: its ring breathes in the accent colour. */
-.next .disc {
-  animation: breathe 1.8s ease-in-out infinite;
+/* The next circle to find: its ring breathes in the accent colour three times after each find. */
+.ring {
+  position: absolute;
+  inset: 0;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  opacity: 0;
+  animation: breathe 1.8s ease-in-out 3;
 }
 
 .next .num {
@@ -117,14 +135,8 @@ withDefaults(defineProps<{ total: number; found: number; colors?: string[] }>(),
 }
 
 @keyframes breathe {
-  0%,
-  100% {
-    stroke: var(--line);
-    stroke-width: 1.4;
-  }
   50% {
-    stroke: var(--accent);
-    stroke-width: 2.2;
+    opacity: 1;
   }
 }
 

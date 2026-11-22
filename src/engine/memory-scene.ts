@@ -98,8 +98,8 @@ export class MemoryScene {
       onSecret: (tap) => this.secret(tap),
       secretTaken: options.secretTaken,
     })
-    this.run([['show', level.memory.showSeconds * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
     this.loop = new FrameLoop(this.frame)
+    this.run([['show', level.memory.showSeconds * 1000], ['curtain', CURTAIN_MS], ['search', Infinity]])
   }
 
   get peeksLeft(): number {
@@ -135,9 +135,11 @@ export class MemoryScene {
     this.board.destroy()
   }
 
+  /** New phases: a sleeping loop wakes to time them. */
   private run(steps: Step[]): void {
     this.steps = steps
     this.next()
+    this.loop.wake()
   }
 
   private next(): void {
@@ -151,7 +153,9 @@ export class MemoryScene {
     if (phase === 'reveal') this.complete(true)
   }
 
-  private frame = (dt: number, now: number) => {
+  /** Returns how long the loop may sleep: on still pictures only the phase clock runs, so it wakes when the phase
+   *  ends, and at least once a second (the search time counts what the sleep skipped). */
+  private frame = (dt: number, now: number): number => {
     if (this.phase === 'search' && !this.done) this.searchMs += dt
     this.left -= dt
     if (this.left <= 0 && this.steps.length > 0) this.next()
@@ -161,6 +165,7 @@ export class MemoryScene {
     }
     this.animTime += (dt / 1000) * this.animationSpeed
     this.board.pose(this.animTime, now)
+    return this.board.animated ? 0 : Math.min(this.left, 1000)
   }
 
   private tap(hit: number, tap: Tap): void {

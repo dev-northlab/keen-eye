@@ -55,6 +55,11 @@ export class Viewport {
     return this.view.scale
   }
 
+  /** A zoom animation (`zoomTo`, `reset`) is running: `step` must be called every frame. */
+  get animating(): boolean {
+    return this.anim !== null
+  }
+
   /** svg i now shows the scene another way: the same part of the scene stays in view. */
   setTransform(i: number, transform: PictureTransform): void {
     this.transforms[i] = transform
