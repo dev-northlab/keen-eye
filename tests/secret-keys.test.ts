@@ -33,12 +33,12 @@ describe('hidden keys and the treasury (docs/hidden-item-feature.md)', () => {
     }
   })
 
-  test('the treasury: its own chapter, 8–10 differences, back to the game modes, no next level', () => {
+  test('the treasury: its own chapter, 15 differences, back to the game modes, no next level', () => {
     assert.equal(levelById(treasuryLevel.id), treasuryLevel)
     assert.equal(chapterOf(treasuryLevel.id), TREASURY_CHAPTER)
     assert.equal(treasuryLevel.chapter, TREASURY_CHAPTER.id)
     const [min, max] = difficultyOf(treasuryLevel.id).differences
-    assert.ok(min >= 8 && max <= 10 && treasuryLevel.differences.length >= min && treasuryLevel.differences.length <= max)
+    assert.ok(min === 15 && max === 15 && treasuryLevel.differences.length === 15)
     assert.ok(treasuryLevel.differences.some((d) => d.motion))
     assert.deepEqual(levelsScreen(treasuryLevel), { name: 'levels' })
     assert.equal(nextLevel(treasuryLevel), undefined)
