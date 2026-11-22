@@ -175,8 +175,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and
   levels not reached yet to the map
 - `src/i18n/` — one `<locale>.json` per language, named by its BCP 47 tag (ru, en, hy, de, fr, es, it, pt, nl, pl,
-  cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh, zh-Hant, ja, ko), registered in
-  `index.ts` and in `CFBundleLocalizations` of `ios/App/App/Info.plist` (`zh` as `zh-Hans`; iOS WebView reports only
+  cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh, zh-Hant, ja, ko), listed in
+  `locales.ts` (`LOCALES`; only `en`, the fallback, is in the bundle — `index.ts` loads the chosen one as its own chunk
+  and `main.ts` mounts the app once it is in) and in `CFBundleLocalizations` of `ios/App/App/Info.plist` (`zh` as `zh-Hans`; iOS WebView reports only
   the declared languages) — keep the same keys in all of them, `npm test` checks both; `en` is the fallback; default language =
   system, picked by `resolve.ts` from the language part of the system tags (fil ≠ fi, no/nn → nb, zh-TW/HK → zh-Hant);
   `ar` is right to left: `setLocale` sets `html[dir]`, so UI CSS uses logical sides (`margin-inline-start`,

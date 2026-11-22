@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { describe, test } from 'node:test'
+import { LOCALES } from '../src/i18n/locales.ts'
 import { resolveLocale } from '../src/i18n/resolve.ts'
 
 const dir = new URL('../src/i18n/', import.meta.url)
@@ -25,6 +26,11 @@ describe('interface languages', () => {
         assert.ok(typeof v === 'string' && v.trim() !== '', `${l} ${k}`)
       }
     }
+  })
+
+  // The app loads a language's file by its tag (i18n/index.ts): the list and the files must match.
+  test('every locale file is listed in LOCALES, and every listed locale has its file', () => {
+    assert.deepEqual([...LOCALES].sort(), [...locales].sort())
   })
 
   test('the system language picks a locale by its language part', () => {

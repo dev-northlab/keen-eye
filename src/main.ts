@@ -1,7 +1,7 @@
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from './App.vue'
-import { i18n } from './i18n/index.ts'
+import { i18n, localeReady } from './i18n/index.ts'
 import { router } from './router/index.ts'
 import { playSfx } from './services/audio.ts'
 import { initBackButton } from './services/backButton.ts'
@@ -15,6 +15,8 @@ import './style.css'
 const app = createApp(App).use(createPinia()).use(i18n)
 // Saved progress, settings and purchase are loaded before routing: the level guard needs them.
 await Promise.all([useProgressStore().load(), useSettingsStore().load(), usePurchaseStore().load(), useDuoStore().load()])
+// The interface language is its own chunk (i18n/index.ts): the app opens once it is in.
+await localeReady()
 // Price and the cached purchase are refreshed from the store in the background.
 usePurchaseStore().sync()
 app.use(router).mount('#app')
