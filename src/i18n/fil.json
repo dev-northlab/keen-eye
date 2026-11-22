@@ -923,7 +923,15 @@
     "label": "Istilo ng larawan",
     "classic": "Klasiko",
     "redesign": "Bagong itsura",
-    "drawnOnly": "Wala pang 3D na larawan ang level na ito, kaya iginuhit ang ipinapakita."
+    "drawnOnly": "Wala pang 3D na larawan ang level na ito, kaya iginuhit ang ipinapakita.",
+    "introCompareTitle": "Dalawang istilo ng larawan",
+    "introCompareText": "Malalaro ang mga level sa iginuhit na 2D na larawan o sa bagong 3D na larawan.",
+    "introSwitchTitle": "Palitan kahit kailan",
+    "introSwitchText": "I-tap ang bilog na 2D / 3D na button sa home screen o habang naglalaro ng level.",
+    "introChooseTitle": "Alin ang gusto mo?",
+    "introChooseText": "Pumili ng istilo para magsimula. Mapapalitan mo ito mamaya.",
+    "introNext": "Susunod",
+    "introDontShow": "Huwag nang ipakita ulit"
   },
   "secret": {
     "findHere": "May nakatagong gintong susi sa isa sa mga level dito. Hanapin ito!",

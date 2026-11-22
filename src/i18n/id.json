@@ -923,7 +923,15 @@
     "label": "Gaya gambar",
     "classic": "Klasik",
     "redesign": "Tampilan baru",
-    "drawnOnly": "Level ini belum punya gambar 3D, jadi ditampilkan dalam gambar biasa."
+    "drawnOnly": "Level ini belum punya gambar 3D, jadi ditampilkan dalam gambar biasa.",
+    "introCompareTitle": "Dua gaya gambar",
+    "introCompareText": "Level bisa dimainkan dengan gambar 2D lukisan atau dengan gambar 3D baru.",
+    "introSwitchTitle": "Ganti kapan saja",
+    "introSwitchText": "Ketuk tombol bulat 2D / 3D di layar utama atau saat bermain level.",
+    "introChooseTitle": "Mana yang kamu suka?",
+    "introChooseText": "Pilih gaya untuk memulai. Kamu bisa menggantinya nanti.",
+    "introNext": "Lanjut",
+    "introDontShow": "Jangan tampilkan lagi"
   },
   "secret": {
     "findHere": "Sebuah kunci emas tersembunyi di salah satu level di sini. Temukan!",

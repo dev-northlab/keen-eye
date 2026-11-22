@@ -1,10 +1,16 @@
+<script lang="ts">
+/** The picture style steps were shown in this run of the app (the home screen mounts again on every visit). */
+let styleIntroShown = false
+</script>
+
 <script setup lang="ts">
-import { onBeforeUnmount, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import ExitDialog from '../components/ExitDialog.vue'
 import ModalDialog from '../components/ModalDialog.vue'
 import MenuIcon from '../components/MenuIcon.vue'
 import ModeSwitch from '../components/ModeSwitch.vue'
+import PictureStyleIntro from '../components/PictureStyleIntro.vue'
 import PictureStyleSwitch from '../components/PictureStyleSwitch.vue'
 import PlayerAvatar from '../components/PlayerAvatar.vue'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
@@ -13,6 +19,7 @@ import { APP_NAME, CONTACT_EMAIL } from '../config/links.ts'
 import { pushBackHandler, useBackButton } from '../services/backButton.ts'
 import { PLAYER_COLORS } from '../stores/duo.ts'
 import { useProgressStore } from '../stores/progress.ts'
+import { useSettingsStore } from '../stores/settings.ts'
 
 const router = useRouter()
 const progress = useProgressStore()
@@ -29,6 +36,17 @@ watch(dialog, (open) => {
 /** Android back on the home screen asks before leaving the app (no exit button: the system's back is the way out). */
 const askExit = ref(false)
 useBackButton(() => (askExit.value = true))
+
+/**
+ * The steps about the 2D / 3D picture styles: once per app launch until "Don't show this again" is ticked. Opened
+ * after this screen is mounted, so its Android back handler sits above the one asking to leave.
+ */
+const settings = useSettingsStore()
+const styleIntro = ref(false)
+onMounted(() => {
+  styleIntro.value = !styleIntroShown && !settings.hideStyleIntro
+  styleIntroShown = true
+})
 
 const mailto =`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(APP_NAME)}`
 /** True for a moment after the address was copied (for players without a mail app). */
@@ -120,6 +138,7 @@ function play() {
     </nav>
 
     <ExitDialog v-if="askExit" @close="askExit = false" />
+    <PictureStyleIntro v-if="styleIntro" @close="styleIntro = false" />
 
     <ModalDialog v-if="dialog === 'privacy'" :title="$t('info.privacy')">
       <template #icon>

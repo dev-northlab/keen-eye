@@ -21,7 +21,15 @@
     "label": "图片风格",
     "classic": "经典",
     "redesign": "新外观",
-    "drawnOnly": "这一关还没有 3D 图片，因此以手绘画面显示。"
+    "drawnOnly": "这一关还没有 3D 图片，因此以手绘画面显示。",
+    "introCompareTitle": "两种画面风格",
+    "introCompareText": "关卡可以用手绘 2D 画面或全新的 3D 画面来玩。",
+    "introSwitchTitle": "随时切换",
+    "introSwitchText": "在主屏幕或关卡中点按圆形的 2D / 3D 按钮。",
+    "introChooseTitle": "你更喜欢哪种？",
+    "introChooseText": "选择一种风格开始。之后可以随时更改。",
+    "introNext": "下一步",
+    "introDontShow": "不再显示"
   },
   "theme": {
     "label": "主题",

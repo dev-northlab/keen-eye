@@ -21,7 +21,15 @@
     "label": "Style des images",
     "classic": "Classique",
     "redesign": "Nouveau look",
-    "drawnOnly": "Ce niveau n'a pas encore d'images 3D, il est donc affiché dessiné."
+    "drawnOnly": "Ce niveau n'a pas encore d'images 3D, il est donc affiché dessiné.",
+    "introCompareTitle": "Deux styles d'images",
+    "introCompareText": "Les niveaux se jouent avec des images 2D dessinées ou avec de nouvelles images 3D.",
+    "introSwitchTitle": "Changez quand vous voulez",
+    "introSwitchText": "Touchez le bouton rond 2D / 3D sur l'écran d'accueil ou pendant un niveau.",
+    "introChooseTitle": "Lequel préférez-vous ?",
+    "introChooseText": "Choisissez un style pour commencer. Vous pourrez le changer plus tard.",
+    "introNext": "Suivant",
+    "introDontShow": "Ne plus afficher"
   },
   "theme": {
     "label": "Thème",

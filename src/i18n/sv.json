@@ -923,7 +923,15 @@
     "label": "Bildstil",
     "classic": "Klassisk",
     "redesign": "Nytt utseende",
-    "drawnOnly": "Den här nivån har inga 3D-bilder än, så den visas tecknad."
+    "drawnOnly": "Den här nivån har inga 3D-bilder än, så den visas tecknad.",
+    "introCompareTitle": "Två bildstilar",
+    "introCompareText": "Nivåerna kan spelas med tecknade 2D-bilder eller med nya 3D-bilder.",
+    "introSwitchTitle": "Byt när du vill",
+    "introSwitchText": "Tryck på den runda 2D / 3D-knappen på startskärmen eller under en nivå.",
+    "introChooseTitle": "Vilken gillar du?",
+    "introChooseText": "Välj en stil för att börja. Du kan ändra den senare.",
+    "introNext": "Nästa",
+    "introDontShow": "Visa inte igen"
   },
   "secret": {
     "findHere": "En gyllene nyckel är gömd i en av nivåerna här. Hitta den!",

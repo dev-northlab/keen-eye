@@ -21,7 +21,15 @@
     "label": "그림 스타일",
     "classic": "클래식",
     "redesign": "새로운 모습",
-    "drawnOnly": "이 레벨은 아직 3D 그림이 없어서 그림으로 표시돼요."
+    "drawnOnly": "이 레벨은 아직 3D 그림이 없어서 그림으로 표시돼요.",
+    "introCompareTitle": "두 가지 그림 스타일",
+    "introCompareText": "레벨은 손으로 그린 2D 그림이나 새로운 3D 그림으로 플레이할 수 있어요.",
+    "introSwitchTitle": "언제든 바꾸기",
+    "introSwitchText": "홈 화면이나 레벨 중에 둥근 2D / 3D 버튼을 누르세요.",
+    "introChooseTitle": "어떤 게 좋으세요?",
+    "introChooseText": "스타일을 골라 시작하세요. 나중에 바꿀 수 있어요.",
+    "introNext": "다음",
+    "introDontShow": "다시 보지 않기"
   },
   "theme": {
     "label": "테마",

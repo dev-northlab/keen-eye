@@ -923,7 +923,15 @@
     "label": "圖片風格",
     "classic": "經典",
     "redesign": "新外觀",
-    "drawnOnly": "這一關還沒有 3D 圖片，因此以手繪畫面顯示。"
+    "drawnOnly": "這一關還沒有 3D 圖片，因此以手繪畫面顯示。",
+    "introCompareTitle": "兩種畫面風格",
+    "introCompareText": "關卡可以用手繪 2D 畫面或全新的 3D 畫面來玩。",
+    "introSwitchTitle": "隨時切換",
+    "introSwitchText": "在主畫面或關卡中點按圓形的 2D / 3D 按鈕。",
+    "introChooseTitle": "你比較喜歡哪種？",
+    "introChooseText": "選擇一種風格開始。之後可以隨時更改。",
+    "introNext": "下一步",
+    "introDontShow": "不再顯示"
   },
   "secret": {
     "findHere": "這裡的某一關藏著一把金鑰匙。找到它！",

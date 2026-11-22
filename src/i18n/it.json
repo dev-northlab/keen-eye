@@ -21,7 +21,15 @@
     "label": "Stile immagini",
     "classic": "Classico",
     "redesign": "Nuovo look",
-    "drawnOnly": "Questo livello non ha ancora immagini 3D, quindi è mostrato disegnato."
+    "drawnOnly": "Questo livello non ha ancora immagini 3D, quindi è mostrato disegnato.",
+    "introCompareTitle": "Due stili di immagini",
+    "introCompareText": "I livelli si possono giocare con immagini 2D disegnate o con nuove immagini 3D.",
+    "introSwitchTitle": "Cambia quando vuoi",
+    "introSwitchText": "Tocca il pulsante rotondo 2D / 3D nella schermata iniziale o durante un livello.",
+    "introChooseTitle": "Quale ti piace di più?",
+    "introChooseText": "Scegli uno stile per iniziare. Potrai cambiarlo in seguito.",
+    "introNext": "Avanti",
+    "introDontShow": "Non mostrare più"
   },
   "theme": {
     "label": "Tema",

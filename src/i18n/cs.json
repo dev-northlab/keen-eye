@@ -21,7 +21,15 @@
     "label": "Styl obrázků",
     "classic": "Klasický",
     "redesign": "Nový vzhled",
-    "drawnOnly": "Tato úroveň zatím nemá 3D obrázky, proto se zobrazuje kreslená."
+    "drawnOnly": "Tato úroveň zatím nemá 3D obrázky, proto se zobrazuje kreslená.",
+    "introCompareTitle": "Dva styly obrázků",
+    "introCompareText": "Úrovně můžete hrát s kreslenými 2D obrázky nebo s novými 3D obrázky.",
+    "introSwitchTitle": "Přepínejte kdykoli",
+    "introSwitchText": "Klepněte na kulaté tlačítko 2D / 3D na hlavní obrazovce nebo během úrovně.",
+    "introChooseTitle": "Který se vám líbí?",
+    "introChooseText": "Vyberte styl a začněte. Později ho můžete změnit.",
+    "introNext": "Další",
+    "introDontShow": "Už nezobrazovat"
   },
   "theme": {
     "label": "Motiv",

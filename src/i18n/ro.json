@@ -21,7 +21,15 @@
     "label": "Stilul imaginilor",
     "classic": "Clasic",
     "redesign": "Aspect nou",
-    "drawnOnly": "Acest nivel nu are încă imagini 3D, așa că este afișat desenat."
+    "drawnOnly": "Acest nivel nu are încă imagini 3D, așa că este afișat desenat.",
+    "introCompareTitle": "Două stiluri de imagini",
+    "introCompareText": "Nivelurile pot fi jucate cu imagini 2D desenate sau cu imagini 3D noi.",
+    "introSwitchTitle": "Schimbă oricând",
+    "introSwitchText": "Atinge butonul rotund 2D / 3D pe ecranul principal sau în timpul unui nivel.",
+    "introChooseTitle": "Care îți place?",
+    "introChooseText": "Alege un stil ca să începi. Îl poți schimba mai târziu.",
+    "introNext": "Înainte",
+    "introDontShow": "Nu mai afișa"
   },
   "theme": {
     "label": "Temă",

@@ -21,7 +21,15 @@
     "label": "Resim stili",
     "classic": "Klasik",
     "redesign": "Yeni görünüm",
-    "drawnOnly": "Bu bölümün henüz 3D resimleri yok, bu yüzden çizim olarak gösteriliyor."
+    "drawnOnly": "Bu bölümün henüz 3D resimleri yok, bu yüzden çizim olarak gösteriliyor.",
+    "introCompareTitle": "İki resim stili",
+    "introCompareText": "Bölümler çizilmiş 2D resimlerle ya da yeni 3D resimlerle oynanabilir.",
+    "introSwitchTitle": "İstediğin zaman değiştir",
+    "introSwitchText": "Ana ekranda ya da bir bölüm sırasında yuvarlak 2D / 3D düğmesine dokun.",
+    "introChooseTitle": "Hangisini beğendin?",
+    "introChooseText": "Başlamak için bir stil seç. Daha sonra değiştirebilirsin.",
+    "introNext": "İleri",
+    "introDontShow": "Bir daha gösterme"
   },
   "theme": {
     "label": "Tema",

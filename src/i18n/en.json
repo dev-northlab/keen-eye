@@ -21,7 +21,15 @@
     "label": "Picture style",
     "classic": "Classic",
     "redesign": "New look",
-    "drawnOnly": "This level has no 3D pictures yet, so it is shown drawn."
+    "drawnOnly": "This level has no 3D pictures yet, so it is shown drawn.",
+    "introCompareTitle": "Two picture styles",
+    "introCompareText": "Levels can be played as drawn 2D pictures or as new 3D pictures.",
+    "introSwitchTitle": "Switch any time",
+    "introSwitchText": "Tap the round 2D / 3D button on the home screen or during a level.",
+    "introChooseTitle": "Which do you like?",
+    "introChooseText": "Pick a style to start. You can change it later.",
+    "introNext": "Next",
+    "introDontShow": "Don't show this again"
   },
   "theme": {
     "label": "Theme",

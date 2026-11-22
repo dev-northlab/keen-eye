@@ -261,7 +261,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
   every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
   140, 145, 146, 304, 305, 306, 308, 310, 313, 316–329 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet, a slide, a pole, a ring, reflections in the water; on 310, 318, 319, 321–323, 325, 327 and 329 Gemini redrew the whole ground, on 316 and 317 its wall came out a shade lighter, so a cut-out shows the outline of what was removed, on 324 the microscope stands taller than its zone, on 326 a removed slipper leaves a shadow too faint to cut out, on 328 the lamp's bulb out darkens the wall, on 320 the new ball's shadow falls on the books), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
-  and in the toolbar of a level that has them) picks them: `LevelView` and `MemoryLevelView` read it as an
+  and in the toolbar of a level that has them; the home screen shows `PictureStyleIntro` once per app launch until its
+  "Don't show this again" is ticked, `settings.hideStyleIntro`: level 1 drawn and in 3D under a sweeping divider, the round button, then the player's pick) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per day/night, `public/backdrops/meadow-<day|night>.avif` (upright `meadow-tall-<day|night>.avif` on a portrait window, `TALL_WINDOW`), and every world's

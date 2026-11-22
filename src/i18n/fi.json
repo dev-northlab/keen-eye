@@ -923,7 +923,15 @@
     "label": "Kuvien tyyli",
     "classic": "Klassinen",
     "redesign": "Uusi ilme",
-    "drawnOnly": "Tässä tasossa ei ole vielä 3D-kuvia, joten se näytetään piirrettynä."
+    "drawnOnly": "Tässä tasossa ei ole vielä 3D-kuvia, joten se näytetään piirrettynä.",
+    "introCompareTitle": "Kaksi kuvatyyliä",
+    "introCompareText": "Tasoja voi pelata piirretyillä 2D-kuvilla tai uusilla 3D-kuvilla.",
+    "introSwitchTitle": "Vaihda milloin vain",
+    "introSwitchText": "Napauta pyöreää 2D / 3D -painiketta aloitusnäytössä tai tason aikana.",
+    "introChooseTitle": "Kumpi miellyttää?",
+    "introChooseText": "Valitse tyyli aloittaaksesi. Voit vaihtaa sen myöhemmin.",
+    "introNext": "Seuraava",
+    "introDontShow": "Älä näytä uudelleen"
   },
   "secret": {
     "findHere": "Johonkin tämän osion tasoista on piilotettu kultainen avain. Löydä se!",

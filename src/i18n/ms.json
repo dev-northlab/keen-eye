@@ -923,7 +923,15 @@
     "label": "Gaya gambar",
     "classic": "Klasik",
     "redesign": "Rupa baharu",
-    "drawnOnly": "Tahap ini belum ada gambar 3D, jadi ia dipaparkan sebagai lukisan."
+    "drawnOnly": "Tahap ini belum ada gambar 3D, jadi ia dipaparkan sebagai lukisan.",
+    "introCompareTitle": "Dua gaya gambar",
+    "introCompareText": "Tahap boleh dimainkan dengan gambar 2D lukisan atau gambar 3D baharu.",
+    "introSwitchTitle": "Tukar bila-bila masa",
+    "introSwitchText": "Ketik butang bulat 2D / 3D di skrin utama atau semasa bermain tahap.",
+    "introChooseTitle": "Yang mana anda suka?",
+    "introChooseText": "Pilih gaya untuk bermula. Anda boleh menukarnya kemudian.",
+    "introNext": "Seterusnya",
+    "introDontShow": "Jangan tunjukkan lagi"
   },
   "secret": {
     "findHere": "Sebatang kunci emas disembunyikan dalam salah satu tahap di sini. Cari ia!",
