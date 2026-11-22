@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bônus",
-    "locked": "Encontre as chaves douradas em todos os capítulos",
+    "lockedHint": "Primeiro encontre todas as chaves douradas — estão escondidas nos níveis de cada mundo e modo. Então o tesouro se abrirá!",
     "congrats": "Você é o jogador mais atento!"
   }
 }

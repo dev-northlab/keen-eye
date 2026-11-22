@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Du er den skarpøydeste spilleren av alle!",
-    "locked": "Finn de gylne nøklene i hvert kapittel",
+    "lockedHint": "Finn først alle gullnøklene – de er gjemt i brettene i hver verden og modus. Da åpnes skattkammeret!",
     "tag": "Bonus"
   },
   "worldTravel": {

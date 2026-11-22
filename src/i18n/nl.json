@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Vind de gouden sleutels in alle hoofdstukken",
+    "lockedHint": "Vind eerst alle gouden sleutels – ze zijn verstopt in de levels van elke wereld en modus. Dan gaat de schatkamer open!",
     "congrats": "Jij bent de oplettendste speler!"
   }
 }

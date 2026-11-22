@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Du är den skarpögdaste spelaren av alla!",
-    "locked": "Hitta de gyllene nycklarna i varje kapitel",
+    "lockedHint": "Hitta först alla guldnycklar – de är gömda i nivåerna i varje värld och läge. Då öppnas skattkammaren!",
     "tag": "Bonus"
   },
   "worldTravel": {

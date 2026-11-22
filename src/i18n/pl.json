@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Znajdź złote klucze we wszystkich rozdziałach",
+    "lockedHint": "Najpierw znajdź wszystkie złote klucze — są ukryte w poziomach każdego świata i trybu. Wtedy skarbiec się otworzy!",
     "congrats": "Jesteś najbardziej spostrzegawczym graczem!"
   }
 }

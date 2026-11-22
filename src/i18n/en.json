@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Find the golden keys in every chapter",
+    "lockedHint": "First find all the golden keys — they are hidden in the levels of every world and mode. Then the treasury opens!",
     "congrats": "You are the keenest player of all!"
   }
 }

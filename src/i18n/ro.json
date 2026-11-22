@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Găsește cheile de aur în toate capitolele",
+    "lockedHint": "Mai întâi găsește toate cheile de aur — sunt ascunse în nivelurile fiecărei lumi și fiecărui mod. Atunci se deschide comoara!",
     "congrats": "Ești cel mai atent jucător!"
   }
 }

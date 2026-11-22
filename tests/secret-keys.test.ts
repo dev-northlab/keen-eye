@@ -57,7 +57,7 @@ describe('hidden keys and the treasury (docs/hidden-item-feature.md)', () => {
         t.secret?.foundHere,
         t.secret?.foundWorlds,
         t.treasury?.tag,
-        t.treasury?.locked,
+        t.treasury?.lockedHint,
         t.treasury?.congrats,
       ])
         assert.ok(typeof text === 'string' && text.length > 0, file)

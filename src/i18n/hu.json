@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bónusz",
-    "locked": "Keresd meg az aranykulcsokat minden fejezetben",
+    "lockedHint": "Először találd meg az összes aranykulcsot – minden világ és mód pályáin el vannak rejtve. Akkor kinyílik a kincstár!",
     "congrats": "Te vagy a legfigyelmesebb játékos!"
   }
 }

@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Du er den mest skarpsynede spiller af dem alle!",
-    "locked": "Find de gyldne nøgler i hvert kapitel",
+    "lockedHint": "Find først alle de gyldne nøgler – de er gemt i banerne i hver verden og tilstand. Så åbner skatkammeret!",
     "tag": "Bonus"
   },
   "worldTravel": {

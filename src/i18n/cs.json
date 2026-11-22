@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Najděte zlaté klíče ve všech kapitolách",
+    "lockedHint": "Nejdřív najděte všechny zlaté klíče – jsou schované v úrovních každého světa a režimu. Pak se pokladnice otevře!",
     "congrats": "Jste nejpozornější hráč!"
   }
 }

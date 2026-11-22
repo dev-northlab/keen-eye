@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Andalah pemain paling tajam mata!",
-    "locked": "Cari kunci emas dalam setiap bab",
+    "lockedHint": "Cari dahulu semua kunci emas — ia tersembunyi dalam tahap setiap dunia dan mod. Kemudian bilik harta akan terbuka!",
     "tag": "Bonus"
   },
   "worldTravel": {

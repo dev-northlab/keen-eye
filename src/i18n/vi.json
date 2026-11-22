@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Bạn là người chơi tinh mắt nhất!",
-    "locked": "Hãy tìm chìa khóa vàng trong mọi chương",
+    "lockedHint": "Trước tiên hãy tìm tất cả chìa khóa vàng — chúng được giấu trong các màn của mỗi thế giới và chế độ. Khi đó kho báu sẽ mở!",
     "tag": "Phần thưởng"
   },
   "worldTravel": {

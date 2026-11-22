@@ -1094,7 +1094,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Trouvez les clés d’or dans tous les chapitres",
+    "lockedHint": "Trouvez d’abord toutes les clés d’or : elles sont cachées dans les niveaux de chaque monde et de chaque mode. Alors le trésor s’ouvrira !",
     "congrats": "Vous êtes le joueur le plus attentif !"
   }
 }

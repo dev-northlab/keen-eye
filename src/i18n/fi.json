@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Olet kaikista tarkkasilmäisin pelaaja!",
-    "locked": "Löydä kultaiset avaimet joka luvusta",
+    "lockedHint": "Etsi ensin kaikki kultaiset avaimet – ne on piilotettu jokaisen maailman ja tilan tasoihin. Sitten aarrekammio aukeaa!",
     "tag": "Bonus"
   },
   "worldTravel": {

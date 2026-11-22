@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Kamulah pemain bermata paling jeli!",
-    "locked": "Temukan kunci emas di setiap bab",
+    "lockedHint": "Temukan dulu semua kunci emas — kunci itu tersembunyi di level setiap dunia dan mode. Lalu ruang harta akan terbuka!",
     "tag": "Bonus"
   },
   "worldTravel": {

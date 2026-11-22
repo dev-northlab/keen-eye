@@ -1008,7 +1008,7 @@
   },
   "treasury": {
     "congrats": "Ikaw ang may pinakamatalas na mata sa lahat!",
-    "locked": "Hanapin ang mga gintong susi sa bawat kabanata",
+    "lockedHint": "Hanapin muna ang lahat ng gintong susi — nakatago sila sa mga level ng bawat mundo at mode. Saka bubukas ang kayamanan!",
     "tag": "Bonus"
   },
   "worldTravel": {
