@@ -197,24 +197,48 @@ export const squirrel = (x: number, y: number, tail: (m: string) => string = (m)
   `<circle cx="${x + 9}" cy="${y - 16}" r="1.5" fill="${INK}"/><circle cx="${x + 12}" cy="${y - 13}" r="1.3" fill="${INK}"/>` +
   `<path d="M${x + 9} ${y - 2}h5M${x + 9} ${y + 8}h5" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>`
 
+/**
+ * Gradients of the shaded nature helpers below (trees, apples, ground shadows), lit from the upper right: put them
+ * in the `<defs>` of a level that draws them.
+ */
+export const NATURE_DEFS =
+  `<radialGradient id="ke-leaf" cx="0.64" cy="0.28" r="0.85"><stop offset="0" stop-color="#a6e57f"/><stop offset="0.5" stop-color="#55b24a"/><stop offset="1" stop-color="#2a7434"/></radialGradient>` +
+  `<radialGradient id="ke-birch-leaf" cx="0.64" cy="0.28" r="0.85"><stop offset="0" stop-color="#d9f3a6"/><stop offset="0.55" stop-color="#a5d873"/><stop offset="1" stop-color="#6aa54a"/></radialGradient>` +
+  `<linearGradient id="ke-pine" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fae63"/><stop offset="0.6" stop-color="#2c7f45"/><stop offset="1" stop-color="#1d5c33"/></linearGradient>` +
+  `<linearGradient id="ke-bark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5e3a1c"/><stop offset="0.6" stop-color="#8f5d2e"/><stop offset="1" stop-color="#b07a44"/></linearGradient>` +
+  `<linearGradient id="ke-birch" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfc9bb"/><stop offset="0.6" stop-color="#f6f3ec"/><stop offset="1" stop-color="#ffffff"/></linearGradient>` +
+  `<radialGradient id="ke-apple" cx="0.65" cy="0.3" r="0.8"><stop offset="0" stop-color="#ff8a80"/><stop offset="0.5" stop-color="#e2303c"/><stop offset="1" stop-color="#981b26"/></radialGradient>` +
+  `<radialGradient id="ke-shadow"><stop offset="0" stop-color="#1b3311" stop-opacity="0.38"/><stop offset="0.7" stop-color="#1b3311" stop-opacity="0.16"/><stop offset="1" stop-color="#1b3311" stop-opacity="0"/></radialGradient>`
+
+/** A soft shadow on the ground around (x, y). */
+export const groundShadow = (x: number, y: number, rx: number, ry: number) =>
+  `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="url(#ke-shadow)"/>`
+
+/** Leafy texture over a crown ball at (x, y) of radius r: a few darker curls. */
+const leaves = (x: number, y: number, r: number) =>
+  `<path d="M${x - r * 0.5} ${y + r * 0.2}q${r * 0.15}-${r * 0.2} ${r * 0.3} 0M${x + r * 0.05} ${y + r * 0.45}q${r * 0.15}-${r * 0.2} ${r * 0.3} 0M${x - r * 0.15} ${y - r * 0.2}q${r * 0.15}-${r * 0.2} ${r * 0.3} 0" fill="none" stroke="#2a7434" stroke-opacity="0.45" stroke-width="${Math.max(1.5, r * 0.05)}" stroke-linecap="round"/>`
+
+/** A shaded crown ball of the trees below. */
+const ball = (x: number, y: number, r: number, fill = 'url(#ke-leaf)') => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" ${O}/>` + leaves(x, y, r)
+
 /** Wraps a tree's crown so it can sway (pivot: the top of its trunk). */
 type Crown = (pivot: [number, number], markup: string) => string
 
 /** An apple on (x, y). */
 export const apple = (x: number, y: number, r = 7) =>
-  `<circle cx="${x}" cy="${y}" r="${r}" fill="#e63946" ${Ow(1.5)}/><path d="M${x} ${y - r}l2-5" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>` +
+  `<circle cx="${x}" cy="${y}" r="${r}" fill="url(#ke-apple)" ${Ow(1.5)}/><path d="M${x} ${y - r}l2-5" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>` +
   `<circle cx="${x - r * 0.35}" cy="${y - r * 0.35}" r="${r * 0.25}" fill="#fff" fill-opacity="0.6"/>`
 
 /** An apple tree standing on (x, y), `s` times its size: a round, layered crown full of apples. */
 export const appleTree = (x: number, y: number, s: number, crown: Crown) => {
   const k = (n: number) => Math.round(n * s * 10) / 10
   return (
-    `<path d="M${x - k(12)} ${y}q${k(5)}-${k(70)}-${k(3)}-${k(130)}h${k(24)}q-${k(8)} ${k(60)} ${k(3)} ${k(130)}z" fill="#8a5a2b" ${O}/>` +
+    groundShadow(x - k(26), y, k(90), k(14)) +
+    `<path d="M${x - k(12)} ${y}q${k(5)}-${k(70)}-${k(3)}-${k(130)}h${k(24)}q-${k(8)} ${k(60)} ${k(3)} ${k(130)}z" fill="url(#ke-bark)" ${O}/>` +
+    `<path d="M${x - k(4)} ${y - k(20)}q${k(3)}-${k(30)} 0-${k(60)}M${x + k(4)} ${y - k(50)}q-${k(2)}-${k(20)} 0-${k(40)}" fill="none" stroke="#4a2c14" stroke-opacity="0.5" stroke-width="${k(2.5)}" stroke-linecap="round"/>` +
     crown(
       [x, y - k(120)],
-      `<circle cx="${x - k(40)}" cy="${y - k(150)}" r="${k(48)}" fill="#4caf50" ${O}/>` +
-        `<circle cx="${x + k(38)}" cy="${y - k(160)}" r="${k(46)}" fill="#5cbf55" ${O}/>` +
-        `<circle cx="${x}" cy="${y - k(200)}" r="${k(54)}" fill="#66c25a" ${O}/>` +
+      ball(x - k(40), y - k(150), k(48)) + ball(x + k(38), y - k(160), k(46)) + ball(x, y - k(200), k(54)) +
         apple(x - k(52), y - k(140), k(7)) + apple(x - k(14), y - k(176), k(7)) + apple(x + k(30), y - k(140), k(7)) +
         apple(x + k(14), y - k(226), k(7)) + apple(x + k(56), y - k(178), k(7)) + apple(x - k(34), y - k(206), k(7)),
     )
@@ -225,10 +249,12 @@ export const appleTree = (x: number, y: number, s: number, crown: Crown) => {
 export const pineTree = (x: number, y: number, s: number, crown: Crown) => {
   const k = (n: number) => Math.round(n * s * 10) / 10
   return (
-    `<rect x="${x - k(8)}" y="${y - k(30)}" width="${k(16)}" height="${k(30)}" fill="#7a4f28" ${O}/>` +
+    groundShadow(x - k(22), y, k(70), k(11)) +
+    `<rect x="${x - k(8)}" y="${y - k(30)}" width="${k(16)}" height="${k(30)}" fill="url(#ke-bark)" ${O}/>` +
     crown(
       [x, y - k(30)],
-      `<path d="M${x} ${y - k(150)}l${k(36)} ${k(50)}h-${k(14)}l${k(30)} ${k(40)}h-${k(14)}l${k(34)} ${k(40)}h-${k(144)}l${k(34)}-${k(40)}h-${k(14)}l${k(30)}-${k(40)}h-${k(14)}z" fill="#2f8a4a" ${O}/>` +
+      `<path d="M${x} ${y - k(150)}l${k(36)} ${k(50)}h-${k(14)}l${k(30)} ${k(40)}h-${k(14)}l${k(34)} ${k(40)}h-${k(144)}l${k(34)}-${k(40)}h-${k(14)}l${k(30)}-${k(40)}h-${k(14)}z" fill="url(#ke-pine)" ${O}/>` +
+        `<path d="M${x} ${y - k(110)}l${k(22)} ${k(10)}M${x} ${y - k(70)}l${k(30)} ${k(10)}M${x} ${y - k(32)}l${k(36)} ${k(6)}" stroke="#1d5c33" stroke-opacity="0.6" stroke-width="${k(3)}" stroke-linecap="round"/>` +
         `<path d="M${x} ${y - k(140)}l-${k(18)} ${k(30)}M${x - k(8)} ${y - k(90)}l-${k(24)} ${k(28)}M${x - k(10)} ${y - k(50)}l-${k(30)} ${k(14)}" stroke="#3fa45a" stroke-width="${k(4)}" stroke-linecap="round"/>`,
     )
   )
@@ -238,13 +264,12 @@ export const pineTree = (x: number, y: number, s: number, crown: Crown) => {
 export const birchTree = (x: number, y: number, s: number, crown: Crown) => {
   const k = (n: number) => Math.round(n * s * 10) / 10
   return (
-    `<path d="M${x - k(7)} ${y}l${k(2)}-${k(150)}h${k(10)}l${k(2)} ${k(150)}z" fill="#f4f1ea" ${O}/>` +
+    groundShadow(x - k(24), y, k(60), k(10)) +
+    `<path d="M${x - k(7)} ${y}l${k(2)}-${k(150)}h${k(10)}l${k(2)} ${k(150)}z" fill="url(#ke-birch)" ${O}/>` +
     `<path d="M${x - k(5)} ${y - k(30)}h${k(6)}M${x} ${y - k(62)}h${k(5)}M${x - k(4)} ${y - k(96)}h${k(6)}M${x + k(1)} ${y - k(124)}h${k(4)}" stroke="${INK}" stroke-width="${k(3)}" stroke-linecap="round"/>` +
     crown(
       [x, y - k(140)],
-      `<ellipse cx="${x - k(22)}" cy="${y - k(160)}" rx="${k(30)}" ry="${k(26)}" fill="#9bd16a" ${O}/>` +
-        `<ellipse cx="${x + k(24)}" cy="${y - k(170)}" rx="${k(30)}" ry="${k(28)}" fill="#a9db78" ${O}/>` +
-        `<ellipse cx="${x}" cy="${y - k(200)}" rx="${k(32)}" ry="${k(30)}" fill="#b6e384" ${O}/>`,
+      ball(x - k(22), y - k(160), k(28), 'url(#ke-birch-leaf)') + ball(x + k(24), y - k(170), k(29), 'url(#ke-birch-leaf)') + ball(x, y - k(200), k(31), 'url(#ke-birch-leaf)'),
     )
   )
 }
@@ -253,8 +278,9 @@ export const birchTree = (x: number, y: number, s: number, crown: Crown) => {
 export const roundTree = (x: number, y: number, s: number, color: string, crown: Crown) => {
   const k = (n: number) => Math.round(n * s * 10) / 10
   return (
-    `<path d="M${x - k(9)} ${y}q${k(4)}-${k(50)}-${k(2)}-${k(90)}h${k(20)}q-${k(6)} ${k(40)} ${k(2)} ${k(90)}z" fill="#8a5a2b" ${O}/>` +
-    crown([x, y - k(90)], `<circle cx="${x}" cy="${y - k(130)}" r="${k(52)}" fill="${color}" ${O}/><path d="M${x - k(30)} ${y - k(150)}q${k(14)}-${k(20)} ${k(34)}-${k(18)}" fill="none" stroke="#fff" stroke-opacity="0.35" stroke-width="${k(6)}" stroke-linecap="round"/>`)
+    groundShadow(x - k(24), y, k(64), k(10)) +
+    `<path d="M${x - k(9)} ${y}q${k(4)}-${k(50)}-${k(2)}-${k(90)}h${k(20)}q-${k(6)} ${k(40)} ${k(2)} ${k(90)}z" fill="url(#ke-bark)" ${O}/>` +
+    crown([x, y - k(90)], ball(x, y - k(130), k(52), color) + `<path d="M${x - k(30)} ${y - k(150)}q${k(14)}-${k(20)} ${k(34)}-${k(18)}" fill="none" stroke="#fff" stroke-opacity="0.35" stroke-width="${k(6)}" stroke-linecap="round"/>`)
   )
 }
 

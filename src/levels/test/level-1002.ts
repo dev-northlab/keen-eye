@@ -4,7 +4,7 @@
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
 import { ease } from '../../engine/keyframes.ts'
-import { apple, appleTree, bee, bird, birchTree, butterflyAt, cartoonChick, cartoonHen, farBird, fly, grassTuft, INK, O, Ow, pineTree, puffCloud, roundTree, squirrel, swingKeys } from './cartoon-shapes.ts'
+import { apple, appleTree, bee, bird, birchTree, butterflyAt, cartoonChick, cartoonHen, farBird, fly, grassTuft, groundShadow, INK, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, squirrel, swingKeys } from './cartoon-shapes.ts'
 
 const LOOP = 20
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
@@ -55,6 +55,18 @@ const dogKeys: Keyframe[] = [
   { t: 18.8, ease: 'inOut' },
   { t: 19, sx: 1 },
 ]
+/** The dog's shadow on the ground: it follows the dog along, and shrinks and fades while the dog is up in the air. */
+const dogShadowKeys: Keyframe[] = (() => {
+  let x = 0
+  let y = 0
+  return dogKeys.map((k) => {
+    x = k.x ?? x
+    y = k.y ?? y
+    const lift = Math.min(Math.abs(y) / 140, 1)
+    return { t: k.t, x, sx: 1 - lift * 0.45, sy: 1 - lift * 0.45, o: 1 - lift * 0.5, ...(k.ease && { ease: k.ease }) }
+  })
+})()
+
 /** Shown from `from` to `to`, hidden the rest of the loop (cuts between drawings). */
 const shownKeys = (from: number, to: number): Keyframe[] => [
   { t: 0, o: 0, ease: 'step' },
@@ -166,7 +178,7 @@ const heartKeys: Keyframe[] = [
 const pie = (x: number, y: number, s = 1) =>
   `<g transform="translate(${x} ${y}) scale(${s})">` +
   `<path d="M-26 0h52l-5 10h-42z" fill="#c9cfd6" ${Ow(2)}/>` +
-  `<path d="M-24 0q0-18 24-18t24 18z" fill="#e7a95b" ${Ow(2)}/>` +
+  `<path d="M-24 0q0-18 24-18t24 18z" fill="url(#c2-crust)" ${Ow(2)}/>` +
   `<path d="M-12-8l6-4M0-10l6-4M10-7l6-3" stroke="#a86a2b" stroke-width="2" stroke-linecap="round"/>` +
   `</g>`
 
@@ -197,10 +209,11 @@ export default svgLevel({
       anim({ type: 'bob', dx: 0, dy: -1.6, period: 2.6 },
         `<path d="M${dx + 50} ${dy - 14}q22 2 18-16" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round"/>` +
         `<path d="M${dx + 50} ${dy - 14}q22 2 18-16" fill="none" stroke="#d9a066" stroke-width="5" stroke-linecap="round"/>` +
-        `<ellipse cx="${dx + 8}" cy="${dy - 16}" rx="46" ry="16" fill="#e8b678" ${O}/>` +
+        `<ellipse cx="${dx + 8}" cy="${dy - 16}" rx="46" ry="16" fill="url(#c2-fur)" ${O}/>` +
+        `<path d="M${dx - 22} ${dy - 6}q30 6 66 0" fill="none" stroke="#c48c4f" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round"/>` +
         `<ellipse cx="${dx - 50}" cy="${dy - 3}" rx="11" ry="5" fill="#e8b678" ${Ow(2)}/>` +
         `<ellipse cx="${dx - 30}" cy="${dy - 3}" rx="11" ry="5" fill="#e8b678" ${Ow(2)}/>` +
-        `<circle cx="${dx - 42}" cy="${dy - 20}" r="17" fill="#e8b678" ${O}/>` +
+        `<circle cx="${dx - 42}" cy="${dy - 20}" r="17" fill="url(#c2-fur)" ${O}/>` +
         `<ellipse cx="${dx - 58}" cy="${dy - 13}" rx="11" ry="7.5" fill="#f3d3a8" ${Ow(2)}/>` +
         `<circle cx="${dx - 66}" cy="${dy - 16}" r="3.6" fill="${INK}"/>` +
         `<path d="M${dx - 48} ${dy - 24}q4 3 8 0" fill="none" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>` +
@@ -219,11 +232,12 @@ export default svgLevel({
         `<path d="M${dx + 36} ${dy - 42}q18-6 20-26" fill="none" stroke="#d9a066" stroke-width="5" stroke-linecap="round"/>`) +
       leg(dx - 22, '#c99358', legsB) +
       leg(dx + 26, '#c99358', flipRot(legsB)) +
-      `<ellipse cx="${dx}" cy="${dy - 36}" rx="40" ry="17" fill="#e8b678" ${O}/>` +
+      `<ellipse cx="${dx}" cy="${dy - 36}" rx="40" ry="17" fill="url(#c2-fur)" ${O}/>` +
+      `<path d="M${dx - 26} ${dy - 26}q26 8 54 0" fill="none" stroke="#c48c4f" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round"/>` +
       leg(dx - 30, '#e8b678', legsA) +
       leg(dx + 32, '#e8b678', flipRot(legsA)) +
       `<path d="M${dx - 34} ${dy - 44}q6 10 14 12" fill="none" stroke="#d1453b" stroke-width="5" stroke-linecap="round"/>` +
-      `<circle cx="${dx - 40}" cy="${dy - 60}" r="18" fill="#e8b678" ${O}/>` +
+      `<circle cx="${dx - 40}" cy="${dy - 60}" r="18" fill="url(#c2-fur)" ${O}/>` +
       `<ellipse cx="${dx - 58}" cy="${dy - 53}" rx="12" ry="8" fill="#f3d3a8" ${Ow(2)}/>` +
       `<circle cx="${dx - 67}" cy="${dy - 56}" r="3.8" fill="${INK}"/>` +
       `<circle cx="${dx - 45}" cy="${dy - 65}" r="3.2" fill="${INK}"/><circle cx="${dx - 44}" cy="${dy - 66}" r="1" fill="#fff"/>` +
@@ -258,7 +272,8 @@ export default svgLevel({
       'grandma',
       grandmaKeys,
       GRANDMA,
-      `<path d="M${gx - 34} ${gy + 80}q0-50 34-56q34 6 34 56z" fill="#7b5ea7" ${O}/>` +
+      `<path d="M${gx - 34} ${gy + 80}q0-50 34-56q34 6 34 56z" fill="url(#c2-dress)" ${O}/>` +
+        `<path d="M${gx - 16} ${gy + 40}q-4 20-2 40M${gx + 18} ${gy + 44}q4 18 2 36" fill="none" stroke="#5b4386" stroke-width="2.4" stroke-linecap="round"/>` +
         `<path d="M${gx - 12} ${gy + 26}q12 10 24 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>` +
         // Serving arm: pushes the pie out.
         keys(undefined, hiddenKeys(14, 20), GRANDMA,
@@ -268,7 +283,7 @@ export default svgLevel({
             `<circle cx="${gx + 50}" cy="${gy + 66}" r="7" fill="#f6c7a1" ${Ow(2)}/>`)) +
         // Head
         `<circle cx="${gx}" cy="${gy - 12}" r="10" fill="#d8d8e0" ${Ow(2)}/>` +
-        `<circle cx="${gx}" cy="${gy + 10}" r="21" fill="#f6c7a1" ${O}/>` +
+        `<circle cx="${gx}" cy="${gy + 10}" r="21" fill="url(#c2-skin)" ${O}/>` +
         `<path d="M${gx - 21} ${gy + 6}q2-18 21-18t21 18q-6-8-21-10q-15 2-21 10z" fill="#d8d8e0" ${Ow(2)}/>` +
         `<circle cx="${gx - 8}" cy="${gy + 9}" r="6" fill="#fff" fill-opacity="0.5" ${Ow(1.8)}/><circle cx="${gx + 8}" cy="${gy + 9}" r="6" fill="#fff" fill-opacity="0.5" ${Ow(1.8)}/>` +
         `<path d="M${gx - 2} ${gy + 9}h4" stroke="${INK}" stroke-width="1.8"/>` +
@@ -325,7 +340,7 @@ export default svgLevel({
       pineTree(55, 652, 1.05, crown(4.4, 1.5)) +
       pineTree(658, 646, 0.9, crown(4.8, 1.5)) +
       birchTree(1022, 640, 0.85, crown(3.6, 3)) +
-      roundTree(1292, 628, 0.7, '#4caf50', crown(4.2))
+      roundTree(1292, 628, 0.7, 'url(#ke-leaf)', crown(4.2))
     const frontTrees =
       appleTree(420, 892, 0.72, crown(5.2)) +
       apple(392, 886, 6) + apple(452, 890, 6) +
@@ -344,6 +359,15 @@ export default svgLevel({
       tufts += anim({ type: 'sway', angle: 7, pivot: [tx, ty], period: 2.3, phase: (tx % 13) / 13 }, grassTuft(tx, ty))
     }
 
+    // Lighter and darker patches of grass, and small stones.
+    let patches = ''
+    for (let i = 0; i < 18; i++) {
+      const px = Math.round(rand() * 1440)
+      const py = Math.round(660 + rand() * 230)
+      const light = i % 2 === 0
+      patches += `<ellipse cx="${px}" cy="${py}" rx="${Math.round(40 + rand() * 70)}" ry="${Math.round(8 + rand() * 10)}" fill="${light ? '#c4ef8f' : '#4f9a3c'}" fill-opacity="${light ? 0.35 : 0.22}"/>`
+    }
+
     // A flock crossing the sky.
     let flock = ''
     for (const [i, [fx, fy]] of ([[1500, 230], [1526, 214], [1528, 246], [1552, 200]] as [number, number][]).entries())
@@ -356,9 +380,9 @@ export default svgLevel({
     const walker = (x: number, phase: number, m: string) =>
       anim({ type: 'path', points: [[0, 0], [150, 10]], period: 16, phase, flipX: x }, m)
     const hens =
-      walker(600, 0, peck([600, 770], 0)(cartoonHen(600, 770))) +
-      walker(566, 0.97, peck([566, 778], 0.4)(cartoonChick(566, 778))) +
-      walker(548, 0.95, peck([548, 766], 0.7)(cartoonChick(548, 766)))
+      walker(600, 0, groundShadow(598, 771, 22, 5) + peck([600, 770], 0)(cartoonHen(600, 770))) +
+      walker(566, 0.97, groundShadow(565, 779, 10, 3) + peck([566, 778], 0.4)(cartoonChick(566, 778))) +
+      walker(548, 0.95, groundShadow(547, 767, 10, 3) + peck([548, 766], 0.7)(cartoonChick(548, 766)))
 
     // Dust kicked up by the running dog, and crumbs of the pie.
     const dust = DUST_TIMES.map((t) => {
@@ -370,10 +394,31 @@ export default svgLevel({
       .join('')
 
     return (
-      `<defs><linearGradient id="c2-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ccff5"/><stop offset="1" stop-color="#e3f5ff"/></linearGradient>` +
-      `<linearGradient id="c2-grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93d36c"/><stop offset="1" stop-color="#5aa847"/></linearGradient>` +
+      `<defs>${NATURE_DEFS}` +
+      `<linearGradient id="c2-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fa8e8"/><stop offset="0.55" stop-color="#9fd6f7"/><stop offset="1" stop-color="#e6f6ff"/></linearGradient>` +
+      `<radialGradient id="c2-glow"><stop offset="0" stop-color="#fff6c9" stop-opacity="0.95"/><stop offset="0.35" stop-color="#fff2b0" stop-opacity="0.45"/><stop offset="1" stop-color="#fff2b0" stop-opacity="0"/></radialGradient>` +
+      `<linearGradient id="c2-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cdd2"/><stop offset="1" stop-color="#bfe0c9"/></linearGradient>` +
+      `<linearGradient id="c2-hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3e8a6"/><stop offset="1" stop-color="#9ccf80"/></linearGradient>` +
+      `<linearGradient id="c2-haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef8ff" stop-opacity="0"/><stop offset="1" stop-color="#eef8ff" stop-opacity="0.45"/></linearGradient>` +
+      `<linearGradient id="c2-grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ad874"/><stop offset="0.5" stop-color="#76c055"/><stop offset="1" stop-color="#4f9a3c"/></linearGradient>` +
+      `<pattern id="c2-blades" width="46" height="26" patternUnits="userSpaceOnUse"><path d="M6 20l2-7M10 21l-1-6M28 9l2-6M33 10l-1-5M40 24l1-6" stroke="#3f8a33" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"/></pattern>` +
+      `<linearGradient id="c2-path" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9c08e"/><stop offset="0.6" stop-color="#ecdcb1"/><stop offset="1" stop-color="#f5e9c8"/></linearGradient>` +
+      `<linearGradient id="c2-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ead2a0"/><stop offset="0.7" stop-color="#fbecc8"/><stop offset="1" stop-color="#fff5dc"/></linearGradient>` +
+      `<linearGradient id="c2-roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e2f40"/><stop offset="0.55" stop-color="#cf4757"/><stop offset="1" stop-color="#e7707a"/></linearGradient>` +
+      `<pattern id="c2-tiles" width="24" height="14" patternUnits="userSpaceOnUse"><path d="M0 14q6-9 12 0q6-9 12 0" fill="none" stroke="#7a1f2e" stroke-opacity="0.45" stroke-width="1.6"/></pattern>` +
+      `<pattern id="c2-bricks" width="20" height="12" patternUnits="userSpaceOnUse"><path d="M0 6h20M0 12h20M10 0v6M0 6v6M20 6v6" stroke="#7d2f22" stroke-opacity="0.55" stroke-width="1.2"/></pattern>` +
+      `<linearGradient id="c2-wood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c6431"/><stop offset="0.6" stop-color="#c98b4b"/><stop offset="1" stop-color="#dca267"/></linearGradient>` +
+      `<pattern id="c2-grain" width="60" height="30" patternUnits="userSpaceOnUse"><path d="M0 30h60M4 10q14-3 26 0t26 0M8 21q10-2 20 0" fill="none" stroke="#7a4a22" stroke-opacity="0.45" stroke-width="1.4"/></pattern>` +
+      `<radialGradient id="c2-fur" cx="0.6" cy="0.25" r="0.85"><stop offset="0" stop-color="#f7d6a4"/><stop offset="0.55" stop-color="#e3ad6c"/><stop offset="1" stop-color="#b9793c"/></radialGradient>` +
+      `<radialGradient id="c2-skin" cx="0.62" cy="0.3" r="0.8"><stop offset="0" stop-color="#ffe0c6"/><stop offset="1" stop-color="#e9a982"/></radialGradient>` +
+      `<linearGradient id="c2-dress" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5f4590"/><stop offset="0.6" stop-color="#7f62ad"/><stop offset="1" stop-color="#9b80c7"/></linearGradient>` +
+      `<radialGradient id="c2-crust" cx="0.6" cy="0.25" r="0.8"><stop offset="0" stop-color="#f7cf8c"/><stop offset="0.6" stop-color="#e1a053"/><stop offset="1" stop-color="#b36f2b"/></radialGradient>` +
+      `<linearGradient id="c2-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff4ff"/><stop offset="1" stop-color="#8fcbe8"/></linearGradient>` +
+      `<radialGradient id="c2-room" cx="0.7" cy="0.3" r="0.9"><stop offset="0" stop-color="#9a6447"/><stop offset="1" stop-color="#4f2d1d"/></radialGradient>` +
+      `<radialGradient id="c2-sunlight" cx="0.87" cy="0.13" r="1"><stop offset="0" stop-color="#fff3c4" stop-opacity="0.35"/><stop offset="0.5" stop-color="#fff3c4" stop-opacity="0.08"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>` +
       `<clipPath id="c2-win"><rect x="292" y="422" width="156" height="118"/></clipPath></defs>` +
       `<rect width="${W}" height="${H}" fill="url(#c2-sky)"/>` +
+      `<circle cx="1250" cy="120" r="190" fill="url(#c2-glow)"/>` +
       anim({ type: 'rotate', pivot: [1250, 120], period: 40 },
         `<path d="M1250 50v-16M1250 190v-16M1180 120h-16M1336 120h-16M1200 70l-11-11M1311 181l-11-11M1200 170l-11 11M1311 59l-11 11" stroke="#ffd23f" stroke-width="7" stroke-linecap="round"/>`) +
       `<circle cx="1250" cy="120" r="48" fill="#ffd23f" stroke="#f2a93b" stroke-width="3"/>` +
@@ -386,11 +431,19 @@ export default svgLevel({
       anim({ type: 'path', points: [[0, 0], [120, 0]], period: 26 }, puffCloud(1050, 70, 0.7)) +
       anim({ type: 'path', points: [[0, 0], [-90, 0]], period: 22 }, puffCloud(560, 260, 0.6)) +
       flock +
-      `<path d="M0 560q180-90 360-30t380-20t360-10t340 20V640H0z" fill="#b5e09a"/>` +
+      `<path d="M0 530q140-70 300-36t320-30t330 20t260-40t230 30V640H0z" fill="url(#c2-far)"/>` +
+      `<path d="M0 560q180-90 360-30t380-20t360-10t340 20V640H0z" fill="url(#c2-hill)"/>` +
       wood +
+      `<rect y="470" width="${W}" height="170" fill="url(#c2-haze)"/>` +
       `<rect y="620" width="${W}" height="${H - 620}" fill="url(#c2-grass)"/>` +
+      `<rect y="620" width="${W}" height="${H - 620}" fill="url(#c2-blades)"/>` +
+      patches +
       backTrees +
-      `<path d="M200 660q40 120 -20 240h90q40-120 30-240z" fill="#e9d7a8"/>` +
+      `<path d="M200 660q40 120 -20 240h90q40-120 30-240z" fill="url(#c2-path)"/>` +
+      `<path d="M200 660q40 120 -20 240" fill="none" stroke="#b89a62" stroke-opacity="0.6" stroke-width="3"/>` +
+      `<ellipse cx="226" cy="720" rx="7" ry="4" fill="#c9b48a"/><ellipse cx="248" cy="790" rx="9" ry="5" fill="#c4ae82"/><ellipse cx="222" cy="852" rx="8" ry="4.5" fill="#cbb68c"/>` +
+      // The house's shadow on the grass, cast to the left.
+      groundShadow(330, 664, 330, 26) +
       // Grandma's house
       [0, 1 / 3, 2 / 3]
         .map((phase) =>
@@ -399,20 +452,28 @@ export default svgLevel({
         )
         .join('') +
       `<rect x="484" y="190" width="30" height="70" fill="#b5523b" ${O}/>` +
-      `<path d="M100 340L370 180L640 340z" fill="#d1495b" ${O}/>` +
-      `<path d="M150 310L370 196L590 310" fill="none" stroke="#a9374a" stroke-width="3"/>` +
+      `<rect x="484" y="190" width="30" height="70" fill="url(#c2-bricks)"/><rect x="484" y="190" width="10" height="70" fill="#000" fill-opacity="0.12"/>` +
+      `<rect x="479" y="184" width="40" height="10" rx="2" fill="#8f3d2d" ${Ow(2)}/>` +
+      `<path d="M100 340L370 180L640 340z" fill="url(#c2-roof)" ${O}/>` +
+      `<path d="M100 340L370 180L640 340z" fill="url(#c2-tiles)"/>` +
+      `<path d="M104 338L370 182" stroke="#fff" stroke-opacity="0.25" stroke-width="4" stroke-linecap="round"/>` +
       anim({ type: 'sway', angle: 8, pivot: [370, 180], period: 4.2, id: 'vane' },
         `<path d="M370 180v-48" stroke="${INK}" stroke-width="3"/>` +
           diff(372, 124, 28,
             `<path d="M356 132q-2-14 8-16q2-10 10-6q8 2 6 10l6 2l-6 3q2 8-6 10z" fill="#ffd23f" ${Ow(1.8)}/><path d="M357 126l-8-6l2 10" fill="#e63946" ${Ow(1.5)}/>`,
             `<path d="M352 124h40l-6-5M392 124l-6 5" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>`,
             'vane')) +
-      `<rect x="120" y="338" width="500" height="322" fill="#fff1cf" ${O}/>` +
-      `<path d="M120 400h500M120 470h500M120 540h500M120 610h500" stroke="#f0d9a7" stroke-width="2"/>` +
-      `<rect x="160" y="520" width="80" height="140" rx="6" fill="#8a5a2b" ${O}/><circle cx="226" cy="596" r="4" fill="#ffd23f"/>` +
-      `<rect x="176" y="540" width="48" height="36" rx="4" fill="#bfe8ff" ${Ow(2)}/>` +
+      `<rect x="120" y="338" width="500" height="322" fill="url(#c2-wall)" ${O}/>` +
+      `<path d="M120 370h500M120 400h500M120 430h500M120 470h500M120 505h500M120 540h500M120 575h500M120 610h500" stroke="#e2c68f" stroke-opacity="0.8" stroke-width="2"/>` +
+      // Shade under the eaves, a stone footing.
+      `<rect x="122" y="340" width="496" height="22" fill="#6b4a2a" fill-opacity="0.18"/>` +
+      `<rect x="120" y="644" width="500" height="16" fill="#a9a39a" ${Ow(2)}/><path d="M150 644v16M200 644v16M260 644v16M330 644v16M400 644v16M470 644v16M540 644v16M590 644v16" stroke="#7d776e" stroke-width="1.5"/>` +
+      `<rect x="160" y="520" width="80" height="140" rx="6" fill="url(#c2-wood)" ${O}/>` +
+      `<rect x="172" y="590" width="56" height="54" rx="3" fill="none" stroke="#6e4220" stroke-opacity="0.6" stroke-width="2.5"/><circle cx="226" cy="596" r="4" fill="#ffd23f" ${Ow(1.2)}/>` +
+      `<rect x="176" y="540" width="48" height="36" rx="4" fill="url(#c2-glass)" ${Ow(2)}/>` +
+      `<path d="M184 570l18-24M196 572l16-22" stroke="#fff" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>` +
       // Kitchen window: the room behind, grandma in it.
-      `<rect x="292" y="422" width="156" height="118" fill="#7a4a32"/>` +
+      `<rect x="292" y="422" width="156" height="118" fill="url(#c2-room)"/>` +
       `<path d="M300 470h60" stroke="#5c3522" stroke-width="5"/><rect x="306" y="452" width="12" height="18" fill="#4dabf7"/><rect x="324" y="456" width="16" height="14" fill="#ffd23f"/>` +
       `<circle cx="385" cy="436" r="10" fill="#f3e2bd" ${Ow(2)}/><path d="M385 436v-6M385 436l4 2" stroke="${INK}" stroke-width="1.6" stroke-linecap="round"/>` +
       anim({ type: 'sway', angle: 18, pivot: [385, 446], period: 1.2 }, `<path d="M385 446v14" stroke="#c9a227" stroke-width="2"/><circle cx="385" cy="462" r="3.5" fill="#c9a227"/>`) +
@@ -423,7 +484,8 @@ export default svgLevel({
       anim({ type: 'sway', angle: 2.5, pivot: [297, 422], period: 3.4 }, `<path d="M292 422h30q-8 50 0 118h-30z" fill="#4dabf7" fill-opacity="0.9" ${Ow(2)}/>`) +
       anim({ type: 'sway', angle: 2.5, pivot: [443, 422], period: 3.4, phase: 0.5 }, `<path d="M448 422h-30q8 50 0 118h30z" fill="#4dabf7" fill-opacity="0.9" ${Ow(2)}/>`) +
       `<rect x="292" y="422" width="156" height="118" fill="none" ${Ow(5)}/>` +
-      `<rect x="276" y="538" width="188" height="14" rx="3" fill="#a0703f" ${Ow(2.4)}/>` +
+      `<rect x="280" y="552" width="180" height="10" fill="#6b4a2a" fill-opacity="0.18"/>` +
+      `<rect x="276" y="538" width="188" height="14" rx="3" fill="url(#c2-wood)" ${Ow(2.4)}/>` +
       // Flowerpot on the sill (in B a cactus)
       `<path d="M288 538l4-20h24l4 20z" fill="#d9774b" ${Ow(2)}/>` +
       diff(304, 504, 22,
@@ -441,7 +503,8 @@ export default svgLevel({
       flowers +
       tufts +
       // Clothesline
-      `<path d="M700 420v240M1000 420v240" stroke="#8a5a2b" stroke-width="8"/>` +
+      groundShadow(690, 662, 30, 6) + groundShadow(990, 662, 30, 6) +
+      `<rect x="696" y="420" width="9" height="240" fill="url(#ke-bark)" ${Ow(1.5)}/><rect x="996" y="420" width="9" height="240" fill="url(#ke-bark)" ${Ow(1.5)}/>` +
       `<path d="M700 428q150 14 300 0" fill="none" stroke="${INK}" stroke-width="2"/>` +
       laundry(760, `<path d="M740 432h40l8 14l-8 4v30h-40v-30l-8-4z" fill="#4dabf7" ${Ow(2)}/>`) +
       diff(852, 455, 26, laundry(850, sock, 'sock'), '', 'sock') +
@@ -451,25 +514,32 @@ export default svgLevel({
         bird(1000, 416),
       ) +
       // Tree with a birdhouse (A only)
-      `<path d="M1348 660q8-120-2-260h30q-10 140-2 260z" fill="#8a5a2b" ${O}/>` +
+      groundShadow(1320, 662, 110, 16) +
+      `<path d="M1348 660q8-120-2-260h30q-10 140-2 260z" fill="url(#ke-bark)" ${O}/>` +
+      `<path d="M1356 640q4-40 0-80M1366 590q-3-30 0-60" fill="none" stroke="#4a2c14" stroke-opacity="0.5" stroke-width="2.5" stroke-linecap="round"/>` +
       diff(1362, 470, 24,
         `<path d="M1346 470l16-14l16 14z" fill="#d1495b" ${Ow(2)}/><rect x="1350" y="470" width="24" height="22" fill="#ffd23f" ${Ow(2)}/><circle cx="1362" cy="481" r="4" fill="${INK}"/>`,
         '') +
       anim({ type: 'sway', angle: 2, pivot: [1360, 420], period: 5 },
-        `<circle cx="1320" cy="360" r="62" fill="#4caf50" ${O}/><circle cx="1400" cy="340" r="58" fill="#5cbf55" ${O}/><circle cx="1360" cy="290" r="64" fill="#66c25a" ${O}/>` +
+        `<circle cx="1320" cy="360" r="62" fill="url(#ke-leaf)" ${O}/><circle cx="1400" cy="340" r="58" fill="url(#ke-leaf)" ${O}/><circle cx="1360" cy="290" r="64" fill="url(#ke-leaf)" ${O}/>` +
+          `<path d="M1290 380q10-8 20 0M1330 330q10-8 20 0M1380 360q10-8 20 0M1350 280q10-8 20 0M1400 320q10-8 20 0" fill="none" stroke="#2a7434" stroke-opacity="0.45" stroke-width="3" stroke-linecap="round"/>` +
           apple(1290, 340) + apple(1340, 300) + apple(1384, 250) + apple(1410, 352) + apple(1336, 232) + apple(1262, 380)) +
       once(appleKeys, APPLE, apple(...APPLE)) +
       once(squirrelKeys, SQUIRREL, squirrel(...SQUIRREL, (m) => anim({ type: 'sway', angle: 10, pivot: [SQUIRREL[0] - 2, SQUIRREL[1] + 10], period: 1.1 }, m))) +
       // Doghouse and bowl
-      `<path d="M1050 548l100-70l100 70z" fill="#d1495b" ${O}/>` +
-      `<rect x="1066" y="546" width="168" height="116" fill="#c98b4b" ${O}/>` +
-      `<path d="M1066 576h168M1066 606h168M1066 636h168" stroke="#a86f3c" stroke-width="2"/>` +
-      `<path d="M1120 662v-40q30-34 60 0v40z" fill="#4a2c17" ${O}/>` +
-      `<ellipse cx="1266" cy="690" rx="24" ry="9" fill="#3a86ff" ${Ow(2)}/><ellipse cx="1266" cy="686" rx="18" ry="4" fill="#1f5fd1"/>` +
+      groundShadow(1120, 664, 120, 14) +
+      `<rect x="1066" y="546" width="168" height="116" fill="url(#c2-wood)" ${O}/>` +
+      `<rect x="1066" y="546" width="168" height="116" fill="url(#c2-grain)"/>` +
+      `<rect x="1068" y="548" width="164" height="16" fill="#3e2410" fill-opacity="0.22"/>` +
+      `<path d="M1050 548l100-70l100 70z" fill="url(#c2-roof)" ${O}/><path d="M1050 548l100-70l100 70z" fill="url(#c2-tiles)"/>` +
+      `<path d="M1120 662v-40q30-34 60 0v40z" fill="#2e1a0c" ${O}/><path d="M1126 662v-38q24-26 48 0" fill="none" stroke="#5a3518" stroke-width="3"/>` +
+      groundShadow(1262, 694, 30, 6) +
+      `<ellipse cx="1266" cy="690" rx="24" ry="9" fill="#3a86ff" ${Ow(2)}/><ellipse cx="1266" cy="686" rx="18" ry="4" fill="#1f5fd1"/><path d="M1250 692q16 5 32 0" fill="none" stroke="#9cc4ff" stroke-width="2" stroke-linecap="round"/>` +
       diff(1268, 680, 20, `<path d="M1254 682l26-8" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="1253" cy="679" r="3.5" fill="#fff"/><circle cx="1255" cy="685" r="3.5" fill="#fff"/><circle cx="1279" cy="671" r="3.5" fill="#fff"/><circle cx="1281" cy="677" r="3.5" fill="#fff"/>`, '') +
       anim({ type: 'path', points: [[0, 0], [10, -8], [22, 0], [12, 7]], period: 0.8 },
         anim({ type: 'path', points: [[0, 0], [30, -14], [-10, -24]], period: 5 }, fly(1250, 652, beat([1250, 648], 0.08)))) +
       anim({ type: 'path', points: [[0, 0], [34, -18], [60, 4], [26, 16]], period: 3.8 }, bee(1290, 690, beat([1291, 685], 0.12))) +
+      once(dogShadowKeys, [dx, dy], groundShadow(dx - 6, dy + 1, 58, 9)) +
       dust +
       dog +
       crumbs +
@@ -483,13 +553,16 @@ export default svgLevel({
         during(7, 9.45)) +
       frontTrees +
       // Bushes in front
-      `<path d="M0 900q30-60 90-40q40-50 90 0q50-20 60 40z" fill="#4c9a3f" ${O}/>` +
-      `<path d="M1180 900q30-60 90-40q40-50 90 0q50-20 80 40z" fill="#4c9a3f" ${O}/>` +
+      `<path d="M0 900q30-60 90-40q40-50 90 0q50-20 60 40z" fill="url(#ke-leaf)" ${O}/>` +
+      `<path d="M1180 900q30-60 90-40q40-50 90 0q50-20 80 40z" fill="url(#ke-leaf)" ${O}/>` +
+      `<path d="M40 880q10-8 20 0M120 872q10-8 20 0M1230 880q10-8 20 0M1320 870q10-8 20 0" fill="none" stroke="#2a7434" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round"/>` +
       // Butterflies over the yard
       anim({ type: 'path', points: [[0, 0], [90, -50], [190, -10], [140, 50], [40, 40]], period: 13 },
         anim({ type: 'bob', dx: 0, dy: 6, period: 0.7 }, butterflyAt(600, 700, ['#ff6fb5', '#ffd23f'], beat([600, 700], 0.3, 0, 'sx')))) +
       anim({ type: 'path', points: [[0, 0], [-80, -40], [-150, 20], [-50, 50]], period: 11, reverse: true },
-        anim({ type: 'bob', dx: 0, dy: 5, period: 0.6 }, butterflyAt(1000, 780, ['#b38cff', '#4dabf7'], beat([1000, 780], 0.26, 0.4, 'sx'))))
+        anim({ type: 'bob', dx: 0, dy: 5, period: 0.6 }, butterflyAt(1000, 780, ['#b38cff', '#4dabf7'], beat([1000, 780], 0.26, 0.4, 'sx')))) +
+      // Warm sunlight from the upper right over the whole yard.
+      `<rect width="${W}" height="${H}" fill="url(#c2-sunlight)" pointer-events="none"/>`
     )
   },
 })
