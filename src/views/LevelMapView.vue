@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
 import KeyBadge from '../components/KeyBadge.vue'
+import KeyIcon from '../components/KeyIcon.vue'
 import LevelId from '../components/LevelId.vue'
 import PhotoBanner from '../components/PhotoBanner.vue'
 import {
@@ -71,8 +73,12 @@ const keysFound = () => KEY_CHAPTERS.filter((c) => progress.hasKey(c.id)).length
 /** All keys found (or every level opened for testing). */
 const treasuryOpen = () => progress.allKeysFound || progress.devOpenAll
 
+const treasuryLock = useTemplateRef('treasuryLock')
+
+/** Closed: the lock tells where the keys are; open: the bonus level (or the full-game offer). */
 function openTreasury() {
-  if (progress.needsPurchase(treasuryLevel.id)) purchase.dialogOpen = true
+  if (!treasuryOpen()) treasuryLock.value?.show()
+  else if (progress.needsPurchase(treasuryLevel.id)) purchase.dialogOpen = true
   else if (progress.isUnlocked(treasuryLevel.id)) router.push({ name: 'level', params: { id: treasuryLevel.id } })
 }
 
@@ -166,19 +172,21 @@ const timeTravel = {
             :photo="`${baseUrl}banners/treasury.avif`"
             :tag="$t('treasury.tag')"
             :name="$t('chapters.treasury')"
-            :disabled="!treasuryOpen()"
             @click="openTreasury"
           >
             <template #icon><img class="obj" :src="`${baseUrl}icons/treasury.webp`" alt="" /></template>
-            {{ $t('secret.keys', { n: keysFound(), total: KEY_CHAPTERS.length }) }}
-            <span v-if="!treasuryOpen()" class="line">{{ $t('treasury.locked') }}</span>
+            <!-- One key per chapter that hides one, golden once found. -->
+            <span class="keys" role="img" :aria-label="$t('secret.keys', { n: keysFound(), total: KEY_CHAPTERS.length })">
+              <KeyIcon v-for="c in KEY_CHAPTERS" :key="c.id" :found="progress.hasKey(c.id)" aria-hidden="true" />
+            </span>
             <template #end>
               <LevelId :id="treasuryLevel.id" />
-              <span v-if="!treasuryOpen()" class="key lock" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
-              </span>
+              <span v-if="!treasuryOpen()" class="key-space" aria-hidden="true" />
             </template>
           </PhotoBanner>
+          <KeyBadge v-if="!treasuryOpen()" ref="treasuryLock" class="key lock" :text="$t('treasury.lockedHint')">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="5" y="10" width="14" height="11" rx="2" fill="currentColor"/></svg>
+          </KeyBadge>
         </li>
         <li v-if="settings.developer && test.ids.length">
           <PhotoBanner
@@ -290,18 +298,41 @@ main {
   --banner-icon-bg: #eceef2;
 }
 
-/* The treasury is dimmed until every key is found. */
-.treasury.closed {
+/* The treasury's pictures are dimmed until every key is found (not its keys, so the found ones shine). */
+.treasury.closed :deep(.photo),
+.treasury.closed :deep(.icon) {
   filter: saturate(0.45);
 }
 
-/* The treasury's second line under the key count. */
-.line {
-  display: block;
+/* The treasury's keys: a row of small keys, the ones not found yet in faded white. */
+.keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.keys .key {
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.35));
+}
+
+.keys .key.found {
+  filter: drop-shadow(0 0 3px rgb(255 236 150 / 0.9)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.35));
+}
+
+.keys .key:not(.found) :deep(.metal) {
+  fill: rgb(255 255 255 / 0.25);
+  stroke: rgb(255 255 255 / 0.85);
+}
+
+.keys .key:not(.found) :deep(.hole) {
+  fill: rgb(255 255 255 / 0.9);
 }
 
 /* The banner's hidden key (grey or gold): a button of its own over the banner, in the place kept by
-   `.key-space`; the treasury's lock in the same light badge. */
+   `.key-space`; the closed treasury's lock is such a button too, telling where the keys are. */
 .list li {
   position: relative;
 }
@@ -319,22 +350,16 @@ li > .key {
   translate: 0 -50%;
 }
 
-.key :deep(.key-button),
-.key.lock {
+.key :deep(.key-button) {
   background: rgb(255 255 255 / 0.85);
 }
 
-.key.lock {
-  position: relative;
-  flex: none;
-  width: 34px;
-  height: 34px;
-  padding: 5px;
-  border-radius: 50%;
+.lock :deep(.key-button) {
+  color: #8a6400;
 }
 
-.lock {
-  display: grid;
-  color: #8a6400;
+.lock :deep(.key-button) svg {
+  width: 24px;
+  height: 24px;
 }
 </style>

@@ -21,7 +21,15 @@
     "label": "Bildstil",
     "classic": "Klassisch",
     "redesign": "Neuer Look",
-    "drawnOnly": "Für dieses Level gibt es noch keine 3D-Bilder, daher wird es gezeichnet gezeigt."
+    "drawnOnly": "Für dieses Level gibt es noch keine 3D-Bilder, daher wird es gezeichnet gezeigt.",
+    "introCompareTitle": "Zwei Bildstile",
+    "introCompareText": "Die Level lassen sich mit gezeichneten 2D-Bildern oder mit neuen 3D-Bildern spielen.",
+    "introSwitchTitle": "Jederzeit wechseln",
+    "introSwitchText": "Tippe auf den runden 2D / 3D-Knopf auf dem Startbildschirm oder während eines Levels.",
+    "introChooseTitle": "Was gefällt dir besser?",
+    "introChooseText": "Wähle einen Stil zum Start. Du kannst ihn später ändern.",
+    "introNext": "Weiter",
+    "introDontShow": "Nicht mehr anzeigen"
   },
   "theme": {
     "label": "Design",
@@ -100,6 +108,7 @@
   "level": {
     "level": "Level {n}",
     "found": "Gefunden {found}/{total}",
+    "foundSoFar": "Gefunden {found}",
     "mistakes": "Fehler: {n}",
     "locked": "Nicht so schnell…",
     "complete": "Level geschafft!",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Finde die goldenen Schlüssel in allen Kapiteln",
+    "lockedHint": "Finde zuerst alle goldenen Schlüssel – sie sind in den Levels jeder Welt und jedes Modus versteckt. Dann öffnet sich die Schatzkammer!",
     "congrats": "Du bist der aufmerksamste Spieler!"
   }
 }

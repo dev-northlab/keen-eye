@@ -464,6 +464,7 @@
     "calmDone": "休閒模式 — 不計星星",
     "complete": "過關了！",
     "found": "已找到 {found}/{total}",
+    "foundSoFar": "已找到 {found}",
     "hint": "提示",
     "level": "第 {n} 關",
     "locked": "慢一點…",
@@ -923,7 +924,15 @@
     "label": "圖片風格",
     "classic": "經典",
     "redesign": "新外觀",
-    "drawnOnly": "這一關還沒有 3D 圖片，因此以手繪畫面顯示。"
+    "drawnOnly": "這一關還沒有 3D 圖片，因此以手繪畫面顯示。",
+    "introCompareTitle": "兩種畫面風格",
+    "introCompareText": "關卡可以用手繪 2D 畫面或全新的 3D 畫面來玩。",
+    "introSwitchTitle": "隨時切換",
+    "introSwitchText": "在主畫面或關卡中點按圓形的 2D / 3D 按鈕。",
+    "introChooseTitle": "你比較喜歡哪種？",
+    "introChooseText": "選擇一種風格開始。之後可以隨時更改。",
+    "introNext": "下一步",
+    "introDontShow": "不再顯示"
   },
   "secret": {
     "findHere": "這裡的某一關藏著一把金鑰匙。找到它！",
@@ -1000,7 +1009,7 @@
   },
   "treasury": {
     "congrats": "你是最細心的玩家！",
-    "locked": "在每一章中找到金鑰匙",
+    "lockedHint": "先找到所有金鑰匙——它們藏在每個世界和每種模式的關卡裡。然後寶庫就會打開！",
     "tag": "獎勵"
   },
   "worldTravel": {

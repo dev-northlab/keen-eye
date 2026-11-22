@@ -1359,5 +1359,138 @@
       "dy": 2,
       "period": 5
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/japan-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "calculator",
+        "shape": "rect",
+        "x": 9.14,
+        "y": 54.63,
+        "w": 4.07,
+        "h": 2.02
+      },
+      {
+        "id": "sneakers",
+        "shape": "rect",
+        "x": 9.55,
+        "y": 87.22,
+        "w": 9.61,
+        "h": 2.02
+      },
+      {
+        "id": "bulb",
+        "shape": "rect",
+        "x": 20.75,
+        "y": 47.27,
+        "w": 2.59,
+        "h": 2.57
+      },
+      {
+        "id": "ramen",
+        "shape": "rect",
+        "x": 20.99,
+        "y": 66.73,
+        "w": 5.96,
+        "h": 3.76
+      },
+      {
+        "id": "flashlight",
+        "shape": "rect",
+        "x": 23.47,
+        "y": 93.35,
+        "w": 7.49,
+        "h": 2.45
+      },
+      {
+        "id": "bullet-train",
+        "shape": "rect",
+        "x": 24.94,
+        "y": 37.58,
+        "w": 33.02,
+        "h": 2.65
+      },
+      {
+        "id": "cup-noodles",
+        "shape": "rect",
+        "x": 31.31,
+        "y": 54.0,
+        "w": 4.3,
+        "h": 2.73
+      },
+      {
+        "id": "telephone",
+        "shape": "rect",
+        "x": 40.62,
+        "y": 60.88,
+        "w": 6.31,
+        "h": 3.6
+      },
+      {
+        "id": "pen",
+        "shape": "rect",
+        "x": 43.4,
+        "y": 90.98,
+        "w": 3.48,
+        "h": 2.57
+      },
+      {
+        "id": "game-console",
+        "shape": "rect",
+        "x": 51.18,
+        "y": 70.25,
+        "w": 3.6,
+        "h": 1.74
+      },
+      {
+        "id": "rickshaw",
+        "shape": "circle",
+        "x": 67.81,
+        "y": 60.92,
+        "r": 7.67
+      },
+      {
+        "id": "power-pole",
+        "shape": "rect",
+        "x": 70.52,
+        "y": 40.94,
+        "w": 7.9,
+        "h": 9.69
+      },
+      {
+        "id": "ice-cream",
+        "shape": "rect",
+        "x": 75.65,
+        "y": 88.01,
+        "w": 3.83,
+        "h": 4.15
+      },
+      {
+        "id": "teddy",
+        "shape": "circle",
+        "x": 79.72,
+        "y": 65.27,
+        "r": 3.24
+      },
+      {
+        "id": "electric-fan",
+        "shape": "rect",
+        "x": 91.63,
+        "y": 76.5,
+        "w": 3.89,
+        "h": 3.24
+      },
+      {
+        "id": "lighter",
+        "shape": "rect",
+        "x": 95.58,
+        "y": 93.99,
+        "w": 2.95,
+        "h": 5.14
+      }
+    ]
+  }
 }

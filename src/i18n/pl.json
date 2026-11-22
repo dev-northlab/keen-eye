@@ -21,7 +21,15 @@
     "label": "Styl obrazków",
     "classic": "Klasyczny",
     "redesign": "Nowy wygląd",
-    "drawnOnly": "Ten poziom nie ma jeszcze obrazków 3D, więc jest pokazany jako rysunek."
+    "drawnOnly": "Ten poziom nie ma jeszcze obrazków 3D, więc jest pokazany jako rysunek.",
+    "introCompareTitle": "Dwa style obrazków",
+    "introCompareText": "Poziomy można grać na rysowanych obrazkach 2D albo na nowych obrazkach 3D.",
+    "introSwitchTitle": "Zmieniaj w każdej chwili",
+    "introSwitchText": "Dotknij okrągłego przycisku 2D / 3D na ekranie głównym lub podczas poziomu.",
+    "introChooseTitle": "Który wolisz?",
+    "introChooseText": "Wybierz styl, aby zacząć. Możesz go później zmienić.",
+    "introNext": "Dalej",
+    "introDontShow": "Nie pokazuj ponownie"
   },
   "theme": {
     "label": "Motyw",
@@ -100,6 +108,7 @@
   "level": {
     "level": "Poziom {n}",
     "found": "Znalezione {found}/{total}",
+    "foundSoFar": "Znalezione {found}",
     "mistakes": "Błędy: {n}",
     "locked": "Wolniej…",
     "complete": "Poziom ukończony!",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Znajdź złote klucze we wszystkich rozdziałach",
+    "lockedHint": "Najpierw znajdź wszystkie złote klucze — są ukryte w poziomach każdego świata i trybu. Wtedy skarbiec się otworzy!",
     "congrats": "Jesteś najbardziej spostrzegawczym graczem!"
   }
 }

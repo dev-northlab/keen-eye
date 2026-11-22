@@ -312,7 +312,8 @@ onBeforeUnmount(() => {
       </span>
       <!-- A detective scene keeps the number of its clues to itself: only the ones found so far. -->
       <ClueCounter v-if="level.detective" class="found" :found="found" />
-      <FoundSlots v-else class="found" :total="total" :found="found" />
+      <!-- The treasury, the hardest scene, hides how many differences it has until all are found. -->
+      <FoundSlots v-else class="found" :total="total" :found="found" :hide-total="treasury" />
       <HudCounters
         v-if="!calm"
         :time="time"

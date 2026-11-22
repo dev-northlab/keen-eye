@@ -21,7 +21,15 @@
     "label": "絵のスタイル",
     "classic": "クラシック",
     "redesign": "新しい見た目",
-    "drawnOnly": "このレベルにはまだ3Dの絵がないため、イラストで表示されます。"
+    "drawnOnly": "このレベルにはまだ3Dの絵がないため、イラストで表示されます。",
+    "introCompareTitle": "2つの絵のスタイル",
+    "introCompareText": "レベルは手描きの2Dの絵でも、新しい3Dの絵でも遊べます。",
+    "introSwitchTitle": "いつでも切り替え",
+    "introSwitchText": "ホーム画面やレベル中に、丸い 2D / 3D ボタンをタップしてください。",
+    "introChooseTitle": "どちらが好き？",
+    "introChooseText": "スタイルを選んで始めましょう。あとで変更できます。",
+    "introNext": "つぎへ",
+    "introDontShow": "今後は表示しない"
   },
   "theme": {
     "label": "テーマ",
@@ -100,6 +108,7 @@
   "level": {
     "level": "レベル {n}",
     "found": "見つけた {found}/{total}",
+    "foundSoFar": "見つけた {found}",
     "mistakes": "ミス：{n}",
     "locked": "ゆっくり…",
     "complete": "レベルクリア！",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "ボーナス",
-    "locked": "すべての章で金の鍵を見つけよう",
+    "lockedHint": "まずは金のカギをすべて見つけよう。どの世界とモードにも、レベルのどこかに隠されています。そうすれば宝物庫が開きます！",
     "congrats": "あなたは最も注意深いプレイヤーです！"
   }
 }

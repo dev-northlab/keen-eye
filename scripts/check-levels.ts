@@ -357,7 +357,7 @@ const expected = new Map([
   ...timeLevels.map((l, i) => [l, TIME_CHAPTER.ranges[0][0] + i] as const),
   ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
   ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
-  ...detectiveLevels.map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
+  ...[...detectiveLevels].sort((a, b) => a.id - b.id).map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
   ...tinyBoyLevels.map((l, i) => [l, TINY_BOY_CHAPTER.ranges[0][0] + i] as const),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
   // Hidden levels (upcoming.ts) take their place in the order only when released.

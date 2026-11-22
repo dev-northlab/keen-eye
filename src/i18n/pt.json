@@ -21,7 +21,15 @@
     "label": "Estilo das imagens",
     "classic": "Clássico",
     "redesign": "Novo visual",
-    "drawnOnly": "Este nível ainda não tem imagens 3D, por isso aparece desenhado."
+    "drawnOnly": "Este nível ainda não tem imagens 3D, por isso aparece desenhado.",
+    "introCompareTitle": "Dois estilos de imagem",
+    "introCompareText": "Os níveis podem ser jogados com imagens 2D desenhadas ou com novas imagens 3D.",
+    "introSwitchTitle": "Mude quando quiser",
+    "introSwitchText": "Toque no botão redondo 2D / 3D na tela inicial ou durante um nível.",
+    "introChooseTitle": "Qual você prefere?",
+    "introChooseText": "Escolha um estilo para começar. Você pode mudá-lo depois.",
+    "introNext": "Próximo",
+    "introDontShow": "Não mostrar novamente"
   },
   "theme": {
     "label": "Tema",
@@ -100,6 +108,7 @@
   "level": {
     "level": "Fase {n}",
     "found": "Encontradas {found}/{total}",
+    "foundSoFar": "Encontradas {found}",
     "mistakes": "Erros: {n}",
     "locked": "Calma…",
     "complete": "Fase concluída!",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "Bônus",
-    "locked": "Encontre as chaves douradas em todos os capítulos",
+    "lockedHint": "Primeiro encontre todas as chaves douradas — estão escondidas nos níveis de cada mundo e modo. Então o tesouro se abrirá!",
     "congrats": "Você é o jogador mais atento!"
   }
 }

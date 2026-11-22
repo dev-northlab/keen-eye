@@ -21,7 +21,15 @@
     "label": "Afbeeldingsstijl",
     "classic": "Klassiek",
     "redesign": "Nieuwe look",
-    "drawnOnly": "Dit level heeft nog geen 3D-plaatjes, dus het wordt getekend getoond."
+    "drawnOnly": "Dit level heeft nog geen 3D-plaatjes, dus het wordt getekend getoond.",
+    "introCompareTitle": "Twee beeldstijlen",
+    "introCompareText": "Je kunt de levels spelen met getekende 2D-plaatjes of met nieuwe 3D-plaatjes.",
+    "introSwitchTitle": "Wissel wanneer je wilt",
+    "introSwitchText": "Tik op de ronde 2D / 3D-knop op het startscherm of tijdens een level.",
+    "introChooseTitle": "Welke vind je mooier?",
+    "introChooseText": "Kies een stijl om te beginnen. Je kunt hem later wijzigen.",
+    "introNext": "Volgende",
+    "introDontShow": "Niet meer tonen"
   },
   "theme": {
     "label": "Thema",
@@ -100,6 +108,7 @@
   "level": {
     "level": "Level {n}",
     "found": "Gevonden {found}/{total}",
+    "foundSoFar": "Gevonden {found}",
     "mistakes": "Fouten: {n}",
     "locked": "Rustig aan…",
     "complete": "Level voltooid!",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Vind de gouden sleutels in alle hoofdstukken",
+    "lockedHint": "Vind eerst alle gouden sleutels – ze zijn verstopt in de levels van elke wereld en modus. Dan gaat de schatkamer open!",
     "congrats": "Jij bent de oplettendste speler!"
   }
 }

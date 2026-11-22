@@ -219,8 +219,7 @@ onBeforeUnmount(() => {
   <div class="level">
     <header class="hud">
       <span class="title">
-        {{ text(level.era) }}
-        <ModeChip :mode="mode" />
+        <span>{{ text(level.era) }} <ModeChip :mode="mode" /></span>
         <small>{{ $t('timeTravel.task') }}</small>
       </span>
       <FoundSlots class="found" :total="total" :found="found" />

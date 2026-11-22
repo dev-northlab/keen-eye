@@ -21,7 +21,15 @@
     "label": "Képstílus",
     "classic": "Klasszikus",
     "redesign": "Új megjelenés",
-    "drawnOnly": "Ennek a pályának még nincsenek 3D képei, ezért rajzolva jelenik meg."
+    "drawnOnly": "Ennek a pályának még nincsenek 3D képei, ezért rajzolva jelenik meg.",
+    "introCompareTitle": "Kétféle képstílus",
+    "introCompareText": "A pályák játszhatók rajzolt 2D képekkel vagy új 3D képekkel.",
+    "introSwitchTitle": "Válts bármikor",
+    "introSwitchText": "Koppints a kerek 2D / 3D gombra a kezdőképernyőn vagy egy pálya közben.",
+    "introChooseTitle": "Melyik tetszik?",
+    "introChooseText": "Válassz stílust a kezdéshez. Később megváltoztathatod.",
+    "introNext": "Tovább",
+    "introDontShow": "Ne jelenjen meg többet"
   },
   "theme": {
     "label": "Téma",
@@ -100,6 +108,7 @@
   "level": {
     "level": "{n}. pálya",
     "found": "Megtalálva {found}/{total}",
+    "foundSoFar": "Megtalálva {found}",
     "mistakes": "Hibák: {n}",
     "locked": "Lassabban…",
     "complete": "Pálya teljesítve!",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "Bónusz",
-    "locked": "Keresd meg az aranykulcsokat minden fejezetben",
+    "lockedHint": "Először találd meg az összes aranykulcsot – minden világ és mód pályáin el vannak rejtve. Akkor kinyílik a kincstár!",
     "congrats": "Te vagy a legfigyelmesebb játékos!"
   }
 }

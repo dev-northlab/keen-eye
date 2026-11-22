@@ -464,6 +464,7 @@
     "calmDone": "Mode santai – tanpa bintang",
     "complete": "Level selesai!",
     "found": "Ditemukan {found}/{total}",
+    "foundSoFar": "Ditemukan {found}",
     "hint": "Bantuan",
     "level": "Level {n}",
     "locked": "Pelan-pelan…",
@@ -923,7 +924,15 @@
     "label": "Gaya gambar",
     "classic": "Klasik",
     "redesign": "Tampilan baru",
-    "drawnOnly": "Level ini belum punya gambar 3D, jadi ditampilkan dalam gambar biasa."
+    "drawnOnly": "Level ini belum punya gambar 3D, jadi ditampilkan dalam gambar biasa.",
+    "introCompareTitle": "Dua gaya gambar",
+    "introCompareText": "Level bisa dimainkan dengan gambar 2D lukisan atau dengan gambar 3D baru.",
+    "introSwitchTitle": "Ganti kapan saja",
+    "introSwitchText": "Ketuk tombol bulat 2D / 3D di layar utama atau saat bermain level.",
+    "introChooseTitle": "Mana yang kamu suka?",
+    "introChooseText": "Pilih gaya untuk memulai. Kamu bisa menggantinya nanti.",
+    "introNext": "Lanjut",
+    "introDontShow": "Jangan tampilkan lagi"
   },
   "secret": {
     "findHere": "Sebuah kunci emas tersembunyi di salah satu level di sini. Temukan!",
@@ -1000,7 +1009,7 @@
   },
   "treasury": {
     "congrats": "Kamulah pemain bermata paling jeli!",
-    "locked": "Temukan kunci emas di setiap bab",
+    "lockedHint": "Temukan dulu semua kunci emas — kunci itu tersembunyi di level setiap dunia dan mode. Lalu ruang harta akan terbuka!",
     "tag": "Bonus"
   },
   "worldTravel": {

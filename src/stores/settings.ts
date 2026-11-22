@@ -46,6 +46,8 @@ export const useSettingsStore = defineStore('settings', () => {
    * with the 3D pictures; a stored choice stays.
    */
   const pictureStyle = ref<PictureStyle>('redesign')
+  /** "Don't show this again" ticked in the steps about the 2D / 3D picture styles (`PictureStyleIntro`). */
+  const hideStyleIntro = ref(false)
   /** Turned on by the testing code: Settings show the Development tools. */
   const developer = ref(false)
   /** Developer tools checkbox: levels get the "Show places" button (only in developer mode). */
@@ -79,6 +81,7 @@ export const useSettingsStore = defineStore('settings', () => {
     vibration.value = bool(raw.vibration, true)
     theme.value = raw.theme === 'light' || raw.theme === 'dark' ? raw.theme : systemTheme()
     pictureStyle.value = isPictureStyle(raw.pictureStyle) ? raw.pictureStyle : 'redesign'
+    hideStyleIntro.value = raw.hideStyleIntro === true
     developer.value = raw.developer === true
     devShowPlaces.value = raw.devShowPlaces === true
   }
@@ -90,7 +93,7 @@ export const useSettingsStore = defineStore('settings', () => {
     return true
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, developer, devShowPlaces], () =>
+  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, hideStyleIntro, developer, devShowPlaces], () =>
     saveJson(KEY, {
       locale: locale.value,
       reduceMotion: reduceMotion.value,
@@ -100,10 +103,11 @@ export const useSettingsStore = defineStore('settings', () => {
       vibration: vibration.value,
       theme: theme.value,
       pictureStyle: pictureStyle.value,
+      hideStyleIntro: hideStyleIntro.value,
       developer: developer.value,
       devShowPlaces: devShowPlaces.value,
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
+  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, hideStyleIntro, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
 })

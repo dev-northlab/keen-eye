@@ -314,11 +314,11 @@
       },
       "fact": {
         "ru": "Пираты смотрели в подзорную трубу, а призменные бинокли начали выпускать только в 1894 году.",
-        "en": "Pirates used a spyglass; prism binoculars were first made only in 1894.",
+        "en": "Pirates used a spyglass; prism binoculars went on sale only in 1894.",
         "hy": "Ծովահենները նայում էին դիտակով, իսկ պրիզմայով բինոկլներ սկսեցին արտադրել միայն 1894 թվականին։",
         "de": "Piraten blickten durch ein Fernrohr; Prismenferngläser wurden erst ab 1894 gebaut.",
         "fr": "Les pirates utilisaient une longue-vue ; les jumelles à prismes n'ont été fabriquées qu'à partir de 1894.",
-        "es": "Los piratas usaban un catalejo; los prismáticos no se fabricaron hasta 1894.",
+        "es": "Los piratas usaban un catalejo; los prismáticos con prismas no salieron a la venta hasta 1894.",
         "it": "I pirati usavano il cannocchiale; i binocoli a prismi furono prodotti solo dal 1894.",
         "pt": "Os piratas usavam uma luneta; os binóculos de prismas só começaram a ser fabricados em 1894.",
         "nl": "Piraten gebruikten een kijker met één buis; prismaverrekijkers werden pas vanaf 1894 gemaakt.",
@@ -329,20 +329,20 @@
         "uk": "Пірати дивилися в підзорну трубу, а призматичні біноклі почали випускати лише в 1894 році.",
         "el": "Οι πειρατές κοίταζαν με τηλεσκόπιο· τα πρισματικά κιάλια άρχισαν να κατασκευάζονται μόλις το 1894.",
         "hu": "A kalózok messzelátót használtak; prizmás távcsövet csak 1894-től gyártottak.",
-        "sv": "Pirater använde en tubkikare; prismakikare tillverkades först 1894.",
-        "da": "Pirater brugte en langkikkert; prismekikkerter blev først lavet i 1894.",
-        "nb": "Pirater brukte en langkikkert; prismekikkerter ble først laget i 1894.",
-        "fi": "Merirosvot käyttivät kaukoputkea; prismakiikareita valmistettiin ensimmäisen kerran vasta vuonna 1894.",
+        "sv": "Pirater använde en tubkikare; prismakikare började säljas först 1894.",
+        "da": "Pirater brugte en langkikkert; prismekikkerter kom først i handlen i 1894.",
+        "nb": "Pirater brukte en langkikkert; prismekikkerter kom først i salg i 1894.",
+        "fi": "Merirosvot käyttivät kaukoputkea; prismakiikareita alettiin myydä vasta vuonna 1894.",
         "tr": "Korsanlar tek gözlü dürbün kullanırdı; prizmalı dürbünler ancak 1894'te üretilmeye başlandı.",
-        "ar": "استخدم القراصنة المِقراب، أما المنظار ذو المنشورين فلم يُصنع لأول مرة إلا عام 1894.",
+        "ar": "استخدم القراصنة المِقراب، أما المنظار ذو المنشورين فلم يُطرح للبيع إلا عام 1894.",
         "hi": "समुद्री डाकू एक नली वाली दूरबीन से देखते थे; प्रिज़्म वाली दूरबीनें 1894 में ही बनने लगीं।",
-        "id": "Bajak laut memakai teropong tunggal; teropong prisma baru pertama dibuat pada tahun 1894.",
-        "ms": "Lanun menggunakan teropong tunggal; teropong prisma hanya mula dibuat pada tahun 1894.",
-        "fil": "Teleskopyo ang gamit ng mga pirata; noong 1894 lamang unang ginawa ang prism binocular.",
-        "vi": "Cướp biển dùng ống nhòm một mắt; ống nhòm lăng kính mãi đến năm 1894 mới được chế tạo.",
-        "th": "โจรสลัดใช้กล้องส่องทางไกลแบบตาเดียว ส่วนกล้องสองตาแบบปริซึมเพิ่งผลิตครั้งแรกในปี 1894",
+        "id": "Bajak laut memakai teropong tunggal; teropong prisma baru dijual pada tahun 1894.",
+        "ms": "Lanun menggunakan teropong tunggal; teropong prisma hanya mula dijual pada tahun 1894.",
+        "fil": "Teleskopyo ang gamit ng mga pirata; noong 1894 lamang naibenta ang prism binocular.",
+        "vi": "Cướp biển dùng ống nhòm một mắt; ống nhòm lăng kính mãi đến năm 1894 mới được bán ra.",
+        "th": "โจรสลัดใช้กล้องส่องทางไกลแบบตาเดียว ส่วนกล้องสองตาแบบปริซึมเพิ่งวางขายในปี 1894",
         "zh": "海盗用的是单筒望远镜，棱镜双筒望远镜直到1894年才开始生产。",
-        "zh-Hant": "海盜用的是單筒望遠鏡；稜鏡雙筒望遠鏡直到1894年才首次製造出來。",
+        "zh-Hant": "海盜用的是單筒望遠鏡；稜鏡雙筒望遠鏡直到1894年才開始販售。",
         "ja": "海賊が使ったのは単眼の望遠鏡で、プリズム双眼鏡が作られ始めたのは1894年です。",
         "ko": "해적은 외눈 망원경을 썼고, 프리즘 쌍안경은 1894년에야 만들어지기 시작했습니다."
       }
@@ -1194,5 +1194,124 @@
       "dy": 0,
       "period": 3
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/pirates-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "sunglasses",
+        "shape": "rect",
+        "x": 15.45,
+        "y": 59.34,
+        "w": 2.83,
+        "h": 0.87
+      },
+      {
+        "id": "steel-drum",
+        "shape": "rect",
+        "x": 20.93,
+        "y": 61.51,
+        "w": 14.15,
+        "h": 7.52
+      },
+      {
+        "id": "soda",
+        "shape": "rect",
+        "x": 22.88,
+        "y": 77.65,
+        "w": 2.65,
+        "h": 2.77
+      },
+      {
+        "id": "stamp",
+        "shape": "rect",
+        "x": 24.47,
+        "y": 91.77,
+        "w": 3.12,
+        "h": 1.58
+      },
+      {
+        "id": "flashlight",
+        "shape": "rect",
+        "x": 38.21,
+        "y": 85.44,
+        "w": 7.55,
+        "h": 2.1
+      },
+      {
+        "id": "tin-can",
+        "shape": "rect",
+        "x": 39.03,
+        "y": 94.07,
+        "w": 3.42,
+        "h": 3.48
+      },
+      {
+        "id": "rubber-boots",
+        "shape": "rect",
+        "x": 44.81,
+        "y": 71.68,
+        "w": 9.73,
+        "h": 3.8
+      },
+      {
+        "id": "revolver",
+        "shape": "rect",
+        "x": 57.67,
+        "y": 60.32,
+        "w": 4.25,
+        "h": 1.38
+      },
+      {
+        "id": "matches",
+        "shape": "rect",
+        "x": 67.69,
+        "y": 94.98,
+        "w": 5.72,
+        "h": 3.12
+      },
+      {
+        "id": "balloon",
+        "shape": "rect",
+        "x": 70.81,
+        "y": 5.89,
+        "w": 8.79,
+        "h": 11.12
+      },
+      {
+        "id": "binoculars",
+        "shape": "rect",
+        "x": 74.76,
+        "y": 60.52,
+        "w": 4.25,
+        "h": 1.5
+      },
+      {
+        "id": "camera",
+        "shape": "rect",
+        "x": 82.31,
+        "y": 83.66,
+        "w": 11.5,
+        "h": 8.5
+      },
+      {
+        "id": "steamship",
+        "shape": "rect",
+        "x": 82.37,
+        "y": 27.25,
+        "w": 10.44,
+        "h": 7.63
+      },
+      {
+        "id": "ship-bottle",
+        "shape": "rect",
+        "x": 84.67,
+        "y": 73.77,
+        "w": 8.61,
+        "h": 2.65
+      }
+    ]
+  }
 }

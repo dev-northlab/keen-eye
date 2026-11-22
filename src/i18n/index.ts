@@ -1,47 +1,14 @@
 import { createI18n } from 'vue-i18n'
-import ar from './ar.json'
-import bg from './bg.json'
-import cs from './cs.json'
-import da from './da.json'
-import de from './de.json'
-import el from './el.json'
 import en from './en.json'
-import es from './es.json'
-import fi from './fi.json'
-import fil from './fil.json'
-import fr from './fr.json'
-import hi from './hi.json'
-import hu from './hu.json'
-import hy from './hy.json'
-import id from './id.json'
-import it from './it.json'
-import ja from './ja.json'
-import ko from './ko.json'
-import ms from './ms.json'
-import nb from './nb.json'
-import nl from './nl.json'
-import pl from './pl.json'
-import pt from './pt.json'
-import ro from './ro.json'
-import ru from './ru.json'
-import sv from './sv.json'
-import th from './th.json'
-import tr from './tr.json'
-import uk from './uk.json'
-import vi from './vi.json'
-import zh from './zh.json'
-import zhHant from './zh-Hant.json'
+import { LOCALES, type Locale } from './locales.ts'
 import { resolveLocale } from './resolve.ts'
 
-// Order = order in the language picker. Keys are BCP 47 tags (the `lang` attribute, texts of level JSON files).
-const messages = {
-  ru, en, hy, de, fr, es, it, pt, nl, pl, cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh,
-  'zh-Hant': zhHant, ja, ko,
-}
-export type Locale = keyof typeof messages
-export const LOCALES = Object.keys(messages) as Locale[]
+export { isLocale, LOCALES, type Locale } from './locales.ts'
 
-export const isLocale = (v: unknown): v is Locale => typeof v === 'string' && v in messages
+// Only English (the fallback) is in the bundle; every other language is its own chunk, loaded when it is chosen —
+// parsing all 32 at every launch would slow the start down for one of them.
+type Messages = typeof en
+const loaders = import.meta.glob<Messages>(['./*.json', '!./en.json'], { import: 'default' })
 
 /** Languages written right to left. */
 const RTL: ReadonlySet<Locale> = new Set(['ar'])
@@ -51,9 +18,37 @@ export function systemLocale(): Locale {
   return resolveLocale(navigator.languages?.length ? navigator.languages : [navigator.language], LOCALES, 'en')
 }
 
-export const i18n = createI18n({ legacy: false, locale: systemLocale(), fallbackLocale: 'en', messages })
+// The type lists every locale; only English is there at first, the rest come in by `setLocaleMessage`.
+const messages = { en } as Record<Locale, Messages>
+export const i18n = createI18n<[Messages], Locale, false>({ legacy: false, locale: 'en', fallbackLocale: 'en', messages })
 
+/** The language last asked for, and the load of its messages (resolved when they are in). */
+let wanted: Locale = 'en'
+let ready: Promise<void> = Promise.resolve()
+
+/** Switches the interface to `locale`, once its messages have loaded (at once when they already have). */
 export function setLocale(locale: Locale): void {
+  wanted = locale
+  if (i18n.global.availableLocales.includes(locale)) {
+    ready = Promise.resolve()
+    apply(locale)
+    return
+  }
+  ready = loaders[`./${locale}.json`]()
+    .then((messages) => i18n.global.setLocaleMessage(locale, messages))
+    // A language that failed to load stays on the one shown before.
+    .then(
+      () => {
+        if (wanted === locale) apply(locale)
+      },
+      () => {},
+    )
+}
+
+/** Resolves when the language last set by `setLocale` is shown: the app is mounted after it, so it opens in it. */
+export const localeReady = (): Promise<void> => ready
+
+function apply(locale: Locale): void {
   i18n.global.locale.value = locale
   document.documentElement.lang = locale
   document.documentElement.dir = RTL.has(locale) ? 'rtl' : 'ltr'

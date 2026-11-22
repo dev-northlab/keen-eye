@@ -80,8 +80,7 @@ export const useProgressStore = defineStore('progress', () => {
   function requiredBefore(level: Level): number | undefined {
     const own = chapterLevels(chapterById(level.chapter)!)
     const i = own.indexOf(level)
-    const opensFreeCase = !!level.detective && level.detective.case !== own[i - 1]?.detective!.case && isFreeLevel(level.id)
-    if (i > 0 && !opensFreeCase) return own[i - 1].id
+    if (i > 0) return own[i - 1].id
     return level.id === 1 || categoryOf(level) !== undefined ? undefined : level.id - 1
   }
 

@@ -69,7 +69,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   shows the same scene part on both; single player only (`GameScene`), not in calm mode (`MODE_RULES.<mode>.transformB`), set by `transformBOf` in `difficulty.ts` for the last
   five levels of every world and "travel" and the hardest "detective" case (526–530), alternating mirror-x / rotate-180; the HUD shows `TransformChip`
   and, until such a level is completed, a warning note),
-  `loop.ts` (pausable rAF loop), `scene.ts` (`GameScene`: single player — board, timer, score, events),
+  `loop.ts` (pausable rAF loop; a frame with nothing moving — still 3D pictures, "stop motion" — returns how long it may sleep, so a still level wakes only for the timer's second, a zoom (`FrameLoop.wake`) or a phase; drawn scenes are posed ~30 times a second, `MIN_POSE_INTERVAL_MS` in `render.ts`), `scene.ts` (`GameScene`: single player — board, timer, score, events),
   `hit-test.ts`, `anachronism.ts`, `anachronism-scene.ts` ("find the odd one out", `docs/anachronism-mode.md`: screen →
   percent of the image and hitboxes; level JSON checks and the DOM-free round; `AnachronismScene`, one picture with the
   same zoom, gestures, marks and miss lock), `match.ts` (two-player match engine, DOM-free: state + `dispatch(event) → effects`; hot-seat starts with
@@ -125,8 +125,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
   cases in `progress.solvedCases`, wrong accusations in `progress.caseGuesses`: 3 stars on the first try, one less per miss, `caseStars`;
   suspects crossed out as a note in `progress.struckSuspects`; `DetectiveCase.hard` (516–530): a miss names no clue and
-  no clue fits the culprit alone, `docs/detective-difficulty.md`); only "The missing chickens" is free (`Chapter.free` ranges; a free case opens
-  without the case before it, `progress.isReached`), the rest need the purchase;
+  no clue fits the culprit alone, `docs/detective-difficulty.md`); only "The missing chickens" is free (`Chapter.free` ranges), the rest need the purchase;
+  `detectiveLevels` runs case after case in the order of `CASES`, so it opens first and each later case follows the
+  last scene of the one before (`progress.isReached`);
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
   as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.avif`)
@@ -174,8 +175,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/router/` — routes; a global guard sends unknown levels home, paid levels not bought open the full-game dialog (a direct link lands home), and
   levels not reached yet to the map
 - `src/i18n/` — one `<locale>.json` per language, named by its BCP 47 tag (ru, en, hy, de, fr, es, it, pt, nl, pl,
-  cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh, zh-Hant, ja, ko), registered in
-  `index.ts` and in `CFBundleLocalizations` of `ios/App/App/Info.plist` (`zh` as `zh-Hans`; iOS WebView reports only
+  cs, ro, bg, uk, el, hu, sv, da, nb, fi, tr, ar, hi, id, ms, fil, vi, th, zh, zh-Hant, ja, ko), listed in
+  `locales.ts` (`LOCALES`; only `en`, the fallback, is in the bundle — `index.ts` loads the chosen one as its own chunk
+  and `main.ts` mounts the app once it is in) and in `CFBundleLocalizations` of `ios/App/App/Info.plist` (`zh` as `zh-Hans`; iOS WebView reports only
   the declared languages) — keep the same keys in all of them, `npm test` checks both; `en` is the fallback; default language =
   system, picked by `resolve.ts` from the language part of the system tags (fil ≠ fi, no/nn → nb, zh-TW/HK → zh-Hant);
   `ar` is right to left: `setLocale` sets `html[dir]`, so UI CSS uses logical sides (`margin-inline-start`,
@@ -210,7 +212,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - SVG levels are written with `svgLevel({ ..., scene: ({ diff, anim, rand }) => markup })`. `diff(x, y, r, a, b)`
   returns `a` for picture A and `b` for B and registers the zone — never list zones by hand. Everything `a`/`b` draw
   must fit inside the zone circle. Use only the provided `rand` (seeded by level id) for randomness, so A and B match
-  everywhere except the differences.
+  everywhere except the differences. The zones (and `traps`, `extras`, `secret`, `multiplayerReady`, a detective
+  level's clues) come from drawing the scene once, on their first read (`lazy` in `helpers.ts`), not when the app starts.
 - Living scenes: `anim(spec, markup)` animates markup drawn at its rest position (types `path`, `bob`, `sway`,
   `rotate`, `blink`, `color`; `period`, `phase`, `reverse` — see `AnimationMotion` in `engine/types.ts`). Both
   pictures share one clock, so identical specs stay in sync. A motion difference passes different specs as `a`/`b`;
@@ -260,7 +263,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `svgLevel`; or picture A plus `patchesB`, cut-outs of B per zone from `zonePatches` laid over A by `createPicture`, as
   every redesigned level but 1–16 (B redrawn whole by Gemini) and 20, 41, 71, 75, 83, 85, 88, 110, 117, 124, 127,
   140, 145, 146, 304, 305, 306, 308, 310, 313, 316–329 (B's change reaches far past its zone: a beam, smoke, a tail, a fern, a duvet, a slide, a pole, a ring, reflections in the water; on 310, 318, 319, 321–323, 325, 327 and 329 Gemini redrew the whole ground, on 316 and 317 its wall came out a shade lighter, so a cut-out shows the outline of what was removed, on 324 the microscope stands taller than its zone, on 326 a removed slipper leaves a shadow too faint to cut out, on 328 the lamp's bulb out darkens the wall, on 320 the new ball's shadow falls on the books), e.g. `chapter-04/level-061-redesign.ts`). The setting `pictureStyle` ('classic' | 'redesign', `PictureStyleSwitch`, one round icon button, on the home screen
-  and in the toolbar of a level that has them) picks them: `LevelView` and `MemoryLevelView` read it as an
+  and in the toolbar of a level that has them; the home screen shows `PictureStyleIntro` once per app launch until its
+  "Don't show this again" is ticked, `settings.hideStyleIntro`: level 1 drawn and in 3D under a sweeping divider, the round button, then the player's pick) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
   ready picture per day/night, `public/backdrops/meadow-<day|night>.avif` (upright `meadow-tall-<day|night>.avif` on a portrait window, `TALL_WINDOW`), and every world's

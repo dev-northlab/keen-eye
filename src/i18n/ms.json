@@ -464,6 +464,7 @@
     "calmDone": "Mod tenang – tiada bintang",
     "complete": "Tahap selesai!",
     "found": "Ditemui {found}/{total}",
+    "foundSoFar": "Ditemui {found}",
     "hint": "Bantuan",
     "level": "Tahap {n}",
     "locked": "Perlahan-lahan…",
@@ -923,7 +924,15 @@
     "label": "Gaya gambar",
     "classic": "Klasik",
     "redesign": "Rupa baharu",
-    "drawnOnly": "Tahap ini belum ada gambar 3D, jadi ia dipaparkan sebagai lukisan."
+    "drawnOnly": "Tahap ini belum ada gambar 3D, jadi ia dipaparkan sebagai lukisan.",
+    "introCompareTitle": "Dua gaya gambar",
+    "introCompareText": "Tahap boleh dimainkan dengan gambar 2D lukisan atau gambar 3D baharu.",
+    "introSwitchTitle": "Tukar bila-bila masa",
+    "introSwitchText": "Ketik butang bulat 2D / 3D di skrin utama atau semasa bermain tahap.",
+    "introChooseTitle": "Yang mana anda suka?",
+    "introChooseText": "Pilih gaya untuk bermula. Anda boleh menukarnya kemudian.",
+    "introNext": "Seterusnya",
+    "introDontShow": "Jangan tunjukkan lagi"
   },
   "secret": {
     "findHere": "Sebatang kunci emas disembunyikan dalam salah satu tahap di sini. Cari ia!",
@@ -1000,7 +1009,7 @@
   },
   "treasury": {
     "congrats": "Andalah pemain paling tajam mata!",
-    "locked": "Cari kunci emas dalam setiap bab",
+    "lockedHint": "Cari dahulu semua kunci emas — ia tersembunyi dalam tahap setiap dunia dan mod. Kemudian bilik harta akan terbuka!",
     "tag": "Bonus"
   },
   "worldTravel": {

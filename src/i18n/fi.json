@@ -464,6 +464,7 @@
     "calmDone": "Rauhallinen tila – ei tähtiä",
     "complete": "Taso läpäisty!",
     "found": "Löydetty {found}/{total}",
+    "foundSoFar": "Löydetty {found}",
     "hint": "Vihje",
     "level": "Taso {n}",
     "locked": "Hiljaa hyvä tulee…",
@@ -923,7 +924,15 @@
     "label": "Kuvien tyyli",
     "classic": "Klassinen",
     "redesign": "Uusi ilme",
-    "drawnOnly": "Tässä tasossa ei ole vielä 3D-kuvia, joten se näytetään piirrettynä."
+    "drawnOnly": "Tässä tasossa ei ole vielä 3D-kuvia, joten se näytetään piirrettynä.",
+    "introCompareTitle": "Kaksi kuvatyyliä",
+    "introCompareText": "Tasoja voi pelata piirretyillä 2D-kuvilla tai uusilla 3D-kuvilla.",
+    "introSwitchTitle": "Vaihda milloin vain",
+    "introSwitchText": "Napauta pyöreää 2D / 3D -painiketta aloitusnäytössä tai tason aikana.",
+    "introChooseTitle": "Kumpi miellyttää?",
+    "introChooseText": "Valitse tyyli aloittaaksesi. Voit vaihtaa sen myöhemmin.",
+    "introNext": "Seuraava",
+    "introDontShow": "Älä näytä uudelleen"
   },
   "secret": {
     "findHere": "Johonkin tämän osion tasoista on piilotettu kultainen avain. Löydä se!",
@@ -1000,7 +1009,7 @@
   },
   "treasury": {
     "congrats": "Olet kaikista tarkkasilmäisin pelaaja!",
-    "locked": "Löydä kultaiset avaimet joka luvusta",
+    "lockedHint": "Etsi ensin kaikki kultaiset avaimet – ne on piilotettu jokaisen maailman ja tilan tasoihin. Sitten aarrekammio aukeaa!",
     "tag": "Bonus"
   },
   "worldTravel": {

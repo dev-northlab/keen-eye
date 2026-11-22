@@ -74,6 +74,7 @@ export class GameScene {
       secretTaken: options.secretTaken,
       extras: options.extras,
       transformB: options.transformB,
+      onAnimate: () => this.loop.wake(),
     })
     this.loop = new FrameLoop(this.frame)
   }
@@ -111,6 +112,7 @@ export class GameScene {
   /** Stops or restarts the scene animation (calm mode button). */
   setAnimationFrozen(frozen: boolean): void {
     this.animationFrozen = frozen
+    if (!frozen) this.loop.wake()
   }
 
   /** Freezes timer, animation and input. */
@@ -128,8 +130,9 @@ export class GameScene {
     this.board.destroy()
   }
 
-  // Keeps running after the level is complete: the scene stays alive under the result dialog.
-  private frame = (dt: number, now: number) => {
+  // Keeps running after the level is complete: the scene stays alive under the result dialog. Returns how long the
+  // loop may sleep: nothing moves on still pictures (or "stop motion") but the timer, once a second.
+  private frame = (dt: number, now: number): number => {
     if (!this.done) {
       const prevSec = Math.floor(this.elapsedMs / 1000)
       this.elapsedMs += dt
@@ -138,6 +141,8 @@ export class GameScene {
     }
     if (!this.animationFrozen) this.animTime += (dt / 1000) * this.animationSpeed
     this.board.pose(this.animTime, now)
+    if ((this.board.animated && !this.animationFrozen) || this.board.zooming) return 0
+    return this.done ? Infinity : 1000 - (this.elapsedMs % 1000)
   }
 
   private tap(hit: number, tap: Tap): void {

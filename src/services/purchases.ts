@@ -26,7 +26,7 @@ const APPROVAL_WAIT_MS = 10_000
 
 const STUB_STORE_KEY = 'stubStore.fullGame'
 const STUB_DELAY_MS = 600
-const STUB_PRICES: Record<ProductId, string> = { full_game: '$1.49', tip_small: '$0.99', tip_medium: '$2.99', tip_large: '$4.99' }
+const STUB_PRICES: Record<ProductId, string> = { full_game: '$1.99', tip_small: '$0.99', tip_medium: '$2.99', tip_large: '$4.99' }
 
 const native = Capacitor.isNativePlatform()
 const stubAvailable = import.meta.env.DEV && !native

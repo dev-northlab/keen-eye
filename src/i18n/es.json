@@ -21,7 +21,15 @@
     "label": "Estilo de imagen",
     "classic": "Clásico",
     "redesign": "Nuevo aspecto",
-    "drawnOnly": "Este nivel aún no tiene imágenes 3D, así que se muestra dibujado."
+    "drawnOnly": "Este nivel aún no tiene imágenes 3D, así que se muestra dibujado.",
+    "introCompareTitle": "Dos estilos de imagen",
+    "introCompareText": "Los niveles se pueden jugar con imágenes 2D dibujadas o con nuevas imágenes 3D.",
+    "introSwitchTitle": "Cambia cuando quieras",
+    "introSwitchText": "Toca el botón redondo 2D / 3D en la pantalla de inicio o durante un nivel.",
+    "introChooseTitle": "¿Cuál te gusta más?",
+    "introChooseText": "Elige un estilo para empezar. Podrás cambiarlo después.",
+    "introNext": "Siguiente",
+    "introDontShow": "No volver a mostrar"
   },
   "theme": {
     "label": "Tema",
@@ -100,6 +108,7 @@
   "level": {
     "level": "Nivel {n}",
     "found": "Encontradas {found}/{total}",
+    "foundSoFar": "Encontradas {found}",
     "mistakes": "Errores: {n}",
     "locked": "Más despacio…",
     "complete": "¡Nivel completado!",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "Bonus",
-    "locked": "Encuentra las llaves doradas en todos los capítulos",
+    "lockedHint": "Primero encuentra todas las llaves de oro: están escondidas en los niveles de cada mundo y modo. ¡Entonces se abrirá el tesoro!",
     "congrats": "¡Eres el jugador más observador!"
   }
 }

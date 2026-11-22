@@ -45,6 +45,8 @@ export interface BoardOptions {
   secretTaken?: boolean
   /** Draw the extra objects of normal mode (`Level.extras`). */
   extras?: boolean
+  /** A zoom animation started: the scene's loop must run frames again (`FrameLoop.wake`). */
+  onAnimate?: () => void
 }
 
 /** Index of a random unfound difference, or -1 when all are found. */
@@ -70,6 +72,7 @@ export class Board {
   private readonly viewport: Viewport
   private readonly gestures: Gestures
   private readonly onSecret?: (tap: Tap) => void
+  private readonly onAnimate?: () => void
   /** The hidden key is still on the pictures. */
   private secretLeft: boolean
   /** Animation time of the current pose (zones of moving objects follow it). */
@@ -87,6 +90,7 @@ export class Board {
     this.turn = turn
     this.transforms = [turn, combineTransforms(options.transformB ?? 'none', turn)]
     this.onSecret = options.onSecret
+    this.onAnimate = options.onAnimate
     this.pictures = this.transforms.map((t, i) => createPicture(level, i as 0 | 1, t, options.extras))
     this.secretLeft = !!level.secret && !options.secretTaken
     if (level.secret && !this.secretLeft) for (const p of this.pictures) takeSecret(p, level.secret, false)
@@ -113,6 +117,16 @@ export class Board {
     this.transforms[1] = combineTransforms(transform, this.turn)
     turnPicture(this.pictures[1], this.transforms[1], this.level.viewBox)
     this.viewport.setTransform(1, this.transforms[1])
+  }
+
+  /** The pictures have moving objects (a drawn scene's animations); pixel pictures stand still. */
+  get animated(): boolean {
+    return this.pictures.some((p) => p.animated.length > 0)
+  }
+
+  /** A zoom animation is running: `pose` must be called every frame. */
+  get zooming(): boolean {
+    return this.viewport.animating
   }
 
   /** A hint is shown and its difference not found yet. */
@@ -175,6 +189,7 @@ export class Board {
 
   resetZoom(): void {
     this.viewport.reset()
+    this.onAnimate?.()
   }
 
   destroy(): void {
@@ -231,6 +246,7 @@ export class Board {
     const pt = this.scenePoint(picture, clientX, clientY)
     if (this.viewport.scale > 1) this.viewport.reset()
     else if (pt) this.viewport.zoomTo(DOUBLE_TAP_SCALE, pt.x, pt.y)
+    this.onAnimate?.()
   }
 
   private commitMiss(): void {

@@ -21,7 +21,15 @@
     "label": "图片风格",
     "classic": "经典",
     "redesign": "新外观",
-    "drawnOnly": "这一关还没有 3D 图片，因此以手绘画面显示。"
+    "drawnOnly": "这一关还没有 3D 图片，因此以手绘画面显示。",
+    "introCompareTitle": "两种画面风格",
+    "introCompareText": "关卡可以用手绘 2D 画面或全新的 3D 画面来玩。",
+    "introSwitchTitle": "随时切换",
+    "introSwitchText": "在主屏幕或关卡中点按圆形的 2D / 3D 按钮。",
+    "introChooseTitle": "你更喜欢哪种？",
+    "introChooseText": "选择一种风格开始。之后可以随时更改。",
+    "introNext": "下一步",
+    "introDontShow": "不再显示"
   },
   "theme": {
     "label": "主题",
@@ -100,6 +108,7 @@
   "level": {
     "level": "第 {n} 关",
     "found": "已找到 {found}/{total}",
+    "foundSoFar": "已找到 {found}",
     "mistakes": "错误：{n}",
     "locked": "慢一点…",
     "complete": "过关啦！",
@@ -1086,7 +1095,7 @@
   },
   "treasury": {
     "tag": "奖励",
-    "locked": "在每一章中找到金钥匙",
+    "lockedHint": "先找到所有金钥匙——它们藏在每个世界和每种模式的关卡里。然后宝库就会打开！",
     "congrats": "你是最细心的玩家！"
   }
 }

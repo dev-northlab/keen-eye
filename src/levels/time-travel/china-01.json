@@ -1149,38 +1149,38 @@
         "ko": "불꽃놀이"
       },
       "fact": {
-        "en": "Gunpowder fireworks appeared in China only around the 9th century AD.",
-        "ru": "Пороховые фейерверки появились в Китае только около IX века н. э.",
-        "hy": "Վառոդով հրավառությունը Չինաստանում հայտնվել է միայն մոտ մ.թ. IX դարում։",
-        "de": "Feuerwerk mit Schießpulver gab es in China erst um das 9. Jahrhundert n. Chr.",
-        "fr": "Les feux d'artifice à la poudre ne sont apparus en Chine que vers le IXe siècle.",
-        "es": "Los fuegos artificiales de pólvora aparecieron en China solo hacia el siglo IX d. C.",
-        "it": "I fuochi d'artificio a polvere da sparo comparvero in Cina solo intorno al IX secolo d.C.",
-        "pt": "Os fogos de artifício com pólvora só surgiram na China por volta do século IX d.C.",
-        "nl": "Vuurwerk met buskruit ontstond in China pas rond de 9e eeuw n.Chr.",
-        "pl": "Fajerwerki z prochem pojawiły się w Chinach dopiero około IX wieku n.e.",
-        "cs": "Ohňostroje se střelným prachem se v Číně objevily až kolem 9. století n. l.",
-        "ro": "Artificiile cu praf de pușcă au apărut în China abia în jurul secolului al IX-lea d.Hr.",
-        "bg": "Фойерверките с барут се появяват в Китай едва около IX век.",
-        "uk": "Порохові феєрверки з'явилися в Китаї лише близько IX століття н. е.",
-        "el": "Τα πυροτεχνήματα με μπαρούτι εμφανίστηκαν στην Κίνα μόλις γύρω στον 9ο αιώνα μ.Χ.",
-        "hu": "A puskaporos tűzijáték csak az i. sz. 9. század táján jelent meg Kínában.",
-        "sv": "Fyrverkerier med krut dök upp i Kina först omkring 800-talet e.Kr.",
-        "da": "Fyrværkeri med krudt opstod først i Kina omkring 800-tallet e.Kr.",
-        "nb": "Fyrverkeri med krutt dukket opp i Kina først rundt 800-tallet e.Kr.",
-        "fi": "Ruutia käyttävä ilotulitus syntyi Kiinassa vasta noin 800-luvulla jaa.",
-        "tr": "Barutlu havai fişekler Çin'de ancak MS 9. yüzyıl civarında ortaya çıktı.",
-        "ar": "لم تظهر الألعاب النارية بالبارود في الصين إلا نحو القرن التاسع الميلادي.",
-        "hi": "बारूद वाली आतिशबाज़ी चीन में लगभग नौवीं सदी ईस्वी में ही आई।",
-        "id": "Kembang api bermesiu baru muncul di Tiongkok sekitar abad ke-9 M.",
-        "ms": "Bunga api berserbuk letupan hanya muncul di China sekitar abad ke-9 Masihi.",
-        "fil": "Lumitaw lang ang paputok na may pulbura sa Tsina noong mga ika-9 na siglo AD.",
-        "vi": "Pháo hoa dùng thuốc súng chỉ xuất hiện ở Trung Quốc vào khoảng thế kỷ 9 sau Công nguyên.",
-        "th": "ดอกไม้ไฟที่ใช้ดินปืนเพิ่งเกิดขึ้นในจีนราวคริสต์ศตวรรษที่ 9",
-        "zh": "火药烟花直到公元9世纪左右才在中国出现。",
-        "zh-Hant": "火藥煙火直到西元9世紀左右才在中國出現。",
-        "ja": "火薬の花火が中国に現れたのは9世紀ごろになってからです。",
-        "ko": "화약 불꽃놀이는 9세기 무렵에야 중국에 나타났습니다."
+        "en": "Chinese alchemists first described gunpowder only in the 9th century, and colourful bursts like these appeared only in the 19th century.",
+        "ru": "Порох китайские алхимики впервые описали лишь в IX веке, а такие разноцветные огни в небе появились только в XIX веке.",
+        "hy": "Չինացի ալքիմիկոսները վառոդը առաջին անգամ նկարագրել են միայն IX դարում, իսկ նման գունավոր հրավառություն հայտնվել է միայն XIX դարում։",
+        "de": "Chinesische Alchemisten beschrieben Schießpulver erst im 9. Jahrhundert, und so bunte Feuerwerke wie dieses gibt es erst seit dem 19. Jahrhundert.",
+        "fr": "Les alchimistes chinois n'ont décrit la poudre noire qu'au IXe siècle, et des gerbes colorées comme celles-ci ne sont apparues qu'au XIXe siècle.",
+        "es": "Los alquimistas chinos describieron la pólvora solo en el siglo IX, y unos fuegos de colores como estos no aparecieron hasta el siglo XIX.",
+        "it": "Gli alchimisti cinesi descrissero la polvere da sparo solo nel IX secolo, e fuochi colorati come questi comparvero solo nel XIX secolo.",
+        "pt": "Os alquimistas chineses só descreveram a pólvora no século IX, e fogos coloridos como estes só surgiram no século XIX.",
+        "nl": "Chinese alchemisten beschreven buskruit pas in de 9e eeuw, en zulk kleurrijk vuurwerk ontstond pas in de 19e eeuw.",
+        "pl": "Chińscy alchemicy opisali proch dopiero w IX wieku, a tak kolorowe fajerwerki pojawiły się dopiero w XIX wieku.",
+        "cs": "Čínští alchymisté popsali střelný prach až v 9. století a takhle barevné ohňostroje se objevily až v 19. století.",
+        "ro": "Alchimiștii chinezi au descris praful de pușcă abia în secolul al IX-lea, iar artificii colorate ca acestea au apărut abia în secolul al XIX-lea.",
+        "bg": "Китайските алхимици описват барута едва през IX век, а такива цветни фойерверки се появяват едва през XIX век.",
+        "uk": "Порох китайські алхіміки вперше описали лише в IX столітті, а такі різнобарвні вогні в небі з'явилися тільки в XIX столітті.",
+        "el": "Οι Κινέζοι αλχημιστές περιέγραψαν το μπαρούτι μόλις τον 9ο αιώνα, και τέτοια πολύχρωμα πυροτεχνήματα εμφανίστηκαν μόλις τον 19ο αιώνα.",
+        "hu": "A kínai alkimisták csak a 9. században írták le a puskaport, ilyen színes tűzijáték pedig csak a 19. században jelent meg.",
+        "sv": "Kinesiska alkemister beskrev krut först på 800-talet, och så färggranna fyrverkerier som dessa kom först på 1800-talet.",
+        "da": "Kinesiske alkymister beskrev først krudt i 800-tallet, og så farverigt fyrværkeri som dette kom først i 1800-tallet.",
+        "nb": "Kinesiske alkymister beskrev krutt først på 800-tallet, og så fargerikt fyrverkeri som dette kom først på 1800-tallet.",
+        "fi": "Kiinalaiset alkemistit kuvasivat ruudin vasta 800-luvulla, ja tällaiset värikkäät ilotulitukset syntyivät vasta 1800-luvulla.",
+        "tr": "Çinli simyacılar barutu ancak 9. yüzyılda tarif etti; bunun gibi renkli havai fişekler ise ancak 19. yüzyılda ortaya çıktı.",
+        "ar": "لم يصف الخيميائيون الصينيون البارود إلا في القرن التاسع، ولم تظهر ألعاب نارية ملونة كهذه إلا في القرن التاسع عشر.",
+        "hi": "चीनी कीमियागरों ने बारूद का वर्णन नौवीं सदी में ही किया, और ऐसी रंग-बिरंगी आतिशबाज़ी उन्नीसवीं सदी में ही आई।",
+        "id": "Para alkemis Tiongkok baru menggambarkan mesiu pada abad ke-9, dan kembang api berwarna-warni seperti ini baru muncul pada abad ke-19.",
+        "ms": "Ahli alkimia China hanya menghuraikan serbuk letupan pada abad ke-9, dan bunga api berwarna-warni seperti ini hanya muncul pada abad ke-19.",
+        "fil": "Noong ika-9 na siglo lamang unang inilarawan ng mga alkimistang Tsino ang pulbura, at noong ika-19 na siglo lamang lumitaw ang makukulay na paputok na tulad nito.",
+        "vi": "Các nhà giả kim Trung Quốc mãi đến thế kỷ 9 mới mô tả thuốc súng, còn pháo hoa nhiều màu như thế này chỉ xuất hiện vào thế kỷ 19.",
+        "th": "นักเล่นแร่แปรธาตุจีนเพิ่งบรรยายถึงดินปืนในคริสต์ศตวรรษที่ 9 ส่วนดอกไม้ไฟหลากสีแบบนี้เพิ่งมีในคริสต์ศตวรรษที่ 19",
+        "zh": "中国炼丹家直到9世纪才记载火药，而这样五彩缤纷的烟花直到19世纪才出现。",
+        "zh-Hant": "中國煉丹家直到9世紀才記載火藥，而這樣五彩繽紛的煙火直到19世紀才出現。",
+        "ja": "中国の錬丹術師が火薬を書き記したのは9世紀になってからで、このような色とりどりの花火は19世紀に現れました。",
+        "ko": "중국 연단가들이 화약을 처음 기록한 것은 9세기이고, 이런 알록달록한 불꽃놀이는 19세기에야 나타났습니다."
       }
     },
     {
@@ -1225,38 +1225,38 @@
         "ko": "포춘 쿠키"
       },
       "fact": {
-        "en": "Fortune cookies were invented in the USA in the early 20th century, not in China.",
-        "ru": "Печенье с предсказаниями придумали в США в начале XX века, а не в Китае.",
-        "hy": "Գուշակությամբ թխվածքաբլիթները հորինվել են ԱՄՆ-ում XX դարի սկզբին, ոչ թե Չինաստանում։",
-        "de": "Glückskekse wurden Anfang des 20. Jahrhunderts in den USA erfunden, nicht in China.",
-        "fr": "Les biscuits chinois à message ont été inventés aux États-Unis au début du XXe siècle, pas en Chine.",
-        "es": "Las galletas de la fortuna se inventaron en EE. UU. a principios del siglo XX, no en China.",
-        "it": "I biscotti della fortuna furono inventati negli Stati Uniti all'inizio del XX secolo, non in Cina.",
-        "pt": "Os biscoitos da sorte foram inventados nos EUA no início do século XX, não na China.",
-        "nl": "Gelukskoekjes werden begin 20e eeuw in de VS bedacht, niet in China.",
-        "pl": "Ciasteczka z wróżbą wymyślono w USA na początku XX wieku, a nie w Chinach.",
-        "cs": "Sušenky štěstí vznikly na začátku 20. století v USA, ne v Číně.",
-        "ro": "Biscuiții norocului au fost inventați în SUA la începutul secolului XX, nu în China.",
-        "bg": "Курабийките с късмети са измислени в САЩ в началото на XX век, а не в Китай.",
-        "uk": "Печиво з передбаченнями вигадали в США на початку XX століття, а не в Китаї.",
-        "el": "Τα μπισκότα της τύχης επινοήθηκαν στις ΗΠΑ στις αρχές του 20ού αιώνα, όχι στην Κίνα.",
-        "hu": "A szerencsesütit a 20. század elején találták ki az Egyesült Államokban, nem Kínában.",
-        "sv": "Lyckokakor uppfanns i USA i början av 1900-talet, inte i Kina.",
-        "da": "Lykkekager blev opfundet i USA i begyndelsen af 1900-tallet, ikke i Kina.",
-        "nb": "Lykkekaker ble funnet opp i USA tidlig på 1900-tallet, ikke i Kina.",
-        "fi": "Onnenkeksit keksittiin Yhdysvalloissa 1900-luvun alussa, ei Kiinassa.",
-        "tr": "Şans kurabiyeleri Çin'de değil, 20. yüzyılın başında ABD'de icat edildi.",
-        "ar": "اختُرع بسكويت الحظ في الولايات المتحدة في مطلع القرن العشرين، لا في الصين.",
-        "hi": "फ़ॉर्च्यून कुकी बीसवीं सदी की शुरुआत में अमेरिका में बनी, चीन में नहीं।",
-        "id": "Kue keberuntungan ditemukan di AS pada awal abad ke-20, bukan di Tiongkok.",
-        "ms": "Biskut tuah dicipta di AS pada awal abad ke-20, bukan di China.",
-        "fil": "Naimbento ang fortune cookie sa USA noong unang bahagi ng ika-20 siglo, hindi sa Tsina.",
-        "vi": "Bánh may mắn được nghĩ ra ở Mỹ vào đầu thế kỷ 20, chứ không phải ở Trung Quốc.",
-        "th": "คุกกี้เสี่ยงทายถูกคิดขึ้นในสหรัฐฯ ช่วงต้นคริสต์ศตวรรษที่ 20 ไม่ใช่ในจีน",
-        "zh": "幸运饼干是20世纪初在美国发明的，并非来自中国。",
-        "zh-Hant": "幸運籤餅是20世紀初在美國發明的，並非來自中國。",
-        "ja": "フォーチュンクッキーは中国ではなく、20世紀初めのアメリカで生まれました。",
-        "ko": "포춘 쿠키는 중국이 아니라 20세기 초 미국에서 만들어졌습니다."
+        "en": "Fortune cookies came from Japan and became famous in the USA in the early 20th century; nobody in China knew them.",
+        "ru": "Печенье с предсказаниями пришло из Японии и прославилось в США в начале XX века, а в Китае его не знали.",
+        "hy": "Գուշակությամբ թխվածքաբլիթները եկել են Ճապոնիայից և XX դարի սկզբին հայտնի դարձել ԱՄՆ-ում, իսկ Չինաստանում դրանք չէին ճանաչում։",
+        "de": "Glückskekse stammen aus Japan und wurden Anfang des 20. Jahrhunderts in den USA berühmt; in China kannte sie niemand.",
+        "fr": "Les biscuits chinois à message viennent du Japon et sont devenus célèbres aux États-Unis au début du XXe siècle ; en Chine, personne ne les connaissait.",
+        "es": "Las galletas de la fortuna vienen de Japón y se hicieron famosas en EE. UU. a principios del siglo XX; en China nadie las conocía.",
+        "it": "I biscotti della fortuna vengono dal Giappone e divennero famosi negli Stati Uniti all'inizio del XX secolo; in Cina nessuno li conosceva.",
+        "pt": "Os biscoitos da sorte vieram do Japão e ficaram famosos nos EUA no início do século XX; na China ninguém os conhecia.",
+        "nl": "Gelukskoekjes komen uit Japan en werden begin 20e eeuw beroemd in de VS; in China kende niemand ze.",
+        "pl": "Ciasteczka z wróżbą przyszły z Japonii i zasłynęły w USA na początku XX wieku, a w Chinach nikt ich nie znał.",
+        "cs": "Sušenky štěstí přišly z Japonska a proslavily se na začátku 20. století v USA; v Číně je nikdo neznal.",
+        "ro": "Biscuiții norocului au venit din Japonia și au devenit faimoși în SUA la începutul secolului XX; în China nu-i cunoștea nimeni.",
+        "bg": "Курабийките с късмети идват от Япония и стават известни в САЩ в началото на XX век, а в Китай никой не ги е познавал.",
+        "uk": "Печиво з передбаченнями прийшло з Японії й прославилося в США на початку XX століття, а в Китаї його не знали.",
+        "el": "Τα μπισκότα της τύχης ήρθαν από την Ιαπωνία και έγιναν διάσημα στις ΗΠΑ στις αρχές του 20ού αιώνα· στην Κίνα κανείς δεν τα ήξερε.",
+        "hu": "A szerencsesüti Japánból származik, és a 20. század elején az Egyesült Államokban lett híres; Kínában senki sem ismerte.",
+        "sv": "Lyckokakor kommer från Japan och blev kända i USA i början av 1900-talet; i Kina kände ingen till dem.",
+        "da": "Lykkekager kommer fra Japan og blev berømte i USA i begyndelsen af 1900-tallet; i Kina kendte ingen dem.",
+        "nb": "Lykkekaker kommer fra Japan og ble berømte i USA tidlig på 1900-tallet; i Kina kjente ingen til dem.",
+        "fi": "Onnenkeksit tulivat Japanista ja tulivat kuuluisiksi Yhdysvalloissa 1900-luvun alussa; Kiinassa niitä ei tunnettu.",
+        "tr": "Şans kurabiyeleri Japonya'dan geldi ve 20. yüzyılın başında ABD'de ünlendi; Çin'de onları kimse bilmiyordu.",
+        "ar": "جاء بسكويت الحظ من اليابان واشتهر في الولايات المتحدة في مطلع القرن العشرين، ولم يعرفه أحد في الصين.",
+        "hi": "फ़ॉर्च्यून कुकी जापान से आई और बीसवीं सदी की शुरुआत में अमेरिका में मशहूर हुई; चीन में इसे कोई नहीं जानता था।",
+        "id": "Kue keberuntungan berasal dari Jepang dan menjadi terkenal di AS pada awal abad ke-20; di Tiongkok tak ada yang mengenalnya.",
+        "ms": "Biskut tuah berasal dari Jepun dan menjadi terkenal di AS pada awal abad ke-20; di China tiada siapa yang mengenalinya.",
+        "fil": "Galing sa Japan ang fortune cookie at sumikat ito sa USA noong unang bahagi ng ika-20 siglo; walang nakakakilala rito sa Tsina.",
+        "vi": "Bánh may mắn có nguồn gốc từ Nhật Bản và nổi tiếng ở Mỹ vào đầu thế kỷ 20; ở Trung Quốc không ai biết đến nó.",
+        "th": "คุกกี้เสี่ยงทายมาจากญี่ปุ่นและโด่งดังในสหรัฐฯ ช่วงต้นคริสต์ศตวรรษที่ 20 ส่วนในจีนไม่มีใครรู้จัก",
+        "zh": "幸运饼干源自日本，20世纪初在美国走红；在中国没有人知道它。",
+        "zh-Hant": "幸運籤餅源自日本，20世紀初在美國走紅；在中國沒有人知道它。",
+        "ja": "フォーチュンクッキーは日本から伝わり、20世紀初めにアメリカで有名になりました。中国では誰も知りませんでした。",
+        "ko": "포춘 쿠키는 일본에서 건너와 20세기 초 미국에서 유명해졌고, 중국에서는 아무도 몰랐습니다."
       }
     }
   ],
@@ -1366,5 +1366,139 @@
       ],
       "period": 12
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/china-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "pineapple",
+        "shape": "rect",
+        "x": 2.36,
+        "y": 84.49,
+        "w": 9.43,
+        "h": 10.6
+      },
+      {
+        "id": "windmill",
+        "shape": "rect",
+        "x": 9.32,
+        "y": 23.5,
+        "w": 8.96,
+        "h": 8.27
+      },
+      {
+        "id": "rubber-boots",
+        "shape": "rect",
+        "x": 14.15,
+        "y": 75.75,
+        "w": 5.37,
+        "h": 2.25
+      },
+      {
+        "id": "laptop",
+        "shape": "rect",
+        "x": 17.28,
+        "y": 55.89,
+        "w": 4.95,
+        "h": 2.45
+      },
+      {
+        "id": "basketball",
+        "shape": "rect",
+        "x": 22.05,
+        "y": 85.09,
+        "w": 3.83,
+        "h": 2.53
+      },
+      {
+        "id": "fortune-cookie",
+        "shape": "rect",
+        "x": 29.19,
+        "y": 56.76,
+        "w": 5.48,
+        "h": 1.7
+      },
+      {
+        "id": "fireworks",
+        "shape": "rect",
+        "x": 35.02,
+        "y": 13.25,
+        "w": 14.15,
+        "h": 9.49
+      },
+      {
+        "id": "chili",
+        "shape": "rect",
+        "x": 40.09,
+        "y": 50.24,
+        "w": 2.36,
+        "h": 4.0
+      },
+      {
+        "id": "hourglass",
+        "shape": "rect",
+        "x": 44.52,
+        "y": 84.85,
+        "w": 4.3,
+        "h": 5.14
+      },
+      {
+        "id": "glasses",
+        "shape": "rect",
+        "x": 51.18,
+        "y": 66.26,
+        "w": 2.18,
+        "h": 1.19
+      },
+      {
+        "id": "macaw",
+        "shape": "rect",
+        "x": 57.78,
+        "y": 27.73,
+        "w": 4.07,
+        "h": 8.27
+      },
+      {
+        "id": "alarm-clock",
+        "shape": "rect",
+        "x": 64.27,
+        "y": 64.87,
+        "w": 3.54,
+        "h": 3.16
+      },
+      {
+        "id": "rickshaw",
+        "shape": "circle",
+        "x": 79.3,
+        "y": 75.75,
+        "r": 12.09
+      },
+      {
+        "id": "drone",
+        "shape": "rect",
+        "x": 71.52,
+        "y": 10.76,
+        "w": 10.85,
+        "h": 2.33
+      },
+      {
+        "id": "telescope",
+        "shape": "rect",
+        "x": 83.14,
+        "y": 24.33,
+        "w": 4.72,
+        "h": 1.86
+      },
+      {
+        "id": "tractor",
+        "shape": "rect",
+        "x": 84.08,
+        "y": 45.25,
+        "w": 12.68,
+        "h": 6.37
+      }
+    ]
+  }
 }

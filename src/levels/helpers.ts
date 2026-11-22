@@ -152,30 +152,57 @@ export function svgLevel(def: SvgLevelDef): Level {
     return { svg, animations: registered.filter((a) => svg.includes(`data-anim="${a.key}"`)) }
   }
 
-  const differences: Difference[] = []
-  const traps: Trap[] = []
-  const extras: NonNullable<Level['extras']> = []
-  render(0, 0, false, differences, traps, extras)
+  /** What drawing the scene registers — zones, traps, the extras' circles, the key: drawn once, when first needed. */
+  let registered: { differences: Difference[]; traps: Trap[]; extras: NonNullable<Level['extras']>; secret?: SecretKey } | undefined
+  const zones = () => {
+    if (!registered) {
+      const differences: Difference[] = []
+      const traps: Trap[] = []
+      const extras: NonNullable<Level['extras']> = []
+      render(0, 0, false, differences, traps, extras)
+      registered = { differences, traps, extras, secret: secretKey }
+    }
+    return registered
+  }
   const transformB = transformBOf(def.id)
 
-  return {
+  const level = {
     id: def.id,
     chapter: def.chapter,
     title: def.title,
     kind: 'svg',
     build: (variant, moment = variant, withExtras = false) => render(variant, moment, withExtras),
     viewBox: def.viewBox ?? { w: 800, h: 500 },
-    differences,
     parTimeSec: def.parTimeSec,
-    multiplayerReady: def.multiplayerReady ?? differences.length >= MULTIPLAYER_MIN_DIFFERENCES,
-    ...(def.pair !== undefined && { pair: def.pair, traps }),
+    ...(def.pair !== undefined && { pair: def.pair }),
     ...(def.memory !== undefined && { memory: def.memory }),
     ...(def.travel !== undefined && { travel: def.travel }),
-    ...(secretKey !== undefined && { secret: secretKey }),
-    ...(extras.length > 0 && { extras }),
     ...(transformB !== 'none' && { transformB }),
     ...(def.redesign !== undefined && { redesign: def.redesign }),
-  }
+  } as Level
+  lazy(level, 'differences', () => zones().differences)
+  if (def.multiplayerReady !== undefined) level.multiplayerReady = def.multiplayerReady
+  else lazy(level, 'multiplayerReady', () => zones().differences.length >= MULTIPLAYER_MIN_DIFFERENCES)
+  if (def.pair !== undefined) lazy(level, 'traps', () => zones().traps)
+  lazy(level, 'secret', () => zones().secret)
+  lazy(level, 'extras', () => (zones().extras.length > 0 ? zones().extras : undefined))
+  return level
+}
+
+/**
+ * Makes `key` of `level` computed on its first read, then kept as a plain value. The levels' zones come from drawing
+ * their scenes, so they are drawn when a level is listed or played, not all of them when the app starts.
+ */
+export function lazy<K extends keyof Level>(level: Level, key: K, get: () => Level[K]): void {
+  Object.defineProperty(level, key, {
+    enumerable: true,
+    configurable: true,
+    get() {
+      const value = get()
+      Object.defineProperty(level, key, { value, enumerable: true, configurable: true, writable: true })
+      return value
+    },
+  })
 }
 
 /** "Memory" pictures are portrait: one fills a phone held upright, as A and then B are each shown alone. */
@@ -226,7 +253,7 @@ export function detectiveLevel(def: {
   parTimeSec: number
   scene: (ctx: SceneContext & { clue: ClueAt }) => string
 }): Level {
-  // Clue keys in the order of the zones: svgLevel registers the zones on its first render.
+  // Clue keys in the order of the zones: every drawing of the scene lists them again, the same.
   let clues: string[] = []
   const level = svgLevel({
     id: def.id,
@@ -242,5 +269,9 @@ export function detectiveLevel(def: {
       return def.scene({ ...ctx, clue })
     },
   })
-  return { ...level, detective: { case: def.case, clues } }
+  lazy(level, 'detective', () => {
+    void level.differences // draws the scene once, if nothing has yet
+    return { case: def.case, clues }
+  })
+  return level
 }

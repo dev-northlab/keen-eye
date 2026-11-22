@@ -464,6 +464,7 @@
     "calmDone": "Chế độ thư giãn – không có sao",
     "complete": "Hoàn thành màn chơi!",
     "found": "Đã tìm {found}/{total}",
+    "foundSoFar": "Đã tìm {found}",
     "hint": "Gợi ý",
     "level": "Màn {n}",
     "locked": "Từ từ thôi…",
@@ -923,7 +924,15 @@
     "label": "Kiểu hình ảnh",
     "classic": "Cổ điển",
     "redesign": "Diện mạo mới",
-    "drawnOnly": "Màn này chưa có hình 3D nên được hiển thị dạng vẽ."
+    "drawnOnly": "Màn này chưa có hình 3D nên được hiển thị dạng vẽ.",
+    "introCompareTitle": "Hai kiểu hình",
+    "introCompareText": "Các màn có thể chơi với hình vẽ 2D hoặc với hình 3D mới.",
+    "introSwitchTitle": "Đổi bất cứ lúc nào",
+    "introSwitchText": "Chạm nút tròn 2D / 3D ở màn hình chính hoặc khi đang chơi màn.",
+    "introChooseTitle": "Bạn thích kiểu nào?",
+    "introChooseText": "Chọn một kiểu để bắt đầu. Bạn có thể đổi sau.",
+    "introNext": "Tiếp",
+    "introDontShow": "Không hiện lại"
   },
   "secret": {
     "findHere": "Một chiếc chìa khóa vàng được giấu ở một trong các màn chơi ở đây. Hãy tìm nó!",
@@ -1000,7 +1009,7 @@
   },
   "treasury": {
     "congrats": "Bạn là người chơi tinh mắt nhất!",
-    "locked": "Hãy tìm chìa khóa vàng trong mọi chương",
+    "lockedHint": "Trước tiên hãy tìm tất cả chìa khóa vàng — chúng được giấu trong các màn của mỗi thế giới và chế độ. Khi đó kho báu sẽ mở!",
     "tag": "Phần thưởng"
   },
   "worldTravel": {

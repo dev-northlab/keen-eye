@@ -11,7 +11,9 @@ const cluesOf = (caseId: string) => caseLevels(caseId).flatMap((l) => l.detectiv
 
 describe('"detective" mode (docs/detective-mode.md)', () => {
   test('7 cases of 5 scenes from 501: 5, 6, 7, 8, 9, 10 clues per scene, then "The missing chickens" with 6, listed first', () => {
-    assert.deepEqual(detectiveLevels.map((l) => l.id), Array.from({ length: 35 }, (_, i) => 501 + i))
+    assert.deepEqual(detectiveLevels.map((l) => l.id).sort((a, b) => a - b), Array.from({ length: 35 }, (_, i) => 501 + i))
+    // Played case after case in the order of CASES: the free "chickens" first.
+    assert.deepEqual(detectiveLevels, CASES.flatMap((c) => caseLevels(c.id)))
     assert.deepEqual(CASES.map((c) => c.id), ['chickens', 'cake', 'cheese', 'vase', 'circus', 'train', 'lodge'])
     const plan: Record<string, [first: number, clues: number]> = {
       cake: [501, 5],
@@ -55,7 +57,7 @@ describe('"detective" mode (docs/detective-mode.md)', () => {
   })
 
   test('only "The missing chickens" is free, the others need the full game', () => {
-    // isFreeLevel (stores/purchase.ts) frees the category's `free` ranges; a free case opens from the start (progress.isReached).
+    // isFreeLevel (stores/purchase.ts) frees the category's `free` ranges; listed first, it opens from the start (progress.isReached).
     const range = (id: string) => {
       const scenes = caseLevels(id)
       return [scenes[0].id, scenes[scenes.length - 1].id]

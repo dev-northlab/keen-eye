@@ -464,6 +464,7 @@
     "calmDone": "Rolig modus – ingen stjerner",
     "complete": "Brettet er fullført!",
     "found": "Funnet {found}/{total}",
+    "foundSoFar": "Funnet {found}",
     "hint": "Hint",
     "level": "Brett {n}",
     "locked": "Rolig nå…",
@@ -923,7 +924,15 @@
     "label": "Bildestil",
     "classic": "Klassisk",
     "redesign": "Nytt utseende",
-    "drawnOnly": "Dette nivået har ingen 3D-bilder ennå, så det vises tegnet."
+    "drawnOnly": "Dette nivået har ingen 3D-bilder ennå, så det vises tegnet.",
+    "introCompareTitle": "To bildestiler",
+    "introCompareText": "Brettene kan spilles med tegnede 2D-bilder eller med nye 3D-bilder.",
+    "introSwitchTitle": "Bytt når du vil",
+    "introSwitchText": "Trykk på den runde 2D / 3D-knappen på startskjermen eller under et brett.",
+    "introChooseTitle": "Hvilken liker du best?",
+    "introChooseText": "Velg en stil for å starte. Du kan endre den senere.",
+    "introNext": "Neste",
+    "introDontShow": "Ikke vis igjen"
   },
   "secret": {
     "findHere": "En gyllen nøkkel er gjemt på et av brettene her. Finn den!",
@@ -1000,7 +1009,7 @@
   },
   "treasury": {
     "congrats": "Du er den skarpøydeste spilleren av alle!",
-    "locked": "Finn de gylne nøklene i hvert kapittel",
+    "lockedHint": "Finn først alle gullnøklene – de er gjemt i brettene i hver verden og modus. Da åpnes skattkammeret!",
     "tag": "Bonus"
   },
   "worldTravel": {
