@@ -1,7 +1,7 @@
 // Motion differences: the low firework on the right blinks only on picture B; the right boat bobs faster on B.
 import { bird } from '../chapter-03/shapes.ts'
 import { gullStanding, lifeRing } from '../chapter-04/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level120Redesign } from './level-120-redesign.ts'
 import { bike, bollard } from './shapes.ts'
@@ -105,6 +105,23 @@ export default svgLevel({
       bike(130, 304, '#ffb703') +
       bollard(345, 303) +
       lifeRing(120, 335) +
+      // A busier festive night, the same in both pictures: sky lanterns, more stars and a bat among the fireworks,
+      // a black cat on the bridge rail, a duck, a fish and a bottle in the river, balloons held over the crowd.
+      decor({ anim }, [
+        ['skyLantern', 320, 60],
+        ['skyLantern', 460, 30],
+        ['skyLantern', 780, 150],
+        ['star', 90, 140],
+        ['star', 360, 120],
+        ['star', 620, 30],
+        ['bat', 180, 200],
+        ['cat', 75, 292, '#2b2b2b'],
+        ['duck', 300, 380],
+        ['fish', 240, 420, '#ffb703'],
+        ['bottle', 50, 410],
+        ['balloon', 100, 430, '#ffd23f'],
+        ['balloon', 460, 430, '#4dabf7'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 546, 32],

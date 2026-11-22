@@ -1,5 +1,5 @@
 // Motion differences: the moray peeks out of its hole only on picture B; the jellyfish pulses faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level133Redesign } from './level-133-redesign.ts'
 import { anchor, clam, crab, fish, jellyfish, octopus, sandBits, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
@@ -75,6 +75,20 @@ export default svgLevel({
       seahorse(450, 322) +
       snorkelMask(140, 472) +
       fish(130, 150, '#ffb703') +
+      // A busier wreck, the same in both pictures: more fish, a jellyfish and a seahorse in the water, seaweed, a
+      // rock, a starfish, a shell and a clam on the sand.
+      decor({ anim }, [
+        ['fish', 300, 40, '#e63946'],
+        ['fish', 640, 300, '#4dabf7'],
+        ['fish', 560, 40, '#ffd23f'],
+        ['jellyfish', 60, 40, '#ff9f43'],
+        ['seahorse', 380, 220],
+        ['seaweed', 500, 430, '#2a9d8f'],
+        ['rock', 360, 492],
+        ['starfish', 85, 492, '#ff9f43'],
+        ['shell', 540, 492, '#ffd8c2'],
+        ['clam', 680, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 167, 139, '#4dabf7'],

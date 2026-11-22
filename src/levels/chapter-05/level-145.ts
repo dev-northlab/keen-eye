@@ -1,5 +1,5 @@
 // Motion differences: the beacon on the rocket tip blinks only on picture B; the dust devil spins faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level145Redesign } from './level-145-redesign.ts'
 import { astronaut, crystal, dome, flag, fuelCanister, helmet, moonPebbles, rocket, rover, starField, toolbox } from './shapes.ts'
@@ -74,6 +74,20 @@ export default svgLevel({
       crystal(630, 442) +
       moonPebbles(772, 474) +
       helmet(380, 476) +
+      // A busier colony, the same in both pictures: a UFO, two planets and a probe in the sky, an alien plant, a
+      // crater, a toolbox, a beacon, a wrench and pebbles on the red ground.
+      decor({ anim }, [
+        ['ufo', 500, 40],
+        ['planet', 760, 100, '#ffd23f'],
+        ['ringPlanet', 120, 90, '#b38cff'],
+        ['probe', 380, 180],
+        ['alienPlant', 200, 320, '#8ac926'],
+        ['crater', 780, 440],
+        ['toolbox', 60, 480, '#e63946'],
+        ['beacon', 600, 400],
+        ['wrench', 470, 480],
+        ['moonPebbles', 380, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['moonPebbles', 724, 413],

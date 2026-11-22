@@ -1,5 +1,5 @@
 // Motion differences: the ant on the grass blade runs faster on picture B; the caterpillar wiggles only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level126Redesign } from './level-126-redesign.ts'
 import { snail } from '../shapes.ts'
@@ -93,6 +93,20 @@ export default svgLevel({
       pineCone(115, 492) +
       leafPile(728, 494) +
       snail(280, 494) +
+      // A busier anthill, the same in both pictures: dragonflies, a butterfly and a hanging spider in the air,
+      // ladybugs and bees on the grass, a mushroom and a snail on the ground.
+      decor({ anim }, [
+        ['dragonfly', 330, 60],
+        ['dragonfly', 760, 90],
+        ['butterfly', 130, 40, '#b38cff'],
+        ['spider', 480, 60],
+        ['ladybug', 165, 330],
+        ['ladybug', 590, 200],
+        ['bee', 770, 250],
+        ['bee', 260, 300],
+        ['mushroom', 40, 490, '#e63946'],
+        ['snail', 340, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['butterfly', 230, 111],

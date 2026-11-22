@@ -1,5 +1,5 @@
 // Motion differences: the left astronaut drifts faster on picture B; the status light on the satellite blinks only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level147Redesign } from './level-147-redesign.ts'
 import { asteroid, astronaut, fuelCanister, helmet, probe, rocket, sparkle, starField } from './shapes.ts'
@@ -69,6 +69,20 @@ export default svgLevel({
       fuelCanister(560, 448) +
       helmet(330, 462) +
       asteroid(250, 100, 0.5) +
+      // A busier orbit, the same in both pictures: planets, a probe, asteroids, stars and a sparkle around the
+      // satellite, a lost wrench and a toolbox floating free.
+      decor({ anim }, [
+        ['planet', 60, 60, '#ff6b8b'],
+        ['ringPlanet', 440, 60, '#ff9f43'],
+        ['probe', 200, 60],
+        ['asteroid', 760, 180],
+        ['asteroid', 600, 300],
+        ['spaceStar', 560, 140, '#4dabf7'],
+        ['spaceStar', 40, 200, '#ffd23f'],
+        ['sparkle', 760, 400],
+        ['wrench', 420, 450],
+        ['toolbox', 500, 420, '#4dabf7'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 680, 117],

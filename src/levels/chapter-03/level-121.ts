@@ -1,5 +1,5 @@
 // Motion differences: a maple leaf swings on its twig only on picture B; the squirrel flicks its tail faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level121Redesign } from './level-121-redesign.ts'
 import { stones } from '../shapes.ts'
@@ -91,6 +91,21 @@ export default svgLevel({
       feather(330, 300) +
       trailSign(585, 348) +
       falling +
+      // A busier glade, the same in both pictures: a swallow and a hot-air balloon in the sky, an owl on the big
+      // branch, a rabbit, bluebells, a fern, a mushroom, a pile of leaves, an acorn, a pine cone and a butterfly.
+      decor({ anim }, [
+        ['swallow', 480, 40],
+        ['hotAirBalloon', 500, 110],
+        ['owl', 150, 210],
+        ['rabbit', 380, 400],
+        ['bluebells', 260, 330, '#b38cff'],
+        ['fern', 30, 400],
+        ['mushroom', 480, 420, '#e63946'],
+        ['leafPile', 600, 390],
+        ['acorn', 300, 480],
+        ['pineCone', 240, 492],
+        ['butterfly', 560, 250, '#ff9f43'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['squirrel', 147, 370],

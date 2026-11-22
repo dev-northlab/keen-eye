@@ -1,5 +1,5 @@
 // Motion differences: the beacon on the antenna mast blinks only on picture B; the right astronaut hops only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level150Redesign } from './level-150-redesign.ts'
 import { astronaut, crater, crystal, fuelCanister, moonPebbles, rock, solarPanel, sparkle, star, starField, toolbox } from './shapes.ts'
@@ -74,6 +74,21 @@ export default svgLevel({
       crystal(520, 472) +
       moonPebbles(680, 456) +
       solarPanel(470, 352) +
+      // A busier observatory, the same in both pictures: a UFO, a planet, an asteroid, a probe and a star in the sky;
+      // a crater, a crystal, an alien plant, a beacon, pebbles and a wrench on the ground.
+      decor({ anim }, [
+        ['ufo', 200, 120],
+        ['planet', 760, 40, '#ff6b8b'],
+        ['asteroid', 600, 260],
+        ['probe', 40, 280],
+        ['spaceStar', 560, 40, '#4dabf7'],
+        ['crater', 250, 460],
+        ['crystal', 560, 370, '#b38cff'],
+        ['alienPlant', 780, 420, '#8ac926'],
+        ['beacon', 520, 350],
+        ['moonPebbles', 380, 480],
+        ['wrench', 660, 470],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 86, 199],

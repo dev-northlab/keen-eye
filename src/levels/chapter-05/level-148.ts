@@ -1,5 +1,5 @@
 // Motion differences: the right paper lantern bobs faster on picture B; the parked saucer's lights blink only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level148Redesign } from './level-148-redesign.ts'
 import { alien, alienPlant, fuelCanister, moonPebbles, probe, robot, sparkle, starField, toolbox } from './shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       fuelCanister(650, 470) +
       probe(560, 80) +
       toolbox(775, 474) +
+      // A busier bazaar, the same in both pictures: planets, an asteroid, a probe, a star and a sparkle in the sky;
+      // crystals, an alien plant and pebbles on the ground.
+      decor({ anim }, [
+        ['spaceStar', 300, 30, '#ffd23f'],
+        ['ringPlanet', 300, 60, '#4dabf7'],
+        ['planet', 760, 60, '#8ac926'],
+        ['asteroid', 480, 50],
+        ['probe', 40, 60],
+        ['sparkle', 440, 40],
+        ['crystal', 110, 470, '#ff6b8b'],
+        ['crystal', 660, 400, '#4dabf7'],
+        ['alienPlant', 400, 390, '#ffd23f'],
+        ['moonPebbles', 240, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 162, 376],

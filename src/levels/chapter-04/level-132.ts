@@ -1,5 +1,5 @@
 // Motion differences: the mizzen pennant flaps faster on picture B; a fish leaps by the bow only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level132Redesign } from './level-132-redesign.ts'
 import { bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, lifeRing, palm, person, waves } from './shapes.ts'
@@ -91,6 +91,19 @@ export default svgLevel({
       bottleMessage(300, 452) +
       coconut(745, 262) +
       lifeRing(600, 312) +
+      // A busier sea, the same in both pictures: gulls in the sky, a cat on the deck, a coconut on the island,
+      // fish, a jellyfish and a buoy in the water.
+      decor({ anim }, [
+        ['gull', 180, 30],
+        ['gull', 640, 150],
+        ['cat', 380, 270, '#2b2b2b'],
+        ['coconut', 770, 260],
+        ['fish', 300, 470, '#4dabf7'],
+        ['fish', 770, 472, '#e63946'],
+        ['fish', 40, 460, '#ffb703'],
+        ['jellyfish', 600, 440, '#ff9f43'],
+        ['buoy', 780, 400, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bottle', 489, 409],

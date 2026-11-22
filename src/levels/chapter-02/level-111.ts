@@ -1,5 +1,5 @@
 // Motion differences: the walk signal blinks only on picture B; the rooftop flag flaps faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, bike, bin, bollard, building, bus, car, cityTree, cloud, cone, hydrant, lampHead, lampPost, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, trafficLight } from './shapes.ts'
 import { level111Redesign } from './level-111-redesign.ts'
@@ -82,6 +82,23 @@ export default svgLevel({
       shoppingBag(710, 334) +
       skateboard(400, 494) +
       bollard(600, 494) +
+      // A busier street, the same in both pictures: a plane, an airship, a lost balloon and a swallow in the sky,
+      // flower boxes on the windows, a crow on the lamp, a scooter, a bench, a bin, a bag and a coffee cup.
+      decor({ anim }, [
+        ['plane', 500, 30],
+        ['airship', 120, 30],
+        ['balloon', 580, 60, '#e63946'],
+        ['swallow', 600, 40],
+        ['flowerBox', 100, 215, '#ff006e'],
+        ['flowerBox', 510, 150, '#ffd23f'],
+        ['flowerBox', 690, 190, '#4dabf7'],
+        ['crow', 460, 222],
+        ['scooter', 420, 332],
+        ['bench', 340, 492],
+        ['bin', 740, 492, '#2a9d8f'],
+        ['shoppingBag', 500, 492, '#ffb703'],
+        ['coffeeCup', 60, 494],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 401, 279, '#e63946'],

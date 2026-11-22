@@ -1,5 +1,5 @@
 // Motion differences: the middle crab waves its claw only on picture B; the little fish in the right pool darts faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level138Redesign } from './level-138-redesign.ts'
 import { bucket, crab, flipFlops, gull, seaUrchin, seaweed, shell, snorkelMask, starfish, sunglasses, sunHat, waves } from './shapes.ts'
@@ -88,6 +88,21 @@ export default svgLevel({
       snorkelMask(580, 362) +
       seaUrchin(680, 464) +
       sunglasses(150, 470) +
+      // Busier rock pools, the same in both pictures (no more crabs: they are differences and extras here): gulls,
+      // a buoy and a bottle out at sea, a fish in the left pool, a clam and a rock between the pools, a shell, a sea urchin
+      // and a bucket on the sand.
+      decor({ anim }, [
+        ['gull', 480, 40],
+        ['gull', 720, 60],
+        ['buoy', 300, 130, '#e63946'],
+        ['bottle', 660, 140],
+        ['fish', 110, 250, '#ffb703'],
+        ['clam', 620, 330],
+        ['rock', 40, 320],
+        ['shell', 20, 470, '#b38cff'],
+        ['seaUrchin', 210, 490, '#6a4fd8'],
+        ['bucket', 250, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crab', 742, 239],

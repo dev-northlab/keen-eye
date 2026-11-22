@@ -1,5 +1,5 @@
 // Motion differences: the frog hops only on picture B; the spider on its thread bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level122Redesign } from './level-122-redesign.ts'
 import { acorn, anthill, feather, fern, frog, lantern, mushroom, pineCone } from './shapes.ts'
@@ -91,6 +91,20 @@ export default svgLevel({
       acorn(566, 480) +
       feather(470, 418) +
       pineCone(720, 408) +
+      // A busier hollow, the same in both pictures: an owl in the tree hole, a squirrel on a trunk, a spider, a bat,
+      // fireflies and a butterfly in the light beams, bluebells, a hedgehog and a pine cone on the ground.
+      decor({ anim }, [
+        ['owl', 760, 252],
+        ['squirrel', 300, 320],
+        ['spider', 180, 160],
+        ['bat', 680, 120],
+        ['firefly', 400, 200],
+        ['firefly', 650, 200],
+        ['butterfly', 450, 250, '#b38cff'],
+        ['bluebells', 130, 392, '#4dabf7'],
+        ['hedgehog', 40, 488],
+        ['pineCone', 620, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['frog', 655, 399],

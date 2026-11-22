@@ -1,5 +1,5 @@
 // Motion differences: the neon cup flickers only on picture B; the wall fan spins faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level116Redesign } from './level-116-redesign.ts'
 import { bollard, car, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person } from './shapes.ts'
@@ -106,6 +106,21 @@ export default svgLevel({
       parkingMeter(560, 370) +
       manhole(460, 470) +
       rain +
+      // A busier night street, the same in both pictures: bats and a plane in the sky, a black cat on a roof, a crow
+      // on a lamp, flowers under a window, a lamp by the shop door; rain boots, a bin, newspapers and a cone below.
+      decor({ anim }, [
+        ['bat', 60, 20],
+        ['bat', 560, 40],
+        ['plane', 290, 18],
+        ['cat', 250, 60, '#2b2b2b'],
+        ['crow', 160, 258],
+        ['flowerBox', 230, 230, '#ff006e'],
+        ['sconce', 690, 290],
+        ['boots', 380, 404, '#ffd23f'],
+        ['bin', 670, 404, '#2a9d8f'],
+        ['newspapers', 420, 412],
+        ['cone', 200, 470],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 635, 54],

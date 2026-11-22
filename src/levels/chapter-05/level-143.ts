@@ -1,5 +1,5 @@
 // Motion differences: the warning light blinks only on picture B; the hanging mascot swings faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level143Redesign } from './level-143-redesign.ts'
 import { comet, crystal, helmet, planet, probe, sparkle, starField, toolbox, wrench } from './shapes.ts'
@@ -88,6 +88,20 @@ export default svgLevel({
       probe(620, 200) +
       toolbox(650, 472) +
       crystal(510, 340) +
+      // A busier cockpit, the same in both pictures: a UFO, an asteroid, a ringed planet, a star and a sparkle out
+      // of the windows; a calendar, a cactus and a photo on the panel, a wrench and a fuel canister on the console.
+      decor({ anim }, [
+        ['ufo', 300, 200],
+        ['asteroid', 700, 160],
+        ['ringPlanet', 180, 190, '#4dabf7'],
+        ['spaceStar', 330, 150, '#ffd23f'],
+        ['sparkle', 720, 60],
+        ['calendar', 760, 300],
+        ['cactus', 240, 282],
+        ['photoOval', 540, 270],
+        ['wrench', 480, 470],
+        ['fuelCanister', 600, 400, '#ff9f43'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['helmet', 491, 294],

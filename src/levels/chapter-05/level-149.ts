@@ -1,5 +1,5 @@
 // Motion differences: the marker buoy's beacon blinks only on picture B; the sparkle in the lower left twinkles only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level149Redesign } from './level-149-redesign.ts'
 import { asteroid, helmet, planet, rocket, satellite, sparkle, starField, wrench } from './shapes.ts'
@@ -91,6 +91,19 @@ export default svgLevel({
       asteroid(770, 470, 0.6) +
       rocket(40, 300, '#f1f1f1', '#3a86ff', 0.35) +
       wrench(760, 60) +
+      // A busier sky around the giant, the same in both pictures: probes, asteroids, planets, stars and a sparkle.
+      decor({ anim }, [
+        ['probe', 40, 30],
+        ['probe', 440, 480],
+        ['asteroid', 330, 40],
+        ['asteroid', 520, 40],
+        ['spaceStar', 780, 330, '#ffd23f'],
+        ['spaceStar', 140, 480, '#ff6b8b'],
+        ['spaceStar', 330, 90, '#4dabf7'],
+        ['planet', 760, 180, '#8ac926'],
+        ['ringPlanet', 40, 200, '#4dabf7'],
+        ['sparkle', 680, 470],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 101, 195],

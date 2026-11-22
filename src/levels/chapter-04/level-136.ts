@@ -1,5 +1,5 @@
 // Motion differences: the rowboat bobs faster on picture B; the sailboat's masthead pennant flaps only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level136Redesign } from './level-136-redesign.ts'
 import { bottleMessage, bucket, buoy, cloud, fish, gull, gullStanding, lifeRing, person } from './shapes.ts'
@@ -82,6 +82,20 @@ export default svgLevel({
       bottleMessage(160, 394) +
       lifeRing(596, 440) +
       fish(470, 420, '#ffb703') +
+      // A busier port, the same in both pictures: gulls and a hot-air balloon in the sky, a cat, a bench and
+      // fisherman's boots on the quay, fish, a buoy and a jellyfish in the water.
+      decor({ anim }, [
+        ['gull', 450, 30],
+        ['gull', 640, 30],
+        ['hotAirBalloon', 40, 40],
+        ['cat', 480, 240, '#f08c2e'],
+        ['bench', 680, 240],
+        ['boots', 230, 242, '#ffd23f'],
+        ['fish', 300, 380, '#ff6b8b'],
+        ['fish', 500, 470, '#ffd23f'],
+        ['buoy', 480, 410, '#e63946'],
+        ['jellyfish', 180, 480, '#b38cff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bottle', 462, 319],

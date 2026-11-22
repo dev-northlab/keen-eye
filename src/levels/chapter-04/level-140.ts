@@ -1,5 +1,5 @@
 // Motion differences: the middle pier lamp flickers only on picture B; the fishing float bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level140Redesign } from './level-140-redesign.ts'
 import { bottleMessage, fish, gullStanding, lifeRing, person, sunglasses, sunHat } from './shapes.ts'
@@ -82,6 +82,20 @@ export default svgLevel({
       bottleMessage(560, 452) +
       fish(460, 442, '#ffb703') +
       sunglasses(180, 360) +
+      // A busier pier, the same in both pictures: gulls and a hot-air balloon in the sunset sky, a cat, a shopping bag
+      // and a coffee cup on the pier, a fish, a buoy, a jellyfish and a rock in the water.
+      decor({ anim }, [
+        ['gull', 200, 40],
+        ['gull', 720, 70],
+        ['hotAirBalloon', 260, 140],
+        ['cat', 170, 358, '#2b2b2b'],
+        ['shoppingBag', 110, 360, '#ff6b8b'],
+        ['coffeeCup', 700, 358],
+        ['fish', 650, 440, '#ff9f43'],
+        ['buoy', 720, 460, '#ffd23f'],
+        ['jellyfish', 300, 460, '#b38cff'],
+        ['rock', 200, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['buoy', 60, 472],

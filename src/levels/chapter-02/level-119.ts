@@ -1,5 +1,5 @@
 // Motion differences: the right hanging lamp swings only on picture B; the platform signal blinks only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level119Redesign } from './level-119-redesign.ts'
 import { bench, coffeeCup, mailbox, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
@@ -94,6 +94,20 @@ export default svgLevel({
       shoppingBag(375, 472) +
       scooter(745, 482) +
       mailbox(588, 440) +
+      // A busier station, the same in both pictures: a swallow, a lost balloon and bunting under the glass roof, a
+      // sparrow on a lamp; a suitcase, a bin, a puppy, newspapers, a cat on a bench and a shopping bag on the platform.
+      decor({ anim }, [
+        ['swallow', 300, 80],
+        ['sparrow', 300, 160],
+        ['balloon', 680, 120, '#ffd23f'],
+        ['bunting', 500, 228],
+        ['suitcase', 30, 496, '#e63946'],
+        ['bin', 170, 488, '#2a9d8f'],
+        ['puppy', 305, 496],
+        ['newspapers', 440, 494],
+        ['cat', 430, 440, '#f08c2e'],
+        ['shoppingBag', 655, 496, '#ff006e'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 68, 51],

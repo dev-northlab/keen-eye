@@ -1,5 +1,5 @@
 // Motion differences: the mining drone's lamp blinks only on picture B; the top asteroid spins faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level144Redesign } from './level-144-redesign.ts'
 import { asteroid, beacon, comet, flame, fuelCanister, planet, probe, rocket, sparkle, starField, toolbox, wrench } from './shapes.ts'
@@ -62,6 +62,20 @@ export default svgLevel({
       probe(480, 300) +
       fuelCanister(230, 335) +
       wrench(650, 420) +
+      // A busier field, the same in both pictures: a probe, planets, a star and a sparkle between the rocks, a lost
+      // fuel canister and a wrench floating, a crystal, a helmet and moon pebbles on the big asteroid.
+      decor({ anim }, [
+        ['probe', 300, 40],
+        ['planet', 40, 460, '#4dabf7'],
+        ['ringPlanet', 60, 300, '#8ac926'],
+        ['spaceStar', 520, 180, '#ffd23f'],
+        ['sparkle', 300, 190],
+        ['fuelCanister', 760, 330, '#ffd23f'],
+        ['wrench', 560, 460],
+        ['crystal', 80, 390, '#4dabf7'],
+        ['helmet', 150, 420],
+        ['moonPebbles', 120, 440],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ufo', 106, 122],

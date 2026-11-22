@@ -1,7 +1,7 @@
 // Motion differences: one bunting flag flutters only on picture B; the blue balloon bobs faster on B.
 import { awning, person } from '../chapter-02/shapes.ts'
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, chick, cloud, flowerPot, grass, hayBale, milkCan, stones } from '../shapes.ts'
 import { level105Redesign } from './level-105-redesign.ts'
@@ -127,6 +127,19 @@ export default svgLevel({
       bird(100, 178) +
       stones(275, 415) +
       flowerPot(780, 480) +
+      // A busier fair, the same in both pictures: a hot-air balloon, a lost balloon, a paper plane and a swallow in
+      // the sky, a puppy by the corn, a ball, a shopping bag and a chick among the visitors.
+      decor({ anim }, [
+        ['hotAirBalloon', 770, 108],
+        ['balloon', 770, 200, '#ff9f43'],
+        ['paperPlane', 460, 140],
+        ['swallow', 210, 152],
+        ['puppy', 770, 442],
+        ['ball', 640, 490, '#4dabf7'],
+        ['shoppingBag', 546, 480, '#ff6b8b'],
+        ['chick', 262, 486],
+        ['sparrow', 300, 176],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 68, 282],

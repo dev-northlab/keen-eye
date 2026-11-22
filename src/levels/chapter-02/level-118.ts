@@ -1,6 +1,6 @@
 // Motion differences: the mixer drum turns faster on picture B; the excavator beacon blinks only on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level118Redesign } from './level-118-redesign.ts'
 import { stones, wheelbarrow } from '../shapes.ts'
@@ -104,6 +104,21 @@ export default svgLevel({
       stones(392, 486) +
       sandwichBoard(700, 490) +
       bird(470, 48) +
+      // A busier site, the same in both pictures: a plane, a swallow and a hot-air balloon in the sky, a sparrow on
+      // the crane, a crow on the scaffold, a bucket and a toolbox on the floors, a shovel, a cone, boots and a pigeon.
+      decor({ anim }, [
+        ['plane', 220, 20],
+        ['swallow', 250, 100],
+        ['hotAirBalloon', 520, 120],
+        ['sparrow', 360, 48],
+        ['crow', 378, 140],
+        ['bucket', 180, 270],
+        ['toolbox', 100, 336, '#e63946'],
+        ['shovel', 520, 402],
+        ['cone', 22, 486],
+        ['boots', 272, 496, '#ffd23f'],
+        ['pigeon', 652, 494],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['balloon', 702, 175, '#ff006e'],

@@ -1,5 +1,5 @@
 // Motion differences: a landing pad light blinks only on picture B; the left astronaut hops only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level142Redesign } from './level-142-redesign.ts'
 import { astronaut, beacon, crater, crystal, dome, flag, fuelCanister, moonPebbles, rover, sparkle, starField, toolbox } from './shapes.ts'
@@ -69,6 +69,22 @@ export default svgLevel({
       fuelCanister(440, 474) +
       crystal(770, 470) +
       moonPebbles(40, 420) +
+      // A busier moon base, the same in both pictures: a UFO, planets, a probe and stars in the sky; a beacon, an
+      // alien plant, a fuel canister, a helmet, a wrench and moon pebbles on the ground.
+      decor({ anim }, [
+        ['ufo', 480, 140],
+        ['ringPlanet', 420, 60, '#ff9f43'],
+        ['planet', 770, 170, '#e63946'],
+        ['spaceStar', 200, 200, '#ffd23f'],
+        ['spaceStar', 520, 60, '#4dabf7'],
+        ['probe', 60, 200],
+        ['beacon', 440, 350],
+        ['alienPlant', 30, 450, '#8ac926'],
+        ['fuelCanister', 460, 480, '#ffd23f'],
+        ['helmet', 720, 480],
+        ['wrench', 590, 400],
+        ['moonPebbles', 760, 410],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 321, 240],

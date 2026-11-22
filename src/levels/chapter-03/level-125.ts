@@ -1,5 +1,5 @@
 // Motion differences: chimney smoke drifts only on picture B; the dog wags its tail faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level125Redesign } from './level-125-redesign.ts'
 import { acorn, anthill, backpack, bird, bluebells, flower, oak, pine, pineCone, rabbit, stump } from './shapes.ts'
@@ -89,6 +89,21 @@ export default svgLevel({
       acorn(475, 478) +
       anthill(600, 482) +
       bluebells(165, 420) +
+      // A busier homestead, the same in both pictures: a swallow and a hot-air balloon in the sky, a cat by the
+      // house, a broom against its wall, a mailbox by the fence, a bench under the tree, a wheelbarrow, a fox, a hedgehog
+      // and a mushroom.
+      decor({ anim }, [
+        ['swallow', 120, 50],
+        ['hotAirBalloon', 300, 40],
+        ['cat', 250, 392, '#f08c2e'],
+        ['broom', 460, 380],
+        ['mailbox', 140, 392],
+        ['bench', 690, 300],
+        ['wheelbarrow', 470, 440],
+        ['fox', 620, 470],
+        ['hedgehog', 330, 488],
+        ['mushroom', 20, 480, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 385, 418],

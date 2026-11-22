@@ -1,6 +1,6 @@
 // Motion differences: the right duck in the pool bobs faster on picture B; the squirrel flicks its tail only on B.
 import { butterfly } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level117Redesign } from './level-117-redesign.ts'
 import { balloon, cityTree, cloud, coffeeCup, dog, flowerBox, lampHead, lampPost, person, pigeon, scooter, shoppingBag, skateboard, skyline } from './shapes.ts'
@@ -88,6 +88,23 @@ export default svgLevel({
       shoppingBag(198, 422) +
       butterfly(310, 330) +
       coffeeCup(158, 412) +
+      // A busier park, the same in both pictures: a kite, a hot-air balloon, a plane and a swallow in the sky, a
+      // squirrel under the trees, a sparrow on a lamp, a rabbit, a butterfly and a puppy on the grass, a bin, a
+      // pigeon and a ball by the path.
+      decor({ anim }, [
+        ['kite', 220, 30, '#4dabf7'],
+        ['hotAirBalloon', 620, 30],
+        ['plane', 380, 15],
+        ['swallow', 700, 140],
+        ['squirrel', 200, 240],
+        ['sparrow', 250, 256],
+        ['rabbit', 760, 300],
+        ['butterfly', 760, 200, '#ffd43b'],
+        ['puppy', 760, 450],
+        ['bin', 590, 330, '#2a9d8f'],
+        ['pigeon', 520, 440],
+        ['ball', 60, 492, '#ff6b8b'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cloud', 481, 56],
