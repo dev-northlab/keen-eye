@@ -212,7 +212,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - SVG levels are written with `svgLevel({ ..., scene: ({ diff, anim, rand }) => markup })`. `diff(x, y, r, a, b)`
   returns `a` for picture A and `b` for B and registers the zone — never list zones by hand. Everything `a`/`b` draw
   must fit inside the zone circle. Use only the provided `rand` (seeded by level id) for randomness, so A and B match
-  everywhere except the differences.
+  everywhere except the differences. The zones (and `traps`, `extras`, `secret`, `multiplayerReady`, a detective
+  level's clues) come from drawing the scene once, on their first read (`lazy` in `helpers.ts`), not when the app starts.
 - Living scenes: `anim(spec, markup)` animates markup drawn at its rest position (types `path`, `bob`, `sway`,
   `rotate`, `blink`, `color`; `period`, `phase`, `reverse` — see `AnimationMotion` in `engine/types.ts`). Both
   pictures share one clock, so identical specs stay in sync. A motion difference passes different specs as `a`/`b`;
