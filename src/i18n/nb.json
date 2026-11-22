@@ -850,7 +850,9 @@
     "autumnLeaves": "Høstløv",
     "christmasMorning": "Julemorgen",
     "sunnyStreet": "Solfylt gate",
-    "gardenGate": "Ved hageporten"
+    "gardenGate": "Ved hageporten",
+    "cartoonCatPond": "Katten ved dammen",
+    "cartoonDogPie": "Den stjålne paien"
   },
   "map": {
     "level": "Brett {n}",

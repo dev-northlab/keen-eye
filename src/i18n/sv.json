@@ -850,7 +850,9 @@
     "autumnLeaves": "Höstlöv",
     "christmasMorning": "Julmorgon",
     "sunnyStreet": "Solig gata",
-    "gardenGate": "Vid trädgårdsgrinden"
+    "gardenGate": "Vid trädgårdsgrinden",
+    "cartoonCatPond": "Katten vid dammen",
+    "cartoonDogPie": "Den stulna pajen"
   },
   "map": {
     "level": "Nivå {n}",

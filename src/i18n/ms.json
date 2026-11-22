@@ -850,7 +850,9 @@
     "autumnLeaves": "Daun musim luruh",
     "christmasMorning": "Pagi Krismas",
     "sunnyStreet": "Jalan yang cerah",
-    "gardenGate": "Di pintu pagar taman"
+    "gardenGate": "Di pintu pagar taman",
+    "cartoonCatPond": "Kucing di kolam",
+    "cartoonDogPie": "Pai yang dicuri"
   },
   "map": {
     "level": "Tahap {n}",

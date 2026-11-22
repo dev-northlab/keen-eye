@@ -850,7 +850,9 @@
     "autumnLeaves": "Lá mùa thu",
     "christmasMorning": "Sáng Giáng sinh",
     "sunnyStreet": "Con phố đầy nắng",
-    "gardenGate": "Bên cổng vườn"
+    "gardenGate": "Bên cổng vườn",
+    "cartoonCatPond": "Chú mèo bên ao",
+    "cartoonDogPie": "Chiếc bánh bị đánh cắp"
   },
   "map": {
     "level": "Màn {n}",

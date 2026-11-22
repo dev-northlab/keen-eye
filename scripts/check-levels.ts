@@ -1,6 +1,7 @@
 // Level validator: npm run check-levels
 import { existsSync } from 'node:fs'
-import { zoneCenter } from '../src/engine/animation.ts'
+import { zoneActive, zoneCenter } from '../src/engine/animation.ts'
+import { inWindow } from '../src/engine/keyframes.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
 import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
 import { detectiveLevels } from '../src/levels/detective/index.ts'
@@ -18,6 +19,10 @@ const SAMPLE_UNTIL_S = 120
 const SAMPLE_STEP_S = 0.05
 /** Pictures are compared pixel by pixel at these times (only t = 0 for levels without animation). */
 const PIXEL_TIMES_S = [0, 0.37, 0.9, 1.6, 2.45, 3.3, 4.75, 6.1, 7.9, 10.3]
+/** A cartoon's story (keyframe timelines, docs/cartoon-spike.md) is compared at every this many seconds of its loop. */
+const STORY_STEP_S = 0.25
+/** An event difference may still fade in or out this long outside its window. */
+const EVENT_SLACK_S = 0.25
 /** A pixel differs when the summed RGB difference exceeds this (ignores rounding noise). */
 const PIXEL_THRESHOLD = 8
 /** Anti-aliasing may spill this far outside a zone circle. */
@@ -41,13 +46,16 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
   const { w, h } = level.viewBox
   const ds = level.differences
   const animated = a.animations.length > 0 || b.animations.length > 0
-  const times = animated ? PIXEL_TIMES_S : [0]
+  const story = storyPeriod(a, b)
+  const times = story ? Array.from({ length: Math.round(story / STORY_STEP_S) }, (_, i) => i * STORY_STEP_S) : animated ? PIXEL_TIMES_S : [0]
   const perZone = times.map(() => ds.map(() => 0))
 
   times.forEach((t, ti) => {
     const pa = rasterize(posedSvg(a, t), w, h).pixels
     const pb = rasterize(posedSvg(b, t), w, h).pixels
     const zones: Zone[][] = pictures.map((anims) => ds.map((d) => ({ ...zoneCenter(d, anims, t), r: d.r })))
+    // A cartoon's event difference may show only in its window (give or take a fade): elsewhere its zone takes no pixels.
+    const shown = ds.map((d) => !d.during || inWindow({ ...d.during, from: d.during.from - EVENT_SLACK_S, to: d.during.to + EVENT_SLACK_S }, t))
     let outside = 0
     let box = { x0: w, y0: h, x1: 0, y1: 0 }
     for (let y = 0; y < h; y++) {
@@ -58,9 +66,15 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
         const px = x + 0.5
         const py = y + 0.5
         const inside = (z: Zone) => (px - z.x) ** 2 + (py - z.y) ** 2 <= (z.r + ZONE_TOLERANCE_PX) ** 2
-        const i = ds.findIndex((_, i) => inside(zones[0][i]) || inside(zones[1][i]))
+        const i = ds.findIndex((_, i) => shown[i] && (inside(zones[0][i]) || inside(zones[1][i])))
         if (i >= 0) {
           perZone[ti][i]++
+          continue
+        }
+        const early = ds.findIndex((_, i) => inside(zones[0][i]) || inside(zones[1][i]))
+        if (early >= 0) {
+          const w = ds[early].during!
+          report(`event zone #${early} shows outside its window ${w.from}–${w.to}s`, `t=${t}s`)
           continue
         }
         // A "memory" level's key is drawn on B only: not a difference.
@@ -80,6 +94,11 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
     const counts = perZone.map((z) => z[i])
     if (Math.max(...counts) < MIN_VISIBLE_PX) report(`zone #${i} shows no visible difference`, `max ${Math.max(...counts)} px`)
   })
+}
+
+/** The loop of a cartoon's story: the longest period of its keyframe timelines, or 0 without any. */
+function storyPeriod(a: SceneSvg, b: SceneSvg): number {
+  return Math.max(0, ...[...a.animations, ...b.animations].filter((x) => x.type === 'keys').map((x) => x.period))
 }
 
 /** Differing pixels of A and B at t = 0 inside each zone. */
@@ -308,10 +327,15 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
     pictures.forEach((anims, v) => {
       const when = `picture ${'AB'[v]}, t=${t.toFixed(2)}s`
       const zones = ds.map((d) => ({ ...zoneCenter(d, anims, t), r: d.r }))
+      // A cartoon's event difference counts only in its window, and may come in across the frame's edge.
+      const active = ds.map((d) => zoneActive(d, t))
       zones.forEach((z, i) => {
-        if (z.x - z.r < 0 || z.y - z.r < 0 || z.x + z.r > w || z.y + z.r > h)
+        if (!active[i]) return
+        const edge = ds[i].during ? 0 : z.r
+        if (z.x - edge < 0 || z.y - edge < 0 || z.x + edge > w || z.y + edge > h)
           report(`zone #${i} goes outside the ${w}×${h} viewBox`, when)
         for (let j = i + 1; j < zones.length; j++) {
+          if (!active[j]) continue
           const gap = Math.hypot(z.x - zones[j].x, z.y - zones[j].y)
           if (gap < z.r + zones[j].r) report(`zones #${i} and #${j} overlap`, when)
           else if (gap < minGap) report(`zones #${i} and #${j} are closer than ${minGap}`, when)

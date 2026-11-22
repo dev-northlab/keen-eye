@@ -34,6 +34,29 @@ export type AnimationMotion =
   | { type: 'blink'; duty?: number }
   /** Fill cycles through '#rrggbb' colors; children to recolor must not set their own fill. */
   | { type: 'color'; colors: string[] }
+  /**
+   * A cartoon's timeline (docs/cartoon-spike.md): keyframes at seconds of the cycle (`period` is the story's loop),
+   * eased from one to the next and from the last back to the first. Turns and scales around `pivot` (rest position).
+   */
+  | { type: 'keys'; keys: Keyframe[]; pivot?: [number, number] }
+
+/** How a keyframe eases into the next one; 'step' holds it and jumps at the next key (a cut). */
+export type Ease = 'linear' | 'in' | 'out' | 'inOut' | 'back' | 'step'
+
+/**
+ * A key of a `keys` motion at second `t` of the cycle: offset (x, y) from the rest position, turn `rot` in degrees,
+ * scale (sx, sy; −1 mirrors) and opacity `o`. A value a key leaves out stays as the key before had it.
+ */
+export interface Keyframe {
+  t: number
+  x?: number
+  y?: number
+  rot?: number
+  sx?: number
+  sy?: number
+  o?: number
+  ease?: Ease
+}
 
 export type Animation = AnimationBase & AnimationMotion
 
@@ -46,6 +69,39 @@ export interface Difference {
   animatedId?: string
   /** Motion difference: A and B draw the same thing and differ only in how it moves (set by svgLevel). */
   motion?: boolean
+  /**
+   * An event of a cartoon's story (docs/cartoon-spike.md): the difference shows only from `from` to `to` seconds of
+   * every `period`; a tap on its place at other times is a miss.
+   */
+  during?: EventWindow
+}
+
+export interface EventWindow {
+  from: number
+  to: number
+  period: number
+}
+
+/** A camera key of a cartoon (`CartoonFilm`): the shown part of the world, top-left (x, y) and width w. */
+export interface CameraKey {
+  t: number
+  x: number
+  y: number
+  w: number
+  /** 'step' holds the shot until the next key: a cut. */
+  ease?: Ease
+}
+
+/**
+ * A cartoon level (docs/cartoon-spike.md, the camera approach): the scene is a world larger than the screen, and a
+ * camera, the same for both pictures, follows the story — pans, push-ins and cuts. No zoom by the player.
+ */
+export interface CartoonFilm {
+  /** Seconds of one loop of the story. */
+  period: number
+  /** Aspect of the shown part (width × height); every camera key keeps it. */
+  frame: { w: number; h: number }
+  camera: CameraKey[]
 }
 
 /** The two moments of a "time" level (docs/time-differences-mode.md): picture A is the first, B the second. */
@@ -197,6 +253,8 @@ export interface Level {
   transformB?: PictureTransform
   /** The level's redesigned pictures, played in the new picture style (`levels/picture-style.ts`). */
   redesign?: LevelPictures
+  /** A cartoon with a camera: `viewBox` is the whole world, the camera shows part of it (`engine/cartoon.ts`). */
+  cartoon?: CartoonFilm
 }
 
 export type Stars = 1 | 2 | 3

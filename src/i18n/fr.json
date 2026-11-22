@@ -604,7 +604,9 @@
     "autumnLeaves": "Feuilles d’automne",
     "christmasMorning": "Matin de Noël",
     "sunnyStreet": "Rue ensoleillée",
-    "gardenGate": "Au portail du jardin"
+    "gardenGate": "Au portail du jardin",
+    "cartoonCatPond": "Le chat près de l’étang",
+    "cartoonDogPie": "La tarte volée"
   },
   "mode": {
     "label": "Mode",

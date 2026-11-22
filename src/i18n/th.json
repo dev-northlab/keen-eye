@@ -850,7 +850,9 @@
     "autumnLeaves": "ใบไม้ร่วง",
     "christmasMorning": "เช้าวันคริสต์มาส",
     "sunnyStreet": "ถนนแดดจ้า",
-    "gardenGate": "ที่ประตูรั้วสวน"
+    "gardenGate": "ที่ประตูรั้วสวน",
+    "cartoonCatPond": "แมวริมบ่อน้ำ",
+    "cartoonDogPie": "พายที่ถูกขโมย"
   },
   "map": {
     "level": "ด่าน {n}",

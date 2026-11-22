@@ -1,8 +1,8 @@
 import type { Stars } from './types.ts'
 
-/** Index of the zone containing the point, or -1. */
+/** Index of the zone containing the point, or -1. A zone of radius 0 is off (a cartoon's event not on screen). */
 export function hitTest(zones: { x: number; y: number; r: number }[], x: number, y: number): number {
-  return zones.findIndex((z) => (x - z.x) ** 2 + (y - z.y) ** 2 <= z.r ** 2)
+  return zones.findIndex((z) => z.r > 0 && (x - z.x) ** 2 + (y - z.y) ** 2 <= z.r ** 2)
 }
 
 export interface StarInput {

@@ -604,7 +604,9 @@
     "autumnLeaves": "Осенние листья",
     "christmasMorning": "Рождественское утро",
     "sunnyStreet": "Солнечная улица",
-    "gardenGate": "У садовой калитки"
+    "gardenGate": "У садовой калитки",
+    "cartoonCatPond": "Кот у пруда",
+    "cartoonDogPie": "Украденный пирог"
   },
   "mode": {
     "label": "Режим",

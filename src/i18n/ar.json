@@ -850,7 +850,9 @@
     "autumnLeaves": "أوراق الخريف",
     "christmasMorning": "صباح عيد الميلاد",
     "sunnyStreet": "شارع مشمس",
-    "gardenGate": "عند بوابة الحديقة"
+    "gardenGate": "عند بوابة الحديقة",
+    "cartoonCatPond": "القطة عند البركة",
+    "cartoonDogPie": "الفطيرة المسروقة"
   },
   "map": {
     "level": "المرحلة {n}",

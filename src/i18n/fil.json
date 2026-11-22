@@ -850,7 +850,9 @@
     "autumnLeaves": "Mga dahon ng taglagas",
     "christmasMorning": "Umaga ng Pasko",
     "sunnyStreet": "Maaraw na kalye",
-    "gardenGate": "Sa tarangkahan ng hardin"
+    "gardenGate": "Sa tarangkahan ng hardin",
+    "cartoonCatPond": "Pusa sa lawa",
+    "cartoonDogPie": "Ang ninakaw na pie"
   },
   "map": {
     "level": "Level {n}",

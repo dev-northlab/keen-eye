@@ -604,7 +604,9 @@
     "autumnLeaves": "Herbstlaub",
     "christmasMorning": "Weihnachtsmorgen",
     "sunnyStreet": "Sonnige Straße",
-    "gardenGate": "Am Gartentor"
+    "gardenGate": "Am Gartentor",
+    "cartoonCatPond": "Katze am Teich",
+    "cartoonDogPie": "Der gestohlene Kuchen"
   },
   "mode": {
     "label": "Modus",

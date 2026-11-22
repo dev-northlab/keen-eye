@@ -1,4 +1,4 @@
-import { pose, zoneCenter } from './animation.ts'
+import { pose, zoneActive, zoneCenter } from './animation.ts'
 import { svgTransform, type PictureTransform, type Size } from './transform.ts'
 import type { Animation, Difference, ImagePatch, Level } from './types.ts'
 
@@ -211,6 +211,11 @@ function animatedGroups(scene: SVGGElement, animations: Animation[]) {
 /** Zones of a picture at animation time t (animated zones follow their objects). */
 export function zonesAt(p: Picture, differences: Difference[], t: number) {
   return differences.map((d) => ({ ...zoneCenter(d, p.animations, t), r: d.r }))
+}
+
+/** Zones a tap can hit at time t: a cartoon's event difference off screen has radius 0 (`hitTest` skips it). */
+export function tapZonesAt(p: Picture, differences: Difference[], t: number) {
+  return zonesAt(p, differences, t).map((z, i) => (zoneActive(differences[i], t) ? z : { ...z, r: 0 }))
 }
 
 /**

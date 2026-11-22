@@ -850,7 +850,9 @@
     "autumnLeaves": "Efterårsblade",
     "christmasMorning": "Juledagsmorgen",
     "sunnyStreet": "Solrig gade",
-    "gardenGate": "Ved havelågen"
+    "gardenGate": "Ved havelågen",
+    "cartoonCatPond": "Katten ved dammen",
+    "cartoonDogPie": "Den stjålne tærte"
   },
   "map": {
     "level": "Bane {n}",

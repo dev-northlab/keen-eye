@@ -604,7 +604,9 @@
     "autumnLeaves": "Осіннє листя",
     "christmasMorning": "Різдвяний ранок",
     "sunnyStreet": "Сонячна вулиця",
-    "gardenGate": "Біля садової хвіртки"
+    "gardenGate": "Біля садової хвіртки",
+    "cartoonCatPond": "Кіт біля ставка",
+    "cartoonDogPie": "Вкрадений пиріг"
   },
   "mode": {
     "label": "Режим",

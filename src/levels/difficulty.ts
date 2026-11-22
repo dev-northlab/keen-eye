@@ -99,7 +99,9 @@ export const DIFFICULTY: Difficulty[] = [
   // more small, hard ones painted by hand; zones a finger wide on a phone (r ≥ 60 pixels).
   { from: 701, to: 730, differences: [5, 15], motion: [0, 0], minRadius: 60, kinds: EASY },
   // "Test" (developer mode only): picture pairs tried out, any number of differences.
-  { from: 1001, to: 1100, differences: [1, 20], motion: [0, 0], minRadius: 18, kinds: EASY },
+  // 1001–1002: the cartoon spike (docs/cartoon-spike.md), with a motion difference or two.
+  { from: 1001, to: 1002, differences: [1, 20], motion: [0, 2], minRadius: 18, kinds: EASY },
+  { from: 1003, to: 1100, differences: [1, 20], motion: [0, 0], minRadius: 18, kinds: EASY },
 ]
 
 /**

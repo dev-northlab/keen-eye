@@ -850,7 +850,9 @@
     "autumnLeaves": "Syksyn lehdet",
     "christmasMorning": "Jouluaamu",
     "sunnyStreet": "Aurinkoinen katu",
-    "gardenGate": "Puutarhaportilla"
+    "gardenGate": "Puutarhaportilla",
+    "cartoonCatPond": "Kissa lammella",
+    "cartoonDogPie": "Varastettu piirakka"
   },
   "map": {
     "level": "Taso {n}",

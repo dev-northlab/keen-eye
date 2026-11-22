@@ -9,6 +9,7 @@ import {
   HINT_SCALE,
   removeHintMarks,
   takeSecret,
+  tapZonesAt,
   toViewBox,
   turnPicture,
   zonesAt,
@@ -48,6 +49,12 @@ export interface BoardOptions {
   /** A zoom animation started: the scene's loop must run frames again (`FrameLoop.wake`). */
   onAnimate?: () => void
 }
+
+/** What a single player scene needs of its pictures: a `Board`, or a cartoon's `CartoonBoard` (engine/cartoon.ts). */
+export type SceneBoard = Pick<
+  Board,
+  'pose' | 'markFound' | 'markMiss' | 'showHint' | 'hinting' | 'reveal' | 'takeSecret' | 'resetZoom' | 'destroy' | 'setTransformB' | 'animated' | 'zooming'
+>
 
 /** Index of a random unfound difference, or -1 when all are found. */
 export function randomUnfound(found: boolean[]): number {
@@ -220,7 +227,7 @@ export class Board {
     const pt = this.scenePoint(picture, clientX, clientY)
     if (!pt) return
     const tap: Tap = { picture, x: pt.x, y: pt.y, time: performance.now() }
-    const hit = hitTest(zonesAt(this.pictures[picture], this.level.differences, this.time), tap.x, tap.y)
+    const hit = hitTest(tapZonesAt(this.pictures[picture], this.level.differences, this.time), tap.x, tap.y)
     if (hit < 0 && this.onSecretKey(picture, tap)) {
       this.onSecret?.(tap)
       return

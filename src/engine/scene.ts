@@ -1,4 +1,5 @@
-import { Board, randomUnfound, type Tap } from './board.ts'
+import { Board, randomUnfound, type SceneBoard, type Tap } from './board.ts'
+import { CartoonBoard } from './cartoon.ts'
 import { FrameLoop } from './loop.ts'
 import { computeStars, hitTest, LOCK_MS, MissGuard } from './rules.ts'
 import type { PictureTransform } from './transform.ts'
@@ -43,7 +44,7 @@ export class GameScene {
   private readonly handlers: SceneHandlers
   private readonly animationSpeed: number
   private readonly missLock: boolean
-  private readonly board: Board
+  private readonly board: SceneBoard
   private readonly loop: FrameLoop
   private readonly found: boolean[]
   /** Traps whose hint was shown in this round. */
@@ -68,7 +69,9 @@ export class GameScene {
     this.animationSpeed = options.animationSpeed ?? 1
     this.missLock = options.missLock ?? true
     this.found = level.differences.map(() => false)
-    this.board = new Board(container, level, (hit, tap) => this.tap(hit, tap), {
+    // A cartoon with a camera has its own board (engine/cartoon.ts); the rules are the same.
+    const BoardKind = level.cartoon ? CartoonBoard : Board
+    this.board = new BoardKind(container, level, (hit, tap) => this.tap(hit, tap), {
       onZoom: (s) => handlers.onZoom?.(s),
       onSecret: () => this.secret(),
       secretTaken: options.secretTaken,
