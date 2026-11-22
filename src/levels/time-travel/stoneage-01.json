@@ -997,38 +997,38 @@
         "ko": "칫솔"
       },
       "fact": {
-        "ru": "Зубную щётку со щетиной придумали в Китае в 1498 году.",
-        "en": "The bristle toothbrush was invented in China in 1498.",
-        "hy": "Մազիկներով ատամի խոզանակը հորինվել է Չինաստանում 1498 թվականին։",
-        "de": "Die Zahnbürste mit Borsten wurde 1498 in China erfunden.",
-        "fr": "La brosse à dents à poils a été inventée en Chine en 1498.",
-        "es": "El cepillo de dientes con cerdas se inventó en China en 1498.",
-        "it": "Lo spazzolino con le setole fu inventato in Cina nel 1498.",
-        "pt": "A escova de dentes com cerdas foi inventada na China em 1498.",
-        "nl": "De tandenborstel met haren werd in 1498 in China uitgevonden.",
-        "pl": "Szczoteczkę do zębów z włosiem wynaleziono w Chinach w 1498 roku.",
-        "cs": "Zubní kartáček se štětinami vynalezli v Číně v roce 1498.",
-        "ro": "Periuța de dinți cu peri a fost inventată în China în 1498.",
-        "bg": "Четката за зъби с косъмчета е измислена в Китай през 1498 г.",
-        "uk": "Зубну щітку зі щетиною вигадали в Китаї в 1498 році.",
-        "el": "Η οδοντόβουρτσα με τρίχες εφευρέθηκε στην Κίνα το 1498.",
-        "hu": "A sörtés fogkefét 1498-ban találták fel Kínában.",
-        "sv": "Tandborsten med borst uppfanns i Kina 1498.",
-        "da": "Tandbørsten med børstehår blev opfundet i Kina i 1498.",
-        "nb": "Tannbørsten med bust ble oppfunnet i Kina i 1498.",
-        "fi": "Harjaksinen hammasharja keksittiin Kiinassa vuonna 1498.",
-        "tr": "Kıllı diş fırçası 1498'de Çin'de icat edildi.",
-        "ar": "اختُرعت فرشاة الأسنان ذات الشعيرات في الصين عام 1498.",
-        "hi": "रेशों वाला टूथब्रश 1498 में चीन में ईजाद हुआ।",
-        "id": "Sikat gigi berbulu ditemukan di Tiongkok pada tahun 1498.",
-        "ms": "Berus gigi berbulu dicipta di China pada tahun 1498.",
-        "fil": "Inimbento sa China noong 1498 ang sipilyong may bristles.",
-        "vi": "Bàn chải đánh răng có lông được phát minh ở Trung Quốc vào năm 1498.",
-        "th": "แปรงสีฟันแบบมีขนแปรงถูกประดิษฐ์ขึ้นในจีนเมื่อปี 1498",
-        "zh": "带刷毛的牙刷是1498年在中国发明的。",
-        "zh-Hant": "有刷毛的牙刷於1498年在中國發明。",
-        "ja": "毛の付いた歯ブラシは1498年に中国で発明されました。",
-        "ko": "솔이 달린 칫솔은 1498년 중국에서 발명되었습니다."
+        "ru": "Зубные щётки со щетиной впервые сделали в Китае, а в Европу они попали только в XVII веке.",
+        "en": "Bristle toothbrushes were first made in China, and they reached Europe only in the 17th century.",
+        "hy": "Մազիկներով ատամի խոզանակներն առաջին անգամ պատրաստվել են Չինաստանում, իսկ Եվրոպա են հասել միայն XVII դարում։",
+        "de": "Zahnbürsten mit Borsten wurden zuerst in China hergestellt und kamen erst im 17. Jahrhundert nach Europa.",
+        "fr": "Les brosses à dents à poils ont d'abord été fabriquées en Chine et ne sont arrivées en Europe qu'au XVIIe siècle.",
+        "es": "Los cepillos de dientes con cerdas se hicieron primero en China y no llegaron a Europa hasta el siglo XVII.",
+        "it": "Gli spazzolini con le setole furono fatti per la prima volta in Cina e arrivarono in Europa solo nel XVII secolo.",
+        "pt": "As escovas de dentes com cerdas foram feitas primeiro na China e só chegaram à Europa no século XVII.",
+        "nl": "Tandenborstels met haren werden het eerst in China gemaakt en kwamen pas in de 17e eeuw naar Europa.",
+        "pl": "Szczoteczki do zębów z włosiem po raz pierwszy zrobiono w Chinach, a do Europy trafiły dopiero w XVII wieku.",
+        "cs": "Zubní kartáčky se štětinami poprvé vyrobili v Číně a do Evropy se dostaly až v 17. století.",
+        "ro": "Periuțele de dinți cu peri au fost făcute prima oară în China și au ajuns în Europa abia în secolul al XVII-lea.",
+        "bg": "Четките за зъби с косъмчета са направени за първи път в Китай и стигат до Европа едва през XVII век.",
+        "uk": "Зубні щітки зі щетиною вперше зробили в Китаї, а до Європи вони потрапили лише в XVII столітті.",
+        "el": "Οι οδοντόβουρτσες με τρίχες φτιάχτηκαν πρώτα στην Κίνα και έφτασαν στην Ευρώπη μόλις τον 17ο αιώνα.",
+        "hu": "A sörtés fogkefét először Kínában készítették, Európába csak a 17. században jutott el.",
+        "sv": "Tandborstar med borst gjordes först i Kina och kom till Europa först på 1600-talet.",
+        "da": "Tandbørster med børstehår blev først lavet i Kina og nåede først Europa i 1600-tallet.",
+        "nb": "Tannbørster med bust ble først laget i Kina og kom ikke til Europa før på 1600-tallet.",
+        "fi": "Harjaksisia hammasharjoja tehtiin ensin Kiinassa, ja Eurooppaan ne tulivat vasta 1600-luvulla.",
+        "tr": "Kıllı diş fırçaları ilk kez Çin'de yapıldı ve Avrupa'ya ancak 17. yüzyılda ulaştı.",
+        "ar": "صُنعت فراشي الأسنان ذات الشعيرات أولًا في الصين، ولم تصل إلى أوروبا إلا في القرن السابع عشر.",
+        "hi": "रेशों वाले टूथब्रश पहले चीन में बने और यूरोप तक सत्रहवीं सदी में ही पहुँचे।",
+        "id": "Sikat gigi berbulu pertama kali dibuat di Tiongkok dan baru sampai ke Eropa pada abad ke-17.",
+        "ms": "Berus gigi berbulu mula-mula dibuat di China dan hanya sampai ke Eropah pada abad ke-17.",
+        "fil": "Unang ginawa sa Tsina ang sipilyong may bristles, at noong ika-17 siglo lamang ito nakarating sa Europa.",
+        "vi": "Bàn chải đánh răng có lông được làm đầu tiên ở Trung Quốc và mãi đến thế kỷ 17 mới đến châu Âu.",
+        "th": "แปรงสีฟันแบบมีขนแปรงทำขึ้นครั้งแรกในจีน และเพิ่งมาถึงยุโรปในคริสต์ศตวรรษที่ 17",
+        "zh": "带刷毛的牙刷最早出现在中国，直到17世纪才传入欧洲。",
+        "zh-Hant": "有刷毛的牙刷最早出現在中國，直到17世紀才傳入歐洲。",
+        "ja": "毛の付いた歯ブラシは中国で最初に作られ、ヨーロッパに伝わったのは17世紀になってからです。",
+        "ko": "솔이 달린 칫솔은 중국에서 처음 만들어졌고, 17세기에야 유럽에 전해졌습니다."
       }
     },
     {
@@ -1351,5 +1351,140 @@
       "dy": 0,
       "period": 4
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/stoneage-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "clay-tablet",
+        "shape": "rect",
+        "x": 5.01,
+        "y": 73.97,
+        "w": 8.84,
+        "h": 4.15
+      },
+      {
+        "id": "jar",
+        "shape": "rect",
+        "x": 16.69,
+        "y": 64.87,
+        "w": 5.25,
+        "h": 5.06
+      },
+      {
+        "id": "toothbrush",
+        "shape": "rect",
+        "x": 21.7,
+        "y": 81.72,
+        "w": 3.07,
+        "h": 3.32
+      },
+      {
+        "id": "corn",
+        "shape": "rect",
+        "x": 31.13,
+        "y": 59.53,
+        "w": 7.78,
+        "h": 6.05
+      },
+      {
+        "id": "matches",
+        "shape": "rect",
+        "x": 37.15,
+        "y": 81.69,
+        "w": 7.78,
+        "h": 1.86
+      },
+      {
+        "id": "pencil",
+        "shape": "rect",
+        "x": 39.15,
+        "y": 27.89,
+        "w": 5.19,
+        "h": 0.71
+      },
+      {
+        "id": "pin",
+        "shape": "rect",
+        "x": 44.58,
+        "y": 33.11,
+        "w": 4.6,
+        "h": 1.15
+      },
+      {
+        "id": "bronze-sword",
+        "shape": "rect",
+        "x": 47.46,
+        "y": 63.17,
+        "w": 2.83,
+        "h": 7.52
+      },
+      {
+        "id": "nail",
+        "shape": "rect",
+        "x": 59.55,
+        "y": 66.26,
+        "w": 1.77,
+        "h": 2.25
+      },
+      {
+        "id": "lighter",
+        "shape": "rect",
+        "x": 59.61,
+        "y": 77.49,
+        "w": 2.42,
+        "h": 4.51
+      },
+      {
+        "id": "glasses",
+        "shape": "rect",
+        "x": 67.63,
+        "y": 61.79,
+        "w": 4.89,
+        "h": 1.11
+      },
+      {
+        "id": "telescope",
+        "shape": "rect",
+        "x": 74.53,
+        "y": 36.23,
+        "w": 9.55,
+        "h": 2.53
+      },
+      {
+        "id": "hourglass",
+        "shape": "rect",
+        "x": 81.37,
+        "y": 80.7,
+        "w": 4.13,
+        "h": 4.94
+      },
+      {
+        "id": "sunglasses",
+        "shape": "rect",
+        "x": 82.55,
+        "y": 61.12,
+        "w": 4.01,
+        "h": 1.19
+      },
+      {
+        "id": "dinosaur",
+        "shape": "rect",
+        "x": 85.55,
+        "y": 47.75,
+        "w": 8.37,
+        "h": 4.51
+      },
+      {
+        "id": "windmill",
+        "shape": "rect",
+        "x": 85.73,
+        "y": 19.74,
+        "w": 7.43,
+        "h": 8.74
+      }
+    ]
+  }
 }
