@@ -464,6 +464,7 @@
     "calmDone": "Rolig tilstand – ingen stjerner",
     "complete": "Banen er klaret!",
     "found": "Fundet {found}/{total}",
+    "foundSoFar": "Fundet {found}",
     "hint": "Hint",
     "level": "Bane {n}",
     "locked": "Tag det roligt…",

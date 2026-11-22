@@ -108,6 +108,7 @@
   "level": {
     "level": "Մակարդակ {n}",
     "found": "Գտնված է {found}/{total}",
+    "foundSoFar": "Գտնված է {found}",
     "mistakes": "Սխալներ՝ {n}",
     "locked": "Մի՛ շտապեք…",
     "complete": "Մակարդակն անցած է",

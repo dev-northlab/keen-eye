@@ -464,6 +464,7 @@
     "calmDone": "Rauhallinen tila – ei tähtiä",
     "complete": "Taso läpäisty!",
     "found": "Löydetty {found}/{total}",
+    "foundSoFar": "Löydetty {found}",
     "hint": "Vihje",
     "level": "Taso {n}",
     "locked": "Hiljaa hyvä tulee…",

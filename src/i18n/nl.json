@@ -108,6 +108,7 @@
   "level": {
     "level": "Level {n}",
     "found": "Gevonden {found}/{total}",
+    "foundSoFar": "Gevonden {found}",
     "mistakes": "Fouten: {n}",
     "locked": "Rustig aan…",
     "complete": "Level voltooid!",

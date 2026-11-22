@@ -464,6 +464,7 @@
     "calmDone": "Chế độ thư giãn – không có sao",
     "complete": "Hoàn thành màn chơi!",
     "found": "Đã tìm {found}/{total}",
+    "foundSoFar": "Đã tìm {found}",
     "hint": "Gợi ý",
     "level": "Màn {n}",
     "locked": "Từ từ thôi…",

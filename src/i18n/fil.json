@@ -464,6 +464,7 @@
     "calmDone": "Kalmadong mode – walang bituin",
     "complete": "Tapos na ang level!",
     "found": "Nahanap {found}/{total}",
+    "foundSoFar": "Nahanap {found}",
     "hint": "Hint",
     "level": "Level {n}",
     "locked": "Dahan-dahan lang…",

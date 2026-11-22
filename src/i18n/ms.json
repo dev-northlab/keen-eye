@@ -464,6 +464,7 @@
     "calmDone": "Mod tenang – tiada bintang",
     "complete": "Tahap selesai!",
     "found": "Ditemui {found}/{total}",
+    "foundSoFar": "Ditemui {found}",
     "hint": "Bantuan",
     "level": "Tahap {n}",
     "locked": "Perlahan-lahan…",

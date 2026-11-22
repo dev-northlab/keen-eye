@@ -108,6 +108,7 @@
   "level": {
     "level": "{n}. pálya",
     "found": "Megtalálva {found}/{total}",
+    "foundSoFar": "Megtalálva {found}",
     "mistakes": "Hibák: {n}",
     "locked": "Lassabban…",
     "complete": "Pálya teljesítve!",

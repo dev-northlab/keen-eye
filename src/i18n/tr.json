@@ -108,6 +108,7 @@
   "level": {
     "level": "Bölüm {n}",
     "found": "Bulunan {found}/{total}",
+    "foundSoFar": "Bulunan {found}",
     "mistakes": "Hata: {n}",
     "locked": "Yavaş ol…",
     "complete": "Bölüm tamamlandı!",

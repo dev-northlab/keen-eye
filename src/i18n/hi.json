@@ -108,6 +108,7 @@
   "level": {
     "level": "लेवल {n}",
     "found": "मिले {found}/{total}",
+    "foundSoFar": "मिले {found}",
     "mistakes": "गलतियाँ: {n}",
     "locked": "धीरे-धीरे…",
     "complete": "लेवल पूरा!",

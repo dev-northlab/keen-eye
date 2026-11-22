@@ -108,6 +108,7 @@
   "level": {
     "level": "Level {n}",
     "found": "Gefunden {found}/{total}",
+    "foundSoFar": "Gefunden {found}",
     "mistakes": "Fehler: {n}",
     "locked": "Nicht so schnell…",
     "complete": "Level geschafft!",

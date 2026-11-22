@@ -108,6 +108,7 @@
   "level": {
     "level": "레벨 {n}",
     "found": "찾음 {found}/{total}",
+    "foundSoFar": "찾음 {found}",
     "mistakes": "실수: {n}",
     "locked": "천천히…",
     "complete": "레벨 완료!",

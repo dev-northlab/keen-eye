@@ -108,6 +108,7 @@
   "level": {
     "level": "Επίπεδο {n}",
     "found": "Βρέθηκαν {found}/{total}",
+    "foundSoFar": "Βρέθηκαν {found}",
     "mistakes": "Λάθη: {n}",
     "locked": "Πιο αργά…",
     "complete": "Το επίπεδο ολοκληρώθηκε!",

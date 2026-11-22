@@ -464,6 +464,7 @@
     "calmDone": "โหมดผ่อนคลาย – ไม่มีดาว",
     "complete": "ผ่านด่านแล้ว!",
     "found": "เจอแล้ว {found}/{total}",
+    "foundSoFar": "เจอแล้ว {found}",
     "hint": "คำใบ้",
     "level": "ด่าน {n}",
     "locked": "ใจเย็น ๆ…",

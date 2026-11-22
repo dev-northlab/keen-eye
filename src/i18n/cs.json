@@ -108,6 +108,7 @@
   "level": {
     "level": "Úroveň {n}",
     "found": "Nalezeno {found}/{total}",
+    "foundSoFar": "Nalezeno {found}",
     "mistakes": "Chyby: {n}",
     "locked": "Pomaleji…",
     "complete": "Úroveň dokončena!",

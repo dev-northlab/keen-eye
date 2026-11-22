@@ -108,6 +108,7 @@
   "level": {
     "level": "第 {n} 关",
     "found": "已找到 {found}/{total}",
+    "foundSoFar": "已找到 {found}",
     "mistakes": "错误：{n}",
     "locked": "慢一点…",
     "complete": "过关啦！",

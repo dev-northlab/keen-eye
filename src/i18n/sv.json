@@ -464,6 +464,7 @@
     "calmDone": "Lugnt läge – inga stjärnor",
     "complete": "Nivån klar!",
     "found": "Hittade {found}/{total}",
+    "foundSoFar": "Hittade {found}",
     "hint": "Tips",
     "level": "Nivå {n}",
     "locked": "Ta det lugnt…",

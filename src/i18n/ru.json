@@ -108,6 +108,7 @@
   "level": {
     "level": "Уровень {n}",
     "found": "Найдено {found}/{total}",
+    "foundSoFar": "Найдено {found}",
     "mistakes": "Ошибки: {n}",
     "locked": "Не торопитесь…",
     "complete": "Уровень пройден!",

@@ -108,6 +108,7 @@
   "level": {
     "level": "Poziom {n}",
     "found": "Znalezione {found}/{total}",
+    "foundSoFar": "Znalezione {found}",
     "mistakes": "Błędy: {n}",
     "locked": "Wolniej…",
     "complete": "Poziom ukończony!",

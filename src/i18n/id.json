@@ -464,6 +464,7 @@
     "calmDone": "Mode santai – tanpa bintang",
     "complete": "Level selesai!",
     "found": "Ditemukan {found}/{total}",
+    "foundSoFar": "Ditemukan {found}",
     "hint": "Bantuan",
     "level": "Level {n}",
     "locked": "Pelan-pelan…",

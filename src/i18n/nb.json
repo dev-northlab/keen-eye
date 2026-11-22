@@ -464,6 +464,7 @@
     "calmDone": "Rolig modus – ingen stjerner",
     "complete": "Brettet er fullført!",
     "found": "Funnet {found}/{total}",
+    "foundSoFar": "Funnet {found}",
     "hint": "Hint",
     "level": "Brett {n}",
     "locked": "Rolig nå…",

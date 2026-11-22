@@ -108,6 +108,7 @@
   "level": {
     "level": "レベル {n}",
     "found": "見つけた {found}/{total}",
+    "foundSoFar": "見つけた {found}",
     "mistakes": "ミス：{n}",
     "locked": "ゆっくり…",
     "complete": "レベルクリア！",

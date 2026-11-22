@@ -108,6 +108,7 @@
   "level": {
     "level": "Nivelul {n}",
     "found": "Găsite {found}/{total}",
+    "foundSoFar": "Găsite {found}",
     "mistakes": "Greșeli: {n}",
     "locked": "Mai încet…",
     "complete": "Nivel terminat!",

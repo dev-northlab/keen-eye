@@ -464,6 +464,7 @@
     "calmDone": "休閒模式 — 不計星星",
     "complete": "過關了！",
     "found": "已找到 {found}/{total}",
+    "foundSoFar": "已找到 {found}",
     "hint": "提示",
     "level": "第 {n} 關",
     "locked": "慢一點…",

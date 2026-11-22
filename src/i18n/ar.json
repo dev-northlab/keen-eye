@@ -464,6 +464,7 @@
     "calmDone": "الوضع الهادئ – بلا نجوم",
     "complete": "اكتملت المرحلة!",
     "found": "وجدت {found}/{total}",
+    "foundSoFar": "وجدت {found}",
     "hint": "تلميح",
     "level": "المرحلة {n}",
     "locked": "على مهلك…",
