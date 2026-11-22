@@ -238,4 +238,19 @@
     <path d="M51 681q3.5-3 7 0t7 0" fill="none" stroke="#fff" stroke-width="2" />
     <path d="M51 690h14l-1 2h-12Z" fill="#c3ccd6" />
   </g>
+  <!-- More odd items and background things. -->
+  <g id="radio" transform="translate(55 462) scale(0.9) translate(0 0)"><g><path d="M-12 12v-14q0-12 12-12t12 12v14Z" fill="#8a5a33"/><path d="M-8 6v-8q0-8 8-8t8 8v8Z" fill="#e8d3a8"/><path d="M-4 -8v12M0 -10v14M4 -8v12" stroke="#b5814a" stroke-width="1.2"/><circle cx="-5" cy="9" r="1.8" fill="#e8d3a8"/><circle cx="5" cy="9" r="1.8" fill="#e8d3a8"/></g></g>
+  <g id="guitar" transform="translate(300 425) scale(0.7) translate(-231 -442)"><g>
+    <path d="M228 446l26-24" stroke="#8a5a33" stroke-width="5" stroke-linecap="round" />
+    <rect x="252" y="415" width="9" height="10" rx="2" fill="#3b3b4a" transform="rotate(-42 256 420)" />
+    <path d="M200 450q-4-12 8-16l8 4q8-10 16-4l-2 8q8 8 2 18q-8 12-22 10q-14-4-10-20Z" fill="#d93a3a" />
+    <path d="M208 456q8-2 14-10" stroke="#fff" stroke-width="5" stroke-linecap="round" />
+    <path d="M218 458l6-6M212 452l6-6" stroke="#222" stroke-width="2" />
+  </g></g>
+  <g transform="translate(178 520) scale(0.8) translate(0 0)"><g><path d="M-10 10V-2a10 10 0 0 1 20 0v12" fill="none" stroke="#7b8794" stroke-width="5" stroke-linecap="round"/></g></g>
+  <g transform="translate(232 700) scale(0.8) translate(0 0)"><g><path d="M-5 18v-34a5 5 0 0 1 10 0v34Z" fill="#4f8f3a"/><path d="M-5 0h-6v-10a3 3 0 0 1 6 0ZM5 6h6v-12a3 3 0 0 0-6 0Z" fill="#4f8f3a"/></g></g>
+  <g transform="translate(62 622) scale(0.8) translate(0 0)"><g><path d="M-10 -6q0-10 10-10t10 10q0 8-6 10h-8q-6-2-6-10Z" fill="#f3ead2"/><path d="M-10 -8q-12-6-14 4M10 -8q12-6 14 4" fill="none" stroke="#f3ead2" stroke-width="3"/><circle cx="-4" cy="-6" r="2.2" fill="#5a3a22"/><circle cx="4" cy="-6" r="2.2" fill="#5a3a22"/></g></g>
+  <g transform="translate(246 402) scale(0.8) translate(0 0)"><g><path d="M-6 -16h12M0 -20v4" stroke="#3b3b4a" stroke-width="2"/><rect x="-7" y="-14" width="14" height="20" rx="2" fill="#fff8d6" fill-opacity="0.85" stroke="#3b3b4a" stroke-width="2.5"/><path d="M0 2q-3-4 0-8q3 4 0 8Z" fill="#f2a33a"/><rect x="-8" y="6" width="16" height="4" fill="#3b3b4a"/></g></g>
+  <g transform="translate(442 540) scale(0.6) translate(0 0)"><g><path d="M-14 -18q-4 18 0 36h28q4-18 0-36Z" fill="#9a6b3c"/><path d="M-15 -10h30M-15 10h30" stroke="#5a3a22" stroke-width="2.5"/></g></g>
+  <g transform="translate(130 738) scale(0.8) translate(0 0)"><g><ellipse cx="0" cy="2" rx="11" ry="8" fill="#c9773a"/><circle cx="-10" cy="-5" r="5" fill="#c9773a"/><path d="M-14 -4l-4 1 4 2Z" fill="#e0a040"/><path d="M-11 -10l2-3 2 3Z" fill="#d93a3a"/><path d="M10 0q6-6 4-12" fill="none" stroke="#a85e2a" stroke-width="3"/><path d="M-3 10v5M3 10v5" stroke="#e0a040" stroke-width="2"/></g></g>
 </svg>

@@ -115,7 +115,7 @@ const resetOpen = ref(false)
       <span class="muted flip-rtl">›</span>
     </button>
     <label v-else class="row">
-      <span class="lead"><span class="ico" style="--c: #8a94a6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 5.5a4 4 0 0 0-5 5L4 16l4 4 5.5-5.5a4 4 0 0 0 5-5L16 12l-4-4Z" fill="#fff"/></svg></span>{{ $t('settings.developer') }}</span>
+      <span class="lead"><span class="ico" style="--c: #8a94a6" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 5.5a4 4 0 0 0-5 5L4 16l4 4 5.5-5.5a4 4 0 0 0 5-5L16 12l-4-4Z" fill="#fff"/></svg></span>{{ $t('settings.dev') }}</span>
       <input
         v-model="developerCode"
         class="code"

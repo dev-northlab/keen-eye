@@ -938,7 +938,6 @@
   "settings": {
     "dev": "Utveckling",
     "devOff": "Stäng av utvecklarläget",
-    "developer": "Utvecklare",
     "fullGame": "Hela spelet",
     "fullGameOpen": "Lås upp alla nivåer",
     "fullGameOwned": "Upplåst",

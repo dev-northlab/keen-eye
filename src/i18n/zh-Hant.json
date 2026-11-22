@@ -938,7 +938,6 @@
   "settings": {
     "dev": "開發",
     "devOff": "關閉開發者模式",
-    "developer": "開發者",
     "fullGame": "完整版",
     "fullGameOpen": "解鎖所有關卡",
     "fullGameOwned": "已解鎖",

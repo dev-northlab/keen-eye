@@ -65,3 +65,5 @@ would look in the Play app (the game's page and the lists it shows up in).
 - Titles name the game and what it is — no "free", "best", "#1", prices or emoji (Google Play metadata policy).
 - Keywords don't repeat words of the name or subtitle (App Store indexes them already) and name no other apps.
 - The description promises only what the game has; no reviews or rankings are quoted.
+- No text addresses children or parents (family, kids, all ages) while the Google Play target audience is 13+; see
+  CLAUDE.md.

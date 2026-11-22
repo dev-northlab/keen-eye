@@ -938,7 +938,6 @@
   "settings": {
     "dev": "Utvikling",
     "devOff": "Slå av utviklermodus",
-    "developer": "Utvikler",
     "fullGame": "Hele spillet",
     "fullGameOpen": "Lås opp alle brett",
     "fullGameOwned": "Låst opp",

@@ -938,7 +938,6 @@
   "settings": {
     "dev": "Udvikling",
     "devOff": "Slå udviklertilstand fra",
-    "developer": "Udvikler",
     "fullGame": "Hele spillet",
     "fullGameOpen": "Lås alle baner op",
     "fullGameOwned": "Låst op",

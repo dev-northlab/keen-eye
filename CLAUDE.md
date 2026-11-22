@@ -50,7 +50,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `npm run ios:sync` — web build + `cap sync ios`. iOS is built and sent to TestFlight by the Codemagic workflow
   `ios-testflight` (manual start; setup steps are at the top of `codemagic.yaml`)
 - `npm run android:sync` — web build + `cap sync android`; `npm run android:apk` — also builds the debug APK
-  (`android/app/build/outputs/apk/debug/app-debug.apk`). Gradle needs **JDK 21** in `JAVA_HOME` (here:
+  (`android/app/build/outputs/apk/debug/app-debug.apk`). `npm run android:aab` — the signed release bundle for Google Play
+  (`android/app/build/outputs/bundle/release/app-release.aab`), signed by the upload key named in `android/keystore.properties`
+  (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`; kept out of git, like the keystore itself, which lives outside the
+  project in `~/.keystores/`); raise `versionCode` in `android/app/build.gradle` before every upload. Gradle needs **JDK 21** in `JAVA_HOME` (here:
   `~/.local/share/jdks/jdk-21.0.13+9`; Studio's JDK 25 is too new for Gradle 8.14) and the SDK in `ANDROID_HOME`
   (`~/Android/Sdk`); install with `adb install -r <apk>`. Debug builds allow WebView DevTools (chrome://inspect).
 
@@ -182,7 +185,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `assets/` — music (`assets/music/`), store icon and the store page texts (`assets/store/listing/<locale>/`: Google
   Play title, short and full description, App Store subtitle and keywords; one folder per interface language, field
   limits, store language codes and the numbers of levels, languages and countries in the texts checked by `npm test` —
-  update every description when levels, modes or languages are added)
+  update every description when levels, modes or languages are added). While the Play target audience is 13+ (no
+  parental gate yet), the listings never address children or parents ("for the whole family", "kids", "safe to hand to
+  a child", "for all ages", nor such App Store keywords), or Google may require the Families program; bring family
+  wording back only after a parental gate is added and the audience includes under-13
 - The privacy policy (English + Russian) the store listings link to lives in its own public repository
   `dev-northlab/keen-eye-privacy` (local clone `../keen-eye-privacy`, one `index.html`), published by GitHub Pages at
   https://dev-northlab.github.io/keen-eye-privacy/. The game's own Pages build (`.github/workflows/pages.yml`) is only
@@ -311,7 +317,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.
-- Developer tools ("Open all levels", "Complete all levels", "Forget purchase", "Reset progress", "Reset found keys") sit in the `DevToolsDialog`, opened by the "Development" entry in Settings. It shows only in developer mode (`settings.developer`), turned on by the temporary testing code (`DEVELOPER_CODE` in `stores/settings.ts`) typed into the "Developer" code field; "Open all levels" and "Show places in levels" (the levels' red outline of all zones) work only while developer mode is on.
+- Developer tools ("Open all levels", "Complete all levels", "Forget purchase", "Reset progress", "Reset found keys") sit in the `DevToolsDialog`, opened by the "Development" entry in Settings. It shows only in developer mode (`settings.developer`), turned on by the temporary testing code (`DEVELOPER_CODE` in `stores/settings.ts`) typed into the code field of that same "Development" row (before the code the row shows the field, after it the row opens the dialog); "Open all levels" and "Show places in levels" (the levels' red outline of all zones) work only while developer mode is on.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.
 - Level modules and everything they import must stay free of browser/Vue APIs (the validator runs them in Node),
   and TS imports use explicit `.ts` extensions.

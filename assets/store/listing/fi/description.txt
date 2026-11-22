@@ -1,24 +1,28 @@
-Kaksi kuvaa näyttää samalta – mutta ne eivät ole samat. Etsi kaikki erot käsin piirretyistä kohtauksista, jotka heräävät eloon: pilvet lipuvat, veneet keinuvat aalloilla, linnut lentävät, ja osa eroista piileskelee itse liikkeessä.
+Kaksi kuvaa näyttää samalta – mutta ne eivät ole samat. Keen Eye on erojen etsintäpeli, jonka käsin piirretyt kohtaukset heräävät eloon: pilvet lipuvat, veneet keinuvat aalloilla, linnut lentävät – ja osa eroista piileskelee itse liikkeessä.
 
-Monet tasot löytyvät myös yksityiskohtaisina 3D-kuvina: vaihda elävien piirrosten ja 3D:n välillä yhdellä napautuksella.
+Monet tasot löytyvät myös yksityiskohtaisina 3D-kuvina. Vaihda elävien piirrosten ja 3D:n välillä yhdellä napautuksella.
 
 303 TASOA, 8 TAPAA PELATA
 • Maailmat – 150 tasoa maatilalla, kaupungissa, metsässä, merellä ja avaruudessa, 5–10 eroa
-• Aika – sama paikka aamulla ja illalla, kesällä ja talvella: löydä, mikä todella muuttui
-• Muisti – katso kuvaa muutama sekunti ja löydä muutokset muistinvaraisesti
+• Aika – sama paikka aamulla ja illalla, kesällä ja talvella: löydä, mikä todella muuttui – ei sitä, mitä vuodenaika teki
+• Muisti – tutki kuvaa muutama sekunti ja löydä muutokset muistinvaraisesti
 • Maailmanmatka – kuuluisia paikkoja 32 maasta, hauska tieto jokaisesta ja leima passiin jokaisesta voitosta
 • Salapoliisi – jokainen ero on johtolanka: kerää ne ja nimeä syyllinen seitsemässä tapauksessa
 • Mikä ei kuulu joukkoon – mikä ei sovi muinaiseen Egyptiin, Roomaan, viikinkiaikaan ja muihin aikakausiin
-• Pikkupoika – 3D-kuvia pikkupojan maailmasta, eikä kukaan kerro, montako eroa on
+• Pikkupoika – 3D-kohtauksia pikkupojan maailmasta, eikä kukaan kerro, montako eroa on
 • Kaksi pelaajaa samalla laitteella – kaksintaistelu, vuorotellen tai yhdessä
 
-KOKO PERHEELLE
-• Lapset ja aikuiset pelaavat yhdessä: rauhallinen tila pienimmille
-• Rauhallinen tila: ei ajastinta, ei virheitä, 3 ilmaista vihjettä joka tasolla
+PELAA OMALLA TAVALLASI
+• Tavallinen tila – pelaa kelloa vastaan ja ansaitse tähtiä nopeudesta ja tarkkuudesta
+• Rauhallinen tila – ei ajastinta, ei rangaistuksia, 3 ilmaista vihjettä joka tasolla
 • Kahden sormen zoomaus molempiin kuviin yhtä aikaa
 • Piilotetut kultaiset avaimet avaavat bonusaarrekammion
-• Vaalea ja tumma teema, musiikki ja äänet
+• Vaalea ja tumma teema, rentouttava musiikki
 • 32 kieltä
 
-EI MAINOKSIA, EI INTERNETIÄ
-Ei mainoksia eikä chatteja – pelin voi huoletta antaa lapselle. Peli toimii täysin ilman verkkoa eikä kerää mitään tietoja: edistymisesi pysyy laitteellasi. Jokaisen pelitilan ensimmäiset tasot ovat ilmaisia; yksi ostos avaa koko pelin pysyvästi, ilman tilausta. Ostos toimii kaikilla laitteillasi samalla tilillä.
+EI MAINOKSIA. EI INTERNETIÄ. EI TIETOJEN KERUUTA.
+Ei mainoksia, chatteja eikä ponnahdusikkunoita – vain sinä ja kuvat. Peli toimii täysin ilman verkkoa eikä kerää mitään tietoja: edistymisesi pysyy laitteellasi.
+
+Jokaisen pelitilan ensimmäiset tasot ovat ilmaisia. Yksi ostos avaa koko pelin pysyvästi – ilman tilausta. Se toimii kaikilla laitteillasi samalla Google-tilillä.
+
+Treenaa silmää, rentouta mieltä – kuinka tarkka sinun silmäsi on?

@@ -954,6 +954,158 @@
         "ja": "1849年、ウォルター・ハントが安全ピンの特許を取りました。",
         "ko": "1849년 월터 헌트가 옷핀의 특허를 받았습니다."
       }
+    },
+    {
+      "id": "croissant",
+      "shape": "rect",
+      "x": 75.4,
+      "y": 68.13,
+      "w": 6.8,
+      "h": 2.53,
+      "label": {
+        "en": "Croissant",
+        "ru": "Круассан",
+        "hy": "Կրուասան",
+        "de": "Croissant",
+        "fr": "Croissant",
+        "es": "Cruasán",
+        "it": "Cornetto",
+        "pt": "Croissant",
+        "nl": "Croissant",
+        "pl": "Rogalik",
+        "cs": "Croissant",
+        "ro": "Croissant",
+        "bg": "Кроасан",
+        "uk": "Круасан",
+        "el": "Κρουασάν",
+        "hu": "Croissant",
+        "sv": "Croissant",
+        "da": "Croissant",
+        "nb": "Croissant",
+        "fi": "Croissant",
+        "tr": "Kruvasan",
+        "ar": "كرواسون",
+        "hi": "क्रोइसां",
+        "id": "Croissant",
+        "ms": "Croissant",
+        "fil": "Croissant",
+        "vi": "Bánh sừng bò",
+        "th": "ครัวซองต์",
+        "zh": "羊角面包",
+        "zh-Hant": "可頌",
+        "ja": "クロワッサン",
+        "ko": "크루아상"
+      },
+      "fact": {
+        "en": "The croissant appeared in Paris bakeries only in the 19th century.",
+        "ru": "Круассан появился в парижских пекарнях только в XIX веке.",
+        "hy": "Կրուասանը Փարիզի հացատներում հայտնվել է միայն XIX դարում։",
+        "de": "Das Croissant tauchte erst im 19. Jahrhundert in Pariser Bäckereien auf.",
+        "fr": "Le croissant n'est apparu dans les boulangeries parisiennes qu'au XIXe siècle.",
+        "es": "El cruasán apareció en las panaderías de París solo en el siglo XIX.",
+        "it": "Il croissant comparve nelle panetterie di Parigi solo nel XIX secolo.",
+        "pt": "O croissant só apareceu nas padarias de Paris no século XIX.",
+        "nl": "De croissant verscheen pas in de 19e eeuw in Parijse bakkerijen.",
+        "pl": "Rogalik croissant pojawił się w paryskich piekarniach dopiero w XIX wieku.",
+        "cs": "Croissant se v pařížských pekárnách objevil až v 19. století.",
+        "ro": "Croissantul a apărut în brutăriile din Paris abia în secolul al XIX-lea.",
+        "bg": "Кроасанът се появява в парижките пекарни едва през XIX век.",
+        "uk": "Круасан з'явився в паризьких пекарнях лише в XIX столітті.",
+        "el": "Το κρουασάν εμφανίστηκε στους φούρνους του Παρισιού μόλις τον 19ο αιώνα.",
+        "hu": "A croissant csak a 19. században jelent meg a párizsi pékségekben.",
+        "sv": "Croissanten dök upp i bagerierna i Paris först på 1800-talet.",
+        "da": "Croissanten dukkede først op i bagerierne i Paris i 1800-tallet.",
+        "nb": "Croissanten dukket opp i bakeriene i Paris først på 1800-tallet.",
+        "fi": "Croissant ilmestyi pariisilaisiin leipomoihin vasta 1800-luvulla.",
+        "tr": "Kruvasan Paris fırınlarında ancak 19. yüzyılda ortaya çıktı.",
+        "ar": "ظهر الكرواسون في مخابز باريس في القرن التاسع عشر فقط.",
+        "hi": "क्रोइसां पेरिस की बेकरियों में सिर्फ़ उन्नीसवीं सदी में आया।",
+        "id": "Croissant baru muncul di toko roti Paris pada abad ke-19.",
+        "ms": "Croissant hanya muncul di kedai roti Paris pada abad ke-19.",
+        "fil": "Lumitaw ang croissant sa mga panaderya ng Paris noong ika-19 na siglo lamang.",
+        "vi": "Bánh sừng bò chỉ xuất hiện ở các tiệm bánh Paris vào thế kỷ 19.",
+        "th": "ครัวซองต์เพิ่งมีในร้านขนมปังของปารีสในคริสต์ศตวรรษที่ 19",
+        "zh": "羊角面包直到19世纪才出现在巴黎的面包店里。",
+        "zh-Hant": "可頌直到19世紀才出現在巴黎的麵包店裡。",
+        "ja": "クロワッサンがパリのパン屋に登場したのは19世紀になってからです。",
+        "ko": "크루아상은 19세기에야 파리의 빵집에 등장했습니다."
+      }
+    },
+    {
+      "id": "teapot",
+      "shape": "rect",
+      "x": 4,
+      "y": 65.2,
+      "w": 8.4,
+      "h": 3.6,
+      "label": {
+        "en": "Teapot",
+        "ru": "Заварочный чайник",
+        "hy": "Թեյաման",
+        "de": "Teekanne",
+        "fr": "Théière",
+        "es": "Tetera",
+        "it": "Teiera",
+        "pt": "Bule de chá",
+        "nl": "Theepot",
+        "pl": "Dzbanek do herbaty",
+        "cs": "Čajová konvice",
+        "ro": "Ceainic",
+        "bg": "Чайник за чай",
+        "uk": "Заварник",
+        "el": "Τσαγιέρα",
+        "hu": "Teáskanna",
+        "sv": "Tekanna",
+        "da": "Tekande",
+        "nb": "Tekanne",
+        "fi": "Teekannu",
+        "tr": "Demlik",
+        "ar": "إبريق شاي",
+        "hi": "चायदानी",
+        "id": "Teko teh",
+        "ms": "Teko teh",
+        "fil": "Tsarera",
+        "vi": "Ấm trà",
+        "th": "กาน้ำชา",
+        "zh": "茶壶",
+        "zh-Hant": "茶壺",
+        "ja": "ティーポット",
+        "ko": "찻주전자"
+      },
+      "fact": {
+        "en": "Tea reached Europe only at the start of the 17th century.",
+        "ru": "Чай попал в Европу только в начале XVII века.",
+        "hy": "Թեյը Եվրոպա է հասել միայն XVII դարի սկզբին։",
+        "de": "Tee kam erst Anfang des 17. Jahrhunderts nach Europa.",
+        "fr": "Le thé n'est arrivé en Europe qu'au début du XVIIe siècle.",
+        "es": "El té no llegó a Europa hasta principios del siglo XVII.",
+        "it": "Il tè arrivò in Europa solo all'inizio del XVII secolo.",
+        "pt": "O chá só chegou à Europa no início do século XVII.",
+        "nl": "Thee bereikte Europa pas aan het begin van de 17e eeuw.",
+        "pl": "Herbata dotarła do Europy dopiero na początku XVII wieku.",
+        "cs": "Čaj se do Evropy dostal až na začátku 17. století.",
+        "ro": "Ceaiul a ajuns în Europa abia la începutul secolului al XVII-lea.",
+        "bg": "Чаят стига до Европа едва в началото на XVII век.",
+        "uk": "Чай потрапив до Європи лише на початку XVII століття.",
+        "el": "Το τσάι έφτασε στην Ευρώπη μόλις στις αρχές του 17ου αιώνα.",
+        "hu": "A tea csak a 17. század elején jutott el Európába.",
+        "sv": "Teet kom till Europa först i början av 1600-talet.",
+        "da": "Te nåede først Europa i begyndelsen af 1600-tallet.",
+        "nb": "Te kom til Europa først tidlig på 1600-tallet.",
+        "fi": "Tee saapui Eurooppaan vasta 1600-luvun alussa.",
+        "tr": "Çay Avrupa'ya ancak 17. yüzyılın başında ulaştı.",
+        "ar": "لم يصل الشاي إلى أوروبا إلا في مطلع القرن السابع عشر.",
+        "hi": "चाय यूरोप में सत्रहवीं सदी की शुरुआत में ही पहुँची।",
+        "id": "Teh baru tiba di Eropa pada awal abad ke-17.",
+        "ms": "Teh hanya tiba di Eropah pada awal abad ke-17.",
+        "fil": "Nakarating lang ang tsaa sa Europa sa simula ng ika-17 siglo.",
+        "vi": "Trà chỉ đến châu Âu vào đầu thế kỷ 17.",
+        "th": "ชาเพิ่งมาถึงยุโรปในช่วงต้นคริสต์ศตวรรษที่ 17",
+        "zh": "茶直到17世纪初才传入欧洲。",
+        "zh-Hant": "茶直到17世紀初才傳入歐洲。",
+        "ja": "お茶がヨーロッパに伝わったのは17世紀の初めになってからです。",
+        "ko": "차는 17세기 초에야 유럽에 전해졌습니다."
+      }
     }
   ],
   "animations": [
@@ -1046,6 +1198,12 @@
       "phase": 0.4
     },
     {
+      "key": "torch",
+      "type": "blink",
+      "period": 0.9,
+      "duty": 0.85
+    },
+    {
       "key": "goose",
       "type": "sway",
       "angle": 8,
@@ -1085,5 +1243,124 @@
       ],
       "period": 1.5
     }
-  ]
+  ],
+  "redesign": {
+    "image": "levels/time-travel/redesign/castle-01.avif",
+    "width": 1696,
+    "height": 2528,
+    "items": [
+      {
+        "id": "teapot",
+        "shape": "rect",
+        "x": 4.36,
+        "y": 65.9,
+        "w": 8.02,
+        "h": 4.11
+      },
+      {
+        "id": "corn",
+        "shape": "rect",
+        "x": 5.19,
+        "y": 89.64,
+        "w": 10.97,
+        "h": 6.8
+      },
+      {
+        "id": "turkey",
+        "shape": "rect",
+        "x": 14.03,
+        "y": 73.26,
+        "w": 15.21,
+        "h": 9.49
+      },
+      {
+        "id": "watch",
+        "shape": "rect",
+        "x": 21.23,
+        "y": 54.98,
+        "w": 2.95,
+        "h": 1.9
+      },
+      {
+        "id": "telescope",
+        "shape": "rect",
+        "x": 29.48,
+        "y": 20.25,
+        "w": 8.37,
+        "h": 1.9
+      },
+      {
+        "id": "potatoes",
+        "shape": "rect",
+        "x": 38.62,
+        "y": 80.85,
+        "w": 18.87,
+        "h": 4.27
+      },
+      {
+        "id": "guitar",
+        "shape": "rect",
+        "x": 38.62,
+        "y": 54.91,
+        "w": 15.04,
+        "h": 8.23
+      },
+      {
+        "id": "ball",
+        "shape": "rect",
+        "x": 57.25,
+        "y": 94.86,
+        "w": 5.48,
+        "h": 3.4
+      },
+      {
+        "id": "chocolate",
+        "shape": "rect",
+        "x": 63.44,
+        "y": 67.96,
+        "w": 7.55,
+        "h": 2.81
+      },
+      {
+        "id": "tomatoes",
+        "shape": "rect",
+        "x": 69.16,
+        "y": 80.74,
+        "w": 9.67,
+        "h": 3.76
+      },
+      {
+        "id": "matches",
+        "shape": "rect",
+        "x": 76.65,
+        "y": 54.83,
+        "w": 5.07,
+        "h": 1.58
+      },
+      {
+        "id": "croissant",
+        "shape": "rect",
+        "x": 82.43,
+        "y": 69.15,
+        "w": 5.19,
+        "h": 1.82
+      },
+      {
+        "id": "pin",
+        "shape": "rect",
+        "x": 87.74,
+        "y": 90.98,
+        "w": 3.89,
+        "h": 1.31
+      },
+      {
+        "id": "tin-can",
+        "shape": "rect",
+        "x": 91.27,
+        "y": 50.47,
+        "w": 3.66,
+        "h": 2.06
+      }
+    ]
+  }
 }

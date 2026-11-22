@@ -254,4 +254,13 @@
     <path d="M102 726l9-6" stroke="#e8d3a8" stroke-width="2" stroke-linecap="round" />
     <circle cx="112" cy="719.5" r="2.2" fill="#d93a3a" />
   </g>
+  <!-- More odd items and background things. -->
+  <g id="sombrero" transform="translate(40 522) scale(0.9) translate(0 0)"><g><ellipse cx="0" cy="4" rx="22" ry="5" fill="#e8c35a" stroke="#c9a33f" stroke-width="1.2"/><path d="M-9 4q0-16 9-16t9 16Z" fill="#e8c35a"/><path d="M-9 1h18" stroke="#c0392b" stroke-width="2.5"/></g></g>
+  <g id="spanish-guitar" transform="translate(160 668) scale(0.8) translate(0 0)"><g><ellipse cx="0" cy="10" rx="10" ry="9" fill="#c98a45"/><ellipse cx="0" cy="-2" rx="8" ry="7" fill="#c98a45"/><circle cx="0" cy="3" r="3" fill="#3b2a1a"/><rect x="-1.5" y="-26" width="3" height="20" fill="#6b4226"/><rect x="-3" y="-31" width="6" height="6" rx="1" fill="#4a2e18"/><path d="M-1 -6v20M1 -6v20" stroke="#f3ead2" stroke-width="0.6"/></g></g>
+  <g transform="translate(362 492) scale(0.8) translate(0 0)"><g><path d="M-16 0h32l-4 12h-24Z" fill="#a88a50"/><g fill="#b0532e"><ellipse cx="-7" cy="-4" rx="5" ry="8"/><ellipse cx="5" cy="-5" rx="5" ry="8"/></g><path d="M-7 -11v14M5 -12v14" stroke="#8a3a1e" stroke-width="1"/></g></g>
+  <g transform="translate(240 362) scale(0.8) translate(0 0)"><g><path d="M-6 14q-6-18 2-30q4 14-2 30Z" fill="#2ecc71"/><path d="M2 14q0-20 10-30q0 18-10 30Z" fill="#2e86c1"/><path d="M-12 14q-8-14-6-24q8 10 6 24Z" fill="#e74c3c"/></g></g>
+  <g transform="translate(332 622) scale(0.8) translate(0 0)"><g><path d="M-12 -12h24v24h-24Z" fill="#a8743f"/><ellipse cx="0" cy="-12" rx="12" ry="4" fill="#e8d3a8"/><path d="M-12 -4l24 8M-12 4l24-8" stroke="#6b4226" stroke-width="1.5"/></g></g>
+  <g transform="translate(32 652) scale(0.8) translate(0 0)"><g><path d="M-14 0h28l-4 12h-20Z" fill="#c8a35a"/><g fill="#5a2a1a"><ellipse cx="-6" cy="-2" rx="3" ry="2"/><ellipse cx="0" cy="-4" rx="3" ry="2"/><ellipse cx="6" cy="-2" rx="3" ry="2"/><ellipse cx="-2" cy="1" rx="3" ry="2"/><ellipse cx="4" cy="1" rx="3" ry="2"/></g></g></g>
+  <g transform="translate(300 362) scale(0.8) translate(0 0)"><g><path d="M-12 12q-8-14 2-24h20q10 10 2 24Z" fill="#b5532f"/><rect x="-8" y="-16" width="16" height="5" rx="2" fill="#a0462a"/><path d="M-12 0h24" stroke="#ffd23f" stroke-width="2"/></g></g>
+  <g transform="translate(172 742) scale(0.8) translate(0 0)"><g><path d="M-6 12v-12M2 12v-16M8 12v-10" stroke="#4f8f3a" stroke-width="2"/><circle cx="-6" cy="-2" r="4" fill="#e05a8a"/><circle cx="2" cy="-6" r="4" fill="#f2c14e"/><circle cx="8" cy="0" r="4" fill="#9b59b6"/></g></g>
 </svg>
