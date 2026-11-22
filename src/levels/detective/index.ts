@@ -2,6 +2,7 @@
 // from 501 with chapter 'detective' (`DETECTIVE_CHAPTER` in ../chapters.ts), played by LevelView and
 // listed by case (DetectiveView, CaseView); the cases themselves are in cases.ts.
 import type { Level } from '../../engine/types.ts'
+import { CASES } from './cases.ts'
 import level501 from './level-501.ts'
 import level502 from './level-502.ts'
 import level503 from './level-503.ts'
@@ -38,7 +39,10 @@ import level533 from './level-533.ts'
 import level534 from './level-534.ts'
 import level535 from './level-535.ts'
 
-export const detectiveLevels: Level[] = [level501, level502, level503, level504, level505, level506, level507, level508, level509, level510, level511, level512, level513, level514, level515, level516, level517, level518, level519, level520, level521, level522, level523, level524, level525, level526, level527, level528, level529, level530, level531, level532, level533, level534, level535]
+const byId: Level[] = [level501, level502, level503, level504, level505, level506, level507, level508, level509, level510, level511, level512, level513, level514, level515, level516, level517, level518, level519, level520, level521, level522, level523, level524, level525, level526, level527, level528, level529, level530, level531, level532, level533, level534, level535]
 
 /** The scenes of a case, in play order. */
-export const caseLevels = (caseId: string) => detectiveLevels.filter((l) => l.detective!.case === caseId)
+export const caseLevels = (caseId: string) => byId.filter((l) => l.detective!.case === caseId)
+
+/** All scenes in play order: case after case as `CASES` lists them, so "The missing chickens" (531–535) opens first. */
+export const detectiveLevels: Level[] = CASES.flatMap((c) => caseLevels(c.id))

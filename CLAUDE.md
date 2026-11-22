@@ -125,8 +125,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   by `DetectiveView` (`/detective`) and `CaseView` (`/detective/:case`: story, scenes, notebook, naming the culprit; solved
   cases in `progress.solvedCases`, wrong accusations in `progress.caseGuesses`: 3 stars on the first try, one less per miss, `caseStars`;
   suspects crossed out as a note in `progress.struckSuspects`; `DetectiveCase.hard` (516–530): a miss names no clue and
-  no clue fits the culprit alone, `docs/detective-difficulty.md`); only "The missing chickens" is free (`Chapter.free` ranges; a free case opens
-  without the case before it, `progress.isReached`), the rest need the purchase;
+  no clue fits the culprit alone, `docs/detective-difficulty.md`); only "The missing chickens" is free (`Chapter.free` ranges), the rest need the purchase;
+  `detectiveLevels` runs case after case in the order of `CASES`, so it opens first and each later case follows the
+  last scene of the one before (`progress.isReached`);
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
   as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.avif`)
