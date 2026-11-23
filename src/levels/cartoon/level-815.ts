@@ -1,9 +1,9 @@
 // Cartoon "The bamboo catapult" (docs/cartoon-mode.md), made like 812: a 20 s story in a garden with a pagoda, told by
 // a camera. A panda jumps for the leafy top of a bamboo stalk, its weight bends the stalk down to the ground and it
 // munches away — until it reaches for one leaf too many, lets its feet go, and the stalk springs up and flings it
-// over the koi pond into a heap of maple leaves (poof). Dazed but still holding the leafy top, it is about to eat
-// it when a red panda sneaks up, snatches the leaves and runs up the maple; the panda looks at the bare stick in its
-// paw — and chews that, content. Twelve differences: two hard (a bell under the pagoda's eave, a baluster of the
+// high over the garden — splash — into the koi pond. It sits there up to its chest, a lily pad on its head, dazed but
+// still holding the leafy top up, when a red panda creeps along the bridge above, leans down, snatches the leaves and
+// runs up the maple; the panda looks at the bare stick in its paw — and chews that, content. Twelve differences: two hard (a bell under the pagoda's eave, a baluster of the
 // bridge), three events of B (a koi jumping, the crane on one leg, a dragonfly on the lantern).
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
@@ -29,14 +29,14 @@ const camera: CameraKey[] = [
   // Flung over the pond.
   { t: 7.5, x: 150, y: 230, w: 1000, ease: 'inOut' },
   { t: 9.75, x: 400, y: 240, w: 1000, ease: 'step' },
-  // Poof, dazed in the leaves; the red panda sneaks up.
-  { t: 9.8, x: 860, y: 560, w: 400, ease: 'linear' },
-  { t: 13.5, x: 870, y: 560, w: 400, ease: 'step' },
-  { t: 13.55, x: 880, y: 520, w: 460, ease: 'linear' },
-  { t: 16.4, x: 870, y: 520, w: 460, ease: 'step' },
-  // The leaves up the maple, the bare stick, chewed happily.
-  { t: 16.45, x: 880, y: 500, w: 480 },
-  { t: 19.95, x: 890, y: 505, w: 470, ease: 'step' },
+  // Splash: into the pond, a lily pad on its head; the red panda creeps along the bridge and snatches the leaves.
+  { t: 9.8, x: 510, y: 600, w: 420, ease: 'linear' },
+  { t: 13.5, x: 516, y: 600, w: 420, ease: 'step' },
+  { t: 13.55, x: 580, y: 560, w: 520, ease: 'linear' },
+  { t: 16.4, x: 576, y: 560, w: 520, ease: 'step' },
+  // The leaves up the maple, the bare stick chewed happily in the pond; on to the pagoda.
+  { t: 16.45, x: 580, y: 525, w: 600, ease: 'inOut' },
+  { t: 19.95, x: 840, y: 525, w: 600, ease: 'step' },
 ]
 
 /** Shown in these intervals, hidden the rest of the loop (cuts between drawings). */
@@ -80,6 +80,9 @@ const FLING_TOP = topAt(STALK_TURN[6])
 
 /** The panda's feet, sitting in the bamboo at first. */
 const PANDA: [number, number] = [250, 790]
+/** Where it sits in the koi pond, up to its chest (offset of its feet): between the lotus and the frog. */
+const POND_X = 470
+const POND_Y = 56
 const HANG: [number, number] = [7.8 - 2.55, 7.8]
 const pandaKeys: Keyframe[] = [
   { t: 0, x: 0, y: 0 },
@@ -87,13 +90,14 @@ const pandaKeys: Keyframe[] = [
   { t: 4.95, x: 24, y: 0, ease: 'out' },
   // Up to the top of the stalk (the hanging panda takes over there).
   { t: HANG[0], x: REST_TOP[0] - 250, y: REST_TOP[1] + 150 - 790, ease: 'step' },
-  // Flung: from the stalk's top over the pond into the leaves.
+  // Flung: from the stalk's top up over the garden and down — splash — into the koi pond.
   { t: HANG[1], x: FLING_TOP[0] - 250, y: FLING_TOP[1] + 150 - 790, ease: 'out' },
-  { t: 8.75, x: 540, y: -400, ease: 'in' },
-  { t: 9.75, x: 760, y: 40, ease: 'step' },
-  { t: 9.8, x: 760, y: 0, ease: 'inOut' },
-  { t: 10.6, y: 4, ease: 'inOut' },
-  { t: 11.4, y: 0, ease: 'inOut' },
+  { t: 8.75, x: 400, y: -400, ease: 'in' },
+  { t: 9.75, x: POND_X, y: POND_Y + 24, ease: 'step' },
+  { t: 9.8, x: POND_X, y: POND_Y + 24, ease: 'out' },
+  { t: 10.1, y: POND_Y, ease: 'inOut' },
+  { t: 10.9, y: POND_Y + 4, ease: 'inOut' },
+  { t: 11.7, y: POND_Y, ease: 'inOut' },
   { t: 19.95, ease: 'step' },
 ]
 
@@ -101,18 +105,24 @@ const pandaKeys: Keyframe[] = [
 const PILE: [number, number] = [1010, 800]
 /** The red panda's feet: by the maple, facing the heap. */
 const RED: [number, number] = [1100, 795]
+/** Feet positions up the bridge's arch (offsets from RED), from its foot to above the panda. */
+const UP_BRIDGE: [number, number][] = [[-216, -23], [-240, -44], [-280, -74], [-315, -93]]
 const redKeys: Keyframe[] = [
-  { t: 0, x: 0, y: 0, sx: 1, sy: 1 },
+  { t: 0, x: 0, y: 0, sx: 1, sy: 1, rot: 0 },
   { t: 13.6, ease: 'inOut' },
-  { t: 14.3, x: -36, y: 0, ease: 'out' },
-  // Up on its hind legs: the leaves.
-  { t: 14.45, sy: 1.15, ease: 'inOut' },
-  { t: 14.65, sy: 1, sx: 1, ease: 'step' },
-  // Off to the maple and up its trunk.
-  { t: 14.7, sx: -1, ease: 'linear' },
-  { t: 15.05, x: 0, ease: 'step' },
-  { t: 15.1, sx: 1, ease: 'out' },
-  { t: 15.8, x: -40, y: -103 },
+  // Across to the bridge and up its arch, creeping.
+  { t: 14.05, x: UP_BRIDGE[0][0], y: UP_BRIDGE[0][1], ease: 'linear' },
+  ...UP_BRIDGE.slice(1).map(([x, y], i) => ({ t: 14.2 + i * 0.15, x, y, ease: 'linear' as const })),
+  // Leans down over the rail: snatch.
+  { t: 14.55, rot: 0, ease: 'in' },
+  { t: 14.7, rot: -34, y: UP_BRIDGE[3][1] + 10, ease: 'out' },
+  { t: 14.85, rot: 0, y: UP_BRIDGE[3][1], sx: 1, ease: 'step' },
+  // Off down the bridge, to the maple and up its trunk.
+  { t: 14.9, sx: -1, ease: 'linear' },
+  ...UP_BRIDGE.slice(0, 3).reverse().map(([x, y], i) => ({ t: 15 + i * 0.12, x, y, ease: 'linear' as const })),
+  { t: 15.55, x: 0, y: 0, ease: 'step' },
+  { t: 15.6, sx: 1, ease: 'out' },
+  { t: 16.2, x: -40, y: -103 },
   { t: 19.95, ease: 'step' },
 ]
 
@@ -260,16 +270,26 @@ export default svgLevel({
     }
     let pileFront = `<path d="M${kx - 66} ${ky + 2}q66-38 132 0q-66 22-132 0z" fill="#d9442e" ${Ow(1.8)}/>`
     for (let i = 0; i < 12; i++) pileFront += mapleLeaf(kx - 52 + i * 9, ky - 6 - (i % 3) * 5 + Math.abs(i - 6) * 2, i * 37, LEAF_COLORS[(i + 1) % LEAF_COLORS.length], 1.05)
-    // Poof: leaves bursting out as the panda lands, a starburst.
+    // SPLASH: a fountain of drops and a starburst as the panda lands in the pond.
+    const SPLASH: [number, number] = [720, 826]
+    const [wx, wy] = SPLASH
     let burst = ''
-    for (let i = 0; i < 14; i++) {
-      const dxu = Math.round((rand() - 0.5) * 180)
-      const up = Math.round(60 + rand() * 90)
-      burst += once([{ t: 0, x: 0, y: 0, rot: 0, o: 0, ease: 'step' }, { t: 9.75, o: 1, ease: 'out' }, { t: 10.2, x: dxu, y: -up, rot: 200, ease: 'in' }, { t: 11.3, x: dxu * 1.4, y: 14, rot: 460, o: 1, ease: 'step' }, { t: 11.35, o: 0, ease: 'step' }],
-        [kx, ky - 10], mapleLeaf(kx, ky - 10, 0, LEAF_COLORS[i % LEAF_COLORS.length], 1.2))
+    for (let i = 0; i < 16; i++) {
+      const dxu = Math.round((i - 7.5) * 16 + (rand() - 0.5) * 10)
+      const up = Math.round(70 + rand() * 90)
+      burst += once([{ t: 0, x: 0, y: 0, o: 0, ease: 'step' }, { t: 9.75, o: 1, ease: 'out' }, { t: 10.15, x: dxu, y: -up, ease: 'in' }, { t: 10.75, x: dxu * 1.5, y: 8, o: 1, ease: 'step' }, { t: 10.8, o: 0, ease: 'step' }],
+        SPLASH, `<path d="M${wx} ${wy - 8}q5 7 0 11q-5-4 0-11z" fill="#bfe8f5" ${Ow(1.2)}/>`)
     }
-    burst += once([{ t: 0, sx: 0.3, sy: 0.3, o: 0, ease: 'step' }, { t: 9.75, o: 1, ease: 'out' }, { t: 9.9, sx: 1.15, sy: 1.15, ease: 'inOut' }, { t: 10.1, sx: 1, sy: 1, o: 1, ease: 'step' }, { t: 10.15, o: 0, ease: 'step' }], [kx, ky - 30],
-      `<path d="M${kx} ${ky - 84}l10 22l22-10l-10 22l24 8l-24 8l10 22l-22-10l-10 22l-10-22l-22 10l10-22l-24-8l24-8l-10-22l22 10z" fill="#ffe8a8" ${Ow(1.8)}/>`)
+    burst += once([{ t: 0, sx: 0.3, sy: 0.3, o: 0, ease: 'step' }, { t: 9.75, o: 1, ease: 'out' }, { t: 9.9, sx: 1.15, sy: 1.15, ease: 'inOut' }, { t: 10.1, sx: 1, sy: 1, o: 1, ease: 'step' }, { t: 10.15, o: 0, ease: 'step' }], [wx, wy - 30],
+      `<path d="M${wx} ${wy - 84}l10 22l22-10l-10 22l24 8l-24 8l10 22l-22-10l-10 22l-10-22l-22 10l10-22l-24-8l24-8l-10-22l22 10z" fill="#e8f7ff" ${Ow(1.8)}/>`)
+    burst += once([{ t: 0, sx: 0.2, sy: 0.2, o: 0, ease: 'step' }, { t: 9.78, o: 1, ease: 'out' }, { t: 10.4, sx: 1, sy: 1, o: 0 }], SPLASH,
+      `<path d="M${wx - 50} ${wy}q-6-50 14-70M${wx + 50} ${wy}q6-50-14-70M${wx - 24} ${wy - 4}q-2-60 8-84M${wx + 24} ${wy - 4}q2-60-8-84" fill="none" stroke="#bfe8f5" stroke-width="9" stroke-linecap="round"/>`)
+    // The water closing over the panda's lower half, rings round it while it sits there.
+    const waterline =
+      once(showIn([9.8, LOOP]), SPLASH,
+        `<ellipse cx="${wx}" cy="${wy + 18}" rx="46" ry="14" fill="url(#c15-water)"/>` +
+          [0, 0.9].map((phase) => anim({ type: 'keys', period: 1.8, phase, keys: [{ t: 0, sx: 0.8, sy: 0.8, o: 0.9 }, { t: 1.8, sx: 1.4, sy: 1.4, o: 0 }], pivot: [wx, wy + 8] },
+            `<ellipse cx="${wx}" cy="${wy + 8}" rx="48" ry="9" fill="none" stroke="#fff" stroke-width="2.4"/>`)).join(''))
 
     // --- The koi pond: the bridge (a baluster fewer in B: a hard one), lotus (one flower pink in A, white in B), a
     // frog on a pad (A only), koi, mandarin ducks, the crane (on one leg in B), stone lanterns (the left one's knob in
@@ -403,7 +423,7 @@ export default svgLevel({
     const pandaPile =
       `<ellipse cx="${px}" cy="${py - 24}" rx="38" ry="34" fill="url(#c15-fur)" ${Ow(2)}/><path d="M${px - 36} ${py - 36}q36-22 72 0q-4 12-10 16q-26-12-52 0q-6-4-10-16z" fill="#2b2b3a"/>` +
       once(showIn([9.75, 16.2]), PANDA, limb(px + 28, py - 36, px + 40, py - 70) + stick(px + 40, py - 80, 10) +
-        once(showIn([9.75, 14.6]), PANDA, leafyTop(px + 43, py - 118))) +
+        once(showIn([9.75, 14.7]), PANDA, leafyTop(px + 43, py - 118))) +
       once(showIn([16.2, LOOP]), PANDA,
         anim({ type: 'keys', period: 0.6, keys: [{ t: 0, rot: 0 }, { t: 0.3, rot: -6, ease: 'inOut' }], pivot: [px + 20, py - 40] },
           stick(px + 8, py - 70, 70) + limb(px + 28, py - 36, px + 10, py - 62))) +
@@ -416,6 +436,8 @@ export default svgLevel({
         once(showIn([9.75, 14.6]), PANDA, `<path d="M${hx - 6} ${hyy + 16}q3 3 6 0q3 3 6 0" fill="none" stroke="${INK}" stroke-width="1.6"/>`) +
           once(showIn([14.6, 16.2]), PANDA, `<ellipse cx="${hx}" cy="${hyy + 18}" rx="4" ry="5" fill="#7a2a2a"/>`) +
           once(showIn([16.2, LOOP]), PANDA, anim({ type: 'keys', period: 0.3, keys: [{ t: 0, sy: 1 }, { t: 0.15, sy: 0.4, ease: 'inOut' }], pivot: [hx, hyy + 16] }, `<ellipse cx="${hx}" cy="${hyy + 16}" rx="5" ry="3" fill="#7a2a2a"/>`))) +
+      // A lily pad landed on its head in the splash.
+      `<path d="M${hx - 26} ${hyy - 26}q26-16 52 0q-26 10-52 0z" fill="#5aa845" ${Ow(1.8)}/><path d="M${hx} ${hyy - 28}l12 5" stroke="#468a35" stroke-width="1.4"/>` +
       // Stars circling the dazed head.
       once(showIn([9.9, 12.4]), PANDA, anim({ type: 'rotate', pivot: [hx, hyy - 40], period: 1.1 },
         [0, 120, 240].map((a) => `<path transform="rotate(${a} ${hx} ${hyy - 40})" d="M${hx} ${hyy - 58}l2 4l4 1l-3 3l1 4l-4-2l-4 2l1-4l-3-3l4-1z" fill="#ffd23f" ${Ow(1)}/>`).join('')))
@@ -445,8 +467,8 @@ export default svgLevel({
         `<circle cx="${rx - 17}" cy="${ry - 34}" r="13" fill="url(#c15-red)" ${Ow(1.8)}/>` +
         `<path d="M${rx - 28} ${ry - 32}q11 12 22 0q-4 8-11 8t-11-8z" fill="#fff4e8"/><path d="M${rx - 25} ${ry - 40}h5M${rx - 14} ${ry - 40}h5" stroke="#fff4e8" stroke-width="3" stroke-linecap="round"/>` +
         `<circle cx="${rx - 22}" cy="${ry - 35}" r="2" fill="${INK}"/><circle cx="${rx - 12}" cy="${ry - 35}" r="2" fill="${INK}"/><ellipse cx="${rx - 17}" cy="${ry - 29}" rx="3" ry="2.2" fill="${INK}"/>` +
-        once(showIn([14.6, LOOP]), RED, `<g transform="rotate(-20 ${rx - 30} ${ry - 30})">${leafyTop(rx - 30, ry - 30)}</g>`) +
-        once(showIn([16, LOOP]), RED, anim({ type: 'keys', period: 0.3, keys: [{ t: 0, sy: 1 }, { t: 0.15, sy: 0.4, ease: 'inOut' }], pivot: [rx - 17, ry - 26] }, `<ellipse cx="${rx - 17}" cy="${ry - 26}" rx="3" ry="2" fill="#7a2a2a"/>`)))
+        once(showIn([14.7, LOOP]), RED, `<g transform="rotate(-20 ${rx - 30} ${ry - 30})">${leafyTop(rx - 30, ry - 30)}</g>`) +
+        once(showIn([16.3, LOOP]), RED, anim({ type: 'keys', period: 0.3, keys: [{ t: 0, sy: 1 }, { t: 0.15, sy: 0.4, ease: 'inOut' }], pivot: [rx - 17, ry - 26] }, `<ellipse cx="${rx - 17}" cy="${ry - 26}" rx="3" ry="2" fill="#7a2a2a"/>`)))
 
     return (
       `<defs>${NATURE_DEFS}${JUNGLE_DEFS}` +
@@ -486,8 +508,9 @@ export default svgLevel({
       stalkShadow +
       stalk +
       redPanda +
-      panda +
       pileFront +
+      panda +
+      waterline +
       burst +
       falling +
       `<rect width="${W}" height="${H}" fill="url(#c15-sunlight)"/>`
