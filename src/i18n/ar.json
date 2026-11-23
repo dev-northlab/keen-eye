@@ -857,7 +857,8 @@
     "cartoonFishing": "رحلة صيد",
     "cartoonSnowman": "أنف رجل الثلج",
     "cartoonHedgehog": "The hedgehog's apple",
-    "cartoonBearHoney": "The bear and the honey"
+    "cartoonBearHoney": "The bear and the honey",
+    "cartoonSandcastle": "The sandcastle"
   },
   "map": {
     "level": "المرحلة {n}",

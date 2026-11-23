@@ -45,7 +45,8 @@ only for a while (`Difference.during`), a tap on their place at other times is a
   hills, warm sunlight over all.
 - **Levels so far**: 801 "Gone fishing" (free: grandpa, a heron and a boot by a lake), 802 "The snowman's nose"
   (winter: a hare steals the carrot, the dog crashes into the snowman) and 803 "The hedgehog's apple" (autumn: the
-  apple on its spines, an acorn, a heap of leaves), 10 differences each; 811 "Cat at the pond", 812 "The stolen pie",
+  apple on its spines, an acorn, a heap of leaves) and 804 "The sandcastle" (a beach: a seagull steals the crab's flag,
+  a wave flattens the castle; `palmTree`, `BEACH_DEFS`), 10 differences each; 811 "Cat at the pond", 812 "The stolen pie",
   813 "The bear and the honey" (spring: a bear steals honey from a hive, the swarm chases him into the pond; the
   spring trees `oakTree`, `blossomTree`, `willowTree`, `lilacBush` of shapes.ts, gradients `SPRING_DEFS`), 12 each.
   Every new cartoon brings trees and animals not drawn in the earlier ones.
@@ -59,7 +60,7 @@ only for a while (`Difference.during`), a tap on their place at other times is a
   into `cartoon/index.ts`, the store texts of every language updated, the titles translated.
 - **Order**: the first ten cartoons have 10 differences (ids 801–810), the ones with 12 come after them (811 on);
   a new cartoon of 10 goes into the next free id of 804–810, one of 12 after the last of 811 on. `ranges` of the
-  chapter list only the ids drawn so far (`[[801, 803], [811, 813]]`), so the count on its card stays true.
+  chapter list only the ids drawn so far (`[[801, 804], [811, 813]]`), so the count on its card stays true.
 - **Differences**: 12 (difficulty.ts; the first ten 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.

@@ -402,3 +402,44 @@ export const keenOwl = (x: number, y: number, s: number, blink: (m: string) => s
     `</g>`
   )
 }
+
+/** Gradients of the beach things below (palm): put them in the `<defs>` of a level that draws them. */
+export const BEACH_DEFS =
+  `<linearGradient id="ke-palm" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9be06a"/><stop offset="0.6" stop-color="#3fa34a"/><stop offset="1" stop-color="#23703a"/></linearGradient>` +
+  `<linearGradient id="ke-palm-bark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6236"/><stop offset="0.6" stop-color="#b98b52"/><stop offset="1" stop-color="#d9ae72"/></linearGradient>`
+
+/**
+ * A coconut palm standing on (x, y), `s` times its size, its ringed trunk bending to the right (`lean` −1: left);
+ * `crown` gets the top of the trunk and the fronds (a level adds its coconuts there).
+ */
+export const palmTree = (x: number, y: number, s: number, crown: Crown, lean = 1, coconuts = '') => {
+  const k = (n: number) => Math.round(n * s * 10) / 10
+  const tx = Math.round(x + lean * k(40))
+  const ty = Math.round(y - k(210))
+  let rings = ''
+  for (let i = 1; i < 9; i++) {
+    const f = i / 9
+    const rx = Math.round(x + lean * k(40) * f * f)
+    const ry = Math.round(y - k(210) * f)
+    rings += `<path d="M${rx - k(8)} ${ry}q${k(8)} ${k(5)} ${k(16)} 0" fill="none" stroke="#6e4a26" stroke-width="${k(2)}" stroke-linecap="round"/>`
+  }
+  let fronds = ''
+  const angles = [-170, -140, -105, -70, -35, -8, 20, 160]
+  for (const [i, a] of angles.entries()) {
+    const r = (a * Math.PI) / 180
+    const len = k(i % 2 ? 92 : 80)
+    const ex = Math.round(tx + Math.cos(r) * len)
+    const ey = Math.round(ty + Math.sin(r) * len * 0.55 + k(Math.abs(Math.cos(r)) * 36))
+    const mx = Math.round((tx + ex) / 2)
+    const my = Math.round((ty + ey) / 2 - k(26))
+    fronds +=
+      `<path d="M${tx} ${ty}Q${mx} ${my - k(12)} ${ex} ${ey}Q${mx} ${my + k(14)} ${tx} ${ty}z" fill="url(#ke-palm)" ${Ow(1.8)}/>` +
+      `<path d="M${tx} ${ty}Q${mx} ${my} ${ex} ${ey}" fill="none" stroke="#23703a" stroke-width="${k(1.6)}"/>`
+  }
+  return (
+    groundShadow(x + lean * k(30), y, k(80), k(12)) +
+    `<path d="M${x - k(11)} ${y}Q${x + lean * k(4)} ${y - k(120)} ${tx - k(6)} ${ty}h${k(12)}Q${x + lean * k(22)} ${y - k(110)} ${x + k(11)} ${y}z" fill="url(#ke-palm-bark)" ${O}/>` +
+    rings +
+    crown([tx, ty], fronds + coconuts)
+  )
+}
