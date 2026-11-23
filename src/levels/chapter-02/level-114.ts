@@ -1,5 +1,5 @@
 // Motion differences: one string-light bulb blinks only on picture B; the hanging scale pan swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level114Redesign } from './level-114-redesign.ts'
 import { awning, ball, building, coffeeCup, dog, newspaperBox, person, scooter, shoppingBag } from './shapes.ts'
@@ -111,6 +111,21 @@ export default svgLevel({
       newspaperBox(450, 400) +
       coffeeCup(660, 465) +
       scooter(770, 482) +
+      // A busier market, the same in both pictures: flower boxes on the facades, a pigeon on an awning, a sparrow
+      // on a stall post, a cat by the stalls, a bin, a bag, a pigeon and a coffee cup on the paving, newspapers.
+      decor({ anim }, [
+        ['flowerBox', 150, 140, '#b38cff'],
+        ['flowerBox', 290, 140, '#ff006e'],
+        ['flowerBox', 680, 140, '#ffd23f'],
+        ['pigeon', 470, 150],
+        ['sparrow', 205, 150],
+        ['cat', 380, 345, '#9aa5ad'],
+        ['bin', 30, 494, '#2a9d8f'],
+        ['shoppingBag', 230, 470, '#ff9f43'],
+        ['pigeon', 560, 482],
+        ['coffeeCup', 522, 496],
+        ['newspapers', 775, 372],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 249, 217, '#ffb703'],

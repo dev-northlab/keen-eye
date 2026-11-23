@@ -1,5 +1,5 @@
 // Motion differences: the sparkle above the nebula twinkles only on picture B; the pulsar on the right spins faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level146Redesign } from './level-146-redesign.ts'
 import { asteroid, comet, helmet, planet, probe, rocket, satellite, sparkle, star, starField } from './shapes.ts'
@@ -69,6 +69,20 @@ export default svgLevel({
       rocket(150, 345, '#f1f1f1', '#8ac926', 0.35) +
       satellite(700, 330) +
       helmet(320, 460) +
+      // A busier nebula, the same in both pictures: a UFO, asteroids, a probe, planets, stars, a sparkle and a lost
+      // wrench among the clouds of gas.
+      decor({ anim }, [
+        ['ufo', 360, 40],
+        ['asteroid', 780, 470],
+        ['asteroid', 180, 250],
+        ['probe', 560, 450],
+        ['planet', 40, 200, '#ffd23f'],
+        ['ringPlanet', 280, 470, '#4dabf7'],
+        ['spaceStar', 240, 320, '#b38cff'],
+        ['spaceStar', 640, 40, '#ff6b8b'],
+        ['sparkle', 620, 250],
+        ['wrench', 470, 460],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['planet', 51, 321, '#ff6b8b'],

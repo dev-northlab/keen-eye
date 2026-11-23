@@ -1,6 +1,6 @@
 // Motion differences: the porch lantern swings only on picture B; one firefly by the doghouse blinks only on B.
 import { bird, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { milkCan, sheep, stones, wheelbarrow } from '../shapes.ts'
 import { level110Redesign } from './level-110-redesign.ts'
@@ -137,6 +137,23 @@ export default svgLevel({
       wheelbarrow(340, 345) +
       stones(565, 478) +
       bird(656, 399) +
+      // A busier night, the same in both pictures: sky lanterns, more stars and a second bat in the sky, an owl on
+      // the clothesline post, fireflies, a fox and a hedgehog out in the dark.
+      decor({ anim }, [
+        ['skyLantern', 150, 62],
+        ['skyLantern', 560, 40],
+        ['skyLantern', 760, 92],
+        ['star', 190, 30],
+        ['star', 420, 30],
+        ['star', 776, 24],
+        ['bat', 722, 150],
+        ['owl', 440, 212],
+        ['firefly', 160, 372],
+        ['firefly', 420, 442],
+        ['firefly', 760, 256],
+        ['fox', 36, 496],
+        ['hedgehog', 380, 472],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 493, 476],

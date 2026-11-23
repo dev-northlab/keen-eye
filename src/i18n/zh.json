@@ -204,8 +204,6 @@
     "title": "设置",
     "language": "语言",
     "systemLanguage": "跟随系统",
-    "reduceMotion": "减弱动画",
-    "reduceMotionHint": "画面动得更慢、更柔和",
     "dev": "开发",
     "unlockAll": "完成所有关卡",
     "resetProgress": "重置进度",
@@ -220,6 +218,7 @@
     "fullGameOpen": "解锁所有关卡",
     "resetPurchaseCache": "忘记购买（缓存）",
     "resetPurchaseStore": "忘记购买（包括“商店”）",
+    "devBenchmark": "动画测试",
     "devOff": "关闭开发者模式"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "侦探故事",
     "tinyBoy": "小男孩",
     "treasury": "藏宝室",
-    "test": "测试关卡"
+    "test": "测试关卡",
+    "cartoon": "动画片"
   },
   "levelTitles": {
     "memoryFlowerShop": "花店",
@@ -604,7 +604,37 @@
     "autumnLeaves": "秋天的落叶",
     "christmasMorning": "圣诞节的早晨",
     "sunnyStreet": "阳光街道",
-    "gardenGate": "花园门口"
+    "gardenGate": "花园门口",
+    "cartoonCatPond": "池塘边的猫",
+    "cartoonDogPie": "被偷的馅饼",
+    "cartoonFishing": "去钓鱼",
+    "cartoonSnowman": "雪人的鼻子",
+    "cartoonHedgehog": "刺猬的苹果",
+    "cartoonBearHoney": "熊和蜂蜜",
+    "cartoonSandcastle": "沙堡",
+    "cartoonBananaPeel": "香蕉皮",
+    "cartoonRunawayEgg": "逃跑的蛋",
+    "cartoonNightWatch": "守夜",
+    "cartoonRunawayCheese": "逃跑的奶酪",
+    "cartoonPearl": "珍珠",
+    "cartoonPenguinSlide": "企鹅滑梯",
+    "cartoonMirage": "海市蜃楼",
+    "cartoonBambooCatapult": "竹子弹弓",
+    "cartoonFlamingo": "单脚站的火烈鸟",
+    "cartoonJoey": "小袋鼠的育儿袋",
+    "cartoonChimneySweep": "扫烟囱",
+    "cartoonSnailRace": "蜗牛赛跑",
+    "cartoonBeaverDam": "河狸的水坝",
+    "cartoonWindmill": "风车转转转",
+    "cartoonRainyDay": "下雨天",
+    "cartoonDragonSneeze": "龙打喷嚏",
+    "cartoonShortArms": "小短手",
+    "cartoonCircusSeal": "马戏团的海豹",
+    "cartoonBalloonGoat": "热气球上的山羊",
+    "cartoonCarrotTug": "胡萝卜拔河",
+    "cartoonLastCarriage": "最后一节车厢",
+    "cartoonMoonPicnic": "月球野餐",
+    "cartoonCakeHeist": "蛋糕大盗"
   },
   "mode": {
     "label": "模式",
@@ -1097,5 +1127,9 @@
     "tag": "奖励",
     "lockedHint": "先找到所有金钥匙——它们藏在每个世界和每种模式的关卡里。然后宝库就会打开！",
     "congrats": "你是最细心的玩家！"
+  },
+  "cartoonMode": {
+    "task": "在动画片里找不同",
+    "rules": "两部动画片同时播放同一个有趣的故事。有些不同一直都在，有些只出现一瞬间——请仔细看。用两根手指放大：你看的时候画面不会跑开。"
   }
 }

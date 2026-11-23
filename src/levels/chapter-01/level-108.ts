@@ -1,7 +1,7 @@
 // Motion differences: a wasp by the basket hovers faster on picture B; a cherry pair swings only on B.
 import { person } from '../chapter-02/shapes.ts'
 import { bird, butterfly, hedgehog, mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cloud, grass, snail } from '../shapes.ts'
 import { level108Redesign } from './level-108-redesign.ts'
@@ -105,6 +105,18 @@ export default svgLevel({
       snail(675, 490) +
       butterfly(580, 330) +
       stump(300, 395) +
+      // A busier orchard, the same in both pictures: a balloon and a swallow in the sky, a rabbit under the apple
+      // tree, a squirrel by the cherry tree, a gnome, a dragonfly, a sparrow on the bench, a basket of cherries.
+      basket(764, 496, '#c1121f') +
+      decor({ anim }, [
+        ['hotAirBalloon', 520, 40],
+        ['swallow', 60, 30],
+        ['rabbit', 210, 374],
+        ['squirrel', 770, 334],
+        ['gnome', 650, 410],
+        ['dragonfly', 560, 412],
+        ['sparrow', 720, 420],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ladybug', 52, 359],

@@ -204,8 +204,6 @@
     "title": "Налаштування",
     "language": "Мова",
     "systemLanguage": "Як у системі",
-    "reduceMotion": "Менше анімації",
-    "reduceMotionHint": "Сцени рухаються повільніше й м’якше",
     "dev": "Розробка",
     "unlockAll": "Пройти всі рівні",
     "resetProgress": "Скинути прогрес",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Відкрити всі рівні",
     "resetPurchaseCache": "Забути покупку (кеш)",
     "resetPurchaseStore": "Забути покупку (і в «магазині»)",
+    "devBenchmark": "Тест анімації",
     "devOff": "Вимкнути режим розробника"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Детективна історія",
     "tinyBoy": "Малюк",
     "treasury": "Скарбниця",
-    "test": "Тестові рівні"
+    "test": "Тестові рівні",
+    "cartoon": "Мультфільми"
   },
   "levelTitles": {
     "memoryFlowerShop": "Квіткова крамниця",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Осіннє листя",
     "christmasMorning": "Різдвяний ранок",
     "sunnyStreet": "Сонячна вулиця",
-    "gardenGate": "Біля садової хвіртки"
+    "gardenGate": "Біля садової хвіртки",
+    "cartoonCatPond": "Кіт біля ставка",
+    "cartoonDogPie": "Вкрадений пиріг",
+    "cartoonFishing": "На риболовлі",
+    "cartoonSnowman": "Ніс сніговика",
+    "cartoonHedgehog": "Яблуко їжачка",
+    "cartoonBearHoney": "Ведмідь і мед",
+    "cartoonSandcastle": "Замок з піску",
+    "cartoonBananaPeel": "Бананова шкірка",
+    "cartoonRunawayEgg": "Яйце-втікач",
+    "cartoonNightWatch": "Нічна варта",
+    "cartoonRunawayCheese": "Сир-утікач",
+    "cartoonPearl": "Перлина",
+    "cartoonPenguinSlide": "Пінгвіняча гірка",
+    "cartoonMirage": "Міраж",
+    "cartoonBambooCatapult": "Бамбукова катапульта",
+    "cartoonFlamingo": "Фламінго на одній нозі",
+    "cartoonJoey": "Сумка кенгуреняти",
+    "cartoonChimneySweep": "Сажотрус",
+    "cartoonSnailRace": "Равликові перегони",
+    "cartoonBeaverDam": "Боброва гребля",
+    "cartoonWindmill": "Карусель на млині",
+    "cartoonRainyDay": "Дощовий день",
+    "cartoonDragonSneeze": "Чих дракона",
+    "cartoonShortArms": "Короткі лапки",
+    "cartoonCircusSeal": "Цирковий тюлень",
+    "cartoonBalloonGoat": "Коза на повітряній кулі",
+    "cartoonCarrotTug": "Морква-перетяжка",
+    "cartoonLastCarriage": "Останній вагон",
+    "cartoonMoonPicnic": "Пікнік на Місяці",
+    "cartoonCakeHeist": "Викрадення торта"
   },
   "mode": {
     "label": "Режим",
@@ -1097,5 +1127,9 @@
     "tag": "Бонус",
     "lockedHint": "Спершу знайдіть усі золоті ключі — вони сховані в рівнях кожного світу й режиму. Тоді скарбниця відчиниться!",
     "congrats": "Ви — найуважніший гравець!"
+  },
+  "cartoonMode": {
+    "task": "Знайди відмінності в мультфільмі",
+    "rules": "Два мультфільми показують ту саму смішну історію. Одні відмінності видно весь час, інші трапляються лише на мить — стеж уважно. Наблизь картинку двома пальцями: поки ти дивишся, вона не тікає."
   }
 }

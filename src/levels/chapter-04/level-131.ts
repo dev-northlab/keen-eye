@@ -1,5 +1,5 @@
 // Motion differences: the turtle paddles faster on picture B; the seahorse bobs only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level131Redesign } from './level-131-redesign.ts'
 import { anchor, bottleMessage, clam, coral, fish, jellyfish, sandBits, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
@@ -92,6 +92,20 @@ export default svgLevel({
       anchor(212, 468) +
       clam(518, 490) +
       weeds + bubbles +
+      // A busier reef, the same in both pictures: more fish, two jellyfish and a seahorse in the water, a crab, a
+      // shell, a clam and a sea urchin on the sand.
+      decor({ anim }, [
+        ['jellyfish', 520, 180, '#ff9f43'],
+        ['jellyfish', 650, 40, '#b38cff'],
+        ['fish', 40, 140, '#e63946'],
+        ['fish', 760, 240, '#ffd23f'],
+        ['fish', 230, 60, '#4dabf7'],
+        ['seahorse', 780, 320],
+        ['crab', 342, 492],
+        ['shell', 90, 480, '#ffd8c2'],
+        ['clam', 250, 488],
+        ['seaUrchin', 150, 488, '#6a4fd8'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 192, 236, '#ffb703'],

@@ -182,7 +182,7 @@ const craters = [
         <circle v-for="(s, i) in stars" :key="i" :cx="`${s.x}%`" :cy="`${s.y}%`" :r="s.r" fill="#fff" :fill-opacity="s.opacity" />
       </svg>
       <div class="sky">
-        <!-- The glow pulses and the rays turn slowly. Backdrops always move: "reduce motion" is for levels only. -->
+        <!-- The glow pulses and the rays turn slowly. Backdrops move at their own speed, not the levels' slower one. -->
         <div class="sun">
           <div class="glow" />
           <svg viewBox="-20 -20 140 140">

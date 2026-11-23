@@ -11,6 +11,7 @@ import ClueList from '../components/ClueList.vue'
 import ClueCounter from '../components/ClueCounter.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
+import FpsMeter from '../components/FpsMeter.vue'
 import LevelId from '../components/LevelId.vue'
 import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
@@ -47,7 +48,7 @@ const { t } = useI18n()
 // The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
-const number = levelNumber(level)
+const number = levelNumber(level, settings.developer)
 /** The screen listing this level: its chapter's grid, the world map of "travel" or the case of "detective". */
 const grid = levelsScreen(level)
 /** The bonus level for all the hidden keys: named instead of numbered, a chest opens after it. */
@@ -188,8 +189,7 @@ function start() {
       },
     },
     {
-      // Calm mode and "reduce motion" both slow the scene down.
-      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      animationSpeed: rules.value.animationSpeed,
       missLock: rules.value.missLock,
       extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),
@@ -332,6 +332,8 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <LevelId :id="level.id" boxed />
+      <!-- Developer mode: frames shown, the scene's redraws per second and the longest frame, to compare phones. -->
+      <FpsMeter v-if="settings.developer" :poses="() => scene?.poses ?? 0" />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <div class="note-slot" role="status">
         <Transition name="note">

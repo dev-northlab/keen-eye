@@ -204,8 +204,6 @@
     "title": "Einstellungen",
     "language": "Sprache",
     "systemLanguage": "Systemsprache",
-    "reduceMotion": "Weniger Bewegung",
-    "reduceMotionHint": "Szenen bewegen sich langsamer und sanfter",
     "dev": "Entwicklung",
     "unlockAll": "Alle Level abschließen",
     "resetProgress": "Fortschritt zurücksetzen",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Alle Level freischalten",
     "resetPurchaseCache": "Kauf vergessen (Cache)",
     "resetPurchaseStore": "Kauf vergessen (auch im „Store“)",
+    "devBenchmark": "Animationstest",
     "devOff": "Entwicklermodus ausschalten"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Detektivgeschichte",
     "tinyBoy": "Der Kleine",
     "treasury": "Schatzkammer",
-    "test": "Testlevel"
+    "test": "Testlevel",
+    "cartoon": "Zeichentrick"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blumenladen",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Herbstlaub",
     "christmasMorning": "Weihnachtsmorgen",
     "sunnyStreet": "Sonnige Straße",
-    "gardenGate": "Am Gartentor"
+    "gardenGate": "Am Gartentor",
+    "cartoonCatPond": "Katze am Teich",
+    "cartoonDogPie": "Der gestohlene Kuchen",
+    "cartoonFishing": "Beim Angeln",
+    "cartoonSnowman": "Die Nase des Schneemanns",
+    "cartoonHedgehog": "Der Apfel des Igels",
+    "cartoonBearHoney": "Der Bär und der Honig",
+    "cartoonSandcastle": "Die Sandburg",
+    "cartoonBananaPeel": "Die Bananenschale",
+    "cartoonRunawayEgg": "Das ausgebüxte Ei",
+    "cartoonNightWatch": "Die Nachtwache",
+    "cartoonRunawayCheese": "Der ausgebüxte Käse",
+    "cartoonPearl": "Die Perle",
+    "cartoonPenguinSlide": "Die Pinguinrutsche",
+    "cartoonMirage": "Die Fata Morgana",
+    "cartoonBambooCatapult": "Das Bambuskatapult",
+    "cartoonFlamingo": "Flamingo auf einem Bein",
+    "cartoonJoey": "Der Beutel des Kängurubabys",
+    "cartoonChimneySweep": "Der Schornsteinfeger",
+    "cartoonSnailRace": "Das Schneckenrennen",
+    "cartoonBeaverDam": "Der Biberdamm",
+    "cartoonWindmill": "Karussell auf der Windmühle",
+    "cartoonRainyDay": "Ein Regentag",
+    "cartoonDragonSneeze": "Das Drachenniesen",
+    "cartoonShortArms": "Kurze Ärmchen",
+    "cartoonCircusSeal": "Die Zirkusrobbe",
+    "cartoonBalloonGoat": "Die Ziege im Ballon",
+    "cartoonCarrotTug": "Tauziehen um die Möhre",
+    "cartoonLastCarriage": "Der letzte Wagen",
+    "cartoonMoonPicnic": "Picknick auf dem Mond",
+    "cartoonCakeHeist": "Der Tortenraub"
   },
   "mode": {
     "label": "Modus",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "Finde zuerst alle goldenen Schlüssel – sie sind in den Levels jeder Welt und jedes Modus versteckt. Dann öffnet sich die Schatzkammer!",
     "congrats": "Du bist der aufmerksamste Spieler!"
+  },
+  "cartoonMode": {
+    "task": "Finde die Unterschiede im Zeichentrickfilm",
+    "rules": "Zwei Zeichentrickfilme zeigen dieselbe lustige Geschichte. Manche Unterschiede sind immer zu sehen, andere nur für einen Moment – pass gut auf. Zieh das Bild mit zwei Fingern größer: Solange du hinschaust, läuft es dir nicht davon."
   }
 }

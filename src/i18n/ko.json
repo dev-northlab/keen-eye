@@ -204,8 +204,6 @@
     "title": "설정",
     "language": "언어",
     "systemLanguage": "시스템 언어",
-    "reduceMotion": "움직임 줄이기",
-    "reduceMotionHint": "장면이 더 느리고 부드럽게 움직여요",
     "dev": "개발",
     "unlockAll": "모든 레벨 완료",
     "resetProgress": "진행 상황 초기화",
@@ -220,6 +218,7 @@
     "fullGameOpen": "모든 레벨 잠금 해제",
     "resetPurchaseCache": "구매 잊기 (캐시)",
     "resetPurchaseStore": "구매 잊기 (\"스토어\"에서도)",
+    "devBenchmark": "애니메이션 테스트",
     "devOff": "개발자 모드 끄기"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "탐정 이야기",
     "tinyBoy": "꼬마",
     "treasury": "보물 창고",
-    "test": "테스트 레벨"
+    "test": "테스트 레벨",
+    "cartoon": "만화"
   },
   "levelTitles": {
     "memoryFlowerShop": "꽃집",
@@ -604,7 +604,37 @@
     "autumnLeaves": "가을 낙엽",
     "christmasMorning": "크리스마스 아침",
     "sunnyStreet": "햇살 가득한 거리",
-    "gardenGate": "정원 문 앞에서"
+    "gardenGate": "정원 문 앞에서",
+    "cartoonCatPond": "연못가의 고양이",
+    "cartoonDogPie": "도둑맞은 파이",
+    "cartoonFishing": "낚시하러",
+    "cartoonSnowman": "눈사람의 코",
+    "cartoonHedgehog": "고슴도치의 사과",
+    "cartoonBearHoney": "곰과 꿀",
+    "cartoonSandcastle": "모래성",
+    "cartoonBananaPeel": "바나나 껍질",
+    "cartoonRunawayEgg": "도망친 알",
+    "cartoonNightWatch": "밤의 파수꾼",
+    "cartoonRunawayCheese": "도망친 치즈",
+    "cartoonPearl": "진주",
+    "cartoonPenguinSlide": "펭귄 미끄럼틀",
+    "cartoonMirage": "신기루",
+    "cartoonBambooCatapult": "대나무 투석기",
+    "cartoonFlamingo": "한 발로 선 플라밍고",
+    "cartoonJoey": "아기 캥거루의 주머니",
+    "cartoonChimneySweep": "굴뚝 청소부",
+    "cartoonSnailRace": "달팽이 경주",
+    "cartoonBeaverDam": "비버의 댐",
+    "cartoonWindmill": "풍차 타기",
+    "cartoonRainyDay": "비 오는 날",
+    "cartoonDragonSneeze": "용의 재채기",
+    "cartoonShortArms": "짧은 팔",
+    "cartoonCircusSeal": "서커스 물개",
+    "cartoonBalloonGoat": "열기구 탄 염소",
+    "cartoonCarrotTug": "당근 줄다리기",
+    "cartoonLastCarriage": "마지막 객차",
+    "cartoonMoonPicnic": "달나라 소풍",
+    "cartoonCakeHeist": "케이크 도둑"
   },
   "mode": {
     "label": "모드",
@@ -1097,5 +1127,9 @@
     "tag": "보너스",
     "lockedHint": "먼저 황금 열쇠를 모두 찾으세요. 모든 세계와 모드의 레벨에 숨겨져 있어요. 그러면 보물 창고가 열립니다!",
     "congrats": "당신은 가장 눈썰미 좋은 플레이어예요!"
+  },
+  "cartoonMode": {
+    "task": "만화에서 다른 그림 찾기",
+    "rules": "두 만화가 같은 재미있는 이야기를 보여 줘요. 어떤 차이는 계속 보이고, 어떤 차이는 잠깐만 나타나요 — 잘 보세요. 두 손가락으로 확대하면 보는 동안 화면이 멈춰 있어요."
   }
 }

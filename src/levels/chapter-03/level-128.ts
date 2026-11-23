@@ -1,5 +1,5 @@
 // Motion differences: one firefly over the clearing blinks only on picture B; the frog puffs its throat only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level128Redesign } from './level-128-redesign.ts'
 import { snail } from '../shapes.ts'
@@ -90,6 +90,20 @@ export default svgLevel({
       acorn(690, 470) +
       snail(580, 460) +
       bluebells(150, 352) +
+      // A busier night, the same in both pictures: more stars, a bat, a spider on its thread under the branch,
+      // more fireflies, bluebells by the pond, a mouse and a fox in the grass.
+      decor({ anim }, [
+        ['star', 560, 30],
+        ['star', 760, 30],
+        ['bat', 300, 150],
+        ['spider', 660, 240],
+        ['firefly', 100, 300],
+        ['firefly', 560, 300],
+        ['firefly', 760, 420],
+        ['bluebells', 560, 345, '#b38cff'],
+        ['mouse', 330, 488],
+        ['fox', 760, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['hedgehog', 247, 395],

@@ -32,7 +32,8 @@
     "time": "Tiden",
     "travel": "Jorden runt",
     "treasury": "Skattkammare",
-    "test": "Testnivåer"
+    "test": "Testnivåer",
+    "cartoon": "Tecknat"
   },
   "common": {
     "back": "Tillbaka",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Höstlöv",
     "christmasMorning": "Julmorgon",
     "sunnyStreet": "Solig gata",
-    "gardenGate": "Vid trädgårdsgrinden"
+    "gardenGate": "Vid trädgårdsgrinden",
+    "cartoonCatPond": "Katten vid dammen",
+    "cartoonDogPie": "Den stulna pajen",
+    "cartoonFishing": "På fisketur",
+    "cartoonSnowman": "Snögubbens näsa",
+    "cartoonHedgehog": "Igelkottens äpple",
+    "cartoonBearHoney": "Björnen och honungen",
+    "cartoonSandcastle": "Sandslottet",
+    "cartoonBananaPeel": "Bananskalet",
+    "cartoonRunawayEgg": "Ägget som rymde",
+    "cartoonNightWatch": "Nattvakten",
+    "cartoonRunawayCheese": "Osten som rymde",
+    "cartoonPearl": "Pärlan",
+    "cartoonPenguinSlide": "Pingvinrutschkanan",
+    "cartoonMirage": "Hägringen",
+    "cartoonBambooCatapult": "Bambukatapulten",
+    "cartoonFlamingo": "Flamingon på ett ben",
+    "cartoonJoey": "Kängurungens pung",
+    "cartoonChimneySweep": "Sotaren",
+    "cartoonSnailRace": "Snigelloppet",
+    "cartoonBeaverDam": "Bäverdammen",
+    "cartoonWindmill": "En tur på väderkvarnen",
+    "cartoonRainyDay": "En regnig dag",
+    "cartoonDragonSneeze": "Drakens nysning",
+    "cartoonShortArms": "Korta armar",
+    "cartoonCircusSeal": "Cirkussälen",
+    "cartoonBalloonGoat": "Geten i ballongen",
+    "cartoonCarrotTug": "Dragkamp om moroten",
+    "cartoonLastCarriage": "Sista vagnen",
+    "cartoonMoonPicnic": "Picknick på månen",
+    "cartoonCakeHeist": "Tårtkuppen"
   },
   "map": {
     "level": "Nivå {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Utveckling",
+    "devBenchmark": "Animationstest",
     "devOff": "Stäng av utvecklarläget",
     "fullGame": "Hela spelet",
     "fullGameOpen": "Lås upp alla nivåer",
     "fullGameOwned": "Upplåst",
     "language": "Språk",
     "music": "Musik",
-    "reduceMotion": "Minska rörelse",
-    "reduceMotionHint": "Scenerna rör sig långsammare och mjukare",
     "resetKeys": "Återställ hittade nycklar",
     "resetProgress": "Återställ framsteg",
     "resetProgressText": "Alla stjärnor, rekord, hittade nycklar, lösta fall och historiken för spel med två spelare raderas. Köpet och inställningarna finns kvar.",
@@ -1097,5 +1127,9 @@
     "rules": "Res jorden runt: hitta skillnaderna på varje plats, lär dig ett intressant faktum om den och få en stämpel i ditt pass.",
     "stamps": "Stämplar: {n} av {total}",
     "task": "Skillnader runt om i världen"
+  },
+  "cartoonMode": {
+    "task": "Hitta skillnaderna i en tecknad film",
+    "rules": "Två tecknade filmer visar samma roliga historia. Vissa skillnader syns hela tiden, andra bara ett ögonblick – titta noga. Zooma in med två fingrar: bilden står still medan du tittar."
   }
 }

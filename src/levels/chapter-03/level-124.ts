@@ -1,5 +1,5 @@
 // Motion differences: the owl in the hollow blinks only on picture B; the fern by the fox sways faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level124Redesign } from './level-124-redesign.ts'
 import { acorn, anthill, bird, bush, deer, feather, fern, fox, mushroom, pine, pineCone, rock, trailSign } from './shapes.ts'
@@ -71,6 +71,20 @@ export default svgLevel({
       feather(200, 385) +
       trailSign(785, 415) +
       fog(430, 0.25) +
+      // A busier thicket, the same in both pictures: a swallow over the mist, an owl and a bird on the branches, a
+      // butterfly, a rabbit on the path, bluebells, a hedgehog, a pile of leaves, a mushroom and a pine cone.
+      decor({ anim }, [
+        ['swallow', 200, 40],
+        ['owl', 200, 145],
+        ['bird', 700, 236],
+        ['butterfly', 350, 230, '#ffd43b'],
+        ['rabbit', 350, 400],
+        ['bluebells', 520, 340, '#b38cff'],
+        ['hedgehog', 30, 410],
+        ['leafPile', 110, 480],
+        ['mushroom', 300, 480, '#e63946'],
+        ['pineCone', 610, 404],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 666, 389],

@@ -204,8 +204,6 @@
     "title": "Settings",
     "language": "Language",
     "systemLanguage": "System default",
-    "reduceMotion": "Reduce motion",
-    "reduceMotionHint": "Scenes move slower and softer",
     "dev": "Development",
     "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Unlock all levels",
     "resetPurchaseCache": "Forget purchase (cache)",
     "resetPurchaseStore": "Forget purchase (also in the \"store\")",
+    "devBenchmark": "Animation benchmark",
     "devOff": "Turn off developer mode"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Detective story",
     "tinyBoy": "Tiny boy",
     "treasury": "Treasury",
-    "test": "Test levels"
+    "test": "Test levels",
+    "cartoon": "Cartoons"
   },
   "levelTitles": {
     "memoryFlowerShop": "Flower shop",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Autumn leaves",
     "christmasMorning": "Christmas morning",
     "sunnyStreet": "Sunny street",
-    "gardenGate": "At the garden gate"
+    "gardenGate": "At the garden gate",
+    "cartoonCatPond": "Cat at the pond",
+    "cartoonDogPie": "The stolen pie",
+    "cartoonFishing": "Gone fishing",
+    "cartoonSnowman": "The snowman's nose",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey",
+    "cartoonSandcastle": "The sandcastle",
+    "cartoonBananaPeel": "The banana peel",
+    "cartoonRunawayEgg": "The runaway egg",
+    "cartoonNightWatch": "The night watch",
+    "cartoonRunawayCheese": "The runaway cheese",
+    "cartoonPearl": "The pearl",
+    "cartoonPenguinSlide": "The penguin slide",
+    "cartoonMirage": "The mirage",
+    "cartoonBambooCatapult": "The bamboo catapult",
+    "cartoonFlamingo": "The flamingo's balance",
+    "cartoonJoey": "The joey's pouch",
+    "cartoonChimneySweep": "The chimney sweep",
+    "cartoonSnailRace": "The snail race",
+    "cartoonBeaverDam": "The beaver's dam",
+    "cartoonWindmill": "The windmill ride",
+    "cartoonRainyDay": "The rainy day",
+    "cartoonDragonSneeze": "The dragon's sneeze",
+    "cartoonShortArms": "The short arms",
+    "cartoonCircusSeal": "The circus seal",
+    "cartoonBalloonGoat": "The balloon goat",
+    "cartoonCarrotTug": "The carrot tug",
+    "cartoonLastCarriage": "The last carriage",
+    "cartoonMoonPicnic": "The moon picnic",
+    "cartoonCakeHeist": "The cake heist"
   },
   "mode": {
     "label": "Mode",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "First find all the golden keys — they are hidden in the levels of every world and mode. Then the treasury opens!",
     "congrats": "You are the keenest player of all!"
+  },
+  "cartoonMode": {
+    "task": "Spot the difference in a cartoon",
+    "rules": "Two cartoons play the same funny story at once. Some differences stay all the time, others happen only for a moment of the story — watch closely. Pinch to zoom in: the picture holds still while you look."
   }
 }

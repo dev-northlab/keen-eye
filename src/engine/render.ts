@@ -1,4 +1,5 @@
-import { pose, zoneCenter } from './animation.ts'
+import { pose, zoneActive, zoneCenter } from './animation.ts'
+import { MIN_POSE_INTERVAL_MS } from './pace.ts'
 import { svgTransform, type PictureTransform, type Size } from './transform.ts'
 import type { Animation, Difference, ImagePatch, Level } from './types.ts'
 
@@ -16,6 +17,8 @@ export interface Picture {
   /** Animation time of the poses drawn now (NaN before the first) and when they were drawn (`performance.now()`). */
   posedT: number
   posedAt: number
+  /** How many times the poses were drawn: the developer's frame meter (`FpsMeter`) shows it per second. */
+  poses: number
 }
 
 interface ZoneMark {
@@ -80,6 +83,7 @@ export function createPicture(level: Level, variant: 0 | 1, transform: PictureTr
     zoneMarks: [],
     posedT: NaN,
     posedAt: -Infinity,
+    poses: 0,
   }
   turnPicture(picture, transform, level.viewBox)
   return picture
@@ -181,6 +185,7 @@ export function createSvgPicture(source: string, w: number, h: number, animation
     zoneMarks: [],
     posedT: NaN,
     posedAt: -Infinity,
+    poses: 0,
   }
 }
 
@@ -196,7 +201,7 @@ export function createImagePicture(href: string, w: number, h: number): Picture 
   const marks = el('g', { 'pointer-events': 'none' })
   svg.append(scene, marks)
   if (loader) svg.append(loader)
-  return { svg, marks, animated: [], animations: new Map(), zoneMarks: [], posedT: NaN, posedAt: -Infinity }
+  return { svg, marks, animated: [], animations: new Map(), zoneMarks: [], posedT: NaN, posedAt: -Infinity, poses: 0 }
 }
 
 /** The `data-anim` groups of a scene that have an animation (matched by key). */
@@ -213,23 +218,23 @@ export function zonesAt(p: Picture, differences: Difference[], t: number) {
   return differences.map((d) => ({ ...zoneCenter(d, p.animations, t), r: d.r }))
 }
 
-/**
- * The pictures' animations are posed about 30 times a second on every screen: their motion is slow (sway, bob, a
- * walk), and each pose redraws the whole picture, so 60 (or a 120 Hz screen's 120) would only spend the battery.
- * The threshold sits between one and two frames of a 60 Hz screen (three and four of 120 Hz), so frame jitter does
- * not drop it to every third.
- */
-const MIN_POSE_INTERVAL_MS = 28
+/** Zones a tap can hit at time t: a cartoon's event difference off screen has radius 0 (`hitTest` skips it). */
+export function tapZonesAt(p: Picture, differences: Difference[], t: number) {
+  return zonesAt(p, differences, t).map((z, i) => (zoneActive(differences[i], t) ? z : { ...z, r: 0 }))
+}
+
 
 /**
  * Applies animation poses and moves the marks of moving zones. Does nothing when time stands still
- * (paused, "stop motion") or when the last poses are too recent (`MIN_POSE_INTERVAL_MS`).
+ * (paused, "stop motion") or when the last poses are more recent than `minInterval` (default `MIN_POSE_INTERVAL_MS`;
+ * a cartoon keeps its own pace, engine/cartoon.ts).
  */
-export function animatePicture(p: Picture, differences: Difference[], t: number): void {
+export function animatePicture(p: Picture, differences: Difference[], t: number, minInterval = MIN_POSE_INTERVAL_MS): void {
   const now = performance.now()
-  if (t === p.posedT || now - p.posedAt < MIN_POSE_INTERVAL_MS) return
+  if (t === p.posedT || now - p.posedAt < minInterval) return
   p.posedT = t
   p.posedAt = now
+  p.poses++
   for (const { el, animation } of p.animated) {
     const { matrix, opacity, fill } = pose(animation, t)
     if (matrix) el.setAttribute('transform', `matrix(${matrix.join(' ')})`)

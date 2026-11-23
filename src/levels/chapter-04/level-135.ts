@@ -1,5 +1,5 @@
 // Motion differences: a second lightning bolt flashes only on picture B; smoke drifts from the keeper's chimney only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level135Redesign } from './level-135-redesign.ts'
 import { bottleMessage, bucket, buoy, crab, gullStanding, rock, starfish } from './shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       starfish(605, 376) +
       crab(462, 412) +
       rain +
+      // A busier storm, the same in both pictures: gulls in the wind, a buoy, a life ring, a bottle and a fish in
+      // the waves, seaweed, a starfish and a rock by the shore.
+      decor({ anim }, [
+        ['gull', 100, 200],
+        ['gull', 760, 160],
+        ['gull', 40, 120],
+        ['lifeRing', 730, 450, '#ff9f43'],
+        ['buoy', 250, 420, '#e63946'],
+        ['bottle', 150, 430],
+        ['fish', 560, 470, '#ffb703'],
+        ['starfish', 690, 400, '#ff9f43'],
+        ['seaweed', 440, 410, '#2a9d8f'],
+        ['rock', 40, 410],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 436, 462],

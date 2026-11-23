@@ -1,8 +1,8 @@
 // Motion differences: the pinwheel on the path spins the other way on picture B; the bee hovers faster on B.
 import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
-import { bee, cloud, fence, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, sunflower } from '../shapes.ts'
+import { basket, bee, cloud, fence, flower, FLOWER_COLORS, grass, pick, snail, stones, sun, sunflower } from '../shapes.ts'
 import { level102Redesign } from './level-102-redesign.ts'
 
 /** Raised bed, wooden frame around soil; (x, y) = top-left corner, w × h. */
@@ -138,6 +138,25 @@ export default svgLevel({
       butterfly(610, 195) +
       stones(775, 482) +
       mushroom(35, 480) +
+      // A busier garden, the same in both pictures: a kite and a swallow in the sky, a birdhouse on the fence, a
+      // bench by the shed, a rabbit and chicks between the beds, a basket of carrots and a wheelbarrow by the flowers.
+      decor({ anim }, [
+        ['kite', 236, 36, '#ff6b8b'],
+        ['swallow', 60, 28],
+        ['swallow', 560, 22],
+        ['birdhouse', 610, 140],
+        ['bench', 700, 216],
+        ['rabbit', 466, 214],
+        ['snail', 60, 302],
+        ['ladybug', 720, 296],
+        ['bucket', 60, 398],
+        ['chick', 300, 390],
+        ['wheelbarrow', 652, 494],
+        ['butterfly', 300, 452, '#ffd43b'],
+        ['dragonfly', 760, 300],
+        ['sparrow', 560, 214],
+      ]) +
+      basket(172, 496, '#f08c2e') +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ladybug', 146, 207],

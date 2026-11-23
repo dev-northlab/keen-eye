@@ -46,7 +46,8 @@ export async function seedStorage(
   storage: Record<string, unknown> = {},
 ) {
   const stored = {
-    settings: { locale, theme: 'light', musicVolume: 0, soundVolume: 0, pictureStyle: 'classic', ...settings },
+    // The picture style intro would cover the home screen: the seeded player has seen it.
+    settings: { locale, theme: 'light', musicVolume: 0, soundVolume: 0, pictureStyle: 'classic', hideStyleIntro: true, ...settings },
     progress: seededProgress(),
     purchase: { fullGame: true },
     ...storage,

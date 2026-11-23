@@ -204,8 +204,6 @@
     "title": "Настройки",
     "language": "Език",
     "systemLanguage": "Като в системата",
-    "reduceMotion": "По-малко движение",
-    "reduceMotionHint": "Сцените се движат по-бавно и плавно",
     "dev": "Разработка",
     "unlockAll": "Премини всички нива",
     "resetProgress": "Нулирай напредъка",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Отключи всички нива",
     "resetPurchaseCache": "Забрави покупката (кеш)",
     "resetPurchaseStore": "Забрави покупката (и в „магазина“)",
+    "devBenchmark": "Тест на анимацията",
     "devOff": "Изключи режима за разработчици"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Детективска история",
     "tinyBoy": "Малчуган",
     "treasury": "Съкровищница",
-    "test": "Тестови нива"
+    "test": "Тестови нива",
+    "cartoon": "Анимации"
   },
   "levelTitles": {
     "memoryFlowerShop": "Цветарски магазин",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Есенни листа",
     "christmasMorning": "Коледна сутрин",
     "sunnyStreet": "Слънчева улица",
-    "gardenGate": "При градинската портичка"
+    "gardenGate": "При градинската портичка",
+    "cartoonCatPond": "Котка край езерото",
+    "cartoonDogPie": "Откраднатият пай",
+    "cartoonFishing": "За риба",
+    "cartoonSnowman": "Носът на снежния човек",
+    "cartoonHedgehog": "Ябълката на таралежа",
+    "cartoonBearHoney": "Мечката и медът",
+    "cartoonSandcastle": "Пясъчният замък",
+    "cartoonBananaPeel": "Бананова кора",
+    "cartoonRunawayEgg": "Избягалото яйце",
+    "cartoonNightWatch": "Нощна стража",
+    "cartoonRunawayCheese": "Избягалото сирене",
+    "cartoonPearl": "Перлата",
+    "cartoonPenguinSlide": "Пингвинската пързалка",
+    "cartoonMirage": "Мираж",
+    "cartoonBambooCatapult": "Бамбуковата катапулта",
+    "cartoonFlamingo": "Фламинго на един крак",
+    "cartoonJoey": "Торбата на кенгуренцето",
+    "cartoonChimneySweep": "Коминочистачът",
+    "cartoonSnailRace": "Охлювско състезание",
+    "cartoonBeaverDam": "Бобровият бент",
+    "cartoonWindmill": "Въртележка на мелницата",
+    "cartoonRainyDay": "Дъждовен ден",
+    "cartoonDragonSneeze": "Кихавицата на дракона",
+    "cartoonShortArms": "Къси лапички",
+    "cartoonCircusSeal": "Цирковият тюлен",
+    "cartoonBalloonGoat": "Козата с балона",
+    "cartoonCarrotTug": "Теглене на морков",
+    "cartoonLastCarriage": "Последният вагон",
+    "cartoonMoonPicnic": "Пикник на Луната",
+    "cartoonCakeHeist": "Отвличането на тортата"
   },
   "mode": {
     "label": "Режим",
@@ -1097,5 +1127,9 @@
     "tag": "Бонус",
     "lockedHint": "Първо намерете всички златни ключове — скрити са в нивата на всеки свят и режим. Тогава съкровищницата ще се отвори!",
     "congrats": "Вие сте най-внимателният играч!"
+  },
+  "cartoonMode": {
+    "task": "Открий разликите в анимация",
+    "rules": "Две анимации показват една и съща забавна история. Някои разлики се виждат през цялото време, други само за миг – гледай внимателно. Увеличи картината с два пръста: тя не бяга, докато гледаш."
   }
 }

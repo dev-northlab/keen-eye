@@ -1,6 +1,6 @@
 // Motion differences: the windsock flaps faster on picture B; the bee over the blue hive hovers faster on B.
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bee, beehive, cloud, fence, flower, FLOWER_COLORS, grass, pick, sun, wateringCan } from '../shapes.ts'
 import { level104Redesign } from './level-104-redesign.ts'
@@ -112,6 +112,20 @@ export default svgLevel({
       butterfly(505, 430) +
       wateringCan(460, 420) +
       mushroom(360, 430) +
+      // A busier bee yard, the same in both pictures: a kite, a swallow and a little cloud in the sky, a dragonfly
+      // over the lavender, a bird on the fence, a rabbit and a hedgehog in the grass, an old skep on the crates.
+      cloud(700, 92, 0.5) +
+      decor({ anim }, [
+        ['kite', 560, 104, '#b38cff'],
+        ['swallow', 724, 36],
+        ['dragonfly', 712, 196],
+        ['bird', 580, 254],
+        ['rabbit', 620, 446],
+        ['hedgehog', 250, 472],
+        ['beehive', 784, 428],
+        ['wheelbarrow', 716, 482],
+        ['snail', 92, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 127, 306],

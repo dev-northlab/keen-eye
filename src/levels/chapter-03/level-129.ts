@@ -1,5 +1,5 @@
 // Motion differences: the splash at the foot of the falls bubbles faster on picture B; the salmon leaps only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level129Redesign } from './level-129-redesign.ts'
 import { acorn, backpack, bluebells, butterfly, feather, fern, pine, pineCone } from './shapes.ts'
@@ -88,6 +88,20 @@ export default svgLevel({
       backpack(645, 484) +
       bluebells(398, 484) +
       feather(88, 281) +
+      // A busier waterfall, the same in both pictures: a swallow and a butterfly over the pines, an owl and a bird on
+      // the cliffs, a fern, a dragonfly and a fish over the water, a rabbit, a hedgehog and a mushroom on the bank.
+      decor({ anim }, [
+        ['swallow', 430, 40],
+        ['butterfly', 600, 60, '#b38cff'],
+        ['owl', 260, 250],
+        ['bird', 700, 262],
+        ['fern', 40, 370],
+        ['dragonfly', 450, 420],
+        ['fish', 220, 430, '#4dabf7'],
+        ['rabbit', 60, 490],
+        ['hedgehog', 480, 492],
+        ['mushroom', 690, 492, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bird', 90, 358],

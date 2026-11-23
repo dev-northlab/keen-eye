@@ -208,14 +208,36 @@ export const TINY_BOY_CHAPTER: Chapter = {
     `<path d="M14 44q10-6 20 0" fill="#ffd23f"/>`,
 }
 
+/**
+ * "Cartoons" (`cartoon/`, docs/cartoon-mode.md): short funny stories that loop, told by a camera, with differences
+ * that stay all along and events of the story. Its own live banner on the game modes screen (CartoonBanner); a
+ * category grid; open like the "time" category, but only its first level is free; no key yet.
+ */
+export const CARTOON_CHAPTER: Chapter = {
+  id: 'cartoon',
+  // Grows with every new cartoon (difficulty.ts covers up to 830): a wider range would announce cartoons not drawn yet.
+  // The first ten cartoons (10 differences) are 801–810, those of 12 from 811.
+  ranges: [[801, 830]],
+  free: [[801, 801]],
+  color: '#f0743e',
+  soft: '#ffece2',
+  backdrop: 'meadow',
+  rules: 'cartoonMode.rules',
+  icon:
+    `<rect x="5" y="16" width="38" height="26" rx="4" fill="#3b3f8f"/>` +
+    `<path d="M5 9l36-6 2 10-36 6Z" fill="#ffd23f"/><path d="M11 8l5 9M20 6.5l5 9M29 5l5 9" stroke="#3b3f8f" stroke-width="3.4"/>` +
+    `<path d="M20 22v14l12-7Z" fill="#fff"/>`,
+}
+
 /** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
-export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER, TINY_BOY_CHAPTER]
+export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER, TINY_BOY_CHAPTER, CARTOON_CHAPTER]
 
 /**
- * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category but "tiny boy" (none drawn
- * yet), one level each (`Level.secret`; the key's id is the chapter id). The first is in the free part of the farm.
+ * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category but "tiny boy" and "cartoons"
+ * (none drawn yet), one level each (`Level.secret`; the key's id is the chapter id). The first is in the free part
+ * of the farm.
  */
-export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES.filter((c) => c !== TINY_BOY_CHAPTER)]
+export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES.filter((c) => c !== TINY_BOY_CHAPTER && c !== CARTOON_CHAPTER)]
 
 /**
  * "Treasury" (docs/hidden-item-feature.md, `treasury/`): the bonus level, opened once the key of every
@@ -266,8 +288,15 @@ export const chapterSize = (chapter: Chapter) =>
 /** Levels of the chapter that exist, in play order (`allLevels` is sorted by id, as are the ranges). */
 export const chapterLevels = (chapter: Chapter) => allLevels.filter((l) => l.chapter === chapter.id)
 
-/** The chapter's levels followed by its hidden ones (upcoming.ts, ids after the released): developer mode's grid. */
-export const chapterLevelsWithHidden = (chapter: Chapter) => [...chapterLevels(chapter), ...upcomingLevels.filter((l) => l.chapter === chapter.id)]
+/** The chapter's levels with its hidden ones (upcoming.ts) each at its place by id: developer mode's grid. */
+export function chapterLevelsWithHidden(chapter: Chapter): Level[] {
+  const list = chapterLevels(chapter)
+  for (const hidden of upcomingLevels.filter((l) => l.chapter === chapter.id)) {
+    const at = list.findIndex((l) => l.id > hidden.id)
+    list.splice(at < 0 ? list.length : at, 0, hidden)
+  }
+  return list
+}
 
 /**
  * The level after `level` in its chapter, or at a world's end the next world's first one. A "detective"
@@ -303,8 +332,13 @@ export const levelsScreen = (level: Level) =>
           ? { name: 'levels' }
           : { name: 'chapter', params: { chapter: level.chapter } }
 
-/** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
-export function levelNumber(level: Level): number {
+/**
+ * Number shown on a level: the id in the worlds, the place in its category (1, 2, …) otherwise — counted among the
+ * released levels, so a hidden one between them (upcoming.ts) leaves the players no gap; `withHidden` (developer
+ * mode, which lists the hidden ones too) counts those as well, so its grid runs 1, 2, 3, … without repeats.
+ */
+export function levelNumber(level: Level, withHidden = false): number {
   const category = categoryOf(level)
-  return category ? level.id - category.ranges[0][0] + 1 : level.id
+  if (!category) return level.id
+  return (withHidden ? chapterLevelsWithHidden(category) : chapterLevels(category)).filter((l) => l.id < level.id).length + 1
 }

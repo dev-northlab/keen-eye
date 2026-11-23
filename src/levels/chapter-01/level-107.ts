@@ -1,8 +1,8 @@
 // Motion differences: the owl turns its head only on picture B; the kitten's tail swishes faster on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
-import { chick, eggNest, hayBale, hen, milkCan, pumpkin } from '../shapes.ts'
+import { basket, chick, eggNest, hayBale, hen, milkCan, pumpkin } from '../shapes.ts'
 import { level107Redesign } from './level-107-redesign.ts'
 
 /** Square hay bale, 80 × 40; (x, y) = top-left corner; `bands` twine bands of `twine` color. */
@@ -119,6 +119,19 @@ export default svgLevel({
       bird(250, 125) +
       milkCan(640, 392) +
       pumpkin(390, 488) +
+      // A busier hayloft, the same in both pictures: a bat and a spider under the roof, a swallow, a shovel by the
+      // door, a cat on the hay, a hen, a basket of apples, a chick and a mouse on the floor.
+      hen(40, 410, false, '#f1e3c8') +
+      basket(770, 402, '#e63946') +
+      decor({ anim }, [
+        ['bat', 540, 60],
+        ['spider', 300, 66],
+        ['swallow', 250, 172],
+        ['shovel', 292, 360],
+        ['cat', 648, 240, '#9aa5ad'],
+        ['chick', 762, 472],
+        ['mouse', 724, 494],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['horseshoe', 62, 33],

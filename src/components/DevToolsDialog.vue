@@ -1,5 +1,6 @@
 <script setup lang="ts">
 // Developer mode's testing tools, opened from Settings.
+import { useRouter } from 'vue-router'
 import ModalDialog from './ModalDialog.vue'
 import { useBackButton } from '../services/backButton.ts'
 import { useProgressStore } from '../stores/progress.ts'
@@ -15,6 +16,14 @@ const isDev = import.meta.env.DEV
 
 // Android back closes the dialog.
 useBackButton(() => emit('close'))
+
+const router = useRouter()
+
+/** The animation benchmark (/dev/bench): SVG and Canvas 2D playing the same cartoon. */
+function benchmark() {
+  emit('close')
+  router.push({ name: 'bench' })
+}
 
 function turnOff() {
   settings.developer = false
@@ -39,6 +48,7 @@ function turnOff() {
       <button class="secondary" @click="progress.reset()">{{ $t('settings.resetProgress') }}</button>
       <!-- The hidden keys show on the pictures again. -->
       <button class="secondary" @click="progress.resetKeys()">{{ $t('settings.resetKeys') }}</button>
+      <button class="secondary" @click="benchmark">{{ $t('settings.devBenchmark') }}</button>
       <button class="secondary" @click="turnOff">{{ $t('settings.devOff') }}</button>
       <button @click="emit('close')">{{ $t('common.close') }}</button>
     </div>

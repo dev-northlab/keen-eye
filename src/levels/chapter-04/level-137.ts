@@ -1,5 +1,5 @@
 // Motion differences: the right pink jellyfish drifts faster on picture B; the lanternfish's light blinks only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level137Redesign } from './level-137-redesign.ts'
 import { anchor, bottleMessage, clam, rock, seahorse, seaUrchin, starfish } from './shapes.ts'
@@ -79,6 +79,20 @@ export default svgLevel({
       seahorse(170, 360) +
       bottleMessage(660, 480) +
       anchor(370, 470) +
+      // A busier deep, the same in both pictures (no more jellyfish: they are the differences here): more fish and a
+      // seahorse in the dark water, seaweed, a sea urchin, a shell and a clam on the bottom.
+      decor({ anim }, [
+        ['fish', 260, 60, '#ffb703'],
+        ['fish', 620, 40, '#4dabf7'],
+        ['fish', 40, 180, '#ff6b8b'],
+        ['fish', 560, 240, '#ffd23f'],
+        ['fish', 770, 200, '#ff9f43'],
+        ['seahorse', 500, 420],
+        ['seaUrchin', 250, 492, '#e63946'],
+        ['shell', 620, 492, '#ffd8c2'],
+        ['seaweed', 480, 470, '#2a9d8f'],
+        ['clam', 700, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['jellyfish', 161, 242],

@@ -1,5 +1,5 @@
 // Motion differences: the campfire flame flickers faster on picture B; the heron dips its head only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level123Redesign } from './level-123-redesign.ts'
 import { backpack, bluebells, feather, fireLogs, flame, lantern, pine, pineCone, rock } from './shapes.ts'
@@ -86,6 +86,22 @@ export default svgLevel({
       pineCone(395, 486) +
       feather(80, 366) +
       bluebells(690, 456) +
+      // A busier lake, the same in both pictures: a swallow and a hot-air balloon in the sky, an owl in the big pine,
+      // a squirrel on the jetty, a dragonfly, a fish and a frog on a lily pad in the water, a dragonfly by the reeds, a rabbit,
+      // a fern and a mushroom on the shore.
+      decor({ anim }, [
+        ['swallow', 420, 40],
+        ['hotAirBalloon', 720, 110],
+        ['owl', 90, 270],
+        ['squirrel', 100, 370],
+        ['dragonfly', 240, 304],
+        ['fish', 620, 280, '#ffb703'],
+        ['frog', 470, 400],
+        ['dragonfly', 700, 410],
+        ['rabbit', 60, 440],
+        ['fern', 700, 470],
+        ['mushroom', 370, 490, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 263, 49],

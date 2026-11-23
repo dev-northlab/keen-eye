@@ -204,8 +204,6 @@
     "title": "Nastavení",
     "language": "Jazyk",
     "systemLanguage": "Podle systému",
-    "reduceMotion": "Omezit pohyb",
-    "reduceMotionHint": "Scény se hýbou pomaleji a jemněji",
     "dev": "Vývoj",
     "unlockAll": "Dokončit všechny úrovně",
     "resetProgress": "Smazat postup",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Odemknout všechny úrovně",
     "resetPurchaseCache": "Zapomenout nákup (cache)",
     "resetPurchaseStore": "Zapomenout nákup (i v „obchodě“)",
+    "devBenchmark": "Test animace",
     "devOff": "Vypnout vývojářský režim"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Detektivní příběh",
     "tinyBoy": "Malý kluk",
     "treasury": "Klenotnice",
-    "test": "Testovací úrovně"
+    "test": "Testovací úrovně",
+    "cartoon": "Kreslené filmy"
   },
   "levelTitles": {
     "memoryFlowerShop": "Květinářství",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Podzimní listí",
     "christmasMorning": "Vánoční ráno",
     "sunnyStreet": "Slunečná ulice",
-    "gardenGate": "U zahradní branky"
+    "gardenGate": "U zahradní branky",
+    "cartoonCatPond": "Kočka u rybníka",
+    "cartoonDogPie": "Ukradený koláč",
+    "cartoonFishing": "Na rybách",
+    "cartoonSnowman": "Nos sněhuláka",
+    "cartoonHedgehog": "Ježkovo jablko",
+    "cartoonBearHoney": "Medvěd a med",
+    "cartoonSandcastle": "Hrad z písku",
+    "cartoonBananaPeel": "Banánová slupka",
+    "cartoonRunawayEgg": "Utíkající vejce",
+    "cartoonNightWatch": "Noční hlídka",
+    "cartoonRunawayCheese": "Utíkající sýr",
+    "cartoonPearl": "Perla",
+    "cartoonPenguinSlide": "Tučňáčí skluzavka",
+    "cartoonMirage": "Fata morgána",
+    "cartoonBambooCatapult": "Bambusový katapult",
+    "cartoonFlamingo": "Plameňák na jedné noze",
+    "cartoonJoey": "Kapsa malého klokana",
+    "cartoonChimneySweep": "Kominík",
+    "cartoonSnailRace": "Šnečí závod",
+    "cartoonBeaverDam": "Bobří hráz",
+    "cartoonWindmill": "Jízda na větrném mlýně",
+    "cartoonRainyDay": "Deštivý den",
+    "cartoonDragonSneeze": "Dračí kýchnutí",
+    "cartoonShortArms": "Krátké tlapky",
+    "cartoonCircusSeal": "Cirkusový tuleň",
+    "cartoonBalloonGoat": "Koza v balónu",
+    "cartoonCarrotTug": "Přetahovaná o mrkev",
+    "cartoonLastCarriage": "Poslední vagon",
+    "cartoonMoonPicnic": "Piknik na Měsíci",
+    "cartoonCakeHeist": "Loupež dortu"
   },
   "mode": {
     "label": "Režim",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "Nejdřív najděte všechny zlaté klíče – jsou schované v úrovních každého světa a režimu. Pak se pokladnice otevře!",
     "congrats": "Jste nejpozornější hráč!"
+  },
+  "cartoonMode": {
+    "task": "Najdi rozdíly v kresleném filmu",
+    "rules": "Dva kreslené filmy vyprávějí stejný vtipný příběh. Některé rozdíly jsou vidět pořád, jiné jen na okamžik – dívej se pozorně. Přibliž obrázek dvěma prsty: dokud se díváš, neuteče ti."
   }
 }

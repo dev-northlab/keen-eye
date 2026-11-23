@@ -1,8 +1,8 @@
 // Motion differences: the chick by the trough bobs faster on picture B; the butterfly flutters only on B.
 import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, basket, bucket, cat, cloud, fence, flower, FLOWER_COLORS, flowerPot, grass, hen, pick, stones, sun, tree } from '../shapes.ts'
+import { apple, basket, bucket, cat, cloud, fence, flower, FLOWER_COLORS, flowerPot, grass, hen, pick, pumpkin, stones, sun, tree } from '../shapes.ts'
 import { level101Redesign } from './level-101-redesign.ts'
 
 /** Chick; (x, y) = feet. Bounds: x ±9, y from −14 to 0. */
@@ -113,6 +113,33 @@ export default svgLevel({
       mushroom(375, 470) +
       stones(640, 398) +
       flowerPot(165, 348) +
+      // A busier farmyard, the same in both pictures: a windmill on the hill, a kite and a balloon in the sky,
+      // a dog by the coop, a rabbit, a bench, a gnome, a nest in the yard, a horseshoe over the door.
+      decor({ anim }, [
+        ['windmill', 128, 322],
+        ['kite', 700, 112, '#4dabf7'],
+        ['hotAirBalloon', 760, 40],
+        ['swallow', 60, 52],
+        ['puppy', 250, 380],
+        ['horseshoe', 300, 270],
+        ['rabbit', 30, 374],
+        ['wateringCan', 24, 444, '#e05a47'],
+        ['bench', 762, 394],
+        ['gnome', 612, 374],
+        ['eggNest', 340, 410],
+        ['sparrow', 626, 318],
+        ['ladybug', 120, 486],
+        ['snail', 700, 488],
+        ['birdhouse', 455, 322],
+        ['swallow', 440, 24],
+        ['mushroom', 790, 482],
+        ['chick', 548, 486],
+      ]) +
+      pumpkin(662, 374) +
+      pumpkin(694, 382) +
+      flower(520, 362, '#ff6b8b') +
+      flower(548, 360, '#b38cff') +
+      flower(584, 364, '#ffffff') +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['butterfly', 748, 442],

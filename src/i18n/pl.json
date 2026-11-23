@@ -204,8 +204,6 @@
     "title": "Ustawienia",
     "language": "Język",
     "systemLanguage": "Jak w systemie",
-    "reduceMotion": "Ogranicz ruch",
-    "reduceMotionHint": "Sceny poruszają się wolniej i łagodniej",
     "dev": "Programowanie",
     "unlockAll": "Ukończ wszystkie poziomy",
     "resetProgress": "Resetuj postęp",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Odblokuj wszystkie poziomy",
     "resetPurchaseCache": "Zapomnij zakup (pamięć podręczna)",
     "resetPurchaseStore": "Zapomnij zakup (także w „sklepie”)",
+    "devBenchmark": "Test animacji",
     "devOff": "Wyłącz tryb dewelopera"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Historia detektywistyczna",
     "tinyBoy": "Maluch",
     "treasury": "Skarbiec",
-    "test": "Poziomy testowe"
+    "test": "Poziomy testowe",
+    "cartoon": "Kreskówki"
   },
   "levelTitles": {
     "memoryFlowerShop": "Kwiaciarnia",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Jesienne liście",
     "christmasMorning": "Świąteczny poranek",
     "sunnyStreet": "Słoneczna ulica",
-    "gardenGate": "Przy furtce ogrodu"
+    "gardenGate": "Przy furtce ogrodu",
+    "cartoonCatPond": "Kot przy stawie",
+    "cartoonDogPie": "Skradzione ciasto",
+    "cartoonFishing": "Na rybach",
+    "cartoonSnowman": "Nos bałwana",
+    "cartoonHedgehog": "Jabłko jeżyka",
+    "cartoonBearHoney": "Niedźwiedź i miód",
+    "cartoonSandcastle": "Zamek z piasku",
+    "cartoonBananaPeel": "Skórka od banana",
+    "cartoonRunawayEgg": "Uciekające jajo",
+    "cartoonNightWatch": "Nocna warta",
+    "cartoonRunawayCheese": "Uciekający ser",
+    "cartoonPearl": "Perła",
+    "cartoonPenguinSlide": "Pingwinia zjeżdżalnia",
+    "cartoonMirage": "Fatamorgana",
+    "cartoonBambooCatapult": "Bambusowa katapulta",
+    "cartoonFlamingo": "Flaming na jednej nodze",
+    "cartoonJoey": "Torba małego kangura",
+    "cartoonChimneySweep": "Kominiarz",
+    "cartoonSnailRace": "Wyścig ślimaków",
+    "cartoonBeaverDam": "Tama bobra",
+    "cartoonWindmill": "Przejażdżka na wiatraku",
+    "cartoonRainyDay": "Deszczowy dzień",
+    "cartoonDragonSneeze": "Kichnięcie smoka",
+    "cartoonShortArms": "Krótkie łapki",
+    "cartoonCircusSeal": "Cyrkowa foka",
+    "cartoonBalloonGoat": "Koza w balonie",
+    "cartoonCarrotTug": "Przeciąganie marchewki",
+    "cartoonLastCarriage": "Ostatni wagon",
+    "cartoonMoonPicnic": "Piknik na Księżycu",
+    "cartoonCakeHeist": "Skok na tort"
   },
   "mode": {
     "label": "Tryb",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "Najpierw znajdź wszystkie złote klucze — są ukryte w poziomach każdego świata i trybu. Wtedy skarbiec się otworzy!",
     "congrats": "Jesteś najbardziej spostrzegawczym graczem!"
+  },
+  "cartoonMode": {
+    "task": "Znajdź różnice w kreskówce",
+    "rules": "Dwie kreskówki pokazują tę samą zabawną historię. Niektóre różnice widać cały czas, inne tylko przez chwilę – patrz uważnie. Przybliż obraz dwoma palcami: nie ucieka, gdy patrzysz."
   }
 }

@@ -204,8 +204,6 @@
     "title": "Ayarlar",
     "language": "Dil",
     "systemLanguage": "Sistem dili",
-    "reduceMotion": "Hareketi azalt",
-    "reduceMotionHint": "Sahneler daha yavaş ve yumuşak hareket eder",
     "dev": "Geliştirme",
     "unlockAll": "Tüm bölümleri tamamla",
     "resetProgress": "İlerlemeyi sıfırla",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Tüm bölümlerin kilidini aç",
     "resetPurchaseCache": "Satın almayı unut (önbellek)",
     "resetPurchaseStore": "Satın almayı unut (\"mağazada\" da)",
+    "devBenchmark": "Animasyon testi",
     "devOff": "Geliştirici modunu kapat"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Dedektif hikâyesi",
     "tinyBoy": "Minik",
     "treasury": "Hazine odası",
-    "test": "Test bölümleri"
+    "test": "Test bölümleri",
+    "cartoon": "Çizgi filmler"
   },
   "levelTitles": {
     "memoryFlowerShop": "Çiçekçi",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Sonbahar yaprakları",
     "christmasMorning": "Noel sabahı",
     "sunnyStreet": "Güneşli sokak",
-    "gardenGate": "Bahçe kapısında"
+    "gardenGate": "Bahçe kapısında",
+    "cartoonCatPond": "Göletteki kedi",
+    "cartoonDogPie": "Çalınan turta",
+    "cartoonFishing": "Balık tutmaya",
+    "cartoonSnowman": "Kardan adamın burnu",
+    "cartoonHedgehog": "Kirpinin elması",
+    "cartoonBearHoney": "Ayı ve bal",
+    "cartoonSandcastle": "Kumdan kale",
+    "cartoonBananaPeel": "Muz kabuğu",
+    "cartoonRunawayEgg": "Kaçak yumurta",
+    "cartoonNightWatch": "Gece nöbeti",
+    "cartoonRunawayCheese": "Kaçak peynir",
+    "cartoonPearl": "İnci",
+    "cartoonPenguinSlide": "Penguen kaydırağı",
+    "cartoonMirage": "Serap",
+    "cartoonBambooCatapult": "Bambu mancınık",
+    "cartoonFlamingo": "Tek ayaklı flamingo",
+    "cartoonJoey": "Yavru kangurunun kesesi",
+    "cartoonChimneySweep": "Baca temizleyicisi",
+    "cartoonSnailRace": "Salyangoz yarışı",
+    "cartoonBeaverDam": "Kunduz barajı",
+    "cartoonWindmill": "Yel değirmeni turu",
+    "cartoonRainyDay": "Yağmurlu gün",
+    "cartoonDragonSneeze": "Ejderhanın hapşırığı",
+    "cartoonShortArms": "Kısa kollar",
+    "cartoonCircusSeal": "Sirk foku",
+    "cartoonBalloonGoat": "Balondaki keçi",
+    "cartoonCarrotTug": "Havuç çekişmesi",
+    "cartoonLastCarriage": "Son vagon",
+    "cartoonMoonPicnic": "Ay'da piknik",
+    "cartoonCakeHeist": "Pasta soygunu"
   },
   "mode": {
     "label": "Mod",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "Önce tüm altın anahtarları bul — her dünyanın ve modun bölümlerinde saklılar. O zaman hazine odası açılır!",
     "congrats": "Sen en dikkatli oyuncusun!"
+  },
+  "cartoonMode": {
+    "task": "Çizgi filmdeki farkları bul",
+    "rules": "İki çizgi film aynı komik hikâyeyi anlatır. Bazı farklar hep görünür, bazıları ise yalnızca bir an için – dikkatle bak. İki parmakla yakınlaştır: sen bakarken resim kaçmaz."
   }
 }

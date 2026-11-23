@@ -1,6 +1,6 @@
 // Motion differences: the left lantern swings wider and faster on picture B; the cat's tail swishes only on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, chick, eggNest, hayBale, hen, pumpkin, wateringCan } from '../shapes.ts'
 import { level103Redesign } from './level-103-redesign.ts'
@@ -136,6 +136,23 @@ export default svgLevel({
       pumpkin(520, 488) +
       wateringCan(650, 490) +
       chick(270, 425) +
+      // A busier barn, the same in both pictures: an owl on the beam, a spider, garlic under the loft, a wall lamp,
+      // a broom, a mouse, a sparrow by the hay; a swallow and a butterfly in the sky outside.
+      decor({ anim }, [
+        ['owl', 120, 68],
+        ['spider', 60, 112],
+        ['garlic', 690, 166],
+        ['sconce', 652, 250],
+        ['keyRack', 660, 318],
+        ['broom', 528, 418],
+        ['mouse', 252, 422],
+        ['sparrow', 648, 150],
+        ['swallow', 360, 200],
+        ['butterfly', 452, 252, '#ff9f43'],
+        ['haybale', 662, 420],
+        ['calendar', 40, 190],
+        ['spider', 782, 100],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['eggNest', 322, 446],

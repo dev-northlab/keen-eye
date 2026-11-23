@@ -35,7 +35,7 @@ const settings = useSettingsStore()
 // The route guard guarantees a "memory" level that is unlocked.
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
-const number = levelNumber(level)
+const number = levelNumber(level, settings.developer)
 const grid = levelsScreen(level)
 const total = level.differences.length
 
@@ -137,8 +137,8 @@ function start() {
       },
     },
     {
-      // Calm mode and "reduce motion" both slow the scene down; the mode sets the miss and peek limits.
-      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      // The mode sets the speed and the miss and peek limits.
+      animationSpeed: rules.value.animationSpeed,
       maxMisses: maxMisses.value,
       peeks: peeksLeft.value,
       secretTaken: progress.hasKey(level.chapter),

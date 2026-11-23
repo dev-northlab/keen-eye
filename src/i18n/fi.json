@@ -32,7 +32,8 @@
     "time": "Aika",
     "travel": "Maailmanmatka",
     "treasury": "Aarrekammio",
-    "test": "Testitasot"
+    "test": "Testitasot",
+    "cartoon": "Piirretyt"
   },
   "common": {
     "back": "Takaisin",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Syksyn lehdet",
     "christmasMorning": "Jouluaamu",
     "sunnyStreet": "Aurinkoinen katu",
-    "gardenGate": "Puutarhaportilla"
+    "gardenGate": "Puutarhaportilla",
+    "cartoonCatPond": "Kissa lammella",
+    "cartoonDogPie": "Varastettu piirakka",
+    "cartoonFishing": "Kalassa",
+    "cartoonSnowman": "Lumiukon nenä",
+    "cartoonHedgehog": "Siilin omena",
+    "cartoonBearHoney": "Karhu ja hunaja",
+    "cartoonSandcastle": "Hiekkalinna",
+    "cartoonBananaPeel": "Banaaninkuori",
+    "cartoonRunawayEgg": "Karannut muna",
+    "cartoonNightWatch": "Yövartio",
+    "cartoonRunawayCheese": "Karannut juusto",
+    "cartoonPearl": "Helmi",
+    "cartoonPenguinSlide": "Pingviinien liukumäki",
+    "cartoonMirage": "Kangastus",
+    "cartoonBambooCatapult": "Bambukatapultti",
+    "cartoonFlamingo": "Flamingo yhdellä jalalla",
+    "cartoonJoey": "Kengurunpoikasen pussi",
+    "cartoonChimneySweep": "Nuohooja",
+    "cartoonSnailRace": "Etanakisa",
+    "cartoonBeaverDam": "Majavan pato",
+    "cartoonWindmill": "Tuulimyllykaruselli",
+    "cartoonRainyDay": "Sadepäivä",
+    "cartoonDragonSneeze": "Lohikäärmeen aivastus",
+    "cartoonShortArms": "Lyhyet kädet",
+    "cartoonCircusSeal": "Sirkushylje",
+    "cartoonBalloonGoat": "Vuohi kuumailmapallossa",
+    "cartoonCarrotTug": "Porkkanaköydenveto",
+    "cartoonLastCarriage": "Viimeinen vaunu",
+    "cartoonMoonPicnic": "Piknik kuussa",
+    "cartoonCakeHeist": "Kakkukeikka"
   },
   "map": {
     "level": "Taso {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Kehitys",
+    "devBenchmark": "Animaatiotesti",
     "devOff": "Poista kehittäjätila käytöstä",
     "fullGame": "Koko peli",
     "fullGameOpen": "Avaa kaikki tasot",
     "fullGameOwned": "Avattu",
     "language": "Kieli",
     "music": "Musiikki",
-    "reduceMotion": "Vähennä liikettä",
-    "reduceMotionHint": "Maisemat liikkuvat hitaammin ja pehmeämmin",
     "resetKeys": "Nollaa löydetyt avaimet",
     "resetProgress": "Nollaa edistyminen",
     "resetProgressText": "Kaikki tähdet, ennätykset, löydetyt avaimet, ratkaistut tapaukset ja kahden pelaajan pelien historia poistetaan. Osto ja asetukset säilyvät.",
@@ -1097,5 +1127,9 @@
     "rules": "Matkusta ympäri maailmaa: etsi erot joka paikasta, opi siitä kiinnostava asia ja saa leima passiisi.",
     "stamps": "Leimat: {n}/{total}",
     "task": "Eroja ympäri maailmaa"
+  },
+  "cartoonMode": {
+    "task": "Etsi erot piirretystä",
+    "rules": "Kaksi piirrettyä kertoo saman hauskan tarinan. Osa eroista näkyy koko ajan, osa vain hetken – katso tarkkaan. Lähennä kahdella sormella: kuva pysyy paikallaan, kun katsot."
   }
 }

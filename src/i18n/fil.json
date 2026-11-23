@@ -32,7 +32,8 @@
     "time": "Panahon",
     "travel": "Paglalakbay sa mundo",
     "treasury": "Silid ng kayamanan",
-    "test": "Mga test level"
+    "test": "Mga test level",
+    "cartoon": "Mga cartoon"
   },
   "common": {
     "back": "Bumalik",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Mga dahon ng taglagas",
     "christmasMorning": "Umaga ng Pasko",
     "sunnyStreet": "Maaraw na kalye",
-    "gardenGate": "Sa tarangkahan ng hardin"
+    "gardenGate": "Sa tarangkahan ng hardin",
+    "cartoonCatPond": "Pusa sa lawa",
+    "cartoonDogPie": "Ang ninakaw na pie",
+    "cartoonFishing": "Nangingisda",
+    "cartoonSnowman": "Ilong ng snowman",
+    "cartoonHedgehog": "Mansanas ng hedgehog",
+    "cartoonBearHoney": "Oso at pulot",
+    "cartoonSandcastle": "Kastilyong buhangin",
+    "cartoonBananaPeel": "Balat ng saging",
+    "cartoonRunawayEgg": "Tumakas na itlog",
+    "cartoonNightWatch": "Bantay sa gabi",
+    "cartoonRunawayCheese": "Tumakas na keso",
+    "cartoonPearl": "Perlas",
+    "cartoonPenguinSlide": "Padulasan ng penguin",
+    "cartoonMirage": "Malikmata",
+    "cartoonBambooCatapult": "Kawayang tirador",
+    "cartoonFlamingo": "Flamingo sa isang paa",
+    "cartoonJoey": "Supot ng batang kangaroo",
+    "cartoonChimneySweep": "Tagalinis ng tsimenea",
+    "cartoonSnailRace": "Karera ng mga suso",
+    "cartoonBeaverDam": "Dike ng beaver",
+    "cartoonWindmill": "Sakay sa windmill",
+    "cartoonRainyDay": "Maulang araw",
+    "cartoonDragonSneeze": "Bahing ng dragon",
+    "cartoonShortArms": "Maiikling braso",
+    "cartoonCircusSeal": "Seal sa sirko",
+    "cartoonBalloonGoat": "Kambing sa lobo",
+    "cartoonCarrotTug": "Hilahan ng karot",
+    "cartoonLastCarriage": "Huling bagon",
+    "cartoonMoonPicnic": "Piknik sa buwan",
+    "cartoonCakeHeist": "Ninakaw na keyk"
   },
   "map": {
     "level": "Level {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Development",
+    "devBenchmark": "Pagsubok ng animasyon",
     "devOff": "I-off ang developer mode",
     "fullGame": "Buong laro",
     "fullGameOpen": "I-unlock ang lahat ng level",
     "fullGameOwned": "Naka-unlock",
     "language": "Wika",
     "music": "Musika",
-    "reduceMotion": "Bawasan ang galaw",
-    "reduceMotionHint": "Mas mabagal at mas malumanay ang galaw ng mga eksena",
     "resetKeys": "I-reset ang mga nahanap na susi",
     "resetProgress": "I-reset ang progreso",
     "resetProgressText": "Mabubura ang lahat ng bituin, rekord, nahanap na susi, nalutas na kaso at ang kasaysayan ng laro ng dalawang manlalaro. Mananatili ang pagbili at mga setting.",
@@ -1097,5 +1127,9 @@
     "rules": "Libutin ang mundo: hanapin ang mga pagkakaiba sa bawat lugar, alamin ang isang kawili-wiling kaalaman tungkol dito at makakuha ng tatak sa iyong pasaporte.",
     "stamps": "Tatak: {n} sa {total}",
     "task": "Mga pagkakaiba sa buong mundo"
+  },
+  "cartoonMode": {
+    "task": "Hanapin ang pagkakaiba sa cartoon",
+    "rules": "Dalawang cartoon ang nagpapakita ng iisang nakakatawang kuwento. May mga pagkakaibang nakikita palagi, at may lumilitaw lang sandali — tumingin nang mabuti. Mag-zoom gamit ang dalawang daliri: hindi gagalaw ang larawan habang tumitingin ka."
   }
 }

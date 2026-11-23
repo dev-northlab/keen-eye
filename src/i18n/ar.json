@@ -32,7 +32,8 @@
     "time": "الزمن",
     "travel": "حول العالم",
     "treasury": "غرفة الكنز",
-    "test": "مستويات تجريبية"
+    "test": "مستويات تجريبية",
+    "cartoon": "رسوم متحركة"
   },
   "common": {
     "back": "رجوع",
@@ -850,7 +851,37 @@
     "autumnLeaves": "أوراق الخريف",
     "christmasMorning": "صباح عيد الميلاد",
     "sunnyStreet": "شارع مشمس",
-    "gardenGate": "عند بوابة الحديقة"
+    "gardenGate": "عند بوابة الحديقة",
+    "cartoonCatPond": "القطة عند البركة",
+    "cartoonDogPie": "الفطيرة المسروقة",
+    "cartoonFishing": "رحلة صيد",
+    "cartoonSnowman": "أنف رجل الثلج",
+    "cartoonHedgehog": "تفاحة القنفذ",
+    "cartoonBearHoney": "الدبّ والعسل",
+    "cartoonSandcastle": "قلعة الرمل",
+    "cartoonBananaPeel": "قشرة الموز",
+    "cartoonRunawayEgg": "البيضة الهاربة",
+    "cartoonNightWatch": "الحراسة الليلية",
+    "cartoonRunawayCheese": "الجبن الهارب",
+    "cartoonPearl": "اللؤلؤة",
+    "cartoonPenguinSlide": "زلّاقة البطاريق",
+    "cartoonMirage": "السراب",
+    "cartoonBambooCatapult": "منجنيق الخيزران",
+    "cartoonFlamingo": "الفلامنغو على ساق واحدة",
+    "cartoonJoey": "جراب صغير الكنغر",
+    "cartoonChimneySweep": "منظّف المداخن",
+    "cartoonSnailRace": "سباق الحلزونات",
+    "cartoonBeaverDam": "سدّ القندس",
+    "cartoonWindmill": "جولة على طاحونة الهواء",
+    "cartoonRainyDay": "يوم ممطر",
+    "cartoonDragonSneeze": "عطسة التنين",
+    "cartoonShortArms": "الذراعان القصيرتان",
+    "cartoonCircusSeal": "فقمة السيرك",
+    "cartoonBalloonGoat": "الماعز في المنطاد",
+    "cartoonCarrotTug": "شدّ الجزرة",
+    "cartoonLastCarriage": "العربة الأخيرة",
+    "cartoonMoonPicnic": "نزهة على القمر",
+    "cartoonCakeHeist": "سرقة الكعكة"
   },
   "map": {
     "level": "المرحلة {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "التطوير",
+    "devBenchmark": "اختبار الرسوم المتحركة",
     "devOff": "إيقاف وضع المطوّر",
     "fullGame": "اللعبة الكاملة",
     "fullGameOpen": "افتح كل المراحل",
     "fullGameOwned": "مفتوحة",
     "language": "اللغة",
     "music": "الموسيقى",
-    "reduceMotion": "تقليل الحركة",
-    "reduceMotionHint": "تتحرك المشاهد أبطأ وألطف",
     "resetKeys": "إعادة تعيين المفاتيح الموجودة",
     "resetProgress": "إعادة تعيين التقدم",
     "resetProgressText": "سيتم حذف جميع النجوم والأرقام القياسية والمفاتيح التي عُثر عليها والقضايا المحلولة وسجل مباريات لاعبَين. تبقى عملية الشراء والإعدادات كما هي.",
@@ -1097,5 +1127,9 @@
     "rules": "تجوّل حول العالم: اعثر على الاختلافات في كل مكان، وتعرّف إلى معلومة مثيرة عنه، واحصل على ختم في جواز سفرك.",
     "stamps": "الأختام: {n} من {total}",
     "task": "اختلافات حول العالم"
+  },
+  "cartoonMode": {
+    "task": "اكتشف الفروق في فيلم رسوم متحركة",
+    "rules": "فيلمان من الرسوم المتحركة يعرضان القصة المضحكة نفسها. بعض الفروق تظهر طوال الوقت، وبعضها للحظة فقط — انتبه جيدًا. كبّر الصورة بإصبعين: لن تهرب منك ما دمت تنظر."
   }
 }

@@ -32,7 +32,8 @@
     "time": "Tiden",
     "travel": "Jorda rundt",
     "treasury": "Skattkammer",
-    "test": "Testnivåer"
+    "test": "Testnivåer",
+    "cartoon": "Tegnefilm"
   },
   "common": {
     "back": "Tilbake",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Høstløv",
     "christmasMorning": "Julemorgen",
     "sunnyStreet": "Solfylt gate",
-    "gardenGate": "Ved hageporten"
+    "gardenGate": "Ved hageporten",
+    "cartoonCatPond": "Katten ved dammen",
+    "cartoonDogPie": "Den stjålne paien",
+    "cartoonFishing": "På fisketur",
+    "cartoonSnowman": "Snømannens nese",
+    "cartoonHedgehog": "Pinnsvinets eple",
+    "cartoonBearHoney": "Bjørnen og honningen",
+    "cartoonSandcastle": "Sandslottet",
+    "cartoonBananaPeel": "Bananskallet",
+    "cartoonRunawayEgg": "Egget som rømte",
+    "cartoonNightWatch": "Nattevakten",
+    "cartoonRunawayCheese": "Osten som rømte",
+    "cartoonPearl": "Perlen",
+    "cartoonPenguinSlide": "Pingvinsklia",
+    "cartoonMirage": "Hildringen",
+    "cartoonBambooCatapult": "Bambuskatapulten",
+    "cartoonFlamingo": "Flamingo på ett bein",
+    "cartoonJoey": "Kengurubabyens pung",
+    "cartoonChimneySweep": "Feieren",
+    "cartoonSnailRace": "Sneglekappløpet",
+    "cartoonBeaverDam": "Beverdammen",
+    "cartoonWindmill": "En tur på vindmølla",
+    "cartoonRainyDay": "En regnværsdag",
+    "cartoonDragonSneeze": "Dragens nys",
+    "cartoonShortArms": "Korte armer",
+    "cartoonCircusSeal": "Sirkusselen",
+    "cartoonBalloonGoat": "Geita i ballongen",
+    "cartoonCarrotTug": "Dragkamp om gulroten",
+    "cartoonLastCarriage": "Den siste vognen",
+    "cartoonMoonPicnic": "Piknik på månen",
+    "cartoonCakeHeist": "Kakekuppet"
   },
   "map": {
     "level": "Brett {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Utvikling",
+    "devBenchmark": "Animasjonstest",
     "devOff": "Slå av utviklermodus",
     "fullGame": "Hele spillet",
     "fullGameOpen": "Lås opp alle brett",
     "fullGameOwned": "Låst opp",
     "language": "Språk",
     "music": "Musikk",
-    "reduceMotion": "Reduser bevegelse",
-    "reduceMotionHint": "Scenene beveger seg saktere og mykere",
     "resetKeys": "Tilbakestill funnede nøkler",
     "resetProgress": "Tilbakestill fremgang",
     "resetProgressText": "Alle stjerner, rekorder, funne nøkler, oppklarte saker og historikken for spill for to slettes. Kjøpet og innstillingene beholdes.",
@@ -1097,5 +1127,9 @@
     "rules": "Reis jorda rundt: finn forskjellene på hvert sted, lær noe interessant om det og få et stempel i passet ditt.",
     "stamps": "Stempler: {n} av {total}",
     "task": "Forskjeller verden rundt"
+  },
+  "cartoonMode": {
+    "task": "Finn forskjellene i en tegnefilm",
+    "rules": "To tegnefilmer viser den samme morsomme historien. Noen forskjeller synes hele tiden, andre bare et øyeblikk – se godt etter. Zoom inn med to fingre: bildet står stille mens du ser."
   }
 }

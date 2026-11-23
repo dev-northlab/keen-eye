@@ -32,7 +32,8 @@
     "time": "Waktu",
     "travel": "Keliling dunia",
     "treasury": "Ruang harta",
-    "test": "Level uji"
+    "test": "Level uji",
+    "cartoon": "Kartun"
   },
   "common": {
     "back": "Kembali",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Daun musim gugur",
     "christmasMorning": "Pagi Natal",
     "sunnyStreet": "Jalan yang cerah",
-    "gardenGate": "Di gerbang taman"
+    "gardenGate": "Di gerbang taman",
+    "cartoonCatPond": "Kucing di kolam",
+    "cartoonDogPie": "Pai yang dicuri",
+    "cartoonFishing": "Memancing",
+    "cartoonSnowman": "Hidung manusia salju",
+    "cartoonHedgehog": "Apel si landak",
+    "cartoonBearHoney": "Beruang dan madu",
+    "cartoonSandcastle": "Istana pasir",
+    "cartoonBananaPeel": "Kulit pisang",
+    "cartoonRunawayEgg": "Telur yang kabur",
+    "cartoonNightWatch": "Jaga malam",
+    "cartoonRunawayCheese": "Keju yang kabur",
+    "cartoonPearl": "Mutiara",
+    "cartoonPenguinSlide": "Perosotan penguin",
+    "cartoonMirage": "Fatamorgana",
+    "cartoonBambooCatapult": "Ketapel bambu",
+    "cartoonFlamingo": "Flamingo berdiri satu kaki",
+    "cartoonJoey": "Kantong anak kanguru",
+    "cartoonChimneySweep": "Pembersih cerobong",
+    "cartoonSnailRace": "Balapan siput",
+    "cartoonBeaverDam": "Bendungan berang-berang",
+    "cartoonWindmill": "Naik kincir angin",
+    "cartoonRainyDay": "Hari hujan",
+    "cartoonDragonSneeze": "Bersin si naga",
+    "cartoonShortArms": "Tangan pendek",
+    "cartoonCircusSeal": "Anjing laut sirkus",
+    "cartoonBalloonGoat": "Kambing di balon udara",
+    "cartoonCarrotTug": "Tarik-tarikan wortel",
+    "cartoonLastCarriage": "Gerbong terakhir",
+    "cartoonMoonPicnic": "Piknik di bulan",
+    "cartoonCakeHeist": "Pencurian kue"
   },
   "map": {
     "level": "Level {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Pengembangan",
+    "devBenchmark": "Uji animasi",
     "devOff": "Matikan mode pengembang",
     "fullGame": "Permainan lengkap",
     "fullGameOpen": "Buka semua level",
     "fullGameOwned": "Terbuka",
     "language": "Bahasa",
     "music": "Musik",
-    "reduceMotion": "Kurangi gerakan",
-    "reduceMotionHint": "Adegan bergerak lebih lambat dan lembut",
     "resetKeys": "Atur ulang kunci yang ditemukan",
     "resetProgress": "Atur ulang progres",
     "resetProgressText": "Semua bintang, rekor, kunci yang ditemukan, kasus yang terpecahkan, dan riwayat permainan berdua akan dihapus. Pembelian dan pengaturan tetap tersimpan.",
@@ -1097,5 +1127,9 @@
     "rules": "Jelajahi dunia: temukan perbedaan di setiap tempat, pelajari fakta menarik tentangnya, dan dapatkan cap di paspormu.",
     "stamps": "Cap: {n} dari {total}",
     "task": "Perbedaan di seluruh dunia"
+  },
+  "cartoonMode": {
+    "task": "Temukan perbedaan dalam kartun",
+    "rules": "Dua kartun memutar cerita lucu yang sama. Beberapa perbedaan terlihat sepanjang waktu, yang lain hanya sesaat — perhatikan baik-baik. Perbesar dengan dua jari: gambar diam selama kamu melihat."
   }
 }

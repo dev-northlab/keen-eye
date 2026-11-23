@@ -204,8 +204,6 @@
     "title": "Impostazioni",
     "language": "Lingua",
     "systemLanguage": "Lingua di sistema",
-    "reduceMotion": "Riduci movimento",
-    "reduceMotionHint": "Le scene si muovono più lente e morbide",
     "dev": "Sviluppo",
     "unlockAll": "Completa tutti i livelli",
     "resetProgress": "Azzera i progressi",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Sblocca tutti i livelli",
     "resetPurchaseCache": "Dimentica acquisto (cache)",
     "resetPurchaseStore": "Dimentica acquisto (anche nello «store»)",
+    "devBenchmark": "Test animazione",
     "devOff": "Disattiva la modalità sviluppatore"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Storia investigativa",
     "tinyBoy": "Piccolino",
     "treasury": "Stanza del tesoro",
-    "test": "Livelli di prova"
+    "test": "Livelli di prova",
+    "cartoon": "Cartoni animati"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fioraio",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Foglie d’autunno",
     "christmasMorning": "Mattina di Natale",
     "sunnyStreet": "Strada assolata",
-    "gardenGate": "Al cancello del giardino"
+    "gardenGate": "Al cancello del giardino",
+    "cartoonCatPond": "Il gatto allo stagno",
+    "cartoonDogPie": "La torta rubata",
+    "cartoonFishing": "A pesca",
+    "cartoonSnowman": "Il naso del pupazzo di neve",
+    "cartoonHedgehog": "La mela del riccio",
+    "cartoonBearHoney": "L'orso e il miele",
+    "cartoonSandcastle": "Il castello di sabbia",
+    "cartoonBananaPeel": "La buccia di banana",
+    "cartoonRunawayEgg": "L'uovo fuggitivo",
+    "cartoonNightWatch": "La guardia notturna",
+    "cartoonRunawayCheese": "Il formaggio fuggitivo",
+    "cartoonPearl": "La perla",
+    "cartoonPenguinSlide": "Lo scivolo dei pinguini",
+    "cartoonMirage": "Il miraggio",
+    "cartoonBambooCatapult": "La catapulta di bambù",
+    "cartoonFlamingo": "Il fenicottero su una zampa",
+    "cartoonJoey": "Il marsupio del canguretto",
+    "cartoonChimneySweep": "Lo spazzacamino",
+    "cartoonSnailRace": "La corsa delle lumache",
+    "cartoonBeaverDam": "La diga del castoro",
+    "cartoonWindmill": "Il giro sul mulino",
+    "cartoonRainyDay": "Una giornata di pioggia",
+    "cartoonDragonSneeze": "Lo starnuto del drago",
+    "cartoonShortArms": "Braccine corte",
+    "cartoonCircusSeal": "La foca del circo",
+    "cartoonBalloonGoat": "La capra in mongolfiera",
+    "cartoonCarrotTug": "Il tiro alla carota",
+    "cartoonLastCarriage": "L'ultimo vagone",
+    "cartoonMoonPicnic": "Picnic sulla Luna",
+    "cartoonCakeHeist": "Il furto della torta"
   },
   "mode": {
     "label": "Modalità",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "Prima trova tutte le chiavi d’oro: sono nascoste nei livelli di ogni mondo e modalità. Allora il tesoro si aprirà!",
     "congrats": "Sei il giocatore più attento!"
+  },
+  "cartoonMode": {
+    "task": "Trova le differenze in un cartone animato",
+    "rules": "Due cartoni animati raccontano la stessa storia buffa. Alcune differenze restano sempre, altre durano solo un attimo: guarda bene. Ingrandisci con due dita: l’immagine resta ferma mentre guardi."
   }
 }

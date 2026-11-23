@@ -204,8 +204,6 @@
     "title": "Beállítások",
     "language": "Nyelv",
     "systemLanguage": "Rendszer nyelve",
-    "reduceMotion": "Kevesebb mozgás",
-    "reduceMotionHint": "A jelenetek lassabban és lágyabban mozognak",
     "dev": "Fejlesztés",
     "unlockAll": "Minden pálya teljesítése",
     "resetProgress": "Előrehaladás törlése",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Minden pálya feloldása",
     "resetPurchaseCache": "Vásárlás elfelejtése (gyorsítótár)",
     "resetPurchaseStore": "Vásárlás elfelejtése (a „boltban” is)",
+    "devBenchmark": "Animációs teszt",
     "devOff": "Fejlesztői mód kikapcsolása"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Detektívtörténet",
     "tinyBoy": "Kisfiú",
     "treasury": "Kincskamra",
-    "test": "Tesztpályák"
+    "test": "Tesztpályák",
+    "cartoon": "Rajzfilmek"
   },
   "levelTitles": {
     "memoryFlowerShop": "Virágbolt",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Őszi levelek",
     "christmasMorning": "Karácsony reggel",
     "sunnyStreet": "Napos utca",
-    "gardenGate": "A kertkapunál"
+    "gardenGate": "A kertkapunál",
+    "cartoonCatPond": "Macska a tónál",
+    "cartoonDogPie": "Az ellopott pite",
+    "cartoonFishing": "Horgászat",
+    "cartoonSnowman": "A hóember orra",
+    "cartoonHedgehog": "A sün almája",
+    "cartoonBearHoney": "A medve és a méz",
+    "cartoonSandcastle": "Homokvár",
+    "cartoonBananaPeel": "Banánhéj",
+    "cartoonRunawayEgg": "A szökevény tojás",
+    "cartoonNightWatch": "Éjjeli őrség",
+    "cartoonRunawayCheese": "A szökevény sajt",
+    "cartoonPearl": "A gyöngy",
+    "cartoonPenguinSlide": "Pingvincsúszda",
+    "cartoonMirage": "Délibáb",
+    "cartoonBambooCatapult": "Bambuszkatapult",
+    "cartoonFlamingo": "Flamingó egy lábon",
+    "cartoonJoey": "A kenguru erszénye",
+    "cartoonChimneySweep": "A kéményseprő",
+    "cartoonSnailRace": "Csigaverseny",
+    "cartoonBeaverDam": "A hód gátja",
+    "cartoonWindmill": "Körhinta a szélmalmon",
+    "cartoonRainyDay": "Esős nap",
+    "cartoonDragonSneeze": "A sárkány tüsszentése",
+    "cartoonShortArms": "Rövid mancsok",
+    "cartoonCircusSeal": "A cirkuszi fóka",
+    "cartoonBalloonGoat": "Kecske a hőlégballonban",
+    "cartoonCarrotTug": "Kötélhúzás a répáért",
+    "cartoonLastCarriage": "Az utolsó kocsi",
+    "cartoonMoonPicnic": "Piknik a Holdon",
+    "cartoonCakeHeist": "A tortarablás"
   },
   "mode": {
     "label": "Mód",
@@ -1097,5 +1127,9 @@
     "tag": "Bónusz",
     "lockedHint": "Először találd meg az összes aranykulcsot – minden világ és mód pályáin el vannak rejtve. Akkor kinyílik a kincstár!",
     "congrats": "Te vagy a legfigyelmesebb játékos!"
+  },
+  "cartoonMode": {
+    "task": "Keresd a különbségeket egy rajzfilmben",
+    "rules": "Két rajzfilm ugyanazt a vicces történetet meséli el. Néhány különbség mindig látszik, mások csak egy pillanatra – figyelj jól. Nagyíts két ujjal: amíg nézed, a kép nem szalad el."
   }
 }

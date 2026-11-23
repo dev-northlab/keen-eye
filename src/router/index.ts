@@ -71,6 +71,8 @@ export const router = createRouter({
     },
     { path: '/settings', name: 'settings', component: SettingsView },
     { path: '/about', name: 'about', component: AboutView },
+    // Developer mode only: SVG and Canvas 2D playing the same cartoon (its own chunk).
+    { path: '/dev/bench', name: 'bench', component: () => import('../views/BenchView.vue') },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })
@@ -89,6 +91,7 @@ router.beforeEach((to, from) => {
     return chapterById(String(to.params.chapter)) ? true : { name: 'worlds' }
   }
   if (to.name === 'case') return caseById(String(to.params.case)) ? true : { name: 'detective' }
+  if (to.name === 'bench') return useSettingsStore().developer ? true : { name: 'home' }
   const progress = useProgressStore()
   // Offer the full game over the current screen; a direct link to the level lands on the home screen.
   const offerPurchase = () => {
@@ -119,6 +122,7 @@ function backdropOf(to: RouteLocationNormalized): BackdropTheme | undefined {
     case 'memory':
     case 'match':
     case 'time-travel':
+    case 'bench':
       return undefined
     case 'chapter':
       return chapterById(String(to.params.chapter))?.backdrop

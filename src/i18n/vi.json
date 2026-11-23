@@ -32,7 +32,8 @@
     "time": "Thời gian",
     "travel": "Vòng quanh thế giới",
     "treasury": "Kho báu",
-    "test": "Màn thử nghiệm"
+    "test": "Màn thử nghiệm",
+    "cartoon": "Hoạt hình"
   },
   "common": {
     "back": "Quay lại",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Lá mùa thu",
     "christmasMorning": "Sáng Giáng sinh",
     "sunnyStreet": "Con phố đầy nắng",
-    "gardenGate": "Bên cổng vườn"
+    "gardenGate": "Bên cổng vườn",
+    "cartoonCatPond": "Chú mèo bên ao",
+    "cartoonDogPie": "Chiếc bánh bị đánh cắp",
+    "cartoonFishing": "Đi câu cá",
+    "cartoonSnowman": "Chiếc mũi của người tuyết",
+    "cartoonHedgehog": "Quả táo của nhím",
+    "cartoonBearHoney": "Gấu và mật ong",
+    "cartoonSandcastle": "Lâu đài cát",
+    "cartoonBananaPeel": "Vỏ chuối",
+    "cartoonRunawayEgg": "Quả trứng bỏ trốn",
+    "cartoonNightWatch": "Canh gác đêm",
+    "cartoonRunawayCheese": "Miếng phô mai bỏ trốn",
+    "cartoonPearl": "Viên ngọc trai",
+    "cartoonPenguinSlide": "Cầu trượt chim cánh cụt",
+    "cartoonMirage": "Ảo ảnh",
+    "cartoonBambooCatapult": "Máy bắn tre",
+    "cartoonFlamingo": "Hồng hạc đứng một chân",
+    "cartoonJoey": "Túi của kangaroo con",
+    "cartoonChimneySweep": "Người quét ống khói",
+    "cartoonSnailRace": "Cuộc đua ốc sên",
+    "cartoonBeaverDam": "Đập của hải ly",
+    "cartoonWindmill": "Vòng quay cối xay gió",
+    "cartoonRainyDay": "Ngày mưa",
+    "cartoonDragonSneeze": "Cái hắt hơi của rồng",
+    "cartoonShortArms": "Tay ngắn",
+    "cartoonCircusSeal": "Hải cẩu rạp xiếc",
+    "cartoonBalloonGoat": "Chú dê trên khinh khí cầu",
+    "cartoonCarrotTug": "Kéo co củ cà rốt",
+    "cartoonLastCarriage": "Toa tàu cuối cùng",
+    "cartoonMoonPicnic": "Dã ngoại trên Mặt Trăng",
+    "cartoonCakeHeist": "Vụ trộm bánh kem"
   },
   "map": {
     "level": "Màn {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Phát triển",
+    "devBenchmark": "Kiểm tra hoạt ảnh",
     "devOff": "Tắt chế độ nhà phát triển",
     "fullGame": "Trò chơi đầy đủ",
     "fullGameOpen": "Mở khóa mọi màn chơi",
     "fullGameOwned": "Đã mở khóa",
     "language": "Ngôn ngữ",
     "music": "Nhạc",
-    "reduceMotion": "Giảm chuyển động",
-    "reduceMotionHint": "Cảnh chuyển động chậm và nhẹ nhàng hơn",
     "resetKeys": "Đặt lại chìa khóa đã tìm",
     "resetProgress": "Đặt lại tiến trình",
     "resetProgressText": "Tất cả sao, kỷ lục, chìa khóa đã tìm thấy, vụ án đã phá và lịch sử chơi hai người sẽ bị xóa. Giao dịch mua và cài đặt vẫn được giữ.",
@@ -1097,5 +1127,9 @@
     "rules": "Du lịch vòng quanh thế giới: tìm điểm khác biệt ở mỗi nơi, khám phá một điều thú vị về nơi đó và nhận con dấu trong hộ chiếu.",
     "stamps": "Con dấu: {n}/{total}",
     "task": "Điểm khác biệt khắp thế giới"
+  },
+  "cartoonMode": {
+    "task": "Tìm điểm khác biệt trong phim hoạt hình",
+    "rules": "Hai bộ phim hoạt hình kể cùng một câu chuyện vui. Có điểm khác biệt hiện suốt, có điểm chỉ thoáng qua — hãy nhìn thật kỹ. Phóng to bằng hai ngón tay: hình sẽ đứng yên khi bạn nhìn."
   }
 }

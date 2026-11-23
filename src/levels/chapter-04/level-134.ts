@@ -1,5 +1,5 @@
 // Motion differences: the lifeguard flag flaps faster on picture B; the swimmer bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level134Redesign } from './level-134-redesign.ts'
 import { castleFlag, cloud, coconut, crab, flipFlops, gull, person, sailboat, sandcastle, shell, snorkelMask, sunglasses, sunHat, towel, waves } from './shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       sunglasses(680, 422) +
       coconut(530, 302) +
       snorkelMask(145, 442) +
+      // A busier beach, the same in both pictures (all kept clear of the hidden key): gulls and a kite in the sky, a
+      // buoy and a life ring on the water, a coconut, sunglasses, a starfish, a shell and a rock on the sand.
+      decor({ anim }, [
+        ['gull', 370, 30],
+        ['gull', 360, 115],
+        ['kite', 150, 150, '#e63946'],
+        ['buoy', 380, 200, '#ffd23f'],
+        ['lifeRing', 690, 215, '#ff9f43'],
+        ['coconut', 110, 300],
+        ['sunglasses', 310, 420],
+        ['starfish', 400, 480, '#ff9f43'],
+        ['shell', 620, 480, '#b38cff'],
+        ['rock', 790, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['clam', 734, 428],

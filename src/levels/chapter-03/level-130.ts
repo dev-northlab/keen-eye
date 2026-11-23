@@ -1,5 +1,5 @@
 // Motion differences: the left owlet blinks only on picture B; the spider on its thread bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level130Redesign } from './level-130-redesign.ts'
 import { ladybug } from '../shapes.ts'
@@ -94,6 +94,21 @@ export default svgLevel({
       feather(740, 372) +
       ladybug(520, 232) +
       bird(205, 140) +
+      // A busier evening, the same in both pictures: bats, first stars and fireflies in the dusk, a ladybug, a
+      // butterfly, a spider and a mushroom on the trunk, a snail on the right branch.
+      decor({ anim }, [
+        ['bat', 140, 190],
+        ['bat', 700, 200],
+        ['star', 180, 30],
+        ['star', 620, 40],
+        ['firefly', 650, 300],
+        ['firefly', 100, 330],
+        ['ladybug', 250, 200],
+        ['butterfly', 520, 230, '#b38cff'],
+        ['spider', 550, 170],
+        ['mushroom', 440, 490, '#e63946'],
+        ['snail', 770, 352],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['cloud', 86, 65],

@@ -38,19 +38,18 @@ pictures**: one tap on the 2D / 3D switch (home screen or level toolbar) turns t
 | ✈️ **Travel** | 32 | One recognizable city per country on a world map, a fun fact for each, and a passport stamp for every win. |
 | 🔍 **Detective** | 35 | Seven cases of five scenes. Every difference is a clue — collect them and name the culprit. |
 | 🏺 **Find the odd one out** | 10 eras | Egypt, Rome, Vikings, a castle, pirates, the Wild West, the Stone Age, samurai Japan, the Aztecs, ancient China — spot what doesn't belong in the era. |
-| 👦 **Tiny boy** | 10 | 3D pictures of a little boy's world — a birthday, a snowman, a fair. Nobody says how many differences there are: find them all. No timer, no stars, just won or not yet. |
+| 👦 **Tiny boy** | 15 | 3D pictures of a little boy's world — a birthday, a snowman, a fair. Nobody says how many differences there are: find them all. No timer, no stars, just won or not yet. |
+| 🎬 **Cartoons** | 30 | Short funny stories that loop, told by a camera — a gag in every one, the game's owl somewhere in each. Some differences are events of the story and show only for a moment; 10 differences in the first ten, 12 after. |
 | 🗝️ **Treasury** | 1 bonus | A golden key hides in one level of every world and mode. Find them all to open the treasure. |
 | 👫 **Two players** | — | On one device: **duel** (first to tap scores), **hot-seat** (take turns) or **co-op** (one shared score). Face to face on a tablet, too. |
 
 ### Made for everyone
 
 - **Calm mode** — no timer, no mistakes, no stars, three hints per level, slower animation and a "stop motion" button.
-- **Hard mode** — no hints, only one mistake allowed (the second ends the level), extra objects in the pictures and red
-  stars for the best.
 - **Pinch to zoom** and pan, shared by both pictures; double tap to zoom in.
-- **Hints** given afresh on every attempt: three in calm mode, one in normal mode, none in hard mode.
+- **Hints** given afresh on every attempt: three in calm mode, one in normal mode.
 - **Light and dark themes**, music, sound effects and vibration.
-- **Reduce motion** support and SVG-only interface icons.
+- Calm, slow animation of the level pictures and SVG-only interface icons.
 - **32 languages**: English, Русский, Հայերեն, Deutsch, Français, Español, Italiano, Português, Nederlands, Polski,
   Čeština, Română, Български, Українська, Ελληνικά, Magyar, Svenska, Dansk, Norsk, Suomi, Türkçe, العربية, हिन्दी,
   Bahasa Indonesia, Bahasa Melayu, Filipino, Tiếng Việt, ไทย, 简体中文, 繁體中文, 日本語, 한국어.

@@ -1,5 +1,5 @@
 // Motion differences: the beacon on the main module blinks only on picture B; the floating wrench spins faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level141Redesign } from './level-141-redesign.ts'
 import { asteroid, astronaut, fuelCanister, helmet, probe, sparkle, starField, toolbox } from './shapes.ts'
@@ -79,6 +79,21 @@ export default svgLevel({
       helmet(80, 310) +
       asteroid(260, 90, 0.5) +
       toolbox(410, 335) +
+      // A busier orbit, the same in both pictures: a UFO, planets, asteroids, a probe, stars and sparkles around the
+      // station, a lost helmet and a wrench floating free.
+      decor({ anim }, [
+        ['ufo', 300, 60],
+        ['ringPlanet', 760, 40],
+        ['planet', 180, 60, '#ff6b8b'],
+        ['asteroid', 560, 60],
+        ['asteroid', 640, 370],
+        ['probe', 760, 300],
+        ['spaceStar', 330, 270, '#ffd23f'],
+        ['sparkle', 440, 360],
+        ['spaceStar', 770, 350, '#b38cff'],
+        ['helmet', 30, 250],
+        ['wrench', 300, 370],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['planet', 699, 418, '#4dabf7'],

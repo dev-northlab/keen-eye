@@ -1,6 +1,6 @@
 // Motion differences: smoke rises from the middle chimney only on picture B; the red shirt on the line swings faster on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level113Redesign } from './level-113-redesign.ts'
 import { flowerPot, wateringCan } from '../shapes.ts'
@@ -111,6 +111,24 @@ export default svgLevel({
       flowerPot(380, 482) +
       coffeeCup(650, 482) +
       wateringCan(720, 482) +
+      // Busier rooftops, the same in both pictures: a kite, a plane, a balloon and a paper plane in the sky, a pigeon
+      // on the red roof, a crow on an aerial, a ginger cat on the flat roof; a bench, a teddy, boots, a skateboard, a
+      // pot and a bin on the terrace.
+      decor({ anim }, [
+        ['kite', 100, 50, '#ff6b8b'],
+        ['plane', 40, 20],
+        ['hotAirBalloon', 600, 40],
+        ['paperPlane', 540, 30],
+        ['pigeon', 150, 196],
+        ['crow', 760, 148],
+        ['cat', 760, 310, '#f08c2e'],
+        ['bench', 300, 492],
+        ['teddy', 20, 494, '#c68b4e'],
+        ['boots', 232, 496, '#e63946'],
+        ['skateboard', 650, 494, '#8338ec'],
+        ['flowerPot', 680, 452],
+        ['bin', 780, 494, '#2a9d8f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 324, 57],

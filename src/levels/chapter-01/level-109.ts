@@ -2,9 +2,9 @@
 import { person } from '../chapter-02/shapes.ts'
 import { bird, butterfly, frog, mushroom, pine, stump } from '../chapter-03/shapes.ts'
 import { fish } from '../chapter-04/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
-import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sun } from '../shapes.ts'
+import { cloud, duck, flower, FLOWER_COLORS, grass, pick, sheep, sun } from '../shapes.ts'
 import { level109Redesign } from './level-109-redesign.ts'
 
 /** Mill wheel with 8 paddles around (x, y), radius r. */
@@ -122,6 +122,19 @@ export default svgLevel({
       stump(590, 330) +
       mushroom(500, 325) +
       butterfly(785, 345) +
+      // A busier creek, the same in both pictures: a kite and swallows in the sky, a far windmill and a sheep on the
+      // hill, a rabbit by the stump, a dragonfly, a frog and a fish in the water.
+      sheep(42, 352) +
+      decor({ anim }, [
+        ['kite', 720, 92, '#ffd43b'],
+        ['swallow', 280, 40],
+        ['swallow', 766, 36],
+        ['windmill', 90, 250],
+        ['rabbit', 548, 326],
+        ['dragonfly', 210, 390],
+        ['frog', 400, 490],
+        ['fish', 620, 482, '#4dabf7'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ladybug', 457, 275],

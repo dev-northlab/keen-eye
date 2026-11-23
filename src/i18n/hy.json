@@ -204,8 +204,6 @@
     "title": "Կարգավորումներ",
     "language": "Լեզու",
     "systemLanguage": "Ինչպես համակարգում",
-    "reduceMotion": "Նվազեցնել անիմացիան",
-    "reduceMotionHint": "Տեսարանները շարժվում են ավելի դանդաղ",
     "dev": "Մշակում",
     "unlockAll": "Անցնել բոլոր մակարդակները",
     "resetProgress": "Զրոյացնել առաջընթացը",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Բացել բոլոր մակարդակները",
     "resetPurchaseCache": "Մոռանալ գնումը (քեշ)",
     "resetPurchaseStore": "Մոռանալ գնումը («խանութում» նույնպես)",
+    "devBenchmark": "Անիմացիայի թեստ",
     "devOff": "Անջատել մշակողի ռեժիմը"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Դետեկտիվ պատմություն",
     "tinyBoy": "Փոքրիկը",
     "treasury": "Գանձարան",
-    "test": "Փորձնական մակարդակներ"
+    "test": "Փորձնական մակարդակներ",
+    "cartoon": "Մուլտֆիլմեր"
   },
   "levelTitles": {
     "memoryFlowerShop": "Ծաղկի խանութ",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Աշնանային տերևներ",
     "christmasMorning": "Սուրբ Ծննդյան առավոտ",
     "sunnyStreet": "Արևոտ փողոց",
-    "gardenGate": "Այգու դռնակի մոտ"
+    "gardenGate": "Այգու դռնակի մոտ",
+    "cartoonCatPond": "Կատուն լճակի մոտ",
+    "cartoonDogPie": "Գողացված կարկանդակը",
+    "cartoonFishing": "Ձկնորսության",
+    "cartoonSnowman": "Ձնեմարդու քիթը",
+    "cartoonHedgehog": "Ոզնու խնձորը",
+    "cartoonBearHoney": "Արջն ու մեղրը",
+    "cartoonSandcastle": "Ավազե դղյակը",
+    "cartoonBananaPeel": "Բանանի կեղևը",
+    "cartoonRunawayEgg": "Փախած ձուն",
+    "cartoonNightWatch": "Գիշերային պահակը",
+    "cartoonRunawayCheese": "Փախած պանիրը",
+    "cartoonPearl": "Մարգարիտը",
+    "cartoonPenguinSlide": "Պինգվինների սահարանը",
+    "cartoonMirage": "Միրաժ",
+    "cartoonBambooCatapult": "Բամբուկե կատապուլտը",
+    "cartoonFlamingo": "Ֆլամինգոն մեկ ոտքի վրա",
+    "cartoonJoey": "Ձագ կենգուրուի պարկը",
+    "cartoonChimneySweep": "Ծխնելույզ մաքրողը",
+    "cartoonSnailRace": "Խխունջների մրցավազքը",
+    "cartoonBeaverDam": "Կղբի ամբարտակը",
+    "cartoonWindmill": "Հողմաղացի կարուսելը",
+    "cartoonRainyDay": "Անձրևոտ օր",
+    "cartoonDragonSneeze": "Վիշապի փռշտոցը",
+    "cartoonShortArms": "Կարճ թաթիկներ",
+    "cartoonCircusSeal": "Կրկեսի փոկը",
+    "cartoonBalloonGoat": "Այծն օդապարիկում",
+    "cartoonCarrotTug": "Գազարի քաշքշուկը",
+    "cartoonLastCarriage": "Վերջին վագոնը",
+    "cartoonMoonPicnic": "Պիկնիկ Լուսնի վրա",
+    "cartoonCakeHeist": "Տորթի գողությունը"
   },
   "mode": {
     "label": "Ռեժիմ",
@@ -1097,5 +1127,9 @@
     "tag": "Բոնուս",
     "lockedHint": "Նախ գտեք բոլոր ոսկե բանալիները․ դրանք թաքնված են յուրաքանչյուր աշխարհի և ռեժիմի մակարդակներում։ Այդ ժամանակ գանձարանը կբացվի։",
     "congrats": "Դուք ամենաուշադիր խաղացողն եք։"
+  },
+  "cartoonMode": {
+    "task": "Գտիր տարբերությունները մուլտֆիլմում",
+    "rules": "Երկու մուլտֆիլմ ցույց են տալիս նույն զվարճալի պատմությունը։ Որոշ տարբերություններ միշտ երևում են, մյուսները՝ միայն մի պահ․ ուշադիր եղիր։ Մոտեցրու նկարը երկու մատով․ քանի դեռ նայում ես, այն չի փախչում։"
   }
 }

@@ -1,10 +1,12 @@
 // Level validator: npm run check-levels
 import { existsSync } from 'node:fs'
-import { zoneCenter } from '../src/engine/animation.ts'
+import { zoneActive, zoneCenter } from '../src/engine/animation.ts'
+import { inWindow } from '../src/engine/keyframes.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
+import { CARTOON_CHAPTER, chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
 import { detectiveLevels } from '../src/levels/detective/index.ts'
 import { tinyBoyLevels } from '../src/levels/tiny-boy/index.ts'
+import { cartoonLevels } from '../src/levels/cartoon/index.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels, treasuryLevel } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
@@ -18,6 +20,10 @@ const SAMPLE_UNTIL_S = 120
 const SAMPLE_STEP_S = 0.05
 /** Pictures are compared pixel by pixel at these times (only t = 0 for levels without animation). */
 const PIXEL_TIMES_S = [0, 0.37, 0.9, 1.6, 2.45, 3.3, 4.75, 6.1, 7.9, 10.3]
+/** A cartoon's story (keyframe timelines, docs/cartoon-mode.md) is compared at every this many seconds of its loop. */
+const STORY_STEP_S = 0.25
+/** An event difference may still fade in or out this long outside its window. */
+const EVENT_SLACK_S = 0.25
 /** A pixel differs when the summed RGB difference exceeds this (ignores rounding noise). */
 const PIXEL_THRESHOLD = 8
 /** Anti-aliasing may spill this far outside a zone circle. */
@@ -41,13 +47,16 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
   const { w, h } = level.viewBox
   const ds = level.differences
   const animated = a.animations.length > 0 || b.animations.length > 0
-  const times = animated ? PIXEL_TIMES_S : [0]
+  const story = storyPeriod(a, b)
+  const times = story ? Array.from({ length: Math.round(story / STORY_STEP_S) }, (_, i) => i * STORY_STEP_S) : animated ? PIXEL_TIMES_S : [0]
   const perZone = times.map(() => ds.map(() => 0))
 
   times.forEach((t, ti) => {
     const pa = rasterize(posedSvg(a, t), w, h).pixels
     const pb = rasterize(posedSvg(b, t), w, h).pixels
     const zones: Zone[][] = pictures.map((anims) => ds.map((d) => ({ ...zoneCenter(d, anims, t), r: d.r })))
+    // A cartoon's event difference may show only in its window (give or take a fade): elsewhere its zone takes no pixels.
+    const shown = ds.map((d) => !d.during || inWindow({ ...d.during, from: d.during.from - EVENT_SLACK_S, to: d.during.to + EVENT_SLACK_S }, t))
     let outside = 0
     let box = { x0: w, y0: h, x1: 0, y1: 0 }
     for (let y = 0; y < h; y++) {
@@ -58,9 +67,15 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
         const px = x + 0.5
         const py = y + 0.5
         const inside = (z: Zone) => (px - z.x) ** 2 + (py - z.y) ** 2 <= (z.r + ZONE_TOLERANCE_PX) ** 2
-        const i = ds.findIndex((_, i) => inside(zones[0][i]) || inside(zones[1][i]))
+        const i = ds.findIndex((_, i) => shown[i] && (inside(zones[0][i]) || inside(zones[1][i])))
         if (i >= 0) {
           perZone[ti][i]++
+          continue
+        }
+        const early = ds.findIndex((_, i) => inside(zones[0][i]) || inside(zones[1][i]))
+        if (early >= 0) {
+          const w = ds[early].during!
+          report(`event zone #${early} shows outside its window ${w.from}–${w.to}s`, `t=${t}s`)
           continue
         }
         // A "memory" level's key is drawn on B only: not a difference.
@@ -80,6 +95,11 @@ function comparePixels(level: Level, a: SceneSvg, b: SceneSvg, pictures: Map<str
     const counts = perZone.map((z) => z[i])
     if (Math.max(...counts) < MIN_VISIBLE_PX) report(`zone #${i} shows no visible difference`, `max ${Math.max(...counts)} px`)
   })
+}
+
+/** The loop of a cartoon's story: the longest period of its keyframe timelines, or 0 without any. */
+function storyPeriod(a: SceneSvg, b: SceneSvg): number {
+  return Math.max(0, ...[...a.animations, ...b.animations].filter((x) => x.type === 'keys').map((x) => x.period))
 }
 
 /** Differing pixels of A and B at t = 0 inside each zone. */
@@ -308,10 +328,15 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
     pictures.forEach((anims, v) => {
       const when = `picture ${'AB'[v]}, t=${t.toFixed(2)}s`
       const zones = ds.map((d) => ({ ...zoneCenter(d, anims, t), r: d.r }))
+      // A cartoon's event difference counts only in its window, and may come in across the frame's edge.
+      const active = ds.map((d) => zoneActive(d, t))
       zones.forEach((z, i) => {
-        if (z.x - z.r < 0 || z.y - z.r < 0 || z.x + z.r > w || z.y + z.r > h)
+        if (!active[i]) return
+        const edge = ds[i].during ? 0 : z.r
+        if (z.x - edge < 0 || z.y - edge < 0 || z.x + edge > w || z.y + edge > h)
           report(`zone #${i} goes outside the ${w}×${h} viewBox`, when)
         for (let j = i + 1; j < zones.length; j++) {
+          if (!active[j]) continue
           const gap = Math.hypot(z.x - zones[j].x, z.y - zones[j].y)
           if (gap < z.r + zones[j].r) report(`zones #${i} and #${j} overlap`, when)
           else if (gap < minGap) report(`zones #${i} and #${j} are closer than ${minGap}`, when)
@@ -351,14 +376,26 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
 
 // Optional level ids to check (npm run check-levels -- 81 82); all levels by default.
 const ids = process.argv.slice(2).map(Number)
-// Ids run on without gaps: the worlds from 1, each category from its first id.
+// Ids run on without gaps: the worlds from 1, each category through its ranges (the cartoons leave ids free between
+// theirs) — but for the ids of hidden levels (upcoming.ts), kept for them at their place (a cartoon drawn ahead may
+// sit between released ones).
+const hiddenIds = new Set(upcomingLevels.map((l) => l.id))
+const inOrder = (list: Level[], ranges: [number, number][]) => {
+  const ids = ranges.flatMap(([from, to]) => Array.from({ length: Math.min(to, from + list.length + hiddenIds.size) - from + 1 }, (_, i) => from + i))
+  let at = 0
+  return list.map((l) => {
+    while (hiddenIds.has(ids[at])) at++
+    return [l, ids[at++] ?? -1] as const
+  })
+}
 const expected = new Map([
-  ...levels.map((l, i) => [l, i + 1] as const),
-  ...timeLevels.map((l, i) => [l, TIME_CHAPTER.ranges[0][0] + i] as const),
-  ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
-  ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
-  ...[...detectiveLevels].sort((a, b) => a.id - b.id).map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
-  ...tinyBoyLevels.map((l, i) => [l, TINY_BOY_CHAPTER.ranges[0][0] + i] as const),
+  ...inOrder(levels, [[1, levels.length + hiddenIds.size]]),
+  ...inOrder(timeLevels, TIME_CHAPTER.ranges),
+  ...inOrder(memoryLevels, MEMORY_CHAPTER.ranges),
+  ...inOrder(travelLevels, TRAVEL_CHAPTER.ranges),
+  ...inOrder([...detectiveLevels].sort((a, b) => a.id - b.id), DETECTIVE_CHAPTER.ranges),
+  ...inOrder(tinyBoyLevels, TINY_BOY_CHAPTER.ranges),
+  ...inOrder(cartoonLevels, CARTOON_CHAPTER.ranges),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
   // Hidden levels (upcoming.ts) take their place in the order only when released.
   ...upcomingLevels.map((l) => [l, l.id] as const),

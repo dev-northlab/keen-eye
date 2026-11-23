@@ -1,4 +1,5 @@
 // Animation math: poses of animated objects at time t. No DOM, so the level validator can use it in Node.
+import { inWindow, loopTime, sampleKeys } from './keyframes.ts'
 import type { Animation, Difference } from './types.ts'
 
 /** SVG matrix(a b c d e f): x' = a·x + c·y + e, y' = b·x + d·y + f. */
@@ -72,12 +73,35 @@ export function pose(a: Animation, t: number): Pose {
       return { opacity: u < (a.duty ?? 0.5) ? 1 : 0 }
     case 'color':
       return { fill: mixColors(a.colors, u) }
+    case 'keys': {
+      const k = sampleKeys(a.keys, loopTime(u * a.period, a.period), a.period, KEY_FIELDS, KEY_REST)
+      const p = { matrix: keyMatrix(k, a.pivot ?? [0, 0]) }
+      return a.keys.some((key) => key.o !== undefined) ? { ...p, opacity: Math.min(Math.max(k.o, 0), 1) } : p
+    }
   }
+}
+
+const KEY_FIELDS = ['x', 'y', 'rot', 'sx', 'sy', 'o'] as const
+const KEY_REST = { x: 0, y: 0, rot: 0, sx: 1, sy: 1, o: 1 }
+
+/** Offset by (x, y), then turned and scaled around the pivot: translate(x + px, y + py) · rotate · scale · translate(−px, −py). */
+function keyMatrix(k: Record<(typeof KEY_FIELDS)[number], number>, [px, py]: [number, number]): Matrix {
+  const rad = (k.rot * Math.PI) / 180
+  const c = Math.cos(rad)
+  const s = Math.sin(rad)
+  const a = c * k.sx
+  const b = s * k.sx
+  const cc = -s * k.sy
+  const d = c * k.sy
+  return [a, b, cc, d, k.x + px - (a * px + cc * py), k.y + py - (b * px + d * py)]
 }
 
 export function transformPoint([a, b, c, d, e, f]: Matrix, x: number, y: number) {
   return { x: a * x + c * y + e, y: b * x + d * y + f }
 }
+
+/** A cartoon's event difference (`Difference.during`) is on screen at time t; other differences always are. */
+export const zoneActive = (d: Difference, t: number) => !d.during || inWindow(d.during, t)
 
 /** Zone center at time t in a picture with the given animations (by id). */
 export function zoneCenter(d: Difference, animations: Map<string, Animation>, t: number) {

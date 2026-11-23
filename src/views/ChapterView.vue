@@ -75,7 +75,7 @@ function tileLabel(level: Level) {
       ? t(`levelTitles.${level.title}`)
       : t('map.locked')
   const hidden = isUpcoming(level.id) ? ` (${t('map.hidden')})` : ''
-  return `${t('map.level', { n: levelNumber(level) })}: ${name}${hidden}`
+  return `${t('map.level', { n: levelNumber(level, settings.developer) })}: ${name}${hidden}`
 }
 </script>
 
@@ -119,7 +119,7 @@ function tileLabel(level: Level) {
               <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2" />
               <path d="M4 20 20 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
             </svg>
-            <span class="num">{{ levelNumber(level) }}</span>
+            <span class="num">{{ levelNumber(level, settings.developer) }}</span>
             <svg v-if="!progress.isUnlocked(level.id)" class="lock" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7.5 10.5V8a4.5 4.5 0 0 1 9 0v2.5" fill="none" stroke="currentColor" stroke-width="2.4" />
               <rect x="5" y="10" width="14" height="11" rx="3" fill="currentColor" />

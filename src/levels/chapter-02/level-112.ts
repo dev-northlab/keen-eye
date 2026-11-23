@@ -1,6 +1,6 @@
 // Motion differences: steam rises from the right cup only on picture B; the hanging plant swings faster on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, bike, cityTree, flowerBox, lampHead, lampPost, newspaperBox, person, pigeon, scooter, shoppingBag } from './shapes.ts'
 import { level112Redesign } from './level-112-redesign.ts'
@@ -119,6 +119,21 @@ export default svgLevel({
       scooter(262, 482) +
       shoppingBag(735, 440) +
       newspaperBox(322, 380) +
+      // A busier café corner, the same in both pictures: bunting and wall lamps on the facade, flowers on the empty
+      // balcony, a sparrow on the street lamp, a cat by the shop window, a puppy, a bin, a bag and newspapers.
+      decor({ anim }, [
+        ['bunting', 150, 52],
+        ['bunting', 650, 52],
+        ['sconce', 370, 170],
+        ['sconce', 650, 170],
+        ['flowerBox', 570, 118, '#ff6b8b'],
+        ['sparrow', 770, 318],
+        ['cat', 410, 330],
+        ['puppy', 600, 494],
+        ['bin', 22, 494, '#2a9d8f'],
+        ['shoppingBag', 225, 494, '#4dabf7'],
+        ['newspapers', 700, 494],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 450, 170, '#ffb703'],

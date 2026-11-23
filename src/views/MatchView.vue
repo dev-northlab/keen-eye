@@ -20,6 +20,7 @@ import { useBackButton } from '../services/backButton.ts'
 import { vibrateFound, vibrateMiss } from '../services/haptics.ts'
 import { useDuoStore } from '../stores/duo.ts'
 import { useSettingsStore } from '../stores/settings.ts'
+import { MODE_RULES } from '../engine/rules.ts'
 
 // Two players on one device. The route guard guarantees the level exists and is available.
 
@@ -85,8 +86,8 @@ function start() {
   handOver.value = null
   tossed.value = false
   result.value = null
-  // Reduce motion slows the scene down; the match places moving zones on the same clock.
-  const animationSpeed = settings.effectiveReduceMotion ? 0.5 : 1
+  // Duels move at normal mode's speed; the match places moving zones on the same clock.
+  const animationSpeed = MODE_RULES.normal.animationSpeed
   const players = setup.players.map((p, i) => ({ name: playerName(i), color: p.color }))
   // Hot-seat: a spun bottle decides who plays first, anew for every match. Its neck points right at rest (player 2).
   const firstTurn: PlayerId = Math.random() < 0.5 ? 1 : 2

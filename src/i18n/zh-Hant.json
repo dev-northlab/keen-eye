@@ -32,7 +32,8 @@
     "time": "時間",
     "travel": "環遊世界",
     "treasury": "藏寶室",
-    "test": "測試關卡"
+    "test": "測試關卡",
+    "cartoon": "動畫片"
   },
   "common": {
     "back": "返回",
@@ -850,7 +851,37 @@
     "autumnLeaves": "秋天的落葉",
     "christmasMorning": "聖誕節的早晨",
     "sunnyStreet": "陽光街道",
-    "gardenGate": "花園門口"
+    "gardenGate": "花園門口",
+    "cartoonCatPond": "池塘邊的貓",
+    "cartoonDogPie": "被偷的餡餅",
+    "cartoonFishing": "去釣魚",
+    "cartoonSnowman": "雪人的鼻子",
+    "cartoonHedgehog": "刺蝟的蘋果",
+    "cartoonBearHoney": "熊和蜂蜜",
+    "cartoonSandcastle": "沙堡",
+    "cartoonBananaPeel": "香蕉皮",
+    "cartoonRunawayEgg": "逃跑的蛋",
+    "cartoonNightWatch": "守夜",
+    "cartoonRunawayCheese": "逃跑的起司",
+    "cartoonPearl": "珍珠",
+    "cartoonPenguinSlide": "企鵝溜滑梯",
+    "cartoonMirage": "海市蜃樓",
+    "cartoonBambooCatapult": "竹子彈弓",
+    "cartoonFlamingo": "單腳站的紅鶴",
+    "cartoonJoey": "小袋鼠的育兒袋",
+    "cartoonChimneySweep": "掃煙囪",
+    "cartoonSnailRace": "蝸牛賽跑",
+    "cartoonBeaverDam": "河狸的水壩",
+    "cartoonWindmill": "風車轉轉轉",
+    "cartoonRainyDay": "下雨天",
+    "cartoonDragonSneeze": "龍打噴嚏",
+    "cartoonShortArms": "小短手",
+    "cartoonCircusSeal": "馬戲團的海豹",
+    "cartoonBalloonGoat": "熱氣球上的山羊",
+    "cartoonCarrotTug": "胡蘿蔔拔河",
+    "cartoonLastCarriage": "最後一節車廂",
+    "cartoonMoonPicnic": "月球野餐",
+    "cartoonCakeHeist": "蛋糕大盜"
   },
   "map": {
     "level": "第 {n} 關",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "開發",
+    "devBenchmark": "動畫測試",
     "devOff": "關閉開發者模式",
     "fullGame": "完整版",
     "fullGameOpen": "解鎖所有關卡",
     "fullGameOwned": "已解鎖",
     "language": "語言",
     "music": "音樂",
-    "reduceMotion": "減少動態效果",
-    "reduceMotionHint": "畫面動得更慢、更柔和",
     "resetKeys": "重設已找到的鑰匙",
     "resetProgress": "重設進度",
     "resetProgressText": "所有星星、紀錄、找到的鑰匙、已破的案件和雙人對戰紀錄都將被刪除。購買和設定會保留。",
@@ -1097,5 +1127,9 @@
     "rules": "環遊世界：在每個地方找出不同，了解一個有趣的知識，並在護照上蓋一個章。",
     "stamps": "印章：{n}/{total}",
     "task": "全世界的不同之處"
+  },
+  "cartoonMode": {
+    "task": "在動畫片裡找不同",
+    "rules": "兩部動畫片同時播放同一個有趣的故事。有些不同一直都在，有些只出現一瞬間——請仔細看。用兩根手指放大：你看的時候畫面不會跑開。"
   }
 }

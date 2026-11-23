@@ -50,16 +50,16 @@ const holdBottle = async (page: Page) => {
 
 // Order = order in the stores; captions are the lines of screenshots.txt in the same order.
 const SHOTS: Shot[] = [
-  { name: 'level', route: '/level/75', act: findDifferences(75, 4) },
-  // The same level as 3D pictures: every level is drawn, many also come in 3D.
+  { name: 'level', route: '/level/48', settings: { pictureStyle: 'redesign' }, act: findDifferences(48, 4, 'redesign') },
+  // Another level as 3D pictures: every level is drawn, many also come in 3D.
   { name: 'level-3d', route: '/level/75', settings: { pictureStyle: 'redesign' }, act: findDifferences(75, 4, 'redesign') },
   { name: 'modes', route: '/levels' },
-  { name: 'time', route: '/level/203', act: findDifferences(203, 3) },
+  { name: 'time', route: '/level/203', settings: { pictureStyle: 'redesign' }, act: findDifferences(203, 3, 'redesign') },
   { name: 'detective', route: '/detective/cake' },
   { name: 'travel', route: '/travel' },
   // Two players taking turns: the bottle spun for who goes first, held just before it stops (once it stops, the
   // dialog shows only the first player).
-  { name: 'duel', route: '/duo/75', storage: { duoSetup: { mode: 'hotseat' } }, act: holdBottle },
+  { name: 'duel', route: '/duo/105', settings: { pictureStyle: 'redesign' }, storage: { duoSetup: { mode: 'hotseat' } }, act: holdBottle },
   { name: 'calm', route: '/', settings: { mode: 'calm' } },
 ]
 

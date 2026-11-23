@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Debug builds only (com.northlab.keeneye.dev): told apart from the Google Play version on the home screen. -->
+<resources>
+    <string name="app_name">Keen Eye Dev</string>
+    <string name="title_activity_main">Keen Eye Dev</string>
+</resources>

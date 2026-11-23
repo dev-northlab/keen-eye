@@ -32,7 +32,8 @@
     "time": "กาลเวลา",
     "travel": "เที่ยวรอบโลก",
     "treasury": "ห้องสมบัติ",
-    "test": "ด่านทดสอบ"
+    "test": "ด่านทดสอบ",
+    "cartoon": "การ์ตูน"
   },
   "common": {
     "back": "กลับ",
@@ -850,7 +851,37 @@
     "autumnLeaves": "ใบไม้ร่วง",
     "christmasMorning": "เช้าวันคริสต์มาส",
     "sunnyStreet": "ถนนแดดจ้า",
-    "gardenGate": "ที่ประตูรั้วสวน"
+    "gardenGate": "ที่ประตูรั้วสวน",
+    "cartoonCatPond": "แมวริมบ่อน้ำ",
+    "cartoonDogPie": "พายที่ถูกขโมย",
+    "cartoonFishing": "ไปตกปลา",
+    "cartoonSnowman": "จมูกของตุ๊กตาหิมะ",
+    "cartoonHedgehog": "แอปเปิลของเม่น",
+    "cartoonBearHoney": "หมีกับน้ำผึ้ง",
+    "cartoonSandcastle": "ปราสาททราย",
+    "cartoonBananaPeel": "เปลือกกล้วย",
+    "cartoonRunawayEgg": "ไข่จอมหนี",
+    "cartoonNightWatch": "ยามกลางคืน",
+    "cartoonRunawayCheese": "ชีสจอมหนี",
+    "cartoonPearl": "ไข่มุก",
+    "cartoonPenguinSlide": "สไลเดอร์เพนกวิน",
+    "cartoonMirage": "ภาพลวงตา",
+    "cartoonBambooCatapult": "หนังสติ๊กไม้ไผ่",
+    "cartoonFlamingo": "ฟลามิงโกขาเดียว",
+    "cartoonJoey": "กระเป๋าของลูกจิงโจ้",
+    "cartoonChimneySweep": "คนกวาดปล่องไฟ",
+    "cartoonSnailRace": "แข่งหอยทาก",
+    "cartoonBeaverDam": "เขื่อนของบีเวอร์",
+    "cartoonWindmill": "ม้าหมุนกังหันลม",
+    "cartoonRainyDay": "วันฝนตก",
+    "cartoonDragonSneeze": "จามของมังกร",
+    "cartoonShortArms": "แขนสั้น",
+    "cartoonCircusSeal": "แมวน้ำละครสัตว์",
+    "cartoonBalloonGoat": "แพะบนบอลลูน",
+    "cartoonCarrotTug": "ชักเย่อแครอท",
+    "cartoonLastCarriage": "ตู้รถไฟตู้สุดท้าย",
+    "cartoonMoonPicnic": "ปิกนิกบนดวงจันทร์",
+    "cartoonCakeHeist": "ปล้นเค้ก"
   },
   "map": {
     "level": "ด่าน {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "การพัฒนา",
+    "devBenchmark": "ทดสอบแอนิเมชัน",
     "devOff": "ปิดโหมดนักพัฒนา",
     "fullGame": "เกมเต็ม",
     "fullGameOpen": "ปลดล็อกทุกด่าน",
     "fullGameOwned": "ปลดล็อกแล้ว",
     "language": "ภาษา",
     "music": "เพลง",
-    "reduceMotion": "ลดการเคลื่อนไหว",
-    "reduceMotionHint": "ฉากเคลื่อนไหวช้าลงและนุ่มนวลขึ้น",
     "resetKeys": "รีเซ็ตกุญแจที่พบ",
     "resetProgress": "รีเซ็ตความคืบหน้า",
     "resetProgressText": "ดาว สถิติ กุญแจที่พบ คดีที่ไขแล้ว และประวัติการเล่นสองคนทั้งหมดจะถูกลบ การซื้อและการตั้งค่ายังคงอยู่",
@@ -1097,5 +1127,9 @@
     "rules": "เดินทางรอบโลก: จับผิดภาพในแต่ละสถานที่ เรียนรู้เรื่องน่าสนใจ และรับตราประทับในหนังสือเดินทาง",
     "stamps": "ตราประทับ: {n} จาก {total}",
     "task": "จุดต่างรอบโลก"
+  },
+  "cartoonMode": {
+    "task": "หาจุดต่างในการ์ตูน",
+    "rules": "การ์ตูนสองเรื่องเล่าเรื่องตลกเดียวกัน บางจุดต่างเห็นได้ตลอดเวลา บางจุดเกิดขึ้นเพียงชั่วครู่ — ดูให้ดี ซูมด้วยสองนิ้ว: ภาพจะหยุดนิ่งขณะที่คุณดู"
   }
 }

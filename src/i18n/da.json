@@ -32,7 +32,8 @@
     "time": "Tiden",
     "travel": "Jorden rundt",
     "treasury": "Skatkammer",
-    "test": "Testbaner"
+    "test": "Testbaner",
+    "cartoon": "Tegnefilm"
   },
   "common": {
     "back": "Tilbage",
@@ -850,7 +851,37 @@
     "autumnLeaves": "Efterårsblade",
     "christmasMorning": "Juledagsmorgen",
     "sunnyStreet": "Solrig gade",
-    "gardenGate": "Ved havelågen"
+    "gardenGate": "Ved havelågen",
+    "cartoonCatPond": "Katten ved dammen",
+    "cartoonDogPie": "Den stjålne tærte",
+    "cartoonFishing": "På fisketur",
+    "cartoonSnowman": "Snemandens næse",
+    "cartoonHedgehog": "Pindsvinets æble",
+    "cartoonBearHoney": "Bjørnen og honningen",
+    "cartoonSandcastle": "Sandslottet",
+    "cartoonBananaPeel": "Bananskrællen",
+    "cartoonRunawayEgg": "Ægget der stak af",
+    "cartoonNightWatch": "Nattevagten",
+    "cartoonRunawayCheese": "Osten der stak af",
+    "cartoonPearl": "Perlen",
+    "cartoonPenguinSlide": "Pingvinrutsjebanen",
+    "cartoonMirage": "Fatamorganaen",
+    "cartoonBambooCatapult": "Bambuskatapulten",
+    "cartoonFlamingo": "Flamingo på ét ben",
+    "cartoonJoey": "Kængurungens pung",
+    "cartoonChimneySweep": "Skorstensfejeren",
+    "cartoonSnailRace": "Sneglevæddeløbet",
+    "cartoonBeaverDam": "Bæverdæmningen",
+    "cartoonWindmill": "En tur på møllen",
+    "cartoonRainyDay": "En regnvejrsdag",
+    "cartoonDragonSneeze": "Dragens nys",
+    "cartoonShortArms": "Korte arme",
+    "cartoonCircusSeal": "Cirkussælen",
+    "cartoonBalloonGoat": "Geden i ballonen",
+    "cartoonCarrotTug": "Tovtrækning om guleroden",
+    "cartoonLastCarriage": "Den sidste vogn",
+    "cartoonMoonPicnic": "Picnic på månen",
+    "cartoonCakeHeist": "Lagkagekuppet"
   },
   "map": {
     "level": "Bane {n}",
@@ -946,14 +977,13 @@
   },
   "settings": {
     "dev": "Udvikling",
+    "devBenchmark": "Animationstest",
     "devOff": "Slå udviklertilstand fra",
     "fullGame": "Hele spillet",
     "fullGameOpen": "Lås alle baner op",
     "fullGameOwned": "Låst op",
     "language": "Sprog",
     "music": "Musik",
-    "reduceMotion": "Reducer bevægelse",
-    "reduceMotionHint": "Scenerne bevæger sig langsommere og blødere",
     "resetKeys": "Nulstil fundne nøgler",
     "resetProgress": "Nulstil fremskridt",
     "resetProgressText": "Alle stjerner, rekorder, fundne nøgler, opklarede sager og historikken for spil for to slettes. Købet og indstillingerne bevares.",
@@ -1097,5 +1127,9 @@
     "rules": "Rejs jorden rundt: find forskellene på hvert sted, lær en interessant ting om det, og få et stempel i dit pas.",
     "stamps": "Stempler: {n} af {total}",
     "task": "Forskelle verden rundt"
+  },
+  "cartoonMode": {
+    "task": "Find forskellene i en tegnefilm",
+    "rules": "To tegnefilm viser den samme sjove historie. Nogle forskelle ses hele tiden, andre kun et øjeblik – kig godt efter. Zoom ind med to fingre: billedet står stille, mens du kigger."
   }
 }

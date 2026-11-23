@@ -1,12 +1,13 @@
 import { transformBOf } from './difficulty.ts'
-import type { Animation, AnimationMotion, Difference, Level, LevelPictures, MemoryRules, SecretKey, TimePair, TravelPlace, Trap } from '../engine/types.ts'
+import type { Animation, AnimationMotion, CartoonFilm, Difference, EventWindow, Level, LevelPictures, MemoryRules, SecretKey, TimePair, TravelPlace, Trap } from '../engine/types.ts'
 
 /**
  * Returns `a` for picture A and `b` for picture B and registers the zone
  * (x, y, r) in viewBox coordinates. Everything a/b draw must fit inside it.
- * `follow` is the id of an animation (see `anim`) the zone moves with.
+ * `follow` is the id of an animation (see `anim`) the zone moves with. `during`: a cartoon's event, shown and
+ * tappable only in that window of the story (docs/cartoon-mode.md).
  */
-export type Diff = (x: number, y: number, r: number, a: string, b: string, follow?: string) => string
+export type Diff = (x: number, y: number, r: number, a: string, b: string, follow?: string, during?: EventWindow) => string
 
 export type AnimSpec = AnimationMotion & {
   /** Needed only to reference the animation from `diff(..., follow)`. */
@@ -96,6 +97,8 @@ interface SvgLevelDef {
   travel?: TravelPlace
   /** The level's redesigned pictures (Level.redesign), played in the new picture style. */
   redesign?: LevelPictures
+  /** Makes it a cartoon with a camera (Level.cartoon): `viewBox` is the whole world. */
+  cartoon?: CartoonFilm
   /** Draws the scene; called once per picture with a fresh context. */
   scene: (ctx: SceneContext) => string
 }
@@ -125,10 +128,11 @@ export function svgLevel(def: SvgLevelDef): Level {
       }
       return s
     }
-    const diff: Diff = (x, y, r, a, b, follow) => {
+    const diff: Diff = (x, y, r, a, b, follow, during) => {
       if (zones) {
         const zone: Difference = { x, y, r }
         if (follow !== undefined) zone.animatedId = follow
+        if (during !== undefined) zone.during = during
         if (unwrap(a, 'still') === unwrap(b, 'still') && unwrap(a, 'moving') !== unwrap(b, 'moving')) zone.motion = true
         zones.push(zone)
       }
@@ -179,6 +183,7 @@ export function svgLevel(def: SvgLevelDef): Level {
     ...(def.travel !== undefined && { travel: def.travel }),
     ...(transformB !== 'none' && { transformB }),
     ...(def.redesign !== undefined && { redesign: def.redesign }),
+    ...(def.cartoon !== undefined && { cartoon: def.cartoon }),
   } as Level
   lazy(level, 'differences', () => zones().differences)
   if (def.multiplayerReady !== undefined) level.multiplayerReady = def.multiplayerReady

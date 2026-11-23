@@ -1,5 +1,5 @@
 // Motion differences: a hand strap in the train swings only on picture B; a dot on the departure board blinks only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level115Redesign } from './level-115-redesign.ts'
 import { bench, bin, coffeeCup, newspaperBox, person, scooter, shoppingBag, skateboard } from './shapes.ts'
@@ -102,6 +102,20 @@ export default svgLevel({
       shoppingBag(185, 462) +
       scooter(472, 482) +
       skateboard(775, 492) +
+      // A busier platform, the same in both pictures: a wall phone, a lamp, a calendar, an umbrella stand and a fire
+      // extinguisher on the wall; a child's balloon, a pigeon, a suitcase and a coffee cup on the platform.
+      decor({ anim }, [
+        ['wallPhone', 600, 300],
+        ['sconce', 520, 300],
+        ['calendar', 300, 105],
+        ['umbrellaStand', 550, 372],
+        ['fireExtinguisher', 730, 370],
+        ['balloon', 150, 352, '#e63946'],
+        ['pigeon', 160, 494],
+        ['suitcase', 560, 496, '#8338ec'],
+        ['coffeeCup', 200, 494],
+        ['newspapers', 40, 496],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bollard', 219, 422],

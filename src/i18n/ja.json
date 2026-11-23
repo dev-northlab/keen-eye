@@ -204,8 +204,6 @@
     "title": "設定",
     "language": "言語",
     "systemLanguage": "システムの言語",
-    "reduceMotion": "動きを減らす",
-    "reduceMotionHint": "シーンがゆっくり、やさしく動きます",
     "dev": "開発",
     "unlockAll": "全レベルをクリア",
     "resetProgress": "進行状況をリセット",
@@ -220,6 +218,7 @@
     "fullGameOpen": "全レベルを解放",
     "resetPurchaseCache": "購入を忘れる（キャッシュ）",
     "resetPurchaseStore": "購入を忘れる（「ストア」も）",
+    "devBenchmark": "アニメーションテスト",
     "devOff": "開発者モードをオフにする"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "探偵ストーリー",
     "tinyBoy": "ちいさな男の子",
     "treasury": "宝物庫",
-    "test": "テストレベル"
+    "test": "テストレベル",
+    "cartoon": "アニメ"
   },
   "levelTitles": {
     "memoryFlowerShop": "お花屋さん",
@@ -604,7 +604,37 @@
     "autumnLeaves": "秋の落ち葉",
     "christmasMorning": "クリスマスの朝",
     "sunnyStreet": "晴れた通り",
-    "gardenGate": "庭の門で"
+    "gardenGate": "庭の門で",
+    "cartoonCatPond": "池のねこ",
+    "cartoonDogPie": "ぬすまれたパイ",
+    "cartoonFishing": "つりに行こう",
+    "cartoonSnowman": "ゆきだるまのはな",
+    "cartoonHedgehog": "ハリネズミのりんご",
+    "cartoonBearHoney": "クマとはちみつ",
+    "cartoonSandcastle": "すなのおしろ",
+    "cartoonBananaPeel": "バナナのかわ",
+    "cartoonRunawayEgg": "にげたたまご",
+    "cartoonNightWatch": "よるのみはり",
+    "cartoonRunawayCheese": "にげたチーズ",
+    "cartoonPearl": "しんじゅ",
+    "cartoonPenguinSlide": "ペンギンのすべりだい",
+    "cartoonMirage": "しんきろう",
+    "cartoonBambooCatapult": "たけのカタパルト",
+    "cartoonFlamingo": "かたあしのフラミンゴ",
+    "cartoonJoey": "こどもカンガルーのポケット",
+    "cartoonChimneySweep": "えんとつそうじ",
+    "cartoonSnailRace": "カタツムリのきょうそう",
+    "cartoonBeaverDam": "ビーバーのダム",
+    "cartoonWindmill": "ふうしゃでぐるぐる",
+    "cartoonRainyDay": "あめのひ",
+    "cartoonDragonSneeze": "ドラゴンのくしゃみ",
+    "cartoonShortArms": "みじかいうで",
+    "cartoonCircusSeal": "サーカスのアザラシ",
+    "cartoonBalloonGoat": "ききゅうのヤギ",
+    "cartoonCarrotTug": "ニンジンのひっぱりあい",
+    "cartoonLastCarriage": "さいごのしゃりょう",
+    "cartoonMoonPicnic": "つきでピクニック",
+    "cartoonCakeHeist": "ケーキどろぼう"
   },
   "mode": {
     "label": "モード",
@@ -1097,5 +1127,9 @@
     "tag": "ボーナス",
     "lockedHint": "まずは金のカギをすべて見つけよう。どの世界とモードにも、レベルのどこかに隠されています。そうすれば宝物庫が開きます！",
     "congrats": "あなたは最も注意深いプレイヤーです！"
+  },
+  "cartoonMode": {
+    "task": "アニメのまちがいさがし",
+    "rules": "2つのアニメが同じおもしろいお話を流します。ずっと見えるまちがいもあれば、一瞬だけのまちがいも——よく見てね。2本の指で拡大すると、見ているあいだ画面は止まります。"
   }
 }

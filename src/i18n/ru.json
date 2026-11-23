@@ -204,8 +204,6 @@
     "title": "Настройки",
     "language": "Язык",
     "systemLanguage": "Как в системе",
-    "reduceMotion": "Уменьшить анимацию",
-    "reduceMotionHint": "Сцены двигаются медленнее и мягче",
     "dev": "Разработка",
     "unlockAll": "Пройти все уровни",
     "resetProgress": "Сбросить прогресс",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Открыть все уровни",
     "resetPurchaseCache": "Забыть покупку (кеш)",
     "resetPurchaseStore": "Забыть покупку (и в «магазине»)",
+    "devBenchmark": "Тест анимации",
     "devOff": "Выключить режим разработчика"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Детективная история",
     "tinyBoy": "Малыш",
     "treasury": "Сокровищница",
-    "test": "Тестовые уровни"
+    "test": "Тестовые уровни",
+    "cartoon": "Мультфильмы"
   },
   "levelTitles": {
     "memoryFlowerShop": "Цветочный магазин",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Осенние листья",
     "christmasMorning": "Рождественское утро",
     "sunnyStreet": "Солнечная улица",
-    "gardenGate": "У садовой калитки"
+    "gardenGate": "У садовой калитки",
+    "cartoonCatPond": "Кот у пруда",
+    "cartoonDogPie": "Украденный пирог",
+    "cartoonFishing": "На рыбалке",
+    "cartoonSnowman": "Нос снеговика",
+    "cartoonHedgehog": "Яблоко ёжика",
+    "cartoonBearHoney": "Медведь и мёд",
+    "cartoonSandcastle": "Замок из песка",
+    "cartoonBananaPeel": "Банановая кожура",
+    "cartoonRunawayEgg": "Убежавшее яйцо",
+    "cartoonNightWatch": "Ночной дозор",
+    "cartoonRunawayCheese": "Сбежавший сыр",
+    "cartoonPearl": "Жемчужина",
+    "cartoonPenguinSlide": "Пингвинья горка",
+    "cartoonMirage": "Мираж",
+    "cartoonBambooCatapult": "Бамбуковая катапульта",
+    "cartoonFlamingo": "Фламинго на одной ноге",
+    "cartoonJoey": "Сумка кенгурёнка",
+    "cartoonChimneySweep": "Трубочист",
+    "cartoonSnailRace": "Улиточные гонки",
+    "cartoonBeaverDam": "Бобровая плотина",
+    "cartoonWindmill": "Карусель на мельнице",
+    "cartoonRainyDay": "Дождливый день",
+    "cartoonDragonSneeze": "Чих дракона",
+    "cartoonShortArms": "Короткие лапки",
+    "cartoonCircusSeal": "Цирковой тюлень",
+    "cartoonBalloonGoat": "Коза на воздушном шаре",
+    "cartoonCarrotTug": "Морковка-перетяжка",
+    "cartoonLastCarriage": "Последний вагон",
+    "cartoonMoonPicnic": "Пикник на Луне",
+    "cartoonCakeHeist": "Похищение торта"
   },
   "mode": {
     "label": "Режим",
@@ -1097,5 +1127,9 @@
     "tag": "Бонус",
     "lockedHint": "Сначала найдите все золотые ключи — они спрятаны в уровнях каждого мира и режима. Тогда сокровищница откроется!",
     "congrats": "Вы — самый внимательный игрок!"
+  },
+  "cartoonMode": {
+    "task": "Найди отличия в мультфильме",
+    "rules": "Два мультфильма показывают одну и ту же смешную историю. Одни отличия видны всё время, другие случаются лишь на миг — следи внимательно. Приблизь картинку двумя пальцами: пока ты смотришь, она не убегает."
   }
 }

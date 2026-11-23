@@ -3,11 +3,13 @@ import { useTemplateRef } from 'vue'
 import { useRouter } from 'vue-router'
 import ScreenBackdrop from '../components/ScreenBackdrop.vue'
 import BackButton from '../components/BackButton.vue'
+import CartoonBannerScene from '../components/CartoonBannerScene.vue'
 import KeyBadge from '../components/KeyBadge.vue'
 import KeyIcon from '../components/KeyIcon.vue'
 import LevelId from '../components/LevelId.vue'
 import PhotoBanner from '../components/PhotoBanner.vue'
 import {
+  CARTOON_CHAPTER,
   CHAPTERS,
   chapterLevels,
   chapterLevelsWithHidden,
@@ -66,6 +68,7 @@ const categories = [
   { chapter: DETECTIVE_CHAPTER, task: 'detective.task', to: { name: 'detective' } },
 ].map((c) => ({ ...c, totals: category(c.chapter) }))
 const tinyBoy = category(TINY_BOY_CHAPTER)
+const cartoons = category(CARTOON_CHAPTER)
 
 /** Worlds whose key is found (the "spot the difference" banner stands for all of them). */
 const worldKeys = () => CHAPTERS.filter((c) => progress.hasKey(c.id)).length
@@ -119,6 +122,20 @@ const timeTravel = {
             :found="worldKeys() === CHAPTERS.length"
             :text="worldKeys() === CHAPTERS.length ? $t('secret.foundWorlds') : $t('secret.findWorlds', { n: worldKeys(), total: CHAPTERS.length })"
           />
+        </li>
+        <li>
+          <!-- "Cartoons" (docs/cartoon-mode.md): a live banner, a little cartoon of its own; its levels in a grid. -->
+          <PhotoBanner
+            class="cartoon"
+            :tag="$t('cartoonMode.task')"
+            :name="$t('chapters.cartoon')"
+            @click="router.push({ name: 'chapter', params: { chapter: CARTOON_CHAPTER.id } })"
+          >
+            <template #picture><CartoonBannerScene /></template>
+            <template #icon><img class="obj" :src="`${baseUrl}icons/cartoon.webp`" alt="" /></template>
+            {{ $t('map.doneCount', { n: cartoons.done() }) }} · ★ {{ cartoons.stars() }}
+            <template #end><LevelId :id="cartoons.ids" /></template>
+          </PhotoBanner>
         </li>
         <li>
           <!-- "Tiny boy": its levels as picture banners (TinyBoyView). -->
@@ -231,8 +248,8 @@ main {
   gap: 16px;
 }
 
-/* A banner per game mode (PhotoBanner, its picture in public/banners/): "spot the difference" green, "tiny boy" sky
-   blue (the default), "in time" violet, "memory" pink, "travel" sea blue, "detective" brown, "find the odd one out"
+/* A banner per game mode (PhotoBanner, its picture in public/banners/): "spot the difference" green, "cartoons"
+   orange (a live picture, CartoonBannerScene), "tiny boy" sky blue (the default), "in time" violet, "memory" pink, "travel" sea blue, "detective" brown, "find the odd one out"
    warm, the treasury gold. */
 .spot {
   --banner-from: #4cc38a;
@@ -240,6 +257,14 @@ main {
   --banner-to: #1f7a55;
   --banner-shadow: rgb(20 90 60 / 0.6);
   --banner-icon-bg: #e3f6ec;
+}
+
+.cartoon {
+  --banner-from: #ffa25c;
+  --banner-mid: #f0743e;
+  --banner-to: #c4471f;
+  --banner-shadow: rgb(170 60 20 / 0.6);
+  --banner-icon-bg: #ffece2;
 }
 
 .time {

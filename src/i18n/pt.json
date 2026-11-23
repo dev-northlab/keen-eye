@@ -204,8 +204,6 @@
     "title": "Configurações",
     "language": "Idioma",
     "systemLanguage": "Idioma do sistema",
-    "reduceMotion": "Reduzir movimento",
-    "reduceMotionHint": "As cenas se movem mais devagar e suave",
     "dev": "Desenvolvimento",
     "unlockAll": "Concluir todas as fases",
     "resetProgress": "Apagar progresso",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Desbloquear todas as fases",
     "resetPurchaseCache": "Esquecer compra (cache)",
     "resetPurchaseStore": "Esquecer compra (também na \"loja\")",
+    "devBenchmark": "Teste de animação",
     "devOff": "Desativar o modo de desenvolvedor"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "História de detetive",
     "tinyBoy": "Pequenino",
     "treasury": "Sala do tesouro",
-    "test": "Níveis de teste"
+    "test": "Níveis de teste",
+    "cartoon": "Desenhos animados"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floricultura",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Folhas de outono",
     "christmasMorning": "Manhã de Natal",
     "sunnyStreet": "Rua ensolarada",
-    "gardenGate": "No portão do jardim"
+    "gardenGate": "No portão do jardim",
+    "cartoonCatPond": "O gato no lago",
+    "cartoonDogPie": "A torta roubada",
+    "cartoonFishing": "Pescaria",
+    "cartoonSnowman": "O nariz do boneco de neve",
+    "cartoonHedgehog": "A maçã do ouriço",
+    "cartoonBearHoney": "O urso e o mel",
+    "cartoonSandcastle": "O castelo de areia",
+    "cartoonBananaPeel": "A casca de banana",
+    "cartoonRunawayEgg": "O ovo fujão",
+    "cartoonNightWatch": "A vigia noturna",
+    "cartoonRunawayCheese": "O queijo fujão",
+    "cartoonPearl": "A pérola",
+    "cartoonPenguinSlide": "O escorregador dos pinguins",
+    "cartoonMirage": "A miragem",
+    "cartoonBambooCatapult": "A catapulta de bambu",
+    "cartoonFlamingo": "O flamingo em um pé só",
+    "cartoonJoey": "A bolsa do filhote de canguru",
+    "cartoonChimneySweep": "O limpador de chaminés",
+    "cartoonSnailRace": "A corrida de caracóis",
+    "cartoonBeaverDam": "A represa do castor",
+    "cartoonWindmill": "Passeio no moinho",
+    "cartoonRainyDay": "Um dia de chuva",
+    "cartoonDragonSneeze": "O espirro do dragão",
+    "cartoonShortArms": "Bracinhos curtos",
+    "cartoonCircusSeal": "A foca do circo",
+    "cartoonBalloonGoat": "A cabra no balão",
+    "cartoonCarrotTug": "O cabo de guerra da cenoura",
+    "cartoonLastCarriage": "O último vagão",
+    "cartoonMoonPicnic": "Piquenique na Lua",
+    "cartoonCakeHeist": "O roubo do bolo"
   },
   "mode": {
     "label": "Modo",
@@ -1097,5 +1127,9 @@
     "tag": "Bônus",
     "lockedHint": "Primeiro encontre todas as chaves douradas — estão escondidas nos níveis de cada mundo e modo. Então o tesouro se abrirá!",
     "congrats": "Você é o jogador mais atento!"
+  },
+  "cartoonMode": {
+    "task": "Encontre as diferenças num desenho animado",
+    "rules": "Dois desenhos animados contam a mesma história engraçada. Algumas diferenças ficam o tempo todo, outras só por um instante — olhe com atenção. Amplie com dois dedos: a imagem fica parada enquanto você olha."
   }
 }

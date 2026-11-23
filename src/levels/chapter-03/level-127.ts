@@ -1,5 +1,5 @@
 // Motion differences: the bullfinch on the log hops faster on picture B; the far cabin's smoke drifts only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level127Redesign } from './level-127-redesign.ts'
 import { stones } from '../shapes.ts'
@@ -95,6 +95,19 @@ export default svgLevel({
       trailSign(310, 345) +
       stones(620, 482) +
       flakes +
+      // A busier winter wood, the same in both pictures: an owl and a bullfinch in the big pine, a crow on the
+      // signpost, a fox, a sled, a snow shovel by the house, skates on the ice, snowballs and mittens in the snow.
+      decor({ anim }, [
+        ['owl', 60, 330],
+        ['bullfinch', 40, 260],
+        ['crow', 310, 306],
+        ['fox', 30, 420],
+        ['sled', 590, 368],
+        ['snowShovel', 720, 280],
+        ['iceSkates', 300, 470],
+        ['snowballs', 250, 490],
+        ['mittens', 60, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bird', 378, 298],

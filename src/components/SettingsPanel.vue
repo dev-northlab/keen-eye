@@ -82,22 +82,6 @@ const resetOpen = ref(false)
       <input v-model="settings.vibration" type="checkbox" role="switch" />
     </label>
 
-    <label class="row">
-      <span class="lead">
-        <span class="ico" style="--c: #5a8dee" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 13c2.5-4 5.5-4 8 0s5.5 4 8 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M5 18h14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7"/></svg></span>
-        <span>
-          {{ $t('settings.reduceMotion') }}
-          <small>{{ $t('settings.reduceMotionHint') }}</small>
-        </span>
-      </span>
-      <input
-        type="checkbox"
-        role="switch"
-        :checked="settings.effectiveReduceMotion"
-        @change="settings.reduceMotion = ($event.target as HTMLInputElement).checked"
-      />
-    </label>
-
     <button class="row link" @click="purchase.dialogOpen = true">
       <span class="lead"><span class="ico" style="--c: #ffc531" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8l4 3.5L12 5l4 6.5L20 8l-1.5 10h-13Z" fill="#fff"/></svg></span>{{ $t('settings.fullGame') }}</span>
       <span class="muted">

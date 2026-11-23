@@ -204,8 +204,6 @@
     "title": "Instellingen",
     "language": "Taal",
     "systemLanguage": "Systeemtaal",
-    "reduceMotion": "Minder beweging",
-    "reduceMotionHint": "Scènes bewegen langzamer en zachter",
     "dev": "Ontwikkeling",
     "unlockAll": "Alle levels voltooien",
     "resetProgress": "Voortgang wissen",
@@ -220,6 +218,7 @@
     "fullGameOpen": "Alle levels ontgrendelen",
     "resetPurchaseCache": "Aankoop vergeten (cache)",
     "resetPurchaseStore": "Aankoop vergeten (ook in de \"winkel\")",
+    "devBenchmark": "Animatietest",
     "devOff": "Ontwikkelaarsmodus uitschakelen"
   },
   "common": {
@@ -239,7 +238,8 @@
     "detective": "Detectiveverhaal",
     "tinyBoy": "Kleine jongen",
     "treasury": "Schatkamer",
-    "test": "Testlevels"
+    "test": "Testlevels",
+    "cartoon": "Tekenfilms"
   },
   "levelTitles": {
     "memoryFlowerShop": "Bloemenwinkel",
@@ -604,7 +604,37 @@
     "autumnLeaves": "Herfstbladeren",
     "christmasMorning": "Kerstochtend",
     "sunnyStreet": "Zonnige straat",
-    "gardenGate": "Bij het tuinhek"
+    "gardenGate": "Bij het tuinhek",
+    "cartoonCatPond": "Kat bij de vijver",
+    "cartoonDogPie": "De gestolen taart",
+    "cartoonFishing": "Uit vissen",
+    "cartoonSnowman": "De neus van de sneeuwpop",
+    "cartoonHedgehog": "De appel van de egel",
+    "cartoonBearHoney": "De beer en de honing",
+    "cartoonSandcastle": "Het zandkasteel",
+    "cartoonBananaPeel": "De bananenschil",
+    "cartoonRunawayEgg": "Het weggelopen ei",
+    "cartoonNightWatch": "De nachtwacht",
+    "cartoonRunawayCheese": "De weggerolde kaas",
+    "cartoonPearl": "De parel",
+    "cartoonPenguinSlide": "De pinguïnglijbaan",
+    "cartoonMirage": "De luchtspiegeling",
+    "cartoonBambooCatapult": "De bamboekatapult",
+    "cartoonFlamingo": "Flamingo op één poot",
+    "cartoonJoey": "De buidel van het kangoeroejong",
+    "cartoonChimneySweep": "De schoorsteenveger",
+    "cartoonSnailRace": "De slakkenrace",
+    "cartoonBeaverDam": "De beverdam",
+    "cartoonWindmill": "Een ritje op de molen",
+    "cartoonRainyDay": "Een regenachtige dag",
+    "cartoonDragonSneeze": "De niesbui van de draak",
+    "cartoonShortArms": "Korte armpjes",
+    "cartoonCircusSeal": "De circuszeehond",
+    "cartoonBalloonGoat": "De geit in de ballon",
+    "cartoonCarrotTug": "Touwtrekken om een wortel",
+    "cartoonLastCarriage": "De laatste wagon",
+    "cartoonMoonPicnic": "Picknick op de maan",
+    "cartoonCakeHeist": "De taartroof"
   },
   "mode": {
     "label": "Modus",
@@ -1097,5 +1127,9 @@
     "tag": "Bonus",
     "lockedHint": "Vind eerst alle gouden sleutels – ze zijn verstopt in de levels van elke wereld en modus. Dan gaat de schatkamer open!",
     "congrats": "Jij bent de oplettendste speler!"
+  },
+  "cartoonMode": {
+    "task": "Zoek de verschillen in een tekenfilm",
+    "rules": "Twee tekenfilms vertellen hetzelfde grappige verhaal. Sommige verschillen blijven de hele tijd, andere zie je maar even – let goed op. Zoom in met twee vingers: het beeld blijft stilstaan terwijl je kijkt."
   }
 }

@@ -1,5 +1,5 @@
 // Motion differences: the diver's bubbles rise faster on picture B; the octopus waves an arm only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level139Redesign } from './level-139-redesign.ts'
 import { anchor, bottleMessage, crab, fish, seahorse, seaUrchin } from './shapes.ts'
@@ -87,6 +87,20 @@ export default svgLevel({
       seahorse(700, 400) +
       anchor(112, 462) +
       fish(260, 320, '#ff6b8b') +
+      // A busier cave, the same in both pictures: more fish and a jellyfish in the window, a fish by the octopus,
+      // seaweed, a seahorse, a sea urchin, a shell and a rock on the cave floor.
+      decor({ anim }, [
+        ['fish', 260, 240, '#ff9f43'],
+        ['fish', 560, 140, '#ff6b8b'],
+        ['fish', 600, 340, '#4dabf7'],
+        ['fish', 100, 380, '#ffd23f'],
+        ['jellyfish', 300, 360, '#ff9f43'],
+        ['seahorse', 720, 470],
+        ['shell', 100, 490, '#ffd8c2'],
+        ['seaUrchin', 580, 492, '#6a4fd8'],
+        ['seaweed', 30, 420, '#2a9d8f'],
+        ['rock', 780, 420],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 598, 222, '#4dabf7'],

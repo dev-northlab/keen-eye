@@ -1,6 +1,6 @@
 // Motion differences: the grey horse twitches its ear only on picture B; the dog wags its tail faster on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, cat, flowerPot, hayBale, milkCan, wheelbarrow } from '../shapes.ts'
 import { level106Redesign } from './level-106-redesign.ts'
@@ -125,6 +125,19 @@ export default svgLevel({
       milkCan(480, 415) +
       wheelbarrow(130, 490) +
       flowerPot(240, 72) +
+      // A busier stable, the same in both pictures: a lamp, a calendar and a spider on the wall, an owl on the beam,
+      // a swallow, halters hung on the stall doors, a hay bale and a mouse on the floor.
+      decor({ anim }, [
+        ['sconce', 60, 52],
+        ['calendar', 470, 50],
+        ['spider', 782, 30],
+        ['owl', 232, 102],
+        ['swallow', 760, 44],
+        ['scarfHook', 40, 300, '#4dabf7'],
+        ['scarfHook', 760, 300, '#e63946'],
+        ['haybale', 702, 420],
+        ['mouse', 604, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['horseshoe', 682, 44],
