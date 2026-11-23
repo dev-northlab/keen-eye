@@ -443,3 +443,58 @@ export const palmTree = (x: number, y: number, s: number, crown: Crown, lean = 1
     crown([tx, ty], fronds + coconuts)
   )
 }
+
+/** Gradients of the jungle plants below (banana plant, bamboo): put them in the `<defs>` of a level that draws them. */
+export const JUNGLE_DEFS =
+  `<linearGradient id="ke-banana-leaf" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b6e86a"/><stop offset="0.6" stop-color="#5cb342"/><stop offset="1" stop-color="#2f7d34"/></linearGradient>` +
+  `<linearGradient id="ke-bamboo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7fae3a"/><stop offset="0.6" stop-color="#b9d968"/><stop offset="1" stop-color="#d9ec98"/></linearGradient>`
+
+/**
+ * A banana plant standing on (x, y), `s` times its size: a green stem, big ragged leaves arching out of its top
+ * (`crown` gets them, with `extra` drawn among them: a bunch, a young rolled leaf).
+ */
+export const bananaPlant = (x: number, y: number, s: number, crown: Crown, extra = '') => {
+  const k = (n: number) => Math.round(n * s * 10) / 10
+  const top = y - k(150)
+  let leavesM = ''
+  for (const [i, a] of [-160, -120, -60, -20, 200].entries()) {
+    const r = (a * Math.PI) / 180
+    const len = k(i % 2 ? 110 : 96)
+    const ex = Math.round(x + Math.cos(r) * len)
+    const ey = Math.round(top + Math.sin(r) * len * 0.5 + k(40))
+    const mx = Math.round((x + ex) / 2)
+    const my = Math.round((top + ey) / 2 - k(40))
+    leavesM +=
+      `<path d="M${x} ${top}Q${mx} ${my - k(26)} ${ex} ${ey}Q${mx} ${my + k(18)} ${x} ${top}z" fill="url(#ke-banana-leaf)" ${Ow(1.8)}/>` +
+      `<path d="M${x} ${top}Q${mx} ${my - k(4)} ${ex} ${ey}" fill="none" stroke="#2f7d34" stroke-width="${k(2)}"/>` +
+      `<path d="M${Math.round(mx - k(8))} ${Math.round(my + k(4))}l${k(4)} ${k(10)}M${Math.round(mx + k(10))} ${Math.round(my + k(6))}l${k(2)} ${k(10)}" stroke="#2f7d34" stroke-width="${k(1.4)}"/>`
+  }
+  return (
+    groundShadow(x, y, k(50), k(8)) +
+    `<path d="M${x - k(12)} ${y}q${k(2)}-${k(80)} ${k(4)}-${k(150)}h${k(16)}q${k(2)} ${k(70)} ${k(4)} ${k(150)}z" fill="#7fae3a" ${O}/>` +
+    `<path d="M${x - k(4)} ${y - k(10)}q${k(2)}-${k(60)} 0-${k(130)}" fill="none" stroke="#5c8a2a" stroke-width="${k(2)}"/>` +
+    crown([x, top], leavesM + extra)
+  )
+}
+
+/** A clump of bamboo standing on (x, y), `s` times its size: `n` jointed stalks with leaf sprays; `sway` moves each. */
+export const bambooClump = (x: number, y: number, s: number, n: number, sway: (pivot: [number, number], m: string) => string) => {
+  const k = (v: number) => Math.round(v * s * 10) / 10
+  let m = groundShadow(x, y, k(60), k(8))
+  for (let i = 0; i < n; i++) {
+    const sx = Math.round(x - k(36) + i * k(72 / Math.max(1, n - 1)))
+    const h = k(260 - (i % 3) * 40)
+    let joints = ''
+    for (let j = 1; j * k(40) < h; j++) joints += `<path d="M${sx - k(7)} ${y - j * k(40)}h${k(14)}" stroke="#5c8a2a" stroke-width="${k(3)}"/>`
+    const sprays = [0.55, 0.8]
+      .map((f, j) => {
+        const lx = sx + (j % 2 ? k(6) : -k(6))
+        const ly = Math.round(y - h * f)
+        const d = j % 2 ? 1 : -1
+        return `<path d="M${lx} ${ly}q${d * k(20)}-${k(4)} ${d * k(34)} ${k(6)}q-${d * k(18)} ${k(4)}-${d * k(34)}-${k(6)}zM${lx} ${ly}q${d * k(16)}-${k(14)} ${d * k(30)}-${k(16)}q-${d * k(14)} ${k(10)}-${d * k(30)} ${k(16)}z" fill="url(#ke-banana-leaf)" ${Ow(1.4)}/>`
+      })
+      .join('')
+    m += sway([sx, y], `<rect x="${sx - k(7)}" y="${y - h}" width="${k(14)}" height="${h}" rx="${k(5)}" fill="url(#ke-bamboo)" ${Ow(1.8)}/>` + joints + sprays)
+  }
+  return m
+}

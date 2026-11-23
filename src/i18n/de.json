@@ -613,7 +613,8 @@
     "cartoonSnowman": "Die Nase des Schneemanns",
     "cartoonHedgehog": "The hedgehog's apple",
     "cartoonBearHoney": "The bear and the honey",
-    "cartoonSandcastle": "The sandcastle"
+    "cartoonSandcastle": "The sandcastle",
+    "cartoonBananaPeel": "The banana peel"
   },
   "mode": {
     "label": "Modus",
