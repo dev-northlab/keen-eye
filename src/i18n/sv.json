@@ -984,8 +984,6 @@
     "fullGameOwned": "Upplåst",
     "language": "Språk",
     "music": "Musik",
-    "reduceMotion": "Minska rörelse",
-    "reduceMotionHint": "Scenerna rör sig långsammare och mjukare",
     "resetKeys": "Återställ hittade nycklar",
     "resetProgress": "Återställ framsteg",
     "resetProgressText": "Alla stjärnor, rekord, hittade nycklar, lösta fall och historiken för spel med två spelare raderas. Köpet och inställningarna finns kvar.",

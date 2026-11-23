@@ -984,8 +984,6 @@
     "fullGameOwned": "Avattu",
     "language": "Kieli",
     "music": "Musiikki",
-    "reduceMotion": "Vähennä liikettä",
-    "reduceMotionHint": "Maisemat liikkuvat hitaammin ja pehmeämmin",
     "resetKeys": "Nollaa löydetyt avaimet",
     "resetProgress": "Nollaa edistyminen",
     "resetProgressText": "Kaikki tähdet, ennätykset, löydetyt avaimet, ratkaistut tapaukset ja kahden pelaajan pelien historia poistetaan. Osto ja asetukset säilyvät.",

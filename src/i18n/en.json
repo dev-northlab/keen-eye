@@ -204,8 +204,6 @@
     "title": "Settings",
     "language": "Language",
     "systemLanguage": "System default",
-    "reduceMotion": "Reduce motion",
-    "reduceMotionHint": "Scenes move slower and softer",
     "dev": "Development",
     "unlockAll": "Complete all levels",
     "resetProgress": "Reset progress",

@@ -204,8 +204,6 @@
     "title": "Ajustes",
     "language": "Idioma",
     "systemLanguage": "Idioma del sistema",
-    "reduceMotion": "Reducir movimiento",
-    "reduceMotionHint": "Las escenas se mueven más lento y suave",
     "dev": "Desarrollo",
     "unlockAll": "Completar todos los niveles",
     "resetProgress": "Borrar progreso",

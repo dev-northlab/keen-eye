@@ -47,7 +47,7 @@ export interface ModeRules {
   hints: number
   /** Anti-spam lock after quick misses (`MissGuard`). */
   missLock: boolean
-  /** Animation time multiplier (calm mode slows the scene down). */
+  /** Animation time multiplier of the level pictures: always slow, half their drawn speed, calm mode slower still. */
   animationSpeed: number
   /** "Memory": looks at A while searching, from the level's. */
   memoryPeeks: (levelPeeks: number) => number
@@ -63,7 +63,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
   calm: {
     hints: 3,
     missLock: false,
-    animationSpeed: 0.6,
+    animationSpeed: 0.3,
     memoryPeeks: () => 3,
     memoryMaxMisses: () => Infinity,
     extras: false,
@@ -72,7 +72,7 @@ export const MODE_RULES: Record<GameMode, ModeRules> = {
   normal: {
     hints: 1,
     missLock: true,
-    animationSpeed: 1,
+    animationSpeed: 0.5,
     memoryPeeks: (p) => p,
     // Two fewer than the changes: 1 for 3 changes, 2 for 4, 3 for 5.
     memoryMaxMisses: (changes) => Math.max(1, changes - 2),

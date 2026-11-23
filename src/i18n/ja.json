@@ -204,8 +204,6 @@
     "title": "設定",
     "language": "言語",
     "systemLanguage": "システムの言語",
-    "reduceMotion": "動きを減らす",
-    "reduceMotionHint": "シーンがゆっくり、やさしく動きます",
     "dev": "開発",
     "unlockAll": "全レベルをクリア",
     "resetProgress": "進行状況をリセット",

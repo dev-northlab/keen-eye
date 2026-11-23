@@ -204,8 +204,6 @@
     "title": "Configurações",
     "language": "Idioma",
     "systemLanguage": "Idioma do sistema",
-    "reduceMotion": "Reduzir movimento",
-    "reduceMotionHint": "As cenas se movem mais devagar e suave",
     "dev": "Desenvolvimento",
     "unlockAll": "Concluir todas as fases",
     "resetProgress": "Apagar progresso",

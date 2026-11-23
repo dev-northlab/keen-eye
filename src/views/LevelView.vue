@@ -189,8 +189,7 @@ function start() {
       },
     },
     {
-      // Calm mode and "reduce motion" both slow the scene down.
-      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      animationSpeed: rules.value.animationSpeed,
       missLock: rules.value.missLock,
       extras: rules.value.extras,
       secretTaken: progress.hasKey(level.chapter),

@@ -162,7 +162,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - `src/stores/` — Pinia: `duo` (two-player setup and match history), `progress` (best stars/time per level, sequential unlocking, hidden keys found; a tap on a level not reached
   yet in any level list opens `LockedLevelDialog` (mounted in `App.vue`, `showLocked`/`firstToComplete`): the next level to
   complete, with a button straight to it — such tiles carry `aria-disabled`, not `disabled`), `settings`
-  (mode calm/normal, music and sound volume 0–1, vibration, language, reduce motion (only the level pictures' own animations, at half speed: `animationSpeed` 0.5; the interface always moves), light/dark theme; written directly, auto-saved, pushed to
+  (mode calm/normal, music and sound volume 0–1, vibration, language, light/dark theme; written directly, auto-saved, pushed to
   i18n and services by a `watchSyncEffect`), `purchase` (full game flag cached locally, price; `sync()` refreshes it
   from the store in the background); all are loaded in `main.ts` before the router starts
 - `src/services/` — `images.ts` (big pixel pictures fetched and decoded ahead and kept ready, the last 32: `preloadPictures`
@@ -300,7 +300,8 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   "stop motion" button; completion is stored with `stars: 0`. The mode is read when a level starts; another mode chosen in the pause menu's settings starts the level over in it.
 - Two modes only, calm and normal (`docs/difficulty-modes.md`; hard mode was removed — a stored `hard` setting loads as
   normal, stored red stars are dropped). Every mode's numbers live in `MODE_RULES` (`engine/rules.ts`); scenes take them
-  through their options, screens read them there instead of checking the mode; the level HUD shows the attempt's mode
+  through their options, screens read them there instead of checking the mode; the level pictures always move slowly, at half their drawn
+  speed (`animationSpeed`: normal 0.5, also in duels; calm 0.3; there is no "reduce motion" setting); the level HUD shows the attempt's mode
   (`ModeChip`). Not in duels.
 - Extra objects of normal mode (`docs/extra-objects.md`; not in "memory" or calm mode; in all five worlds, "time" (1–3 flocks of birds in the sky, before `DUSK`/snowfall) and "travel" (5, plus 7 decor objects of
   every mode drawn with `decor` from the same module), "detective" (10, plus 5 decor objects of every mode; their own

@@ -127,8 +127,7 @@ function start() {
       },
     },
     {
-      // Calm mode and "reduce motion" both slow the background down.
-      animationSpeed: (settings.effectiveReduceMotion ? 0.5 : 1) * rules.value.animationSpeed,
+      animationSpeed: rules.value.animationSpeed,
       missLock: rules.value.missLock,
     },
   )

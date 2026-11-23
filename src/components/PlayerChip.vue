@@ -14,7 +14,6 @@ defineProps<{
   /** Show the hint button (duel with hints). */
   hint?: boolean
   hintDisabled?: boolean
-  /** Reduce motion: no shake and pulse. */
 }>()
 defineEmits<{ hint: [] }>()
 </script>

@@ -204,8 +204,6 @@
     "title": "Beállítások",
     "language": "Nyelv",
     "systemLanguage": "Rendszer nyelve",
-    "reduceMotion": "Kevesebb mozgás",
-    "reduceMotionHint": "A jelenetek lassabban és lágyabban mozognak",
     "dev": "Fejlesztés",
     "unlockAll": "Minden pálya teljesítése",
     "resetProgress": "Előrehaladás törlése",

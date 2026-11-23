@@ -204,8 +204,6 @@
     "title": "Настройки",
     "language": "Язык",
     "systemLanguage": "Как в системе",
-    "reduceMotion": "Уменьшить анимацию",
-    "reduceMotionHint": "Сцены двигаются медленнее и мягче",
     "dev": "Разработка",
     "unlockAll": "Пройти все уровни",
     "resetProgress": "Сбросить прогресс",

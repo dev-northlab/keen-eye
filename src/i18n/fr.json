@@ -204,8 +204,6 @@
     "title": "Réglages",
     "language": "Langue",
     "systemLanguage": "Langue du système",
-    "reduceMotion": "Réduire les animations",
-    "reduceMotionHint": "Les scènes bougent plus lentement et plus doucement",
     "dev": "Développement",
     "unlockAll": "Terminer tous les niveaux",
     "resetProgress": "Réinitialiser la progression",

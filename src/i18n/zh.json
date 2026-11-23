@@ -204,8 +204,6 @@
     "title": "设置",
     "language": "语言",
     "systemLanguage": "跟随系统",
-    "reduceMotion": "减弱动画",
-    "reduceMotionHint": "画面动得更慢、更柔和",
     "dev": "开发",
     "unlockAll": "完成所有关卡",
     "resetProgress": "重置进度",

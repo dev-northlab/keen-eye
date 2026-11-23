@@ -2,7 +2,7 @@
 // The "Cartoons" banner's live picture (LevelMapView, in PhotoBanner's `picture` slot): a 6 s cartoon of its own drawn
 // with the cartoons' characters (levels/cartoon/shapes.ts) — the cat sneaks to the pond, a fish jumps, the cat leaps,
 // splashes in and climbs back out. Moved by CSS animations (no frame loop on the menu screen); the interface always
-// moves, whatever "reduce motion" says (it is about the levels' pictures).
+// moves.
 import { appleTree, apple, cat, fish, grassTuft, groundShadow, lilyPad, NATURE_DEFS, O, Ow, puffCloud } from '../levels/cartoon/shapes.ts'
 
 /** The cat stands on the bank at (CAT_X, CAT_Y), drawn at CAT_SCALE of its level size. */

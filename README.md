@@ -49,7 +49,7 @@ pictures**: one tap on the 2D / 3D switch (home screen or level toolbar) turns t
 - **Pinch to zoom** and pan, shared by both pictures; double tap to zoom in.
 - **Hints** given afresh on every attempt: three in calm mode, one in normal mode.
 - **Light and dark themes**, music, sound effects and vibration.
-- **Reduce motion** support and SVG-only interface icons.
+- Calm, slow animation of the level pictures and SVG-only interface icons.
 - **32 languages**: English, Русский, Հայերեն, Deutsch, Français, Español, Italiano, Português, Nederlands, Polski,
   Čeština, Română, Български, Українська, Ελληνικά, Magyar, Svenska, Dansk, Norsk, Suomi, Türkçe, العربية, हिन्दी,
   Bahasa Indonesia, Bahasa Melayu, Filipino, Tiếng Việt, ไทย, 简体中文, 繁體中文, 日本語, 한국어.

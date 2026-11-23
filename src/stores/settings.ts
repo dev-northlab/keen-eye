@@ -26,14 +26,10 @@ function parseVolume(volume: unknown, legacyOn: unknown, fallback: number): numb
   return legacyOn === false ? 0 : fallback
 }
 
-const systemReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
 /** Settings are changed by writing the fields directly (e.g. v-model); every change is saved. */
 export const useSettingsStore = defineStore('settings', () => {
   /** null = follow the system. */
   const locale = ref<Locale | null>(null)
-  /** null = follow the system "reduce motion" setting. */
-  const reduceMotion = ref<boolean | null>(null)
   const mode = ref<GameMode>('normal')
   /** 0–1, 0 = off. */
   const musicVolume = ref(DEFAULT_MUSIC_VOLUME)
@@ -54,7 +50,6 @@ export const useSettingsStore = defineStore('settings', () => {
   const devShowPlaces = ref(false)
 
   const effectiveLocale = computed(() => locale.value ?? systemLocale())
-  const effectiveReduceMotion = computed(() => reduceMotion.value ?? systemReducedMotion())
   const calm = computed(() => mode.value === 'calm')
   const showPlaces = computed(() => developer.value && devShowPlaces.value)
 
@@ -74,7 +69,6 @@ export const useSettingsStore = defineStore('settings', () => {
     const bool = (v: unknown, fallback: boolean) => (typeof v === 'boolean' ? v : fallback)
     const storedLocale = raw.locale
     locale.value = isLocale(storedLocale) ? storedLocale : null
-    reduceMotion.value = typeof raw.reduceMotion === 'boolean' ? raw.reduceMotion : null
     mode.value = GAME_MODES.includes(raw.mode as GameMode) ? (raw.mode as GameMode) : 'normal'
     musicVolume.value = parseVolume(raw.musicVolume, raw.music, DEFAULT_MUSIC_VOLUME)
     soundVolume.value = parseVolume(raw.soundVolume, raw.sound, DEFAULT_SOUND_VOLUME)
@@ -93,10 +87,9 @@ export const useSettingsStore = defineStore('settings', () => {
     return true
   }
 
-  watch([locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, hideStyleIntro, developer, devShowPlaces], () =>
+  watch([locale, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, hideStyleIntro, developer, devShowPlaces], () =>
     saveJson(KEY, {
       locale: locale.value,
-      reduceMotion: reduceMotion.value,
       mode: mode.value,
       musicVolume: musicVolume.value,
       soundVolume: soundVolume.value,
@@ -109,5 +102,5 @@ export const useSettingsStore = defineStore('settings', () => {
     }),
   )
 
-  return { locale, reduceMotion, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, hideStyleIntro, developer, devShowPlaces, showPlaces, calm, effectiveLocale, effectiveReduceMotion, load, enableDeveloper }
+  return { locale, mode, musicVolume, soundVolume, vibration, theme, pictureStyle, hideStyleIntro, developer, devShowPlaces, showPlaces, calm, effectiveLocale, load, enableDeveloper }
 })

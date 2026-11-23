@@ -20,7 +20,7 @@ export interface MatchHandlers {
 }
 
 export interface MatchSceneOptions {
-  /** Animation time multiplier (reduce motion). */
+  /** Animation time multiplier (`ModeRules.animationSpeed`). */
   animationSpeed?: number
 }
 

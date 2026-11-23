@@ -204,8 +204,6 @@
     "title": "설정",
     "language": "언어",
     "systemLanguage": "시스템 언어",
-    "reduceMotion": "움직임 줄이기",
-    "reduceMotionHint": "장면이 더 느리고 부드럽게 움직여요",
     "dev": "개발",
     "unlockAll": "모든 레벨 완료",
     "resetProgress": "진행 상황 초기화",
