@@ -2,7 +2,7 @@ Duas imagens parecem iguais, mas não são. Keen Eye é um jogo de achar as dife
 
 Muitos níveis também têm imagens 3D detalhadas. Troque entre desenhos animados e 3D com um toque.
 
-323 FASES, 9 JEITOS DE JOGAR
+328 FASES, 9 JEITOS DE JOGAR
 • Mundos – 150 fases na fazenda, na cidade, na floresta, no mar e no espaço, com 5 a 10 diferenças
 • Tempo – o mesmo lugar de manhã e à noite, no verão e no inverno: descubra o que mudou de verdade, não o que a estação fez
 • Memória – estude a imagem por alguns segundos e encontre as mudanças de memória

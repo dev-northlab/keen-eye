@@ -2,7 +2,7 @@
 // with differences that stay all along and differences that are events of the story. Drawn SVG scenes (`svgLevel`
 // with `cartoon`), played by LevelView on the cartoon board (engine/cartoon.ts).
 // A new cartoon may wait in upcoming.ts while it is drawn (developer mode only, at its place in the grid). The titles
-// of 803–810 and 813–820 are still English in every locale: translating them is left for later.
+// of 803–810 and 813–825 are still English in every locale: translating them is left for later.
 import type { Level } from '../../engine/types.ts'
 import level801 from './level-801.ts'
 import level802 from './level-802.ts'
@@ -24,5 +24,10 @@ import level817 from './level-817.ts'
 import level818 from './level-818.ts'
 import level819 from './level-819.ts'
 import level820 from './level-820.ts'
+import level821 from './level-821.ts'
+import level822 from './level-822.ts'
+import level823 from './level-823.ts'
+import level824 from './level-824.ts'
+import level825 from './level-825.ts'
 
-export const cartoonLevels: Level[] = [level801, level802, level803, level804, level805, level806, level807, level808, level809, level810, level811, level812, level813, level814, level815, level816, level817, level818, level819, level820]
+export const cartoonLevels: Level[] = [level801, level802, level803, level804, level805, level806, level807, level808, level809, level810, level811, level812, level813, level814, level815, level816, level817, level818, level819, level820, level821, level822, level823, level824, level825]

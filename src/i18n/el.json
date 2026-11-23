@@ -626,7 +626,12 @@
     "cartoonJoey": "The joey's pouch",
     "cartoonChimneySweep": "The chimney sweep",
     "cartoonSnailRace": "The snail race",
-    "cartoonBeaverDam": "The beaver's dam"
+    "cartoonBeaverDam": "The beaver's dam",
+    "cartoonWindmill": "The windmill ride",
+    "cartoonRainyDay": "The rainy day",
+    "cartoonDragonSneeze": "The dragon's sneeze",
+    "cartoonShortArms": "The short arms",
+    "cartoonCircusSeal": "The circus seal"
   },
   "mode": {
     "label": "Λειτουργία",

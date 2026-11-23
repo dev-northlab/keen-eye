@@ -2,7 +2,7 @@ A két kép ugyanolyannak tűnik – pedig nem az. A Keen Eye egy különbségke
 
 Sok pálya részletes 3D képekkel is játszható. Egy érintéssel válthatsz az élő rajzok és a 3D között.
 
-323 PÁLYA, 9 JÁTÉKMÓD
+328 PÁLYA, 9 JÁTÉKMÓD
 • Világok – 150 pálya a tanyán, a városban, az erdőben, a tengeren és a világűrben, 5–10 különbséggel
 • Idő – ugyanaz a hely reggel és este, nyáron és télen: találd meg, mi változott valójában, ne azt, amit az évszak hozott
 • Memória – tanulmányozd a képet néhány másodpercig, aztán emlékezetből keresd meg a változásokat

@@ -2,7 +2,7 @@ Dva obrázky vypadají stejně – ale nejsou. Keen Eye je hledačka rozdílů s
 
 Mnoho úrovní má i podrobné 3D obrázky. Mezi živými kresbami a 3D přepneš jedním dotykem.
 
-323 ÚROVNÍ, 9 ZPŮSOBŮ HRY
+328 ÚROVNÍ, 9 ZPŮSOBŮ HRY
 • Světy – 150 úrovní na farmě, ve městě, v lese, na moři a ve vesmíru, od 5 do 10 rozdílů
 • Čas – stejné místo ráno a večer, v létě a v zimě: najdi, co se opravdu změnilo, ne co způsobilo roční období
 • Paměť – prohlédni si obrázek pár sekund a najdi změny zpaměti

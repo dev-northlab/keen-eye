@@ -56,14 +56,14 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - **The owl**: the game's owl (the app icon's, `keenOwl` of shapes.ts) sits in every cartoon — on a branch, a lamp,
   a pole, in a hollow — blinking and tilting its head (dozing on a calm one), clear of the zones; it may also be a
   difference.
-- **Released**: all 20 cartoons (801–820) were released on 2026-11-23 at the developer's request, the titles of
-  803–810 and 813–820 still in English in every locale and the store texts changed only in their level count; the
+- **Released**: all 25 cartoons (801–825) were released on 2026-11-23 at the developer's request, the titles of
+  803–810 and 813–825 still in English in every locale and the store texts changed only in their level count; the
   translated titles and the store texts' cartoons line come later. A cartoon still being drawn may wait in
   `levels/upcoming.ts` (developer mode only, at its place in the grid; players' tile numbers count released levels
   only, developer mode counts the hidden ones too — `check-levels` keeps hidden ids free in the order).
 - **Order**: the first ten cartoons have 10 differences (ids 801–810), the ones with 12 come after them (811 on);
-  801–810 are all drawn, so a new cartoon (12 differences) takes the id after the last one, 821 on. `ranges` of
-  the chapter list only the ids drawn so far (`[[801, 820]]`), so the count on its card stays true.
+  801–810 are all drawn, so a new cartoon (12 differences) takes the id after the last one, 826 on. `ranges` of
+  the chapter list only the ids drawn so far (`[[801, 825]]`), so the count on its card stays true.
 - **Differences**: 12 (difficulty.ts; the first ten 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.
@@ -145,6 +145,46 @@ the game's owl; places, plants and animals not used in 801–813; `ranges` grows
   rapids and a salmon jumps over it; it starts building again in the moose's antlers. Paper birches and firs by the river,
   cattails, lily pads, a waterfall; beaver, moose, salmon, otter, loon, red squirrel; the owl (a great grey) on a dead tree. Events of B: an otter on its back cracking a shell, a loon
   diving, a salmon jumping the falls.
+
+## The plan of cartoons 21–25 (821–825), 12 differences each (all drawn on 2026-11-23)
+
+Proposed and drawn on 2026-11-23, in parallel, one level file each. Same rules as 814–820: a 20 s story with one clear gag; 12 differences — 2
+hard, 3 events of B, 7 others (one recolour at most, the rest small changes of a part or a small object in A only);
+every difference in a close shot for 1.5–2 s or more — let the story itself happen where the differences are (as
+815's panda falling into the pond), rather than showing them only in the wide shot or a quick pan; the game's owl;
+places, plants and animals not used in 801–820; `ranges` grows to `[[801, 825]]`.
+
+- **821 "The windmill ride"** (tulip fields and a canal): a cat chases a butterfly up onto a windmill's sail — the
+  sail turns and carries it round and round; dizzy, it lets go at the top, flies over the canal into the storks'
+  nest on the roof (the stork glares), slides down the roof into a cart of tulips and comes out with a tulip on
+  its head. Tulip rows in stripes of colour, the windmill, a canal with a little drawbridge and a barge, willows by
+  the water; cat, storks, butterfly, cows in a meadow, ducks, coots; the owl in the windmill's cap
+  window. Events of B: a duckling following the barge, a fish snapping at a fly, a stork chick peeping out.
+- **822 "The rainy day"** (a forest in the rain): drops start falling; the animals run for the one big mushroom —
+  a badger, a fox cub, a mole, a frog holding a leaf; they squeeze under it one after the other until the last, a
+  plump wild-boar piglet, squeezes in and pops them all out into the puddles; the rain stops, a rainbow, and they all laugh.
+  Rain streaks, puddles with rings, giant toadstools, ferns, an oak stump, moss, a woodpecker hole; badger, fox
+  cub, mole, frog, boar piglet, dormouse, slugs, a woodpecker; the owl in a hollow, dry and smug. Events of B:
+  a worm out of the wet ground, a beetle sheltering under a leaf, a bird shaking itself.
+- **823 "The dragon's sneeze"** (a little castle with a moat at dusk, a festival): a baby dragon tries to light the
+  lanterns along the wall for the feast — only smoke and sparks; a dandelion's fluff tickles its nose — a giant
+  sneeze, and the fire goes up as fireworks over the castle; everyone below cheers, the dragon bows. Castle with
+  towers, banners and a drawbridge, the moat with swans, torches, bunting, a market stall; baby dragon, swans,
+  ravens on the battlements, a goat, castle cat, hens; the owl on a turret with a lantern. Events of B: a raven
+  stealing a bun from the stall, a frog on the moat's lily pad, a firework shaped like a heart.
+- **824 "The short arms"** (a prehistoric valley with a volcano): a young T-rex can't reach an apple-like fruit on
+  a tree with its short arms — it jumps, stretches, wobbles; a long-necked dinosaur kindly lowers its head to help
+  — and eats the fruit itself; the volcano puffs, a shake drops another fruit — right into the T-rex's open mouth.
+  Tree ferns, cycads, horsetails, giant dragonflies, a smoking volcano, steaming springs; T-rex, brachiosaur,
+  triceratops, pterosaurs, a small raptor-like dino, an armoured ankylosaur; the owl perched on a tree
+  fern. Events of B: a baby triceratops peeking from the ferns, a pterosaur landing on a rock, an egg cracking in a
+  nest.
+- **825 "The circus seal"** (inside a big top): a seal balances a ball on its nose to a drumroll; a poodle on a
+  unicycle wobbles past and bumps it; the ball bounces round the ring — off a sleeping lion's head, a drum, the
+  trapeze — into a popcorn bucket, which flips and rains popcorn; the seal catches popcorn in its mouth and takes
+  a bow. Striped tent, spotlights, a ring with stars, a trapeze, ladders, a drum, a popcorn stand; seal, poodle,
+  lion, horse with a plume, parrot, mice in the stands; the owl on the ringmaster's top hat on its stand. Events
+  of B: a mouse peeking from the drum, the parrot swinging on the trapeze, the lion opening one eye.
 
 ## How it was chosen
 
