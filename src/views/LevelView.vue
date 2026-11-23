@@ -48,7 +48,7 @@ const { t } = useI18n()
 // The route guard guarantees the level exists and is unlocked.
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
-const number = levelNumber(level)
+const number = levelNumber(level, settings.developer)
 /** The screen listing this level: its chapter's grid, the world map of "travel" or the case of "detective". */
 const grid = levelsScreen(level)
 /** The bonus level for all the hidden keys: named instead of numbered, a chest opens after it. */

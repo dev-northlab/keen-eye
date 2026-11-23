@@ -217,7 +217,7 @@ export const CARTOON_CHAPTER: Chapter = {
   id: 'cartoon',
   // Grows with every new cartoon (difficulty.ts covers up to 830): a wider range would announce cartoons not drawn yet.
   // The first ten cartoons (10 differences) are 801–810, those of 12 from 811: ids left free for the ten drawn later.
-  ranges: [[801, 805], [811, 813]],
+  ranges: [[801, 810], [811, 813]],
   free: [[801, 801]],
   color: '#f0743e',
   soft: '#ffece2',
@@ -333,11 +333,12 @@ export const levelsScreen = (level: Level) =>
           : { name: 'chapter', params: { chapter: level.chapter } }
 
 /**
- * Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise — counted among
- * the released levels, so a hidden one between them (upcoming.ts) leaves no gap; a hidden one takes the number of
- * the released level after it.
+ * Number shown on a level: the id in the worlds, the place in its category (1, 2, …) otherwise — counted among the
+ * released levels, so a hidden one between them (upcoming.ts) leaves the players no gap; `withHidden` (developer
+ * mode, which lists the hidden ones too) counts those as well, so its grid runs 1, 2, 3, … without repeats.
  */
-export function levelNumber(level: Level): number {
+export function levelNumber(level: Level, withHidden = false): number {
   const category = categoryOf(level)
-  return category ? chapterLevels(category).filter((l) => l.id < level.id).length + 1 : level.id
+  if (!category) return level.id
+  return (withHidden ? chapterLevelsWithHidden(category) : chapterLevels(category)).filter((l) => l.id < level.id).length + 1
 }

@@ -859,7 +859,12 @@
     "cartoonHedgehog": "The hedgehog's apple",
     "cartoonBearHoney": "The bear and the honey",
     "cartoonSandcastle": "The sandcastle",
-    "cartoonBananaPeel": "The banana peel"
+    "cartoonBananaPeel": "The banana peel",
+    "cartoonRunawayEgg": "The runaway egg",
+    "cartoonNightWatch": "The night watch",
+    "cartoonRunawayCheese": "The runaway cheese",
+    "cartoonPearl": "The pearl",
+    "cartoonPenguinSlide": "The penguin slide"
   },
   "map": {
     "level": "Brett {n}",

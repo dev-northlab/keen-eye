@@ -35,7 +35,7 @@ const settings = useSettingsStore()
 // The route guard guarantees a "memory" level that is unlocked.
 const level = levelById(props.id)!
 const nextLevel = nextLevelOf(level)
-const number = levelNumber(level)
+const number = levelNumber(level, settings.developer)
 const grid = levelsScreen(level)
 const total = level.differences.length
 

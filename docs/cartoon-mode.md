@@ -47,24 +47,60 @@ only for a while (`Difference.during`), a tap on their place at other times is a
   (winter: a hare steals the carrot, the dog crashes into the snowman) and 803 "The hedgehog's apple" (autumn: the
   apple on its spines, an acorn, a heap of leaves) and 804 "The sandcastle" (a beach: a seagull steals the crab's flag,
   a wave flattens the castle; `palmTree`, `BEACH_DEFS`) and 805 "The banana peel" (a jungle: a monkey's peel
-  sends an elephant into the river; `bananaPlant`, `bambooClump`, `JUNGLE_DEFS`), 10 differences each; 811 "Cat at the pond", 812 "The stolen pie",
+  sends an elephant into the river; `bananaPlant`, `bambooClump`, `JUNGLE_DEFS`), then 806–810 drawn from the plan
+  below (savanna, night farm, alpine meadow, coral reef, Arctic; their trees and animals written in their own level
+  files), 10 differences each; 811 "Cat at the pond", 812 "The stolen pie",
   813 "The bear and the honey" (spring: a bear steals honey from a hive, the swarm chases him into the pond; the
   spring trees `oakTree`, `blossomTree`, `willowTree`, `lilacBush` of shapes.ts, gradients `SPRING_DEFS`), 12 each.
   Every new cartoon brings trees and animals not drawn in the earlier ones.
 - **The owl**: the game's owl (the app icon's, `keenOwl` of shapes.ts) sits in every cartoon — on a branch, a lamp,
   a pole, in a hollow — blinking and tilting its head (dozing on a calm one), clear of the zones; it may also be a
   difference.
-- **While the category is being drawn**, a new cartoon waits in `levels/upcoming.ts` (developer mode only, at its
-  place in the grid, e.g. 803 between the released 802 and 811; its tile numbers count released levels only, so the
-  players see no gap — `check-levels` keeps hidden ids free in the order)
-  with its title in English in every locale. When the category is finished they are all released at once: moved
-  into `cartoon/index.ts`, the store texts of every language updated, the titles translated.
+- **Released**: all 13 cartoons (801–813) were released on 2026-11-23 at the developer's request, the titles of
+  803–810 and 813 still in English in every locale and the store texts changed only in their level count; the
+  translated titles and the store texts' cartoons line come later. A cartoon still being drawn may wait in
+  `levels/upcoming.ts` (developer mode only, at its place in the grid; players' tile numbers count released levels
+  only, developer mode counts the hidden ones too — `check-levels` keeps hidden ids free in the order).
 - **Order**: the first ten cartoons have 10 differences (ids 801–810), the ones with 12 come after them (811 on);
   a new cartoon of 10 goes into the next free id of 804–810, one of 12 after the last of 811 on. `ranges` of the
-  chapter list only the ids drawn so far (`[[801, 805], [811, 813]]`), so the count on its card stays true.
+  chapter list only the ids drawn so far (`[[801, 810], [811, 813]]`), so the count on its card stays true.
 - **Differences**: 12 (difficulty.ts; the first ten 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.
+
+## The plan of 806–810 (all drawn on 2026-11-23)
+
+Agreed with the developer on 2026-11-23; drawn in parallel, one level file each (build, look at the frames, try on the phone, commit).
+Each: a 20 s story with one clear gag; 10 differences — 2 hard, 3 events of B, 5 others, one recolour at most, the
+rest small changes of a part; every difference in a shot for 1.5–2 s or more (the camera pans over the parts the
+story does not visit); the game's owl; new trees, plants and animals, their helpers in shapes.ts; hidden in
+upcoming.ts with an English title.
+
+- **806 "The runaway egg"** (savanna): an ostrich hides its head in the sand at a rustle, its egg rolls away; meerkats
+  pass it like a ball, it bounces off a hippo's back in the waterhole, a giraffe catches it with its neck and brings
+  it back — it cracks, a chick peeps out, the ostrich finally pulls its head out. Acacia, baobab, tall dry grass;
+  ostrich, meerkats, giraffe, hippo, zebras, hornbills; the owl in the baobab's hollow. Events of B: a lion cub peeks
+  out of the grass, an oxpecker on the hippo's back, the giraffe's tongue.
+- **807 "The night watch"** (a farm under the moon, the owl the hero): a fox creeps to the henhouse, the owl hoots,
+  the dog wakes and runs into a bucket, the fox is at the door — out steps the rooster in a nightcap; the fox flees
+  through the corn, the owl blinks, pleased. Sunflowers, a cornfield, a haystack; fox, bats, fireflies, moths, a cow
+  and a horse in the stable, a scarecrow, lanterns. A bright night (a big moon, warm windows) so small differences
+  show. Events of B: a bat on a beam, a firefly on the fox's nose, a mouse out of the haystack.
+- **808 "The runaway cheese"** (an alpine meadow): a goat butts a cheese wheel by the chalet, it rolls down the slope,
+  chased by a cow with a bell and a marmot, bounces over a brook — an eagle catches it and drops it into the marmots'
+  burrow. Larch, a spruce with cones, edelweiss, gentians; mountain goat, marmots, eagle, cow; the chalet with window
+  boxes, snowy peaks; the owl under the chalet's roof. Events of B: a second marmot whistling at its burrow, a
+  butterfly on the goat's horn, a pebble rolling from under its hooves.
+- **809 "The pearl"** (a coral reef): an octopus finds a pearl and hides it in a shell, clownfish tease it, a shark
+  swims up — a cloud of ink, and when it clears the shark wears shell "glasses"; meanwhile a crab has made off with
+  the pearl. Corals, kelp, sea anemones in place of trees; octopus, clownfish, seahorse, shark, ray, jellyfish,
+  bubbles and sunlight through the water; the owl on the mast of a sunken ship (in a diving mask). Events of B: a
+  seahorse hiding in the kelp, a jellyfish drifting by, a fish peeking out of a chest.
+- **810 "The penguin slide"** (the Arctic): penguins slide down an ice slope into the water one by one; the smallest
+  is scared, runs up and gets stuck on the edge; a seal nudges it with its nose — it flies the farthest and lands on
+  a sleeping polar bear's belly; the bear only smiles in its sleep. Ice floes, icebergs, hummocks, the northern
+  lights; penguins, seal, polar bear, walrus, arctic foxes, a whale far off; a snowy owl drawn like the icon. Events
+  of B: an arctic fox peeking from behind a hummock, a fish jumping out of an ice hole, the whale's spout.
 
 ## How it was chosen
 
