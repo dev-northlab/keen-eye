@@ -146,7 +146,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `keenOwl`, the app icon's, sits in every one); listed in a
   category grid, opened by a live banner (`CartoonBannerScene` in `PhotoBanner`'s `picture` slot), the second on the
   game modes screen; only its first level is free; no key yet (left out of `KEY_CHAPTERS`); `ranges` grow with every
-  new cartoon; all 13 (801–813) released on 2026-11-23, the titles of 803–810 and 813 still English in every locale
+  new cartoon; all 20 (801–820) released on 2026-11-23, the titles of 803–810 and 813–820 still English in every locale
   and the store texts updated only in their level count (translations and the cartoons line later,
   `docs/cartoon-mode.md`);
   `allLevels` = worlds + time + memory + travel + detective + tiny boy + cartoons (`levels` stays the worlds),

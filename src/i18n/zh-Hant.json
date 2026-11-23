@@ -864,7 +864,14 @@
     "cartoonNightWatch": "The night watch",
     "cartoonRunawayCheese": "The runaway cheese",
     "cartoonPearl": "The pearl",
-    "cartoonPenguinSlide": "The penguin slide"
+    "cartoonPenguinSlide": "The penguin slide",
+    "cartoonMirage": "The mirage",
+    "cartoonBambooCatapult": "The bamboo catapult",
+    "cartoonFlamingo": "The flamingo's balance",
+    "cartoonJoey": "The joey's pouch",
+    "cartoonChimneySweep": "The chimney sweep",
+    "cartoonSnailRace": "The snail race",
+    "cartoonBeaverDam": "The beaver's dam"
   },
   "map": {
     "level": "第 {n} 關",

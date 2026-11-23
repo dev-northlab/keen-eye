@@ -56,14 +56,14 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - **The owl**: the game's owl (the app icon's, `keenOwl` of shapes.ts) sits in every cartoon — on a branch, a lamp,
   a pole, in a hollow — blinking and tilting its head (dozing on a calm one), clear of the zones; it may also be a
   difference.
-- **Released**: all 13 cartoons (801–813) were released on 2026-11-23 at the developer's request, the titles of
-  803–810 and 813 still in English in every locale and the store texts changed only in their level count; the
+- **Released**: all 20 cartoons (801–820) were released on 2026-11-23 at the developer's request, the titles of
+  803–810 and 813–820 still in English in every locale and the store texts changed only in their level count; the
   translated titles and the store texts' cartoons line come later. A cartoon still being drawn may wait in
   `levels/upcoming.ts` (developer mode only, at its place in the grid; players' tile numbers count released levels
   only, developer mode counts the hidden ones too — `check-levels` keeps hidden ids free in the order).
 - **Order**: the first ten cartoons have 10 differences (ids 801–810), the ones with 12 come after them (811 on);
-  a new cartoon of 10 goes into the next free id of 804–810, one of 12 after the last of 811 on. `ranges` of the
-  chapter list only the ids drawn so far (`[[801, 810], [811, 813]]`), so the count on its card stays true.
+  801–810 are all drawn, so a new cartoon (12 differences) takes the id after the last one, 821 on. `ranges` of
+  the chapter list only the ids drawn so far (`[[801, 820]]`), so the count on its card stays true.
 - **Differences**: 12 (difficulty.ts; the first ten 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.
@@ -101,6 +101,50 @@ upcoming.ts with an English title.
   a sleeping polar bear's belly; the bear only smiles in its sleep. Ice floes, icebergs, hummocks, the northern
   lights; penguins, seal, polar bear, walrus, arctic foxes, a whale far off; a snowy owl drawn like the icon. Events
   of B: an arctic fox peeking from behind a hummock, a fish jumping out of an ice hole, the whale's spout.
+
+## The plan of cartoons 14–20 (814–820), 12 differences each (all drawn on 2026-11-23)
+
+Proposed and drawn on 2026-11-23, in parallel, one level file each, their trees and animals in their own files. Each: a 20 s story with one clear gag; 12 differences — 2 hard, 3 events of
+B, 7 others (one recolour at most, the rest small changes of a part); every difference in a shot for 1.5–2 s or more;
+the game's owl; places, plants and animals not used in 801–813; `ranges` grows to `[[801, 820]]` as they come.
+
+- **814 "The mirage"** (a desert oasis): a thirsty camel plods to the oasis, drinks the pond dry in one long slurp —
+  a fish left flapping, a frog sitting on the bare mud; it lies down happy, its humps swelling, then a sneeze
+  sprays it all back. Date palms, saguaro and prickly-pear cacti, dunes; camel, fennec fox, lizard, tortoise,
+  scorpion, vultures; the owl in a hole of the saguaro (an elf owl lives there). Events of B: a fennec's ears over a
+  dune, the lizard licking its eye, a vulture landing on the palm.
+- **815 "The bamboo catapult"** (a garden with a pagoda): a panda bends a bamboo stalk to reach the leaves at its top
+  — lets go — the stalk flings it over the koi pond into a pile of leaves; a red panda takes the leaves, the panda
+  chews the bamboo it is still holding. Bamboo grove, red maple, lotus, stone lanterns, a curved bridge; panda, red
+  panda, koi, crane, mandarin ducks; the owl on the pagoda's roof. Events of B: a koi jumping, the crane on one leg,
+  a dragonfly on the lantern.
+- **816 "The flamingo's balance"** (a mangrove swamp): flamingos stand on one leg; the young one wobbles, hops, tips
+  over the others like dominoes into the water; an alligator's eyes rise — and it only yawns; they get back up all
+  on the other leg. Mangroves on their roots, water lilies, Spanish moss, reeds; flamingos, alligator, spoonbill,
+  manatee, frogs, mosquitoes; the owl on a mossy branch. Events of B: a
+  manatee's nose, a snake on a root, a crab under the roots.
+- **817 "The joey's pouch"** (the Australian outback): a kangaroo hops along; from its pouch the joey throws out
+  things it collected (a ball, a boomerang, a sock) — the boomerang comes back and knocks a koala's leaf off a
+  eucalyptus; the koala, cross, drops a nut on the kangaroo; the joey pops it into the pouch, pleased. Eucalyptus,
+  red rocks (an Uluru-like hill), spinifex grass, bottle tree; kangaroo, joey, koala, emu, wombat, cockatoos,
+  platypus in a creek; the owl in a hollow eucalyptus. Events of B: a wombat out of its burrow, a frill-necked
+  lizard spreading its frill, the platypus diving.
+- **818 "The chimney sweep"** (rooftops of an old town): a cat stalks a pigeon along the ridge, pounces — the pigeon
+  flies off and the cat drops down a chimney; out of the next chimney it comes black with soot, sneezes a cloud;
+  the pigeons laugh on the TV aerial. Tiled roofs, chimneys, dormers, window boxes, an aerial, a weathervane, laundry
+  between houses, a tower clock far off; cat, pigeons, sparrows, a crow; the owl by the clock face. Events of B: a
+  mouse in a gutter, a sparrow on the aerial, a face in a dormer window (a cat's).
+- **819 "The snail race"** (a meadow seen up close, tiny animals among giant flowers): a snail and a beetle race
+  along a grass stalk; a ladybird is the starter; the beetle zooms off — and gets stuck in a dewdrop; the snail
+  slides past on its slime and wins, a caterpillar cheering; it turns into a butterfly at the end. Giant daisies,
+  clover, dandelion clocks, mushrooms, a dewy spider web, a pebble path; snail, beetle, ladybird, ants carrying a
+  leaf, caterpillar, bee, grasshopper; a tiny owl figure: a moth with owl eyes on its wings (the icon's look). Events
+  of B: a grasshopper leaping, an ant with a crumb, a spider coming down its thread.
+- **820 "The beaver's dam"** (a northern river): a beaver finishes its dam with one last log; a moose comes to drink,
+  steps on the dam — it gives way, the moose's antlers end up full of sticks; the beaver surfs on a log down the
+  rapids and a salmon jumps over it; it starts building again in the moose's antlers. Paper birches and firs by the river,
+  cattails, lily pads, a waterfall; beaver, moose, salmon, otter, loon, red squirrel; the owl (a great grey) on a dead tree. Events of B: an otter on its back cracking a shell, a loon
+  diving, a salmon jumping the falls.
 
 ## How it was chosen
 
