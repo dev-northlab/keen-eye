@@ -855,7 +855,9 @@
     "cartoonCatPond": "แมวริมบ่อน้ำ",
     "cartoonDogPie": "พายที่ถูกขโมย",
     "cartoonFishing": "ไปตกปลา",
-    "cartoonSnowman": "จมูกของตุ๊กตาหิมะ"
+    "cartoonSnowman": "จมูกของตุ๊กตาหิมะ",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "ด่าน {n}",

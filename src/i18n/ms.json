@@ -855,7 +855,9 @@
     "cartoonCatPond": "Kucing di kolam",
     "cartoonDogPie": "Pai yang dicuri",
     "cartoonFishing": "Memancing",
-    "cartoonSnowman": "Hidung orang salji"
+    "cartoonSnowman": "Hidung orang salji",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "Tahap {n}",

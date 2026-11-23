@@ -376,15 +376,26 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
 
 // Optional level ids to check (npm run check-levels -- 81 82); all levels by default.
 const ids = process.argv.slice(2).map(Number)
-// Ids run on without gaps: the worlds from 1, each category from its first id.
+// Ids run on without gaps: the worlds from 1, each category through its ranges (the cartoons leave ids free between
+// theirs) — but for the ids of hidden levels (upcoming.ts), kept for them at their place (a cartoon drawn ahead may
+// sit between released ones).
+const hiddenIds = new Set(upcomingLevels.map((l) => l.id))
+const inOrder = (list: Level[], ranges: [number, number][]) => {
+  const ids = ranges.flatMap(([from, to]) => Array.from({ length: Math.min(to, from + list.length + hiddenIds.size) - from + 1 }, (_, i) => from + i))
+  let at = 0
+  return list.map((l) => {
+    while (hiddenIds.has(ids[at])) at++
+    return [l, ids[at++] ?? -1] as const
+  })
+}
 const expected = new Map([
-  ...levels.map((l, i) => [l, i + 1] as const),
-  ...timeLevels.map((l, i) => [l, TIME_CHAPTER.ranges[0][0] + i] as const),
-  ...memoryLevels.map((l, i) => [l, MEMORY_CHAPTER.ranges[0][0] + i] as const),
-  ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
-  ...[...detectiveLevels].sort((a, b) => a.id - b.id).map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
-  ...tinyBoyLevels.map((l, i) => [l, TINY_BOY_CHAPTER.ranges[0][0] + i] as const),
-  ...cartoonLevels.map((l, i) => [l, CARTOON_CHAPTER.ranges[0][0] + i] as const),
+  ...inOrder(levels, [[1, levels.length + hiddenIds.size]]),
+  ...inOrder(timeLevels, TIME_CHAPTER.ranges),
+  ...inOrder(memoryLevels, MEMORY_CHAPTER.ranges),
+  ...inOrder(travelLevels, TRAVEL_CHAPTER.ranges),
+  ...inOrder([...detectiveLevels].sort((a, b) => a.id - b.id), DETECTIVE_CHAPTER.ranges),
+  ...inOrder(tinyBoyLevels, TINY_BOY_CHAPTER.ranges),
+  ...inOrder(cartoonLevels, CARTOON_CHAPTER.ranges),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
   // Hidden levels (upcoming.ts) take their place in the order only when released.
   ...upcomingLevels.map((l) => [l, l.id] as const),

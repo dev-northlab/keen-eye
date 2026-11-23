@@ -855,7 +855,9 @@
     "cartoonCatPond": "Chú mèo bên ao",
     "cartoonDogPie": "Chiếc bánh bị đánh cắp",
     "cartoonFishing": "Đi câu cá",
-    "cartoonSnowman": "Chiếc mũi của người tuyết"
+    "cartoonSnowman": "Chiếc mũi của người tuyết",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "Màn {n}",

@@ -216,7 +216,8 @@ export const TINY_BOY_CHAPTER: Chapter = {
 export const CARTOON_CHAPTER: Chapter = {
   id: 'cartoon',
   // Grows with every new cartoon (difficulty.ts covers up to 830): a wider range would announce cartoons not drawn yet.
-  ranges: [[801, 804]],
+  // The first ten cartoons (10 differences) are 801–810, those of 12 from 811: ids left free for the ten drawn later.
+  ranges: [[801, 803], [811, 813]],
   free: [[801, 801]],
   color: '#f0743e',
   soft: '#ffece2',
@@ -287,8 +288,15 @@ export const chapterSize = (chapter: Chapter) =>
 /** Levels of the chapter that exist, in play order (`allLevels` is sorted by id, as are the ranges). */
 export const chapterLevels = (chapter: Chapter) => allLevels.filter((l) => l.chapter === chapter.id)
 
-/** The chapter's levels followed by its hidden ones (upcoming.ts, ids after the released): developer mode's grid. */
-export const chapterLevelsWithHidden = (chapter: Chapter) => [...chapterLevels(chapter), ...upcomingLevels.filter((l) => l.chapter === chapter.id)]
+/** The chapter's levels with its hidden ones (upcoming.ts) each at its place by id: developer mode's grid. */
+export function chapterLevelsWithHidden(chapter: Chapter): Level[] {
+  const list = chapterLevels(chapter)
+  for (const hidden of upcomingLevels.filter((l) => l.chapter === chapter.id)) {
+    const at = list.findIndex((l) => l.id > hidden.id)
+    list.splice(at < 0 ? list.length : at, 0, hidden)
+  }
+  return list
+}
 
 /**
  * The level after `level` in its chapter, or at a world's end the next world's first one. A "detective"
@@ -324,8 +332,12 @@ export const levelsScreen = (level: Level) =>
           ? { name: 'levels' }
           : { name: 'chapter', params: { chapter: level.chapter } }
 
-/** Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise. */
+/**
+ * Number shown to the player: the id in the worlds, the place in its category (1, 2, …) otherwise — counted among
+ * the released levels, so a hidden one between them (upcoming.ts) leaves no gap; a hidden one takes the number of
+ * the released level after it.
+ */
 export function levelNumber(level: Level): number {
   const category = categoryOf(level)
-  return category ? level.id - category.ranges[0][0] + 1 : level.id
+  return category ? chapterLevels(category).filter((l) => l.id < level.id).length + 1 : level.id
 }

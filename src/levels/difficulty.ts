@@ -99,9 +99,9 @@ export const DIFFICULTY: Difficulty[] = [
   // more small, hard ones painted by hand; zones a finger wide on a phone (r ≥ 60 pixels).
   { from: 701, to: 730, differences: [5, 15], motion: [0, 0], minRadius: 60, kinds: EASY },
   // "Cartoons" (docs/cartoon-mode.md): two of the differences hard, some events of the story; the player's zoom keeps
-  // small ones tappable. The first two have 10, the others 12.
-  { from: 801, to: 802, differences: [10, 10], motion: [0, 2], minRadius: 18, kinds: [...EASY, 'motion'] },
-  { from: 803, to: 830, differences: [12, 12], motion: [0, 2], minRadius: 18, kinds: [...EASY, 'motion'] },
+  // small ones tappable. The first three have 10, the others 12.
+  { from: 801, to: 810, differences: [10, 10], motion: [0, 2], minRadius: 18, kinds: [...EASY, 'motion'] },
+  { from: 811, to: 830, differences: [12, 12], motion: [0, 2], minRadius: 18, kinds: [...EASY, 'motion'] },
   // "Test" (developer mode only): picture pairs tried out, any number of differences.
   { from: 1001, to: 1100, differences: [1, 20], motion: [0, 0], minRadius: 18, kinds: EASY },
 ]

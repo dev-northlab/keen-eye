@@ -34,7 +34,7 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - `check-levels` compares a story every 0.25 s of its loop, checks zones only while their event is on, lets an event's
   zone come in across the frame's edge, and reports an event that shows outside its window.
 
-## How a cartoon is made (804 "The stolen pie" is the model)
+## How a cartoon is made (812 "The stolen pie" is the model)
 
 - **Story**: a short funny loop (16–20 s) with a gag — a theft, a chase, a reaction — told by the camera: wide shots,
   close-ups, a pan after the hero, cuts.
@@ -43,10 +43,24 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - **Look**: ink outlines with sunlight from one side — gradients on every object (`NATURE_DEFS` of shapes.ts), soft
   ground shadows (a moving character's shadow follows it), textures (tiles, bricks, wood grain, bark), haze on the far
   hills, warm sunlight over all.
-- **Levels so far**: 801 "Gone fishing" (free: grandpa, a heron and a boot by a lake) and 802 "The snowman's nose"
-  (winter: a hare steals the carrot, the dog crashes into the snowman), 10 differences each; 803 "Cat at the pond",
-  804 "The stolen pie", 12 each.
-- **Differences**: 12 (difficulty.ts; the first two 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
+- **Levels so far**: 801 "Gone fishing" (free: grandpa, a heron and a boot by a lake), 802 "The snowman's nose"
+  (winter: a hare steals the carrot, the dog crashes into the snowman) and 803 "The hedgehog's apple" (autumn: the
+  apple on its spines, an acorn, a heap of leaves), 10 differences each; 811 "Cat at the pond", 812 "The stolen pie",
+  813 "The bear and the honey" (spring: a bear steals honey from a hive, the swarm chases him into the pond; the
+  spring trees `oakTree`, `blossomTree`, `willowTree`, `lilacBush` of shapes.ts, gradients `SPRING_DEFS`), 12 each.
+  Every new cartoon brings trees and animals not drawn in the earlier ones.
+- **The owl**: the game's owl (the app icon's, `keenOwl` of shapes.ts) sits in every cartoon — on a branch, a lamp,
+  a pole, in a hollow — blinking and tilting its head (dozing on a calm one), clear of the zones; it may also be a
+  difference.
+- **While the category is being drawn**, a new cartoon waits in `levels/upcoming.ts` (developer mode only, at its
+  place in the grid, e.g. 803 between the released 802 and 811; its tile numbers count released levels only, so the
+  players see no gap — `check-levels` keeps hidden ids free in the order)
+  with its title in English in every locale. When the category is finished they are all released at once: moved
+  into `cartoon/index.ts`, the store texts of every language updated, the titles translated.
+- **Order**: the first ten cartoons have 10 differences (ids 801–810), the ones with 12 come after them (811 on);
+  a new cartoon of 10 goes into the next free id of 804–810, one of 12 after the last of 811 on. `ranges` of the
+  chapter list only the ids drawn so far (`[[801, 803], [811, 813]]`), so the count on its card stays true.
+- **Differences**: 12 (difficulty.ts; the first ten 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.
 

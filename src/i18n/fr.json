@@ -610,7 +610,9 @@
     "cartoonCatPond": "Le chat près de l’étang",
     "cartoonDogPie": "La tarte volée",
     "cartoonFishing": "Partie de pêche",
-    "cartoonSnowman": "Le nez du bonhomme de neige"
+    "cartoonSnowman": "Le nez du bonhomme de neige",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Mode",

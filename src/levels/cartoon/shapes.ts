@@ -209,6 +209,7 @@ export const NATURE_DEFS =
   `<linearGradient id="ke-birch" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfc9bb"/><stop offset="0.6" stop-color="#f6f3ec"/><stop offset="1" stop-color="#ffffff"/></linearGradient>` +
   `<radialGradient id="ke-apple" cx="0.65" cy="0.3" r="0.8"><stop offset="0" stop-color="#ff8a80"/><stop offset="0.5" stop-color="#e2303c"/><stop offset="1" stop-color="#981b26"/></radialGradient>` +
   `<radialGradient id="ke-ginger" cx="0.6" cy="0.25" r="0.85"><stop offset="0" stop-color="#ffc77a"/><stop offset="0.55" stop-color="#f4a13b"/><stop offset="1" stop-color="#c9741f"/></radialGradient>` +
+  `<radialGradient id="ke-owl-iris" cx="0.42" cy="0.38" r="0.7"><stop offset="0" stop-color="#fff0a8"/><stop offset="0.5" stop-color="#ffb703"/><stop offset="1" stop-color="#d36b00"/></radialGradient>` +
   `<radialGradient id="ke-shadow"><stop offset="0" stop-color="#1b3311" stop-opacity="0.38"/><stop offset="0.7" stop-color="#1b3311" stop-opacity="0.16"/><stop offset="1" stop-color="#1b3311" stop-opacity="0"/></radialGradient>`
 
 /** A soft shadow on the ground around (x, y). */
@@ -288,3 +289,116 @@ export const roundTree = (x: number, y: number, s: number, color: string, crown:
 /** A tuft of grass on (x, y). */
 export const grassTuft = (x: number, y: number) =>
   `<path d="M${x - 6} ${y}q2-12 0-18M${x} ${y}q1-16 4-22M${x + 6} ${y}q-1-10 4-14" fill="none" stroke="#3f8f3a" stroke-width="2.6" stroke-linecap="round"/>`
+
+/**
+ * Gradients of the spring trees below (oak, blossoming cherry, weeping willow, lilac bush), lit from the upper right
+ * like NATURE_DEFS: put them in the `<defs>` of a level that draws them.
+ */
+export const SPRING_DEFS =
+  `<radialGradient id="ke-oak" cx="0.64" cy="0.28" r="0.85"><stop offset="0" stop-color="#8fcf5e"/><stop offset="0.5" stop-color="#3f8f3a"/><stop offset="1" stop-color="#1f5a26"/></radialGradient>` +
+  `<radialGradient id="ke-blossom" cx="0.64" cy="0.28" r="0.85"><stop offset="0" stop-color="#fff0f5"/><stop offset="0.5" stop-color="#ffc1d6"/><stop offset="1" stop-color="#e889ad"/></radialGradient>` +
+  `<linearGradient id="ke-willow" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4ef8a"/><stop offset="0.6" stop-color="#9ccf52"/><stop offset="1" stop-color="#6a9e35"/></linearGradient>` +
+  `<radialGradient id="ke-lilac" cx="0.64" cy="0.28" r="0.85"><stop offset="0" stop-color="#e6c8ff"/><stop offset="0.6" stop-color="#b48ae6"/><stop offset="1" stop-color="#7d55b8"/></radialGradient>`
+
+/** An oak standing on (x, y), `s` times its size: a thick gnarled trunk with roots, a broad dark crown with acorns. */
+export const oakTree = (x: number, y: number, s: number, crown: Crown) => {
+  const k = (n: number) => Math.round(n * s * 10) / 10
+  const acorn = (ax: number, ay: number) =>
+    `<ellipse cx="${ax}" cy="${ay + k(3)}" rx="${k(3.5)}" ry="${k(4.5)}" fill="#c8893f" ${Ow(1.2)}/><path d="M${ax - k(4)} ${ay + k(1)}q${k(4)}-${k(5)} ${k(8)} 0z" fill="#7a4a22" ${Ow(1)}/>`
+  return (
+    groundShadow(x - k(30), y, k(120), k(16)) +
+    `<path d="M${x - k(34)} ${y}q${k(16)}-${k(6)} ${k(18)}-${k(30)}q${k(2)}-${k(50)}-${k(10)}-${k(110)}l${k(16)}-${k(8)}q${k(10)} ${k(30)} ${k(12)} ${k(40)}q${k(4)}-${k(30)} ${k(16)}-${k(44)}l${k(14)} ${k(6)}q-${k(12)} ${k(30)}-${k(8)} ${k(98)}q${k(2)} ${k(24)} ${k(20)} ${k(30)}z" fill="url(#ke-bark)" ${O}/>` +
+    `<path d="M${x - k(8)} ${y - k(20)}q${k(4)}-${k(30)}-${k(2)}-${k(60)}M${x + k(6)} ${y - k(40)}q-${k(3)}-${k(20)} ${k(2)}-${k(40)}M${x - k(18)} ${y - k(8)}q${k(6)}-${k(12)} ${k(4)}-${k(26)}" fill="none" stroke="#4a2c14" stroke-opacity="0.5" stroke-width="${k(2.5)}" stroke-linecap="round"/>` +
+    crown(
+      [x, y - k(130)],
+      ball(x - k(76), y - k(160), k(50), 'url(#ke-oak)') + ball(x + k(74), y - k(166), k(52), 'url(#ke-oak)') +
+        ball(x - k(36), y - k(214), k(56), 'url(#ke-oak)') + ball(x + k(38), y - k(220), k(54), 'url(#ke-oak)') + ball(x, y - k(176), k(58), 'url(#ke-oak)') +
+        acorn(x - k(80), y - k(150)) + acorn(x + k(60), y - k(150)) + acorn(x - k(20), y - k(232)) + acorn(x + k(30), y - k(186)) + acorn(x + k(86), y - k(196)),
+    )
+  )
+}
+
+/** A blossoming cherry standing on (x, y), `s` times its size: a slim, bent trunk and a pink cloud of flowers. */
+export const blossomTree = (x: number, y: number, s: number, crown: Crown) => {
+  const k = (n: number) => Math.round(n * s * 10) / 10
+  const flowers = (cx: number, cy: number, r: number) => {
+    let m = ''
+    for (let i = 0; i < 6; i++) {
+      const a = i * 2.4
+      const fx = Math.round(cx + Math.cos(a) * r * 0.6)
+      const fy = Math.round(cy + Math.sin(a) * r * 0.55)
+      m += `<circle cx="${fx}" cy="${fy}" r="${k(3.4)}" fill="#fff"/><circle cx="${fx}" cy="${fy}" r="${k(1.4)}" fill="#e2508a"/>`
+    }
+    return m
+  }
+  const pink = (bx: number, by: number, r: number) =>
+    `<circle cx="${bx}" cy="${by}" r="${r}" fill="url(#ke-blossom)" ${O}/>` + flowers(bx, by, r)
+  return (
+    groundShadow(x - k(24), y, k(74), k(11)) +
+    `<path d="M${x - k(9)} ${y}q${k(10)}-${k(50)}-${k(8)}-${k(90)}l${k(14)}-${k(4)}q${k(16)} ${k(40)} ${k(12)} ${k(94)}z" fill="#6e3f2a" ${O}/>` +
+    `<path d="M${x - k(6)} ${y - k(80)}q-${k(20)}-${k(20)}-${k(40)}-${k(24)}M${x + k(2)} ${y - k(86)}q${k(20)}-${k(16)} ${k(44)}-${k(18)}" fill="none" stroke="#6e3f2a" stroke-width="${k(6)}" stroke-linecap="round"/>` +
+    crown([x, y - k(90)], pink(x - k(44), y - k(118), k(36)) + pink(x + k(46), y - k(122), k(38)) + pink(x, y - k(150), k(46)))
+  )
+}
+
+/** A weeping willow standing on (x, y), `s` times its size: a leaning trunk, a crown with long hanging strands. */
+export const willowTree = (x: number, y: number, s: number, crown: Crown) => {
+  const k = (n: number) => Math.round(n * s * 10) / 10
+  let strands = ''
+  for (let i = 0; i < 11; i++) {
+    const sx = Math.round(x - k(96) + i * k(19))
+    const top = Math.round(y - k(200) + Math.abs(i - 5) * k(8))
+    const len = k(110 + (i % 3) * 22)
+    strands += `<path d="M${sx} ${top}q${k(6)} ${len / 2}-${k(4)} ${len}" fill="none" stroke="#5f8f2e" stroke-width="${k(9)}" stroke-linecap="round"/>`
+    strands += `<path d="M${sx} ${top}q${k(6)} ${len / 2}-${k(4)} ${len}" fill="none" stroke="url(#ke-willow)" stroke-width="${k(6)}" stroke-linecap="round" stroke-dasharray="${k(5)} ${k(3)}"/>`
+  }
+  return (
+    groundShadow(x - k(20), y, k(100), k(14)) +
+    `<path d="M${x - k(12)} ${y}q${k(10)}-${k(70)}-${k(14)}-${k(150)}h${k(20)}q${k(18)} ${k(80)} ${k(16)} ${k(150)}z" fill="url(#ke-bark)" ${O}/>` +
+    crown(
+      [x - k(16), y - k(150)],
+      `<ellipse cx="${x - k(14)}" cy="${y - k(196)}" rx="${k(104)}" ry="${k(46)}" fill="url(#ke-willow)" ${O}/>` + strands,
+    )
+  )
+}
+
+/** A lilac bush standing on (x, y), `s` times its size: green leaves and purple flower cones. */
+export const lilacBush = (x: number, y: number, s: number) => {
+  const k = (n: number) => Math.round(n * s * 10) / 10
+  const cone = (cx: number, cy: number) =>
+    `<path d="M${cx - k(10)} ${cy}q${k(10)}-${k(34)} ${k(20)} 0q-${k(10)} ${k(8)}-${k(20)} 0z" fill="url(#ke-lilac)" ${Ow(1.4)}/>` +
+    `<circle cx="${cx - k(3)}" cy="${cy - k(10)}" r="${k(2)}" fill="#f3e6ff"/><circle cx="${cx + k(3)}" cy="${cy - k(18)}" r="${k(1.6)}" fill="#f3e6ff"/>`
+  return (
+    groundShadow(x, y, k(84), k(10)) +
+    `<path d="M${x - k(78)} ${y}q-${k(10)}-${k(50)} ${k(26)}-${k(66)}q${k(14)}-${k(36)} ${k(56)}-${k(28)}q${k(40)}-${k(14)} ${k(58)} ${k(24)}q${k(36)} ${k(20)} ${k(18)} ${k(70)}z" fill="url(#ke-oak)" ${O}/>` +
+    leaves(x - k(30), y - k(40), k(40)) + leaves(x + k(30), y - k(50), k(36)) +
+    cone(x - k(48), y - k(52)) + cone(x - k(14), y - k(80)) + cone(x + k(22), y - k(74)) + cone(x + k(54), y - k(44)) + cone(x - k(2), y - k(40))
+  )
+}
+
+/**
+ * The game's owl (the app icon's, scripts/make-icons.ts): ear tufts, cream face disks, amber eyes, orange beak, brows —
+ * with wings and feet, perched on (x, y), `s` times its size (about 36 units tall at 1). `blink` wraps its eyelids;
+ * `sleepy` draws it dozing, eyes shut.
+ */
+export const keenOwl = (x: number, y: number, s: number, blink: (m: string) => string = () => '', sleepy = false) => {
+  const eye = (ex: number) =>
+    `<circle cx="${ex}" cy="54" r="12.5" fill="#f3dcb4"/>` +
+    (sleepy
+      ? `<path d="M${ex - 7} 55q7 5 14 0" fill="none" stroke="#5e3a17" stroke-width="2.6" stroke-linecap="round"/>`
+      : `<circle cx="${ex}" cy="54" r="9.6" fill="#fff"/><circle cx="${ex}" cy="54" r="6.6" fill="url(#ke-owl-iris)"/><circle cx="${ex}" cy="54" r="3.4" fill="#1b1410"/><circle cx="${ex + 2}" cy="51.8" r="1.7" fill="#fff"/>`)
+  const lids = `<circle cx="42.5" cy="54" r="10.4" fill="#8b5a2b"/><circle cx="65.5" cy="54" r="10.4" fill="#8b5a2b"/><path d="M33 55h19M56 55h19" stroke="#5e3a17" stroke-width="2"/>`
+  return (
+    `<g transform="translate(${x} ${y}) scale(${Math.round(s * 62) / 100}) translate(-54 -86)">` +
+    `<path d="M30 60q-8 14 2 26l8-6zM78 60q8 14-2 26l-8-6z" fill="#6e4520" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>` +
+    `<path d="M31 42L33.5 27.5L45 36Q54 33.5 63 36L74.5 27.5L77 42Q83 53 80 66Q74 82 54 82Q34 82 28 66Q25 53 31 42Z" fill="#8b5a2b" stroke="${INK}" stroke-width="2.6" stroke-linejoin="round"/>` +
+    `<path d="M40 76q14 7 28 0q-4-9-14-9t-14 9Z" fill="#a8743f"/>` +
+    `<path d="M47 75l2 3M54 74v3.5M61 75l-2 3" stroke="#8b5a2b" stroke-width="1.6" stroke-linecap="round"/>` +
+    eye(42.5) + eye(65.5) +
+    (sleepy ? '' : blink(lids)) +
+    `<path d="M50.5 63h7L54 70.5Z" fill="#ff9f1c" stroke="#d97706" stroke-width="1" stroke-linejoin="round"/>` +
+    `<path d="M33 40.5q9-4 18 1.5M75 40.5q-9-4-18 1.5" fill="none" stroke="#5e3a17" stroke-width="2.6" stroke-linecap="round"/>` +
+    `<path d="M45 82v4M49 82v4M59 82v4M63 82v4" stroke="#e8a33b" stroke-width="2.6" stroke-linecap="round"/>` +
+    `</g>`
+  )
+}

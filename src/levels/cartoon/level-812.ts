@@ -5,7 +5,7 @@
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
 import { ease } from '../../engine/keyframes.ts'
-import { apple, appleTree, bee, bird, birchTree, butterflyAt, cartoonChick, cartoonHen, farBird, fly, grassTuft, groundShadow, INK, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, squirrel, swingKeys } from './shapes.ts'
+import { apple, appleTree, bee, birchTree, bird, butterflyAt, cartoonChick, cartoonHen, farBird, fly, grassTuft, groundShadow, INK, keenOwl, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, squirrel, swingKeys } from './shapes.ts'
 
 const LOOP = 20
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
@@ -189,7 +189,7 @@ const butterfly = (x: number, y: number, flap: (m: string) => string) =>
     `<circle cx="${x - 9}" cy="${y - 10}" r="2.2" fill="#ffd23f"/><circle cx="${x + 9}" cy="${y - 10}" r="2.2" fill="#ffd23f"/>`)
 
 export default svgLevel({
-  id: 804,
+  id: 812,
   chapter: 'cartoon',
   title: 'cartoonDogPie',
   parTimeSec: 120,
@@ -610,6 +610,8 @@ export default svgLevel({
       `<path d="M700 428q150 14 300 0" fill="none" stroke="${INK}" stroke-width="2"/>` +
       laundry(760, `<path d="M740 432h40l8 14l-8 4v30h-40v-30l-8-4z" fill="#4dabf7" ${Ow(2)}/>`) +
       diff(852, 455, 26, laundry(850, sock, 'sock'), '', 'sock') +
+      // The game's owl on top of the clothesline's pole.
+      anim({ type: 'sway', angle: 7, pivot: [700, 421], period: 3.6 }, keenOwl(700, 421, 1, (m) => anim({ type: 'blink', duty: 0.07, period: 3.1, phase: 0.3 }, m))) +
       laundry(935, `<rect x="915" y="433" width="40" height="52" rx="3" fill="#ff6b8b" ${Ow(2)}/><path d="M915 470h40" stroke="#fff" stroke-width="4"/>`) +
       anim(
         { type: 'keys', period: 5, keys: [{ t: 0, y: 0, sx: 1 }, { t: 1.2, ease: 'out' }, { t: 1.35, y: -8, ease: 'in' }, { t: 1.5, y: 0 }, { t: 2.5, ease: 'step' }, { t: 2.6, sx: -1 }, { t: 3.7, ease: 'out' }, { t: 3.85, y: -8, ease: 'in' }, { t: 4, y: 0 }, { t: 4.9, ease: 'step' }], pivot: [1000, 414] },

@@ -610,7 +610,9 @@
     "cartoonCatPond": "Cat at the pond",
     "cartoonDogPie": "The stolen pie",
     "cartoonFishing": "Gone fishing",
-    "cartoonSnowman": "The snowman's nose"
+    "cartoonSnowman": "The snowman's nose",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Mode",

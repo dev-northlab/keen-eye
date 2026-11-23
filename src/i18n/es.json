@@ -610,7 +610,9 @@
     "cartoonCatPond": "El gato en el estanque",
     "cartoonDogPie": "La tarta robada",
     "cartoonFishing": "De pesca",
-    "cartoonSnowman": "La nariz del muñeco de nieve"
+    "cartoonSnowman": "La nariz del muñeco de nieve",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Modo",

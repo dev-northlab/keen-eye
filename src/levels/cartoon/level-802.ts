@@ -1,11 +1,11 @@
-// Cartoon "The snowman's nose" (docs/cartoon-mode.md), the second one, made like 804: a 20 s winter story told by a
+// Cartoon "The snowman's nose" (docs/cartoon-mode.md), the second one, made like 812: a 20 s winter story told by a
 // camera. A hare hops up to the snowman, leaps and snatches its carrot nose; the dog on the porch wakes and gives
 // chase, runs smack into the snowman — it rocks, its head and hat fly off ahead and plop into the snow — and is
 // thrown back, dazed under circling stars, while the hare settles on the headless snowman crunching the carrot.
 // Ten differences: two hard (a missing icicle, the wreath's bow), three events of the story.
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
-import { birchTree, groundShadow, INK, NATURE_DEFS, O, Ow, pineTree, swingKeys } from './shapes.ts'
+import { birchTree, groundShadow, INK, keenOwl, NATURE_DEFS, O, Ow, pineTree, swingKeys } from './shapes.ts'
 
 const LOOP = 20
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
@@ -452,6 +452,9 @@ export default svgLevel({
       snowyFir(40, 640, 1.1) +
       snowyFir(620, 600, 0.75) +
       birchTree(900, 640, 0.8, crown(3.6, 1)) +
+      // The game's owl on a branch of the birch, watching the chase.
+      `<path d="M904 574l30 -8" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M904 574l30 -8" stroke="#8f5d2e" stroke-width="4" stroke-linecap="round"/>` +
+      anim({ type: 'sway', angle: 7, pivot: [928, 568], period: 3.6 }, keenOwl(928, 568, 0.95, (m) => anim({ type: 'blink', duty: 0.07, period: 3.1, phase: 0.3 }, m))) +
       snowyFir(1390, 650, 1.05) +
       fence +
       bareTree +

@@ -855,7 +855,9 @@
     "cartoonCatPond": "Katten ved dammen",
     "cartoonDogPie": "Den stjålne paien",
     "cartoonFishing": "På fisketur",
-    "cartoonSnowman": "Snømannens nese"
+    "cartoonSnowman": "Snømannens nese",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "Brett {n}",

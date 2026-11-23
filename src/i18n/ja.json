@@ -610,7 +610,9 @@
     "cartoonCatPond": "池のねこ",
     "cartoonDogPie": "ぬすまれたパイ",
     "cartoonFishing": "つりに行こう",
-    "cartoonSnowman": "ゆきだるまのはな"
+    "cartoonSnowman": "ゆきだるまのはな",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "モード",

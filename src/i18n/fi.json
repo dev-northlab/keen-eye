@@ -855,7 +855,9 @@
     "cartoonCatPond": "Kissa lammella",
     "cartoonDogPie": "Varastettu piirakka",
     "cartoonFishing": "Kalassa",
-    "cartoonSnowman": "Lumiukon nenä"
+    "cartoonSnowman": "Lumiukon nenä",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "Taso {n}",

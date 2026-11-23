@@ -610,7 +610,9 @@
     "cartoonCatPond": "Кот у пруда",
     "cartoonDogPie": "Украденный пирог",
     "cartoonFishing": "На рыбалке",
-    "cartoonSnowman": "Нос снеговика"
+    "cartoonSnowman": "Нос снеговика",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Режим",

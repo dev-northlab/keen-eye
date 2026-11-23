@@ -1,4 +1,4 @@
-// Cartoon "Gone fishing" (docs/cartoon-mode.md), the first and free one, made like 804: a 20 s story by a lake told by
+// Cartoon "Gone fishing" (docs/cartoon-mode.md), the first and free one, made like 812: a 20 s story by a lake told by
 // a camera. Grandpa dozes on the jetty with his rod; a bite — he pulls with all his might while a heron tiptoes
 // along the boards and steals the fish from his bucket; he lands an old boot (a frog hops out of it), turns to the
 // empty bucket, sees the heron flying off with his fish and shakes the rod, boot and all. Ten differences: two hard
@@ -6,7 +6,7 @@
 import { sampleKeys } from '../../engine/keyframes.ts'
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
-import { birchTree, butterflyAt, dragonfly, farBird, fish, frog, grassTuft, groundShadow, INK, lilyPad, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, swingKeys, waterLily } from './shapes.ts'
+import { birchTree, butterflyAt, dragonfly, farBird, fish, frog, grassTuft, groundShadow, INK, keenOwl, lilyPad, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, swingKeys, waterLily } from './shapes.ts'
 
 const LOOP = 20
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
@@ -495,6 +495,9 @@ export default svgLevel({
       stones +
       pineTree(70, 650, 1.0, crown(4.4, 1.5)) +
       birchTree(170, 640, 0.9, crown(3.6, 3)) +
+      // The game's owl dozes on a branch of the birch, like grandpa on the jetty.
+      `<path d="M176 576l30 -8" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M176 576l30 -8" stroke="#8f5d2e" stroke-width="4" stroke-linecap="round"/>` +
+      anim({ type: 'keys', period: 3.2, keys: [{ t: 0, sy: 1 }, { t: 1.6, sy: 1.04, ease: 'inOut' }], pivot: [200, 570] }, keenOwl(200, 570, 0.95, undefined, true)) +
       flowers +
       tufts +
       reeds +

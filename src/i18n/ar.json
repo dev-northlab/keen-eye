@@ -855,7 +855,9 @@
     "cartoonCatPond": "القطة عند البركة",
     "cartoonDogPie": "الفطيرة المسروقة",
     "cartoonFishing": "رحلة صيد",
-    "cartoonSnowman": "أنف رجل الثلج"
+    "cartoonSnowman": "أنف رجل الثلج",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "المرحلة {n}",

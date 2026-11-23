@@ -610,7 +610,9 @@
     "cartoonCatPond": "Katze am Teich",
     "cartoonDogPie": "Der gestohlene Kuchen",
     "cartoonFishing": "Beim Angeln",
-    "cartoonSnowman": "Die Nase des Schneemanns"
+    "cartoonSnowman": "Die Nase des Schneemanns",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Modus",

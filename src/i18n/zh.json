@@ -610,7 +610,9 @@
     "cartoonCatPond": "池塘边的猫",
     "cartoonDogPie": "被偷的馅饼",
     "cartoonFishing": "去钓鱼",
-    "cartoonSnowman": "雪人的鼻子"
+    "cartoonSnowman": "雪人的鼻子",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "模式",

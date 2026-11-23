@@ -610,7 +610,9 @@
     "cartoonCatPond": "O gato no lago",
     "cartoonDogPie": "A torta roubada",
     "cartoonFishing": "Pescaria",
-    "cartoonSnowman": "O nariz do boneco de neve"
+    "cartoonSnowman": "O nariz do boneco de neve",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Modo",

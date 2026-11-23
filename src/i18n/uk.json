@@ -610,7 +610,9 @@
     "cartoonCatPond": "Кіт біля ставка",
     "cartoonDogPie": "Вкрадений пиріг",
     "cartoonFishing": "На риболовлі",
-    "cartoonSnowman": "Ніс сніговика"
+    "cartoonSnowman": "Ніс сніговика",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "mode": {
     "label": "Режим",

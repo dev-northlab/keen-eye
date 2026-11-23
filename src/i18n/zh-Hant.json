@@ -855,7 +855,9 @@
     "cartoonCatPond": "池塘邊的貓",
     "cartoonDogPie": "被偷的餡餅",
     "cartoonFishing": "去釣魚",
-    "cartoonSnowman": "雪人的鼻子"
+    "cartoonSnowman": "雪人的鼻子",
+    "cartoonHedgehog": "The hedgehog's apple",
+    "cartoonBearHoney": "The bear and the honey"
   },
   "map": {
     "level": "第 {n} 關",
