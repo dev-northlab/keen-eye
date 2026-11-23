@@ -608,7 +608,9 @@
     "sunnyStreet": "Slunečná ulice",
     "gardenGate": "U zahradní branky",
     "cartoonCatPond": "Kočka u rybníka",
-    "cartoonDogPie": "Ukradený koláč"
+    "cartoonDogPie": "Ukradený koláč",
+    "cartoonFishing": "Na rybách",
+    "cartoonSnowman": "Nos sněhuláka"
   },
   "mode": {
     "label": "Režim",

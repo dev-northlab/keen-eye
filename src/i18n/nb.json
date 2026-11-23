@@ -853,7 +853,9 @@
     "sunnyStreet": "Solfylt gate",
     "gardenGate": "Ved hageporten",
     "cartoonCatPond": "Katten ved dammen",
-    "cartoonDogPie": "Den stjålne paien"
+    "cartoonDogPie": "Den stjålne paien",
+    "cartoonFishing": "På fisketur",
+    "cartoonSnowman": "Snømannens nese"
   },
   "map": {
     "level": "Brett {n}",

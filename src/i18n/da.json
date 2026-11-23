@@ -853,7 +853,9 @@
     "sunnyStreet": "Solrig gade",
     "gardenGate": "Ved havelågen",
     "cartoonCatPond": "Katten ved dammen",
-    "cartoonDogPie": "Den stjålne tærte"
+    "cartoonDogPie": "Den stjålne tærte",
+    "cartoonFishing": "På fisketur",
+    "cartoonSnowman": "Snemandens næse"
   },
   "map": {
     "level": "Bane {n}",

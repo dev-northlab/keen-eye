@@ -608,7 +608,9 @@
     "sunnyStreet": "Güneşli sokak",
     "gardenGate": "Bahçe kapısında",
     "cartoonCatPond": "Göletteki kedi",
-    "cartoonDogPie": "Çalınan turta"
+    "cartoonDogPie": "Çalınan turta",
+    "cartoonFishing": "Balık tutmaya",
+    "cartoonSnowman": "Kardan adamın burnu"
   },
   "mode": {
     "label": "Mod",

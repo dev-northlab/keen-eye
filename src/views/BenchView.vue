@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Animation benchmark (developer mode only, /dev/bench): the cartoon level 802 played by SVG (the game's way) and
+// Animation benchmark (developer mode only, /dev/bench): the cartoon level 804 played by SVG (the game's way) and
 // Canvas 2D, each for a while, to see which keeps the frame rate on a weak phone. Its labels are technical names, the
 // same in every language.
 import { onBeforeUnmount, onMounted, ref, shallowRef } from 'vue'
@@ -8,7 +8,7 @@ import { buildLayers, type GroupLayer, type LayerStats } from '../bench/layers.t
 import { canvasRenderer, svgRenderer, type Renderer, type RendererKind } from '../bench/renderers.ts'
 import { levelById } from '../levels/index.ts'
 
-const LEVEL_ID = 802
+const LEVEL_ID = 804
 /** Each run: a second to settle, then this long measured. */
 const WARMUP_MS = 1000
 const MEASURE_MS = 10000

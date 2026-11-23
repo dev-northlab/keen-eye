@@ -608,7 +608,9 @@
     "sunnyStreet": "Strada assolata",
     "gardenGate": "Al cancello del giardino",
     "cartoonCatPond": "Il gatto allo stagno",
-    "cartoonDogPie": "La torta rubata"
+    "cartoonDogPie": "La torta rubata",
+    "cartoonFishing": "A pesca",
+    "cartoonSnowman": "Il naso del pupazzo di neve"
   },
   "mode": {
     "label": "Modalità",

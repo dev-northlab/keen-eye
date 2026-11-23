@@ -608,7 +608,9 @@
     "sunnyStreet": "Слънчева улица",
     "gardenGate": "При градинската портичка",
     "cartoonCatPond": "Котка край езерото",
-    "cartoonDogPie": "Откраднатият пай"
+    "cartoonDogPie": "Откраднатият пай",
+    "cartoonFishing": "За риба",
+    "cartoonSnowman": "Носът на снежния човек"
   },
   "mode": {
     "label": "Режим",

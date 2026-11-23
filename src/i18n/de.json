@@ -608,7 +608,9 @@
     "sunnyStreet": "Sonnige Straße",
     "gardenGate": "Am Gartentor",
     "cartoonCatPond": "Katze am Teich",
-    "cartoonDogPie": "Der gestohlene Kuchen"
+    "cartoonDogPie": "Der gestohlene Kuchen",
+    "cartoonFishing": "Beim Angeln",
+    "cartoonSnowman": "Die Nase des Schneemanns"
   },
   "mode": {
     "label": "Modus",

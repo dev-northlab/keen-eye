@@ -608,7 +608,9 @@
     "sunnyStreet": "Zonnige straat",
     "gardenGate": "Bij het tuinhek",
     "cartoonCatPond": "Kat bij de vijver",
-    "cartoonDogPie": "De gestolen taart"
+    "cartoonDogPie": "De gestolen taart",
+    "cartoonFishing": "Uit vissen",
+    "cartoonSnowman": "De neus van de sneeuwpop"
   },
   "mode": {
     "label": "Modus",

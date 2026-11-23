@@ -608,7 +608,9 @@
     "sunnyStreet": "晴れた通り",
     "gardenGate": "庭の門で",
     "cartoonCatPond": "池のねこ",
-    "cartoonDogPie": "ぬすまれたパイ"
+    "cartoonDogPie": "ぬすまれたパイ",
+    "cartoonFishing": "つりに行こう",
+    "cartoonSnowman": "ゆきだるまのはな"
   },
   "mode": {
     "label": "モード",

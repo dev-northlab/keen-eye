@@ -53,11 +53,17 @@ export function sampleKeys<F extends string>(keys: Keyed<F>[], s: number, period
   return out
 }
 
-/** Keys with every field set, kept per keys array: a story's keys are posed ~30 times a second. */
-const filledCache = new WeakMap<object, unknown>()
+/**
+ * Keys with every field set, kept per keys array and set of fields (a story's keys are posed ~60 times a second):
+ * the same keys may be read with other fields, e.g. only x and y by a level working out where something will be.
+ */
+const filledCache = new WeakMap<object, Map<string, unknown>>()
 
 function fill<F extends string>(keys: Keyed<F>[], fields: readonly F[], defaults: Record<F, number>): Record<F, number>[] {
-  const cached = filledCache.get(keys) as Record<F, number>[] | undefined
+  let byFields = filledCache.get(keys)
+  if (!byFields) filledCache.set(keys, (byFields = new Map()))
+  const id = fields.join() + '|' + fields.map((f) => defaults[f]).join()
+  const cached = byFields.get(id) as Record<F, number>[] | undefined
   if (cached) return cached
   let last = { ...defaults }
   const filled = keys.map((k) => {
@@ -65,7 +71,7 @@ function fill<F extends string>(keys: Keyed<F>[], fields: readonly F[], defaults
     for (const f of fields) if (k[f] !== undefined) last[f] = k[f]!
     return last
   })
-  filledCache.set(keys, filled)
+  byFields.set(id, filled)
   return filled
 }
 

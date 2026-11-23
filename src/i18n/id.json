@@ -853,7 +853,9 @@
     "sunnyStreet": "Jalan yang cerah",
     "gardenGate": "Di gerbang taman",
     "cartoonCatPond": "Kucing di kolam",
-    "cartoonDogPie": "Pai yang dicuri"
+    "cartoonDogPie": "Pai yang dicuri",
+    "cartoonFishing": "Memancing",
+    "cartoonSnowman": "Hidung manusia salju"
   },
   "map": {
     "level": "Level {n}",

@@ -608,7 +608,9 @@
     "sunnyStreet": "धूप भरी गली",
     "gardenGate": "बगीचे के गेट पर",
     "cartoonCatPond": "तालाब के पास बिल्ली",
-    "cartoonDogPie": "चोरी हुई पाई"
+    "cartoonDogPie": "चोरी हुई पाई",
+    "cartoonFishing": "मछली पकड़ने",
+    "cartoonSnowman": "स्नोमैन की नाक"
   },
   "mode": {
     "label": "मोड",

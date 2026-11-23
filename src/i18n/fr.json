@@ -608,7 +608,9 @@
     "sunnyStreet": "Rue ensoleillée",
     "gardenGate": "Au portail du jardin",
     "cartoonCatPond": "Le chat près de l’étang",
-    "cartoonDogPie": "La tarte volée"
+    "cartoonDogPie": "La tarte volée",
+    "cartoonFishing": "Partie de pêche",
+    "cartoonSnowman": "Le nez du bonhomme de neige"
   },
   "mode": {
     "label": "Mode",

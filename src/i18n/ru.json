@@ -608,7 +608,9 @@
     "sunnyStreet": "Солнечная улица",
     "gardenGate": "У садовой калитки",
     "cartoonCatPond": "Кот у пруда",
-    "cartoonDogPie": "Украденный пирог"
+    "cartoonDogPie": "Украденный пирог",
+    "cartoonFishing": "На рыбалке",
+    "cartoonSnowman": "Нос снеговика"
   },
   "mode": {
     "label": "Режим",

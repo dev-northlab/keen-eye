@@ -608,7 +608,9 @@
     "sunnyStreet": "햇살 가득한 거리",
     "gardenGate": "정원 문 앞에서",
     "cartoonCatPond": "연못가의 고양이",
-    "cartoonDogPie": "도둑맞은 파이"
+    "cartoonDogPie": "도둑맞은 파이",
+    "cartoonFishing": "낚시하러",
+    "cartoonSnowman": "눈사람의 코"
   },
   "mode": {
     "label": "모드",

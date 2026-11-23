@@ -141,7 +141,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   told by a camera (`svgLevel({ …, cartoon: { period, frame, camera } })`, played by `LevelView` on `CartoonBoard`,
   `engine/cartoon.ts`: shots, pans and cuts, fitted to the picture's shape, the player's zoom holds the shot; posed
   ~60 a second by `PoseRate`, `engine/pace.ts`); stories on keyframes (`keys` motion, `engine/keyframes.ts`), event
-  differences shown only in their window (`Difference.during`); 12 differences, two hard; made like 802 "The stolen
+  differences shown only in their window (`Difference.during`); 12 differences (the first two 10), two hard; made like 804 "The stolen
   pie" (a rich yard in sunlight: shaded trees, ground shadows, textures; helpers in `cartoon/shapes.ts`); listed in a
   category grid, opened by a live banner (`CartoonBannerScene` in `PhotoBanner`'s `picture` slot), the second on the
   game modes screen; only its first level is free; no key yet (left out of `KEY_CHAPTERS`); `ranges` grow with every
@@ -331,7 +331,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.
 - Developer mode also shows a frame meter over every level (`FpsMeter`: frames shown, the scene's redraws per second,
-  the longest frame) and has an "Animation benchmark" (`/dev/bench`, `BenchView`, `src/bench/`: level 802 played by SVG
+  the longest frame) and has an "Animation benchmark" (`/dev/bench`, `BenchView`, `src/bench/`: level 804 played by SVG
   and by Canvas 2D from bitmaps of its static parts, for comparing phones).
 - Developer tools ("Open all levels", "Complete all levels", "Forget purchase", "Reset progress", "Reset found keys") sit in the `DevToolsDialog`, opened by the "Development" entry in Settings. It shows only in developer mode (`settings.developer`), turned on by the temporary testing code (`DEVELOPER_CODE` in `stores/settings.ts`) typed into the code field of that same "Development" row (before the code the row shows the field, after it the row opens the dialog); "Open all levels" and "Show places in levels" (the levels' red outline of all zones) work only while developer mode is on.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.

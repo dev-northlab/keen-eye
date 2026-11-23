@@ -608,7 +608,9 @@
     "sunnyStreet": "Calle soleada",
     "gardenGate": "En la puerta del jardín",
     "cartoonCatPond": "El gato en el estanque",
-    "cartoonDogPie": "La tarta robada"
+    "cartoonDogPie": "La tarta robada",
+    "cartoonFishing": "De pesca",
+    "cartoonSnowman": "La nariz del muñeco de nieve"
   },
   "mode": {
     "label": "Modo",

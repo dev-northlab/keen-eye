@@ -853,7 +853,9 @@
     "sunnyStreet": "ถนนแดดจ้า",
     "gardenGate": "ที่ประตูรั้วสวน",
     "cartoonCatPond": "แมวริมบ่อน้ำ",
-    "cartoonDogPie": "พายที่ถูกขโมย"
+    "cartoonDogPie": "พายที่ถูกขโมย",
+    "cartoonFishing": "ไปตกปลา",
+    "cartoonSnowman": "จมูกของตุ๊กตาหิมะ"
   },
   "map": {
     "level": "ด่าน {n}",

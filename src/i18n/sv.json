@@ -853,7 +853,9 @@
     "sunnyStreet": "Solig gata",
     "gardenGate": "Vid trädgårdsgrinden",
     "cartoonCatPond": "Katten vid dammen",
-    "cartoonDogPie": "Den stulna pajen"
+    "cartoonDogPie": "Den stulna pajen",
+    "cartoonFishing": "På fisketur",
+    "cartoonSnowman": "Snögubbens näsa"
   },
   "map": {
     "level": "Nivå {n}",

@@ -608,7 +608,9 @@
     "sunnyStreet": "Сонячна вулиця",
     "gardenGate": "Біля садової хвіртки",
     "cartoonCatPond": "Кіт біля ставка",
-    "cartoonDogPie": "Вкрадений пиріг"
+    "cartoonDogPie": "Вкрадений пиріг",
+    "cartoonFishing": "На риболовлі",
+    "cartoonSnowman": "Ніс сніговика"
   },
   "mode": {
     "label": "Режим",

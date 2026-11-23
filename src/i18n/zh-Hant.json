@@ -853,7 +853,9 @@
     "sunnyStreet": "陽光街道",
     "gardenGate": "花園門口",
     "cartoonCatPond": "池塘邊的貓",
-    "cartoonDogPie": "被偷的餡餅"
+    "cartoonDogPie": "被偷的餡餅",
+    "cartoonFishing": "去釣魚",
+    "cartoonSnowman": "雪人的鼻子"
   },
   "map": {
     "level": "第 {n} 關",

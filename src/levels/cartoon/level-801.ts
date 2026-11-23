@@ -1,560 +1,537 @@
-// Cartoon "Cat at the pond" (docs/cartoon-mode.md), made like level 802: a 16 s story shown by a camera that
-// follows the cat and cuts between shots. The cat sneaks to the pond, leaps for a jumping fish, lands in the water,
-// shakes itself dry and walks home — while it is away, a mouse comes out of its hole and flees as the cat turns.
-// Twelve differences: eight that stay all along (one rides on the cat), four events of the story; two are hard
-// (a cattail at the pond, the chimney's cap).
+// Cartoon "Gone fishing" (docs/cartoon-mode.md), the first and free one, made like 804: a 20 s story by a lake told by
+// a camera. Grandpa dozes on the jetty with his rod; a bite — he pulls with all his might while a heron tiptoes
+// along the boards and steals the fish from his bucket; he lands an old boot (a frog hops out of it), turns to the
+// empty bucket, sees the heron flying off with his fish and shakes the rod, boot and all. Ten differences: two hard
+// (a missing board of the jetty, a missing stone on the shore), three events of the story.
+import { sampleKeys } from '../../engine/keyframes.ts'
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
-import { apple, appleTree, bee, birchTree, bird, butterflyAt, cat, catBow, dragonfly, farBird, fish, fly, frog, grassTuft, groundShadow, INK, lilyPad, mouse, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, snail, swingKeys, waterLily } from './shapes.ts'
+import { birchTree, butterflyAt, dragonfly, farBird, fish, frog, grassTuft, groundShadow, INK, lilyPad, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, swingKeys, waterLily } from './shapes.ts'
 
-/** Seconds of one loop of the story. */
-const LOOP = 16
+const LOOP = 20
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
+const W = 1440
+const H = 900
+/** The lake's surface where the jetty stands: what is under it (the line's end, the boot) is not seen. */
+const WATER = 652
 
-const WIDE = { x: 0, y: 0, w: 800 }
-/** The shot of the mouse's hole, cut to twice: it comes out, and it flees. */
-const HOLE = { x: 10, y: 225, w: 250 }
+const WIDE = { x: 60, y: 88, w: 1300 }
 const camera: CameraKey[] = [
   { t: 0, ...WIDE, ease: 'step' },
-  // Following the cat as it sneaks to the pond…
-  { t: 2.8, x: 100, y: 215, w: 360, ease: 'linear' },
-  { t: 3.2, x: 100, y: 215, w: 360, ease: 'inOut' },
-  { t: 5.6, x: 170, y: 240, w: 360, ease: 'linear' },
-  // …over to the pond as the fish jumps and the cat leaps.
-  { t: 6, x: 170, y: 240, w: 360, ease: 'inOut' },
-  { t: 6.35, x: 250, y: 220, w: 440, ease: 'linear' },
-  { t: 7.3, x: 262, y: 228, w: 420, ease: 'step' },
-  // In the water, the frog beside it.
-  { t: 7.35, x: 290, y: 330, w: 260, ease: 'step' },
-  // Meanwhile, at the house: the mouse comes out.
-  { t: 9, ...HOLE, ease: 'step' },
-  // The cat shakes itself dry…
-  { t: 10.4, x: 170, y: 260, w: 250, ease: 'step' },
-  // …and the mouse runs for it.
-  { t: 11.4, ...HOLE, ease: 'step' },
-  // Following the cat home, a bird on the fence; then back to the whole yard.
-  { t: 12.1, x: 120, y: 205, w: 380, ease: 'linear' },
-  { t: 12.2, x: 120, y: 205, w: 380, ease: 'inOut' },
-  { t: 14.6, x: 60, y: 195, w: 380, ease: 'inOut' },
-  { t: 15.4, ...WIDE, ease: 'linear' },
+  // Grandpa dozing.
+  { t: 3, x: 690, y: 430, w: 360 },
+  { t: 5.75, x: 705, y: 445, w: 330, ease: 'step' },
+  // The float: a bite!
+  { t: 5.8, x: 900, y: 560, w: 240, ease: 'step' },
+  // He pulls…
+  { t: 7.6, x: 620, y: 360, w: 500 },
+  { t: 10, x: 630, y: 370, w: 480, ease: 'step' },
+  // …while the heron reaches the bucket.
+  { t: 10.05, x: 540, y: 450, w: 300 },
+  { t: 12.3, x: 556, y: 456, w: 280, ease: 'step' },
+  // The catch: a boot.
+  { t: 12.35, x: 820, y: 430, w: 340 },
+  { t: 14.3, x: 830, y: 436, w: 320, ease: 'step' },
+  // The empty bucket.
+  { t: 14.35, x: 680, y: 430, w: 340, ease: 'step' },
+  // Over the lake, the heron flies off with the fish.
+  { t: 15.6, x: 520, y: 150, w: 880, ease: 'inOut' },
+  { t: 17.1, x: 560, y: 110, w: 860, ease: 'step' },
+  // Grandpa shakes his rod at it, boot and all.
+  { t: 17.15, x: 690, y: 380, w: 420 },
+  { t: 19.95, x: 700, y: 390, w: 400, ease: 'step' },
 ]
 
-/** The cat's rest place: by the house door; drawn 1.45 times its helper's size, a star of the story. */
-const CAT: [number, number] = [175, 345]
-const CAT_SCALE = 1.45
-const catKeys: Keyframe[] = [
-  { t: 0, x: 0, y: 0, sx: 1, sy: 1, rot: 0 },
-  { t: 2.8, ease: 'inOut' },
-  { t: 3.2, sy: 0.88, ease: 'inOut' },
-  // Sneaks to the pond.
-  { t: 5.6, x: 100, y: 40, ease: 'out' },
-  { t: 6.1, sy: 0.72, ease: 'out' },
-  // The leap: too short.
-  { t: 6.35, x: 120, y: 25, sy: 1.12, rot: -18, ease: 'out' },
-  { t: 6.85, x: 175, y: -40, sy: 1.05, rot: -8, ease: 'in' },
-  { t: 7.3, x: 245, y: 100, sy: 1, rot: 12, ease: 'out' },
-  { t: 7.5, sy: 0.9, rot: 0, ease: 'out' },
-  // In the water up to its neck, bobbing.
-  { t: 7.8, sy: 1, ease: 'inOut' },
-  { t: 8.6, y: 94, ease: 'inOut' },
-  { t: 9.4, y: 100, ease: 'inOut' },
-  { t: 10, y: 96, ease: 'inOut' },
-  // Scrambles out and shakes itself dry.
-  { t: 10.5, x: 100, y: 40, ease: 'linear' },
-  { t: 10.7, rot: 14, ease: 'inOut' },
-  { t: 10.85, rot: -14, ease: 'inOut' },
-  { t: 11, rot: 14, ease: 'inOut' },
-  { t: 11.15, rot: -14, ease: 'inOut' },
-  { t: 11.3, rot: 0 },
-  { t: 11.5, ease: 'inOut' },
-  // Turns round and walks home.
-  { t: 11.75, sx: -1, sy: 1 },
-  { t: 14.6, x: 0, y: 0, ease: 'inOut' },
-  { t: 15, ease: 'inOut' },
-  { t: 15.3, sx: 1 },
+/** Shown from `from` to `to`, hidden the rest of the loop (cuts between drawings). */
+const shownKeys = (from: number, to: number): Keyframe[] => [
+  { t: 0, o: 0, ease: 'step' },
+  { t: from, o: 1, ease: 'step' },
+  { t: to, o: 0 },
 ]
-const WALKS: [number, number][] = [[3.2, 5.6], [10.05, 10.5], [11.75, 14.6]]
+const hiddenKeys = (from: number, to: number): Keyframe[] => [
+  { t: 0, o: 1, ease: 'step' },
+  { t: from, o: 0, ease: 'step' },
+  { t: to, o: 1 },
+]
+/** Quick back and forth of `key` between a and b every `step` s from `from` to `to`. */
+function shake(from: number, to: number, step: number, field: 'rot', a: number, b: number): Keyframe[] {
+  const keys: Keyframe[] = []
+  let i = 0
+  for (let t = from; t < to - 1e-9; t += step, i++) keys.push({ t: Math.round(t * 100) / 100, [field]: i % 2 ? b : a, ease: 'inOut' })
+  return keys
+}
 
+/** Grandpa sits on the end of the jetty, facing the lake. */
+const HIP: [number, number] = [812, 598]
+const NECK: [number, number] = [812, 532]
+const grandpaKeys: Keyframe[] = [
+  { t: 0, x: 0, y: 0, rot: 0, sy: 1 },
+  { t: 3, ease: 'inOut' },
+  { t: 3.6, rot: 5 },
+  { t: 6.5, ease: 'out' },
+  // A bite: he jumps.
+  { t: 6.65, rot: -2, y: -8, sy: 1.06, ease: 'in' },
+  { t: 6.85, rot: -4, y: 0, sy: 1 },
+  // Pulls with all his might.
+  { t: 7.6, rot: -6, ease: 'inOut' },
+  { t: 8.4, rot: -12, ease: 'inOut' },
+  { t: 9.2, rot: -8, ease: 'inOut' },
+  { t: 10, rot: -13, ease: 'inOut' },
+  { t: 10.8, rot: -9, ease: 'inOut' },
+  { t: 11.6, rot: -14, ease: 'inOut' },
+  { t: 12.4, rot: -10, ease: 'out' },
+  { t: 13, rot: -16, ease: 'inOut' },
+  // A boot?!
+  { t: 13.4, rot: -4, y: -6, sy: 1.06, ease: 'inOut' },
+  { t: 13.7, rot: 0, y: 0, sy: 1 },
+  { t: 16, ease: 'inOut' },
+  // Shaking with anger.
+  ...shake(16.2, 19.4, 0.2, 'rot', 3, -3),
+  { t: 19.6, rot: 0 },
+]
+const headKeys: Keyframe[] = [
+  { t: 0, rot: 0, sx: 1 },
+  { t: 3.4, ease: 'inOut' },
+  // Nodding off.
+  { t: 3.9, rot: 12, ease: 'inOut' },
+  { t: 4.5, rot: 6, ease: 'inOut' },
+  { t: 5.1, rot: 13, ease: 'inOut' },
+  { t: 5.7, rot: 7, ease: 'inOut' },
+  { t: 6.3, rot: 13, ease: 'out' },
+  { t: 6.6, rot: 0 },
+  // A look back at the bucket.
+  { t: 14.4, ease: 'inOut' },
+  { t: 14.6, sx: -1 },
+  { t: 15.6, ease: 'inOut' },
+  { t: 15.8, sx: 1 },
+]
+
+/** The rod turns round the hands; its tip holds the line. */
+const HANDS: [number, number] = [848, 560]
+const TIP: [number, number] = [1010, 455]
+const rodKeys: Keyframe[] = [
+  { t: 0, rot: 0 },
+  { t: 6.55, ease: 'out' },
+  { t: 6.7, rot: 4, ease: 'inOut' },
+  { t: 7, rot: 1, ease: 'inOut' },
+  { t: 7.3, rot: 4, ease: 'inOut' },
+  { t: 7.6, rot: -4, ease: 'inOut' },
+  // The struggle.
+  ...shake(8, 12.4, 0.4, 'rot', -12, -6),
+  { t: 12.4, rot: -12, ease: 'inOut' },
+  // Out it comes.
+  { t: 13, rot: -32, ease: 'inOut' },
+  { t: 13.3, rot: -28 },
+  { t: 16, ease: 'inOut' },
+  ...shake(16.2, 19.4, 0.2, 'rot', -36, -24),
+  { t: 19.6, rot: -30 },
+  { t: 19.95, ease: 'step' },
+]
+/** The float dips under at the bite. */
+const DIP: Record<string, number> = { '6.7': 12, '7': 5, '7.3': 12 }
 /**
- * The cat's shadow on the grass: under its feet on the slope down to the pond (the ground falls 40 over the first
- * 100 of the way), shrinking while it leaps, and gone while it is in the water.
+ * The line hangs straight down from the rod's tip: a group of its own (clipped at the water) that follows the tip.
+ * Its keys are the rod's, turned into the tip's moves.
  */
-const catShadowKeys: Keyframe[] = (() => {
-  let x = 0
-  let y = 0
-  return catKeys.map((k) => {
-    x = k.x ?? x
-    y = k.y ?? y
-    const ground = Math.min(x, 100) * 0.4
-    const lift = Math.max(0, ground - y)
-    const inWater = x > 150 && y > 60
-    const s = 1 - Math.min(lift / 160, 0.5)
-    return { t: k.t, x, y: Math.min(ground, 40), sx: s, sy: s, o: inWater ? 0 : 1 - Math.min(lift / 140, 0.6), ...(k.ease && { ease: k.ease }) }
+const lineKeys: Keyframe[] = (() => {
+  let rot = 0
+  return rodKeys.map((k) => {
+    rot = k.rot ?? rot
+    const a = (rot * Math.PI) / 180
+    const rx = TIP[0] - HANDS[0]
+    const ry = TIP[1] - HANDS[1]
+    const x = HANDS[0] + rx * Math.cos(a) - ry * Math.sin(a) - TIP[0]
+    const y = HANDS[1] + rx * Math.sin(a) + ry * Math.cos(a) - TIP[1] + (DIP[String(k.t)] ?? 0)
+    return { t: k.t, x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10, ...(k.ease && { ease: k.ease }) }
   })
 })()
+/** The line's end hangs this far under the tip: below the surface, until he reels it in. */
+const LINE = 200
+/** Reeling in lifts the float (and the boot) this much, the line shortened to REELED of its length. */
+const REEL = 110
+const REELED = 0.45
+/** The float, the hook and what hangs on it: the tip's moves, plus the reeling in. */
+const hookKeys: Keyframe[] = lineKeys.map((k) => ({ ...k, y: (k.y ?? 0) + (k.t >= 13 ? -REEL : 0) }))
+const reelKeys: Keyframe[] = [{ t: 0, sy: 1 }, { t: 12.4, ease: 'inOut' }, { t: 13, sy: REELED }, { t: 19.95, ease: 'step' }]
 
-const FISH: [number, number] = [530, 320]
-const fishKeys: Keyframe[] = [
-  { t: 0, x: -50, y: 80, rot: -55, o: 0 },
-  { t: 5.95 },
-  { t: 6, o: 1, ease: 'out' },
-  { t: 6.75, x: 0, y: 0, rot: 0, ease: 'in' },
-  { t: 7.5, x: 50, y: 80, rot: 55 },
-  { t: 7.55, o: 0 },
+/** The heron stands in the reeds, walks onto the jetty, steals the fish and flies off over the lake. */
+const HERON: [number, number] = [330, 700]
+const heronKeys: Keyframe[] = [
+  { t: 0, x: 0, y: 0, sy: 1 },
+  { t: 5.2, ease: 'inOut' },
+  { t: 7.6, x: 100, y: -94 },
+  { t: 10.6, x: 360, y: -94, ease: 'out' },
+  { t: 11.6, ease: 'out' },
+  { t: 11.8, sy: 0.86, ease: 'out' },
+  { t: 12.05, x: 400, y: -160, sy: 1.08, ease: 'inOut' },
+  { t: 13.6, x: 600, y: -300, sy: 1, ease: 'inOut' },
+  { t: 15.6, x: 850, y: -400 },
+  { t: 17.6, x: 1200, y: -540 },
+  { t: 19.95, ease: 'step' },
+]
+const HERON_WALKS: [number, number][] = [[5.2, 7.6], [7.6, 10.6]]
+
+/** The boot comes out of the water with a frog in it (in B a fish): it hops out into the lake. */
+const CRITTER_AT = 13.35
+const lineAt = (t: number) => sampleKeys(hookKeys, t, LOOP, ['x', 'y'] as const, { x: 0, y: 0 })
+const BOOT_TOP: [number, number] = (() => {
+  const p = lineAt(CRITTER_AT)
+  return [Math.round(TIP[0] + p.x), Math.round(TIP[1] + LINE + p.y - 4)]
+})()
+const critterKeys: Keyframe[] = [
+  { t: 0, x: 0, y: 0, rot: 0, o: 0, ease: 'step' },
+  { t: CRITTER_AT, o: 1, ease: 'out' },
+  { t: CRITTER_AT + 0.45, x: 36, y: -34, rot: 20, ease: 'in' },
+  { t: CRITTER_AT + 0.95, x: 70, y: WATER - BOOT_TOP[1] + 2, rot: 60 },
+  { t: CRITTER_AT + 1, o: 0 },
 ]
 
-const FROG: [number, number] = [360, 432]
-const frogJump: Keyframe[] = [
-  { t: 0, y: 0, sy: 1 },
-  { t: 7.45, ease: 'out' },
-  { t: 7.85, y: -64, sy: 1.12, ease: 'in' },
-  { t: 8.25, y: 0, sy: 0.78, ease: 'out' },
-  { t: 8.5, sy: 1 },
+/** In B a little fish leaps beside the float as it dips. */
+const LEAP: [number, number] = [1052, 612]
+const leapKeys: Keyframe[] = [
+  { t: 0, x: -18, y: 36, rot: -50, o: 0, ease: 'step' },
+  { t: 6.45, o: 1, ease: 'out' },
+  { t: 6.85, x: 0, y: 0, rot: 0, ease: 'in' },
+  { t: 7.25, x: 18, y: 36, rot: 50 },
+  { t: 7.3, o: 0 },
 ]
 
-/** The bird's perch on the fence post. */
-const BIRD: [number, number] = [260, 262]
-const birdKeys: Keyframe[] = [
-  { t: 0, x: 560, y: -200, o: 0 },
-  { t: 10.4, o: 1, ease: 'out' },
-  { t: 11.4, x: 0, y: 0 },
-  { t: 12.4, ease: 'out' },
-  { t: 12.55, y: -8, ease: 'in' },
-  { t: 12.7, y: 0 },
-  { t: 13.6, ease: 'in' },
-  { t: 14.5, x: -420, y: -230 },
-  { t: 14.55, o: 0 },
-]
-
-/** Splash where the cat lands. */
-const SPLASH: [number, number] = [420, 410]
-const splashKeys: Keyframe[] = [
-  { t: 0, sx: 0.4, sy: 0.3, o: 0 },
-  { t: 7.28 },
-  { t: 7.32, o: 1, ease: 'out' },
-  { t: 7.7, sx: 1.15, sy: 1.2, ease: 'in' },
-  { t: 8.1, sx: 1.35, sy: 1.3, o: 0 },
-]
-
-/** A mouse lives in a hole in the house wall: it comes out while the cat is in the pond and flees when it turns. */
-const MOUSE: [number, number] = [62, 334]
-const mouseKeys: Keyframe[] = [
-  { t: 0, x: 0, y: 0, sx: 1, sy: 1, o: 0 },
-  { t: 7.7, ease: 'step' },
-  { t: 7.75, o: 1, ease: 'out' },
-  { t: 8.2, x: 6 },
-  { t: 8.6, ease: 'inOut' },
-  { t: 9.4, x: 62, y: 8 },
-  { t: 10.2, ease: 'inOut' },
-  { t: 10.35, sy: 0.8, ease: 'inOut' },
-  { t: 10.5, sy: 1, ease: 'inOut' },
-  { t: 10.65, sy: 0.8, ease: 'inOut' },
-  { t: 10.8, sy: 1 },
-  // The cat is out of the water: run!
-  { t: 11.3, ease: 'step' },
-  { t: 11.35, sx: -1, ease: 'in' },
-  { t: 11.9, x: 0, y: 0, ease: 'step' },
-  { t: 11.95, o: 0, sx: 1 },
-]
-
-/** The cat sees the fish: a "!" pops up over its head. */
-const SURPRISE: [number, number] = [318, 300]
-const surpriseKeys: Keyframe[] = [
-  { t: 0, sx: 0.01, sy: 0.01, o: 0 },
-  { t: 5.6, ease: 'back' },
-  { t: 5.8, sx: 1, sy: 1, o: 1 },
-  { t: 6.2, ease: 'in' },
-  { t: 6.35, sx: 0.01, sy: 0.01, o: 0 },
-]
-
-/** Drops the cat shakes off, from where it climbs out. */
-const DRY: [number, number] = [282, 352]
-const dropKeys = ([dx, dy]: [number, number]): Keyframe[] => [
-  { t: 0, x: 0, y: 0, o: 0 },
-  { t: 10.6, ease: 'out' },
-  { t: 10.62, o: 1, ease: 'out' },
-  { t: 10.95, x: dx, y: dy - 26, ease: 'in' },
-  { t: 11.35, x: dx * 1.4, y: dy + 24, o: 0 },
-]
-
-/** Rings on the water where the cat came down. */
-const ringKeys = (delay: number): Keyframe[] => [
-  { t: 0, sx: 0.3, sy: 0.3, o: 0 },
-  { t: 7.45 + delay, ease: 'out' },
-  { t: 7.5 + delay, o: 0.9, ease: 'out' },
-  { t: 9.2 + delay, sx: 2.4, sy: 2.4, o: 0 },
-]
-
-/** The fish's shadow under the water before it jumps. */
-const SHADOW: [number, number] = [500, 400]
-const shadowKeys: Keyframe[] = [
-  { t: 0, x: -70, y: 30, sx: 1, o: 0 },
-  { t: 0.5, o: 0.3, ease: 'inOut' },
-  { t: 2, x: 20, y: 20, ease: 'inOut' },
-  { t: 2.3, sx: -1, ease: 'inOut' },
-  { t: 3.8, x: -60, y: 10, ease: 'inOut' },
-  { t: 4.1, sx: 1, ease: 'inOut' },
-  { t: 5.8, x: -20, y: 0, ease: 'in' },
-  { t: 5.95, o: 0 },
-]
-
-/** A fly buzzes about until the frog catches it; its tongue reaches where the fly hangs. */
-const FLY: [number, number] = [392, 372]
-const flyKeys: Keyframe[] = [
-  { t: 0, x: -130, y: -40, o: 0 },
-  { t: 0.6, o: 1, ease: 'inOut' },
-  { t: 2.2, x: -40, y: -60, ease: 'inOut' },
-  { t: 3.6, x: 34, y: -14, ease: 'inOut' },
-  { t: 4.5, x: 0, y: 0, ease: 'in' },
-  { t: 4.62, x: -32, y: 42 },
-  { t: 4.66, o: 0 },
-]
-const tongueKeys: Keyframe[] = [
-  { t: 0, sx: 0.01, sy: 0.01, o: 0 },
-  { t: 4.45, ease: 'out' },
-  { t: 4.5, sx: 1, sy: 1, o: 1, ease: 'in' },
-  { t: 4.64, sx: 0.01, sy: 0.01 },
-  { t: 4.68, o: 0 },
-]
-
-/** An apple falls from the tree, bounces and rolls away, and a new one grows. */
-const APPLE: [number, number] = [668, 226]
-const appleKeys: Keyframe[] = [
-  { t: 0, x: 0, y: 0, rot: 0, o: 0 },
-  { t: 0.8, o: 1 },
-  { t: 11.8, ease: 'in' },
-  { t: 12.3, y: 108, ease: 'out' },
-  { t: 12.45, y: 94, ease: 'in' },
-  { t: 12.6, y: 108, ease: 'out' },
-  { t: 13.6, x: -40, rot: -260 },
-  { t: 15.2, ease: 'inOut' },
-  { t: 15.7, o: 0 },
-]
-
-const fencePost = (x: number) =>
-  `<path d="M${x - 9} 318V276l9-8l9 8V318z" fill="url(#c1-picket)" ${Ow(2)}/>`
+const BUCKET: [number, number] = [735, 606]
 
 export default svgLevel({
   id: 801,
   chapter: 'cartoon',
-  title: 'cartoonCatPond',
-  parTimeSec: 120,
+  title: 'cartoonFishing',
+  parTimeSec: 100,
+  viewBox: { w: W, h: H },
   cartoon: { period: LOOP, frame: { w: 800, h: 500 }, camera },
   scene: ({ diff, anim, rand }) => {
     const keys = (id: string | undefined, k: Keyframe[], pivot: [number, number], markup: string) =>
       anim({ type: 'keys', keys: k, pivot, period: LOOP, ...(id && { id }) }, markup)
-    const flap = (intervals: [number, number][]) => (m: string) =>
-      keys(undefined, swingKeys(intervals, 0.14, 40), [BIRD[0] + 2, BIRD[1] - 12], m)
-
-    /** Wings beating `every` seconds: squashed to a third and back. */
-    const beat = (pivot: [number, number], every: number, phase = 0) => (m: string) =>
-      anim({ type: 'keys', period: every, phase, keys: [{ t: 0, sy: 1 }, { t: every / 2, sy: 0.3, ease: 'inOut' }], pivot }, m)
-    const beatX = (pivot: [number, number], every: number, phase = 0) => (m: string) =>
-      anim({ type: 'keys', period: every, phase, keys: [{ t: 0, sx: 1 }, { t: every / 2, sx: 0.25, ease: 'inOut' }], pivot }, m)
     const once = (k: Keyframe[], pivot: [number, number], m: string) => keys(undefined, k, pivot, m)
-
-    // A flock crossing the sky once a loop.
-    let flock = ''
-    for (const [i, [fx, fy]] of ([[880, 70], [904, 56], [906, 84]] as [number, number][]).entries())
-      flock += farBird(fx, fy, beat([fx, fy - 2], 0.5, i * 0.3))
-    flock = keys(undefined, [{ t: 0, x: 0 }, { t: 15.9, x: -1010 }], [880, 70], flock)
-
-    // Flowers at the foot of the fence, with bees.
-    let flowers = ''
-    for (const [i, [fx, c]] of ([[330, '#ff6b8b'], [362, '#ffd23f'], [398, '#b38cff'], [432, '#ff9f43'], [466, '#ff6b8b'], [500, '#4dabf7']] as [number, string][]).entries())
-      flowers += anim(
-        { type: 'sway', angle: 7, pivot: [fx, 330], period: 2.2, phase: i / 6 },
-        `<path d="M${fx} 330v-18" stroke="#3f8f3a" stroke-width="3"/><path d="M${fx} 322q-8-2-9-8q7 0 9 6" fill="#5cbf55" ${Ow(1.2)}/>` +
-          `<circle cx="${fx - 5}" cy="312" r="4.6" fill="${c}" ${Ow(1.3)}/><circle cx="${fx + 5}" cy="312" r="4.6" fill="${c}" ${Ow(1.3)}/>` +
-          `<circle cx="${fx}" cy="307" r="4.6" fill="${c}" ${Ow(1.3)}/><circle cx="${fx}" cy="317" r="4.6" fill="${c}" ${Ow(1.3)}/><circle cx="${fx}" cy="312" r="3.4" fill="#fff3b0"/>`,
-      )
-    const bees =
-      anim({ type: 'path', points: [[0, 0], [30, -16], [64, -4], [40, 14], [8, 10]], period: 4.2 }, bee(352, 300, beat([353, 295], 0.12))) +
-      anim({ type: 'path', points: [[0, 0], [-26, -12], [-52, 6], [-20, 18]], period: 3.4, reverse: true }, bee(484, 296, beat([485, 291], 0.12, 0.5)))
-
-    /** A tree's crown swaying in the wind, each tree at its own pace. */
+    const beat = (pivot: [number, number], every: number, phase = 0, axis: 'sx' | 'sy' = 'sy') => (m: string) =>
+      anim({ type: 'keys', period: every, phase, keys: [{ t: 0, [axis]: 1 }, { t: every / 2, [axis]: axis === 'sy' ? 0.3 : 0.25, ease: 'inOut' }], pivot }, m)
     const crown = (period: number, angle = 2) => (pivot: [number, number], m: string) =>
       anim({ type: 'sway', angle, pivot, period, phase: (pivot[0] % 11) / 11 }, m)
 
-    // A distant wood along the hills, then trees of several kinds behind the fence and in the corners.
-    let wood = ''
-    for (const [wx, wy, r, c] of [[260, 246, 18, '#8cc770'], [290, 240, 22, '#7fbf66'], [322, 248, 16, '#93cc78'], [560, 238, 20, '#86c46d'], [590, 232, 24, '#7aba61'], [620, 242, 17, '#8cc770']] as [number, number, number, string][])
-      wood += `<circle cx="${wx}" cy="${wy}" r="${r}" fill="${c}"/>`
-    const backTrees =
-      pineTree(330, 286, 0.62, crown(4.4, 1.5)) +
-      roundTree(462, 282, 0.5, 'url(#ke-leaf)', crown(4.2)) +
-      birchTree(646, 284, 0.6, crown(3.6, 3))
-    const frontTrees =
-      appleTree(36, 500, 0.5, crown(5.2)) +
-      apple(20, 496, 5) + apple(56, 498, 5) +
-      pineTree(776, 504, 0.62, crown(4, 1.5))
-
-    // Lighter and darker patches of grass.
-    let patches = ''
-    for (let i = 0; i < 12; i++) {
-      const px = Math.round(rand() * 800)
-      const py = Math.round(330 + rand() * 160)
-      const light = i % 2 === 0
-      patches += `<ellipse cx="${px}" cy="${py}" rx="${Math.round(30 + rand() * 50)}" ry="${Math.round(6 + rand() * 8)}" fill="${light ? '#c4ef8f' : '#4f9a3c'}" fill-opacity="${light ? 0.35 : 0.22}"/>`
+    // Far shore: mountains in haze, a dark band of firs, their reflection.
+    let firs = ''
+    for (let x = -10; x < W + 20; x += 18 + Math.round(rand() * 10)) {
+      const h = 34 + Math.round(rand() * 26)
+      firs += `<path d="M${x} 560l9-${h}l9 ${h}z" fill="${rand() < 0.5 ? '#3f7a5a' : '#4a8a64'}"/>`
     }
 
-    // Reeds at both ends of the pond, swaying.
+    // Sparkles on the lake.
+    let sparkles = ''
+    for (let i = 0; i < 16; i++) {
+      const sx = Math.round(560 + rand() * 860)
+      const sy = Math.round(600 + rand() * 280)
+      sparkles += anim(
+        { type: 'blink', duty: 0.35, period: 1.6 + rand() * 1.4, phase: rand() },
+        `<path d="M${sx - 8} ${sy}h16" stroke="#fff" stroke-opacity="0.75" stroke-width="2.4" stroke-linecap="round"/>`,
+      )
+    }
+
+    // The near shore: grass, flowers, tufts; a row of stones at the water (in B one is missing: a hard one).
+    const STONES: [number, number, number][] = [[296, 652, 9], [330, 662, 8], [364, 672, 10], [398, 684, 8], [428, 694, 9], [456, 708, 8], [478, 726, 10], [494, 748, 8], [504, 772, 9]]
+    const stones = STONES.map(([x, y, r]) => {
+      const stone = `<ellipse cx="${x}" cy="${y}" rx="${r * 1.35}" ry="${r}" fill="#b7b2a7" ${Ow(1.5)}/><path d="M${x - r * 0.6} ${y - r * 0.3}q${r * 0.5}-${r * 0.5} ${r} 0" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-width="1.5"/>`
+      return x === 456 ? diff(456, 708, 18, stone, '') : stone
+    }).join('')
+    let flowers = ''
+    for (const [fx, fy, c] of [[60, 720, '#ff6b8b'], [150, 690, '#ffd23f'], [230, 760, '#b38cff'], [110, 820, '#ff9f43'], [320, 850, '#ff6b8b'], [40, 870, '#4dabf7'], [260, 700, '#ffd23f']] as [number, number, string][])
+      flowers += anim(
+        { type: 'sway', angle: 5, pivot: [fx, fy], period: 2.6, phase: (fx % 9) / 9 },
+        `<path d="M${fx} ${fy}v-20" stroke="#3f8f3a" stroke-width="3"/>` +
+          `<circle cx="${fx - 5}" cy="${fy - 22}" r="5" fill="${c}" ${Ow(1.4)}/><circle cx="${fx + 5}" cy="${fy - 22}" r="5" fill="${c}" ${Ow(1.4)}/>` +
+          `<circle cx="${fx}" cy="${fy - 27}" r="5" fill="${c}" ${Ow(1.4)}/><circle cx="${fx}" cy="${fy - 17}" r="5" fill="${c}" ${Ow(1.4)}/><circle cx="${fx}" cy="${fy - 22}" r="3.6" fill="#fff3b0"/>`,
+      )
+    let tufts = ''
+    for (let i = 0; i < 22; i++) {
+      const tx = Math.round(10 + rand() * 470)
+      const ty = Math.round(690 + rand() * 200)
+      if (tx > 360 + (ty - 650) * 0.4) continue
+      tufts += anim({ type: 'sway', angle: 7, pivot: [tx, ty], period: 2.3, phase: (tx % 13) / 13 }, grassTuft(tx, ty))
+    }
+
+    // Reeds and cattails at the shore, where the heron waits.
     let reeds = ''
-    for (const [i, [rx, ry]] of ([[296, 404], [306, 410], [640, 402], [648, 412]] as [number, number][]).entries()) {
-      const reed = anim(
-        { type: 'sway', angle: 5, pivot: [rx, ry], period: 2.8, phase: i / 4 },
-        `<path d="M${rx} ${ry}q-2-24 2-46" fill="none" stroke="#4f7a2a" stroke-width="2.4" stroke-linecap="round"/>` +
-          `<rect x="${rx - 2.5}" y="${ry - 52}" width="6" height="16" rx="3" fill="#7a4a22" ${Ow(1.2)}/>` +
-          `<path d="M${rx} ${ry}q8-14 14-20" fill="none" stroke="#5c9e45" stroke-width="2" stroke-linecap="round"/>`,
-      )
-      // A hard one: the last cattail is missing in B.
-      reeds += i === 3 ? diff(rx + 3, ry - 28, 32, reed, '') : reed
-    }
-
-    let fence = ''
-    for (let x = 230; x <= 640; x += 22) fence += x === 604 ? diff(604, 292, 27, fencePost(x), '') : fencePost(x)
-
-    // Tufts of grass all over the meadow, off the pond and the differences' places.
-    let grass = ''
-    const tufts: [number, number][] = [[40, 380], [120, 470], [230, 440], [300, 480], [660, 450], [720, 380], [760, 470], [600, 482], [190, 395]]
-    for (let i = 0; i < 20; i++) tufts.push([Math.round(10 + rand() * 780), Math.round(345 + rand() * 145)])
-    for (const [gx, gy] of tufts) {
-      const inPond = ((gx - 470) / 190) ** 2 + ((gy - 410) / 66) ** 2 < 1
-      if (inPond || Math.hypot(gx - 520, gy - 447) < 40) continue
-      grass += anim({ type: 'sway', angle: 6, pivot: [gx, gy], period: 2.4, phase: (gx % 7) / 7 }, grassTuft(gx, gy))
-    }
-
-    const frogMarkup = () =>
-      frog(
-        ...FROG,
-        (m) => anim({ type: 'blink', duty: 0.06, period: 3.1, phase: 0.7 }, m),
-        (m) => anim({ type: 'keys', period: 1.6, keys: [{ t: 0, sx: 1, sy: 1 }, { t: 0.8, sx: 1.25, sy: 1.35, ease: 'inOut' }], pivot: [FROG[0], FROG[1] - 9] }, m),
+    for (const [i, [rx, ry]] of ([[268, 690], [282, 700], [300, 712], [356, 724], [372, 716], [388, 730], [250, 676]] as [number, number][]).entries())
+      reeds += anim(
+        { type: 'sway', angle: 5, pivot: [rx, ry], period: 2.8, phase: i / 7 },
+        `<path d="M${rx} ${ry}q-2-30 2-58" fill="none" stroke="#4f7a2a" stroke-width="2.6" stroke-linecap="round"/>` +
+          (i % 2 ? `<rect x="${rx - 3}" y="${ry - 64}" width="7" height="18" rx="3.5" fill="#7a4a22" ${Ow(1.2)}/>` : '') +
+          `<path d="M${rx} ${ry}q9-16 16-24M${rx} ${ry}q-8-14-13-20" fill="none" stroke="#5c9e45" stroke-width="2.2" stroke-linecap="round"/>`,
       )
 
-    // The bow tie rides with the cat: in A only, its zone follows the cat.
-    const catMarkup = () =>
+    // The jetty: boards on posts (in B one board is missing: a hard one).
+    let boards = ''
+    for (let x = 410; x < 880; x += 24) {
+      const board = `<rect x="${x}" y="594" width="23" height="26" fill="url(#c3-plank)" ${Ow(1.6)}/>`
+      boards += x === 506 ? diff(518, 607, 18, board, '') : board
+    }
+    let posts = ''
+    for (const px of [432, 548, 664, 780, 868]) {
+      posts += `<rect x="${px - 7}" y="616" width="14" height="44" fill="url(#ke-bark)" ${Ow(1.8)}/>`
+      posts += anim({ type: 'keys', period: 2.6, phase: (px % 7) / 7, keys: [{ t: 0, sx: 0.5, sy: 0.5, o: 0.9 }, { t: 2.3, sx: 1.4, sy: 1.4, o: 0, ease: 'out' }], pivot: [px, 660] },
+        `<ellipse cx="${px}" cy="660" rx="16" ry="4" fill="none" stroke="#fff" stroke-width="1.6"/>`)
+    }
+
+    // Grandpa.
+    const [hx, hy] = HIP
+    const [nx, ny] = NECK
+    const leg = (dx: number, color: string) =>
+      `<path d="M${hx - 6 + dx} ${hy - 2}L${hx + 30 + dx} ${hy + 6}L${hx + 34 + dx} ${hy + 46}" fill="none" stroke="${INK}" stroke-width="19" stroke-linecap="round" stroke-linejoin="round"/>` +
+      `<path d="M${hx - 6 + dx} ${hy - 2}L${hx + 30 + dx} ${hy + 6}L${hx + 34 + dx} ${hy + 46}" fill="none" stroke="${color}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>` +
+      `<path d="M${hx + 26 + dx} ${hy + 46}h18q8 0 8 8h-28z" fill="#5a3a22" ${Ow(1.8)}/>`
+    const head = keys(
+      undefined,
+      headKeys,
+      NECK,
+      `<rect x="${nx - 6}" y="${ny - 8}" width="12" height="14" fill="#f2c09a" ${Ow(1.6)}/>` +
+        `<circle cx="${nx}" cy="${ny - 24}" r="22" fill="url(#c3-skin)" ${O}/>` +
+        `<ellipse cx="${nx - 19}" cy="${ny - 22}" rx="5" ry="7" fill="#f2b38e" ${Ow(1.6)}/>` +
+        // Beard and moustache.
+        `<path d="M${nx - 16} ${ny - 18}q2 26 18 26q16 0 20-24q-6 6-20 6t-18-8z" fill="#f4f4f6" ${Ow(1.8)}/>` +
+        `<path d="M${nx + 6} ${ny - 14}q8-6 16 0q-8 4-16 0z" fill="#e6e6ea" ${Ow(1.4)}/>` +
+        `<ellipse cx="${nx + 22}" cy="${ny - 20}" rx="7" ry="6" fill="#e9a07a" ${Ow(1.6)}/>` +
+        // Eyes: open, or shut while he dozes.
+        once(hiddenKeys(3.4, 6.6), NECK, `<circle cx="${nx + 11}" cy="${ny - 29}" r="2.6" fill="${INK}"/><circle cx="${nx + 12}" cy="${ny - 30}" r="0.8" fill="#fff"/>`) +
+        once(shownKeys(3.4, 6.6), NECK, `<path d="M${nx + 7} ${ny - 29}q4 3 8 0" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="round"/>`) +
+        // Brows: angry at the end.
+        once(hiddenKeys(15.8, 19.8), NECK, `<path d="M${nx + 5} ${ny - 36}q6-3 12 0" fill="none" stroke="#d8d8dc" stroke-width="3" stroke-linecap="round"/>`) +
+        once(shownKeys(15.8, 19.8), NECK, `<path d="M${nx + 4} ${ny - 39}l13 5" stroke="#d8d8dc" stroke-width="3.4" stroke-linecap="round"/>`) +
+        // Mouth: a smile; open at the bite and at the boot; a scowl at the end.
+        once(hiddenKeys(6.6, 7.4), NECK, once(hiddenKeys(13.3, 14.1), NECK, once(hiddenKeys(15.8, 19.8), NECK, `<path d="M${nx + 9} ${ny - 9}q5 3 9-1" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="round"/>`))) +
+        once(shownKeys(6.6, 7.4), NECK, `<ellipse cx="${nx + 14}" cy="${ny - 9}" rx="3.4" ry="4.2" fill="#7a2b2b" ${Ow(1.2)}/>`) +
+        once(shownKeys(13.3, 14.1), NECK, `<ellipse cx="${nx + 14}" cy="${ny - 9}" rx="3.4" ry="4.2" fill="#7a2b2b" ${Ow(1.2)}/>`) +
+        once(shownKeys(15.8, 19.8), NECK, `<path d="M${nx + 9} ${ny - 7}q5-4 10 0" fill="none" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>`) +
+        // Straw hat, a fly lure on its band (A only).
+        `<ellipse cx="${nx}" cy="${ny - 44}" rx="36" ry="7" fill="#e8c46a" ${Ow(1.8)}/>` +
+        `<path d="M${nx - 18} ${ny - 44}q-2-20 18-22q20 2 18 22z" fill="#efcf7a" ${Ow(1.8)}/>` +
+        `<path d="M${nx - 18} ${ny - 50}q18 4 36 0v6q-18 4-36 0z" fill="#b8402e"/>` +
+        `<path d="M${nx - 10} ${ny - 60}q8-4 16-2M${nx - 14} ${ny - 54}q12-4 26-2" fill="none" stroke="#c79a3c" stroke-width="1.2"/>` +
+        // A fly lure stuck on top of the hat (A only), in its middle: it stays put as he turns his head.
+        diff(
+          nx,
+          ny - 70,
+          25,
+          `<path d="M${nx - 4} ${ny - 66}l3-14l4 13z" fill="#36a3d9" ${Ow(1)}/><path d="M${nx} ${ny - 67}l7-10l1 10z" fill="#ffd23f" ${Ow(1)}/><circle cx="${nx}" cy="${ny - 65}" r="2.6" fill="#e63946" ${Ow(0.8)}/>`,
+          '',
+          'grandpa',
+        ),
+    )
+    const grandpa = keys(
+      'grandpa',
+      grandpaKeys,
+      HIP,
+      leg(-6, '#3d4a66') +
+        leg(0, '#4a5a7a') +
+        `<path d="M${hx - 22} ${hy + 2}q-4-40 10-60h28q16 24 12 60z" fill="url(#c3-vest)" ${O}/>` +
+        `<path d="M${hx - 2} ${hy - 58}l10 16l10-16" fill="#e8d8b0" ${Ow(1.6)}/>` +
+        `<circle cx="${hx + 8}" cy="${hy - 30}" r="2" fill="#2f3b1a"/><circle cx="${hx + 8}" cy="${hy - 18}" r="2" fill="#2f3b1a"/>` +
+        `<path d="M${hx + 14} ${hy - 50}q20 2 22 12" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/>` +
+        `<path d="M${hx + 14} ${hy - 50}q20 2 22 12" fill="none" stroke="#e8d8b0" stroke-width="8" stroke-linecap="round"/>` +
+        head +
+        // Z-z-z while he dozes.
+        once(shownKeys(3.6, 6.5), [nx, ny], anim({ type: 'keys', period: 1.4, keys: [{ t: 0, x: 0, y: 0, o: 0 }, { t: 0.3, o: 1 }, { t: 1.2, x: 14, y: -30, o: 0 }], pivot: [nx + 30, ny - 60] },
+          `<path d="M${nx + 28} ${ny - 64}h8l-8 8h8" fill="none" stroke="#5a6b8a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`)) +
+        // "!" at the empty bucket.
+        once([{ t: 0, sx: 0.01, sy: 0.01, o: 0 }, { t: 14.6, ease: 'back' }, { t: 14.8, sx: 1, sy: 1, o: 1 }, { t: 15.5, ease: 'in' }, { t: 15.7, sx: 0.01, sy: 0.01, o: 0 }], [nx - 6, ny - 80],
+          `<path d="M${nx - 10} ${ny - 108}h9l-2 22h-5z" fill="#e63946" ${Ow(1.8)}/><circle cx="${nx - 6}" cy="${ny - 79}" r="3.6" fill="#e63946" ${Ow(1.4)}/>`),
+    )
+
+    // The rod, the hands on it; the line (clipped at the water) with its float — and later the boot.
+    const rod = keys(
+      'rod',
+      rodKeys,
+      HANDS,
+      `<path d="M832 574L${TIP[0]} ${TIP[1]}" stroke="${INK}" stroke-width="6" stroke-linecap="round"/>` +
+        `<path d="M832 574L${TIP[0]} ${TIP[1]}" stroke="#a8743f" stroke-width="3" stroke-linecap="round"/>` +
+        `<circle cx="842" cy="568" r="6" fill="#9aa3ad" ${Ow(1.6)}/>` +
+        `<circle cx="${HANDS[0]}" cy="${HANDS[1]}" r="7" fill="#f2c09a" ${Ow(1.6)}/><circle cx="${HANDS[0] - 12}" cy="${HANDS[1] + 8}" r="7" fill="#f2c09a" ${Ow(1.6)}/>`,
+    )
+    const [tx, ty] = TIP
+    const boot =
+      `<path d="M${tx - 9} ${ty + LINE}h18v30q0 6 6 7l16 3q8 2 8 10h-48v-12z" fill="#6b4a2f" ${Ow(2)}/>` +
+      `<path d="M${tx - 9} ${ty + LINE + 2}h18" stroke="#4a3220" stroke-width="3"/><path d="M${tx - 10} ${ty + LINE + 48}h48" stroke="#3a2618" stroke-width="3"/>` +
+      anim({ type: 'keys', period: 0.9, keys: [{ t: 0, y: 0, o: 0 }, { t: 0.2, o: 1 }, { t: 0.8, y: 26, o: 0 }], pivot: [tx + 30, ty + LINE + 44] },
+        `<path d="M${tx + 30} ${ty + LINE + 44}q3 5 0 8q-3-3 0-8z" fill="#8fd8ff" ${Ow(1)}/>`)
+    const line =
+      once(lineKeys, TIP, once(reelKeys, TIP, `<path d="M${tx} ${ty}V${ty + LINE}" stroke="#f4f4f4" stroke-width="1.4"/>`)) +
       keys(
-        'cat',
-        catKeys,
-        [CAT[0], CAT[1] - 25 * CAT_SCALE],
-        `<g transform="translate(${CAT[0]} ${CAT[1]}) scale(${CAT_SCALE})">` +
-          cat(
-            0,
-            0,
-            { back: swingKeys(WALKS, 0.22, 24), front: swingKeys(WALKS, 0.22, 24, true) },
-            (k, pivot, m) => keys(undefined, k, pivot, m),
-            diff(CAT[0] + 14 * CAT_SCALE, CAT[1] - 30 * CAT_SCALE, 26, catBow(0, 0), '', 'cat'),
-            (m) => anim({ type: 'blink', duty: 0.05, period: 3.4, phase: 0.2 }, m),
-            (m) => anim({ type: 'sway', angle: 10, pivot: [-26, -25], period: 1.8 }, m),
-          ) +
-          `</g>`,
+        'line',
+        hookKeys,
+        TIP,
+        `<path d="M${tx - 6} ${ty + LINE - 9}a6 6 0 0 1 12 0z" fill="#e63946" ${Ow(1.4)}/><path d="M${tx - 6} ${ty + LINE - 9}a6 6 0 0 0 12 0z" fill="#fff" ${Ow(1.4)}/>` +
+          once(shownKeys(12.3, 19.95), [tx, ty + LINE], boot) +
+          // In B water squirts from the boot as he shakes it.
+          diff(
+            tx + 50,
+            ty + LINE + 56,
+            26,
+            '',
+            once(shownKeys(17.4, 19.5), [tx + 40, ty + LINE + 48], anim({ type: 'blink', duty: 0.7, period: 0.2 },
+              `<path d="M${tx + 38} ${ty + LINE + 46}q14 2 20 22" fill="none" stroke="#8fd8ff" stroke-width="4" stroke-linecap="round"/><circle cx="${tx + 60}" cy="${ty + LINE + 70}" r="3" fill="#8fd8ff"/>`)),
+            'line',
+            during(17.4, 19.5),
+          ),
       )
+
+    // The heron: standing and walking (legs swing), then flying with the fish.
+    const [ex, ey] = HERON
+    const heronLeg = (dx: number, k: Keyframe[]) =>
+      keys(undefined, k, [ex + dx, ey - 60], `<path d="M${ex + dx} ${ey - 60}L${ex + dx - 4} ${ey - 30}L${ex + dx} ${ey}" fill="none" stroke="#4d5866" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M${ex + dx - 6} ${ey}h14" stroke="#4d5866" stroke-width="2.4" stroke-linecap="round"/>`)
+    const heronFish = (x: number, y: number) => fish(x, y, 0.5, '#ff9f43')
+    const standing =
+      heronLeg(-6, swingKeys(HERON_WALKS, 0.3, 18)) +
+      heronLeg(6, swingKeys(HERON_WALKS, 0.3, 18, true)) +
+      `<path d="M${ex - 28} ${ey - 70}l-14 10l16 2z" fill="#8f9cab" ${Ow(1.6)}/>` +
+      `<ellipse cx="${ex}" cy="${ey - 70}" rx="28" ry="15" fill="url(#c3-heron)" ${O}/>` +
+      `<path d="M${ex - 18} ${ey - 76}q18-8 34 2q-16 10-34-2z" fill="#8f9cab" ${Ow(1.4)}/>` +
+      keys(undefined, [{ t: 0, rot: 0 }, { t: 10.9, ease: 'inOut' }, { t: 11.3, rot: 105, ease: 'inOut' }, { t: 11.6, rot: 0 }], [ex + 18, ey - 78],
+        `<path d="M${ex + 18} ${ey - 78}q16-10 2-26q-10-14 8-24" fill="none" stroke="${INK}" stroke-width="10" stroke-linecap="round"/>` +
+          `<path d="M${ex + 18} ${ey - 78}q16-10 2-26q-10-14 8-24" fill="none" stroke="#eef2f6" stroke-width="6" stroke-linecap="round"/>` +
+          `<circle cx="${ex + 30}" cy="${ey - 130}" r="9" fill="#eef2f6" ${Ow(1.8)}/>` +
+          `<path d="M${ex + 24} ${ey - 137}q-14-4-20 4" fill="none" stroke="#2b2f36" stroke-width="3" stroke-linecap="round"/>` +
+          `<path d="M${ex + 37} ${ey - 132}l30 4l-30 3z" fill="#f2a93b" ${Ow(1.2)}/>` +
+          `<circle cx="${ex + 32}" cy="${ey - 132}" r="1.8" fill="${INK}"/>` +
+          once(shownKeys(11.4, 12.05), [ex + 66, ey - 128], heronFish(ex + 62, ey - 126)))
+    const flying =
+      `<path d="M${ex - 30} ${ey - 72}l-30 6M${ex - 30} ${ey - 68}l-30 10" stroke="#4d5866" stroke-width="3" stroke-linecap="round"/>` +
+      beat([ex, ey - 74], 0.5)(`<path d="M${ex - 10} ${ey - 76}q-6-46 26-56q-2 34-4 56z" fill="#a9b6c4" ${Ow(1.6)}/>`) +
+      `<ellipse cx="${ex}" cy="${ey - 72}" rx="30" ry="12" fill="url(#c3-heron)" ${O}/>` +
+      `<path d="M${ex + 24} ${ey - 76}q16-8 22 2" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M${ex + 24} ${ey - 76}q16-8 22 2" fill="none" stroke="#eef2f6" stroke-width="5" stroke-linecap="round"/>` +
+      `<circle cx="${ex + 50}" cy="${ey - 72}" r="8" fill="#eef2f6" ${Ow(1.6)}/><path d="M${ex + 56} ${ey - 73}l26 3l-26 3z" fill="#f2a93b" ${Ow(1.2)}/>` +
+      `<circle cx="${ex + 52}" cy="${ey - 74}" r="1.6" fill="${INK}"/>` +
+      heronFish(ex + 78, ey - 68)
+    const heron = keys('heron', heronKeys, [ex, ey - 50], once(hiddenKeys(12.05, 19.99), HERON, standing) + once(shownKeys(12.05, 19.99), HERON, flying))
+
+    // Ducks crossing the lake: the mother and her ducklings (in B one fewer).
+    const duck = (x: number, y: number) =>
+      `<path d="M${x - 18} ${y}q-2-14 14-14h10q10 0 12 8l-4 6z" fill="#8a6a4a" ${Ow(1.6)}/>` +
+      `<circle cx="${x + 10}" cy="${y - 20}" r="8" fill="#2f7a4a" ${Ow(1.6)}/><path d="M${x + 17} ${y - 20}l8 2l-8 3z" fill="#f2a93b" ${Ow(1)}/><circle cx="${x + 12}" cy="${y - 22}" r="1.4" fill="${INK}"/>`
+    const duckling = (x: number, y: number) =>
+      `<ellipse cx="${x}" cy="${y - 5}" rx="8" ry="5" fill="#ffd84a" ${Ow(1.3)}/><circle cx="${x + 6}" cy="${y - 11}" r="4" fill="#ffd84a" ${Ow(1.3)}/><path d="M${x + 9} ${y - 11}l4 1l-4 2z" fill="#f2a93b"/>`
+    const swim = (phase: number, m: string, id?: string) =>
+      anim({ type: 'path', points: [[0, 0], [-300, 10]], period: LOOP, phase, flipX: 1180, ...(id && { id }) }, anim({ type: 'bob', dx: 0, dy: 1.5, period: 1.6, phase }, m))
+    const ducks =
+      swim(0, duck(1180, 772)) +
+      swim(-0.025, duckling(1180, 772)) +
+      swim(-0.05, duckling(1180, 772)) +
+      diff(1180, 762, 18, swim(-0.075, duckling(1180, 772), 'duckling3'), '', 'duckling3')
+
+    // A rowboat tied to the jetty, rocking (an oar in it in A only).
+    const boat = anim(
+      { type: 'keys', period: 3.2, keys: [{ t: 0, y: 0, rot: 0 }, { t: 1.6, y: 2.5, rot: 1.5, ease: 'inOut' }], pivot: [560, 690], id: 'boat' },
+      `<path d="M494 676q66 20 140 0l-10 22q-60 14-120 0z" fill="url(#c3-boat)" ${O}/>` +
+        `<path d="M498 680q62 16 132 0" fill="none" stroke="#f4e3c0" stroke-width="3"/>` +
+        diff(574, 670, 33, `<path d="M548 682l42-14" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M548 682l42-14" stroke="#c99358" stroke-width="3" stroke-linecap="round"/><path d="M586 666l14-6l3 8z" fill="#c99358" ${Ow(1.4)}/>`, '', 'boat') +
+        `<path d="M548 682v-8h24v8" fill="none" stroke="#8a5a2b" stroke-width="4"/>`,
+    )
+
+    // On the boards: the tackle box (its lid red in A, blue in B), a flask, the bucket with the fish's tail.
+    const tackle =
+      groundShadow(640, 606, 22, 3) +
+      `<rect x="623" y="588" width="34" height="18" rx="2" fill="#5f8f80" ${Ow(1.8)}/>` +
+      diff(640, 588, 18, `<rect x="621" y="582" width="38" height="8" rx="2" fill="#d1453b" ${Ow(1.6)}/>`, `<rect x="621" y="582" width="38" height="8" rx="2" fill="#3a86ff" ${Ow(1.6)}/>`) +
+      `<rect x="634" y="584" width="12" height="4" rx="1" fill="#f2c94c"/>` +
+      groundShadow(674, 606, 10, 2.5) +
+      `<rect x="668" y="580" width="12" height="26" rx="4" fill="#3a86ff" ${Ow(1.6)}/><rect x="667" y="576" width="14" height="6" rx="2" fill="#c8ced6" ${Ow(1.2)}/>`
+    const [bx, by] = BUCKET
+    const bucket =
+      groundShadow(bx, by, 20, 3) +
+      once(hiddenKeys(11.4, 19.99), BUCKET, `<path d="M${bx + 2} ${by - 28}l8-14l2 8l6-4l-4 12z" fill="#ff9f43" ${Ow(1.4)}/>`) +
+      `<path d="M${bx - 14} ${by - 28}h28l-3 28h-22z" fill="url(#c3-metal)" ${Ow(1.8)}/>` +
+      `<path d="M${bx - 14} ${by - 20}h28" stroke="#8a96a3" stroke-width="2"/>` +
+      diff(bx, by - 36, 22, `<path d="M${bx - 14} ${by - 28}q14-24 28 0" fill="none" stroke="${INK}" stroke-width="2.4"/>`, '')
 
     return (
       `<defs>${NATURE_DEFS}` +
-      `<linearGradient id="c1-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fa8e8"/><stop offset="0.6" stop-color="#9fd6f7"/><stop offset="1" stop-color="#e6f6ff"/></linearGradient>` +
-      `<radialGradient id="c1-glow"><stop offset="0" stop-color="#fff6c9" stop-opacity="0.95"/><stop offset="0.35" stop-color="#fff2b0" stop-opacity="0.45"/><stop offset="1" stop-color="#fff2b0" stop-opacity="0"/></radialGradient>` +
-      `<linearGradient id="c1-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cdd2"/><stop offset="1" stop-color="#bfe0c9"/></linearGradient>` +
-      `<linearGradient id="c1-hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3e8a6"/><stop offset="1" stop-color="#9ccf80"/></linearGradient>` +
-      `<linearGradient id="c1-haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef8ff" stop-opacity="0"/><stop offset="1" stop-color="#eef8ff" stop-opacity="0.45"/></linearGradient>` +
-      `<linearGradient id="c1-grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ad874"/><stop offset="0.5" stop-color="#76c055"/><stop offset="1" stop-color="#4f9a3c"/></linearGradient>` +
-      `<pattern id="c1-blades" width="46" height="26" patternUnits="userSpaceOnUse"><path d="M6 20l2-7M10 21l-1-6M28 9l2-6M33 10l-1-5M40 24l1-6" stroke="#3f8a33" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"/></pattern>` +
-      `<radialGradient id="c1-water" cx="0.62" cy="0.3" r="0.8"><stop offset="0" stop-color="#9fe0f5"/><stop offset="0.5" stop-color="#58b8e0"/><stop offset="1" stop-color="#2b7fb0"/></radialGradient>` +
-      `<linearGradient id="c1-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ead2a0"/><stop offset="0.7" stop-color="#fbecc8"/><stop offset="1" stop-color="#fff5dc"/></linearGradient>` +
-      `<linearGradient id="c1-roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e2f40"/><stop offset="0.55" stop-color="#cf4757"/><stop offset="1" stop-color="#e7707a"/></linearGradient>` +
-      `<pattern id="c1-tiles" width="16" height="10" patternUnits="userSpaceOnUse"><path d="M0 10q4-6 8 0q4-6 8 0" fill="none" stroke="#7a1f2e" stroke-opacity="0.45" stroke-width="1.3"/></pattern>` +
-      `<pattern id="c1-bricks" width="14" height="8" patternUnits="userSpaceOnUse"><path d="M0 4h14M0 8h14M7 0v4M0 4v4M14 4v4" stroke="#7d2f22" stroke-opacity="0.55" stroke-width="1"/></pattern>` +
-      `<linearGradient id="c1-wood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a4a22"/><stop offset="0.6" stop-color="#a06a35"/><stop offset="1" stop-color="#b98048"/></linearGradient>` +
-      `<linearGradient id="c1-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff4ff"/><stop offset="1" stop-color="#8fcbe8"/></linearGradient>` +
-      `<linearGradient id="c1-picket" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cbb68c"/><stop offset="1" stop-color="#f6ecd4"/></linearGradient>` +
-      `<radialGradient id="c1-sunlight" cx="0.86" cy="0.16" r="1"><stop offset="0" stop-color="#fff3c4" stop-opacity="0.35"/><stop offset="0.5" stop-color="#fff3c4" stop-opacity="0.08"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient></defs>` +
-      `<rect width="800" height="500" fill="url(#c1-sky)"/>` +
-      `<circle cx="690" cy="80" r="160" fill="url(#c1-glow)"/>` +
-      // Sun with turning rays
-      anim(
-        { type: 'rotate', pivot: [690, 80], period: 30 },
-        `<path d="M690 22v-14M690 152v-14M632 80h-14M762 80h-14M649 39l-10-10M741 131l-10-10M649 121l-10 10M741 29l-10 10" stroke="#ffd23f" stroke-width="6" stroke-linecap="round"/>`,
-      ) +
-      `<circle cx="690" cy="80" r="40" fill="#ffd23f" stroke="#f2a93b" stroke-width="3"/>` +
-      // The sun smiles and blinks.
-      `<ellipse cx="676" cy="74" rx="4" ry="6" fill="${INK}"/><ellipse cx="704" cy="74" rx="4" ry="6" fill="${INK}"/>` +
-      anim({ type: 'blink', duty: 0.06, period: 4.4, phase: 0.5 }, `<rect x="670" y="66" width="40" height="16" fill="#ffd23f"/><path d="M671 75h11M698 75h11" stroke="${INK}" stroke-width="2.4" stroke-linecap="round"/>`) +
-      `<path d="M674 92q16 14 32 0" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>` +
-      `<circle cx="665" cy="90" r="5" fill="#ff9f43" fill-opacity="0.6"/><circle cx="715" cy="90" r="5" fill="#ff9f43" fill-opacity="0.6"/>` +
-      anim({ type: 'path', points: [[0, 0], [90, 0]], period: 28 }, puffCloud(140, 70, 0.9)) +
-      anim({ type: 'path', points: [[0, 0], [-70, 0]], period: 22 }, puffCloud(470, 48, 0.7)) +
-      anim({ type: 'path', points: [[0, 0], [60, 0]], period: 18 }, puffCloud(330, 120, 0.45)) +
-      flock +
-      // Far hills in haze, near hills, a wood along them; the grass with its texture and patches.
-      `<path d="M0 232q100-50 220-24t250-22t200 10t130-24V320H0z" fill="url(#c1-far)"/>` +
-      `<path d="M0 250q120-70 260-20t280-10t260 0V320H0z" fill="url(#c1-hill)"/>` +
-      wood +
-      `<rect y="170" width="800" height="140" fill="url(#c1-haze)"/>` +
-      `<rect y="300" width="800" height="200" fill="url(#c1-grass)"/>` +
-      `<rect y="300" width="800" height="200" fill="url(#c1-blades)"/>` +
-      patches +
-      backTrees +
-      // House
-      [0, 1 / 3, 2 / 3]
-        .map((phase) =>
-          anim(
-            { type: 'keys', period: 4, phase, keys: [{ t: 0, x: 0, y: 0, sx: 0.5, sy: 0.5, o: 0.85 }, { t: 3.6, x: 18, y: -70, sx: 1.5, sy: 1.5, o: 0, ease: 'out' }], pivot: [185, 118] },
-            `<circle cx="185" cy="118" r="9" fill="#e8eef3"/><circle cx="192" cy="111" r="7" fill="#e8eef3"/>`,
-          ),
-        )
-        .join('') +
-      groundShadow(110, 332, 130, 14) +
-      `<rect x="174" y="118" width="20" height="40" fill="#b5523b" ${O}/>` +
-      `<rect x="174" y="118" width="20" height="40" fill="url(#c1-bricks)"/><rect x="174" y="118" width="7" height="40" fill="#000" fill-opacity="0.12"/>` +
-      // A hard one: the chimney's cap is missing in B.
-      diff(184, 117, 18, `<rect x="170" y="113" width="28" height="8" rx="2" fill="#8f3d2d" ${Ow(2)}/>`, '') +
-      `<path d="M18 200L120 118L222 200z" fill="url(#c1-roof)" ${O}/><path d="M18 200L120 118L222 200z" fill="url(#c1-tiles)"/>` +
-      `<path d="M22 198L120 120" stroke="#fff" stroke-opacity="0.25" stroke-width="3" stroke-linecap="round"/>` +
-      `<rect x="34" y="198" width="172" height="132" fill="url(#c1-wall)" ${O}/>` +
-      `<path d="M34 214h172M34 230h172M34 246h172M34 262h172M34 278h172M34 294h172M34 310h172" stroke="#e2c68f" stroke-opacity="0.8" stroke-width="1.6"/>` +
-      `<rect x="36" y="200" width="168" height="12" fill="#6b4a2a" fill-opacity="0.18"/>` +
-      `<rect x="34" y="320" width="172" height="10" fill="#a9a39a" ${Ow(1.8)}/><path d="M60 320v10M96 320v10M140 320v10M180 320v10" stroke="#7d776e" stroke-width="1.2"/>` +
-      `<rect x="70" y="220" width="60" height="50" fill="url(#c1-glass)" ${O}/>` +
-      `<path d="M76 262l20-36M88 266l18-32" stroke="#fff" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round"/>` +
-      `<path d="M100 220v50M70 245h60" stroke="${INK}" stroke-width="2.5"/>` +
-      diff(
-        100,
-        245,
-        44,
-        `<path d="M70 220h16q-4 26 2 50h-18zM130 220h-16q4 26-2 50h18z" fill="#e63946" ${Ow(2)}/>` +
-          `<path d="M70 219h60" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>`,
-        '',
-      ) +
-      `<rect x="68" y="275" width="64" height="6" fill="#6b4a2a" fill-opacity="0.18"/>` +
-      `<rect x="66" y="268" width="68" height="7" rx="2" fill="url(#c1-wood)" ${Ow(2)}/>` +
-      `<rect x="150" y="258" width="40" height="72" rx="4" fill="url(#c1-wood)" ${O}/>` +
-      `<rect x="157" y="266" width="26" height="24" rx="2" fill="none" stroke="#5b3818" stroke-opacity="0.6" stroke-width="2"/><rect x="157" y="296" width="26" height="26" rx="2" fill="none" stroke="#5b3818" stroke-opacity="0.6" stroke-width="2"/>` +
-      `<circle cx="182" cy="296" r="3" fill="#ffd23f" ${Ow(1)}/>` +
-      `<path d="M50 330v-6q12-14 24 0v6z" fill="#3a2418" ${Ow(2)}/>` +
-      keys(
-        'mouse',
-        mouseKeys,
-        [MOUSE[0], MOUSE[1] - 7],
-        mouse(...MOUSE, (m) => anim({ type: 'sway', angle: 14, pivot: [MOUSE[0] - 10, MOUSE[1] - 5], period: 0.8 }, m)) +
-          // In B it comes out with a piece of cheese.
-          diff(
-            MOUSE[0] + 20,
-            MOUSE[1] - 9,
-            18,
-            '',
-            `<path d="M${MOUSE[0] + 15} ${MOUSE[1] - 4}l12-12l2 12z" fill="#ffd23f" ${Ow(1.4)}/><circle cx="${MOUSE[0] + 24}" cy="${MOUSE[1] - 7}" r="1.6" fill="#e0a800"/>`,
-            'mouse',
-            during(7.75, 11.95),
-          ),
-      ) +
-      // Tree
-      groundShadow(694, 340, 90, 13) +
-      `<path d="M712 340q6-60-4-130h22q-8 70 4 130z" fill="url(#ke-bark)" ${O}/>` +
-      `<path d="M716 330q4-30 0-60M724 300q-3-24 0-48" fill="none" stroke="#4a2c14" stroke-opacity="0.5" stroke-width="2.2" stroke-linecap="round"/>` +
-      anim(
-        { type: 'sway', angle: 2, pivot: [720, 300], period: 5, id: 'crown' },
-        `<circle cx="690" cy="190" r="48" fill="url(#ke-leaf)" ${O}/><circle cx="752" cy="180" r="44" fill="url(#ke-leaf)" ${O}/><circle cx="720" cy="140" r="52" fill="url(#ke-leaf)" ${O}/>` +
-          `<path d="M666 200q8-6 16 0M706 150q8-6 16 0M744 196q8-6 16 0M716 112q8-6 16 0" fill="none" stroke="#2a7434" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>` +
-          apple(680, 160) + apple(728, 118) + diff(700, 203, 18, apple(700, 205), '', 'crown') + apple(746, 158) + apple(668, 220),
-      ) +
-      diff(
-        757,
-        196,
-        22,
-        `<path d="M740 198q17 12 34 0q-3 9-17 9t-17-9z" fill="#a0703f" ${Ow(1.8)}/>` +
-          `<ellipse cx="751" cy="196" rx="5" ry="4" fill="#e9f4ff" ${Ow(1.2)}/><ellipse cx="762" cy="196" rx="5" ry="4" fill="#e9f4ff" ${Ow(1.2)}/>`,
-        '',
-      ) +
-      once(appleKeys, APPLE, apple(...APPLE)) +
-      // Fence
-      `<path d="M220 284H650M220 306H650" stroke="${INK}" stroke-width="9"/><path d="M220 284H650M220 306H650" stroke="#e7cf9f" stroke-width="5"/>` +
-      fence +
+      `<linearGradient id="c3-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fa8e8"/><stop offset="0.6" stop-color="#a4d9f7"/><stop offset="1" stop-color="#e9f7ff"/></linearGradient>` +
+      `<radialGradient id="c3-glow"><stop offset="0" stop-color="#fff6c9" stop-opacity="0.95"/><stop offset="0.35" stop-color="#fff2b0" stop-opacity="0.45"/><stop offset="1" stop-color="#fff2b0" stop-opacity="0"/></radialGradient>` +
+      `<linearGradient id="c3-mount" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb0c8"/><stop offset="1" stop-color="#b9d4dc"/></linearGradient>` +
+      `<linearGradient id="c3-haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef8ff" stop-opacity="0"/><stop offset="1" stop-color="#eef8ff" stop-opacity="0.5"/></linearGradient>` +
+      `<linearGradient id="c3-lake" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd0ee"/><stop offset="0.45" stop-color="#4fa6d4"/><stop offset="1" stop-color="#2a74a6"/></linearGradient>` +
+      `<linearGradient id="c3-grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ad874"/><stop offset="0.5" stop-color="#76c055"/><stop offset="1" stop-color="#4f9a3c"/></linearGradient>` +
+      `<pattern id="c3-blades" width="46" height="26" patternUnits="userSpaceOnUse"><path d="M6 20l2-7M10 21l-1-6M28 9l2-6M33 10l-1-5M40 24l1-6" stroke="#3f8a33" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"/></pattern>` +
+      `<linearGradient id="c3-plank" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3b77d"/><stop offset="0.4" stop-color="#c48f55"/><stop offset="1" stop-color="#8f5d2e"/></linearGradient>` +
+      `<linearGradient id="c3-boat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e05a43"/><stop offset="1" stop-color="#9e2f24"/></linearGradient>` +
+      `<linearGradient id="c3-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8f9aa6"/><stop offset="0.6" stop-color="#c8d0d8"/><stop offset="1" stop-color="#e6ebf0"/></linearGradient>` +
+      `<linearGradient id="c3-vest" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4c6b26"/><stop offset="0.6" stop-color="#6b8f3a"/><stop offset="1" stop-color="#86a84f"/></linearGradient>` +
+      `<radialGradient id="c3-skin" cx="0.62" cy="0.3" r="0.8"><stop offset="0" stop-color="#ffe0c6"/><stop offset="1" stop-color="#e9a982"/></radialGradient>` +
+      `<radialGradient id="c3-heron" cx="0.6" cy="0.3" r="0.85"><stop offset="0" stop-color="#e9eef3"/><stop offset="0.6" stop-color="#b7c4d2"/><stop offset="1" stop-color="#7d8b9a"/></radialGradient>` +
+      `<radialGradient id="c3-sunlight" cx="0.87" cy="0.13" r="1"><stop offset="0" stop-color="#fff3c4" stop-opacity="0.35"/><stop offset="0.5" stop-color="#fff3c4" stop-opacity="0.08"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>` +
+      `<clipPath id="c3-above"><rect x="0" y="0" width="${W}" height="${WATER}"/></clipPath></defs>` +
+      `<rect width="${W}" height="${H}" fill="url(#c3-sky)"/>` +
+      // Sun, clouds, a flock.
+      `<circle cx="1250" cy="120" r="190" fill="url(#c3-glow)"/>` +
+      anim({ type: 'rotate', pivot: [1250, 120], period: 40 },
+        `<path d="M1250 50v-16M1250 190v-16M1180 120h-16M1336 120h-16M1200 70l-11-11M1311 181l-11-11M1200 170l-11 11M1311 59l-11 11" stroke="#ffd23f" stroke-width="7" stroke-linecap="round"/>`) +
+      `<circle cx="1250" cy="120" r="48" fill="#ffd23f" stroke="#f2a93b" stroke-width="3"/>` +
+      `<ellipse cx="1234" cy="112" rx="4.5" ry="7" fill="${INK}"/><ellipse cx="1266" cy="112" rx="4.5" ry="7" fill="${INK}"/>` +
+      anim({ type: 'blink', duty: 0.06, period: 4.6, phase: 0.3 }, `<rect x="1226" y="103" width="48" height="18" fill="#ffd23f"/><path d="M1228 113h12M1260 113h12" stroke="${INK}" stroke-width="2.6" stroke-linecap="round"/>`) +
+      `<path d="M1230 134q20 16 40 0" fill="none" stroke="${INK}" stroke-width="3.4" stroke-linecap="round"/>` +
+      `<circle cx="1220" cy="130" r="6" fill="#ff9f43" fill-opacity="0.6"/><circle cx="1280" cy="130" r="6" fill="#ff9f43" fill-opacity="0.6"/>` +
+      anim({ type: 'path', points: [[0, 0], [160, 0]], period: 34 }, puffCloud(220, 90, 1.1)) +
+      anim({ type: 'path', points: [[0, 0], [-140, 0]], period: 30 }, puffCloud(760, 160, 0.9)) +
+      anim({ type: 'path', points: [[0, 0], [120, 0]], period: 26 }, puffCloud(1020, 70, 0.7)) +
+      keys(undefined, [{ t: 0, x: 0 }, { t: 19.9, x: -1700 }], [1500, 230],
+        ([[1500, 230], [1526, 214], [1528, 246]] as [number, number][]).map(([fx, fy], i) => farBird(fx, fy, beat([fx, fy - 2], 0.5, i * 0.25))).join('')) +
+      // Mountains in haze, the far shore's firs, the lake.
+      `<path d="M0 520l120-120l80 60l140-150l120 110l90-70l160 150l120-100l140 120l110-90l150 120l110-60V560H0z" fill="url(#c3-mount)"/>` +
+      `<path d="M330 312l30 38l-24-6zM580 360l26 32l-22-6zM980 350l24 30l-20-4z" fill="#fff" fill-opacity="0.85"/>` +
+      `<rect y="420" width="${W}" height="140" fill="url(#c3-haze)"/>` +
+      firs +
+      `<rect y="556" width="${W}" height="${H - 556}" fill="url(#c3-lake)"/>` +
+      `<rect y="556" width="${W}" height="26" fill="#2f6a4c" fill-opacity="0.28"/>` +
+      `<path d="M0 590h1440M0 620h1440" stroke="#fff" stroke-opacity="0.12" stroke-width="2"/>` +
+      sparkles +
+      // Lily pads on the lake.
+      lilyPad(1240, 700, 1.1) + lilyPad(1300, 724, 0.9) + waterLily(1300, 720) + lilyPad(980, 820, 1) +
+      // The near shore.
+      `<path d="M0 596q200 14 360 54q110 32 150 110q24 70 10 140H0z" fill="url(#c3-grass)" ${O}/>` +
+      `<path d="M0 596q200 14 360 54q110 32 150 110q24 70 10 140H0z" fill="url(#c3-blades)"/>` +
+      stones +
+      pineTree(70, 650, 1.0, crown(4.4, 1.5)) +
+      birchTree(170, 640, 0.9, crown(3.6, 3)) +
       flowers +
-      bees +
-      // Pond
-      `<ellipse cx="470" cy="412" rx="182" ry="60" fill="#4f8f3c"/>` +
-      `<ellipse cx="470" cy="410" rx="170" ry="52" fill="url(#c1-water)" ${O}/>` +
-      `<path d="M312 396q20-28 80-40" fill="none" stroke="#1f5f8a" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round"/>` +
-      ([[300, 422, 8], [318, 444, 7], [628, 432, 9], [606, 452, 7], [450, 462, 8], [540, 462, 7]] as [number, number, number][])
-        .map(([sx, sy, r]) => `<ellipse cx="${sx}" cy="${sy}" rx="${r * 1.4}" ry="${r}" fill="#b7b2a7" ${Ow(1.5)}/><path d="M${sx - r * 0.6} ${sy - r * 0.3}q${r * 0.5}-${r * 0.5} ${r} 0" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-width="1.5"/>`)
-        .join('') +
+      tufts +
       reeds +
-      `<path d="M330 400q20-6 40 0M560 392q20-6 40 0M450 380q16-5 32 0" fill="none" stroke="#fff" stroke-opacity="0.7" stroke-width="2.5" stroke-linecap="round"/>` +
-      // The fish jumps (in B with its little one)
+      // The jetty, the boat by it, the things on its boards.
+      posts +
+      groundShadow(640, 622, 240, 10) +
+      boards +
+      `<path d="M410 594h470" stroke="#f3d6a6" stroke-width="2"/>` +
+      boat +
+      `<path d="M548 664q-30-10-90-50" fill="none" stroke="#c8b48a" stroke-width="2"/>` +
+      tackle +
+      bucket +
+      heron +
+      grandpa +
+      rod +
+      `<g clip-path="url(#c3-above)">${line}</g>` +
+      // The boot's critter (A: a frog, B: a fish) and the fish leaping beside the float (B only).
       diff(
-        522,
-        324,
-        32,
-        keys('fish', fishKeys, FISH, fish(...FISH)),
-        keys('fish', fishKeys, FISH, fish(...FISH) + fish(FISH[0] - 22, FISH[1] + 14, 0.55, '#ff9f43')),
-        'fish',
-        during(5.95, 7.6),
+        BOOT_TOP[0],
+        BOOT_TOP[1] - 12,
+        28,
+        keys('critter', critterKeys, BOOT_TOP, frog(BOOT_TOP[0], BOOT_TOP[1])),
+        keys('critter', critterKeys, BOOT_TOP, fish(BOOT_TOP[0], BOOT_TOP[1] - 8, 0.7)),
+        'critter',
+        during(CRITTER_AT, CRITTER_AT + 1),
       ) +
-      grass +
-      anim({ type: 'path', points: [[0, 0], [70, 0]], period: 40, flipX: 250 }, snail(250, 478)) +
-      // "!" — the cat has seen the fish.
-      once(surpriseKeys, SURPRISE, `<path d="M${SURPRISE[0] - 5} 262h10l-3 24h-4z" fill="#e63946" ${Ow(2)}/><circle cx="${SURPRISE[0]}" cy="295" r="4" fill="#e63946" ${Ow(1.6)}/>`) +
-      once(catShadowKeys, CAT, groundShadow(CAT[0] + 2, CAT[1] + 1, 50, 8)) +
-      catMarkup() +
-      // The water in front of the cat: in the pond only its head shows.
-      `<path d="M300 410a170 52 0 0 0 340 0z" fill="url(#c1-water)"/>` +
-      `<path d="M300 410a170 52 0 0 0 340 0" fill="none" stroke="${INK}" stroke-width="2.5"/>` +
-      `<path d="M390 424q30 6 60 0M500 440q30 6 60 0" fill="none" stroke="#fff" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round"/>` +
-      keys(
-        undefined,
-        splashKeys,
-        SPLASH,
-        `<path d="M${SPLASH[0] - 40} ${SPLASH[1]}q10-30 20-4q8-40 20-2q12-38 20 2q10-26 20 4z" fill="#bfeaff" ${Ow(2)}/>` +
-          `<circle cx="${SPLASH[0] - 34}" cy="${SPLASH[1] - 40}" r="4" fill="#bfeaff" ${Ow(1.5)}/><circle cx="${SPLASH[0] + 30}" cy="${SPLASH[1] - 46}" r="5" fill="#bfeaff" ${Ow(1.5)}/>`,
-      ) +
-      [0, 0.45]
-        .map((d) => once(ringKeys(d), [SPLASH[0], SPLASH[1] + 4], `<ellipse cx="${SPLASH[0]}" cy="${SPLASH[1] + 4}" rx="22" ry="6" fill="none" stroke="#fff" stroke-width="2.4"/>`))
-        .join('') +
-      ([[-44, -6], [-24, -30], [2, -40], [28, -28], [46, -4]] as [number, number][])
-        .map((d) => once(dropKeys(d), DRY, `<path d="M${DRY[0]} ${DRY[1] - 5}q4 6 0 9q-4-3 0-9z" fill="#8fd8ff" ${Ow(1.2)}/>`))
-        .join('') +
-      once(shadowKeys, SHADOW, `<path d="M${SHADOW[0] - 14} ${SHADOW[1]}l-12-9v18zM${SHADOW[0] + 18} ${SHADOW[1]}a18 9 0 1 1-36 0a18 9 0 1 1 36 0z" fill="#1f5f8a" fill-opacity="0.7"/>`) +
-      ([[440, 430, 0], [492, 418, 0.4], [560, 430, 0.75]] as [number, number, number][])
-        .map(([bx, by, phase]) =>
-          anim({ type: 'keys', period: 2.6, phase, keys: [{ t: 0, y: 0, o: 0 }, { t: 0.3, o: 0.9 }, { t: 2.2, y: -16, o: 0.9 }, { t: 2.4, o: 0 }], pivot: [bx, by] },
-            `<circle cx="${bx}" cy="${by}" r="3" fill="#fff" fill-opacity="0.3" stroke="#fff" stroke-width="1.4"/>`),
-        )
-        .join('') +
-      ([[585, 428, 3.2, 0], [410, 442, 4.1, 0.5]] as [number, number, number, number][])
-        .map(([rx, ry, period, phase]) =>
-          anim({ type: 'keys', period, phase, keys: [{ t: 0, sx: 0.3, sy: 0.3, o: 0.8 }, { t: period * 0.9, sx: 1.6, sy: 1.6, o: 0, ease: 'out' }], pivot: [rx, ry] },
-            `<ellipse cx="${rx}" cy="${ry}" rx="16" ry="4.5" fill="none" stroke="#fff" stroke-width="2"/>`),
-        )
-        .join('') +
-      once(tongueKeys, [FROG[0], FROG[1] - 15], `<path d="M${FROG[0]} ${FROG[1] - 15}L${FLY[0]} ${FLY[1]}" stroke="#e8798f" stroke-width="4" stroke-linecap="round"/><circle cx="${FLY[0]}" cy="${FLY[1]}" r="4" fill="#e8798f"/>`) +
-      once(flyKeys, FLY, anim({ type: 'path', points: [[0, 0], [6, -5], [12, 2], [4, 6]], period: 0.7 }, fly(...FLY, beat([FLY[0], FLY[1] - 3], 0.08)))) +
-      anim(
-        { type: 'keys', period: 6, keys: [{ t: 0, x: 0, y: 0 }, { t: 1.2, ease: 'inOut' }, { t: 1.5, x: -70, y: -6 }, { t: 2.8, ease: 'inOut' }, { t: 3.1, x: -30, y: -38 }, { t: 4.6, ease: 'inOut' }, { t: 4.9, x: 0, y: 0 }], pivot: [660, 360] },
-        anim({ type: 'bob', dx: 0, dy: 3, period: 0.9 }, dragonfly(660, 360, beat([660, 354], 0.1))),
-      ) +
-      lilyPad(FROG[0], FROG[1] + 4, 1.2) +
-      lilyPad(590, 408) +
-      diff(520, 447, 20, lilyPad(520, 452, 0.8) + waterLily(520, 448), lilyPad(520, 452, 0.8)) +
-      // The frog: in B it leaps when the cat splashes down.
-      diff(FROG[0], FROG[1] - 14, 26, frogMarkup(), keys('frog', frogJump, FROG, frogMarkup()), 'frog', during(7.45, 8.5)) +
-      // A bird comes to the fence (B only)
-      diff(
-        BIRD[0],
-        BIRD[1] - 10,
-        22,
-        '',
-        keys('bird', birdKeys, BIRD, bird(...BIRD, flap([[10.4, 11.4], [13.6, 14.5]]))),
-        'bird',
-        during(10.45, 14.3),
-      ) +
-      // Butterflies over the meadow
-      anim({ type: 'path', points: [[0, 0], [70, -40], [150, -10], [120, 40], [40, 30]], period: 11 },
-        anim({ type: 'bob', dx: 0, dy: 5, period: 0.7 }, butterflyAt(60, 420, ['#ff6fb5', '#ffd23f'], beatX([60, 420], 0.3)))) +
-      anim({ type: 'path', points: [[0, 0], [-60, -30], [-100, 20], [-30, 40]], period: 9, reverse: true },
-        anim({ type: 'bob', dx: 0, dy: 4, period: 0.6 }, butterflyAt(700, 440, ['#b38cff', '#4dabf7'], beatX([700, 440], 0.26, 0.4)))) +
-      frontTrees +
-      // Warm sunlight from the upper right.
-      `<rect width="800" height="500" fill="url(#c1-sunlight)"/>`
+      diff(LEAP[0], LEAP[1], 22, '', keys('leap', leapKeys, LEAP, fish(LEAP[0], LEAP[1], 0.6)), 'leap', during(6.45, 7.3)) +
+      // Rings where the float sits, and where the boot breaks the surface.
+      anim({ type: 'keys', period: 2.4, keys: [{ t: 0, sx: 0.4, sy: 0.4, o: 0.8 }, { t: 2.2, sx: 1.6, sy: 1.6, o: 0, ease: 'out' }], pivot: [TIP[0], WATER - 2] },
+        `<ellipse cx="${TIP[0]}" cy="${WATER - 2}" rx="18" ry="4.5" fill="none" stroke="#fff" stroke-width="1.8"/>`) +
+      ducks +
+      anim({ type: 'keys', period: 6, keys: [{ t: 0, x: 0, y: 0 }, { t: 1.2, ease: 'inOut' }, { t: 1.5, x: -60, y: -8 }, { t: 2.8, ease: 'inOut' }, { t: 3.1, x: -24, y: -36 }, { t: 4.6, ease: 'inOut' }, { t: 4.9, x: 0, y: 0 }], pivot: [1160, 600] },
+        anim({ type: 'bob', dx: 0, dy: 3, period: 0.9 }, dragonfly(1160, 600, beat([1160, 594], 0.1)))) +
+      roundTree(1400, 900, 0.8, 'url(#ke-leaf)', crown(4.2)) +
+      anim({ type: 'path', points: [[0, 0], [90, -50], [190, -10], [140, 50], [40, 40]], period: 13 },
+        anim({ type: 'bob', dx: 0, dy: 6, period: 0.7 }, butterflyAt(140, 760, ['#ff6fb5', '#ffd23f'], beat([140, 760], 0.3, 0, 'sx')))) +
+      `<rect width="${W}" height="${H}" fill="url(#c3-sunlight)"/>`
     )
   },
 })

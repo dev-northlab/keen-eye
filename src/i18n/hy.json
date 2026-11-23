@@ -608,7 +608,9 @@
     "sunnyStreet": "Արևոտ փողոց",
     "gardenGate": "Այգու դռնակի մոտ",
     "cartoonCatPond": "Կատուն լճակի մոտ",
-    "cartoonDogPie": "Գողացված կարկանդակը"
+    "cartoonDogPie": "Գողացված կարկանդակը",
+    "cartoonFishing": "Ձկնորսության",
+    "cartoonSnowman": "Ձնեմարդու քիթը"
   },
   "mode": {
     "label": "Ռեժիմ",

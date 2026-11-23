@@ -216,7 +216,7 @@ export const TINY_BOY_CHAPTER: Chapter = {
 export const CARTOON_CHAPTER: Chapter = {
   id: 'cartoon',
   // Grows with every new cartoon (difficulty.ts covers up to 830): a wider range would announce cartoons not drawn yet.
-  ranges: [[801, 802]],
+  ranges: [[801, 804]],
   free: [[801, 801]],
   color: '#f0743e',
   soft: '#ffece2',

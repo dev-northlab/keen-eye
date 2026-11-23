@@ -853,7 +853,9 @@
     "sunnyStreet": "Maaraw na kalye",
     "gardenGate": "Sa tarangkahan ng hardin",
     "cartoonCatPond": "Pusa sa lawa",
-    "cartoonDogPie": "Ang ninakaw na pie"
+    "cartoonDogPie": "Ang ninakaw na pie",
+    "cartoonFishing": "Nangingisda",
+    "cartoonSnowman": "Ilong ng snowman"
   },
   "map": {
     "level": "Level {n}",

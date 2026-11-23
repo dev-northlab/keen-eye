@@ -608,7 +608,9 @@
     "sunnyStreet": "Ηλιόλουστος δρόμος",
     "gardenGate": "Στην αυλόπορτα",
     "cartoonCatPond": "Η γάτα στη λιμνούλα",
-    "cartoonDogPie": "Η κλεμμένη πίτα"
+    "cartoonDogPie": "Η κλεμμένη πίτα",
+    "cartoonFishing": "Για ψάρεμα",
+    "cartoonSnowman": "Η μύτη του χιονάνθρωπου"
   },
   "mode": {
     "label": "Λειτουργία",

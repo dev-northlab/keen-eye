@@ -853,7 +853,9 @@
     "sunnyStreet": "Con phố đầy nắng",
     "gardenGate": "Bên cổng vườn",
     "cartoonCatPond": "Chú mèo bên ao",
-    "cartoonDogPie": "Chiếc bánh bị đánh cắp"
+    "cartoonDogPie": "Chiếc bánh bị đánh cắp",
+    "cartoonFishing": "Đi câu cá",
+    "cartoonSnowman": "Chiếc mũi của người tuyết"
   },
   "map": {
     "level": "Màn {n}",

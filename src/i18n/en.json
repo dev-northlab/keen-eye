@@ -608,7 +608,9 @@
     "sunnyStreet": "Sunny street",
     "gardenGate": "At the garden gate",
     "cartoonCatPond": "Cat at the pond",
-    "cartoonDogPie": "The stolen pie"
+    "cartoonDogPie": "The stolen pie",
+    "cartoonFishing": "Gone fishing",
+    "cartoonSnowman": "The snowman's nose"
   },
   "mode": {
     "label": "Mode",

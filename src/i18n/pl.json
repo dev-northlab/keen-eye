@@ -608,7 +608,9 @@
     "sunnyStreet": "Słoneczna ulica",
     "gardenGate": "Przy furtce ogrodu",
     "cartoonCatPond": "Kot przy stawie",
-    "cartoonDogPie": "Skradzione ciasto"
+    "cartoonDogPie": "Skradzione ciasto",
+    "cartoonFishing": "Na rybach",
+    "cartoonSnowman": "Nos bałwana"
   },
   "mode": {
     "label": "Tryb",

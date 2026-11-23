@@ -608,7 +608,9 @@
     "sunnyStreet": "Rua ensolarada",
     "gardenGate": "No portão do jardim",
     "cartoonCatPond": "O gato no lago",
-    "cartoonDogPie": "A torta roubada"
+    "cartoonDogPie": "A torta roubada",
+    "cartoonFishing": "Pescaria",
+    "cartoonSnowman": "O nariz do boneco de neve"
   },
   "mode": {
     "label": "Modo",

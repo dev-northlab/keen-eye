@@ -608,7 +608,9 @@
     "sunnyStreet": "Napos utca",
     "gardenGate": "A kertkapunál",
     "cartoonCatPond": "Macska a tónál",
-    "cartoonDogPie": "Az ellopott pite"
+    "cartoonDogPie": "Az ellopott pite",
+    "cartoonFishing": "Horgászat",
+    "cartoonSnowman": "A hóember orra"
   },
   "mode": {
     "label": "Mód",

@@ -608,7 +608,9 @@
     "sunnyStreet": "阳光街道",
     "gardenGate": "花园门口",
     "cartoonCatPond": "池塘边的猫",
-    "cartoonDogPie": "被偷的馅饼"
+    "cartoonDogPie": "被偷的馅饼",
+    "cartoonFishing": "去钓鱼",
+    "cartoonSnowman": "雪人的鼻子"
   },
   "mode": {
     "label": "模式",

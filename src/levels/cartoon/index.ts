@@ -4,5 +4,7 @@
 import type { Level } from '../../engine/types.ts'
 import level801 from './level-801.ts'
 import level802 from './level-802.ts'
+import level803 from './level-803.ts'
+import level804 from './level-804.ts'
 
-export const cartoonLevels: Level[] = [level801, level802]
+export const cartoonLevels: Level[] = [level801, level802, level803, level804]

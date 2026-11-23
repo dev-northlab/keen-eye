@@ -34,7 +34,7 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - `check-levels` compares a story every 0.25 s of its loop, checks zones only while their event is on, lets an event's
   zone come in across the frame's edge, and reports an event that shows outside its window.
 
-## How a cartoon is made (802 "The stolen pie" is the model)
+## How a cartoon is made (804 "The stolen pie" is the model)
 
 - **Story**: a short funny loop (16–20 s) with a gag — a theft, a chase, a reaction — told by the camera: wide shots,
   close-ups, a pan after the hero, cuts.
@@ -43,7 +43,10 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - **Look**: ink outlines with sunlight from one side — gradients on every object (`NATURE_DEFS` of shapes.ts), soft
   ground shadows (a moving character's shadow follows it), textures (tiles, bricks, wood grain, bark), haze on the far
   hills, warm sunlight over all.
-- **Differences**: 12 (difficulty.ts), two of them hard (one missing picket in a long row, the stripes of a sleeping
+- **Levels so far**: 801 "Gone fishing" (free: grandpa, a heron and a boot by a lake) and 802 "The snowman's nose"
+  (winter: a hare steals the carrot, the dog crashes into the snowman), 10 differences each; 803 "Cat at the pond",
+  804 "The stolen pie", 12 each.
+- **Differences**: 12 (difficulty.ts; the first two 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.
 
