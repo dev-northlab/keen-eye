@@ -56,14 +56,14 @@ only for a while (`Difference.during`), a tap on their place at other times is a
 - **The owl**: the game's owl (the app icon's, `keenOwl` of shapes.ts) sits in every cartoon — on a branch, a lamp,
   a pole, in a hollow — blinking and tilting its head (dozing on a calm one), clear of the zones; it may also be a
   difference.
-- **Released**: all 25 cartoons (801–825) were released on 2026-11-23 at the developer's request, the titles of
-  803–810 and 813–825 still in English in every locale and the store texts changed only in their level count; the
-  translated titles and the store texts' cartoons line come later. A cartoon still being drawn may wait in
-  `levels/upcoming.ts` (developer mode only, at its place in the grid; players' tile numbers count released levels
-  only, developer mode counts the hidden ones too — `check-levels` keeps hidden ids free in the order).
+- **Released**: the category is complete with 30 cartoons (801–830), released on 2026-11-23; every title is translated
+  in every locale and the store texts name 30 cartoons. A cartoon drawn later may wait in `levels/upcoming.ts`
+  (developer mode only, at its place in the grid; players' tile numbers count released levels only, developer mode
+  counts the hidden ones too — `check-levels` keeps hidden ids free in the order) with an English title, until it is
+  released with its translations and the store texts' counts.
 - **Order**: the first ten cartoons have 10 differences (ids 801–810), the ones with 12 come after them (811 on);
-  801–810 are all drawn, so a new cartoon (12 differences) takes the id after the last one, 826 on. `ranges` of
-  the chapter list only the ids drawn so far (`[[801, 825]]`), so the count on its card stays true.
+  801–810 are all drawn, so a new cartoon (12 differences) takes the id after the last one, 831 on (difficulty.ts has its row up to 830). `ranges` of
+  the chapter list only the ids drawn so far (`[[801, 830]]`), so the count on its card stays true.
 - **Differences**: 12 (difficulty.ts; the first ten 10), two of them hard (one missing picket in a long row, the stripes of a sleeping
   cat, a missing cattail, a chimney's cap), some of them events of the story; small ones stay tappable through the
   player's zoom.
@@ -185,6 +185,45 @@ places, plants and animals not used in 801–820; `ranges` grows to `[[801, 825]
   a bow. Striped tent, spotlights, a ring with stars, a trapeze, ladders, a drum, a popcorn stand; seal, poodle,
   lion, horse with a plume, parrot, mice in the stands; the owl on the ringmaster's top hat on its stand. Events
   of B: a mouse peeking from the drum, the parrot swinging on the trapeze, the lion opening one eye.
+
+## The plan of cartoons 26–30 (826–830), 12 differences each (all drawn on 2026-11-23)
+
+Proposed and drawn on 2026-11-23, in parallel, one level file each. Same rules as 821–825: a 20 s story with one clear gag; 12 differences — 2
+hard, 3 events of B, 7 others (one recolour at most, the rest small changes of a part or a small object in A only);
+the differences where the story happens, so the camera holds them close for 1.5–2 s or more; the game's owl; places,
+plants and animals not used in 801–825; `ranges` grows to `[[801, 830]]`.
+
+- **826 "The balloon goat"** (a hot-air balloon over patchwork fields): a goat stowed away in a balloon's basket
+  nibbles the ropes of the sandbags one by one — each bag drops, the balloon jumps higher; geese in a V fly past
+  and honk, a kestrel hovers; the last bag falls onto a haystack below, the balloon shoots up into a cloud and comes
+  out with the goat chewing the cloud like candyfloss. Patchwork fields, hedgerows, a village with a church spire, a
+  river with a stone bridge, sheep and cows like dots below; goat, geese, kestrel, swallows, sheep; the owl riding on
+  the basket's rim. Events of B: a swallow perching on a rope, a sheep looking up below, a kite's string caught.
+- **827 "The carrot tug"** (a meadow cut open: above the ground and the burrows below): a rabbit pulls at a carrot
+  top; under the ground a mole has the root and pulls back — a tug of war, the rabbit's ears stretch, the mole's
+  claws dig in; the carrot snaps, the rabbit flies back into a bush with the leaves, the mole tumbles down its
+  tunnel with the root — and both munch happily. Grass and flowers above, soil layers, roots, stones, a buried bone,
+  burrows and tunnels below; rabbit and kits, mole, earthworms, ants with eggs, a beetle larva, a field mouse's
+  nest; the owl on a fence post above. Events of B: a worm poking out of the tunnel wall, an ant carrying a seed, a
+  baby rabbit peeking from the burrow.
+- **828 "The last carriage"** (a country station with a little steam train): the conductor — a dog — whistles,
+  the train puffs off; a pig with a suitcase runs out of the waiting room too late, chases it along the platform,
+  the suitcase bursts open, socks fly; a goose in the last carriage grabs the pig's collar and hauls it aboard; the
+  socks land on the passengers. Station with a clock and a bench, signals, a water tower, a viaduct and a tunnel in
+  the hills; dog, pig, goose, sheep passengers, a station cat, pigeons; the owl on the station clock. Events of B:
+  a pigeon on the signal arm, a mouse in the mailbag, a lamb waving from a window.
+- **829 "The moon picnic"** (on the Moon): a cat astronaut lands its little rocket, spreads a picnic, opens a can of
+  fish — in the low gravity the fish floats up out of the can; it leaps after it in great slow bounces, a little
+  alien in a crater catches the fish and offers it back — they share it, the Earth rising behind them. Craters, grey
+  dust, rocks, the rocket with a ladder, a flag, stars, the Earth, a ringed planet; cat astronaut, little aliens,
+  a moon-rover; the owl in a tiny space helmet on the rocket's nose. Events of B: a satellite passing, an alien's
+  antenna popping out of a crater, a shooting star.
+- **830 "The cake heist"** (a kitchen at night, seen at mouse height): mice build a ladder of spoons and a
+  matchbox to climb to a cake on the table; the cat on the chair sleeps; the topmost mouse reaches the cherry — the
+  ladder sways, topples; the mice land on the sleeping cat's back, it only purrs; they drag the cherry off to their
+  hole. Table legs, a tablecloth hanging down, jars, a cookie tin, a teapot, a window with the moon, a clock; mice,
+  the cat, a spider, a moth at the lamp; the owl outside on the window sill. Events of B: a mouse peeking from the
+  cookie tin, the moth landing on the clock, the cat's whiskers twitching.
 
 ## How it was chosen
 
