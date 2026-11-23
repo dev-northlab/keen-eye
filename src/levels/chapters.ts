@@ -208,14 +208,35 @@ export const TINY_BOY_CHAPTER: Chapter = {
     `<path d="M14 44q10-6 20 0" fill="#ffd23f"/>`,
 }
 
+/**
+ * "Cartoons" (`cartoon/`, docs/cartoon-mode.md): short funny stories that loop, told by a camera, with differences
+ * that stay all along and events of the story. Its own live banner on the game modes screen (CartoonBanner); a
+ * category grid; open like the "time" category, but only its first level is free; no key yet.
+ */
+export const CARTOON_CHAPTER: Chapter = {
+  id: 'cartoon',
+  // Grows with every new cartoon (difficulty.ts covers up to 830): a wider range would announce cartoons not drawn yet.
+  ranges: [[801, 802]],
+  free: [[801, 801]],
+  color: '#f0743e',
+  soft: '#ffece2',
+  backdrop: 'meadow',
+  rules: 'cartoonMode.rules',
+  icon:
+    `<rect x="5" y="16" width="38" height="26" rx="4" fill="#3b3f8f"/>` +
+    `<path d="M5 9l36-6 2 10-36 6Z" fill="#ffd23f"/><path d="M11 8l5 9M20 6.5l5 9M29 5l5 9" stroke="#3b3f8f" stroke-width="3.4"/>` +
+    `<path d="M20 22v14l12-7Z" fill="#fff"/>`,
+}
+
 /** Categories: a banner each on the game modes screen; levels numbered from 1, the first ones free. */
-export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER, TINY_BOY_CHAPTER]
+export const CATEGORIES = [TIME_CHAPTER, MEMORY_CHAPTER, TRAVEL_CHAPTER, DETECTIVE_CHAPTER, TINY_BOY_CHAPTER, CARTOON_CHAPTER]
 
 /**
- * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category but "tiny boy" (none drawn
- * yet), one level each (`Level.secret`; the key's id is the chapter id). The first is in the free part of the farm.
+ * Chapters hiding a golden key (docs/hidden-item-feature.md): every world and category but "tiny boy" and "cartoons"
+ * (none drawn yet), one level each (`Level.secret`; the key's id is the chapter id). The first is in the free part
+ * of the farm.
  */
-export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES.filter((c) => c !== TINY_BOY_CHAPTER)]
+export const KEY_CHAPTERS = [...CHAPTERS, ...CATEGORIES.filter((c) => c !== TINY_BOY_CHAPTER && c !== CARTOON_CHAPTER)]
 
 /**
  * "Treasury" (docs/hidden-item-feature.md, `treasury/`): the bonus level, opened once the key of every

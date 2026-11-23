@@ -1,5 +1,5 @@
-// Drawing helpers of the cartoon spike levels (docs/cartoon-spike.md): characters with an ink outline, drawn at their
-// rest position, and the keyframe helpers that make them walk.
+// Drawing helpers of the cartoons (docs/cartoon-mode.md): characters with an ink outline, drawn at their rest position,
+// the keyframe helpers that make them walk, and the shaded nature (trees, apples, ground shadows) of their yards.
 import type { Keyframe } from '../../engine/types.ts'
 
 export const INK = '#3d2b1f'
@@ -41,7 +41,7 @@ export function cat(x: number, y: number, legs: { back: Keyframe[]; front: Keyfr
     ) +
     leg(x - 19, dark, legs ? flip(legs.back) : undefined) +
     leg(x + 13, dark, legs ? flip(legs.front) : undefined) +
-    `<ellipse cx="${x}" cy="${y - 23}" rx="30" ry="15" fill="${fur}" ${O}/>` +
+    `<ellipse cx="${x}" cy="${y - 23}" rx="30" ry="15" fill="url(#ke-ginger)" ${O}/>` +
     `<path d="M${x - 10} ${y - 37}q3 8 0 14M${x} ${y - 38}q3 8 0 14M${x - 20} ${y - 33}q3 6 1 11" fill="none" stroke="${dark}" stroke-width="3" stroke-linecap="round"/>` +
     `<ellipse cx="${x + 4}" cy="${y - 15}" rx="17" ry="6" fill="#fde3b8"/>` +
     leg(x - 11, fur, legs?.back) +
@@ -50,7 +50,7 @@ export function cat(x: number, y: number, legs: { back: Keyframe[]; front: Keyfr
     `<path d="M${x + 14} ${y - 48}l1-17l11 9z" fill="${fur}" ${O}/>` +
     `<path d="M${x + 29} ${y - 56}l9-12l3 16z" fill="${fur}" ${O}/>` +
     `<path d="M${x + 17} ${y - 58}l0-4l4 3z M${x + 33} ${y - 60}l4-5l1 6z" fill="#f7a6b4"/>` +
-    `<circle cx="${x + 27}" cy="${y - 42}" r="15.5" fill="${fur}" ${O}/>` +
+    `<circle cx="${x + 27}" cy="${y - 42}" r="15.5" fill="url(#ke-ginger)" ${O}/>` +
     `<path d="M${x + 22} ${y - 56}q2 5 0 8M${x + 28} ${y - 57}q2 5 0 8" fill="none" stroke="${dark}" stroke-width="2.4" stroke-linecap="round"/>` +
     `<ellipse cx="${x + 25}" cy="${y - 44}" rx="4" ry="5" fill="#fff" ${Ow(1.5)}/>` +
     `<ellipse cx="${x + 35}" cy="${y - 44}" rx="4" ry="5" fill="#fff" ${Ow(1.5)}/>` +
@@ -208,6 +208,7 @@ export const NATURE_DEFS =
   `<linearGradient id="ke-bark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5e3a1c"/><stop offset="0.6" stop-color="#8f5d2e"/><stop offset="1" stop-color="#b07a44"/></linearGradient>` +
   `<linearGradient id="ke-birch" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfc9bb"/><stop offset="0.6" stop-color="#f6f3ec"/><stop offset="1" stop-color="#ffffff"/></linearGradient>` +
   `<radialGradient id="ke-apple" cx="0.65" cy="0.3" r="0.8"><stop offset="0" stop-color="#ff8a80"/><stop offset="0.5" stop-color="#e2303c"/><stop offset="1" stop-color="#981b26"/></radialGradient>` +
+  `<radialGradient id="ke-ginger" cx="0.6" cy="0.25" r="0.85"><stop offset="0" stop-color="#ffc77a"/><stop offset="0.55" stop-color="#f4a13b"/><stop offset="1" stop-color="#c9741f"/></radialGradient>` +
   `<radialGradient id="ke-shadow"><stop offset="0" stop-color="#1b3311" stop-opacity="0.38"/><stop offset="0.7" stop-color="#1b3311" stop-opacity="0.16"/><stop offset="1" stop-color="#1b3311" stop-opacity="0"/></radialGradient>`
 
 /** A soft shadow on the ground around (x, y). */

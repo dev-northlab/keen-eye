@@ -35,6 +35,12 @@ android {
         }
     }
     buildTypes {
+        // A debug build installs beside the Google Play one (its own id, "Keen Eye Dev" in src/debug/res), so testing
+        // never replaces the store version and its progress or purchase. Release keeps com.northlab.keeneye.
+        debug {
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
         release {
             if (keystorePropertiesFile.exists()) {
                 signingConfig signingConfigs.release

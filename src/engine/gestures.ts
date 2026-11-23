@@ -14,6 +14,9 @@ export interface GestureHandlers {
   onDoubleTap: (svg: SVGSVGElement, clientX: number, clientY: number) => void
 }
 
+/** What gestures zoom and pan: a `Viewport`, or a cartoon's zoom over its camera (engine/cartoon.ts). */
+export type ZoomTarget = Pick<Viewport, 'frame' | 'toScene' | 'anchor' | 'scale'>
+
 interface Pointer {
   /** Picture under the finger at pointerdown; null for the gap around pictures. */
   svg: SVGSVGElement | null
@@ -34,7 +37,7 @@ interface Pointer {
  */
 export class Gestures {
   private readonly svgs: SVGSVGElement[]
-  private readonly viewport: Viewport
+  private readonly viewport: ZoomTarget
   private readonly handlers: GestureHandlers
   private readonly zoom: boolean
   private readonly pointers = new Map<number, Pointer>()
@@ -44,7 +47,7 @@ export class Gestures {
   private transform: { frame: Frame; ax: number; ay: number; dist: number; scale: number } | null = null
   private lastTap = { time: -Infinity, x: 0, y: 0 }
 
-  constructor(container: HTMLElement, svgs: SVGSVGElement[], viewport: Viewport, handlers: GestureHandlers, zoom = true) {
+  constructor(container: HTMLElement, svgs: SVGSVGElement[], viewport: ZoomTarget, handlers: GestureHandlers, zoom = true) {
     this.svgs = svgs
     this.viewport = viewport
     this.handlers = handlers

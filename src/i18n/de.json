@@ -220,6 +220,7 @@
     "fullGameOpen": "Alle Level freischalten",
     "resetPurchaseCache": "Kauf vergessen (Cache)",
     "resetPurchaseStore": "Kauf vergessen (auch im „Store“)",
+    "devBenchmark": "Animationstest",
     "devOff": "Entwicklermodus ausschalten"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Detektivgeschichte",
     "tinyBoy": "Der Kleine",
     "treasury": "Schatzkammer",
-    "test": "Testlevel"
+    "test": "Testlevel",
+    "cartoon": "Zeichentrick"
   },
   "levelTitles": {
     "memoryFlowerShop": "Blumenladen",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Finde zuerst alle goldenen Schlüssel – sie sind in den Levels jeder Welt und jedes Modus versteckt. Dann öffnet sich die Schatzkammer!",
     "congrats": "Du bist der aufmerksamste Spieler!"
+  },
+  "cartoonMode": {
+    "task": "Finde die Unterschiede im Zeichentrickfilm",
+    "rules": "Zwei Zeichentrickfilme zeigen dieselbe lustige Geschichte. Manche Unterschiede sind immer zu sehen, andere nur für einen Moment – pass gut auf. Zieh das Bild mit zwei Fingern größer: Solange du hinschaust, läuft es dir nicht davon."
   }
 }

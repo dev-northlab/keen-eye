@@ -32,7 +32,8 @@
     "time": "Tiden",
     "travel": "Jorden runt",
     "treasury": "Skattkammare",
-    "test": "Testnivåer"
+    "test": "Testnivåer",
+    "cartoon": "Tecknat"
   },
   "common": {
     "back": "Tillbaka",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Utveckling",
+    "devBenchmark": "Animationstest",
     "devOff": "Stäng av utvecklarläget",
     "fullGame": "Hela spelet",
     "fullGameOpen": "Lås upp alla nivåer",
@@ -1099,5 +1101,9 @@
     "rules": "Res jorden runt: hitta skillnaderna på varje plats, lär dig ett intressant faktum om den och få en stämpel i ditt pass.",
     "stamps": "Stämplar: {n} av {total}",
     "task": "Skillnader runt om i världen"
+  },
+  "cartoonMode": {
+    "task": "Hitta skillnaderna i en tecknad film",
+    "rules": "Två tecknade filmer visar samma roliga historia. Vissa skillnader syns hela tiden, andra bara ett ögonblick – titta noga. Zooma in med två fingrar: bilden står still medan du tittar."
   }
 }

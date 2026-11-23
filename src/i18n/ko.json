@@ -220,6 +220,7 @@
     "fullGameOpen": "모든 레벨 잠금 해제",
     "resetPurchaseCache": "구매 잊기 (캐시)",
     "resetPurchaseStore": "구매 잊기 (\"스토어\"에서도)",
+    "devBenchmark": "애니메이션 테스트",
     "devOff": "개발자 모드 끄기"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "탐정 이야기",
     "tinyBoy": "꼬마",
     "treasury": "보물 창고",
-    "test": "테스트 레벨"
+    "test": "테스트 레벨",
+    "cartoon": "만화"
   },
   "levelTitles": {
     "memoryFlowerShop": "꽃집",
@@ -1099,5 +1101,9 @@
     "tag": "보너스",
     "lockedHint": "먼저 황금 열쇠를 모두 찾으세요. 모든 세계와 모드의 레벨에 숨겨져 있어요. 그러면 보물 창고가 열립니다!",
     "congrats": "당신은 가장 눈썰미 좋은 플레이어예요!"
+  },
+  "cartoonMode": {
+    "task": "만화에서 다른 그림 찾기",
+    "rules": "두 만화가 같은 재미있는 이야기를 보여 줘요. 어떤 차이는 계속 보이고, 어떤 차이는 잠깐만 나타나요 — 잘 보세요. 두 손가락으로 확대하면 보는 동안 화면이 멈춰 있어요."
   }
 }

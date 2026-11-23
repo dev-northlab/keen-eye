@@ -1,10 +1,11 @@
-// Cartoon spike, approach B (docs/cartoon-spike.md): a 20 s story in a world larger than the screen, shown by a camera
-// (engine/cartoon.ts) that cuts between shots and pans after the dog. Grandma sets a pie on the windowsill to cool,
-// the dog wakes up, runs over, steals it and carries it home while grandma shakes her fist at the window.
+// Cartoon "The stolen pie" (docs/cartoon-mode.md), the model of the category: a 20 s story in a world larger than the
+// screen, shown by a camera (engine/cartoon.ts) that cuts between shots and pans after the dog. Grandma sets a pie on
+// the windowsill to cool, the dog wakes up, runs over, steals it and carries it home while grandma shakes her fist at
+// the window. Twelve differences, two of them hard (a missing picket, the sleeping cat's stripes).
 import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
 import { ease } from '../../engine/keyframes.ts'
-import { apple, appleTree, bee, bird, birchTree, butterflyAt, cartoonChick, cartoonHen, farBird, fly, grassTuft, groundShadow, INK, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, squirrel, swingKeys } from './cartoon-shapes.ts'
+import { apple, appleTree, bee, bird, birchTree, butterflyAt, cartoonChick, cartoonHen, farBird, fly, grassTuft, groundShadow, INK, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, squirrel, swingKeys } from './shapes.ts'
 
 const LOOP = 20
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
@@ -188,10 +189,10 @@ const butterfly = (x: number, y: number, flap: (m: string) => string) =>
     `<circle cx="${x - 9}" cy="${y - 10}" r="2.2" fill="#ffd23f"/><circle cx="${x + 9}" cy="${y - 10}" r="2.2" fill="#ffd23f"/>`)
 
 export default svgLevel({
-  id: 1002,
-  chapter: 'test',
+  id: 802,
+  chapter: 'cartoon',
   title: 'cartoonDogPie',
-  parTimeSec: 100,
+  parTimeSec: 120,
   viewBox: { w: W, h: H },
   cartoon: { period: LOOP, frame: { w: 800, h: 500 }, camera },
   scene: ({ diff, anim, rand }) => {
@@ -308,7 +309,7 @@ export default svgLevel({
               { type: 'sway', angle: 9, pivot: [gx + 20, gy + 34], period: 0.36 },
               `<path d="M${gx + 20} ${gy + 34}q20-20 16-60" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/>` +
                 `<path d="M${gx + 20} ${gy + 34}q20-20 16-60" fill="none" stroke="#7b5ea7" stroke-width="7" stroke-linecap="round"/>` +
-                diff(gx + 36, gy - 38, 40, fist, fist + rollingPin, 'grandma', during(15.2, 19.2)),
+                diff(gx + 36, gy - 38, 40, fist, fist + rollingPin, 'grandma', during(15.3, 18.95)),
             ),
         ),
     )
@@ -368,6 +369,98 @@ export default svgLevel({
       patches += `<ellipse cx="${px}" cy="${py}" rx="${Math.round(40 + rand() * 70)}" ry="${Math.round(8 + rand() * 10)}" fill="${light ? '#c4ef8f' : '#4f9a3c'}" fill-opacity="${light ? 0.35 : 0.22}"/>`
     }
 
+    // A picket fence along the back of the yard (behind the trees, its foot in the grass).
+    let fence = ''
+    for (let x = 6; x < W; x += 22) {
+      if (x > 112 && x < 640) continue
+      const picket = `<path d="M${x - 8} 628v-30l8-8l8 8v30z" fill="url(#c2-picket)" ${Ow(1.8)}/>`
+      // A hard one: one picket of the long row is missing in B.
+      fence += x === 1260 ? diff(1260, 609, 22, picket, '') : picket
+    }
+    fence =
+      `<path d="M0 600H120M640 600H${W}M0 618H120M640 618H${W}" stroke="${INK}" stroke-width="7"/><path d="M0 600H120M640 600H${W}M0 618H120M640 618H${W}" stroke="#c9b48a" stroke-width="3.5"/>` +
+      fence
+
+    // A rain barrel at the corner of the house, fed by a downpipe.
+    const barrel =
+      `<path d="M624 342v250" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M624 342v250" stroke="#b9c0c8" stroke-width="5" stroke-linecap="round"/>` +
+      groundShadow(590, 664, 40, 7) +
+      `<path d="M588 604q22-6 44 0l4 56q-26 6-52 0z" fill="url(#c2-barrel)" ${O}/>` +
+      `<path d="M587 618q24-5 46 0M585 646q26-5 50 0" fill="none" stroke="#5d6670" stroke-width="4"/>` +
+      `<ellipse cx="610" cy="604" rx="22" ry="5" fill="#3d6f8f" ${Ow(2)}/>` +
+      anim({ type: 'keys', period: 2.8, keys: [{ t: 0, sx: 0.3, sy: 0.3, o: 0.9 }, { t: 2.4, sx: 1.4, sy: 1.4, o: 0, ease: 'out' }], pivot: [612, 604] },
+        `<ellipse cx="612" cy="604" rx="10" ry="2.4" fill="none" stroke="#bfe6ff" stroke-width="1.4"/>`)
+
+    // A bench under the kitchen window, a cat asleep on it.
+    const cat =
+      anim({ type: 'bob', dx: 0, dy: -1.2, period: 2.2 },
+        `<ellipse cx="392" cy="620" rx="24" ry="11" fill="#f4a13b" ${Ow(2)}/>` +
+          // A hard one: the sleeping cat has no stripes in B.
+          diff(390, 618, 18, `<path d="M378 616q4 6 0 10M388 612q4 6 0 12M398 612q4 6 0 12" fill="none" stroke="#d9822b" stroke-width="2.4" stroke-linecap="round"/>`, '') +
+          `<circle cx="372" cy="620" r="10" fill="#f4a13b" ${Ow(2)}/>` +
+          `<path d="M364 613l1-9l7 5zM374 611l6-7l1 9z" fill="#f4a13b" ${Ow(1.6)}/>` +
+          `<path d="M366 620q3 2 6 0M374 620q3 2 6 0" fill="none" stroke="${INK}" stroke-width="1.5" stroke-linecap="round"/>`) +
+      anim({ type: 'sway', angle: 12, pivot: [414, 624], period: 3.2 },
+        `<path d="M414 624q16 2 14 16" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M414 624q16 2 14 16" fill="none" stroke="#f4a13b" stroke-width="4" stroke-linecap="round"/>`)
+    const bench =
+      groundShadow(372, 664, 80, 7) +
+      `<rect x="318" y="600" width="110" height="9" rx="2" fill="url(#c2-wood)" ${Ow(2)}/>` +
+      `<path d="M326 640v22M420 640v22M330 609v20M416 609v20" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M326 640v22M420 640v22M330 609v20M416 609v20" stroke="#8a5a2b" stroke-width="4" stroke-linecap="round"/>` +
+      `<rect x="312" y="630" width="122" height="11" rx="3" fill="url(#c2-wood)" ${Ow(2)}/>` +
+      cat
+
+    // A woodpile by the pine, a chopping block and an axe.
+    let logs = ''
+    for (const [lx, ly] of [[646, 652], [664, 652], [682, 652], [700, 652], [655, 637], [673, 637], [691, 637], [664, 622], [682, 622]] as [number, number][])
+      logs += `<circle cx="${lx}" cy="${ly}" r="9" fill="#e9c58d" ${Ow(1.8)}/><circle cx="${lx}" cy="${ly}" r="5" fill="none" stroke="#b98a4f" stroke-width="1.2"/><circle cx="${lx}" cy="${ly}" r="1.6" fill="#b98a4f"/>`
+    const woodpile =
+      groundShadow(660, 664, 52, 7) + logs +
+      `<path d="M726 664v-20q14-5 28 0v20z" fill="url(#ke-bark)" ${Ow(2)}/><ellipse cx="740" cy="644" rx="14" ry="4" fill="#e9c58d" ${Ow(1.6)}/>` +
+      `<path d="M736 642l14-22" stroke="#8a5a2b" stroke-width="4" stroke-linecap="round"/><path d="M744 618l10 4l-4 8l-10-4z" fill="#b9c0c8" ${Ow(1.6)}/>`
+
+    // A wicker basket of laundry under the line.
+    const basket =
+      groundShadow(896, 672, 40, 6) +
+      `<path d="M866 650h60l-6 22h-48z" fill="#d2a564" ${Ow(2)}/>` +
+      `<path d="M872 656h48M874 662h44M876 668h40M880 650v22M892 650v22M904 650v22M916 650v22" stroke="#9c7238" stroke-width="1.4"/>` +
+      `<path d="M868 650q14-14 28-4q12-10 28 4z" fill="#f4f7fb" ${Ow(1.8)}/><path d="M882 646q8 2 14-2" fill="none" stroke="#c8d3df" stroke-width="2"/>`
+
+    // A vegetable bed: cabbages and carrots, a watering can beside it.
+    let veg = ''
+    for (let i = 0; i < 5; i++) {
+      const cx = 990 + i * 28
+      veg += `<circle cx="${cx}" cy="784" r="11" fill="#9fd67b" ${Ow(1.6)}/><path d="M${cx - 6} 782q6-8 12 0M${cx - 4} 788q4-4 8 0" fill="none" stroke="#5c9e45" stroke-width="1.6"/>`
+      veg += anim({ type: 'sway', angle: 8, pivot: [cx + 2, 826], period: 2.4, phase: i / 5 },
+        `<path d="M${cx + 2} 826q-6-10-8-18M${cx + 2} 826q0-12 2-20M${cx + 2} 826q6-10 10-16" fill="none" stroke="#3f8f3a" stroke-width="2" stroke-linecap="round"/><path d="M${cx - 1} 826h6l-3 6z" fill="#ff8c2a"/>`)
+    }
+    const garden =
+      groundShadow(1040, 842, 96, 9) +
+      `<rect x="962" y="766" width="160" height="72" rx="6" fill="url(#c2-soil)" ${Ow(2.4)}/>` +
+      `<path d="M970 804h144" stroke="#4a2d17" stroke-opacity="0.4" stroke-width="2"/>` +
+      veg +
+      groundShadow(930, 840, 22, 5) +
+      `<path d="M920 816h22l-2 22h-18z" fill="url(#c2-metal)" ${Ow(1.8)}/><path d="M922 818l-16-12" stroke="${INK}" stroke-width="5" stroke-linecap="round"/><path d="M922 818l-16-12" stroke="#7fa89a" stroke-width="2.6" stroke-linecap="round"/>` +
+      `<path d="M924 816q7-12 14 0" fill="none" stroke="${INK}" stroke-width="2.4"/>`
+
+    // A mailbox at the path, and a wheelbarrow of pumpkins.
+    const mailbox =
+      groundShadow(312, 752, 16, 4) +
+      `<rect x="314" y="714" width="6" height="38" fill="url(#ke-bark)" ${Ow(1.6)}/>` +
+      `<path d="M302 716v-14q0-8 15-8t15 8v14z" fill="#3a86ff" ${Ow(2)}/><path d="M332 702h-30" stroke="#1f5fd1" stroke-width="2"/>` +
+      `<path d="M334 706v-14h8v5h-6" fill="#e63946" ${Ow(1.4)}/>`
+    const pumpkin = (x: number, y: number, r: number) =>
+      `<ellipse cx="${x}" cy="${y}" rx="${r * 1.2}" ry="${r}" fill="#f28c28" ${Ow(1.8)}/><path d="M${x} ${y - r}q-${r * 0.6} ${r} 0 ${r * 2}M${x} ${y - r}q${r * 0.6} ${r} 0 ${r * 2}" fill="none" stroke="#c2611a" stroke-width="1.6"/><path d="M${x} ${y - r}l2-6" stroke="#4f7a2a" stroke-width="3" stroke-linecap="round"/>`
+    // Moved 40 to the right of where it was drawn, clear of the frame's edge on a narrow screen.
+    const barrow =
+      `<g transform="translate(40 0)">` +
+      groundShadow(118, 806, 62, 8) +
+      `<circle cx="160" cy="794" r="13" fill="#3b3f46" ${Ow(2)}/><circle cx="160" cy="794" r="5" fill="#b9c0c8"/>` +
+      `<path d="M74 800l12 8M98 802v-8" stroke="${INK}" stroke-width="5" stroke-linecap="round"/>` +
+      pumpkin(104, 762, 11) + pumpkin(130, 760, 12) + diff(157, 747, 18, pumpkin(117, 750, 9), '') +
+      `<path d="M78 768h96l-18 26h-62z" fill="#c8332f" ${Ow(2.2)}/><path d="M86 774h80" stroke="#e46a5d" stroke-width="2.5"/>` +
+      `<path d="M80 770l-30-8" stroke="${INK}" stroke-width="6" stroke-linecap="round"/><path d="M80 770l-30-8" stroke="#8a5a2b" stroke-width="3" stroke-linecap="round"/>` +
+      `</g>`
+
     // A flock crossing the sky.
     let flock = ''
     for (const [i, [fx, fy]] of ([[1500, 230], [1526, 214], [1528, 246], [1552, 200]] as [number, number][]).entries())
@@ -416,6 +509,10 @@ export default svgLevel({
       `<linearGradient id="c2-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff4ff"/><stop offset="1" stop-color="#8fcbe8"/></linearGradient>` +
       `<radialGradient id="c2-room" cx="0.7" cy="0.3" r="0.9"><stop offset="0" stop-color="#9a6447"/><stop offset="1" stop-color="#4f2d1d"/></radialGradient>` +
       `<radialGradient id="c2-sunlight" cx="0.87" cy="0.13" r="1"><stop offset="0" stop-color="#fff3c4" stop-opacity="0.35"/><stop offset="0.5" stop-color="#fff3c4" stop-opacity="0.08"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient>` +
+      `<linearGradient id="c2-picket" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cbb68c"/><stop offset="1" stop-color="#f1e6cc"/></linearGradient>` +
+      `<linearGradient id="c2-barrel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6b4321"/><stop offset="0.6" stop-color="#a7713c"/><stop offset="1" stop-color="#c48a4f"/></linearGradient>` +
+      `<linearGradient id="c2-soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5a35"/><stop offset="1" stop-color="#5d3a20"/></linearGradient>` +
+      `<linearGradient id="c2-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5f8f80"/><stop offset="0.6" stop-color="#8fbcad"/><stop offset="1" stop-color="#b6dccf"/></linearGradient>` +
       `<clipPath id="c2-win"><rect x="292" y="422" width="156" height="118"/></clipPath></defs>` +
       `<rect width="${W}" height="${H}" fill="url(#c2-sky)"/>` +
       `<circle cx="1250" cy="120" r="190" fill="url(#c2-glow)"/>` +
@@ -435,6 +532,7 @@ export default svgLevel({
       `<path d="M0 560q180-90 360-30t380-20t360-10t340 20V640H0z" fill="url(#c2-hill)"/>` +
       wood +
       `<rect y="470" width="${W}" height="170" fill="url(#c2-haze)"/>` +
+      fence +
       `<rect y="620" width="${W}" height="${H - 620}" fill="url(#c2-grass)"/>` +
       `<rect y="620" width="${W}" height="${H - 620}" fill="url(#c2-blades)"/>` +
       patches +
@@ -472,6 +570,7 @@ export default svgLevel({
       `<rect x="172" y="590" width="56" height="54" rx="3" fill="none" stroke="#6e4220" stroke-opacity="0.6" stroke-width="2.5"/><circle cx="226" cy="596" r="4" fill="#ffd23f" ${Ow(1.2)}/>` +
       `<rect x="176" y="540" width="48" height="36" rx="4" fill="url(#c2-glass)" ${Ow(2)}/>` +
       `<path d="M184 570l18-24M196 572l16-22" stroke="#fff" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round"/>` +
+      barrel +
       // Kitchen window: the room behind, grandma in it.
       `<rect x="292" y="422" width="156" height="118" fill="url(#c2-room)"/>` +
       `<path d="M300 470h60" stroke="#5c3522" stroke-width="5"/><rect x="306" y="452" width="12" height="18" fill="#4dabf7"/><rect x="324" y="456" width="16" height="14" fill="#ffd23f"/>` +
@@ -500,6 +599,9 @@ export default svgLevel({
           `<path d="M${PIE[0]} ${PIE[1] - 26}q-18-12-16-24q4-10 16-2q12-8 16 2q2 12-16 24z" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>`)),
         undefined,
         during(4.6, 14)) +
+      bench +
+      woodpile +
+      basket +
       flowers +
       tufts +
       // Clothesline
@@ -551,6 +653,9 @@ export default svgLevel({
           butterfly(...NOSE, (m) => anim({ type: 'keys', period: 0.24, keys: [{ t: 0, sy: 1 }, { t: 0.12, sy: 0.25, ease: 'inOut' }], pivot: [NOSE[0], NOSE[1] - 6] }, m))),
         'butterfly',
         during(7, 9.45)) +
+      garden +
+      mailbox +
+      barrow +
       frontTrees +
       // Bushes in front
       `<path d="M0 900q30-60 90-40q40-50 90 0q50-20 60 40z" fill="url(#ke-leaf)" ${O}/>` +

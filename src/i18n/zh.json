@@ -220,6 +220,7 @@
     "fullGameOpen": "解锁所有关卡",
     "resetPurchaseCache": "忘记购买（缓存）",
     "resetPurchaseStore": "忘记购买（包括“商店”）",
+    "devBenchmark": "动画测试",
     "devOff": "关闭开发者模式"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "侦探故事",
     "tinyBoy": "小男孩",
     "treasury": "藏宝室",
-    "test": "测试关卡"
+    "test": "测试关卡",
+    "cartoon": "动画片"
   },
   "levelTitles": {
     "memoryFlowerShop": "花店",
@@ -1099,5 +1101,9 @@
     "tag": "奖励",
     "lockedHint": "先找到所有金钥匙——它们藏在每个世界和每种模式的关卡里。然后宝库就会打开！",
     "congrats": "你是最细心的玩家！"
+  },
+  "cartoonMode": {
+    "task": "在动画片里找不同",
+    "rules": "两部动画片同时播放同一个有趣的故事。有些不同一直都在，有些只出现一瞬间——请仔细看。用两根手指放大：你看的时候画面不会跑开。"
   }
 }

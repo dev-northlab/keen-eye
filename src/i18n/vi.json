@@ -32,7 +32,8 @@
     "time": "Thời gian",
     "travel": "Vòng quanh thế giới",
     "treasury": "Kho báu",
-    "test": "Màn thử nghiệm"
+    "test": "Màn thử nghiệm",
+    "cartoon": "Hoạt hình"
   },
   "common": {
     "back": "Quay lại",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Phát triển",
+    "devBenchmark": "Kiểm tra hoạt ảnh",
     "devOff": "Tắt chế độ nhà phát triển",
     "fullGame": "Trò chơi đầy đủ",
     "fullGameOpen": "Mở khóa mọi màn chơi",
@@ -1099,5 +1101,9 @@
     "rules": "Du lịch vòng quanh thế giới: tìm điểm khác biệt ở mỗi nơi, khám phá một điều thú vị về nơi đó và nhận con dấu trong hộ chiếu.",
     "stamps": "Con dấu: {n}/{total}",
     "task": "Điểm khác biệt khắp thế giới"
+  },
+  "cartoonMode": {
+    "task": "Tìm điểm khác biệt trong phim hoạt hình",
+    "rules": "Hai bộ phim hoạt hình kể cùng một câu chuyện vui. Có điểm khác biệt hiện suốt, có điểm chỉ thoáng qua — hãy nhìn thật kỹ. Phóng to bằng hai ngón tay: hình sẽ đứng yên khi bạn nhìn."
   }
 }

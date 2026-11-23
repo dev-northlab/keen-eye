@@ -220,6 +220,7 @@
     "fullGameOpen": "Desbloquear todos los niveles",
     "resetPurchaseCache": "Olvidar compra (caché)",
     "resetPurchaseStore": "Olvidar compra (también en la «tienda»)",
+    "devBenchmark": "Prueba de animación",
     "devOff": "Desactivar el modo desarrollador"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Historia de detectives",
     "tinyBoy": "Pequeñín",
     "treasury": "Cámara del tesoro",
-    "test": "Niveles de prueba"
+    "test": "Niveles de prueba",
+    "cartoon": "Dibujos animados"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floristería",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Primero encuentra todas las llaves de oro: están escondidas en los niveles de cada mundo y modo. ¡Entonces se abrirá el tesoro!",
     "congrats": "¡Eres el jugador más observador!"
+  },
+  "cartoonMode": {
+    "task": "Encuentra las diferencias en un dibujo animado",
+    "rules": "Dos dibujos animados cuentan la misma historia divertida. Algunas diferencias se ven todo el tiempo y otras solo un instante: mira con atención. Amplía la imagen con dos dedos: no se escapa mientras miras."
   }
 }

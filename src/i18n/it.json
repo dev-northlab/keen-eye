@@ -220,6 +220,7 @@
     "fullGameOpen": "Sblocca tutti i livelli",
     "resetPurchaseCache": "Dimentica acquisto (cache)",
     "resetPurchaseStore": "Dimentica acquisto (anche nello «store»)",
+    "devBenchmark": "Test animazione",
     "devOff": "Disattiva la modalità sviluppatore"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Storia investigativa",
     "tinyBoy": "Piccolino",
     "treasury": "Stanza del tesoro",
-    "test": "Livelli di prova"
+    "test": "Livelli di prova",
+    "cartoon": "Cartoni animati"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fioraio",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Prima trova tutte le chiavi d’oro: sono nascoste nei livelli di ogni mondo e modalità. Allora il tesoro si aprirà!",
     "congrats": "Sei il giocatore più attento!"
+  },
+  "cartoonMode": {
+    "task": "Trova le differenze in un cartone animato",
+    "rules": "Due cartoni animati raccontano la stessa storia buffa. Alcune differenze restano sempre, altre durano solo un attimo: guarda bene. Ingrandisci con due dita: l’immagine resta ferma mentre guardi."
   }
 }

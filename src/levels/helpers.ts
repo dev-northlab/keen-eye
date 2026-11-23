@@ -5,7 +5,7 @@ import type { Animation, AnimationMotion, CartoonFilm, Difference, EventWindow, 
  * Returns `a` for picture A and `b` for picture B and registers the zone
  * (x, y, r) in viewBox coordinates. Everything a/b draw must fit inside it.
  * `follow` is the id of an animation (see `anim`) the zone moves with. `during`: a cartoon's event, shown and
- * tappable only in that window of the story (docs/cartoon-spike.md).
+ * tappable only in that window of the story (docs/cartoon-mode.md).
  */
 export type Diff = (x: number, y: number, r: number, a: string, b: string, follow?: string, during?: EventWindow) => string
 

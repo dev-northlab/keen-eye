@@ -220,6 +220,7 @@
     "fullGameOpen": "Minden pálya feloldása",
     "resetPurchaseCache": "Vásárlás elfelejtése (gyorsítótár)",
     "resetPurchaseStore": "Vásárlás elfelejtése (a „boltban” is)",
+    "devBenchmark": "Animációs teszt",
     "devOff": "Fejlesztői mód kikapcsolása"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Detektívtörténet",
     "tinyBoy": "Kisfiú",
     "treasury": "Kincskamra",
-    "test": "Tesztpályák"
+    "test": "Tesztpályák",
+    "cartoon": "Rajzfilmek"
   },
   "levelTitles": {
     "memoryFlowerShop": "Virágbolt",
@@ -1099,5 +1101,9 @@
     "tag": "Bónusz",
     "lockedHint": "Először találd meg az összes aranykulcsot – minden világ és mód pályáin el vannak rejtve. Akkor kinyílik a kincstár!",
     "congrats": "Te vagy a legfigyelmesebb játékos!"
+  },
+  "cartoonMode": {
+    "task": "Keresd a különbségeket egy rajzfilmben",
+    "rules": "Két rajzfilm ugyanazt a vicces történetet meséli el. Néhány különbség mindig látszik, mások csak egy pillanatra – figyelj jól. Nagyíts két ujjal: amíg nézed, a kép nem szalad el."
   }
 }

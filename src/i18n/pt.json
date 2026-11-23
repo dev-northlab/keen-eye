@@ -220,6 +220,7 @@
     "fullGameOpen": "Desbloquear todas as fases",
     "resetPurchaseCache": "Esquecer compra (cache)",
     "resetPurchaseStore": "Esquecer compra (também na \"loja\")",
+    "devBenchmark": "Teste de animação",
     "devOff": "Desativar o modo de desenvolvedor"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "História de detetive",
     "tinyBoy": "Pequenino",
     "treasury": "Sala do tesouro",
-    "test": "Níveis de teste"
+    "test": "Níveis de teste",
+    "cartoon": "Desenhos animados"
   },
   "levelTitles": {
     "memoryFlowerShop": "Floricultura",
@@ -1099,5 +1101,9 @@
     "tag": "Bônus",
     "lockedHint": "Primeiro encontre todas as chaves douradas — estão escondidas nos níveis de cada mundo e modo. Então o tesouro se abrirá!",
     "congrats": "Você é o jogador mais atento!"
+  },
+  "cartoonMode": {
+    "task": "Encontre as diferenças num desenho animado",
+    "rules": "Dois desenhos animados contam a mesma história engraçada. Algumas diferenças ficam o tempo todo, outras só por um instante — olhe com atenção. Amplie com dois dedos: a imagem fica parada enquanto você olha."
   }
 }

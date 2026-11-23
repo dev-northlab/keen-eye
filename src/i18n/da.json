@@ -32,7 +32,8 @@
     "time": "Tiden",
     "travel": "Jorden rundt",
     "treasury": "Skatkammer",
-    "test": "Testbaner"
+    "test": "Testbaner",
+    "cartoon": "Tegnefilm"
   },
   "common": {
     "back": "Tilbage",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Udvikling",
+    "devBenchmark": "Animationstest",
     "devOff": "Slå udviklertilstand fra",
     "fullGame": "Hele spillet",
     "fullGameOpen": "Lås alle baner op",
@@ -1099,5 +1101,9 @@
     "rules": "Rejs jorden rundt: find forskellene på hvert sted, lær en interessant ting om det, og få et stempel i dit pas.",
     "stamps": "Stempler: {n} af {total}",
     "task": "Forskelle verden rundt"
+  },
+  "cartoonMode": {
+    "task": "Find forskellene i en tegnefilm",
+    "rules": "To tegnefilm viser den samme sjove historie. Nogle forskelle ses hele tiden, andre kun et øjeblik – kig godt efter. Zoom ind med to fingre: billedet står stille, mens du kigger."
   }
 }

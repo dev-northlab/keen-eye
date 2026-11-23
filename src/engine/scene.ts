@@ -86,6 +86,11 @@ export class GameScene {
     this.board.resetZoom()
   }
 
+  /** How many times the pictures have been posed so far (the developer's frame meter, per second). */
+  get poses(): number {
+    return this.board.poses
+  }
+
   /**
    * Highlights a random unfound difference until it is found. Returns false when
    * there is nothing to hint or a hint is already shown (so a hint is never spent twice).

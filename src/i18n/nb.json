@@ -32,7 +32,8 @@
     "time": "Tiden",
     "travel": "Jorda rundt",
     "treasury": "Skattkammer",
-    "test": "Testnivåer"
+    "test": "Testnivåer",
+    "cartoon": "Tegnefilm"
   },
   "common": {
     "back": "Tilbake",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Utvikling",
+    "devBenchmark": "Animasjonstest",
     "devOff": "Slå av utviklermodus",
     "fullGame": "Hele spillet",
     "fullGameOpen": "Lås opp alle brett",
@@ -1099,5 +1101,9 @@
     "rules": "Reis jorda rundt: finn forskjellene på hvert sted, lær noe interessant om det og få et stempel i passet ditt.",
     "stamps": "Stempler: {n} av {total}",
     "task": "Forskjeller verden rundt"
+  },
+  "cartoonMode": {
+    "task": "Finn forskjellene i en tegnefilm",
+    "rules": "To tegnefilmer viser den samme morsomme historien. Noen forskjeller synes hele tiden, andre bare et øyeblikk – se godt etter. Zoom inn med to fingre: bildet står stille mens du ser."
   }
 }

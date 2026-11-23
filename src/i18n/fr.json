@@ -220,6 +220,7 @@
     "fullGameOpen": "Débloquer tous les niveaux",
     "resetPurchaseCache": "Oublier l’achat (cache)",
     "resetPurchaseStore": "Oublier l’achat (aussi dans le « store »)",
+    "devBenchmark": "Test d’animation",
     "devOff": "Désactiver le mode développeur"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Histoire de détective",
     "tinyBoy": "Petit garçon",
     "treasury": "Salle au trésor",
-    "test": "Niveaux de test"
+    "test": "Niveaux de test",
+    "cartoon": "Dessins animés"
   },
   "levelTitles": {
     "memoryFlowerShop": "Fleuriste",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Trouvez d’abord toutes les clés d’or : elles sont cachées dans les niveaux de chaque monde et de chaque mode. Alors le trésor s’ouvrira !",
     "congrats": "Vous êtes le joueur le plus attentif !"
+  },
+  "cartoonMode": {
+    "task": "Trouve les différences dans un dessin animé",
+    "rules": "Deux dessins animés racontent la même histoire drôle. Certaines différences restent tout le temps, d’autres ne durent qu’un instant : regarde bien. Zoome avec deux doigts : l’image ne bouge plus pendant que tu regardes."
   }
 }

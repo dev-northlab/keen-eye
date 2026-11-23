@@ -15,6 +15,7 @@ import {
   zonesAt,
   type Picture,
 } from './render.ts'
+import { PoseRate } from './pace.ts'
 import { hitTest } from './rules.ts'
 import { combineTransforms, inverseTransformPoint, type PictureTransform } from './transform.ts'
 import type { Level } from './types.ts'
@@ -53,7 +54,7 @@ export interface BoardOptions {
 /** What a single player scene needs of its pictures: a `Board`, or a cartoon's `CartoonBoard` (engine/cartoon.ts). */
 export type SceneBoard = Pick<
   Board,
-  'pose' | 'markFound' | 'markMiss' | 'showHint' | 'hinting' | 'reveal' | 'takeSecret' | 'resetZoom' | 'destroy' | 'setTransformB' | 'animated' | 'zooming'
+  'pose' | 'markFound' | 'markMiss' | 'showHint' | 'hinting' | 'reveal' | 'takeSecret' | 'resetZoom' | 'destroy' | 'setTransformB' | 'animated' | 'zooming' | 'poses'
 >
 
 /** Index of a random unfound difference, or -1 when all are found. */
@@ -84,6 +85,12 @@ export class Board {
   private secretLeft: boolean
   /** Animation time of the current pose (zones of moving objects follow it). */
   private time = 0
+  /**
+   * A cartoon's story (keyframe timelines) poses at a cartoon's pace, ~60 a second while the phone keeps up
+   * (`PoseRate`); other scenes ~30, as their slow motion needs.
+   */
+  private readonly storyRate: PoseRate | null
+  private storyPosedAt = -Infinity
   /** Difference highlighted by a hint, or -1. */
   private hinted = -1
   /** A miss waits DOUBLE_TAP_MS: if it turns out to be the first tap of a double tap, it is dropped. */
@@ -99,6 +106,7 @@ export class Board {
     this.onSecret = options.onSecret
     this.onAnimate = options.onAnimate
     this.pictures = this.transforms.map((t, i) => createPicture(level, i as 0 | 1, t, options.extras))
+    this.storyRate = this.pictures.some((p) => p.animated.some((a) => a.animation.type === 'keys')) ? new PoseRate() : null
     this.secretLeft = !!level.secret && !options.secretTaken
     if (level.secret && !this.secretLeft) for (const p of this.pictures) takeSecret(p, level.secret, false)
     const svgs = this.pictures.map((p) => p.svg)
@@ -131,6 +139,11 @@ export class Board {
     return this.pictures.some((p) => p.animated.length > 0)
   }
 
+  /** How many times the pictures have been posed (the developer's frame meter). */
+  get poses(): number {
+    return this.pictures[0].poses
+  }
+
   /** A zoom animation is running: `pose` must be called every frame. */
   get zooming(): boolean {
     return this.viewport.animating
@@ -144,7 +157,11 @@ export class Board {
   /** Poses the pictures at animation time t and advances the zoom animation; called every frame. */
   pose(t: number, now: number): void {
     this.time = t
-    for (const p of this.pictures) animatePicture(p, this.level.differences, t)
+    if (!this.storyRate) for (const p of this.pictures) animatePicture(p, this.level.differences, t)
+    else if (this.storyRate.due(now, this.storyPosedAt)) {
+      this.storyPosedAt = now
+      for (const p of this.pictures) animatePicture(p, this.level.differences, t, 0)
+    }
     this.viewport.step(now)
   }
 

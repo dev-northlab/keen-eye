@@ -220,6 +220,7 @@
     "fullGameOpen": "Deblochează toate nivelurile",
     "resetPurchaseCache": "Uită achiziția (cache)",
     "resetPurchaseStore": "Uită achiziția (și în „magazin”)",
+    "devBenchmark": "Test de animație",
     "devOff": "Dezactivează modul dezvoltator"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Poveste polițistă",
     "tinyBoy": "Băiețelul",
     "treasury": "Camera comorii",
-    "test": "Niveluri de test"
+    "test": "Niveluri de test",
+    "cartoon": "Desene animate"
   },
   "levelTitles": {
     "memoryFlowerShop": "Florărie",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Mai întâi găsește toate cheile de aur — sunt ascunse în nivelurile fiecărei lumi și fiecărui mod. Atunci se deschide comoara!",
     "congrats": "Ești cel mai atent jucător!"
+  },
+  "cartoonMode": {
+    "task": "Găsește diferențele într-un desen animat",
+    "rules": "Două desene animate spun aceeași poveste amuzantă. Unele diferențe se văd tot timpul, altele doar o clipă – fii atent. Mărește imaginea cu două degete: nu fuge cât timp te uiți."
   }
 }

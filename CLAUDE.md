@@ -137,7 +137,16 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
   the HUD's line), its banners "won" / "not won yet" (`map.won`, `map.notWon`); open like "time", but only its first level is free
   (`Chapter.free`);
-  `allLevels` = worlds + time + memory + travel + detective + tiny boy (`levels` stays the worlds),
+  `cartoon/` — "cartoons" (`docs/cartoon-mode.md`): levels 801– of chapter `cartoon`, short funny stories that loop,
+  told by a camera (`svgLevel({ …, cartoon: { period, frame, camera } })`, played by `LevelView` on `CartoonBoard`,
+  `engine/cartoon.ts`: shots, pans and cuts, fitted to the picture's shape, the player's zoom holds the shot; posed
+  ~60 a second by `PoseRate`, `engine/pace.ts`); stories on keyframes (`keys` motion, `engine/keyframes.ts`), event
+  differences shown only in their window (`Difference.during`); 12 differences, two hard; made like 802 "The stolen
+  pie" (a rich yard in sunlight: shaded trees, ground shadows, textures; helpers in `cartoon/shapes.ts`); listed in a
+  category grid, opened by a live banner (`CartoonBannerScene` in `PhotoBanner`'s `picture` slot), the second on the
+  game modes screen; only its first level is free; no key yet (left out of `KEY_CHAPTERS`); `ranges` grow with every
+  new cartoon;
+  `allLevels` = worlds + time + memory + travel + detective + tiny boy + cartoons (`levels` stays the worlds),
   `difficulty.ts` (difference and motion counts, min zone radius and gap, kinds by level range; read by `check-levels`)
 - `src/views/` — screens: Home, LevelMap (game mode banners, `/levels`), Worlds (world banners, `/worlds`; a world whose levels all need the purchase opens the full-game offer, not its grid), Chapter (level grid of one chapter, `/levels/:chapter`, with a dice button that opens a random playable level;
   the levels ahead lie in a fog — those reached, one more and two fading tiles show, the rest stay under a cloud with no
@@ -234,7 +243,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   place in the grid with a crossed-out eye (`chapterLevelsWithHidden`, `ChapterView`) and plays them free.
   `check-levels`/`preview-levels` take them too. To release one, move it into its chapter's list and update the
   store texts. The "test" chapter (`TEST_CHAPTER`, ids 1001–1100, `levels/test/`) lives there for good:
-  picture pairs tried out in developer mode (a banner at the end of the game modes screen while it has any; now 1001–1002, the cartoon spike of `docs/cartoon-spike.md`: a story looping on keyframes (`keys` motion), event differences (`Difference.during`), and 1002 shown by a camera, `CartoonBoard` in `engine/cartoon.ts`), `kind: 'image'` levels
+  picture pairs tried out in developer mode (a banner at the end of the game modes screen while it has any; empty now), `kind: 'image'` levels
   with their pictures in `public/levels/test/` (paths relative to the app base, viewBox = image pixels), and
   `testLabels` (format, size, file size of A and B) that `LevelView` shows over the pictures. Drawing helpers per chapter: `shapes.ts` (farm), `chapter-02/shapes.ts` (city),
   `chapter-03/shapes.ts` (forest), `chapter-04/shapes.ts` (sea), `chapter-05/shapes.ts` (space). Every
@@ -321,6 +330,9 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   not emoji, for UI symbols (Android draws ⏸ ⏹ ▶ as colored emoji).
 - Board taps: `Gestures` cancels the touch's synthetic click, otherwise the last find's tap would also press a button
   of the result dialog that opens under the finger.
+- Developer mode also shows a frame meter over every level (`FpsMeter`: frames shown, the scene's redraws per second,
+  the longest frame) and has an "Animation benchmark" (`/dev/bench`, `BenchView`, `src/bench/`: level 802 played by SVG
+  and by Canvas 2D from bitmaps of its static parts, for comparing phones).
 - Developer tools ("Open all levels", "Complete all levels", "Forget purchase", "Reset progress", "Reset found keys") sit in the `DevToolsDialog`, opened by the "Development" entry in Settings. It shows only in developer mode (`settings.developer`), turned on by the temporary testing code (`DEVELOPER_CODE` in `stores/settings.ts`) typed into the code field of that same "Development" row (before the code the row shows the field, after it the row opens the dialog); "Open all levels" and "Show places in levels" (the levels' red outline of all zones) work only while developer mode is on.
 - `chapter` and `title` are i18n keys (`chapters.<chapter>`, `levelTitles.<title>`); all UI text goes through vue-i18n.
 - Level modules and everything they import must stay free of browser/Vue APIs (the validator runs them in Node),

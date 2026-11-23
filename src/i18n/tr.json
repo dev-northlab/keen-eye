@@ -220,6 +220,7 @@
     "fullGameOpen": "Tüm bölümlerin kilidini aç",
     "resetPurchaseCache": "Satın almayı unut (önbellek)",
     "resetPurchaseStore": "Satın almayı unut (\"mağazada\" da)",
+    "devBenchmark": "Animasyon testi",
     "devOff": "Geliştirici modunu kapat"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Dedektif hikâyesi",
     "tinyBoy": "Minik",
     "treasury": "Hazine odası",
-    "test": "Test bölümleri"
+    "test": "Test bölümleri",
+    "cartoon": "Çizgi filmler"
   },
   "levelTitles": {
     "memoryFlowerShop": "Çiçekçi",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Önce tüm altın anahtarları bul — her dünyanın ve modun bölümlerinde saklılar. O zaman hazine odası açılır!",
     "congrats": "Sen en dikkatli oyuncusun!"
+  },
+  "cartoonMode": {
+    "task": "Çizgi filmdeki farkları bul",
+    "rules": "İki çizgi film aynı komik hikâyeyi anlatır. Bazı farklar hep görünür, bazıları ise yalnızca bir an için – dikkatle bak. İki parmakla yakınlaştır: sen bakarken resim kaçmaz."
   }
 }

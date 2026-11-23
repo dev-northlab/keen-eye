@@ -32,7 +32,8 @@
     "time": "Aika",
     "travel": "Maailmanmatka",
     "treasury": "Aarrekammio",
-    "test": "Testitasot"
+    "test": "Testitasot",
+    "cartoon": "Piirretyt"
   },
   "common": {
     "back": "Takaisin",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Kehitys",
+    "devBenchmark": "Animaatiotesti",
     "devOff": "Poista kehittäjätila käytöstä",
     "fullGame": "Koko peli",
     "fullGameOpen": "Avaa kaikki tasot",
@@ -1099,5 +1101,9 @@
     "rules": "Matkusta ympäri maailmaa: etsi erot joka paikasta, opi siitä kiinnostava asia ja saa leima passiisi.",
     "stamps": "Leimat: {n}/{total}",
     "task": "Eroja ympäri maailmaa"
+  },
+  "cartoonMode": {
+    "task": "Etsi erot piirretystä",
+    "rules": "Kaksi piirrettyä kertoo saman hauskan tarinan. Osa eroista näkyy koko ajan, osa vain hetken – katso tarkkaan. Lähennä kahdella sormella: kuva pysyy paikallaan, kun katsot."
   }
 }

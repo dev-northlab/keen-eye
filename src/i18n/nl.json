@@ -220,6 +220,7 @@
     "fullGameOpen": "Alle levels ontgrendelen",
     "resetPurchaseCache": "Aankoop vergeten (cache)",
     "resetPurchaseStore": "Aankoop vergeten (ook in de \"winkel\")",
+    "devBenchmark": "Animatietest",
     "devOff": "Ontwikkelaarsmodus uitschakelen"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Detectiveverhaal",
     "tinyBoy": "Kleine jongen",
     "treasury": "Schatkamer",
-    "test": "Testlevels"
+    "test": "Testlevels",
+    "cartoon": "Tekenfilms"
   },
   "levelTitles": {
     "memoryFlowerShop": "Bloemenwinkel",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Vind eerst alle gouden sleutels – ze zijn verstopt in de levels van elke wereld en modus. Dan gaat de schatkamer open!",
     "congrats": "Jij bent de oplettendste speler!"
+  },
+  "cartoonMode": {
+    "task": "Zoek de verschillen in een tekenfilm",
+    "rules": "Twee tekenfilms vertellen hetzelfde grappige verhaal. Sommige verschillen blijven de hele tijd, andere zie je maar even – let goed op. Zoom in met twee vingers: het beeld blijft stilstaan terwijl je kijkt."
   }
 }

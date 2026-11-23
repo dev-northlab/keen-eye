@@ -220,6 +220,7 @@
     "fullGameOpen": "Odblokuj wszystkie poziomy",
     "resetPurchaseCache": "Zapomnij zakup (pamięć podręczna)",
     "resetPurchaseStore": "Zapomnij zakup (także w „sklepie”)",
+    "devBenchmark": "Test animacji",
     "devOff": "Wyłącz tryb dewelopera"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Historia detektywistyczna",
     "tinyBoy": "Maluch",
     "treasury": "Skarbiec",
-    "test": "Poziomy testowe"
+    "test": "Poziomy testowe",
+    "cartoon": "Kreskówki"
   },
   "levelTitles": {
     "memoryFlowerShop": "Kwiaciarnia",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "Najpierw znajdź wszystkie złote klucze — są ukryte w poziomach każdego świata i trybu. Wtedy skarbiec się otworzy!",
     "congrats": "Jesteś najbardziej spostrzegawczym graczem!"
+  },
+  "cartoonMode": {
+    "task": "Znajdź różnice w kreskówce",
+    "rules": "Dwie kreskówki pokazują tę samą zabawną historię. Niektóre różnice widać cały czas, inne tylko przez chwilę – patrz uważnie. Przybliż obraz dwoma palcami: nie ucieka, gdy patrzysz."
   }
 }

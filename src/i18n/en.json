@@ -220,6 +220,7 @@
     "fullGameOpen": "Unlock all levels",
     "resetPurchaseCache": "Forget purchase (cache)",
     "resetPurchaseStore": "Forget purchase (also in the \"store\")",
+    "devBenchmark": "Animation benchmark",
     "devOff": "Turn off developer mode"
   },
   "common": {
@@ -239,7 +240,8 @@
     "detective": "Detective story",
     "tinyBoy": "Tiny boy",
     "treasury": "Treasury",
-    "test": "Test levels"
+    "test": "Test levels",
+    "cartoon": "Cartoons"
   },
   "levelTitles": {
     "memoryFlowerShop": "Flower shop",
@@ -1099,5 +1101,9 @@
     "tag": "Bonus",
     "lockedHint": "First find all the golden keys — they are hidden in the levels of every world and mode. Then the treasury opens!",
     "congrats": "You are the keenest player of all!"
+  },
+  "cartoonMode": {
+    "task": "Spot the difference in a cartoon",
+    "rules": "Two cartoons play the same funny story at once. Some differences stay all the time, others happen only for a moment of the story — watch closely. Pinch to zoom in: the picture holds still while you look."
   }
 }

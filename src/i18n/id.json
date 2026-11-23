@@ -32,7 +32,8 @@
     "time": "Waktu",
     "travel": "Keliling dunia",
     "treasury": "Ruang harta",
-    "test": "Level uji"
+    "test": "Level uji",
+    "cartoon": "Kartun"
   },
   "common": {
     "back": "Kembali",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Pengembangan",
+    "devBenchmark": "Uji animasi",
     "devOff": "Matikan mode pengembang",
     "fullGame": "Permainan lengkap",
     "fullGameOpen": "Buka semua level",
@@ -1099,5 +1101,9 @@
     "rules": "Jelajahi dunia: temukan perbedaan di setiap tempat, pelajari fakta menarik tentangnya, dan dapatkan cap di paspormu.",
     "stamps": "Cap: {n} dari {total}",
     "task": "Perbedaan di seluruh dunia"
+  },
+  "cartoonMode": {
+    "task": "Temukan perbedaan dalam kartun",
+    "rules": "Dua kartun memutar cerita lucu yang sama. Beberapa perbedaan terlihat sepanjang waktu, yang lain hanya sesaat — perhatikan baik-baik. Perbesar dengan dua jari: gambar diam selama kamu melihat."
   }
 }

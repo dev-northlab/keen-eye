@@ -1,4 +1,4 @@
-// Keyframe timelines of cartoons (docs/cartoon-spike.md): values eased from key to key over a looping story.
+// Keyframe timelines of cartoons (docs/cartoon-mode.md): values eased from key to key over a looping story.
 // No DOM, so the level validator can use it in Node.
 import type { Ease, EventWindow } from './types.ts'
 

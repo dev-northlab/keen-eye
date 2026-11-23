@@ -3,7 +3,8 @@
  * A game mode's banner (LevelMapView) or a "tiny boy" level's (TinyBoyView): a coloured gradient with a picture at
  * its end side (public/banners/), faded into the colour under the text. The parent sets the colours with
  * `--banner-from`, `--banner-mid`, `--banner-to`, `--banner-shadow` and `--banner-icon-bg` (sky blue by default).
- * Slots: `icon` fills the square at the start (an inline SVG, an <img>: a photo, or with class `obj` a 3D object icon of
+ * Slots: `picture` takes the photo's place with live markup (the cartoons' moving scene, CartoonBannerScene); `icon`
+ * fills the square at the start (an inline SVG, an <img>: a photo, or with class `obj` a 3D object icon of
  * public/icons/, or a number), the default one the line
  * under the name, `end` sits at the end inside the button (the level ids, room for a key badge laid over it).
  * The picture is mirrored right to left, so what it shows on its right stays at the outer edge.
@@ -14,6 +15,7 @@ defineProps<{ name: string; photo?: string; tag?: string; disabled?: boolean }>(
 <template>
   <button class="banner" type="button" :disabled="disabled">
     <img v-if="photo" class="photo flip-rtl" :src="photo" alt="" />
+    <span v-else-if="$slots.picture" class="photo flip-rtl"><slot name="picture" /></span>
     <span class="icon"><slot name="icon" /></span>
     <span class="text">
       <span v-if="tag" class="tag">{{ tag }}</span>
@@ -60,6 +62,13 @@ defineProps<{ name: string; photo?: string; tag?: string; disabled?: boolean }>(
   max-width: none;
   mask-image: linear-gradient(to right, transparent 12%, #000 62%);
   pointer-events: none;
+}
+
+/* Live markup in the photo's place: an svg as tall as the banner, as wide as its own proportions. */
+span.photo :slotted(svg) {
+  display: block;
+  height: 100%;
+  width: auto;
 }
 
 .icon {

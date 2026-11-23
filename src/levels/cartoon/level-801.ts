@@ -1,13 +1,43 @@
-// Cartoon spike, approach A (docs/cartoon-spike.md): a 16 s story played by the usual board — a still camera, zoom
-// as on any level. A cat sneaks to the pond, leaps for a jumping fish, lands in the water, shakes itself dry and
-// walks home. Five differences stay all the story long (one rides on the cat), three are events of the story.
-import type { Keyframe } from '../../engine/types.ts'
+// Cartoon "Cat at the pond" (docs/cartoon-mode.md), made like level 802: a 16 s story shown by a camera that
+// follows the cat and cuts between shots. The cat sneaks to the pond, leaps for a jumping fish, lands in the water,
+// shakes itself dry and walks home — while it is away, a mouse comes out of its hole and flees as the cat turns.
+// Twelve differences: eight that stay all along (one rides on the cat), four events of the story; two are hard
+// (a cattail at the pond, the chimney's cap).
+import type { CameraKey, Keyframe } from '../../engine/types.ts'
 import { svgLevel } from '../helpers.ts'
-import { bee, bird, butterflyAt, cat, catBow, dragonfly, farBird, fish, fly, frog, INK, lilyPad, mouse, O, Ow, puffCloud, snail, swingKeys, waterLily } from './cartoon-shapes.ts'
+import { apple, appleTree, bee, birchTree, bird, butterflyAt, cat, catBow, dragonfly, farBird, fish, fly, frog, grassTuft, groundShadow, INK, lilyPad, mouse, NATURE_DEFS, O, Ow, pineTree, puffCloud, roundTree, snail, swingKeys, waterLily } from './shapes.ts'
 
 /** Seconds of one loop of the story. */
 const LOOP = 16
 const during = (from: number, to: number) => ({ from, to, period: LOOP })
+
+const WIDE = { x: 0, y: 0, w: 800 }
+/** The shot of the mouse's hole, cut to twice: it comes out, and it flees. */
+const HOLE = { x: 10, y: 225, w: 250 }
+const camera: CameraKey[] = [
+  { t: 0, ...WIDE, ease: 'step' },
+  // Following the cat as it sneaks to the pond…
+  { t: 2.8, x: 100, y: 215, w: 360, ease: 'linear' },
+  { t: 3.2, x: 100, y: 215, w: 360, ease: 'inOut' },
+  { t: 5.6, x: 170, y: 240, w: 360, ease: 'linear' },
+  // …over to the pond as the fish jumps and the cat leaps.
+  { t: 6, x: 170, y: 240, w: 360, ease: 'inOut' },
+  { t: 6.35, x: 250, y: 220, w: 440, ease: 'linear' },
+  { t: 7.3, x: 262, y: 228, w: 420, ease: 'step' },
+  // In the water, the frog beside it.
+  { t: 7.35, x: 290, y: 330, w: 260, ease: 'step' },
+  // Meanwhile, at the house: the mouse comes out.
+  { t: 9, ...HOLE, ease: 'step' },
+  // The cat shakes itself dry…
+  { t: 10.4, x: 170, y: 260, w: 250, ease: 'step' },
+  // …and the mouse runs for it.
+  { t: 11.4, ...HOLE, ease: 'step' },
+  // Following the cat home, a bird on the fence; then back to the whole yard.
+  { t: 12.1, x: 120, y: 205, w: 380, ease: 'linear' },
+  { t: 12.2, x: 120, y: 205, w: 380, ease: 'inOut' },
+  { t: 14.6, x: 60, y: 195, w: 380, ease: 'inOut' },
+  { t: 15.4, ...WIDE, ease: 'linear' },
+]
 
 /** The cat's rest place: by the house door; drawn 1.45 times its helper's size, a star of the story. */
 const CAT: [number, number] = [175, 345]
@@ -44,6 +74,24 @@ const catKeys: Keyframe[] = [
   { t: 15.3, sx: 1 },
 ]
 const WALKS: [number, number][] = [[3.2, 5.6], [10.05, 10.5], [11.75, 14.6]]
+
+/**
+ * The cat's shadow on the grass: under its feet on the slope down to the pond (the ground falls 40 over the first
+ * 100 of the way), shrinking while it leaps, and gone while it is in the water.
+ */
+const catShadowKeys: Keyframe[] = (() => {
+  let x = 0
+  let y = 0
+  return catKeys.map((k) => {
+    x = k.x ?? x
+    y = k.y ?? y
+    const ground = Math.min(x, 100) * 0.4
+    const lift = Math.max(0, ground - y)
+    const inWater = x > 150 && y > 60
+    const s = 1 - Math.min(lift / 160, 0.5)
+    return { t: k.t, x, y: Math.min(ground, 40), sx: s, sy: s, o: inWater ? 0 : 1 - Math.min(lift / 140, 0.6), ...(k.ease && { ease: k.ease }) }
+  })
+})()
 
 const FISH: [number, number] = [530, 320]
 const fishKeys: Keyframe[] = [
@@ -184,14 +232,15 @@ const appleKeys: Keyframe[] = [
 ]
 
 const fencePost = (x: number) =>
-  `<path d="M${x - 9} 318V276l9-8l9 8V318z" fill="#f3e2bd" ${Ow(2)}/>`
+  `<path d="M${x - 9} 318V276l9-8l9 8V318z" fill="url(#c1-picket)" ${Ow(2)}/>`
 
 export default svgLevel({
-  id: 1001,
-  chapter: 'test',
+  id: 801,
+  chapter: 'cartoon',
   title: 'cartoonCatPond',
-  parTimeSec: 90,
-  scene: ({ diff, anim }) => {
+  parTimeSec: 120,
+  cartoon: { period: LOOP, frame: { w: 800, h: 500 }, camera },
+  scene: ({ diff, anim, rand }) => {
     const keys = (id: string | undefined, k: Keyframe[], pivot: [number, number], markup: string) =>
       anim({ type: 'keys', keys: k, pivot, period: LOOP, ...(id && { id }) }, markup)
     const flap = (intervals: [number, number][]) => (m: string) =>
@@ -223,15 +272,57 @@ export default svgLevel({
       anim({ type: 'path', points: [[0, 0], [30, -16], [64, -4], [40, 14], [8, 10]], period: 4.2 }, bee(352, 300, beat([353, 295], 0.12))) +
       anim({ type: 'path', points: [[0, 0], [-26, -12], [-52, 6], [-20, 18]], period: 3.4, reverse: true }, bee(484, 296, beat([485, 291], 0.12, 0.5)))
 
+    /** A tree's crown swaying in the wind, each tree at its own pace. */
+    const crown = (period: number, angle = 2) => (pivot: [number, number], m: string) =>
+      anim({ type: 'sway', angle, pivot, period, phase: (pivot[0] % 11) / 11 }, m)
+
+    // A distant wood along the hills, then trees of several kinds behind the fence and in the corners.
+    let wood = ''
+    for (const [wx, wy, r, c] of [[260, 246, 18, '#8cc770'], [290, 240, 22, '#7fbf66'], [322, 248, 16, '#93cc78'], [560, 238, 20, '#86c46d'], [590, 232, 24, '#7aba61'], [620, 242, 17, '#8cc770']] as [number, number, number, string][])
+      wood += `<circle cx="${wx}" cy="${wy}" r="${r}" fill="${c}"/>`
+    const backTrees =
+      pineTree(330, 286, 0.62, crown(4.4, 1.5)) +
+      roundTree(462, 282, 0.5, 'url(#ke-leaf)', crown(4.2)) +
+      birchTree(646, 284, 0.6, crown(3.6, 3))
+    const frontTrees =
+      appleTree(36, 500, 0.5, crown(5.2)) +
+      apple(20, 496, 5) + apple(56, 498, 5) +
+      pineTree(776, 504, 0.62, crown(4, 1.5))
+
+    // Lighter and darker patches of grass.
+    let patches = ''
+    for (let i = 0; i < 12; i++) {
+      const px = Math.round(rand() * 800)
+      const py = Math.round(330 + rand() * 160)
+      const light = i % 2 === 0
+      patches += `<ellipse cx="${px}" cy="${py}" rx="${Math.round(30 + rand() * 50)}" ry="${Math.round(6 + rand() * 8)}" fill="${light ? '#c4ef8f' : '#4f9a3c'}" fill-opacity="${light ? 0.35 : 0.22}"/>`
+    }
+
+    // Reeds at both ends of the pond, swaying.
+    let reeds = ''
+    for (const [i, [rx, ry]] of ([[296, 404], [306, 410], [640, 402], [648, 412]] as [number, number][]).entries()) {
+      const reed = anim(
+        { type: 'sway', angle: 5, pivot: [rx, ry], period: 2.8, phase: i / 4 },
+        `<path d="M${rx} ${ry}q-2-24 2-46" fill="none" stroke="#4f7a2a" stroke-width="2.4" stroke-linecap="round"/>` +
+          `<rect x="${rx - 2.5}" y="${ry - 52}" width="6" height="16" rx="3" fill="#7a4a22" ${Ow(1.2)}/>` +
+          `<path d="M${rx} ${ry}q8-14 14-20" fill="none" stroke="#5c9e45" stroke-width="2" stroke-linecap="round"/>`,
+      )
+      // A hard one: the last cattail is missing in B.
+      reeds += i === 3 ? diff(rx + 3, ry - 28, 32, reed, '') : reed
+    }
+
     let fence = ''
     for (let x = 230; x <= 640; x += 22) fence += x === 604 ? diff(604, 292, 27, fencePost(x), '') : fencePost(x)
 
+    // Tufts of grass all over the meadow, off the pond and the differences' places.
     let grass = ''
-    for (const [gx, gy] of [[40, 380], [120, 470], [230, 440], [300, 480], [660, 450], [720, 380], [760, 470], [600, 482], [190, 395]])
-      grass += anim(
-        { type: 'sway', angle: 6, pivot: [gx, gy], period: 2.4, phase: (gx % 7) / 7 },
-        `<path d="M${gx - 6} ${gy}q2-12 0-18M${gx} ${gy}q1-16 4-22M${gx + 6} ${gy}q-1-10 4-14" fill="none" stroke="#3f8f3a" stroke-width="2.6" stroke-linecap="round"/>`,
-      )
+    const tufts: [number, number][] = [[40, 380], [120, 470], [230, 440], [300, 480], [660, 450], [720, 380], [760, 470], [600, 482], [190, 395]]
+    for (let i = 0; i < 20; i++) tufts.push([Math.round(10 + rand() * 780), Math.round(345 + rand() * 145)])
+    for (const [gx, gy] of tufts) {
+      const inPond = ((gx - 470) / 190) ** 2 + ((gy - 410) / 66) ** 2 < 1
+      if (inPond || Math.hypot(gx - 520, gy - 447) < 40) continue
+      grass += anim({ type: 'sway', angle: 6, pivot: [gx, gy], period: 2.4, phase: (gx % 7) / 7 }, grassTuft(gx, gy))
+    }
 
     const frogMarkup = () =>
       frog(
@@ -260,10 +351,25 @@ export default svgLevel({
       )
 
     return (
-      `<defs><linearGradient id="c1-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc6f2"/><stop offset="1" stop-color="#d8f1ff"/></linearGradient>` +
-      `<linearGradient id="c1-grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd16a"/><stop offset="1" stop-color="#5fae4a"/></linearGradient>` +
-      `<radialGradient id="c1-water" cx="0.5" cy="0.4" r="0.7"><stop offset="0" stop-color="#7fd3f0"/><stop offset="1" stop-color="#3b9fd1"/></radialGradient></defs>` +
+      `<defs>${NATURE_DEFS}` +
+      `<linearGradient id="c1-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4fa8e8"/><stop offset="0.6" stop-color="#9fd6f7"/><stop offset="1" stop-color="#e6f6ff"/></linearGradient>` +
+      `<radialGradient id="c1-glow"><stop offset="0" stop-color="#fff6c9" stop-opacity="0.95"/><stop offset="0.35" stop-color="#fff2b0" stop-opacity="0.45"/><stop offset="1" stop-color="#fff2b0" stop-opacity="0"/></radialGradient>` +
+      `<linearGradient id="c1-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9cdd2"/><stop offset="1" stop-color="#bfe0c9"/></linearGradient>` +
+      `<linearGradient id="c1-hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3e8a6"/><stop offset="1" stop-color="#9ccf80"/></linearGradient>` +
+      `<linearGradient id="c1-haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef8ff" stop-opacity="0"/><stop offset="1" stop-color="#eef8ff" stop-opacity="0.45"/></linearGradient>` +
+      `<linearGradient id="c1-grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ad874"/><stop offset="0.5" stop-color="#76c055"/><stop offset="1" stop-color="#4f9a3c"/></linearGradient>` +
+      `<pattern id="c1-blades" width="46" height="26" patternUnits="userSpaceOnUse"><path d="M6 20l2-7M10 21l-1-6M28 9l2-6M33 10l-1-5M40 24l1-6" stroke="#3f8a33" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"/></pattern>` +
+      `<radialGradient id="c1-water" cx="0.62" cy="0.3" r="0.8"><stop offset="0" stop-color="#9fe0f5"/><stop offset="0.5" stop-color="#58b8e0"/><stop offset="1" stop-color="#2b7fb0"/></radialGradient>` +
+      `<linearGradient id="c1-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ead2a0"/><stop offset="0.7" stop-color="#fbecc8"/><stop offset="1" stop-color="#fff5dc"/></linearGradient>` +
+      `<linearGradient id="c1-roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9e2f40"/><stop offset="0.55" stop-color="#cf4757"/><stop offset="1" stop-color="#e7707a"/></linearGradient>` +
+      `<pattern id="c1-tiles" width="16" height="10" patternUnits="userSpaceOnUse"><path d="M0 10q4-6 8 0q4-6 8 0" fill="none" stroke="#7a1f2e" stroke-opacity="0.45" stroke-width="1.3"/></pattern>` +
+      `<pattern id="c1-bricks" width="14" height="8" patternUnits="userSpaceOnUse"><path d="M0 4h14M0 8h14M7 0v4M0 4v4M14 4v4" stroke="#7d2f22" stroke-opacity="0.55" stroke-width="1"/></pattern>` +
+      `<linearGradient id="c1-wood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7a4a22"/><stop offset="0.6" stop-color="#a06a35"/><stop offset="1" stop-color="#b98048"/></linearGradient>` +
+      `<linearGradient id="c1-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dff4ff"/><stop offset="1" stop-color="#8fcbe8"/></linearGradient>` +
+      `<linearGradient id="c1-picket" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cbb68c"/><stop offset="1" stop-color="#f6ecd4"/></linearGradient>` +
+      `<radialGradient id="c1-sunlight" cx="0.86" cy="0.16" r="1"><stop offset="0" stop-color="#fff3c4" stop-opacity="0.35"/><stop offset="0.5" stop-color="#fff3c4" stop-opacity="0.08"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/></radialGradient></defs>` +
       `<rect width="800" height="500" fill="url(#c1-sky)"/>` +
+      `<circle cx="690" cy="80" r="160" fill="url(#c1-glow)"/>` +
       // Sun with turning rays
       anim(
         { type: 'rotate', pivot: [690, 80], period: 30 },
@@ -279,9 +385,15 @@ export default svgLevel({
       anim({ type: 'path', points: [[0, 0], [-70, 0]], period: 22 }, puffCloud(470, 48, 0.7)) +
       anim({ type: 'path', points: [[0, 0], [60, 0]], period: 18 }, puffCloud(330, 120, 0.45)) +
       flock +
-      // Hills
-      `<path d="M0 250q120-70 260-20t280-10t260 0V320H0z" fill="#a9dc8a"/>` +
+      // Far hills in haze, near hills, a wood along them; the grass with its texture and patches.
+      `<path d="M0 232q100-50 220-24t250-22t200 10t130-24V320H0z" fill="url(#c1-far)"/>` +
+      `<path d="M0 250q120-70 260-20t280-10t260 0V320H0z" fill="url(#c1-hill)"/>` +
+      wood +
+      `<rect y="170" width="800" height="140" fill="url(#c1-haze)"/>` +
       `<rect y="300" width="800" height="200" fill="url(#c1-grass)"/>` +
+      `<rect y="300" width="800" height="200" fill="url(#c1-blades)"/>` +
+      patches +
+      backTrees +
       // House
       [0, 1 / 3, 2 / 3]
         .map((phase) =>
@@ -291,11 +403,19 @@ export default svgLevel({
           ),
         )
         .join('') +
+      groundShadow(110, 332, 130, 14) +
       `<rect x="174" y="118" width="20" height="40" fill="#b5523b" ${O}/>` +
-      `<path d="M18 200L120 118L222 200z" fill="#d1495b" ${O}/>` +
-      `<rect x="34" y="198" width="172" height="132" fill="#ffe8b6" ${O}/>` +
-      `<path d="M34 230h172M34 262h172M34 294h172" stroke="#f0d08f" stroke-width="2"/>` +
-      `<rect x="70" y="220" width="60" height="50" fill="#bfe8ff" ${O}/>` +
+      `<rect x="174" y="118" width="20" height="40" fill="url(#c1-bricks)"/><rect x="174" y="118" width="7" height="40" fill="#000" fill-opacity="0.12"/>` +
+      // A hard one: the chimney's cap is missing in B.
+      diff(184, 117, 18, `<rect x="170" y="113" width="28" height="8" rx="2" fill="#8f3d2d" ${Ow(2)}/>`, '') +
+      `<path d="M18 200L120 118L222 200z" fill="url(#c1-roof)" ${O}/><path d="M18 200L120 118L222 200z" fill="url(#c1-tiles)"/>` +
+      `<path d="M22 198L120 120" stroke="#fff" stroke-opacity="0.25" stroke-width="3" stroke-linecap="round"/>` +
+      `<rect x="34" y="198" width="172" height="132" fill="url(#c1-wall)" ${O}/>` +
+      `<path d="M34 214h172M34 230h172M34 246h172M34 262h172M34 278h172M34 294h172M34 310h172" stroke="#e2c68f" stroke-opacity="0.8" stroke-width="1.6"/>` +
+      `<rect x="36" y="200" width="168" height="12" fill="#6b4a2a" fill-opacity="0.18"/>` +
+      `<rect x="34" y="320" width="172" height="10" fill="#a9a39a" ${Ow(1.8)}/><path d="M60 320v10M96 320v10M140 320v10M180 320v10" stroke="#7d776e" stroke-width="1.2"/>` +
+      `<rect x="70" y="220" width="60" height="50" fill="url(#c1-glass)" ${O}/>` +
+      `<path d="M76 262l20-36M88 266l18-32" stroke="#fff" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round"/>` +
       `<path d="M100 220v50M70 245h60" stroke="${INK}" stroke-width="2.5"/>` +
       diff(
         100,
@@ -305,16 +425,37 @@ export default svgLevel({
           `<path d="M70 219h60" stroke="${INK}" stroke-width="4" stroke-linecap="round"/>`,
         '',
       ) +
-      `<rect x="66" y="268" width="68" height="7" rx="2" fill="#a0703f" ${Ow(2)}/>` +
-      `<rect x="150" y="258" width="40" height="72" rx="4" fill="#8a5a2b" ${O}/><circle cx="182" cy="296" r="3" fill="#ffd23f"/>` +
+      `<rect x="68" y="275" width="64" height="6" fill="#6b4a2a" fill-opacity="0.18"/>` +
+      `<rect x="66" y="268" width="68" height="7" rx="2" fill="url(#c1-wood)" ${Ow(2)}/>` +
+      `<rect x="150" y="258" width="40" height="72" rx="4" fill="url(#c1-wood)" ${O}/>` +
+      `<rect x="157" y="266" width="26" height="24" rx="2" fill="none" stroke="#5b3818" stroke-opacity="0.6" stroke-width="2"/><rect x="157" y="296" width="26" height="26" rx="2" fill="none" stroke="#5b3818" stroke-opacity="0.6" stroke-width="2"/>` +
+      `<circle cx="182" cy="296" r="3" fill="#ffd23f" ${Ow(1)}/>` +
       `<path d="M50 330v-6q12-14 24 0v6z" fill="#3a2418" ${Ow(2)}/>` +
-      once(mouseKeys, [MOUSE[0], MOUSE[1] - 7], mouse(...MOUSE, (m) => anim({ type: 'sway', angle: 14, pivot: [MOUSE[0] - 10, MOUSE[1] - 5], period: 0.8 }, m))) +
+      keys(
+        'mouse',
+        mouseKeys,
+        [MOUSE[0], MOUSE[1] - 7],
+        mouse(...MOUSE, (m) => anim({ type: 'sway', angle: 14, pivot: [MOUSE[0] - 10, MOUSE[1] - 5], period: 0.8 }, m)) +
+          // In B it comes out with a piece of cheese.
+          diff(
+            MOUSE[0] + 20,
+            MOUSE[1] - 9,
+            18,
+            '',
+            `<path d="M${MOUSE[0] + 15} ${MOUSE[1] - 4}l12-12l2 12z" fill="#ffd23f" ${Ow(1.4)}/><circle cx="${MOUSE[0] + 24}" cy="${MOUSE[1] - 7}" r="1.6" fill="#e0a800"/>`,
+            'mouse',
+            during(7.75, 11.95),
+          ),
+      ) +
       // Tree
-      `<path d="M712 340q6-60-4-130h22q-8 70 4 130z" fill="#8a5a2b" ${O}/>` +
+      groundShadow(694, 340, 90, 13) +
+      `<path d="M712 340q6-60-4-130h22q-8 70 4 130z" fill="url(#ke-bark)" ${O}/>` +
+      `<path d="M716 330q4-30 0-60M724 300q-3-24 0-48" fill="none" stroke="#4a2c14" stroke-opacity="0.5" stroke-width="2.2" stroke-linecap="round"/>` +
       anim(
-        { type: 'sway', angle: 2, pivot: [720, 300], period: 5 },
-        `<circle cx="690" cy="190" r="48" fill="#4caf50" ${O}/><circle cx="752" cy="180" r="44" fill="#5cbf55" ${O}/><circle cx="720" cy="140" r="52" fill="#66c25a" ${O}/>` +
-          `<circle cx="680" cy="160" r="7" fill="#e63946" ${Ow(1.5)}/><circle cx="728" cy="118" r="7" fill="#e63946" ${Ow(1.5)}/><circle cx="700" cy="205" r="7" fill="#e63946" ${Ow(1.5)}/>`,
+        { type: 'sway', angle: 2, pivot: [720, 300], period: 5, id: 'crown' },
+        `<circle cx="690" cy="190" r="48" fill="url(#ke-leaf)" ${O}/><circle cx="752" cy="180" r="44" fill="url(#ke-leaf)" ${O}/><circle cx="720" cy="140" r="52" fill="url(#ke-leaf)" ${O}/>` +
+          `<path d="M666 200q8-6 16 0M706 150q8-6 16 0M744 196q8-6 16 0M716 112q8-6 16 0" fill="none" stroke="#2a7434" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round"/>` +
+          apple(680, 160) + apple(728, 118) + diff(700, 203, 18, apple(700, 205), '', 'crown') + apple(746, 158) + apple(668, 220),
       ) +
       diff(
         757,
@@ -324,15 +465,20 @@ export default svgLevel({
           `<ellipse cx="751" cy="196" rx="5" ry="4" fill="#e9f4ff" ${Ow(1.2)}/><ellipse cx="762" cy="196" rx="5" ry="4" fill="#e9f4ff" ${Ow(1.2)}/>`,
         '',
       ) +
-      once(appleKeys, APPLE, `<circle cx="${APPLE[0]}" cy="${APPLE[1]}" r="7" fill="#e63946" ${Ow(1.5)}/><path d="M${APPLE[0]} ${APPLE[1] - 7}l2-5" stroke="${INK}" stroke-width="1.6"/>`) +
+      once(appleKeys, APPLE, apple(...APPLE)) +
       // Fence
       `<path d="M220 284H650M220 306H650" stroke="${INK}" stroke-width="9"/><path d="M220 284H650M220 306H650" stroke="#e7cf9f" stroke-width="5"/>` +
       fence +
       flowers +
       bees +
       // Pond
-      `<ellipse cx="470" cy="410" rx="176" ry="56" fill="#5f9f48"/>` +
+      `<ellipse cx="470" cy="412" rx="182" ry="60" fill="#4f8f3c"/>` +
       `<ellipse cx="470" cy="410" rx="170" ry="52" fill="url(#c1-water)" ${O}/>` +
+      `<path d="M312 396q20-28 80-40" fill="none" stroke="#1f5f8a" stroke-opacity="0.35" stroke-width="8" stroke-linecap="round"/>` +
+      ([[300, 422, 8], [318, 444, 7], [628, 432, 9], [606, 452, 7], [450, 462, 8], [540, 462, 7]] as [number, number, number][])
+        .map(([sx, sy, r]) => `<ellipse cx="${sx}" cy="${sy}" rx="${r * 1.4}" ry="${r}" fill="#b7b2a7" ${Ow(1.5)}/><path d="M${sx - r * 0.6} ${sy - r * 0.3}q${r * 0.5}-${r * 0.5} ${r} 0" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-width="1.5"/>`)
+        .join('') +
+      reeds +
       `<path d="M330 400q20-6 40 0M560 392q20-6 40 0M450 380q16-5 32 0" fill="none" stroke="#fff" stroke-opacity="0.7" stroke-width="2.5" stroke-linecap="round"/>` +
       // The fish jumps (in B with its little one)
       diff(
@@ -348,6 +494,7 @@ export default svgLevel({
       anim({ type: 'path', points: [[0, 0], [70, 0]], period: 40, flipX: 250 }, snail(250, 478)) +
       // "!" — the cat has seen the fish.
       once(surpriseKeys, SURPRISE, `<path d="M${SURPRISE[0] - 5} 262h10l-3 24h-4z" fill="#e63946" ${Ow(2)}/><circle cx="${SURPRISE[0]}" cy="295" r="4" fill="#e63946" ${Ow(1.6)}/>`) +
+      once(catShadowKeys, CAT, groundShadow(CAT[0] + 2, CAT[1] + 1, 50, 8)) +
       catMarkup() +
       // The water in front of the cat: in the pond only its head shows.
       `<path d="M300 410a170 52 0 0 0 340 0z" fill="url(#c1-water)"/>` +
@@ -404,7 +551,10 @@ export default svgLevel({
       anim({ type: 'path', points: [[0, 0], [70, -40], [150, -10], [120, 40], [40, 30]], period: 11 },
         anim({ type: 'bob', dx: 0, dy: 5, period: 0.7 }, butterflyAt(60, 420, ['#ff6fb5', '#ffd23f'], beatX([60, 420], 0.3)))) +
       anim({ type: 'path', points: [[0, 0], [-60, -30], [-100, 20], [-30, 40]], period: 9, reverse: true },
-        anim({ type: 'bob', dx: 0, dy: 4, period: 0.6 }, butterflyAt(700, 440, ['#b38cff', '#4dabf7'], beatX([700, 440], 0.26, 0.4))))
+        anim({ type: 'bob', dx: 0, dy: 4, period: 0.6 }, butterflyAt(700, 440, ['#b38cff', '#4dabf7'], beatX([700, 440], 0.26, 0.4)))) +
+      frontTrees +
+      // Warm sunlight from the upper right.
+      `<rect width="800" height="500" fill="url(#c1-sunlight)"/>`
     )
   },
 })

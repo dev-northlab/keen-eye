@@ -32,7 +32,8 @@
     "time": "Masa",
     "travel": "Keliling dunia",
     "treasury": "Bilik harta",
-    "test": "Tahap ujian"
+    "test": "Tahap ujian",
+    "cartoon": "Kartun"
   },
   "common": {
     "back": "Kembali",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Pembangunan",
+    "devBenchmark": "Ujian animasi",
     "devOff": "Matikan mod pembangun",
     "fullGame": "Permainan penuh",
     "fullGameOpen": "Buka semua tahap",
@@ -1099,5 +1101,9 @@
     "rules": "Jelajahi dunia: cari perbezaan di setiap tempat, pelajari fakta menarik tentangnya dan dapatkan cop dalam pasport anda.",
     "stamps": "Cop: {n} daripada {total}",
     "task": "Perbezaan di seluruh dunia"
+  },
+  "cartoonMode": {
+    "task": "Cari perbezaan dalam kartun",
+    "rules": "Dua kartun memaparkan cerita lucu yang sama. Sesetengah perbezaan kelihatan sepanjang masa, yang lain hanya seketika — perhati baik-baik. Zum dengan dua jari: gambar tidak lari semasa anda melihat."
   }
 }

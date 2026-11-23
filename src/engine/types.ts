@@ -35,7 +35,7 @@ export type AnimationMotion =
   /** Fill cycles through '#rrggbb' colors; children to recolor must not set their own fill. */
   | { type: 'color'; colors: string[] }
   /**
-   * A cartoon's timeline (docs/cartoon-spike.md): keyframes at seconds of the cycle (`period` is the story's loop),
+   * A cartoon's timeline (docs/cartoon-mode.md): keyframes at seconds of the cycle (`period` is the story's loop),
    * eased from one to the next and from the last back to the first. Turns and scales around `pivot` (rest position).
    */
   | { type: 'keys'; keys: Keyframe[]; pivot?: [number, number] }
@@ -70,7 +70,7 @@ export interface Difference {
   /** Motion difference: A and B draw the same thing and differ only in how it moves (set by svgLevel). */
   motion?: boolean
   /**
-   * An event of a cartoon's story (docs/cartoon-spike.md): the difference shows only from `from` to `to` seconds of
+   * An event of a cartoon's story (docs/cartoon-mode.md): the difference shows only from `from` to `to` seconds of
    * every `period`; a tap on its place at other times is a miss.
    */
   during?: EventWindow
@@ -93,7 +93,7 @@ export interface CameraKey {
 }
 
 /**
- * A cartoon level (docs/cartoon-spike.md, the camera approach): the scene is a world larger than the screen, and a
+ * A cartoon level (docs/cartoon-mode.md, the camera approach): the scene is a world larger than the screen, and a
  * camera, the same for both pictures, follows the story — pans, push-ins and cuts. No zoom by the player.
  */
 export interface CartoonFilm {

@@ -11,6 +11,7 @@ import ClueList from '../components/ClueList.vue'
 import ClueCounter from '../components/ClueCounter.vue'
 import FoundSlots from '../components/FoundSlots.vue'
 import HudCounters from '../components/HudCounters.vue'
+import FpsMeter from '../components/FpsMeter.vue'
 import LevelId from '../components/LevelId.vue'
 import ModeChip from '../components/ModeChip.vue'
 import PauseDialog from '../components/PauseDialog.vue'
@@ -332,6 +333,8 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <LevelId :id="level.id" boxed />
+      <!-- Developer mode: frames shown, the scene's redraws per second and the longest frame, to compare phones. -->
+      <FpsMeter v-if="settings.developer" :poses="() => scene?.poses ?? 0" />
       <div v-if="locked" class="lock-note">{{ $t('level.locked') }}</div>
       <div class="note-slot" role="status">
         <Transition name="note">

@@ -3,9 +3,10 @@ import { existsSync } from 'node:fs'
 import { zoneActive, zoneCenter } from '../src/engine/animation.ts'
 import { inWindow } from '../src/engine/keyframes.ts'
 import type { Animation, Level, SceneSvg } from '../src/engine/types.ts'
-import { chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
+import { CARTOON_CHAPTER, chapterOf, DETECTIVE_CHAPTER, MEMORY_CHAPTER, TIME_CHAPTER, TINY_BOY_CHAPTER, TRAVEL_CHAPTER, TREASURY_CHAPTER } from '../src/levels/chapters.ts'
 import { detectiveLevels } from '../src/levels/detective/index.ts'
 import { tinyBoyLevels } from '../src/levels/tiny-boy/index.ts'
+import { cartoonLevels } from '../src/levels/cartoon/index.ts'
 import { difficultyOf } from '../src/levels/difficulty.ts'
 import { levels, treasuryLevel } from '../src/levels/index.ts'
 import { memoryLevels } from '../src/levels/memory/index.ts'
@@ -19,7 +20,7 @@ const SAMPLE_UNTIL_S = 120
 const SAMPLE_STEP_S = 0.05
 /** Pictures are compared pixel by pixel at these times (only t = 0 for levels without animation). */
 const PIXEL_TIMES_S = [0, 0.37, 0.9, 1.6, 2.45, 3.3, 4.75, 6.1, 7.9, 10.3]
-/** A cartoon's story (keyframe timelines, docs/cartoon-spike.md) is compared at every this many seconds of its loop. */
+/** A cartoon's story (keyframe timelines, docs/cartoon-mode.md) is compared at every this many seconds of its loop. */
 const STORY_STEP_S = 0.25
 /** An event difference may still fade in or out this long outside its window. */
 const EVENT_SLACK_S = 0.25
@@ -383,6 +384,7 @@ const expected = new Map([
   ...travelLevels.map((l, i) => [l, TRAVEL_CHAPTER.ranges[0][0] + i] as const),
   ...[...detectiveLevels].sort((a, b) => a.id - b.id).map((l, i) => [l, DETECTIVE_CHAPTER.ranges[0][0] + i] as const),
   ...tinyBoyLevels.map((l, i) => [l, TINY_BOY_CHAPTER.ranges[0][0] + i] as const),
+  ...cartoonLevels.map((l, i) => [l, CARTOON_CHAPTER.ranges[0][0] + i] as const),
   [treasuryLevel, TREASURY_CHAPTER.ranges[0][0]] as const,
   // Hidden levels (upcoming.ts) take their place in the order only when released.
   ...upcomingLevels.map((l) => [l, l.id] as const),

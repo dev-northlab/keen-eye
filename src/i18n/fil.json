@@ -32,7 +32,8 @@
     "time": "Panahon",
     "travel": "Paglalakbay sa mundo",
     "treasury": "Silid ng kayamanan",
-    "test": "Mga test level"
+    "test": "Mga test level",
+    "cartoon": "Mga cartoon"
   },
   "common": {
     "back": "Bumalik",
@@ -948,6 +949,7 @@
   },
   "settings": {
     "dev": "Development",
+    "devBenchmark": "Pagsubok ng animasyon",
     "devOff": "I-off ang developer mode",
     "fullGame": "Buong laro",
     "fullGameOpen": "I-unlock ang lahat ng level",
@@ -1099,5 +1101,9 @@
     "rules": "Libutin ang mundo: hanapin ang mga pagkakaiba sa bawat lugar, alamin ang isang kawili-wiling kaalaman tungkol dito at makakuha ng tatak sa iyong pasaporte.",
     "stamps": "Tatak: {n} sa {total}",
     "task": "Mga pagkakaiba sa buong mundo"
+  },
+  "cartoonMode": {
+    "task": "Hanapin ang pagkakaiba sa cartoon",
+    "rules": "Dalawang cartoon ang nagpapakita ng iisang nakakatawang kuwento. May mga pagkakaibang nakikita palagi, at may lumilitaw lang sandali — tumingin nang mabuti. Mag-zoom gamit ang dalawang daliri: hindi gagalaw ang larawan habang tumitingin ka."
   }
 }

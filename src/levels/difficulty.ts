@@ -98,10 +98,11 @@ export const DIFFICULTY: Difficulty[] = [
   // "Tiny boy" (Gemini pictures of a little boy, their pixels as the viewBox): 5–7 differences asked of Gemini, up to 7
   // more small, hard ones painted by hand; zones a finger wide on a phone (r ≥ 60 pixels).
   { from: 701, to: 730, differences: [5, 15], motion: [0, 0], minRadius: 60, kinds: EASY },
+  // "Cartoons" (docs/cartoon-mode.md): 12 differences, two of them hard, some events of the story; the player's zoom
+  // keeps small ones tappable.
+  { from: 801, to: 830, differences: [12, 12], motion: [0, 2], minRadius: 18, kinds: [...EASY, 'motion'] },
   // "Test" (developer mode only): picture pairs tried out, any number of differences.
-  // 1001–1002: the cartoon spike (docs/cartoon-spike.md), with a motion difference or two.
-  { from: 1001, to: 1002, differences: [1, 20], motion: [0, 2], minRadius: 18, kinds: EASY },
-  { from: 1003, to: 1100, differences: [1, 20], motion: [0, 0], minRadius: 18, kinds: EASY },
+  { from: 1001, to: 1100, differences: [1, 20], motion: [0, 0], minRadius: 18, kinds: EASY },
 ]
 
 /**
