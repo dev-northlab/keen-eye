@@ -130,6 +130,20 @@ export default travelLevel({
         ['birds', 200, 176],
         ['balloon', 372, 32, '#ffd23f'],
       ]) +
+      // A busier London, the same in both pictures: a plane and an airship in the sky, a crow on the Parliament roof,
+      // gulls over the Thames, a bench, a shopping bag, a coffee cup, a manhole and a sparrow on the embankment.
+      decor({ anim }, [
+        ['plane', 480, 24],
+        ['airship', 270, 24],
+        ['crow', 250, 230],
+        ['gull', 380, 382],
+        ['gull', 740, 360],
+        ['bench', 100, 496],
+        ['shoppingBag', 145, 494, '#3a86ff'],
+        ['coffeeCup', 420, 470],
+        ['manhole', 640, 450],
+        ['sparrow', 782, 496],
+      ]) +
       extras({ extra, anim }, [
         ['cone', 736, 488],
         ['bottle', 276, 364],

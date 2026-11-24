@@ -58,6 +58,20 @@ export default detectiveLevel({
       ['boots', 556, 472],
       ['scarfHook', 566, 144, '#4c9a52'],
     ]) +
+    // A busier attic, the same in both pictures: a bat under the roof, an old kite, a mirror and antlers on the
+    // walls, a teddy on the trunk, an umbrella stand, a suitcase, a globe, a yarn basket and a sled stored away.
+    decor({ anim }, [
+      ['bat', 620, 62],
+      ['kite', 40, 228, '#ffd23f'],
+      ['roundMirror', 520, 218],
+      ['antlers', 752, 222],
+      ['teddy', 210, 294, '#c98a6a'],
+      ['umbrellaStand', 38, 372],
+      ['suitcase', 762, 370, '#3a86ff'],
+      ['globe', 245, 402],
+      ['yarnBasket', 115, 496],
+      ['sled', 735, 496],
+    ]) +
     extras({ extra, anim }, [
       ['tortoise', 66, 443],
       ['wallPhone', 259, 185],

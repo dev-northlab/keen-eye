@@ -107,6 +107,20 @@ export default travelLevel({
         ['cloud', 708, 140],
         ['birds', 184, 56],
       ]) +
+      // A busier Seoul: a kite, a swallow and a plane in the sky; a bench, a shopping bag, a coffee cup, a puppy, a
+      // sparrow, a cat by the statue and a scooter on the square.
+      decor({ anim }, [
+        ['kite', 40, 280, '#e63946'],
+        ['swallow', 520, 40],
+        ['plane', 760, 40],
+        ['bench', 30, 420],
+        ['shoppingBag', 460, 400, '#8338ec'],
+        ['coffeeCup', 520, 400],
+        ['puppy', 440, 496],
+        ['sparrow', 215, 496],
+        ['cat', 680, 420, '#f08c2e'],
+        ['scooter', 782, 496],
+      ]) +
       extras({ extra, anim }, [
         ['newspaperBox', 512, 488, '#e63946'],
         ['pigeon', 152, 476],

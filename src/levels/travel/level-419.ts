@@ -116,6 +116,19 @@ export default travelLevel({
         ['cloud', 464, 136],
         ['birds', 196, 108],
       ]) +
+      // A busier Prague: a hot-air balloon, a swallow and a plane in the sky, a gull over the Vltava; a bench, a crow,
+      // a newspaper box, a sparrow and a puppy on the embankment.
+      decor({ anim }, [
+        ['hotAirBalloon', 238, 36],
+        ['swallow', 520, 40],
+        ['plane', 760, 130],
+        ['gull', 430, 322],
+        ['bench', 186, 412],
+        ['crow', 346, 470],
+        ['newspaperBox', 664, 412, '#e63946'],
+        ['sparrow', 620, 496],
+        ['puppy', 770, 496],
+      ]) +
       extras({ extra, anim }, [
         ['shoppingBag', 164, 464, '#ff6b8b'],
         ['lifeRing', 256, 332],

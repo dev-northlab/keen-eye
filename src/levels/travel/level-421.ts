@@ -119,6 +119,20 @@ export default travelLevel({
         ['cloud', 136, 136],
         ['birds', 576, 220],
       ]) +
+      // A busier Dubai: a gull, a plane and a kite in the sky; a buoy and a fish in the Gulf; a shell, a clam, stones,
+      // a bird and a desert tent on the sand.
+      decor({ anim }, [
+        ['gull', 240, 60],
+        ['plane', 580, 30],
+        ['kite', 765, 200, '#2a9d8f'],
+        ['buoy', 22, 392, '#ffd23f'],
+        ['fish', 770, 386],
+        ['shell', 160, 474, '#ffb4a2'],
+        ['clam', 300, 480],
+        ['stones', 430, 496],
+        ['bird', 520, 482],
+        ['tent', 775, 496],
+      ]) +
       extras({ extra, anim }, [
         ['sunglasses', 64, 464],
         ['coconut', 368, 488],

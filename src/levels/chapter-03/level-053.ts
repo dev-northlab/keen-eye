@@ -1,5 +1,5 @@
 // Motion differences: the rope ladder sways only on picture B; the flag waves faster on B; the bucket goes up and down faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level053Redesign } from './level-053-redesign.ts'
 import { acorn, backpack, bush, cloud, floor, lantern, mushroom, pine, pineCone, squirrel, sun, trailSign } from './shapes.ts'
@@ -76,6 +76,20 @@ export default svgLevel({
       pineCone(620, 480) +
       acorn(200, 480) +
       trailSign(720, 412) +
+      // A busier treehouse, the same in both pictures: a paper plane and a swallow in the sky, a hedgehog and a fox on
+      // the hill, a birdhouse by the trail sign, a ball, a sparrow, a ladybug, a snail and a flower in the grass.
+      decor({ anim }, [
+        ['paperPlane', 250, 40],
+        ['swallow', 770, 130],
+        ['hedgehog', 230, 332],
+        ['fox', 615, 372],
+        ['birdhouse', 775, 402],
+        ['ball', 600, 440, '#e63946'],
+        ['sparrow', 205, 442],
+        ['ladybug', 520, 430],
+        ['snail', 775, 490],
+        ['flower', 22, 432, '#b38cff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['squirrel', 150, 381],

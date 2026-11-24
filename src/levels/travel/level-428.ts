@@ -121,6 +121,21 @@ export default travelLevel({
         ['birds', 380, 180],
         ['balloon', 636, 148, '#ffd23f'],
       ]) +
+      // A busier street: a plane and a hot-air balloon in the sky, a pigeon on the roof, a dragonfly over the canal and
+      // two fish in it, a ball, a puppy, a flower pot, a sparrow and a cat by the mariachis.
+      decor({ anim }, [
+        ['plane', 460, 128],
+        ['hotAirBalloon', 770, 215],
+        ['pigeon', 335, 250],
+        ['dragonfly', 470, 360],
+        ['fish', 498, 400],
+        ['fish', 660, 400, '#ff6b35'],
+        ['ball', 150, 494, '#e63946'],
+        ['puppy', 200, 494, '#c98b4f'],
+        ['flowerPot', 350, 494],
+        ['sparrow', 430, 494],
+        ['cat', 770, 494, '#e8a04a'],
+      ]) +
       extras({ extra, anim }, [
         ['bin', 624, 488, '#2a9d8f'],
         ['coffeeCup', 392, 452],

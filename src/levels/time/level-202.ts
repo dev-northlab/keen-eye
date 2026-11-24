@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level202Redesign } from './level-202-redesign.ts'
 import { awning, bench, bin, bird, bollard, car, cityTree, cloud, cone, door, DUSK, flowerBox, glow, hangingSign, hydrant, lampHead, lampPost, moon, person, pigeon, poster, pot, roadSign, sky, street, sun, window, windowLight } from './shapes.ts'
@@ -66,12 +66,36 @@ export default svgLevel({
       bollard(520, 492) +
       bollard(600, 492) +
       bin(700, 492, '#e07a5f') +
+      // A busier street: an airship, a newspaper box, a manhole, a parked scooter, a skateboard, a ball, a shopping
+      // bag, a crow and a cat; a butterfly by day, bats and a sky lantern in the evening.
+      decor({ anim }, [
+        ['airship', 440, 40],
+        ['newspaperBox', 472, 348, '#2a9d8f'],
+        ['manhole', 300, 445],
+        ['scooter', 255, 492],
+        ['skateboard', 470, 490, '#ff006e'],
+        ['ball', 410, 492, '#ffd23f'],
+        ['shoppingBag', 110, 492, '#8338ec'],
+        ['crow', 770, 492],
+        ['cat', 650, 492, '#3d3d3d'],
+      ]) +
+      time(
+        decor({ anim }, [
+          ['butterfly', 655, 300, '#ff9f43'],
+        ]),
+        decor({ anim }, [
+          ['bat', 430, 55],
+          ['bat', 255, 115],
+        ]),
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 202, 58],
         ['birds', 699, 191],
       ]) +
       time('', DUSK) +
+      // Night lights over the dusk, so that they glow: only in the evening picture.
+      time('', decor({ anim }, [['skyLantern', 390, 120]])) +
       trap(200, 245, 36, lampHead(200, 345, false), lampHead(200, 345, true), 'lights') +
       trap(605, 158, 26, '', windowLight(605, 158), 'lights') +
       trap(565, 423, 40, '', beam(650, 430), 'lights') +

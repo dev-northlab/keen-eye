@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level223Redesign } from './level-223-redesign.ts'
 import { around, bareTree, barrel, beehive, bird, birdHouse, birds, bucket, butterfly, chimney, cloud, crate, fence, grass, hen, house, icicles, logPile, oak, pane, person, picket, rabbit, roofSnow, sack, sky, small, smoke, snowCap, snowfall, snowman, squirrel, stones, winterPerson, winterSky } from './shapes.ts'
@@ -84,6 +84,22 @@ export default svgLevel({
       time('', snowCap(684, 369, 32)) +
       hen(40, 470) +
       time(butterfly(340, 320) + grass(560, 360) + stones(235, 490), '') +
+      // A busier orchard, the same in both seasons: a plane, a hay bale, a cat under the apple tree, a garden gnome, a
+      // bullfinch; a bee and a flower in summer.
+      decor({ anim }, [
+        ['plane', 250, 30],
+        ['haybale', 530, 372],
+        ['cat', 392, 380, '#6c757d'],
+        ['gnome', 778, 404],
+        ['bullfinch', 60, 372],
+      ]) +
+      time(
+        decor({ anim }, [
+          ['bee', 72, 398],
+          ['flower', 150, 492, '#ff6b8b'],
+        ]),
+        snowCap(518, 357, 24),
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 130, 185],

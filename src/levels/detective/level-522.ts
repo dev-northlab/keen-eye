@@ -71,6 +71,18 @@ export default detectiveLevel({
       ['boots', 751, 482, '#4c9a52'],
       ['keyRack', 757, 49],
     ]) +
+    // A busier corridor, the same in both pictures: a calendar, a clock and a route map up on the wall, a spider in
+    // the corner, two coat hooks with scarves, an umbrella stand by a door and a knitting basket on the carpet.
+    decor({ anim }, [
+      ['calendar', 100, 42],
+      ['spider', 22, 40],
+      ['cuckooClock', 290, 40],
+      ['treasureMap', 630, 42],
+      ['scarfHook', 500, 305, '#e8457a'],
+      ['scarfHook', 565, 305, '#3a86ff'],
+      ['umbrellaStand', 300, 382],
+      ['yarnBasket', 240, 440],
+    ]) +
     extras({ extra, anim }, [
       ['butterflyFrame', 40, 248],
       ['globe', 58, 472],

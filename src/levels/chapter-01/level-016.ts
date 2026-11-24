@@ -1,6 +1,6 @@
 // Motion differences: the crow flies the other way round on picture B; the tractor's exhaust puff bobs only on B.
 import { mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { apple, basket, cat, cloud, eggNest, grass, hayBale, milkCan, stones, sun, tractor, tree } from '../shapes.ts'
 import { level016Redesign } from './level-016-redesign.ts'
@@ -88,6 +88,19 @@ export default svgLevel({
       cat(775, 480) +
       eggNest(268, 490) +
       stones(420, 488) +
+      // A busier wheat field, the same in both pictures: a balloon, a kite and swallows in the sky, a cottage far on the
+      // hill, a rabbit and a fox in the wheat, a sparrow by the sacks, a wheelbarrow at the field's edge.
+      decor({ anim }, [
+        ['hotAirBalloon', 600, 200],
+        ['kite', 260, 210, '#ff006e'],
+        ['swallow', 140, 200],
+        ['swallow', 420, 215],
+        ['cottage', 260, 300],
+        ['rabbit', 200, 370],
+        ['fox', 640, 370],
+        ['sparrow', 520, 410],
+        ['wheelbarrow', 778, 420],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 339, 264],

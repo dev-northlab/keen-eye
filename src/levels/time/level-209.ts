@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level209Redesign } from './level-209-redesign.ts'
 import { barrel, bollard, bucket, buoy, cloud, crate, gull, icicles, lifeRing, pier, pine, pineSnow, rock, ropeCoil, rowboat, sack, sailboat, shell, sky, snowCap, snowfall, starfish, waves, winterSky } from './shapes.ts'
@@ -63,6 +63,18 @@ export default svgLevel({
     time(starfish(740, 470), '') +
     buoy(320, 470, '#ffffff') +
     buoy(460, 460, '#3a86ff') +
+    // A busier harbour: rubber boots on the pier, fish and a bottle in the water, a bench, a rock and a crow on the
+    // shore in both seasons, snowed on in winter.
+    decor({ anim }, [
+      ['boots', 226, 330, '#ffb703'],
+      ['fish', 167, 420],
+      ['fish', 472, 396, '#e63946'],
+      ['bottle', 40, 420],
+      ['bench', 740, 395],
+      ['rock', 700, 470, '#9aa5b1'],
+      ['crow', 580, 300],
+    ]) +
+    time('', snowCap(724, 371, 32) + snowCap(691, 461, 16)) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 309, 86],

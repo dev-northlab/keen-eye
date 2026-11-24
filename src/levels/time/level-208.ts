@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level208Redesign } from './level-208-redesign.ts'
 import { bareTree, bird, birdHouse, bush, cabin, chimney, cloud, fern, fox, grass, logPile, mushroom, oak, pine, pineSnow, pond, rabbit, rock, signpost, sky, smoke, snowCap, snowfall, squirrel, stones, stump, winterSky } from './shapes.ts'
@@ -61,6 +61,25 @@ export default svgLevel({
       time(fern(30, 490), '') +
       time(grass(560, 480), '') +
       time(stones(400, 490), '') +
+      // A busier forest: a mailbox and a bucket by the cabin, a pine cone, a sparrow, a crow and a bullfinch on the
+      // stump in both seasons, snowed on in winter; a butterfly, a dragonfly and wild strawberries in summer.
+      decor({ anim }, [
+        ['mailbox', 155, 372],
+        ['bucket', 345, 370],
+        ['pineCone', 530, 490],
+        ['sparrow', 240, 420],
+        ['crow', 720, 400],
+        ['bullfinch', 780, 383],
+      ]) +
+      time('', snowCap(147, 336, 16) + snowCap(337, 352, 16)) +
+      time(
+        decor({ anim }, [
+          ['butterfly', 380, 420, '#ffd23f'],
+          ['dragonfly', 560, 400],
+          ['wildStrawberry', 90, 475],
+        ]),
+        '',
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 554, 123],

@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level203Redesign } from './level-203-redesign.ts'
 import { birds, bucket, bush, butterfly, cloud, DUSK, fern, fireLogs, flame, grass, hedgehog, logPile, moon, mushroom, pine, rabbit, rock, signpost, sky, squirrel, stars, stones, stump, sun, tent } from './shapes.ts'
@@ -47,12 +47,34 @@ export default svgLevel({
       fern(30, 470) +
       mushroom(60, 480, '#e63946', 0.7) +
       stump(590, 470) +
+      // A busier camp: boots by the tent, a pine cone, a heap of leaves, an anthill, wild strawberries, bluebells and
+      // a fox; a dragonfly by day, an owl on the stump, a bat and a firefly at night.
+      decor({ anim }, [
+        ['boots', 366, 428, '#e63946'],
+        ['pineCone', 290, 442],
+        ['leafPile', 196, 352],
+        ['anthill', 476, 346],
+        ['wildStrawberry', 36, 405],
+        ['bluebells', 150, 342, '#8f7bff'],
+        ['fox', 712, 368],
+      ]) +
+      time(
+        decor({ anim }, [
+          ['dragonfly', 286, 302],
+        ]),
+        decor({ anim }, [
+          ['owl', 590, 457],
+          ['bat', 352, 92],
+        ]),
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 601, 129],
         ['birds', 727, 58],
       ]) +
       time('', DUSK) +
+      // Night lights over the dusk, so that they glow: only in the evening picture.
+      time('', decor({ anim }, [['firefly', 432, 342]])) +
       trap(520, 412, 30, '', flame(520, 440), 'lights') +
       trap(440, 60, 40, birds(440, 60), '', 'birds') +
       trap(250, 70, 42, '', stars(250, 70), 'stars') +

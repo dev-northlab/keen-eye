@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level211Redesign } from './level-211-redesign.ts'
 import { awning, bench, bin, bird, cloud, cone, dog, door, DUSK, flowerBox, glow, lampHead, lampPost, moon, pane, pigeon, poster, pot, roadSign, sky, stars, street, sun, window } from './shapes.ts'
@@ -84,6 +84,21 @@ export default svgLevel({
       bench(200, 492, '#3a86ff') +
       pigeon(260, 492, true) +
       cone(360, 492) +
+      // A busier avenue: a hydrant, a shopping bag and a newspaper box by the shops, a pigeon on the bank's roof, a coffee
+      // cup, a skateboard, bollards, a ball and a cat on the near pavement; a bat in the evening sky.
+      decor({ anim }, [
+        ['hydrant', 200, 358],
+        ['shoppingBag', 340, 358, '#ff006e'],
+        ['newspaperBox', 712, 358],
+        ['pigeon', 610, 104],
+        ['coffeeCup', 300, 490],
+        ['skateboard', 460, 492],
+        ['bollard', 620, 492],
+        ['bollard', 660, 492],
+        ['ball', 520, 492],
+        ['cat', 566, 492],
+      ]) +
+      time('', decor({ anim }, [['bat', 340, 110]])) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 533, 57],

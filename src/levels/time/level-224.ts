@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level224Redesign } from './level-224-redesign.ts'
 import { around, bench, bin, buoy, cloud, dog, duck, DUSK, flowerBox, glow, lampHead, lampPost, moon, oak, pane, person, pigeon, pot, rowboat, sky, stars, sun } from './shapes.ts'
@@ -76,6 +76,25 @@ export default svgLevel({
       bin(470, 490) +
       pigeon(740, 492, true) +
       pot(760, 490) +
+      // A busier riverside: a gull and a swallow, a life ring on the railing, a bottle drifting under the bridge, a
+      // mooring bollard, a skateboard, a shopping bag, a sparrow; a dragonfly by day, a bat, a sky lantern over the water
+      // and a star at night.
+      decor({ anim }, [
+        ['gull', 530, 100],
+        ['swallow', 240, 110],
+        ['lifeRing', 520, 412, '#e63946'],
+        ['bottle', 210, 388],
+        ['bollard', 250, 442],
+        ['skateboard', 140, 494, '#ff006e'],
+        ['shoppingBag', 612, 494, '#ffb703'],
+        ['sparrow', 505, 494],
+      ]) +
+      time(
+        decor({ anim }, [['dragonfly', 100, 272]]),
+        decor({ anim }, [
+          ['bat', 380, 32],
+        ]),
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 304, 54],
@@ -83,6 +102,8 @@ export default svgLevel({
         ['birds', 73, 71],
       ]) +
       time('', DUSK) +
+      // Night lights over the dusk, so that they glow: only in the evening picture.
+      time('', decor({ anim }, [['skyLantern', 100, 268], ['star', 520, 28]])) +
       time('', lampHead(260, 254, true) + lampHead(540, 254, true) + glow(155, 188, 22, 26) + glow(626, 172, 22, 26)) +
       trap(400, 154, 34, lampHead(400, 254, false), lampHead(400, 254, true), 'lights') +
       trap(300, 185, 22, '', glow(289, 172, 22, 26), 'lights') +

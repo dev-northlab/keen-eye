@@ -1,5 +1,5 @@
 import { butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level007Redesign } from './level-007-redesign.ts'
 import { bee, beehive, cloud, flower, FLOWER_COLORS, flowerPot, grass, pick, snail, sun, tree } from '../shapes.ts'
@@ -81,6 +81,20 @@ export default svgLevel({
       mushroom(570, 385) +
       snail(665, 420) +
       butterfly(60, 410) +
+      // A busier apiary, the same in both pictures: a kite and swallows in the sky, an old skep on the hill, a bee and a
+      // dragonfly over the meadow, the beekeeper's bench and boots, a hedgehog and a mouse in the flowers.
+      decor({ anim }, [
+        ['kite', 400, 120, '#ff9f43'],
+        ['swallow', 380, 210],
+        ['swallow', 640, 40],
+        ['beehive', 30, 362],
+        ['dragonfly', 160, 270],
+        ['bee', 160, 440],
+        ['bench', 318, 366],
+        ['boots', 268, 400],
+        ['hedgehog', 700, 495],
+        ['mouse', 395, 496],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 282, 311],

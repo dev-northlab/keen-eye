@@ -1,5 +1,5 @@
 // Motion differences: the fish school swims faster on picture B; the jellyfish bobs faster on B; the seaweed sways only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level063Redesign } from './level-063-redesign.ts'
 import { bottleMessage, coral, fish, jellyfish, octopus, rock, seahorse, seaUrchin, seaweed, shell, snorkelMask, starfish, turtle } from './shapes.ts'
@@ -65,6 +65,19 @@ export default svgLevel({
       shell(440, 428) +
       snorkelMask(705, 488) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles) +
+      // A busier reef, the same in both pictures: more fish, two jellyfish and a seahorse in the water, a crab and a
+      // shell on the sand.
+      decor({ anim }, [
+        ['jellyfish', 330, 295, '#ff9f43'],
+        ['jellyfish', 560, 330, '#4dabf7'],
+        ['fish', 90, 310, '#4dabf7'],
+        ['fish', 360, 90, '#ff6b8b'],
+        ['fish', 780, 230, '#ffd23f'],
+        ['fish', 140, 110, '#e63946'],
+        ['seahorse', 60, 380, '#ff9f43'],
+        ['crab', 40, 458, '#ff9f43'],
+        ['shell', 540, 499, '#ffd8c2'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['jellyfish', 673, 100],

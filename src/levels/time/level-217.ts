@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level217Redesign } from './level-217-redesign.ts'
 import { around, bench, bird, birdHouse, bucket, bush, butterfly, chimney, cloud, dog, door, flowerBox, flowers, grass, house, icicles, logPile, mailbox, mountains, pane, person, pine, pineSnow, rock, roofSnow, signpost, sky, small, smoke, snowCap, snowfall, snowman, stump, vane, winterPerson, winterSky } from './shapes.ts'
@@ -62,6 +62,17 @@ export default svgLevel({
     time('', snowCap(334, 454, 32)) +
     dog(390, 480) +
     time(flowers(520, 296, '#ffd23f') + butterfly(450, 280) + grass(470, 490) + grass(160, 490), '') +
+    // A busier mountain yard: a fox, a crow on the stump, a bullfinch on the rock, a sparrow, a wheelbarrow and a ball in
+    // both seasons; a bee and a flower only in summer.
+    decor({ anim }, [
+      ['fox', 140, 300],
+      ['crow', 780, 335],
+      ['bullfinch', 676, 346],
+      ['sparrow', 402, 382],
+      ['wheelbarrow', 465, 490],
+      ['ball', 185, 488, '#ff006e'],
+    ]) +
+    time(decor({ anim }, [['bee', 540, 280], ['flower', 300, 492, '#b38cff']]), '') +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 221, 65],

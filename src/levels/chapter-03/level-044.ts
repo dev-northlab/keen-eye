@@ -1,5 +1,5 @@
 // Motion differences: the snail crawls faster on picture B; the frog hops only on B; the chimney smoke rises faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level044Redesign } from './level-044-redesign.ts'
 import { acorn, bluebells, fern, floor, frog, hedgehog, lantern, leafPile, mushroom, oak, pine, pineCone, rock } from './shapes.ts'
@@ -80,6 +80,20 @@ export default svgLevel({
       pineCone(380, 488) +
       leafPile(510, 432) +
       bluebells(700, 352) +
+      // A busier gnome glade, the same in both pictures: a garden gnome by the house, fireflies and a spider under the
+      // dark canopy, a fox and a rabbit by the trees, a molehill and a ladybug.
+      decor({ anim }, [
+        ['gnome', 440, 420],
+        ['firefly', 320, 210],
+        ['firefly', 510, 250],
+        ['firefly', 720, 190],
+        ['firefly', 140, 240],
+        ['spider', 260, 160],
+        ['fox', 600, 332],
+        ['rabbit', 770, 386],
+        ['molehill', 35, 412],
+        ['ladybug', 770, 442],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bluebells', 286, 331],

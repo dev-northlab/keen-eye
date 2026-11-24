@@ -1,5 +1,5 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bear drums faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level060Redesign } from './level-060-redesign.ts'
 import { acorn, backpack, bear, feather, fireLogs, flame, floor, fox, hedgehog, pine, pineCone, rabbit, wildStrawberry } from './shapes.ts'
@@ -73,6 +73,22 @@ export default svgLevel({
       pineCone(670, 480) +
       acorn(230, 412) +
       wildStrawberry(50, 480) +
+      // A busier forest party, the same in both pictures: two sky lanterns and a bat in the night sky, an owl in the pine,
+      // a squirrel and a mouse come to visit, fireflies, a teddy bear and a mushroom.
+      decor({ anim }, [
+        ['skyLantern', 100, 55],
+        ['skyLantern', 450, 45],
+        ['bat', 330, 70],
+        ['owl', 765, 240],
+        ['squirrel', 450, 332],
+        ['mouse', 620, 347],
+        ['firefly', 200, 330],
+        ['firefly', 600, 300],
+        ['firefly', 350, 360],
+        ['firefly', 760, 380],
+        ['teddy', 30, 402],
+        ['mushroom', 760, 482, '#a0703f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fern', 396, 390],

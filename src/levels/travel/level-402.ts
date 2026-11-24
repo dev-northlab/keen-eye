@@ -123,6 +123,18 @@ export default travelLevel({
       ['cloud', 532, 100],
       ['birds', 420, 112],
     ]) +
+    // A busier Venice, the same in both pictures: a plane in the sky, pigeons and a sparrow on the palace roofs, a potted
+    // plant on a window sill, a gull flying low over the canal and a buoy by the far pole.
+    decor({ anim }, [
+      ['plane', 340, 24],
+      ['pigeon', 100, 162],
+      ['pigeon', 190, 122],
+      ['sparrow', 330, 142],
+      ['pigeon', 770, 152],
+      ['flowerPot', 225, 200],
+      ['gull', 768, 398],
+      ['buoy', 775, 478, '#e63946'],
+    ]) +
     extras({ extra, anim }, [
       ['bottle', 500, 480],
       ['lifeRing', 516, 364],

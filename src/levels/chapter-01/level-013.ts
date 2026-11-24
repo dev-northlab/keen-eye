@@ -1,5 +1,5 @@
 // Motion difference: the duck swims faster on picture B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import type { AnimSpec } from '../helpers.ts'
 import { bird, frog, stump } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
@@ -83,6 +83,21 @@ export default svgLevel({
       bird(690, 118) +
       snail(160, 472) +
       stones(240, 480) +
+      // A busier riverside, the same in both pictures: a kite and a swallow in the sky, a sparrow on the bridge, a tent,
+      // a rabbit, a bench and a squirrel on the far bank, a dragonfly over the water, a hedgehog, a bucket, a ladybug.
+      decor({ anim }, [
+        ['kite', 120, 120, '#ff6b8b'],
+        ['swallow', 450, 210],
+        ['sparrow', 70, 277],
+        ['tent', 300, 292],
+        ['rabbit', 420, 290],
+        ['bench', 520, 292],
+        ['squirrel', 640, 290],
+        ['dragonfly', 110, 400],
+        ['hedgehog', 40, 482],
+        ['bucket', 780, 470],
+        ['ladybug', 600, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 689, 476],

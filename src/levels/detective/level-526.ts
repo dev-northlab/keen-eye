@@ -89,6 +89,19 @@ export default detectiveLevel({
       ['keyRack', 752, 49],
       ['newspapers', 758, 483],
     ]) +
+    // A busier lounge, the same in both pictures: antlers on the chimney, a birdcage, a dartboard, a photo, a mirror
+    // and a butterfly on the walls, a fire extinguisher by the fireplace, a cat asleep in the armchair and a pouf.
+    decor({ anim }, [
+      ['antlers', 400, 40],
+      ['birdcage', 560, 60],
+      ['dartboard', 40, 170],
+      ['photoOval', 130, 240],
+      ['roundMirror', 262, 220],
+      ['butterflyFrame', 775, 140],
+      ['fireExtinguisher', 555, 250],
+      ['cat', 680, 330, '#f2994a'],
+      ['pouf', 690, 495, '#7b5ea7'],
+    ]) +
     extras({ extra, anim }, [
       ['wallPhone', 39, 250],
       ['broom', 46, 468],

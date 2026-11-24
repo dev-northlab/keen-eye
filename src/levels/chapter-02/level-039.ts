@@ -1,5 +1,5 @@
 // Motion differences: the skater rides the ramp faster on picture B; the bird on the wire hops only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, cityTree, cloud, cone, dog, mailbox, newspaperBox, person, scooter, skateboard, skyline, sun } from './shapes.ts'
 import { level039Redesign } from './level-039-redesign.ts'
@@ -68,6 +68,20 @@ export default svgLevel({
       mailbox(230, 345) +
       scooter(485, 355) +
       newspaperBox(150, 345) +
+      // A busier skatepark, the same in both pictures: a plane and a swallow in the sky, sparrows on the wire, a crow on the
+      // pole, bunting on the wall, a bin, a coffee cup and a pigeon on the concrete.
+      decor({ anim }, [
+        ['plane', 360, 25],
+        ['swallow', 270, 110],
+        ['sparrow', 300, 161],
+        ['sparrow', 680, 151],
+        ['crow', 759, 120],
+        ['bunting', 300, 205],
+        ['bunting', 700, 205],
+        ['bin', 640, 370, '#2a9d8f'],
+        ['coffeeCup', 580, 370],
+        ['pigeon', 785, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 563, 304, '#ffb703'],

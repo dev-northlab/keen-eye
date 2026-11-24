@@ -66,6 +66,19 @@ export default detectiveLevel({
       ['calendar', 743, 87],
       ['boots', 746, 442],
     ]) +
+    // A busier storeroom, the same in both pictures: a dartboard and antlers on the walls, a watering can under
+    // the workbench, a shovel by the ladder, and old things put away: a dollhouse, a globe, a sled, a teddy, a drum.
+    decor({ anim }, [
+      ['dartboard', 250, 60],
+      ['antlers', 670, 165],
+      ['wateringCan', 535, 380],
+      ['shovel', 712, 380],
+      ['dollhouse', 210, 420],
+      ['globe', 330, 492],
+      ['sled', 600, 480],
+      ['teddy', 690, 490],
+      ['toyDrum', 780, 490],
+    ]) +
     extras({ extra, anim }, [
       ['puppy', 138, 434, '#8a5a2b'],
       ['photoOval', 163, 141],

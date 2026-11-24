@@ -74,6 +74,18 @@ export default detectiveLevel({
       ['wallPhone', 484, 55],
       ['yarnBasket', 738, 476],
     ]) +
+    // A busier corridor, the same in both pictures: a round mirror, a second lamp, a portrait, antlers and a
+    // butterfly frame on the walls, an umbrella stand, a fire extinguisher and a pouf by the wall.
+    decor({ anim }, [
+      ['roundMirror', 160, 60],
+      ['sconce', 250, 62],
+      ['photoOval', 410, 92],
+      ['antlers', 690, 175],
+      ['butterflyFrame', 520, 310],
+      ['umbrellaStand', 110, 400],
+      ['fireExtinguisher', 300, 396],
+      ['pouf', 520, 396, '#b5838d'],
+    ]) +
     extras({ extra, anim }, [
       ['scarfHook', 41, 244, '#7b5ea7'],
       ['cat', 102, 483, '#9aa0a8'],

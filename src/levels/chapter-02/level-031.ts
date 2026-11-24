@@ -1,5 +1,5 @@
 // Motion differences: the bus arrives faster on picture B; the kiosk's flag waves only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bin, building, bus, cityTree, cloud, dog, lampHead, lampPost, mailbox, manhole, newspaperBox, person, pigeon, scooter, shoppingBag, skyline, street, sun } from './shapes.ts'
 import { level031Redesign } from './level-031-redesign.ts'
@@ -64,6 +64,22 @@ export default svgLevel({
       shoppingBag(442, 352) +
       scooter(783, 352) +
       manhole(620, 470) +
+      // A busier bus stop, the same in both pictures: a plane, an airship and a swallow in the sky, a pigeon, a crow
+      // and a cat on the roofs, birds on the lamp and the shelter, flower boxes on the windows, a cone on the road.
+      decor({ anim }, [
+        ['plane', 300, 30],
+        ['airship', 650, 45],
+        ['swallow', 580, 120],
+        ['pigeon', 40, 122],
+        ['crow', 420, 82],
+        ['cat', 780, 102, '#f2a65a'],
+        ['pigeon', 560, 228],
+        ['sparrow', 310, 230],
+        ['flowerBox', 200, 269, '#ffd23f'],
+        ['flowerBox', 485, 205, '#ff006e'],
+        ['flowerBox', 755, 207, '#4dabf7'],
+        ['cone', 790, 478],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pigeon', 675, 474],

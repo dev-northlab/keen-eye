@@ -88,6 +88,18 @@ export default detectiveLevel({
       ['tent', 587, 478],
       ['wheelbarrow', 759, 366],
     ]) +
+    // A busier yard, the same in both pictures: a cloud and a balloon in the sky, a pigeon on the roof ridge, a sparrow
+    // on the fence, a flower box under the window, a broom by the door, a beehive by the house, stones by the pen.
+    decor({ anim }, [
+      ['cloud', 240, 40],
+      ['hotAirBalloon', 660, 170],
+      ['pigeon', 160, 66],
+      ['sparrow', 320, 252],
+      ['flowerBox', 160, 262, '#e86aa0'],
+      ['broom', 205, 326],
+      ['beehive', 20, 330],
+      ['stones', 770, 490],
+    ]) +
     extras({ extra, anim }, [
       ['owl', 45, 390],
       ['airship', 87, 37],

@@ -1,6 +1,6 @@
 // Motion difference: a window light blinks only on picture B.
 import { mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level012Redesign } from './level-012-redesign.ts'
 import { fence, grass, milkCan, stones, wheelbarrow } from '../shapes.ts'
@@ -79,6 +79,22 @@ export default svgLevel({
       mushroom(360, 470) +
       wheelbarrow(770, 470) +
       stones(505, 475) +
+      // A busier evening farm, the same in both pictures: the first stars and two bats in the sky, an owl on a fence
+      // post, a fox on the hill, a hedgehog and a mouse out for the night, a hay bale, a rake and one more firefly.
+      decor({ anim }, [
+        ['star', 140, 28],
+        ['star', 410, 26],
+        ['star', 770, 40],
+        ['bat', 200, 160],
+        ['bat', 720, 170],
+        ['owl', 691, 346],
+        ['fox', 600, 300],
+        ['hedgehog', 130, 470],
+        ['mouse', 450, 390],
+        ['haybale', 230, 362],
+        ['rake', 620, 496],
+        ['firefly', 290, 380],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 496, 447, '#ff9f43'],

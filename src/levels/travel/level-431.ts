@@ -132,6 +132,19 @@ export default travelLevel({
         ['birds', 520, 64],
         ['cloud', 712, 84],
       ]) +
+      // A busier square: a plane and a swallow in the sky, a crow and a sparrow on the Kremlin wall, a newspaper box by
+      // the lamp, a tourist's suitcase and a kick scooter, a sparrow and a puppy on the cobbles.
+      decor({ anim }, [
+        ['plane', 240, 30],
+        ['swallow', 350, 215],
+        ['crow', 233, 260],
+        ['sparrow', 779, 260],
+        ['newspaperBox', 20, 494, '#3a86ff'],
+        ['scooter', 180, 440],
+        ['suitcase', 165, 494, '#ffd23f'],
+        ['sparrow', 440, 380],
+        ['puppy', 775, 494, '#c98b4f'],
+      ]) +
       extras({ extra, anim }, [
         ['ball', 504, 364, '#ffd23f'],
         ['bollard', 228, 492],

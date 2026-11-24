@@ -1,5 +1,5 @@
 // Motion differences: the lantern swings only on picture B; the sun brightens faster on B; the fog puff drifts faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level059Redesign } from './level-059-redesign.ts'
 import { anthill, backpack, deer, feather, floor, mushroom, pine, pineCone, stump, trailSign } from './shapes.ts'
@@ -76,6 +76,19 @@ export default svgLevel({
       trailSign(620, 425) +
       feather(740, 480) +
       anthill(70, 480) +
+      // A busier misty morning, the same in both pictures: an owl on the pine branch, a molehill, a rabbit, a fox and a
+      // hedgehog in the fog, a fern, a snail, stones and a pile of leaves.
+      decor({ anim }, [
+        ['owl', 455, 308],
+        ['molehill', 230, 332],
+        ['rabbit', 260, 372],
+        ['fox', 640, 350],
+        ['hedgehog', 765, 442],
+        ['fern', 30, 380],
+        ['snail', 430, 474],
+        ['stones', 140, 490],
+        ['leafPile', 690, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 84, 138],

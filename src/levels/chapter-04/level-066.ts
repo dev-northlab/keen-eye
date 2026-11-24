@@ -1,5 +1,5 @@
 // Motion differences: the drying fish sway only on picture B; the net float bobs faster on B; the gull flies the other way round on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level066Redesign } from './level-066-redesign.ts'
 import { beachBall, bucket, buoy, cloud, fish, flipFlops, gull, gullStanding, lifeRing, person, rock, sun, sunglasses, sunHat, waves } from './shapes.ts'
@@ -73,6 +73,20 @@ export default svgLevel({
       beachBall(420, 372) +
       flipFlops(590, 372) +
       sunglasses(720, 372) +
+      // A busier fishing village, the same in both pictures: a plane, a kite and a flock of birds in the sky, bollards,
+      // boots and a cat on the quay, fish and a jellyfish in the water.
+      decor({ anim }, [
+        ['plane', 560, 30],
+        ['birds', 200, 170],
+        ['kite', 740, 170, '#8ac926'],
+        ['boots', 80, 380, '#ffd23f'],
+        ['bollard', 370, 372],
+        ['bollard', 520, 378],
+        ['cat', 660, 385],
+        ['fish', 370, 475, '#ffd23f'],
+        ['fish', 30, 475, '#ff6b8b'],
+        ['jellyfish', 130, 470, '#b38cff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 457, 436],

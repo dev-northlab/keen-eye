@@ -1,5 +1,5 @@
 import { bird, butterfly, mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level010Redesign } from './level-010-redesign.ts'
 import { cat, cloud, cow, fence, flower, FLOWER_COLORS, grass, pick, sun, wheelbarrow } from '../shapes.ts'
@@ -65,6 +65,19 @@ export default svgLevel({
       wheelbarrow(555, 402) +
       mushroom(25, 420) +
       butterfly(775, 320) +
+      // A busier cow yard, the same in both pictures: a kite and barn swallows in the sky, a sparrow on the barn roof,
+      // a crow on a fence post, a rabbit on the hill, a broom by the barn, a hay bale and the milking pail.
+      decor({ anim }, [
+        ['kite', 380, 190, '#8ac926'],
+        ['swallow', 460, 235],
+        ['swallow', 780, 130],
+        ['sparrow', 560, 168],
+        ['crow', 91, 321],
+        ['rabbit', 120, 300],
+        ['broom', 510, 360],
+        ['haybale', 28, 488],
+        ['bucket', 520, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 628, 456],

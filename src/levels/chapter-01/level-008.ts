@@ -1,5 +1,5 @@
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level008Redesign } from './level-008-redesign.ts'
 import { birdhouse, cat, cloud, fence, hayBale, pumpkin, sun, tractor, wheelbarrow } from '../shapes.ts'
@@ -55,6 +55,20 @@ export default svgLevel({
     wheelbarrow(110, 400) +
     pumpkin(470, 488) +
     cat(770, 492) +
+    // A busier harvest field, the same in both pictures: a crop duster and swallows in the sky, a windmill on the hill,
+    // a sparrow on a fence post, a rabbit, a field mouse and a crow in the stubble, a hay rake and a bucket.
+    decor({ anim }, [
+      ['plane', 120, 60],
+      ['swallow', 60, 200],
+      ['swallow', 380, 220],
+      ['windmill', 600, 292],
+      ['sparrow', 51, 286],
+      ['rabbit', 480, 380],
+      ['mouse', 120, 470],
+      ['crow', 250, 482],
+      ['rake', 560, 492],
+      ['bucket', 300, 492],
+    ]) +
     // The extra objects of normal mode (docs/extra-objects.md).
     extras({ extra, anim }, [
       ['bee', 196, 412],

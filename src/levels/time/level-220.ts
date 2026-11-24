@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level220Redesign } from './level-220-redesign.ts'
 import { around, barrel, birds, cloud, cone, crate, door, DUSK, glow, lampHead, lampPost, moon, pane, sky, stars, sun } from './shapes.ts'
@@ -110,6 +110,19 @@ export default svgLevel({
     cone(140, 392) +
     crate(786, 392, 22, '#8a7a4e') +
     crate(786, 370, 22, '#8a7a4e') +
+    // A busier airfield: a pigeon on the hangar, a crow on the barracks, a broom by its wall, a wheelbarrow, a bucket,
+    // boots and a cat on the apron, a plane in the sky; a bat in the evening.
+    decor({ anim }, [
+      ['pigeon', 120, 152],
+      ['crow', 650, 194],
+      ['broom', 775, 300],
+      ['wheelbarrow', 215, 340],
+      ['bucket', 62, 394],
+      ['boots', 548, 494, '#3d4a2a'],
+      ['cat', 445, 300, '#3d3d3d'],
+      ['plane', 560, 130],
+    ]) +
+    time('', decor({ anim }, [['bat', 30, 150]])) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 190, 60],

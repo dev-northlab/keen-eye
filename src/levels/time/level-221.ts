@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level221Redesign } from './level-221-redesign.ts'
 import { around, bareTree, bucket, butterfly, cloud, cone, grass, icicles, oak, pane, person, sky, smoke, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
@@ -104,6 +104,27 @@ export default svgLevel({
     cloud(480, 50, 0.45) +
     cloud(700, 110, 0.4) +
     time(grass(40, 496) + grass(600, 498) + butterfly(330, 440), '') +
+    // A busier site, the same in both seasons: a crow on the jib, a plane, a hot-air balloon, a bin, the site dog, a
+    // manhole, a pigeon on the office, stones, a bollard, a sparrow; a dandelion and a bee in summer.
+    decor({ anim }, [
+      ['crow', 230, 66],
+      ['plane', 745, 32],
+      ['hotAirBalloon', 225, 228],
+      ['bin', 58, 300, '#4f772d'],
+      ['puppy', 32, 388],
+      ['manhole', 395, 494],
+      ['pigeon', 680, 230],
+      ['stones', 505, 496],
+      ['bollard', 615, 496],
+      ['sparrow', 785, 404],
+    ]) +
+    time(
+      decor({ anim }, [
+        ['flower', 18, 494, '#ffd23f'],
+        ['bee', 36, 462],
+      ]),
+      snowCap(48, 272, 20) + snowCap(492, 484, 26),
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 200, 150],

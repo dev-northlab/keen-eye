@@ -1,5 +1,5 @@
 import { bird, butterfly } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level006Redesign } from './level-006-redesign.ts'
 import { cloud, eggNest, fence, flower, FLOWER_COLORS, grass, hen, milkCan, pick, sun, wateringCan } from '../shapes.ts'
@@ -78,6 +78,20 @@ export default svgLevel({
       wateringCan(745, 478) +
       bird(571, 317) +
       butterfly(300, 330) +
+      // A busier chicken run, the same in both pictures: swallows in the sky, a sparrow on the coop roof, a crow on a
+      // fence post, a fox sneaking up by the fence, a hay bale, a wheelbarrow, a lost feather, a snail and a ladybug.
+      decor({ anim }, [
+        ['sparrow', 170, 142],
+        ['swallow', 380, 195],
+        ['swallow', 580, 150],
+        ['crow', 491, 316],
+        ['fox', 782, 400],
+        ['haybale', 500, 385],
+        ['wheelbarrow', 366, 493],
+        ['feather', 230, 490, '#ffffff'],
+        ['snail', 30, 488],
+        ['ladybug', 782, 466],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 143, 446],

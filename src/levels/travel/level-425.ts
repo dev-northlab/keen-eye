@@ -116,6 +116,22 @@ export default travelLevel({
         ['birds', 88, 108],
         ['cloud', 612, 140],
       ]) +
+      // A busier souk: a hot-air balloon, a plane and a swallow in the sky, a cat, a pigeon and a sparrow on the wall,
+      // a potted plant, poufs and a tortoise by the stall, a bucket and a basket of rug wool by the rug seller.
+      decor({ anim }, [
+        ['hotAirBalloon', 270, 50],
+        ['plane', 130, 30],
+        ['swallow', 760, 190],
+        ['cat', 270, 260, '#d9a066'],
+        ['pigeon', 720, 260],
+        ['sparrow', 520, 260],
+        ['flowerPot', 225, 430],
+        ['tortoise', 360, 492],
+        ['pouf', 420, 494, '#b23a48'],
+        ['pouf', 520, 494, '#2a9d8f'],
+        ['bucket', 635, 440],
+        ['yarnBasket', 765, 494],
+      ]) +
       extras({ extra, anim }, [
         ['pigeon', 632, 372],
         ['suitcase', 296, 384, '#3a86ff'],

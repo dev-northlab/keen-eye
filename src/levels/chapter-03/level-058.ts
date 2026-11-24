@@ -1,5 +1,5 @@
 // Motion differences: the bees fly faster on picture B; the honey drip bobs only on B; the leafy twig sways faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level058Redesign } from './level-058-redesign.ts'
 import { acorn, anthill, bear, bird, bluebells, bush, cloud, floor, flower, pine, pineCone, sun, wildStrawberry } from './shapes.ts'
@@ -65,6 +65,20 @@ export default svgLevel({
       acorn(612, 480) +
       anthill(55, 490) +
       bluebells(455, 484) +
+      // A busier honey tree, the same in both pictures: a swallow, a sparrow and a squirrel on the branches, a hedgehog,
+      // a mushroom, a snail and a fox on the hill, a ladybug, a molehill and a beehive on the meadow.
+      decor({ anim }, [
+        ['swallow', 530, 40],
+        ['sparrow', 320, 154],
+        ['squirrel', 470, 174],
+        ['hedgehog', 160, 322],
+        ['mushroom', 300, 330, '#a0703f'],
+        ['snail', 310, 372],
+        ['fox', 612, 346],
+        ['ladybug', 340, 432],
+        ['molehill', 25, 432],
+        ['beehive', 770, 432],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 442, 414],

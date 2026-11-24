@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level216Redesign } from './level-216-redesign.ts'
 import { around, balloon, barrel, bench, bin, bird, bulbs, clockFace, cloud, crate, dog, door, DUSK, flowerBox, fruit, glow, lampHead, lampPost, moon, pane, person, pigeon, poster, pot, sack, sky, small, stall, stars, sun } from './shapes.ts'
@@ -73,11 +73,26 @@ export default svgLevel({
       bench(80, 480) +
       pot(400, 490) +
       pigeon(660, 490, true) +
+      // A busier square: a shopping bag, a newspaper box, a cat, a scooter and pigeons on the cobbles, one on the guest
+      // house's roof, flower pots by its door; bats and a sky lantern in the evening.
+      decor({ anim }, [
+        ['shoppingBag', 70, 420, '#8338ec'],
+        ['newspaperBox', 780, 480, '#2a9d8f'],
+        ['cat', 160, 488, '#6c757d'],
+        ['scooter', 350, 492],
+        ['pigeon', 625, 480],
+        ['pigeon', 580, 132],
+        ['flowerPot', 640, 300],
+        ['flowerPot', 712, 300],
+      ]) +
+      time('', decor({ anim }, [['bat', 180, 30], ['bat', 470, 28]])) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 726, 84],
       ]) +
       time('', DUSK) +
+      // Night lights over the dusk, so that they glow: only in the evening picture.
+      time('', decor({ anim }, [['skyLantern', 320, 30]])) +
       time('', glow(290, 140, 30, 50) + glow(480, 140, 30, 50) + glow(30, 220, 36, 40)) +
       trap(400, 82, 26, clockFace(400, 82, 20, 8, 0), clockFace(400, 82, 20, 7, 30), 'clock') +
       trap(745, 188, 24, '', glow(730, 170, 30, 36), 'lights') +

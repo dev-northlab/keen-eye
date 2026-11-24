@@ -1,5 +1,5 @@
 // Motion differences: the hanging sign swings only on picture B; the coffee steam rises faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, ball, bike, cloud, door, flowerBox, manhole, newspaperBox, person, pigeon, shoppingBag, skateboard, street, window } from './shapes.ts'
 import { level022Redesign } from './level-022-redesign.ts'
@@ -104,6 +104,21 @@ export default svgLevel({
       shoppingBag(600, 382) +
       ball(705, 380) +
       manhole(420, 470) +
+      // A busier cafe, the same in both pictures: a kite, a hot-air balloon and a swallow in the sky, a pigeon and a crow
+      // on the roof, bunting and lamps on the wall, a sparrow and a puppy by the tables.
+      decor({ anim }, [
+        ['kite', 500, 56, '#ff9f1c'],
+        ['hotAirBalloon', 50, 60],
+        ['swallow', 450, 112],
+        ['pigeon', 250, 140],
+        ['crow', 640, 140],
+        ['bunting', 250, 165],
+        ['bunting', 550, 165],
+        ['sconce', 230, 250],
+        ['sconce', 580, 250],
+        ['sparrow', 600, 412],
+        ['puppy', 330, 428, '#c98b4f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 127, 253, '#ffb703'],

@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level204Redesign } from './level-204-redesign.ts'
 import { anchor, beam, bollard, buoy, chimney, cloud, crate, DUSK, flowerBox, glow, gull, lampHead, lampPost, lifeRing, lighthouse, moon, pier, pine, rock, ropeCoil, rowboat, sailboat, sky, sun, waves } from './shapes.ts'
@@ -49,12 +49,29 @@ export default svgLevel({
     buoy(250, 480, '#ffb703') +
     buoy(620, 470, '#3a86ff') +
     sailboat(740, 440, '#e63946') +
+    // A busier harbour: a bucket on the pier, a crab on the island, a duck, a fish and a bottle in the water;
+    // stars, a bat and a sky lantern in the evening.
+    decor({ anim }, [
+      ['bucket', 320, 330],
+      ['crab', 645, 296, '#e85d3f'],
+      ['duck', 62, 476],
+      ['fish', 420, 472, '#ff9f43'],
+      ['bottle', 545, 470],
+    ]) +
+    time(
+      '',
+      decor({ anim }, [
+        ['bat', 480, 200],
+      ]),
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 274, 162],
       ['birds', 582, 79],
     ]) +
     time('', DUSK) +
+    // Night lights over the dusk, so that they glow: only in the evening picture.
+    time('', decor({ anim }, [['star', 380, 40], ['star', 640, 28], ['skyLantern', 525, 225]])) +
     trap(400, 230, 36, lampHead(400, 330, false), lampHead(400, 330, true), 'lights') +
     trap(690, 135, 50, '', beam(690, 290), 'lights') +
     time('', glow(59, 273, 30, 22)) +

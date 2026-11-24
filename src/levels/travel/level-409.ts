@@ -139,6 +139,22 @@ export default travelLevel({
         ['cloud', 704, 112],
         ['birds', 236, 52],
       ]) +
+      // A busier Tbilisi, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, a crow on the
+      // fortress wall, flowers and a sparrow on the hill, a cat and a bench by the houses, a gull and fish over and in the river.
+      decor({ anim }, [
+        ['plane', 360, 30],
+        ['hotAirBalloon', 780, 50],
+        ['swallow', 640, 160],
+        ['crow', 200, 182],
+        ['flower', 30, 330, '#ff6b8b'],
+        ['flower', 220, 330, '#ffd23f'],
+        ['sparrow', 120, 300],
+        ['cat', 474, 412, '#6b6b6b'],
+        ['bench', 640, 414],
+        ['gull', 440, 446],
+        ['fish', 240, 445],
+        ['fish', 650, 482, '#ff8c42'],
+      ]) +
       extras({ extra, anim }, [
         ['coffeeCup', 56, 372],
         ['lifeRing', 308, 464],

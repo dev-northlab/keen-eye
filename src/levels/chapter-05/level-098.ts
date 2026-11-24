@@ -1,5 +1,5 @@
 // Motion differences: the rocket lands and lifts off faster on picture B; the pad beacon blinks faster on B; the tower radar turns only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level098Redesign } from './level-098-redesign.ts'
 import { astronaut, flame, fuelCanister, helmet, moonPebbles, rocket, solarPanel, starField, toolbox, ufo } from './shapes.ts'
@@ -65,6 +65,21 @@ export default svgLevel({
       moonPebbles(165, 364) +
       helmet(730, 472) +
       solarPanel(645, 356) +
+      // A busier spaceport, the same in both pictures: planets, a probe and stars in the sky; a beacon, traffic cones,
+      // a bollard and travellers' suitcases on the apron.
+      decor({ anim }, [
+        ['ringPlanet', 650, 60, '#ff9f43'],
+        ['planet', 300, 40, '#8ecae6'],
+        ['probe', 470, 40],
+        ['spaceStar', 30, 160, '#ffd23f'],
+        ['spaceStar', 470, 180, '#ff6bd6'],
+        ['beacon', 30, 362],
+        ['cone', 150, 412],
+        ['cone', 425, 412],
+        ['bollard', 625, 410],
+        ['suitcase', 40, 486, '#e63946'],
+        ['suitcase', 785, 412, '#3a86ff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 413, 477],

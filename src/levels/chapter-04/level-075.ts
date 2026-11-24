@@ -1,5 +1,5 @@
 // Motion differences: the sun pulses faster on picture B; the lantern on the pier swings only on B; the rowboat rocks faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level075Redesign } from './level-075-redesign.ts'
 import { bottleMessage, fish, gull, gullStanding, lifeRing, palm, person, rock, sailboat, sunglasses, waves } from './shapes.ts'
@@ -64,6 +64,19 @@ export default svgLevel({
       fish(420, 430, '#ffb703') +
       sunglasses(780, 345) +
       gullStanding(250, 258) +
+      // A busier sunset bay, the same in both pictures: a plane, a hot-air balloon, a sky lantern and a flock of birds
+      // in the sky, fish, a jellyfish and a buoy in the water.
+      decor({ anim }, [
+        ['plane', 480, 100],
+        ['hotAirBalloon', 300, 150],
+        ['skyLantern', 680, 150],
+        ['birds', 760, 190],
+        ['buoy', 30, 400, '#ffb703'],
+        ['fish', 290, 480, '#ff6b8b'],
+        ['fish', 510, 480, '#4dabf7'],
+        ['fish', 780, 405, '#ffd23f'],
+        ['jellyfish', 650, 470, '#b38cff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['buoy', 110, 349],

@@ -1,5 +1,5 @@
 // Motion differences: the lantern over the fruit stall swings faster on picture B; the lantern on the right swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level092Redesign } from './level-092-redesign.ts'
 import { alien, alienPlant, crystal, fuelCanister, moonPebbles, probe, robot, star, starField } from './shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       fuelCanister(505, 378) +
       moonPebbles(640, 466) +
       probe(450, 210) +
+      // A busier market, the same in both pictures: a ring planet, stars and a hot-air balloon in the sky; a balloon,
+      // a shopping bag, a cactus for sale, a ball and a beacon by the stalls.
+      decor({ anim }, [
+        ['ringPlanet', 250, 40, '#ff9f43'],
+        ['spaceStar', 40, 30, '#ffd23f'],
+        ['spaceStar', 720, 30, '#3ae0ff'],
+        ['spaceStar', 380, 180, '#ffd23f'],
+        ['hotAirBalloon', 60, 200],
+        ['balloon', 40, 318, '#ffd23f'],
+        ['shoppingBag', 122, 484, '#ff006e'],
+        ['cactus', 602, 492],
+        ['ball', 376, 492, '#3a86ff'],
+        ['beacon', 785, 345],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 688, 478],

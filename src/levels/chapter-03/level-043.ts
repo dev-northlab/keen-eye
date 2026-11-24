@@ -1,5 +1,5 @@
 // Motion differences: the dragonfly darts faster on picture B; the floating log drifts faster on B; the reeds sway only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level043Redesign } from './level-043-redesign.ts'
 import { acorn, anthill, bluebells, bush, cloud, floor, log, oak, pine, pineCone, rock, sun } from './shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       bluebells(45, 338) +
       anthill(735, 340) +
       snail(590, 340) +
+      // A busier river, the same in both pictures: a swallow, a bee over the bush, a fox, a mushroom, a fern and wild
+      // strawberries on the bank, a dragonfly and a fish over the water, a frog on the lily pad and stones in the shallows.
+      decor({ anim }, [
+        ['swallow', 580, 170],
+        ['bee', 640, 272],
+        ['fox', 588, 322],
+        ['mushroom', 690, 324, '#e63946'],
+        ['fern', 772, 306],
+        ['wildStrawberry', 95, 340],
+        ['dragonfly', 165, 400],
+        ['fish', 400, 490, '#ffb703'],
+        ['frog', 200, 468],
+        ['stones', 778, 494],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 724, 275],

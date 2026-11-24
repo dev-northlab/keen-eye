@@ -1,6 +1,6 @@
 // Motion differences: the laundry sways only on picture B; the chimney smoke rises faster on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { flowerPot, wateringCan } from '../shapes.ts'
 import { ball, cloud, coffeeCup, pigeon, skyline, sun } from './shapes.ts'
@@ -85,6 +85,21 @@ export default svgLevel({
       flowerPot(590, 448) +
       wateringCan(720, 478) +
       coffeeCup(265, 462) +
+      // Busier rooftops, the same in both pictures: a kite, a plane, a paper plane and a hot-air balloon in the sky, a crow
+      // and a birdhouse on the blue roof, lamps on the walls, a bucket, a potted plant and a sparrow on the near roof.
+      decor({ anim }, [
+        ['kite', 60, 80, '#2a9d8f'],
+        ['plane', 480, 30],
+        ['paperPlane', 470, 140],
+        ['hotAirBalloon', 770, 170],
+        ['crow', 780, 252],
+        ['birdhouse', 680, 252],
+        ['sconce', 240, 330],
+        ['sconce', 540, 340],
+        ['bucket', 40, 440],
+        ['flowerPot', 360, 430],
+        ['sparrow', 600, 412],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 91, 369, '#e63946'],

@@ -68,6 +68,18 @@ export default detectiveLevel({
       ['scarfHook', 716, 79, '#7b5ea7'],
       ['fireExtinguisher', 757, 490],
     ]) +
+    // A busier hall, the same in both pictures: a cuckoo clock, two portraits, antlers, a butterfly frame and a
+    // calendar of exhibitions on the walls, an umbrella stand by the column and a globe on the floor.
+    decor({ anim }, [
+      ['cuckooClock', 230, 50],
+      ['photoOval', 430, 64],
+      ['antlers', 190, 262],
+      ['photoOval', 112, 300],
+      ['butterflyFrame', 560, 205],
+      ['calendar', 615, 290],
+      ['umbrellaStand', 70, 410],
+      ['globe', 200, 490],
+    ]) +
     extras({ extra, anim }, [
       ['butterflyFrame', 90, 248],
       ['bunting', 122, 53],

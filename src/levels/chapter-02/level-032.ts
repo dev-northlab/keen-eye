@@ -1,6 +1,6 @@
 // Motion differences: the boat sails faster on picture B; the gull flies the other way round on B.
 import { bird, butterfly } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, car, cityTree, cloud, coffeeCup, lampHead, lampPost, person, skateboard, skyline, sun } from './shapes.ts'
 import { duck } from '../shapes.ts'
@@ -78,6 +78,20 @@ export default svgLevel({
       butterfly(720, 340) +
       skateboard(705, 300) +
       coffeeCup(125, 390) +
+      // A busier river, the same in both pictures: a plane, a hot-air balloon, an airship and a swallow in the sky, a pigeon
+      // on the railing, a crow on the lamp, a sparrow on the tree, a bottle in the water, a bucket and a puppy on the banks.
+      decor({ anim }, [
+        ['plane', 440, 30],
+        ['hotAirBalloon', 720, 178],
+        ['airship', 50, 188],
+        ['swallow', 110, 140],
+        ['pigeon', 480, 272],
+        ['crow', 540, 178],
+        ['sparrow', 745, 229],
+        ['bottle', 505, 414],
+        ['bucket', 25, 398],
+        ['puppy', 770, 330, '#f4f1de'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 560, 423, '#ff6b8b'],

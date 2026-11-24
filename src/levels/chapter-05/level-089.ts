@@ -1,5 +1,5 @@
 // Motion differences: the astronaut floats faster on picture B; the apple spins faster on B; the panel light blinks only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level089Redesign } from './level-089-redesign.ts'
 import { astronaut, fuelCanister, helmet, probe, rocket, toolbox, wrench } from './shapes.ts'
@@ -59,6 +59,19 @@ export default svgLevel({
       helmet(720, 345) +
       probe(260, 330) +
       fuelCanister(500, 472) +
+      // A busier cabin, the same in both pictures: a calendar, a photo, a phone, a star map and a lamp on the walls; a
+      // paper plane, a cup, a ball and a teddy floating free.
+      decor({ anim }, [
+        ['calendar', 140, 160],
+        ['photoOval', 772, 150],
+        ['wallPhone', 32, 230],
+        ['treasureMap', 140, 360],
+        ['sconce', 300, 92],
+        ['paperPlane', 550, 130],
+        ['coffeeCup', 420, 352],
+        ['ball', 670, 300, '#e63946'],
+        ['teddy', 352, 440, '#c9a06c'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 234, 197],

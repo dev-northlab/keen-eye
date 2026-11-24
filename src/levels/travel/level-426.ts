@@ -109,6 +109,20 @@ export default travelLevel({
         ['cloud', 616, 72],
         ['birds', 344, 52],
       ]) +
+      // A busier harbour: a plane and gulls in the sky, a cat and a pigeon on the Bo-Kaap roofs, fish and a jellyfish in
+      // the bay, a shell on the sand and a starfish on the penguins' rock.
+      decor({ anim }, [
+        ['plane', 560, 28],
+        ['gull', 590, 200],
+        ['gull', 90, 180],
+        ['cat', 40, 264, '#6b6b6b'],
+        ['pigeon', 420, 264],
+        ['fish', 620, 480, '#ff9f43'],
+        ['fish', 440, 490],
+        ['jellyfish', 780, 466, '#f4a6c4'],
+        ['shell', 75, 496],
+        ['starfish', 262, 472, '#ff6b35'],
+      ]) +
       extras({ extra, anim }, [
         ['buoy', 528, 464, '#e63946'],
         ['bottle', 168, 404],

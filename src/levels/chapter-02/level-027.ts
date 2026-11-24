@@ -1,5 +1,5 @@
 // Motion differences: the neon sign blinks only on picture B; the taxi drives faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bin, bollard, building, car, cityTree, door, lampHead, lampPost, mailbox, manhole, newspaperBox, person, shoppingBag, signBoard, skyline, street } from './shapes.ts'
 import { level027Redesign } from './level-027-redesign.ts'
@@ -71,6 +71,21 @@ export default svgLevel({
       newspaperBox(520, 352) +
       shoppingBag(752, 352) +
       manhole(700, 470) +
+      // A busier night street, the same in both pictures: bats and sky lanterns in the sky, a cat and an owl on the roofs,
+      // an owl on the lamp, a wall lamp by the door, a bench, a hydrant and a mouse on the pavement.
+      decor({ anim }, [
+        ['bat', 290, 110],
+        ['bat', 720, 60],
+        ['skyLantern', 480, 30],
+        ['skyLantern', 770, 80],
+        ['cat', 330, 142, '#9a9a9a'],
+        ['owl', 540, 72],
+        ['owl', 620, 228],
+        ['sconce', 130, 300],
+        ['bench', 215, 356, '#5a4a6b'],
+        ['hydrant', 580, 354],
+        ['mouse', 420, 356],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 252, 65],

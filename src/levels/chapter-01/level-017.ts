@@ -1,6 +1,6 @@
 // Motion differences: the chimney smoke rises faster on picture B; the bird on the feeder hops only on B.
 import { stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { cat, fence, milkCan, stones, wheelbarrow } from '../shapes.ts'
 import { level017Redesign } from './level-017-redesign.ts'
@@ -99,6 +99,19 @@ export default svgLevel({
       stump(700, 440) +
       stones(410, 480) +
       wheelbarrow(290, 370) +
+      // A busier winter farm, the same in both pictures: a little pine on the hill, bullfinches on the fence, a crow on
+      // the snowy roof, a fox in the snow, a snow shovel, snowballs, ice skates and lost mittens.
+      decor({ anim }, [
+        ['pine', 140, 302],
+        ['bullfinch', 51, 346],
+        ['bullfinch', 211, 346],
+        ['crow', 490, 177],
+        ['fox', 620, 470],
+        ['snowShovel', 225, 455],
+        ['snowballs', 450, 415],
+        ['iceSkates', 570, 488],
+        ['mittens', 60, 490],
+      ]) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [

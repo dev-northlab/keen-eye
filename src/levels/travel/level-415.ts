@@ -112,6 +112,20 @@ export default travelLevel({
         ['cloud', 240, 60],
         ['birds', 600, 80],
       ]) +
+      // A busier valley, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, fish in the lake,
+      // a tent and stones on the shore, a fern, a sheepdog and a snail in the meadow.
+      decor({ anim }, [
+        ['plane', 700, 40],
+        ['hotAirBalloon', 250, 140],
+        ['swallow', 60, 180],
+        ['fish', 150, 306],
+        ['fish', 778, 304, '#ff8c42'],
+        ['tent', 560, 348],
+        ['stones', 460, 372],
+        ['fern', 784, 497],
+        ['puppy', 625, 496, '#2b2b2b'],
+        ['snail', 430, 490],
+      ]) +
       extras({ extra, anim }, [
         ['butterfly', 96, 476, '#ffd23f'],
         ['stones', 284, 480],

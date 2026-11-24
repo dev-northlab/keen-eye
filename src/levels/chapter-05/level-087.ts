@@ -1,5 +1,5 @@
 // Motion differences: the big asteroid spins faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level087Redesign } from './level-087-redesign.ts'
 import { asteroid, astronaut, beacon, flag, flame, fuelCanister, planet, probe, rocket, sparkle, star, starField, toolbox, wrench } from './shapes.ts'
@@ -51,6 +51,20 @@ export default svgLevel({
       probe(410, 360) +
       fuelCanister(250, 245) +
       wrench(470, 335) +
+      // A busier asteroid belt, the same in both pictures: planets, a probe, stars and sparkles, a crystal on a rock,
+      // and a lost helmet and toolbox floating among the rocks.
+      decor({ anim }, [
+        ['ringPlanet', 770, 230, '#8ecae6'],
+        ['planet', 640, 30, '#ffd23f'],
+        ['probe', 230, 330],
+        ['spaceStar', 260, 30, '#ff6b8b'],
+        ['spaceStar', 530, 160, '#4dabf7'],
+        ['sparkle', 785, 470],
+        ['sparkle', 20, 270],
+        ['crystal', 426, 458, '#ff6bd6'],
+        ['helmet', 40, 345],
+        ['toolbox', 660, 335, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ringPlanet', 579, 224],

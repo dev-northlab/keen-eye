@@ -1,5 +1,5 @@
 // Motion differences: the station clock runs backwards on picture B; the engine's smoke rises faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bench, bollard, cloud, mailbox, newspaperBox, person, pigeon, shoppingBag, skateboard, skyline, window } from './shapes.ts'
 import { level024Redesign } from './level-024-redesign.ts'
@@ -98,6 +98,21 @@ export default svgLevel({
       bollard(330, 368) +
       mailbox(770, 368) +
       skateboard(685, 368) +
+      // A busier station, the same in both pictures: a plane, an airship and a swallow in the sky, a pigeon on the eave,
+      // a lamp, a timetable and a phone on the wall, a suitcase and a bin on the platform, a crow and a sparrow on the tracks.
+      decor({ anim }, [
+        ['plane', 300, 30],
+        ['airship', 720, 100],
+        ['swallow', 200, 150],
+        ['pigeon', 195, 200],
+        ['sconce', 215, 250],
+        ['calendar', 300, 300],
+        ['wallPhone', 500, 305],
+        ['suitcase', 25, 370, '#ffb703'],
+        ['bin', 97, 370, '#2a9d8f'],
+        ['crow', 770, 425],
+        ['sparrow', 750, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 415, 250, '#ff006e'],

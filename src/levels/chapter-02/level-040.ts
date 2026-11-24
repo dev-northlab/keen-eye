@@ -1,5 +1,5 @@
 // Motion differences: the big firework bursts at another moment on picture B; the lantern swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, balloon, bollard, coffeeCup, person, sandwichBoard, shoppingBag, skyline } from './shapes.ts'
 import { level040Redesign } from './level-040-redesign.ts'
@@ -78,6 +78,20 @@ export default svgLevel({
       coffeeCup(520, 438) +
       sandwichBoard(670, 438) +
       bollard(150, 438) +
+      // A busier festival night, the same in both pictures: sky lanterns and twinkling stars, bunting between the paper
+      // lanterns, a cat, a puppy and a bin on the embankment.
+      decor({ anim }, [
+        ['skyLantern', 80, 200],
+        ['skyLantern', 470, 205],
+        ['skyLantern', 760, 185],
+        ['star', 60, 140],
+        ['star', 740, 140],
+        ['bunting', 330, 309],
+        ['bunting', 630, 303],
+        ['cat', 230, 443, '#9a9a9a'],
+        ['puppy', 740, 443, '#c98b4f'],
+        ['bin', 60, 440, '#8d99ae'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 226, 327],

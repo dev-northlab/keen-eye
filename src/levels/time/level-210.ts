@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level210Redesign } from './level-210-redesign.ts'
 import { around, bareTree, bench, bin, butterfly, cloud, cone, door, flowerBox, grass, hydrant, icicles, oak, pane, person, sky, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
@@ -78,6 +78,26 @@ export default svgLevel({
     bin(400, 494) +
     time('', snowCap(390, 466, 20)) +
     time(grass(30, 496) + grass(240, 498) + grass(770, 496) + butterfly(460, 470), '') +
+    // A busier square: a fire extinguisher, a newspaper box and a bollard on the pavement, a bullfinch on the
+    // police roof, a puppy, a crow and a shopping bag in both seasons; flowers and a bee in summer.
+    decor({ anim }, [
+      ['fireExtinguisher', 285, 326],
+      ['newspaperBox', 545, 326, '#1d4ed8'],
+      ['bollard', 615, 326],
+      ['bullfinch', 360, 150],
+      ['puppy', 440, 494],
+      ['crow', 745, 494],
+      ['shoppingBag', 600, 494, '#8338ec'],
+    ]) +
+    time('', snowCap(537, 294, 16)) +
+    time(
+      decor({ anim }, [
+        ['flower', 120, 494, '#ffd23f'],
+        ['flower', 134, 497, '#ff6b8b'],
+        ['bee', 250, 468],
+      ]),
+      '',
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 110, 70],

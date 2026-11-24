@@ -77,6 +77,20 @@ export default detectiveLevel({
       ['molehill', 658, 484],
       ['bucket', 753, 486],
     ]) +
+    // A busier camp at night, the same in both pictures: a bat in the sky, fireflies by the washing line, a
+    // mushroom, a hedgehog, a snail, a frog, stones and grass tufts in the grass and on the path.
+    decor({ anim }, [
+      ['bat', 420, 70],
+      ['firefly', 455, 292],
+      ['firefly', 535, 318],
+      ['mushroom', 118, 392],
+      ['hedgehog', 22, 456],
+      ['snail', 155, 494],
+      ['grass', 500, 440],
+      ['grass', 598, 392],
+      ['frog', 784, 440],
+      ['stones', 418, 494],
+    ]) +
     extras({ extra, anim }, [
       ['mouse', 47, 379],
       ['bat', 48, 151],

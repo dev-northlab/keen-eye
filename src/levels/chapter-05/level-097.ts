@@ -1,5 +1,5 @@
 // Motion differences: the neon planet blinks faster on picture B; the robot waiter rolls faster on B; the arriving saucer hovers faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level097Redesign } from './level-097-redesign.ts'
 import { parasol } from '../chapter-04/shapes.ts'
@@ -68,6 +68,20 @@ export default svgLevel({
       toolbox(480, 460) +
       fuelCanister(140, 455) +
       crystal(700, 455) +
+      // A busier diner, the same in both pictures: planets, a probe, stars and a sparkle in the sky; an alien plant, a
+      // crystal, stones and pebbles on the asteroid.
+      decor({ anim }, [
+        ['ringPlanet', 310, 80, '#ff9f43'],
+        ['planet', 770, 150, '#e63946'],
+        ['probe', 150, 220],
+        ['spaceStar', 40, 180, '#ffd23f'],
+        ['spaceStar', 780, 260, '#ff6bd6'],
+        ['sparkle', 650, 210],
+        ['alienPlant', 630, 478, '#ff6bd6'],
+        ['crystal', 240, 488, '#4dabf7'],
+        ['moonPebbles', 390, 488],
+        ['stones', 515, 372],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['asteroid', 214, 134],

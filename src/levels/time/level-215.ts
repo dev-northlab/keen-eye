@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level215Redesign } from './level-215-redesign.ts'
 import { bike, bird, birdHouse, bucket, bush, butterfly, cat, chimney, cloud, dog, DUSK, fence, flowerBox, flowers, glow, grass, house, lampHead, lampPost, mailbox, moon, oak, pane, rock, sky, stars, stones, sun, vane } from './shapes.ts'
@@ -67,12 +67,25 @@ export default svgLevel({
     flowers(600, 470, '#ffd23f') +
     bucket(660, 470) +
     dog(740, 475) +
+    // A busier garden: boots by the door, a bench, a watering can, a molehill, a ball and a rabbit on the lawn; a bee by
+    // day, an owl on the fence, a bat and a firefly in the evening.
+    decor({ anim }, [
+      ['boots', 235, 330, '#2a9d8f'],
+      ['bench', 320, 420],
+      ['wateringCan', 470, 410],
+      ['molehill', 575, 494],
+      ['ball', 320, 470, '#3a86ff'],
+      ['rabbit', 115, 470],
+    ]) +
+    time(decor({ anim }, [['bee', 625, 450]]), decor({ anim }, [['owl', 560, 378], ['bat', 250, 40]])) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 644, 170],
       ['birds', 94, 79],
     ]) +
     time('', DUSK) +
+    // Night lights over the dusk, so that they glow: only in the evening picture.
+    time('', decor({ anim }, [['firefly', 590, 440]])) +
     time('', glow(95, 262, 40, 44)) +
     trap(115, 212, 30, '', glow(95, 190, 40, 44), 'lights') +
     trap(195, 250, 22, `<circle cx="195" cy="250" r="6" fill="#d8dee4"/>`, `<circle cx="195" cy="250" r="22" fill="#ffe08a" fill-opacity="0.35"/><circle cx="195" cy="250" r="6" fill="#fff3b0"/>`, 'lights') +

@@ -1,5 +1,5 @@
 // Motion differences: the astronaut floats faster on picture B; the satellite flies faster on B; the antenna light blinks only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level083Redesign } from './level-083-redesign.ts'
 import { astronaut, comet, fuelCanister, helmet, probe, satellite, starField, toolbox, wrench } from './shapes.ts'
@@ -50,6 +50,19 @@ export default svgLevel({
       fuelCanister(700, 330) +
       toolbox(480, 120) +
       helmet(90, 330) +
+      // A busier orbit, the same in both pictures: planets, asteroids, a probe, stars and sparkles around the station.
+      decor({ anim }, [
+        ['ringPlanet', 300, 40, '#ff9f43'],
+        ['asteroid', 470, 40],
+        ['planet', 770, 195, '#ff6b8b'],
+        ['planet', 30, 400, '#ffd23f'],
+        ['asteroid', 620, 312],
+        ['probe', 555, 268],
+        ['sparkle', 430, 352],
+        ['spaceStar', 30, 160, '#4dabf7'],
+        ['spaceStar', 780, 290, '#b38cff'],
+        ['sparkle', 22, 318],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ringPlanet', 738, 340],

@@ -1,5 +1,5 @@
 // Motion differences: the moored boat rocks faster on picture B; the gull on the post hops only on B; the crane hook swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level062Redesign } from './level-062-redesign.ts'
 import { anchor, bottleMessage, bucket, buoy, cloud, gullStanding, lifeRing, person, starfish, sun, sunHat, waves } from './shapes.ts'
@@ -71,6 +71,20 @@ export default svgLevel({
       starfish(675, 330) +
       bottleMessage(320, 470) +
       gullStanding(645, 300) +
+      // A busier port, the same in both pictures: a plane, a hot-air balloon and a gull in the sky, a bench, bollards
+      // and boots on the quay, a jellyfish and two fish in the water.
+      decor({ anim }, [
+        ['plane', 510, 25],
+        ['hotAirBalloon', 175, 160],
+        ['gull', 380, 130],
+        ['bench', 318, 372],
+        ['bollard', 720, 362],
+        ['bollard', 112, 366],
+        ['boots', 775, 366, '#ffd23f'],
+        ['fish', 420, 470, '#ffd23f'],
+        ['jellyfish', 310, 425, '#b38cff'],
+        ['fish', 770, 475, '#ff6b8b'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 64, 453, '#ffb703'],

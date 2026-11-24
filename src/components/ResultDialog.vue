@@ -3,7 +3,6 @@ import type { GameMode } from '../engine/rules.ts'
 import type { LevelResult } from '../engine/types.ts'
 import { onBeforeUnmount, onMounted } from 'vue'
 import { playSfx } from '../services/audio.ts'
-import FireworksShow from './FireworksShow.vue'
 import ModalDialog from './ModalDialog.vue'
 import ShareButton from './ShareButton.vue'
 import StarRating from './StarRating.vue'
@@ -53,9 +52,6 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
   <ModalDialog class="result" :class="{ calm: mode === 'calm' && !portrait, toy: portrait }" :title="$t('level.complete')">
     <!-- A glossy badge over the title: a golden cup (normal mode) or a green tick (calm), light rays turning behind
          it and confetti bursting out. "Tiny boy" has its hero's portrait instead, below. -->
-    <template #backdrop>
-      <FireworksShow />
-    </template>
     <template v-if="!portrait" #icon>
       <span class="rays" aria-hidden="true" />
       <span class="burst badge-burst" aria-hidden="true">
@@ -129,9 +125,7 @@ onBeforeUnmount(() => timers.forEach(clearTimeout))
 <style scoped>
 /* The dialog comes in: the shade fades, the card pops up with a little bounce, then its parts rise one by one
    (`.rise` with its delay `--d`). */
-/* A deeper shade than other dialogs, so the fireworks shine. */
 .result.overlay {
-  background: rgb(0 0 0 / 0.5);
   animation: shade 0.25s ease both;
 }
 

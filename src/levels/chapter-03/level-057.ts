@@ -1,5 +1,5 @@
 // Motion differences: the chimney smoke rises faster on picture B; the bird hops only on B; the lantern swings faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level057Redesign } from './level-057-redesign.ts'
 import { stones } from '../shapes.ts'
@@ -79,6 +79,19 @@ export default svgLevel({
       backpack(615, 402) +
       trailSign(340, 350) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
+      // A busier winter cabin, the same in both pictures: a crow on the roof, a bullfinch, a sparrow and a fox in the snow,
+      // snowballs, a sled and a snow shovel by the cabin, ice skates and a pair of mittens left in the snow.
+      decor({ anim }, [
+        ['crow', 478, 258],
+        ['bullfinch', 765, 290],
+        ['sparrow', 300, 302],
+        ['fox', 185, 375],
+        ['snowballs', 30, 392],
+        ['sled', 400, 372],
+        ['snowShovel', 640, 400],
+        ['iceSkates', 760, 440],
+        ['mittens', 530, 480],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 362, 386],

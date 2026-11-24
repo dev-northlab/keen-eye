@@ -1,5 +1,5 @@
 // Motion differences: the bats fly faster on picture B; the drip falls only on B; the glowing crystals pulse faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level080Redesign } from './level-080-redesign.ts'
 import { bottleMessage, clam, crab, fish, jellyfish, rock, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
@@ -77,6 +77,19 @@ export default svgLevel({
       bottleMessage(300, 412) +
       seahorse(575, 460) +
       snorkelMask(770, 462) +
+      // A busier sea cave, the same in both pictures: more bats in the dark, two gulls in the light of the mouth,
+      // fish in the water, a shell and a starfish on the rocks.
+      decor({ anim }, [
+        ['bat', 190, 175],
+        ['bat', 230, 240],
+        ['bat', 630, 240],
+        ['gull', 365, 305],
+        ['gull', 440, 255],
+        ['fish', 460, 482, '#ffd23f'],
+        ['fish', 630, 395, '#4dabf7'],
+        ['shell', 620, 488, '#ffd8c2'],
+        ['starfish', 22, 435, '#ff9f43'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 241, 435],

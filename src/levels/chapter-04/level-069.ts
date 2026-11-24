@@ -1,5 +1,5 @@
 // Motion differences: the eel sways faster on picture B; the diver's bubbles rise only on B; the fish circles faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level069Redesign } from './level-069-redesign.ts'
 import { anchor, bottleMessage, clam, coral, fish, jellyfish, seahorse, seaUrchin, seaweed, snorkelMask, starfish } from './shapes.ts'
@@ -71,6 +71,19 @@ export default svgLevel({
       bottleMessage(600, 474) +
       snorkelMask(172, 490) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, drifting) +
+      // A busier wreck, the same in both pictures: more fish, a jellyfish and a seahorse in the water, seaweed, a crab,
+      // a shell and a rock on the sea floor.
+      decor({ anim }, [
+        ['fish', 350, 180, '#ffd23f'],
+        ['fish', 40, 220, '#4dabf7'],
+        ['fish', 620, 300, '#e63946'],
+        ['jellyfish', 740, 330, '#ff9f43'],
+        ['seahorse', 780, 90, '#ff6b8b'],
+        ['seaweed', 470, 470, '#4caf6a'],
+        ['crab', 525, 478, '#ff9f43'],
+        ['shell', 20, 490, '#ffd8c2'],
+        ['rock', 650, 480, '#5c677d'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 51, 77, '#ffb703'],

@@ -1,5 +1,5 @@
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level009Redesign } from './level-009-redesign.ts'
 import { cloud, grass, sheep, stones, sun, tree } from '../shapes.ts'
@@ -73,6 +73,20 @@ export default svgLevel({
       bird(400, 293) +
       butterfly(430, 445) +
       stones(610, 480) +
+      // A busier pasture, the same in both pictures: a balloon and a swallow in the sky, a windmill and a rabbit on the
+      // hill, a crow and a sparrow on the wall, the sheepdog, a bucket, a molehill and a ladybug in the grass.
+      decor({ anim }, [
+        ['hotAirBalloon', 300, 165],
+        ['swallow', 530, 140],
+        ['windmill', 270, 262],
+        ['rabbit', 440, 278],
+        ['crow', 200, 296],
+        ['sparrow', 620, 296],
+        ['puppy', 680, 390],
+        ['bucket', 110, 362],
+        ['molehill', 770, 372],
+        ['ladybug', 380, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 627, 439, '#4dabf7'],

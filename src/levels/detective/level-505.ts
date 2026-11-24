@@ -65,6 +65,20 @@ export default detectiveLevel({
       ['bucket', 598, 486],
       ['bench', 699, 392],
     ]) +
+    // A busier yard, the same in both pictures: a hot-air balloon, an airship and a flock in the sky, a bird in the
+    // tree, a lamp on the neighbour's wall, a butterfly, flowers, stones, a watering can and a snail in the grass.
+    decor({ anim }, [
+      ['hotAirBalloon', 270, 110],
+      ['airship', 640, 26],
+      ['birds', 525, 130],
+      ['bird', 75, 205, '#4a90d9'],
+      ['sconce', 735, 240],
+      ['butterfly', 215, 400, '#b38cff'],
+      ['flower', 485, 415, '#ffd23f'],
+      ['stones', 559, 430],
+      ['wateringCan', 640, 442, '#3a86ff'],
+      ['snail', 205, 492],
+    ]) +
     extras({ extra, anim }, [
       ['crow', 123, 330],
       ['beehive', 156, 448],

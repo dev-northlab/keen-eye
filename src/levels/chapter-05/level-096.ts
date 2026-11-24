@@ -1,5 +1,5 @@
 // Motion differences: the space whale swims faster on picture B; the star jelly pulses faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level096Redesign } from './level-096-redesign.ts'
 import { jellyfish } from '../chapter-04/shapes.ts'
@@ -45,6 +45,20 @@ export default svgLevel({
       rocket(760, 310, '#f1f1f1', '#ff6b8b', 0.35) +
       wrench(620, 380) +
       fuelCanister(150, 340) +
+      // A busier nebula, the same in both pictures: planets, an asteroid, stars and sparkles, one more drifting
+      // jellyfish and a lost helmet.
+      decor({ anim }, [
+        ['planet', 30, 150, '#ff9f43'],
+        ['ringPlanet', 70, 462, '#8ac926'],
+        ['asteroid', 780, 410],
+        ['spaceStar', 40, 310, '#ffd23f'],
+        ['spaceStar', 300, 30, '#ff6b8b'],
+        ['spaceStar', 785, 140, '#3ae0ff'],
+        ['sparkle', 560, 25],
+        ['sparkle', 640, 482],
+        ['jellyfish', 40, 390, '#3ae0ff'],
+        ['helmet', 652, 250],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['probe', 189, 185],

@@ -1,5 +1,5 @@
 // Motion differences: the little moon orbits faster on picture B; the rocket flies faster on B; the sparkle twinkles only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level084Redesign } from './level-084-redesign.ts'
 import { asteroid, comet, flame, fuelCanister, helmet, planet, probe, rocket, sparkle, starField, toolbox, ufo, wrench } from './shapes.ts'
@@ -51,6 +51,20 @@ export default svgLevel({
       helmet(765, 250) +
       toolbox(60, 225) +
       fuelCanister(225, 335) +
+      // A busier sky around the giant, the same in both pictures: planets, a ring planet, asteroids, a probe, stars
+      // and sparkles.
+      decor({ anim }, [
+        ['planet', 770, 40, '#8ac926'],
+        ['planet', 20, 270, '#e63946'],
+        ['ringPlanet', 340, 420, '#4dabf7'],
+        ['asteroid', 30, 120],
+        ['asteroid', 780, 330],
+        ['probe', 470, 110],
+        ['sparkle', 615, 185],
+        ['sparkle', 30, 460],
+        ['spaceStar', 130, 20, '#ff6b8b'],
+        ['spaceStar', 610, 320, '#ffd23f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['spaceStar', 66, 348],

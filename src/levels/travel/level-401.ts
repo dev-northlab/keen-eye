@@ -137,6 +137,19 @@ export default travelLevel({
       ['birds', 580, 64],
       ['cloud', 484, 264],
     ]) +
+    // A busier Paris, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, a pigeon, a crow and
+    // a sparrow on the roofs, a sparrow and a puppy by the café, a scooter at the kerb.
+    decor({ anim }, [
+      ['plane', 200, 28],
+      ['hotAirBalloon', 760, 140],
+      ['swallow', 310, 285],
+      ['pigeon', 70, 196],
+      ['crow', 610, 196],
+      ['sparrow', 700, 196],
+      ['sparrow', 240, 494],
+      ['puppy', 30, 494, '#c98b4f'],
+      ['scooter', 776, 492],
+    ]) +
     extras({ extra, anim }, [
       ['suitcase', 348, 468, '#ffd23f'],
       ['newspaperBox', 224, 464, '#e63946'],

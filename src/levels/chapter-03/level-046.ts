@@ -1,5 +1,5 @@
 // Motion differences: the chimney smoke rises faster on picture B; the well bucket swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level046Redesign } from './level-046-redesign.ts'
 import { acorn, anthill, backpack, bush, cabin, cloud, floor, fox, lantern, pine, pineCone, stump, sun } from './shapes.ts'
@@ -86,6 +86,20 @@ export default svgLevel({
       pineCone(95, 486) +
       acorn(360, 478) +
       anthill(760, 426) +
+      // A busier cabin yard, the same in both pictures: a plane and a swallow in the sky, a sparrow on the roof, a
+      // rabbit, a squirrel and a beehive on the hill, a wheelbarrow, boots, a rake and a mushroom in the yard.
+      decor({ anim }, [
+        ['plane', 220, 40],
+        ['swallow', 720, 120],
+        ['sparrow', 338, 262],
+        ['rabbit', 200, 392],
+        ['beehive', 740, 380],
+        ['squirrel', 770, 332],
+        ['wheelbarrow', 440, 490],
+        ['boots', 505, 490],
+        ['rake', 40, 472],
+        ['mushroom', 200, 492, '#a0703f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 396, 429],

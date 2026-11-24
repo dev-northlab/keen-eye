@@ -72,6 +72,19 @@ export default detectiveLevel({
       ['newspapers', 618, 338],
       ['scooter', 702, 482],
     ]) +
+    // A busier courtyard, the same in both pictures: a cloud and a plane in the sky, bunting on the facade and the
+    // ticket booth, two lamps on the columns, a flower box, a manhole and a litter bin on the paving.
+    decor({ anim }, [
+      ['cloud', 140, 40],
+      ['plane', 740, 40],
+      ['bunting', 220, 130],
+      ['bunting', 705, 218],
+      ['sconce', 218, 205],
+      ['sconce', 498, 205],
+      ['flowerBox', 440, 496],
+      ['manhole', 230, 490],
+      ['bin', 785, 500],
+    ]) +
     extras({ extra, anim }, [
       ['dragonfly', 45, 30],
       ['broom', 66, 433],

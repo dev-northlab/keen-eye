@@ -1,5 +1,5 @@
 // Motion differences: the propeller spins faster on picture B; the periscope light blinks only on B; the squid jets faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level070Redesign } from './level-070-redesign.ts'
 import { anchor, bottleMessage, clam, fish, rock, seahorse, seaUrchin, seaweed, turtle } from './shapes.ts'
@@ -70,6 +70,19 @@ export default svgLevel({
       seahorse(700, 300) +
       anchor(680, 470) +
       anim({ type: 'path', points: [[0, 0], [4, -40]], period: 4 }, bubbles) +
+      // A busier deep, the same in both pictures: more fish, a jellyfish and a seahorse around the submarine, a
+      // starfish, a crab and a shell on the sea floor.
+      decor({ anim }, [
+        ['jellyfish', 420, 70, '#ff9f43'],
+        ['fish', 40, 170, '#e63946'],
+        ['fish', 530, 360, '#ffd23f'],
+        ['fish', 110, 330, '#4dabf7'],
+        ['fish', 770, 250, '#ff6b8b'],
+        ['starfish', 628, 478, '#ffb703'],
+        ['crab', 775, 482, '#ff9f43'],
+        ['seahorse', 30, 390, '#ff6b8b'],
+        ['shell', 22, 470, '#ffd8c2'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 243, 368, '#ffb703'],

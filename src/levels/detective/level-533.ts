@@ -70,6 +70,18 @@ export default detectiveLevel({
       ['bucket', 578, 486],
       ['haybale', 678, 360],
     ]) +
+    // A busier garden, the same in both pictures: a balloon and a cloud in the sky, a bird in the tree, a sparrow on the
+    // fence, a butterfly over the grass, bluebells by the fence, stones by the birdhouse and a mushroom in the corner.
+    decor({ anim }, [
+      ['hotAirBalloon', 530, 150],
+      ['cloud', 755, 112],
+      ['bird', 230, 120],
+      ['sparrow', 330, 182],
+      ['butterfly', 500, 280, '#7ab8e8'],
+      ['bluebells', 20, 298],
+      ['stones', 185, 452],
+      ['mushroom', 785, 415],
+    ]) +
     extras({ extra, anim }, [
       ['crow', 43, 365],
       ['paperPlane', 57, 161],

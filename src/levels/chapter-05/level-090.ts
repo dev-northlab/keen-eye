@@ -1,5 +1,5 @@
 // Motion differences: the cow floats faster on picture B; the saucer lights blink faster on B; the weathervane spins only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level090Redesign } from './level-090-redesign.ts'
 import { cow, hayBale, sheep } from '../shapes.ts'
@@ -49,6 +49,21 @@ export default svgLevel({
       probe(250, 250) +
       fuelCanister(775, 385) +
       toolbox(340, 450) +
+      // A busier night farm, the same in both pictures: stars, a sparkle and a bat in the sky; an owl on the fence,
+      // fireflies, a rabbit, a bucket and a molehill in the field.
+      decor({ anim }, [
+        ['spaceStar', 300, 40, '#ffd23f'],
+        ['spaceStar', 180, 120, '#bde3f2'],
+        ['spaceStar', 520, 60, '#ff6b8b'],
+        ['sparkle', 785, 140],
+        ['bat', 620, 92],
+        ['owl', 44, 362],
+        ['firefly', 160, 340],
+        ['firefly', 790, 440],
+        ['rabbit', 780, 482],
+        ['bucket', 40, 482],
+        ['molehill', 610, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 666, 394],

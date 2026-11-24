@@ -109,6 +109,20 @@ export default travelLevel({
         ['cloud', 696, 96],
         ['birds', 448, 80],
       ]) +
+      // A busier harbour, the same in both pictures: a plane and two gulls in the sky, a pigeon, a shopping bag and a
+      // bench on the Opera House steps, fish and a jellyfish in the water.
+      decor({ anim }, [
+        ['plane', 560, 40],
+        ['gull', 760, 160],
+        ['gull', 520, 290],
+        ['pigeon', 110, 346],
+        ['shoppingBag', 160, 348, '#ff6b8b'],
+        ['bench', 220, 350],
+        ['fish', 30, 370],
+        ['fish', 420, 430],
+        ['fish', 560, 440, '#ff8c42'],
+        ['jellyfish', 780, 440],
+      ]) +
       extras({ extra, anim }, [
         ['buoy', 372, 476, '#ffd23f'],
         ['bottle', 216, 480],

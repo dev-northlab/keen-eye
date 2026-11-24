@@ -74,6 +74,18 @@ export default detectiveLevel({
       ['cat', 692, 453, '#9aa0a8'],
       ['dragonfly', 755, 195],
     ]) +
+    // A busier rooftop, the same in both pictures: a party balloon and a cloud in the sky, two butterflies, a bee
+    // and a squirrel on the tiles, bunting under the gutter.
+    decor({ anim }, [
+      ['balloon', 282, 28, '#e5484d'],
+      ['cloud', 768, 30],
+      ['butterfly', 470, 196],
+      ['bee', 560, 330],
+      ['butterfly', 116, 380, '#f2c14e'],
+      ['squirrel', 772, 384],
+      ['bunting', 150, 468],
+      ['bunting', 330, 468],
+    ]) +
     extras({ extra, anim }, [
       ['bullfinch', 40, 485],
       ['airship', 57, 142],

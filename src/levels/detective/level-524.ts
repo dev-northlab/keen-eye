@@ -85,6 +85,18 @@ export default detectiveLevel({
       ['butterflyFrame', 745, 238],
       ['newspapers', 758, 473],
     ]) +
+    // A busier luggage car, the same in both pictures: a stag's antlers, a clock, a photo and a coat hook on the
+    // wall, a birdcage on its hook, a fire extinguisher by the shelf, an umbrella stand by the door and a garden gnome.
+    decor({ anim }, [
+      ['antlers', 180, 160],
+      ['cuckooClock', 520, 130],
+      ['photoOval', 665, 60],
+      ['scarfHook', 300, 40, '#3f9b6b'],
+      ['birdcage', 60, 230],
+      ['fireExtinguisher', 565, 262],
+      ['umbrellaStand', 316, 400],
+      ['gnome', 440, 490],
+    ]) +
     extras({ extra, anim }, [
       ['calendar', 123, 282],
       ['globe', 178, 487],

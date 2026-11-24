@@ -1,5 +1,5 @@
 // Motion differences: the lighthouse beam turns faster on picture B; the flag waves only on B; the boat sails faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level064Redesign } from './level-064-redesign.ts'
 import { bottleMessage, bucket, cloud, gull, gullStanding, rock, sailboat, shell, starfish, sunHat, waves } from './shapes.ts'
@@ -67,6 +67,20 @@ export default svgLevel({
       starfish(675, 340) +
       bucket(720, 338) +
       shell(420, 358) +
+      // A busier sunset, the same in both pictures: a plane, a hot-air balloon, sky lanterns and a flock of birds in the
+      // sky, a crab and a clam on the rocks, two fish and a buoy in the sea.
+      decor({ anim }, [
+        ['plane', 480, 30],
+        ['birds', 300, 252],
+        ['hotAirBalloon', 220, 300],
+        ['skyLantern', 70, 300],
+        ['skyLantern', 680, 280],
+        ['crab', 470, 328, '#ff9f43'],
+        ['clam', 610, 320],
+        ['buoy', 440, 470, '#ffb703'],
+        ['fish', 210, 475, '#ffd23f'],
+        ['fish', 30, 480, '#4dabf7'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['lifeRing', 274, 446],

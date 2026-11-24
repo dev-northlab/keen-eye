@@ -72,6 +72,19 @@ export default detectiveLevel({
       ['gnome', 586, 363],
       ['bucket', 648, 486],
     ]) +
+    // A busier meadow, the same in both pictures: a cloud and an airship in the sky, a bird in the tree and a squirrel
+    // at its foot, a cottage and a bench beyond the stream, a hedgehog in the grass, stones on the bank, a mushroom.
+    decor({ anim }, [
+      ['cloud', 60, 140],
+      ['airship', 520, 40],
+      ['bird', 345, 150],
+      ['squirrel', 412, 262],
+      ['cottage', 470, 262],
+      ['bench', 540, 262],
+      ['hedgehog', 290, 300],
+      ['stones', 775, 392],
+      ['mushroom', 20, 440],
+    ]) +
     extras({ extra, anim }, [
       ['swallow', 48, 31],
       ['flowerPot', 51, 392],

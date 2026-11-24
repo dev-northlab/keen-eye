@@ -1,5 +1,5 @@
 import { bird, butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level004Redesign } from './level-004-redesign.ts'
 import { apple, basket, cloud, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       stump(320, 478) +
       butterfly(560, 330) +
       wateringCan(705, 346) +
+      // A busier orchard, the same in both pictures: swallows in the sky, a squirrel and a hedgehog after the apples,
+      // a rabbit, a sparrow, a beehive with its bee, a rake and a shovel left in the grass.
+      decor({ anim }, [
+        ['swallow', 200, 115],
+        ['swallow', 560, 120],
+        ['squirrel', 290, 340],
+        ['hedgehog', 140, 410],
+        ['rabbit', 480, 420],
+        ['sparrow', 120, 460],
+        ['beehive', 780, 400],
+        ['bee', 768, 356],
+        ['rake', 650, 380],
+        ['shovel', 545, 482],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['stones', 58, 414],

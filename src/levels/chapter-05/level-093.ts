@@ -1,5 +1,5 @@
 // Motion differences: the Moon circles the Earth faster on picture B; Jupiter's moon orbits only on B; the solar flare flashes faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level093Redesign } from './level-093-redesign.ts'
 import { asteroid, comet, planet, probe, rocket, satellite, starField, wrench } from './shapes.ts'
@@ -52,6 +52,19 @@ export default svgLevel({
       satellite(690, 230) +
       asteroid(470, 470, 0.5) +
       wrench(110, 470) +
+      // A busier solar system, the same in both pictures: asteroids in the belt, a probe, stars and sparkles.
+      decor({ anim }, [
+        ['asteroid', 410, 40],
+        ['asteroid', 425, 105],
+        ['asteroid', 410, 462],
+        ['probe', 600, 120],
+        ['spaceStar', 780, 140, '#ffd23f'],
+        ['spaceStar', 620, 470, '#ff6b8b'],
+        ['spaceStar', 30, 480, '#bde3f2'],
+        ['spaceStar', 260, 470, '#4dabf7'],
+        ['sparkle', 780, 310],
+        ['sparkle', 250, 110],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['asteroid', 336, 112],

@@ -131,7 +131,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
   as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.avif`)
-  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.avif` or `-tall.avif` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.m4a` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
+  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy.avif`, dimmed in the dark theme; its own music `assets/music/tiny_boy.m4a` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
@@ -279,8 +279,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   "Don't show this again" is ticked, `settings.hideStyleIntro`: level 1 drawn and in 3D under a sweeping divider, the round button, then the player's pick) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
-  ready picture per day/night, `public/backdrops/meadow-<day|night>.avif` (upright `meadow-tall-<day|night>.avif` on a portrait window, `TALL_WINDOW`), and every world's
-  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.avif`, space into one `space.avif` (dark in both themes). `check-levels` checks the files,
+  ready picture per day/night, `public/backdrops/meadow-<day|night>.avif`, and every world's
+  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.avif`, space into one `space.avif` (dark in both themes);
+  all backdrop pictures (these and "tiny boy"'s) are upright, for phones only (1536×2752, cut to the window by `cover`;
+  prompts in `~/Pictures/keen-eye/backdrops/PROMPTS.md`, the old wide ones in `old/` there). `check-levels` checks the files,
   the same number of differences as the scene (a motion difference becomes a still one: pictures do not move),
   zones on the picture, big enough and apart, and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).
@@ -311,6 +313,14 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `levels/extras.ts` (chapter shapes with their boxes; animals and things on water bob or sway on the spot, the circle
   grown by the motion's reach). `check-levels` keeps them 20+ units clear of zones, key and
   traps and inside their circles; `npm run preview-levels -- --extras <id>` shows them.
+- Decor of every mode: every level of the five worlds (1–150) also lists 9–18 plain decor objects with `decor({ anim }, [[kind, x, y, color?], …])`
+  of `levels/extras.ts` (animals, birds, toys, tools, planets of its world, in empty places, the same in A and B and in
+  every mode; the 3D pictures do not have them). Each is drawn in a `data-decor="x y r"` group whose circle holds the
+  whole shape; `check-levels` keeps it 4+ units clear of the zones (over time), the key, the traps and the extras.
+  "Time" levels (201–230) carry such decor too, read at both moments: drawn the same at both, except what changes by
+  nature (insects, flowers and grass, at night owls, bats, fireflies, stars, sky lanterns — at most 4 a level, through
+  `time()`), since an object that appears only in winter would read as a difference with no trap to explain it; night
+  lights go after `DUSK` so that they glow, everything else before it and before `snowfall`.
 - Hints: no pool to collect — every attempt of a level gets the mode's hints again (`MODE_RULES.<mode>.hints`: calm 3,
   normal 1); `GameScene.hint()` returns false when nothing can be hinted, so a hint is only spent when it is
   shown. Duels have their own hints (`duo`).

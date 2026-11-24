@@ -177,7 +177,8 @@ export const mailbox = (x: number, y: number, color = '#3a86ff') =>
 export const cat = (x: number, y: number, color = '#f08c3a', flip = false) =>
   `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)"><path d="M-10 -2q-14 -2 -8 -14" stroke="${color}" stroke-width="4" fill="none" stroke-linecap="round"/>` +
   `<ellipse cy="-12" rx="11" ry="12" fill="${color}"/><circle cx="4" cy="-26" r="8" fill="${color}"/>` +
-  `<path d="M-2 -31l1 -5l5 3ZM6 -33l5 -3l0 6Z" fill="${color}"/><circle cx="7" cy="-27" r="1.4" fill="#222"/></g>`
+  `<path d="M-2 -31l1 -5l5 3ZM6 -33l5 -3l0 6Z" fill="${color}"/><circle cx="1" cy="-27" r="1.4" fill="#222"/><circle cx="7" cy="-27" r="1.4" fill="#222"/>` +
+  `<path d="M2.8 -24.2h2.4l-1.2 1.4Z" fill="#e58a9a"/></g>`
 
 /** Hen house / dog kennel; (x, y) = ground center. Bounds: x ±30, y from −50 to 0. */
 export const kennel = (x: number, y: number, color = '#c1622f') =>

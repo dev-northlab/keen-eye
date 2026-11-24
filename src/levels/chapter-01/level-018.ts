@@ -1,6 +1,6 @@
 // Motion differences: the weathervane turns the other way on picture B; the lantern swings only on B.
 import { mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { birdhouse, duck, grass, hen, milkCan, snail, stones } from '../shapes.ts'
 import { level018Redesign } from './level-018-redesign.ts'
@@ -94,6 +94,19 @@ export default svgLevel({
       mushroom(720, 385) +
       milkCan(50, 380) +
       birdhouse(690, 345) +
+      // A busier rainy farm, the same in both pictures: a crow on the shed roof, a sparrow on the porch roof, a puppy
+      // sheltering by the door, a bucket catching the rain, a wheelbarrow, a fern, a hedgehog, mushrooms, a molehill.
+      decor({ anim }, [
+        ['crow', 120, 256],
+        ['sparrow', 485, 272],
+        ['puppy', 460, 375],
+        ['bucket', 760, 420],
+        ['wheelbarrow', 270, 350],
+        ['fern', 780, 350],
+        ['hedgehog', 40, 482],
+        ['mushroom', 470, 480, '#a0703f'],
+        ['molehill', 560, 490],
+      ]) +
       anim({ type: 'path', points: [[0, 0], [-12, 48]], period: 0.8 }, rain) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [

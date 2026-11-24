@@ -92,6 +92,19 @@ export default detectiveLevel({
       ['hatBox', 537, 381],
       ['newspapers', 748, 483],
     ]) +
+    // A busier animal yard, the same in both pictures: a flock of birds and an airship in the sky, a flower and a
+    // grass tuft on the lawn, a tortoise, a circus dog, a pigeon, a snail and stones on the sand by the pool.
+    decor({ anim }, [
+      ['birds', 255, 40],
+      ['airship', 738, 48],
+      ['flower', 24, 364, '#f2b632'],
+      ['grass', 300, 390],
+      ['tortoise', 420, 400],
+      ['puppy', 250, 494, '#f2f2f2'],
+      ['pigeon', 470, 494],
+      ['snail', 26, 490],
+      ['stones', 650, 498],
+    ]) +
     extras({ extra, anim }, [
       ['bucket', 113, 486],
       ['swallow', 143, 56],

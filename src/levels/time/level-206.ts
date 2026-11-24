@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level206Redesign } from './level-206-redesign.ts'
 import { bareTree, barrel, bird, bucket, butterfly, cloud, crate, fence, flowers, grass, hayBale, hen, kennel, oak, pane, picket, pine, pineSnow, pond, rock, roofSnow, sack, sky, snowCap, snowfall, snowman, stump, vane, winterSky } from './shapes.ts'
@@ -60,6 +60,24 @@ export default svgLevel({
     time('', snowCap(546, 450, 28)) +
     bucket(760, 470) +
     time('', snowCap(744, 444, 32)) +
+    // A busier farm: a wheelbarrow, a beehive, a crow, a sparrow and a bullfinch in both seasons, snowed on in winter;
+    // flowers and a bee in summer.
+    decor({ anim }, [
+      ['wheelbarrow', 300, 395],
+      ['beehive', 40, 478],
+      ['crow', 35, 350],
+      ['sparrow', 690, 478],
+      ['bullfinch', 520, 485],
+    ]) +
+    time('', snowCap(282, 376, 28) + snowCap(31, 452, 18)) +
+    time(
+      decor({ anim }, [
+        ['flower', 600, 480, '#ff6b8b'],
+        ['flower', 618, 484, '#ffd23f'],
+        ['bee', 650, 470],
+      ]),
+      '',
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 446, 76],

@@ -1,5 +1,5 @@
 // Motion differences: the warning light on the tower blinks faster on picture B; the astronaut walks faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level081Redesign } from './level-081-redesign.ts'
 import { astronaut, dish, flag, fuelCanister, helmet, moonPebbles, rock, rocket, solarPanel, starField, toolbox } from './shapes.ts'
@@ -64,6 +64,22 @@ export default svgLevel({
       solarPanel(770, 362) +
       moonPebbles(400, 470) +
       helmet(640, 430) +
+      // A busier launch site, the same in both pictures: a UFO, planets and stars in the sky; a crater, a beacon, a
+      // crystal, an alien plant, a fuel canister and moon pebbles on the ground.
+      decor({ anim }, [
+        ['ringPlanet', 360, 50],
+        ['ufo', 600, 135],
+        ['planet', 40, 240, '#4dabf7'],
+        ['spaceStar', 220, 140, '#ffd23f'],
+        ['spaceStar', 770, 170, '#b38cff'],
+        ['sparkle', 300, 210],
+        ['crater', 450, 425],
+        ['moonPebbles', 770, 425],
+        ['beacon', 785, 495],
+        ['crystal', 240, 485, '#4dabf7'],
+        ['alienPlant', 630, 492, '#8ac926'],
+        ['fuelCanister', 40, 365, '#ffd23f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['moonPebbles', 58, 426],

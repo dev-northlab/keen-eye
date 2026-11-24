@@ -1,6 +1,6 @@
 // Motion differences: the crane's hook swings only on picture B; the mixer drum turns faster on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones, wheelbarrow } from '../shapes.ts'
 import { cloud, coffeeCup, cone, person, pigeon, sandwichBoard, skyline, sun } from './shapes.ts'
@@ -95,6 +95,19 @@ export default svgLevel({
       sandwichBoard(500, 472) +
       bird(400, 197) +
       stones(690, 482) +
+      // A busier building site, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, a crow on
+      // the jib, a sparrow on the roof, a bucket and a toolbox on the floors, a shovel and a fuel can on the ground.
+      decor({ anim }, [
+        ['plane', 500, 35],
+        ['hotAirBalloon', 240, 128],
+        ['swallow', 520, 230],
+        ['crow', 750, 110],
+        ['sparrow', 250, 196],
+        ['bucket', 240, 377],
+        ['toolbox', 330, 377, '#e63946'],
+        ['shovel', 240, 480],
+        ['fuelCanister', 785, 488, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['balloon', 578, 345, '#ffb703'],

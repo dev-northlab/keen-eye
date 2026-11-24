@@ -1,5 +1,5 @@
 // Motion differences: the woodpecker pecks faster on picture B; the beetle crawls the other way round on B; the spider bobs only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level056Redesign } from './level-056-redesign.ts'
 import { acorn, anthill, bird, bluebells, floor, leafPile, mushroom, pine, pineCone, squirrel } from './shapes.ts'
@@ -80,6 +80,19 @@ export default svgLevel({
       bluebells(340, 480) +
       leafPile(470, 480) +
       anthill(730, 482) +
+      // A busier old trunk, the same in both pictures: a hot-air balloon and a swallow in the sky, a sparrow on the branch,
+      // a hedgehog, a molehill, wild strawberries, a mouse, a fox and a mushroom on the meadow.
+      decor({ anim }, [
+        ['hotAirBalloon', 40, 55],
+        ['swallow', 580, 40],
+        ['sparrow', 318, 114],
+        ['hedgehog', 230, 360],
+        ['molehill', 285, 380],
+        ['wildStrawberry', 650, 380],
+        ['mouse', 180, 422],
+        ['fox', 585, 425],
+        ['mushroom', 782, 472, '#a0703f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['feather', 137, 310],

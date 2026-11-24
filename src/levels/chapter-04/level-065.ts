@@ -1,5 +1,5 @@
 // Motion differences: the flag waves faster on picture B; the lantern swings only on B; the shark fin cruises the other way round on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level065Redesign } from './level-065-redesign.ts'
 import { anchor, bottleMessage, bucket, cloud, coconut, fish, gull, gullStanding, person, sun, waves } from './shapes.ts'
@@ -93,6 +93,20 @@ export default svgLevel({
       bottleMessage(510, 331) +
       gullStanding(470, 104) +
       fish(600, 445, '#ffb703') +
+      // A busier pirate ship, the same in both pictures: a plane, a gull, a hot-air balloon and a flock of birds in the
+      // sky, a crow on the yard, the ship's cat on deck, fish and a buoy in the sea.
+      decor({ anim }, [
+        ['plane', 290, 25],
+        ['gull', 560, 70],
+        ['hotAirBalloon', 60, 300],
+        ['birds', 165, 280],
+        ['crow', 330, 224],
+        ['cat', 425, 331, '#f08c2e'],
+        ['fish', 30, 480, '#ff6b8b'],
+        ['fish', 320, 485, '#4dabf7'],
+        ['fish', 600, 490, '#e63946'],
+        ['buoy', 788, 430, '#ffb703'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 541, 471, '#ff6b8b'],

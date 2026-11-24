@@ -121,7 +121,7 @@ export default svgLevel({
         ['paperPlane', 540, 30],
         ['pigeon', 150, 196],
         ['crow', 760, 148],
-        ['cat', 760, 310, '#f08c2e'],
+        ['cat', 766, 310, '#f08c2e'],
         ['bench', 300, 492],
         ['teddy', 20, 494, '#c68b4e'],
         ['boots', 232, 496, '#e63946'],
