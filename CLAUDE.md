@@ -131,7 +131,7 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `tiny-boy/` — "tiny boy": levels 701– of chapter `tinyBoy` (a category with no key yet, so left out of `KEY_CHAPTERS`),
   `kind: 'image'` Gemini pictures of one little boy at home (`public/levels/tiny-boy/`, 5–15 differences, r ≥ 60 px), B built
   as A + only the listed parts of Gemini's B; listed as picture banners (`PhotoBanner`, photo `public/banners/tiny-boy-<id>.avif`)
-  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy-wide.avif` or `-tall.avif` on a portrait window, dimmed in the dark theme; its own music `assets/music/tiny_boy.m4a` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
+  by `TinyBoyView` (`/tiny-boy`, backdrop `tinyBoy`: its own autumn picture in both picture styles, `public/backdrops/tiny-boy.avif`, dimmed in the dark theme; its own music `assets/music/tiny_boy.m4a` there and in its levels, every mode), the second banner of the game modes screen; played by `LevelView` with no count of the
   differences: its HUD shows only `level.uncounted` ("there are differences, nobody knows how many"); no modes or stars
   either — every attempt plays by calm mode's rules whatever the setting, but with one hint (stored with `stars: 0`), the result dialog
   shows its hero's portrait with a tick, confetti and a cheer (`portrait`, `level.tinyWon` in the `ToyText` toy letters of
@@ -279,8 +279,10 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   "Don't show this again" is ticked, `settings.hideStyleIntro`: level 1 drawn and in 3D under a sweeping divider, the round button, then the player's pick) picks them: `LevelView` and `MemoryLevelView` read it as an
   attempt starts and start over when it changes (other zones), `MatchView` as it opens (`styledLevel`: an image level,
   same id/progress/stars). The same style turns the meadow backdrop (`ScreenBackdrop`, every screen using it) into a
-  ready picture per day/night, `public/backdrops/meadow-<day|night>.avif` (upright `meadow-tall-<day|night>.avif` on a portrait window, `TALL_WINDOW`), and every world's
-  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.avif`, space into one `space.avif` (dark in both themes). `check-levels` checks the files,
+  ready picture per day/night, `public/backdrops/meadow-<day|night>.avif`, and every world's
+  backdrop into `public/backdrops/<farm|city|forest|sea>-<day|night>.avif`, space into one `space.avif` (dark in both themes);
+  all backdrop pictures (these and "tiny boy"'s) are upright, for phones only (1536×2752, cut to the window by `cover`;
+  prompts in `~/Pictures/keen-eye/backdrops/PROMPTS.md`, the old wide ones in `old/` there). `check-levels` checks the files,
   the same number of differences as the scene (a motion difference becomes a still one: pictures do not move),
   zones on the picture, big enough and apart, and the key (`LevelPictures.secret`) on both pictures exactly when the scene hides one,
   as its own image over pictures drawn without it (`secret.image`, laid by `createPicture` as `[data-secret]`, so taking it works as on a drawn scene).

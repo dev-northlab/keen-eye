@@ -23,7 +23,7 @@ const view = ref({ w: innerWidth, h: innerHeight })
 const onResize = () => (view.value = { w: innerWidth, h: innerHeight })
 addEventListener('resize', onResize)
 onBeforeUnmount(() => removeEventListener('resize', onResize))
-/** A portrait window (phones, `TALL_WINDOW`): some backdrops have an upright picture or layout for it. */
+/** A portrait window (phones): the drawn meadow has an upright layout for it. */
 const tall = computed(() => view.value.w <= view.value.h)
 
 /** The drawn meadow on a portrait window is laid out like its upright picture: blossoming trees at both edges, the
@@ -40,7 +40,7 @@ const highKite = computed(() => {
 })
 
 /** A ready picture instead of the drawn sky and landscape (services/backdrops.ts), cut to the window like the strip. */
-const picture = computed(() => backdropPicture(props.theme, tall.value))
+const picture = computed(() => backdropPicture(props.theme))
 
 /** Spring petals falling over the drawn meadow. Deterministic spread: left (%), size (px), fall time and start
  *  offset (s), sideways drift (px). */
@@ -451,12 +451,20 @@ const craters = [
   background: linear-gradient(var(--sky) 0%, var(--sky-mid) 55%, var(--bg) 100%);
 }
 
+/* The pictures are upright, made for phones (9:16): a phone's window is filled; a wider one (a tablet, a computer)
+   shows the whole picture at full height in the middle, over the backdrop's own colours. */
 .picture {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (min-aspect-ratio: 3/5) {
+  .picture {
+    object-fit: contain;
+  }
 }
 
 .picture.dimmed {
