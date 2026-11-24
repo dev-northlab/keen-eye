@@ -1,7 +1,7 @@
 // Motion differences: the kite flies faster on picture B; the fountain jet bobs slower on B.
 import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { duck, flower, FLOWER_COLORS } from '../shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { ball, bench, bin, cityTree, cloud, coffeeCup, dog, grass, lampHead, lampPost, person, pick, scooter, sun } from './shapes.ts'
 import { level023Redesign } from './level-023-redesign.ts'
@@ -86,6 +86,21 @@ export default svgLevel({
       bird(530, 410) +
       butterfly(330, 290) +
       coffeeCup(505, 424) +
+      // A busier park, the same in both pictures: a plane, a paper plane, a hot-air balloon and a swallow in the sky, a
+      // squirrel, a rabbit and a hedgehog on the grass, a crow on the lamp, pigeons by the fountain and a frog by the pond.
+      decor({ anim }, [
+        ['plane', 750, 40],
+        ['paperPlane', 450, 100],
+        ['hotAirBalloon', 35, 135],
+        ['swallow', 420, 232],
+        ['squirrel', 660, 290],
+        ['rabbit', 240, 300],
+        ['hedgehog', 760, 400],
+        ['crow', 640, 308],
+        ['pigeon', 470, 372],
+        ['pigeon', 360, 480],
+        ['frog', 245, 394],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['balloon', 369, 164, '#3a86ff'],

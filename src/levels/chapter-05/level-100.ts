@@ -1,5 +1,5 @@
 // Motion differences: the big firework bursts faster on picture B; the dancer on stage hops faster on B; the disco ball spins only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level100Redesign } from './level-100-redesign.ts'
 import { alien, alienPlant, astronaut, crystal, helmet, moonPebbles, probe, robot, star, starField } from './shapes.ts'
@@ -89,6 +89,20 @@ export default svgLevel({
       crystal(555, 476) +
       helmet(645, 476) +
       moonPebbles(390, 476) +
+      // A busier festival, the same in both pictures: a hot-air balloon, a planet, a star and sparkles in the sky;
+      // fireflies, a toy drum and a ball among the crowd.
+      decor({ anim }, [
+        ['hotAirBalloon', 592, 225],
+        ['planet', 770, 330, '#ff9f43'],
+        ['spaceStar', 30, 300, '#ffd23f'],
+        ['sparkle', 220, 215],
+        ['sparkle', 780, 190],
+        ['firefly', 30, 480],
+        ['firefly', 440, 420],
+        ['firefly', 790, 420],
+        ['toyDrum', 592, 422],
+        ['ball', 360, 422, '#ffd23f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 635, 341],

@@ -1,5 +1,5 @@
 // Motion differences: the exhaust puff bobs only on picture B; the cyclist weaves through faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bike, bollard, building, bus, car, cloud, mailbox, newspaperBox, parkingMeter, person, sandwichBoard, skyline, street, trafficLight } from './shapes.ts'
 import { level028Redesign } from './level-028-redesign.ts'
@@ -56,6 +56,23 @@ export default svgLevel({
       newspaperBox(300, 312) +
       sandwichBoard(450, 312) +
       bollard(570, 312) +
+      // A busier jam, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, a pigeon, a cat and a
+      // crow on the roofs, flower boxes on the windows, a bench, a bag, a coffee cup and a puppy on the pavement.
+      decor({ anim }, [
+        ['plane', 360, 30],
+        ['hotAirBalloon', 40, 60],
+        ['swallow', 300, 70],
+        ['pigeon', 150, 132],
+        ['cat', 380, 92, '#f2a65a'],
+        ['crow', 560, 122],
+        ['flowerBox', 268, 155, '#ffd23f'],
+        ['flowerBox', 535, 227, '#4dabf7'],
+        ['flowerBox', 756, 207, '#e63946'],
+        ['bench', 520, 316],
+        ['shoppingBag', 260, 318, '#ff006e'],
+        ['coffeeCup', 400, 318],
+        ['puppy', 770, 318, '#8a5a3b'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 344, 279, '#ff006e'],

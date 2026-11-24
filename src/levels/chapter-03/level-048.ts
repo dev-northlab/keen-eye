@@ -1,5 +1,5 @@
 // Motion differences: the fish jumps faster on picture B; the bird flies the other way round on B; the mist bobs only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level048Redesign } from './level-048-redesign.ts'
 import { acorn, anthill, bear, bluebells, fern, floor, pine, pineCone, rock, trailSign } from './shapes.ts'
@@ -83,6 +83,20 @@ export default svgLevel({
       anthill(760, 405) +
       acorn(30, 390) +
       bluebells(200, 170) +
+      // A busier waterfall, the same in both pictures: a swallow in the sky, a squirrel, a hedgehog and a mushroom on
+      // the cliff tops, a crow, a sparrow and a bullfinch on the ledges, a dragonfly, a fish and stones in the pool.
+      decor({ anim }, [
+        ['swallow', 290, 25],
+        ['squirrel', 495, 142],
+        ['hedgehog', 672, 142],
+        ['mushroom', 15, 142, '#e63946'],
+        ['crow', 70, 190],
+        ['sparrow', 225, 240],
+        ['bullfinch', 730, 250],
+        ['dragonfly', 480, 415],
+        ['fish', 150, 482, '#ff9f43'],
+        ['stones', 330, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bird', 498, 199],

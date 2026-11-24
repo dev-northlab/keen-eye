@@ -1,5 +1,5 @@
 // Motion differences: the hanging scale swings only on picture B; the gull hops faster on B; the shop sign sways faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level079Redesign } from './level-079-redesign.ts'
 import { bucket, clam, coconut, crab, fish, gullStanding, person, starfish, sun, sunHat, waves } from './shapes.ts'
@@ -77,6 +77,19 @@ export default svgLevel({
       clam(320, 462) +
       coconut(250, 456) +
       starfish(645, 452) +
+      // A busier fish market, the same in both pictures: a plane and a flock of birds in the sky, a buoy and fish in
+      // the harbour, a bollard, boots, a bench and a cat on the quay.
+      decor({ anim }, [
+        ['plane', 380, 30],
+        ['birds', 400, 150],
+        ['buoy', 238, 258, '#ffb703'],
+        ['fish', 40, 250, '#ff6b8b'],
+        ['fish', 760, 250, '#4dabf7'],
+        ['bollard', 22, 330],
+        ['boots', 40, 420, '#ffd23f'],
+        ['bench', 415, 450],
+        ['cat', 778, 440],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['shell', 181, 477],

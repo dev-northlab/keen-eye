@@ -1,5 +1,5 @@
 // Motion differences: the rover drives faster on picture B; the dish scans only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level082Redesign } from './level-082-redesign.ts'
 import { astronaut, beacon, crater, crystal, dome, flag, planet, rover, satellite, solarPanel, sparkle, starField, toolbox, wrench } from './shapes.ts'
@@ -53,6 +53,23 @@ export default svgLevel({
       wrench(320, 422) +
       toolbox(540, 432) +
       beacon(770, 320) +
+      // A busier moon base, the same in both pictures: a UFO, a ring planet, an asteroid, a probe and stars in the
+      // sky; an alien plant, a crystal, a crater, pebbles, a helmet and a fuel canister on the ground.
+      decor({ anim }, [
+        ['ufo', 170, 200],
+        ['ringPlanet', 770, 40, '#ff9f43'],
+        ['asteroid', 420, 110],
+        ['probe', 770, 190],
+        ['spaceStar', 570, 200, '#ffd23f'],
+        ['spaceStar', 40, 40, '#4dabf7'],
+        ['sparkle', 30, 160],
+        ['alienPlant', 30, 485, '#ff6bd6'],
+        ['crystal', 262, 402, '#b38cff'],
+        ['crater', 265, 470],
+        ['moonPebbles', 632, 432],
+        ['helmet', 505, 318],
+        ['fuelCanister', 780, 412, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['helmet', 215, 480],

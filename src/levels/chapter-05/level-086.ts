@@ -1,5 +1,5 @@
 // Motion differences: the saucer hovers faster on picture B; the bulb plant sways faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level086Redesign } from './level-086-redesign.ts'
 import { alien, alienPlant, crystal, moonPebbles, planet, probe, solarPanel, star, starField, ufo } from './shapes.ts'
@@ -65,6 +65,21 @@ export default svgLevel({
       moonPebbles(600, 452) +
       probe(280, 210) +
       solarPanel(218, 428) +
+      // A busier alien village, the same in both pictures: planets, a probe, stars and a sparkle in the sky; alien
+      // plants, crystals and pebbles in the grass.
+      decor({ anim }, [
+        ['ringPlanet', 310, 40, '#8ac926'],
+        ['planet', 30, 40, '#ff9f43'],
+        ['probe', 470, 180],
+        ['spaceStar', 760, 50, '#ffd23f'],
+        ['spaceStar', 780, 240, '#ff6bd6'],
+        ['sparkle', 640, 40],
+        ['crystal', 262, 356, '#b38cff'],
+        ['crystal', 335, 490, '#ffd23f'],
+        ['alienPlant', 790, 490, '#ff6bd6'],
+        ['alienPlant', 680, 488, '#ffd23f'],
+        ['moonPebbles', 485, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['alienPlant', 437, 446],

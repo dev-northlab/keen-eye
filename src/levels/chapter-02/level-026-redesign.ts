@@ -8,7 +8,8 @@ import { zonePatches } from '../picture-style.ts'
 // between the stalls turns teal, the seller's yellow balloon turns green. Touched up by hand: B is A with only
 // Gemini's shade, stripe, cat and balloon laid over it. Gemini also turned the next white stripe blue and the green
 // crate into tomatoes (those stay as in A), and left the tomatoes, the pan and the shirt as they were: the tomato and
-// the shirt are recolored by hand, keeping their shading, and the pan painted out with the wall below it.
+// the shirt are recolored by hand, keeping their shading, and the pan painted out with the wall below it. Gemini drew
+// the four people with one eye, like the old drawn scene: the second eye is copied, mirrored, on both pictures.
 const viewBox = { w: 2624, h: 1632 }
 const differences: Difference[] = [
   // The shade of the lamp hanging above the street: dark grey in A, green in B.

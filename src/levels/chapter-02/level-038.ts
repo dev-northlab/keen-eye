@@ -1,5 +1,5 @@
 // Motion differences: the marquee bulbs blink only on picture B; the balloon bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, bollard, building, car, coffeeCup, mailbox, manhole, person, pigeon, sandwichBoard, skyline, street } from './shapes.ts'
 import { level038Redesign } from './level-038-redesign.ts'
@@ -65,6 +65,21 @@ export default svgLevel({
       coffeeCup(525, 358) +
       mailbox(620, 358) +
       manhole(400, 472) +
+      // A busier evening at the cinema, the same in both pictures: stars, a sky lantern and a bat in the sky, a cat and an
+      // owl on the roof, lamps by the doors, a bin, a bundle of newspapers and a bench on the pavement.
+      decor({ anim }, [
+        ['star', 400, 20],
+        ['star', 760, 30],
+        ['skyLantern', 300, 35],
+        ['bat', 530, 45],
+        ['cat', 200, 130, '#9a9a9a'],
+        ['owl', 620, 130],
+        ['sconce', 330, 250],
+        ['sconce', 470, 250],
+        ['bin', 20, 358, '#3d4a55'],
+        ['newspapers', 380, 358],
+        ['bench', 770, 360],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['sparkle', 660, 37],

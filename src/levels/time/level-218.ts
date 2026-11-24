@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level218Redesign } from './level-218-redesign.ts'
 import { around, bench, bin, carriage, carriageWindows, chimney, clockFace, cloud, DUSK, glow, moon, pane, person, pigeon, poster, pot, sky, stars, sun } from './shapes.ts'
@@ -66,12 +66,26 @@ export default svgLevel({
     bin(500, 396) +
     pigeon(530, 392) +
     bench(760, 396) +
+    // A busier station: a newspaper box, a flower pot, a coffee cup and a cat on the platform, a phone and a fire
+    // extinguisher on the wall, a crow on the roof; a sky lantern and a bat in the evening.
+    decor({ anim }, [
+      ['newspaperBox', 150, 396, '#e63946'],
+      ['flowerPot', 350, 396],
+      ['coffeeCup', 470, 396],
+      ['cat', 225, 396, '#f4a261'],
+      ['wallPhone', 255, 262],
+      ['fireExtinguisher', 55, 330],
+      ['crow', 260, 118],
+    ]) +
+    time('', decor({ anim }, [['bat', 360, 115]])) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 565, 76],
       ['birds', 77, 61],
     ]) +
     time('', DUSK) +
+    // Night lights over the dusk, so that they glow: only in the evening picture.
+    time('', decor({ anim }, [['skyLantern', 240, 40]])) +
     time('', glow(64, 180, 32, 56) + glow(124, 180, 32, 56) + carriageWindows(40, 470, 200, '#ffe08a') + carriageWindows(250, 470, 200, '#ffe08a')) +
     trap(190, 124, 22, clockFace(190, 124, 16, 9, 0), clockFace(190, 124, 16, 6, 45), 'clock') +
     trap(560, 428, 32, '', carriageWindows(460, 470, 200, '#ffe08a'), 'lights') +

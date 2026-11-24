@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level226Redesign } from './level-226-redesign.ts'
 import { around, bench, bin, bird, clockFace, cloud, door, DUSK, flowerBox, fountain, glow, hangingSign, lampHead, lampPost, moon, pane, parasol, person, pigeon, pot, sky, small, stars, sun } from './shapes.ts'
@@ -78,6 +78,25 @@ export default svgLevel({
       pot(80, 480, '#3a86ff') +
       pot(330, 492) +
       bin(780, 490) +
+      // A busier square: a scooter, a hydrant, a newspaper box, a cat, a manhole, a shopping bag and a cup on the café
+      // table; a butterfly by day, an owl on the tower, a bat and a star at night.
+      decor({ anim }, [
+        ['scooter', 160, 332],
+        ['hydrant', 360, 334, '#e63946'],
+        ['newspaperBox', 480, 332, '#3a86ff'],
+        ['cat', 770, 382, '#3d3d3d'],
+        ['manhole', 382, 488],
+        ['shoppingBag', 40, 438, '#8338ec'],
+        ['coffeeCup', 536, 441],
+      ]) +
+      time(
+        decor({ anim }, [['butterfly', 578, 325, '#ffd23f']]),
+        decor({ anim }, [
+          ['owl', 446, 70],
+          ['bat', 470, 30],
+          ['star', 180, 30],
+        ]),
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 727, 62],

@@ -1,5 +1,5 @@
 // Motion difference: the swing is out of sync between the pictures (different phase).
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import type { AnimSpec } from '../helpers.ts'
 import { bird, butterfly } from '../chapter-03/shapes.ts'
 import { svgLevel } from '../helpers.ts'
@@ -79,6 +79,20 @@ export default svgLevel({
       stones(650, 470) +
       flowerPot(240, 420) +
       wateringCan(80, 385) +
+      // A busier backyard, the same in both pictures: a balloon, a swallow and a paper plane in the sky, the puppy of
+      // the dog house, a cat, a bench, a gnome, a scooter and a teddy left on the grass, a snail.
+      decor({ anim }, [
+        ['hotAirBalloon', 770, 170],
+        ['swallow', 400, 230],
+        ['paperPlane', 560, 230],
+        ['puppy', 470, 420],
+        ['cat', 25, 445, '#9a9a9a'],
+        ['bench', 370, 400],
+        ['gnome', 790, 395],
+        ['scooter', 760, 480],
+        ['teddy', 290, 486],
+        ['snail', 140, 440],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ladybug', 90, 427],

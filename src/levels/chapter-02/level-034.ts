@@ -1,5 +1,5 @@
 // Motion differences: the bell swings only on picture B; the beacon flashes only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, cloud, dog, door, hydrant, mailbox, manhole, newspaperBox, person, sandwichBoard, skyline, street, sun, window } from './shapes.ts'
 import { level034Redesign } from './level-034-redesign.ts'
@@ -75,6 +75,22 @@ export default svgLevel({
       mailbox(700, 378) +
       manhole(180, 472) +
       sandwichBoard(490, 378) +
+      // A busier fire station, the same in both pictures: a plane and a swallow in the sky, a cat, a crow, a pigeon and a
+      // sparrow on the roofs, lamps between the garage doors, an extinguisher, a bucket, a bin and a plant on the pavement.
+      decor({ anim }, [
+        ['plane', 250, 25],
+        ['swallow', 700, 40],
+        ['cat', 200, 112, '#f2a65a'],
+        ['crow', 400, 36],
+        ['pigeon', 620, 112],
+        ['sparrow', 760, 120],
+        ['sconce', 310, 250],
+        ['sconce', 490, 250],
+        ['fireExtinguisher', 200, 378],
+        ['bucket', 232, 378],
+        ['bin', 580, 378, '#3d4a55'],
+        ['flowerPot', 760, 378],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 712, 175, '#ffb703'],

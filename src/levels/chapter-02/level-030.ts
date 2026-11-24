@@ -1,5 +1,5 @@
 // Motion differences: the middle fountain jet bobs faster on picture B; the flags wave only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { balloon, bench, bollard, building, cloud, coffeeCup, newspaperBox, person, pigeon, sandwichBoard, shoppingBag, sun } from './shapes.ts'
 import { level030Redesign } from './level-030-redesign.ts'
@@ -79,6 +79,22 @@ export default svgLevel({
       coffeeCup(215, 442) +
       shoppingBag(570, 488) +
       bollard(775, 480) +
+      // A busier square, the same in both pictures: a plane and a hot-air balloon in the sky, a pigeon, a crow and a cat on
+      // the roofs, flower boxes on the windows, a puppy, a sparrow, a scooter and a skateboard on the square.
+      decor({ anim }, [
+        ['plane', 330, 25],
+        ['hotAirBalloon', 770, 40],
+        ['pigeon', 200, 122],
+        ['crow', 490, 132],
+        ['cat', 780, 112, '#6b6b6b'],
+        ['flowerBox', 200, 269, '#b38cff'],
+        ['flowerBox', 333, 167, '#ffd23f'],
+        ['flowerBox', 515, 237, '#ff006e'],
+        ['puppy', 30, 370, '#c98b4f'],
+        ['sparrow', 680, 360],
+        ['scooter', 780, 440],
+        ['skateboard', 60, 480, '#3a86ff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 83, 307, '#e63946'],

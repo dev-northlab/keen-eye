@@ -1,5 +1,5 @@
 import { butterfly, mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level003Redesign } from './level-003-redesign.ts'
 import { cloud, duck, flower, FLOWER_COLORS, grass, ladybug, pick, snail, sun, tree } from '../shapes.ts'
@@ -84,6 +84,20 @@ export default svgLevel({
       mushroom(520, 305) +
       snail(207, 302) +
       stump(690, 488) +
+      // A busier pond, the same in both pictures: a kite and a swallow in the sky, fish and dragonflies over the water,
+      // a frog on a lily pad, a rabbit on the bank, a hedgehog by the reeds and a tortoise by the stump.
+      decor({ anim }, [
+        ['kite', 300, 190, '#ffd23f'],
+        ['swallow', 520, 210],
+        ['fish', 330, 410],
+        ['fish', 700, 400, '#ff7b54'],
+        ['dragonfly', 180, 440],
+        ['dragonfly', 650, 360],
+        ['frog', 330, 450],
+        ['rabbit', 380, 302],
+        ['hedgehog', 30, 362],
+        ['tortoise', 588, 496],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 606, 271, '#b38cff'],

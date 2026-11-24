@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level228Redesign } from './level-228-redesign.ts'
 import { around, ball, bike, bin, bucket, bulbs, buoy, cloud, dog, DUSK, lampHead, lampPost, moon, palm, parasol, person, pigeon, sailboat, shell, sky, starfish, stars, sun, towel, waves } from './shapes.ts'
@@ -65,6 +65,18 @@ export default svgLevel({
     starfish(700, 395, '#ff6b8b') +
     bin(100, 490, '#3a86ff') +
     pigeon(125, 490) +
+    // A busier seafront: gulls and a swallow, flip-flops and sunglasses on the sand, a skateboard, a sparrow and a manhole
+    // on the promenade; sky lanterns over the sea and stars at night.
+    decor({ anim }, [
+      ['gull', 460, 185],
+      ['gull', 640, 182],
+      ['swallow', 300, 30],
+      ['flipFlops', 240, 352, '#ff6b8b'],
+      ['sunglasses', 590, 350],
+      ['skateboard', 222, 494, '#3a86ff'],
+      ['sparrow', 574, 496],
+      ['manhole', 690, 492],
+    ]) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 214, 122],
@@ -72,6 +84,8 @@ export default svgLevel({
       ['birds', 76, 56],
     ]) +
     time('', DUSK) +
+    // Night lights over the dusk, so that they glow: only in the evening picture.
+    time('', decor({ anim }, [['skyLantern', 360, 190], ['skyLantern', 110, 225], ['star', 470, 30], ['star', 760, 165]])) +
     trap(157, 417, 22, bulbs(120, 405, 340, 405, 9, false), bulbs(120, 405, 340, 405, 9, true), 'lights') +
     trap(40, 380, 34, lampHead(40, 480, false), lampHead(40, 480, true), 'lights') +
     trap(760, 380, 34, lampHead(760, 480, false), lampHead(760, 480, true), 'lights') +

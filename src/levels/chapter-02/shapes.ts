@@ -116,13 +116,14 @@ export const hydrant = (x: number, y: number, color = '#e63946') =>
   `<g transform="translate(${x} ${y})"><rect x="-6" y="-26" width="12" height="26" rx="3" fill="${color}"/>` +
   `<circle cy="-28" r="5" fill="${color}"/><rect x="-9" y="-18" width="18" height="5" rx="2" fill="${color}"/></g>`
 
-/** Standing person, faces right; (x, y) = feet. Bounds: x ±13, y from −62 to 0. */
+/** Standing person facing the viewer (two eyes, a smile); (x, y) = feet. Bounds: x ±13, y from −62 to 0. */
 export const person = (x: number, y: number, shirt: string, flip = false, skin = '#f2d29b', hair = '#5a3d2b') =>
   `<g transform="translate(${x} ${y}) scale(${flip ? -1 : 1} 1)">` +
   `<rect x="-9" y="-24" width="7" height="24" fill="#3d4a55"/><rect x="2" y="-24" width="7" height="24" fill="#3d4a55"/>` +
   `<path d="M-11 -48h22l3 26h-28Z" fill="${shirt}"/><path d="M-11 -46l-2 20M11 -46l2 20" stroke="${shirt}" stroke-width="5" stroke-linecap="round"/>` +
   `<circle cy="-54" r="8" fill="${skin}"/><path d="M-8 -56q8 -10 16 0v-4q-8 -6 -16 0Z" fill="${hair}"/>` +
-  `<circle cx="3" cy="-55" r="1.2" fill="#222"/></g>`
+  `<circle cx="-3" cy="-54" r="1.2" fill="#222"/><circle cx="3" cy="-54" r="1.2" fill="#222"/>` +
+  `<path d="M-2.5 -50.5q2.5 2 5 0" fill="none" stroke="#8a4b3a" stroke-width="1" stroke-linecap="round"/></g>`
 
 /** Dog, faces right; (x, y) = feet. Bounds: x ±22, y from −26 to 0. */
 export const dog = (x: number, y: number, color = '#c48a5a', flip = false) =>

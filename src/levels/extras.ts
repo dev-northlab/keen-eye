@@ -4,7 +4,8 @@
 // at the shapes' own anchor points (their x, y arguments); the circle each one needs is worked out here from
 // the shape's box and its motion. Animals and things on the water move on the spot (the same in A and B, so
 // never a difference); `check-levels` checks they stay in their circles and keep clear of the zones.
-// `decor` draws the same shapes in every mode: plain scenery of a level, also the same in A and B.
+// `decor` draws the same shapes in every mode: plain scenery of a level, also the same in A and B, which
+// `check-levels` keeps DECOR_GAP clear of the zones, the key, the traps and the extras.
 import {
   balloon,
   ball,
@@ -285,6 +286,12 @@ export function extras({ extra, anim }: Pick<SceneContext, 'extra' | 'anim'>, it
     .join('')
 }
 
-/** Draws the listed shapes as plain decor of every mode, kept clear of the zones by the level itself. */
+/** Draws the listed shapes as plain decor of every mode, each in a group carrying its circle (`data-decor="x y r"`),
+ * by which `check-levels` keeps it clear of the zones, the key, the traps and the extras. */
 export const decor = ({ anim }: Pick<SceneContext, 'anim'>, items: Item[]): string =>
-  items.map((item) => place(anim, item).markup).join('')
+  items
+    .map((item) => {
+      const { markup, x, y, r } = place(anim, item)
+      return `<g data-decor="${x} ${y} ${r}">${markup}</g>`
+    })
+    .join('')

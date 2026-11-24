@@ -1,5 +1,5 @@
 // Motion differences: the cyclist rides the other way round on picture B; the balloon bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, balloon, bike, bin, building, car, cityTree, cloud, dog, door, flowerBox, lampHead, lampPost, mailbox, manhole, newspaperBox, parkingMeter, person, pigeon, sandwichBoard, signBoard, skyline, street, sun } from './shapes.ts'
 import { level021Redesign } from './level-021-redesign.ts'
@@ -54,6 +54,22 @@ export default svgLevel({
       newspaperBox(375, 352) +
       parkingMeter(575, 352) +
       manhole(330, 472) +
+      // A busier shop street, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, a crow, a
+      // pigeon and a cat on the roofs, flower boxes on the windows, a hydrant, a shopping bag and a coffee cup.
+      decor({ anim }, [
+        ['plane', 470, 22],
+        ['hotAirBalloon', 60, 45],
+        ['swallow', 300, 30],
+        ['crow', 370, 72],
+        ['pigeon', 440, 132],
+        ['cat', 780, 92, '#6b6b6b'],
+        ['flowerBox', 120, 217, '#4dabf7'],
+        ['flowerBox', 240, 175, '#ffd23f'],
+        ['flowerBox', 520, 235, '#b38cff'],
+        ['hydrant', 210, 354],
+        ['shoppingBag', 160, 356, '#2a9d8f'],
+        ['coffeeCup', 395, 356],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['balloon', 593, 41, '#ff006e'],

@@ -1,6 +1,6 @@
 // Motion differences: the weathervane turns the other way on picture B; the horse's tail swings faster on B.
 import { stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bucket, cat, chick, cloud, fence, grass, hen, pumpkin, sun, tree, wateringCan } from '../shapes.ts'
 import { level020Redesign } from './level-020-redesign.ts'
@@ -93,6 +93,19 @@ export default svgLevel({
       wateringCan(50, 430) +
       stump(250, 410) +
       pumpkin(640, 385) +
+      // A busier stable yard, the same in both pictures: barn swallows in the sky, pigeons on the roof, a broom by the
+      // door, a hay bale, a puppy and a mouse in the grass, a rake by the paddock.
+      decor({ anim }, [
+        ['swallow', 80, 180],
+        ['swallow', 600, 180],
+        ['pigeon', 170, 180],
+        ['pigeon', 420, 177],
+        ['broom', 245, 360],
+        ['haybale', 60, 370],
+        ['puppy', 200, 495],
+        ['mouse', 100, 490],
+        ['rake', 740, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['butterfly', 447, 385],

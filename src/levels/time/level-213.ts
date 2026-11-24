@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level213Redesign } from './level-213-redesign.ts'
 import { anchor, barrel, buoy, cloud, crate, DUSK, glow, gull, lampHead, lampPost, lifeRing, moon, pane, poster, ropeCoil, sack, sky, stars, sun, waves } from './shapes.ts'
@@ -60,12 +60,27 @@ export default svgLevel({
     crate(700, 480, 28) +
     crate(730, 480, 28, '#b07a42') +
     ropeCoil(770, 486) +
+    // A busier harbour: a cat on the crates, a bucket, a mouse by the sacks, a crab, a broom by the warehouse, a fish and
+    // a bottle in the water, a plane in the sky; sky lanterns and a bat in the evening.
+    decor({ anim }, [
+      ['cat', 715, 452, '#f4a261'],
+      ['bucket', 415, 485],
+      ['mouse', 476, 490],
+      ['crab', 540, 492],
+      ['broom', 75, 400],
+      ['fish', 760, 385, '#ff9f1c'],
+      ['bottle', 258, 282],
+      ['plane', 180, 40],
+    ]) +
+    time('', decor({ anim }, [['bat', 170, 180]])) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 366, 110],
       ['birds', 616, 53],
     ]) +
     time('', DUSK) +
+    // Night lights over the dusk, so that they glow: only in the evening picture.
+    time('', decor({ anim }, [['skyLantern', 520, 178], ['skyLantern', 472, 140]])) +
     time('', glow(170, 286, 30, 24)) +
     trap(640, 296, 30, '', portholes('#ffe08a'), 'lights') +
     trap(200, 370, 34, lampHead(200, 470, false), lampHead(200, 470, true), 'lights') +

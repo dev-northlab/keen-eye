@@ -1,5 +1,5 @@
 // Motion differences: the gardening robot rolls faster on picture B; the alien flower nods faster on B; the sprinkler sprays only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level095Redesign } from './level-095-redesign.ts'
 import { wateringCan } from '../shapes.ts'
@@ -77,6 +77,20 @@ export default svgLevel({
       helmet(700, 465) +
       fuelCanister(440, 464) +
       probe(460, 200) +
+      // A busier greenhouse, the same in both pictures: a ring planet, an asteroid, a probe and stars outside the
+      // dome; bees, a butterfly, a snail and a potted flower inside.
+      decor({ anim }, [
+        ['ringPlanet', 760, 40, '#4dabf7'],
+        ['asteroid', 780, 200],
+        ['probe', 30, 230],
+        ['spaceStar', 240, 30, '#ffd23f'],
+        ['spaceStar', 520, 30, '#ff6bd6'],
+        ['bee', 200, 300],
+        ['bee', 630, 220],
+        ['butterfly', 470, 320, '#ff6bd6'],
+        ['snail', 775, 478],
+        ['flowerPot', 30, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['ringPlanet', 297, 115],

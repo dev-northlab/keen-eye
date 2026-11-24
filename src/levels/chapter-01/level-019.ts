@@ -1,6 +1,6 @@
 // Motion differences: the bat flies faster on picture B; the cat's tail swings only on B.
 import { mushroom, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { fence, grass, hayBale, milkCan, pumpkin, stones } from '../shapes.ts'
 import { level019Redesign } from './level-019-redesign.ts'
@@ -99,6 +99,19 @@ export default svgLevel({
       mushroom(360, 440) +
       milkCan(545, 348) +
       stones(740, 470) +
+      // A busier night farm, the same in both pictures: a cottage far on the hill, a fox, a hedgehog and a mouse out in
+      // the dark, more fireflies, a bucket by the lantern, a rake and a molehill.
+      decor({ anim }, [
+        ['cottage', 60, 300],
+        ['fox', 470, 440],
+        ['hedgehog', 300, 400],
+        ['mouse', 780, 490],
+        ['firefly', 310, 480],
+        ['firefly', 500, 380],
+        ['bucket', 110, 362],
+        ['rake', 150, 490],
+        ['molehill', 440, 495],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['snail', 193, 307],

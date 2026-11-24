@@ -1,3 +1,4 @@
+import { decor } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { around, bench, bin, bird, bus, car, cloud, cone, dog, door, DUSK, flowerBox, hydrant, lampHead, lampPost, moon, person, pigeon, pot, roadSign, sky, stars, sun } from './shapes.ts'
 import { level230Redesign } from './level-230-redesign.ts'
@@ -17,7 +18,7 @@ export default svgLevel({
   pair: 'day-night',
   parTimeSec: 155,
   redesign: level230Redesign,
-  scene: ({ diff, time, trap }) =>
+  scene: ({ diff, time, trap, anim }) =>
     sky(time(false, true), 300) +
     // Towers
     `<rect x="20" y="60" width="140" height="240" fill="#7aa6d6"/>` +
@@ -72,6 +73,26 @@ export default svgLevel({
     cone(300, 490) +
     pot(520, 490, '#3a86ff') +
     bench(740, 490, '#3a86ff') +
+    // A busier street: a swallow, a bollard, a scooter, a newspaper box, a manhole in the road, a shopping bag, a
+    // skateboard, a cat and a sparrow; a butterfly by day, a bat and a star at night.
+    decor({ anim }, [
+      ['swallow', 166, 104],
+      ['bollard', 68, 328],
+      ['scooter', 370, 330],
+      ['newspaperBox', 600, 328, '#2a9d8f'],
+      ['manhole', 720, 398],
+      ['shoppingBag', 270, 494, '#e63946'],
+      ['skateboard', 420, 494, '#8338ec'],
+      ['cat', 470, 494, '#3d3d3d'],
+      ['sparrow', 788, 494],
+    ]) +
+    time(
+      decor({ anim }, [['butterfly', 255, 305, '#ffd23f']]),
+      decor({ anim }, [
+        ['bat', 628, 30],
+        ['star', 785, 25],
+      ]),
+    ) +
     time('', DUSK) +
     time('', lampHead(40, 330, true) + officeWindows(32, 76, 4, 2, '#ffe08a') + officeWindows(636, 86, 5, 1, '#ffe08a') + officeWindows(484, 150, 5, 1, '#ffe08a')) +
     trap(407, 126, 30, '', officeWindows(372, 100, 3, 2, '#ffe08a'), 'lights') +

@@ -1,5 +1,5 @@
 // Motion differences: the parrot bobs only on picture B; the coconut swings faster on B; the raft drifts faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level073Redesign } from './level-073-redesign.ts'
 import { clam, cloud, crab, fish, gull, palm, rock, sandBits, shell, starfish, sun, sunglasses, sunHat, waves } from './shapes.ts'
@@ -65,6 +65,19 @@ export default svgLevel({
       sunglasses(405, 346) +
       clam(205, 348) +
       fish(320, 440, '#ff6b8b') +
+      // A busier island, the same in both pictures: a plane, a hot-air balloon, a cloud and a flock of birds in the sky,
+      // fish and a jellyfish around the island.
+      decor({ anim }, [
+        ['plane', 330, 30],
+        ['hotAirBalloon', 290, 125],
+        ['birds', 590, 215],
+        ['cloud', 710, 245],
+        ['fish', 30, 440, '#ffd23f'],
+        ['fish', 500, 395, '#e63946'],
+        ['fish', 430, 475, '#ffd23f'],
+        ['fish', 785, 480, '#4dabf7'],
+        ['jellyfish', 190, 455, '#b38cff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 420, 402, '#4dabf7'],

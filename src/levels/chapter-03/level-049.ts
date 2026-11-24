@@ -1,5 +1,5 @@
 // Motion differences: the owl blinks only on picture B; the glowing mushroom pulses faster on B; the bat flies faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level049Redesign } from './level-049-redesign.ts'
 import { acorn, anthill, backpack, floor, fox, hedgehog, lantern, mushroom, pine, pineCone, tent } from './shapes.ts'
@@ -79,6 +79,21 @@ export default svgLevel({
       pineCone(300, 478) +
       acorn(230, 482) +
       anthill(480, 412) +
+      // A busier night wood, the same in both pictures: two bats and a twinkling star, an owl in the pine, a rabbit, a
+      // mouse, fireflies, a mushroom and boots left by the tent.
+      decor({ anim }, [
+        ['bat', 130, 100],
+        ['bat', 600, 195],
+        ['star', 760, 110],
+        ['owl', 720, 222],
+        ['rabbit', 430, 382],
+        ['mouse', 350, 442],
+        ['firefly', 220, 352],
+        ['firefly', 470, 345],
+        ['firefly', 760, 382],
+        ['mushroom', 30, 337, '#e63946'],
+        ['boots', 760, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 183, 274],

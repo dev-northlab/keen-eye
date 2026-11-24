@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level207Redesign } from './level-207-redesign.ts'
 import { bareTree, bench, bike, bird, bollard, building, car, cityTree, cloud, cone, curtainWindow, door, hangingSign, hydrant, icicles, person, pigeon, sky, snowCap, snowfall, street, winterPerson, winterSky } from './shapes.ts'
@@ -65,6 +65,25 @@ export default svgLevel({
     bollard(520, 492) +
     pigeon(600, 492, true) +
     bin(770, 490, '#5c8d5a') +
+    // A busier street: a plane, a manhole, a crow, a shopping bag, a suitcase, a newspaper box and bullfinches on
+    // the roofs in both seasons; a butterfly in summer.
+    decor({ anim }, [
+      ['plane', 470, 100],
+      ['manhole', 250, 445],
+      ['crow', 130, 492],
+      ['shoppingBag', 360, 492, '#ffb703'],
+      ['suitcase', 470, 492, '#2a9d8f'],
+      ['newspaperBox', 690, 492, '#3a86ff'],
+      ['bullfinch', 110, 74],
+      ['bullfinch', 630, 114],
+    ]) +
+    time('', snowCap(682, 462, 16)) +
+    time(
+      decor({ anim }, [
+        ['butterfly', 560, 455, '#ff9f43'],
+      ]),
+      '',
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 337, 92],

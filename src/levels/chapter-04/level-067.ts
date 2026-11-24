@@ -1,5 +1,5 @@
 // Motion differences: the surfer rides faster on picture B; the kite bobs only on B; the gull flies faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level067Redesign } from './level-067-redesign.ts'
 import { beachBall, cloud, coconut, flipFlops, gull, palm, parasol, person, rock, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
@@ -67,6 +67,20 @@ export default svgLevel({
       sunHat(760, 450) +
       coconut(85, 410) +
       sunglasses(205, 470) +
+      // A busier surf beach, the same in both pictures: a plane, a hot-air balloon and a gull in the sky, a buoy and a
+      // fish in the waves, a crab, a starfish, a shell, a clam and flip-flops on the sand.
+      decor({ anim }, [
+        ['plane', 560, 30],
+        ['hotAirBalloon', 770, 160],
+        ['gull', 290, 175],
+        ['buoy', 688, 252, '#ffb703'],
+        ['fish', 320, 345, '#ff6b8b'],
+        ['shell', 215, 425, '#ffd8c2'],
+        ['crab', 340, 430, '#ff9f43'],
+        ['starfish', 520, 412, '#ff6b8b'],
+        ['clam', 780, 485],
+        ['flipFlops', 25, 490, '#3a86ff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['coconut', 138, 392],

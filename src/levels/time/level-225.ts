@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level225Redesign } from './level-225-redesign.ts'
 import { around, bareTree, barrel, butterfly, cloud, crate, door, grass, icicles, mountains, oak, pane, person, pond, roofSnow, sky, smoke, snowCap, snowfall, snowman, winterPerson, winterSky } from './shapes.ts'
@@ -106,6 +106,23 @@ export default svgLevel({
     barrel(14, 300, '#4f6b2f') +
     ladder(758, 300, 12, 100) +
     time(grass(40, 495) + grass(330, 496) + butterfly(60, 392) + grass(690, 470), '') +
+    // A busier camp, the same in both seasons: a hot-air balloon, the camp dog, a pair of boots, a fire bucket, a crow,
+    // stones; a dragonfly by the pond and a flower in summer.
+    decor({ anim }, [
+      ['hotAirBalloon', 60, 170],
+      ['puppy', 316, 490],
+      ['boots', 520, 494, '#4f5f2a'],
+      ['bucket', 605, 352],
+      ['crow', 684, 458],
+      ['stones', 562, 494],
+    ]) +
+    time(
+      decor({ anim }, [
+        ['dragonfly', 765, 345],
+        ['flower', 770, 446, '#ff6b8b'],
+      ]),
+      snowCap(592, 328, 26),
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 300, 70],

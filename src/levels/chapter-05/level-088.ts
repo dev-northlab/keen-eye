@@ -1,5 +1,5 @@
 // Motion differences: the telescope scans only on picture B; the meteor flashes only on B; the fireflies blink faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level088Redesign } from './level-088-redesign.ts'
 import { beacon, comet, moonPebbles, person, solarPanel, starField, toolbox, wrench } from './shapes.ts'
@@ -60,6 +60,21 @@ export default svgLevel({
       moonPebbles(560, 442) +
       beacon(690, 332) +
       wrench(170, 440) +
+      // A busier night on the hill, the same in both pictures: stars, a sparkle and a bat in the sky; an owl, a rabbit,
+      // fireflies, a snail, bluebells and an acorn in the grass.
+      decor({ anim }, [
+        ['spaceStar', 30, 40, '#ffd23f'],
+        ['spaceStar', 780, 165, '#bde3f2'],
+        ['sparkle', 475, 40],
+        ['bat', 700, 205],
+        ['owl', 722, 400],
+        ['rabbit', 625, 412],
+        ['firefly', 760, 440],
+        ['firefly', 22, 420],
+        ['snail', 150, 398],
+        ['bluebells', 515, 480],
+        ['acorn', 762, 486],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 668, 460],

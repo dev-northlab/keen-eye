@@ -1,5 +1,5 @@
 // Motion differences: the rover drives faster on picture B; the drone hovers faster on B; the dust devil sways only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level085Redesign } from './level-085-redesign.ts'
 import { astronaut, beacon, crater, crystal, fuelCanister, rock, rover, solarPanel, starField, toolbox } from './shapes.ts'
@@ -55,6 +55,20 @@ export default svgLevel({
       fuelCanister(175, 335) +
       beacon(590, 336) +
       solarPanel(760, 402) +
+      // A busier red desert, the same in both pictures: a ring planet, a planet, a probe and stars in the sky; a
+      // rock, crystals, stones and pebbles on the ground.
+      decor({ anim }, [
+        ['ringPlanet', 580, 40, '#8ecae6'],
+        ['planet', 770, 30, '#b38cff'],
+        ['probe', 40, 170],
+        ['spaceStar', 400, 30, '#fff8e1'],
+        ['sparkle', 760, 160],
+        ['rock', 460, 482, '#a5502c'],
+        ['moonPebbles', 660, 440],
+        ['crystal', 30, 475, '#ff6bd6'],
+        ['crystal', 785, 312, '#4dabf7'],
+        ['stones', 335, 302],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['wrench', 733, 405],

@@ -311,6 +311,14 @@ Swift Package Manager and is built in the cloud by Codemagic, `codemagic.yaml`).
   `levels/extras.ts` (chapter shapes with their boxes; animals and things on water bob or sway on the spot, the circle
   grown by the motion's reach). `check-levels` keeps them 20+ units clear of zones, key and
   traps and inside their circles; `npm run preview-levels -- --extras <id>` shows them.
+- Decor of every mode: every level of the five worlds (1–150) also lists 9–18 plain decor objects with `decor({ anim }, [[kind, x, y, color?], …])`
+  of `levels/extras.ts` (animals, birds, toys, tools, planets of its world, in empty places, the same in A and B and in
+  every mode; the 3D pictures do not have them). Each is drawn in a `data-decor="x y r"` group whose circle holds the
+  whole shape; `check-levels` keeps it 4+ units clear of the zones (over time), the key, the traps and the extras.
+  "Time" levels (201–230) carry such decor too, read at both moments: drawn the same at both, except what changes by
+  nature (insects, flowers and grass, at night owls, bats, fireflies, stars, sky lanterns — at most 4 a level, through
+  `time()`), since an object that appears only in winter would read as a difference with no trap to explain it; night
+  lights go after `DUSK` so that they glow, everything else before it and before `snowfall`.
 - Hints: no pool to collect — every attempt of a level gets the mode's hints again (`MODE_RULES.<mode>.hints`: calm 3,
   normal 1); `GameScene.hint()` returns false when nothing can be hinted, so a hint is only spent when it is
   shown. Duels have their own hints (`duo`).

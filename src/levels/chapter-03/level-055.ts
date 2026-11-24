@@ -1,5 +1,5 @@
 // Motion differences: the dog runs faster on picture B; the kite flies faster on B; the frisbee spins the other way on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level055Redesign } from './level-055-redesign.ts'
 import { anthill, backpack, bluebells, bush, cloud, feather, floor, oak, pine, sun, wildStrawberry } from './shapes.ts'
@@ -69,6 +69,20 @@ export default svgLevel({
       bluebells(440, 354) +
       feather(230, 362) +
       anthill(770, 482) +
+      // A busier picnic, the same in both pictures: a plane and a swallow in the sky, a rabbit and a fox on the hill, a
+      // sparrow after crumbs, a squirrel, a ladybug, a snail, a bee by the bush and a mushroom.
+      decor({ anim }, [
+        ['plane', 270, 35],
+        ['swallow', 765, 50],
+        ['rabbit', 340, 292],
+        ['fox', 680, 300],
+        ['sparrow', 590, 400],
+        ['squirrel', 30, 410],
+        ['ladybug', 100, 400],
+        ['snail', 400, 322],
+        ['bee', 700, 385],
+        ['mushroom', 785, 400, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['frog', 175, 364],

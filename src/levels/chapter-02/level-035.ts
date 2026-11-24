@@ -1,5 +1,5 @@
 // Motion differences: the school clock runs backwards on picture B; the ball bounces faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, bus, cityTree, cloud, door, mailbox, person, scooter, shoppingBag, skateboard, street, sun, window } from './shapes.ts'
 import { level035Redesign } from './level-035-redesign.ts'
@@ -91,6 +91,21 @@ export default svgLevel({
       scooter(150, 368) +
       skateboard(670, 368) +
       mailbox(30, 368) +
+      // A busier school, the same in both pictures: a kite, a paper plane and a swallow in the sky, a pigeon and a sparrow
+      // on the roof, bunting over the door, flower boxes on the windows, a bench, a bin and a puppy waiting for the kids.
+      decor({ anim }, [
+        ['kite', 35, 50, '#ff006e'],
+        ['paperPlane', 520, 40],
+        ['swallow', 775, 225],
+        ['pigeon', 190, 142],
+        ['sparrow', 500, 142],
+        ['bunting', 400, 170],
+        ['flowerBox', 210, 289, '#ff006e'],
+        ['flowerBox', 280, 219, '#4dabf7'],
+        ['bench', 455, 368],
+        ['bin', 790, 368, '#2a9d8f'],
+        ['puppy', 170, 440, '#c98b4f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 321, 252, '#ffb703'],

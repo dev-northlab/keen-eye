@@ -1,5 +1,5 @@
 // Motion differences: the big geyser puffs faster on picture B; the small geyser erupts only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level091Redesign } from './level-091-redesign.ts'
 import { alien, astronaut, beacon, dome, flag, fuelCanister, helmet, planet, probe, sparkle, starField, toolbox } from './shapes.ts'
@@ -52,6 +52,20 @@ export default svgLevel({
       toolbox(330, 470) +
       probe(380, 220) +
       helmet(740, 470) +
+      // A busier ice moon, the same in both pictures: a UFO, a planet, stars and a sparkle in the sky; a sled,
+      // snowballs, a crystal, a crater and a wrench on the ice.
+      decor({ anim }, [
+        ['ufo', 170, 50],
+        ['planet', 40, 160, '#8ecae6'],
+        ['spaceStar', 40, 50, '#ffd23f'],
+        ['spaceStar', 560, 240, '#ff6bd6'],
+        ['sparkle', 290, 210],
+        ['sled', 585, 478],
+        ['snowballs', 268, 442],
+        ['crystal', 785, 425, '#b38cff'],
+        ['crater', 95, 362],
+        ['wrench', 470, 472],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crater', 493, 401],

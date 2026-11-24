@@ -1,5 +1,5 @@
 import { bird, mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level005Redesign } from './level-005-redesign.ts'
 import { bucket, cat, chick, cloud, fence, grass, pig, pumpkin, sun, sunflower } from '../shapes.ts'
@@ -62,6 +62,20 @@ export default svgLevel({
       mushroom(30, 402) +
       pumpkin(640, 484) +
       cat(776, 482) +
+      // A busier pig yard, the same in both pictures: a balloon and a swallow in the sky, a bee by the sunflowers, a crow
+      // on a fence post, a horseshoe and a broom at the shed, a hay bale, a puppy, a molehill and a ladybug.
+      decor({ anim }, [
+        ['hotAirBalloon', 120, 60],
+        ['swallow', 380, 150],
+        ['bee', 100, 190],
+        ['crow', 451, 286],
+        ['horseshoe', 715, 262],
+        ['broom', 705, 358],
+        ['haybale', 782, 362],
+        ['puppy', 510, 496],
+        ['molehill', 40, 470],
+        ['ladybug', 455, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 453, 399],

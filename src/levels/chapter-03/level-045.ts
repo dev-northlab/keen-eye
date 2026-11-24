@@ -1,5 +1,5 @@
 // Motion differences: the geese fly faster on picture B; the swing swings faster on B; the falling leaf spins the other way on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level045Redesign } from './level-045-redesign.ts'
 import { anthill, backpack, bear, bush, cloud, feather, floor, mushroom, oak, pine, pineCone, squirrel, stump, trailSign } from './shapes.ts'
@@ -75,6 +75,20 @@ export default svgLevel({
       feather(480, 330) +
       trailSign(240, 330) +
       anim({ type: 'path', points: [[0, 0], [-20, 60]], period: 5 }, leaves) +
+      // A busier autumn wood, the same in both pictures: a bullfinch on the trail sign, a crow, a fox and a rabbit on the
+      // hill, a hedgehog, a sparrow, a pile of leaves, a pine cone, an acorn and a mushroom on the ground.
+      decor({ anim }, [
+        ['bullfinch', 238, 293],
+        ['crow', 180, 302],
+        ['fox', 420, 302],
+        ['rabbit', 560, 300],
+        ['hedgehog', 768, 334],
+        ['sparrow', 510, 432],
+        ['leafPile', 510, 372],
+        ['pineCone', 200, 372],
+        ['acorn', 782, 492],
+        ['mushroom', 40, 422, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 564, 401],

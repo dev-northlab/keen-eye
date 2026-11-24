@@ -1,5 +1,5 @@
 // Motion differences: the robot head rides the belt faster on picture B; the ceiling arm swings faster on B; the warning light flashes faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level099Redesign } from './level-099-redesign.ts'
 import { beacon, fuelCanister, probe, robot, toolbox, wrench } from './shapes.ts'
@@ -74,6 +74,19 @@ export default svgLevel({
       fuelCanister(500, 474) +
       probe(420, 270) +
       beacon(780, 472) +
+      // A busier factory, the same in both pictures: a phone, a key rack, a calendar, a blueprint and lamps on the
+      // walls; a fire extinguisher, a wheelbarrow and a cone on the floor.
+      decor({ anim }, [
+        ['wallPhone', 40, 150],
+        ['keyRack', 250, 255],
+        ['calendar', 368, 96],
+        ['treasureMap', 620, 250],
+        ['sconce', 780, 200],
+        ['sconce', 25, 320],
+        ['fireExtinguisher', 25, 445],
+        ['wheelbarrow', 382, 490],
+        ['cone', 252, 496],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['toolbox', 192, 323],

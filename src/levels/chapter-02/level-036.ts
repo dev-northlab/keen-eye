@@ -1,6 +1,6 @@
 // Motion differences: the skater glides faster on picture B; the star on the tree blinks only on B.
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, building, cloud, mailbox, newspaperBox, parkingMeter, person, shoppingBag } from './shapes.ts'
 import { level036Redesign } from './level-036-redesign.ts'
@@ -78,6 +78,20 @@ export default svgLevel({
       newspaperBox(300, 345) +
       parkingMeter(150, 345) +
       anim({ type: 'path', points: [[0, 0], [-10, 40]], period: 3.5 }, flakes) +
+      // A busier winter square, the same in both pictures: a plane and an airship in the sky, a crow, a cat, a sparrow and
+      // a bullfinch on the roofs, a little fir, a sled, a snow shovel and a pair of lost mittens in the snow.
+      decor({ anim }, [
+        ['plane', 120, 25],
+        ['airship', 590, 20],
+        ['crow', 40, 72],
+        ['cat', 300, 112, '#6b6b6b'],
+        ['sparrow', 220, 112],
+        ['bullfinch', 640, 92],
+        ['pine', 580, 330],
+        ['sled', 430, 345],
+        ['snowShovel', 780, 340],
+        ['mittens', 655, 488, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 739, 278, '#ff006e'],

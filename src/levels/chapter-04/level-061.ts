@@ -1,5 +1,5 @@
 // Motion differences: the gull flies faster on picture B; the crab scuttles faster on B; the ball bounces only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level061Redesign } from './level-061-redesign.ts'
 import { bottleMessage, bucket, castleFlag, cloud, coconut, crab, flipFlops, gull, palm, parasol, person, sailboat, sandBits, sandcastle, shell, starfish, sun, sunglasses, sunHat, towel, waves } from './shapes.ts'
@@ -53,6 +53,20 @@ export default svgLevel({
       sunHat(565, 398) +
       coconut(85, 345) +
       bottleMessage(440, 332) +
+      // A busier beach, the same in both pictures: a plane, a kite and a gull in the sky, a life ring and a buoy on
+      // the water, a crab, a starfish, a clam, a shell and a rock on the sand.
+      decor({ anim }, [
+        ['plane', 240, 25],
+        ['kite', 470, 140, '#ff006e'],
+        ['gull', 760, 150],
+        ['lifeRing', 290, 265],
+        ['buoy', 500, 290, '#ffb703'],
+        ['crab', 300, 372, '#ff9f43'],
+        ['starfish', 520, 345, '#ffb703'],
+        ['clam', 775, 440],
+        ['rock', 30, 470],
+        ['shell', 230, 490, '#ffd8c2'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['clam', 76, 434],

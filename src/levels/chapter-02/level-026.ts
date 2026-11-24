@@ -1,5 +1,5 @@
 // Motion differences: the hanging lamp swings only on picture B; the balloon bunch bobs faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { awning, balloon, building, cloud, manhole, newspaperBox, parkingMeter, person, pigeon, scooter, shoppingBag, street, sun } from './shapes.ts'
 import { level026Redesign } from './level-026-redesign.ts'
@@ -87,6 +87,23 @@ export default svgLevel({
       parkingMeter(700, 398) +
       scooter(770, 398) +
       manhole(600, 478) +
+      // A busier market, the same in both pictures: a plane and a swallow in the sky, a cat, a pigeon and a crow on the
+      // roofs, flower boxes on the windows, a hydrant, a ball, a puppy and a wheelbarrow.
+      decor({ anim }, [
+        ['plane', 470, 25],
+        ['swallow', 630, 100],
+        ['cat', 30, 132, '#6b6b6b'],
+        ['pigeon', 200, 132],
+        ['crow', 465, 102],
+        ['flowerBox', 87, 195, '#ffd23f'],
+        ['flowerBox', 307, 207, '#ff006e'],
+        ['flowerBox', 493, 249, '#4dabf7'],
+        ['flowerBox', 627, 185, '#e63946'],
+        ['hydrant', 20, 398],
+        ['ball', 430, 492, '#3a86ff'],
+        ['puppy', 660, 470, '#c98b4f'],
+        ['wheelbarrow', 770, 488],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flowerBox', 50, 327, '#8338ec'],

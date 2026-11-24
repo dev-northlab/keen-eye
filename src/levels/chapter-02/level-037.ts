@@ -1,5 +1,5 @@
 // Motion differences: the dog runs faster on picture B; the pharmacy sign swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { bollard, building, cityTree, cloud, dog, door, mailbox, newspaperBox, person, sandwichBoard, shoppingBag, skyline, street, sun } from './shapes.ts'
 import { level037Redesign } from './level-037-redesign.ts'
@@ -79,6 +79,23 @@ export default svgLevel({
       bollard(397, 352) +
       shoppingBag(522, 354) +
       sandwichBoard(765, 352) +
+      // A busier tram street, the same in both pictures: a hot-air balloon and a plane in the sky, birds on the tram wire,
+      // a crow, a pigeon and a cat on the roofs, flower boxes on the windows, a bin and a hydrant on the pavement.
+      decor({ anim }, [
+        ['hotAirBalloon', 60, 30],
+        ['plane', 440, 28],
+        ['sparrow', 520, 230],
+        ['sparrow', 548, 230],
+        ['pigeon', 700, 230],
+        ['crow', 30, 102],
+        ['pigeon', 350, 132],
+        ['cat', 780, 142, '#f2a65a'],
+        ['flowerBox', 44, 207, '#ff006e'],
+        ['flowerBox', 355, 195, '#ffd23f'],
+        ['flowerBox', 640, 205, '#4dabf7'],
+        ['bin', 75, 352, '#2a9d8f'],
+        ['hydrant', 345, 354],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 177, 61],

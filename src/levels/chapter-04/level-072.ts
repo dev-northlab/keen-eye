@@ -1,5 +1,5 @@
 // Motion differences: the whale's spout rises faster on picture B; the tail fluke sways only on B; the pilot fish circles faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level072Redesign } from './level-072-redesign.ts'
 import { beachBall, bottleMessage, cloud, fish, gull, gullStanding, lifeRing, sailboat, sun, waves } from './shapes.ts'
@@ -55,6 +55,19 @@ export default svgLevel({
       lifeRing(420, 460) +
       gullStanding(705, 243) +
       fish(140, 470, '#4dabf7') +
+      // A busier whale watch, the same in both pictures: a plane, an airship, a hot-air balloon, a gull and a flock of
+      // birds in the sky, two jellyfish and two buoys in the water.
+      decor({ anim }, [
+        ['plane', 340, 25],
+        ['airship', 765, 180],
+        ['hotAirBalloon', 500, 170],
+        ['gull', 300, 200],
+        ['birds', 50, 215],
+        ['jellyfish', 230, 300, '#ff9f43'],
+        ['jellyfish', 690, 325, '#b38cff'],
+        ['buoy', 532, 478, '#ffb703'],
+        ['buoy', 785, 395, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 477, 467, '#ff9f43'],

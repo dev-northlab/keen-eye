@@ -1,5 +1,5 @@
 // Motion differences: the shrimp darts faster on picture B; the anemone sways only on B; the gull hops faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level074Redesign } from './level-074-redesign.ts'
 import { bucket, clam, crab, flipFlops, gullStanding, person, rock, seaweed, shell, snorkelMask, starfish, sun, sunHat, waves } from './shapes.ts'
@@ -68,6 +68,20 @@ export default svgLevel({
       clam(420, 486) +
       flipFlops(170, 342) +
       snorkelMask(700, 372) +
+      // A busier rocky shore, the same in both pictures: a plane, a kite and a flock of birds in the sky, a buoy and a
+      // fish in the sea, a clam, sunglasses, a stone, a shell and a sea urchin on the rocks.
+      decor({ anim }, [
+        ['plane', 440, 40],
+        ['kite', 480, 140, '#ff006e'],
+        ['birds', 170, 170],
+        ['buoy', 560, 250, '#e63946'],
+        ['fish', 250, 245, '#ffd23f'],
+        ['clam', 340, 362],
+        ['sunglasses', 300, 368],
+        ['rock', 25, 418, '#5c677d'],
+        ['shell', 515, 492, '#ffd8c2'],
+        ['seaUrchin', 650, 490, '#6a4fd8'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['clam', 73, 353],

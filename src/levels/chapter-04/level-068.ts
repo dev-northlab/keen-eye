@@ -1,5 +1,5 @@
 // Motion differences: the lead yacht rocks faster on picture B; the pennants wave only on B; the motorboat crosses the other way round on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level068Redesign } from './level-068-redesign.ts'
 import { beachBall, bottleMessage, buoy, cloud, dolphin, gull, gullStanding, lifeRing, person, sailboat, sun, waves } from './shapes.ts'
@@ -60,6 +60,19 @@ export default svgLevel({
       gullStanding(590, 180) +
       dolphin(470, 300) +
       lifeRing(770, 430) +
+      // A busier regatta, the same in both pictures: an airship, a hot-air balloon, a gull and a flock of birds in the
+      // sky, fish and a jellyfish in the water.
+      decor({ anim }, [
+        ['airship', 470, 70],
+        ['hotAirBalloon', 450, 165],
+        ['birds', 100, 160],
+        ['gull', 775, 160],
+        ['fish', 780, 250, '#ffd23f'],
+        ['fish', 160, 480, '#ff6b8b'],
+        ['fish', 560, 440, '#4dabf7'],
+        ['fish', 30, 350, '#e63946'],
+        ['jellyfish', 620, 475, '#b38cff'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['buoy', 531, 385],

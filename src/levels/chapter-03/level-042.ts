@@ -1,5 +1,5 @@
 // Motion differences: the flame flickers faster on picture B; the lantern swings only on B; the bird flies the other way round on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level042Redesign } from './level-042-redesign.ts'
 import { acorn, anthill, bush, feather, fireLogs, flame, floor, log, pine, pineCone, rock, tent, trailSign } from './shapes.ts'
@@ -81,6 +81,21 @@ export default svgLevel({
       pineCone(80, 482) +
       trailSign(330, 380) +
       feather(640, 470) +
+      // A busier camp at dusk, the same in both pictures: two sky lanterns and a bat, a fox on the hill, a hedgehog,
+      // fireflies over the grass, a mushroom by the red tent and a pine cone by the rock.
+      decor({ anim }, [
+        ['skyLantern', 200, 40],
+        ['skyLantern', 720, 120],
+        ['bat', 380, 150],
+        ['fox', 430, 332],
+        ['hedgehog', 470, 412],
+        ['firefly', 25, 395],
+        ['firefly', 240, 385],
+        ['firefly', 780, 372],
+        ['firefly', 360, 302],
+        ['mushroom', 190, 484, '#e63946'],
+        ['pineCone', 776, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 53, 471],

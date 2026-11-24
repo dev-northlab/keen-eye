@@ -1,6 +1,6 @@
 // Motion difference: the flag on the tent waves only on picture B.
 import { butterfly, stump } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level015Redesign } from './level-015-redesign.ts'
 import { basket, chick, cloud, flowerPot, grass, milkCan, sun } from '../shapes.ts'
@@ -90,6 +90,20 @@ export default svgLevel({
       flowerPot(40, 400) +
       stump(650, 450) +
       butterfly(240, 410) +
+      // A busier fair, the same in both pictures: a balloon, swallows and a paper plane in the sky, a hay bale to sit
+      // on, a toy drum, a wheelbarrow, a shopping bag, a puppy and a ladybug in the grass.
+      decor({ anim }, [
+        ['hotAirBalloon', 40, 250],
+        ['swallow', 510, 220],
+        ['swallow', 700, 260],
+        ['paperPlane', 330, 250],
+        ['haybale', 105, 415],
+        ['toyDrum', 230, 485],
+        ['wheelbarrow', 470, 492],
+        ['shoppingBag', 690, 400, '#ff9f43'],
+        ['puppy', 768, 486],
+        ['ladybug', 130, 490],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['flower', 707, 466, '#ff6b8b'],

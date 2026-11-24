@@ -1,5 +1,5 @@
 // Motion differences: the flock flies faster on picture B; the butterfly flutters faster on B; the reeds sway only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level051Redesign } from './level-051-redesign.ts'
 import { anthill, bluebells, butterfly, cloud, deer, feather, floor, flower, oak, pine, pineCone, rock, trailSign } from './shapes.ts'
@@ -65,6 +65,21 @@ export default svgLevel({
       pineCone(80, 285) +
       trailSign(200, 310) +
       feather(420, 330) +
+      // A busier meadow by the stream, the same in both pictures: a swallow and a hot-air balloon in the sky, a fox, a
+      // rabbit and a hedgehog on the hill, a snail, a ladybug, a bee by the daisies, a frog, a fish and a dragonfly at the stream.
+      decor({ anim }, [
+        ['swallow', 50, 40],
+        ['hotAirBalloon', 620, 35],
+        ['fox', 30, 320],
+        ['rabbit', 260, 310],
+        ['hedgehog', 670, 290],
+        ['snail', 450, 352],
+        ['ladybug', 400, 372],
+        ['bee', 190, 452],
+        ['frog', 390, 490],
+        ['fish', 170, 492, '#ffb703'],
+        ['dragonfly', 570, 478],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 625, 427],

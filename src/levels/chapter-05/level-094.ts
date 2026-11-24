@@ -1,5 +1,5 @@
 // Motion differences: the crystals glow faster on picture B; the cart rolls faster on B; the bat flutters faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level094Redesign } from './level-094-redesign.ts'
 import { alien, alienPlant, beacon, helmet, moonPebbles, star, toolbox } from './shapes.ts'
@@ -69,6 +69,20 @@ export default svgLevel({
       helmet(760, 412) +
       alienPlant(300, 416) +
       moonPebbles(40, 482) +
+      // A busier cave, the same in both pictures: a star and a sparkle in the opening; a spider, a bat, fireflies and
+      // crystals on the walls; a mushroom on the floor.
+      decor({ anim }, [
+        ['spaceStar', 540, 25, '#fff3b0'],
+        ['sparkle', 480, 40],
+        ['spider', 160, 46],
+        ['bat', 262, 158],
+        ['firefly', 640, 320],
+        ['firefly', 370, 200],
+        ['crystal', 782, 150, '#ffd23f'],
+        ['crystal', 20, 150, '#ffd23f'],
+        ['firefly', 115, 290],
+        ['mushroom', 362, 410, '#ff6bd6'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['crystal', 711, 247, '#7bdff2'],

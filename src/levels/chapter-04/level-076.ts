@@ -1,5 +1,5 @@
 // Motion differences: the lightning flashes at another moment on picture B; the ship pitches faster on B; the buoy bell swings only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level076Redesign } from './level-076-redesign.ts'
 import { beachBall, bottleMessage, dolphin, fish, gull, lifeRing, rock, sunHat, waves } from './shapes.ts'
@@ -59,6 +59,19 @@ export default svgLevel({
       fish(420, 470, '#ffb703') +
       dolphin(160, 330) +
       anim({ type: 'path', points: [[0, 0], [-14, 50]], period: 0.7 }, rain) +
+      // A busier storm, the same in both pictures: gulls and a flock of birds under the clouds, fish, jellyfish and a
+      // buoy in the waves.
+      decor({ anim }, [
+        ['gull', 760, 170],
+        ['gull', 100, 205],
+        ['birds', 400, 140],
+        ['fish', 780, 330, '#ff6b8b'],
+        ['fish', 540, 400, '#ffd23f'],
+        ['fish', 220, 410, '#4dabf7'],
+        ['jellyfish', 360, 410, '#ff9f43'],
+        ['jellyfish', 40, 360, '#b38cff'],
+        ['buoy', 30, 425, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 260, 319, '#ffb703'],

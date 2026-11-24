@@ -1,5 +1,5 @@
 // Motion differences: the rowboat rocks faster on picture B; the fish leaps only on B; the reeds sway faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level047Redesign } from './level-047-redesign.ts'
 import { backpack, bluebells, cloud, floor, lantern, pine, pineCone, rock, sun, trailSign } from './shapes.ts'
@@ -80,6 +80,20 @@ export default svgLevel({
       trailSign(400, 296) +
       pineCone(600, 302) +
       bluebells(165, 300) +
+      // A busier mountain lake, the same in both pictures: two swallows, a tent, a fox, a rabbit, a hedgehog and a
+      // mushroom on the far bank, a fish and a dragonfly over the water and a feather afloat by the reeds.
+      decor({ anim }, [
+        ['swallow', 340, 40],
+        ['swallow', 770, 125],
+        ['tent', 540, 302],
+        ['fox', 652, 302],
+        ['rabbit', 240, 302],
+        ['hedgehog', 460, 302],
+        ['mushroom', 20, 305, '#e63946'],
+        ['fish', 330, 486, '#ff9f43'],
+        ['dragonfly', 610, 410],
+        ['feather', 760, 420],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['duck', 281, 415],

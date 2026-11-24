@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level222Redesign } from './level-222-redesign.ts'
 import { around, cloud, cone, DUSK, glow, lampHead, lampPost, moon, pane, sky, stars, sun } from './shapes.ts'
@@ -82,6 +82,27 @@ export default svgLevel({
     cloud(470, 150, 0.4) +
     cloud(200, 70, 0.45) +
     scaledAt(600, 110, 0.35, `<g transform="rotate(-12 600 110)">${jet(600, 110, '#ced4da', '#adb5bd', false)}</g>`) +
+    // A busier airfield: a far plane and an airship, a bin, a bollard and an extinguisher, a drain, a cone and a toolbox
+    // on the apron; stars and a bat by the lamp at night.
+    decor({ anim }, [
+      ['plane', 230, 125],
+      ['airship', 575, 40],
+      ['bin', 240, 330, '#4a5560'],
+      ['bollard', 132, 324],
+      ['fireExtinguisher', 770, 340],
+      ['manhole', 150, 400],
+      ['cone', 40, 392],
+      ['toolbox', 470, 490, '#e63946'],
+    ]) +
+    time(
+      '',
+      decor({ anim }, [
+        ['star', 40, 30],
+        ['star', 322, 28],
+        ['star', 650, 158],
+        ['bat', 520, 262],
+      ]),
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 110, 70],

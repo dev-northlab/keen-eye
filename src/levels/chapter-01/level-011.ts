@@ -1,6 +1,6 @@
 // Motion difference: the windmill blades turn the other way on picture B.
 import { frog, mushroom } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level011Redesign } from './level-011-redesign.ts'
 import { birdhouse, cat, cloud, duck, flower, FLOWER_COLORS, grass, pick, sun, tree, wateringCan } from '../shapes.ts'
@@ -74,6 +74,19 @@ export default svgLevel({
       cat(225, 332) +
       birdhouse(520, 345) +
       wateringCan(745, 470) +
+      // A busier mill yard, the same in both pictures: a balloon and a swallow in the sky, a sparrow on the roof, a
+      // mailbox by the house, a fish and a dragonfly at the pond, a puppy, a rabbit and a snail.
+      decor({ anim }, [
+        ['hotAirBalloon', 770, 170],
+        ['swallow', 240, 160],
+        ['sparrow', 60, 234],
+        ['mailbox', 30, 330],
+        ['fish', 280, 452, '#ff7b54'],
+        ['dragonfly', 200, 380],
+        ['puppy', 680, 362],
+        ['rabbit', 770, 360],
+        ['snail', 470, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['bee', 556, 434],

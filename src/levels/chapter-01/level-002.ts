@@ -1,5 +1,5 @@
 import { bird } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level002Redesign } from './level-002-redesign.ts'
 import { cat, cloud, flower, FLOWER_COLORS, grass, pick, pumpkin, snail, sun, wheelbarrow } from '../shapes.ts'
@@ -85,6 +85,20 @@ export default svgLevel({
       cat(292, 336) +
       wheelbarrow(770, 362) +
       snail(560, 494) +
+      // A busier kitchen garden, the same in both pictures: a swallow and a kite in the sky, a sparrow on the roof, a
+      // crow on the scarecrow's arm, a birdhouse, a gnome, a shovel by the wheelbarrow, a rake, a mouse and a ladybug.
+      decor({ anim }, [
+        ['swallow', 90, 40],
+        ['kite', 760, 170, '#ff6b8b'],
+        ['sparrow', 130, 127],
+        ['crow', 515, 255],
+        ['birdhouse', 330, 300],
+        ['gnome', 720, 318],
+        ['shovel', 785, 330],
+        ['rake', 680, 497],
+        ['mouse', 400, 497],
+        ['ladybug', 255, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 351, 344],

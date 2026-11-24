@@ -1,5 +1,5 @@
 // Motion differences: the wasp buzzes faster on picture B; the bird hops only on B; the berry branch sways only on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level050Redesign } from './level-050-redesign.ts'
 import { acorn, backpack, bear, bird, bush, cloud, floor, oak, pine, pineCone, sun, trailSign, wildStrawberry } from './shapes.ts'
@@ -67,6 +67,20 @@ export default svgLevel({
       trailSign(85, 332) +
       pineCone(745, 482) +
       acorn(662, 326) +
+      // A busier berry meadow, the same in both pictures: a swallow, a fox and a hedgehog on the hill, a beehive, a molehill,
+      // wild strawberries, a mushroom, a ladybug, a snail and a flower in the grass.
+      decor({ anim }, [
+        ['swallow', 390, 35],
+        ['fox', 140, 302],
+        ['hedgehog', 480, 292],
+        ['beehive', 300, 332],
+        ['molehill', 680, 372],
+        ['wildStrawberry', 780, 340],
+        ['mushroom', 530, 320, '#e63946'],
+        ['ladybug', 510, 410],
+        ['snail', 215, 388],
+        ['flower', 30, 470, '#ff6b8b'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['leafPile', 57, 371],

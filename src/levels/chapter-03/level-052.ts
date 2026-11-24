@@ -1,5 +1,5 @@
 // Motion differences: the crow hops only on picture B; the hawk circles faster on B; the dandelion sways faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level052Redesign } from './level-052-redesign.ts'
 import { acorn, anthill, bluebells, bush, feather, floor, fox, log, mushroom, pine, pineCone, rock } from './shapes.ts'
@@ -71,6 +71,20 @@ export default svgLevel({
       anthill(585, 432) +
       acorn(365, 482) +
       feather(185, 490) +
+      // A busier fox den, the same in both pictures: two swallows in the evening sky, a hedgehog, a mouse, a molehill,
+      // wild strawberries, a ladybug by the bush, a mushroom, stones and a pine cone.
+      decor({ anim }, [
+        ['swallow', 60, 45],
+        ['swallow', 745, 55],
+        ['hedgehog', 480, 322],
+        ['mouse', 565, 327],
+        ['molehill', 40, 382],
+        ['wildStrawberry', 110, 372],
+        ['ladybug', 640, 400],
+        ['mushroom', 774, 425, '#e63946'],
+        ['stones', 30, 494],
+        ['pineCone', 505, 492],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['butterfly', 592, 376],

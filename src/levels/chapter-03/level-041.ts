@@ -1,5 +1,5 @@
 // Motion differences: the butterfly flutters faster on picture B; the bird hops only on B; the big flower sways faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level041Redesign } from './level-041-redesign.ts'
 import { acorn, anthill, bird, bluebells, butterfly, cloud, deer, floor, flower, FLOWER_COLORS, fox, log, mushroom, oak, pick, pine, pineCone, rabbit, rock, stump, sun, trailSign } from './shapes.ts'
@@ -52,6 +52,20 @@ export default svgLevel({
       anthill(510, 492) +
       acorn(640, 330) +
       bluebells(765, 480) +
+      // A busier clearing, the same in both pictures: a swallow and a hot-air balloon in the sky, a sparrow on the
+      // trail sign, a hedgehog, a squirrel, a molehill, a bee, a ladybug, a snail and a mushroom by the stump.
+      decor({ anim }, [
+        ['swallow', 220, 130],
+        ['hotAirBalloon', 770, 50],
+        ['sparrow', 326, 309],
+        ['hedgehog', 380, 405],
+        ['squirrel', 760, 362],
+        ['molehill', 250, 352],
+        ['bee', 620, 395],
+        ['ladybug', 470, 420],
+        ['snail', 370, 490],
+        ['mushroom', 276, 484, '#e63946'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['mushroom', 99, 286],

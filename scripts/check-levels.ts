@@ -35,8 +35,18 @@ const SECRET_MIN_VISIBLE_PX = 25
 const SECRET_MAX_SHOWN = 0.75
 /** Extra objects of normal mode keep at least this far from the zones, the key and the traps. */
 const EXTRA_GAP = 20
+/** Decor of every mode (`decor` of levels/extras.ts) keeps at least this far from the zones, the key, the traps and
+ * the extras (its circle already holds the whole shape). */
+const DECOR_GAP = 4
 
 type Zone = { x: number; y: number; r: number }
+
+/** The circles of a picture's decor, from its `data-decor="x y r"` groups. */
+const decorOf = (scene: SceneSvg): Zone[] =>
+  [...scene.svg.matchAll(/data-decor="([^"]+)"/g)].map((m) => {
+    const [x, y, r] = m[1].split(' ').map(Number)
+    return { x, y, r }
+  })
 
 /**
  * Renders A and B at the sampled times and checks that they differ only inside
@@ -321,6 +331,17 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
       errors.push(`zone #${i} follows unknown animation "${d.animatedId}"`)
   })
 
+  // A "time" level may draw some decor at one moment only (through `time`): both moments are read.
+  const decor = [...decorOf(a), ...(timed ? decorOf(level.build(0, 1)) : [])]
+  if (decor.length > 0) {
+    const near = (e: Zone, o: Zone, gap: number) => Math.hypot(e.x - o.x, e.y - o.y) < e.r + o.r + gap
+    decor.forEach((e, i) => {
+      if (level.secret && near(e, level.secret, DECOR_GAP)) errors.push(`decor #${i} is closer than ${DECOR_GAP} to the secret key`)
+      ;(level.traps ?? []).forEach((t, j) => near(e, t, DECOR_GAP) && errors.push(`decor #${i} is closer than ${DECOR_GAP} to trap #${j}`))
+      ;(level.extras ?? []).forEach((x, j) => near(e, x, DECOR_GAP) && errors.push(`decor #${i} is closer than ${DECOR_GAP} to extra #${j}`))
+    })
+  }
+
   // Zones are checked in each picture over time: moving zones must stay inside the
   // picture and never overlap other zones. Static levels need only t = 0.
   const moving = ds.some((d) => d.animatedId !== undefined)
@@ -345,6 +366,9 @@ function check(level: Level, expectedId: number): { errors: string[]; motion: nu
         if (s && Math.hypot(z.x - s.x, z.y - s.y) < z.r + s.r) report(`the secret key overlaps zone #${i}`, when)
         ;(level.extras ?? []).forEach((e, j) => {
           if (Math.hypot(z.x - e.x, z.y - e.y) < z.r + e.r + EXTRA_GAP) report(`extra #${j} is closer than ${EXTRA_GAP} to zone #${i}`, when)
+        })
+        decor.forEach((e, j) => {
+          if (Math.hypot(z.x - e.x, z.y - e.y) < z.r + e.r + DECOR_GAP) report(`decor #${j} is closer than ${DECOR_GAP} to zone #${i}`, when)
         })
       })
     })

@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level205Redesign } from './level-205-redesign.ts'
 import { ball, bench, bin, bird, birdHouse, bucket, bush, butterfly, cat, cloud, dog, DUSK, flowers, glow, grass, lampHead, lampPost, laundry, moon, oak, pane, pigeon, pot, shirt, sky, slide, stars, stones, sun, swingFrame, swingSeat } from './shapes.ts'
@@ -51,11 +51,33 @@ export default svgLevel({
       birdHouse(770, 470) +
       grass(40, 490) +
       grass(400, 490) +
+      // A busier yard: flower boxes under two windows, a sparrow on the roof, a teddy left in the sandbox, a scooter,
+      // a watering can and a crow; a bee by day, an owl on the birdhouse, a bat and a firefly at night.
+      decor({ anim }, [
+        ['flowerBox', 345, 226, '#ff6b8b'],
+        ['flowerBox', 570, 122, '#b38cff'],
+        ['sparrow', 300, 52],
+        ['teddy', 190, 462, '#c68b4e'],
+        ['scooter', 410, 460],
+        ['wateringCan', 700, 400],
+        ['crow', 470, 302],
+      ]) +
+      time(
+        decor({ anim }, [
+          ['bee', 668, 268],
+        ]),
+        decor({ anim }, [
+          ['owl', 770, 392],
+          ['bat', 60, 240],
+        ]),
+      ) +
       // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
       extras({ extra, anim }, [
         ['birds', 662, 199],
       ]) +
       time('', DUSK) +
+      // Night lights over the dusk, so that they glow: only in the evening picture.
+      time('', decor({ anim }, [['firefly', 185, 380]])) +
       trap(350, 370, 36, lampHead(350, 470, false), lampHead(350, 470, true), 'lights') +
       trap(270, 149, 28, '', glow(255, 132, 30, 34), 'lights') +
       time('', glow(405, 236, 30, 34) + glow(180, 236, 30, 34)) +

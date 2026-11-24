@@ -1,6 +1,6 @@
 // Motion differences: the swing swings faster on picture B; the pinwheel turns the other way on B.
 import { butterfly } from '../chapter-03/shapes.ts'
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { stones } from '../shapes.ts'
 import { bench, cityTree, cloud, coffeeCup, grass, person, pigeon, scooter, skateboard, sun } from './shapes.ts'
@@ -84,6 +84,19 @@ export default svgLevel({
       scooter(775, 480) +
       coffeeCup(575, 424) +
       butterfly(390, 300) +
+      // A busier playground, the same in both pictures: a kite, a plane, a paper plane and a swallow in the sky, sparrows
+      // on the tree and the grass, a puppy, a teddy and a bin.
+      decor({ anim }, [
+        ['kite', 440, 40, '#8338ec'],
+        ['plane', 180, 30],
+        ['paperPlane', 600, 180],
+        ['swallow', 260, 130],
+        ['sparrow', 760, 212],
+        ['sparrow', 440, 488],
+        ['puppy', 60, 395, '#f4f1de'],
+        ['teddy', 420, 360],
+        ['bin', 745, 440, '#2a9d8f'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['birds', 530, 125],

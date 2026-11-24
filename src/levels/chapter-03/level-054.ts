@@ -1,5 +1,5 @@
 // Motion differences: the mill wheel turns faster on picture B; the lantern swings only on B; the dragonfly flies the other way round on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level054Redesign } from './level-054-redesign.ts'
 import { acorn, anthill, backpack, bluebells, cloud, floor, frog, oak, pine, pineCone, sun } from './shapes.ts'
@@ -76,6 +76,20 @@ export default svgLevel({
       bluebells(470, 364) +
       anthill(570, 366) +
       acorn(525, 274) +
+      // A busier mill creek, the same in both pictures: a swallow, a sparrow on the mill roof, a rabbit, a hedgehog and
+      // a squirrel on the hill, a mushroom, two fish, a floating feather and stones in the creek.
+      decor({ anim }, [
+        ['swallow', 620, 55],
+        ['sparrow', 785, 207],
+        ['rabbit', 360, 262],
+        ['hedgehog', 440, 256],
+        ['squirrel', 610, 262],
+        ['mushroom', 15, 366, '#e63946'],
+        ['fish', 230, 440, '#ffb703'],
+        ['fish', 480, 430, '#ff9f43'],
+        ['feather', 300, 480],
+        ['stones', 770, 440],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['pineCone', 471, 331],

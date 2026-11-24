@@ -1,4 +1,4 @@
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level201Redesign } from './level-201-redesign.ts'
 import { birdHouse, bucket, bush, cat, cloud, door, duck, DUSK, fence, flowerBox, flowers, glow, grass, hayBale, hen, house, mailbox, moon, oak, pane, picket, shadow, sky, stars, stones, stump, sun, sunflower, vane } from './shapes.ts'
@@ -49,6 +49,25 @@ export default svgLevel({
     hen(560, 455) +
     hayBale(735, 455) +
     stump(770, 340) +
+    // A busier farmyard: a rabbit, a garden gnome, a sparrow, a rake and a wheelbarrow; a butterfly and a bee by
+    // day, an owl on the stump and a bat in the evening.
+    decor({ anim }, [
+      ['rabbit', 185, 470],
+      ['gnome', 75, 430],
+      ['sparrow', 610, 482],
+      ['rake', 380, 455],
+      ['wheelbarrow', 680, 488],
+    ]) +
+    time(
+      decor({ anim }, [
+        ['butterfly', 200, 350, '#ffd23f'],
+        ['bee', 345, 388],
+      ]),
+      decor({ anim }, [
+        ['owl', 770, 323],
+        ['bat', 560, 55],
+      ]),
+    ) +
     // The extra objects of normal mode (docs/extra-objects.md): flocks in the sky, the same at both moments.
     extras({ extra, anim }, [
       ['birds', 390, 198],

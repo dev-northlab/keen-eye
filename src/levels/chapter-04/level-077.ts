@@ -1,5 +1,5 @@
 // Motion differences: the penguin slides faster on picture B; the seal claps only on B; the floe drifts faster on B.
-import { extras } from '../extras.ts'
+import { decor, extras } from '../extras.ts'
 import { svgLevel } from '../helpers.ts'
 import { level077Redesign } from './level-077-redesign.ts'
 import { bottleMessage, dolphin, fish, gullStanding, lifeRing, waves } from './shapes.ts'
@@ -69,6 +69,19 @@ export default svgLevel({
       lifeRing(200, 462) +
       dolphin(482, 288) +
       anim({ type: 'path', points: [[0, 0], [-8, 40]], period: 4 }, flakes) +
+      // A busier polar sea, the same in both pictures: a plane, an airship, gulls and a flock of birds in the sky,
+      // fish and jellyfish among the floes.
+      decor({ anim }, [
+        ['plane', 300, 25],
+        ['airship', 650, 140],
+        ['birds', 500, 140],
+        ['gull', 90, 60],
+        ['gull', 760, 170],
+        ['fish', 660, 320, '#4dabf7'],
+        ['fish', 240, 268, '#ffd23f'],
+        ['jellyfish', 260, 400, '#b38cff'],
+        ['jellyfish', 30, 395, '#ff9f43'],
+      ]) +
       // The extra objects of normal mode (docs/extra-objects.md).
       extras({ extra, anim }, [
         ['fish', 625, 269, '#ff9f43'],
