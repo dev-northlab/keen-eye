@@ -119,6 +119,19 @@ export default travelLevel({
       ['birds', 300, 56],
       ['balloon', 500, 100, '#ffd23f'],
     ]) +
+    // A busier Amsterdam, the same in both pictures: a plane, a swallow and a hot-air balloon in the sky, a cat, a
+    // shopping bag, a bench and a sparrow on the quay, gulls flying low over the canal.
+    decor({ anim }, [
+      ['plane', 190, 28],
+      ['swallow', 470, 30],
+      ['hotAirBalloon', 780, 30],
+      ['cat', 395, 364, '#e0a050'],
+      ['shoppingBag', 520, 364, '#ff6b8b'],
+      ['bench', 690, 364],
+      ['sparrow', 735, 364],
+      ['gull', 175, 475],
+      ['gull', 460, 410],
+    ]) +
     extras({ extra, anim }, [
       ['lifeRing', 240, 428],
       ['bottle', 512, 476],

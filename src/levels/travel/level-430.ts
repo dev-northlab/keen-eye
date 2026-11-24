@@ -119,6 +119,21 @@ export default travelLevel({
         ['birds', 132, 96],
         ['cloud', 644, 140],
       ]) +
+      // A busier Caminito: a plane and a swallow in the sky, a pigeon, a cat and a crow on the roofs, flower boxes on two
+      // windows, a potted plant by a door, a puppy, a sparrow and a scooter in the street.
+      decor({ anim }, [
+        ['plane', 700, 40],
+        ['swallow', 470, 130],
+        ['pigeon', 60, 165],
+        ['cat', 633, 195, '#1d1d1d'],
+        ['crow', 740, 160],
+        ['flowerBox', 625, 281, '#ff006e'],
+        ['flowerBox', 735, 251, '#ffd23f'],
+        ['flowerPot', 90, 384],
+        ['puppy', 40, 494, '#c98b4f'],
+        ['sparrow', 220, 494],
+        ['scooter', 620, 494],
+      ]) +
       extras({ extra, anim }, [
         ['ball', 480, 484, '#ffd23f'],
         ['bollard', 736, 492],

@@ -117,6 +117,19 @@ export default travelLevel({
         ['cloud', 108, 64],
         ['birds', 320, 200],
       ]) +
+      // A busier park: a plane and a swallow in the sky, tulips and a butterfly on the grass, a hay bale behind the horse,
+      // a bench and a steppe tortoise.
+      decor({ anim }, [
+        ['plane', 600, 30],
+        ['swallow', 230, 280],
+        ['flower', 230, 410, '#e63946'],
+        ['flower', 690, 480, '#e63946'],
+        ['flower', 760, 470, '#ffd23f'],
+        ['butterfly', 760, 380, '#ff9f43'],
+        ['haybale', 500, 380],
+        ['bench', 530, 494],
+        ['tortoise', 40, 494],
+      ]) +
       extras({ extra, anim }, [
         ['bee', 568, 372],
         ['mushroom', 352, 484, '#e63946'],

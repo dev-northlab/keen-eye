@@ -116,6 +116,20 @@ export default travelLevel({
         ['cloud', 108, 92],
         ['birds', 532, 96],
       ]) +
+      // A busier savanna, the same in both pictures: two hot-air balloons, a plane and a swallow in the sky, a safari
+      // tent and grass by the jeep, a rock and a butterfly over the plain, a sparrow and a tortoise in the grass.
+      decor({ anim }, [
+        ['hotAirBalloon', 440, 170],
+        ['hotAirBalloon', 230, 60],
+        ['plane', 770, 36],
+        ['swallow', 600, 220],
+        ['tent', 40, 470],
+        ['grass', 30, 400],
+        ['rock', 430, 318, '#b9853f'],
+        ['butterfly', 490, 316, '#ff9f43'],
+        ['sparrow', 290, 496],
+        ['tortoise', 520, 488],
+      ]) +
       extras({ extra, anim }, [
         ['rock', 764, 332, '#b9853f'],
         ['bee', 612, 464],

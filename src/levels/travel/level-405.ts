@@ -131,6 +131,20 @@ export default travelLevel({
       ['balloon', 264, 32, '#ffd23f'],
       ['birds', 500, 92],
     ]) +
+    // A busier Agra, the same in both pictures: a hot-air balloon in the sky, pigeons on the white platform, a crow, a
+    // dragonfly over the pool, a tortoise, a flower, a dog and a tourist's suitcase with a sparrow in the gardens.
+    decor({ anim }, [
+      ['hotAirBalloon', 780, 215],
+      ['pigeon', 270, 300],
+      ['pigeon', 528, 300],
+      ['crow', 235, 410],
+      ['dragonfly', 400, 380],
+      ['tortoise', 562, 476],
+      ['flower', 240, 490, '#ffd23f'],
+      ['puppy', 40, 450, '#c98b4f'],
+      ['suitcase', 770, 488, '#3a86ff'],
+      ['sparrow', 735, 490],
+    ]) +
     extras({ extra, anim }, [
       ['grass', 180, 488],
       ['ladybug', 480, 472],

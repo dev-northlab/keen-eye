@@ -109,6 +109,21 @@ export default travelLevel({
         ['balloon', 488, 64, '#ffd23f'],
         ['birds', 712, 172],
       ]) +
+      // A busier Bangkok: a kite, a sky lantern and a plane in the sky, a crow on the temple terrace, fish in the
+      // Chao Phraya; a stray puppy, a manhole, a pigeon, a scooter and a cat in the road.
+      decor({ anim }, [
+        ['kite', 30, 130, '#e63946'],
+        ['skyLantern', 640, 100],
+        ['plane', 770, 110],
+        ['crow', 770, 292],
+        ['fish', 40, 395],
+        ['fish', 535, 398, '#e63946'],
+        ['puppy', 60, 496],
+        ['manhole', 110, 476],
+        ['pigeon', 370, 494],
+        ['scooter', 720, 496],
+        ['cat', 780, 496, '#8d99ae'],
+      ]) +
       extras({ extra, anim }, [
         ['cone', 456, 488],
         ['bottle', 732, 356],

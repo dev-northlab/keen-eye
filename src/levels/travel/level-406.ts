@@ -120,6 +120,19 @@ export default travelLevel({
         ['birds', 372, 148],
         ['cloud', 600, 56],
       ]) +
+      // Busier hills, the same in both pictures: a plane and a hot-air balloon in the sky, a dragonfly, a butterfly, a
+      // mushroom, bluebells, a rabbit and a fox on the slope below the wall, a hikers' tent among the pines.
+      decor({ anim }, [
+        ['plane', 470, 26],
+        ['hotAirBalloon', 300, 36],
+        ['butterfly', 480, 370, '#b38cff'],
+        ['dragonfly', 36, 384],
+        ['mushroom', 40, 446, '#e63946'],
+        ['bluebells', 250, 488, '#b38cff'],
+        ['rabbit', 300, 400],
+        ['fox', 360, 492],
+        ['tent', 620, 482],
+      ]) +
       extras({ extra, anim }, [
         ['ladybug', 364, 320],
         ['flower', 88, 364, '#b38cff'],

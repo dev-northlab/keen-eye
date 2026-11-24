@@ -121,6 +121,19 @@ export default travelLevel({
       ['cloud', 584, 60],
       ['birds', 88, 236],
     ]) +
+    // A busier boulevard, the same in both pictures: a plane in the sky, a pigeon on the old wall, a cat, a bench, a
+    // bin, a scooter and a puppy on the boulevard, gulls flying low over the sea.
+    decor({ anim }, [
+      ['plane', 360, 28],
+      ['pigeon', 270, 300],
+      ['cat', 230, 424, '#e0a050'],
+      ['bench', 380, 424],
+      ['bin', 500, 424, '#2a9d8f'],
+      ['scooter', 600, 424],
+      ['puppy', 722, 424, '#6b6b6b'],
+      ['gull', 200, 460],
+      ['gull', 775, 445],
+    ]) +
     extras({ extra, anim }, [
       ['bottle', 728, 476],
       ['lifeRing', 420, 456],

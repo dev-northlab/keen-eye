@@ -122,6 +122,20 @@ export default travelLevel({
         ['birds', 708, 92],
         ['cloud', 184, 124],
       ]) +
+      // A busier square: a swallow and a plane in the sky, a pigeon and a crow on the red roofs, potted geraniums by the
+      // houses, a cat and a sparrow on the Inca wall, another sparrow and a puppy on the square.
+      decor({ anim }, [
+        ['swallow', 530, 50],
+        ['plane', 770, 30],
+        ['pigeon', 190, 224],
+        ['crow', 600, 214],
+        ['flowerPot', 230, 360],
+        ['flowerPot', 550, 352],
+        ['cat', 250, 406, '#8a6a4a'],
+        ['sparrow', 30, 404],
+        ['sparrow', 560, 494],
+        ['puppy', 770, 494, '#e3d2b0'],
+      ]) +
       extras({ extra, anim }, [
         ['shoppingBag', 364, 488, '#ff6b8b'],
         ['pigeon', 176, 368],

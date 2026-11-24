@@ -90,6 +90,20 @@ export default travelLevel({
         ['cloud', 372, 140],
         ['birds', 92, 236],
       ]) +
+      // A busier Giza, the same in both pictures: a plane, two hot-air balloons and a swallow in the sky, a Bedouin tent
+      // and a cat by the Sphinx, a mouse, a tortoise, a sparrow and a tourist's suitcase on the sand.
+      decor({ anim }, [
+        ['plane', 420, 40],
+        ['hotAirBalloon', 750, 120],
+        ['hotAirBalloon', 220, 160],
+        ['swallow', 720, 190],
+        ['tent', 40, 496],
+        ['cat', 30, 425, '#8a8a8a'],
+        ['mouse', 350, 492],
+        ['tortoise', 420, 490],
+        ['sparrow', 560, 494],
+        ['suitcase', 590, 440, '#e63946'],
+      ]) +
       extras({ extra, anim }, [
         ['stones', 468, 464],
         ['rock', 672, 440, '#b9853f'],

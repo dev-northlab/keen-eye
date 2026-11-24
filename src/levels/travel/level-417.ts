@@ -109,6 +109,22 @@ export default travelLevel({
         ['birds', 172, 216],
         ['cloud', 596, 288],
       ]) +
+      // A busier Barcelona: a gull and a plane from the sea, a hot-air balloon by the sun; a wheelbarrow and a cone
+      // at the crane's foot; a sparrow on the bench; a skateboard, a pigeon, a ginger cat, a scooter and a flower pot
+      // on the terrace.
+      decor({ anim }, [
+        ['gull', 760, 120],
+        ['plane', 760, 220],
+        ['hotAirBalloon', 40, 230],
+        ['wheelbarrow', 498, 392],
+        ['cone', 536, 390],
+        ['sparrow', 482, 416],
+        ['skateboard', 40, 494, '#8338ec'],
+        ['pigeon', 360, 494],
+        ['cat', 420, 496, '#f08c2e'],
+        ['scooter', 486, 496],
+        ['flowerPot', 772, 494],
+      ]) +
       extras({ extra, anim }, [
         ['shoppingBag', 592, 488, '#ff6b8b'],
         ['ball', 220, 488, '#ffd23f'],

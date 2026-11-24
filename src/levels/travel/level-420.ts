@@ -121,6 +121,21 @@ export default travelLevel({
         ['birds', 596, 176],
         ['cloud', 184, 104],
       ]) +
+      // A busier Istanbul: a gull, a plane and a hot-air balloon in the sky; fish and a jellyfish in the Bosphorus; a
+      // flower pot, pigeons, a bench and a scooter on the promenade.
+      decor({ anim }, [
+        ['gull', 290, 40],
+        ['plane', 760, 40],
+        ['hotAirBalloon', 770, 150],
+        ['fish', 40, 384],
+        ['jellyfish', 168, 342],
+        ['fish', 590, 388, '#e63946'],
+        ['flowerPot', 30, 496],
+        ['pigeon', 410, 494],
+        ['bench', 505, 498],
+        ['scooter', 670, 496],
+        ['pigeon', 780, 494],
+      ]) +
       extras({ extra, anim }, [
         ['pigeon', 532, 440],
         ['ball', 388, 436, '#ffd23f'],

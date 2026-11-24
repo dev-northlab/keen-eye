@@ -118,6 +118,20 @@ export default travelLevel({
       ['balloon', 660, 36, '#ffd23f'],
       ['birds', 352, 52],
     ]) +
+    // A busier New York, the same in both pictures: a plane and an airship in the sky, pigeons, a crow and a black cat
+    // on the roofs, stones on Liberty Island, a gull and fish over and in the harbor.
+    decor({ anim }, [
+      ['plane', 60, 40],
+      ['airship', 500, 40],
+      ['pigeon', 270, 250],
+      ['pigeon', 330, 200],
+      ['crow', 380, 270],
+      ['cat', 760, 220, '#2b2b2b'],
+      ['stones', 214, 382],
+      ['gull', 770, 400],
+      ['fish', 220, 410],
+      ['fish', 760, 480, '#ff8c42'],
+    ]) +
     extras({ extra, anim }, [
       ['bottle', 96, 446],
       ['buoy', 596, 400, '#e63946'],

@@ -100,6 +100,21 @@ export default travelLevel({
         ['cloud', 592, 56],
         ['birds', 88, 204],
       ]) +
+      // A busier Athens: a plane over the temple and a gull from the sea; a tortoise and a butterfly on the hill;
+      // flower pots, a pigeon and a sparrow on the flat roofs; flip-flops, a scooter and a stray puppy in the street.
+      decor({ anim }, [
+        ['plane', 480, 26],
+        ['gull', 770, 128],
+        ['tortoise', 200, 292],
+        ['butterfly', 640, 250, '#ffd23f'],
+        ['flowerPot', 165, 315],
+        ['pigeon', 300, 295],
+        ['flowerPot', 548, 305],
+        ['sparrow', 640, 321],
+        ['flipFlops', 40, 488, '#ff6b8b'],
+        ['scooter', 470, 496],
+        ['puppy', 566, 496],
+      ]) +
       extras({ extra, anim }, [
         ['coffeeCup', 744, 472],
         ['shoppingBag', 616, 476, '#ff6b8b'],

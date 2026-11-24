@@ -111,6 +111,21 @@ export default travelLevel({
         ['balloon', 228, 52, '#ffd23f'],
         ['birds', 548, 112],
       ]) +
+      // A busier Rio, the same in both pictures: a kite, a plane and a gull in the sky, a fish leaping in the bay, a crab,
+      // a starfish and a shell on the sand, a bench, a puppy, a skateboard and a pigeon on the wave pavement.
+      decor({ anim }, [
+        ['kite', 660, 60, '#ff6b8b'],
+        ['plane', 760, 30],
+        ['gull', 40, 210],
+        ['fish', 404, 316, '#ff8c42'],
+        ['crab', 150, 446],
+        ['starfish', 290, 446, '#ff9f43'],
+        ['shell', 782, 446, '#b38cff'],
+        ['bench', 300, 496],
+        ['puppy', 440, 496, '#c98b4f'],
+        ['skateboard', 620, 494, '#3a86ff'],
+        ['pigeon', 710, 494],
+      ]) +
       extras({ extra, anim }, [
         ['flipFlops', 68, 428, '#3a86ff'],
         ['sunglasses', 436, 408],

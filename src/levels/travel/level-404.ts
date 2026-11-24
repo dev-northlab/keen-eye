@@ -120,6 +120,19 @@ export default travelLevel({
       ['birds', 160, 180],
       ['balloon', 560, 228, '#ffd23f'],
     ]) +
+    // A busier Tokyo, the same in both pictures: a plane, a swallow and a kite in the sky, a crow on a city roof, a
+    // dragonfly under the viaduct, a bench with a sparrow, a cat and a flower in the park.
+    decor({ anim }, [
+      ['plane', 56, 118],
+      ['swallow', 470, 240],
+      ['kite', 760, 140, '#2b59c3'],
+      ['crow', 510, 314],
+      ['dragonfly', 160, 412],
+      ['bench', 130, 498],
+      ['sparrow', 118, 474],
+      ['cat', 250, 480, '#e8a25a'],
+      ['flower', 776, 490, '#b38cff'],
+    ]) +
     extras({ extra, anim }, [
       ['stones', 248, 412],
       ['grass', 60, 484],

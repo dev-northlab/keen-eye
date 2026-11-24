@@ -120,6 +120,21 @@ export default travelLevel({
         ['birds', 288, 52],
         ['cloud', 708, 228],
       ]) +
+      // A busier Singapore: a gull, a plane and a swallow in the sky, a butterfly among the Supertrees, a sparrow on
+      // the quay, fish in the bay; a pigeon, a bench, a shopping bag and a bin on the promenade.
+      decor({ anim }, [
+        ['gull', 470, 60],
+        ['plane', 760, 50],
+        ['swallow', 760, 150],
+        ['butterfly', 350, 290, '#ffd23f'],
+        ['sparrow', 20, 318],
+        ['fish', 30, 432],
+        ['fish', 480, 420, '#ff6b8b'],
+        ['pigeon', 30, 494],
+        ['bench', 160, 498],
+        ['shoppingBag', 360, 494, '#8338ec'],
+        ['bin', 400, 494, '#2a9d8f'],
+      ]) +
       extras({ extra, anim }, [
         ['bollard', 228, 492],
         ['lifeRing', 72, 372],

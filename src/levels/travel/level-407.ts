@@ -126,6 +126,19 @@ export default travelLevel({
         ['birds', 88, 136],
         ['cloud', 256, 64],
       ]) +
+      // A busier square, the same in both pictures: a plane, a hot-air balloon and a swallow in the sky, a cat, a crow and a
+      // sparrow on the roofs, a butterfly, a puppy and a skateboard on the square.
+      decor({ anim }, [
+        ['plane', 520, 36],
+        ['hotAirBalloon', 36, 196],
+        ['swallow', 340, 120],
+        ['cat', 420, 250, '#6b6b6b'],
+        ['crow', 520, 280],
+        ['sparrow', 740, 280],
+        ['butterfly', 170, 412, '#ffd23f'],
+        ['puppy', 462, 498, '#c98b4f'],
+        ['skateboard', 620, 494, '#e63946'],
+      ]) +
       extras({ extra, anim }, [
         ['shoppingBag', 284, 476, '#ff6b8b'],
         ['pigeon', 244, 436],

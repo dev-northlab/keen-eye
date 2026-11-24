@@ -129,6 +129,20 @@ export default travelLevel({
         ['cloud', 540, 68],
         ['birds', 160, 156],
       ]) +
+      // A busier lakeshore: a plane over the tower, pigeons and a crow on the skyscrapers, a gull and a fish on the
+      // lake, a bench, a squirrel and autumn leaf piles on the grass.
+      decor({ anim }, [
+        ['plane', 480, 100],
+        ['pigeon', 145, 220],
+        ['crow', 300, 236],
+        ['pigeon', 690, 260],
+        ['gull', 360, 400],
+        ['fish', 750, 410],
+        ['bench', 230, 492],
+        ['squirrel', 370, 492],
+        ['leafPile', 30, 494],
+        ['leafPile', 450, 494],
+      ]) +
       extras({ extra, anim }, [
         ['butterfly', 124, 476, '#ffd23f'],
         ['bottle', 180, 356],
