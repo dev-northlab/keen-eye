@@ -76,6 +76,19 @@ export default detectiveLevel({
       ['iceSkates', 598, 356],
       ['tent', 647, 483],
     ]) +
+    // A busier ski slope, the same in both pictures: clouds and a flock in the sky, a bullfinch on the station roof,
+    // a snowy pine on the slope, a fire extinguisher by the station, a hare, a fox and a sparrow on the snow.
+    decor({ anim }, [
+      ['cloud', 190, 60],
+      ['cloud', 460, 36],
+      ['birds', 560, 28],
+      ['bullfinch', 120, 150],
+      ['pine', 550, 335],
+      ['fireExtinguisher', 75, 340],
+      ['rabbit', 70, 430],
+      ['sparrow', 330, 410],
+      ['fox', 682, 395],
+    ]) +
     extras({ extra, anim }, [
       ['sparrow', 41, 359],
       ['sled', 47, 475],

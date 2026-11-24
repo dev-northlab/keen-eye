@@ -74,6 +74,18 @@ export default detectiveLevel({
       ['sled', 302, 410],
       ['iceSkates', 598, 481],
     ]) +
+    // A busier yard, the same in both pictures: twinkling stars in the night sky, three small snowy pines in the
+    // front yard and a garden gnome by the snowman.
+    decor({ anim }, [
+      ['star', 180, 30],
+      ['star', 480, 25],
+      ['star', 470, 140],
+      ['star', 760, 110],
+      ['pine', 20, 345],
+      ['pine', 170, 385],
+      ['pine', 780, 420],
+      ['gnome', 590, 430],
+    ]) +
     extras({ extra, anim }, [
       ['sparrow', 41, 479],
       ['owl', 45, 425],

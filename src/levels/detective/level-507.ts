@@ -83,6 +83,19 @@ export default detectiveLevel({
       ['sconce', 657, 99],
       ['bucket', 758, 486],
     ]) +
+    // A busier storeroom, the same in both pictures: a spider in the corner, an apron and a dartboard on the walls,
+    // a broom and a shovel against the wall, a toolbox, a basket, a watering can and a sled stored on the floor.
+    decor({ anim }, [
+      ['spider', 780, 60],
+      ['scarfHook', 290, 70, '#e5484d'],
+      ['dartboard', 700, 170],
+      ['broom', 95, 380],
+      ['shovel', 140, 380],
+      ['toolbox', 190, 490],
+      ['yarnBasket', 40, 496],
+      ['wateringCan', 400, 490, '#4c9a52'],
+      ['sled', 540, 490],
+    ]) +
     extras({ extra, anim }, [
       ['butterflyFrame', 40, 263],
       ['umbrellaStand', 108, 482],

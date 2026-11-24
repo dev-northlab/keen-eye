@@ -74,6 +74,19 @@ export default detectiveLevel({
       ['antlers', 662, 62],
       ['fireExtinguisher', 757, 480],
     ]) +
+    // A busier dressing room, the same in both pictures: an oval photo, a wall phone and a target on the walls, an
+    // umbrella stand, a yarn basket under the table, a cat, a flower pot, a toy drum and a ball on the floor.
+    decor({ anim }, [
+      ['photoOval', 32, 210],
+      ['wallPhone', 386, 250],
+      ['dartboard', 590, 74],
+      ['umbrellaStand', 36, 400],
+      ['yarnBasket', 200, 382],
+      ['cat', 320, 496, '#7a7a86'],
+      ['flowerPot', 540, 494],
+      ['toyDrum', 680, 490],
+      ['ball', 115, 494, '#7cc25a'],
+    ]) +
     extras({ extra, anim }, [
       ['butterflyFrame', 110, 323],
       ['mouse', 122, 424],

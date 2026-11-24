@@ -75,6 +75,20 @@ export default detectiveLevel({
       ['wateringCan', 638, 447, '#4c9a52'],
       ['garlic', 760, 189],
     ]) +
+    // A busier shop, the same in both pictures: bunting under the ceiling, a cuckoo clock, a wall phone and a mirror,
+    // a fire extinguisher by the counter, an umbrella stand by the door, a bucket, a customer's bag and a toolbox.
+    decor({ anim }, [
+      ['bunting', 180, 70],
+      ['bunting', 625, 72],
+      ['cuckooClock', 250, 140],
+      ['wallPhone', 50, 295],
+      ['roundMirror', 776, 115],
+      ['fireExtinguisher', 175, 352],
+      ['umbrellaStand', 612, 362],
+      ['bucket', 100, 490],
+      ['shoppingBag', 300, 488, '#3a86ff'],
+      ['toolbox', 520, 488],
+    ]) +
     extras({ extra, anim }, [
       ['newspapers', 43, 423],
       ['photoOval', 63, 71],

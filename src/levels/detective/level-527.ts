@@ -90,6 +90,18 @@ export default detectiveLevel({
       ['sconce', 467, 59],
       ['keyRack', 757, 69],
     ]) +
+    // A busier ski room, the same in both pictures: a clock, a phone and a butterfly on the walls, a broom by the
+    // rack, a toolbox under the workbench, a fuel can, a potted plant and a mouse on the floor.
+    decor({ anim }, [
+      ['cuckooClock', 130, 55],
+      ['wallPhone', 260, 60],
+      ['butterflyFrame', 530, 120],
+      ['broom', 290, 400],
+      ['toolbox', 370, 400, '#e5484d'],
+      ['fuelCanister', 480, 490],
+      ['flowerPot', 600, 490],
+      ['mouse', 265, 490],
+    ]) +
     extras({ extra, anim }, [
       ['roundMirror', 40, 210],
       ['calendar', 48, 57],

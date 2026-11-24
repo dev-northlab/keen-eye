@@ -86,6 +86,18 @@ export default detectiveLevel({
       ['toyDrum', 300, 430],
       ['tent', 497, 468],
     ]) +
+    // A busier entrance, the same in both pictures: a flock of birds in the sky, a crow on the arch, a bin by the
+    // booth, a flower pot, a ball, a pigeon, stones and a grass tuft on the sand.
+    decor({ anim }, [
+      ['birds', 322, 38],
+      ['crow', 664, 110],
+      ['bin', 24, 398, '#5b8db8'],
+      ['flowerPot', 90, 494],
+      ['ball', 205, 492, '#3fbf5f'],
+      ['pigeon', 548, 494],
+      ['stones', 668, 494],
+      ['grass', 786, 494],
+    ]) +
     extras({ extra, anim }, [
       ['airship', 172, 67],
       ['mouse', 262, 479, '#b9a58a'],

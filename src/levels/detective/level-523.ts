@@ -91,6 +91,17 @@ export default detectiveLevel({
       ['yarnBasket', 738, 481],
       ['wallPhone', 749, 70],
     ]) +
+    // A busier dining car, the same in both pictures: a birdcage in the corner, a clock between the windows, coat
+    // hooks with scarves, a garland and a string of garlic over the counter and an umbrella stand.
+    decor({ anim }, [
+      ['birdcage', 60, 50],
+      ['cuckooClock', 275, 140],
+      ['scarfHook', 505, 140, '#4fb3a9'],
+      ['scarfHook', 35, 200, '#e8457a'],
+      ['bunting', 650, 40],
+      ['garlic', 580, 60],
+      ['umbrellaStand', 450, 420],
+    ]) +
     extras({ extra, anim }, [
       ['sconce', 47, 129],
       ['pouf', 158, 464, '#4fb3a9'],

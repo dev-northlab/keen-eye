@@ -83,6 +83,19 @@ export default detectiveLevel({
       ['scarfHook', 641, 274, '#4a90d9'],
       ['keyRack', 732, 49],
     ]) +
+    // A busier gift shop, the same in both pictures: a butterfly frame, a wall lamp, a cuckoo clock, a round mirror and
+    // an oval photo on the walls, a stack of newspapers, a teddy, a toy drum and a flower pot on the floor.
+    decor({ anim }, [
+      ['butterflyFrame', 172, 96],
+      ['sconce', 522, 70],
+      ['cuckooClock', 626, 64],
+      ['roundMirror', 312, 214],
+      ['photoOval', 782, 232],
+      ['newspapers', 152, 424],
+      ['teddy', 298, 420, '#c98b4f'],
+      ['toyDrum', 142, 482],
+      ['flowerPot', 590, 474],
+    ]) +
     extras({ extra, anim }, [
       ['sconce', 52, 274],
       ['bunting', 72, 73],

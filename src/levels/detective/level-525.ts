@@ -82,6 +82,18 @@ export default detectiveLevel({
       ['scarfHook', 751, 54, '#7b5ea7'],
       ['boots', 756, 427, '#4c9a52'],
     ]) +
+    // A busier compartment, the same in both pictures: pennants over the bunks and the shelf, a pirate map between
+    // the bunks, a dartboard, a butterfly and a photo on the wall, a suitcase and an umbrella stand by the wall.
+    decor({ anim }, [
+      ['bunting', 200, 40],
+      ['bunting', 560, 42],
+      ['treasureMap', 200, 255],
+      ['photoOval', 765, 140],
+      ['dartboard', 640, 320],
+      ['butterflyFrame', 720, 320],
+      ['suitcase', 520, 400, '#3a86ff'],
+      ['umbrellaStand', 700, 400],
+    ]) +
     extras({ extra, anim }, [
       ['birdcage', 88, 231],
       ['yarnBasket', 128, 431],

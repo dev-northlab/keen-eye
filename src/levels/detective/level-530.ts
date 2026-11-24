@@ -57,6 +57,20 @@ export default detectiveLevel({
       ['mailbox', 603, 383],
       ['snowballs', 736, 480],
     ]) +
+    // A busier summit, the same in both pictures: clouds, a balloon, an airship and a flock in the sky, two snowy pines
+    // below the peak, a fox by the big fir, a pine cone under it and a few stones poking out of the snow.
+    decor({ anim }, [
+      ['cloud', 450, 40],
+      ['cloud', 760, 50],
+      ['hotAirBalloon', 200, 110],
+      ['airship', 380, 140],
+      ['birds', 750, 150],
+      ['pine', 440, 300],
+      ['pine', 720, 300],
+      ['fox', 30, 380],
+      ['pineCone', 125, 346],
+      ['stones', 240, 484],
+    ]) +
     extras({ extra, anim }, [
       ['plane', 50, 43],
       ['sparrow', 86, 374],

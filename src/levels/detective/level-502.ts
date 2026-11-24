@@ -74,6 +74,20 @@ export default detectiveLevel({
       ['molehill', 328, 474],
       ['bucket', 543, 466],
     ]) +
+    // A busier garden, the same in both pictures: a hot-air balloon, a kite and a flock in the sky, a lamp by the
+    // door, a flower pot, a bullfinch on the fence, a bee and a butterfly, a snail and flowers in the grass.
+    decor({ anim }, [
+      ['hotAirBalloon', 420, 100],
+      ['kite', 590, 118, '#3a86ff'],
+      ['birds', 560, 190],
+      ['sconce', 145, 215],
+      ['flowerPot', 150, 392],
+      ['bullfinch', 358, 257],
+      ['bee', 470, 312],
+      ['butterfly', 560, 240, '#ffd23f'],
+      ['snail', 500, 492],
+      ['flower', 772, 428, '#ff6b8b'],
+    ]) +
     extras({ extra, anim }, [
       ['wheelbarrow', 69, 411],
       ['dragonfly', 75, 45],

@@ -96,6 +96,18 @@ export default detectiveLevel({
       ['bucket', 553, 486],
       ['dartboard', 705, 65],
     ]) +
+    // A busier compartment, the same in both pictures: a calendar, an oval photo, a round mirror and a butterfly frame
+    // on the walls, a birdcage by the window, an umbrella stand, a yarn basket and a flower pot on the floor.
+    decor({ anim }, [
+      ['calendar', 268, 48],
+      ['photoOval', 565, 45],
+      ['roundMirror', 772, 48],
+      ['butterflyFrame', 505, 292],
+      ['birdcage', 295, 206],
+      ['umbrellaStand', 40, 420],
+      ['yarnBasket', 470, 482],
+      ['flowerPot', 378, 482],
+    ]) +
     extras({ extra, anim }, [
       ['pouf', 123, 464, '#e5484d'],
       ['butterflyFrame', 190, 148],

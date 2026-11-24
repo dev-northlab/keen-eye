@@ -73,6 +73,21 @@ export default detectiveLevel({
       ['calendar', 573, 62],
       ['teddy', 755, 480],
     ]) +
+    // A busier living room, the same in both pictures: a cuckoo clock, a birdcage, a dartboard and a scarf on the
+    // walls, a hat box by the sofa, a yarn basket on the rug, an umbrella stand by the door, newspapers, a dollhouse
+    // and a globe on the floor.
+    decor({ anim }, [
+      ['cuckooClock', 255, 140],
+      ['birdcage', 30, 150],
+      ['dartboard', 560, 150],
+      ['scarfHook', 782, 200, '#3a86ff'],
+      ['hatBox', 185, 380, '#b38cff'],
+      ['yarnBasket', 400, 452],
+      ['umbrellaStand', 782, 402],
+      ['newspapers', 52, 398],
+      ['dollhouse', 300, 498],
+      ['globe', 470, 498],
+    ]) +
     extras({ extra, anim }, [
       ['butterflyFrame', 40, 58],
       ['mouse', 47, 459],

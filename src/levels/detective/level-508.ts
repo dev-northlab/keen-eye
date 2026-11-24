@@ -83,6 +83,20 @@ export default detectiveLevel({
       ['cactus', 603, 483],
       ['bench', 734, 437],
     ]) +
+    // A busier street, the same in both pictures: bunting on the shop front, a lamp by the house door, a kite in
+    // the sky, a hydrant, a bin, a ball, a manhole, a shopping bag and a butterfly over the cobbles.
+    decor({ anim }, [
+      ['bunting', 255, 150],
+      ['bunting', 410, 150],
+      ['sconce', 660, 226],
+      ['kite', 130, 206, '#9b5de5'],
+      ['hydrant', 545, 398],
+      ['bin', 30, 470],
+      ['ball', 140, 425],
+      ['manhole', 520, 482],
+      ['shoppingBag', 700, 488, '#2a9d8f'],
+      ['butterfly', 420, 470],
+    ]) +
     extras({ extra, anim }, [
       ['plane', 50, 173],
       ['hotAirBalloon', 65, 38],

@@ -71,6 +71,21 @@ export default detectiveLevel({
       ['cactus', 508, 453],
       ['sconce', 762, 259],
     ]) +
+    // A busier kitchen, the same in both pictures: a calendar, a framed photo, a mirror and bunting on the walls,
+    // a second pan, a flower pot on the counter, an umbrella stand by the door, a bucket under the table,
+    // a yarn basket and a pouf on the floor.
+    decor({ anim }, [
+      ['calendar', 30, 160],
+      ['photoOval', 357, 72],
+      ['roundMirror', 612, 205],
+      ['bunting', 330, 22],
+      ['pan', 312, 222],
+      ['flowerPot', 60, 240],
+      ['umbrellaStand', 772, 335],
+      ['bucket', 445, 398],
+      ['yarnBasket', 450, 484],
+      ['pouf', 45, 472, '#7fb3a6'],
+    ]) +
     extras({ extra, anim }, [
       ['globe', 58, 397],
       ['boots', 221, 372, '#4c9a52'],

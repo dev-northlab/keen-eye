@@ -73,6 +73,19 @@ export default detectiveLevel({
       ['haybale', 628, 405],
       ['pouf', 758, 484, '#4fb3a9'],
     ]) +
+    // A busier circus ring, the same in both pictures: a target and a portrait on the tent wall, a swallow under the roof,
+    // a performer's trunk, a hay bale, a ball and a bench by the ring, a circus dog and a fire extinguisher.
+    decor({ anim }, [
+      ['dartboard', 150, 70],
+      ['photoOval', 472, 92],
+      ['swallow', 742, 60],
+      ['suitcase', 386, 494, '#8a5a2b'],
+      ['haybale', 58, 362],
+      ['ball', 382, 354, '#3a86ff'],
+      ['bench', 760, 362],
+      ['puppy', 572, 394, '#f2f2f2'],
+      ['fireExtinguisher', 784, 440],
+    ]) +
     extras({ extra, anim }, [
       ['bucket', 38, 406],
       ['spider', 65, 117],

@@ -70,6 +70,18 @@ export default detectiveLevel({
       ['keyRack', 462, 54],
       ['boots', 491, 477, '#4fa3c7'],
     ]) +
+    // A busier barn, the same in both pictures: a bat in the rafters, a swallow under the roof, a sparrow on the loft,
+    // a calendar and a scarf on its hook on the walls, a wrench by the window, a fire extinguisher, a toolbox.
+    decor({ anim }, [
+      ['bat', 30, 50],
+      ['swallow', 430, 200],
+      ['sparrow', 700, 92],
+      ['calendar', 60, 165],
+      ['scarfHook', 250, 245, '#3a8fd8'],
+      ['wrench', 740, 200],
+      ['fireExtinguisher', 785, 440],
+      ['toolbox', 545, 492],
+    ]) +
     extras({ extra, anim }, [
       ['spider', 135, 117],
       ['shovel', 138, 455],

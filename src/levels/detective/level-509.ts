@@ -78,6 +78,19 @@ export default detectiveLevel({
       ['newspapers', 518, 483],
       ['pan', 647, 319],
     ]) +
+    // A busier cellar, the same in both pictures: a scarf on a hook by the stairs, a cuckoo clock, antlers and a
+    // dartboard on the walls, and things put away on the floor: a suitcase, a watering can, a sled, boots, a toolbox.
+    decor({ anim }, [
+      ['scarfHook', 110, 108],
+      ['cuckooClock', 250, 40],
+      ['antlers', 300, 150],
+      ['dartboard', 690, 240],
+      ['suitcase', 255, 442, '#8e6bbf'],
+      ['wateringCan', 420, 402],
+      ['sled', 420, 472],
+      ['boots', 571, 440],
+      ['toolbox', 30, 472],
+    ]) +
     extras({ extra, anim }, [
       ['globe', 93, 442],
       ['birdcage', 198, 126],

@@ -59,6 +59,19 @@ export default detectiveLevel({
       ['haybale', 488, 470],
       ['mailbox', 733, 418],
     ]) +
+    // A busier yard, the same in both pictures: a swallow in the sky, a bird in the tree and a sparrow on the fence,
+    // a horseshoe for luck on the coop and a mushroom beside it, a bee by the hive, a snail, a garden gnome, a frog by the pond.
+    decor({ anim }, [
+      ['swallow', 772, 28],
+      ['bird', 520, 200],
+      ['sparrow', 400, 252],
+      ['horseshoe', 110, 280],
+      ['bee', 415, 322],
+      ['mushroom', 30, 304],
+      ['snail', 95, 470],
+      ['gnome', 780, 372],
+      ['frog', 580, 488],
+    ]) +
     extras({ extra, anim }, [
       ['crow', 43, 485],
       ['kite', 64, 47, '#7cc25a'],
