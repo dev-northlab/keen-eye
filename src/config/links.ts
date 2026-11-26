@@ -31,7 +31,8 @@ export const SHARE_TARGETS: ShareTarget[] = [
   { name: 'Facebook', icon: siFacebook, url: (link) => `https://www.facebook.com/sharer/sharer.php?u=${q(link)}` },
   { name: 'X', icon: siX, url: (link, text) => `https://twitter.com/intent/tweet?text=${q(text)}&url=${q(link)}` },
   { name: 'LinkedIn', icon: linkedin, url: (link) => `https://www.linkedin.com/sharing/share-offsite/?url=${q(link)}` },
-  { name: 'WhatsApp', icon: siWhatsapp, url: (link, text) => `https://wa.me/?text=${q(`${text} ${link}`)}` },
+  // Not wa.me: its redirect turns emoji into "�".
+  { name: 'WhatsApp', icon: siWhatsapp, url: (link, text) => `https://api.whatsapp.com/send?text=${q(`${text} ${link}`)}` },
   { name: 'Telegram', icon: siTelegram, url: (link, text) => `https://t.me/share/url?url=${q(link)}&text=${q(text)}` },
   { name: 'VK', icon: siVk, url: (link, text) => `https://vk.com/share.php?url=${q(link)}&title=${q(text)}` },
 ]
